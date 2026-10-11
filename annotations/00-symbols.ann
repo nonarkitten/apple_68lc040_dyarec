@@ -1,0 +1,5 @@
+# Labels that the build or the XCOFF symbol table depends on.
+
+@00000 cb
+@0E8B0 EmEntry
+@0E8C0 EmKernelTrapTable

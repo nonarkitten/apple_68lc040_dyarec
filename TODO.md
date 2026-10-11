@@ -14,17 +14,17 @@ Legend: `[x]` done, `[~]` partly done, `[ ]` not started.
 - [x] Pick a toolchain and prove a byte-exact round trip is possible
 - [x] PowerPC decoder that only emits forms which reassemble identically (`tools/ppc.py`)
 - [x] 68040 opcode-word decoder for naming dispatch table entries (`tools/m68k.py`)
-- [ ] Source generator driven by annotation files (`tools/gen.py`)
-- [ ] `make` builds `build/Emulator.x`; `make verify` compares it with the reference
+- [x] Source generator driven by annotation files (`tools/gen.py`)
+- [x] `make` builds `build/Emulator.x`; `make verify` compares it with the reference
 
 ### 2. Legible source
-- [ ] Role names for every register (patent names: `d0`, `a0`, `pc`, `prefetch_data`, ...)
+- [~] Role names for every register (patent names: `d0`, `a0`, `pc`, `prefetch_data`, ...)
 - [ ] Symbolic condition-register flag bits
 - [ ] Symbolic `EmulatorState` field offsets
-- [ ] Alignment padding expressed as directives rather than runs of `nop`
+- [x] Alignment padding expressed as directives rather than runs of `nop`
 - [ ] Embedded data tables emitted as data (with symbolic code offsets where they hold pointers)
-- [ ] Automatic end-of-line comments for cryptic PowerPC instructions (rotate/mask, CR logic, ...)
-- [ ] Dispatch table: every entry commented with its 68K instruction
+- [x] Automatic end-of-line comments for cryptic PowerPC instructions (rotate/mask, CR logic, ...)
+- [x] Dispatch table: every entry commented with its 68K instruction
 
 ### 3. Understanding the interpreter (0x00000-0x0EA44)
 - [ ] Dispatch / prefetch / decode sequence

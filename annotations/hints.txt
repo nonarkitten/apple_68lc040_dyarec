@@ -1,0 +1,22 @@
+# Per-address hints for tools/gen.py.
+#
+#   data  START END KIND        bytes START..END-1 are data, not code
+#                               KIND: long | short | byte | ascii | zero | offs16
+#                               (offs16 = 16-bit offsets from cb to a label)
+#   align START N               the nop run at START pads to a multiple of N
+#   reg   START END rN NAME     call register N "NAME" within START..END-1
+#   opnd  ADDR TEXT             replace the last operand of the instruction at ADDR
+#
+# All offsets are hexadecimal, relative to EmTop.
+
+data  085C0 08600 long
+data  0C510 0C514 byte
+data  0C7B0 0C7E0 byte
+data  0C960 0C964 long
+data  0D850 0D86C byte
+data  0DC44 0DD74 offs16
+data  0E7E0 0E830 offs16
+data  0EA00 0EA2C ascii
+align 0EA44 0x10000
+
+data  182FC 20000 zero
