@@ -20,21 +20,21 @@
         b       move_b_mem_d0
         and     data, d0, d7                            // C007  AND.B     D7,D0
         b       move_b_mem_d0
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C008  AND.B     A0,D0   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C008  AND.B     A0,D0   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C009  AND.B     A1,D0   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C009  AND.B     A1,D0   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C00A  AND.B     A2,D0   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C00A  AND.B     A2,D0   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C00B  AND.B     A3,D0   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C00B  AND.B     A3,D0   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C00C  AND.B     A4,D0   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C00C  AND.B     A4,D0   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C00D  AND.B     A5,D0   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C00D  AND.B     A5,D0   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C00E  AND.B     A6,D0   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C00E  AND.B     A6,D0   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C00F  AND.B     A7,D0   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C00F  AND.B     A7,D0   (illegal)
         b       take_illegal_instruction
         lbz     data, 0(a0)                             // C010  AND.B     (A0),D0
         b       and_b_mem_d0_2
@@ -126,11 +126,11 @@
         b       fea_b_73
         and     data, d0, prefetch_data                 // C03C  AND.B     #<data>,D0
         b       move_or_etc_b_ea_d0
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C03D  AND.B     <ea 7.5>,D0   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C03D  AND.B     <ea 7.5>,D0   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C03E  AND.B     <ea 7.6>,D0   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C03E  AND.B     <ea 7.6>,D0   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C03F  AND.B     <ea 7.7>,D0   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C03F  AND.B     <ea 7.7>,D0   (illegal)
         b       take_illegal_instruction
 
 // ---- $C040-$C07F --------------------------------------------------------
@@ -150,21 +150,21 @@
         b       or_eor_etc_w_reg_d0
         and     data, d0, d7                            // C047  AND.W     D7,D0
         b       or_eor_etc_w_reg_d0
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C048  AND.W     A0,D0   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C048  AND.W     A0,D0   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C049  AND.W     A1,D0   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C049  AND.W     A1,D0   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C04A  AND.W     A2,D0   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C04A  AND.W     A2,D0   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C04B  AND.W     A3,D0   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C04B  AND.W     A3,D0   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C04C  AND.W     A4,D0   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C04C  AND.W     A4,D0   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C04D  AND.W     A5,D0   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C04D  AND.W     A5,D0   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C04E  AND.W     A6,D0   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C04E  AND.W     A6,D0   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C04F  AND.W     A7,D0   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C04F  AND.W     A7,D0   (illegal)
         b       take_illegal_instruction
         lha     data, 0(a0)                             // C050  AND.W     (A0),D0
         b       and_w_mem_d0_2
@@ -256,11 +256,11 @@
         b       fea_w_73
         and     data, d0, prefetch_data                 // C07C  AND.W     #<data>,D0
         b       or_and_eor_w_imm_d0
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C07D  AND.W     <ea 7.5>,D0   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C07D  AND.W     <ea 7.5>,D0   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C07E  AND.W     <ea 7.6>,D0   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C07E  AND.W     <ea 7.6>,D0   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C07F  AND.W     <ea 7.7>,D0   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C07F  AND.W     <ea 7.7>,D0   (illegal)
         b       take_illegal_instruction
 
 // ---- $C080-$C0BF --------------------------------------------------------
@@ -280,21 +280,21 @@
         b       update_vc_zero
         and.    d0, d0, d7                              // C087  AND.L     D7,D0
         b       update_vc_zero
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C088  AND.L     A0,D0   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C088  AND.L     A0,D0   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C089  AND.L     A1,D0   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C089  AND.L     A1,D0   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C08A  AND.L     A2,D0   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C08A  AND.L     A2,D0   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C08B  AND.L     A3,D0   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C08B  AND.L     A3,D0   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C08C  AND.L     A4,D0   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C08C  AND.L     A4,D0   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C08D  AND.L     A5,D0   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C08D  AND.L     A5,D0   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C08E  AND.L     A6,D0   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C08E  AND.L     A6,D0   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C08F  AND.L     A7,D0   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C08F  AND.L     A7,D0   (illegal)
         b       take_illegal_instruction
         lwz     data, 0(a0)                             // C090  AND.L     (A0),D0
         b       and_l_mem_d0_2
@@ -386,11 +386,11 @@
         b       fea_l_73
         lwz     data, 0(pc)                             // C0BC  AND.L     #<data>,D0
         b       and_l_imm_d0
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C0BD  AND.L     <ea 7.5>,D0   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C0BD  AND.L     <ea 7.5>,D0   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C0BE  AND.L     <ea 7.6>,D0   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C0BE  AND.L     <ea 7.6>,D0   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C0BF  AND.L     <ea 7.7>,D0   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C0BF  AND.L     <ea 7.7>,D0   (illegal)
         b       take_illegal_instruction
 
 // ---- $C0C0-$C0FF --------------------------------------------------------
@@ -410,21 +410,21 @@
         b       mulu_w_any_d0
         clrlwi  data, d7, 16                            // C0C7  MULU.W    D7,D0
         b       mulu_w_any_d0
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C0C8  MULU.W    A0,D0   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C0C8  MULU.W    A0,D0   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C0C9  MULU.W    A1,D0   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C0C9  MULU.W    A1,D0   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C0CA  MULU.W    A2,D0   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C0CA  MULU.W    A2,D0   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C0CB  MULU.W    A3,D0   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C0CB  MULU.W    A3,D0   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C0CC  MULU.W    A4,D0   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C0CC  MULU.W    A4,D0   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C0CD  MULU.W    A5,D0   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C0CD  MULU.W    A5,D0   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C0CE  MULU.W    A6,D0   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C0CE  MULU.W    A6,D0   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C0CF  MULU.W    A7,D0   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C0CF  MULU.W    A7,D0   (illegal)
         b       take_illegal_instruction
         lhz     data, 0(a0)                             // C0D0  MULU.W    (A0),D0
         b       mulu_w_any_d0
@@ -516,11 +516,11 @@
         b       fea_w_73
         mr      data, prefetch_data                     // C0FC  MULU.W    #<data>,D0
         b       mulu_w_ea_d0
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C0FD  MULU.W    <ea 7.5>,D0   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C0FD  MULU.W    <ea 7.5>,D0   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C0FE  MULU.W    <ea 7.6>,D0   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C0FE  MULU.W    <ea 7.6>,D0   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C0FF  MULU.W    <ea 7.7>,D0   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C0FF  MULU.W    <ea 7.7>,D0   (illegal)
         b       take_illegal_instruction
 
 // ---- $C100-$C13F --------------------------------------------------------
@@ -648,17 +648,17 @@ op_C117:
         b       and_b_d0_mem
         ori     rtn_addr, code_ptr, and_b_d0_mem_2 - cb  // C139  AND.B     D0,(xxx).L
         b       cea_x_71_2
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C13A  AND.B     D0,(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C13A  AND.B     D0,(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C13B  AND.B     D0,(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C13B  AND.B     D0,(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C13C  AND.B     D0,#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C13C  AND.B     D0,#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C13D  AND.B     D0,<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C13D  AND.B     D0,<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C13E  AND.B     D0,<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C13E  AND.B     D0,<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C13F  AND.B     D0,<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C13F  AND.B     D0,<ea 7.7>   (illegal)
         b       take_illegal_instruction
 
 // ---- $C140-$C17F --------------------------------------------------------
@@ -786,35 +786,35 @@ op_C157:
         b       and_w_d0_mem
         ori     rtn_addr, code_ptr, and_w_d0_mem_2 - cb  // C179  AND.W     D0,(xxx).L
         b       cea_x_71_2
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C17A  AND.W     D0,(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C17A  AND.W     D0,(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C17B  AND.W     D0,(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C17B  AND.W     D0,(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C17C  AND.W     D0,#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C17C  AND.W     D0,#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C17D  AND.W     D0,<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C17D  AND.W     D0,<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C17E  AND.W     D0,<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C17E  AND.W     D0,<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C17F  AND.W     D0,<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C17F  AND.W     D0,<ea 7.7>   (illegal)
         b       take_illegal_instruction
 
 // ---- $C180-$C1BF --------------------------------------------------------
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C180  ILLEGAL
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C180  ILLEGAL
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C181  ILLEGAL
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C181  ILLEGAL
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C182  ILLEGAL
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C182  ILLEGAL
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C183  ILLEGAL
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C183  ILLEGAL
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C184  ILLEGAL
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C184  ILLEGAL
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C185  ILLEGAL
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C185  ILLEGAL
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C186  ILLEGAL
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C186  ILLEGAL
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C187  ILLEGAL
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C187  ILLEGAL
         b       take_illegal_instruction
         mr      data, d0                                // C188  EXG.L     D0,A0
         b       exg_l_d0_a0
@@ -924,17 +924,17 @@ op_C197:
         b       and_l_d0_mem
         ori     rtn_addr, code_ptr, and_l_d0_mem_2 - cb  // C1B9  AND.L     D0,(xxx).L
         b       cea_x_71_2
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C1BA  AND.L     D0,(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C1BA  AND.L     D0,(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C1BB  AND.L     D0,(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C1BB  AND.L     D0,(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C1BC  AND.L     D0,#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C1BC  AND.L     D0,#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C1BD  AND.L     D0,<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C1BD  AND.L     D0,<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C1BE  AND.L     D0,<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C1BE  AND.L     D0,<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C1BF  AND.L     D0,<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C1BF  AND.L     D0,<ea 7.7>   (illegal)
         b       take_illegal_instruction
 
 // ---- $C1C0-$C1FF --------------------------------------------------------
@@ -954,21 +954,21 @@ op_C197:
         b       muls_w_mem_d0
         extsh   data, d7                                // C1C7  MULS.W    D7,D0
         b       muls_w_mem_d0
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C1C8  MULS.W    A0,D0   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C1C8  MULS.W    A0,D0   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C1C9  MULS.W    A1,D0   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C1C9  MULS.W    A1,D0   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C1CA  MULS.W    A2,D0   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C1CA  MULS.W    A2,D0   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C1CB  MULS.W    A3,D0   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C1CB  MULS.W    A3,D0   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C1CC  MULS.W    A4,D0   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C1CC  MULS.W    A4,D0   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C1CD  MULS.W    A5,D0   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C1CD  MULS.W    A5,D0   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C1CE  MULS.W    A6,D0   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C1CE  MULS.W    A6,D0   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C1CF  MULS.W    A7,D0   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C1CF  MULS.W    A7,D0   (illegal)
         b       take_illegal_instruction
         lha     data, 0(a0)                             // C1D0  MULS.W    (A0),D0
         b       muls_w_mem_d0
@@ -1060,11 +1060,11 @@ op_C197:
         b       fea_w_73
         mr      data, prefetch_data                     // C1FC  MULS.W    #<data>,D0
         b       muls_w_ea_d0
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C1FD  MULS.W    <ea 7.5>,D0   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C1FD  MULS.W    <ea 7.5>,D0   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C1FE  MULS.W    <ea 7.6>,D0   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C1FE  MULS.W    <ea 7.6>,D0   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C1FF  MULS.W    <ea 7.7>,D0   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C1FF  MULS.W    <ea 7.7>,D0   (illegal)
         b       take_illegal_instruction
 
 // ---- $C200-$C23F --------------------------------------------------------
@@ -1084,21 +1084,21 @@ op_C197:
         b       move_b_mem_d1
         and     data, d1, d7                            // C207  AND.B     D7,D1
         b       move_b_mem_d1
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C208  AND.B     A0,D1   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C208  AND.B     A0,D1   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C209  AND.B     A1,D1   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C209  AND.B     A1,D1   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C20A  AND.B     A2,D1   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C20A  AND.B     A2,D1   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C20B  AND.B     A3,D1   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C20B  AND.B     A3,D1   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C20C  AND.B     A4,D1   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C20C  AND.B     A4,D1   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C20D  AND.B     A5,D1   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C20D  AND.B     A5,D1   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C20E  AND.B     A6,D1   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C20E  AND.B     A6,D1   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C20F  AND.B     A7,D1   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C20F  AND.B     A7,D1   (illegal)
         b       take_illegal_instruction
         lbz     data, 0(a0)                             // C210  AND.B     (A0),D1
         b       and_b_mem_d1_2
@@ -1190,11 +1190,11 @@ op_C197:
         b       fea_b_73
         and     data, d1, prefetch_data                 // C23C  AND.B     #<data>,D1
         b       move_or_etc_b_ea_d1
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C23D  AND.B     <ea 7.5>,D1   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C23D  AND.B     <ea 7.5>,D1   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C23E  AND.B     <ea 7.6>,D1   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C23E  AND.B     <ea 7.6>,D1   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C23F  AND.B     <ea 7.7>,D1   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C23F  AND.B     <ea 7.7>,D1   (illegal)
         b       take_illegal_instruction
 
 // ---- $C240-$C27F --------------------------------------------------------
@@ -1214,21 +1214,21 @@ op_C197:
         b       or_eor_etc_w_reg_d1
         and     data, d1, d7                            // C247  AND.W     D7,D1
         b       or_eor_etc_w_reg_d1
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C248  AND.W     A0,D1   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C248  AND.W     A0,D1   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C249  AND.W     A1,D1   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C249  AND.W     A1,D1   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C24A  AND.W     A2,D1   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C24A  AND.W     A2,D1   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C24B  AND.W     A3,D1   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C24B  AND.W     A3,D1   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C24C  AND.W     A4,D1   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C24C  AND.W     A4,D1   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C24D  AND.W     A5,D1   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C24D  AND.W     A5,D1   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C24E  AND.W     A6,D1   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C24E  AND.W     A6,D1   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C24F  AND.W     A7,D1   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C24F  AND.W     A7,D1   (illegal)
         b       take_illegal_instruction
         lha     data, 0(a0)                             // C250  AND.W     (A0),D1
         b       and_w_mem_d1_2
@@ -1320,11 +1320,11 @@ op_C197:
         b       fea_w_73
         and     data, d1, prefetch_data                 // C27C  AND.W     #<data>,D1
         b       or_and_eor_w_imm_d1
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C27D  AND.W     <ea 7.5>,D1   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C27D  AND.W     <ea 7.5>,D1   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C27E  AND.W     <ea 7.6>,D1   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C27E  AND.W     <ea 7.6>,D1   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C27F  AND.W     <ea 7.7>,D1   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C27F  AND.W     <ea 7.7>,D1   (illegal)
         b       take_illegal_instruction
 
 // ---- $C280-$C2BF --------------------------------------------------------
@@ -1344,21 +1344,21 @@ op_C197:
         b       update_vc_zero
         and.    d1, d1, d7                              // C287  AND.L     D7,D1
         b       update_vc_zero
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C288  AND.L     A0,D1   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C288  AND.L     A0,D1   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C289  AND.L     A1,D1   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C289  AND.L     A1,D1   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C28A  AND.L     A2,D1   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C28A  AND.L     A2,D1   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C28B  AND.L     A3,D1   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C28B  AND.L     A3,D1   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C28C  AND.L     A4,D1   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C28C  AND.L     A4,D1   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C28D  AND.L     A5,D1   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C28D  AND.L     A5,D1   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C28E  AND.L     A6,D1   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C28E  AND.L     A6,D1   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C28F  AND.L     A7,D1   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C28F  AND.L     A7,D1   (illegal)
         b       take_illegal_instruction
         lwz     data, 0(a0)                             // C290  AND.L     (A0),D1
         b       and_l_mem_d1_2
@@ -1450,11 +1450,11 @@ op_C197:
         b       fea_l_73
         lwz     data, 0(pc)                             // C2BC  AND.L     #<data>,D1
         b       and_l_imm_d1
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C2BD  AND.L     <ea 7.5>,D1   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C2BD  AND.L     <ea 7.5>,D1   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C2BE  AND.L     <ea 7.6>,D1   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C2BE  AND.L     <ea 7.6>,D1   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C2BF  AND.L     <ea 7.7>,D1   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C2BF  AND.L     <ea 7.7>,D1   (illegal)
         b       take_illegal_instruction
 
 // ---- $C2C0-$C2FF --------------------------------------------------------
@@ -1474,21 +1474,21 @@ op_C197:
         b       mulu_w_any_d1
         clrlwi  data, d7, 16                            // C2C7  MULU.W    D7,D1
         b       mulu_w_any_d1
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C2C8  MULU.W    A0,D1   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C2C8  MULU.W    A0,D1   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C2C9  MULU.W    A1,D1   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C2C9  MULU.W    A1,D1   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C2CA  MULU.W    A2,D1   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C2CA  MULU.W    A2,D1   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C2CB  MULU.W    A3,D1   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C2CB  MULU.W    A3,D1   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C2CC  MULU.W    A4,D1   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C2CC  MULU.W    A4,D1   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C2CD  MULU.W    A5,D1   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C2CD  MULU.W    A5,D1   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C2CE  MULU.W    A6,D1   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C2CE  MULU.W    A6,D1   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C2CF  MULU.W    A7,D1   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C2CF  MULU.W    A7,D1   (illegal)
         b       take_illegal_instruction
         lhz     data, 0(a0)                             // C2D0  MULU.W    (A0),D1
         b       mulu_w_any_d1
@@ -1580,11 +1580,11 @@ op_C197:
         b       fea_w_73
         mr      data, prefetch_data                     // C2FC  MULU.W    #<data>,D1
         b       mulu_w_ea_d1
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C2FD  MULU.W    <ea 7.5>,D1   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C2FD  MULU.W    <ea 7.5>,D1   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C2FE  MULU.W    <ea 7.6>,D1   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C2FE  MULU.W    <ea 7.6>,D1   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C2FF  MULU.W    <ea 7.7>,D1   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C2FF  MULU.W    <ea 7.7>,D1   (illegal)
         b       take_illegal_instruction
 
 // ---- $C300-$C33F --------------------------------------------------------
@@ -1712,17 +1712,17 @@ op_C317:
         b       and_b_d1_mem
         ori     rtn_addr, code_ptr, and_b_d1_mem_2 - cb  // C339  AND.B     D1,(xxx).L
         b       cea_x_71_2
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C33A  AND.B     D1,(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C33A  AND.B     D1,(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C33B  AND.B     D1,(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C33B  AND.B     D1,(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C33C  AND.B     D1,#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C33C  AND.B     D1,#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C33D  AND.B     D1,<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C33D  AND.B     D1,<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C33E  AND.B     D1,<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C33E  AND.B     D1,<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C33F  AND.B     D1,<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C33F  AND.B     D1,<ea 7.7>   (illegal)
         b       take_illegal_instruction
 
 // ---- $C340-$C37F --------------------------------------------------------
@@ -1850,35 +1850,35 @@ op_C357:
         b       and_w_d1_mem
         ori     rtn_addr, code_ptr, and_w_d1_mem_2 - cb  // C379  AND.W     D1,(xxx).L
         b       cea_x_71_2
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C37A  AND.W     D1,(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C37A  AND.W     D1,(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C37B  AND.W     D1,(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C37B  AND.W     D1,(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C37C  AND.W     D1,#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C37C  AND.W     D1,#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C37D  AND.W     D1,<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C37D  AND.W     D1,<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C37E  AND.W     D1,<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C37E  AND.W     D1,<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C37F  AND.W     D1,<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C37F  AND.W     D1,<ea 7.7>   (illegal)
         b       take_illegal_instruction
 
 // ---- $C380-$C3BF --------------------------------------------------------
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C380  ILLEGAL
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C380  ILLEGAL
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C381  ILLEGAL
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C381  ILLEGAL
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C382  ILLEGAL
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C382  ILLEGAL
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C383  ILLEGAL
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C383  ILLEGAL
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C384  ILLEGAL
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C384  ILLEGAL
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C385  ILLEGAL
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C385  ILLEGAL
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C386  ILLEGAL
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C386  ILLEGAL
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C387  ILLEGAL
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C387  ILLEGAL
         b       take_illegal_instruction
         mr      data, d1                                // C388  EXG.L     D1,A0
         b       exg_l_d1_a0
@@ -1988,17 +1988,17 @@ op_C397:
         b       and_l_d1_mem
         ori     rtn_addr, code_ptr, and_l_d1_mem_2 - cb  // C3B9  AND.L     D1,(xxx).L
         b       cea_x_71_2
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C3BA  AND.L     D1,(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C3BA  AND.L     D1,(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C3BB  AND.L     D1,(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C3BB  AND.L     D1,(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C3BC  AND.L     D1,#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C3BC  AND.L     D1,#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C3BD  AND.L     D1,<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C3BD  AND.L     D1,<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C3BE  AND.L     D1,<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C3BE  AND.L     D1,<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C3BF  AND.L     D1,<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C3BF  AND.L     D1,<ea 7.7>   (illegal)
         b       take_illegal_instruction
 
 // ---- $C3C0-$C3FF --------------------------------------------------------
@@ -2018,21 +2018,21 @@ op_C397:
         b       muls_w_mem_d1
         extsh   data, d7                                // C3C7  MULS.W    D7,D1
         b       muls_w_mem_d1
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C3C8  MULS.W    A0,D1   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C3C8  MULS.W    A0,D1   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C3C9  MULS.W    A1,D1   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C3C9  MULS.W    A1,D1   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C3CA  MULS.W    A2,D1   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C3CA  MULS.W    A2,D1   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C3CB  MULS.W    A3,D1   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C3CB  MULS.W    A3,D1   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C3CC  MULS.W    A4,D1   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C3CC  MULS.W    A4,D1   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C3CD  MULS.W    A5,D1   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C3CD  MULS.W    A5,D1   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C3CE  MULS.W    A6,D1   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C3CE  MULS.W    A6,D1   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C3CF  MULS.W    A7,D1   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C3CF  MULS.W    A7,D1   (illegal)
         b       take_illegal_instruction
         lha     data, 0(a0)                             // C3D0  MULS.W    (A0),D1
         b       muls_w_mem_d1
@@ -2124,11 +2124,11 @@ op_C397:
         b       fea_w_73
         mr      data, prefetch_data                     // C3FC  MULS.W    #<data>,D1
         b       muls_w_ea_d1
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C3FD  MULS.W    <ea 7.5>,D1   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C3FD  MULS.W    <ea 7.5>,D1   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C3FE  MULS.W    <ea 7.6>,D1   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C3FE  MULS.W    <ea 7.6>,D1   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C3FF  MULS.W    <ea 7.7>,D1   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C3FF  MULS.W    <ea 7.7>,D1   (illegal)
         b       take_illegal_instruction
 
 // ---- $C400-$C43F --------------------------------------------------------
@@ -2148,21 +2148,21 @@ op_C397:
         b       move_b_mem_d2
         and     data, d2, d7                            // C407  AND.B     D7,D2
         b       move_b_mem_d2
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C408  AND.B     A0,D2   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C408  AND.B     A0,D2   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C409  AND.B     A1,D2   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C409  AND.B     A1,D2   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C40A  AND.B     A2,D2   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C40A  AND.B     A2,D2   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C40B  AND.B     A3,D2   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C40B  AND.B     A3,D2   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C40C  AND.B     A4,D2   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C40C  AND.B     A4,D2   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C40D  AND.B     A5,D2   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C40D  AND.B     A5,D2   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C40E  AND.B     A6,D2   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C40E  AND.B     A6,D2   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C40F  AND.B     A7,D2   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C40F  AND.B     A7,D2   (illegal)
         b       take_illegal_instruction
         lbz     data, 0(a0)                             // C410  AND.B     (A0),D2
         b       and_b_mem_d2_2
@@ -2254,11 +2254,11 @@ op_C397:
         b       fea_b_73
         and     data, d2, prefetch_data                 // C43C  AND.B     #<data>,D2
         b       move_or_etc_b_ea_d2
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C43D  AND.B     <ea 7.5>,D2   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C43D  AND.B     <ea 7.5>,D2   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C43E  AND.B     <ea 7.6>,D2   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C43E  AND.B     <ea 7.6>,D2   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C43F  AND.B     <ea 7.7>,D2   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C43F  AND.B     <ea 7.7>,D2   (illegal)
         b       take_illegal_instruction
 
 // ---- $C440-$C47F --------------------------------------------------------
@@ -2278,21 +2278,21 @@ op_C397:
         b       or_eor_etc_w_reg_d2
         and     data, d2, d7                            // C447  AND.W     D7,D2
         b       or_eor_etc_w_reg_d2
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C448  AND.W     A0,D2   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C448  AND.W     A0,D2   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C449  AND.W     A1,D2   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C449  AND.W     A1,D2   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C44A  AND.W     A2,D2   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C44A  AND.W     A2,D2   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C44B  AND.W     A3,D2   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C44B  AND.W     A3,D2   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C44C  AND.W     A4,D2   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C44C  AND.W     A4,D2   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C44D  AND.W     A5,D2   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C44D  AND.W     A5,D2   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C44E  AND.W     A6,D2   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C44E  AND.W     A6,D2   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C44F  AND.W     A7,D2   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C44F  AND.W     A7,D2   (illegal)
         b       take_illegal_instruction
         lha     data, 0(a0)                             // C450  AND.W     (A0),D2
         b       and_w_mem_d2_2
@@ -2384,11 +2384,11 @@ op_C397:
         b       fea_w_73
         and     data, d2, prefetch_data                 // C47C  AND.W     #<data>,D2
         b       or_and_eor_w_imm_d2
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C47D  AND.W     <ea 7.5>,D2   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C47D  AND.W     <ea 7.5>,D2   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C47E  AND.W     <ea 7.6>,D2   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C47E  AND.W     <ea 7.6>,D2   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C47F  AND.W     <ea 7.7>,D2   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C47F  AND.W     <ea 7.7>,D2   (illegal)
         b       take_illegal_instruction
 
 // ---- $C480-$C4BF --------------------------------------------------------
@@ -2408,21 +2408,21 @@ op_C397:
         b       update_vc_zero
         and.    d2, d2, d7                              // C487  AND.L     D7,D2
         b       update_vc_zero
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C488  AND.L     A0,D2   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C488  AND.L     A0,D2   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C489  AND.L     A1,D2   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C489  AND.L     A1,D2   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C48A  AND.L     A2,D2   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C48A  AND.L     A2,D2   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C48B  AND.L     A3,D2   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C48B  AND.L     A3,D2   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C48C  AND.L     A4,D2   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C48C  AND.L     A4,D2   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C48D  AND.L     A5,D2   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C48D  AND.L     A5,D2   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C48E  AND.L     A6,D2   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C48E  AND.L     A6,D2   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C48F  AND.L     A7,D2   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C48F  AND.L     A7,D2   (illegal)
         b       take_illegal_instruction
         lwz     data, 0(a0)                             // C490  AND.L     (A0),D2
         b       and_l_mem_d2_2
@@ -2514,11 +2514,11 @@ op_C397:
         b       fea_l_73
         lwz     data, 0(pc)                             // C4BC  AND.L     #<data>,D2
         b       and_l_imm_d2
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C4BD  AND.L     <ea 7.5>,D2   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C4BD  AND.L     <ea 7.5>,D2   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C4BE  AND.L     <ea 7.6>,D2   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C4BE  AND.L     <ea 7.6>,D2   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C4BF  AND.L     <ea 7.7>,D2   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C4BF  AND.L     <ea 7.7>,D2   (illegal)
         b       take_illegal_instruction
 
 // ---- $C4C0-$C4FF --------------------------------------------------------
@@ -2538,21 +2538,21 @@ op_C397:
         b       mulu_w_any_d2
         clrlwi  data, d7, 16                            // C4C7  MULU.W    D7,D2
         b       mulu_w_any_d2
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C4C8  MULU.W    A0,D2   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C4C8  MULU.W    A0,D2   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C4C9  MULU.W    A1,D2   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C4C9  MULU.W    A1,D2   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C4CA  MULU.W    A2,D2   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C4CA  MULU.W    A2,D2   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C4CB  MULU.W    A3,D2   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C4CB  MULU.W    A3,D2   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C4CC  MULU.W    A4,D2   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C4CC  MULU.W    A4,D2   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C4CD  MULU.W    A5,D2   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C4CD  MULU.W    A5,D2   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C4CE  MULU.W    A6,D2   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C4CE  MULU.W    A6,D2   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C4CF  MULU.W    A7,D2   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C4CF  MULU.W    A7,D2   (illegal)
         b       take_illegal_instruction
         lhz     data, 0(a0)                             // C4D0  MULU.W    (A0),D2
         b       mulu_w_any_d2
@@ -2644,11 +2644,11 @@ op_C397:
         b       fea_w_73
         mr      data, prefetch_data                     // C4FC  MULU.W    #<data>,D2
         b       mulu_w_ea_d2
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C4FD  MULU.W    <ea 7.5>,D2   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C4FD  MULU.W    <ea 7.5>,D2   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C4FE  MULU.W    <ea 7.6>,D2   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C4FE  MULU.W    <ea 7.6>,D2   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C4FF  MULU.W    <ea 7.7>,D2   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C4FF  MULU.W    <ea 7.7>,D2   (illegal)
         b       take_illegal_instruction
 
 // ---- $C500-$C53F --------------------------------------------------------
@@ -2776,17 +2776,17 @@ op_C517:
         b       and_b_d2_mem
         ori     rtn_addr, code_ptr, and_b_d2_mem_2 - cb  // C539  AND.B     D2,(xxx).L
         b       cea_x_71_2
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C53A  AND.B     D2,(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C53A  AND.B     D2,(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C53B  AND.B     D2,(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C53B  AND.B     D2,(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C53C  AND.B     D2,#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C53C  AND.B     D2,#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C53D  AND.B     D2,<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C53D  AND.B     D2,<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C53E  AND.B     D2,<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C53E  AND.B     D2,<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C53F  AND.B     D2,<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C53F  AND.B     D2,<ea 7.7>   (illegal)
         b       take_illegal_instruction
 
 // ---- $C540-$C57F --------------------------------------------------------
@@ -2914,35 +2914,35 @@ op_C557:
         b       and_w_d2_mem
         ori     rtn_addr, code_ptr, and_w_d2_mem_2 - cb  // C579  AND.W     D2,(xxx).L
         b       cea_x_71_2
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C57A  AND.W     D2,(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C57A  AND.W     D2,(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C57B  AND.W     D2,(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C57B  AND.W     D2,(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C57C  AND.W     D2,#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C57C  AND.W     D2,#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C57D  AND.W     D2,<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C57D  AND.W     D2,<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C57E  AND.W     D2,<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C57E  AND.W     D2,<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C57F  AND.W     D2,<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C57F  AND.W     D2,<ea 7.7>   (illegal)
         b       take_illegal_instruction
 
 // ---- $C580-$C5BF --------------------------------------------------------
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C580  ILLEGAL
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C580  ILLEGAL
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C581  ILLEGAL
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C581  ILLEGAL
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C582  ILLEGAL
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C582  ILLEGAL
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C583  ILLEGAL
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C583  ILLEGAL
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C584  ILLEGAL
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C584  ILLEGAL
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C585  ILLEGAL
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C585  ILLEGAL
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C586  ILLEGAL
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C586  ILLEGAL
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C587  ILLEGAL
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C587  ILLEGAL
         b       take_illegal_instruction
         mr      data, d2                                // C588  EXG.L     D2,A0
         b       exg_l_d2_a0
@@ -3052,17 +3052,17 @@ op_C597:
         b       and_l_d2_mem
         ori     rtn_addr, code_ptr, and_l_d2_mem_2 - cb  // C5B9  AND.L     D2,(xxx).L
         b       cea_x_71_2
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C5BA  AND.L     D2,(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C5BA  AND.L     D2,(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C5BB  AND.L     D2,(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C5BB  AND.L     D2,(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C5BC  AND.L     D2,#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C5BC  AND.L     D2,#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C5BD  AND.L     D2,<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C5BD  AND.L     D2,<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C5BE  AND.L     D2,<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C5BE  AND.L     D2,<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C5BF  AND.L     D2,<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C5BF  AND.L     D2,<ea 7.7>   (illegal)
         b       take_illegal_instruction
 
 // ---- $C5C0-$C5FF --------------------------------------------------------
@@ -3082,21 +3082,21 @@ op_C597:
         b       muls_w_mem_d2
         extsh   data, d7                                // C5C7  MULS.W    D7,D2
         b       muls_w_mem_d2
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C5C8  MULS.W    A0,D2   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C5C8  MULS.W    A0,D2   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C5C9  MULS.W    A1,D2   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C5C9  MULS.W    A1,D2   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C5CA  MULS.W    A2,D2   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C5CA  MULS.W    A2,D2   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C5CB  MULS.W    A3,D2   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C5CB  MULS.W    A3,D2   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C5CC  MULS.W    A4,D2   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C5CC  MULS.W    A4,D2   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C5CD  MULS.W    A5,D2   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C5CD  MULS.W    A5,D2   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C5CE  MULS.W    A6,D2   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C5CE  MULS.W    A6,D2   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C5CF  MULS.W    A7,D2   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C5CF  MULS.W    A7,D2   (illegal)
         b       take_illegal_instruction
         lha     data, 0(a0)                             // C5D0  MULS.W    (A0),D2
         b       muls_w_mem_d2
@@ -3188,11 +3188,11 @@ op_C597:
         b       fea_w_73
         mr      data, prefetch_data                     // C5FC  MULS.W    #<data>,D2
         b       muls_w_ea_d2
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C5FD  MULS.W    <ea 7.5>,D2   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C5FD  MULS.W    <ea 7.5>,D2   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C5FE  MULS.W    <ea 7.6>,D2   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C5FE  MULS.W    <ea 7.6>,D2   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C5FF  MULS.W    <ea 7.7>,D2   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C5FF  MULS.W    <ea 7.7>,D2   (illegal)
         b       take_illegal_instruction
 
 // ---- $C600-$C63F --------------------------------------------------------
@@ -3212,21 +3212,21 @@ op_C597:
         b       move_b_mem_d3
         and     data, d3, d7                            // C607  AND.B     D7,D3
         b       move_b_mem_d3
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C608  AND.B     A0,D3   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C608  AND.B     A0,D3   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C609  AND.B     A1,D3   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C609  AND.B     A1,D3   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C60A  AND.B     A2,D3   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C60A  AND.B     A2,D3   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C60B  AND.B     A3,D3   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C60B  AND.B     A3,D3   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C60C  AND.B     A4,D3   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C60C  AND.B     A4,D3   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C60D  AND.B     A5,D3   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C60D  AND.B     A5,D3   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C60E  AND.B     A6,D3   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C60E  AND.B     A6,D3   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C60F  AND.B     A7,D3   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C60F  AND.B     A7,D3   (illegal)
         b       take_illegal_instruction
         lbz     data, 0(a0)                             // C610  AND.B     (A0),D3
         b       and_b_mem_d3_2
@@ -3318,11 +3318,11 @@ op_C597:
         b       fea_b_73
         and     data, d3, prefetch_data                 // C63C  AND.B     #<data>,D3
         b       move_or_etc_b_ea_d3
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C63D  AND.B     <ea 7.5>,D3   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C63D  AND.B     <ea 7.5>,D3   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C63E  AND.B     <ea 7.6>,D3   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C63E  AND.B     <ea 7.6>,D3   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C63F  AND.B     <ea 7.7>,D3   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C63F  AND.B     <ea 7.7>,D3   (illegal)
         b       take_illegal_instruction
 
 // ---- $C640-$C67F --------------------------------------------------------
@@ -3342,21 +3342,21 @@ op_C597:
         b       or_eor_etc_w_reg_d3
         and     data, d3, d7                            // C647  AND.W     D7,D3
         b       or_eor_etc_w_reg_d3
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C648  AND.W     A0,D3   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C648  AND.W     A0,D3   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C649  AND.W     A1,D3   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C649  AND.W     A1,D3   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C64A  AND.W     A2,D3   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C64A  AND.W     A2,D3   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C64B  AND.W     A3,D3   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C64B  AND.W     A3,D3   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C64C  AND.W     A4,D3   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C64C  AND.W     A4,D3   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C64D  AND.W     A5,D3   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C64D  AND.W     A5,D3   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C64E  AND.W     A6,D3   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C64E  AND.W     A6,D3   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C64F  AND.W     A7,D3   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C64F  AND.W     A7,D3   (illegal)
         b       take_illegal_instruction
         lha     data, 0(a0)                             // C650  AND.W     (A0),D3
         b       and_w_mem_d3_2
@@ -3448,11 +3448,11 @@ op_C597:
         b       fea_w_73
         and     data, d3, prefetch_data                 // C67C  AND.W     #<data>,D3
         b       or_and_eor_w_imm_d3
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C67D  AND.W     <ea 7.5>,D3   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C67D  AND.W     <ea 7.5>,D3   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C67E  AND.W     <ea 7.6>,D3   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C67E  AND.W     <ea 7.6>,D3   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C67F  AND.W     <ea 7.7>,D3   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C67F  AND.W     <ea 7.7>,D3   (illegal)
         b       take_illegal_instruction
 
 // ---- $C680-$C6BF --------------------------------------------------------
@@ -3472,21 +3472,21 @@ op_C597:
         b       update_vc_zero
         and.    d3, d3, d7                              // C687  AND.L     D7,D3
         b       update_vc_zero
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C688  AND.L     A0,D3   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C688  AND.L     A0,D3   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C689  AND.L     A1,D3   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C689  AND.L     A1,D3   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C68A  AND.L     A2,D3   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C68A  AND.L     A2,D3   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C68B  AND.L     A3,D3   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C68B  AND.L     A3,D3   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C68C  AND.L     A4,D3   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C68C  AND.L     A4,D3   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C68D  AND.L     A5,D3   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C68D  AND.L     A5,D3   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C68E  AND.L     A6,D3   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C68E  AND.L     A6,D3   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C68F  AND.L     A7,D3   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C68F  AND.L     A7,D3   (illegal)
         b       take_illegal_instruction
         lwz     data, 0(a0)                             // C690  AND.L     (A0),D3
         b       and_l_mem_d3_2
@@ -3578,11 +3578,11 @@ op_C597:
         b       fea_l_73
         lwz     data, 0(pc)                             // C6BC  AND.L     #<data>,D3
         b       and_l_imm_d3
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C6BD  AND.L     <ea 7.5>,D3   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C6BD  AND.L     <ea 7.5>,D3   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C6BE  AND.L     <ea 7.6>,D3   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C6BE  AND.L     <ea 7.6>,D3   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C6BF  AND.L     <ea 7.7>,D3   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C6BF  AND.L     <ea 7.7>,D3   (illegal)
         b       take_illegal_instruction
 
 // ---- $C6C0-$C6FF --------------------------------------------------------
@@ -3602,21 +3602,21 @@ op_C597:
         b       mulu_w_any_d3
         clrlwi  data, d7, 16                            // C6C7  MULU.W    D7,D3
         b       mulu_w_any_d3
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C6C8  MULU.W    A0,D3   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C6C8  MULU.W    A0,D3   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C6C9  MULU.W    A1,D3   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C6C9  MULU.W    A1,D3   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C6CA  MULU.W    A2,D3   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C6CA  MULU.W    A2,D3   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C6CB  MULU.W    A3,D3   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C6CB  MULU.W    A3,D3   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C6CC  MULU.W    A4,D3   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C6CC  MULU.W    A4,D3   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C6CD  MULU.W    A5,D3   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C6CD  MULU.W    A5,D3   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C6CE  MULU.W    A6,D3   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C6CE  MULU.W    A6,D3   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C6CF  MULU.W    A7,D3   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C6CF  MULU.W    A7,D3   (illegal)
         b       take_illegal_instruction
         lhz     data, 0(a0)                             // C6D0  MULU.W    (A0),D3
         b       mulu_w_any_d3
@@ -3708,11 +3708,11 @@ op_C597:
         b       fea_w_73
         mr      data, prefetch_data                     // C6FC  MULU.W    #<data>,D3
         b       mulu_w_ea_d3
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C6FD  MULU.W    <ea 7.5>,D3   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C6FD  MULU.W    <ea 7.5>,D3   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C6FE  MULU.W    <ea 7.6>,D3   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C6FE  MULU.W    <ea 7.6>,D3   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C6FF  MULU.W    <ea 7.7>,D3   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C6FF  MULU.W    <ea 7.7>,D3   (illegal)
         b       take_illegal_instruction
 
 // ---- $C700-$C73F --------------------------------------------------------
@@ -3840,17 +3840,17 @@ op_C717:
         b       and_b_d3_mem
         ori     rtn_addr, code_ptr, and_b_d3_mem_2 - cb  // C739  AND.B     D3,(xxx).L
         b       cea_x_71_2
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C73A  AND.B     D3,(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C73A  AND.B     D3,(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C73B  AND.B     D3,(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C73B  AND.B     D3,(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C73C  AND.B     D3,#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C73C  AND.B     D3,#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C73D  AND.B     D3,<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C73D  AND.B     D3,<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C73E  AND.B     D3,<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C73E  AND.B     D3,<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C73F  AND.B     D3,<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C73F  AND.B     D3,<ea 7.7>   (illegal)
         b       take_illegal_instruction
 
 // ---- $C740-$C77F --------------------------------------------------------
@@ -3978,35 +3978,35 @@ op_C757:
         b       and_w_d3_mem
         ori     rtn_addr, code_ptr, and_w_d3_mem_2 - cb  // C779  AND.W     D3,(xxx).L
         b       cea_x_71_2
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C77A  AND.W     D3,(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C77A  AND.W     D3,(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C77B  AND.W     D3,(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C77B  AND.W     D3,(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C77C  AND.W     D3,#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C77C  AND.W     D3,#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C77D  AND.W     D3,<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C77D  AND.W     D3,<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C77E  AND.W     D3,<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C77E  AND.W     D3,<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C77F  AND.W     D3,<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C77F  AND.W     D3,<ea 7.7>   (illegal)
         b       take_illegal_instruction
 
 // ---- $C780-$C7BF --------------------------------------------------------
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C780  ILLEGAL
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C780  ILLEGAL
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C781  ILLEGAL
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C781  ILLEGAL
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C782  ILLEGAL
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C782  ILLEGAL
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C783  ILLEGAL
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C783  ILLEGAL
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C784  ILLEGAL
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C784  ILLEGAL
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C785  ILLEGAL
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C785  ILLEGAL
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C786  ILLEGAL
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C786  ILLEGAL
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C787  ILLEGAL
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C787  ILLEGAL
         b       take_illegal_instruction
         mr      data, d3                                // C788  EXG.L     D3,A0
         b       exg_l_d3_a0
@@ -4116,17 +4116,17 @@ op_C797:
         b       and_l_d3_mem
         ori     rtn_addr, code_ptr, and_l_d3_mem_2 - cb  // C7B9  AND.L     D3,(xxx).L
         b       cea_x_71_2
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C7BA  AND.L     D3,(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C7BA  AND.L     D3,(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C7BB  AND.L     D3,(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C7BB  AND.L     D3,(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C7BC  AND.L     D3,#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C7BC  AND.L     D3,#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C7BD  AND.L     D3,<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C7BD  AND.L     D3,<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C7BE  AND.L     D3,<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C7BE  AND.L     D3,<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C7BF  AND.L     D3,<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C7BF  AND.L     D3,<ea 7.7>   (illegal)
         b       take_illegal_instruction
 
 // ---- $C7C0-$C7FF --------------------------------------------------------
@@ -4146,21 +4146,21 @@ op_C797:
         b       muls_w_mem_d3
         extsh   data, d7                                // C7C7  MULS.W    D7,D3
         b       muls_w_mem_d3
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C7C8  MULS.W    A0,D3   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C7C8  MULS.W    A0,D3   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C7C9  MULS.W    A1,D3   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C7C9  MULS.W    A1,D3   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C7CA  MULS.W    A2,D3   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C7CA  MULS.W    A2,D3   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C7CB  MULS.W    A3,D3   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C7CB  MULS.W    A3,D3   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C7CC  MULS.W    A4,D3   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C7CC  MULS.W    A4,D3   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C7CD  MULS.W    A5,D3   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C7CD  MULS.W    A5,D3   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C7CE  MULS.W    A6,D3   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C7CE  MULS.W    A6,D3   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C7CF  MULS.W    A7,D3   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C7CF  MULS.W    A7,D3   (illegal)
         b       take_illegal_instruction
         lha     data, 0(a0)                             // C7D0  MULS.W    (A0),D3
         b       muls_w_mem_d3
@@ -4252,11 +4252,11 @@ op_C797:
         b       fea_w_73
         mr      data, prefetch_data                     // C7FC  MULS.W    #<data>,D3
         b       muls_w_ea_d3
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C7FD  MULS.W    <ea 7.5>,D3   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C7FD  MULS.W    <ea 7.5>,D3   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C7FE  MULS.W    <ea 7.6>,D3   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C7FE  MULS.W    <ea 7.6>,D3   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C7FF  MULS.W    <ea 7.7>,D3   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C7FF  MULS.W    <ea 7.7>,D3   (illegal)
         b       take_illegal_instruction
 
 // ---- $C800-$C83F --------------------------------------------------------
@@ -4276,21 +4276,21 @@ op_C797:
         b       move_b_mem_d4
         and     data, d4, d7                            // C807  AND.B     D7,D4
         b       move_b_mem_d4
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C808  AND.B     A0,D4   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C808  AND.B     A0,D4   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C809  AND.B     A1,D4   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C809  AND.B     A1,D4   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C80A  AND.B     A2,D4   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C80A  AND.B     A2,D4   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C80B  AND.B     A3,D4   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C80B  AND.B     A3,D4   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C80C  AND.B     A4,D4   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C80C  AND.B     A4,D4   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C80D  AND.B     A5,D4   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C80D  AND.B     A5,D4   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C80E  AND.B     A6,D4   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C80E  AND.B     A6,D4   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C80F  AND.B     A7,D4   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C80F  AND.B     A7,D4   (illegal)
         b       take_illegal_instruction
         lbz     data, 0(a0)                             // C810  AND.B     (A0),D4
         b       and_b_mem_d4_2
@@ -4382,11 +4382,11 @@ op_C797:
         b       fea_b_73
         and     data, d4, prefetch_data                 // C83C  AND.B     #<data>,D4
         b       move_or_etc_b_ea_d4
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C83D  AND.B     <ea 7.5>,D4   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C83D  AND.B     <ea 7.5>,D4   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C83E  AND.B     <ea 7.6>,D4   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C83E  AND.B     <ea 7.6>,D4   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C83F  AND.B     <ea 7.7>,D4   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C83F  AND.B     <ea 7.7>,D4   (illegal)
         b       take_illegal_instruction
 
 // ---- $C840-$C87F --------------------------------------------------------
@@ -4406,21 +4406,21 @@ op_C797:
         b       or_eor_etc_w_reg_d4
         and     data, d4, d7                            // C847  AND.W     D7,D4
         b       or_eor_etc_w_reg_d4
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C848  AND.W     A0,D4   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C848  AND.W     A0,D4   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C849  AND.W     A1,D4   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C849  AND.W     A1,D4   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C84A  AND.W     A2,D4   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C84A  AND.W     A2,D4   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C84B  AND.W     A3,D4   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C84B  AND.W     A3,D4   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C84C  AND.W     A4,D4   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C84C  AND.W     A4,D4   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C84D  AND.W     A5,D4   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C84D  AND.W     A5,D4   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C84E  AND.W     A6,D4   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C84E  AND.W     A6,D4   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C84F  AND.W     A7,D4   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C84F  AND.W     A7,D4   (illegal)
         b       take_illegal_instruction
         lha     data, 0(a0)                             // C850  AND.W     (A0),D4
         b       and_w_mem_d4_2
@@ -4512,11 +4512,11 @@ op_C797:
         b       fea_w_73
         and     data, d4, prefetch_data                 // C87C  AND.W     #<data>,D4
         b       or_and_eor_w_imm_d4
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C87D  AND.W     <ea 7.5>,D4   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C87D  AND.W     <ea 7.5>,D4   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C87E  AND.W     <ea 7.6>,D4   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C87E  AND.W     <ea 7.6>,D4   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C87F  AND.W     <ea 7.7>,D4   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C87F  AND.W     <ea 7.7>,D4   (illegal)
         b       take_illegal_instruction
 
 // ---- $C880-$C8BF --------------------------------------------------------
@@ -4536,21 +4536,21 @@ op_C797:
         b       update_vc_zero
         and.    d4, d4, d7                              // C887  AND.L     D7,D4
         b       update_vc_zero
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C888  AND.L     A0,D4   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C888  AND.L     A0,D4   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C889  AND.L     A1,D4   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C889  AND.L     A1,D4   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C88A  AND.L     A2,D4   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C88A  AND.L     A2,D4   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C88B  AND.L     A3,D4   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C88B  AND.L     A3,D4   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C88C  AND.L     A4,D4   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C88C  AND.L     A4,D4   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C88D  AND.L     A5,D4   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C88D  AND.L     A5,D4   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C88E  AND.L     A6,D4   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C88E  AND.L     A6,D4   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C88F  AND.L     A7,D4   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C88F  AND.L     A7,D4   (illegal)
         b       take_illegal_instruction
         lwz     data, 0(a0)                             // C890  AND.L     (A0),D4
         b       and_l_mem_d4_2
@@ -4642,11 +4642,11 @@ op_C797:
         b       fea_l_73
         lwz     data, 0(pc)                             // C8BC  AND.L     #<data>,D4
         b       and_l_imm_d4
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C8BD  AND.L     <ea 7.5>,D4   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C8BD  AND.L     <ea 7.5>,D4   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C8BE  AND.L     <ea 7.6>,D4   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C8BE  AND.L     <ea 7.6>,D4   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C8BF  AND.L     <ea 7.7>,D4   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C8BF  AND.L     <ea 7.7>,D4   (illegal)
         b       take_illegal_instruction
 
 // ---- $C8C0-$C8FF --------------------------------------------------------
@@ -4666,21 +4666,21 @@ op_C797:
         b       mulu_w_any_d4
         clrlwi  data, d7, 16                            // C8C7  MULU.W    D7,D4
         b       mulu_w_any_d4
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C8C8  MULU.W    A0,D4   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C8C8  MULU.W    A0,D4   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C8C9  MULU.W    A1,D4   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C8C9  MULU.W    A1,D4   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C8CA  MULU.W    A2,D4   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C8CA  MULU.W    A2,D4   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C8CB  MULU.W    A3,D4   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C8CB  MULU.W    A3,D4   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C8CC  MULU.W    A4,D4   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C8CC  MULU.W    A4,D4   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C8CD  MULU.W    A5,D4   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C8CD  MULU.W    A5,D4   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C8CE  MULU.W    A6,D4   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C8CE  MULU.W    A6,D4   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C8CF  MULU.W    A7,D4   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C8CF  MULU.W    A7,D4   (illegal)
         b       take_illegal_instruction
         lhz     data, 0(a0)                             // C8D0  MULU.W    (A0),D4
         b       mulu_w_any_d4
@@ -4772,11 +4772,11 @@ op_C797:
         b       fea_w_73
         mr      data, prefetch_data                     // C8FC  MULU.W    #<data>,D4
         b       mulu_w_ea_d4
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C8FD  MULU.W    <ea 7.5>,D4   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C8FD  MULU.W    <ea 7.5>,D4   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C8FE  MULU.W    <ea 7.6>,D4   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C8FE  MULU.W    <ea 7.6>,D4   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C8FF  MULU.W    <ea 7.7>,D4   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C8FF  MULU.W    <ea 7.7>,D4   (illegal)
         b       take_illegal_instruction
 
 // ---- $C900-$C93F --------------------------------------------------------
@@ -4904,17 +4904,17 @@ op_C917:
         b       and_b_d4_mem
         ori     rtn_addr, code_ptr, and_b_d4_mem_2 - cb  // C939  AND.B     D4,(xxx).L
         b       cea_x_71_2
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C93A  AND.B     D4,(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C93A  AND.B     D4,(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C93B  AND.B     D4,(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C93B  AND.B     D4,(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C93C  AND.B     D4,#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C93C  AND.B     D4,#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C93D  AND.B     D4,<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C93D  AND.B     D4,<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C93E  AND.B     D4,<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C93E  AND.B     D4,<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C93F  AND.B     D4,<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C93F  AND.B     D4,<ea 7.7>   (illegal)
         b       take_illegal_instruction
 
 // ---- $C940-$C97F --------------------------------------------------------
@@ -5042,35 +5042,35 @@ op_C957:
         b       and_w_d4_mem
         ori     rtn_addr, code_ptr, and_w_d4_mem_2 - cb  // C979  AND.W     D4,(xxx).L
         b       cea_x_71_2
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C97A  AND.W     D4,(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C97A  AND.W     D4,(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C97B  AND.W     D4,(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C97B  AND.W     D4,(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C97C  AND.W     D4,#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C97C  AND.W     D4,#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C97D  AND.W     D4,<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C97D  AND.W     D4,<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C97E  AND.W     D4,<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C97E  AND.W     D4,<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C97F  AND.W     D4,<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C97F  AND.W     D4,<ea 7.7>   (illegal)
         b       take_illegal_instruction
 
 // ---- $C980-$C9BF --------------------------------------------------------
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C980  ILLEGAL
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C980  ILLEGAL
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C981  ILLEGAL
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C981  ILLEGAL
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C982  ILLEGAL
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C982  ILLEGAL
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C983  ILLEGAL
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C983  ILLEGAL
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C984  ILLEGAL
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C984  ILLEGAL
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C985  ILLEGAL
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C985  ILLEGAL
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C986  ILLEGAL
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C986  ILLEGAL
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C987  ILLEGAL
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C987  ILLEGAL
         b       take_illegal_instruction
         mr      data, d4                                // C988  EXG.L     D4,A0
         b       exg_l_d4_a0
@@ -5180,17 +5180,17 @@ op_C997:
         b       and_l_d4_mem
         ori     rtn_addr, code_ptr, and_l_d4_mem_2 - cb  // C9B9  AND.L     D4,(xxx).L
         b       cea_x_71_2
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C9BA  AND.L     D4,(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C9BA  AND.L     D4,(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C9BB  AND.L     D4,(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C9BB  AND.L     D4,(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C9BC  AND.L     D4,#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C9BC  AND.L     D4,#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C9BD  AND.L     D4,<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C9BD  AND.L     D4,<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C9BE  AND.L     D4,<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C9BE  AND.L     D4,<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C9BF  AND.L     D4,<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C9BF  AND.L     D4,<ea 7.7>   (illegal)
         b       take_illegal_instruction
 
 // ---- $C9C0-$C9FF --------------------------------------------------------
@@ -5210,21 +5210,21 @@ op_C997:
         b       muls_w_mem_d4
         extsh   data, d7                                // C9C7  MULS.W    D7,D4
         b       muls_w_mem_d4
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C9C8  MULS.W    A0,D4   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C9C8  MULS.W    A0,D4   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C9C9  MULS.W    A1,D4   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C9C9  MULS.W    A1,D4   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C9CA  MULS.W    A2,D4   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C9CA  MULS.W    A2,D4   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C9CB  MULS.W    A3,D4   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C9CB  MULS.W    A3,D4   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C9CC  MULS.W    A4,D4   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C9CC  MULS.W    A4,D4   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C9CD  MULS.W    A5,D4   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C9CD  MULS.W    A5,D4   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C9CE  MULS.W    A6,D4   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C9CE  MULS.W    A6,D4   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C9CF  MULS.W    A7,D4   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C9CF  MULS.W    A7,D4   (illegal)
         b       take_illegal_instruction
         lha     data, 0(a0)                             // C9D0  MULS.W    (A0),D4
         b       muls_w_mem_d4
@@ -5316,11 +5316,11 @@ op_C997:
         b       fea_w_73
         mr      data, prefetch_data                     // C9FC  MULS.W    #<data>,D4
         b       muls_w_ea_d4
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C9FD  MULS.W    <ea 7.5>,D4   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C9FD  MULS.W    <ea 7.5>,D4   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C9FE  MULS.W    <ea 7.6>,D4   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C9FE  MULS.W    <ea 7.6>,D4   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // C9FF  MULS.W    <ea 7.7>,D4   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // C9FF  MULS.W    <ea 7.7>,D4   (illegal)
         b       take_illegal_instruction
 
 // ---- $CA00-$CA3F --------------------------------------------------------
@@ -5340,21 +5340,21 @@ op_C997:
         b       move_b_mem_d5
         and     data, d5, d7                            // CA07  AND.B     D7,D5
         b       move_b_mem_d5
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CA08  AND.B     A0,D5   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CA08  AND.B     A0,D5   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CA09  AND.B     A1,D5   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CA09  AND.B     A1,D5   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CA0A  AND.B     A2,D5   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CA0A  AND.B     A2,D5   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CA0B  AND.B     A3,D5   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CA0B  AND.B     A3,D5   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CA0C  AND.B     A4,D5   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CA0C  AND.B     A4,D5   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CA0D  AND.B     A5,D5   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CA0D  AND.B     A5,D5   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CA0E  AND.B     A6,D5   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CA0E  AND.B     A6,D5   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CA0F  AND.B     A7,D5   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CA0F  AND.B     A7,D5   (illegal)
         b       take_illegal_instruction
         lbz     data, 0(a0)                             // CA10  AND.B     (A0),D5
         b       and_b_mem_d5_2
@@ -5446,11 +5446,11 @@ op_C997:
         b       fea_b_73
         and     data, d5, prefetch_data                 // CA3C  AND.B     #<data>,D5
         b       move_or_etc_b_ea_d5
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CA3D  AND.B     <ea 7.5>,D5   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CA3D  AND.B     <ea 7.5>,D5   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CA3E  AND.B     <ea 7.6>,D5   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CA3E  AND.B     <ea 7.6>,D5   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CA3F  AND.B     <ea 7.7>,D5   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CA3F  AND.B     <ea 7.7>,D5   (illegal)
         b       take_illegal_instruction
 
 // ---- $CA40-$CA7F --------------------------------------------------------
@@ -5470,21 +5470,21 @@ op_C997:
         b       or_eor_etc_w_reg_d5
         and     data, d5, d7                            // CA47  AND.W     D7,D5
         b       or_eor_etc_w_reg_d5
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CA48  AND.W     A0,D5   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CA48  AND.W     A0,D5   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CA49  AND.W     A1,D5   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CA49  AND.W     A1,D5   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CA4A  AND.W     A2,D5   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CA4A  AND.W     A2,D5   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CA4B  AND.W     A3,D5   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CA4B  AND.W     A3,D5   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CA4C  AND.W     A4,D5   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CA4C  AND.W     A4,D5   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CA4D  AND.W     A5,D5   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CA4D  AND.W     A5,D5   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CA4E  AND.W     A6,D5   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CA4E  AND.W     A6,D5   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CA4F  AND.W     A7,D5   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CA4F  AND.W     A7,D5   (illegal)
         b       take_illegal_instruction
         lha     data, 0(a0)                             // CA50  AND.W     (A0),D5
         b       and_w_mem_d5_2
@@ -5576,11 +5576,11 @@ op_C997:
         b       fea_w_73
         and     data, d5, prefetch_data                 // CA7C  AND.W     #<data>,D5
         b       or_and_eor_w_imm_d5
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CA7D  AND.W     <ea 7.5>,D5   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CA7D  AND.W     <ea 7.5>,D5   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CA7E  AND.W     <ea 7.6>,D5   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CA7E  AND.W     <ea 7.6>,D5   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CA7F  AND.W     <ea 7.7>,D5   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CA7F  AND.W     <ea 7.7>,D5   (illegal)
         b       take_illegal_instruction
 
 // ---- $CA80-$CABF --------------------------------------------------------
@@ -5600,21 +5600,21 @@ op_C997:
         b       update_vc_zero
         and.    d5, d5, d7                              // CA87  AND.L     D7,D5
         b       update_vc_zero
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CA88  AND.L     A0,D5   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CA88  AND.L     A0,D5   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CA89  AND.L     A1,D5   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CA89  AND.L     A1,D5   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CA8A  AND.L     A2,D5   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CA8A  AND.L     A2,D5   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CA8B  AND.L     A3,D5   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CA8B  AND.L     A3,D5   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CA8C  AND.L     A4,D5   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CA8C  AND.L     A4,D5   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CA8D  AND.L     A5,D5   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CA8D  AND.L     A5,D5   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CA8E  AND.L     A6,D5   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CA8E  AND.L     A6,D5   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CA8F  AND.L     A7,D5   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CA8F  AND.L     A7,D5   (illegal)
         b       take_illegal_instruction
         lwz     data, 0(a0)                             // CA90  AND.L     (A0),D5
         b       and_l_mem_d5_2
@@ -5706,11 +5706,11 @@ op_C997:
         b       fea_l_73
         lwz     data, 0(pc)                             // CABC  AND.L     #<data>,D5
         b       and_l_imm_d5
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CABD  AND.L     <ea 7.5>,D5   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CABD  AND.L     <ea 7.5>,D5   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CABE  AND.L     <ea 7.6>,D5   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CABE  AND.L     <ea 7.6>,D5   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CABF  AND.L     <ea 7.7>,D5   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CABF  AND.L     <ea 7.7>,D5   (illegal)
         b       take_illegal_instruction
 
 // ---- $CAC0-$CAFF --------------------------------------------------------
@@ -5730,21 +5730,21 @@ op_C997:
         b       mulu_w_any_d5
         clrlwi  data, d7, 16                            // CAC7  MULU.W    D7,D5
         b       mulu_w_any_d5
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CAC8  MULU.W    A0,D5   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CAC8  MULU.W    A0,D5   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CAC9  MULU.W    A1,D5   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CAC9  MULU.W    A1,D5   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CACA  MULU.W    A2,D5   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CACA  MULU.W    A2,D5   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CACB  MULU.W    A3,D5   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CACB  MULU.W    A3,D5   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CACC  MULU.W    A4,D5   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CACC  MULU.W    A4,D5   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CACD  MULU.W    A5,D5   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CACD  MULU.W    A5,D5   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CACE  MULU.W    A6,D5   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CACE  MULU.W    A6,D5   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CACF  MULU.W    A7,D5   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CACF  MULU.W    A7,D5   (illegal)
         b       take_illegal_instruction
         lhz     data, 0(a0)                             // CAD0  MULU.W    (A0),D5
         b       mulu_w_any_d5
@@ -5836,11 +5836,11 @@ op_C997:
         b       fea_w_73
         mr      data, prefetch_data                     // CAFC  MULU.W    #<data>,D5
         b       mulu_w_ea_d5
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CAFD  MULU.W    <ea 7.5>,D5   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CAFD  MULU.W    <ea 7.5>,D5   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CAFE  MULU.W    <ea 7.6>,D5   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CAFE  MULU.W    <ea 7.6>,D5   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CAFF  MULU.W    <ea 7.7>,D5   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CAFF  MULU.W    <ea 7.7>,D5   (illegal)
         b       take_illegal_instruction
 
 // ---- $CB00-$CB3F --------------------------------------------------------
@@ -5968,17 +5968,17 @@ op_CB17:
         b       and_b_d5_mem
         ori     rtn_addr, code_ptr, and_b_d5_mem_2 - cb  // CB39  AND.B     D5,(xxx).L
         b       cea_x_71_2
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CB3A  AND.B     D5,(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CB3A  AND.B     D5,(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CB3B  AND.B     D5,(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CB3B  AND.B     D5,(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CB3C  AND.B     D5,#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CB3C  AND.B     D5,#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CB3D  AND.B     D5,<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CB3D  AND.B     D5,<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CB3E  AND.B     D5,<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CB3E  AND.B     D5,<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CB3F  AND.B     D5,<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CB3F  AND.B     D5,<ea 7.7>   (illegal)
         b       take_illegal_instruction
 
 // ---- $CB40-$CB7F --------------------------------------------------------
@@ -6106,35 +6106,35 @@ op_CB57:
         b       and_w_d5_mem
         ori     rtn_addr, code_ptr, and_w_d5_mem_2 - cb  // CB79  AND.W     D5,(xxx).L
         b       cea_x_71_2
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CB7A  AND.W     D5,(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CB7A  AND.W     D5,(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CB7B  AND.W     D5,(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CB7B  AND.W     D5,(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CB7C  AND.W     D5,#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CB7C  AND.W     D5,#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CB7D  AND.W     D5,<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CB7D  AND.W     D5,<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CB7E  AND.W     D5,<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CB7E  AND.W     D5,<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CB7F  AND.W     D5,<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CB7F  AND.W     D5,<ea 7.7>   (illegal)
         b       take_illegal_instruction
 
 // ---- $CB80-$CBBF --------------------------------------------------------
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CB80  ILLEGAL
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CB80  ILLEGAL
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CB81  ILLEGAL
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CB81  ILLEGAL
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CB82  ILLEGAL
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CB82  ILLEGAL
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CB83  ILLEGAL
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CB83  ILLEGAL
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CB84  ILLEGAL
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CB84  ILLEGAL
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CB85  ILLEGAL
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CB85  ILLEGAL
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CB86  ILLEGAL
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CB86  ILLEGAL
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CB87  ILLEGAL
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CB87  ILLEGAL
         b       take_illegal_instruction
         mr      data, d5                                // CB88  EXG.L     D5,A0
         b       exg_l_d5_a0
@@ -6244,17 +6244,17 @@ op_CB97:
         b       and_l_d5_mem
         ori     rtn_addr, code_ptr, and_l_d5_mem_2 - cb  // CBB9  AND.L     D5,(xxx).L
         b       cea_x_71_2
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CBBA  AND.L     D5,(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CBBA  AND.L     D5,(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CBBB  AND.L     D5,(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CBBB  AND.L     D5,(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CBBC  AND.L     D5,#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CBBC  AND.L     D5,#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CBBD  AND.L     D5,<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CBBD  AND.L     D5,<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CBBE  AND.L     D5,<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CBBE  AND.L     D5,<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CBBF  AND.L     D5,<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CBBF  AND.L     D5,<ea 7.7>   (illegal)
         b       take_illegal_instruction
 
 // ---- $CBC0-$CBFF --------------------------------------------------------
@@ -6274,21 +6274,21 @@ op_CB97:
         b       muls_w_mem_d5
         extsh   data, d7                                // CBC7  MULS.W    D7,D5
         b       muls_w_mem_d5
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CBC8  MULS.W    A0,D5   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CBC8  MULS.W    A0,D5   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CBC9  MULS.W    A1,D5   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CBC9  MULS.W    A1,D5   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CBCA  MULS.W    A2,D5   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CBCA  MULS.W    A2,D5   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CBCB  MULS.W    A3,D5   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CBCB  MULS.W    A3,D5   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CBCC  MULS.W    A4,D5   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CBCC  MULS.W    A4,D5   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CBCD  MULS.W    A5,D5   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CBCD  MULS.W    A5,D5   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CBCE  MULS.W    A6,D5   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CBCE  MULS.W    A6,D5   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CBCF  MULS.W    A7,D5   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CBCF  MULS.W    A7,D5   (illegal)
         b       take_illegal_instruction
         lha     data, 0(a0)                             // CBD0  MULS.W    (A0),D5
         b       muls_w_mem_d5
@@ -6380,11 +6380,11 @@ op_CB97:
         b       fea_w_73
         mr      data, prefetch_data                     // CBFC  MULS.W    #<data>,D5
         b       muls_w_ea_d5
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CBFD  MULS.W    <ea 7.5>,D5   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CBFD  MULS.W    <ea 7.5>,D5   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CBFE  MULS.W    <ea 7.6>,D5   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CBFE  MULS.W    <ea 7.6>,D5   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CBFF  MULS.W    <ea 7.7>,D5   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CBFF  MULS.W    <ea 7.7>,D5   (illegal)
         b       take_illegal_instruction
 
 // ---- $CC00-$CC3F --------------------------------------------------------
@@ -6404,21 +6404,21 @@ op_CB97:
         b       update_vc_zero
         and     data, d6, d7                            // CC07  AND.B     D7,D6
         b       move_b_mem_d6
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CC08  AND.B     A0,D6   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CC08  AND.B     A0,D6   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CC09  AND.B     A1,D6   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CC09  AND.B     A1,D6   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CC0A  AND.B     A2,D6   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CC0A  AND.B     A2,D6   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CC0B  AND.B     A3,D6   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CC0B  AND.B     A3,D6   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CC0C  AND.B     A4,D6   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CC0C  AND.B     A4,D6   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CC0D  AND.B     A5,D6   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CC0D  AND.B     A5,D6   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CC0E  AND.B     A6,D6   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CC0E  AND.B     A6,D6   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CC0F  AND.B     A7,D6   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CC0F  AND.B     A7,D6   (illegal)
         b       take_illegal_instruction
         lbz     data, 0(a0)                             // CC10  AND.B     (A0),D6
         b       and_b_mem_d6_2
@@ -6510,11 +6510,11 @@ op_CB97:
         b       fea_b_73
         and     data, d6, prefetch_data                 // CC3C  AND.B     #<data>,D6
         b       move_or_etc_b_ea_d6
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CC3D  AND.B     <ea 7.5>,D6   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CC3D  AND.B     <ea 7.5>,D6   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CC3E  AND.B     <ea 7.6>,D6   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CC3E  AND.B     <ea 7.6>,D6   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CC3F  AND.B     <ea 7.7>,D6   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CC3F  AND.B     <ea 7.7>,D6   (illegal)
         b       take_illegal_instruction
 
 // ---- $CC40-$CC7F --------------------------------------------------------
@@ -6534,21 +6534,21 @@ op_CB97:
         b       update_vc_zero
         and     data, d6, d7                            // CC47  AND.W     D7,D6
         b       or_eor_etc_w_reg_d6
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CC48  AND.W     A0,D6   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CC48  AND.W     A0,D6   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CC49  AND.W     A1,D6   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CC49  AND.W     A1,D6   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CC4A  AND.W     A2,D6   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CC4A  AND.W     A2,D6   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CC4B  AND.W     A3,D6   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CC4B  AND.W     A3,D6   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CC4C  AND.W     A4,D6   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CC4C  AND.W     A4,D6   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CC4D  AND.W     A5,D6   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CC4D  AND.W     A5,D6   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CC4E  AND.W     A6,D6   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CC4E  AND.W     A6,D6   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CC4F  AND.W     A7,D6   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CC4F  AND.W     A7,D6   (illegal)
         b       take_illegal_instruction
         lha     data, 0(a0)                             // CC50  AND.W     (A0),D6
         b       and_w_mem_d6_2
@@ -6640,11 +6640,11 @@ op_CB97:
         b       fea_w_73
         and     data, d6, prefetch_data                 // CC7C  AND.W     #<data>,D6
         b       or_and_eor_w_imm_d6
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CC7D  AND.W     <ea 7.5>,D6   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CC7D  AND.W     <ea 7.5>,D6   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CC7E  AND.W     <ea 7.6>,D6   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CC7E  AND.W     <ea 7.6>,D6   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CC7F  AND.W     <ea 7.7>,D6   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CC7F  AND.W     <ea 7.7>,D6   (illegal)
         b       take_illegal_instruction
 
 // ---- $CC80-$CCBF --------------------------------------------------------
@@ -6664,21 +6664,21 @@ op_CB97:
         b       fetch
         and.    d6, d6, d7                              // CC87  AND.L     D7,D6
         b       update_vc_zero
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CC88  AND.L     A0,D6   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CC88  AND.L     A0,D6   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CC89  AND.L     A1,D6   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CC89  AND.L     A1,D6   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CC8A  AND.L     A2,D6   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CC8A  AND.L     A2,D6   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CC8B  AND.L     A3,D6   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CC8B  AND.L     A3,D6   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CC8C  AND.L     A4,D6   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CC8C  AND.L     A4,D6   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CC8D  AND.L     A5,D6   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CC8D  AND.L     A5,D6   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CC8E  AND.L     A6,D6   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CC8E  AND.L     A6,D6   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CC8F  AND.L     A7,D6   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CC8F  AND.L     A7,D6   (illegal)
         b       take_illegal_instruction
         lwz     data, 0(a0)                             // CC90  AND.L     (A0),D6
         b       and_l_mem_d6_2
@@ -6770,11 +6770,11 @@ op_CB97:
         b       fea_l_73
         lwz     data, 0(pc)                             // CCBC  AND.L     #<data>,D6
         b       and_l_imm_d6
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CCBD  AND.L     <ea 7.5>,D6   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CCBD  AND.L     <ea 7.5>,D6   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CCBE  AND.L     <ea 7.6>,D6   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CCBE  AND.L     <ea 7.6>,D6   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CCBF  AND.L     <ea 7.7>,D6   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CCBF  AND.L     <ea 7.7>,D6   (illegal)
         b       take_illegal_instruction
 
 // ---- $CCC0-$CCFF --------------------------------------------------------
@@ -6794,21 +6794,21 @@ op_CB97:
         b       mulu_w_any_d6
         clrlwi  data, d7, 16                            // CCC7  MULU.W    D7,D6
         b       mulu_w_any_d6
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CCC8  MULU.W    A0,D6   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CCC8  MULU.W    A0,D6   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CCC9  MULU.W    A1,D6   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CCC9  MULU.W    A1,D6   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CCCA  MULU.W    A2,D6   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CCCA  MULU.W    A2,D6   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CCCB  MULU.W    A3,D6   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CCCB  MULU.W    A3,D6   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CCCC  MULU.W    A4,D6   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CCCC  MULU.W    A4,D6   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CCCD  MULU.W    A5,D6   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CCCD  MULU.W    A5,D6   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CCCE  MULU.W    A6,D6   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CCCE  MULU.W    A6,D6   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CCCF  MULU.W    A7,D6   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CCCF  MULU.W    A7,D6   (illegal)
         b       take_illegal_instruction
         lhz     data, 0(a0)                             // CCD0  MULU.W    (A0),D6
         b       mulu_w_any_d6
@@ -6900,11 +6900,11 @@ op_CB97:
         b       fea_w_73
         mr      data, prefetch_data                     // CCFC  MULU.W    #<data>,D6
         b       mulu_w_ea_d6
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CCFD  MULU.W    <ea 7.5>,D6   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CCFD  MULU.W    <ea 7.5>,D6   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CCFE  MULU.W    <ea 7.6>,D6   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CCFE  MULU.W    <ea 7.6>,D6   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CCFF  MULU.W    <ea 7.7>,D6   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CCFF  MULU.W    <ea 7.7>,D6   (illegal)
         b       take_illegal_instruction
 
 // ---- $CD00-$CD3F --------------------------------------------------------
@@ -7032,17 +7032,17 @@ op_CD17:
         b       and_b_d6_mem
         ori     rtn_addr, code_ptr, and_b_d6_mem_2 - cb  // CD39  AND.B     D6,(xxx).L
         b       cea_x_71_2
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CD3A  AND.B     D6,(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CD3A  AND.B     D6,(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CD3B  AND.B     D6,(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CD3B  AND.B     D6,(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CD3C  AND.B     D6,#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CD3C  AND.B     D6,#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CD3D  AND.B     D6,<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CD3D  AND.B     D6,<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CD3E  AND.B     D6,<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CD3E  AND.B     D6,<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CD3F  AND.B     D6,<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CD3F  AND.B     D6,<ea 7.7>   (illegal)
         b       take_illegal_instruction
 
 // ---- $CD40-$CD7F --------------------------------------------------------
@@ -7170,35 +7170,35 @@ op_CD57:
         b       and_w_d6_mem
         ori     rtn_addr, code_ptr, and_w_d6_mem_2 - cb  // CD79  AND.W     D6,(xxx).L
         b       cea_x_71_2
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CD7A  AND.W     D6,(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CD7A  AND.W     D6,(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CD7B  AND.W     D6,(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CD7B  AND.W     D6,(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CD7C  AND.W     D6,#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CD7C  AND.W     D6,#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CD7D  AND.W     D6,<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CD7D  AND.W     D6,<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CD7E  AND.W     D6,<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CD7E  AND.W     D6,<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CD7F  AND.W     D6,<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CD7F  AND.W     D6,<ea 7.7>   (illegal)
         b       take_illegal_instruction
 
 // ---- $CD80-$CDBF --------------------------------------------------------
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CD80  ILLEGAL
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CD80  ILLEGAL
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CD81  ILLEGAL
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CD81  ILLEGAL
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CD82  ILLEGAL
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CD82  ILLEGAL
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CD83  ILLEGAL
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CD83  ILLEGAL
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CD84  ILLEGAL
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CD84  ILLEGAL
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CD85  ILLEGAL
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CD85  ILLEGAL
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CD86  ILLEGAL
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CD86  ILLEGAL
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CD87  ILLEGAL
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CD87  ILLEGAL
         b       take_illegal_instruction
         mr      data, d6                                // CD88  EXG.L     D6,A0
         b       exg_l_d6_a0
@@ -7308,17 +7308,17 @@ op_CD97:
         b       and_l_d6_mem
         ori     rtn_addr, code_ptr, and_l_d6_mem_2 - cb  // CDB9  AND.L     D6,(xxx).L
         b       cea_x_71_2
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CDBA  AND.L     D6,(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CDBA  AND.L     D6,(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CDBB  AND.L     D6,(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CDBB  AND.L     D6,(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CDBC  AND.L     D6,#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CDBC  AND.L     D6,#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CDBD  AND.L     D6,<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CDBD  AND.L     D6,<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CDBE  AND.L     D6,<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CDBE  AND.L     D6,<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CDBF  AND.L     D6,<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CDBF  AND.L     D6,<ea 7.7>   (illegal)
         b       take_illegal_instruction
 
 // ---- $CDC0-$CDFF --------------------------------------------------------
@@ -7338,21 +7338,21 @@ op_CD97:
         b       muls_w_mem_d6
         extsh   data, d7                                // CDC7  MULS.W    D7,D6
         b       muls_w_mem_d6
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CDC8  MULS.W    A0,D6   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CDC8  MULS.W    A0,D6   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CDC9  MULS.W    A1,D6   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CDC9  MULS.W    A1,D6   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CDCA  MULS.W    A2,D6   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CDCA  MULS.W    A2,D6   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CDCB  MULS.W    A3,D6   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CDCB  MULS.W    A3,D6   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CDCC  MULS.W    A4,D6   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CDCC  MULS.W    A4,D6   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CDCD  MULS.W    A5,D6   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CDCD  MULS.W    A5,D6   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CDCE  MULS.W    A6,D6   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CDCE  MULS.W    A6,D6   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CDCF  MULS.W    A7,D6   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CDCF  MULS.W    A7,D6   (illegal)
         b       take_illegal_instruction
         lha     data, 0(a0)                             // CDD0  MULS.W    (A0),D6
         b       muls_w_mem_d6
@@ -7444,11 +7444,11 @@ op_CD97:
         b       fea_w_73
         mr      data, prefetch_data                     // CDFC  MULS.W    #<data>,D6
         b       muls_w_ea_d6
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CDFD  MULS.W    <ea 7.5>,D6   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CDFD  MULS.W    <ea 7.5>,D6   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CDFE  MULS.W    <ea 7.6>,D6   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CDFE  MULS.W    <ea 7.6>,D6   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CDFF  MULS.W    <ea 7.7>,D6   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CDFF  MULS.W    <ea 7.7>,D6   (illegal)
         b       take_illegal_instruction
 
 // ---- $CE00-$CE3F --------------------------------------------------------
@@ -7468,21 +7468,21 @@ op_CD97:
         b       move_b_mem_d7
         slwi.   data, d7, 24                            // CE07  AND.B     D7,D7
         b       update_vc_zero
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CE08  AND.B     A0,D7   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CE08  AND.B     A0,D7   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CE09  AND.B     A1,D7   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CE09  AND.B     A1,D7   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CE0A  AND.B     A2,D7   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CE0A  AND.B     A2,D7   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CE0B  AND.B     A3,D7   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CE0B  AND.B     A3,D7   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CE0C  AND.B     A4,D7   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CE0C  AND.B     A4,D7   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CE0D  AND.B     A5,D7   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CE0D  AND.B     A5,D7   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CE0E  AND.B     A6,D7   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CE0E  AND.B     A6,D7   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CE0F  AND.B     A7,D7   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CE0F  AND.B     A7,D7   (illegal)
         b       take_illegal_instruction
         lbz     data, 0(a0)                             // CE10  AND.B     (A0),D7
         b       and_b_mem_d7_2
@@ -7574,11 +7574,11 @@ op_CD97:
         b       fea_b_73
         and     data, d7, prefetch_data                 // CE3C  AND.B     #<data>,D7
         b       move_or_etc_b_ea_d7
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CE3D  AND.B     <ea 7.5>,D7   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CE3D  AND.B     <ea 7.5>,D7   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CE3E  AND.B     <ea 7.6>,D7   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CE3E  AND.B     <ea 7.6>,D7   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CE3F  AND.B     <ea 7.7>,D7   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CE3F  AND.B     <ea 7.7>,D7   (illegal)
         b       take_illegal_instruction
 
 // ---- $CE40-$CE7F --------------------------------------------------------
@@ -7598,21 +7598,21 @@ op_CD97:
         b       or_eor_etc_w_reg_d7
         slwi.   data, d7, 16                            // CE47  AND.W     D7,D7
         b       update_vc_zero
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CE48  AND.W     A0,D7   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CE48  AND.W     A0,D7   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CE49  AND.W     A1,D7   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CE49  AND.W     A1,D7   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CE4A  AND.W     A2,D7   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CE4A  AND.W     A2,D7   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CE4B  AND.W     A3,D7   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CE4B  AND.W     A3,D7   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CE4C  AND.W     A4,D7   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CE4C  AND.W     A4,D7   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CE4D  AND.W     A5,D7   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CE4D  AND.W     A5,D7   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CE4E  AND.W     A6,D7   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CE4E  AND.W     A6,D7   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CE4F  AND.W     A7,D7   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CE4F  AND.W     A7,D7   (illegal)
         b       take_illegal_instruction
         lha     data, 0(a0)                             // CE50  AND.W     (A0),D7
         b       and_w_mem_d7_2
@@ -7704,11 +7704,11 @@ op_CD97:
         b       fea_w_73
         and     data, d7, prefetch_data                 // CE7C  AND.W     #<data>,D7
         b       or_and_eor_w_imm_d7
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CE7D  AND.W     <ea 7.5>,D7   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CE7D  AND.W     <ea 7.5>,D7   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CE7E  AND.W     <ea 7.6>,D7   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CE7E  AND.W     <ea 7.6>,D7   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CE7F  AND.W     <ea 7.7>,D7   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CE7F  AND.W     <ea 7.7>,D7   (illegal)
         b       take_illegal_instruction
 
 // ---- $CE80-$CEBF --------------------------------------------------------
@@ -7728,21 +7728,21 @@ op_CD97:
         b       update_vc_zero
         addco.  data, d7, zero                          // CE87  AND.L     D7,D7
         b       fetch
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CE88  AND.L     A0,D7   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CE88  AND.L     A0,D7   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CE89  AND.L     A1,D7   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CE89  AND.L     A1,D7   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CE8A  AND.L     A2,D7   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CE8A  AND.L     A2,D7   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CE8B  AND.L     A3,D7   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CE8B  AND.L     A3,D7   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CE8C  AND.L     A4,D7   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CE8C  AND.L     A4,D7   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CE8D  AND.L     A5,D7   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CE8D  AND.L     A5,D7   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CE8E  AND.L     A6,D7   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CE8E  AND.L     A6,D7   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CE8F  AND.L     A7,D7   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CE8F  AND.L     A7,D7   (illegal)
         b       take_illegal_instruction
         lwz     data, 0(a0)                             // CE90  AND.L     (A0),D7
         b       and_l_mem_d7_2
@@ -7834,11 +7834,11 @@ op_CD97:
         b       fea_l_73
         lwz     data, 0(pc)                             // CEBC  AND.L     #<data>,D7
         b       and_l_imm_d7
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CEBD  AND.L     <ea 7.5>,D7   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CEBD  AND.L     <ea 7.5>,D7   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CEBE  AND.L     <ea 7.6>,D7   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CEBE  AND.L     <ea 7.6>,D7   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CEBF  AND.L     <ea 7.7>,D7   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CEBF  AND.L     <ea 7.7>,D7   (illegal)
         b       take_illegal_instruction
 
 // ---- $CEC0-$CEFF --------------------------------------------------------
@@ -7858,21 +7858,21 @@ op_CD97:
         b       mulu_w_any_d7
         clrlwi  data, d7, 16                            // CEC7  MULU.W    D7,D7
         b       mulu_w_any_d7
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CEC8  MULU.W    A0,D7   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CEC8  MULU.W    A0,D7   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CEC9  MULU.W    A1,D7   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CEC9  MULU.W    A1,D7   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CECA  MULU.W    A2,D7   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CECA  MULU.W    A2,D7   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CECB  MULU.W    A3,D7   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CECB  MULU.W    A3,D7   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CECC  MULU.W    A4,D7   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CECC  MULU.W    A4,D7   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CECD  MULU.W    A5,D7   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CECD  MULU.W    A5,D7   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CECE  MULU.W    A6,D7   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CECE  MULU.W    A6,D7   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CECF  MULU.W    A7,D7   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CECF  MULU.W    A7,D7   (illegal)
         b       take_illegal_instruction
         lhz     data, 0(a0)                             // CED0  MULU.W    (A0),D7
         b       mulu_w_any_d7
@@ -7964,11 +7964,11 @@ op_CD97:
         b       fea_w_73
         mr      data, prefetch_data                     // CEFC  MULU.W    #<data>,D7
         b       mulu_w_ea_d7
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CEFD  MULU.W    <ea 7.5>,D7   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CEFD  MULU.W    <ea 7.5>,D7   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CEFE  MULU.W    <ea 7.6>,D7   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CEFE  MULU.W    <ea 7.6>,D7   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CEFF  MULU.W    <ea 7.7>,D7   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CEFF  MULU.W    <ea 7.7>,D7   (illegal)
         b       take_illegal_instruction
 
 // ---- $CF00-$CF3F --------------------------------------------------------
@@ -8096,17 +8096,17 @@ op_CF17:
         b       and_b_d7_mem
         ori     rtn_addr, code_ptr, and_b_d7_mem_2 - cb  // CF39  AND.B     D7,(xxx).L
         b       cea_x_71_2
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CF3A  AND.B     D7,(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CF3A  AND.B     D7,(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CF3B  AND.B     D7,(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CF3B  AND.B     D7,(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CF3C  AND.B     D7,#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CF3C  AND.B     D7,#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CF3D  AND.B     D7,<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CF3D  AND.B     D7,<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CF3E  AND.B     D7,<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CF3E  AND.B     D7,<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CF3F  AND.B     D7,<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CF3F  AND.B     D7,<ea 7.7>   (illegal)
         b       take_illegal_instruction
 
 // ---- $CF40-$CF7F --------------------------------------------------------
@@ -8234,35 +8234,35 @@ op_CF57:
         b       and_w_d7_mem
         ori     rtn_addr, code_ptr, and_w_d7_mem_2 - cb  // CF79  AND.W     D7,(xxx).L
         b       cea_x_71_2
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CF7A  AND.W     D7,(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CF7A  AND.W     D7,(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CF7B  AND.W     D7,(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CF7B  AND.W     D7,(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CF7C  AND.W     D7,#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CF7C  AND.W     D7,#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CF7D  AND.W     D7,<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CF7D  AND.W     D7,<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CF7E  AND.W     D7,<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CF7E  AND.W     D7,<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CF7F  AND.W     D7,<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CF7F  AND.W     D7,<ea 7.7>   (illegal)
         b       take_illegal_instruction
 
 // ---- $CF80-$CFBF --------------------------------------------------------
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CF80  ILLEGAL
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CF80  ILLEGAL
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CF81  ILLEGAL
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CF81  ILLEGAL
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CF82  ILLEGAL
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CF82  ILLEGAL
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CF83  ILLEGAL
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CF83  ILLEGAL
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CF84  ILLEGAL
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CF84  ILLEGAL
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CF85  ILLEGAL
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CF85  ILLEGAL
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CF86  ILLEGAL
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CF86  ILLEGAL
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CF87  ILLEGAL
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CF87  ILLEGAL
         b       take_illegal_instruction
         mr      data, d7                                // CF88  EXG.L     D7,A0
         b       exg_l_d7_a0
@@ -8372,17 +8372,17 @@ op_CF97:
         b       and_l_d7_mem
         ori     rtn_addr, code_ptr, and_l_d7_mem_2 - cb  // CFB9  AND.L     D7,(xxx).L
         b       cea_x_71_2
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CFBA  AND.L     D7,(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CFBA  AND.L     D7,(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CFBB  AND.L     D7,(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CFBB  AND.L     D7,(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CFBC  AND.L     D7,#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CFBC  AND.L     D7,#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CFBD  AND.L     D7,<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CFBD  AND.L     D7,<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CFBE  AND.L     D7,<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CFBE  AND.L     D7,<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CFBF  AND.L     D7,<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CFBF  AND.L     D7,<ea 7.7>   (illegal)
         b       take_illegal_instruction
 
 // ---- $CFC0-$CFFF --------------------------------------------------------
@@ -8402,21 +8402,21 @@ op_CF97:
         b       muls_w_mem_d7
         extsh   data, d7                                // CFC7  MULS.W    D7,D7
         b       muls_w_mem_d7
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CFC8  MULS.W    A0,D7   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CFC8  MULS.W    A0,D7   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CFC9  MULS.W    A1,D7   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CFC9  MULS.W    A1,D7   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CFCA  MULS.W    A2,D7   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CFCA  MULS.W    A2,D7   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CFCB  MULS.W    A3,D7   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CFCB  MULS.W    A3,D7   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CFCC  MULS.W    A4,D7   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CFCC  MULS.W    A4,D7   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CFCD  MULS.W    A5,D7   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CFCD  MULS.W    A5,D7   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CFCE  MULS.W    A6,D7   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CFCE  MULS.W    A6,D7   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CFCF  MULS.W    A7,D7   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CFCF  MULS.W    A7,D7   (illegal)
         b       take_illegal_instruction
         lha     data, 0(a0)                             // CFD0  MULS.W    (A0),D7
         b       muls_w_mem_d7
@@ -8508,9 +8508,9 @@ op_CF97:
         b       fea_w_73
         mr      data, prefetch_data                     // CFFC  MULS.W    #<data>,D7
         b       muls_w_ea_d7
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CFFD  MULS.W    <ea 7.5>,D7   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CFFD  MULS.W    <ea 7.5>,D7   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CFFE  MULS.W    <ea 7.6>,D7   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CFFE  MULS.W    <ea 7.6>,D7   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // CFFF  MULS.W    <ea 7.7>,D7   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // CFFF  MULS.W    <ea 7.7>,D7   (illegal)
         b       take_illegal_instruction

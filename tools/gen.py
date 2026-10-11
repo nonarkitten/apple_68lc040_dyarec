@@ -40,9 +40,11 @@ MNEM_COL = 8                    # column where the mnemonic starts
 OPND_COL = 16                   # column where operands start
 COMMENT_COL = 56                # preferred column for end-of-line comments
 
-# XCOFF symbols that share an offset with another label.  EmEntry and
-# EmKernelTrapTable are ordinary labels supplied by the annotations.
-EXTRA_LABELS = {0x00000: ['EmTop'], TABLE_START: ['EmBtm', 'OpcodeTblTop']}
+# Labels that share an offset with another label: the XCOFF symbols (EmEntry
+# and EmKernelTrapTable are ordinary labels supplied by the annotations) and
+# dr_cb, the base of the dynamic recompiler's 64 KB code block.
+EXTRA_LABELS = {0x00000: ['EmTop'], 0x10000: ['dr_cb'],
+                TABLE_START: ['EmBtm', 'OpcodeTblTop']}
 
 AUTO_LABEL = re.compile(r'[LD]_[0-9A-F]{5}')
 

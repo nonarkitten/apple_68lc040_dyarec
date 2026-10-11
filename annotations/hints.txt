@@ -20,3 +20,35 @@ data  0EA00 0EA2C ascii
 align 0EA44 0x10000
 
 data  182FC 20000 zero
+
+# The translator borrows three registers (see Registers.inc, "alias").
+reg   10000 17748 r23 blk_ofs
+reg   10000 17748 r29 rec_ptr
+reg   10000 17748 r30 out_ptr
+# The recompiler's run-time support uses r23 as a lookup table pointer.
+reg   17748 182FC r23 r23
+
+# Lookup tables used by the translator's first pass and by the emitters.
+data  11038 11338 byte
+data  11E7C 1237C byte
+data  182A8 182F8 ascii
+data  182F8 182FC long
+
+# Per-condition descriptor tables used by the Bcc / DBcc / Scc emitters.
+data  16E48 16E88 long
+data  17228 172A8 long
+data  17470 174B0 long
+
+# Offsets from dr_cb (the recompiler's code block) that the code builds with
+# "ori reg, dr_code_base, offset".
+opnd  0DC30 dr_setup - dr_cb
+opnd  0DC38 dr_null_hook - dr_cb
+opnd  18250 dr_dispatch - dr_cb
+opnd  18258 dr_request_flush - dr_cb
+opnd  18260 dr_invalidate_range - dr_cb
+opnd  18268 dr_fault_fixup - dr_cb
+opnd  18270 dr_fault_redirect - dr_cb
+opnd  180E8 dr_resume_after_fault - dr_cb
+opnd  181A0 dr_resume_in_translator - dr_cb
+opnd  17BF4 dr_stale_block - dr_cb
+opnd  17D18 dr_stale_block - dr_cb

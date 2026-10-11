@@ -126,11 +126,11 @@
         b       fea_w_73
         rlwimi  d0, prefetch_data, 0, 16, 31            // 303C  MOVE.W    #<data>,D0
         b       move_w_imm_any
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 303D  MOVE.W    <ea 7.5>,D0   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 303D  MOVE.W    <ea 7.5>,D0   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 303E  MOVE.W    <ea 7.6>,D0   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 303E  MOVE.W    <ea 7.6>,D0   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 303F  MOVE.W    <ea 7.7>,D0   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 303F  MOVE.W    <ea 7.7>,D0   (illegal)
         b       take_illegal_instruction
 
 // ---- $3040-$307F --------------------------------------------------------
@@ -256,11 +256,11 @@
         b       fea_w_73
         mr      a0, prefetch_data                       // 307C  MOVEA.W   #<data>,A0
         b       fetch_skip_word
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 307D  MOVEA.W   <ea 7.5>,A0   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 307D  MOVEA.W   <ea 7.5>,A0   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 307E  MOVEA.W   <ea 7.6>,A0   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 307E  MOVEA.W   <ea 7.6>,A0   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 307F  MOVEA.W   <ea 7.7>,A0   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 307F  MOVEA.W   <ea 7.7>,A0   (illegal)
         b       take_illegal_instruction
 
 // ---- $3080-$30BF --------------------------------------------------------
@@ -386,11 +386,11 @@
         b       fea_w_73
         sth     prefetch_data, 0(a0)                    // 30BC  MOVE.W    #<data>,(A0)
         b       move_w_imm_any
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 30BD  MOVE.W    <ea 7.5>,(A0)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 30BD  MOVE.W    <ea 7.5>,(A0)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 30BE  MOVE.W    <ea 7.6>,(A0)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 30BE  MOVE.W    <ea 7.6>,(A0)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 30BF  MOVE.W    <ea 7.7>,(A0)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 30BF  MOVE.W    <ea 7.7>,(A0)   (illegal)
         b       take_illegal_instruction
 
 // ---- $30C0-$30FF --------------------------------------------------------
@@ -516,11 +516,11 @@
         b       fea_w_73
         extsh   data, prefetch_data                     // 30FC  MOVE.W    #<data>,(A0)+
         b       move_w_ea_mem
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 30FD  MOVE.W    <ea 7.5>,(A0)+   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 30FD  MOVE.W    <ea 7.5>,(A0)+   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 30FE  MOVE.W    <ea 7.6>,(A0)+   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 30FE  MOVE.W    <ea 7.6>,(A0)+   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 30FF  MOVE.W    <ea 7.7>,(A0)+   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 30FF  MOVE.W    <ea 7.7>,(A0)+   (illegal)
         b       take_illegal_instruction
 
 // ---- $3100-$313F --------------------------------------------------------
@@ -646,11 +646,11 @@
         b       fea_w_73
         sthu    prefetch_data, -2(a0)                   // 313C  MOVE.W    #<data>,-(A0)
         b       move_w_imm_any
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 313D  MOVE.W    <ea 7.5>,-(A0)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 313D  MOVE.W    <ea 7.5>,-(A0)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 313E  MOVE.W    <ea 7.6>,-(A0)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 313E  MOVE.W    <ea 7.6>,-(A0)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 313F  MOVE.W    <ea 7.7>,-(A0)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 313F  MOVE.W    <ea 7.7>,-(A0)   (illegal)
         b       take_illegal_instruction
 
 // ---- $3140-$317F --------------------------------------------------------
@@ -776,11 +776,11 @@
         b       fea_w_73
         extsh   data, prefetch_data                     // 317C  MOVE.W    #<data>,(d16,A0)
         b       move_w_ea_mem_2
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 317D  MOVE.W    <ea 7.5>,(d16,A0)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 317D  MOVE.W    <ea 7.5>,(d16,A0)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 317E  MOVE.W    <ea 7.6>,(d16,A0)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 317E  MOVE.W    <ea 7.6>,(d16,A0)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 317F  MOVE.W    <ea 7.7>,(d16,A0)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 317F  MOVE.W    <ea 7.7>,(d16,A0)   (illegal)
         b       take_illegal_instruction
 
 // ---- $3180-$31BF --------------------------------------------------------
@@ -906,11 +906,11 @@
         b       fea_w_73
         extsh   data, prefetch_data                     // 31BC  MOVE.W    #<data>,(d8,A0,Xn)
         b       move_w_ea_mem_3
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 31BD  MOVE.W    <ea 7.5>,(d8,A0,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 31BD  MOVE.W    <ea 7.5>,(d8,A0,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 31BE  MOVE.W    <ea 7.6>,(d8,A0,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 31BE  MOVE.W    <ea 7.6>,(d8,A0,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 31BF  MOVE.W    <ea 7.7>,(d8,A0,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 31BF  MOVE.W    <ea 7.7>,(d8,A0,Xn)   (illegal)
         b       take_illegal_instruction
 
 // ---- $31C0-$31FF --------------------------------------------------------
@@ -1036,11 +1036,11 @@
         b       fea_w_73
         extsh   data, prefetch_data                     // 31FC  MOVE.W    #<data>,(xxx).W
         b       move_w_ea_mem_25
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 31FD  MOVE.W    <ea 7.5>,(xxx).W   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 31FD  MOVE.W    <ea 7.5>,(xxx).W   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 31FE  MOVE.W    <ea 7.6>,(xxx).W   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 31FE  MOVE.W    <ea 7.6>,(xxx).W   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 31FF  MOVE.W    <ea 7.7>,(xxx).W   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 31FF  MOVE.W    <ea 7.7>,(xxx).W   (illegal)
         b       take_illegal_instruction
 
 // ---- $3200-$323F --------------------------------------------------------
@@ -1166,11 +1166,11 @@
         b       fea_w_73
         rlwimi  d1, prefetch_data, 0, 16, 31            // 323C  MOVE.W    #<data>,D1
         b       move_w_imm_any
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 323D  MOVE.W    <ea 7.5>,D1   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 323D  MOVE.W    <ea 7.5>,D1   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 323E  MOVE.W    <ea 7.6>,D1   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 323E  MOVE.W    <ea 7.6>,D1   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 323F  MOVE.W    <ea 7.7>,D1   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 323F  MOVE.W    <ea 7.7>,D1   (illegal)
         b       take_illegal_instruction
 
 // ---- $3240-$327F --------------------------------------------------------
@@ -1296,11 +1296,11 @@
         b       fea_w_73
         mr      a1, prefetch_data                       // 327C  MOVEA.W   #<data>,A1
         b       fetch_skip_word
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 327D  MOVEA.W   <ea 7.5>,A1   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 327D  MOVEA.W   <ea 7.5>,A1   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 327E  MOVEA.W   <ea 7.6>,A1   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 327E  MOVEA.W   <ea 7.6>,A1   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 327F  MOVEA.W   <ea 7.7>,A1   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 327F  MOVEA.W   <ea 7.7>,A1   (illegal)
         b       take_illegal_instruction
 
 // ---- $3280-$32BF --------------------------------------------------------
@@ -1426,11 +1426,11 @@
         b       fea_w_73
         sth     prefetch_data, 0(a1)                    // 32BC  MOVE.W    #<data>,(A1)
         b       move_w_imm_any
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 32BD  MOVE.W    <ea 7.5>,(A1)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 32BD  MOVE.W    <ea 7.5>,(A1)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 32BE  MOVE.W    <ea 7.6>,(A1)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 32BE  MOVE.W    <ea 7.6>,(A1)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 32BF  MOVE.W    <ea 7.7>,(A1)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 32BF  MOVE.W    <ea 7.7>,(A1)   (illegal)
         b       take_illegal_instruction
 
 // ---- $32C0-$32FF --------------------------------------------------------
@@ -1556,11 +1556,11 @@
         b       fea_w_73
         extsh   data, prefetch_data                     // 32FC  MOVE.W    #<data>,(A1)+
         b       move_w_ea_mem_4
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 32FD  MOVE.W    <ea 7.5>,(A1)+   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 32FD  MOVE.W    <ea 7.5>,(A1)+   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 32FE  MOVE.W    <ea 7.6>,(A1)+   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 32FE  MOVE.W    <ea 7.6>,(A1)+   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 32FF  MOVE.W    <ea 7.7>,(A1)+   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 32FF  MOVE.W    <ea 7.7>,(A1)+   (illegal)
         b       take_illegal_instruction
 
 // ---- $3300-$333F --------------------------------------------------------
@@ -1686,11 +1686,11 @@
         b       fea_w_73
         sthu    prefetch_data, -2(a1)                   // 333C  MOVE.W    #<data>,-(A1)
         b       move_w_imm_any
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 333D  MOVE.W    <ea 7.5>,-(A1)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 333D  MOVE.W    <ea 7.5>,-(A1)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 333E  MOVE.W    <ea 7.6>,-(A1)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 333E  MOVE.W    <ea 7.6>,-(A1)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 333F  MOVE.W    <ea 7.7>,-(A1)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 333F  MOVE.W    <ea 7.7>,-(A1)   (illegal)
         b       take_illegal_instruction
 
 // ---- $3340-$337F --------------------------------------------------------
@@ -1816,11 +1816,11 @@
         b       fea_w_73
         extsh   data, prefetch_data                     // 337C  MOVE.W    #<data>,(d16,A1)
         b       move_w_ea_mem_5
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 337D  MOVE.W    <ea 7.5>,(d16,A1)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 337D  MOVE.W    <ea 7.5>,(d16,A1)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 337E  MOVE.W    <ea 7.6>,(d16,A1)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 337E  MOVE.W    <ea 7.6>,(d16,A1)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 337F  MOVE.W    <ea 7.7>,(d16,A1)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 337F  MOVE.W    <ea 7.7>,(d16,A1)   (illegal)
         b       take_illegal_instruction
 
 // ---- $3380-$33BF --------------------------------------------------------
@@ -1946,11 +1946,11 @@
         b       fea_w_73
         extsh   data, prefetch_data                     // 33BC  MOVE.W    #<data>,(d8,A1,Xn)
         b       move_w_ea_mem_6
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 33BD  MOVE.W    <ea 7.5>,(d8,A1,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 33BD  MOVE.W    <ea 7.5>,(d8,A1,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 33BE  MOVE.W    <ea 7.6>,(d8,A1,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 33BE  MOVE.W    <ea 7.6>,(d8,A1,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 33BF  MOVE.W    <ea 7.7>,(d8,A1,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 33BF  MOVE.W    <ea 7.7>,(d8,A1,Xn)   (illegal)
         b       take_illegal_instruction
 
 // ---- $33C0-$33FF --------------------------------------------------------
@@ -2076,11 +2076,11 @@
         b       fea_w_73
         extsh   data, prefetch_data                     // 33FC  MOVE.W    #<data>,(xxx).L
         b       move_w_ea_mem_26
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 33FD  MOVE.W    <ea 7.5>,(xxx).L   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 33FD  MOVE.W    <ea 7.5>,(xxx).L   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 33FE  MOVE.W    <ea 7.6>,(xxx).L   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 33FE  MOVE.W    <ea 7.6>,(xxx).L   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 33FF  MOVE.W    <ea 7.7>,(xxx).L   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 33FF  MOVE.W    <ea 7.7>,(xxx).L   (illegal)
         b       take_illegal_instruction
 
 // ---- $3400-$343F --------------------------------------------------------
@@ -2206,11 +2206,11 @@
         b       fea_w_73
         rlwimi  d2, prefetch_data, 0, 16, 31            // 343C  MOVE.W    #<data>,D2
         b       move_w_imm_any
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 343D  MOVE.W    <ea 7.5>,D2   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 343D  MOVE.W    <ea 7.5>,D2   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 343E  MOVE.W    <ea 7.6>,D2   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 343E  MOVE.W    <ea 7.6>,D2   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 343F  MOVE.W    <ea 7.7>,D2   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 343F  MOVE.W    <ea 7.7>,D2   (illegal)
         b       take_illegal_instruction
 
 // ---- $3440-$347F --------------------------------------------------------
@@ -2336,11 +2336,11 @@
         b       fea_w_73
         mr      a2, prefetch_data                       // 347C  MOVEA.W   #<data>,A2
         b       fetch_skip_word
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 347D  MOVEA.W   <ea 7.5>,A2   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 347D  MOVEA.W   <ea 7.5>,A2   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 347E  MOVEA.W   <ea 7.6>,A2   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 347E  MOVEA.W   <ea 7.6>,A2   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 347F  MOVEA.W   <ea 7.7>,A2   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 347F  MOVEA.W   <ea 7.7>,A2   (illegal)
         b       take_illegal_instruction
 
 // ---- $3480-$34BF --------------------------------------------------------
@@ -2466,11 +2466,11 @@
         b       fea_w_73
         sth     prefetch_data, 0(a2)                    // 34BC  MOVE.W    #<data>,(A2)
         b       move_w_imm_any
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 34BD  MOVE.W    <ea 7.5>,(A2)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 34BD  MOVE.W    <ea 7.5>,(A2)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 34BE  MOVE.W    <ea 7.6>,(A2)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 34BE  MOVE.W    <ea 7.6>,(A2)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 34BF  MOVE.W    <ea 7.7>,(A2)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 34BF  MOVE.W    <ea 7.7>,(A2)   (illegal)
         b       take_illegal_instruction
 
 // ---- $34C0-$34FF --------------------------------------------------------
@@ -2596,11 +2596,11 @@
         b       fea_w_73
         extsh   data, prefetch_data                     // 34FC  MOVE.W    #<data>,(A2)+
         b       move_w_ea_mem_7
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 34FD  MOVE.W    <ea 7.5>,(A2)+   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 34FD  MOVE.W    <ea 7.5>,(A2)+   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 34FE  MOVE.W    <ea 7.6>,(A2)+   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 34FE  MOVE.W    <ea 7.6>,(A2)+   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 34FF  MOVE.W    <ea 7.7>,(A2)+   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 34FF  MOVE.W    <ea 7.7>,(A2)+   (illegal)
         b       take_illegal_instruction
 
 // ---- $3500-$353F --------------------------------------------------------
@@ -2726,11 +2726,11 @@
         b       fea_w_73
         sthu    prefetch_data, -2(a2)                   // 353C  MOVE.W    #<data>,-(A2)
         b       move_w_imm_any
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 353D  MOVE.W    <ea 7.5>,-(A2)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 353D  MOVE.W    <ea 7.5>,-(A2)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 353E  MOVE.W    <ea 7.6>,-(A2)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 353E  MOVE.W    <ea 7.6>,-(A2)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 353F  MOVE.W    <ea 7.7>,-(A2)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 353F  MOVE.W    <ea 7.7>,-(A2)   (illegal)
         b       take_illegal_instruction
 
 // ---- $3540-$357F --------------------------------------------------------
@@ -2856,11 +2856,11 @@
         b       fea_w_73
         extsh   data, prefetch_data                     // 357C  MOVE.W    #<data>,(d16,A2)
         b       move_w_ea_mem_8
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 357D  MOVE.W    <ea 7.5>,(d16,A2)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 357D  MOVE.W    <ea 7.5>,(d16,A2)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 357E  MOVE.W    <ea 7.6>,(d16,A2)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 357E  MOVE.W    <ea 7.6>,(d16,A2)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 357F  MOVE.W    <ea 7.7>,(d16,A2)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 357F  MOVE.W    <ea 7.7>,(d16,A2)   (illegal)
         b       take_illegal_instruction
 
 // ---- $3580-$35BF --------------------------------------------------------
@@ -2986,141 +2986,141 @@
         b       fea_w_73
         extsh   data, prefetch_data                     // 35BC  MOVE.W    #<data>,(d8,A2,Xn)
         b       move_w_ea_mem_9
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 35BD  MOVE.W    <ea 7.5>,(d8,A2,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 35BD  MOVE.W    <ea 7.5>,(d8,A2,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 35BE  MOVE.W    <ea 7.6>,(d8,A2,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 35BE  MOVE.W    <ea 7.6>,(d8,A2,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 35BF  MOVE.W    <ea 7.7>,(d8,A2,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 35BF  MOVE.W    <ea 7.7>,(d8,A2,Xn)   (illegal)
         b       take_illegal_instruction
 
 // ---- $35C0-$35FF --------------------------------------------------------
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 35C0  MOVE.W    D0,(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 35C0  MOVE.W    D0,(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 35C1  MOVE.W    D1,(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 35C1  MOVE.W    D1,(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 35C2  MOVE.W    D2,(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 35C2  MOVE.W    D2,(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 35C3  MOVE.W    D3,(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 35C3  MOVE.W    D3,(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 35C4  MOVE.W    D4,(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 35C4  MOVE.W    D4,(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 35C5  MOVE.W    D5,(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 35C5  MOVE.W    D5,(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 35C6  MOVE.W    D6,(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 35C6  MOVE.W    D6,(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 35C7  MOVE.W    D7,(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 35C7  MOVE.W    D7,(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 35C8  MOVE.W    A0,(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 35C8  MOVE.W    A0,(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 35C9  MOVE.W    A1,(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 35C9  MOVE.W    A1,(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 35CA  MOVE.W    A2,(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 35CA  MOVE.W    A2,(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 35CB  MOVE.W    A3,(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 35CB  MOVE.W    A3,(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 35CC  MOVE.W    A4,(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 35CC  MOVE.W    A4,(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 35CD  MOVE.W    A5,(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 35CD  MOVE.W    A5,(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 35CE  MOVE.W    A6,(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 35CE  MOVE.W    A6,(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 35CF  MOVE.W    A7,(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 35CF  MOVE.W    A7,(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 35D0  MOVE.W    (A0),(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 35D0  MOVE.W    (A0),(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 35D1  MOVE.W    (A1),(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 35D1  MOVE.W    (A1),(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 35D2  MOVE.W    (A2),(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 35D2  MOVE.W    (A2),(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 35D3  MOVE.W    (A3),(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 35D3  MOVE.W    (A3),(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 35D4  MOVE.W    (A4),(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 35D4  MOVE.W    (A4),(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 35D5  MOVE.W    (A5),(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 35D5  MOVE.W    (A5),(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 35D6  MOVE.W    (A6),(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 35D6  MOVE.W    (A6),(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 35D7  MOVE.W    (A7),(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 35D7  MOVE.W    (A7),(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 35D8  MOVE.W    (A0)+,(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 35D8  MOVE.W    (A0)+,(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 35D9  MOVE.W    (A1)+,(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 35D9  MOVE.W    (A1)+,(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 35DA  MOVE.W    (A2)+,(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 35DA  MOVE.W    (A2)+,(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 35DB  MOVE.W    (A3)+,(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 35DB  MOVE.W    (A3)+,(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 35DC  MOVE.W    (A4)+,(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 35DC  MOVE.W    (A4)+,(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 35DD  MOVE.W    (A5)+,(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 35DD  MOVE.W    (A5)+,(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 35DE  MOVE.W    (A6)+,(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 35DE  MOVE.W    (A6)+,(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 35DF  MOVE.W    (A7)+,(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 35DF  MOVE.W    (A7)+,(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 35E0  MOVE.W    -(A0),(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 35E0  MOVE.W    -(A0),(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 35E1  MOVE.W    -(A1),(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 35E1  MOVE.W    -(A1),(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 35E2  MOVE.W    -(A2),(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 35E2  MOVE.W    -(A2),(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 35E3  MOVE.W    -(A3),(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 35E3  MOVE.W    -(A3),(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 35E4  MOVE.W    -(A4),(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 35E4  MOVE.W    -(A4),(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 35E5  MOVE.W    -(A5),(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 35E5  MOVE.W    -(A5),(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 35E6  MOVE.W    -(A6),(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 35E6  MOVE.W    -(A6),(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 35E7  MOVE.W    -(A7),(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 35E7  MOVE.W    -(A7),(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 35E8  MOVE.W    (d16,A0),(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 35E8  MOVE.W    (d16,A0),(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 35E9  MOVE.W    (d16,A1),(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 35E9  MOVE.W    (d16,A1),(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 35EA  MOVE.W    (d16,A2),(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 35EA  MOVE.W    (d16,A2),(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 35EB  MOVE.W    (d16,A3),(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 35EB  MOVE.W    (d16,A3),(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 35EC  MOVE.W    (d16,A4),(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 35EC  MOVE.W    (d16,A4),(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 35ED  MOVE.W    (d16,A5),(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 35ED  MOVE.W    (d16,A5),(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 35EE  MOVE.W    (d16,A6),(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 35EE  MOVE.W    (d16,A6),(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 35EF  MOVE.W    (d16,A7),(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 35EF  MOVE.W    (d16,A7),(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 35F0  MOVE.W    (d8,A0,Xn),(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 35F0  MOVE.W    (d8,A0,Xn),(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 35F1  MOVE.W    (d8,A1,Xn),(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 35F1  MOVE.W    (d8,A1,Xn),(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 35F2  MOVE.W    (d8,A2,Xn),(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 35F2  MOVE.W    (d8,A2,Xn),(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 35F3  MOVE.W    (d8,A3,Xn),(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 35F3  MOVE.W    (d8,A3,Xn),(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 35F4  MOVE.W    (d8,A4,Xn),(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 35F4  MOVE.W    (d8,A4,Xn),(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 35F5  MOVE.W    (d8,A5,Xn),(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 35F5  MOVE.W    (d8,A5,Xn),(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 35F6  MOVE.W    (d8,A6,Xn),(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 35F6  MOVE.W    (d8,A6,Xn),(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 35F7  MOVE.W    (d8,A7,Xn),(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 35F7  MOVE.W    (d8,A7,Xn),(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 35F8  MOVE.W    (xxx).W,(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 35F8  MOVE.W    (xxx).W,(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 35F9  MOVE.W    (xxx).L,(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 35F9  MOVE.W    (xxx).L,(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 35FA  MOVE.W    (d16,PC),(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 35FA  MOVE.W    (d16,PC),(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 35FB  MOVE.W    (d8,PC,Xn),(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 35FB  MOVE.W    (d8,PC,Xn),(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 35FC  MOVE.W    #<data>,(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 35FC  MOVE.W    #<data>,(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 35FD  MOVE.W    <ea 7.5>,(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 35FD  MOVE.W    <ea 7.5>,(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 35FE  MOVE.W    <ea 7.6>,(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 35FE  MOVE.W    <ea 7.6>,(d16,PC)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 35FF  MOVE.W    <ea 7.7>,(d16,PC)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 35FF  MOVE.W    <ea 7.7>,(d16,PC)   (illegal)
         b       take_illegal_instruction
 
 // ---- $3600-$363F --------------------------------------------------------
@@ -3246,11 +3246,11 @@
         b       fea_w_73
         rlwimi  d3, prefetch_data, 0, 16, 31            // 363C  MOVE.W    #<data>,D3
         b       move_w_imm_any
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 363D  MOVE.W    <ea 7.5>,D3   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 363D  MOVE.W    <ea 7.5>,D3   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 363E  MOVE.W    <ea 7.6>,D3   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 363E  MOVE.W    <ea 7.6>,D3   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 363F  MOVE.W    <ea 7.7>,D3   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 363F  MOVE.W    <ea 7.7>,D3   (illegal)
         b       take_illegal_instruction
 
 // ---- $3640-$367F --------------------------------------------------------
@@ -3376,11 +3376,11 @@
         b       fea_w_73
         mr      a3, prefetch_data                       // 367C  MOVEA.W   #<data>,A3
         b       fetch_skip_word
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 367D  MOVEA.W   <ea 7.5>,A3   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 367D  MOVEA.W   <ea 7.5>,A3   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 367E  MOVEA.W   <ea 7.6>,A3   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 367E  MOVEA.W   <ea 7.6>,A3   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 367F  MOVEA.W   <ea 7.7>,A3   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 367F  MOVEA.W   <ea 7.7>,A3   (illegal)
         b       take_illegal_instruction
 
 // ---- $3680-$36BF --------------------------------------------------------
@@ -3506,11 +3506,11 @@
         b       fea_w_73
         sth     prefetch_data, 0(a3)                    // 36BC  MOVE.W    #<data>,(A3)
         b       move_w_imm_any
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 36BD  MOVE.W    <ea 7.5>,(A3)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 36BD  MOVE.W    <ea 7.5>,(A3)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 36BE  MOVE.W    <ea 7.6>,(A3)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 36BE  MOVE.W    <ea 7.6>,(A3)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 36BF  MOVE.W    <ea 7.7>,(A3)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 36BF  MOVE.W    <ea 7.7>,(A3)   (illegal)
         b       take_illegal_instruction
 
 // ---- $36C0-$36FF --------------------------------------------------------
@@ -3636,11 +3636,11 @@
         b       fea_w_73
         extsh   data, prefetch_data                     // 36FC  MOVE.W    #<data>,(A3)+
         b       move_w_ea_mem_10
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 36FD  MOVE.W    <ea 7.5>,(A3)+   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 36FD  MOVE.W    <ea 7.5>,(A3)+   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 36FE  MOVE.W    <ea 7.6>,(A3)+   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 36FE  MOVE.W    <ea 7.6>,(A3)+   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 36FF  MOVE.W    <ea 7.7>,(A3)+   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 36FF  MOVE.W    <ea 7.7>,(A3)+   (illegal)
         b       take_illegal_instruction
 
 // ---- $3700-$373F --------------------------------------------------------
@@ -3766,11 +3766,11 @@
         b       fea_w_73
         sthu    prefetch_data, -2(a3)                   // 373C  MOVE.W    #<data>,-(A3)
         b       move_w_imm_any
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 373D  MOVE.W    <ea 7.5>,-(A3)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 373D  MOVE.W    <ea 7.5>,-(A3)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 373E  MOVE.W    <ea 7.6>,-(A3)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 373E  MOVE.W    <ea 7.6>,-(A3)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 373F  MOVE.W    <ea 7.7>,-(A3)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 373F  MOVE.W    <ea 7.7>,-(A3)   (illegal)
         b       take_illegal_instruction
 
 // ---- $3740-$377F --------------------------------------------------------
@@ -3896,11 +3896,11 @@
         b       fea_w_73
         extsh   data, prefetch_data                     // 377C  MOVE.W    #<data>,(d16,A3)
         b       move_w_ea_mem_11
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 377D  MOVE.W    <ea 7.5>,(d16,A3)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 377D  MOVE.W    <ea 7.5>,(d16,A3)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 377E  MOVE.W    <ea 7.6>,(d16,A3)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 377E  MOVE.W    <ea 7.6>,(d16,A3)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 377F  MOVE.W    <ea 7.7>,(d16,A3)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 377F  MOVE.W    <ea 7.7>,(d16,A3)   (illegal)
         b       take_illegal_instruction
 
 // ---- $3780-$37BF --------------------------------------------------------
@@ -4026,141 +4026,141 @@
         b       fea_w_73
         extsh   data, prefetch_data                     // 37BC  MOVE.W    #<data>,(d8,A3,Xn)
         b       move_w_ea_mem_12
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 37BD  MOVE.W    <ea 7.5>,(d8,A3,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 37BD  MOVE.W    <ea 7.5>,(d8,A3,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 37BE  MOVE.W    <ea 7.6>,(d8,A3,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 37BE  MOVE.W    <ea 7.6>,(d8,A3,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 37BF  MOVE.W    <ea 7.7>,(d8,A3,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 37BF  MOVE.W    <ea 7.7>,(d8,A3,Xn)   (illegal)
         b       take_illegal_instruction
 
 // ---- $37C0-$37FF --------------------------------------------------------
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 37C0  MOVE.W    D0,(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 37C0  MOVE.W    D0,(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 37C1  MOVE.W    D1,(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 37C1  MOVE.W    D1,(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 37C2  MOVE.W    D2,(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 37C2  MOVE.W    D2,(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 37C3  MOVE.W    D3,(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 37C3  MOVE.W    D3,(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 37C4  MOVE.W    D4,(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 37C4  MOVE.W    D4,(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 37C5  MOVE.W    D5,(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 37C5  MOVE.W    D5,(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 37C6  MOVE.W    D6,(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 37C6  MOVE.W    D6,(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 37C7  MOVE.W    D7,(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 37C7  MOVE.W    D7,(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 37C8  MOVE.W    A0,(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 37C8  MOVE.W    A0,(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 37C9  MOVE.W    A1,(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 37C9  MOVE.W    A1,(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 37CA  MOVE.W    A2,(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 37CA  MOVE.W    A2,(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 37CB  MOVE.W    A3,(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 37CB  MOVE.W    A3,(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 37CC  MOVE.W    A4,(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 37CC  MOVE.W    A4,(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 37CD  MOVE.W    A5,(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 37CD  MOVE.W    A5,(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 37CE  MOVE.W    A6,(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 37CE  MOVE.W    A6,(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 37CF  MOVE.W    A7,(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 37CF  MOVE.W    A7,(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 37D0  MOVE.W    (A0),(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 37D0  MOVE.W    (A0),(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 37D1  MOVE.W    (A1),(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 37D1  MOVE.W    (A1),(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 37D2  MOVE.W    (A2),(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 37D2  MOVE.W    (A2),(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 37D3  MOVE.W    (A3),(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 37D3  MOVE.W    (A3),(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 37D4  MOVE.W    (A4),(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 37D4  MOVE.W    (A4),(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 37D5  MOVE.W    (A5),(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 37D5  MOVE.W    (A5),(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 37D6  MOVE.W    (A6),(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 37D6  MOVE.W    (A6),(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 37D7  MOVE.W    (A7),(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 37D7  MOVE.W    (A7),(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 37D8  MOVE.W    (A0)+,(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 37D8  MOVE.W    (A0)+,(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 37D9  MOVE.W    (A1)+,(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 37D9  MOVE.W    (A1)+,(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 37DA  MOVE.W    (A2)+,(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 37DA  MOVE.W    (A2)+,(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 37DB  MOVE.W    (A3)+,(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 37DB  MOVE.W    (A3)+,(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 37DC  MOVE.W    (A4)+,(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 37DC  MOVE.W    (A4)+,(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 37DD  MOVE.W    (A5)+,(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 37DD  MOVE.W    (A5)+,(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 37DE  MOVE.W    (A6)+,(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 37DE  MOVE.W    (A6)+,(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 37DF  MOVE.W    (A7)+,(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 37DF  MOVE.W    (A7)+,(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 37E0  MOVE.W    -(A0),(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 37E0  MOVE.W    -(A0),(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 37E1  MOVE.W    -(A1),(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 37E1  MOVE.W    -(A1),(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 37E2  MOVE.W    -(A2),(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 37E2  MOVE.W    -(A2),(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 37E3  MOVE.W    -(A3),(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 37E3  MOVE.W    -(A3),(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 37E4  MOVE.W    -(A4),(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 37E4  MOVE.W    -(A4),(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 37E5  MOVE.W    -(A5),(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 37E5  MOVE.W    -(A5),(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 37E6  MOVE.W    -(A6),(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 37E6  MOVE.W    -(A6),(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 37E7  MOVE.W    -(A7),(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 37E7  MOVE.W    -(A7),(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 37E8  MOVE.W    (d16,A0),(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 37E8  MOVE.W    (d16,A0),(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 37E9  MOVE.W    (d16,A1),(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 37E9  MOVE.W    (d16,A1),(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 37EA  MOVE.W    (d16,A2),(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 37EA  MOVE.W    (d16,A2),(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 37EB  MOVE.W    (d16,A3),(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 37EB  MOVE.W    (d16,A3),(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 37EC  MOVE.W    (d16,A4),(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 37EC  MOVE.W    (d16,A4),(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 37ED  MOVE.W    (d16,A5),(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 37ED  MOVE.W    (d16,A5),(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 37EE  MOVE.W    (d16,A6),(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 37EE  MOVE.W    (d16,A6),(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 37EF  MOVE.W    (d16,A7),(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 37EF  MOVE.W    (d16,A7),(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 37F0  MOVE.W    (d8,A0,Xn),(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 37F0  MOVE.W    (d8,A0,Xn),(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 37F1  MOVE.W    (d8,A1,Xn),(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 37F1  MOVE.W    (d8,A1,Xn),(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 37F2  MOVE.W    (d8,A2,Xn),(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 37F2  MOVE.W    (d8,A2,Xn),(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 37F3  MOVE.W    (d8,A3,Xn),(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 37F3  MOVE.W    (d8,A3,Xn),(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 37F4  MOVE.W    (d8,A4,Xn),(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 37F4  MOVE.W    (d8,A4,Xn),(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 37F5  MOVE.W    (d8,A5,Xn),(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 37F5  MOVE.W    (d8,A5,Xn),(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 37F6  MOVE.W    (d8,A6,Xn),(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 37F6  MOVE.W    (d8,A6,Xn),(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 37F7  MOVE.W    (d8,A7,Xn),(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 37F7  MOVE.W    (d8,A7,Xn),(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 37F8  MOVE.W    (xxx).W,(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 37F8  MOVE.W    (xxx).W,(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 37F9  MOVE.W    (xxx).L,(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 37F9  MOVE.W    (xxx).L,(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 37FA  MOVE.W    (d16,PC),(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 37FA  MOVE.W    (d16,PC),(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 37FB  MOVE.W    (d8,PC,Xn),(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 37FB  MOVE.W    (d8,PC,Xn),(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 37FC  MOVE.W    #<data>,(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 37FC  MOVE.W    #<data>,(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 37FD  MOVE.W    <ea 7.5>,(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 37FD  MOVE.W    <ea 7.5>,(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 37FE  MOVE.W    <ea 7.6>,(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 37FE  MOVE.W    <ea 7.6>,(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 37FF  MOVE.W    <ea 7.7>,(d8,PC,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 37FF  MOVE.W    <ea 7.7>,(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
 
 // ---- $3800-$383F --------------------------------------------------------
@@ -4286,11 +4286,11 @@
         b       fea_w_73
         rlwimi  d4, prefetch_data, 0, 16, 31            // 383C  MOVE.W    #<data>,D4
         b       move_w_imm_any
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 383D  MOVE.W    <ea 7.5>,D4   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 383D  MOVE.W    <ea 7.5>,D4   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 383E  MOVE.W    <ea 7.6>,D4   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 383E  MOVE.W    <ea 7.6>,D4   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 383F  MOVE.W    <ea 7.7>,D4   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 383F  MOVE.W    <ea 7.7>,D4   (illegal)
         b       take_illegal_instruction
 
 // ---- $3840-$387F --------------------------------------------------------
@@ -4416,11 +4416,11 @@
         b       fea_w_73
         mr      a4, prefetch_data                       // 387C  MOVEA.W   #<data>,A4
         b       fetch_skip_word
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 387D  MOVEA.W   <ea 7.5>,A4   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 387D  MOVEA.W   <ea 7.5>,A4   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 387E  MOVEA.W   <ea 7.6>,A4   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 387E  MOVEA.W   <ea 7.6>,A4   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 387F  MOVEA.W   <ea 7.7>,A4   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 387F  MOVEA.W   <ea 7.7>,A4   (illegal)
         b       take_illegal_instruction
 
 // ---- $3880-$38BF --------------------------------------------------------
@@ -4546,11 +4546,11 @@
         b       fea_w_73
         sth     prefetch_data, 0(a4)                    // 38BC  MOVE.W    #<data>,(A4)
         b       move_w_imm_any
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 38BD  MOVE.W    <ea 7.5>,(A4)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 38BD  MOVE.W    <ea 7.5>,(A4)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 38BE  MOVE.W    <ea 7.6>,(A4)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 38BE  MOVE.W    <ea 7.6>,(A4)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 38BF  MOVE.W    <ea 7.7>,(A4)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 38BF  MOVE.W    <ea 7.7>,(A4)   (illegal)
         b       take_illegal_instruction
 
 // ---- $38C0-$38FF --------------------------------------------------------
@@ -4676,11 +4676,11 @@
         b       fea_w_73
         extsh   data, prefetch_data                     // 38FC  MOVE.W    #<data>,(A4)+
         b       move_w_ea_mem_13
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 38FD  MOVE.W    <ea 7.5>,(A4)+   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 38FD  MOVE.W    <ea 7.5>,(A4)+   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 38FE  MOVE.W    <ea 7.6>,(A4)+   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 38FE  MOVE.W    <ea 7.6>,(A4)+   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 38FF  MOVE.W    <ea 7.7>,(A4)+   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 38FF  MOVE.W    <ea 7.7>,(A4)+   (illegal)
         b       take_illegal_instruction
 
 // ---- $3900-$393F --------------------------------------------------------
@@ -4806,11 +4806,11 @@
         b       fea_w_73
         sthu    prefetch_data, -2(a4)                   // 393C  MOVE.W    #<data>,-(A4)
         b       move_w_imm_any
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 393D  MOVE.W    <ea 7.5>,-(A4)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 393D  MOVE.W    <ea 7.5>,-(A4)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 393E  MOVE.W    <ea 7.6>,-(A4)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 393E  MOVE.W    <ea 7.6>,-(A4)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 393F  MOVE.W    <ea 7.7>,-(A4)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 393F  MOVE.W    <ea 7.7>,-(A4)   (illegal)
         b       take_illegal_instruction
 
 // ---- $3940-$397F --------------------------------------------------------
@@ -4936,11 +4936,11 @@
         b       fea_w_73
         extsh   data, prefetch_data                     // 397C  MOVE.W    #<data>,(d16,A4)
         b       move_w_ea_mem_14
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 397D  MOVE.W    <ea 7.5>,(d16,A4)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 397D  MOVE.W    <ea 7.5>,(d16,A4)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 397E  MOVE.W    <ea 7.6>,(d16,A4)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 397E  MOVE.W    <ea 7.6>,(d16,A4)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 397F  MOVE.W    <ea 7.7>,(d16,A4)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 397F  MOVE.W    <ea 7.7>,(d16,A4)   (illegal)
         b       take_illegal_instruction
 
 // ---- $3980-$39BF --------------------------------------------------------
@@ -5066,141 +5066,141 @@
         b       fea_w_73
         extsh   data, prefetch_data                     // 39BC  MOVE.W    #<data>,(d8,A4,Xn)
         b       move_w_ea_mem_15
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 39BD  MOVE.W    <ea 7.5>,(d8,A4,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 39BD  MOVE.W    <ea 7.5>,(d8,A4,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 39BE  MOVE.W    <ea 7.6>,(d8,A4,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 39BE  MOVE.W    <ea 7.6>,(d8,A4,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 39BF  MOVE.W    <ea 7.7>,(d8,A4,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 39BF  MOVE.W    <ea 7.7>,(d8,A4,Xn)   (illegal)
         b       take_illegal_instruction
 
 // ---- $39C0-$39FF --------------------------------------------------------
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 39C0  MOVE.W    D0,#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 39C0  MOVE.W    D0,#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 39C1  MOVE.W    D1,#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 39C1  MOVE.W    D1,#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 39C2  MOVE.W    D2,#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 39C2  MOVE.W    D2,#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 39C3  MOVE.W    D3,#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 39C3  MOVE.W    D3,#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 39C4  MOVE.W    D4,#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 39C4  MOVE.W    D4,#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 39C5  MOVE.W    D5,#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 39C5  MOVE.W    D5,#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 39C6  MOVE.W    D6,#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 39C6  MOVE.W    D6,#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 39C7  MOVE.W    D7,#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 39C7  MOVE.W    D7,#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 39C8  MOVE.W    A0,#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 39C8  MOVE.W    A0,#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 39C9  MOVE.W    A1,#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 39C9  MOVE.W    A1,#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 39CA  MOVE.W    A2,#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 39CA  MOVE.W    A2,#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 39CB  MOVE.W    A3,#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 39CB  MOVE.W    A3,#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 39CC  MOVE.W    A4,#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 39CC  MOVE.W    A4,#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 39CD  MOVE.W    A5,#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 39CD  MOVE.W    A5,#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 39CE  MOVE.W    A6,#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 39CE  MOVE.W    A6,#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 39CF  MOVE.W    A7,#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 39CF  MOVE.W    A7,#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 39D0  MOVE.W    (A0),#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 39D0  MOVE.W    (A0),#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 39D1  MOVE.W    (A1),#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 39D1  MOVE.W    (A1),#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 39D2  MOVE.W    (A2),#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 39D2  MOVE.W    (A2),#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 39D3  MOVE.W    (A3),#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 39D3  MOVE.W    (A3),#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 39D4  MOVE.W    (A4),#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 39D4  MOVE.W    (A4),#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 39D5  MOVE.W    (A5),#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 39D5  MOVE.W    (A5),#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 39D6  MOVE.W    (A6),#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 39D6  MOVE.W    (A6),#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 39D7  MOVE.W    (A7),#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 39D7  MOVE.W    (A7),#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 39D8  MOVE.W    (A0)+,#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 39D8  MOVE.W    (A0)+,#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 39D9  MOVE.W    (A1)+,#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 39D9  MOVE.W    (A1)+,#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 39DA  MOVE.W    (A2)+,#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 39DA  MOVE.W    (A2)+,#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 39DB  MOVE.W    (A3)+,#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 39DB  MOVE.W    (A3)+,#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 39DC  MOVE.W    (A4)+,#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 39DC  MOVE.W    (A4)+,#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 39DD  MOVE.W    (A5)+,#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 39DD  MOVE.W    (A5)+,#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 39DE  MOVE.W    (A6)+,#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 39DE  MOVE.W    (A6)+,#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 39DF  MOVE.W    (A7)+,#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 39DF  MOVE.W    (A7)+,#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 39E0  MOVE.W    -(A0),#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 39E0  MOVE.W    -(A0),#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 39E1  MOVE.W    -(A1),#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 39E1  MOVE.W    -(A1),#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 39E2  MOVE.W    -(A2),#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 39E2  MOVE.W    -(A2),#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 39E3  MOVE.W    -(A3),#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 39E3  MOVE.W    -(A3),#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 39E4  MOVE.W    -(A4),#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 39E4  MOVE.W    -(A4),#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 39E5  MOVE.W    -(A5),#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 39E5  MOVE.W    -(A5),#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 39E6  MOVE.W    -(A6),#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 39E6  MOVE.W    -(A6),#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 39E7  MOVE.W    -(A7),#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 39E7  MOVE.W    -(A7),#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 39E8  MOVE.W    (d16,A0),#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 39E8  MOVE.W    (d16,A0),#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 39E9  MOVE.W    (d16,A1),#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 39E9  MOVE.W    (d16,A1),#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 39EA  MOVE.W    (d16,A2),#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 39EA  MOVE.W    (d16,A2),#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 39EB  MOVE.W    (d16,A3),#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 39EB  MOVE.W    (d16,A3),#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 39EC  MOVE.W    (d16,A4),#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 39EC  MOVE.W    (d16,A4),#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 39ED  MOVE.W    (d16,A5),#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 39ED  MOVE.W    (d16,A5),#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 39EE  MOVE.W    (d16,A6),#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 39EE  MOVE.W    (d16,A6),#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 39EF  MOVE.W    (d16,A7),#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 39EF  MOVE.W    (d16,A7),#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 39F0  MOVE.W    (d8,A0,Xn),#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 39F0  MOVE.W    (d8,A0,Xn),#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 39F1  MOVE.W    (d8,A1,Xn),#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 39F1  MOVE.W    (d8,A1,Xn),#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 39F2  MOVE.W    (d8,A2,Xn),#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 39F2  MOVE.W    (d8,A2,Xn),#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 39F3  MOVE.W    (d8,A3,Xn),#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 39F3  MOVE.W    (d8,A3,Xn),#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 39F4  MOVE.W    (d8,A4,Xn),#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 39F4  MOVE.W    (d8,A4,Xn),#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 39F5  MOVE.W    (d8,A5,Xn),#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 39F5  MOVE.W    (d8,A5,Xn),#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 39F6  MOVE.W    (d8,A6,Xn),#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 39F6  MOVE.W    (d8,A6,Xn),#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 39F7  MOVE.W    (d8,A7,Xn),#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 39F7  MOVE.W    (d8,A7,Xn),#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 39F8  MOVE.W    (xxx).W,#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 39F8  MOVE.W    (xxx).W,#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 39F9  MOVE.W    (xxx).L,#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 39F9  MOVE.W    (xxx).L,#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 39FA  MOVE.W    (d16,PC),#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 39FA  MOVE.W    (d16,PC),#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 39FB  MOVE.W    (d8,PC,Xn),#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 39FB  MOVE.W    (d8,PC,Xn),#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 39FC  MOVE.W    #<data>,#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 39FC  MOVE.W    #<data>,#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 39FD  MOVE.W    <ea 7.5>,#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 39FD  MOVE.W    <ea 7.5>,#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 39FE  MOVE.W    <ea 7.6>,#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 39FE  MOVE.W    <ea 7.6>,#<data>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 39FF  MOVE.W    <ea 7.7>,#<data>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 39FF  MOVE.W    <ea 7.7>,#<data>   (illegal)
         b       take_illegal_instruction
 
 // ---- $3A00-$3A3F --------------------------------------------------------
@@ -5326,11 +5326,11 @@
         b       fea_w_73
         rlwimi  d5, prefetch_data, 0, 16, 31            // 3A3C  MOVE.W    #<data>,D5
         b       move_w_imm_any
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3A3D  MOVE.W    <ea 7.5>,D5   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3A3D  MOVE.W    <ea 7.5>,D5   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3A3E  MOVE.W    <ea 7.6>,D5   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3A3E  MOVE.W    <ea 7.6>,D5   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3A3F  MOVE.W    <ea 7.7>,D5   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3A3F  MOVE.W    <ea 7.7>,D5   (illegal)
         b       take_illegal_instruction
 
 // ---- $3A40-$3A7F --------------------------------------------------------
@@ -5456,11 +5456,11 @@
         b       fea_w_73
         mr      a5, prefetch_data                       // 3A7C  MOVEA.W   #<data>,A5
         b       fetch_skip_word
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3A7D  MOVEA.W   <ea 7.5>,A5   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3A7D  MOVEA.W   <ea 7.5>,A5   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3A7E  MOVEA.W   <ea 7.6>,A5   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3A7E  MOVEA.W   <ea 7.6>,A5   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3A7F  MOVEA.W   <ea 7.7>,A5   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3A7F  MOVEA.W   <ea 7.7>,A5   (illegal)
         b       take_illegal_instruction
 
 // ---- $3A80-$3ABF --------------------------------------------------------
@@ -5586,11 +5586,11 @@
         b       fea_w_73
         sth     prefetch_data, 0(a5)                    // 3ABC  MOVE.W    #<data>,(A5)
         b       move_w_imm_any
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3ABD  MOVE.W    <ea 7.5>,(A5)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3ABD  MOVE.W    <ea 7.5>,(A5)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3ABE  MOVE.W    <ea 7.6>,(A5)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3ABE  MOVE.W    <ea 7.6>,(A5)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3ABF  MOVE.W    <ea 7.7>,(A5)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3ABF  MOVE.W    <ea 7.7>,(A5)   (illegal)
         b       take_illegal_instruction
 
 // ---- $3AC0-$3AFF --------------------------------------------------------
@@ -5716,11 +5716,11 @@
         b       fea_w_73
         extsh   data, prefetch_data                     // 3AFC  MOVE.W    #<data>,(A5)+
         b       move_w_ea_mem_16
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3AFD  MOVE.W    <ea 7.5>,(A5)+   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3AFD  MOVE.W    <ea 7.5>,(A5)+   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3AFE  MOVE.W    <ea 7.6>,(A5)+   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3AFE  MOVE.W    <ea 7.6>,(A5)+   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3AFF  MOVE.W    <ea 7.7>,(A5)+   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3AFF  MOVE.W    <ea 7.7>,(A5)+   (illegal)
         b       take_illegal_instruction
 
 // ---- $3B00-$3B3F --------------------------------------------------------
@@ -5846,11 +5846,11 @@
         b       fea_w_73
         sthu    prefetch_data, -2(a5)                   // 3B3C  MOVE.W    #<data>,-(A5)
         b       move_w_imm_any
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3B3D  MOVE.W    <ea 7.5>,-(A5)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3B3D  MOVE.W    <ea 7.5>,-(A5)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3B3E  MOVE.W    <ea 7.6>,-(A5)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3B3E  MOVE.W    <ea 7.6>,-(A5)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3B3F  MOVE.W    <ea 7.7>,-(A5)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3B3F  MOVE.W    <ea 7.7>,-(A5)   (illegal)
         b       take_illegal_instruction
 
 // ---- $3B40-$3B7F --------------------------------------------------------
@@ -5976,11 +5976,11 @@
         b       fea_w_73
         extsh   data, prefetch_data                     // 3B7C  MOVE.W    #<data>,(d16,A5)
         b       move_w_ea_mem_17
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3B7D  MOVE.W    <ea 7.5>,(d16,A5)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3B7D  MOVE.W    <ea 7.5>,(d16,A5)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3B7E  MOVE.W    <ea 7.6>,(d16,A5)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3B7E  MOVE.W    <ea 7.6>,(d16,A5)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3B7F  MOVE.W    <ea 7.7>,(d16,A5)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3B7F  MOVE.W    <ea 7.7>,(d16,A5)   (illegal)
         b       take_illegal_instruction
 
 // ---- $3B80-$3BBF --------------------------------------------------------
@@ -6106,141 +6106,141 @@
         b       fea_w_73
         extsh   data, prefetch_data                     // 3BBC  MOVE.W    #<data>,(d8,A5,Xn)
         b       move_w_ea_mem_18
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3BBD  MOVE.W    <ea 7.5>,(d8,A5,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3BBD  MOVE.W    <ea 7.5>,(d8,A5,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3BBE  MOVE.W    <ea 7.6>,(d8,A5,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3BBE  MOVE.W    <ea 7.6>,(d8,A5,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3BBF  MOVE.W    <ea 7.7>,(d8,A5,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3BBF  MOVE.W    <ea 7.7>,(d8,A5,Xn)   (illegal)
         b       take_illegal_instruction
 
 // ---- $3BC0-$3BFF --------------------------------------------------------
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3BC0  MOVE.W    D0,<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3BC0  MOVE.W    D0,<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3BC1  MOVE.W    D1,<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3BC1  MOVE.W    D1,<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3BC2  MOVE.W    D2,<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3BC2  MOVE.W    D2,<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3BC3  MOVE.W    D3,<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3BC3  MOVE.W    D3,<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3BC4  MOVE.W    D4,<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3BC4  MOVE.W    D4,<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3BC5  MOVE.W    D5,<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3BC5  MOVE.W    D5,<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3BC6  MOVE.W    D6,<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3BC6  MOVE.W    D6,<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3BC7  MOVE.W    D7,<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3BC7  MOVE.W    D7,<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3BC8  MOVE.W    A0,<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3BC8  MOVE.W    A0,<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3BC9  MOVE.W    A1,<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3BC9  MOVE.W    A1,<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3BCA  MOVE.W    A2,<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3BCA  MOVE.W    A2,<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3BCB  MOVE.W    A3,<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3BCB  MOVE.W    A3,<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3BCC  MOVE.W    A4,<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3BCC  MOVE.W    A4,<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3BCD  MOVE.W    A5,<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3BCD  MOVE.W    A5,<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3BCE  MOVE.W    A6,<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3BCE  MOVE.W    A6,<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3BCF  MOVE.W    A7,<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3BCF  MOVE.W    A7,<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3BD0  MOVE.W    (A0),<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3BD0  MOVE.W    (A0),<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3BD1  MOVE.W    (A1),<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3BD1  MOVE.W    (A1),<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3BD2  MOVE.W    (A2),<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3BD2  MOVE.W    (A2),<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3BD3  MOVE.W    (A3),<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3BD3  MOVE.W    (A3),<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3BD4  MOVE.W    (A4),<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3BD4  MOVE.W    (A4),<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3BD5  MOVE.W    (A5),<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3BD5  MOVE.W    (A5),<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3BD6  MOVE.W    (A6),<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3BD6  MOVE.W    (A6),<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3BD7  MOVE.W    (A7),<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3BD7  MOVE.W    (A7),<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3BD8  MOVE.W    (A0)+,<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3BD8  MOVE.W    (A0)+,<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3BD9  MOVE.W    (A1)+,<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3BD9  MOVE.W    (A1)+,<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3BDA  MOVE.W    (A2)+,<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3BDA  MOVE.W    (A2)+,<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3BDB  MOVE.W    (A3)+,<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3BDB  MOVE.W    (A3)+,<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3BDC  MOVE.W    (A4)+,<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3BDC  MOVE.W    (A4)+,<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3BDD  MOVE.W    (A5)+,<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3BDD  MOVE.W    (A5)+,<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3BDE  MOVE.W    (A6)+,<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3BDE  MOVE.W    (A6)+,<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3BDF  MOVE.W    (A7)+,<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3BDF  MOVE.W    (A7)+,<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3BE0  MOVE.W    -(A0),<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3BE0  MOVE.W    -(A0),<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3BE1  MOVE.W    -(A1),<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3BE1  MOVE.W    -(A1),<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3BE2  MOVE.W    -(A2),<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3BE2  MOVE.W    -(A2),<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3BE3  MOVE.W    -(A3),<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3BE3  MOVE.W    -(A3),<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3BE4  MOVE.W    -(A4),<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3BE4  MOVE.W    -(A4),<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3BE5  MOVE.W    -(A5),<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3BE5  MOVE.W    -(A5),<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3BE6  MOVE.W    -(A6),<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3BE6  MOVE.W    -(A6),<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3BE7  MOVE.W    -(A7),<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3BE7  MOVE.W    -(A7),<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3BE8  MOVE.W    (d16,A0),<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3BE8  MOVE.W    (d16,A0),<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3BE9  MOVE.W    (d16,A1),<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3BE9  MOVE.W    (d16,A1),<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3BEA  MOVE.W    (d16,A2),<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3BEA  MOVE.W    (d16,A2),<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3BEB  MOVE.W    (d16,A3),<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3BEB  MOVE.W    (d16,A3),<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3BEC  MOVE.W    (d16,A4),<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3BEC  MOVE.W    (d16,A4),<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3BED  MOVE.W    (d16,A5),<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3BED  MOVE.W    (d16,A5),<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3BEE  MOVE.W    (d16,A6),<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3BEE  MOVE.W    (d16,A6),<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3BEF  MOVE.W    (d16,A7),<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3BEF  MOVE.W    (d16,A7),<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3BF0  MOVE.W    (d8,A0,Xn),<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3BF0  MOVE.W    (d8,A0,Xn),<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3BF1  MOVE.W    (d8,A1,Xn),<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3BF1  MOVE.W    (d8,A1,Xn),<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3BF2  MOVE.W    (d8,A2,Xn),<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3BF2  MOVE.W    (d8,A2,Xn),<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3BF3  MOVE.W    (d8,A3,Xn),<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3BF3  MOVE.W    (d8,A3,Xn),<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3BF4  MOVE.W    (d8,A4,Xn),<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3BF4  MOVE.W    (d8,A4,Xn),<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3BF5  MOVE.W    (d8,A5,Xn),<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3BF5  MOVE.W    (d8,A5,Xn),<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3BF6  MOVE.W    (d8,A6,Xn),<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3BF6  MOVE.W    (d8,A6,Xn),<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3BF7  MOVE.W    (d8,A7,Xn),<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3BF7  MOVE.W    (d8,A7,Xn),<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3BF8  MOVE.W    (xxx).W,<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3BF8  MOVE.W    (xxx).W,<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3BF9  MOVE.W    (xxx).L,<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3BF9  MOVE.W    (xxx).L,<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3BFA  MOVE.W    (d16,PC),<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3BFA  MOVE.W    (d16,PC),<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3BFB  MOVE.W    (d8,PC,Xn),<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3BFB  MOVE.W    (d8,PC,Xn),<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3BFC  MOVE.W    #<data>,<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3BFC  MOVE.W    #<data>,<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3BFD  MOVE.W    <ea 7.5>,<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3BFD  MOVE.W    <ea 7.5>,<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3BFE  MOVE.W    <ea 7.6>,<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3BFE  MOVE.W    <ea 7.6>,<ea 7.5>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3BFF  MOVE.W    <ea 7.7>,<ea 7.5>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3BFF  MOVE.W    <ea 7.7>,<ea 7.5>   (illegal)
         b       take_illegal_instruction
 
 // ---- $3C00-$3C3F --------------------------------------------------------
@@ -6366,11 +6366,11 @@
         b       fea_w_73
         rlwimi  d6, prefetch_data, 0, 16, 31            // 3C3C  MOVE.W    #<data>,D6
         b       move_w_imm_any
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3C3D  MOVE.W    <ea 7.5>,D6   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3C3D  MOVE.W    <ea 7.5>,D6   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3C3E  MOVE.W    <ea 7.6>,D6   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3C3E  MOVE.W    <ea 7.6>,D6   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3C3F  MOVE.W    <ea 7.7>,D6   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3C3F  MOVE.W    <ea 7.7>,D6   (illegal)
         b       take_illegal_instruction
 
 // ---- $3C40-$3C7F --------------------------------------------------------
@@ -6496,11 +6496,11 @@
         b       fea_w_73
         mr      a6, prefetch_data                       // 3C7C  MOVEA.W   #<data>,A6
         b       fetch_skip_word
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3C7D  MOVEA.W   <ea 7.5>,A6   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3C7D  MOVEA.W   <ea 7.5>,A6   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3C7E  MOVEA.W   <ea 7.6>,A6   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3C7E  MOVEA.W   <ea 7.6>,A6   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3C7F  MOVEA.W   <ea 7.7>,A6   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3C7F  MOVEA.W   <ea 7.7>,A6   (illegal)
         b       take_illegal_instruction
 
 // ---- $3C80-$3CBF --------------------------------------------------------
@@ -6626,11 +6626,11 @@
         b       fea_w_73
         sth     prefetch_data, 0(a6)                    // 3CBC  MOVE.W    #<data>,(A6)
         b       move_w_imm_any
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3CBD  MOVE.W    <ea 7.5>,(A6)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3CBD  MOVE.W    <ea 7.5>,(A6)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3CBE  MOVE.W    <ea 7.6>,(A6)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3CBE  MOVE.W    <ea 7.6>,(A6)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3CBF  MOVE.W    <ea 7.7>,(A6)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3CBF  MOVE.W    <ea 7.7>,(A6)   (illegal)
         b       take_illegal_instruction
 
 // ---- $3CC0-$3CFF --------------------------------------------------------
@@ -6756,11 +6756,11 @@
         b       fea_w_73
         extsh   data, prefetch_data                     // 3CFC  MOVE.W    #<data>,(A6)+
         b       move_w_ea_mem_19
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3CFD  MOVE.W    <ea 7.5>,(A6)+   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3CFD  MOVE.W    <ea 7.5>,(A6)+   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3CFE  MOVE.W    <ea 7.6>,(A6)+   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3CFE  MOVE.W    <ea 7.6>,(A6)+   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3CFF  MOVE.W    <ea 7.7>,(A6)+   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3CFF  MOVE.W    <ea 7.7>,(A6)+   (illegal)
         b       take_illegal_instruction
 
 // ---- $3D00-$3D3F --------------------------------------------------------
@@ -6886,11 +6886,11 @@
         b       fea_w_73
         sthu    prefetch_data, -2(a6)                   // 3D3C  MOVE.W    #<data>,-(A6)
         b       move_w_imm_any
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3D3D  MOVE.W    <ea 7.5>,-(A6)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3D3D  MOVE.W    <ea 7.5>,-(A6)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3D3E  MOVE.W    <ea 7.6>,-(A6)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3D3E  MOVE.W    <ea 7.6>,-(A6)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3D3F  MOVE.W    <ea 7.7>,-(A6)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3D3F  MOVE.W    <ea 7.7>,-(A6)   (illegal)
         b       take_illegal_instruction
 
 // ---- $3D40-$3D7F --------------------------------------------------------
@@ -7016,11 +7016,11 @@
         b       fea_w_73
         extsh   data, prefetch_data                     // 3D7C  MOVE.W    #<data>,(d16,A6)
         b       move_w_ea_mem_20
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3D7D  MOVE.W    <ea 7.5>,(d16,A6)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3D7D  MOVE.W    <ea 7.5>,(d16,A6)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3D7E  MOVE.W    <ea 7.6>,(d16,A6)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3D7E  MOVE.W    <ea 7.6>,(d16,A6)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3D7F  MOVE.W    <ea 7.7>,(d16,A6)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3D7F  MOVE.W    <ea 7.7>,(d16,A6)   (illegal)
         b       take_illegal_instruction
 
 // ---- $3D80-$3DBF --------------------------------------------------------
@@ -7146,141 +7146,141 @@
         b       fea_w_73
         extsh   data, prefetch_data                     // 3DBC  MOVE.W    #<data>,(d8,A6,Xn)
         b       move_w_ea_mem_21
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3DBD  MOVE.W    <ea 7.5>,(d8,A6,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3DBD  MOVE.W    <ea 7.5>,(d8,A6,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3DBE  MOVE.W    <ea 7.6>,(d8,A6,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3DBE  MOVE.W    <ea 7.6>,(d8,A6,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3DBF  MOVE.W    <ea 7.7>,(d8,A6,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3DBF  MOVE.W    <ea 7.7>,(d8,A6,Xn)   (illegal)
         b       take_illegal_instruction
 
 // ---- $3DC0-$3DFF --------------------------------------------------------
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3DC0  MOVE.W    D0,<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3DC0  MOVE.W    D0,<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3DC1  MOVE.W    D1,<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3DC1  MOVE.W    D1,<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3DC2  MOVE.W    D2,<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3DC2  MOVE.W    D2,<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3DC3  MOVE.W    D3,<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3DC3  MOVE.W    D3,<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3DC4  MOVE.W    D4,<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3DC4  MOVE.W    D4,<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3DC5  MOVE.W    D5,<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3DC5  MOVE.W    D5,<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3DC6  MOVE.W    D6,<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3DC6  MOVE.W    D6,<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3DC7  MOVE.W    D7,<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3DC7  MOVE.W    D7,<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3DC8  MOVE.W    A0,<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3DC8  MOVE.W    A0,<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3DC9  MOVE.W    A1,<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3DC9  MOVE.W    A1,<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3DCA  MOVE.W    A2,<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3DCA  MOVE.W    A2,<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3DCB  MOVE.W    A3,<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3DCB  MOVE.W    A3,<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3DCC  MOVE.W    A4,<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3DCC  MOVE.W    A4,<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3DCD  MOVE.W    A5,<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3DCD  MOVE.W    A5,<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3DCE  MOVE.W    A6,<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3DCE  MOVE.W    A6,<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3DCF  MOVE.W    A7,<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3DCF  MOVE.W    A7,<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3DD0  MOVE.W    (A0),<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3DD0  MOVE.W    (A0),<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3DD1  MOVE.W    (A1),<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3DD1  MOVE.W    (A1),<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3DD2  MOVE.W    (A2),<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3DD2  MOVE.W    (A2),<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3DD3  MOVE.W    (A3),<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3DD3  MOVE.W    (A3),<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3DD4  MOVE.W    (A4),<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3DD4  MOVE.W    (A4),<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3DD5  MOVE.W    (A5),<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3DD5  MOVE.W    (A5),<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3DD6  MOVE.W    (A6),<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3DD6  MOVE.W    (A6),<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3DD7  MOVE.W    (A7),<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3DD7  MOVE.W    (A7),<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3DD8  MOVE.W    (A0)+,<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3DD8  MOVE.W    (A0)+,<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3DD9  MOVE.W    (A1)+,<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3DD9  MOVE.W    (A1)+,<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3DDA  MOVE.W    (A2)+,<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3DDA  MOVE.W    (A2)+,<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3DDB  MOVE.W    (A3)+,<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3DDB  MOVE.W    (A3)+,<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3DDC  MOVE.W    (A4)+,<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3DDC  MOVE.W    (A4)+,<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3DDD  MOVE.W    (A5)+,<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3DDD  MOVE.W    (A5)+,<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3DDE  MOVE.W    (A6)+,<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3DDE  MOVE.W    (A6)+,<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3DDF  MOVE.W    (A7)+,<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3DDF  MOVE.W    (A7)+,<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3DE0  MOVE.W    -(A0),<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3DE0  MOVE.W    -(A0),<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3DE1  MOVE.W    -(A1),<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3DE1  MOVE.W    -(A1),<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3DE2  MOVE.W    -(A2),<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3DE2  MOVE.W    -(A2),<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3DE3  MOVE.W    -(A3),<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3DE3  MOVE.W    -(A3),<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3DE4  MOVE.W    -(A4),<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3DE4  MOVE.W    -(A4),<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3DE5  MOVE.W    -(A5),<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3DE5  MOVE.W    -(A5),<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3DE6  MOVE.W    -(A6),<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3DE6  MOVE.W    -(A6),<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3DE7  MOVE.W    -(A7),<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3DE7  MOVE.W    -(A7),<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3DE8  MOVE.W    (d16,A0),<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3DE8  MOVE.W    (d16,A0),<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3DE9  MOVE.W    (d16,A1),<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3DE9  MOVE.W    (d16,A1),<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3DEA  MOVE.W    (d16,A2),<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3DEA  MOVE.W    (d16,A2),<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3DEB  MOVE.W    (d16,A3),<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3DEB  MOVE.W    (d16,A3),<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3DEC  MOVE.W    (d16,A4),<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3DEC  MOVE.W    (d16,A4),<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3DED  MOVE.W    (d16,A5),<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3DED  MOVE.W    (d16,A5),<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3DEE  MOVE.W    (d16,A6),<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3DEE  MOVE.W    (d16,A6),<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3DEF  MOVE.W    (d16,A7),<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3DEF  MOVE.W    (d16,A7),<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3DF0  MOVE.W    (d8,A0,Xn),<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3DF0  MOVE.W    (d8,A0,Xn),<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3DF1  MOVE.W    (d8,A1,Xn),<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3DF1  MOVE.W    (d8,A1,Xn),<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3DF2  MOVE.W    (d8,A2,Xn),<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3DF2  MOVE.W    (d8,A2,Xn),<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3DF3  MOVE.W    (d8,A3,Xn),<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3DF3  MOVE.W    (d8,A3,Xn),<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3DF4  MOVE.W    (d8,A4,Xn),<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3DF4  MOVE.W    (d8,A4,Xn),<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3DF5  MOVE.W    (d8,A5,Xn),<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3DF5  MOVE.W    (d8,A5,Xn),<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3DF6  MOVE.W    (d8,A6,Xn),<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3DF6  MOVE.W    (d8,A6,Xn),<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3DF7  MOVE.W    (d8,A7,Xn),<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3DF7  MOVE.W    (d8,A7,Xn),<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3DF8  MOVE.W    (xxx).W,<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3DF8  MOVE.W    (xxx).W,<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3DF9  MOVE.W    (xxx).L,<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3DF9  MOVE.W    (xxx).L,<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3DFA  MOVE.W    (d16,PC),<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3DFA  MOVE.W    (d16,PC),<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3DFB  MOVE.W    (d8,PC,Xn),<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3DFB  MOVE.W    (d8,PC,Xn),<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3DFC  MOVE.W    #<data>,<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3DFC  MOVE.W    #<data>,<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3DFD  MOVE.W    <ea 7.5>,<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3DFD  MOVE.W    <ea 7.5>,<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3DFE  MOVE.W    <ea 7.6>,<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3DFE  MOVE.W    <ea 7.6>,<ea 7.6>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3DFF  MOVE.W    <ea 7.7>,<ea 7.6>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3DFF  MOVE.W    <ea 7.7>,<ea 7.6>   (illegal)
         b       take_illegal_instruction
 
 // ---- $3E00-$3E3F --------------------------------------------------------
@@ -7406,11 +7406,11 @@
         b       fea_w_73
         rlwimi  d7, prefetch_data, 0, 16, 31            // 3E3C  MOVE.W    #<data>,D7
         b       move_w_imm_any
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3E3D  MOVE.W    <ea 7.5>,D7   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3E3D  MOVE.W    <ea 7.5>,D7   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3E3E  MOVE.W    <ea 7.6>,D7   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3E3E  MOVE.W    <ea 7.6>,D7   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3E3F  MOVE.W    <ea 7.7>,D7   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3E3F  MOVE.W    <ea 7.7>,D7   (illegal)
         b       take_illegal_instruction
 
 // ---- $3E40-$3E7F --------------------------------------------------------
@@ -7536,11 +7536,11 @@
         b       fea_w_73
         mr      a7, prefetch_data                       // 3E7C  MOVEA.W   #<data>,A7
         b       fetch_skip_word
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3E7D  MOVEA.W   <ea 7.5>,A7   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3E7D  MOVEA.W   <ea 7.5>,A7   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3E7E  MOVEA.W   <ea 7.6>,A7   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3E7E  MOVEA.W   <ea 7.6>,A7   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3E7F  MOVEA.W   <ea 7.7>,A7   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3E7F  MOVEA.W   <ea 7.7>,A7   (illegal)
         b       take_illegal_instruction
 
 // ---- $3E80-$3EBF --------------------------------------------------------
@@ -7666,11 +7666,11 @@
         b       fea_w_73
         sth     prefetch_data, 0(a7)                    // 3EBC  MOVE.W    #<data>,(A7)
         b       move_w_imm_any
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3EBD  MOVE.W    <ea 7.5>,(A7)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3EBD  MOVE.W    <ea 7.5>,(A7)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3EBE  MOVE.W    <ea 7.6>,(A7)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3EBE  MOVE.W    <ea 7.6>,(A7)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3EBF  MOVE.W    <ea 7.7>,(A7)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3EBF  MOVE.W    <ea 7.7>,(A7)   (illegal)
         b       take_illegal_instruction
 
 // ---- $3EC0-$3EFF --------------------------------------------------------
@@ -7796,11 +7796,11 @@
         b       fea_w_73
         extsh   data, prefetch_data                     // 3EFC  MOVE.W    #<data>,(A7)+
         b       move_w_ea_mem_22
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3EFD  MOVE.W    <ea 7.5>,(A7)+   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3EFD  MOVE.W    <ea 7.5>,(A7)+   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3EFE  MOVE.W    <ea 7.6>,(A7)+   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3EFE  MOVE.W    <ea 7.6>,(A7)+   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3EFF  MOVE.W    <ea 7.7>,(A7)+   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3EFF  MOVE.W    <ea 7.7>,(A7)+   (illegal)
         b       take_illegal_instruction
 
 // ---- $3F00-$3F3F --------------------------------------------------------
@@ -7926,11 +7926,11 @@
         b       fea_w_73
         sthu    prefetch_data, -2(a7)                   // 3F3C  MOVE.W    #<data>,-(A7)
         b       move_w_imm_any
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3F3D  MOVE.W    <ea 7.5>,-(A7)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3F3D  MOVE.W    <ea 7.5>,-(A7)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3F3E  MOVE.W    <ea 7.6>,-(A7)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3F3E  MOVE.W    <ea 7.6>,-(A7)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3F3F  MOVE.W    <ea 7.7>,-(A7)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3F3F  MOVE.W    <ea 7.7>,-(A7)   (illegal)
         b       take_illegal_instruction
 
 // ---- $3F40-$3F7F --------------------------------------------------------
@@ -8056,11 +8056,11 @@
         b       fea_w_73
         extsh   data, prefetch_data                     // 3F7C  MOVE.W    #<data>,(d16,A7)
         b       move_w_ea_mem_23
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3F7D  MOVE.W    <ea 7.5>,(d16,A7)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3F7D  MOVE.W    <ea 7.5>,(d16,A7)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3F7E  MOVE.W    <ea 7.6>,(d16,A7)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3F7E  MOVE.W    <ea 7.6>,(d16,A7)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3F7F  MOVE.W    <ea 7.7>,(d16,A7)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3F7F  MOVE.W    <ea 7.7>,(d16,A7)   (illegal)
         b       take_illegal_instruction
 
 // ---- $3F80-$3FBF --------------------------------------------------------
@@ -8186,139 +8186,139 @@
         b       fea_w_73
         extsh   data, prefetch_data                     // 3FBC  MOVE.W    #<data>,(d8,A7,Xn)
         b       move_w_ea_mem_24
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3FBD  MOVE.W    <ea 7.5>,(d8,A7,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3FBD  MOVE.W    <ea 7.5>,(d8,A7,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3FBE  MOVE.W    <ea 7.6>,(d8,A7,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3FBE  MOVE.W    <ea 7.6>,(d8,A7,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3FBF  MOVE.W    <ea 7.7>,(d8,A7,Xn)   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3FBF  MOVE.W    <ea 7.7>,(d8,A7,Xn)   (illegal)
         b       take_illegal_instruction
 
 // ---- $3FC0-$3FFF --------------------------------------------------------
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3FC0  MOVE.W    D0,<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3FC0  MOVE.W    D0,<ea 7.7>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3FC1  MOVE.W    D1,<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3FC1  MOVE.W    D1,<ea 7.7>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3FC2  MOVE.W    D2,<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3FC2  MOVE.W    D2,<ea 7.7>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3FC3  MOVE.W    D3,<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3FC3  MOVE.W    D3,<ea 7.7>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3FC4  MOVE.W    D4,<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3FC4  MOVE.W    D4,<ea 7.7>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3FC5  MOVE.W    D5,<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3FC5  MOVE.W    D5,<ea 7.7>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3FC6  MOVE.W    D6,<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3FC6  MOVE.W    D6,<ea 7.7>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3FC7  MOVE.W    D7,<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3FC7  MOVE.W    D7,<ea 7.7>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3FC8  MOVE.W    A0,<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3FC8  MOVE.W    A0,<ea 7.7>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3FC9  MOVE.W    A1,<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3FC9  MOVE.W    A1,<ea 7.7>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3FCA  MOVE.W    A2,<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3FCA  MOVE.W    A2,<ea 7.7>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3FCB  MOVE.W    A3,<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3FCB  MOVE.W    A3,<ea 7.7>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3FCC  MOVE.W    A4,<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3FCC  MOVE.W    A4,<ea 7.7>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3FCD  MOVE.W    A5,<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3FCD  MOVE.W    A5,<ea 7.7>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3FCE  MOVE.W    A6,<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3FCE  MOVE.W    A6,<ea 7.7>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3FCF  MOVE.W    A7,<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3FCF  MOVE.W    A7,<ea 7.7>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3FD0  MOVE.W    (A0),<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3FD0  MOVE.W    (A0),<ea 7.7>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3FD1  MOVE.W    (A1),<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3FD1  MOVE.W    (A1),<ea 7.7>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3FD2  MOVE.W    (A2),<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3FD2  MOVE.W    (A2),<ea 7.7>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3FD3  MOVE.W    (A3),<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3FD3  MOVE.W    (A3),<ea 7.7>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3FD4  MOVE.W    (A4),<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3FD4  MOVE.W    (A4),<ea 7.7>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3FD5  MOVE.W    (A5),<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3FD5  MOVE.W    (A5),<ea 7.7>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3FD6  MOVE.W    (A6),<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3FD6  MOVE.W    (A6),<ea 7.7>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3FD7  MOVE.W    (A7),<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3FD7  MOVE.W    (A7),<ea 7.7>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3FD8  MOVE.W    (A0)+,<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3FD8  MOVE.W    (A0)+,<ea 7.7>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3FD9  MOVE.W    (A1)+,<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3FD9  MOVE.W    (A1)+,<ea 7.7>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3FDA  MOVE.W    (A2)+,<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3FDA  MOVE.W    (A2)+,<ea 7.7>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3FDB  MOVE.W    (A3)+,<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3FDB  MOVE.W    (A3)+,<ea 7.7>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3FDC  MOVE.W    (A4)+,<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3FDC  MOVE.W    (A4)+,<ea 7.7>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3FDD  MOVE.W    (A5)+,<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3FDD  MOVE.W    (A5)+,<ea 7.7>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3FDE  MOVE.W    (A6)+,<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3FDE  MOVE.W    (A6)+,<ea 7.7>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3FDF  MOVE.W    (A7)+,<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3FDF  MOVE.W    (A7)+,<ea 7.7>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3FE0  MOVE.W    -(A0),<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3FE0  MOVE.W    -(A0),<ea 7.7>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3FE1  MOVE.W    -(A1),<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3FE1  MOVE.W    -(A1),<ea 7.7>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3FE2  MOVE.W    -(A2),<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3FE2  MOVE.W    -(A2),<ea 7.7>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3FE3  MOVE.W    -(A3),<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3FE3  MOVE.W    -(A3),<ea 7.7>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3FE4  MOVE.W    -(A4),<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3FE4  MOVE.W    -(A4),<ea 7.7>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3FE5  MOVE.W    -(A5),<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3FE5  MOVE.W    -(A5),<ea 7.7>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3FE6  MOVE.W    -(A6),<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3FE6  MOVE.W    -(A6),<ea 7.7>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3FE7  MOVE.W    -(A7),<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3FE7  MOVE.W    -(A7),<ea 7.7>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3FE8  MOVE.W    (d16,A0),<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3FE8  MOVE.W    (d16,A0),<ea 7.7>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3FE9  MOVE.W    (d16,A1),<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3FE9  MOVE.W    (d16,A1),<ea 7.7>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3FEA  MOVE.W    (d16,A2),<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3FEA  MOVE.W    (d16,A2),<ea 7.7>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3FEB  MOVE.W    (d16,A3),<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3FEB  MOVE.W    (d16,A3),<ea 7.7>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3FEC  MOVE.W    (d16,A4),<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3FEC  MOVE.W    (d16,A4),<ea 7.7>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3FED  MOVE.W    (d16,A5),<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3FED  MOVE.W    (d16,A5),<ea 7.7>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3FEE  MOVE.W    (d16,A6),<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3FEE  MOVE.W    (d16,A6),<ea 7.7>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3FEF  MOVE.W    (d16,A7),<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3FEF  MOVE.W    (d16,A7),<ea 7.7>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3FF0  MOVE.W    (d8,A0,Xn),<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3FF0  MOVE.W    (d8,A0,Xn),<ea 7.7>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3FF1  MOVE.W    (d8,A1,Xn),<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3FF1  MOVE.W    (d8,A1,Xn),<ea 7.7>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3FF2  MOVE.W    (d8,A2,Xn),<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3FF2  MOVE.W    (d8,A2,Xn),<ea 7.7>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3FF3  MOVE.W    (d8,A3,Xn),<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3FF3  MOVE.W    (d8,A3,Xn),<ea 7.7>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3FF4  MOVE.W    (d8,A4,Xn),<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3FF4  MOVE.W    (d8,A4,Xn),<ea 7.7>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3FF5  MOVE.W    (d8,A5,Xn),<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3FF5  MOVE.W    (d8,A5,Xn),<ea 7.7>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3FF6  MOVE.W    (d8,A6,Xn),<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3FF6  MOVE.W    (d8,A6,Xn),<ea 7.7>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3FF7  MOVE.W    (d8,A7,Xn),<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3FF7  MOVE.W    (d8,A7,Xn),<ea 7.7>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3FF8  MOVE.W    (xxx).W,<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3FF8  MOVE.W    (xxx).W,<ea 7.7>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3FF9  MOVE.W    (xxx).L,<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3FF9  MOVE.W    (xxx).L,<ea 7.7>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3FFA  MOVE.W    (d16,PC),<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3FFA  MOVE.W    (d16,PC),<ea 7.7>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3FFB  MOVE.W    (d8,PC,Xn),<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3FFB  MOVE.W    (d8,PC,Xn),<ea 7.7>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3FFC  MOVE.W    #<data>,<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3FFC  MOVE.W    #<data>,<ea 7.7>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3FFD  MOVE.W    <ea 7.5>,<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3FFD  MOVE.W    <ea 7.5>,<ea 7.7>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3FFE  MOVE.W    <ea 7.6>,<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3FFE  MOVE.W    <ea 7.6>,<ea 7.7>   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 3FFF  MOVE.W    <ea 7.7>,<ea 7.7>   (illegal)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 3FFF  MOVE.W    <ea 7.7>,<ea 7.7>   (illegal)
         b       take_illegal_instruction

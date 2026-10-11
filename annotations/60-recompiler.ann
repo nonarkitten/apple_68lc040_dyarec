@@ -1,0 +1,243 @@
+# The dynamic recompiler (offsets 10000-182FB).
+
+@0EA2C dr_translate_stub
+    Fixed-position branch into the recompiler's code block.
+@0EA40 dr_translate_stub_2
+
+@10000 dr_translate
+    ===========================================================================
+    Dynamic recompiler: translator
+    ===========================================================================
+    Translate the block of 68K code starting at pc - 2 into PowerPC code in
+    the translation cache.  Entered from dr_translate_miss with cr_dr_busy
+    set; leaves through dr_translate_done.
+
+    The translator borrows three emulator registers for the duration:
+        blk_ofs (r23)   byte offset of the current 68K instruction in the block
+        rec_ptr (r29)   current instruction record
+        out_ptr (r30)   last word written to the translation cache
+    base_disp addresses the translator's tables.  The emulator's own values
+    of disp_table and code_ptr are reloaded from the state block on the way
+    out.
+
+    Translation is three passes over an array of 12-byte records, one per
+    68K instruction:
+
+        +0  flags (which condition codes the instruction reads and writes,
+            branch-target and end-of-block markers)
+        +2  offset of the instruction from the start of the block
+        +4  emitter: offset of the code generator for this instruction
+
+    Pass 1 (dr_scan_next) decodes forward, one record per instruction, until
+    an instruction that ends the block or 120 bytes of 68K code.
+    Pass 2 (dr_liveness_loop) walks the records backwards working out which
+    instructions compute condition codes that nothing uses, so that cheaper
+    code can be emitted for them.
+    Pass 3 (dr_emit_next) calls each record's emitter, which appends PowerPC
+    instructions to the cache.
+
+    Every loop polls cr_special_event_pending so that a long translation
+    cannot hold off an interrupt; an interrupted translation is abandoned.
+10000 pc = address of the first instruction of the block
+10004 rec_ptr = start of the record array
+10020 base of the pass-1 decoders and their tables
+
+@10034 dr_scan_advance
+    Pass 1: the instruction just decoded is rtn_addr bytes longer than its
+    opcode word.
+@10038 dr_scan_store
+    Pass 1: finish the record for the instruction just decoded
+    (out_ptr = emitter offset, immed_data = flags) and move to the next.
+10048 a block is at most 120 bytes of 68K code
+@1005C dr_scan_next
+    Pass 1: start a record and call the decoder for this opcode's line.
+1005C prefetch_data = opcode of the instruction at blk_ofs
+10064 (opcode >> 12) * 4
+10068 table of sixteen decoders in the state block
+10070 cr4..cr7 = opcode[15:0], for the decoder to test
+@10080 dr_scan_block_full
+    The block reached its size limit: end it with code that re-enters the
+    recompiler at the following instruction.
+@100C8 dr_scan_end_block
+    Pass 1: the instruction just decoded ends the block.
+
+@100FC dr_liveness
+    Pass 2: backwards over the records, clearing the "must compute" flag
+    bits of instructions whose condition codes are overwritten before
+    anything reads them.
+@10150 dr_liveness_loop
+
+@1018C dr_emit_next
+    Pass 3: call the emitter for the next record.  A non-negative emitter
+    value is an offset from dr_emitters in this block; a negative one
+    selects a routine relative to a table in RAM.
+101A8 record +4 now holds the instruction's offset in the translated block
+101B8 prefetch_data = the opcode again
+
+@101DC dr_fix_branches
+    After emission: resolve branches between instructions of the block.
+
+@10200 dr_emit_finish
+    Flush the new code out of the data cache and into the instruction
+    cache, then hand the block to the run-time.
+@10234 dr_translate_abort
+    A special event became pending during translation.  Give up, restore
+    the borrowed registers and let the interpreter handle the event.
+
+@10280 dr_line_0
+    Pass-1 decoders, one per value of opcode bits 15:12, each 64 bytes long
+    so that the table of sixteen addresses in the state block can be built
+    with a loop (see dr_setup).  A decoder works out the length of the
+    instruction from the addressing mode tables that follow the decoders,
+    chooses an emitter and the condition code flags, and returns to
+    dr_scan_store or dr_scan_end_block.  Opcodes the recompiler does not
+    translate end the block with a return to the interpreter.
+
+@11038 dr_ea_length_tables
+    Byte tables indexed by a 6-bit effective address field (and by the
+    MOVE destination field) giving the number of extension bytes; the low
+    bit flags modes that need the extension word itself to be examined.
+
+@11338 dr_emitters
+    Pass-3 code generators.  Emitter values stored in the records are
+    offsets from this label.
+
+@1767C dr_templates
+    Instruction templates.  These words are never executed here: emitters
+    load them as data, fill in a displacement or immediate, and store them
+    in the translation cache.
+1767C advance pc by a 16-bit amount
+17680 advance pc by the high half of a 32-bit amount
+17684 call into the run-time
+17688 conditional exit when a special event is pending
+17690 unconditional branch
+17694 unconditional branch (used when chaining blocks)
+
+@1782C dr_exit_to_interpreter
+    Leave translated code (or abandon a lookup) and continue in the
+    interpreter with the instruction at pc - 2.
+1782C prefetch_data = that instruction's opcode
+17838 restore dr_entry
+1783C prefetch the word after it
+
+@178A0 dr_chain_block
+    The target of a block-ending branch has been found in the lookup table.
+    Overwrite the call that brought control here with a direct branch to
+    the target block, so that next time the two blocks run back to back
+    without entering the run-time at all.
+178B0 template: unconditional branch
+178C0 patch the call site
+178C8 make the patched word visible to instruction fetch
+
+@178E0 dr_indirect_exit
+    Entered from translated code at a branch whose target is only known at
+    run time (RTS, JMP (An), ...).  The two words following the call are a
+    one-entry cache: the 68K target seen last time and its translation.
+178FC cached 68K address
+17904 cached translation
+1791C same target as last time: go straight there
+
+@17940 dr_promote_hit
+    Lookup hit in a slot other than the first: swap the entry to the front
+    of its set before jumping to it.
+
+@17964 dr_dispatch
+    ===========================================================================
+    Dynamic recompiler: run-time dispatch
+    ===========================================================================
+    The interpreter comes here (through dr_entry, when cr_dr_active is set)
+    after every instruction that changes the flow of control, with LR
+    holding the dispatch table entry it would otherwise have used.
+
+    If a translation of the code at pc - 2 exists, run it; otherwise
+    translate it first.  Returning through LR instead simply interprets the
+    instruction.
+
+    The lookup table maps 68K addresses to translated code.  It is indexed
+    by the low eleven bits of pc; each index selects sixteen bytes (two
+    {68K address, code address} pairs) and a search continues into the
+    following sixteen, so an address can be found in any of four slots.
+17964 opcode of the instruction about to run
+17970 0xAAFE: never translated
+17974 0xFE02: never translated
+17984 a whole-cache flush is in progress
+17988 address ranges are waiting to be invalidated
+@17994 dr_lookup
+17994 lookup table base (64 KB aligned)
+17998 insert (pc & 0x7FF) << 4
+179A8 odd address: let the interpreter raise the error
+179B8 hit in the first slot
+179E0 miss: remember where the search ended
+
+@179EC dr_flush_step
+    Discard every translation.  The lookup table is cleared 2 KB at a time
+    and the page bitmap 2 KB at a time, checking for special events between
+    chunks; progress is kept in the state block so the work resumes on the
+    next dispatch.
+@17A84 dr_flush_done
+
+@17AC0 dr_invalidate_step
+    Service one pending range-invalidation request: scan part of the lookup
+    table and drop every translation whose 68K address lies in the range.
+    Requests are flagged in a bit mask that is updated with lwarx/stwcx.
+    because it is also written from outside the emulator's normal flow.
+@17BE8 dr_drop_entry
+    Remove one lookup table entry and overwrite the first instruction of
+    its translation with a branch to dr_stale_block, in case another block
+    is chained directly to it.
+
+@17C8C dr_stale_block
+    Entered from a translation that has been invalidated: look the address
+    up afresh (which will retranslate it).
+
+@17CD8 dr_translate_miss
+    No translation exists.  Choose a slot in the set (an empty one if there
+    is one, otherwise evict the last), then translate.
+17D54 the translator now owns blk_ofs, rec_ptr and out_ptr
+@17D5C dr_translate_done
+    The translator has produced a block.  Enter it in the lookup table,
+    note in the page bitmap that this piece of 68K memory has been
+    translated, and run it.  If the cache has filled up, start a flush and
+    interpret instead.
+17D70 slot: code address
+17D74 slot: 68K address
+17D88 past the end of the cache?
+17DAC word index: one word per 16 KB of 68K memory
+17DB4 bit number: one bit per 512 bytes
+
+@17E00 dr_invalidate_range
+    Request invalidation of the translations for a range of 68K memory
+    (addr = start, data = length).  Called for the 68K cache-flush
+    operations, i.e. whenever 68K software announces that it has written
+    code.
+
+@17FA0 dr_request_flush
+    Ask for the whole translation cache to be discarded.
+@17FBC dr_reset_requests
+
+@17FFC dr_fault_fixup
+    Called while an exception frame is being built.  If the faulting
+    PowerPC instruction is inside the translation cache, work out the 68K
+    address it corresponds to so that the frame holds a 68K pc.
+
+@181AC dr_setup
+    Carve up the memory given to the recompiler (base and size are in the
+    state block): lookup table (64 KB), a RAM table, the invalidation
+    request table, the translation cache, the page bitmap at the top, and
+    2 KB for instruction records.  Then install the recompiler's entry
+    points in the state block in place of the stubs.
+181E8 address of the kernel's information record
+18250 dr_dispatch
+18258 dr_request_flush
+18260 dr_invalidate_range
+18268 dr_fault_fixup
+18280 dr_line_0: the sixteen pass-1 decoders are 64 bytes apart
+
+@182A8 dr_credits
+
+@180C4 dr_fault_redirect
+    Called while a bus error frame is being built for a fault inside
+    translated code or inside the translator.
+@180F8 dr_resume_in_translator
+@180FC dr_resume_after_fault
+@181A8 dr_null_hook

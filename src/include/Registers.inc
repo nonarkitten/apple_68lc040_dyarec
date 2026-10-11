@@ -64,6 +64,7 @@
 #define a4                  20      // 68K A4
 #define a5                  21      // 68K A5
 #define a6                  22      // 68K A6
+#define dr_entry            23      // address of the dynamic recompiler's dispatcher (0 if none)
 #define pc                  24      // 68K program counter (points past the prefetched word)
 #define sr_and_flags        25      // upper byte of SR plus emulator flag bits
 #define ccr_x               26      // 68K X flag, kept in the XER[CA] bit position
@@ -72,6 +73,14 @@
 #define disp_table          29      // address of the current dispatch table entry
 #define code_ptr            30      // address of the code base "cb" (64 KB aligned)
 #define EmulatorStatePtr    31      // base of the emulator's memory-resident state
+
+//@ alias
+// Names used only inside the dynamic recompiler's translator, where three
+// of the registers above are borrowed for other purposes (see
+// annotations/hints.txt for the ranges).
+#define blk_ofs             23      // offset of the 68K instruction being translated within its block
+#define rec_ptr             29      // current 12-byte instruction record
+#define out_ptr             30      // last PowerPC word written to the translation cache
 
 //@ crf
 // Condition register fields.
@@ -94,6 +103,10 @@
 //@ crbit
 // Condition register bits with a fixed meaning.  CR0 holds the 68K N and Z
 // flags (lt = N, eq = Z); CR2 holds emulator-wide flags.
+#define cr_dr_busy                  4   // cr1.lt: the recompiler (not 68K code) owns the borrowed registers
+#define cr_dr_active                5   // cr1.gt: flow-changing instructions enter the recompiler
+#define cr_dr_ready                 6   // cr1.eq: recompiler memory has been set up
+#define cr_dr_enabled               7   // cr1.so: the recompiler has been switched on
 #define cr_special_event_pending    8   // cr2.lt: something needs attention before the next instruction
 #define cr_interrupt_pending        10  // cr2.eq: a 68K interrupt is waiting to be taken
 #define cr_supervisor               11  // cr2.so: the 68K is in supervisor state (SR S bit)

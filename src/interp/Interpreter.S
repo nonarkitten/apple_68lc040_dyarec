@@ -8634,11 +8634,11 @@ dbf_w_d0:
         rlwimi  disp_table, data, 3, 13, 28             // DECODE1: disp_table[18:3] = opcode in data
         mtlr    disp_table                              // DECODE2: LR = address of the next dispatch entry
         cmplwi  cr6, immed_data, 0x0000
-        mtctr   r23
+        mtctr   dr_entry
         beq     cr6, L_03030
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         addi    d0, d0, -1
-        bgtctr  cr1
+        btctr   cr_dr_active
         bflr_likely cr_special_event_pending            // DISPATCH unless a special event is pending
         b       process_special_event
 L_03030:
@@ -8670,11 +8670,11 @@ dbf_w_d1:
         rlwimi  disp_table, data, 3, 13, 28             // DECODE1: disp_table[18:3] = opcode in data
         mtlr    disp_table                              // DECODE2: LR = address of the next dispatch entry
         cmplwi  cr6, immed_data, 0x0000
-        mtctr   r23
+        mtctr   dr_entry
         beq     cr6, L_03070
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         addi    d1, d1, -1
-        bgtctr  cr1
+        btctr   cr_dr_active
         bflr_likely cr_special_event_pending            // DISPATCH unless a special event is pending
         b       process_special_event
 L_03070:
@@ -8706,11 +8706,11 @@ dbf_w_d2:
         rlwimi  disp_table, data, 3, 13, 28             // DECODE1: disp_table[18:3] = opcode in data
         mtlr    disp_table                              // DECODE2: LR = address of the next dispatch entry
         cmplwi  cr6, immed_data, 0x0000
-        mtctr   r23
+        mtctr   dr_entry
         beq     cr6, L_030B0
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         addi    d2, d2, -1
-        bgtctr  cr1
+        btctr   cr_dr_active
         bflr_likely cr_special_event_pending            // DISPATCH unless a special event is pending
         b       process_special_event
 L_030B0:
@@ -8742,11 +8742,11 @@ dbf_w_d3:
         rlwimi  disp_table, data, 3, 13, 28             // DECODE1: disp_table[18:3] = opcode in data
         mtlr    disp_table                              // DECODE2: LR = address of the next dispatch entry
         cmplwi  cr6, immed_data, 0x0000
-        mtctr   r23
+        mtctr   dr_entry
         beq     cr6, L_030F0
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         addi    d3, d3, -1
-        bgtctr  cr1
+        btctr   cr_dr_active
         bflr_likely cr_special_event_pending            // DISPATCH unless a special event is pending
         b       process_special_event
 L_030F0:
@@ -8778,11 +8778,11 @@ dbf_w_d4:
         rlwimi  disp_table, data, 3, 13, 28             // DECODE1: disp_table[18:3] = opcode in data
         mtlr    disp_table                              // DECODE2: LR = address of the next dispatch entry
         cmplwi  cr6, immed_data, 0x0000
-        mtctr   r23
+        mtctr   dr_entry
         beq     cr6, L_03130
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         addi    d4, d4, -1
-        bgtctr  cr1
+        btctr   cr_dr_active
         bflr_likely cr_special_event_pending            // DISPATCH unless a special event is pending
         b       process_special_event
 L_03130:
@@ -8814,11 +8814,11 @@ dbf_w_d5:
         rlwimi  disp_table, data, 3, 13, 28             // DECODE1: disp_table[18:3] = opcode in data
         mtlr    disp_table                              // DECODE2: LR = address of the next dispatch entry
         cmplwi  cr6, immed_data, 0x0000
-        mtctr   r23
+        mtctr   dr_entry
         beq     cr6, L_03170
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         addi    d5, d5, -1
-        bgtctr  cr1
+        btctr   cr_dr_active
         bflr_likely cr_special_event_pending            // DISPATCH unless a special event is pending
         b       process_special_event
 L_03170:
@@ -8850,11 +8850,11 @@ dbf_w_d6:
         rlwimi  disp_table, data, 3, 13, 28             // DECODE1: disp_table[18:3] = opcode in data
         mtlr    disp_table                              // DECODE2: LR = address of the next dispatch entry
         cmplwi  cr6, immed_data, 0x0000
-        mtctr   r23
+        mtctr   dr_entry
         beq     cr6, L_031B0
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         addi    d6, d6, -1
-        bgtctr  cr1
+        btctr   cr_dr_active
         bflr_likely cr_special_event_pending            // DISPATCH unless a special event is pending
         b       process_special_event
 L_031B0:
@@ -8886,11 +8886,11 @@ dbf_w_d7:
         rlwimi  disp_table, data, 3, 13, 28             // DECODE1: disp_table[18:3] = opcode in data
         mtlr    disp_table                              // DECODE2: LR = address of the next dispatch entry
         cmplwi  cr6, immed_data, 0x0000
-        mtctr   r23
+        mtctr   dr_entry
         beq     cr6, L_031F0
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         addi    d7, d7, -1
-        bgtctr  cr1
+        btctr   cr_dr_active
         bflr_likely cr_special_event_pending            // DISPATCH unless a special event is pending
         b       process_special_event
 L_031F0:
@@ -20868,11 +20868,11 @@ L_07C60:
 //     BRA.W <label>
 jmp_bra_mem:
         rlwimi  disp_table, pc, 20, 11, 11              // disp_table[20] = pc[0]
-        mtctr   r23
+        mtctr   dr_entry
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // DECODE1: disp_table[18:3] = opcode in prefetch_data
         mtlr    disp_table                              // DECODE2: LR = address of the next dispatch entry
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
-        bgtctr  cr1
+        btctr   cr_dr_active
         bflr_likely cr_special_event_pending            // DISPATCH unless a special event is pending
         b       process_special_event
         b       L_07CA0
@@ -20885,11 +20885,11 @@ L_07CA0:
 bra_l:
         lhaux   prefetch_data, pc, data
         rlwimi  disp_table, pc, 20, 11, 11              // disp_table[20] = pc[0]
-        mtctr   r23
+        mtctr   dr_entry
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // DECODE1: disp_table[18:3] = opcode in prefetch_data
         mtlr    disp_table                              // DECODE2: LR = address of the next dispatch entry
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
-        bgtctr  cr1
+        btctr   cr_dr_active
         bflr_likely cr_special_event_pending            // DISPATCH unless a special event is pending
         b       process_special_event
         b       jmp_mem
@@ -20909,11 +20909,11 @@ jmp_mem:
 jmp_mem_2:
         lha     prefetch_data, 0(pc)
         rlwimi  disp_table, pc, 20, 11, 11              // disp_table[20] = pc[0]
-        mtctr   r23
+        mtctr   dr_entry
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // DECODE1: disp_table[18:3] = opcode in prefetch_data
         mtlr    disp_table                              // DECODE2: LR = address of the next dispatch entry
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
-        bgtctr  cr1
+        btctr   cr_dr_active
         bflr_likely cr_special_event_pending            // DISPATCH unless a special event is pending
         b       process_special_event
         b       bsr_s
@@ -20925,11 +20925,11 @@ bsr_s:
         lha     prefetch_data, 0(addr)
         stwu    pc, -4(a7)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // DECODE1: disp_table[18:3] = opcode in prefetch_data
-        mtctr   r23
+        mtctr   dr_entry
         mtlr    disp_table                              // DECODE2: LR = address of the next dispatch entry
         lha     prefetch_data, 2(addr)
         addi    pc, addr, 2
-        bgtctr  cr1
+        btctr   cr_dr_active
         bflr_likely cr_special_event_pending            // DISPATCH unless a special event is pending
         b       process_special_event
         b       jsr_bsr_mem
@@ -20942,11 +20942,11 @@ jsr_bsr_mem:
         rlwimi  disp_table, prefetch_data, 20, 11, 11   // disp_table[20] = prefetch_data[0]
         rlwimi  disp_table, data, 3, 13, 28             // DECODE1: disp_table[18:3] = opcode in data
         mtlr    disp_table                              // DECODE2: LR = address of the next dispatch entry
-        mtctr   r23
+        mtctr   dr_entry
         addi    pc, pc, 2
         stwu    pc, -4(a7)
         lhaux   prefetch_data, pc, prefetch_data
-        bgtctr  cr1
+        btctr   cr_dr_active
         bflr_likely cr_special_event_pending            // DISPATCH unless a special event is pending
         b       process_special_event
         b       rts
@@ -20957,12 +20957,12 @@ jsr_bsr_mem:
 rts:
         lha     prefetch_data, 0(pc)
         rlwimi  disp_table, pc, 20, 11, 11              // disp_table[20] = pc[0]
-        mtctr   r23
+        mtctr   dr_entry
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // DECODE1: disp_table[18:3] = opcode in prefetch_data
         mtlr    disp_table                              // DECODE2: LR = address of the next dispatch entry
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         addi    a7, a7, 4
-        bgtctr  cr1
+        btctr   cr_dr_active
         bflr_likely cr_special_event_pending            // DISPATCH unless a special event is pending
         b       process_special_event
         b       rtd_imm
@@ -20973,13 +20973,13 @@ rts:
 rtd_imm:
         lha     immed_data, 0(pc)
         rlwimi  disp_table, pc, 20, 11, 11              // disp_table[20] = pc[0]
-        mtctr   r23
+        mtctr   dr_entry
         rlwimi  disp_table, immed_data, 3, 13, 28       // DECODE1: disp_table[18:3] = opcode in immed_data
         mtlr    disp_table                              // DECODE2: LR = address of the next dispatch entry
         add     a7, a7, prefetch_data
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         addi    a7, a7, 4
-        bgtctr  cr1
+        btctr   cr_dr_active
         bflr_likely cr_special_event_pending            // DISPATCH unless a special event is pending
         b       process_special_event
 
@@ -20998,12 +20998,12 @@ jsr_mem_2:
         lha     prefetch_data, 0(addr)
         rlwimi  disp_table, addr, 20, 11, 11            // disp_table[20] = addr[0]
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // DECODE1: disp_table[18:3] = opcode in prefetch_data
-        mtctr   r23
+        mtctr   dr_entry
         mtlr    disp_table                              // DECODE2: LR = address of the next dispatch entry
         lha     prefetch_data, 2(addr)
         stwu    pc, -4(a7)
         addi    pc, addr, 2
-        bgtctr  cr1
+        btctr   cr_dr_active
         bflr_likely cr_special_event_pending            // DISPATCH unless a special event is pending
         b       process_special_event
 
@@ -21014,12 +21014,12 @@ bsr_l:
         rlwimi  disp_table, data, 20, 11, 11            // disp_table[20] = data[0]
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // DECODE1: disp_table[18:3] = opcode in prefetch_data
         mtlr    disp_table                              // DECODE2: LR = address of the next dispatch entry
-        mtctr   r23
+        mtctr   dr_entry
         addi    pc, pc, 4
         stwu    pc, -4(a7)
         lha     prefetch_data, 2(data)
         addi    pc, data, 2
-        bgtctr  cr1
+        btctr   cr_dr_active
         bflr_likely cr_special_event_pending            // DISPATCH unless a special event is pending
         b       process_special_event
 
@@ -21029,13 +21029,13 @@ jsr_mem_3:
         lha     prefetch_data, 0(addr)
         rlwimi  disp_table, addr, 20, 11, 11            // disp_table[20] = addr[0]
         addi    pc, pc, 4
-        mtctr   r23
+        mtctr   dr_entry
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // DECODE1: disp_table[18:3] = opcode in prefetch_data
         mtlr    disp_table                              // DECODE2: LR = address of the next dispatch entry
         lha     prefetch_data, 2(addr)
         stwu    pc, -4(a7)
         addi    pc, addr, 2
-        bgtctr  cr1
+        btctr   cr_dr_active
         bflr_likely cr_special_event_pending            // DISPATCH unless a special event is pending
         b       process_special_event
         ALIGN(32)
@@ -21055,11 +21055,11 @@ rtr:
 // Reached from 127 dispatch table entries:
 //     BRA.S <label>
 bra_s:
-        mtctr   r23
+        mtctr   dr_entry
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // DECODE1: disp_table[18:3] = opcode in prefetch_data
         mtlr    disp_table                              // DECODE2: LR = address of the next dispatch entry
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
-        bgtctr  cr1
+        btctr   cr_dr_active
         bflr_likely cr_special_event_pending            // DISPATCH unless a special event is pending
         b       process_special_event
         ALIGN(32)
@@ -21119,12 +21119,12 @@ beq_s:
         bne     L_07EF0
 L_07F64:
         lha     data, 0(addr)
-        mtctr   r23
+        mtctr   dr_entry
         lha     prefetch_data, 2(addr)
         rlwimi  disp_table, data, 3, 13, 28             // DECODE1: disp_table[18:3] = opcode in data
         mtlr    disp_table                              // DECODE2: LR = address of the next dispatch entry
         addi    pc, addr, 2
-        bgtctr  cr1
+        btctr   cr_dr_active
         bflr_likely cr_special_event_pending            // DISPATCH unless a special event is pending
         b       process_special_event
         b       bpl_s
@@ -21135,12 +21135,12 @@ L_07F64:
 bpl_s:
         blt     L_07EF0
         lha     data, 0(addr)
-        mtctr   r23
+        mtctr   dr_entry
         lha     prefetch_data, 2(addr)
         rlwimi  disp_table, data, 3, 13, 28             // DECODE1: disp_table[18:3] = opcode in data
         mtlr    disp_table                              // DECODE2: LR = address of the next dispatch entry
         addi    pc, addr, 2
-        bgtctr  cr1
+        btctr   cr_dr_active
         bflr_likely cr_special_event_pending            // DISPATCH unless a special event is pending
         b       process_special_event
         b       bpl_s_2
@@ -21151,12 +21151,12 @@ bpl_s:
 bpl_s_2:
         lha     data, 0(addr)
         blt     L_07EF0
-        mtctr   r23
+        mtctr   dr_entry
         rlwimi  disp_table, data, 3, 13, 28             // DECODE1: disp_table[18:3] = opcode in data
         mtlr    disp_table                              // DECODE2: LR = address of the next dispatch entry
         lha     prefetch_data, 2(addr)
         addi    pc, addr, 2
-        bgtctr  cr1
+        btctr   cr_dr_active
         bflr_likely cr_special_event_pending            // DISPATCH unless a special event is pending
         b       process_special_event
         b       bmi_s
@@ -21167,12 +21167,12 @@ bpl_s_2:
 bmi_s:
         bge     L_07EF0
         lha     data, 0(addr)
-        mtctr   r23
+        mtctr   dr_entry
         lha     prefetch_data, 2(addr)
         rlwimi  disp_table, data, 3, 13, 28             // DECODE1: disp_table[18:3] = opcode in data
         mtlr    disp_table                              // DECODE2: LR = address of the next dispatch entry
         addi    pc, addr, 2
-        bgtctr  cr1
+        btctr   cr_dr_active
         bflr_likely cr_special_event_pending            // DISPATCH unless a special event is pending
         b       process_special_event
         b       bmi_s_2
@@ -21183,12 +21183,12 @@ bmi_s:
 bmi_s_2:
         lha     data, 0(addr)
         bge     L_07EF0
-        mtctr   r23
+        mtctr   dr_entry
         rlwimi  disp_table, data, 3, 13, 28             // DECODE1: disp_table[18:3] = opcode in data
         mtlr    disp_table                              // DECODE2: LR = address of the next dispatch entry
         lha     prefetch_data, 2(addr)
         addi    pc, addr, 2
-        bgtctr  cr1
+        btctr   cr_dr_active
         bflr_likely cr_special_event_pending            // DISPATCH unless a special event is pending
         b       process_special_event
         b       bgt_s
@@ -21241,12 +21241,12 @@ bvc_s:
         rlwinm  data, data, 8, 24, 27                   // data = data[31:28] << 4
         mtcrf   0x02, data                              // cr6 = data[7:4]
         bgt     cr6, L_07EF0
-        mtctr   r23
+        mtctr   dr_entry
         rlwimi  disp_table, immed_data, 3, 13, 28       // DECODE1: disp_table[18:3] = opcode in immed_data
         mtlr    disp_table                              // DECODE2: LR = address of the next dispatch entry
         lha     prefetch_data, 2(addr)
         addi    pc, addr, 2
-        bgtctr  cr1
+        btctr   cr_dr_active
         bflr_likely cr_special_event_pending            // DISPATCH unless a special event is pending
         b       process_special_event
 
@@ -21590,7 +21590,7 @@ bsr_s_2:
 //     BRA.S <label>
 bra_s_2:
         addi    data, pc, -2
-        stw     data, 108(EmulatorStatePtr)
+        stw     data, trace_pc(EmulatorStatePtr)
         lha     prefetch_data, 0(addr)
         mr      pc, addr
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // DECODE1: disp_table[18:3] = opcode in prefetch_data
@@ -23132,14 +23132,14 @@ aline:
         stw     a1, 4(a7)
         stw     d1, 8(a7)
         rlwimi  d1, disp_table, 29, 16, 31              // d1[15:0] = disp_table[18:3]
-        mtctr   r23
+        mtctr   dr_entry
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // DECODE1: disp_table[18:3] = opcode in prefetch_data
         mtlr    disp_table                              // DECODE2: LR = address of the next dispatch entry
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         stw     d2, 12(a7)
         stw     a2, 16(a7)
         stw     data, 24(a7)
-        bgtctr  cr1
+        btctr   cr_dr_active
         bflr_likely cr_special_event_pending            // DISPATCH unless a special event is pending
         b       process_special_event
         b       aline_2
@@ -23167,11 +23167,11 @@ aline_2:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // DECODE1: disp_table[18:3] = opcode in prefetch_data
         mtlr    disp_table                              // DECODE2: LR = address of the next dispatch entry
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
-        mtctr   r23
+        mtctr   dr_entry
         stw     d2, 16(a7)
         stw     a2, 20(a7)
         stw     data, 28(a7)
-        bgtctr  cr1
+        btctr   cr_dr_active
         bflr_likely cr_special_event_pending            // DISPATCH unless a special event is pending
         b       process_special_event
         b       fline
@@ -23185,7 +23185,7 @@ fline:
         rlwimi  disp_table, pc, 20, 11, 11              // disp_table[20] = pc[0]
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // DECODE1: disp_table[18:3] = opcode in prefetch_data
         mtlr    disp_table                              // DECODE2: LR = address of the next dispatch entry
-        mtctr   r23
+        mtctr   dr_entry
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         addco   zero, zero, zero                        // V=0, C=0
         lwz     a1, 0(a7)
@@ -23193,7 +23193,7 @@ fline:
         lwz     d2, 8(a7)
         lwz     a2, 12(a7)
         addi    a7, a7, 24
-        bgtctr  cr1
+        btctr   cr_dr_active
         bflr_likely cr_special_event_pending            // DISPATCH unless a special event is pending
         b       process_special_event
 
@@ -23210,12 +23210,12 @@ aline_3:
         rlwinm  sr_and_flags, sr_and_flags, 0, 26, 22   // sr_and_flags = sr_and_flags & 0xFFFFFE3F
         lha     prefetch_data, 0(pc)
         rlwimi  disp_table, pc, 20, 11, 11              // disp_table[20] = pc[0]
-        mtctr   r23
+        mtctr   dr_entry
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // DECODE1: disp_table[18:3] = opcode in prefetch_data
         mtlr    disp_table                              // DECODE2: LR = address of the next dispatch entry
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         stwu    data, -4(a7)
-        bgtctr  cr1
+        btctr   cr_dr_active
         bflr_likely cr_special_event_pending            // DISPATCH unless a special event is pending
         b       process_special_event
         b       aline_4
@@ -23233,11 +23233,11 @@ aline_4:
         rlwinm  sr_and_flags, sr_and_flags, 0, 26, 22   // sr_and_flags = sr_and_flags & 0xFFFFFE3F
         lha     prefetch_data, 0(pc)
         rlwimi  disp_table, pc, 20, 11, 11              // disp_table[20] = pc[0]
-        mtctr   r23
+        mtctr   dr_entry
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // DECODE1: disp_table[18:3] = opcode in prefetch_data
         mtlr    disp_table                              // DECODE2: LR = address of the next dispatch entry
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
-        bgtctr  cr1
+        btctr   cr_dr_active
         bflr_likely cr_special_event_pending            // DISPATCH unless a special event is pending
         b       process_special_event
 
@@ -24585,8 +24585,8 @@ L_0A9C4:
         bflr_likely cr_special_event_pending            // DISPATCH unless a special event is pending
         b       process_special_event
 L_0A9DC:
-        bne     cr1, L_0A9F8
-        lwz     data, 0xA08(EmulatorStatePtr)
+        bf      cr_dr_ready, L_0A9F8
+        lwz     data, dr_invalidate_vector(EmulatorStatePtr)
         mr      addr, a1
         mtctr   data
         mr      data, d0
@@ -28487,8 +28487,8 @@ L_0C410:
         li      base_disp, 0x4C0
         and     base_disp, base_disp, sr_and_flags
         cmpwi   cr6, base_disp, 0
-        crand   4*cr1+gt, 4*cr1+so, 4*cr6+eq            // cr1.gt = cr1.so & cr6.eq
-        lbz     base_disp, 113(EmulatorStatePtr)
+        crand   cr_dr_active, cr_dr_enabled, 4*cr6+eq   // cr_dr_active = cr_dr_enabled & cr6.eq
+        lbz     base_disp, interrupt_level(EmulatorStatePtr)
         lwz     immed_data, 0x1D0(EmulatorStatePtr)
         cmpwi   cr6, immed_data, 0
         rlwinm  immed_data, data, 24, 29, 31            // immed_data = data[10:8]
@@ -28543,7 +28543,7 @@ L_0C4EC:
         mflr    base_disp
         bl      L_0E8D0
         mtlr    base_disp
-        lbz     base_disp, 113(EmulatorStatePtr)
+        lbz     base_disp, interrupt_level(EmulatorStatePtr)
         cmpw    cr6, base_disp, immed_data
         cror    cr_interrupt_pending, cr_interrupt_pending, 4*cr6+gt  // cr_interrupt_pending = cr_interrupt_pending | cr6.gt
         cror    cr_special_event_pending, cr_special_event_pending, 4*cr6+gt  // cr_special_event_pending = cr_special_event_pending | cr6.gt
@@ -28737,7 +28737,7 @@ L_0C6E8:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // DECODE1: disp_table[18:3] = opcode in prefetch_data
         mtlr    disp_table                              // DECODE2: LR = address of the next dispatch entry
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
-        stw     data, 72(EmulatorStatePtr)
+        stw     data, saved_usp(EmulatorStatePtr)
         bflr_likely cr_special_event_pending            // DISPATCH unless a special event is pending
         b       process_special_event
 
@@ -28748,7 +28748,7 @@ move_l_usp_an:
         b       cinvl_cinvp_etc_any_any
 L_0C708:
         mtctr   data
-        lwz     data, 72(EmulatorStatePtr)
+        lwz     data, saved_usp(EmulatorStatePtr)
         bctr
 L_0C714:
         rlwinm  data, prefetch_data, 0, 21, 28          // data = prefetch_data[10:3] << 3
@@ -28786,7 +28786,7 @@ L_0C758:
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         beqctr  cr7
 L_0C798:
-        lwz     rtn_addr, 0x800(EmulatorStatePtr)
+        lwz     rtn_addr, illegal_handler(EmulatorStatePtr)
         addi    pc, pc, -2
         b       take_illegal_instruction
         .long   0x4800000C
@@ -28806,9 +28806,9 @@ D_0C7B0:
         b       L_0C814
         mr      vbr, base_disp
         b       L_0C814
-        lwz     data, 0xA04(EmulatorStatePtr)
+        lwz     data, dr_flush_vector(EmulatorStatePtr)
         mtctr   data
-        beqctrl cr1
+        btctrl  cr_dr_ready
         clrlwi  base_disp, base_disp, 30                // base_disp = base_disp & 0x00000003
         clrlwi  base_disp, base_disp, 29                // base_disp = base_disp & 0x00000007
 L_0C814:
@@ -28976,7 +28976,7 @@ L_0C984:
         rlwimi  rtn_addr, immed_data, 24, 24, 27        // rtn_addr[7:4] = immed_data[15:12]
         blt     cr5, L_0C9C8
         mflr    base_disp
-        lwz     data, 88(EmulatorStatePtr)
+        lwz     data, saved_sfc(EmulatorStatePtr)
         blt     cr4, L_0C9B0
         mtctr   rtn_addr
         addi    base_disp, base_disp, 8
@@ -28992,7 +28992,7 @@ L_0C9C4:
         blr
 L_0C9C8:
         mtctr   rtn_addr
-        lwz     data, 92(EmulatorStatePtr)
+        lwz     data, saved_dfc(EmulatorStatePtr)
         bctr
 L_0C9D4:
         b       fetch
@@ -29024,7 +29024,7 @@ stop_imm:
 L_0CA28:
         bf      cr_interrupt_pending, L_0CA28
         crclr   cr_interrupt_pending
-        lbz     immed_data, 113(EmulatorStatePtr)
+        lbz     immed_data, interrupt_level(EmulatorStatePtr)
         cmpw    cr7, data, immed_data
         bge     cr7, L_0CA28
         crset   cr_interrupt_pending
@@ -30029,7 +30029,7 @@ L_0D0EC:
 // The first thing done is an indirect call through a hook in the emulator
 // state, which normally points straight back to special_event_continue.
 process_special_event:
-        lwz     rtn_addr, 0x814(EmulatorStatePtr)       // hook; normally special_event_continue
+        lwz     rtn_addr, special_event_hook(EmulatorStatePtr)  // hook; normally special_event_continue
         rlwimi  sr_and_flags, pc, 9, 22, 22             // flag_odd_pc = low bit of pc
         mtlr    rtn_addr
         mtcrf   0x0F, sr_and_flags                      // cr4..cr7 = flag byte and SR byte of sr_and_flags
@@ -30054,7 +30054,7 @@ special_event_continue:
 arm_trace:
         crset   cr_special_event_pending
         addi    data, pc, -2                            // pc is 2 past the instruction
-        stw     data, 108(EmulatorStatePtr)
+        stw     data, trace_pc(EmulatorStatePtr)
         ori     sr_and_flags, sr_and_flags, 0x0100      // flag_trace_pending
         bltctr  cr6                                     // T1: trace every instruction
         rlwinm  data, disp_table, 29, 16, 31            // data = the opcode about to run
@@ -30113,7 +30113,7 @@ L_0D200:
 
 take_trace_exception:
         cror    cr_special_event_pending, cr_special_event_pending, cr_interrupt_pending  // cr_special_event_pending = cr_special_event_pending | cr_interrupt_pending
-        lwz     addr, 108(EmulatorStatePtr)
+        lwz     addr, trace_pc(EmulatorStatePtr)
         crset   4*cr7+so
         rlwinm  data, sr_and_flags, 8, 16, 23           // data = sr_and_flags[7:0] << 8
         li      immed_data, 0x2024                      // format 2, vector offset 0x24 (trace)
@@ -30127,8 +30127,8 @@ take_trace_exception:
 // the interrupt stack as well.
 take_interrupt:
         crclr   cr_interrupt_pending
-        crclr   4*cr1+gt
-        lbz     base_disp, 113(EmulatorStatePtr)
+        crclr   cr_dr_active
+        lbz     base_disp, interrupt_level(EmulatorStatePtr)
         clrlwi  immed_data, sr_and_flags, 29            // immed_data = sr_and_flags & 0x00000007
         cmpw    cr7, base_disp, immed_data
         bgt     cr7, L_0D268
@@ -30148,9 +30148,9 @@ L_0D268:
         sthu    data, -8(a7)                            // push SR
         stw     pc, 2(a7)                               // push PC
         sth     immed_data, 6(a7)                       // push format/vector word
-        stw     a7, 80(EmulatorStatePtr)
+        stw     a7, saved_msp(EmulatorStatePtr)
         rlwinm  sr_and_flags, sr_and_flags, 0, 28, 26   // clear SR M bit
-        lwz     a7, 76(EmulatorStatePtr)
+        lwz     a7, saved_isp(EmulatorStatePtr)
         ori     immed_data, immed_data, 0x1000          // format 1 (throwaway) for the second frame
         rlwimi  data, sr_and_flags, 8, 16, 23           // data[15:8] = sr_and_flags[7:0]
         blr
@@ -30233,7 +30233,7 @@ take_address_error:
         addi    pc, pc, -2
         stw     pc, 28(a7)
         li      addr, 0x3000
-        lwz     rtn_addr, 108(EmulatorStatePtr)
+        lwz     rtn_addr, trace_pc(EmulatorStatePtr)
         sth     addr, 2(a7)
         ori     addr, code_ptr, L_0D3B8 - cb
         stw     rtn_addr, 24(a7)
@@ -30258,7 +30258,7 @@ L_0D3D4:
 check_interrupt:
         lwz     addr, 0x1D0(EmulatorStatePtr)
         clrlwi  immed_data, sr_and_flags, 29            // immed_data = sr_and_flags & 0x00000007
-        lbz     base_disp, 113(EmulatorStatePtr)
+        lbz     base_disp, interrupt_level(EmulatorStatePtr)
         cmplw   cr7, addr, immed_data
         blelr   cr7
         bf_likely 4*cr2+gt, L_0D404
@@ -30269,10 +30269,10 @@ L_0D404:
         addi    immed_data, EmulatorStatePtr, 0xAE0
         slwi    addr, addr, 2
         lwzx    addr, addr, immed_data
-        lwz     immed_data, 192(EmulatorStatePtr)
+        lwz     immed_data, interrupt_counts(EmulatorStatePtr)
         addi    immed_data, immed_data, 1
         cror    cr_special_event_pending, cr_special_event_pending, cr_interrupt_pending  // cr_special_event_pending = cr_special_event_pending | cr_interrupt_pending
-        stw     immed_data, 192(EmulatorStatePtr)
+        stw     immed_data, interrupt_counts(EmulatorStatePtr)
         crset   4*cr7+so
         rlwinm  data, sr_and_flags, 8, 16, 23           // data = sr_and_flags[7:0] << 8
         li      immed_data, 0x2058
@@ -30370,7 +30370,7 @@ take_bus_error:
         ori     addr, addr, 0x0101
         sth     addr, 2(a7)
         addi    pc, pc, -2
-        lwz     addr, 108(EmulatorStatePtr)
+        lwz     addr, trace_pc(EmulatorStatePtr)
         lhz     rtn_addr, 182(EmulatorStatePtr)
         stw     addr, 24(a7)
         lwz     addr, 152(EmulatorStatePtr)
@@ -30389,8 +30389,8 @@ take_bus_error:
         ori     rtn_addr, rtn_addr, 0xE000
         rlwimi  rtn_addr, addr, 0, 20, 23               // rtn_addr[11:8] = addr[11:8]
         sth     rtn_addr, 46(a7)
-        blelr   cr1
-        lwz     rtn_addr, 0xA0C(EmulatorStatePtr)
+        bflr    cr_dr_active
+        lwz     rtn_addr, dr_fault_fixup_vector(EmulatorStatePtr)
         lwz     addr, 176(EmulatorStatePtr)
         mtctr   rtn_addr
         bctr
@@ -30405,7 +30405,7 @@ L_0D5DC:
         slwi    base_disp, base_disp, 16
         mtcrf   0x40, base_disp                         // cr1 = base_disp[27:24]
         lwz     base_disp, 0xA10(EmulatorStatePtr)
-        ble     cr1, L_0D610
+        bf      cr_dr_active, L_0D610
         mtctr   base_disp
         bctrl
 L_0D610:
@@ -30441,7 +30441,7 @@ L_0D640:
         lhz     rtn_addr, 52(a7)
         rlwimi  disp_table, immed_data, 3, 13, 28       // DECODE1: disp_table[18:3] = opcode in immed_data
         lhz     immed_data, 14(a7)
-        stw     base_disp, 108(EmulatorStatePtr)
+        stw     base_disp, trace_pc(EmulatorStatePtr)
         lwz     base_disp, 72(a7)
         sth     immed_data, 180(EmulatorStatePtr)
         lwz     immed_data, 60(a7)
@@ -30525,7 +30525,7 @@ take_fline:
         ALIGN(16)
 
 take_aline:
-        lwz     rtn_addr, 0x804(EmulatorStatePtr)
+        lwz     rtn_addr, aline_handler(EmulatorStatePtr)
         mtlr    rtn_addr
         li      immed_data, 40                          // vector offset 0x28: line 1010 emulator
         blrl
@@ -30560,12 +30560,12 @@ take_exception_pc_set:
 enter_supervisor:
         bt      cr_supervisor, push_exception_frame     // already in supervisor state
         mtcrf   0x02, sr_and_flags                      // cr6 = sr_and_flags[7:4]
-        stw     a7, 72(EmulatorStatePtr)                // save the user stack pointer
-        lwz     a7, 76(EmulatorStatePtr)                // assume the interrupt stack
+        stw     a7, saved_usp(EmulatorStatePtr)         // save the user stack pointer
+        lwz     a7, saved_isp(EmulatorStatePtr)         // assume the interrupt stack
         ori     sr_and_flags, sr_and_flags, 0x0020      // set SR S bit
         crset   cr_supervisor
         bns     cr6, push_exception_frame
-        lwz     a7, 80(EmulatorStatePtr)                // M bit set: the master stack instead
+        lwz     a7, saved_msp(EmulatorStatePtr)         // M bit set: the master stack instead
 
 push_exception_frame:
         bsolrl  cr7                                     // let the caller push its extra frame words first
@@ -30676,21 +30676,21 @@ L_0D900:
         cmpwi   cr6, base_disp, 0
         rlwinm  data, a0, 24, 6, 7                      // data = a0[1:0] << 24
         mtcrf   0x40, data                              // cr1 = data[27:24]
-        crand   4*cr1+gt, 4*cr1+so, 4*cr6+eq            // cr1.gt = cr1.so & cr6.eq
-        cror    4*cr1+eq, 4*cr1+eq, 4*cr1+so            // cr1.eq = cr1.eq | cr1.so
-        bns     cr1, update_nzvc_zero
-        crandc  4*cr7+so, 4*cr1+so, 4*cr7+so            // cr7.so = cr1.so & ~cr7.so
-        lwz     data, 0xA14(EmulatorStatePtr)
+        crand   cr_dr_active, cr_dr_enabled, 4*cr6+eq   // cr_dr_active = cr_dr_enabled & cr6.eq
+        cror    cr_dr_ready, cr_dr_ready, cr_dr_enabled  // cr_dr_ready = cr_dr_ready | cr_dr_enabled
+        bf      cr_dr_enabled, update_nzvc_zero
+        crandc  4*cr7+so, cr_dr_enabled, 4*cr7+so       // cr7.so = cr_dr_enabled & ~cr7.so
+        lwz     data, dr_setup_vector(EmulatorStatePtr)
         bns     cr7, L_0D948
         mtctr   data
         bctrl
 L_0D948:
-        crandc  4*cr7+eq, 4*cr1+eq, 4*cr7+eq            // cr7.eq = cr1.eq & ~cr7.eq
-        lwz     data, 0xA04(EmulatorStatePtr)
+        crandc  4*cr7+eq, cr_dr_ready, 4*cr7+eq         // cr7.eq = cr_dr_ready & ~cr7.eq
+        lwz     data, dr_flush_vector(EmulatorStatePtr)
         bne     cr7, update_nzvc_zero
         mtctr   data
         bctrl
-        lwz     r23, 0xA00(EmulatorStatePtr)
+        lwz     dr_entry, dr_dispatch_vector(EmulatorStatePtr)
         b       update_nzvc_zero
 L_0D964:
         andi.   data, a0, 0xFFFF
@@ -30727,8 +30727,8 @@ L_0D9CC:
 // Reached from 1 dispatch table entry:
 //     F-LINE cpID 6
 fline_23:
-        bne     cr1, fetch
-        lwz     data, 0xA08(EmulatorStatePtr)
+        bf      cr_dr_ready, fetch
+        lwz     data, dr_invalidate_vector(EmulatorStatePtr)
         mr      addr, a0
         mtctr   data
         mr      data, d0
@@ -30887,10 +30887,10 @@ cea_x_37:
         bflr_likely cr_special_event_pending            // DISPATCH unless a special event is pending
         b       process_special_event
 L_0DB94:
-        crclr   4*cr1+so
-        crclr   4*cr1+eq
-        crclr   4*cr1+gt
-        crclr   4*cr1+lt
+        crclr   cr_dr_enabled
+        crclr   cr_dr_ready
+        crclr   cr_dr_active
+        crclr   cr_dr_busy
         oris    data, zero, 0x0000
         ori     data, data, 0x21F8
         stw     data, 0x718(EmulatorStatePtr)
@@ -30909,7 +30909,7 @@ L_0DB94:
         ori     data, data, 0x0010
         stw     data, 0x7A0(EmulatorStatePtr)
         addis   data, code_ptr, 1
-        stw     data, 0xB00(EmulatorStatePtr)
+        stw     data, dr_code_base(EmulatorStatePtr)
         mtcrf   0x40, zero                              // cr1 = zero[27:24]
         rlwimi  sr_and_flags, zero, 0, 0, 15            // sr_and_flags[31:16] = zero[31:16]
         rlwimi  sr_and_flags, zero, 0, 21, 21           // sr_and_flags[10] = zero[10]
@@ -30926,10 +30926,10 @@ L_0DC1C:
         or      data, data, code_ptr
         stwu    data, 4(addr)
         bdnz    L_0DC1C                                 // CTR -= 1; branch while CTR != 0
-        lwz     data, 0xB00(EmulatorStatePtr)
-        ori     addr, data, 0x81AC
-        stw     addr, 0xA14(EmulatorStatePtr)
-        ori     addr, data, 0x81A8
+        lwz     data, dr_code_base(EmulatorStatePtr)
+        ori     addr, data, dr_setup - dr_cb
+        stw     addr, dr_setup_vector(EmulatorStatePtr)
+        ori     addr, data, dr_null_hook - dr_cb
         stw     addr, 0xA18(EmulatorStatePtr)
         b       L_0DD74
 D_0DC44:
@@ -31201,13 +31201,13 @@ L_0DEEC:
         li      addr, 0x4C0
         and     addr, addr, sr_and_flags
         cmpwi   cr7, addr, 0
-        mtctr   r23
-        crand   4*cr1+gt, 4*cr1+so, 4*cr7+eq            // cr1.gt = cr1.so & cr7.eq
+        mtctr   dr_entry
+        crand   cr_dr_active, cr_dr_enabled, 4*cr7+eq   // cr_dr_active = cr_dr_enabled & cr7.eq
         rlwimi  disp_table, pc, 20, 11, 11              // disp_table[20] = pc[0]
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // DECODE1: disp_table[18:3] = opcode in prefetch_data
         mtlr    disp_table                              // DECODE2: LR = address of the next dispatch entry
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
-        bgtctr  cr1
+        btctr   cr_dr_active
         bflr_likely cr_special_event_pending            // DISPATCH unless a special event is pending
         b       process_special_event
 L_0DF1C:
@@ -31427,7 +31427,7 @@ L_0E208:
         addi    base_disp, immed_data, -240
         addi    pc, pc, -2
         cmplwi  cr5, base_disp, 0x0007
-        stw     pc, 108(EmulatorStatePtr)
+        stw     pc, trace_pc(EmulatorStatePtr)
         blel    cr5, L_0E278
         cmpwi   cr4, immed_data, 0
         crandc  4*cr7+eq, cr_interrupt_pending, 4*cr7+so  // cr7.eq = cr_interrupt_pending & ~cr7.so
@@ -31449,7 +31449,7 @@ L_0E208:
         stw     data, 64(rtn_addr)
         crandc  cr_interrupt_pending, cr_interrupt_pending, 4*cr7+so  // cr_interrupt_pending = cr_interrupt_pending & ~cr7.so
         crset   cr_special_event_pending
-        lwz     pc, 108(EmulatorStatePtr)
+        lwz     pc, trace_pc(EmulatorStatePtr)
         addi    pc, pc, 2
         b       L_0E154
 L_0E278:
@@ -31470,7 +31470,7 @@ L_0E2A0:
         rlwinm  sr_and_flags, sr_and_flags, 0, 26, 21   // sr_and_flags = sr_and_flags & 0xFFFFFC3F
         bl      enter_supervisor
         addi    a7, a7, -0x310
-        lwz     base_disp, 108(EmulatorStatePtr)
+        lwz     base_disp, trace_pc(EmulatorStatePtr)
         oris    immed_data, zero, 0x1300
         stw     rtn_addr, 4(a7)
         stw     addr, 8(a7)
@@ -31548,7 +31548,7 @@ L_0E3C0:
         cmpwi   cr7, rtn_addr, 0
         mtlr    disp_table                              // DECODE2: LR = address of the next dispatch entry
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
-        crand   4*cr1+gt, 4*cr1+so, 4*cr7+eq            // cr1.gt = cr1.so & cr7.eq
+        crand   cr_dr_active, cr_dr_enabled, 4*cr7+eq   // cr_dr_active = cr_dr_enabled & cr7.eq
         bflr_likely cr_special_event_pending            // DISPATCH unless a special event is pending
         b       process_special_event
 L_0E3E0:
@@ -31572,7 +31572,7 @@ L_0E408:
         bne     cr7, L_0C6D8
         ori     sr_and_flags, sr_and_flags, 0x0800
         mr      pc, addr
-        stw     base_disp, 108(EmulatorStatePtr)
+        stw     base_disp, trace_pc(EmulatorStatePtr)
         li      immed_data, 96
         lwz     rtn_addr, 0x710(EmulatorStatePtr)
         addi    addr, a7, 0x318
@@ -31604,13 +31604,13 @@ L_0E48C:
         addi    EmulatorStatePtr, EmulatorStatePtr, -0x740
         lwz     rtn_addr, 0x7B8(EmulatorStatePtr)
         mtcrf   0x01, rtn_addr                          // cr7 = rtn_addr[3:0]
-        lwz     rtn_addr, 0xA08(EmulatorStatePtr)
+        lwz     rtn_addr, dr_invalidate_vector(EmulatorStatePtr)
         bnelr   cr7
         mtctr   rtn_addr
         bctr
 L_0E4A8:
-        bne     cr1, L_0E4B8
-        lwz     data, 0xA04(EmulatorStatePtr)
+        bf      cr_dr_ready, L_0E4B8
+        lwz     data, dr_flush_vector(EmulatorStatePtr)
         mtctr   data
         bctrl
 L_0E4B8:
@@ -32037,7 +32037,7 @@ D_0E7E0:
         .short  L_0E76C - cb
         .short  L_0E77C - cb
 L_0E830:
-        stw     d0, 0(EmulatorStatePtr)
+        stw     d0, saved_d0(EmulatorStatePtr)
         stw     d1, 4(EmulatorStatePtr)
         stw     d2, 8(EmulatorStatePtr)
         stw     d3, 12(EmulatorStatePtr)
@@ -32045,16 +32045,16 @@ L_0E830:
         stw     d5, 20(EmulatorStatePtr)
         stw     d6, 24(EmulatorStatePtr)
         stw     d7, 28(EmulatorStatePtr)
-        stw     a0, 32(EmulatorStatePtr)
+        stw     a0, saved_a0(EmulatorStatePtr)
         stw     a1, 36(EmulatorStatePtr)
         stw     a2, 40(EmulatorStatePtr)
         stw     a3, 44(EmulatorStatePtr)
         stw     a4, 48(EmulatorStatePtr)
         stw     a5, 52(EmulatorStatePtr)
         stw     a6, 56(EmulatorStatePtr)
-        stw     a7, 60(EmulatorStatePtr)
+        stw     a7, saved_a7(EmulatorStatePtr)
         addi    pc, pc, -2
-        stw     pc, 68(EmulatorStatePtr)
+        stw     pc, saved_pc(EmulatorStatePtr)
         rlwinm  data, sr_and_flags, 8, 16, 23           // data = sr_and_flags[7:0] << 8
         rlwimi  data, ccr_x, 7, 27, 27                  // data[4] = ccr_x[29]
         mfcr    ccr_x
@@ -32062,8 +32062,8 @@ L_0E830:
         rlwimi  data, ccr_x, 5, 29, 29                  // data[2] = ccr_x[29]
         mfxer   ccr_x                                   // X = C (ccr_x keeps a copy of XER)
         rlwimi  data, ccr_x, 3, 30, 31                  // data[1:0] = ccr_x[30:29]
-        sth     data, 66(EmulatorStatePtr)
-        lwz     a7, 124(EmulatorStatePtr)
+        sth     data, saved_sr(EmulatorStatePtr)
+        lwz     a7, native_sp(EmulatorStatePtr)
         lmw     d3, 0(a7)                               // load r11..r31
         mtcr    d3                                      // CR = d3
         mtlr    d4
@@ -32110,10 +32110,10 @@ L_0E904:
         stmw    d4, 4(a7)                               // store r12..r31
         mr      EmulatorStatePtr, addr
         mr      disp_table, data
-        stw     disp_table, 116(EmulatorStatePtr)
+        stw     disp_table, saved_disp_table(EmulatorStatePtr)
         mflr    code_ptr
         clrrwi  code_ptr, code_ptr, 16                  // code_ptr = code_ptr & 0xFFFF0000
-        stw     code_ptr, 120(EmulatorStatePtr)
+        stw     code_ptr, saved_code_ptr(EmulatorStatePtr)
         stw     addr, 0x194(EmulatorStatePtr)
         stw     data, 0x19C(EmulatorStatePtr)
         ori     zero, code_ptr, L_0E964 - cb
@@ -32130,7 +32130,7 @@ L_0E904:
         b       EmKernelTrapTable
 L_0E964:
         li      zero, 0
-        li      r23, 0
+        li      dr_entry, 0
         mtcrf   0x7F, zero                              // cr1..cr7 = zero[27:0]
         bl      L_0DB94
         li      d0, 0
@@ -32152,7 +32152,7 @@ L_0E964:
         lwz     a7, 0(pc)
         lwz     pc, 4(pc)
         li      vbr, 0
-        stw     vbr, 84(EmulatorStatePtr)
+        stw     vbr, saved_vbr(EmulatorStatePtr)
         li      sr_and_flags, 39
         crset   cr_supervisor
         li      ccr_x, 0
@@ -32168,8 +32168,12 @@ L_0E964:
 D_0EA00:
         .ascii  "680x0 Emulation written by Gary Davidian"
         .space  4
-        b       L_0EA40
+
+// Fixed-position branch into the recompiler's code block.
+dr_translate_stub:
+        b       dr_translate_stub_2
         ALIGN(64)
-L_0EA40:
-        b       L_10000
+
+dr_translate_stub_2:
+        b       dr_translate
         ALIGN(0x10000)
