@@ -101,21 +101,21 @@
         lbzx    data, a7, prefetch_data                 // 102F  MOVE.B    (d16,A7),D0
         b       move_or_etc_b_ea_d0
         ori     rtn_addr, code_ptr, move_b_mem_d0 - cb  // 1030  MOVE.B    (d8,A0,Xn),D0
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, move_b_mem_d0 - cb  // 1031  MOVE.B    (d8,A1,Xn),D0
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, move_b_mem_d0 - cb  // 1032  MOVE.B    (d8,A2,Xn),D0
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, move_b_mem_d0 - cb  // 1033  MOVE.B    (d8,A3,Xn),D0
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, move_b_mem_d0 - cb  // 1034  MOVE.B    (d8,A4,Xn),D0
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, move_b_mem_d0 - cb  // 1035  MOVE.B    (d8,A5,Xn),D0
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, move_b_mem_d0 - cb  // 1036  MOVE.B    (d8,A6,Xn),D0
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, move_b_mem_d0 - cb  // 1037  MOVE.B    (d8,A7,Xn),D0
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         lbz     data, 0(prefetch_data)                  // 1038  MOVE.B    (xxx).W,D0
         b       move_or_etc_b_ea_d0
         ori     rtn_addr, code_ptr, move_b_mem_d0 - cb  // 1039  MOVE.B    (xxx).L,D0
@@ -123,7 +123,7 @@
         lbzx    data, pc, prefetch_data                 // 103A  MOVE.B    (d16,PC),D0
         b       move_or_etc_b_ea_d0
         ori     rtn_addr, code_ptr, move_b_mem_d0 - cb  // 103B  MOVE.B    (d8,PC,Xn),D0
-        b       fea_b_73
+        b       fea_b_73_2
         rlwimi  d0, prefetch_data, 0, 24, 31            // 103C  MOVE.B    #<data>,D0
         b       move_b_imm_any
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 103D  MOVE.B    <ea 7.5>,D0   (illegal)
@@ -361,21 +361,21 @@
         lbzx    data, a7, prefetch_data                 // 10AF  MOVE.B    (d16,A7),(A0)
         b       move_b_mem_mem
         ori     rtn_addr, code_ptr, move_b_mem_mem_2 - cb  // 10B0  MOVE.B    (d8,A0,Xn),(A0)
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_2 - cb  // 10B1  MOVE.B    (d8,A1,Xn),(A0)
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_2 - cb  // 10B2  MOVE.B    (d8,A2,Xn),(A0)
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_2 - cb  // 10B3  MOVE.B    (d8,A3,Xn),(A0)
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_2 - cb  // 10B4  MOVE.B    (d8,A4,Xn),(A0)
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_2 - cb  // 10B5  MOVE.B    (d8,A5,Xn),(A0)
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_2 - cb  // 10B6  MOVE.B    (d8,A6,Xn),(A0)
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_2 - cb  // 10B7  MOVE.B    (d8,A7,Xn),(A0)
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         lbz     data, 0(prefetch_data)                  // 10B8  MOVE.B    (xxx).W,(A0)
         b       move_b_mem_mem
         ori     rtn_addr, code_ptr, move_b_mem_mem_2 - cb  // 10B9  MOVE.B    (xxx).L,(A0)
@@ -383,7 +383,7 @@
         lbzx    data, pc, prefetch_data                 // 10BA  MOVE.B    (d16,PC),(A0)
         b       move_b_mem_mem
         ori     rtn_addr, code_ptr, move_b_mem_mem_2 - cb  // 10BB  MOVE.B    (d8,PC,Xn),(A0)
-        b       fea_b_73
+        b       fea_b_73_2
         stb     prefetch_data, 0(a0)                    // 10BC  MOVE.B    #<data>,(A0)
         b       move_b_imm_any
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 10BD  MOVE.B    <ea 7.5>,(A0)   (illegal)
@@ -491,21 +491,21 @@
         lbzx    data, a7, prefetch_data                 // 10EF  MOVE.B    (d16,A7),(A0)+
         b       move_b_ea_mem_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_6 - cb  // 10F0  MOVE.B    (d8,A0,Xn),(A0)+
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_6 - cb  // 10F1  MOVE.B    (d8,A1,Xn),(A0)+
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_6 - cb  // 10F2  MOVE.B    (d8,A2,Xn),(A0)+
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_6 - cb  // 10F3  MOVE.B    (d8,A3,Xn),(A0)+
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_6 - cb  // 10F4  MOVE.B    (d8,A4,Xn),(A0)+
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_6 - cb  // 10F5  MOVE.B    (d8,A5,Xn),(A0)+
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_6 - cb  // 10F6  MOVE.B    (d8,A6,Xn),(A0)+
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_6 - cb  // 10F7  MOVE.B    (d8,A7,Xn),(A0)+
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         lbz     data, 0(prefetch_data)                  // 10F8  MOVE.B    (xxx).W,(A0)+
         b       move_b_ea_mem_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_6 - cb  // 10F9  MOVE.B    (xxx).L,(A0)+
@@ -513,7 +513,7 @@
         lbzx    data, pc, prefetch_data                 // 10FA  MOVE.B    (d16,PC),(A0)+
         b       move_b_ea_mem_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_6 - cb  // 10FB  MOVE.B    (d8,PC,Xn),(A0)+
-        b       fea_b_73
+        b       fea_b_73_2
         clrlwi  data, prefetch_data, 24                 // 10FC  MOVE.B    #<data>,(A0)+
         b       move_b_ea_mem_2
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 10FD  MOVE.B    <ea 7.5>,(A0)+   (illegal)
@@ -621,21 +621,21 @@
         lbzx    data, a7, prefetch_data                 // 112F  MOVE.B    (d16,A7),-(A0)
         b       move_b_mem_mem_3
         ori     rtn_addr, code_ptr, move_b_mem_mem_4 - cb  // 1130  MOVE.B    (d8,A0,Xn),-(A0)
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_4 - cb  // 1131  MOVE.B    (d8,A1,Xn),-(A0)
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_4 - cb  // 1132  MOVE.B    (d8,A2,Xn),-(A0)
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_4 - cb  // 1133  MOVE.B    (d8,A3,Xn),-(A0)
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_4 - cb  // 1134  MOVE.B    (d8,A4,Xn),-(A0)
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_4 - cb  // 1135  MOVE.B    (d8,A5,Xn),-(A0)
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_4 - cb  // 1136  MOVE.B    (d8,A6,Xn),-(A0)
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_4 - cb  // 1137  MOVE.B    (d8,A7,Xn),-(A0)
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         lbz     data, 0(prefetch_data)                  // 1138  MOVE.B    (xxx).W,-(A0)
         b       move_b_mem_mem_3
         ori     rtn_addr, code_ptr, move_b_mem_mem_4 - cb  // 1139  MOVE.B    (xxx).L,-(A0)
@@ -643,7 +643,7 @@
         lbzx    data, pc, prefetch_data                 // 113A  MOVE.B    (d16,PC),-(A0)
         b       move_b_mem_mem_3
         ori     rtn_addr, code_ptr, move_b_mem_mem_4 - cb  // 113B  MOVE.B    (d8,PC,Xn),-(A0)
-        b       fea_b_73
+        b       fea_b_73_2
         stbu    prefetch_data, -1(a0)                   // 113C  MOVE.B    #<data>,-(A0)
         b       move_b_imm_any
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 113D  MOVE.B    <ea 7.5>,-(A0)   (illegal)
@@ -751,21 +751,21 @@
         lbzx    data, a7, prefetch_data                 // 116F  MOVE.B    (d16,A7),(d16,A0)
         b       move_b_ea_mem_3
         ori     rtn_addr, code_ptr, move_b_mem_mem_7 - cb  // 1170  MOVE.B    (d8,A0,Xn),(d16,A0)
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_7 - cb  // 1171  MOVE.B    (d8,A1,Xn),(d16,A0)
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_7 - cb  // 1172  MOVE.B    (d8,A2,Xn),(d16,A0)
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_7 - cb  // 1173  MOVE.B    (d8,A3,Xn),(d16,A0)
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_7 - cb  // 1174  MOVE.B    (d8,A4,Xn),(d16,A0)
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_7 - cb  // 1175  MOVE.B    (d8,A5,Xn),(d16,A0)
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_7 - cb  // 1176  MOVE.B    (d8,A6,Xn),(d16,A0)
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_7 - cb  // 1177  MOVE.B    (d8,A7,Xn),(d16,A0)
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         lbz     data, 0(prefetch_data)                  // 1178  MOVE.B    (xxx).W,(d16,A0)
         b       move_b_ea_mem_3
         ori     rtn_addr, code_ptr, move_b_mem_mem_7 - cb  // 1179  MOVE.B    (xxx).L,(d16,A0)
@@ -773,7 +773,7 @@
         lbzx    data, pc, prefetch_data                 // 117A  MOVE.B    (d16,PC),(d16,A0)
         b       move_b_ea_mem_3
         ori     rtn_addr, code_ptr, move_b_mem_mem_7 - cb  // 117B  MOVE.B    (d8,PC,Xn),(d16,A0)
-        b       fea_b_73
+        b       fea_b_73_2
         clrlwi  data, prefetch_data, 24                 // 117C  MOVE.B    #<data>,(d16,A0)
         b       move_b_ea_mem_3
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 117D  MOVE.B    <ea 7.5>,(d16,A0)   (illegal)
@@ -881,21 +881,21 @@
         lbzx    data, a7, prefetch_data                 // 11AF  MOVE.B    (d16,A7),(d8,A0,Xn)
         b       move_b_ea_mem
         ori     rtn_addr, code_ptr, move_b_mem_mem_5 - cb  // 11B0  MOVE.B    (d8,A0,Xn),(d8,A0,Xn)
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_5 - cb  // 11B1  MOVE.B    (d8,A1,Xn),(d8,A0,Xn)
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_5 - cb  // 11B2  MOVE.B    (d8,A2,Xn),(d8,A0,Xn)
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_5 - cb  // 11B3  MOVE.B    (d8,A3,Xn),(d8,A0,Xn)
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_5 - cb  // 11B4  MOVE.B    (d8,A4,Xn),(d8,A0,Xn)
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_5 - cb  // 11B5  MOVE.B    (d8,A5,Xn),(d8,A0,Xn)
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_5 - cb  // 11B6  MOVE.B    (d8,A6,Xn),(d8,A0,Xn)
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_5 - cb  // 11B7  MOVE.B    (d8,A7,Xn),(d8,A0,Xn)
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         lbz     data, 0(prefetch_data)                  // 11B8  MOVE.B    (xxx).W,(d8,A0,Xn)
         b       move_b_ea_mem
         ori     rtn_addr, code_ptr, move_b_mem_mem_5 - cb  // 11B9  MOVE.B    (xxx).L,(d8,A0,Xn)
@@ -903,7 +903,7 @@
         lbzx    data, pc, prefetch_data                 // 11BA  MOVE.B    (d16,PC),(d8,A0,Xn)
         b       move_b_ea_mem
         ori     rtn_addr, code_ptr, move_b_mem_mem_5 - cb  // 11BB  MOVE.B    (d8,PC,Xn),(d8,A0,Xn)
-        b       fea_b_73
+        b       fea_b_73_2
         clrlwi  data, prefetch_data, 24                 // 11BC  MOVE.B    #<data>,(d8,A0,Xn)
         b       move_b_ea_mem
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 11BD  MOVE.B    <ea 7.5>,(d8,A0,Xn)   (illegal)
@@ -1011,21 +1011,21 @@
         lbzx    data, a7, prefetch_data                 // 11EF  MOVE.B    (d16,A7),(xxx).W
         b       move_b_ea_mem_25
         ori     rtn_addr, code_ptr, move_b_mem_mem_57 - cb  // 11F0  MOVE.B    (d8,A0,Xn),(xxx).W
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_57 - cb  // 11F1  MOVE.B    (d8,A1,Xn),(xxx).W
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_57 - cb  // 11F2  MOVE.B    (d8,A2,Xn),(xxx).W
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_57 - cb  // 11F3  MOVE.B    (d8,A3,Xn),(xxx).W
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_57 - cb  // 11F4  MOVE.B    (d8,A4,Xn),(xxx).W
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_57 - cb  // 11F5  MOVE.B    (d8,A5,Xn),(xxx).W
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_57 - cb  // 11F6  MOVE.B    (d8,A6,Xn),(xxx).W
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_57 - cb  // 11F7  MOVE.B    (d8,A7,Xn),(xxx).W
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         lbz     data, 0(prefetch_data)                  // 11F8  MOVE.B    (xxx).W,(xxx).W
         b       move_b_ea_mem_25
         ori     rtn_addr, code_ptr, move_b_mem_mem_57 - cb  // 11F9  MOVE.B    (xxx).L,(xxx).W
@@ -1033,7 +1033,7 @@
         lbzx    data, pc, prefetch_data                 // 11FA  MOVE.B    (d16,PC),(xxx).W
         b       move_b_ea_mem_25
         ori     rtn_addr, code_ptr, move_b_mem_mem_57 - cb  // 11FB  MOVE.B    (d8,PC,Xn),(xxx).W
-        b       fea_b_73
+        b       fea_b_73_2
         clrlwi  data, prefetch_data, 24                 // 11FC  MOVE.B    #<data>,(xxx).W
         b       move_b_ea_mem_25
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 11FD  MOVE.B    <ea 7.5>,(xxx).W   (illegal)
@@ -1141,21 +1141,21 @@
         lbzx    data, a7, prefetch_data                 // 122F  MOVE.B    (d16,A7),D1
         b       move_or_etc_b_ea_d1
         ori     rtn_addr, code_ptr, move_b_mem_d1 - cb  // 1230  MOVE.B    (d8,A0,Xn),D1
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, move_b_mem_d1 - cb  // 1231  MOVE.B    (d8,A1,Xn),D1
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, move_b_mem_d1 - cb  // 1232  MOVE.B    (d8,A2,Xn),D1
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, move_b_mem_d1 - cb  // 1233  MOVE.B    (d8,A3,Xn),D1
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, move_b_mem_d1 - cb  // 1234  MOVE.B    (d8,A4,Xn),D1
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, move_b_mem_d1 - cb  // 1235  MOVE.B    (d8,A5,Xn),D1
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, move_b_mem_d1 - cb  // 1236  MOVE.B    (d8,A6,Xn),D1
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, move_b_mem_d1 - cb  // 1237  MOVE.B    (d8,A7,Xn),D1
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         lbz     data, 0(prefetch_data)                  // 1238  MOVE.B    (xxx).W,D1
         b       move_or_etc_b_ea_d1
         ori     rtn_addr, code_ptr, move_b_mem_d1 - cb  // 1239  MOVE.B    (xxx).L,D1
@@ -1163,7 +1163,7 @@
         lbzx    data, pc, prefetch_data                 // 123A  MOVE.B    (d16,PC),D1
         b       move_or_etc_b_ea_d1
         ori     rtn_addr, code_ptr, move_b_mem_d1 - cb  // 123B  MOVE.B    (d8,PC,Xn),D1
-        b       fea_b_73
+        b       fea_b_73_2
         rlwimi  d1, prefetch_data, 0, 24, 31            // 123C  MOVE.B    #<data>,D1
         b       move_b_imm_any
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 123D  MOVE.B    <ea 7.5>,D1   (illegal)
@@ -1401,21 +1401,21 @@
         lbzx    data, a7, prefetch_data                 // 12AF  MOVE.B    (d16,A7),(A1)
         b       move_b_mem_mem_8
         ori     rtn_addr, code_ptr, move_b_mem_mem_9 - cb  // 12B0  MOVE.B    (d8,A0,Xn),(A1)
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_9 - cb  // 12B1  MOVE.B    (d8,A1,Xn),(A1)
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_9 - cb  // 12B2  MOVE.B    (d8,A2,Xn),(A1)
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_9 - cb  // 12B3  MOVE.B    (d8,A3,Xn),(A1)
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_9 - cb  // 12B4  MOVE.B    (d8,A4,Xn),(A1)
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_9 - cb  // 12B5  MOVE.B    (d8,A5,Xn),(A1)
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_9 - cb  // 12B6  MOVE.B    (d8,A6,Xn),(A1)
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_9 - cb  // 12B7  MOVE.B    (d8,A7,Xn),(A1)
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         lbz     data, 0(prefetch_data)                  // 12B8  MOVE.B    (xxx).W,(A1)
         b       move_b_mem_mem_8
         ori     rtn_addr, code_ptr, move_b_mem_mem_9 - cb  // 12B9  MOVE.B    (xxx).L,(A1)
@@ -1423,7 +1423,7 @@
         lbzx    data, pc, prefetch_data                 // 12BA  MOVE.B    (d16,PC),(A1)
         b       move_b_mem_mem_8
         ori     rtn_addr, code_ptr, move_b_mem_mem_9 - cb  // 12BB  MOVE.B    (d8,PC,Xn),(A1)
-        b       fea_b_73
+        b       fea_b_73_2
         stb     prefetch_data, 0(a1)                    // 12BC  MOVE.B    #<data>,(A1)
         b       move_b_imm_any
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 12BD  MOVE.B    <ea 7.5>,(A1)   (illegal)
@@ -1531,21 +1531,21 @@
         lbzx    data, a7, prefetch_data                 // 12EF  MOVE.B    (d16,A7),(A1)+
         b       move_b_ea_mem_5
         ori     rtn_addr, code_ptr, move_b_mem_mem_13 - cb  // 12F0  MOVE.B    (d8,A0,Xn),(A1)+
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_13 - cb  // 12F1  MOVE.B    (d8,A1,Xn),(A1)+
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_13 - cb  // 12F2  MOVE.B    (d8,A2,Xn),(A1)+
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_13 - cb  // 12F3  MOVE.B    (d8,A3,Xn),(A1)+
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_13 - cb  // 12F4  MOVE.B    (d8,A4,Xn),(A1)+
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_13 - cb  // 12F5  MOVE.B    (d8,A5,Xn),(A1)+
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_13 - cb  // 12F6  MOVE.B    (d8,A6,Xn),(A1)+
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_13 - cb  // 12F7  MOVE.B    (d8,A7,Xn),(A1)+
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         lbz     data, 0(prefetch_data)                  // 12F8  MOVE.B    (xxx).W,(A1)+
         b       move_b_ea_mem_5
         ori     rtn_addr, code_ptr, move_b_mem_mem_13 - cb  // 12F9  MOVE.B    (xxx).L,(A1)+
@@ -1553,7 +1553,7 @@
         lbzx    data, pc, prefetch_data                 // 12FA  MOVE.B    (d16,PC),(A1)+
         b       move_b_ea_mem_5
         ori     rtn_addr, code_ptr, move_b_mem_mem_13 - cb  // 12FB  MOVE.B    (d8,PC,Xn),(A1)+
-        b       fea_b_73
+        b       fea_b_73_2
         clrlwi  data, prefetch_data, 24                 // 12FC  MOVE.B    #<data>,(A1)+
         b       move_b_ea_mem_5
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 12FD  MOVE.B    <ea 7.5>,(A1)+   (illegal)
@@ -1661,21 +1661,21 @@
         lbzx    data, a7, prefetch_data                 // 132F  MOVE.B    (d16,A7),-(A1)
         b       move_b_mem_mem_10
         ori     rtn_addr, code_ptr, move_b_mem_mem_11 - cb  // 1330  MOVE.B    (d8,A0,Xn),-(A1)
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_11 - cb  // 1331  MOVE.B    (d8,A1,Xn),-(A1)
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_11 - cb  // 1332  MOVE.B    (d8,A2,Xn),-(A1)
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_11 - cb  // 1333  MOVE.B    (d8,A3,Xn),-(A1)
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_11 - cb  // 1334  MOVE.B    (d8,A4,Xn),-(A1)
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_11 - cb  // 1335  MOVE.B    (d8,A5,Xn),-(A1)
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_11 - cb  // 1336  MOVE.B    (d8,A6,Xn),-(A1)
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_11 - cb  // 1337  MOVE.B    (d8,A7,Xn),-(A1)
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         lbz     data, 0(prefetch_data)                  // 1338  MOVE.B    (xxx).W,-(A1)
         b       move_b_mem_mem_10
         ori     rtn_addr, code_ptr, move_b_mem_mem_11 - cb  // 1339  MOVE.B    (xxx).L,-(A1)
@@ -1683,7 +1683,7 @@
         lbzx    data, pc, prefetch_data                 // 133A  MOVE.B    (d16,PC),-(A1)
         b       move_b_mem_mem_10
         ori     rtn_addr, code_ptr, move_b_mem_mem_11 - cb  // 133B  MOVE.B    (d8,PC,Xn),-(A1)
-        b       fea_b_73
+        b       fea_b_73_2
         stbu    prefetch_data, -1(a1)                   // 133C  MOVE.B    #<data>,-(A1)
         b       move_b_imm_any
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 133D  MOVE.B    <ea 7.5>,-(A1)   (illegal)
@@ -1791,21 +1791,21 @@
         lbzx    data, a7, prefetch_data                 // 136F  MOVE.B    (d16,A7),(d16,A1)
         b       move_b_ea_mem_6
         ori     rtn_addr, code_ptr, move_b_mem_mem_14 - cb  // 1370  MOVE.B    (d8,A0,Xn),(d16,A1)
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_14 - cb  // 1371  MOVE.B    (d8,A1,Xn),(d16,A1)
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_14 - cb  // 1372  MOVE.B    (d8,A2,Xn),(d16,A1)
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_14 - cb  // 1373  MOVE.B    (d8,A3,Xn),(d16,A1)
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_14 - cb  // 1374  MOVE.B    (d8,A4,Xn),(d16,A1)
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_14 - cb  // 1375  MOVE.B    (d8,A5,Xn),(d16,A1)
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_14 - cb  // 1376  MOVE.B    (d8,A6,Xn),(d16,A1)
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_14 - cb  // 1377  MOVE.B    (d8,A7,Xn),(d16,A1)
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         lbz     data, 0(prefetch_data)                  // 1378  MOVE.B    (xxx).W,(d16,A1)
         b       move_b_ea_mem_6
         ori     rtn_addr, code_ptr, move_b_mem_mem_14 - cb  // 1379  MOVE.B    (xxx).L,(d16,A1)
@@ -1813,7 +1813,7 @@
         lbzx    data, pc, prefetch_data                 // 137A  MOVE.B    (d16,PC),(d16,A1)
         b       move_b_ea_mem_6
         ori     rtn_addr, code_ptr, move_b_mem_mem_14 - cb  // 137B  MOVE.B    (d8,PC,Xn),(d16,A1)
-        b       fea_b_73
+        b       fea_b_73_2
         clrlwi  data, prefetch_data, 24                 // 137C  MOVE.B    #<data>,(d16,A1)
         b       move_b_ea_mem_6
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 137D  MOVE.B    <ea 7.5>,(d16,A1)   (illegal)
@@ -1921,21 +1921,21 @@
         lbzx    data, a7, prefetch_data                 // 13AF  MOVE.B    (d16,A7),(d8,A1,Xn)
         b       move_b_ea_mem_4
         ori     rtn_addr, code_ptr, move_b_mem_mem_12 - cb  // 13B0  MOVE.B    (d8,A0,Xn),(d8,A1,Xn)
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_12 - cb  // 13B1  MOVE.B    (d8,A1,Xn),(d8,A1,Xn)
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_12 - cb  // 13B2  MOVE.B    (d8,A2,Xn),(d8,A1,Xn)
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_12 - cb  // 13B3  MOVE.B    (d8,A3,Xn),(d8,A1,Xn)
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_12 - cb  // 13B4  MOVE.B    (d8,A4,Xn),(d8,A1,Xn)
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_12 - cb  // 13B5  MOVE.B    (d8,A5,Xn),(d8,A1,Xn)
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_12 - cb  // 13B6  MOVE.B    (d8,A6,Xn),(d8,A1,Xn)
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_12 - cb  // 13B7  MOVE.B    (d8,A7,Xn),(d8,A1,Xn)
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         lbz     data, 0(prefetch_data)                  // 13B8  MOVE.B    (xxx).W,(d8,A1,Xn)
         b       move_b_ea_mem_4
         ori     rtn_addr, code_ptr, move_b_mem_mem_12 - cb  // 13B9  MOVE.B    (xxx).L,(d8,A1,Xn)
@@ -1943,7 +1943,7 @@
         lbzx    data, pc, prefetch_data                 // 13BA  MOVE.B    (d16,PC),(d8,A1,Xn)
         b       move_b_ea_mem_4
         ori     rtn_addr, code_ptr, move_b_mem_mem_12 - cb  // 13BB  MOVE.B    (d8,PC,Xn),(d8,A1,Xn)
-        b       fea_b_73
+        b       fea_b_73_2
         clrlwi  data, prefetch_data, 24                 // 13BC  MOVE.B    #<data>,(d8,A1,Xn)
         b       move_b_ea_mem_4
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 13BD  MOVE.B    <ea 7.5>,(d8,A1,Xn)   (illegal)
@@ -2051,21 +2051,21 @@
         lbzx    data, a7, prefetch_data                 // 13EF  MOVE.B    (d16,A7),(xxx).L
         b       move_b_ea_mem_26
         ori     rtn_addr, code_ptr, move_b_mem_mem_58 - cb  // 13F0  MOVE.B    (d8,A0,Xn),(xxx).L
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_58 - cb  // 13F1  MOVE.B    (d8,A1,Xn),(xxx).L
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_58 - cb  // 13F2  MOVE.B    (d8,A2,Xn),(xxx).L
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_58 - cb  // 13F3  MOVE.B    (d8,A3,Xn),(xxx).L
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_58 - cb  // 13F4  MOVE.B    (d8,A4,Xn),(xxx).L
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_58 - cb  // 13F5  MOVE.B    (d8,A5,Xn),(xxx).L
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_58 - cb  // 13F6  MOVE.B    (d8,A6,Xn),(xxx).L
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_58 - cb  // 13F7  MOVE.B    (d8,A7,Xn),(xxx).L
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         lbz     data, 0(prefetch_data)                  // 13F8  MOVE.B    (xxx).W,(xxx).L
         b       move_b_ea_mem_26
         ori     rtn_addr, code_ptr, move_b_mem_mem_58 - cb  // 13F9  MOVE.B    (xxx).L,(xxx).L
@@ -2073,7 +2073,7 @@
         lbzx    data, pc, prefetch_data                 // 13FA  MOVE.B    (d16,PC),(xxx).L
         b       move_b_ea_mem_26
         ori     rtn_addr, code_ptr, move_b_mem_mem_58 - cb  // 13FB  MOVE.B    (d8,PC,Xn),(xxx).L
-        b       fea_b_73
+        b       fea_b_73_2
         clrlwi  data, prefetch_data, 24                 // 13FC  MOVE.B    #<data>,(xxx).L
         b       move_b_ea_mem_26
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 13FD  MOVE.B    <ea 7.5>,(xxx).L   (illegal)
@@ -2181,21 +2181,21 @@
         lbzx    data, a7, prefetch_data                 // 142F  MOVE.B    (d16,A7),D2
         b       move_or_etc_b_ea_d2
         ori     rtn_addr, code_ptr, move_b_mem_d2 - cb  // 1430  MOVE.B    (d8,A0,Xn),D2
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, move_b_mem_d2 - cb  // 1431  MOVE.B    (d8,A1,Xn),D2
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, move_b_mem_d2 - cb  // 1432  MOVE.B    (d8,A2,Xn),D2
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, move_b_mem_d2 - cb  // 1433  MOVE.B    (d8,A3,Xn),D2
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, move_b_mem_d2 - cb  // 1434  MOVE.B    (d8,A4,Xn),D2
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, move_b_mem_d2 - cb  // 1435  MOVE.B    (d8,A5,Xn),D2
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, move_b_mem_d2 - cb  // 1436  MOVE.B    (d8,A6,Xn),D2
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, move_b_mem_d2 - cb  // 1437  MOVE.B    (d8,A7,Xn),D2
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         lbz     data, 0(prefetch_data)                  // 1438  MOVE.B    (xxx).W,D2
         b       move_or_etc_b_ea_d2
         ori     rtn_addr, code_ptr, move_b_mem_d2 - cb  // 1439  MOVE.B    (xxx).L,D2
@@ -2203,7 +2203,7 @@
         lbzx    data, pc, prefetch_data                 // 143A  MOVE.B    (d16,PC),D2
         b       move_or_etc_b_ea_d2
         ori     rtn_addr, code_ptr, move_b_mem_d2 - cb  // 143B  MOVE.B    (d8,PC,Xn),D2
-        b       fea_b_73
+        b       fea_b_73_2
         rlwimi  d2, prefetch_data, 0, 24, 31            // 143C  MOVE.B    #<data>,D2
         b       move_b_imm_any
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 143D  MOVE.B    <ea 7.5>,D2   (illegal)
@@ -2441,21 +2441,21 @@
         lbzx    data, a7, prefetch_data                 // 14AF  MOVE.B    (d16,A7),(A2)
         b       move_b_mem_mem_15
         ori     rtn_addr, code_ptr, move_b_mem_mem_16 - cb  // 14B0  MOVE.B    (d8,A0,Xn),(A2)
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_16 - cb  // 14B1  MOVE.B    (d8,A1,Xn),(A2)
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_16 - cb  // 14B2  MOVE.B    (d8,A2,Xn),(A2)
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_16 - cb  // 14B3  MOVE.B    (d8,A3,Xn),(A2)
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_16 - cb  // 14B4  MOVE.B    (d8,A4,Xn),(A2)
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_16 - cb  // 14B5  MOVE.B    (d8,A5,Xn),(A2)
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_16 - cb  // 14B6  MOVE.B    (d8,A6,Xn),(A2)
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_16 - cb  // 14B7  MOVE.B    (d8,A7,Xn),(A2)
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         lbz     data, 0(prefetch_data)                  // 14B8  MOVE.B    (xxx).W,(A2)
         b       move_b_mem_mem_15
         ori     rtn_addr, code_ptr, move_b_mem_mem_16 - cb  // 14B9  MOVE.B    (xxx).L,(A2)
@@ -2463,7 +2463,7 @@
         lbzx    data, pc, prefetch_data                 // 14BA  MOVE.B    (d16,PC),(A2)
         b       move_b_mem_mem_15
         ori     rtn_addr, code_ptr, move_b_mem_mem_16 - cb  // 14BB  MOVE.B    (d8,PC,Xn),(A2)
-        b       fea_b_73
+        b       fea_b_73_2
         stb     prefetch_data, 0(a2)                    // 14BC  MOVE.B    #<data>,(A2)
         b       move_b_imm_any
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 14BD  MOVE.B    <ea 7.5>,(A2)   (illegal)
@@ -2571,21 +2571,21 @@
         lbzx    data, a7, prefetch_data                 // 14EF  MOVE.B    (d16,A7),(A2)+
         b       move_b_ea_mem_8
         ori     rtn_addr, code_ptr, move_b_mem_mem_20 - cb  // 14F0  MOVE.B    (d8,A0,Xn),(A2)+
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_20 - cb  // 14F1  MOVE.B    (d8,A1,Xn),(A2)+
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_20 - cb  // 14F2  MOVE.B    (d8,A2,Xn),(A2)+
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_20 - cb  // 14F3  MOVE.B    (d8,A3,Xn),(A2)+
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_20 - cb  // 14F4  MOVE.B    (d8,A4,Xn),(A2)+
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_20 - cb  // 14F5  MOVE.B    (d8,A5,Xn),(A2)+
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_20 - cb  // 14F6  MOVE.B    (d8,A6,Xn),(A2)+
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_20 - cb  // 14F7  MOVE.B    (d8,A7,Xn),(A2)+
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         lbz     data, 0(prefetch_data)                  // 14F8  MOVE.B    (xxx).W,(A2)+
         b       move_b_ea_mem_8
         ori     rtn_addr, code_ptr, move_b_mem_mem_20 - cb  // 14F9  MOVE.B    (xxx).L,(A2)+
@@ -2593,7 +2593,7 @@
         lbzx    data, pc, prefetch_data                 // 14FA  MOVE.B    (d16,PC),(A2)+
         b       move_b_ea_mem_8
         ori     rtn_addr, code_ptr, move_b_mem_mem_20 - cb  // 14FB  MOVE.B    (d8,PC,Xn),(A2)+
-        b       fea_b_73
+        b       fea_b_73_2
         clrlwi  data, prefetch_data, 24                 // 14FC  MOVE.B    #<data>,(A2)+
         b       move_b_ea_mem_8
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 14FD  MOVE.B    <ea 7.5>,(A2)+   (illegal)
@@ -2701,21 +2701,21 @@
         lbzx    data, a7, prefetch_data                 // 152F  MOVE.B    (d16,A7),-(A2)
         b       move_b_mem_mem_17
         ori     rtn_addr, code_ptr, move_b_mem_mem_18 - cb  // 1530  MOVE.B    (d8,A0,Xn),-(A2)
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_18 - cb  // 1531  MOVE.B    (d8,A1,Xn),-(A2)
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_18 - cb  // 1532  MOVE.B    (d8,A2,Xn),-(A2)
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_18 - cb  // 1533  MOVE.B    (d8,A3,Xn),-(A2)
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_18 - cb  // 1534  MOVE.B    (d8,A4,Xn),-(A2)
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_18 - cb  // 1535  MOVE.B    (d8,A5,Xn),-(A2)
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_18 - cb  // 1536  MOVE.B    (d8,A6,Xn),-(A2)
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_18 - cb  // 1537  MOVE.B    (d8,A7,Xn),-(A2)
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         lbz     data, 0(prefetch_data)                  // 1538  MOVE.B    (xxx).W,-(A2)
         b       move_b_mem_mem_17
         ori     rtn_addr, code_ptr, move_b_mem_mem_18 - cb  // 1539  MOVE.B    (xxx).L,-(A2)
@@ -2723,7 +2723,7 @@
         lbzx    data, pc, prefetch_data                 // 153A  MOVE.B    (d16,PC),-(A2)
         b       move_b_mem_mem_17
         ori     rtn_addr, code_ptr, move_b_mem_mem_18 - cb  // 153B  MOVE.B    (d8,PC,Xn),-(A2)
-        b       fea_b_73
+        b       fea_b_73_2
         stbu    prefetch_data, -1(a2)                   // 153C  MOVE.B    #<data>,-(A2)
         b       move_b_imm_any
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 153D  MOVE.B    <ea 7.5>,-(A2)   (illegal)
@@ -2831,21 +2831,21 @@
         lbzx    data, a7, prefetch_data                 // 156F  MOVE.B    (d16,A7),(d16,A2)
         b       move_b_ea_mem_9
         ori     rtn_addr, code_ptr, move_b_mem_mem_21 - cb  // 1570  MOVE.B    (d8,A0,Xn),(d16,A2)
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_21 - cb  // 1571  MOVE.B    (d8,A1,Xn),(d16,A2)
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_21 - cb  // 1572  MOVE.B    (d8,A2,Xn),(d16,A2)
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_21 - cb  // 1573  MOVE.B    (d8,A3,Xn),(d16,A2)
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_21 - cb  // 1574  MOVE.B    (d8,A4,Xn),(d16,A2)
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_21 - cb  // 1575  MOVE.B    (d8,A5,Xn),(d16,A2)
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_21 - cb  // 1576  MOVE.B    (d8,A6,Xn),(d16,A2)
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_21 - cb  // 1577  MOVE.B    (d8,A7,Xn),(d16,A2)
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         lbz     data, 0(prefetch_data)                  // 1578  MOVE.B    (xxx).W,(d16,A2)
         b       move_b_ea_mem_9
         ori     rtn_addr, code_ptr, move_b_mem_mem_21 - cb  // 1579  MOVE.B    (xxx).L,(d16,A2)
@@ -2853,7 +2853,7 @@
         lbzx    data, pc, prefetch_data                 // 157A  MOVE.B    (d16,PC),(d16,A2)
         b       move_b_ea_mem_9
         ori     rtn_addr, code_ptr, move_b_mem_mem_21 - cb  // 157B  MOVE.B    (d8,PC,Xn),(d16,A2)
-        b       fea_b_73
+        b       fea_b_73_2
         clrlwi  data, prefetch_data, 24                 // 157C  MOVE.B    #<data>,(d16,A2)
         b       move_b_ea_mem_9
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 157D  MOVE.B    <ea 7.5>,(d16,A2)   (illegal)
@@ -2961,21 +2961,21 @@
         lbzx    data, a7, prefetch_data                 // 15AF  MOVE.B    (d16,A7),(d8,A2,Xn)
         b       move_b_ea_mem_7
         ori     rtn_addr, code_ptr, move_b_mem_mem_19 - cb  // 15B0  MOVE.B    (d8,A0,Xn),(d8,A2,Xn)
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_19 - cb  // 15B1  MOVE.B    (d8,A1,Xn),(d8,A2,Xn)
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_19 - cb  // 15B2  MOVE.B    (d8,A2,Xn),(d8,A2,Xn)
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_19 - cb  // 15B3  MOVE.B    (d8,A3,Xn),(d8,A2,Xn)
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_19 - cb  // 15B4  MOVE.B    (d8,A4,Xn),(d8,A2,Xn)
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_19 - cb  // 15B5  MOVE.B    (d8,A5,Xn),(d8,A2,Xn)
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_19 - cb  // 15B6  MOVE.B    (d8,A6,Xn),(d8,A2,Xn)
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_19 - cb  // 15B7  MOVE.B    (d8,A7,Xn),(d8,A2,Xn)
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         lbz     data, 0(prefetch_data)                  // 15B8  MOVE.B    (xxx).W,(d8,A2,Xn)
         b       move_b_ea_mem_7
         ori     rtn_addr, code_ptr, move_b_mem_mem_19 - cb  // 15B9  MOVE.B    (xxx).L,(d8,A2,Xn)
@@ -2983,7 +2983,7 @@
         lbzx    data, pc, prefetch_data                 // 15BA  MOVE.B    (d16,PC),(d8,A2,Xn)
         b       move_b_ea_mem_7
         ori     rtn_addr, code_ptr, move_b_mem_mem_19 - cb  // 15BB  MOVE.B    (d8,PC,Xn),(d8,A2,Xn)
-        b       fea_b_73
+        b       fea_b_73_2
         clrlwi  data, prefetch_data, 24                 // 15BC  MOVE.B    #<data>,(d8,A2,Xn)
         b       move_b_ea_mem_7
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 15BD  MOVE.B    <ea 7.5>,(d8,A2,Xn)   (illegal)
@@ -3221,21 +3221,21 @@
         lbzx    data, a7, prefetch_data                 // 162F  MOVE.B    (d16,A7),D3
         b       move_or_etc_b_ea_d3
         ori     rtn_addr, code_ptr, move_b_mem_d3 - cb  // 1630  MOVE.B    (d8,A0,Xn),D3
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, move_b_mem_d3 - cb  // 1631  MOVE.B    (d8,A1,Xn),D3
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, move_b_mem_d3 - cb  // 1632  MOVE.B    (d8,A2,Xn),D3
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, move_b_mem_d3 - cb  // 1633  MOVE.B    (d8,A3,Xn),D3
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, move_b_mem_d3 - cb  // 1634  MOVE.B    (d8,A4,Xn),D3
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, move_b_mem_d3 - cb  // 1635  MOVE.B    (d8,A5,Xn),D3
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, move_b_mem_d3 - cb  // 1636  MOVE.B    (d8,A6,Xn),D3
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, move_b_mem_d3 - cb  // 1637  MOVE.B    (d8,A7,Xn),D3
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         lbz     data, 0(prefetch_data)                  // 1638  MOVE.B    (xxx).W,D3
         b       move_or_etc_b_ea_d3
         ori     rtn_addr, code_ptr, move_b_mem_d3 - cb  // 1639  MOVE.B    (xxx).L,D3
@@ -3243,7 +3243,7 @@
         lbzx    data, pc, prefetch_data                 // 163A  MOVE.B    (d16,PC),D3
         b       move_or_etc_b_ea_d3
         ori     rtn_addr, code_ptr, move_b_mem_d3 - cb  // 163B  MOVE.B    (d8,PC,Xn),D3
-        b       fea_b_73
+        b       fea_b_73_2
         rlwimi  d3, prefetch_data, 0, 24, 31            // 163C  MOVE.B    #<data>,D3
         b       move_b_imm_any
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 163D  MOVE.B    <ea 7.5>,D3   (illegal)
@@ -3481,21 +3481,21 @@
         lbzx    data, a7, prefetch_data                 // 16AF  MOVE.B    (d16,A7),(A3)
         b       move_b_mem_mem_22
         ori     rtn_addr, code_ptr, move_b_mem_mem_23 - cb  // 16B0  MOVE.B    (d8,A0,Xn),(A3)
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_23 - cb  // 16B1  MOVE.B    (d8,A1,Xn),(A3)
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_23 - cb  // 16B2  MOVE.B    (d8,A2,Xn),(A3)
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_23 - cb  // 16B3  MOVE.B    (d8,A3,Xn),(A3)
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_23 - cb  // 16B4  MOVE.B    (d8,A4,Xn),(A3)
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_23 - cb  // 16B5  MOVE.B    (d8,A5,Xn),(A3)
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_23 - cb  // 16B6  MOVE.B    (d8,A6,Xn),(A3)
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_23 - cb  // 16B7  MOVE.B    (d8,A7,Xn),(A3)
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         lbz     data, 0(prefetch_data)                  // 16B8  MOVE.B    (xxx).W,(A3)
         b       move_b_mem_mem_22
         ori     rtn_addr, code_ptr, move_b_mem_mem_23 - cb  // 16B9  MOVE.B    (xxx).L,(A3)
@@ -3503,7 +3503,7 @@
         lbzx    data, pc, prefetch_data                 // 16BA  MOVE.B    (d16,PC),(A3)
         b       move_b_mem_mem_22
         ori     rtn_addr, code_ptr, move_b_mem_mem_23 - cb  // 16BB  MOVE.B    (d8,PC,Xn),(A3)
-        b       fea_b_73
+        b       fea_b_73_2
         stb     prefetch_data, 0(a3)                    // 16BC  MOVE.B    #<data>,(A3)
         b       move_b_imm_any
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 16BD  MOVE.B    <ea 7.5>,(A3)   (illegal)
@@ -3611,21 +3611,21 @@
         lbzx    data, a7, prefetch_data                 // 16EF  MOVE.B    (d16,A7),(A3)+
         b       move_b_ea_mem_11
         ori     rtn_addr, code_ptr, move_b_mem_mem_27 - cb  // 16F0  MOVE.B    (d8,A0,Xn),(A3)+
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_27 - cb  // 16F1  MOVE.B    (d8,A1,Xn),(A3)+
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_27 - cb  // 16F2  MOVE.B    (d8,A2,Xn),(A3)+
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_27 - cb  // 16F3  MOVE.B    (d8,A3,Xn),(A3)+
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_27 - cb  // 16F4  MOVE.B    (d8,A4,Xn),(A3)+
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_27 - cb  // 16F5  MOVE.B    (d8,A5,Xn),(A3)+
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_27 - cb  // 16F6  MOVE.B    (d8,A6,Xn),(A3)+
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_27 - cb  // 16F7  MOVE.B    (d8,A7,Xn),(A3)+
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         lbz     data, 0(prefetch_data)                  // 16F8  MOVE.B    (xxx).W,(A3)+
         b       move_b_ea_mem_11
         ori     rtn_addr, code_ptr, move_b_mem_mem_27 - cb  // 16F9  MOVE.B    (xxx).L,(A3)+
@@ -3633,7 +3633,7 @@
         lbzx    data, pc, prefetch_data                 // 16FA  MOVE.B    (d16,PC),(A3)+
         b       move_b_ea_mem_11
         ori     rtn_addr, code_ptr, move_b_mem_mem_27 - cb  // 16FB  MOVE.B    (d8,PC,Xn),(A3)+
-        b       fea_b_73
+        b       fea_b_73_2
         clrlwi  data, prefetch_data, 24                 // 16FC  MOVE.B    #<data>,(A3)+
         b       move_b_ea_mem_11
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 16FD  MOVE.B    <ea 7.5>,(A3)+   (illegal)
@@ -3741,21 +3741,21 @@
         lbzx    data, a7, prefetch_data                 // 172F  MOVE.B    (d16,A7),-(A3)
         b       move_b_mem_mem_24
         ori     rtn_addr, code_ptr, move_b_mem_mem_25 - cb  // 1730  MOVE.B    (d8,A0,Xn),-(A3)
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_25 - cb  // 1731  MOVE.B    (d8,A1,Xn),-(A3)
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_25 - cb  // 1732  MOVE.B    (d8,A2,Xn),-(A3)
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_25 - cb  // 1733  MOVE.B    (d8,A3,Xn),-(A3)
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_25 - cb  // 1734  MOVE.B    (d8,A4,Xn),-(A3)
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_25 - cb  // 1735  MOVE.B    (d8,A5,Xn),-(A3)
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_25 - cb  // 1736  MOVE.B    (d8,A6,Xn),-(A3)
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_25 - cb  // 1737  MOVE.B    (d8,A7,Xn),-(A3)
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         lbz     data, 0(prefetch_data)                  // 1738  MOVE.B    (xxx).W,-(A3)
         b       move_b_mem_mem_24
         ori     rtn_addr, code_ptr, move_b_mem_mem_25 - cb  // 1739  MOVE.B    (xxx).L,-(A3)
@@ -3763,7 +3763,7 @@
         lbzx    data, pc, prefetch_data                 // 173A  MOVE.B    (d16,PC),-(A3)
         b       move_b_mem_mem_24
         ori     rtn_addr, code_ptr, move_b_mem_mem_25 - cb  // 173B  MOVE.B    (d8,PC,Xn),-(A3)
-        b       fea_b_73
+        b       fea_b_73_2
         stbu    prefetch_data, -1(a3)                   // 173C  MOVE.B    #<data>,-(A3)
         b       move_b_imm_any
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 173D  MOVE.B    <ea 7.5>,-(A3)   (illegal)
@@ -3871,21 +3871,21 @@
         lbzx    data, a7, prefetch_data                 // 176F  MOVE.B    (d16,A7),(d16,A3)
         b       move_b_ea_mem_12
         ori     rtn_addr, code_ptr, move_b_mem_mem_28 - cb  // 1770  MOVE.B    (d8,A0,Xn),(d16,A3)
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_28 - cb  // 1771  MOVE.B    (d8,A1,Xn),(d16,A3)
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_28 - cb  // 1772  MOVE.B    (d8,A2,Xn),(d16,A3)
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_28 - cb  // 1773  MOVE.B    (d8,A3,Xn),(d16,A3)
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_28 - cb  // 1774  MOVE.B    (d8,A4,Xn),(d16,A3)
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_28 - cb  // 1775  MOVE.B    (d8,A5,Xn),(d16,A3)
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_28 - cb  // 1776  MOVE.B    (d8,A6,Xn),(d16,A3)
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_28 - cb  // 1777  MOVE.B    (d8,A7,Xn),(d16,A3)
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         lbz     data, 0(prefetch_data)                  // 1778  MOVE.B    (xxx).W,(d16,A3)
         b       move_b_ea_mem_12
         ori     rtn_addr, code_ptr, move_b_mem_mem_28 - cb  // 1779  MOVE.B    (xxx).L,(d16,A3)
@@ -3893,7 +3893,7 @@
         lbzx    data, pc, prefetch_data                 // 177A  MOVE.B    (d16,PC),(d16,A3)
         b       move_b_ea_mem_12
         ori     rtn_addr, code_ptr, move_b_mem_mem_28 - cb  // 177B  MOVE.B    (d8,PC,Xn),(d16,A3)
-        b       fea_b_73
+        b       fea_b_73_2
         clrlwi  data, prefetch_data, 24                 // 177C  MOVE.B    #<data>,(d16,A3)
         b       move_b_ea_mem_12
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 177D  MOVE.B    <ea 7.5>,(d16,A3)   (illegal)
@@ -4001,21 +4001,21 @@
         lbzx    data, a7, prefetch_data                 // 17AF  MOVE.B    (d16,A7),(d8,A3,Xn)
         b       move_b_ea_mem_10
         ori     rtn_addr, code_ptr, move_b_mem_mem_26 - cb  // 17B0  MOVE.B    (d8,A0,Xn),(d8,A3,Xn)
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_26 - cb  // 17B1  MOVE.B    (d8,A1,Xn),(d8,A3,Xn)
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_26 - cb  // 17B2  MOVE.B    (d8,A2,Xn),(d8,A3,Xn)
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_26 - cb  // 17B3  MOVE.B    (d8,A3,Xn),(d8,A3,Xn)
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_26 - cb  // 17B4  MOVE.B    (d8,A4,Xn),(d8,A3,Xn)
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_26 - cb  // 17B5  MOVE.B    (d8,A5,Xn),(d8,A3,Xn)
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_26 - cb  // 17B6  MOVE.B    (d8,A6,Xn),(d8,A3,Xn)
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_26 - cb  // 17B7  MOVE.B    (d8,A7,Xn),(d8,A3,Xn)
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         lbz     data, 0(prefetch_data)                  // 17B8  MOVE.B    (xxx).W,(d8,A3,Xn)
         b       move_b_ea_mem_10
         ori     rtn_addr, code_ptr, move_b_mem_mem_26 - cb  // 17B9  MOVE.B    (xxx).L,(d8,A3,Xn)
@@ -4023,7 +4023,7 @@
         lbzx    data, pc, prefetch_data                 // 17BA  MOVE.B    (d16,PC),(d8,A3,Xn)
         b       move_b_ea_mem_10
         ori     rtn_addr, code_ptr, move_b_mem_mem_26 - cb  // 17BB  MOVE.B    (d8,PC,Xn),(d8,A3,Xn)
-        b       fea_b_73
+        b       fea_b_73_2
         clrlwi  data, prefetch_data, 24                 // 17BC  MOVE.B    #<data>,(d8,A3,Xn)
         b       move_b_ea_mem_10
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 17BD  MOVE.B    <ea 7.5>,(d8,A3,Xn)   (illegal)
@@ -4261,21 +4261,21 @@
         lbzx    data, a7, prefetch_data                 // 182F  MOVE.B    (d16,A7),D4
         b       move_or_etc_b_ea_d4
         ori     rtn_addr, code_ptr, move_b_mem_d4 - cb  // 1830  MOVE.B    (d8,A0,Xn),D4
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, move_b_mem_d4 - cb  // 1831  MOVE.B    (d8,A1,Xn),D4
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, move_b_mem_d4 - cb  // 1832  MOVE.B    (d8,A2,Xn),D4
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, move_b_mem_d4 - cb  // 1833  MOVE.B    (d8,A3,Xn),D4
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, move_b_mem_d4 - cb  // 1834  MOVE.B    (d8,A4,Xn),D4
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, move_b_mem_d4 - cb  // 1835  MOVE.B    (d8,A5,Xn),D4
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, move_b_mem_d4 - cb  // 1836  MOVE.B    (d8,A6,Xn),D4
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, move_b_mem_d4 - cb  // 1837  MOVE.B    (d8,A7,Xn),D4
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         lbz     data, 0(prefetch_data)                  // 1838  MOVE.B    (xxx).W,D4
         b       move_or_etc_b_ea_d4
         ori     rtn_addr, code_ptr, move_b_mem_d4 - cb  // 1839  MOVE.B    (xxx).L,D4
@@ -4283,7 +4283,7 @@
         lbzx    data, pc, prefetch_data                 // 183A  MOVE.B    (d16,PC),D4
         b       move_or_etc_b_ea_d4
         ori     rtn_addr, code_ptr, move_b_mem_d4 - cb  // 183B  MOVE.B    (d8,PC,Xn),D4
-        b       fea_b_73
+        b       fea_b_73_2
         rlwimi  d4, prefetch_data, 0, 24, 31            // 183C  MOVE.B    #<data>,D4
         b       move_b_imm_any
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 183D  MOVE.B    <ea 7.5>,D4   (illegal)
@@ -4521,21 +4521,21 @@
         lbzx    data, a7, prefetch_data                 // 18AF  MOVE.B    (d16,A7),(A4)
         b       move_b_mem_mem_29
         ori     rtn_addr, code_ptr, move_b_mem_mem_30 - cb  // 18B0  MOVE.B    (d8,A0,Xn),(A4)
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_30 - cb  // 18B1  MOVE.B    (d8,A1,Xn),(A4)
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_30 - cb  // 18B2  MOVE.B    (d8,A2,Xn),(A4)
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_30 - cb  // 18B3  MOVE.B    (d8,A3,Xn),(A4)
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_30 - cb  // 18B4  MOVE.B    (d8,A4,Xn),(A4)
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_30 - cb  // 18B5  MOVE.B    (d8,A5,Xn),(A4)
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_30 - cb  // 18B6  MOVE.B    (d8,A6,Xn),(A4)
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_30 - cb  // 18B7  MOVE.B    (d8,A7,Xn),(A4)
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         lbz     data, 0(prefetch_data)                  // 18B8  MOVE.B    (xxx).W,(A4)
         b       move_b_mem_mem_29
         ori     rtn_addr, code_ptr, move_b_mem_mem_30 - cb  // 18B9  MOVE.B    (xxx).L,(A4)
@@ -4543,7 +4543,7 @@
         lbzx    data, pc, prefetch_data                 // 18BA  MOVE.B    (d16,PC),(A4)
         b       move_b_mem_mem_29
         ori     rtn_addr, code_ptr, move_b_mem_mem_30 - cb  // 18BB  MOVE.B    (d8,PC,Xn),(A4)
-        b       fea_b_73
+        b       fea_b_73_2
         stb     prefetch_data, 0(a4)                    // 18BC  MOVE.B    #<data>,(A4)
         b       move_b_imm_any
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 18BD  MOVE.B    <ea 7.5>,(A4)   (illegal)
@@ -4651,21 +4651,21 @@
         lbzx    data, a7, prefetch_data                 // 18EF  MOVE.B    (d16,A7),(A4)+
         b       move_b_ea_mem_14
         ori     rtn_addr, code_ptr, move_b_mem_mem_34 - cb  // 18F0  MOVE.B    (d8,A0,Xn),(A4)+
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_34 - cb  // 18F1  MOVE.B    (d8,A1,Xn),(A4)+
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_34 - cb  // 18F2  MOVE.B    (d8,A2,Xn),(A4)+
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_34 - cb  // 18F3  MOVE.B    (d8,A3,Xn),(A4)+
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_34 - cb  // 18F4  MOVE.B    (d8,A4,Xn),(A4)+
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_34 - cb  // 18F5  MOVE.B    (d8,A5,Xn),(A4)+
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_34 - cb  // 18F6  MOVE.B    (d8,A6,Xn),(A4)+
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_34 - cb  // 18F7  MOVE.B    (d8,A7,Xn),(A4)+
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         lbz     data, 0(prefetch_data)                  // 18F8  MOVE.B    (xxx).W,(A4)+
         b       move_b_ea_mem_14
         ori     rtn_addr, code_ptr, move_b_mem_mem_34 - cb  // 18F9  MOVE.B    (xxx).L,(A4)+
@@ -4673,7 +4673,7 @@
         lbzx    data, pc, prefetch_data                 // 18FA  MOVE.B    (d16,PC),(A4)+
         b       move_b_ea_mem_14
         ori     rtn_addr, code_ptr, move_b_mem_mem_34 - cb  // 18FB  MOVE.B    (d8,PC,Xn),(A4)+
-        b       fea_b_73
+        b       fea_b_73_2
         clrlwi  data, prefetch_data, 24                 // 18FC  MOVE.B    #<data>,(A4)+
         b       move_b_ea_mem_14
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 18FD  MOVE.B    <ea 7.5>,(A4)+   (illegal)
@@ -4781,21 +4781,21 @@
         lbzx    data, a7, prefetch_data                 // 192F  MOVE.B    (d16,A7),-(A4)
         b       move_b_mem_mem_31
         ori     rtn_addr, code_ptr, move_b_mem_mem_32 - cb  // 1930  MOVE.B    (d8,A0,Xn),-(A4)
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_32 - cb  // 1931  MOVE.B    (d8,A1,Xn),-(A4)
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_32 - cb  // 1932  MOVE.B    (d8,A2,Xn),-(A4)
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_32 - cb  // 1933  MOVE.B    (d8,A3,Xn),-(A4)
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_32 - cb  // 1934  MOVE.B    (d8,A4,Xn),-(A4)
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_32 - cb  // 1935  MOVE.B    (d8,A5,Xn),-(A4)
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_32 - cb  // 1936  MOVE.B    (d8,A6,Xn),-(A4)
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_32 - cb  // 1937  MOVE.B    (d8,A7,Xn),-(A4)
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         lbz     data, 0(prefetch_data)                  // 1938  MOVE.B    (xxx).W,-(A4)
         b       move_b_mem_mem_31
         ori     rtn_addr, code_ptr, move_b_mem_mem_32 - cb  // 1939  MOVE.B    (xxx).L,-(A4)
@@ -4803,7 +4803,7 @@
         lbzx    data, pc, prefetch_data                 // 193A  MOVE.B    (d16,PC),-(A4)
         b       move_b_mem_mem_31
         ori     rtn_addr, code_ptr, move_b_mem_mem_32 - cb  // 193B  MOVE.B    (d8,PC,Xn),-(A4)
-        b       fea_b_73
+        b       fea_b_73_2
         stbu    prefetch_data, -1(a4)                   // 193C  MOVE.B    #<data>,-(A4)
         b       move_b_imm_any
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 193D  MOVE.B    <ea 7.5>,-(A4)   (illegal)
@@ -4911,21 +4911,21 @@
         lbzx    data, a7, prefetch_data                 // 196F  MOVE.B    (d16,A7),(d16,A4)
         b       move_b_ea_mem_15
         ori     rtn_addr, code_ptr, move_b_mem_mem_35 - cb  // 1970  MOVE.B    (d8,A0,Xn),(d16,A4)
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_35 - cb  // 1971  MOVE.B    (d8,A1,Xn),(d16,A4)
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_35 - cb  // 1972  MOVE.B    (d8,A2,Xn),(d16,A4)
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_35 - cb  // 1973  MOVE.B    (d8,A3,Xn),(d16,A4)
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_35 - cb  // 1974  MOVE.B    (d8,A4,Xn),(d16,A4)
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_35 - cb  // 1975  MOVE.B    (d8,A5,Xn),(d16,A4)
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_35 - cb  // 1976  MOVE.B    (d8,A6,Xn),(d16,A4)
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_35 - cb  // 1977  MOVE.B    (d8,A7,Xn),(d16,A4)
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         lbz     data, 0(prefetch_data)                  // 1978  MOVE.B    (xxx).W,(d16,A4)
         b       move_b_ea_mem_15
         ori     rtn_addr, code_ptr, move_b_mem_mem_35 - cb  // 1979  MOVE.B    (xxx).L,(d16,A4)
@@ -4933,7 +4933,7 @@
         lbzx    data, pc, prefetch_data                 // 197A  MOVE.B    (d16,PC),(d16,A4)
         b       move_b_ea_mem_15
         ori     rtn_addr, code_ptr, move_b_mem_mem_35 - cb  // 197B  MOVE.B    (d8,PC,Xn),(d16,A4)
-        b       fea_b_73
+        b       fea_b_73_2
         clrlwi  data, prefetch_data, 24                 // 197C  MOVE.B    #<data>,(d16,A4)
         b       move_b_ea_mem_15
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 197D  MOVE.B    <ea 7.5>,(d16,A4)   (illegal)
@@ -5041,21 +5041,21 @@
         lbzx    data, a7, prefetch_data                 // 19AF  MOVE.B    (d16,A7),(d8,A4,Xn)
         b       move_b_ea_mem_13
         ori     rtn_addr, code_ptr, move_b_mem_mem_33 - cb  // 19B0  MOVE.B    (d8,A0,Xn),(d8,A4,Xn)
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_33 - cb  // 19B1  MOVE.B    (d8,A1,Xn),(d8,A4,Xn)
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_33 - cb  // 19B2  MOVE.B    (d8,A2,Xn),(d8,A4,Xn)
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_33 - cb  // 19B3  MOVE.B    (d8,A3,Xn),(d8,A4,Xn)
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_33 - cb  // 19B4  MOVE.B    (d8,A4,Xn),(d8,A4,Xn)
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_33 - cb  // 19B5  MOVE.B    (d8,A5,Xn),(d8,A4,Xn)
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_33 - cb  // 19B6  MOVE.B    (d8,A6,Xn),(d8,A4,Xn)
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_33 - cb  // 19B7  MOVE.B    (d8,A7,Xn),(d8,A4,Xn)
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         lbz     data, 0(prefetch_data)                  // 19B8  MOVE.B    (xxx).W,(d8,A4,Xn)
         b       move_b_ea_mem_13
         ori     rtn_addr, code_ptr, move_b_mem_mem_33 - cb  // 19B9  MOVE.B    (xxx).L,(d8,A4,Xn)
@@ -5063,7 +5063,7 @@
         lbzx    data, pc, prefetch_data                 // 19BA  MOVE.B    (d16,PC),(d8,A4,Xn)
         b       move_b_ea_mem_13
         ori     rtn_addr, code_ptr, move_b_mem_mem_33 - cb  // 19BB  MOVE.B    (d8,PC,Xn),(d8,A4,Xn)
-        b       fea_b_73
+        b       fea_b_73_2
         clrlwi  data, prefetch_data, 24                 // 19BC  MOVE.B    #<data>,(d8,A4,Xn)
         b       move_b_ea_mem_13
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 19BD  MOVE.B    <ea 7.5>,(d8,A4,Xn)   (illegal)
@@ -5301,21 +5301,21 @@
         lbzx    data, a7, prefetch_data                 // 1A2F  MOVE.B    (d16,A7),D5
         b       move_or_etc_b_ea_d5
         ori     rtn_addr, code_ptr, move_b_mem_d5 - cb  // 1A30  MOVE.B    (d8,A0,Xn),D5
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, move_b_mem_d5 - cb  // 1A31  MOVE.B    (d8,A1,Xn),D5
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, move_b_mem_d5 - cb  // 1A32  MOVE.B    (d8,A2,Xn),D5
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, move_b_mem_d5 - cb  // 1A33  MOVE.B    (d8,A3,Xn),D5
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, move_b_mem_d5 - cb  // 1A34  MOVE.B    (d8,A4,Xn),D5
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, move_b_mem_d5 - cb  // 1A35  MOVE.B    (d8,A5,Xn),D5
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, move_b_mem_d5 - cb  // 1A36  MOVE.B    (d8,A6,Xn),D5
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, move_b_mem_d5 - cb  // 1A37  MOVE.B    (d8,A7,Xn),D5
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         lbz     data, 0(prefetch_data)                  // 1A38  MOVE.B    (xxx).W,D5
         b       move_or_etc_b_ea_d5
         ori     rtn_addr, code_ptr, move_b_mem_d5 - cb  // 1A39  MOVE.B    (xxx).L,D5
@@ -5323,7 +5323,7 @@
         lbzx    data, pc, prefetch_data                 // 1A3A  MOVE.B    (d16,PC),D5
         b       move_or_etc_b_ea_d5
         ori     rtn_addr, code_ptr, move_b_mem_d5 - cb  // 1A3B  MOVE.B    (d8,PC,Xn),D5
-        b       fea_b_73
+        b       fea_b_73_2
         rlwimi  d5, prefetch_data, 0, 24, 31            // 1A3C  MOVE.B    #<data>,D5
         b       move_b_imm_any
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 1A3D  MOVE.B    <ea 7.5>,D5   (illegal)
@@ -5561,21 +5561,21 @@
         lbzx    data, a7, prefetch_data                 // 1AAF  MOVE.B    (d16,A7),(A5)
         b       move_b_mem_mem_36
         ori     rtn_addr, code_ptr, move_b_mem_mem_37 - cb  // 1AB0  MOVE.B    (d8,A0,Xn),(A5)
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_37 - cb  // 1AB1  MOVE.B    (d8,A1,Xn),(A5)
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_37 - cb  // 1AB2  MOVE.B    (d8,A2,Xn),(A5)
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_37 - cb  // 1AB3  MOVE.B    (d8,A3,Xn),(A5)
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_37 - cb  // 1AB4  MOVE.B    (d8,A4,Xn),(A5)
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_37 - cb  // 1AB5  MOVE.B    (d8,A5,Xn),(A5)
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_37 - cb  // 1AB6  MOVE.B    (d8,A6,Xn),(A5)
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_37 - cb  // 1AB7  MOVE.B    (d8,A7,Xn),(A5)
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         lbz     data, 0(prefetch_data)                  // 1AB8  MOVE.B    (xxx).W,(A5)
         b       move_b_mem_mem_36
         ori     rtn_addr, code_ptr, move_b_mem_mem_37 - cb  // 1AB9  MOVE.B    (xxx).L,(A5)
@@ -5583,7 +5583,7 @@
         lbzx    data, pc, prefetch_data                 // 1ABA  MOVE.B    (d16,PC),(A5)
         b       move_b_mem_mem_36
         ori     rtn_addr, code_ptr, move_b_mem_mem_37 - cb  // 1ABB  MOVE.B    (d8,PC,Xn),(A5)
-        b       fea_b_73
+        b       fea_b_73_2
         stb     prefetch_data, 0(a5)                    // 1ABC  MOVE.B    #<data>,(A5)
         b       move_b_imm_any
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 1ABD  MOVE.B    <ea 7.5>,(A5)   (illegal)
@@ -5691,21 +5691,21 @@
         lbzx    data, a7, prefetch_data                 // 1AEF  MOVE.B    (d16,A7),(A5)+
         b       move_b_ea_mem_17
         ori     rtn_addr, code_ptr, move_b_mem_mem_41 - cb  // 1AF0  MOVE.B    (d8,A0,Xn),(A5)+
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_41 - cb  // 1AF1  MOVE.B    (d8,A1,Xn),(A5)+
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_41 - cb  // 1AF2  MOVE.B    (d8,A2,Xn),(A5)+
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_41 - cb  // 1AF3  MOVE.B    (d8,A3,Xn),(A5)+
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_41 - cb  // 1AF4  MOVE.B    (d8,A4,Xn),(A5)+
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_41 - cb  // 1AF5  MOVE.B    (d8,A5,Xn),(A5)+
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_41 - cb  // 1AF6  MOVE.B    (d8,A6,Xn),(A5)+
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_41 - cb  // 1AF7  MOVE.B    (d8,A7,Xn),(A5)+
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         lbz     data, 0(prefetch_data)                  // 1AF8  MOVE.B    (xxx).W,(A5)+
         b       move_b_ea_mem_17
         ori     rtn_addr, code_ptr, move_b_mem_mem_41 - cb  // 1AF9  MOVE.B    (xxx).L,(A5)+
@@ -5713,7 +5713,7 @@
         lbzx    data, pc, prefetch_data                 // 1AFA  MOVE.B    (d16,PC),(A5)+
         b       move_b_ea_mem_17
         ori     rtn_addr, code_ptr, move_b_mem_mem_41 - cb  // 1AFB  MOVE.B    (d8,PC,Xn),(A5)+
-        b       fea_b_73
+        b       fea_b_73_2
         clrlwi  data, prefetch_data, 24                 // 1AFC  MOVE.B    #<data>,(A5)+
         b       move_b_ea_mem_17
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 1AFD  MOVE.B    <ea 7.5>,(A5)+   (illegal)
@@ -5821,21 +5821,21 @@
         lbzx    data, a7, prefetch_data                 // 1B2F  MOVE.B    (d16,A7),-(A5)
         b       move_b_mem_mem_38
         ori     rtn_addr, code_ptr, move_b_mem_mem_39 - cb  // 1B30  MOVE.B    (d8,A0,Xn),-(A5)
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_39 - cb  // 1B31  MOVE.B    (d8,A1,Xn),-(A5)
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_39 - cb  // 1B32  MOVE.B    (d8,A2,Xn),-(A5)
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_39 - cb  // 1B33  MOVE.B    (d8,A3,Xn),-(A5)
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_39 - cb  // 1B34  MOVE.B    (d8,A4,Xn),-(A5)
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_39 - cb  // 1B35  MOVE.B    (d8,A5,Xn),-(A5)
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_39 - cb  // 1B36  MOVE.B    (d8,A6,Xn),-(A5)
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_39 - cb  // 1B37  MOVE.B    (d8,A7,Xn),-(A5)
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         lbz     data, 0(prefetch_data)                  // 1B38  MOVE.B    (xxx).W,-(A5)
         b       move_b_mem_mem_38
         ori     rtn_addr, code_ptr, move_b_mem_mem_39 - cb  // 1B39  MOVE.B    (xxx).L,-(A5)
@@ -5843,7 +5843,7 @@
         lbzx    data, pc, prefetch_data                 // 1B3A  MOVE.B    (d16,PC),-(A5)
         b       move_b_mem_mem_38
         ori     rtn_addr, code_ptr, move_b_mem_mem_39 - cb  // 1B3B  MOVE.B    (d8,PC,Xn),-(A5)
-        b       fea_b_73
+        b       fea_b_73_2
         stbu    prefetch_data, -1(a5)                   // 1B3C  MOVE.B    #<data>,-(A5)
         b       move_b_imm_any
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 1B3D  MOVE.B    <ea 7.5>,-(A5)   (illegal)
@@ -5951,21 +5951,21 @@
         lbzx    data, a7, prefetch_data                 // 1B6F  MOVE.B    (d16,A7),(d16,A5)
         b       move_b_ea_mem_18
         ori     rtn_addr, code_ptr, move_b_mem_mem_42 - cb  // 1B70  MOVE.B    (d8,A0,Xn),(d16,A5)
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_42 - cb  // 1B71  MOVE.B    (d8,A1,Xn),(d16,A5)
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_42 - cb  // 1B72  MOVE.B    (d8,A2,Xn),(d16,A5)
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_42 - cb  // 1B73  MOVE.B    (d8,A3,Xn),(d16,A5)
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_42 - cb  // 1B74  MOVE.B    (d8,A4,Xn),(d16,A5)
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_42 - cb  // 1B75  MOVE.B    (d8,A5,Xn),(d16,A5)
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_42 - cb  // 1B76  MOVE.B    (d8,A6,Xn),(d16,A5)
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_42 - cb  // 1B77  MOVE.B    (d8,A7,Xn),(d16,A5)
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         lbz     data, 0(prefetch_data)                  // 1B78  MOVE.B    (xxx).W,(d16,A5)
         b       move_b_ea_mem_18
         ori     rtn_addr, code_ptr, move_b_mem_mem_42 - cb  // 1B79  MOVE.B    (xxx).L,(d16,A5)
@@ -5973,7 +5973,7 @@
         lbzx    data, pc, prefetch_data                 // 1B7A  MOVE.B    (d16,PC),(d16,A5)
         b       move_b_ea_mem_18
         ori     rtn_addr, code_ptr, move_b_mem_mem_42 - cb  // 1B7B  MOVE.B    (d8,PC,Xn),(d16,A5)
-        b       fea_b_73
+        b       fea_b_73_2
         clrlwi  data, prefetch_data, 24                 // 1B7C  MOVE.B    #<data>,(d16,A5)
         b       move_b_ea_mem_18
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 1B7D  MOVE.B    <ea 7.5>,(d16,A5)   (illegal)
@@ -6081,21 +6081,21 @@
         lbzx    data, a7, prefetch_data                 // 1BAF  MOVE.B    (d16,A7),(d8,A5,Xn)
         b       move_b_ea_mem_16
         ori     rtn_addr, code_ptr, move_b_mem_mem_40 - cb  // 1BB0  MOVE.B    (d8,A0,Xn),(d8,A5,Xn)
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_40 - cb  // 1BB1  MOVE.B    (d8,A1,Xn),(d8,A5,Xn)
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_40 - cb  // 1BB2  MOVE.B    (d8,A2,Xn),(d8,A5,Xn)
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_40 - cb  // 1BB3  MOVE.B    (d8,A3,Xn),(d8,A5,Xn)
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_40 - cb  // 1BB4  MOVE.B    (d8,A4,Xn),(d8,A5,Xn)
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_40 - cb  // 1BB5  MOVE.B    (d8,A5,Xn),(d8,A5,Xn)
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_40 - cb  // 1BB6  MOVE.B    (d8,A6,Xn),(d8,A5,Xn)
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_40 - cb  // 1BB7  MOVE.B    (d8,A7,Xn),(d8,A5,Xn)
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         lbz     data, 0(prefetch_data)                  // 1BB8  MOVE.B    (xxx).W,(d8,A5,Xn)
         b       move_b_ea_mem_16
         ori     rtn_addr, code_ptr, move_b_mem_mem_40 - cb  // 1BB9  MOVE.B    (xxx).L,(d8,A5,Xn)
@@ -6103,7 +6103,7 @@
         lbzx    data, pc, prefetch_data                 // 1BBA  MOVE.B    (d16,PC),(d8,A5,Xn)
         b       move_b_ea_mem_16
         ori     rtn_addr, code_ptr, move_b_mem_mem_40 - cb  // 1BBB  MOVE.B    (d8,PC,Xn),(d8,A5,Xn)
-        b       fea_b_73
+        b       fea_b_73_2
         clrlwi  data, prefetch_data, 24                 // 1BBC  MOVE.B    #<data>,(d8,A5,Xn)
         b       move_b_ea_mem_16
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 1BBD  MOVE.B    <ea 7.5>,(d8,A5,Xn)   (illegal)
@@ -6341,21 +6341,21 @@
         lbzx    data, a7, prefetch_data                 // 1C2F  MOVE.B    (d16,A7),D6
         b       move_or_etc_b_ea_d6
         ori     rtn_addr, code_ptr, move_b_mem_d6 - cb  // 1C30  MOVE.B    (d8,A0,Xn),D6
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, move_b_mem_d6 - cb  // 1C31  MOVE.B    (d8,A1,Xn),D6
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, move_b_mem_d6 - cb  // 1C32  MOVE.B    (d8,A2,Xn),D6
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, move_b_mem_d6 - cb  // 1C33  MOVE.B    (d8,A3,Xn),D6
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, move_b_mem_d6 - cb  // 1C34  MOVE.B    (d8,A4,Xn),D6
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, move_b_mem_d6 - cb  // 1C35  MOVE.B    (d8,A5,Xn),D6
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, move_b_mem_d6 - cb  // 1C36  MOVE.B    (d8,A6,Xn),D6
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, move_b_mem_d6 - cb  // 1C37  MOVE.B    (d8,A7,Xn),D6
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         lbz     data, 0(prefetch_data)                  // 1C38  MOVE.B    (xxx).W,D6
         b       move_or_etc_b_ea_d6
         ori     rtn_addr, code_ptr, move_b_mem_d6 - cb  // 1C39  MOVE.B    (xxx).L,D6
@@ -6363,7 +6363,7 @@
         lbzx    data, pc, prefetch_data                 // 1C3A  MOVE.B    (d16,PC),D6
         b       move_or_etc_b_ea_d6
         ori     rtn_addr, code_ptr, move_b_mem_d6 - cb  // 1C3B  MOVE.B    (d8,PC,Xn),D6
-        b       fea_b_73
+        b       fea_b_73_2
         rlwimi  d6, prefetch_data, 0, 24, 31            // 1C3C  MOVE.B    #<data>,D6
         b       move_b_imm_any
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 1C3D  MOVE.B    <ea 7.5>,D6   (illegal)
@@ -6601,21 +6601,21 @@
         lbzx    data, a7, prefetch_data                 // 1CAF  MOVE.B    (d16,A7),(A6)
         b       move_b_mem_mem_43
         ori     rtn_addr, code_ptr, move_b_mem_mem_44 - cb  // 1CB0  MOVE.B    (d8,A0,Xn),(A6)
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_44 - cb  // 1CB1  MOVE.B    (d8,A1,Xn),(A6)
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_44 - cb  // 1CB2  MOVE.B    (d8,A2,Xn),(A6)
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_44 - cb  // 1CB3  MOVE.B    (d8,A3,Xn),(A6)
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_44 - cb  // 1CB4  MOVE.B    (d8,A4,Xn),(A6)
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_44 - cb  // 1CB5  MOVE.B    (d8,A5,Xn),(A6)
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_44 - cb  // 1CB6  MOVE.B    (d8,A6,Xn),(A6)
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_44 - cb  // 1CB7  MOVE.B    (d8,A7,Xn),(A6)
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         lbz     data, 0(prefetch_data)                  // 1CB8  MOVE.B    (xxx).W,(A6)
         b       move_b_mem_mem_43
         ori     rtn_addr, code_ptr, move_b_mem_mem_44 - cb  // 1CB9  MOVE.B    (xxx).L,(A6)
@@ -6623,7 +6623,7 @@
         lbzx    data, pc, prefetch_data                 // 1CBA  MOVE.B    (d16,PC),(A6)
         b       move_b_mem_mem_43
         ori     rtn_addr, code_ptr, move_b_mem_mem_44 - cb  // 1CBB  MOVE.B    (d8,PC,Xn),(A6)
-        b       fea_b_73
+        b       fea_b_73_2
         stb     prefetch_data, 0(a6)                    // 1CBC  MOVE.B    #<data>,(A6)
         b       move_b_imm_any
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 1CBD  MOVE.B    <ea 7.5>,(A6)   (illegal)
@@ -6731,21 +6731,21 @@
         lbzx    data, a7, prefetch_data                 // 1CEF  MOVE.B    (d16,A7),(A6)+
         b       move_b_ea_mem_20
         ori     rtn_addr, code_ptr, move_b_mem_mem_48 - cb  // 1CF0  MOVE.B    (d8,A0,Xn),(A6)+
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_48 - cb  // 1CF1  MOVE.B    (d8,A1,Xn),(A6)+
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_48 - cb  // 1CF2  MOVE.B    (d8,A2,Xn),(A6)+
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_48 - cb  // 1CF3  MOVE.B    (d8,A3,Xn),(A6)+
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_48 - cb  // 1CF4  MOVE.B    (d8,A4,Xn),(A6)+
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_48 - cb  // 1CF5  MOVE.B    (d8,A5,Xn),(A6)+
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_48 - cb  // 1CF6  MOVE.B    (d8,A6,Xn),(A6)+
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_48 - cb  // 1CF7  MOVE.B    (d8,A7,Xn),(A6)+
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         lbz     data, 0(prefetch_data)                  // 1CF8  MOVE.B    (xxx).W,(A6)+
         b       move_b_ea_mem_20
         ori     rtn_addr, code_ptr, move_b_mem_mem_48 - cb  // 1CF9  MOVE.B    (xxx).L,(A6)+
@@ -6753,7 +6753,7 @@
         lbzx    data, pc, prefetch_data                 // 1CFA  MOVE.B    (d16,PC),(A6)+
         b       move_b_ea_mem_20
         ori     rtn_addr, code_ptr, move_b_mem_mem_48 - cb  // 1CFB  MOVE.B    (d8,PC,Xn),(A6)+
-        b       fea_b_73
+        b       fea_b_73_2
         clrlwi  data, prefetch_data, 24                 // 1CFC  MOVE.B    #<data>,(A6)+
         b       move_b_ea_mem_20
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 1CFD  MOVE.B    <ea 7.5>,(A6)+   (illegal)
@@ -6861,21 +6861,21 @@
         lbzx    data, a7, prefetch_data                 // 1D2F  MOVE.B    (d16,A7),-(A6)
         b       move_b_mem_mem_45
         ori     rtn_addr, code_ptr, move_b_mem_mem_46 - cb  // 1D30  MOVE.B    (d8,A0,Xn),-(A6)
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_46 - cb  // 1D31  MOVE.B    (d8,A1,Xn),-(A6)
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_46 - cb  // 1D32  MOVE.B    (d8,A2,Xn),-(A6)
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_46 - cb  // 1D33  MOVE.B    (d8,A3,Xn),-(A6)
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_46 - cb  // 1D34  MOVE.B    (d8,A4,Xn),-(A6)
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_46 - cb  // 1D35  MOVE.B    (d8,A5,Xn),-(A6)
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_46 - cb  // 1D36  MOVE.B    (d8,A6,Xn),-(A6)
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_46 - cb  // 1D37  MOVE.B    (d8,A7,Xn),-(A6)
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         lbz     data, 0(prefetch_data)                  // 1D38  MOVE.B    (xxx).W,-(A6)
         b       move_b_mem_mem_45
         ori     rtn_addr, code_ptr, move_b_mem_mem_46 - cb  // 1D39  MOVE.B    (xxx).L,-(A6)
@@ -6883,7 +6883,7 @@
         lbzx    data, pc, prefetch_data                 // 1D3A  MOVE.B    (d16,PC),-(A6)
         b       move_b_mem_mem_45
         ori     rtn_addr, code_ptr, move_b_mem_mem_46 - cb  // 1D3B  MOVE.B    (d8,PC,Xn),-(A6)
-        b       fea_b_73
+        b       fea_b_73_2
         stbu    prefetch_data, -1(a6)                   // 1D3C  MOVE.B    #<data>,-(A6)
         b       move_b_imm_any
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 1D3D  MOVE.B    <ea 7.5>,-(A6)   (illegal)
@@ -6991,21 +6991,21 @@
         lbzx    data, a7, prefetch_data                 // 1D6F  MOVE.B    (d16,A7),(d16,A6)
         b       move_b_ea_mem_21
         ori     rtn_addr, code_ptr, move_b_mem_mem_49 - cb  // 1D70  MOVE.B    (d8,A0,Xn),(d16,A6)
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_49 - cb  // 1D71  MOVE.B    (d8,A1,Xn),(d16,A6)
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_49 - cb  // 1D72  MOVE.B    (d8,A2,Xn),(d16,A6)
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_49 - cb  // 1D73  MOVE.B    (d8,A3,Xn),(d16,A6)
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_49 - cb  // 1D74  MOVE.B    (d8,A4,Xn),(d16,A6)
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_49 - cb  // 1D75  MOVE.B    (d8,A5,Xn),(d16,A6)
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_49 - cb  // 1D76  MOVE.B    (d8,A6,Xn),(d16,A6)
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_49 - cb  // 1D77  MOVE.B    (d8,A7,Xn),(d16,A6)
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         lbz     data, 0(prefetch_data)                  // 1D78  MOVE.B    (xxx).W,(d16,A6)
         b       move_b_ea_mem_21
         ori     rtn_addr, code_ptr, move_b_mem_mem_49 - cb  // 1D79  MOVE.B    (xxx).L,(d16,A6)
@@ -7013,7 +7013,7 @@
         lbzx    data, pc, prefetch_data                 // 1D7A  MOVE.B    (d16,PC),(d16,A6)
         b       move_b_ea_mem_21
         ori     rtn_addr, code_ptr, move_b_mem_mem_49 - cb  // 1D7B  MOVE.B    (d8,PC,Xn),(d16,A6)
-        b       fea_b_73
+        b       fea_b_73_2
         clrlwi  data, prefetch_data, 24                 // 1D7C  MOVE.B    #<data>,(d16,A6)
         b       move_b_ea_mem_21
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 1D7D  MOVE.B    <ea 7.5>,(d16,A6)   (illegal)
@@ -7121,21 +7121,21 @@
         lbzx    data, a7, prefetch_data                 // 1DAF  MOVE.B    (d16,A7),(d8,A6,Xn)
         b       move_b_ea_mem_19
         ori     rtn_addr, code_ptr, move_b_mem_mem_47 - cb  // 1DB0  MOVE.B    (d8,A0,Xn),(d8,A6,Xn)
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_47 - cb  // 1DB1  MOVE.B    (d8,A1,Xn),(d8,A6,Xn)
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_47 - cb  // 1DB2  MOVE.B    (d8,A2,Xn),(d8,A6,Xn)
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_47 - cb  // 1DB3  MOVE.B    (d8,A3,Xn),(d8,A6,Xn)
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_47 - cb  // 1DB4  MOVE.B    (d8,A4,Xn),(d8,A6,Xn)
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_47 - cb  // 1DB5  MOVE.B    (d8,A5,Xn),(d8,A6,Xn)
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_47 - cb  // 1DB6  MOVE.B    (d8,A6,Xn),(d8,A6,Xn)
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_47 - cb  // 1DB7  MOVE.B    (d8,A7,Xn),(d8,A6,Xn)
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         lbz     data, 0(prefetch_data)                  // 1DB8  MOVE.B    (xxx).W,(d8,A6,Xn)
         b       move_b_ea_mem_19
         ori     rtn_addr, code_ptr, move_b_mem_mem_47 - cb  // 1DB9  MOVE.B    (xxx).L,(d8,A6,Xn)
@@ -7143,7 +7143,7 @@
         lbzx    data, pc, prefetch_data                 // 1DBA  MOVE.B    (d16,PC),(d8,A6,Xn)
         b       move_b_ea_mem_19
         ori     rtn_addr, code_ptr, move_b_mem_mem_47 - cb  // 1DBB  MOVE.B    (d8,PC,Xn),(d8,A6,Xn)
-        b       fea_b_73
+        b       fea_b_73_2
         clrlwi  data, prefetch_data, 24                 // 1DBC  MOVE.B    #<data>,(d8,A6,Xn)
         b       move_b_ea_mem_19
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 1DBD  MOVE.B    <ea 7.5>,(d8,A6,Xn)   (illegal)
@@ -7381,21 +7381,21 @@
         lbzx    data, a7, prefetch_data                 // 1E2F  MOVE.B    (d16,A7),D7
         b       move_or_etc_b_ea_d7
         ori     rtn_addr, code_ptr, move_b_mem_d7 - cb  // 1E30  MOVE.B    (d8,A0,Xn),D7
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, move_b_mem_d7 - cb  // 1E31  MOVE.B    (d8,A1,Xn),D7
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, move_b_mem_d7 - cb  // 1E32  MOVE.B    (d8,A2,Xn),D7
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, move_b_mem_d7 - cb  // 1E33  MOVE.B    (d8,A3,Xn),D7
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, move_b_mem_d7 - cb  // 1E34  MOVE.B    (d8,A4,Xn),D7
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, move_b_mem_d7 - cb  // 1E35  MOVE.B    (d8,A5,Xn),D7
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, move_b_mem_d7 - cb  // 1E36  MOVE.B    (d8,A6,Xn),D7
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, move_b_mem_d7 - cb  // 1E37  MOVE.B    (d8,A7,Xn),D7
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         lbz     data, 0(prefetch_data)                  // 1E38  MOVE.B    (xxx).W,D7
         b       move_or_etc_b_ea_d7
         ori     rtn_addr, code_ptr, move_b_mem_d7 - cb  // 1E39  MOVE.B    (xxx).L,D7
@@ -7403,7 +7403,7 @@
         lbzx    data, pc, prefetch_data                 // 1E3A  MOVE.B    (d16,PC),D7
         b       move_or_etc_b_ea_d7
         ori     rtn_addr, code_ptr, move_b_mem_d7 - cb  // 1E3B  MOVE.B    (d8,PC,Xn),D7
-        b       fea_b_73
+        b       fea_b_73_2
         rlwimi  d7, prefetch_data, 0, 24, 31            // 1E3C  MOVE.B    #<data>,D7
         b       move_b_imm_any
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 1E3D  MOVE.B    <ea 7.5>,D7   (illegal)
@@ -7641,21 +7641,21 @@
         lbzx    data, a7, prefetch_data                 // 1EAF  MOVE.B    (d16,A7),(A7)
         b       move_b_mem_mem_50
         ori     rtn_addr, code_ptr, move_b_mem_mem_51 - cb  // 1EB0  MOVE.B    (d8,A0,Xn),(A7)
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_51 - cb  // 1EB1  MOVE.B    (d8,A1,Xn),(A7)
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_51 - cb  // 1EB2  MOVE.B    (d8,A2,Xn),(A7)
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_51 - cb  // 1EB3  MOVE.B    (d8,A3,Xn),(A7)
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_51 - cb  // 1EB4  MOVE.B    (d8,A4,Xn),(A7)
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_51 - cb  // 1EB5  MOVE.B    (d8,A5,Xn),(A7)
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_51 - cb  // 1EB6  MOVE.B    (d8,A6,Xn),(A7)
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_51 - cb  // 1EB7  MOVE.B    (d8,A7,Xn),(A7)
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         lbz     data, 0(prefetch_data)                  // 1EB8  MOVE.B    (xxx).W,(A7)
         b       move_b_mem_mem_50
         ori     rtn_addr, code_ptr, move_b_mem_mem_51 - cb  // 1EB9  MOVE.B    (xxx).L,(A7)
@@ -7663,7 +7663,7 @@
         lbzx    data, pc, prefetch_data                 // 1EBA  MOVE.B    (d16,PC),(A7)
         b       move_b_mem_mem_50
         ori     rtn_addr, code_ptr, move_b_mem_mem_51 - cb  // 1EBB  MOVE.B    (d8,PC,Xn),(A7)
-        b       fea_b_73
+        b       fea_b_73_2
         stb     prefetch_data, 0(a7)                    // 1EBC  MOVE.B    #<data>,(A7)
         b       move_b_imm_any
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 1EBD  MOVE.B    <ea 7.5>,(A7)   (illegal)
@@ -7771,21 +7771,21 @@
         lbzx    data, a7, prefetch_data                 // 1EEF  MOVE.B    (d16,A7),(A7)+
         b       move_b_ea_mem_23
         ori     rtn_addr, code_ptr, move_b_mem_mem_55 - cb  // 1EF0  MOVE.B    (d8,A0,Xn),(A7)+
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_55 - cb  // 1EF1  MOVE.B    (d8,A1,Xn),(A7)+
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_55 - cb  // 1EF2  MOVE.B    (d8,A2,Xn),(A7)+
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_55 - cb  // 1EF3  MOVE.B    (d8,A3,Xn),(A7)+
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_55 - cb  // 1EF4  MOVE.B    (d8,A4,Xn),(A7)+
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_55 - cb  // 1EF5  MOVE.B    (d8,A5,Xn),(A7)+
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_55 - cb  // 1EF6  MOVE.B    (d8,A6,Xn),(A7)+
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_55 - cb  // 1EF7  MOVE.B    (d8,A7,Xn),(A7)+
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         lbz     data, 0(prefetch_data)                  // 1EF8  MOVE.B    (xxx).W,(A7)+
         b       move_b_ea_mem_23
         ori     rtn_addr, code_ptr, move_b_mem_mem_55 - cb  // 1EF9  MOVE.B    (xxx).L,(A7)+
@@ -7793,7 +7793,7 @@
         lbzx    data, pc, prefetch_data                 // 1EFA  MOVE.B    (d16,PC),(A7)+
         b       move_b_ea_mem_23
         ori     rtn_addr, code_ptr, move_b_mem_mem_55 - cb  // 1EFB  MOVE.B    (d8,PC,Xn),(A7)+
-        b       fea_b_73
+        b       fea_b_73_2
         clrlwi  data, prefetch_data, 24                 // 1EFC  MOVE.B    #<data>,(A7)+
         b       move_b_ea_mem_23
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 1EFD  MOVE.B    <ea 7.5>,(A7)+   (illegal)
@@ -7901,21 +7901,21 @@
         lbzx    data, a7, prefetch_data                 // 1F2F  MOVE.B    (d16,A7),-(A7)
         b       move_b_mem_mem_52
         ori     rtn_addr, code_ptr, move_b_mem_mem_53 - cb  // 1F30  MOVE.B    (d8,A0,Xn),-(A7)
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_53 - cb  // 1F31  MOVE.B    (d8,A1,Xn),-(A7)
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_53 - cb  // 1F32  MOVE.B    (d8,A2,Xn),-(A7)
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_53 - cb  // 1F33  MOVE.B    (d8,A3,Xn),-(A7)
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_53 - cb  // 1F34  MOVE.B    (d8,A4,Xn),-(A7)
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_53 - cb  // 1F35  MOVE.B    (d8,A5,Xn),-(A7)
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_53 - cb  // 1F36  MOVE.B    (d8,A6,Xn),-(A7)
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_53 - cb  // 1F37  MOVE.B    (d8,A7,Xn),-(A7)
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         lbz     data, 0(prefetch_data)                  // 1F38  MOVE.B    (xxx).W,-(A7)
         b       move_b_mem_mem_52
         ori     rtn_addr, code_ptr, move_b_mem_mem_53 - cb  // 1F39  MOVE.B    (xxx).L,-(A7)
@@ -7923,7 +7923,7 @@
         lbzx    data, pc, prefetch_data                 // 1F3A  MOVE.B    (d16,PC),-(A7)
         b       move_b_mem_mem_52
         ori     rtn_addr, code_ptr, move_b_mem_mem_53 - cb  // 1F3B  MOVE.B    (d8,PC,Xn),-(A7)
-        b       fea_b_73
+        b       fea_b_73_2
         stbu    prefetch_data, -2(a7)                   // 1F3C  MOVE.B    #<data>,-(A7)
         b       move_b_imm_any
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 1F3D  MOVE.B    <ea 7.5>,-(A7)   (illegal)
@@ -8031,21 +8031,21 @@
         lbzx    data, a7, prefetch_data                 // 1F6F  MOVE.B    (d16,A7),(d16,A7)
         b       move_b_ea_mem_24
         ori     rtn_addr, code_ptr, move_b_mem_mem_56 - cb  // 1F70  MOVE.B    (d8,A0,Xn),(d16,A7)
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_56 - cb  // 1F71  MOVE.B    (d8,A1,Xn),(d16,A7)
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_56 - cb  // 1F72  MOVE.B    (d8,A2,Xn),(d16,A7)
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_56 - cb  // 1F73  MOVE.B    (d8,A3,Xn),(d16,A7)
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_56 - cb  // 1F74  MOVE.B    (d8,A4,Xn),(d16,A7)
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_56 - cb  // 1F75  MOVE.B    (d8,A5,Xn),(d16,A7)
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_56 - cb  // 1F76  MOVE.B    (d8,A6,Xn),(d16,A7)
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_56 - cb  // 1F77  MOVE.B    (d8,A7,Xn),(d16,A7)
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         lbz     data, 0(prefetch_data)                  // 1F78  MOVE.B    (xxx).W,(d16,A7)
         b       move_b_ea_mem_24
         ori     rtn_addr, code_ptr, move_b_mem_mem_56 - cb  // 1F79  MOVE.B    (xxx).L,(d16,A7)
@@ -8053,7 +8053,7 @@
         lbzx    data, pc, prefetch_data                 // 1F7A  MOVE.B    (d16,PC),(d16,A7)
         b       move_b_ea_mem_24
         ori     rtn_addr, code_ptr, move_b_mem_mem_56 - cb  // 1F7B  MOVE.B    (d8,PC,Xn),(d16,A7)
-        b       fea_b_73
+        b       fea_b_73_2
         clrlwi  data, prefetch_data, 24                 // 1F7C  MOVE.B    #<data>,(d16,A7)
         b       move_b_ea_mem_24
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 1F7D  MOVE.B    <ea 7.5>,(d16,A7)   (illegal)
@@ -8161,21 +8161,21 @@
         lbzx    data, a7, prefetch_data                 // 1FAF  MOVE.B    (d16,A7),(d8,A7,Xn)
         b       move_b_ea_mem_22
         ori     rtn_addr, code_ptr, move_b_mem_mem_54 - cb  // 1FB0  MOVE.B    (d8,A0,Xn),(d8,A7,Xn)
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_54 - cb  // 1FB1  MOVE.B    (d8,A1,Xn),(d8,A7,Xn)
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_54 - cb  // 1FB2  MOVE.B    (d8,A2,Xn),(d8,A7,Xn)
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_54 - cb  // 1FB3  MOVE.B    (d8,A3,Xn),(d8,A7,Xn)
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_54 - cb  // 1FB4  MOVE.B    (d8,A4,Xn),(d8,A7,Xn)
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_54 - cb  // 1FB5  MOVE.B    (d8,A5,Xn),(d8,A7,Xn)
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_54 - cb  // 1FB6  MOVE.B    (d8,A6,Xn),(d8,A7,Xn)
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, move_b_mem_mem_54 - cb  // 1FB7  MOVE.B    (d8,A7,Xn),(d8,A7,Xn)
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         lbz     data, 0(prefetch_data)                  // 1FB8  MOVE.B    (xxx).W,(d8,A7,Xn)
         b       move_b_ea_mem_22
         ori     rtn_addr, code_ptr, move_b_mem_mem_54 - cb  // 1FB9  MOVE.B    (xxx).L,(d8,A7,Xn)
@@ -8183,7 +8183,7 @@
         lbzx    data, pc, prefetch_data                 // 1FBA  MOVE.B    (d16,PC),(d8,A7,Xn)
         b       move_b_ea_mem_22
         ori     rtn_addr, code_ptr, move_b_mem_mem_54 - cb  // 1FBB  MOVE.B    (d8,PC,Xn),(d8,A7,Xn)
-        b       fea_b_73
+        b       fea_b_73_2
         clrlwi  data, prefetch_data, 24                 // 1FBC  MOVE.B    #<data>,(d8,A7,Xn)
         b       move_b_ea_mem_22
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 1FBD  MOVE.B    <ea 7.5>,(d8,A7,Xn)   (illegal)

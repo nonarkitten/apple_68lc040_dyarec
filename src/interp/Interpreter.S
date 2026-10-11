@@ -16370,7 +16370,7 @@ unlk_a5:
 //     CAS.L Dc,Du,(d8,An,Xn)
 //     MOVEM.W <list>,(d8,An,Xn)
 //     ... and 13 more forms
-movem_cas_etc_any_any:
+cea_x_60:
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         lha     immed_data, -2(pc)
 
@@ -16382,7 +16382,7 @@ movem_cas_etc_any_any:
 //     OR.B Dn,(d8,An,Xn)
 //     OR.W Dn,(d8,An,Xn)
 //     ... and 43 more forms
-or_sub_etc_any_any:
+cea_x_60_2:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, a0
         b       L_05E50
@@ -16395,7 +16395,7 @@ or_sub_etc_any_any:
 //     BTST.B #<bit>,(d8,An,Xn)
 //     BCHG.B #<bit>,(d8,An,Xn)
 //     ... and 4 more forms
-or_and_etc_b_imm_mem:
+fea_b_60:
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         lbz     immed_data, -1(pc)
 
@@ -16407,7 +16407,7 @@ or_and_etc_b_imm_mem:
 //     MOVE.B (d8,An,Xn),-(An)
 //     MOVE.B (d8,An,Xn),(d16,An)
 //     ... and 11 more forms
-move_add_etc_b_any_any:
+fea_b_60_2:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, a0
         b       L_05EB0
@@ -16420,7 +16420,7 @@ move_add_etc_b_any_any:
 //     ADDI.W #<data>,(d8,An,Xn)
 //     EORI.W #<data>,(d8,An,Xn)
 //     ... and 1 more forms
-or_chk2_cmp2_etc_ea_any:
+fea_x_60:
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         lha     immed_data, -2(pc)
 
@@ -16432,7 +16432,7 @@ or_chk2_cmp2_etc_ea_any:
 //     MOVE.W (d8,An,Xn),-(An)
 //     MOVE.W (d8,An,Xn),(d16,An)
 //     ... and 28 more forms
-move_add_etc_w_any_any:
+fea_w_60:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, a0
         b       L_05EE0
@@ -16445,7 +16445,7 @@ move_add_etc_w_any_any:
 //     ADDI.L #<data>,(d8,An,Xn)
 //     EORI.L #<data>,(d8,An,Xn)
 //     CMPI.L #<data>,(d8,An,Xn)
-or_and_etc_l_imm_mem:
+fea_l_60:
         lhau    prefetch_data, 4(pc)                    // PREFETCH: pc += 4, load the word there
         lwz     immed_data, -4(pc)
 
@@ -16457,7 +16457,7 @@ or_and_etc_l_imm_mem:
 //     MOVE.L (d8,An,Xn),(d16,An)
 //     MOVE.L (d8,An,Xn),(d8,An,Xn)
 //     ... and 15 more forms
-move_add_etc_l_any_any:
+fea_l_60_2:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, a0
         b       ea_indexed_dispatch
@@ -16471,7 +16471,7 @@ move_add_etc_l_any_any:
 //     CAS.L Dc,Du,(d8,An,Xn)
 //     MOVEM.W <list>,(d8,An,Xn)
 //     ... and 13 more forms
-movem_cas_etc_any_any_2:
+cea_x_61:
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         lha     immed_data, -2(pc)
 
@@ -16483,7 +16483,7 @@ movem_cas_etc_any_any_2:
 //     OR.B Dn,(d8,An,Xn)
 //     OR.W Dn,(d8,An,Xn)
 //     ... and 44 more forms
-or_sub_etc_any_any_2:
+cea_x_61_2:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, a1
         b       L_05E50
@@ -16496,7 +16496,7 @@ or_sub_etc_any_any_2:
 //     BTST.B #<bit>,(d8,An,Xn)
 //     BCHG.B #<bit>,(d8,An,Xn)
 //     ... and 4 more forms
-or_and_etc_b_imm_mem_2:
+fea_b_61:
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         lbz     immed_data, -1(pc)
 
@@ -16508,7 +16508,7 @@ or_and_etc_b_imm_mem_2:
 //     MOVE.B (d8,An,Xn),-(An)
 //     MOVE.B (d8,An,Xn),(d16,An)
 //     ... and 11 more forms
-move_add_etc_b_any_any_2:
+fea_b_61_2:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, a1
         b       L_05EB0
@@ -16521,7 +16521,7 @@ move_add_etc_b_any_any_2:
 //     ADDI.W #<data>,(d8,An,Xn)
 //     EORI.W #<data>,(d8,An,Xn)
 //     ... and 1 more forms
-or_chk2_cmp2_etc_ea_any_2:
+fea_x_61:
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         lha     immed_data, -2(pc)
 
@@ -16533,7 +16533,7 @@ or_chk2_cmp2_etc_ea_any_2:
 //     MOVE.W (d8,An,Xn),-(An)
 //     MOVE.W (d8,An,Xn),(d16,An)
 //     ... and 28 more forms
-move_add_etc_w_any_any_2:
+fea_w_61:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, a1
         b       L_05EE0
@@ -16546,7 +16546,7 @@ move_add_etc_w_any_any_2:
 //     ADDI.L #<data>,(d8,An,Xn)
 //     EORI.L #<data>,(d8,An,Xn)
 //     CMPI.L #<data>,(d8,An,Xn)
-or_and_etc_l_imm_mem_2:
+fea_l_61:
         lhau    prefetch_data, 4(pc)                    // PREFETCH: pc += 4, load the word there
         lwz     immed_data, -4(pc)
 
@@ -16558,7 +16558,7 @@ or_and_etc_l_imm_mem_2:
 //     MOVE.L (d8,An,Xn),-(An)
 //     MOVE.L (d8,An,Xn),(d16,An)
 //     ... and 15 more forms
-move_add_etc_l_any_any_2:
+fea_l_61_2:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, a1
         b       ea_indexed_dispatch
@@ -16572,7 +16572,7 @@ move_add_etc_l_any_any_2:
 //     CAS.L Dc,Du,(d8,An,Xn)
 //     MOVEM.W <list>,(d8,An,Xn)
 //     ... and 13 more forms
-movem_cas_etc_any_any_3:
+cea_x_62:
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         lha     immed_data, -2(pc)
 
@@ -16584,7 +16584,7 @@ movem_cas_etc_any_any_3:
 //     OR.B Dn,(d8,An,Xn)
 //     OR.W Dn,(d8,An,Xn)
 //     ... and 44 more forms
-or_sub_etc_any_any_3:
+cea_x_62_2:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, a2
         b       L_05E50
@@ -16597,7 +16597,7 @@ or_sub_etc_any_any_3:
 //     BTST.B #<bit>,(d8,An,Xn)
 //     BCHG.B #<bit>,(d8,An,Xn)
 //     ... and 4 more forms
-or_and_etc_b_imm_mem_3:
+fea_b_62:
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         lbz     immed_data, -1(pc)
 
@@ -16609,7 +16609,7 @@ or_and_etc_b_imm_mem_3:
 //     MOVE.B (d8,An,Xn),-(An)
 //     MOVE.B (d8,An,Xn),(d16,An)
 //     ... and 11 more forms
-move_add_etc_b_any_any_3:
+fea_b_62_2:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, a2
         b       L_05EB0
@@ -16622,7 +16622,7 @@ move_add_etc_b_any_any_3:
 //     ADDI.W #<data>,(d8,An,Xn)
 //     EORI.W #<data>,(d8,An,Xn)
 //     ... and 1 more forms
-or_chk2_cmp2_etc_ea_any_3:
+fea_x_62:
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         lha     immed_data, -2(pc)
 
@@ -16634,7 +16634,7 @@ or_chk2_cmp2_etc_ea_any_3:
 //     MOVE.W (d8,An,Xn),-(An)
 //     MOVE.W (d8,An,Xn),(d16,An)
 //     ... and 28 more forms
-move_add_etc_w_any_any_3:
+fea_w_62:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, a2
         b       L_05EE0
@@ -16647,7 +16647,7 @@ move_add_etc_w_any_any_3:
 //     ADDI.L #<data>,(d8,An,Xn)
 //     EORI.L #<data>,(d8,An,Xn)
 //     CMPI.L #<data>,(d8,An,Xn)
-or_and_etc_l_imm_mem_3:
+fea_l_62:
         lhau    prefetch_data, 4(pc)                    // PREFETCH: pc += 4, load the word there
         lwz     immed_data, -4(pc)
 
@@ -16659,7 +16659,7 @@ or_and_etc_l_imm_mem_3:
 //     MOVE.L (d8,An,Xn),-(An)
 //     MOVE.L (d8,An,Xn),(d16,An)
 //     ... and 15 more forms
-move_add_etc_l_any_any_3:
+fea_l_62_2:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, a2
         b       ea_indexed_dispatch
@@ -16673,7 +16673,7 @@ move_add_etc_l_any_any_3:
 //     CAS.L Dc,Du,(d8,An,Xn)
 //     MOVEM.W <list>,(d8,An,Xn)
 //     ... and 13 more forms
-movem_cas_etc_any_any_4:
+cea_x_63:
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         lha     immed_data, -2(pc)
 
@@ -16685,7 +16685,7 @@ movem_cas_etc_any_any_4:
 //     OR.B Dn,(d8,An,Xn)
 //     OR.W Dn,(d8,An,Xn)
 //     ... and 44 more forms
-or_sub_etc_any_any_4:
+cea_x_63_2:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, a3
         b       L_05E50
@@ -16698,7 +16698,7 @@ or_sub_etc_any_any_4:
 //     BTST.B #<bit>,(d8,An,Xn)
 //     BCHG.B #<bit>,(d8,An,Xn)
 //     ... and 4 more forms
-or_and_etc_b_imm_mem_4:
+fea_b_63:
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         lbz     immed_data, -1(pc)
 
@@ -16710,7 +16710,7 @@ or_and_etc_b_imm_mem_4:
 //     MOVE.B (d8,An,Xn),-(An)
 //     MOVE.B (d8,An,Xn),(d16,An)
 //     ... and 11 more forms
-move_add_etc_b_any_any_4:
+fea_b_63_2:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, a3
         b       L_05EB0
@@ -16723,7 +16723,7 @@ move_add_etc_b_any_any_4:
 //     ADDI.W #<data>,(d8,An,Xn)
 //     EORI.W #<data>,(d8,An,Xn)
 //     ... and 1 more forms
-or_chk2_cmp2_etc_ea_any_4:
+fea_x_63:
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         lha     immed_data, -2(pc)
 
@@ -16735,7 +16735,7 @@ or_chk2_cmp2_etc_ea_any_4:
 //     MOVE.W (d8,An,Xn),-(An)
 //     MOVE.W (d8,An,Xn),(d16,An)
 //     ... and 28 more forms
-move_add_etc_w_any_any_4:
+fea_w_63:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, a3
         b       L_05EE0
@@ -16748,7 +16748,7 @@ move_add_etc_w_any_any_4:
 //     ADDI.L #<data>,(d8,An,Xn)
 //     EORI.L #<data>,(d8,An,Xn)
 //     CMPI.L #<data>,(d8,An,Xn)
-or_and_etc_l_imm_mem_4:
+fea_l_63:
         lhau    prefetch_data, 4(pc)                    // PREFETCH: pc += 4, load the word there
         lwz     immed_data, -4(pc)
 
@@ -16760,7 +16760,7 @@ or_and_etc_l_imm_mem_4:
 //     MOVE.L (d8,An,Xn),-(An)
 //     MOVE.L (d8,An,Xn),(d16,An)
 //     ... and 15 more forms
-move_add_etc_l_any_any_4:
+fea_l_63_2:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, a3
         b       ea_indexed_dispatch
@@ -16774,7 +16774,7 @@ move_add_etc_l_any_any_4:
 //     CAS.L Dc,Du,(d8,An,Xn)
 //     MOVEM.W <list>,(d8,An,Xn)
 //     ... and 13 more forms
-movem_cas_etc_any_any_5:
+cea_x_64:
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         lha     immed_data, -2(pc)
 
@@ -16786,7 +16786,7 @@ movem_cas_etc_any_any_5:
 //     OR.B Dn,(d8,An,Xn)
 //     OR.W Dn,(d8,An,Xn)
 //     ... and 43 more forms
-or_sub_etc_any_any_5:
+cea_x_64_2:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, a4
         b       L_05E50
@@ -16799,7 +16799,7 @@ or_sub_etc_any_any_5:
 //     BTST.B #<bit>,(d8,An,Xn)
 //     BCHG.B #<bit>,(d8,An,Xn)
 //     ... and 4 more forms
-or_and_etc_b_imm_mem_5:
+fea_b_64:
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         lbz     immed_data, -1(pc)
 
@@ -16811,7 +16811,7 @@ or_and_etc_b_imm_mem_5:
 //     MOVE.B (d8,An,Xn),-(An)
 //     MOVE.B (d8,An,Xn),(d16,An)
 //     ... and 11 more forms
-move_add_etc_b_any_any_5:
+fea_b_64_2:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, a4
         b       L_05EB0
@@ -16824,7 +16824,7 @@ move_add_etc_b_any_any_5:
 //     ADDI.W #<data>,(d8,An,Xn)
 //     EORI.W #<data>,(d8,An,Xn)
 //     ... and 1 more forms
-or_chk2_cmp2_etc_ea_any_5:
+fea_x_64:
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         lha     immed_data, -2(pc)
 
@@ -16836,7 +16836,7 @@ or_chk2_cmp2_etc_ea_any_5:
 //     MOVE.W (d8,An,Xn),-(An)
 //     MOVE.W (d8,An,Xn),(d16,An)
 //     ... and 28 more forms
-move_add_etc_w_any_any_5:
+fea_w_64:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, a4
         b       L_05EE0
@@ -16849,7 +16849,7 @@ move_add_etc_w_any_any_5:
 //     ADDI.L #<data>,(d8,An,Xn)
 //     EORI.L #<data>,(d8,An,Xn)
 //     CMPI.L #<data>,(d8,An,Xn)
-or_and_etc_l_imm_mem_5:
+fea_l_64:
         lhau    prefetch_data, 4(pc)                    // PREFETCH: pc += 4, load the word there
         lwz     immed_data, -4(pc)
 
@@ -16861,7 +16861,7 @@ or_and_etc_l_imm_mem_5:
 //     MOVE.L (d8,An,Xn),-(An)
 //     MOVE.L (d8,An,Xn),(d16,An)
 //     ... and 15 more forms
-move_add_etc_l_any_any_5:
+fea_l_64_2:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, a4
         b       ea_indexed_dispatch
@@ -16875,7 +16875,7 @@ move_add_etc_l_any_any_5:
 //     CAS.L Dc,Du,(d8,An,Xn)
 //     MOVEM.W <list>,(d8,An,Xn)
 //     ... and 13 more forms
-movem_cas_etc_any_any_6:
+cea_x_65:
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         lha     immed_data, -2(pc)
 
@@ -16887,7 +16887,7 @@ movem_cas_etc_any_any_6:
 //     OR.B Dn,(d8,An,Xn)
 //     OR.W Dn,(d8,An,Xn)
 //     ... and 44 more forms
-or_sub_etc_any_any_6:
+cea_x_65_2:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, a5
         b       L_05E50
@@ -16900,7 +16900,7 @@ or_sub_etc_any_any_6:
 //     BTST.B #<bit>,(d8,An,Xn)
 //     BCHG.B #<bit>,(d8,An,Xn)
 //     ... and 4 more forms
-or_and_etc_b_imm_mem_6:
+fea_b_65:
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         lbz     immed_data, -1(pc)
 
@@ -16912,7 +16912,7 @@ or_and_etc_b_imm_mem_6:
 //     MOVE.B (d8,An,Xn),-(An)
 //     MOVE.B (d8,An,Xn),(d16,An)
 //     ... and 11 more forms
-move_add_etc_b_any_any_6:
+fea_b_65_2:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, a5
         b       L_05EB0
@@ -16925,7 +16925,7 @@ move_add_etc_b_any_any_6:
 //     ADDI.W #<data>,(d8,An,Xn)
 //     EORI.W #<data>,(d8,An,Xn)
 //     ... and 1 more forms
-or_chk2_cmp2_etc_ea_any_6:
+fea_x_65:
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         lha     immed_data, -2(pc)
 
@@ -16937,7 +16937,7 @@ or_chk2_cmp2_etc_ea_any_6:
 //     MOVE.W (d8,An,Xn),-(An)
 //     MOVE.W (d8,An,Xn),(d16,An)
 //     ... and 28 more forms
-move_add_etc_w_any_any_6:
+fea_w_65:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, a5
         b       L_05EE0
@@ -16950,7 +16950,7 @@ move_add_etc_w_any_any_6:
 //     ADDI.L #<data>,(d8,An,Xn)
 //     EORI.L #<data>,(d8,An,Xn)
 //     CMPI.L #<data>,(d8,An,Xn)
-or_and_etc_l_imm_mem_6:
+fea_l_65:
         lhau    prefetch_data, 4(pc)                    // PREFETCH: pc += 4, load the word there
         lwz     immed_data, -4(pc)
 
@@ -16962,7 +16962,7 @@ or_and_etc_l_imm_mem_6:
 //     MOVE.L (d8,An,Xn),-(An)
 //     MOVE.L (d8,An,Xn),(d16,An)
 //     ... and 15 more forms
-move_add_etc_l_any_any_6:
+fea_l_65_2:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, a5
         b       ea_indexed_dispatch
@@ -16976,7 +16976,7 @@ move_add_etc_l_any_any_6:
 //     CAS.L Dc,Du,(d8,An,Xn)
 //     MOVEM.W <list>,(d8,An,Xn)
 //     ... and 13 more forms
-movem_cas_etc_any_any_7:
+cea_x_66:
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         lha     immed_data, -2(pc)
 
@@ -16988,7 +16988,7 @@ movem_cas_etc_any_any_7:
 //     OR.B Dn,(d8,An,Xn)
 //     OR.W Dn,(d8,An,Xn)
 //     ... and 44 more forms
-or_sub_etc_any_any_7:
+cea_x_66_2:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, a6
         b       L_05E50
@@ -17001,7 +17001,7 @@ or_sub_etc_any_any_7:
 //     BTST.B #<bit>,(d8,An,Xn)
 //     BCHG.B #<bit>,(d8,An,Xn)
 //     ... and 4 more forms
-or_and_etc_b_imm_mem_7:
+fea_b_66:
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         lbz     immed_data, -1(pc)
 
@@ -17013,7 +17013,7 @@ or_and_etc_b_imm_mem_7:
 //     MOVE.B (d8,An,Xn),-(An)
 //     MOVE.B (d8,An,Xn),(d16,An)
 //     ... and 11 more forms
-move_add_etc_b_any_any_7:
+fea_b_66_2:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, a6
         b       L_05EB0
@@ -17026,7 +17026,7 @@ move_add_etc_b_any_any_7:
 //     ADDI.W #<data>,(d8,An,Xn)
 //     EORI.W #<data>,(d8,An,Xn)
 //     ... and 1 more forms
-or_chk2_cmp2_etc_ea_any_7:
+fea_x_66:
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         lha     immed_data, -2(pc)
 
@@ -17038,7 +17038,7 @@ or_chk2_cmp2_etc_ea_any_7:
 //     MOVE.W (d8,An,Xn),-(An)
 //     MOVE.W (d8,An,Xn),(d16,An)
 //     ... and 28 more forms
-move_add_etc_w_any_any_7:
+fea_w_66:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, a6
         b       L_05EE0
@@ -17051,7 +17051,7 @@ move_add_etc_w_any_any_7:
 //     ADDI.L #<data>,(d8,An,Xn)
 //     EORI.L #<data>,(d8,An,Xn)
 //     CMPI.L #<data>,(d8,An,Xn)
-or_and_etc_l_imm_mem_7:
+fea_l_66:
         lhau    prefetch_data, 4(pc)                    // PREFETCH: pc += 4, load the word there
         lwz     immed_data, -4(pc)
 
@@ -17063,7 +17063,7 @@ or_and_etc_l_imm_mem_7:
 //     MOVE.L (d8,An,Xn),-(An)
 //     MOVE.L (d8,An,Xn),(d16,An)
 //     ... and 15 more forms
-move_add_etc_l_any_any_7:
+fea_l_66_2:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, a6
         b       ea_indexed_dispatch
@@ -17077,7 +17077,7 @@ move_add_etc_l_any_any_7:
 //     CAS.L Dc,Du,(d8,An,Xn)
 //     MOVEM.W <list>,(d8,An,Xn)
 //     ... and 13 more forms
-movem_cas_etc_any_any_8:
+cea_x_67:
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         lha     immed_data, -2(pc)
 
@@ -17089,7 +17089,7 @@ movem_cas_etc_any_any_8:
 //     OR.B Dn,(d8,An,Xn)
 //     OR.W Dn,(d8,An,Xn)
 //     ... and 44 more forms
-or_sub_etc_any_any_8:
+cea_x_67_2:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, a7
         b       L_05E50
@@ -17102,7 +17102,7 @@ or_sub_etc_any_any_8:
 //     BTST.B #<bit>,(d8,An,Xn)
 //     BCHG.B #<bit>,(d8,An,Xn)
 //     ... and 4 more forms
-or_and_etc_b_imm_mem_8:
+fea_b_67:
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         lbz     immed_data, -1(pc)
 
@@ -17114,7 +17114,7 @@ or_and_etc_b_imm_mem_8:
 //     MOVE.B (d8,An,Xn),-(An)
 //     MOVE.B (d8,An,Xn),(d16,An)
 //     ... and 11 more forms
-move_add_etc_b_any_any_8:
+fea_b_67_2:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, a7
         b       L_05EB0
@@ -17127,7 +17127,7 @@ move_add_etc_b_any_any_8:
 //     ADDI.W #<data>,(d8,An,Xn)
 //     EORI.W #<data>,(d8,An,Xn)
 //     ... and 1 more forms
-or_chk2_cmp2_etc_ea_any_8:
+fea_x_67:
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         lha     immed_data, -2(pc)
 
@@ -17139,7 +17139,7 @@ or_chk2_cmp2_etc_ea_any_8:
 //     MOVE.W (d8,An,Xn),-(An)
 //     MOVE.W (d8,An,Xn),(d16,An)
 //     ... and 28 more forms
-move_add_etc_w_any_any_8:
+fea_w_67:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, a7
         b       L_05EE0
@@ -17152,7 +17152,7 @@ move_add_etc_w_any_any_8:
 //     ADDI.L #<data>,(d8,An,Xn)
 //     EORI.L #<data>,(d8,An,Xn)
 //     CMPI.L #<data>,(d8,An,Xn)
-or_and_etc_l_imm_mem_8:
+fea_l_67:
         lhau    prefetch_data, 4(pc)                    // PREFETCH: pc += 4, load the word there
         lwz     immed_data, -4(pc)
 
@@ -17164,7 +17164,7 @@ or_and_etc_l_imm_mem_8:
 //     MOVE.L (d8,An,Xn),-(An)
 //     MOVE.L (d8,An,Xn),(d16,An)
 //     ... and 15 more forms
-move_add_etc_l_any_any_8:
+fea_l_67_2:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, a7
         b       ea_indexed_dispatch
@@ -17458,7 +17458,7 @@ fea_b_71_2:
 //     MOVEM.W (d8,PC,Xn),<list>
 //     MOVEM.L (d8,PC,Xn),<list>
 //     ... and 4 more forms
-chk2_cmp2_movem_etc_mem_any:
+cea_x_73:
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         lha     immed_data, -2(pc)
 
@@ -17467,7 +17467,7 @@ chk2_cmp2_movem_etc_mem_any:
 //     PEA (d8,PC,Xn)
 //     JSR (d8,PC,Xn)
 //     JMP (d8,PC,Xn)
-cea_x_73:
+cea_x_73_2:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, pc
 L_05E50:
@@ -17534,7 +17534,7 @@ fea_l_71_2:
 // Reached from 2 dispatch table entries:
 //     BTST.B #<bit>,(d8,PC,Xn)
 //     CMPI.B #<data>,(d8,PC,Xn)
-btst_cmp_b_imm_mem:
+fea_b_73:
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         lbz     immed_data, -1(pc)
 
@@ -17546,7 +17546,7 @@ btst_cmp_b_imm_mem:
 //     MOVE.B (d8,PC,Xn),-(An)
 //     MOVE.B (d8,PC,Xn),(d16,An)
 //     ... and 9 more forms
-fea_b_73:
+fea_b_73_2:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, pc
 L_05EB0:
@@ -17562,7 +17562,7 @@ L_05EB0:
 // Reached from 2 dispatch table entries:
 //     CHK2/CMP2.B (d8,PC,Xn),Rn
 //     CMPI.W #<data>,(d8,PC,Xn)
-chk2_cmp2_cmp_ea_any:
+fea_x_73:
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         lha     immed_data, -2(pc)
 
@@ -17589,7 +17589,7 @@ L_05EE0:
 
 // Reached from 1 dispatch table entry:
 //     CMPI.L #<data>,(d8,PC,Xn)
-cmpi_l_imm_mem:
+fea_l_73:
         lhau    prefetch_data, 4(pc)                    // PREFETCH: pc += 4, load the word there
         lwz     immed_data, -4(pc)
 
@@ -17601,7 +17601,7 @@ cmpi_l_imm_mem:
 //     MOVE.L (d8,PC,Xn),-(An)
 //     MOVE.L (d8,PC,Xn),(d16,An)
 //     ... and 13 more forms
-fea_l_73:
+fea_l_73_2:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, pc
 
@@ -18353,7 +18353,7 @@ cmp_w_imm_dn:
 //     CMPA.L #<data>,An
 // Continuation (via rtn_addr) of 8 dispatch table entries:
 //     CMPI.L #<data>,(An)+
-cmpi_l_imm_mem_2:
+cmpi_l_imm_mem:
         lhau    prefetch_data, 4(pc)                    // PREFETCH: pc += 4, load the word there
         lwz     immed_data, -4(pc)
 
@@ -18361,7 +18361,7 @@ cmpi_l_imm_mem_2:
 //     CMPI.L #<data>,(d8,An,Xn)
 //     CMPI.L #<data>,(xxx).L
 //     CMPI.L #<data>,(d8,PC,Xn)
-cmpi_l_imm_mem_3:
+cmpi_l_imm_mem_2:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // DECODE1: disp_table[18:3] = opcode in prefetch_data
 L_0644C:
         mtlr    disp_table                              // DECODE2: LR = address of the next dispatch entry
@@ -18375,12 +18375,12 @@ L_0644C:
 //     CMPI.L #<data>,(d16,An)
 //     CMPI.L #<data>,(xxx).W
 //     CMPI.L #<data>,(d16,PC)
-cmpi_l_imm_mem_4:
+cmpi_l_imm_mem_3:
         lha     base_disp, 4(pc)
         lhau    prefetch_data, 6(pc)
         lwz     immed_data, -6(pc)
         lwzx    data, addr, base_disp
-        b       cmpi_l_imm_mem_3
+        b       cmpi_l_imm_mem_2
         ALIGN(64)
 L_06480:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // DECODE1: disp_table[18:3] = opcode in prefetch_data
@@ -23044,7 +23044,7 @@ jsr_mem_4:
         b       jsr_mem_2
 L_094D4:
         ori     rtn_addr, code_ptr, jsr_mem_2 - cb
-        b       or_sub_etc_any_any
+        b       cea_x_60_2
         ALIGN(32)
 
 // Reached from 1 dispatch table entry:
@@ -23070,7 +23070,7 @@ L_09504:
         b       process_special_event
 L_09524:
         ori     rtn_addr, code_ptr, move_l_ea_mem_16 - cb
-        b       move_add_etc_l_any_any
+        b       fea_l_60_2
         b       move_l_mem_mem_50
         ALIGN(64)
 
@@ -23117,13 +23117,13 @@ jmp_mem_3:
         b       jmp_mem_2
 L_095C0:
         ori     rtn_addr, code_ptr, jmp_mem - cb
-        b       or_sub_etc_any_any_5
-        b       aline
+        b       cea_x_64_2
+        b       aline_os_trap_alt
         ALIGN(32)
 
 // Reached from 1024 dispatch table entries:
 //     A-LINE $Axxx
-aline:
+aline_os_trap_alt:
         lwz     rtn_addr, 40(vbr)
         rlwinm  base_disp, disp_table, 31, 22, 29       // base_disp = disp_table[10:3] << 2
         cmplw   cr7, addr, rtn_addr
@@ -23149,12 +23149,29 @@ aline:
         btctr   cr_dr_active
         bflr_likely cr_special_event_pending            // DISPATCH unless a special event is pending
         b       process_special_event
-        b       aline_2
+        b       aline_os_trap
         ALIGN(32)
 
+// ===========================================================================
+// Line 1010 (Mac OS trap) dispatch
+// ===========================================================================
+// Every line-A opcode comes to one of four routines, with addr holding
+// the trap dispatcher address the
+// emulator expects to find in the line-A exception vector.  If the vector
+// at 40(vbr) still holds that address, the trap is dispatched here: the
+// routine address is read from the trap table in 68K low memory and the
+// registers are saved on the 68K stack as the standard dispatcher would
+// have done.  If the vector has been changed, the exception is taken in
+// the ordinary way through aline_handler.
+//
+// Operating system traps (A000-A7FF) go to aline_os_trap when opcode bit
+// 8 is clear and aline_os_trap_alt when it is set.  Toolbox traps go to
+// aline_toolbox_trap (A800-ABFF) or, with the auto-pop bit set,
+// aline_toolbox_trap_autopop (AC00-AFFF).
+//
 // Reached from 1024 dispatch table entries:
 //     A-LINE $Axxx
-aline_2:
+aline_os_trap:
         lwz     rtn_addr, 40(vbr)
         rlwinm  base_disp, disp_table, 31, 22, 29       // base_disp = disp_table[10:3] << 2
         cmplw   cr7, addr, rtn_addr
@@ -23206,7 +23223,7 @@ fline:
 
 // Reached from 1024 dispatch table entries:
 //     A-LINE $Axxx
-aline_3:
+aline_toolbox_trap:
         lwz     rtn_addr, 40(vbr)
         rlwinm  base_disp, disp_table, 31, 20, 29       // base_disp = disp_table[12:3] << 2
         cmplw   cr7, addr, rtn_addr
@@ -23225,12 +23242,12 @@ aline_3:
         btctr   cr_dr_active
         bflr_likely cr_special_event_pending            // DISPATCH unless a special event is pending
         b       process_special_event
-        b       aline_4
+        b       aline_toolbox_trap_autopop
         ALIGN(64)
 
 // Reached from 1024 dispatch table entries:
 //     A-LINE $Axxx
-aline_4:
+aline_toolbox_trap_autopop:
         lwz     rtn_addr, 40(vbr)
         rlwinm  base_disp, disp_table, 31, 20, 29       // base_disp = disp_table[12:3] << 2
         cmplw   cr7, addr, rtn_addr

@@ -135,3 +135,24 @@
 0E9D4 V = C = 0
 
 @0EA00 interpreter_credits
+
+@09660 aline_os_trap
+    ===========================================================================
+    Line 1010 (Mac OS trap) dispatch
+    ===========================================================================
+    Every line-A opcode comes to one of four routines, with addr holding
+    the trap dispatcher address the
+    emulator expects to find in the line-A exception vector.  If the vector
+    at 40(vbr) still holds that address, the trap is dispatched here: the
+    routine address is read from the trap table in 68K low memory and the
+    registers are saved on the 68K stack as the standard dispatcher would
+    have done.  If the vector has been changed, the exception is taken in
+    the ordinary way through aline_handler.
+    .
+    Operating system traps (A000-A7FF) go to aline_os_trap when opcode bit
+    8 is clear and aline_os_trap_alt when it is set.  Toolbox traps go to
+    aline_toolbox_trap (A800-ABFF) or, with the auto-pop bit set,
+    aline_toolbox_trap_autopop (AC00-AFFF).
+@095E0 aline_os_trap_alt
+@09720 aline_toolbox_trap
+@09780 aline_toolbox_trap_autopop

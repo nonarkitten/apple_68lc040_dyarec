@@ -101,21 +101,21 @@
         lhax    data, a7, prefetch_data                 // 302F  MOVE.W    (d16,A7),D0
         b       move_w_mem_d0
         ori     rtn_addr, code_ptr, move_w_mem_d0_2 - cb  // 3030  MOVE.W    (d8,A0,Xn),D0
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, move_w_mem_d0_2 - cb  // 3031  MOVE.W    (d8,A1,Xn),D0
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, move_w_mem_d0_2 - cb  // 3032  MOVE.W    (d8,A2,Xn),D0
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, move_w_mem_d0_2 - cb  // 3033  MOVE.W    (d8,A3,Xn),D0
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, move_w_mem_d0_2 - cb  // 3034  MOVE.W    (d8,A4,Xn),D0
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, move_w_mem_d0_2 - cb  // 3035  MOVE.W    (d8,A5,Xn),D0
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, move_w_mem_d0_2 - cb  // 3036  MOVE.W    (d8,A6,Xn),D0
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, move_w_mem_d0_2 - cb  // 3037  MOVE.W    (d8,A7,Xn),D0
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 3038  MOVE.W    (xxx).W,D0
         b       move_w_mem_d0
         ori     rtn_addr, code_ptr, move_w_mem_d0_2 - cb  // 3039  MOVE.W    (xxx).L,D0
@@ -231,21 +231,21 @@
         lhax    a0, a7, prefetch_data                   // 306F  MOVEA.W   (d16,A7),A0
         b       fetch_skip_word
         ori     rtn_addr, code_ptr, movea_mem_a0 - cb   // 3070  MOVEA.W   (d8,A0,Xn),A0
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, movea_mem_a0 - cb   // 3071  MOVEA.W   (d8,A1,Xn),A0
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, movea_mem_a0 - cb   // 3072  MOVEA.W   (d8,A2,Xn),A0
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, movea_mem_a0 - cb   // 3073  MOVEA.W   (d8,A3,Xn),A0
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, movea_mem_a0 - cb   // 3074  MOVEA.W   (d8,A4,Xn),A0
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, movea_mem_a0 - cb   // 3075  MOVEA.W   (d8,A5,Xn),A0
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, movea_mem_a0 - cb   // 3076  MOVEA.W   (d8,A6,Xn),A0
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, movea_mem_a0 - cb   // 3077  MOVEA.W   (d8,A7,Xn),A0
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     a0, 0(prefetch_data)                    // 3078  MOVEA.W   (xxx).W,A0
         b       fetch_skip_word
         ori     rtn_addr, code_ptr, movea_mem_a0 - cb   // 3079  MOVEA.W   (xxx).L,A0
@@ -361,21 +361,21 @@
         lhax    data, a7, prefetch_data                 // 30AF  MOVE.W    (d16,A7),(A0)
         b       move_w_mem_mem
         ori     rtn_addr, code_ptr, move_w_mem_mem_2 - cb  // 30B0  MOVE.W    (d8,A0,Xn),(A0)
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, move_w_mem_mem_2 - cb  // 30B1  MOVE.W    (d8,A1,Xn),(A0)
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, move_w_mem_mem_2 - cb  // 30B2  MOVE.W    (d8,A2,Xn),(A0)
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, move_w_mem_mem_2 - cb  // 30B3  MOVE.W    (d8,A3,Xn),(A0)
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, move_w_mem_mem_2 - cb  // 30B4  MOVE.W    (d8,A4,Xn),(A0)
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, move_w_mem_mem_2 - cb  // 30B5  MOVE.W    (d8,A5,Xn),(A0)
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, move_w_mem_mem_2 - cb  // 30B6  MOVE.W    (d8,A6,Xn),(A0)
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, move_w_mem_mem_2 - cb  // 30B7  MOVE.W    (d8,A7,Xn),(A0)
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 30B8  MOVE.W    (xxx).W,(A0)
         b       move_w_mem_mem
         ori     rtn_addr, code_ptr, move_w_mem_mem_2 - cb  // 30B9  MOVE.W    (xxx).L,(A0)
@@ -491,21 +491,21 @@
         lhax    data, a7, prefetch_data                 // 30EF  MOVE.W    (d16,A7),(A0)+
         b       move_w_ea_mem
         ori     rtn_addr, code_ptr, move_w_mem_mem_33 - cb  // 30F0  MOVE.W    (d8,A0,Xn),(A0)+
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, move_w_mem_mem_33 - cb  // 30F1  MOVE.W    (d8,A1,Xn),(A0)+
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, move_w_mem_mem_33 - cb  // 30F2  MOVE.W    (d8,A2,Xn),(A0)+
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, move_w_mem_mem_33 - cb  // 30F3  MOVE.W    (d8,A3,Xn),(A0)+
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, move_w_mem_mem_33 - cb  // 30F4  MOVE.W    (d8,A4,Xn),(A0)+
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, move_w_mem_mem_33 - cb  // 30F5  MOVE.W    (d8,A5,Xn),(A0)+
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, move_w_mem_mem_33 - cb  // 30F6  MOVE.W    (d8,A6,Xn),(A0)+
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, move_w_mem_mem_33 - cb  // 30F7  MOVE.W    (d8,A7,Xn),(A0)+
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 30F8  MOVE.W    (xxx).W,(A0)+
         b       move_w_ea_mem
         ori     rtn_addr, code_ptr, move_w_mem_mem_33 - cb  // 30F9  MOVE.W    (xxx).L,(A0)+
@@ -621,21 +621,21 @@
         lhax    data, a7, prefetch_data                 // 312F  MOVE.W    (d16,A7),-(A0)
         b       move_w_mem_mem_17
         ori     rtn_addr, code_ptr, move_w_mem_mem_18 - cb  // 3130  MOVE.W    (d8,A0,Xn),-(A0)
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, move_w_mem_mem_18 - cb  // 3131  MOVE.W    (d8,A1,Xn),-(A0)
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, move_w_mem_mem_18 - cb  // 3132  MOVE.W    (d8,A2,Xn),-(A0)
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, move_w_mem_mem_18 - cb  // 3133  MOVE.W    (d8,A3,Xn),-(A0)
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, move_w_mem_mem_18 - cb  // 3134  MOVE.W    (d8,A4,Xn),-(A0)
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, move_w_mem_mem_18 - cb  // 3135  MOVE.W    (d8,A5,Xn),-(A0)
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, move_w_mem_mem_18 - cb  // 3136  MOVE.W    (d8,A6,Xn),-(A0)
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, move_w_mem_mem_18 - cb  // 3137  MOVE.W    (d8,A7,Xn),-(A0)
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 3138  MOVE.W    (xxx).W,-(A0)
         b       move_w_mem_mem_17
         ori     rtn_addr, code_ptr, move_w_mem_mem_18 - cb  // 3139  MOVE.W    (xxx).L,-(A0)
@@ -751,21 +751,21 @@
         lhax    data, a7, prefetch_data                 // 316F  MOVE.W    (d16,A7),(d16,A0)
         b       move_w_ea_mem_2
         ori     rtn_addr, code_ptr, move_w_mem_mem_34 - cb  // 3170  MOVE.W    (d8,A0,Xn),(d16,A0)
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, move_w_mem_mem_34 - cb  // 3171  MOVE.W    (d8,A1,Xn),(d16,A0)
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, move_w_mem_mem_34 - cb  // 3172  MOVE.W    (d8,A2,Xn),(d16,A0)
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, move_w_mem_mem_34 - cb  // 3173  MOVE.W    (d8,A3,Xn),(d16,A0)
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, move_w_mem_mem_34 - cb  // 3174  MOVE.W    (d8,A4,Xn),(d16,A0)
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, move_w_mem_mem_34 - cb  // 3175  MOVE.W    (d8,A5,Xn),(d16,A0)
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, move_w_mem_mem_34 - cb  // 3176  MOVE.W    (d8,A6,Xn),(d16,A0)
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, move_w_mem_mem_34 - cb  // 3177  MOVE.W    (d8,A7,Xn),(d16,A0)
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 3178  MOVE.W    (xxx).W,(d16,A0)
         b       move_w_ea_mem_2
         ori     rtn_addr, code_ptr, move_w_mem_mem_34 - cb  // 3179  MOVE.W    (xxx).L,(d16,A0)
@@ -881,21 +881,21 @@
         lhax    data, a7, prefetch_data                 // 31AF  MOVE.W    (d16,A7),(d8,A0,Xn)
         b       move_w_ea_mem_3
         ori     rtn_addr, code_ptr, move_w_mem_mem_35 - cb  // 31B0  MOVE.W    (d8,A0,Xn),(d8,A0,Xn)
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, move_w_mem_mem_35 - cb  // 31B1  MOVE.W    (d8,A1,Xn),(d8,A0,Xn)
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, move_w_mem_mem_35 - cb  // 31B2  MOVE.W    (d8,A2,Xn),(d8,A0,Xn)
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, move_w_mem_mem_35 - cb  // 31B3  MOVE.W    (d8,A3,Xn),(d8,A0,Xn)
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, move_w_mem_mem_35 - cb  // 31B4  MOVE.W    (d8,A4,Xn),(d8,A0,Xn)
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, move_w_mem_mem_35 - cb  // 31B5  MOVE.W    (d8,A5,Xn),(d8,A0,Xn)
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, move_w_mem_mem_35 - cb  // 31B6  MOVE.W    (d8,A6,Xn),(d8,A0,Xn)
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, move_w_mem_mem_35 - cb  // 31B7  MOVE.W    (d8,A7,Xn),(d8,A0,Xn)
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 31B8  MOVE.W    (xxx).W,(d8,A0,Xn)
         b       move_w_ea_mem_3
         ori     rtn_addr, code_ptr, move_w_mem_mem_35 - cb  // 31B9  MOVE.W    (xxx).L,(d8,A0,Xn)
@@ -1011,21 +1011,21 @@
         lhax    data, a7, prefetch_data                 // 31EF  MOVE.W    (d16,A7),(xxx).W
         b       move_w_ea_mem_25
         ori     rtn_addr, code_ptr, move_w_mem_mem_57 - cb  // 31F0  MOVE.W    (d8,A0,Xn),(xxx).W
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, move_w_mem_mem_57 - cb  // 31F1  MOVE.W    (d8,A1,Xn),(xxx).W
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, move_w_mem_mem_57 - cb  // 31F2  MOVE.W    (d8,A2,Xn),(xxx).W
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, move_w_mem_mem_57 - cb  // 31F3  MOVE.W    (d8,A3,Xn),(xxx).W
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, move_w_mem_mem_57 - cb  // 31F4  MOVE.W    (d8,A4,Xn),(xxx).W
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, move_w_mem_mem_57 - cb  // 31F5  MOVE.W    (d8,A5,Xn),(xxx).W
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, move_w_mem_mem_57 - cb  // 31F6  MOVE.W    (d8,A6,Xn),(xxx).W
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, move_w_mem_mem_57 - cb  // 31F7  MOVE.W    (d8,A7,Xn),(xxx).W
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 31F8  MOVE.W    (xxx).W,(xxx).W
         b       move_w_ea_mem_25
         ori     rtn_addr, code_ptr, move_w_mem_mem_57 - cb  // 31F9  MOVE.W    (xxx).L,(xxx).W
@@ -1141,21 +1141,21 @@
         lhax    data, a7, prefetch_data                 // 322F  MOVE.W    (d16,A7),D1
         b       move_w_mem_d1
         ori     rtn_addr, code_ptr, move_w_mem_d1_2 - cb  // 3230  MOVE.W    (d8,A0,Xn),D1
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, move_w_mem_d1_2 - cb  // 3231  MOVE.W    (d8,A1,Xn),D1
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, move_w_mem_d1_2 - cb  // 3232  MOVE.W    (d8,A2,Xn),D1
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, move_w_mem_d1_2 - cb  // 3233  MOVE.W    (d8,A3,Xn),D1
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, move_w_mem_d1_2 - cb  // 3234  MOVE.W    (d8,A4,Xn),D1
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, move_w_mem_d1_2 - cb  // 3235  MOVE.W    (d8,A5,Xn),D1
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, move_w_mem_d1_2 - cb  // 3236  MOVE.W    (d8,A6,Xn),D1
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, move_w_mem_d1_2 - cb  // 3237  MOVE.W    (d8,A7,Xn),D1
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 3238  MOVE.W    (xxx).W,D1
         b       move_w_mem_d1
         ori     rtn_addr, code_ptr, move_w_mem_d1_2 - cb  // 3239  MOVE.W    (xxx).L,D1
@@ -1271,21 +1271,21 @@
         lhax    a1, a7, prefetch_data                   // 326F  MOVEA.W   (d16,A7),A1
         b       fetch_skip_word
         ori     rtn_addr, code_ptr, movea_mem_a1 - cb   // 3270  MOVEA.W   (d8,A0,Xn),A1
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, movea_mem_a1 - cb   // 3271  MOVEA.W   (d8,A1,Xn),A1
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, movea_mem_a1 - cb   // 3272  MOVEA.W   (d8,A2,Xn),A1
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, movea_mem_a1 - cb   // 3273  MOVEA.W   (d8,A3,Xn),A1
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, movea_mem_a1 - cb   // 3274  MOVEA.W   (d8,A4,Xn),A1
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, movea_mem_a1 - cb   // 3275  MOVEA.W   (d8,A5,Xn),A1
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, movea_mem_a1 - cb   // 3276  MOVEA.W   (d8,A6,Xn),A1
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, movea_mem_a1 - cb   // 3277  MOVEA.W   (d8,A7,Xn),A1
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     a1, 0(prefetch_data)                    // 3278  MOVEA.W   (xxx).W,A1
         b       fetch_skip_word
         ori     rtn_addr, code_ptr, movea_mem_a1 - cb   // 3279  MOVEA.W   (xxx).L,A1
@@ -1401,21 +1401,21 @@
         lhax    data, a7, prefetch_data                 // 32AF  MOVE.W    (d16,A7),(A1)
         b       move_w_mem_mem_3
         ori     rtn_addr, code_ptr, move_w_mem_mem_4 - cb  // 32B0  MOVE.W    (d8,A0,Xn),(A1)
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, move_w_mem_mem_4 - cb  // 32B1  MOVE.W    (d8,A1,Xn),(A1)
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, move_w_mem_mem_4 - cb  // 32B2  MOVE.W    (d8,A2,Xn),(A1)
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, move_w_mem_mem_4 - cb  // 32B3  MOVE.W    (d8,A3,Xn),(A1)
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, move_w_mem_mem_4 - cb  // 32B4  MOVE.W    (d8,A4,Xn),(A1)
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, move_w_mem_mem_4 - cb  // 32B5  MOVE.W    (d8,A5,Xn),(A1)
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, move_w_mem_mem_4 - cb  // 32B6  MOVE.W    (d8,A6,Xn),(A1)
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, move_w_mem_mem_4 - cb  // 32B7  MOVE.W    (d8,A7,Xn),(A1)
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 32B8  MOVE.W    (xxx).W,(A1)
         b       move_w_mem_mem_3
         ori     rtn_addr, code_ptr, move_w_mem_mem_4 - cb  // 32B9  MOVE.W    (xxx).L,(A1)
@@ -1531,21 +1531,21 @@
         lhax    data, a7, prefetch_data                 // 32EF  MOVE.W    (d16,A7),(A1)+
         b       move_w_ea_mem_4
         ori     rtn_addr, code_ptr, move_w_mem_mem_36 - cb  // 32F0  MOVE.W    (d8,A0,Xn),(A1)+
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, move_w_mem_mem_36 - cb  // 32F1  MOVE.W    (d8,A1,Xn),(A1)+
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, move_w_mem_mem_36 - cb  // 32F2  MOVE.W    (d8,A2,Xn),(A1)+
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, move_w_mem_mem_36 - cb  // 32F3  MOVE.W    (d8,A3,Xn),(A1)+
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, move_w_mem_mem_36 - cb  // 32F4  MOVE.W    (d8,A4,Xn),(A1)+
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, move_w_mem_mem_36 - cb  // 32F5  MOVE.W    (d8,A5,Xn),(A1)+
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, move_w_mem_mem_36 - cb  // 32F6  MOVE.W    (d8,A6,Xn),(A1)+
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, move_w_mem_mem_36 - cb  // 32F7  MOVE.W    (d8,A7,Xn),(A1)+
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 32F8  MOVE.W    (xxx).W,(A1)+
         b       move_w_ea_mem_4
         ori     rtn_addr, code_ptr, move_w_mem_mem_36 - cb  // 32F9  MOVE.W    (xxx).L,(A1)+
@@ -1661,21 +1661,21 @@
         lhax    data, a7, prefetch_data                 // 332F  MOVE.W    (d16,A7),-(A1)
         b       move_w_mem_mem_19
         ori     rtn_addr, code_ptr, move_w_mem_mem_20 - cb  // 3330  MOVE.W    (d8,A0,Xn),-(A1)
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, move_w_mem_mem_20 - cb  // 3331  MOVE.W    (d8,A1,Xn),-(A1)
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, move_w_mem_mem_20 - cb  // 3332  MOVE.W    (d8,A2,Xn),-(A1)
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, move_w_mem_mem_20 - cb  // 3333  MOVE.W    (d8,A3,Xn),-(A1)
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, move_w_mem_mem_20 - cb  // 3334  MOVE.W    (d8,A4,Xn),-(A1)
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, move_w_mem_mem_20 - cb  // 3335  MOVE.W    (d8,A5,Xn),-(A1)
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, move_w_mem_mem_20 - cb  // 3336  MOVE.W    (d8,A6,Xn),-(A1)
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, move_w_mem_mem_20 - cb  // 3337  MOVE.W    (d8,A7,Xn),-(A1)
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 3338  MOVE.W    (xxx).W,-(A1)
         b       move_w_mem_mem_19
         ori     rtn_addr, code_ptr, move_w_mem_mem_20 - cb  // 3339  MOVE.W    (xxx).L,-(A1)
@@ -1791,21 +1791,21 @@
         lhax    data, a7, prefetch_data                 // 336F  MOVE.W    (d16,A7),(d16,A1)
         b       move_w_ea_mem_5
         ori     rtn_addr, code_ptr, move_w_mem_mem_37 - cb  // 3370  MOVE.W    (d8,A0,Xn),(d16,A1)
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, move_w_mem_mem_37 - cb  // 3371  MOVE.W    (d8,A1,Xn),(d16,A1)
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, move_w_mem_mem_37 - cb  // 3372  MOVE.W    (d8,A2,Xn),(d16,A1)
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, move_w_mem_mem_37 - cb  // 3373  MOVE.W    (d8,A3,Xn),(d16,A1)
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, move_w_mem_mem_37 - cb  // 3374  MOVE.W    (d8,A4,Xn),(d16,A1)
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, move_w_mem_mem_37 - cb  // 3375  MOVE.W    (d8,A5,Xn),(d16,A1)
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, move_w_mem_mem_37 - cb  // 3376  MOVE.W    (d8,A6,Xn),(d16,A1)
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, move_w_mem_mem_37 - cb  // 3377  MOVE.W    (d8,A7,Xn),(d16,A1)
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 3378  MOVE.W    (xxx).W,(d16,A1)
         b       move_w_ea_mem_5
         ori     rtn_addr, code_ptr, move_w_mem_mem_37 - cb  // 3379  MOVE.W    (xxx).L,(d16,A1)
@@ -1921,21 +1921,21 @@
         lhax    data, a7, prefetch_data                 // 33AF  MOVE.W    (d16,A7),(d8,A1,Xn)
         b       move_w_ea_mem_6
         ori     rtn_addr, code_ptr, move_w_mem_mem_38 - cb  // 33B0  MOVE.W    (d8,A0,Xn),(d8,A1,Xn)
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, move_w_mem_mem_38 - cb  // 33B1  MOVE.W    (d8,A1,Xn),(d8,A1,Xn)
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, move_w_mem_mem_38 - cb  // 33B2  MOVE.W    (d8,A2,Xn),(d8,A1,Xn)
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, move_w_mem_mem_38 - cb  // 33B3  MOVE.W    (d8,A3,Xn),(d8,A1,Xn)
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, move_w_mem_mem_38 - cb  // 33B4  MOVE.W    (d8,A4,Xn),(d8,A1,Xn)
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, move_w_mem_mem_38 - cb  // 33B5  MOVE.W    (d8,A5,Xn),(d8,A1,Xn)
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, move_w_mem_mem_38 - cb  // 33B6  MOVE.W    (d8,A6,Xn),(d8,A1,Xn)
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, move_w_mem_mem_38 - cb  // 33B7  MOVE.W    (d8,A7,Xn),(d8,A1,Xn)
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 33B8  MOVE.W    (xxx).W,(d8,A1,Xn)
         b       move_w_ea_mem_6
         ori     rtn_addr, code_ptr, move_w_mem_mem_38 - cb  // 33B9  MOVE.W    (xxx).L,(d8,A1,Xn)
@@ -2051,21 +2051,21 @@
         lhax    data, a7, prefetch_data                 // 33EF  MOVE.W    (d16,A7),(xxx).L
         b       move_w_ea_mem_26
         ori     rtn_addr, code_ptr, move_w_mem_mem_58 - cb  // 33F0  MOVE.W    (d8,A0,Xn),(xxx).L
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, move_w_mem_mem_58 - cb  // 33F1  MOVE.W    (d8,A1,Xn),(xxx).L
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, move_w_mem_mem_58 - cb  // 33F2  MOVE.W    (d8,A2,Xn),(xxx).L
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, move_w_mem_mem_58 - cb  // 33F3  MOVE.W    (d8,A3,Xn),(xxx).L
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, move_w_mem_mem_58 - cb  // 33F4  MOVE.W    (d8,A4,Xn),(xxx).L
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, move_w_mem_mem_58 - cb  // 33F5  MOVE.W    (d8,A5,Xn),(xxx).L
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, move_w_mem_mem_58 - cb  // 33F6  MOVE.W    (d8,A6,Xn),(xxx).L
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, move_w_mem_mem_58 - cb  // 33F7  MOVE.W    (d8,A7,Xn),(xxx).L
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 33F8  MOVE.W    (xxx).W,(xxx).L
         b       move_w_ea_mem_26
         ori     rtn_addr, code_ptr, move_w_mem_mem_58 - cb  // 33F9  MOVE.W    (xxx).L,(xxx).L
@@ -2181,21 +2181,21 @@
         lhax    data, a7, prefetch_data                 // 342F  MOVE.W    (d16,A7),D2
         b       move_w_mem_d2
         ori     rtn_addr, code_ptr, move_w_mem_d2_2 - cb  // 3430  MOVE.W    (d8,A0,Xn),D2
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, move_w_mem_d2_2 - cb  // 3431  MOVE.W    (d8,A1,Xn),D2
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, move_w_mem_d2_2 - cb  // 3432  MOVE.W    (d8,A2,Xn),D2
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, move_w_mem_d2_2 - cb  // 3433  MOVE.W    (d8,A3,Xn),D2
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, move_w_mem_d2_2 - cb  // 3434  MOVE.W    (d8,A4,Xn),D2
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, move_w_mem_d2_2 - cb  // 3435  MOVE.W    (d8,A5,Xn),D2
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, move_w_mem_d2_2 - cb  // 3436  MOVE.W    (d8,A6,Xn),D2
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, move_w_mem_d2_2 - cb  // 3437  MOVE.W    (d8,A7,Xn),D2
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 3438  MOVE.W    (xxx).W,D2
         b       move_w_mem_d2
         ori     rtn_addr, code_ptr, move_w_mem_d2_2 - cb  // 3439  MOVE.W    (xxx).L,D2
@@ -2311,21 +2311,21 @@
         lhax    a2, a7, prefetch_data                   // 346F  MOVEA.W   (d16,A7),A2
         b       fetch_skip_word
         ori     rtn_addr, code_ptr, movea_mem_a2 - cb   // 3470  MOVEA.W   (d8,A0,Xn),A2
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, movea_mem_a2 - cb   // 3471  MOVEA.W   (d8,A1,Xn),A2
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, movea_mem_a2 - cb   // 3472  MOVEA.W   (d8,A2,Xn),A2
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, movea_mem_a2 - cb   // 3473  MOVEA.W   (d8,A3,Xn),A2
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, movea_mem_a2 - cb   // 3474  MOVEA.W   (d8,A4,Xn),A2
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, movea_mem_a2 - cb   // 3475  MOVEA.W   (d8,A5,Xn),A2
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, movea_mem_a2 - cb   // 3476  MOVEA.W   (d8,A6,Xn),A2
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, movea_mem_a2 - cb   // 3477  MOVEA.W   (d8,A7,Xn),A2
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     a2, 0(prefetch_data)                    // 3478  MOVEA.W   (xxx).W,A2
         b       fetch_skip_word
         ori     rtn_addr, code_ptr, movea_mem_a2 - cb   // 3479  MOVEA.W   (xxx).L,A2
@@ -2441,21 +2441,21 @@
         lhax    data, a7, prefetch_data                 // 34AF  MOVE.W    (d16,A7),(A2)
         b       move_w_mem_mem_5
         ori     rtn_addr, code_ptr, move_w_mem_mem_6 - cb  // 34B0  MOVE.W    (d8,A0,Xn),(A2)
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, move_w_mem_mem_6 - cb  // 34B1  MOVE.W    (d8,A1,Xn),(A2)
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, move_w_mem_mem_6 - cb  // 34B2  MOVE.W    (d8,A2,Xn),(A2)
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, move_w_mem_mem_6 - cb  // 34B3  MOVE.W    (d8,A3,Xn),(A2)
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, move_w_mem_mem_6 - cb  // 34B4  MOVE.W    (d8,A4,Xn),(A2)
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, move_w_mem_mem_6 - cb  // 34B5  MOVE.W    (d8,A5,Xn),(A2)
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, move_w_mem_mem_6 - cb  // 34B6  MOVE.W    (d8,A6,Xn),(A2)
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, move_w_mem_mem_6 - cb  // 34B7  MOVE.W    (d8,A7,Xn),(A2)
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 34B8  MOVE.W    (xxx).W,(A2)
         b       move_w_mem_mem_5
         ori     rtn_addr, code_ptr, move_w_mem_mem_6 - cb  // 34B9  MOVE.W    (xxx).L,(A2)
@@ -2571,21 +2571,21 @@
         lhax    data, a7, prefetch_data                 // 34EF  MOVE.W    (d16,A7),(A2)+
         b       move_w_ea_mem_7
         ori     rtn_addr, code_ptr, move_w_mem_mem_39 - cb  // 34F0  MOVE.W    (d8,A0,Xn),(A2)+
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, move_w_mem_mem_39 - cb  // 34F1  MOVE.W    (d8,A1,Xn),(A2)+
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, move_w_mem_mem_39 - cb  // 34F2  MOVE.W    (d8,A2,Xn),(A2)+
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, move_w_mem_mem_39 - cb  // 34F3  MOVE.W    (d8,A3,Xn),(A2)+
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, move_w_mem_mem_39 - cb  // 34F4  MOVE.W    (d8,A4,Xn),(A2)+
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, move_w_mem_mem_39 - cb  // 34F5  MOVE.W    (d8,A5,Xn),(A2)+
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, move_w_mem_mem_39 - cb  // 34F6  MOVE.W    (d8,A6,Xn),(A2)+
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, move_w_mem_mem_39 - cb  // 34F7  MOVE.W    (d8,A7,Xn),(A2)+
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 34F8  MOVE.W    (xxx).W,(A2)+
         b       move_w_ea_mem_7
         ori     rtn_addr, code_ptr, move_w_mem_mem_39 - cb  // 34F9  MOVE.W    (xxx).L,(A2)+
@@ -2701,21 +2701,21 @@
         lhax    data, a7, prefetch_data                 // 352F  MOVE.W    (d16,A7),-(A2)
         b       move_w_mem_mem_21
         ori     rtn_addr, code_ptr, move_w_mem_mem_22 - cb  // 3530  MOVE.W    (d8,A0,Xn),-(A2)
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, move_w_mem_mem_22 - cb  // 3531  MOVE.W    (d8,A1,Xn),-(A2)
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, move_w_mem_mem_22 - cb  // 3532  MOVE.W    (d8,A2,Xn),-(A2)
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, move_w_mem_mem_22 - cb  // 3533  MOVE.W    (d8,A3,Xn),-(A2)
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, move_w_mem_mem_22 - cb  // 3534  MOVE.W    (d8,A4,Xn),-(A2)
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, move_w_mem_mem_22 - cb  // 3535  MOVE.W    (d8,A5,Xn),-(A2)
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, move_w_mem_mem_22 - cb  // 3536  MOVE.W    (d8,A6,Xn),-(A2)
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, move_w_mem_mem_22 - cb  // 3537  MOVE.W    (d8,A7,Xn),-(A2)
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 3538  MOVE.W    (xxx).W,-(A2)
         b       move_w_mem_mem_21
         ori     rtn_addr, code_ptr, move_w_mem_mem_22 - cb  // 3539  MOVE.W    (xxx).L,-(A2)
@@ -2831,21 +2831,21 @@
         lhax    data, a7, prefetch_data                 // 356F  MOVE.W    (d16,A7),(d16,A2)
         b       move_w_ea_mem_8
         ori     rtn_addr, code_ptr, move_w_mem_mem_40 - cb  // 3570  MOVE.W    (d8,A0,Xn),(d16,A2)
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, move_w_mem_mem_40 - cb  // 3571  MOVE.W    (d8,A1,Xn),(d16,A2)
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, move_w_mem_mem_40 - cb  // 3572  MOVE.W    (d8,A2,Xn),(d16,A2)
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, move_w_mem_mem_40 - cb  // 3573  MOVE.W    (d8,A3,Xn),(d16,A2)
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, move_w_mem_mem_40 - cb  // 3574  MOVE.W    (d8,A4,Xn),(d16,A2)
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, move_w_mem_mem_40 - cb  // 3575  MOVE.W    (d8,A5,Xn),(d16,A2)
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, move_w_mem_mem_40 - cb  // 3576  MOVE.W    (d8,A6,Xn),(d16,A2)
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, move_w_mem_mem_40 - cb  // 3577  MOVE.W    (d8,A7,Xn),(d16,A2)
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 3578  MOVE.W    (xxx).W,(d16,A2)
         b       move_w_ea_mem_8
         ori     rtn_addr, code_ptr, move_w_mem_mem_40 - cb  // 3579  MOVE.W    (xxx).L,(d16,A2)
@@ -2961,21 +2961,21 @@
         lhax    data, a7, prefetch_data                 // 35AF  MOVE.W    (d16,A7),(d8,A2,Xn)
         b       move_w_ea_mem_9
         ori     rtn_addr, code_ptr, move_w_mem_mem_41 - cb  // 35B0  MOVE.W    (d8,A0,Xn),(d8,A2,Xn)
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, move_w_mem_mem_41 - cb  // 35B1  MOVE.W    (d8,A1,Xn),(d8,A2,Xn)
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, move_w_mem_mem_41 - cb  // 35B2  MOVE.W    (d8,A2,Xn),(d8,A2,Xn)
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, move_w_mem_mem_41 - cb  // 35B3  MOVE.W    (d8,A3,Xn),(d8,A2,Xn)
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, move_w_mem_mem_41 - cb  // 35B4  MOVE.W    (d8,A4,Xn),(d8,A2,Xn)
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, move_w_mem_mem_41 - cb  // 35B5  MOVE.W    (d8,A5,Xn),(d8,A2,Xn)
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, move_w_mem_mem_41 - cb  // 35B6  MOVE.W    (d8,A6,Xn),(d8,A2,Xn)
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, move_w_mem_mem_41 - cb  // 35B7  MOVE.W    (d8,A7,Xn),(d8,A2,Xn)
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 35B8  MOVE.W    (xxx).W,(d8,A2,Xn)
         b       move_w_ea_mem_9
         ori     rtn_addr, code_ptr, move_w_mem_mem_41 - cb  // 35B9  MOVE.W    (xxx).L,(d8,A2,Xn)
@@ -3221,21 +3221,21 @@
         lhax    data, a7, prefetch_data                 // 362F  MOVE.W    (d16,A7),D3
         b       move_w_mem_d3
         ori     rtn_addr, code_ptr, move_w_mem_d3_2 - cb  // 3630  MOVE.W    (d8,A0,Xn),D3
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, move_w_mem_d3_2 - cb  // 3631  MOVE.W    (d8,A1,Xn),D3
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, move_w_mem_d3_2 - cb  // 3632  MOVE.W    (d8,A2,Xn),D3
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, move_w_mem_d3_2 - cb  // 3633  MOVE.W    (d8,A3,Xn),D3
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, move_w_mem_d3_2 - cb  // 3634  MOVE.W    (d8,A4,Xn),D3
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, move_w_mem_d3_2 - cb  // 3635  MOVE.W    (d8,A5,Xn),D3
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, move_w_mem_d3_2 - cb  // 3636  MOVE.W    (d8,A6,Xn),D3
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, move_w_mem_d3_2 - cb  // 3637  MOVE.W    (d8,A7,Xn),D3
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 3638  MOVE.W    (xxx).W,D3
         b       move_w_mem_d3
         ori     rtn_addr, code_ptr, move_w_mem_d3_2 - cb  // 3639  MOVE.W    (xxx).L,D3
@@ -3351,21 +3351,21 @@
         lhax    a3, a7, prefetch_data                   // 366F  MOVEA.W   (d16,A7),A3
         b       fetch_skip_word
         ori     rtn_addr, code_ptr, movea_mem_a3 - cb   // 3670  MOVEA.W   (d8,A0,Xn),A3
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, movea_mem_a3 - cb   // 3671  MOVEA.W   (d8,A1,Xn),A3
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, movea_mem_a3 - cb   // 3672  MOVEA.W   (d8,A2,Xn),A3
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, movea_mem_a3 - cb   // 3673  MOVEA.W   (d8,A3,Xn),A3
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, movea_mem_a3 - cb   // 3674  MOVEA.W   (d8,A4,Xn),A3
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, movea_mem_a3 - cb   // 3675  MOVEA.W   (d8,A5,Xn),A3
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, movea_mem_a3 - cb   // 3676  MOVEA.W   (d8,A6,Xn),A3
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, movea_mem_a3 - cb   // 3677  MOVEA.W   (d8,A7,Xn),A3
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     a3, 0(prefetch_data)                    // 3678  MOVEA.W   (xxx).W,A3
         b       fetch_skip_word
         ori     rtn_addr, code_ptr, movea_mem_a3 - cb   // 3679  MOVEA.W   (xxx).L,A3
@@ -3481,21 +3481,21 @@
         lhax    data, a7, prefetch_data                 // 36AF  MOVE.W    (d16,A7),(A3)
         b       move_w_mem_mem_7
         ori     rtn_addr, code_ptr, move_w_mem_mem_8 - cb  // 36B0  MOVE.W    (d8,A0,Xn),(A3)
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, move_w_mem_mem_8 - cb  // 36B1  MOVE.W    (d8,A1,Xn),(A3)
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, move_w_mem_mem_8 - cb  // 36B2  MOVE.W    (d8,A2,Xn),(A3)
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, move_w_mem_mem_8 - cb  // 36B3  MOVE.W    (d8,A3,Xn),(A3)
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, move_w_mem_mem_8 - cb  // 36B4  MOVE.W    (d8,A4,Xn),(A3)
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, move_w_mem_mem_8 - cb  // 36B5  MOVE.W    (d8,A5,Xn),(A3)
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, move_w_mem_mem_8 - cb  // 36B6  MOVE.W    (d8,A6,Xn),(A3)
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, move_w_mem_mem_8 - cb  // 36B7  MOVE.W    (d8,A7,Xn),(A3)
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 36B8  MOVE.W    (xxx).W,(A3)
         b       move_w_mem_mem_7
         ori     rtn_addr, code_ptr, move_w_mem_mem_8 - cb  // 36B9  MOVE.W    (xxx).L,(A3)
@@ -3611,21 +3611,21 @@
         lhax    data, a7, prefetch_data                 // 36EF  MOVE.W    (d16,A7),(A3)+
         b       move_w_ea_mem_10
         ori     rtn_addr, code_ptr, move_w_mem_mem_42 - cb  // 36F0  MOVE.W    (d8,A0,Xn),(A3)+
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, move_w_mem_mem_42 - cb  // 36F1  MOVE.W    (d8,A1,Xn),(A3)+
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, move_w_mem_mem_42 - cb  // 36F2  MOVE.W    (d8,A2,Xn),(A3)+
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, move_w_mem_mem_42 - cb  // 36F3  MOVE.W    (d8,A3,Xn),(A3)+
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, move_w_mem_mem_42 - cb  // 36F4  MOVE.W    (d8,A4,Xn),(A3)+
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, move_w_mem_mem_42 - cb  // 36F5  MOVE.W    (d8,A5,Xn),(A3)+
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, move_w_mem_mem_42 - cb  // 36F6  MOVE.W    (d8,A6,Xn),(A3)+
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, move_w_mem_mem_42 - cb  // 36F7  MOVE.W    (d8,A7,Xn),(A3)+
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 36F8  MOVE.W    (xxx).W,(A3)+
         b       move_w_ea_mem_10
         ori     rtn_addr, code_ptr, move_w_mem_mem_42 - cb  // 36F9  MOVE.W    (xxx).L,(A3)+
@@ -3741,21 +3741,21 @@
         lhax    data, a7, prefetch_data                 // 372F  MOVE.W    (d16,A7),-(A3)
         b       move_w_mem_mem_23
         ori     rtn_addr, code_ptr, move_w_mem_mem_24 - cb  // 3730  MOVE.W    (d8,A0,Xn),-(A3)
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, move_w_mem_mem_24 - cb  // 3731  MOVE.W    (d8,A1,Xn),-(A3)
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, move_w_mem_mem_24 - cb  // 3732  MOVE.W    (d8,A2,Xn),-(A3)
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, move_w_mem_mem_24 - cb  // 3733  MOVE.W    (d8,A3,Xn),-(A3)
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, move_w_mem_mem_24 - cb  // 3734  MOVE.W    (d8,A4,Xn),-(A3)
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, move_w_mem_mem_24 - cb  // 3735  MOVE.W    (d8,A5,Xn),-(A3)
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, move_w_mem_mem_24 - cb  // 3736  MOVE.W    (d8,A6,Xn),-(A3)
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, move_w_mem_mem_24 - cb  // 3737  MOVE.W    (d8,A7,Xn),-(A3)
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 3738  MOVE.W    (xxx).W,-(A3)
         b       move_w_mem_mem_23
         ori     rtn_addr, code_ptr, move_w_mem_mem_24 - cb  // 3739  MOVE.W    (xxx).L,-(A3)
@@ -3871,21 +3871,21 @@
         lhax    data, a7, prefetch_data                 // 376F  MOVE.W    (d16,A7),(d16,A3)
         b       move_w_ea_mem_11
         ori     rtn_addr, code_ptr, move_w_mem_mem_43 - cb  // 3770  MOVE.W    (d8,A0,Xn),(d16,A3)
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, move_w_mem_mem_43 - cb  // 3771  MOVE.W    (d8,A1,Xn),(d16,A3)
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, move_w_mem_mem_43 - cb  // 3772  MOVE.W    (d8,A2,Xn),(d16,A3)
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, move_w_mem_mem_43 - cb  // 3773  MOVE.W    (d8,A3,Xn),(d16,A3)
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, move_w_mem_mem_43 - cb  // 3774  MOVE.W    (d8,A4,Xn),(d16,A3)
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, move_w_mem_mem_43 - cb  // 3775  MOVE.W    (d8,A5,Xn),(d16,A3)
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, move_w_mem_mem_43 - cb  // 3776  MOVE.W    (d8,A6,Xn),(d16,A3)
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, move_w_mem_mem_43 - cb  // 3777  MOVE.W    (d8,A7,Xn),(d16,A3)
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 3778  MOVE.W    (xxx).W,(d16,A3)
         b       move_w_ea_mem_11
         ori     rtn_addr, code_ptr, move_w_mem_mem_43 - cb  // 3779  MOVE.W    (xxx).L,(d16,A3)
@@ -4001,21 +4001,21 @@
         lhax    data, a7, prefetch_data                 // 37AF  MOVE.W    (d16,A7),(d8,A3,Xn)
         b       move_w_ea_mem_12
         ori     rtn_addr, code_ptr, move_w_mem_mem_44 - cb  // 37B0  MOVE.W    (d8,A0,Xn),(d8,A3,Xn)
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, move_w_mem_mem_44 - cb  // 37B1  MOVE.W    (d8,A1,Xn),(d8,A3,Xn)
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, move_w_mem_mem_44 - cb  // 37B2  MOVE.W    (d8,A2,Xn),(d8,A3,Xn)
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, move_w_mem_mem_44 - cb  // 37B3  MOVE.W    (d8,A3,Xn),(d8,A3,Xn)
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, move_w_mem_mem_44 - cb  // 37B4  MOVE.W    (d8,A4,Xn),(d8,A3,Xn)
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, move_w_mem_mem_44 - cb  // 37B5  MOVE.W    (d8,A5,Xn),(d8,A3,Xn)
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, move_w_mem_mem_44 - cb  // 37B6  MOVE.W    (d8,A6,Xn),(d8,A3,Xn)
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, move_w_mem_mem_44 - cb  // 37B7  MOVE.W    (d8,A7,Xn),(d8,A3,Xn)
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 37B8  MOVE.W    (xxx).W,(d8,A3,Xn)
         b       move_w_ea_mem_12
         ori     rtn_addr, code_ptr, move_w_mem_mem_44 - cb  // 37B9  MOVE.W    (xxx).L,(d8,A3,Xn)
@@ -4261,21 +4261,21 @@
         lhax    data, a7, prefetch_data                 // 382F  MOVE.W    (d16,A7),D4
         b       move_w_mem_d4
         ori     rtn_addr, code_ptr, move_w_mem_d4_2 - cb  // 3830  MOVE.W    (d8,A0,Xn),D4
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, move_w_mem_d4_2 - cb  // 3831  MOVE.W    (d8,A1,Xn),D4
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, move_w_mem_d4_2 - cb  // 3832  MOVE.W    (d8,A2,Xn),D4
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, move_w_mem_d4_2 - cb  // 3833  MOVE.W    (d8,A3,Xn),D4
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, move_w_mem_d4_2 - cb  // 3834  MOVE.W    (d8,A4,Xn),D4
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, move_w_mem_d4_2 - cb  // 3835  MOVE.W    (d8,A5,Xn),D4
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, move_w_mem_d4_2 - cb  // 3836  MOVE.W    (d8,A6,Xn),D4
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, move_w_mem_d4_2 - cb  // 3837  MOVE.W    (d8,A7,Xn),D4
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 3838  MOVE.W    (xxx).W,D4
         b       move_w_mem_d4
         ori     rtn_addr, code_ptr, move_w_mem_d4_2 - cb  // 3839  MOVE.W    (xxx).L,D4
@@ -4391,21 +4391,21 @@
         lhax    a4, a7, prefetch_data                   // 386F  MOVEA.W   (d16,A7),A4
         b       fetch_skip_word
         ori     rtn_addr, code_ptr, movea_mem_a4 - cb   // 3870  MOVEA.W   (d8,A0,Xn),A4
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, movea_mem_a4 - cb   // 3871  MOVEA.W   (d8,A1,Xn),A4
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, movea_mem_a4 - cb   // 3872  MOVEA.W   (d8,A2,Xn),A4
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, movea_mem_a4 - cb   // 3873  MOVEA.W   (d8,A3,Xn),A4
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, movea_mem_a4 - cb   // 3874  MOVEA.W   (d8,A4,Xn),A4
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, movea_mem_a4 - cb   // 3875  MOVEA.W   (d8,A5,Xn),A4
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, movea_mem_a4 - cb   // 3876  MOVEA.W   (d8,A6,Xn),A4
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, movea_mem_a4 - cb   // 3877  MOVEA.W   (d8,A7,Xn),A4
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     a4, 0(prefetch_data)                    // 3878  MOVEA.W   (xxx).W,A4
         b       fetch_skip_word
         ori     rtn_addr, code_ptr, movea_mem_a4 - cb   // 3879  MOVEA.W   (xxx).L,A4
@@ -4521,21 +4521,21 @@
         lhax    data, a7, prefetch_data                 // 38AF  MOVE.W    (d16,A7),(A4)
         b       move_w_mem_mem_9
         ori     rtn_addr, code_ptr, move_w_mem_mem_10 - cb  // 38B0  MOVE.W    (d8,A0,Xn),(A4)
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, move_w_mem_mem_10 - cb  // 38B1  MOVE.W    (d8,A1,Xn),(A4)
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, move_w_mem_mem_10 - cb  // 38B2  MOVE.W    (d8,A2,Xn),(A4)
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, move_w_mem_mem_10 - cb  // 38B3  MOVE.W    (d8,A3,Xn),(A4)
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, move_w_mem_mem_10 - cb  // 38B4  MOVE.W    (d8,A4,Xn),(A4)
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, move_w_mem_mem_10 - cb  // 38B5  MOVE.W    (d8,A5,Xn),(A4)
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, move_w_mem_mem_10 - cb  // 38B6  MOVE.W    (d8,A6,Xn),(A4)
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, move_w_mem_mem_10 - cb  // 38B7  MOVE.W    (d8,A7,Xn),(A4)
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 38B8  MOVE.W    (xxx).W,(A4)
         b       move_w_mem_mem_9
         ori     rtn_addr, code_ptr, move_w_mem_mem_10 - cb  // 38B9  MOVE.W    (xxx).L,(A4)
@@ -4651,21 +4651,21 @@
         lhax    data, a7, prefetch_data                 // 38EF  MOVE.W    (d16,A7),(A4)+
         b       move_w_ea_mem_13
         ori     rtn_addr, code_ptr, move_w_mem_mem_45 - cb  // 38F0  MOVE.W    (d8,A0,Xn),(A4)+
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, move_w_mem_mem_45 - cb  // 38F1  MOVE.W    (d8,A1,Xn),(A4)+
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, move_w_mem_mem_45 - cb  // 38F2  MOVE.W    (d8,A2,Xn),(A4)+
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, move_w_mem_mem_45 - cb  // 38F3  MOVE.W    (d8,A3,Xn),(A4)+
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, move_w_mem_mem_45 - cb  // 38F4  MOVE.W    (d8,A4,Xn),(A4)+
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, move_w_mem_mem_45 - cb  // 38F5  MOVE.W    (d8,A5,Xn),(A4)+
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, move_w_mem_mem_45 - cb  // 38F6  MOVE.W    (d8,A6,Xn),(A4)+
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, move_w_mem_mem_45 - cb  // 38F7  MOVE.W    (d8,A7,Xn),(A4)+
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 38F8  MOVE.W    (xxx).W,(A4)+
         b       move_w_ea_mem_13
         ori     rtn_addr, code_ptr, move_w_mem_mem_45 - cb  // 38F9  MOVE.W    (xxx).L,(A4)+
@@ -4781,21 +4781,21 @@
         lhax    data, a7, prefetch_data                 // 392F  MOVE.W    (d16,A7),-(A4)
         b       move_w_mem_mem_25
         ori     rtn_addr, code_ptr, move_w_mem_mem_26 - cb  // 3930  MOVE.W    (d8,A0,Xn),-(A4)
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, move_w_mem_mem_26 - cb  // 3931  MOVE.W    (d8,A1,Xn),-(A4)
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, move_w_mem_mem_26 - cb  // 3932  MOVE.W    (d8,A2,Xn),-(A4)
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, move_w_mem_mem_26 - cb  // 3933  MOVE.W    (d8,A3,Xn),-(A4)
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, move_w_mem_mem_26 - cb  // 3934  MOVE.W    (d8,A4,Xn),-(A4)
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, move_w_mem_mem_26 - cb  // 3935  MOVE.W    (d8,A5,Xn),-(A4)
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, move_w_mem_mem_26 - cb  // 3936  MOVE.W    (d8,A6,Xn),-(A4)
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, move_w_mem_mem_26 - cb  // 3937  MOVE.W    (d8,A7,Xn),-(A4)
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 3938  MOVE.W    (xxx).W,-(A4)
         b       move_w_mem_mem_25
         ori     rtn_addr, code_ptr, move_w_mem_mem_26 - cb  // 3939  MOVE.W    (xxx).L,-(A4)
@@ -4911,21 +4911,21 @@
         lhax    data, a7, prefetch_data                 // 396F  MOVE.W    (d16,A7),(d16,A4)
         b       move_w_ea_mem_14
         ori     rtn_addr, code_ptr, move_w_mem_mem_46 - cb  // 3970  MOVE.W    (d8,A0,Xn),(d16,A4)
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, move_w_mem_mem_46 - cb  // 3971  MOVE.W    (d8,A1,Xn),(d16,A4)
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, move_w_mem_mem_46 - cb  // 3972  MOVE.W    (d8,A2,Xn),(d16,A4)
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, move_w_mem_mem_46 - cb  // 3973  MOVE.W    (d8,A3,Xn),(d16,A4)
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, move_w_mem_mem_46 - cb  // 3974  MOVE.W    (d8,A4,Xn),(d16,A4)
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, move_w_mem_mem_46 - cb  // 3975  MOVE.W    (d8,A5,Xn),(d16,A4)
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, move_w_mem_mem_46 - cb  // 3976  MOVE.W    (d8,A6,Xn),(d16,A4)
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, move_w_mem_mem_46 - cb  // 3977  MOVE.W    (d8,A7,Xn),(d16,A4)
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 3978  MOVE.W    (xxx).W,(d16,A4)
         b       move_w_ea_mem_14
         ori     rtn_addr, code_ptr, move_w_mem_mem_46 - cb  // 3979  MOVE.W    (xxx).L,(d16,A4)
@@ -5041,21 +5041,21 @@
         lhax    data, a7, prefetch_data                 // 39AF  MOVE.W    (d16,A7),(d8,A4,Xn)
         b       move_w_ea_mem_15
         ori     rtn_addr, code_ptr, move_w_mem_mem_47 - cb  // 39B0  MOVE.W    (d8,A0,Xn),(d8,A4,Xn)
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, move_w_mem_mem_47 - cb  // 39B1  MOVE.W    (d8,A1,Xn),(d8,A4,Xn)
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, move_w_mem_mem_47 - cb  // 39B2  MOVE.W    (d8,A2,Xn),(d8,A4,Xn)
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, move_w_mem_mem_47 - cb  // 39B3  MOVE.W    (d8,A3,Xn),(d8,A4,Xn)
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, move_w_mem_mem_47 - cb  // 39B4  MOVE.W    (d8,A4,Xn),(d8,A4,Xn)
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, move_w_mem_mem_47 - cb  // 39B5  MOVE.W    (d8,A5,Xn),(d8,A4,Xn)
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, move_w_mem_mem_47 - cb  // 39B6  MOVE.W    (d8,A6,Xn),(d8,A4,Xn)
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, move_w_mem_mem_47 - cb  // 39B7  MOVE.W    (d8,A7,Xn),(d8,A4,Xn)
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 39B8  MOVE.W    (xxx).W,(d8,A4,Xn)
         b       move_w_ea_mem_15
         ori     rtn_addr, code_ptr, move_w_mem_mem_47 - cb  // 39B9  MOVE.W    (xxx).L,(d8,A4,Xn)
@@ -5301,21 +5301,21 @@
         lhax    data, a7, prefetch_data                 // 3A2F  MOVE.W    (d16,A7),D5
         b       move_w_mem_d5
         ori     rtn_addr, code_ptr, move_w_mem_d5_2 - cb  // 3A30  MOVE.W    (d8,A0,Xn),D5
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, move_w_mem_d5_2 - cb  // 3A31  MOVE.W    (d8,A1,Xn),D5
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, move_w_mem_d5_2 - cb  // 3A32  MOVE.W    (d8,A2,Xn),D5
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, move_w_mem_d5_2 - cb  // 3A33  MOVE.W    (d8,A3,Xn),D5
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, move_w_mem_d5_2 - cb  // 3A34  MOVE.W    (d8,A4,Xn),D5
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, move_w_mem_d5_2 - cb  // 3A35  MOVE.W    (d8,A5,Xn),D5
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, move_w_mem_d5_2 - cb  // 3A36  MOVE.W    (d8,A6,Xn),D5
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, move_w_mem_d5_2 - cb  // 3A37  MOVE.W    (d8,A7,Xn),D5
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 3A38  MOVE.W    (xxx).W,D5
         b       move_w_mem_d5
         ori     rtn_addr, code_ptr, move_w_mem_d5_2 - cb  // 3A39  MOVE.W    (xxx).L,D5
@@ -5431,21 +5431,21 @@
         lhax    a5, a7, prefetch_data                   // 3A6F  MOVEA.W   (d16,A7),A5
         b       fetch_skip_word
         ori     rtn_addr, code_ptr, movea_mem_a5 - cb   // 3A70  MOVEA.W   (d8,A0,Xn),A5
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, movea_mem_a5 - cb   // 3A71  MOVEA.W   (d8,A1,Xn),A5
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, movea_mem_a5 - cb   // 3A72  MOVEA.W   (d8,A2,Xn),A5
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, movea_mem_a5 - cb   // 3A73  MOVEA.W   (d8,A3,Xn),A5
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, movea_mem_a5 - cb   // 3A74  MOVEA.W   (d8,A4,Xn),A5
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, movea_mem_a5 - cb   // 3A75  MOVEA.W   (d8,A5,Xn),A5
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, movea_mem_a5 - cb   // 3A76  MOVEA.W   (d8,A6,Xn),A5
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, movea_mem_a5 - cb   // 3A77  MOVEA.W   (d8,A7,Xn),A5
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     a5, 0(prefetch_data)                    // 3A78  MOVEA.W   (xxx).W,A5
         b       fetch_skip_word
         ori     rtn_addr, code_ptr, movea_mem_a5 - cb   // 3A79  MOVEA.W   (xxx).L,A5
@@ -5561,21 +5561,21 @@
         lhax    data, a7, prefetch_data                 // 3AAF  MOVE.W    (d16,A7),(A5)
         b       move_w_mem_mem_11
         ori     rtn_addr, code_ptr, move_w_mem_mem_12 - cb  // 3AB0  MOVE.W    (d8,A0,Xn),(A5)
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, move_w_mem_mem_12 - cb  // 3AB1  MOVE.W    (d8,A1,Xn),(A5)
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, move_w_mem_mem_12 - cb  // 3AB2  MOVE.W    (d8,A2,Xn),(A5)
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, move_w_mem_mem_12 - cb  // 3AB3  MOVE.W    (d8,A3,Xn),(A5)
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, move_w_mem_mem_12 - cb  // 3AB4  MOVE.W    (d8,A4,Xn),(A5)
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, move_w_mem_mem_12 - cb  // 3AB5  MOVE.W    (d8,A5,Xn),(A5)
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, move_w_mem_mem_12 - cb  // 3AB6  MOVE.W    (d8,A6,Xn),(A5)
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, move_w_mem_mem_12 - cb  // 3AB7  MOVE.W    (d8,A7,Xn),(A5)
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 3AB8  MOVE.W    (xxx).W,(A5)
         b       move_w_mem_mem_11
         ori     rtn_addr, code_ptr, move_w_mem_mem_12 - cb  // 3AB9  MOVE.W    (xxx).L,(A5)
@@ -5691,21 +5691,21 @@
         lhax    data, a7, prefetch_data                 // 3AEF  MOVE.W    (d16,A7),(A5)+
         b       move_w_ea_mem_16
         ori     rtn_addr, code_ptr, move_w_mem_mem_48 - cb  // 3AF0  MOVE.W    (d8,A0,Xn),(A5)+
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, move_w_mem_mem_48 - cb  // 3AF1  MOVE.W    (d8,A1,Xn),(A5)+
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, move_w_mem_mem_48 - cb  // 3AF2  MOVE.W    (d8,A2,Xn),(A5)+
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, move_w_mem_mem_48 - cb  // 3AF3  MOVE.W    (d8,A3,Xn),(A5)+
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, move_w_mem_mem_48 - cb  // 3AF4  MOVE.W    (d8,A4,Xn),(A5)+
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, move_w_mem_mem_48 - cb  // 3AF5  MOVE.W    (d8,A5,Xn),(A5)+
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, move_w_mem_mem_48 - cb  // 3AF6  MOVE.W    (d8,A6,Xn),(A5)+
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, move_w_mem_mem_48 - cb  // 3AF7  MOVE.W    (d8,A7,Xn),(A5)+
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 3AF8  MOVE.W    (xxx).W,(A5)+
         b       move_w_ea_mem_16
         ori     rtn_addr, code_ptr, move_w_mem_mem_48 - cb  // 3AF9  MOVE.W    (xxx).L,(A5)+
@@ -5821,21 +5821,21 @@
         lhax    data, a7, prefetch_data                 // 3B2F  MOVE.W    (d16,A7),-(A5)
         b       move_w_mem_mem_27
         ori     rtn_addr, code_ptr, move_w_mem_mem_28 - cb  // 3B30  MOVE.W    (d8,A0,Xn),-(A5)
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, move_w_mem_mem_28 - cb  // 3B31  MOVE.W    (d8,A1,Xn),-(A5)
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, move_w_mem_mem_28 - cb  // 3B32  MOVE.W    (d8,A2,Xn),-(A5)
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, move_w_mem_mem_28 - cb  // 3B33  MOVE.W    (d8,A3,Xn),-(A5)
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, move_w_mem_mem_28 - cb  // 3B34  MOVE.W    (d8,A4,Xn),-(A5)
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, move_w_mem_mem_28 - cb  // 3B35  MOVE.W    (d8,A5,Xn),-(A5)
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, move_w_mem_mem_28 - cb  // 3B36  MOVE.W    (d8,A6,Xn),-(A5)
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, move_w_mem_mem_28 - cb  // 3B37  MOVE.W    (d8,A7,Xn),-(A5)
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 3B38  MOVE.W    (xxx).W,-(A5)
         b       move_w_mem_mem_27
         ori     rtn_addr, code_ptr, move_w_mem_mem_28 - cb  // 3B39  MOVE.W    (xxx).L,-(A5)
@@ -5951,21 +5951,21 @@
         lhax    data, a7, prefetch_data                 // 3B6F  MOVE.W    (d16,A7),(d16,A5)
         b       move_w_ea_mem_17
         ori     rtn_addr, code_ptr, move_w_mem_mem_49 - cb  // 3B70  MOVE.W    (d8,A0,Xn),(d16,A5)
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, move_w_mem_mem_49 - cb  // 3B71  MOVE.W    (d8,A1,Xn),(d16,A5)
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, move_w_mem_mem_49 - cb  // 3B72  MOVE.W    (d8,A2,Xn),(d16,A5)
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, move_w_mem_mem_49 - cb  // 3B73  MOVE.W    (d8,A3,Xn),(d16,A5)
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, move_w_mem_mem_49 - cb  // 3B74  MOVE.W    (d8,A4,Xn),(d16,A5)
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, move_w_mem_mem_49 - cb  // 3B75  MOVE.W    (d8,A5,Xn),(d16,A5)
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, move_w_mem_mem_49 - cb  // 3B76  MOVE.W    (d8,A6,Xn),(d16,A5)
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, move_w_mem_mem_49 - cb  // 3B77  MOVE.W    (d8,A7,Xn),(d16,A5)
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 3B78  MOVE.W    (xxx).W,(d16,A5)
         b       move_w_ea_mem_17
         ori     rtn_addr, code_ptr, move_w_mem_mem_49 - cb  // 3B79  MOVE.W    (xxx).L,(d16,A5)
@@ -6081,21 +6081,21 @@
         lhax    data, a7, prefetch_data                 // 3BAF  MOVE.W    (d16,A7),(d8,A5,Xn)
         b       move_w_ea_mem_18
         ori     rtn_addr, code_ptr, move_w_mem_mem_50 - cb  // 3BB0  MOVE.W    (d8,A0,Xn),(d8,A5,Xn)
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, move_w_mem_mem_50 - cb  // 3BB1  MOVE.W    (d8,A1,Xn),(d8,A5,Xn)
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, move_w_mem_mem_50 - cb  // 3BB2  MOVE.W    (d8,A2,Xn),(d8,A5,Xn)
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, move_w_mem_mem_50 - cb  // 3BB3  MOVE.W    (d8,A3,Xn),(d8,A5,Xn)
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, move_w_mem_mem_50 - cb  // 3BB4  MOVE.W    (d8,A4,Xn),(d8,A5,Xn)
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, move_w_mem_mem_50 - cb  // 3BB5  MOVE.W    (d8,A5,Xn),(d8,A5,Xn)
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, move_w_mem_mem_50 - cb  // 3BB6  MOVE.W    (d8,A6,Xn),(d8,A5,Xn)
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, move_w_mem_mem_50 - cb  // 3BB7  MOVE.W    (d8,A7,Xn),(d8,A5,Xn)
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 3BB8  MOVE.W    (xxx).W,(d8,A5,Xn)
         b       move_w_ea_mem_18
         ori     rtn_addr, code_ptr, move_w_mem_mem_50 - cb  // 3BB9  MOVE.W    (xxx).L,(d8,A5,Xn)
@@ -6341,21 +6341,21 @@
         lhax    data, a7, prefetch_data                 // 3C2F  MOVE.W    (d16,A7),D6
         b       move_w_mem_d6
         ori     rtn_addr, code_ptr, move_w_mem_d6_2 - cb  // 3C30  MOVE.W    (d8,A0,Xn),D6
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, move_w_mem_d6_2 - cb  // 3C31  MOVE.W    (d8,A1,Xn),D6
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, move_w_mem_d6_2 - cb  // 3C32  MOVE.W    (d8,A2,Xn),D6
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, move_w_mem_d6_2 - cb  // 3C33  MOVE.W    (d8,A3,Xn),D6
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, move_w_mem_d6_2 - cb  // 3C34  MOVE.W    (d8,A4,Xn),D6
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, move_w_mem_d6_2 - cb  // 3C35  MOVE.W    (d8,A5,Xn),D6
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, move_w_mem_d6_2 - cb  // 3C36  MOVE.W    (d8,A6,Xn),D6
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, move_w_mem_d6_2 - cb  // 3C37  MOVE.W    (d8,A7,Xn),D6
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 3C38  MOVE.W    (xxx).W,D6
         b       move_w_mem_d6
         ori     rtn_addr, code_ptr, move_w_mem_d6_2 - cb  // 3C39  MOVE.W    (xxx).L,D6
@@ -6471,21 +6471,21 @@
         lhax    a6, a7, prefetch_data                   // 3C6F  MOVEA.W   (d16,A7),A6
         b       fetch_skip_word
         ori     rtn_addr, code_ptr, movea_mem_a6 - cb   // 3C70  MOVEA.W   (d8,A0,Xn),A6
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, movea_mem_a6 - cb   // 3C71  MOVEA.W   (d8,A1,Xn),A6
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, movea_mem_a6 - cb   // 3C72  MOVEA.W   (d8,A2,Xn),A6
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, movea_mem_a6 - cb   // 3C73  MOVEA.W   (d8,A3,Xn),A6
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, movea_mem_a6 - cb   // 3C74  MOVEA.W   (d8,A4,Xn),A6
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, movea_mem_a6 - cb   // 3C75  MOVEA.W   (d8,A5,Xn),A6
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, movea_mem_a6 - cb   // 3C76  MOVEA.W   (d8,A6,Xn),A6
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, movea_mem_a6 - cb   // 3C77  MOVEA.W   (d8,A7,Xn),A6
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     a6, 0(prefetch_data)                    // 3C78  MOVEA.W   (xxx).W,A6
         b       fetch_skip_word
         ori     rtn_addr, code_ptr, movea_mem_a6 - cb   // 3C79  MOVEA.W   (xxx).L,A6
@@ -6601,21 +6601,21 @@
         lhax    data, a7, prefetch_data                 // 3CAF  MOVE.W    (d16,A7),(A6)
         b       move_w_mem_mem_13
         ori     rtn_addr, code_ptr, move_w_mem_mem_14 - cb  // 3CB0  MOVE.W    (d8,A0,Xn),(A6)
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, move_w_mem_mem_14 - cb  // 3CB1  MOVE.W    (d8,A1,Xn),(A6)
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, move_w_mem_mem_14 - cb  // 3CB2  MOVE.W    (d8,A2,Xn),(A6)
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, move_w_mem_mem_14 - cb  // 3CB3  MOVE.W    (d8,A3,Xn),(A6)
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, move_w_mem_mem_14 - cb  // 3CB4  MOVE.W    (d8,A4,Xn),(A6)
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, move_w_mem_mem_14 - cb  // 3CB5  MOVE.W    (d8,A5,Xn),(A6)
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, move_w_mem_mem_14 - cb  // 3CB6  MOVE.W    (d8,A6,Xn),(A6)
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, move_w_mem_mem_14 - cb  // 3CB7  MOVE.W    (d8,A7,Xn),(A6)
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 3CB8  MOVE.W    (xxx).W,(A6)
         b       move_w_mem_mem_13
         ori     rtn_addr, code_ptr, move_w_mem_mem_14 - cb  // 3CB9  MOVE.W    (xxx).L,(A6)
@@ -6731,21 +6731,21 @@
         lhax    data, a7, prefetch_data                 // 3CEF  MOVE.W    (d16,A7),(A6)+
         b       move_w_ea_mem_19
         ori     rtn_addr, code_ptr, move_w_mem_mem_51 - cb  // 3CF0  MOVE.W    (d8,A0,Xn),(A6)+
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, move_w_mem_mem_51 - cb  // 3CF1  MOVE.W    (d8,A1,Xn),(A6)+
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, move_w_mem_mem_51 - cb  // 3CF2  MOVE.W    (d8,A2,Xn),(A6)+
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, move_w_mem_mem_51 - cb  // 3CF3  MOVE.W    (d8,A3,Xn),(A6)+
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, move_w_mem_mem_51 - cb  // 3CF4  MOVE.W    (d8,A4,Xn),(A6)+
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, move_w_mem_mem_51 - cb  // 3CF5  MOVE.W    (d8,A5,Xn),(A6)+
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, move_w_mem_mem_51 - cb  // 3CF6  MOVE.W    (d8,A6,Xn),(A6)+
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, move_w_mem_mem_51 - cb  // 3CF7  MOVE.W    (d8,A7,Xn),(A6)+
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 3CF8  MOVE.W    (xxx).W,(A6)+
         b       move_w_ea_mem_19
         ori     rtn_addr, code_ptr, move_w_mem_mem_51 - cb  // 3CF9  MOVE.W    (xxx).L,(A6)+
@@ -6861,21 +6861,21 @@
         lhax    data, a7, prefetch_data                 // 3D2F  MOVE.W    (d16,A7),-(A6)
         b       move_w_mem_mem_29
         ori     rtn_addr, code_ptr, move_w_mem_mem_30 - cb  // 3D30  MOVE.W    (d8,A0,Xn),-(A6)
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, move_w_mem_mem_30 - cb  // 3D31  MOVE.W    (d8,A1,Xn),-(A6)
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, move_w_mem_mem_30 - cb  // 3D32  MOVE.W    (d8,A2,Xn),-(A6)
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, move_w_mem_mem_30 - cb  // 3D33  MOVE.W    (d8,A3,Xn),-(A6)
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, move_w_mem_mem_30 - cb  // 3D34  MOVE.W    (d8,A4,Xn),-(A6)
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, move_w_mem_mem_30 - cb  // 3D35  MOVE.W    (d8,A5,Xn),-(A6)
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, move_w_mem_mem_30 - cb  // 3D36  MOVE.W    (d8,A6,Xn),-(A6)
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, move_w_mem_mem_30 - cb  // 3D37  MOVE.W    (d8,A7,Xn),-(A6)
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 3D38  MOVE.W    (xxx).W,-(A6)
         b       move_w_mem_mem_29
         ori     rtn_addr, code_ptr, move_w_mem_mem_30 - cb  // 3D39  MOVE.W    (xxx).L,-(A6)
@@ -6991,21 +6991,21 @@
         lhax    data, a7, prefetch_data                 // 3D6F  MOVE.W    (d16,A7),(d16,A6)
         b       move_w_ea_mem_20
         ori     rtn_addr, code_ptr, move_w_mem_mem_52 - cb  // 3D70  MOVE.W    (d8,A0,Xn),(d16,A6)
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, move_w_mem_mem_52 - cb  // 3D71  MOVE.W    (d8,A1,Xn),(d16,A6)
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, move_w_mem_mem_52 - cb  // 3D72  MOVE.W    (d8,A2,Xn),(d16,A6)
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, move_w_mem_mem_52 - cb  // 3D73  MOVE.W    (d8,A3,Xn),(d16,A6)
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, move_w_mem_mem_52 - cb  // 3D74  MOVE.W    (d8,A4,Xn),(d16,A6)
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, move_w_mem_mem_52 - cb  // 3D75  MOVE.W    (d8,A5,Xn),(d16,A6)
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, move_w_mem_mem_52 - cb  // 3D76  MOVE.W    (d8,A6,Xn),(d16,A6)
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, move_w_mem_mem_52 - cb  // 3D77  MOVE.W    (d8,A7,Xn),(d16,A6)
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 3D78  MOVE.W    (xxx).W,(d16,A6)
         b       move_w_ea_mem_20
         ori     rtn_addr, code_ptr, move_w_mem_mem_52 - cb  // 3D79  MOVE.W    (xxx).L,(d16,A6)
@@ -7121,21 +7121,21 @@
         lhax    data, a7, prefetch_data                 // 3DAF  MOVE.W    (d16,A7),(d8,A6,Xn)
         b       move_w_ea_mem_21
         ori     rtn_addr, code_ptr, move_w_mem_mem_53 - cb  // 3DB0  MOVE.W    (d8,A0,Xn),(d8,A6,Xn)
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, move_w_mem_mem_53 - cb  // 3DB1  MOVE.W    (d8,A1,Xn),(d8,A6,Xn)
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, move_w_mem_mem_53 - cb  // 3DB2  MOVE.W    (d8,A2,Xn),(d8,A6,Xn)
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, move_w_mem_mem_53 - cb  // 3DB3  MOVE.W    (d8,A3,Xn),(d8,A6,Xn)
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, move_w_mem_mem_53 - cb  // 3DB4  MOVE.W    (d8,A4,Xn),(d8,A6,Xn)
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, move_w_mem_mem_53 - cb  // 3DB5  MOVE.W    (d8,A5,Xn),(d8,A6,Xn)
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, move_w_mem_mem_53 - cb  // 3DB6  MOVE.W    (d8,A6,Xn),(d8,A6,Xn)
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, move_w_mem_mem_53 - cb  // 3DB7  MOVE.W    (d8,A7,Xn),(d8,A6,Xn)
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 3DB8  MOVE.W    (xxx).W,(d8,A6,Xn)
         b       move_w_ea_mem_21
         ori     rtn_addr, code_ptr, move_w_mem_mem_53 - cb  // 3DB9  MOVE.W    (xxx).L,(d8,A6,Xn)
@@ -7381,21 +7381,21 @@
         lhax    data, a7, prefetch_data                 // 3E2F  MOVE.W    (d16,A7),D7
         b       move_w_mem_d7
         ori     rtn_addr, code_ptr, move_w_mem_d7_2 - cb  // 3E30  MOVE.W    (d8,A0,Xn),D7
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, move_w_mem_d7_2 - cb  // 3E31  MOVE.W    (d8,A1,Xn),D7
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, move_w_mem_d7_2 - cb  // 3E32  MOVE.W    (d8,A2,Xn),D7
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, move_w_mem_d7_2 - cb  // 3E33  MOVE.W    (d8,A3,Xn),D7
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, move_w_mem_d7_2 - cb  // 3E34  MOVE.W    (d8,A4,Xn),D7
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, move_w_mem_d7_2 - cb  // 3E35  MOVE.W    (d8,A5,Xn),D7
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, move_w_mem_d7_2 - cb  // 3E36  MOVE.W    (d8,A6,Xn),D7
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, move_w_mem_d7_2 - cb  // 3E37  MOVE.W    (d8,A7,Xn),D7
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 3E38  MOVE.W    (xxx).W,D7
         b       move_w_mem_d7
         ori     rtn_addr, code_ptr, move_w_mem_d7_2 - cb  // 3E39  MOVE.W    (xxx).L,D7
@@ -7511,21 +7511,21 @@
         lhax    a7, a7, prefetch_data                   // 3E6F  MOVEA.W   (d16,A7),A7
         b       fetch_skip_word
         ori     rtn_addr, code_ptr, movea_mem_a7 - cb   // 3E70  MOVEA.W   (d8,A0,Xn),A7
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, movea_mem_a7 - cb   // 3E71  MOVEA.W   (d8,A1,Xn),A7
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, movea_mem_a7 - cb   // 3E72  MOVEA.W   (d8,A2,Xn),A7
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, movea_mem_a7 - cb   // 3E73  MOVEA.W   (d8,A3,Xn),A7
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, movea_mem_a7 - cb   // 3E74  MOVEA.W   (d8,A4,Xn),A7
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, movea_mem_a7 - cb   // 3E75  MOVEA.W   (d8,A5,Xn),A7
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, movea_mem_a7 - cb   // 3E76  MOVEA.W   (d8,A6,Xn),A7
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, movea_mem_a7 - cb   // 3E77  MOVEA.W   (d8,A7,Xn),A7
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     a7, 0(prefetch_data)                    // 3E78  MOVEA.W   (xxx).W,A7
         b       fetch_skip_word
         ori     rtn_addr, code_ptr, movea_mem_a7 - cb   // 3E79  MOVEA.W   (xxx).L,A7
@@ -7641,21 +7641,21 @@
         lhax    data, a7, prefetch_data                 // 3EAF  MOVE.W    (d16,A7),(A7)
         b       move_w_mem_mem_15
         ori     rtn_addr, code_ptr, move_w_mem_mem_16 - cb  // 3EB0  MOVE.W    (d8,A0,Xn),(A7)
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, move_w_mem_mem_16 - cb  // 3EB1  MOVE.W    (d8,A1,Xn),(A7)
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, move_w_mem_mem_16 - cb  // 3EB2  MOVE.W    (d8,A2,Xn),(A7)
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, move_w_mem_mem_16 - cb  // 3EB3  MOVE.W    (d8,A3,Xn),(A7)
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, move_w_mem_mem_16 - cb  // 3EB4  MOVE.W    (d8,A4,Xn),(A7)
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, move_w_mem_mem_16 - cb  // 3EB5  MOVE.W    (d8,A5,Xn),(A7)
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, move_w_mem_mem_16 - cb  // 3EB6  MOVE.W    (d8,A6,Xn),(A7)
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, move_w_mem_mem_16 - cb  // 3EB7  MOVE.W    (d8,A7,Xn),(A7)
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 3EB8  MOVE.W    (xxx).W,(A7)
         b       move_w_mem_mem_15
         ori     rtn_addr, code_ptr, move_w_mem_mem_16 - cb  // 3EB9  MOVE.W    (xxx).L,(A7)
@@ -7771,21 +7771,21 @@
         lhax    data, a7, prefetch_data                 // 3EEF  MOVE.W    (d16,A7),(A7)+
         b       move_w_ea_mem_22
         ori     rtn_addr, code_ptr, move_w_mem_mem_54 - cb  // 3EF0  MOVE.W    (d8,A0,Xn),(A7)+
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, move_w_mem_mem_54 - cb  // 3EF1  MOVE.W    (d8,A1,Xn),(A7)+
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, move_w_mem_mem_54 - cb  // 3EF2  MOVE.W    (d8,A2,Xn),(A7)+
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, move_w_mem_mem_54 - cb  // 3EF3  MOVE.W    (d8,A3,Xn),(A7)+
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, move_w_mem_mem_54 - cb  // 3EF4  MOVE.W    (d8,A4,Xn),(A7)+
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, move_w_mem_mem_54 - cb  // 3EF5  MOVE.W    (d8,A5,Xn),(A7)+
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, move_w_mem_mem_54 - cb  // 3EF6  MOVE.W    (d8,A6,Xn),(A7)+
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, move_w_mem_mem_54 - cb  // 3EF7  MOVE.W    (d8,A7,Xn),(A7)+
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 3EF8  MOVE.W    (xxx).W,(A7)+
         b       move_w_ea_mem_22
         ori     rtn_addr, code_ptr, move_w_mem_mem_54 - cb  // 3EF9  MOVE.W    (xxx).L,(A7)+
@@ -7901,21 +7901,21 @@
         lhax    data, a7, prefetch_data                 // 3F2F  MOVE.W    (d16,A7),-(A7)
         b       move_w_mem_mem_31
         ori     rtn_addr, code_ptr, move_w_mem_mem_32 - cb  // 3F30  MOVE.W    (d8,A0,Xn),-(A7)
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, move_w_mem_mem_32 - cb  // 3F31  MOVE.W    (d8,A1,Xn),-(A7)
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, move_w_mem_mem_32 - cb  // 3F32  MOVE.W    (d8,A2,Xn),-(A7)
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, move_w_mem_mem_32 - cb  // 3F33  MOVE.W    (d8,A3,Xn),-(A7)
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, move_w_mem_mem_32 - cb  // 3F34  MOVE.W    (d8,A4,Xn),-(A7)
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, move_w_mem_mem_32 - cb  // 3F35  MOVE.W    (d8,A5,Xn),-(A7)
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, move_w_mem_mem_32 - cb  // 3F36  MOVE.W    (d8,A6,Xn),-(A7)
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, move_w_mem_mem_32 - cb  // 3F37  MOVE.W    (d8,A7,Xn),-(A7)
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 3F38  MOVE.W    (xxx).W,-(A7)
         b       move_w_mem_mem_31
         ori     rtn_addr, code_ptr, move_w_mem_mem_32 - cb  // 3F39  MOVE.W    (xxx).L,-(A7)
@@ -8031,21 +8031,21 @@
         lhax    data, a7, prefetch_data                 // 3F6F  MOVE.W    (d16,A7),(d16,A7)
         b       move_w_ea_mem_23
         ori     rtn_addr, code_ptr, move_w_mem_mem_55 - cb  // 3F70  MOVE.W    (d8,A0,Xn),(d16,A7)
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, move_w_mem_mem_55 - cb  // 3F71  MOVE.W    (d8,A1,Xn),(d16,A7)
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, move_w_mem_mem_55 - cb  // 3F72  MOVE.W    (d8,A2,Xn),(d16,A7)
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, move_w_mem_mem_55 - cb  // 3F73  MOVE.W    (d8,A3,Xn),(d16,A7)
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, move_w_mem_mem_55 - cb  // 3F74  MOVE.W    (d8,A4,Xn),(d16,A7)
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, move_w_mem_mem_55 - cb  // 3F75  MOVE.W    (d8,A5,Xn),(d16,A7)
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, move_w_mem_mem_55 - cb  // 3F76  MOVE.W    (d8,A6,Xn),(d16,A7)
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, move_w_mem_mem_55 - cb  // 3F77  MOVE.W    (d8,A7,Xn),(d16,A7)
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 3F78  MOVE.W    (xxx).W,(d16,A7)
         b       move_w_ea_mem_23
         ori     rtn_addr, code_ptr, move_w_mem_mem_55 - cb  // 3F79  MOVE.W    (xxx).L,(d16,A7)
@@ -8161,21 +8161,21 @@
         lhax    data, a7, prefetch_data                 // 3FAF  MOVE.W    (d16,A7),(d8,A7,Xn)
         b       move_w_ea_mem_24
         ori     rtn_addr, code_ptr, move_w_mem_mem_56 - cb  // 3FB0  MOVE.W    (d8,A0,Xn),(d8,A7,Xn)
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, move_w_mem_mem_56 - cb  // 3FB1  MOVE.W    (d8,A1,Xn),(d8,A7,Xn)
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, move_w_mem_mem_56 - cb  // 3FB2  MOVE.W    (d8,A2,Xn),(d8,A7,Xn)
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, move_w_mem_mem_56 - cb  // 3FB3  MOVE.W    (d8,A3,Xn),(d8,A7,Xn)
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, move_w_mem_mem_56 - cb  // 3FB4  MOVE.W    (d8,A4,Xn),(d8,A7,Xn)
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, move_w_mem_mem_56 - cb  // 3FB5  MOVE.W    (d8,A5,Xn),(d8,A7,Xn)
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, move_w_mem_mem_56 - cb  // 3FB6  MOVE.W    (d8,A6,Xn),(d8,A7,Xn)
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, move_w_mem_mem_56 - cb  // 3FB7  MOVE.W    (d8,A7,Xn),(d8,A7,Xn)
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 3FB8  MOVE.W    (xxx).W,(d8,A7,Xn)
         b       move_w_ea_mem_24
         ori     rtn_addr, code_ptr, move_w_mem_mem_56 - cb  // 3FB9  MOVE.W    (xxx).L,(d8,A7,Xn)

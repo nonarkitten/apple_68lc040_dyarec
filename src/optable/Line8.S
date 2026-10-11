@@ -101,21 +101,21 @@
         lbzx    data, a7, prefetch_data                 // 802F  OR.B      (d16,A7),D0
         b       or_b_mem_d0
         ori     rtn_addr, code_ptr, or_b_mem_d0_2 - cb  // 8030  OR.B      (d8,A0,Xn),D0
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, or_b_mem_d0_2 - cb  // 8031  OR.B      (d8,A1,Xn),D0
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, or_b_mem_d0_2 - cb  // 8032  OR.B      (d8,A2,Xn),D0
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, or_b_mem_d0_2 - cb  // 8033  OR.B      (d8,A3,Xn),D0
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, or_b_mem_d0_2 - cb  // 8034  OR.B      (d8,A4,Xn),D0
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, or_b_mem_d0_2 - cb  // 8035  OR.B      (d8,A5,Xn),D0
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, or_b_mem_d0_2 - cb  // 8036  OR.B      (d8,A6,Xn),D0
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, or_b_mem_d0_2 - cb  // 8037  OR.B      (d8,A7,Xn),D0
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         lbz     data, 0(prefetch_data)                  // 8038  OR.B      (xxx).W,D0
         b       or_b_mem_d0
         ori     rtn_addr, code_ptr, or_b_mem_d0_2 - cb  // 8039  OR.B      (xxx).L,D0
@@ -123,7 +123,7 @@
         lbzx    data, pc, prefetch_data                 // 803A  OR.B      (d16,PC),D0
         b       or_b_mem_d0
         ori     rtn_addr, code_ptr, or_b_mem_d0_2 - cb  // 803B  OR.B      (d8,PC,Xn),D0
-        b       fea_b_73
+        b       fea_b_73_2
         or      data, d0, prefetch_data                 // 803C  OR.B      #<data>,D0
         b       move_or_etc_b_ea_d0
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 803D  OR.B      <ea 7.5>,D0   (illegal)
@@ -231,21 +231,21 @@
         lhax    data, a7, prefetch_data                 // 806F  OR.W      (d16,A7),D0
         b       or_w_mem_d0_2
         ori     rtn_addr, code_ptr, or_w_mem_d0 - cb    // 8070  OR.W      (d8,A0,Xn),D0
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, or_w_mem_d0 - cb    // 8071  OR.W      (d8,A1,Xn),D0
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, or_w_mem_d0 - cb    // 8072  OR.W      (d8,A2,Xn),D0
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, or_w_mem_d0 - cb    // 8073  OR.W      (d8,A3,Xn),D0
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, or_w_mem_d0 - cb    // 8074  OR.W      (d8,A4,Xn),D0
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, or_w_mem_d0 - cb    // 8075  OR.W      (d8,A5,Xn),D0
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, or_w_mem_d0 - cb    // 8076  OR.W      (d8,A6,Xn),D0
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, or_w_mem_d0 - cb    // 8077  OR.W      (d8,A7,Xn),D0
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 8078  OR.W      (xxx).W,D0
         b       or_w_mem_d0_2
         ori     rtn_addr, code_ptr, or_w_mem_d0 - cb    // 8079  OR.W      (xxx).L,D0
@@ -361,21 +361,21 @@
         lwzx    data, a7, prefetch_data                 // 80AF  OR.L      (d16,A7),D0
         b       or_l_mem_d0
         ori     rtn_addr, code_ptr, or_l_mem_d0_2 - cb  // 80B0  OR.L      (d8,A0,Xn),D0
-        b       move_add_etc_l_any_any
+        b       fea_l_60_2
         ori     rtn_addr, code_ptr, or_l_mem_d0_2 - cb  // 80B1  OR.L      (d8,A1,Xn),D0
-        b       move_add_etc_l_any_any_2
+        b       fea_l_61_2
         ori     rtn_addr, code_ptr, or_l_mem_d0_2 - cb  // 80B2  OR.L      (d8,A2,Xn),D0
-        b       move_add_etc_l_any_any_3
+        b       fea_l_62_2
         ori     rtn_addr, code_ptr, or_l_mem_d0_2 - cb  // 80B3  OR.L      (d8,A3,Xn),D0
-        b       move_add_etc_l_any_any_4
+        b       fea_l_63_2
         ori     rtn_addr, code_ptr, or_l_mem_d0_2 - cb  // 80B4  OR.L      (d8,A4,Xn),D0
-        b       move_add_etc_l_any_any_5
+        b       fea_l_64_2
         ori     rtn_addr, code_ptr, or_l_mem_d0_2 - cb  // 80B5  OR.L      (d8,A5,Xn),D0
-        b       move_add_etc_l_any_any_6
+        b       fea_l_65_2
         ori     rtn_addr, code_ptr, or_l_mem_d0_2 - cb  // 80B6  OR.L      (d8,A6,Xn),D0
-        b       move_add_etc_l_any_any_7
+        b       fea_l_66_2
         ori     rtn_addr, code_ptr, or_l_mem_d0_2 - cb  // 80B7  OR.L      (d8,A7,Xn),D0
-        b       move_add_etc_l_any_any_8
+        b       fea_l_67_2
         lwz     data, 0(prefetch_data)                  // 80B8  OR.L      (xxx).W,D0
         b       or_l_mem_d0
         ori     rtn_addr, code_ptr, or_l_mem_d0_2 - cb  // 80B9  OR.L      (xxx).L,D0
@@ -383,7 +383,7 @@
         lwzx    data, pc, prefetch_data                 // 80BA  OR.L      (d16,PC),D0
         b       or_l_mem_d0
         ori     rtn_addr, code_ptr, or_l_mem_d0_2 - cb  // 80BB  OR.L      (d8,PC,Xn),D0
-        b       fea_l_73
+        b       fea_l_73_2
         lwz     data, 0(pc)                             // 80BC  OR.L      #<data>,D0
         b       or_l_imm_d0
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 80BD  OR.L      <ea 7.5>,D0   (illegal)
@@ -491,21 +491,21 @@
         lhax    data, a7, prefetch_data                 // 80EF  DIVU.W    (d16,A7),D0
         b       divu_w_ea_d0
         ori     rtn_addr, code_ptr, divu_w_mem_d0 - cb  // 80F0  DIVU.W    (d8,A0,Xn),D0
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, divu_w_mem_d0 - cb  // 80F1  DIVU.W    (d8,A1,Xn),D0
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, divu_w_mem_d0 - cb  // 80F2  DIVU.W    (d8,A2,Xn),D0
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, divu_w_mem_d0 - cb  // 80F3  DIVU.W    (d8,A3,Xn),D0
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, divu_w_mem_d0 - cb  // 80F4  DIVU.W    (d8,A4,Xn),D0
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, divu_w_mem_d0 - cb  // 80F5  DIVU.W    (d8,A5,Xn),D0
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, divu_w_mem_d0 - cb  // 80F6  DIVU.W    (d8,A6,Xn),D0
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, divu_w_mem_d0 - cb  // 80F7  DIVU.W    (d8,A7,Xn),D0
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 80F8  DIVU.W    (xxx).W,D0
         b       divu_w_ea_d0
         ori     rtn_addr, code_ptr, divu_w_mem_d0 - cb  // 80F9  DIVU.W    (xxx).L,D0
@@ -629,21 +629,21 @@ op_8117:
         add     addr, a7, prefetch_data                 // 812F  OR.B      D0,(d16,A7)
         b       or_b_d0_mem
         ori     rtn_addr, code_ptr, or_b_d0_mem_2 - cb  // 8130  OR.B      D0,(d8,A0,Xn)
-        b       or_sub_etc_any_any
+        b       cea_x_60_2
         ori     rtn_addr, code_ptr, or_b_d0_mem_2 - cb  // 8131  OR.B      D0,(d8,A1,Xn)
-        b       or_sub_etc_any_any_2
+        b       cea_x_61_2
         ori     rtn_addr, code_ptr, or_b_d0_mem_2 - cb  // 8132  OR.B      D0,(d8,A2,Xn)
-        b       or_sub_etc_any_any_3
+        b       cea_x_62_2
         ori     rtn_addr, code_ptr, or_b_d0_mem_2 - cb  // 8133  OR.B      D0,(d8,A3,Xn)
-        b       or_sub_etc_any_any_4
+        b       cea_x_63_2
         ori     rtn_addr, code_ptr, or_b_d0_mem_2 - cb  // 8134  OR.B      D0,(d8,A4,Xn)
-        b       or_sub_etc_any_any_5
+        b       cea_x_64_2
         ori     rtn_addr, code_ptr, or_b_d0_mem_2 - cb  // 8135  OR.B      D0,(d8,A5,Xn)
-        b       or_sub_etc_any_any_6
+        b       cea_x_65_2
         ori     rtn_addr, code_ptr, or_b_d0_mem_2 - cb  // 8136  OR.B      D0,(d8,A6,Xn)
-        b       or_sub_etc_any_any_7
+        b       cea_x_66_2
         ori     rtn_addr, code_ptr, or_b_d0_mem_2 - cb  // 8137  OR.B      D0,(d8,A7,Xn)
-        b       or_sub_etc_any_any_8
+        b       cea_x_67_2
         mr      addr, prefetch_data                     // 8138  OR.B      D0,(xxx).W
         b       or_b_d0_mem
         ori     rtn_addr, code_ptr, or_b_d0_mem_2 - cb  // 8139  OR.B      D0,(xxx).L
@@ -767,21 +767,21 @@ op_8157:
         add     addr, a7, prefetch_data                 // 816F  OR.W      D0,(d16,A7)
         b       or_w_d0_mem
         ori     rtn_addr, code_ptr, or_w_d0_mem_2 - cb  // 8170  OR.W      D0,(d8,A0,Xn)
-        b       or_sub_etc_any_any
+        b       cea_x_60_2
         ori     rtn_addr, code_ptr, or_w_d0_mem_2 - cb  // 8171  OR.W      D0,(d8,A1,Xn)
-        b       or_sub_etc_any_any_2
+        b       cea_x_61_2
         ori     rtn_addr, code_ptr, or_w_d0_mem_2 - cb  // 8172  OR.W      D0,(d8,A2,Xn)
-        b       or_sub_etc_any_any_3
+        b       cea_x_62_2
         ori     rtn_addr, code_ptr, or_w_d0_mem_2 - cb  // 8173  OR.W      D0,(d8,A3,Xn)
-        b       or_sub_etc_any_any_4
+        b       cea_x_63_2
         ori     rtn_addr, code_ptr, or_w_d0_mem_2 - cb  // 8174  OR.W      D0,(d8,A4,Xn)
-        b       or_sub_etc_any_any_5
+        b       cea_x_64_2
         ori     rtn_addr, code_ptr, or_w_d0_mem_2 - cb  // 8175  OR.W      D0,(d8,A5,Xn)
-        b       or_sub_etc_any_any_6
+        b       cea_x_65_2
         ori     rtn_addr, code_ptr, or_w_d0_mem_2 - cb  // 8176  OR.W      D0,(d8,A6,Xn)
-        b       or_sub_etc_any_any_7
+        b       cea_x_66_2
         ori     rtn_addr, code_ptr, or_w_d0_mem_2 - cb  // 8177  OR.W      D0,(d8,A7,Xn)
-        b       or_sub_etc_any_any_8
+        b       cea_x_67_2
         mr      addr, prefetch_data                     // 8178  OR.W      D0,(xxx).W
         b       or_w_d0_mem
         ori     rtn_addr, code_ptr, or_w_d0_mem_2 - cb  // 8179  OR.W      D0,(xxx).L
@@ -905,21 +905,21 @@ op_8197:
         add     addr, a7, prefetch_data                 // 81AF  OR.L      D0,(d16,A7)
         b       or_l_d0_mem
         ori     rtn_addr, code_ptr, or_l_d0_mem_2 - cb  // 81B0  OR.L      D0,(d8,A0,Xn)
-        b       or_sub_etc_any_any
+        b       cea_x_60_2
         ori     rtn_addr, code_ptr, or_l_d0_mem_2 - cb  // 81B1  OR.L      D0,(d8,A1,Xn)
-        b       or_sub_etc_any_any_2
+        b       cea_x_61_2
         ori     rtn_addr, code_ptr, or_l_d0_mem_2 - cb  // 81B2  OR.L      D0,(d8,A2,Xn)
-        b       or_sub_etc_any_any_3
+        b       cea_x_62_2
         ori     rtn_addr, code_ptr, or_l_d0_mem_2 - cb  // 81B3  OR.L      D0,(d8,A3,Xn)
-        b       or_sub_etc_any_any_4
+        b       cea_x_63_2
         ori     rtn_addr, code_ptr, or_l_d0_mem_2 - cb  // 81B4  OR.L      D0,(d8,A4,Xn)
-        b       or_sub_etc_any_any_5
+        b       cea_x_64_2
         ori     rtn_addr, code_ptr, or_l_d0_mem_2 - cb  // 81B5  OR.L      D0,(d8,A5,Xn)
-        b       or_sub_etc_any_any_6
+        b       cea_x_65_2
         ori     rtn_addr, code_ptr, or_l_d0_mem_2 - cb  // 81B6  OR.L      D0,(d8,A6,Xn)
-        b       or_sub_etc_any_any_7
+        b       cea_x_66_2
         ori     rtn_addr, code_ptr, or_l_d0_mem_2 - cb  // 81B7  OR.L      D0,(d8,A7,Xn)
-        b       or_sub_etc_any_any_8
+        b       cea_x_67_2
         mr      addr, prefetch_data                     // 81B8  OR.L      D0,(xxx).W
         b       or_l_d0_mem
         ori     rtn_addr, code_ptr, or_l_d0_mem_2 - cb  // 81B9  OR.L      D0,(xxx).L
@@ -1035,21 +1035,21 @@ op_8197:
         lhax    data, a7, prefetch_data                 // 81EF  DIVS.W    (d16,A7),D0
         b       divs_w_ea_d0
         ori     rtn_addr, code_ptr, divs_w_mem_d0 - cb  // 81F0  DIVS.W    (d8,A0,Xn),D0
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, divs_w_mem_d0 - cb  // 81F1  DIVS.W    (d8,A1,Xn),D0
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, divs_w_mem_d0 - cb  // 81F2  DIVS.W    (d8,A2,Xn),D0
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, divs_w_mem_d0 - cb  // 81F3  DIVS.W    (d8,A3,Xn),D0
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, divs_w_mem_d0 - cb  // 81F4  DIVS.W    (d8,A4,Xn),D0
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, divs_w_mem_d0 - cb  // 81F5  DIVS.W    (d8,A5,Xn),D0
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, divs_w_mem_d0 - cb  // 81F6  DIVS.W    (d8,A6,Xn),D0
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, divs_w_mem_d0 - cb  // 81F7  DIVS.W    (d8,A7,Xn),D0
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 81F8  DIVS.W    (xxx).W,D0
         b       divs_w_ea_d0
         ori     rtn_addr, code_ptr, divs_w_mem_d0 - cb  // 81F9  DIVS.W    (xxx).L,D0
@@ -1165,21 +1165,21 @@ op_8197:
         lbzx    data, a7, prefetch_data                 // 822F  OR.B      (d16,A7),D1
         b       or_b_mem_d1
         ori     rtn_addr, code_ptr, or_b_mem_d1_2 - cb  // 8230  OR.B      (d8,A0,Xn),D1
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, or_b_mem_d1_2 - cb  // 8231  OR.B      (d8,A1,Xn),D1
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, or_b_mem_d1_2 - cb  // 8232  OR.B      (d8,A2,Xn),D1
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, or_b_mem_d1_2 - cb  // 8233  OR.B      (d8,A3,Xn),D1
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, or_b_mem_d1_2 - cb  // 8234  OR.B      (d8,A4,Xn),D1
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, or_b_mem_d1_2 - cb  // 8235  OR.B      (d8,A5,Xn),D1
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, or_b_mem_d1_2 - cb  // 8236  OR.B      (d8,A6,Xn),D1
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, or_b_mem_d1_2 - cb  // 8237  OR.B      (d8,A7,Xn),D1
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         lbz     data, 0(prefetch_data)                  // 8238  OR.B      (xxx).W,D1
         b       or_b_mem_d1
         ori     rtn_addr, code_ptr, or_b_mem_d1_2 - cb  // 8239  OR.B      (xxx).L,D1
@@ -1187,7 +1187,7 @@ op_8197:
         lbzx    data, pc, prefetch_data                 // 823A  OR.B      (d16,PC),D1
         b       or_b_mem_d1
         ori     rtn_addr, code_ptr, or_b_mem_d1_2 - cb  // 823B  OR.B      (d8,PC,Xn),D1
-        b       fea_b_73
+        b       fea_b_73_2
         or      data, d1, prefetch_data                 // 823C  OR.B      #<data>,D1
         b       move_or_etc_b_ea_d1
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 823D  OR.B      <ea 7.5>,D1   (illegal)
@@ -1295,21 +1295,21 @@ op_8197:
         lhax    data, a7, prefetch_data                 // 826F  OR.W      (d16,A7),D1
         b       or_w_mem_d1_2
         ori     rtn_addr, code_ptr, or_w_mem_d1 - cb    // 8270  OR.W      (d8,A0,Xn),D1
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, or_w_mem_d1 - cb    // 8271  OR.W      (d8,A1,Xn),D1
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, or_w_mem_d1 - cb    // 8272  OR.W      (d8,A2,Xn),D1
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, or_w_mem_d1 - cb    // 8273  OR.W      (d8,A3,Xn),D1
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, or_w_mem_d1 - cb    // 8274  OR.W      (d8,A4,Xn),D1
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, or_w_mem_d1 - cb    // 8275  OR.W      (d8,A5,Xn),D1
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, or_w_mem_d1 - cb    // 8276  OR.W      (d8,A6,Xn),D1
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, or_w_mem_d1 - cb    // 8277  OR.W      (d8,A7,Xn),D1
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 8278  OR.W      (xxx).W,D1
         b       or_w_mem_d1_2
         ori     rtn_addr, code_ptr, or_w_mem_d1 - cb    // 8279  OR.W      (xxx).L,D1
@@ -1425,21 +1425,21 @@ op_8197:
         lwzx    data, a7, prefetch_data                 // 82AF  OR.L      (d16,A7),D1
         b       or_l_mem_d1
         ori     rtn_addr, code_ptr, or_l_mem_d1_2 - cb  // 82B0  OR.L      (d8,A0,Xn),D1
-        b       move_add_etc_l_any_any
+        b       fea_l_60_2
         ori     rtn_addr, code_ptr, or_l_mem_d1_2 - cb  // 82B1  OR.L      (d8,A1,Xn),D1
-        b       move_add_etc_l_any_any_2
+        b       fea_l_61_2
         ori     rtn_addr, code_ptr, or_l_mem_d1_2 - cb  // 82B2  OR.L      (d8,A2,Xn),D1
-        b       move_add_etc_l_any_any_3
+        b       fea_l_62_2
         ori     rtn_addr, code_ptr, or_l_mem_d1_2 - cb  // 82B3  OR.L      (d8,A3,Xn),D1
-        b       move_add_etc_l_any_any_4
+        b       fea_l_63_2
         ori     rtn_addr, code_ptr, or_l_mem_d1_2 - cb  // 82B4  OR.L      (d8,A4,Xn),D1
-        b       move_add_etc_l_any_any_5
+        b       fea_l_64_2
         ori     rtn_addr, code_ptr, or_l_mem_d1_2 - cb  // 82B5  OR.L      (d8,A5,Xn),D1
-        b       move_add_etc_l_any_any_6
+        b       fea_l_65_2
         ori     rtn_addr, code_ptr, or_l_mem_d1_2 - cb  // 82B6  OR.L      (d8,A6,Xn),D1
-        b       move_add_etc_l_any_any_7
+        b       fea_l_66_2
         ori     rtn_addr, code_ptr, or_l_mem_d1_2 - cb  // 82B7  OR.L      (d8,A7,Xn),D1
-        b       move_add_etc_l_any_any_8
+        b       fea_l_67_2
         lwz     data, 0(prefetch_data)                  // 82B8  OR.L      (xxx).W,D1
         b       or_l_mem_d1
         ori     rtn_addr, code_ptr, or_l_mem_d1_2 - cb  // 82B9  OR.L      (xxx).L,D1
@@ -1447,7 +1447,7 @@ op_8197:
         lwzx    data, pc, prefetch_data                 // 82BA  OR.L      (d16,PC),D1
         b       or_l_mem_d1
         ori     rtn_addr, code_ptr, or_l_mem_d1_2 - cb  // 82BB  OR.L      (d8,PC,Xn),D1
-        b       fea_l_73
+        b       fea_l_73_2
         lwz     data, 0(pc)                             // 82BC  OR.L      #<data>,D1
         b       or_l_imm_d1
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 82BD  OR.L      <ea 7.5>,D1   (illegal)
@@ -1555,21 +1555,21 @@ op_8197:
         lhax    data, a7, prefetch_data                 // 82EF  DIVU.W    (d16,A7),D1
         b       divu_w_ea_d1
         ori     rtn_addr, code_ptr, divu_w_mem_d1 - cb  // 82F0  DIVU.W    (d8,A0,Xn),D1
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, divu_w_mem_d1 - cb  // 82F1  DIVU.W    (d8,A1,Xn),D1
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, divu_w_mem_d1 - cb  // 82F2  DIVU.W    (d8,A2,Xn),D1
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, divu_w_mem_d1 - cb  // 82F3  DIVU.W    (d8,A3,Xn),D1
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, divu_w_mem_d1 - cb  // 82F4  DIVU.W    (d8,A4,Xn),D1
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, divu_w_mem_d1 - cb  // 82F5  DIVU.W    (d8,A5,Xn),D1
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, divu_w_mem_d1 - cb  // 82F6  DIVU.W    (d8,A6,Xn),D1
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, divu_w_mem_d1 - cb  // 82F7  DIVU.W    (d8,A7,Xn),D1
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 82F8  DIVU.W    (xxx).W,D1
         b       divu_w_ea_d1
         ori     rtn_addr, code_ptr, divu_w_mem_d1 - cb  // 82F9  DIVU.W    (xxx).L,D1
@@ -1693,21 +1693,21 @@ op_8317:
         add     addr, a7, prefetch_data                 // 832F  OR.B      D1,(d16,A7)
         b       or_b_d1_mem
         ori     rtn_addr, code_ptr, or_b_d1_mem_2 - cb  // 8330  OR.B      D1,(d8,A0,Xn)
-        b       or_sub_etc_any_any
+        b       cea_x_60_2
         ori     rtn_addr, code_ptr, or_b_d1_mem_2 - cb  // 8331  OR.B      D1,(d8,A1,Xn)
-        b       or_sub_etc_any_any_2
+        b       cea_x_61_2
         ori     rtn_addr, code_ptr, or_b_d1_mem_2 - cb  // 8332  OR.B      D1,(d8,A2,Xn)
-        b       or_sub_etc_any_any_3
+        b       cea_x_62_2
         ori     rtn_addr, code_ptr, or_b_d1_mem_2 - cb  // 8333  OR.B      D1,(d8,A3,Xn)
-        b       or_sub_etc_any_any_4
+        b       cea_x_63_2
         ori     rtn_addr, code_ptr, or_b_d1_mem_2 - cb  // 8334  OR.B      D1,(d8,A4,Xn)
-        b       or_sub_etc_any_any_5
+        b       cea_x_64_2
         ori     rtn_addr, code_ptr, or_b_d1_mem_2 - cb  // 8335  OR.B      D1,(d8,A5,Xn)
-        b       or_sub_etc_any_any_6
+        b       cea_x_65_2
         ori     rtn_addr, code_ptr, or_b_d1_mem_2 - cb  // 8336  OR.B      D1,(d8,A6,Xn)
-        b       or_sub_etc_any_any_7
+        b       cea_x_66_2
         ori     rtn_addr, code_ptr, or_b_d1_mem_2 - cb  // 8337  OR.B      D1,(d8,A7,Xn)
-        b       or_sub_etc_any_any_8
+        b       cea_x_67_2
         mr      addr, prefetch_data                     // 8338  OR.B      D1,(xxx).W
         b       or_b_d1_mem
         ori     rtn_addr, code_ptr, or_b_d1_mem_2 - cb  // 8339  OR.B      D1,(xxx).L
@@ -1831,21 +1831,21 @@ op_8357:
         add     addr, a7, prefetch_data                 // 836F  OR.W      D1,(d16,A7)
         b       or_w_d1_mem
         ori     rtn_addr, code_ptr, or_w_d1_mem_2 - cb  // 8370  OR.W      D1,(d8,A0,Xn)
-        b       or_sub_etc_any_any
+        b       cea_x_60_2
         ori     rtn_addr, code_ptr, or_w_d1_mem_2 - cb  // 8371  OR.W      D1,(d8,A1,Xn)
-        b       or_sub_etc_any_any_2
+        b       cea_x_61_2
         ori     rtn_addr, code_ptr, or_w_d1_mem_2 - cb  // 8372  OR.W      D1,(d8,A2,Xn)
-        b       or_sub_etc_any_any_3
+        b       cea_x_62_2
         ori     rtn_addr, code_ptr, or_w_d1_mem_2 - cb  // 8373  OR.W      D1,(d8,A3,Xn)
-        b       or_sub_etc_any_any_4
+        b       cea_x_63_2
         ori     rtn_addr, code_ptr, or_w_d1_mem_2 - cb  // 8374  OR.W      D1,(d8,A4,Xn)
-        b       or_sub_etc_any_any_5
+        b       cea_x_64_2
         ori     rtn_addr, code_ptr, or_w_d1_mem_2 - cb  // 8375  OR.W      D1,(d8,A5,Xn)
-        b       or_sub_etc_any_any_6
+        b       cea_x_65_2
         ori     rtn_addr, code_ptr, or_w_d1_mem_2 - cb  // 8376  OR.W      D1,(d8,A6,Xn)
-        b       or_sub_etc_any_any_7
+        b       cea_x_66_2
         ori     rtn_addr, code_ptr, or_w_d1_mem_2 - cb  // 8377  OR.W      D1,(d8,A7,Xn)
-        b       or_sub_etc_any_any_8
+        b       cea_x_67_2
         mr      addr, prefetch_data                     // 8378  OR.W      D1,(xxx).W
         b       or_w_d1_mem
         ori     rtn_addr, code_ptr, or_w_d1_mem_2 - cb  // 8379  OR.W      D1,(xxx).L
@@ -1969,21 +1969,21 @@ op_8397:
         add     addr, a7, prefetch_data                 // 83AF  OR.L      D1,(d16,A7)
         b       or_l_d1_mem
         ori     rtn_addr, code_ptr, or_l_d1_mem_2 - cb  // 83B0  OR.L      D1,(d8,A0,Xn)
-        b       or_sub_etc_any_any
+        b       cea_x_60_2
         ori     rtn_addr, code_ptr, or_l_d1_mem_2 - cb  // 83B1  OR.L      D1,(d8,A1,Xn)
-        b       or_sub_etc_any_any_2
+        b       cea_x_61_2
         ori     rtn_addr, code_ptr, or_l_d1_mem_2 - cb  // 83B2  OR.L      D1,(d8,A2,Xn)
-        b       or_sub_etc_any_any_3
+        b       cea_x_62_2
         ori     rtn_addr, code_ptr, or_l_d1_mem_2 - cb  // 83B3  OR.L      D1,(d8,A3,Xn)
-        b       or_sub_etc_any_any_4
+        b       cea_x_63_2
         ori     rtn_addr, code_ptr, or_l_d1_mem_2 - cb  // 83B4  OR.L      D1,(d8,A4,Xn)
-        b       or_sub_etc_any_any_5
+        b       cea_x_64_2
         ori     rtn_addr, code_ptr, or_l_d1_mem_2 - cb  // 83B5  OR.L      D1,(d8,A5,Xn)
-        b       or_sub_etc_any_any_6
+        b       cea_x_65_2
         ori     rtn_addr, code_ptr, or_l_d1_mem_2 - cb  // 83B6  OR.L      D1,(d8,A6,Xn)
-        b       or_sub_etc_any_any_7
+        b       cea_x_66_2
         ori     rtn_addr, code_ptr, or_l_d1_mem_2 - cb  // 83B7  OR.L      D1,(d8,A7,Xn)
-        b       or_sub_etc_any_any_8
+        b       cea_x_67_2
         mr      addr, prefetch_data                     // 83B8  OR.L      D1,(xxx).W
         b       or_l_d1_mem
         ori     rtn_addr, code_ptr, or_l_d1_mem_2 - cb  // 83B9  OR.L      D1,(xxx).L
@@ -2099,21 +2099,21 @@ op_8397:
         lhax    data, a7, prefetch_data                 // 83EF  DIVS.W    (d16,A7),D1
         b       divs_w_ea_d1
         ori     rtn_addr, code_ptr, divs_w_mem_d1 - cb  // 83F0  DIVS.W    (d8,A0,Xn),D1
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, divs_w_mem_d1 - cb  // 83F1  DIVS.W    (d8,A1,Xn),D1
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, divs_w_mem_d1 - cb  // 83F2  DIVS.W    (d8,A2,Xn),D1
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, divs_w_mem_d1 - cb  // 83F3  DIVS.W    (d8,A3,Xn),D1
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, divs_w_mem_d1 - cb  // 83F4  DIVS.W    (d8,A4,Xn),D1
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, divs_w_mem_d1 - cb  // 83F5  DIVS.W    (d8,A5,Xn),D1
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, divs_w_mem_d1 - cb  // 83F6  DIVS.W    (d8,A6,Xn),D1
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, divs_w_mem_d1 - cb  // 83F7  DIVS.W    (d8,A7,Xn),D1
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 83F8  DIVS.W    (xxx).W,D1
         b       divs_w_ea_d1
         ori     rtn_addr, code_ptr, divs_w_mem_d1 - cb  // 83F9  DIVS.W    (xxx).L,D1
@@ -2229,21 +2229,21 @@ op_8397:
         lbzx    data, a7, prefetch_data                 // 842F  OR.B      (d16,A7),D2
         b       or_b_mem_d2
         ori     rtn_addr, code_ptr, or_b_mem_d2_2 - cb  // 8430  OR.B      (d8,A0,Xn),D2
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, or_b_mem_d2_2 - cb  // 8431  OR.B      (d8,A1,Xn),D2
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, or_b_mem_d2_2 - cb  // 8432  OR.B      (d8,A2,Xn),D2
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, or_b_mem_d2_2 - cb  // 8433  OR.B      (d8,A3,Xn),D2
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, or_b_mem_d2_2 - cb  // 8434  OR.B      (d8,A4,Xn),D2
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, or_b_mem_d2_2 - cb  // 8435  OR.B      (d8,A5,Xn),D2
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, or_b_mem_d2_2 - cb  // 8436  OR.B      (d8,A6,Xn),D2
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, or_b_mem_d2_2 - cb  // 8437  OR.B      (d8,A7,Xn),D2
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         lbz     data, 0(prefetch_data)                  // 8438  OR.B      (xxx).W,D2
         b       or_b_mem_d2
         ori     rtn_addr, code_ptr, or_b_mem_d2_2 - cb  // 8439  OR.B      (xxx).L,D2
@@ -2251,7 +2251,7 @@ op_8397:
         lbzx    data, pc, prefetch_data                 // 843A  OR.B      (d16,PC),D2
         b       or_b_mem_d2
         ori     rtn_addr, code_ptr, or_b_mem_d2_2 - cb  // 843B  OR.B      (d8,PC,Xn),D2
-        b       fea_b_73
+        b       fea_b_73_2
         or      data, d2, prefetch_data                 // 843C  OR.B      #<data>,D2
         b       move_or_etc_b_ea_d2
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 843D  OR.B      <ea 7.5>,D2   (illegal)
@@ -2359,21 +2359,21 @@ op_8397:
         lhax    data, a7, prefetch_data                 // 846F  OR.W      (d16,A7),D2
         b       or_w_mem_d2_2
         ori     rtn_addr, code_ptr, or_w_mem_d2 - cb    // 8470  OR.W      (d8,A0,Xn),D2
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, or_w_mem_d2 - cb    // 8471  OR.W      (d8,A1,Xn),D2
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, or_w_mem_d2 - cb    // 8472  OR.W      (d8,A2,Xn),D2
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, or_w_mem_d2 - cb    // 8473  OR.W      (d8,A3,Xn),D2
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, or_w_mem_d2 - cb    // 8474  OR.W      (d8,A4,Xn),D2
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, or_w_mem_d2 - cb    // 8475  OR.W      (d8,A5,Xn),D2
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, or_w_mem_d2 - cb    // 8476  OR.W      (d8,A6,Xn),D2
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, or_w_mem_d2 - cb    // 8477  OR.W      (d8,A7,Xn),D2
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 8478  OR.W      (xxx).W,D2
         b       or_w_mem_d2_2
         ori     rtn_addr, code_ptr, or_w_mem_d2 - cb    // 8479  OR.W      (xxx).L,D2
@@ -2489,21 +2489,21 @@ op_8397:
         lwzx    data, a7, prefetch_data                 // 84AF  OR.L      (d16,A7),D2
         b       or_l_mem_d2
         ori     rtn_addr, code_ptr, or_l_mem_d2_2 - cb  // 84B0  OR.L      (d8,A0,Xn),D2
-        b       move_add_etc_l_any_any
+        b       fea_l_60_2
         ori     rtn_addr, code_ptr, or_l_mem_d2_2 - cb  // 84B1  OR.L      (d8,A1,Xn),D2
-        b       move_add_etc_l_any_any_2
+        b       fea_l_61_2
         ori     rtn_addr, code_ptr, or_l_mem_d2_2 - cb  // 84B2  OR.L      (d8,A2,Xn),D2
-        b       move_add_etc_l_any_any_3
+        b       fea_l_62_2
         ori     rtn_addr, code_ptr, or_l_mem_d2_2 - cb  // 84B3  OR.L      (d8,A3,Xn),D2
-        b       move_add_etc_l_any_any_4
+        b       fea_l_63_2
         ori     rtn_addr, code_ptr, or_l_mem_d2_2 - cb  // 84B4  OR.L      (d8,A4,Xn),D2
-        b       move_add_etc_l_any_any_5
+        b       fea_l_64_2
         ori     rtn_addr, code_ptr, or_l_mem_d2_2 - cb  // 84B5  OR.L      (d8,A5,Xn),D2
-        b       move_add_etc_l_any_any_6
+        b       fea_l_65_2
         ori     rtn_addr, code_ptr, or_l_mem_d2_2 - cb  // 84B6  OR.L      (d8,A6,Xn),D2
-        b       move_add_etc_l_any_any_7
+        b       fea_l_66_2
         ori     rtn_addr, code_ptr, or_l_mem_d2_2 - cb  // 84B7  OR.L      (d8,A7,Xn),D2
-        b       move_add_etc_l_any_any_8
+        b       fea_l_67_2
         lwz     data, 0(prefetch_data)                  // 84B8  OR.L      (xxx).W,D2
         b       or_l_mem_d2
         ori     rtn_addr, code_ptr, or_l_mem_d2_2 - cb  // 84B9  OR.L      (xxx).L,D2
@@ -2511,7 +2511,7 @@ op_8397:
         lwzx    data, pc, prefetch_data                 // 84BA  OR.L      (d16,PC),D2
         b       or_l_mem_d2
         ori     rtn_addr, code_ptr, or_l_mem_d2_2 - cb  // 84BB  OR.L      (d8,PC,Xn),D2
-        b       fea_l_73
+        b       fea_l_73_2
         lwz     data, 0(pc)                             // 84BC  OR.L      #<data>,D2
         b       or_l_imm_d2
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 84BD  OR.L      <ea 7.5>,D2   (illegal)
@@ -2619,21 +2619,21 @@ op_8397:
         lhax    data, a7, prefetch_data                 // 84EF  DIVU.W    (d16,A7),D2
         b       divu_w_ea_d2
         ori     rtn_addr, code_ptr, divu_w_mem_d2 - cb  // 84F0  DIVU.W    (d8,A0,Xn),D2
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, divu_w_mem_d2 - cb  // 84F1  DIVU.W    (d8,A1,Xn),D2
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, divu_w_mem_d2 - cb  // 84F2  DIVU.W    (d8,A2,Xn),D2
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, divu_w_mem_d2 - cb  // 84F3  DIVU.W    (d8,A3,Xn),D2
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, divu_w_mem_d2 - cb  // 84F4  DIVU.W    (d8,A4,Xn),D2
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, divu_w_mem_d2 - cb  // 84F5  DIVU.W    (d8,A5,Xn),D2
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, divu_w_mem_d2 - cb  // 84F6  DIVU.W    (d8,A6,Xn),D2
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, divu_w_mem_d2 - cb  // 84F7  DIVU.W    (d8,A7,Xn),D2
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 84F8  DIVU.W    (xxx).W,D2
         b       divu_w_ea_d2
         ori     rtn_addr, code_ptr, divu_w_mem_d2 - cb  // 84F9  DIVU.W    (xxx).L,D2
@@ -2757,21 +2757,21 @@ op_8517:
         add     addr, a7, prefetch_data                 // 852F  OR.B      D2,(d16,A7)
         b       or_b_d2_mem
         ori     rtn_addr, code_ptr, or_b_d2_mem_2 - cb  // 8530  OR.B      D2,(d8,A0,Xn)
-        b       or_sub_etc_any_any
+        b       cea_x_60_2
         ori     rtn_addr, code_ptr, or_b_d2_mem_2 - cb  // 8531  OR.B      D2,(d8,A1,Xn)
-        b       or_sub_etc_any_any_2
+        b       cea_x_61_2
         ori     rtn_addr, code_ptr, or_b_d2_mem_2 - cb  // 8532  OR.B      D2,(d8,A2,Xn)
-        b       or_sub_etc_any_any_3
+        b       cea_x_62_2
         ori     rtn_addr, code_ptr, or_b_d2_mem_2 - cb  // 8533  OR.B      D2,(d8,A3,Xn)
-        b       or_sub_etc_any_any_4
+        b       cea_x_63_2
         ori     rtn_addr, code_ptr, or_b_d2_mem_2 - cb  // 8534  OR.B      D2,(d8,A4,Xn)
-        b       or_sub_etc_any_any_5
+        b       cea_x_64_2
         ori     rtn_addr, code_ptr, or_b_d2_mem_2 - cb  // 8535  OR.B      D2,(d8,A5,Xn)
-        b       or_sub_etc_any_any_6
+        b       cea_x_65_2
         ori     rtn_addr, code_ptr, or_b_d2_mem_2 - cb  // 8536  OR.B      D2,(d8,A6,Xn)
-        b       or_sub_etc_any_any_7
+        b       cea_x_66_2
         ori     rtn_addr, code_ptr, or_b_d2_mem_2 - cb  // 8537  OR.B      D2,(d8,A7,Xn)
-        b       or_sub_etc_any_any_8
+        b       cea_x_67_2
         mr      addr, prefetch_data                     // 8538  OR.B      D2,(xxx).W
         b       or_b_d2_mem
         ori     rtn_addr, code_ptr, or_b_d2_mem_2 - cb  // 8539  OR.B      D2,(xxx).L
@@ -2895,21 +2895,21 @@ op_8557:
         add     addr, a7, prefetch_data                 // 856F  OR.W      D2,(d16,A7)
         b       or_w_d2_mem
         ori     rtn_addr, code_ptr, or_w_d2_mem_2 - cb  // 8570  OR.W      D2,(d8,A0,Xn)
-        b       or_sub_etc_any_any
+        b       cea_x_60_2
         ori     rtn_addr, code_ptr, or_w_d2_mem_2 - cb  // 8571  OR.W      D2,(d8,A1,Xn)
-        b       or_sub_etc_any_any_2
+        b       cea_x_61_2
         ori     rtn_addr, code_ptr, or_w_d2_mem_2 - cb  // 8572  OR.W      D2,(d8,A2,Xn)
-        b       or_sub_etc_any_any_3
+        b       cea_x_62_2
         ori     rtn_addr, code_ptr, or_w_d2_mem_2 - cb  // 8573  OR.W      D2,(d8,A3,Xn)
-        b       or_sub_etc_any_any_4
+        b       cea_x_63_2
         ori     rtn_addr, code_ptr, or_w_d2_mem_2 - cb  // 8574  OR.W      D2,(d8,A4,Xn)
-        b       or_sub_etc_any_any_5
+        b       cea_x_64_2
         ori     rtn_addr, code_ptr, or_w_d2_mem_2 - cb  // 8575  OR.W      D2,(d8,A5,Xn)
-        b       or_sub_etc_any_any_6
+        b       cea_x_65_2
         ori     rtn_addr, code_ptr, or_w_d2_mem_2 - cb  // 8576  OR.W      D2,(d8,A6,Xn)
-        b       or_sub_etc_any_any_7
+        b       cea_x_66_2
         ori     rtn_addr, code_ptr, or_w_d2_mem_2 - cb  // 8577  OR.W      D2,(d8,A7,Xn)
-        b       or_sub_etc_any_any_8
+        b       cea_x_67_2
         mr      addr, prefetch_data                     // 8578  OR.W      D2,(xxx).W
         b       or_w_d2_mem
         ori     rtn_addr, code_ptr, or_w_d2_mem_2 - cb  // 8579  OR.W      D2,(xxx).L
@@ -3033,21 +3033,21 @@ op_8597:
         add     addr, a7, prefetch_data                 // 85AF  OR.L      D2,(d16,A7)
         b       or_l_d2_mem
         ori     rtn_addr, code_ptr, or_l_d2_mem_2 - cb  // 85B0  OR.L      D2,(d8,A0,Xn)
-        b       or_sub_etc_any_any
+        b       cea_x_60_2
         ori     rtn_addr, code_ptr, or_l_d2_mem_2 - cb  // 85B1  OR.L      D2,(d8,A1,Xn)
-        b       or_sub_etc_any_any_2
+        b       cea_x_61_2
         ori     rtn_addr, code_ptr, or_l_d2_mem_2 - cb  // 85B2  OR.L      D2,(d8,A2,Xn)
-        b       or_sub_etc_any_any_3
+        b       cea_x_62_2
         ori     rtn_addr, code_ptr, or_l_d2_mem_2 - cb  // 85B3  OR.L      D2,(d8,A3,Xn)
-        b       or_sub_etc_any_any_4
+        b       cea_x_63_2
         ori     rtn_addr, code_ptr, or_l_d2_mem_2 - cb  // 85B4  OR.L      D2,(d8,A4,Xn)
-        b       or_sub_etc_any_any_5
+        b       cea_x_64_2
         ori     rtn_addr, code_ptr, or_l_d2_mem_2 - cb  // 85B5  OR.L      D2,(d8,A5,Xn)
-        b       or_sub_etc_any_any_6
+        b       cea_x_65_2
         ori     rtn_addr, code_ptr, or_l_d2_mem_2 - cb  // 85B6  OR.L      D2,(d8,A6,Xn)
-        b       or_sub_etc_any_any_7
+        b       cea_x_66_2
         ori     rtn_addr, code_ptr, or_l_d2_mem_2 - cb  // 85B7  OR.L      D2,(d8,A7,Xn)
-        b       or_sub_etc_any_any_8
+        b       cea_x_67_2
         mr      addr, prefetch_data                     // 85B8  OR.L      D2,(xxx).W
         b       or_l_d2_mem
         ori     rtn_addr, code_ptr, or_l_d2_mem_2 - cb  // 85B9  OR.L      D2,(xxx).L
@@ -3163,21 +3163,21 @@ op_8597:
         lhax    data, a7, prefetch_data                 // 85EF  DIVS.W    (d16,A7),D2
         b       divs_w_ea_d2
         ori     rtn_addr, code_ptr, divs_w_mem_d2 - cb  // 85F0  DIVS.W    (d8,A0,Xn),D2
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, divs_w_mem_d2 - cb  // 85F1  DIVS.W    (d8,A1,Xn),D2
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, divs_w_mem_d2 - cb  // 85F2  DIVS.W    (d8,A2,Xn),D2
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, divs_w_mem_d2 - cb  // 85F3  DIVS.W    (d8,A3,Xn),D2
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, divs_w_mem_d2 - cb  // 85F4  DIVS.W    (d8,A4,Xn),D2
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, divs_w_mem_d2 - cb  // 85F5  DIVS.W    (d8,A5,Xn),D2
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, divs_w_mem_d2 - cb  // 85F6  DIVS.W    (d8,A6,Xn),D2
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, divs_w_mem_d2 - cb  // 85F7  DIVS.W    (d8,A7,Xn),D2
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 85F8  DIVS.W    (xxx).W,D2
         b       divs_w_ea_d2
         ori     rtn_addr, code_ptr, divs_w_mem_d2 - cb  // 85F9  DIVS.W    (xxx).L,D2
@@ -3293,21 +3293,21 @@ op_8597:
         lbzx    data, a7, prefetch_data                 // 862F  OR.B      (d16,A7),D3
         b       or_b_mem_d3
         ori     rtn_addr, code_ptr, or_b_mem_d3_2 - cb  // 8630  OR.B      (d8,A0,Xn),D3
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, or_b_mem_d3_2 - cb  // 8631  OR.B      (d8,A1,Xn),D3
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, or_b_mem_d3_2 - cb  // 8632  OR.B      (d8,A2,Xn),D3
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, or_b_mem_d3_2 - cb  // 8633  OR.B      (d8,A3,Xn),D3
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, or_b_mem_d3_2 - cb  // 8634  OR.B      (d8,A4,Xn),D3
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, or_b_mem_d3_2 - cb  // 8635  OR.B      (d8,A5,Xn),D3
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, or_b_mem_d3_2 - cb  // 8636  OR.B      (d8,A6,Xn),D3
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, or_b_mem_d3_2 - cb  // 8637  OR.B      (d8,A7,Xn),D3
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         lbz     data, 0(prefetch_data)                  // 8638  OR.B      (xxx).W,D3
         b       or_b_mem_d3
         ori     rtn_addr, code_ptr, or_b_mem_d3_2 - cb  // 8639  OR.B      (xxx).L,D3
@@ -3315,7 +3315,7 @@ op_8597:
         lbzx    data, pc, prefetch_data                 // 863A  OR.B      (d16,PC),D3
         b       or_b_mem_d3
         ori     rtn_addr, code_ptr, or_b_mem_d3_2 - cb  // 863B  OR.B      (d8,PC,Xn),D3
-        b       fea_b_73
+        b       fea_b_73_2
         or      data, d3, prefetch_data                 // 863C  OR.B      #<data>,D3
         b       move_or_etc_b_ea_d3
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 863D  OR.B      <ea 7.5>,D3   (illegal)
@@ -3423,21 +3423,21 @@ op_8597:
         lhax    data, a7, prefetch_data                 // 866F  OR.W      (d16,A7),D3
         b       or_w_mem_d3_2
         ori     rtn_addr, code_ptr, or_w_mem_d3 - cb    // 8670  OR.W      (d8,A0,Xn),D3
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, or_w_mem_d3 - cb    // 8671  OR.W      (d8,A1,Xn),D3
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, or_w_mem_d3 - cb    // 8672  OR.W      (d8,A2,Xn),D3
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, or_w_mem_d3 - cb    // 8673  OR.W      (d8,A3,Xn),D3
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, or_w_mem_d3 - cb    // 8674  OR.W      (d8,A4,Xn),D3
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, or_w_mem_d3 - cb    // 8675  OR.W      (d8,A5,Xn),D3
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, or_w_mem_d3 - cb    // 8676  OR.W      (d8,A6,Xn),D3
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, or_w_mem_d3 - cb    // 8677  OR.W      (d8,A7,Xn),D3
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 8678  OR.W      (xxx).W,D3
         b       or_w_mem_d3_2
         ori     rtn_addr, code_ptr, or_w_mem_d3 - cb    // 8679  OR.W      (xxx).L,D3
@@ -3553,21 +3553,21 @@ op_8597:
         lwzx    data, a7, prefetch_data                 // 86AF  OR.L      (d16,A7),D3
         b       or_l_mem_d3
         ori     rtn_addr, code_ptr, or_l_mem_d3_2 - cb  // 86B0  OR.L      (d8,A0,Xn),D3
-        b       move_add_etc_l_any_any
+        b       fea_l_60_2
         ori     rtn_addr, code_ptr, or_l_mem_d3_2 - cb  // 86B1  OR.L      (d8,A1,Xn),D3
-        b       move_add_etc_l_any_any_2
+        b       fea_l_61_2
         ori     rtn_addr, code_ptr, or_l_mem_d3_2 - cb  // 86B2  OR.L      (d8,A2,Xn),D3
-        b       move_add_etc_l_any_any_3
+        b       fea_l_62_2
         ori     rtn_addr, code_ptr, or_l_mem_d3_2 - cb  // 86B3  OR.L      (d8,A3,Xn),D3
-        b       move_add_etc_l_any_any_4
+        b       fea_l_63_2
         ori     rtn_addr, code_ptr, or_l_mem_d3_2 - cb  // 86B4  OR.L      (d8,A4,Xn),D3
-        b       move_add_etc_l_any_any_5
+        b       fea_l_64_2
         ori     rtn_addr, code_ptr, or_l_mem_d3_2 - cb  // 86B5  OR.L      (d8,A5,Xn),D3
-        b       move_add_etc_l_any_any_6
+        b       fea_l_65_2
         ori     rtn_addr, code_ptr, or_l_mem_d3_2 - cb  // 86B6  OR.L      (d8,A6,Xn),D3
-        b       move_add_etc_l_any_any_7
+        b       fea_l_66_2
         ori     rtn_addr, code_ptr, or_l_mem_d3_2 - cb  // 86B7  OR.L      (d8,A7,Xn),D3
-        b       move_add_etc_l_any_any_8
+        b       fea_l_67_2
         lwz     data, 0(prefetch_data)                  // 86B8  OR.L      (xxx).W,D3
         b       or_l_mem_d3
         ori     rtn_addr, code_ptr, or_l_mem_d3_2 - cb  // 86B9  OR.L      (xxx).L,D3
@@ -3575,7 +3575,7 @@ op_8597:
         lwzx    data, pc, prefetch_data                 // 86BA  OR.L      (d16,PC),D3
         b       or_l_mem_d3
         ori     rtn_addr, code_ptr, or_l_mem_d3_2 - cb  // 86BB  OR.L      (d8,PC,Xn),D3
-        b       fea_l_73
+        b       fea_l_73_2
         lwz     data, 0(pc)                             // 86BC  OR.L      #<data>,D3
         b       or_l_imm_d3
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 86BD  OR.L      <ea 7.5>,D3   (illegal)
@@ -3683,21 +3683,21 @@ op_8597:
         lhax    data, a7, prefetch_data                 // 86EF  DIVU.W    (d16,A7),D3
         b       divu_w_ea_d3
         ori     rtn_addr, code_ptr, divu_w_mem_d3 - cb  // 86F0  DIVU.W    (d8,A0,Xn),D3
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, divu_w_mem_d3 - cb  // 86F1  DIVU.W    (d8,A1,Xn),D3
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, divu_w_mem_d3 - cb  // 86F2  DIVU.W    (d8,A2,Xn),D3
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, divu_w_mem_d3 - cb  // 86F3  DIVU.W    (d8,A3,Xn),D3
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, divu_w_mem_d3 - cb  // 86F4  DIVU.W    (d8,A4,Xn),D3
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, divu_w_mem_d3 - cb  // 86F5  DIVU.W    (d8,A5,Xn),D3
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, divu_w_mem_d3 - cb  // 86F6  DIVU.W    (d8,A6,Xn),D3
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, divu_w_mem_d3 - cb  // 86F7  DIVU.W    (d8,A7,Xn),D3
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 86F8  DIVU.W    (xxx).W,D3
         b       divu_w_ea_d3
         ori     rtn_addr, code_ptr, divu_w_mem_d3 - cb  // 86F9  DIVU.W    (xxx).L,D3
@@ -3821,21 +3821,21 @@ op_8717:
         add     addr, a7, prefetch_data                 // 872F  OR.B      D3,(d16,A7)
         b       or_b_d3_mem
         ori     rtn_addr, code_ptr, or_b_d3_mem_2 - cb  // 8730  OR.B      D3,(d8,A0,Xn)
-        b       or_sub_etc_any_any
+        b       cea_x_60_2
         ori     rtn_addr, code_ptr, or_b_d3_mem_2 - cb  // 8731  OR.B      D3,(d8,A1,Xn)
-        b       or_sub_etc_any_any_2
+        b       cea_x_61_2
         ori     rtn_addr, code_ptr, or_b_d3_mem_2 - cb  // 8732  OR.B      D3,(d8,A2,Xn)
-        b       or_sub_etc_any_any_3
+        b       cea_x_62_2
         ori     rtn_addr, code_ptr, or_b_d3_mem_2 - cb  // 8733  OR.B      D3,(d8,A3,Xn)
-        b       or_sub_etc_any_any_4
+        b       cea_x_63_2
         ori     rtn_addr, code_ptr, or_b_d3_mem_2 - cb  // 8734  OR.B      D3,(d8,A4,Xn)
-        b       or_sub_etc_any_any_5
+        b       cea_x_64_2
         ori     rtn_addr, code_ptr, or_b_d3_mem_2 - cb  // 8735  OR.B      D3,(d8,A5,Xn)
-        b       or_sub_etc_any_any_6
+        b       cea_x_65_2
         ori     rtn_addr, code_ptr, or_b_d3_mem_2 - cb  // 8736  OR.B      D3,(d8,A6,Xn)
-        b       or_sub_etc_any_any_7
+        b       cea_x_66_2
         ori     rtn_addr, code_ptr, or_b_d3_mem_2 - cb  // 8737  OR.B      D3,(d8,A7,Xn)
-        b       or_sub_etc_any_any_8
+        b       cea_x_67_2
         mr      addr, prefetch_data                     // 8738  OR.B      D3,(xxx).W
         b       or_b_d3_mem
         ori     rtn_addr, code_ptr, or_b_d3_mem_2 - cb  // 8739  OR.B      D3,(xxx).L
@@ -3959,21 +3959,21 @@ op_8757:
         add     addr, a7, prefetch_data                 // 876F  OR.W      D3,(d16,A7)
         b       or_w_d3_mem
         ori     rtn_addr, code_ptr, or_w_d3_mem_2 - cb  // 8770  OR.W      D3,(d8,A0,Xn)
-        b       or_sub_etc_any_any
+        b       cea_x_60_2
         ori     rtn_addr, code_ptr, or_w_d3_mem_2 - cb  // 8771  OR.W      D3,(d8,A1,Xn)
-        b       or_sub_etc_any_any_2
+        b       cea_x_61_2
         ori     rtn_addr, code_ptr, or_w_d3_mem_2 - cb  // 8772  OR.W      D3,(d8,A2,Xn)
-        b       or_sub_etc_any_any_3
+        b       cea_x_62_2
         ori     rtn_addr, code_ptr, or_w_d3_mem_2 - cb  // 8773  OR.W      D3,(d8,A3,Xn)
-        b       or_sub_etc_any_any_4
+        b       cea_x_63_2
         ori     rtn_addr, code_ptr, or_w_d3_mem_2 - cb  // 8774  OR.W      D3,(d8,A4,Xn)
-        b       or_sub_etc_any_any_5
+        b       cea_x_64_2
         ori     rtn_addr, code_ptr, or_w_d3_mem_2 - cb  // 8775  OR.W      D3,(d8,A5,Xn)
-        b       or_sub_etc_any_any_6
+        b       cea_x_65_2
         ori     rtn_addr, code_ptr, or_w_d3_mem_2 - cb  // 8776  OR.W      D3,(d8,A6,Xn)
-        b       or_sub_etc_any_any_7
+        b       cea_x_66_2
         ori     rtn_addr, code_ptr, or_w_d3_mem_2 - cb  // 8777  OR.W      D3,(d8,A7,Xn)
-        b       or_sub_etc_any_any_8
+        b       cea_x_67_2
         mr      addr, prefetch_data                     // 8778  OR.W      D3,(xxx).W
         b       or_w_d3_mem
         ori     rtn_addr, code_ptr, or_w_d3_mem_2 - cb  // 8779  OR.W      D3,(xxx).L
@@ -4097,21 +4097,21 @@ op_8797:
         add     addr, a7, prefetch_data                 // 87AF  OR.L      D3,(d16,A7)
         b       or_l_d3_mem
         ori     rtn_addr, code_ptr, or_l_d3_mem_2 - cb  // 87B0  OR.L      D3,(d8,A0,Xn)
-        b       or_sub_etc_any_any
+        b       cea_x_60_2
         ori     rtn_addr, code_ptr, or_l_d3_mem_2 - cb  // 87B1  OR.L      D3,(d8,A1,Xn)
-        b       or_sub_etc_any_any_2
+        b       cea_x_61_2
         ori     rtn_addr, code_ptr, or_l_d3_mem_2 - cb  // 87B2  OR.L      D3,(d8,A2,Xn)
-        b       or_sub_etc_any_any_3
+        b       cea_x_62_2
         ori     rtn_addr, code_ptr, or_l_d3_mem_2 - cb  // 87B3  OR.L      D3,(d8,A3,Xn)
-        b       or_sub_etc_any_any_4
+        b       cea_x_63_2
         ori     rtn_addr, code_ptr, or_l_d3_mem_2 - cb  // 87B4  OR.L      D3,(d8,A4,Xn)
-        b       or_sub_etc_any_any_5
+        b       cea_x_64_2
         ori     rtn_addr, code_ptr, or_l_d3_mem_2 - cb  // 87B5  OR.L      D3,(d8,A5,Xn)
-        b       or_sub_etc_any_any_6
+        b       cea_x_65_2
         ori     rtn_addr, code_ptr, or_l_d3_mem_2 - cb  // 87B6  OR.L      D3,(d8,A6,Xn)
-        b       or_sub_etc_any_any_7
+        b       cea_x_66_2
         ori     rtn_addr, code_ptr, or_l_d3_mem_2 - cb  // 87B7  OR.L      D3,(d8,A7,Xn)
-        b       or_sub_etc_any_any_8
+        b       cea_x_67_2
         mr      addr, prefetch_data                     // 87B8  OR.L      D3,(xxx).W
         b       or_l_d3_mem
         ori     rtn_addr, code_ptr, or_l_d3_mem_2 - cb  // 87B9  OR.L      D3,(xxx).L
@@ -4227,21 +4227,21 @@ op_8797:
         lhax    data, a7, prefetch_data                 // 87EF  DIVS.W    (d16,A7),D3
         b       divs_w_ea_d3
         ori     rtn_addr, code_ptr, divs_w_mem_d3 - cb  // 87F0  DIVS.W    (d8,A0,Xn),D3
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, divs_w_mem_d3 - cb  // 87F1  DIVS.W    (d8,A1,Xn),D3
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, divs_w_mem_d3 - cb  // 87F2  DIVS.W    (d8,A2,Xn),D3
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, divs_w_mem_d3 - cb  // 87F3  DIVS.W    (d8,A3,Xn),D3
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, divs_w_mem_d3 - cb  // 87F4  DIVS.W    (d8,A4,Xn),D3
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, divs_w_mem_d3 - cb  // 87F5  DIVS.W    (d8,A5,Xn),D3
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, divs_w_mem_d3 - cb  // 87F6  DIVS.W    (d8,A6,Xn),D3
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, divs_w_mem_d3 - cb  // 87F7  DIVS.W    (d8,A7,Xn),D3
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 87F8  DIVS.W    (xxx).W,D3
         b       divs_w_ea_d3
         ori     rtn_addr, code_ptr, divs_w_mem_d3 - cb  // 87F9  DIVS.W    (xxx).L,D3
@@ -4357,21 +4357,21 @@ op_8797:
         lbzx    data, a7, prefetch_data                 // 882F  OR.B      (d16,A7),D4
         b       or_b_mem_d4
         ori     rtn_addr, code_ptr, or_b_mem_d4_2 - cb  // 8830  OR.B      (d8,A0,Xn),D4
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, or_b_mem_d4_2 - cb  // 8831  OR.B      (d8,A1,Xn),D4
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, or_b_mem_d4_2 - cb  // 8832  OR.B      (d8,A2,Xn),D4
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, or_b_mem_d4_2 - cb  // 8833  OR.B      (d8,A3,Xn),D4
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, or_b_mem_d4_2 - cb  // 8834  OR.B      (d8,A4,Xn),D4
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, or_b_mem_d4_2 - cb  // 8835  OR.B      (d8,A5,Xn),D4
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, or_b_mem_d4_2 - cb  // 8836  OR.B      (d8,A6,Xn),D4
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, or_b_mem_d4_2 - cb  // 8837  OR.B      (d8,A7,Xn),D4
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         lbz     data, 0(prefetch_data)                  // 8838  OR.B      (xxx).W,D4
         b       or_b_mem_d4
         ori     rtn_addr, code_ptr, or_b_mem_d4_2 - cb  // 8839  OR.B      (xxx).L,D4
@@ -4379,7 +4379,7 @@ op_8797:
         lbzx    data, pc, prefetch_data                 // 883A  OR.B      (d16,PC),D4
         b       or_b_mem_d4
         ori     rtn_addr, code_ptr, or_b_mem_d4_2 - cb  // 883B  OR.B      (d8,PC,Xn),D4
-        b       fea_b_73
+        b       fea_b_73_2
         or      data, d4, prefetch_data                 // 883C  OR.B      #<data>,D4
         b       move_or_etc_b_ea_d4
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 883D  OR.B      <ea 7.5>,D4   (illegal)
@@ -4487,21 +4487,21 @@ op_8797:
         lhax    data, a7, prefetch_data                 // 886F  OR.W      (d16,A7),D4
         b       or_w_mem_d4_2
         ori     rtn_addr, code_ptr, or_w_mem_d4 - cb    // 8870  OR.W      (d8,A0,Xn),D4
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, or_w_mem_d4 - cb    // 8871  OR.W      (d8,A1,Xn),D4
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, or_w_mem_d4 - cb    // 8872  OR.W      (d8,A2,Xn),D4
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, or_w_mem_d4 - cb    // 8873  OR.W      (d8,A3,Xn),D4
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, or_w_mem_d4 - cb    // 8874  OR.W      (d8,A4,Xn),D4
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, or_w_mem_d4 - cb    // 8875  OR.W      (d8,A5,Xn),D4
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, or_w_mem_d4 - cb    // 8876  OR.W      (d8,A6,Xn),D4
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, or_w_mem_d4 - cb    // 8877  OR.W      (d8,A7,Xn),D4
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 8878  OR.W      (xxx).W,D4
         b       or_w_mem_d4_2
         ori     rtn_addr, code_ptr, or_w_mem_d4 - cb    // 8879  OR.W      (xxx).L,D4
@@ -4617,21 +4617,21 @@ op_8797:
         lwzx    data, a7, prefetch_data                 // 88AF  OR.L      (d16,A7),D4
         b       or_l_mem_d4
         ori     rtn_addr, code_ptr, or_l_mem_d4_2 - cb  // 88B0  OR.L      (d8,A0,Xn),D4
-        b       move_add_etc_l_any_any
+        b       fea_l_60_2
         ori     rtn_addr, code_ptr, or_l_mem_d4_2 - cb  // 88B1  OR.L      (d8,A1,Xn),D4
-        b       move_add_etc_l_any_any_2
+        b       fea_l_61_2
         ori     rtn_addr, code_ptr, or_l_mem_d4_2 - cb  // 88B2  OR.L      (d8,A2,Xn),D4
-        b       move_add_etc_l_any_any_3
+        b       fea_l_62_2
         ori     rtn_addr, code_ptr, or_l_mem_d4_2 - cb  // 88B3  OR.L      (d8,A3,Xn),D4
-        b       move_add_etc_l_any_any_4
+        b       fea_l_63_2
         ori     rtn_addr, code_ptr, or_l_mem_d4_2 - cb  // 88B4  OR.L      (d8,A4,Xn),D4
-        b       move_add_etc_l_any_any_5
+        b       fea_l_64_2
         ori     rtn_addr, code_ptr, or_l_mem_d4_2 - cb  // 88B5  OR.L      (d8,A5,Xn),D4
-        b       move_add_etc_l_any_any_6
+        b       fea_l_65_2
         ori     rtn_addr, code_ptr, or_l_mem_d4_2 - cb  // 88B6  OR.L      (d8,A6,Xn),D4
-        b       move_add_etc_l_any_any_7
+        b       fea_l_66_2
         ori     rtn_addr, code_ptr, or_l_mem_d4_2 - cb  // 88B7  OR.L      (d8,A7,Xn),D4
-        b       move_add_etc_l_any_any_8
+        b       fea_l_67_2
         lwz     data, 0(prefetch_data)                  // 88B8  OR.L      (xxx).W,D4
         b       or_l_mem_d4
         ori     rtn_addr, code_ptr, or_l_mem_d4_2 - cb  // 88B9  OR.L      (xxx).L,D4
@@ -4639,7 +4639,7 @@ op_8797:
         lwzx    data, pc, prefetch_data                 // 88BA  OR.L      (d16,PC),D4
         b       or_l_mem_d4
         ori     rtn_addr, code_ptr, or_l_mem_d4_2 - cb  // 88BB  OR.L      (d8,PC,Xn),D4
-        b       fea_l_73
+        b       fea_l_73_2
         lwz     data, 0(pc)                             // 88BC  OR.L      #<data>,D4
         b       or_l_imm_d4
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 88BD  OR.L      <ea 7.5>,D4   (illegal)
@@ -4747,21 +4747,21 @@ op_8797:
         lhax    data, a7, prefetch_data                 // 88EF  DIVU.W    (d16,A7),D4
         b       divu_w_ea_d4
         ori     rtn_addr, code_ptr, divu_w_mem_d4 - cb  // 88F0  DIVU.W    (d8,A0,Xn),D4
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, divu_w_mem_d4 - cb  // 88F1  DIVU.W    (d8,A1,Xn),D4
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, divu_w_mem_d4 - cb  // 88F2  DIVU.W    (d8,A2,Xn),D4
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, divu_w_mem_d4 - cb  // 88F3  DIVU.W    (d8,A3,Xn),D4
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, divu_w_mem_d4 - cb  // 88F4  DIVU.W    (d8,A4,Xn),D4
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, divu_w_mem_d4 - cb  // 88F5  DIVU.W    (d8,A5,Xn),D4
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, divu_w_mem_d4 - cb  // 88F6  DIVU.W    (d8,A6,Xn),D4
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, divu_w_mem_d4 - cb  // 88F7  DIVU.W    (d8,A7,Xn),D4
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 88F8  DIVU.W    (xxx).W,D4
         b       divu_w_ea_d4
         ori     rtn_addr, code_ptr, divu_w_mem_d4 - cb  // 88F9  DIVU.W    (xxx).L,D4
@@ -4885,21 +4885,21 @@ op_8917:
         add     addr, a7, prefetch_data                 // 892F  OR.B      D4,(d16,A7)
         b       or_b_d4_mem
         ori     rtn_addr, code_ptr, or_b_d4_mem_2 - cb  // 8930  OR.B      D4,(d8,A0,Xn)
-        b       or_sub_etc_any_any
+        b       cea_x_60_2
         ori     rtn_addr, code_ptr, or_b_d4_mem_2 - cb  // 8931  OR.B      D4,(d8,A1,Xn)
-        b       or_sub_etc_any_any_2
+        b       cea_x_61_2
         ori     rtn_addr, code_ptr, or_b_d4_mem_2 - cb  // 8932  OR.B      D4,(d8,A2,Xn)
-        b       or_sub_etc_any_any_3
+        b       cea_x_62_2
         ori     rtn_addr, code_ptr, or_b_d4_mem_2 - cb  // 8933  OR.B      D4,(d8,A3,Xn)
-        b       or_sub_etc_any_any_4
+        b       cea_x_63_2
         ori     rtn_addr, code_ptr, or_b_d4_mem_2 - cb  // 8934  OR.B      D4,(d8,A4,Xn)
-        b       or_sub_etc_any_any_5
+        b       cea_x_64_2
         ori     rtn_addr, code_ptr, or_b_d4_mem_2 - cb  // 8935  OR.B      D4,(d8,A5,Xn)
-        b       or_sub_etc_any_any_6
+        b       cea_x_65_2
         ori     rtn_addr, code_ptr, or_b_d4_mem_2 - cb  // 8936  OR.B      D4,(d8,A6,Xn)
-        b       or_sub_etc_any_any_7
+        b       cea_x_66_2
         ori     rtn_addr, code_ptr, or_b_d4_mem_2 - cb  // 8937  OR.B      D4,(d8,A7,Xn)
-        b       or_sub_etc_any_any_8
+        b       cea_x_67_2
         mr      addr, prefetch_data                     // 8938  OR.B      D4,(xxx).W
         b       or_b_d4_mem
         ori     rtn_addr, code_ptr, or_b_d4_mem_2 - cb  // 8939  OR.B      D4,(xxx).L
@@ -5023,21 +5023,21 @@ op_8957:
         add     addr, a7, prefetch_data                 // 896F  OR.W      D4,(d16,A7)
         b       or_w_d4_mem
         ori     rtn_addr, code_ptr, or_w_d4_mem_2 - cb  // 8970  OR.W      D4,(d8,A0,Xn)
-        b       or_sub_etc_any_any
+        b       cea_x_60_2
         ori     rtn_addr, code_ptr, or_w_d4_mem_2 - cb  // 8971  OR.W      D4,(d8,A1,Xn)
-        b       or_sub_etc_any_any_2
+        b       cea_x_61_2
         ori     rtn_addr, code_ptr, or_w_d4_mem_2 - cb  // 8972  OR.W      D4,(d8,A2,Xn)
-        b       or_sub_etc_any_any_3
+        b       cea_x_62_2
         ori     rtn_addr, code_ptr, or_w_d4_mem_2 - cb  // 8973  OR.W      D4,(d8,A3,Xn)
-        b       or_sub_etc_any_any_4
+        b       cea_x_63_2
         ori     rtn_addr, code_ptr, or_w_d4_mem_2 - cb  // 8974  OR.W      D4,(d8,A4,Xn)
-        b       or_sub_etc_any_any_5
+        b       cea_x_64_2
         ori     rtn_addr, code_ptr, or_w_d4_mem_2 - cb  // 8975  OR.W      D4,(d8,A5,Xn)
-        b       or_sub_etc_any_any_6
+        b       cea_x_65_2
         ori     rtn_addr, code_ptr, or_w_d4_mem_2 - cb  // 8976  OR.W      D4,(d8,A6,Xn)
-        b       or_sub_etc_any_any_7
+        b       cea_x_66_2
         ori     rtn_addr, code_ptr, or_w_d4_mem_2 - cb  // 8977  OR.W      D4,(d8,A7,Xn)
-        b       or_sub_etc_any_any_8
+        b       cea_x_67_2
         mr      addr, prefetch_data                     // 8978  OR.W      D4,(xxx).W
         b       or_w_d4_mem
         ori     rtn_addr, code_ptr, or_w_d4_mem_2 - cb  // 8979  OR.W      D4,(xxx).L
@@ -5161,21 +5161,21 @@ op_8997:
         add     addr, a7, prefetch_data                 // 89AF  OR.L      D4,(d16,A7)
         b       or_l_d4_mem
         ori     rtn_addr, code_ptr, or_l_d4_mem_2 - cb  // 89B0  OR.L      D4,(d8,A0,Xn)
-        b       or_sub_etc_any_any
+        b       cea_x_60_2
         ori     rtn_addr, code_ptr, or_l_d4_mem_2 - cb  // 89B1  OR.L      D4,(d8,A1,Xn)
-        b       or_sub_etc_any_any_2
+        b       cea_x_61_2
         ori     rtn_addr, code_ptr, or_l_d4_mem_2 - cb  // 89B2  OR.L      D4,(d8,A2,Xn)
-        b       or_sub_etc_any_any_3
+        b       cea_x_62_2
         ori     rtn_addr, code_ptr, or_l_d4_mem_2 - cb  // 89B3  OR.L      D4,(d8,A3,Xn)
-        b       or_sub_etc_any_any_4
+        b       cea_x_63_2
         ori     rtn_addr, code_ptr, or_l_d4_mem_2 - cb  // 89B4  OR.L      D4,(d8,A4,Xn)
-        b       or_sub_etc_any_any_5
+        b       cea_x_64_2
         ori     rtn_addr, code_ptr, or_l_d4_mem_2 - cb  // 89B5  OR.L      D4,(d8,A5,Xn)
-        b       or_sub_etc_any_any_6
+        b       cea_x_65_2
         ori     rtn_addr, code_ptr, or_l_d4_mem_2 - cb  // 89B6  OR.L      D4,(d8,A6,Xn)
-        b       or_sub_etc_any_any_7
+        b       cea_x_66_2
         ori     rtn_addr, code_ptr, or_l_d4_mem_2 - cb  // 89B7  OR.L      D4,(d8,A7,Xn)
-        b       or_sub_etc_any_any_8
+        b       cea_x_67_2
         mr      addr, prefetch_data                     // 89B8  OR.L      D4,(xxx).W
         b       or_l_d4_mem
         ori     rtn_addr, code_ptr, or_l_d4_mem_2 - cb  // 89B9  OR.L      D4,(xxx).L
@@ -5291,21 +5291,21 @@ op_8997:
         lhax    data, a7, prefetch_data                 // 89EF  DIVS.W    (d16,A7),D4
         b       divs_w_ea_d4
         ori     rtn_addr, code_ptr, divs_w_mem_d4 - cb  // 89F0  DIVS.W    (d8,A0,Xn),D4
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, divs_w_mem_d4 - cb  // 89F1  DIVS.W    (d8,A1,Xn),D4
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, divs_w_mem_d4 - cb  // 89F2  DIVS.W    (d8,A2,Xn),D4
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, divs_w_mem_d4 - cb  // 89F3  DIVS.W    (d8,A3,Xn),D4
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, divs_w_mem_d4 - cb  // 89F4  DIVS.W    (d8,A4,Xn),D4
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, divs_w_mem_d4 - cb  // 89F5  DIVS.W    (d8,A5,Xn),D4
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, divs_w_mem_d4 - cb  // 89F6  DIVS.W    (d8,A6,Xn),D4
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, divs_w_mem_d4 - cb  // 89F7  DIVS.W    (d8,A7,Xn),D4
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 89F8  DIVS.W    (xxx).W,D4
         b       divs_w_ea_d4
         ori     rtn_addr, code_ptr, divs_w_mem_d4 - cb  // 89F9  DIVS.W    (xxx).L,D4
@@ -5421,21 +5421,21 @@ op_8997:
         lbzx    data, a7, prefetch_data                 // 8A2F  OR.B      (d16,A7),D5
         b       or_b_mem_d5
         ori     rtn_addr, code_ptr, or_b_mem_d5_2 - cb  // 8A30  OR.B      (d8,A0,Xn),D5
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, or_b_mem_d5_2 - cb  // 8A31  OR.B      (d8,A1,Xn),D5
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, or_b_mem_d5_2 - cb  // 8A32  OR.B      (d8,A2,Xn),D5
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, or_b_mem_d5_2 - cb  // 8A33  OR.B      (d8,A3,Xn),D5
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, or_b_mem_d5_2 - cb  // 8A34  OR.B      (d8,A4,Xn),D5
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, or_b_mem_d5_2 - cb  // 8A35  OR.B      (d8,A5,Xn),D5
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, or_b_mem_d5_2 - cb  // 8A36  OR.B      (d8,A6,Xn),D5
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, or_b_mem_d5_2 - cb  // 8A37  OR.B      (d8,A7,Xn),D5
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         lbz     data, 0(prefetch_data)                  // 8A38  OR.B      (xxx).W,D5
         b       or_b_mem_d5
         ori     rtn_addr, code_ptr, or_b_mem_d5_2 - cb  // 8A39  OR.B      (xxx).L,D5
@@ -5443,7 +5443,7 @@ op_8997:
         lbzx    data, pc, prefetch_data                 // 8A3A  OR.B      (d16,PC),D5
         b       or_b_mem_d5
         ori     rtn_addr, code_ptr, or_b_mem_d5_2 - cb  // 8A3B  OR.B      (d8,PC,Xn),D5
-        b       fea_b_73
+        b       fea_b_73_2
         or      data, d5, prefetch_data                 // 8A3C  OR.B      #<data>,D5
         b       move_or_etc_b_ea_d5
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 8A3D  OR.B      <ea 7.5>,D5   (illegal)
@@ -5551,21 +5551,21 @@ op_8997:
         lhax    data, a7, prefetch_data                 // 8A6F  OR.W      (d16,A7),D5
         b       or_w_mem_d5_2
         ori     rtn_addr, code_ptr, or_w_mem_d5 - cb    // 8A70  OR.W      (d8,A0,Xn),D5
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, or_w_mem_d5 - cb    // 8A71  OR.W      (d8,A1,Xn),D5
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, or_w_mem_d5 - cb    // 8A72  OR.W      (d8,A2,Xn),D5
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, or_w_mem_d5 - cb    // 8A73  OR.W      (d8,A3,Xn),D5
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, or_w_mem_d5 - cb    // 8A74  OR.W      (d8,A4,Xn),D5
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, or_w_mem_d5 - cb    // 8A75  OR.W      (d8,A5,Xn),D5
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, or_w_mem_d5 - cb    // 8A76  OR.W      (d8,A6,Xn),D5
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, or_w_mem_d5 - cb    // 8A77  OR.W      (d8,A7,Xn),D5
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 8A78  OR.W      (xxx).W,D5
         b       or_w_mem_d5_2
         ori     rtn_addr, code_ptr, or_w_mem_d5 - cb    // 8A79  OR.W      (xxx).L,D5
@@ -5681,21 +5681,21 @@ op_8997:
         lwzx    data, a7, prefetch_data                 // 8AAF  OR.L      (d16,A7),D5
         b       or_l_mem_d5
         ori     rtn_addr, code_ptr, or_l_mem_d5_2 - cb  // 8AB0  OR.L      (d8,A0,Xn),D5
-        b       move_add_etc_l_any_any
+        b       fea_l_60_2
         ori     rtn_addr, code_ptr, or_l_mem_d5_2 - cb  // 8AB1  OR.L      (d8,A1,Xn),D5
-        b       move_add_etc_l_any_any_2
+        b       fea_l_61_2
         ori     rtn_addr, code_ptr, or_l_mem_d5_2 - cb  // 8AB2  OR.L      (d8,A2,Xn),D5
-        b       move_add_etc_l_any_any_3
+        b       fea_l_62_2
         ori     rtn_addr, code_ptr, or_l_mem_d5_2 - cb  // 8AB3  OR.L      (d8,A3,Xn),D5
-        b       move_add_etc_l_any_any_4
+        b       fea_l_63_2
         ori     rtn_addr, code_ptr, or_l_mem_d5_2 - cb  // 8AB4  OR.L      (d8,A4,Xn),D5
-        b       move_add_etc_l_any_any_5
+        b       fea_l_64_2
         ori     rtn_addr, code_ptr, or_l_mem_d5_2 - cb  // 8AB5  OR.L      (d8,A5,Xn),D5
-        b       move_add_etc_l_any_any_6
+        b       fea_l_65_2
         ori     rtn_addr, code_ptr, or_l_mem_d5_2 - cb  // 8AB6  OR.L      (d8,A6,Xn),D5
-        b       move_add_etc_l_any_any_7
+        b       fea_l_66_2
         ori     rtn_addr, code_ptr, or_l_mem_d5_2 - cb  // 8AB7  OR.L      (d8,A7,Xn),D5
-        b       move_add_etc_l_any_any_8
+        b       fea_l_67_2
         lwz     data, 0(prefetch_data)                  // 8AB8  OR.L      (xxx).W,D5
         b       or_l_mem_d5
         ori     rtn_addr, code_ptr, or_l_mem_d5_2 - cb  // 8AB9  OR.L      (xxx).L,D5
@@ -5703,7 +5703,7 @@ op_8997:
         lwzx    data, pc, prefetch_data                 // 8ABA  OR.L      (d16,PC),D5
         b       or_l_mem_d5
         ori     rtn_addr, code_ptr, or_l_mem_d5_2 - cb  // 8ABB  OR.L      (d8,PC,Xn),D5
-        b       fea_l_73
+        b       fea_l_73_2
         lwz     data, 0(pc)                             // 8ABC  OR.L      #<data>,D5
         b       or_l_imm_d5
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 8ABD  OR.L      <ea 7.5>,D5   (illegal)
@@ -5811,21 +5811,21 @@ op_8997:
         lhax    data, a7, prefetch_data                 // 8AEF  DIVU.W    (d16,A7),D5
         b       divu_w_ea_d5
         ori     rtn_addr, code_ptr, divu_w_mem_d5 - cb  // 8AF0  DIVU.W    (d8,A0,Xn),D5
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, divu_w_mem_d5 - cb  // 8AF1  DIVU.W    (d8,A1,Xn),D5
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, divu_w_mem_d5 - cb  // 8AF2  DIVU.W    (d8,A2,Xn),D5
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, divu_w_mem_d5 - cb  // 8AF3  DIVU.W    (d8,A3,Xn),D5
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, divu_w_mem_d5 - cb  // 8AF4  DIVU.W    (d8,A4,Xn),D5
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, divu_w_mem_d5 - cb  // 8AF5  DIVU.W    (d8,A5,Xn),D5
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, divu_w_mem_d5 - cb  // 8AF6  DIVU.W    (d8,A6,Xn),D5
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, divu_w_mem_d5 - cb  // 8AF7  DIVU.W    (d8,A7,Xn),D5
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 8AF8  DIVU.W    (xxx).W,D5
         b       divu_w_ea_d5
         ori     rtn_addr, code_ptr, divu_w_mem_d5 - cb  // 8AF9  DIVU.W    (xxx).L,D5
@@ -5949,21 +5949,21 @@ op_8B17:
         add     addr, a7, prefetch_data                 // 8B2F  OR.B      D5,(d16,A7)
         b       or_b_d5_mem
         ori     rtn_addr, code_ptr, or_b_d5_mem_2 - cb  // 8B30  OR.B      D5,(d8,A0,Xn)
-        b       or_sub_etc_any_any
+        b       cea_x_60_2
         ori     rtn_addr, code_ptr, or_b_d5_mem_2 - cb  // 8B31  OR.B      D5,(d8,A1,Xn)
-        b       or_sub_etc_any_any_2
+        b       cea_x_61_2
         ori     rtn_addr, code_ptr, or_b_d5_mem_2 - cb  // 8B32  OR.B      D5,(d8,A2,Xn)
-        b       or_sub_etc_any_any_3
+        b       cea_x_62_2
         ori     rtn_addr, code_ptr, or_b_d5_mem_2 - cb  // 8B33  OR.B      D5,(d8,A3,Xn)
-        b       or_sub_etc_any_any_4
+        b       cea_x_63_2
         ori     rtn_addr, code_ptr, or_b_d5_mem_2 - cb  // 8B34  OR.B      D5,(d8,A4,Xn)
-        b       or_sub_etc_any_any_5
+        b       cea_x_64_2
         ori     rtn_addr, code_ptr, or_b_d5_mem_2 - cb  // 8B35  OR.B      D5,(d8,A5,Xn)
-        b       or_sub_etc_any_any_6
+        b       cea_x_65_2
         ori     rtn_addr, code_ptr, or_b_d5_mem_2 - cb  // 8B36  OR.B      D5,(d8,A6,Xn)
-        b       or_sub_etc_any_any_7
+        b       cea_x_66_2
         ori     rtn_addr, code_ptr, or_b_d5_mem_2 - cb  // 8B37  OR.B      D5,(d8,A7,Xn)
-        b       or_sub_etc_any_any_8
+        b       cea_x_67_2
         mr      addr, prefetch_data                     // 8B38  OR.B      D5,(xxx).W
         b       or_b_d5_mem
         ori     rtn_addr, code_ptr, or_b_d5_mem_2 - cb  // 8B39  OR.B      D5,(xxx).L
@@ -6087,21 +6087,21 @@ op_8B57:
         add     addr, a7, prefetch_data                 // 8B6F  OR.W      D5,(d16,A7)
         b       or_w_d5_mem
         ori     rtn_addr, code_ptr, or_w_d5_mem_2 - cb  // 8B70  OR.W      D5,(d8,A0,Xn)
-        b       or_sub_etc_any_any
+        b       cea_x_60_2
         ori     rtn_addr, code_ptr, or_w_d5_mem_2 - cb  // 8B71  OR.W      D5,(d8,A1,Xn)
-        b       or_sub_etc_any_any_2
+        b       cea_x_61_2
         ori     rtn_addr, code_ptr, or_w_d5_mem_2 - cb  // 8B72  OR.W      D5,(d8,A2,Xn)
-        b       or_sub_etc_any_any_3
+        b       cea_x_62_2
         ori     rtn_addr, code_ptr, or_w_d5_mem_2 - cb  // 8B73  OR.W      D5,(d8,A3,Xn)
-        b       or_sub_etc_any_any_4
+        b       cea_x_63_2
         ori     rtn_addr, code_ptr, or_w_d5_mem_2 - cb  // 8B74  OR.W      D5,(d8,A4,Xn)
-        b       or_sub_etc_any_any_5
+        b       cea_x_64_2
         ori     rtn_addr, code_ptr, or_w_d5_mem_2 - cb  // 8B75  OR.W      D5,(d8,A5,Xn)
-        b       or_sub_etc_any_any_6
+        b       cea_x_65_2
         ori     rtn_addr, code_ptr, or_w_d5_mem_2 - cb  // 8B76  OR.W      D5,(d8,A6,Xn)
-        b       or_sub_etc_any_any_7
+        b       cea_x_66_2
         ori     rtn_addr, code_ptr, or_w_d5_mem_2 - cb  // 8B77  OR.W      D5,(d8,A7,Xn)
-        b       or_sub_etc_any_any_8
+        b       cea_x_67_2
         mr      addr, prefetch_data                     // 8B78  OR.W      D5,(xxx).W
         b       or_w_d5_mem
         ori     rtn_addr, code_ptr, or_w_d5_mem_2 - cb  // 8B79  OR.W      D5,(xxx).L
@@ -6225,21 +6225,21 @@ op_8B97:
         add     addr, a7, prefetch_data                 // 8BAF  OR.L      D5,(d16,A7)
         b       or_l_d5_mem
         ori     rtn_addr, code_ptr, or_l_d5_mem_2 - cb  // 8BB0  OR.L      D5,(d8,A0,Xn)
-        b       or_sub_etc_any_any
+        b       cea_x_60_2
         ori     rtn_addr, code_ptr, or_l_d5_mem_2 - cb  // 8BB1  OR.L      D5,(d8,A1,Xn)
-        b       or_sub_etc_any_any_2
+        b       cea_x_61_2
         ori     rtn_addr, code_ptr, or_l_d5_mem_2 - cb  // 8BB2  OR.L      D5,(d8,A2,Xn)
-        b       or_sub_etc_any_any_3
+        b       cea_x_62_2
         ori     rtn_addr, code_ptr, or_l_d5_mem_2 - cb  // 8BB3  OR.L      D5,(d8,A3,Xn)
-        b       or_sub_etc_any_any_4
+        b       cea_x_63_2
         ori     rtn_addr, code_ptr, or_l_d5_mem_2 - cb  // 8BB4  OR.L      D5,(d8,A4,Xn)
-        b       or_sub_etc_any_any_5
+        b       cea_x_64_2
         ori     rtn_addr, code_ptr, or_l_d5_mem_2 - cb  // 8BB5  OR.L      D5,(d8,A5,Xn)
-        b       or_sub_etc_any_any_6
+        b       cea_x_65_2
         ori     rtn_addr, code_ptr, or_l_d5_mem_2 - cb  // 8BB6  OR.L      D5,(d8,A6,Xn)
-        b       or_sub_etc_any_any_7
+        b       cea_x_66_2
         ori     rtn_addr, code_ptr, or_l_d5_mem_2 - cb  // 8BB7  OR.L      D5,(d8,A7,Xn)
-        b       or_sub_etc_any_any_8
+        b       cea_x_67_2
         mr      addr, prefetch_data                     // 8BB8  OR.L      D5,(xxx).W
         b       or_l_d5_mem
         ori     rtn_addr, code_ptr, or_l_d5_mem_2 - cb  // 8BB9  OR.L      D5,(xxx).L
@@ -6355,21 +6355,21 @@ op_8B97:
         lhax    data, a7, prefetch_data                 // 8BEF  DIVS.W    (d16,A7),D5
         b       divs_w_ea_d5
         ori     rtn_addr, code_ptr, divs_w_mem_d5 - cb  // 8BF0  DIVS.W    (d8,A0,Xn),D5
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, divs_w_mem_d5 - cb  // 8BF1  DIVS.W    (d8,A1,Xn),D5
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, divs_w_mem_d5 - cb  // 8BF2  DIVS.W    (d8,A2,Xn),D5
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, divs_w_mem_d5 - cb  // 8BF3  DIVS.W    (d8,A3,Xn),D5
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, divs_w_mem_d5 - cb  // 8BF4  DIVS.W    (d8,A4,Xn),D5
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, divs_w_mem_d5 - cb  // 8BF5  DIVS.W    (d8,A5,Xn),D5
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, divs_w_mem_d5 - cb  // 8BF6  DIVS.W    (d8,A6,Xn),D5
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, divs_w_mem_d5 - cb  // 8BF7  DIVS.W    (d8,A7,Xn),D5
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 8BF8  DIVS.W    (xxx).W,D5
         b       divs_w_ea_d5
         ori     rtn_addr, code_ptr, divs_w_mem_d5 - cb  // 8BF9  DIVS.W    (xxx).L,D5
@@ -6485,21 +6485,21 @@ op_8B97:
         lbzx    data, a7, prefetch_data                 // 8C2F  OR.B      (d16,A7),D6
         b       or_b_mem_d6
         ori     rtn_addr, code_ptr, or_b_mem_d6_2 - cb  // 8C30  OR.B      (d8,A0,Xn),D6
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, or_b_mem_d6_2 - cb  // 8C31  OR.B      (d8,A1,Xn),D6
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, or_b_mem_d6_2 - cb  // 8C32  OR.B      (d8,A2,Xn),D6
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, or_b_mem_d6_2 - cb  // 8C33  OR.B      (d8,A3,Xn),D6
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, or_b_mem_d6_2 - cb  // 8C34  OR.B      (d8,A4,Xn),D6
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, or_b_mem_d6_2 - cb  // 8C35  OR.B      (d8,A5,Xn),D6
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, or_b_mem_d6_2 - cb  // 8C36  OR.B      (d8,A6,Xn),D6
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, or_b_mem_d6_2 - cb  // 8C37  OR.B      (d8,A7,Xn),D6
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         lbz     data, 0(prefetch_data)                  // 8C38  OR.B      (xxx).W,D6
         b       or_b_mem_d6
         ori     rtn_addr, code_ptr, or_b_mem_d6_2 - cb  // 8C39  OR.B      (xxx).L,D6
@@ -6507,7 +6507,7 @@ op_8B97:
         lbzx    data, pc, prefetch_data                 // 8C3A  OR.B      (d16,PC),D6
         b       or_b_mem_d6
         ori     rtn_addr, code_ptr, or_b_mem_d6_2 - cb  // 8C3B  OR.B      (d8,PC,Xn),D6
-        b       fea_b_73
+        b       fea_b_73_2
         or      data, d6, prefetch_data                 // 8C3C  OR.B      #<data>,D6
         b       move_or_etc_b_ea_d6
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 8C3D  OR.B      <ea 7.5>,D6   (illegal)
@@ -6615,21 +6615,21 @@ op_8B97:
         lhax    data, a7, prefetch_data                 // 8C6F  OR.W      (d16,A7),D6
         b       or_w_mem_d6_2
         ori     rtn_addr, code_ptr, or_w_mem_d6 - cb    // 8C70  OR.W      (d8,A0,Xn),D6
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, or_w_mem_d6 - cb    // 8C71  OR.W      (d8,A1,Xn),D6
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, or_w_mem_d6 - cb    // 8C72  OR.W      (d8,A2,Xn),D6
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, or_w_mem_d6 - cb    // 8C73  OR.W      (d8,A3,Xn),D6
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, or_w_mem_d6 - cb    // 8C74  OR.W      (d8,A4,Xn),D6
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, or_w_mem_d6 - cb    // 8C75  OR.W      (d8,A5,Xn),D6
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, or_w_mem_d6 - cb    // 8C76  OR.W      (d8,A6,Xn),D6
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, or_w_mem_d6 - cb    // 8C77  OR.W      (d8,A7,Xn),D6
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 8C78  OR.W      (xxx).W,D6
         b       or_w_mem_d6_2
         ori     rtn_addr, code_ptr, or_w_mem_d6 - cb    // 8C79  OR.W      (xxx).L,D6
@@ -6745,21 +6745,21 @@ op_8B97:
         lwzx    data, a7, prefetch_data                 // 8CAF  OR.L      (d16,A7),D6
         b       or_l_mem_d6
         ori     rtn_addr, code_ptr, or_l_mem_d6_2 - cb  // 8CB0  OR.L      (d8,A0,Xn),D6
-        b       move_add_etc_l_any_any
+        b       fea_l_60_2
         ori     rtn_addr, code_ptr, or_l_mem_d6_2 - cb  // 8CB1  OR.L      (d8,A1,Xn),D6
-        b       move_add_etc_l_any_any_2
+        b       fea_l_61_2
         ori     rtn_addr, code_ptr, or_l_mem_d6_2 - cb  // 8CB2  OR.L      (d8,A2,Xn),D6
-        b       move_add_etc_l_any_any_3
+        b       fea_l_62_2
         ori     rtn_addr, code_ptr, or_l_mem_d6_2 - cb  // 8CB3  OR.L      (d8,A3,Xn),D6
-        b       move_add_etc_l_any_any_4
+        b       fea_l_63_2
         ori     rtn_addr, code_ptr, or_l_mem_d6_2 - cb  // 8CB4  OR.L      (d8,A4,Xn),D6
-        b       move_add_etc_l_any_any_5
+        b       fea_l_64_2
         ori     rtn_addr, code_ptr, or_l_mem_d6_2 - cb  // 8CB5  OR.L      (d8,A5,Xn),D6
-        b       move_add_etc_l_any_any_6
+        b       fea_l_65_2
         ori     rtn_addr, code_ptr, or_l_mem_d6_2 - cb  // 8CB6  OR.L      (d8,A6,Xn),D6
-        b       move_add_etc_l_any_any_7
+        b       fea_l_66_2
         ori     rtn_addr, code_ptr, or_l_mem_d6_2 - cb  // 8CB7  OR.L      (d8,A7,Xn),D6
-        b       move_add_etc_l_any_any_8
+        b       fea_l_67_2
         lwz     data, 0(prefetch_data)                  // 8CB8  OR.L      (xxx).W,D6
         b       or_l_mem_d6
         ori     rtn_addr, code_ptr, or_l_mem_d6_2 - cb  // 8CB9  OR.L      (xxx).L,D6
@@ -6767,7 +6767,7 @@ op_8B97:
         lwzx    data, pc, prefetch_data                 // 8CBA  OR.L      (d16,PC),D6
         b       or_l_mem_d6
         ori     rtn_addr, code_ptr, or_l_mem_d6_2 - cb  // 8CBB  OR.L      (d8,PC,Xn),D6
-        b       fea_l_73
+        b       fea_l_73_2
         lwz     data, 0(pc)                             // 8CBC  OR.L      #<data>,D6
         b       or_l_imm_d6
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 8CBD  OR.L      <ea 7.5>,D6   (illegal)
@@ -6875,21 +6875,21 @@ op_8B97:
         lhax    data, a7, prefetch_data                 // 8CEF  DIVU.W    (d16,A7),D6
         b       divu_w_ea_d6
         ori     rtn_addr, code_ptr, divu_w_mem_d6 - cb  // 8CF0  DIVU.W    (d8,A0,Xn),D6
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, divu_w_mem_d6 - cb  // 8CF1  DIVU.W    (d8,A1,Xn),D6
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, divu_w_mem_d6 - cb  // 8CF2  DIVU.W    (d8,A2,Xn),D6
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, divu_w_mem_d6 - cb  // 8CF3  DIVU.W    (d8,A3,Xn),D6
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, divu_w_mem_d6 - cb  // 8CF4  DIVU.W    (d8,A4,Xn),D6
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, divu_w_mem_d6 - cb  // 8CF5  DIVU.W    (d8,A5,Xn),D6
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, divu_w_mem_d6 - cb  // 8CF6  DIVU.W    (d8,A6,Xn),D6
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, divu_w_mem_d6 - cb  // 8CF7  DIVU.W    (d8,A7,Xn),D6
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 8CF8  DIVU.W    (xxx).W,D6
         b       divu_w_ea_d6
         ori     rtn_addr, code_ptr, divu_w_mem_d6 - cb  // 8CF9  DIVU.W    (xxx).L,D6
@@ -7013,21 +7013,21 @@ op_8D17:
         add     addr, a7, prefetch_data                 // 8D2F  OR.B      D6,(d16,A7)
         b       or_b_d6_mem
         ori     rtn_addr, code_ptr, or_b_d6_mem_2 - cb  // 8D30  OR.B      D6,(d8,A0,Xn)
-        b       or_sub_etc_any_any
+        b       cea_x_60_2
         ori     rtn_addr, code_ptr, or_b_d6_mem_2 - cb  // 8D31  OR.B      D6,(d8,A1,Xn)
-        b       or_sub_etc_any_any_2
+        b       cea_x_61_2
         ori     rtn_addr, code_ptr, or_b_d6_mem_2 - cb  // 8D32  OR.B      D6,(d8,A2,Xn)
-        b       or_sub_etc_any_any_3
+        b       cea_x_62_2
         ori     rtn_addr, code_ptr, or_b_d6_mem_2 - cb  // 8D33  OR.B      D6,(d8,A3,Xn)
-        b       or_sub_etc_any_any_4
+        b       cea_x_63_2
         ori     rtn_addr, code_ptr, or_b_d6_mem_2 - cb  // 8D34  OR.B      D6,(d8,A4,Xn)
-        b       or_sub_etc_any_any_5
+        b       cea_x_64_2
         ori     rtn_addr, code_ptr, or_b_d6_mem_2 - cb  // 8D35  OR.B      D6,(d8,A5,Xn)
-        b       or_sub_etc_any_any_6
+        b       cea_x_65_2
         ori     rtn_addr, code_ptr, or_b_d6_mem_2 - cb  // 8D36  OR.B      D6,(d8,A6,Xn)
-        b       or_sub_etc_any_any_7
+        b       cea_x_66_2
         ori     rtn_addr, code_ptr, or_b_d6_mem_2 - cb  // 8D37  OR.B      D6,(d8,A7,Xn)
-        b       or_sub_etc_any_any_8
+        b       cea_x_67_2
         mr      addr, prefetch_data                     // 8D38  OR.B      D6,(xxx).W
         b       or_b_d6_mem
         ori     rtn_addr, code_ptr, or_b_d6_mem_2 - cb  // 8D39  OR.B      D6,(xxx).L
@@ -7151,21 +7151,21 @@ op_8D57:
         add     addr, a7, prefetch_data                 // 8D6F  OR.W      D6,(d16,A7)
         b       or_w_d6_mem
         ori     rtn_addr, code_ptr, or_w_d6_mem_2 - cb  // 8D70  OR.W      D6,(d8,A0,Xn)
-        b       or_sub_etc_any_any
+        b       cea_x_60_2
         ori     rtn_addr, code_ptr, or_w_d6_mem_2 - cb  // 8D71  OR.W      D6,(d8,A1,Xn)
-        b       or_sub_etc_any_any_2
+        b       cea_x_61_2
         ori     rtn_addr, code_ptr, or_w_d6_mem_2 - cb  // 8D72  OR.W      D6,(d8,A2,Xn)
-        b       or_sub_etc_any_any_3
+        b       cea_x_62_2
         ori     rtn_addr, code_ptr, or_w_d6_mem_2 - cb  // 8D73  OR.W      D6,(d8,A3,Xn)
-        b       or_sub_etc_any_any_4
+        b       cea_x_63_2
         ori     rtn_addr, code_ptr, or_w_d6_mem_2 - cb  // 8D74  OR.W      D6,(d8,A4,Xn)
-        b       or_sub_etc_any_any_5
+        b       cea_x_64_2
         ori     rtn_addr, code_ptr, or_w_d6_mem_2 - cb  // 8D75  OR.W      D6,(d8,A5,Xn)
-        b       or_sub_etc_any_any_6
+        b       cea_x_65_2
         ori     rtn_addr, code_ptr, or_w_d6_mem_2 - cb  // 8D76  OR.W      D6,(d8,A6,Xn)
-        b       or_sub_etc_any_any_7
+        b       cea_x_66_2
         ori     rtn_addr, code_ptr, or_w_d6_mem_2 - cb  // 8D77  OR.W      D6,(d8,A7,Xn)
-        b       or_sub_etc_any_any_8
+        b       cea_x_67_2
         mr      addr, prefetch_data                     // 8D78  OR.W      D6,(xxx).W
         b       or_w_d6_mem
         ori     rtn_addr, code_ptr, or_w_d6_mem_2 - cb  // 8D79  OR.W      D6,(xxx).L
@@ -7289,21 +7289,21 @@ op_8D97:
         add     addr, a7, prefetch_data                 // 8DAF  OR.L      D6,(d16,A7)
         b       or_l_d6_mem
         ori     rtn_addr, code_ptr, or_l_d6_mem_2 - cb  // 8DB0  OR.L      D6,(d8,A0,Xn)
-        b       or_sub_etc_any_any
+        b       cea_x_60_2
         ori     rtn_addr, code_ptr, or_l_d6_mem_2 - cb  // 8DB1  OR.L      D6,(d8,A1,Xn)
-        b       or_sub_etc_any_any_2
+        b       cea_x_61_2
         ori     rtn_addr, code_ptr, or_l_d6_mem_2 - cb  // 8DB2  OR.L      D6,(d8,A2,Xn)
-        b       or_sub_etc_any_any_3
+        b       cea_x_62_2
         ori     rtn_addr, code_ptr, or_l_d6_mem_2 - cb  // 8DB3  OR.L      D6,(d8,A3,Xn)
-        b       or_sub_etc_any_any_4
+        b       cea_x_63_2
         ori     rtn_addr, code_ptr, or_l_d6_mem_2 - cb  // 8DB4  OR.L      D6,(d8,A4,Xn)
-        b       or_sub_etc_any_any_5
+        b       cea_x_64_2
         ori     rtn_addr, code_ptr, or_l_d6_mem_2 - cb  // 8DB5  OR.L      D6,(d8,A5,Xn)
-        b       or_sub_etc_any_any_6
+        b       cea_x_65_2
         ori     rtn_addr, code_ptr, or_l_d6_mem_2 - cb  // 8DB6  OR.L      D6,(d8,A6,Xn)
-        b       or_sub_etc_any_any_7
+        b       cea_x_66_2
         ori     rtn_addr, code_ptr, or_l_d6_mem_2 - cb  // 8DB7  OR.L      D6,(d8,A7,Xn)
-        b       or_sub_etc_any_any_8
+        b       cea_x_67_2
         mr      addr, prefetch_data                     // 8DB8  OR.L      D6,(xxx).W
         b       or_l_d6_mem
         ori     rtn_addr, code_ptr, or_l_d6_mem_2 - cb  // 8DB9  OR.L      D6,(xxx).L
@@ -7419,21 +7419,21 @@ op_8D97:
         lhax    data, a7, prefetch_data                 // 8DEF  DIVS.W    (d16,A7),D6
         b       divs_w_ea_d6
         ori     rtn_addr, code_ptr, divs_w_mem_d6 - cb  // 8DF0  DIVS.W    (d8,A0,Xn),D6
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, divs_w_mem_d6 - cb  // 8DF1  DIVS.W    (d8,A1,Xn),D6
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, divs_w_mem_d6 - cb  // 8DF2  DIVS.W    (d8,A2,Xn),D6
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, divs_w_mem_d6 - cb  // 8DF3  DIVS.W    (d8,A3,Xn),D6
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, divs_w_mem_d6 - cb  // 8DF4  DIVS.W    (d8,A4,Xn),D6
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, divs_w_mem_d6 - cb  // 8DF5  DIVS.W    (d8,A5,Xn),D6
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, divs_w_mem_d6 - cb  // 8DF6  DIVS.W    (d8,A6,Xn),D6
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, divs_w_mem_d6 - cb  // 8DF7  DIVS.W    (d8,A7,Xn),D6
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 8DF8  DIVS.W    (xxx).W,D6
         b       divs_w_ea_d6
         ori     rtn_addr, code_ptr, divs_w_mem_d6 - cb  // 8DF9  DIVS.W    (xxx).L,D6
@@ -7549,21 +7549,21 @@ op_8D97:
         lbzx    data, a7, prefetch_data                 // 8E2F  OR.B      (d16,A7),D7
         b       or_b_mem_d7
         ori     rtn_addr, code_ptr, or_b_mem_d7_2 - cb  // 8E30  OR.B      (d8,A0,Xn),D7
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, or_b_mem_d7_2 - cb  // 8E31  OR.B      (d8,A1,Xn),D7
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, or_b_mem_d7_2 - cb  // 8E32  OR.B      (d8,A2,Xn),D7
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, or_b_mem_d7_2 - cb  // 8E33  OR.B      (d8,A3,Xn),D7
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, or_b_mem_d7_2 - cb  // 8E34  OR.B      (d8,A4,Xn),D7
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, or_b_mem_d7_2 - cb  // 8E35  OR.B      (d8,A5,Xn),D7
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, or_b_mem_d7_2 - cb  // 8E36  OR.B      (d8,A6,Xn),D7
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, or_b_mem_d7_2 - cb  // 8E37  OR.B      (d8,A7,Xn),D7
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         lbz     data, 0(prefetch_data)                  // 8E38  OR.B      (xxx).W,D7
         b       or_b_mem_d7
         ori     rtn_addr, code_ptr, or_b_mem_d7_2 - cb  // 8E39  OR.B      (xxx).L,D7
@@ -7571,7 +7571,7 @@ op_8D97:
         lbzx    data, pc, prefetch_data                 // 8E3A  OR.B      (d16,PC),D7
         b       or_b_mem_d7
         ori     rtn_addr, code_ptr, or_b_mem_d7_2 - cb  // 8E3B  OR.B      (d8,PC,Xn),D7
-        b       fea_b_73
+        b       fea_b_73_2
         or      data, d7, prefetch_data                 // 8E3C  OR.B      #<data>,D7
         b       move_or_etc_b_ea_d7
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 8E3D  OR.B      <ea 7.5>,D7   (illegal)
@@ -7679,21 +7679,21 @@ op_8D97:
         lhax    data, a7, prefetch_data                 // 8E6F  OR.W      (d16,A7),D7
         b       or_w_mem_d7_2
         ori     rtn_addr, code_ptr, or_w_mem_d7 - cb    // 8E70  OR.W      (d8,A0,Xn),D7
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, or_w_mem_d7 - cb    // 8E71  OR.W      (d8,A1,Xn),D7
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, or_w_mem_d7 - cb    // 8E72  OR.W      (d8,A2,Xn),D7
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, or_w_mem_d7 - cb    // 8E73  OR.W      (d8,A3,Xn),D7
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, or_w_mem_d7 - cb    // 8E74  OR.W      (d8,A4,Xn),D7
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, or_w_mem_d7 - cb    // 8E75  OR.W      (d8,A5,Xn),D7
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, or_w_mem_d7 - cb    // 8E76  OR.W      (d8,A6,Xn),D7
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, or_w_mem_d7 - cb    // 8E77  OR.W      (d8,A7,Xn),D7
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 8E78  OR.W      (xxx).W,D7
         b       or_w_mem_d7_2
         ori     rtn_addr, code_ptr, or_w_mem_d7 - cb    // 8E79  OR.W      (xxx).L,D7
@@ -7809,21 +7809,21 @@ op_8D97:
         lwzx    data, a7, prefetch_data                 // 8EAF  OR.L      (d16,A7),D7
         b       or_l_mem_d7
         ori     rtn_addr, code_ptr, or_l_mem_d7_2 - cb  // 8EB0  OR.L      (d8,A0,Xn),D7
-        b       move_add_etc_l_any_any
+        b       fea_l_60_2
         ori     rtn_addr, code_ptr, or_l_mem_d7_2 - cb  // 8EB1  OR.L      (d8,A1,Xn),D7
-        b       move_add_etc_l_any_any_2
+        b       fea_l_61_2
         ori     rtn_addr, code_ptr, or_l_mem_d7_2 - cb  // 8EB2  OR.L      (d8,A2,Xn),D7
-        b       move_add_etc_l_any_any_3
+        b       fea_l_62_2
         ori     rtn_addr, code_ptr, or_l_mem_d7_2 - cb  // 8EB3  OR.L      (d8,A3,Xn),D7
-        b       move_add_etc_l_any_any_4
+        b       fea_l_63_2
         ori     rtn_addr, code_ptr, or_l_mem_d7_2 - cb  // 8EB4  OR.L      (d8,A4,Xn),D7
-        b       move_add_etc_l_any_any_5
+        b       fea_l_64_2
         ori     rtn_addr, code_ptr, or_l_mem_d7_2 - cb  // 8EB5  OR.L      (d8,A5,Xn),D7
-        b       move_add_etc_l_any_any_6
+        b       fea_l_65_2
         ori     rtn_addr, code_ptr, or_l_mem_d7_2 - cb  // 8EB6  OR.L      (d8,A6,Xn),D7
-        b       move_add_etc_l_any_any_7
+        b       fea_l_66_2
         ori     rtn_addr, code_ptr, or_l_mem_d7_2 - cb  // 8EB7  OR.L      (d8,A7,Xn),D7
-        b       move_add_etc_l_any_any_8
+        b       fea_l_67_2
         lwz     data, 0(prefetch_data)                  // 8EB8  OR.L      (xxx).W,D7
         b       or_l_mem_d7
         ori     rtn_addr, code_ptr, or_l_mem_d7_2 - cb  // 8EB9  OR.L      (xxx).L,D7
@@ -7831,7 +7831,7 @@ op_8D97:
         lwzx    data, pc, prefetch_data                 // 8EBA  OR.L      (d16,PC),D7
         b       or_l_mem_d7
         ori     rtn_addr, code_ptr, or_l_mem_d7_2 - cb  // 8EBB  OR.L      (d8,PC,Xn),D7
-        b       fea_l_73
+        b       fea_l_73_2
         lwz     data, 0(pc)                             // 8EBC  OR.L      #<data>,D7
         b       or_l_imm_d7
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 8EBD  OR.L      <ea 7.5>,D7   (illegal)
@@ -7939,21 +7939,21 @@ op_8D97:
         lhax    data, a7, prefetch_data                 // 8EEF  DIVU.W    (d16,A7),D7
         b       divu_w_ea_d7
         ori     rtn_addr, code_ptr, divu_w_mem_d7 - cb  // 8EF0  DIVU.W    (d8,A0,Xn),D7
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, divu_w_mem_d7 - cb  // 8EF1  DIVU.W    (d8,A1,Xn),D7
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, divu_w_mem_d7 - cb  // 8EF2  DIVU.W    (d8,A2,Xn),D7
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, divu_w_mem_d7 - cb  // 8EF3  DIVU.W    (d8,A3,Xn),D7
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, divu_w_mem_d7 - cb  // 8EF4  DIVU.W    (d8,A4,Xn),D7
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, divu_w_mem_d7 - cb  // 8EF5  DIVU.W    (d8,A5,Xn),D7
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, divu_w_mem_d7 - cb  // 8EF6  DIVU.W    (d8,A6,Xn),D7
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, divu_w_mem_d7 - cb  // 8EF7  DIVU.W    (d8,A7,Xn),D7
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 8EF8  DIVU.W    (xxx).W,D7
         b       divu_w_ea_d7
         ori     rtn_addr, code_ptr, divu_w_mem_d7 - cb  // 8EF9  DIVU.W    (xxx).L,D7
@@ -8077,21 +8077,21 @@ op_8F17:
         add     addr, a7, prefetch_data                 // 8F2F  OR.B      D7,(d16,A7)
         b       or_b_d7_mem
         ori     rtn_addr, code_ptr, or_b_d7_mem_2 - cb  // 8F30  OR.B      D7,(d8,A0,Xn)
-        b       or_sub_etc_any_any
+        b       cea_x_60_2
         ori     rtn_addr, code_ptr, or_b_d7_mem_2 - cb  // 8F31  OR.B      D7,(d8,A1,Xn)
-        b       or_sub_etc_any_any_2
+        b       cea_x_61_2
         ori     rtn_addr, code_ptr, or_b_d7_mem_2 - cb  // 8F32  OR.B      D7,(d8,A2,Xn)
-        b       or_sub_etc_any_any_3
+        b       cea_x_62_2
         ori     rtn_addr, code_ptr, or_b_d7_mem_2 - cb  // 8F33  OR.B      D7,(d8,A3,Xn)
-        b       or_sub_etc_any_any_4
+        b       cea_x_63_2
         ori     rtn_addr, code_ptr, or_b_d7_mem_2 - cb  // 8F34  OR.B      D7,(d8,A4,Xn)
-        b       or_sub_etc_any_any_5
+        b       cea_x_64_2
         ori     rtn_addr, code_ptr, or_b_d7_mem_2 - cb  // 8F35  OR.B      D7,(d8,A5,Xn)
-        b       or_sub_etc_any_any_6
+        b       cea_x_65_2
         ori     rtn_addr, code_ptr, or_b_d7_mem_2 - cb  // 8F36  OR.B      D7,(d8,A6,Xn)
-        b       or_sub_etc_any_any_7
+        b       cea_x_66_2
         ori     rtn_addr, code_ptr, or_b_d7_mem_2 - cb  // 8F37  OR.B      D7,(d8,A7,Xn)
-        b       or_sub_etc_any_any_8
+        b       cea_x_67_2
         mr      addr, prefetch_data                     // 8F38  OR.B      D7,(xxx).W
         b       or_b_d7_mem
         ori     rtn_addr, code_ptr, or_b_d7_mem_2 - cb  // 8F39  OR.B      D7,(xxx).L
@@ -8215,21 +8215,21 @@ op_8F57:
         add     addr, a7, prefetch_data                 // 8F6F  OR.W      D7,(d16,A7)
         b       or_w_d7_mem
         ori     rtn_addr, code_ptr, or_w_d7_mem_2 - cb  // 8F70  OR.W      D7,(d8,A0,Xn)
-        b       or_sub_etc_any_any
+        b       cea_x_60_2
         ori     rtn_addr, code_ptr, or_w_d7_mem_2 - cb  // 8F71  OR.W      D7,(d8,A1,Xn)
-        b       or_sub_etc_any_any_2
+        b       cea_x_61_2
         ori     rtn_addr, code_ptr, or_w_d7_mem_2 - cb  // 8F72  OR.W      D7,(d8,A2,Xn)
-        b       or_sub_etc_any_any_3
+        b       cea_x_62_2
         ori     rtn_addr, code_ptr, or_w_d7_mem_2 - cb  // 8F73  OR.W      D7,(d8,A3,Xn)
-        b       or_sub_etc_any_any_4
+        b       cea_x_63_2
         ori     rtn_addr, code_ptr, or_w_d7_mem_2 - cb  // 8F74  OR.W      D7,(d8,A4,Xn)
-        b       or_sub_etc_any_any_5
+        b       cea_x_64_2
         ori     rtn_addr, code_ptr, or_w_d7_mem_2 - cb  // 8F75  OR.W      D7,(d8,A5,Xn)
-        b       or_sub_etc_any_any_6
+        b       cea_x_65_2
         ori     rtn_addr, code_ptr, or_w_d7_mem_2 - cb  // 8F76  OR.W      D7,(d8,A6,Xn)
-        b       or_sub_etc_any_any_7
+        b       cea_x_66_2
         ori     rtn_addr, code_ptr, or_w_d7_mem_2 - cb  // 8F77  OR.W      D7,(d8,A7,Xn)
-        b       or_sub_etc_any_any_8
+        b       cea_x_67_2
         mr      addr, prefetch_data                     // 8F78  OR.W      D7,(xxx).W
         b       or_w_d7_mem
         ori     rtn_addr, code_ptr, or_w_d7_mem_2 - cb  // 8F79  OR.W      D7,(xxx).L
@@ -8353,21 +8353,21 @@ op_8F97:
         add     addr, a7, prefetch_data                 // 8FAF  OR.L      D7,(d16,A7)
         b       or_l_d7_mem
         ori     rtn_addr, code_ptr, or_l_d7_mem_2 - cb  // 8FB0  OR.L      D7,(d8,A0,Xn)
-        b       or_sub_etc_any_any
+        b       cea_x_60_2
         ori     rtn_addr, code_ptr, or_l_d7_mem_2 - cb  // 8FB1  OR.L      D7,(d8,A1,Xn)
-        b       or_sub_etc_any_any_2
+        b       cea_x_61_2
         ori     rtn_addr, code_ptr, or_l_d7_mem_2 - cb  // 8FB2  OR.L      D7,(d8,A2,Xn)
-        b       or_sub_etc_any_any_3
+        b       cea_x_62_2
         ori     rtn_addr, code_ptr, or_l_d7_mem_2 - cb  // 8FB3  OR.L      D7,(d8,A3,Xn)
-        b       or_sub_etc_any_any_4
+        b       cea_x_63_2
         ori     rtn_addr, code_ptr, or_l_d7_mem_2 - cb  // 8FB4  OR.L      D7,(d8,A4,Xn)
-        b       or_sub_etc_any_any_5
+        b       cea_x_64_2
         ori     rtn_addr, code_ptr, or_l_d7_mem_2 - cb  // 8FB5  OR.L      D7,(d8,A5,Xn)
-        b       or_sub_etc_any_any_6
+        b       cea_x_65_2
         ori     rtn_addr, code_ptr, or_l_d7_mem_2 - cb  // 8FB6  OR.L      D7,(d8,A6,Xn)
-        b       or_sub_etc_any_any_7
+        b       cea_x_66_2
         ori     rtn_addr, code_ptr, or_l_d7_mem_2 - cb  // 8FB7  OR.L      D7,(d8,A7,Xn)
-        b       or_sub_etc_any_any_8
+        b       cea_x_67_2
         mr      addr, prefetch_data                     // 8FB8  OR.L      D7,(xxx).W
         b       or_l_d7_mem
         ori     rtn_addr, code_ptr, or_l_d7_mem_2 - cb  // 8FB9  OR.L      D7,(xxx).L
@@ -8483,21 +8483,21 @@ op_8F97:
         lhax    data, a7, prefetch_data                 // 8FEF  DIVS.W    (d16,A7),D7
         b       divs_w_ea_d7
         ori     rtn_addr, code_ptr, divs_w_mem_d7 - cb  // 8FF0  DIVS.W    (d8,A0,Xn),D7
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, divs_w_mem_d7 - cb  // 8FF1  DIVS.W    (d8,A1,Xn),D7
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, divs_w_mem_d7 - cb  // 8FF2  DIVS.W    (d8,A2,Xn),D7
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, divs_w_mem_d7 - cb  // 8FF3  DIVS.W    (d8,A3,Xn),D7
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, divs_w_mem_d7 - cb  // 8FF4  DIVS.W    (d8,A4,Xn),D7
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, divs_w_mem_d7 - cb  // 8FF5  DIVS.W    (d8,A5,Xn),D7
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, divs_w_mem_d7 - cb  // 8FF6  DIVS.W    (d8,A6,Xn),D7
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, divs_w_mem_d7 - cb  // 8FF7  DIVS.W    (d8,A7,Xn),D7
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         lha     data, 0(prefetch_data)                  // 8FF8  DIVS.W    (xxx).W,D7
         b       divs_w_ea_d7
         ori     rtn_addr, code_ptr, divs_w_mem_d7 - cb  // 8FF9  DIVS.W    (xxx).L,D7

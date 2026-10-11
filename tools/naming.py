@@ -159,8 +159,10 @@ def assign(generator, direct, continuation, ea_users):
     proposals = {}
     for addr, opcodes in direct.items():
         # An effective address routine moves rtn_addr to LR or CTR so that
-        # it can "return" into the operation routine.
-        if generator.uses_rtn_addr(addr):
+        # it can "return" into the operation routine; failing that, a
+        # routine every user enters with rtn_addr loaded is one too.
+        via_rtn_addr = len(ea_users.get(addr, ())) == len(opcodes)
+        if generator.uses_rtn_addr(addr) or via_rtn_addr:
             name = ea_routine_name(opcodes, generator.routine_fetches(addr))
             if name:
                 proposals[addr] = name

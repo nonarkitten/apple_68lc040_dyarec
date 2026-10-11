@@ -1140,21 +1140,21 @@
         b       fline_mem_4
         mr      addr, a7                                // F22F  F-LINE    FPU general,(d16,A7)
         b       fline_mem_4
-        ori     addr, code_ptr, movem_cas_etc_any_any - cb  // F230  F-LINE    FPU general,(d8,A0,Xn)
+        ori     addr, code_ptr, cea_x_60 - cb           // F230  F-LINE    FPU general,(d8,A0,Xn)
         b       fline_mem_5
-        ori     addr, code_ptr, movem_cas_etc_any_any_2 - cb  // F231  F-LINE    FPU general,(d8,A1,Xn)
+        ori     addr, code_ptr, cea_x_61 - cb           // F231  F-LINE    FPU general,(d8,A1,Xn)
         b       fline_mem_5
-        ori     addr, code_ptr, movem_cas_etc_any_any_3 - cb  // F232  F-LINE    FPU general,(d8,A2,Xn)
+        ori     addr, code_ptr, cea_x_62 - cb           // F232  F-LINE    FPU general,(d8,A2,Xn)
         b       fline_mem_5
-        ori     addr, code_ptr, movem_cas_etc_any_any_4 - cb  // F233  F-LINE    FPU general,(d8,A3,Xn)
+        ori     addr, code_ptr, cea_x_63 - cb           // F233  F-LINE    FPU general,(d8,A3,Xn)
         b       fline_mem_5
-        ori     addr, code_ptr, movem_cas_etc_any_any_5 - cb  // F234  F-LINE    FPU general,(d8,A4,Xn)
+        ori     addr, code_ptr, cea_x_64 - cb           // F234  F-LINE    FPU general,(d8,A4,Xn)
         b       fline_mem_5
-        ori     addr, code_ptr, movem_cas_etc_any_any_6 - cb  // F235  F-LINE    FPU general,(d8,A5,Xn)
+        ori     addr, code_ptr, cea_x_65 - cb           // F235  F-LINE    FPU general,(d8,A5,Xn)
         b       fline_mem_5
-        ori     addr, code_ptr, movem_cas_etc_any_any_7 - cb  // F236  F-LINE    FPU general,(d8,A6,Xn)
+        ori     addr, code_ptr, cea_x_66 - cb           // F236  F-LINE    FPU general,(d8,A6,Xn)
         b       fline_mem_5
-        ori     addr, code_ptr, movem_cas_etc_any_any_8 - cb  // F237  F-LINE    FPU general,(d8,A7,Xn)
+        ori     addr, code_ptr, cea_x_67 - cb           // F237  F-LINE    FPU general,(d8,A7,Xn)
         b       fline_mem_5
         li      addr, 0                                 // F238  F-LINE    FPU general,(xxx).W
         b       fline_mem_6
@@ -1162,7 +1162,7 @@
         b       fline_mem_7
         addi    addr, pc, 2                             // F23A  F-LINE    FPU general,(d16,PC)
         b       fline_mem_8
-        ori     addr, code_ptr, chk2_cmp2_movem_etc_mem_any - cb  // F23B  F-LINE    FPU general,(d8,PC,Xn)
+        ori     addr, code_ptr, cea_x_73 - cb           // F23B  F-LINE    FPU general,(d8,PC,Xn)
         b       fline_mem_9
         lwz     rtn_addr, 0x8C8(EmulatorStatePtr)       // F23C  F-LINE    FPU general,#<data>
         b       take_fline
@@ -1270,21 +1270,21 @@
         b       fline_mem_13
         mr      addr, a7                                // F26F  F-LINE    FScc/FDBcc/FTRAPcc,(d16,A7)
         b       fline_mem_13
-        ori     addr, code_ptr, movem_cas_etc_any_any - cb  // F270  F-LINE    FScc/FDBcc/FTRAPcc,(d8,A0,Xn)
+        ori     addr, code_ptr, cea_x_60 - cb           // F270  F-LINE    FScc/FDBcc/FTRAPcc,(d8,A0,Xn)
         b       fline_mem_14
-        ori     addr, code_ptr, movem_cas_etc_any_any_2 - cb  // F271  F-LINE    FScc/FDBcc/FTRAPcc,(d8,A1,Xn)
+        ori     addr, code_ptr, cea_x_61 - cb           // F271  F-LINE    FScc/FDBcc/FTRAPcc,(d8,A1,Xn)
         b       fline_mem_14
-        ori     addr, code_ptr, movem_cas_etc_any_any_3 - cb  // F272  F-LINE    FScc/FDBcc/FTRAPcc,(d8,A2,Xn)
+        ori     addr, code_ptr, cea_x_62 - cb           // F272  F-LINE    FScc/FDBcc/FTRAPcc,(d8,A2,Xn)
         b       fline_mem_14
-        ori     addr, code_ptr, movem_cas_etc_any_any_4 - cb  // F273  F-LINE    FScc/FDBcc/FTRAPcc,(d8,A3,Xn)
+        ori     addr, code_ptr, cea_x_63 - cb           // F273  F-LINE    FScc/FDBcc/FTRAPcc,(d8,A3,Xn)
         b       fline_mem_14
-        ori     addr, code_ptr, movem_cas_etc_any_any_5 - cb  // F274  F-LINE    FScc/FDBcc/FTRAPcc,(d8,A4,Xn)
+        ori     addr, code_ptr, cea_x_64 - cb           // F274  F-LINE    FScc/FDBcc/FTRAPcc,(d8,A4,Xn)
         b       fline_mem_14
-        ori     addr, code_ptr, movem_cas_etc_any_any_6 - cb  // F275  F-LINE    FScc/FDBcc/FTRAPcc,(d8,A5,Xn)
+        ori     addr, code_ptr, cea_x_65 - cb           // F275  F-LINE    FScc/FDBcc/FTRAPcc,(d8,A5,Xn)
         b       fline_mem_14
-        ori     addr, code_ptr, movem_cas_etc_any_any_7 - cb  // F276  F-LINE    FScc/FDBcc/FTRAPcc,(d8,A6,Xn)
+        ori     addr, code_ptr, cea_x_66 - cb           // F276  F-LINE    FScc/FDBcc/FTRAPcc,(d8,A6,Xn)
         b       fline_mem_14
-        ori     addr, code_ptr, movem_cas_etc_any_any_8 - cb  // F277  F-LINE    FScc/FDBcc/FTRAPcc,(d8,A7,Xn)
+        ori     addr, code_ptr, cea_x_67 - cb           // F277  F-LINE    FScc/FDBcc/FTRAPcc,(d8,A7,Xn)
         b       fline_mem_14
         li      addr, 0                                 // F278  F-LINE    FScc/FDBcc/FTRAPcc,(xxx).W
         b       fline_mem_15
@@ -1660,21 +1660,21 @@
         b       fline_mem_19
         add     addr, a7, prefetch_data                 // F32F  F-LINE    FSAVE,(d16,A7)
         b       fline_mem_19
-        ori     addr, code_ptr, or_sub_etc_any_any - cb  // F330  F-LINE    FSAVE,(d8,A0,Xn)
+        ori     addr, code_ptr, cea_x_60_2 - cb         // F330  F-LINE    FSAVE,(d8,A0,Xn)
         b       fline_mem_20
-        ori     addr, code_ptr, or_sub_etc_any_any_2 - cb  // F331  F-LINE    FSAVE,(d8,A1,Xn)
+        ori     addr, code_ptr, cea_x_61_2 - cb         // F331  F-LINE    FSAVE,(d8,A1,Xn)
         b       fline_mem_20
-        ori     addr, code_ptr, or_sub_etc_any_any_3 - cb  // F332  F-LINE    FSAVE,(d8,A2,Xn)
+        ori     addr, code_ptr, cea_x_62_2 - cb         // F332  F-LINE    FSAVE,(d8,A2,Xn)
         b       fline_mem_20
-        ori     addr, code_ptr, or_sub_etc_any_any_4 - cb  // F333  F-LINE    FSAVE,(d8,A3,Xn)
+        ori     addr, code_ptr, cea_x_63_2 - cb         // F333  F-LINE    FSAVE,(d8,A3,Xn)
         b       fline_mem_20
-        ori     addr, code_ptr, or_sub_etc_any_any_5 - cb  // F334  F-LINE    FSAVE,(d8,A4,Xn)
+        ori     addr, code_ptr, cea_x_64_2 - cb         // F334  F-LINE    FSAVE,(d8,A4,Xn)
         b       fline_mem_20
-        ori     addr, code_ptr, or_sub_etc_any_any_6 - cb  // F335  F-LINE    FSAVE,(d8,A5,Xn)
+        ori     addr, code_ptr, cea_x_65_2 - cb         // F335  F-LINE    FSAVE,(d8,A5,Xn)
         b       fline_mem_20
-        ori     addr, code_ptr, or_sub_etc_any_any_7 - cb  // F336  F-LINE    FSAVE,(d8,A6,Xn)
+        ori     addr, code_ptr, cea_x_66_2 - cb         // F336  F-LINE    FSAVE,(d8,A6,Xn)
         b       fline_mem_20
-        ori     addr, code_ptr, or_sub_etc_any_any_8 - cb  // F337  F-LINE    FSAVE,(d8,A7,Xn)
+        ori     addr, code_ptr, cea_x_67_2 - cb         // F337  F-LINE    FSAVE,(d8,A7,Xn)
         b       fline_mem_20
         li      addr, 0                                 // F338  F-LINE    FSAVE,(xxx).W
         b       fline_mem_21
@@ -1790,21 +1790,21 @@
         b       fline_mem_25
         add     addr, a7, prefetch_data                 // F36F  F-LINE    FRESTORE,(d16,A7)
         b       fline_mem_25
-        ori     addr, code_ptr, or_sub_etc_any_any - cb  // F370  F-LINE    FRESTORE,(d8,A0,Xn)
+        ori     addr, code_ptr, cea_x_60_2 - cb         // F370  F-LINE    FRESTORE,(d8,A0,Xn)
         b       fline_mem_26
-        ori     addr, code_ptr, or_sub_etc_any_any_2 - cb  // F371  F-LINE    FRESTORE,(d8,A1,Xn)
+        ori     addr, code_ptr, cea_x_61_2 - cb         // F371  F-LINE    FRESTORE,(d8,A1,Xn)
         b       fline_mem_26
-        ori     addr, code_ptr, or_sub_etc_any_any_3 - cb  // F372  F-LINE    FRESTORE,(d8,A2,Xn)
+        ori     addr, code_ptr, cea_x_62_2 - cb         // F372  F-LINE    FRESTORE,(d8,A2,Xn)
         b       fline_mem_26
-        ori     addr, code_ptr, or_sub_etc_any_any_4 - cb  // F373  F-LINE    FRESTORE,(d8,A3,Xn)
+        ori     addr, code_ptr, cea_x_63_2 - cb         // F373  F-LINE    FRESTORE,(d8,A3,Xn)
         b       fline_mem_26
-        ori     addr, code_ptr, or_sub_etc_any_any_5 - cb  // F374  F-LINE    FRESTORE,(d8,A4,Xn)
+        ori     addr, code_ptr, cea_x_64_2 - cb         // F374  F-LINE    FRESTORE,(d8,A4,Xn)
         b       fline_mem_26
-        ori     addr, code_ptr, or_sub_etc_any_any_6 - cb  // F375  F-LINE    FRESTORE,(d8,A5,Xn)
+        ori     addr, code_ptr, cea_x_65_2 - cb         // F375  F-LINE    FRESTORE,(d8,A5,Xn)
         b       fline_mem_26
-        ori     addr, code_ptr, or_sub_etc_any_any_7 - cb  // F376  F-LINE    FRESTORE,(d8,A6,Xn)
+        ori     addr, code_ptr, cea_x_66_2 - cb         // F376  F-LINE    FRESTORE,(d8,A6,Xn)
         b       fline_mem_26
-        ori     addr, code_ptr, or_sub_etc_any_any_8 - cb  // F377  F-LINE    FRESTORE,(d8,A7,Xn)
+        ori     addr, code_ptr, cea_x_67_2 - cb         // F377  F-LINE    FRESTORE,(d8,A7,Xn)
         b       fline_mem_26
         li      addr, 0                                 // F378  F-LINE    FRESTORE,(xxx).W
         b       fline_mem_27
@@ -1812,7 +1812,7 @@
         b       fline_mem_28
         add     addr, pc, prefetch_data                 // F37A  F-LINE    FRESTORE,(d16,PC)
         b       fline_mem_29
-        ori     addr, code_ptr, cea_x_73 - cb           // F37B  F-LINE    FRESTORE,(d8,PC,Xn)
+        ori     addr, code_ptr, cea_x_73_2 - cb         // F37B  F-LINE    FRESTORE,(d8,PC,Xn)
         b       fline_mem_30
         lwz     rtn_addr, fline_handler(EmulatorStatePtr)  // F37C  F-LINE    FRESTORE,#<data>
         b       take_fline

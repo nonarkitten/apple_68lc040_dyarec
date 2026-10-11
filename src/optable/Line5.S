@@ -109,21 +109,21 @@ op_5017:
         add     addr, a7, prefetch_data                 // 502F  ADDQ.B    #8,(d16,A7)
         b       addq_b_q_mem_4
         ori     rtn_addr, code_ptr, addq_b_q_mem_6 - cb  // 5030  ADDQ.B    #8,(d8,A0,Xn)
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, addq_b_q_mem_6 - cb  // 5031  ADDQ.B    #8,(d8,A1,Xn)
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, addq_b_q_mem_6 - cb  // 5032  ADDQ.B    #8,(d8,A2,Xn)
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, addq_b_q_mem_6 - cb  // 5033  ADDQ.B    #8,(d8,A3,Xn)
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, addq_b_q_mem_6 - cb  // 5034  ADDQ.B    #8,(d8,A4,Xn)
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, addq_b_q_mem_6 - cb  // 5035  ADDQ.B    #8,(d8,A5,Xn)
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, addq_b_q_mem_6 - cb  // 5036  ADDQ.B    #8,(d8,A6,Xn)
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, addq_b_q_mem_6 - cb  // 5037  ADDQ.B    #8,(d8,A7,Xn)
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         mr      addr, prefetch_data                     // 5038  ADDQ.B    #8,(xxx).W
         b       addq_b_q_mem_4
         ori     rtn_addr, code_ptr, addq_b_q_mem_6 - cb  // 5039  ADDQ.B    #8,(xxx).L
@@ -247,21 +247,21 @@ op_5057:
         add     addr, a7, prefetch_data                 // 506F  ADDQ.W    #8,(d16,A7)
         b       addq_w_q_mem_4
         ori     rtn_addr, code_ptr, addq_w_q_mem_6 - cb  // 5070  ADDQ.W    #8,(d8,A0,Xn)
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, addq_w_q_mem_6 - cb  // 5071  ADDQ.W    #8,(d8,A1,Xn)
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, addq_w_q_mem_6 - cb  // 5072  ADDQ.W    #8,(d8,A2,Xn)
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, addq_w_q_mem_6 - cb  // 5073  ADDQ.W    #8,(d8,A3,Xn)
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, addq_w_q_mem_6 - cb  // 5074  ADDQ.W    #8,(d8,A4,Xn)
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, addq_w_q_mem_6 - cb  // 5075  ADDQ.W    #8,(d8,A5,Xn)
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, addq_w_q_mem_6 - cb  // 5076  ADDQ.W    #8,(d8,A6,Xn)
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, addq_w_q_mem_6 - cb  // 5077  ADDQ.W    #8,(d8,A7,Xn)
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         mr      addr, prefetch_data                     // 5078  ADDQ.W    #8,(xxx).W
         b       addq_w_q_mem_4
         ori     rtn_addr, code_ptr, addq_w_q_mem_6 - cb  // 5079  ADDQ.W    #8,(xxx).L
@@ -385,21 +385,21 @@ op_5097:
         add     addr, a7, prefetch_data                 // 50AF  ADDQ.L    #8,(d16,A7)
         b       addq_l_q_mem_4
         ori     rtn_addr, code_ptr, addq_l_q_mem_6 - cb  // 50B0  ADDQ.L    #8,(d8,A0,Xn)
-        b       move_add_etc_l_any_any
+        b       fea_l_60_2
         ori     rtn_addr, code_ptr, addq_l_q_mem_6 - cb  // 50B1  ADDQ.L    #8,(d8,A1,Xn)
-        b       move_add_etc_l_any_any_2
+        b       fea_l_61_2
         ori     rtn_addr, code_ptr, addq_l_q_mem_6 - cb  // 50B2  ADDQ.L    #8,(d8,A2,Xn)
-        b       move_add_etc_l_any_any_3
+        b       fea_l_62_2
         ori     rtn_addr, code_ptr, addq_l_q_mem_6 - cb  // 50B3  ADDQ.L    #8,(d8,A3,Xn)
-        b       move_add_etc_l_any_any_4
+        b       fea_l_63_2
         ori     rtn_addr, code_ptr, addq_l_q_mem_6 - cb  // 50B4  ADDQ.L    #8,(d8,A4,Xn)
-        b       move_add_etc_l_any_any_5
+        b       fea_l_64_2
         ori     rtn_addr, code_ptr, addq_l_q_mem_6 - cb  // 50B5  ADDQ.L    #8,(d8,A5,Xn)
-        b       move_add_etc_l_any_any_6
+        b       fea_l_65_2
         ori     rtn_addr, code_ptr, addq_l_q_mem_6 - cb  // 50B6  ADDQ.L    #8,(d8,A6,Xn)
-        b       move_add_etc_l_any_any_7
+        b       fea_l_66_2
         ori     rtn_addr, code_ptr, addq_l_q_mem_6 - cb  // 50B7  ADDQ.L    #8,(d8,A7,Xn)
-        b       move_add_etc_l_any_any_8
+        b       fea_l_67_2
         mr      addr, prefetch_data                     // 50B8  ADDQ.L    #8,(xxx).W
         b       addq_l_q_mem_4
         ori     rtn_addr, code_ptr, addq_l_q_mem_6 - cb  // 50B9  ADDQ.L    #8,(xxx).L
@@ -531,21 +531,21 @@ op_50D7:
         add     addr, a7, prefetch_data                 // 50EF  ST.B      (d16,A7)
         b       scc_b_mem
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 50F0  ST.B      (d8,A0,Xn)
-        b       or_sub_etc_any_any
+        b       cea_x_60_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 50F1  ST.B      (d8,A1,Xn)
-        b       or_sub_etc_any_any_2
+        b       cea_x_61_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 50F2  ST.B      (d8,A2,Xn)
-        b       or_sub_etc_any_any_3
+        b       cea_x_62_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 50F3  ST.B      (d8,A3,Xn)
-        b       or_sub_etc_any_any_4
+        b       cea_x_63_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 50F4  ST.B      (d8,A4,Xn)
-        b       or_sub_etc_any_any_5
+        b       cea_x_64_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 50F5  ST.B      (d8,A5,Xn)
-        b       or_sub_etc_any_any_6
+        b       cea_x_65_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 50F6  ST.B      (d8,A6,Xn)
-        b       or_sub_etc_any_any_7
+        b       cea_x_66_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 50F7  ST.B      (d8,A7,Xn)
-        b       or_sub_etc_any_any_8
+        b       cea_x_67_2
         mr      addr, prefetch_data                     // 50F8  ST.B      (xxx).W
         b       scc_b_mem
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 50F9  ST.B      (xxx).L
@@ -669,21 +669,21 @@ op_5117:
         add     addr, a7, prefetch_data                 // 512F  SUBQ.B    #8,(d16,A7)
         b       subq_b_q_mem_4
         ori     rtn_addr, code_ptr, subq_b_q_mem_6 - cb  // 5130  SUBQ.B    #8,(d8,A0,Xn)
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, subq_b_q_mem_6 - cb  // 5131  SUBQ.B    #8,(d8,A1,Xn)
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, subq_b_q_mem_6 - cb  // 5132  SUBQ.B    #8,(d8,A2,Xn)
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, subq_b_q_mem_6 - cb  // 5133  SUBQ.B    #8,(d8,A3,Xn)
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, subq_b_q_mem_6 - cb  // 5134  SUBQ.B    #8,(d8,A4,Xn)
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, subq_b_q_mem_6 - cb  // 5135  SUBQ.B    #8,(d8,A5,Xn)
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, subq_b_q_mem_6 - cb  // 5136  SUBQ.B    #8,(d8,A6,Xn)
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, subq_b_q_mem_6 - cb  // 5137  SUBQ.B    #8,(d8,A7,Xn)
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         mr      addr, prefetch_data                     // 5138  SUBQ.B    #8,(xxx).W
         b       subq_b_q_mem_4
         ori     rtn_addr, code_ptr, subq_b_q_mem_6 - cb  // 5139  SUBQ.B    #8,(xxx).L
@@ -807,21 +807,21 @@ op_5157:
         add     addr, a7, prefetch_data                 // 516F  SUBQ.W    #8,(d16,A7)
         b       subq_w_q_mem_4
         ori     rtn_addr, code_ptr, subq_w_q_mem_6 - cb  // 5170  SUBQ.W    #8,(d8,A0,Xn)
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, subq_w_q_mem_6 - cb  // 5171  SUBQ.W    #8,(d8,A1,Xn)
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, subq_w_q_mem_6 - cb  // 5172  SUBQ.W    #8,(d8,A2,Xn)
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, subq_w_q_mem_6 - cb  // 5173  SUBQ.W    #8,(d8,A3,Xn)
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, subq_w_q_mem_6 - cb  // 5174  SUBQ.W    #8,(d8,A4,Xn)
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, subq_w_q_mem_6 - cb  // 5175  SUBQ.W    #8,(d8,A5,Xn)
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, subq_w_q_mem_6 - cb  // 5176  SUBQ.W    #8,(d8,A6,Xn)
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, subq_w_q_mem_6 - cb  // 5177  SUBQ.W    #8,(d8,A7,Xn)
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         mr      addr, prefetch_data                     // 5178  SUBQ.W    #8,(xxx).W
         b       subq_w_q_mem_4
         ori     rtn_addr, code_ptr, subq_w_q_mem_6 - cb  // 5179  SUBQ.W    #8,(xxx).L
@@ -945,21 +945,21 @@ op_5197:
         add     addr, a7, prefetch_data                 // 51AF  SUBQ.L    #8,(d16,A7)
         b       subq_l_q_mem_4
         ori     rtn_addr, code_ptr, subq_l_q_mem_6 - cb  // 51B0  SUBQ.L    #8,(d8,A0,Xn)
-        b       move_add_etc_l_any_any
+        b       fea_l_60_2
         ori     rtn_addr, code_ptr, subq_l_q_mem_6 - cb  // 51B1  SUBQ.L    #8,(d8,A1,Xn)
-        b       move_add_etc_l_any_any_2
+        b       fea_l_61_2
         ori     rtn_addr, code_ptr, subq_l_q_mem_6 - cb  // 51B2  SUBQ.L    #8,(d8,A2,Xn)
-        b       move_add_etc_l_any_any_3
+        b       fea_l_62_2
         ori     rtn_addr, code_ptr, subq_l_q_mem_6 - cb  // 51B3  SUBQ.L    #8,(d8,A3,Xn)
-        b       move_add_etc_l_any_any_4
+        b       fea_l_63_2
         ori     rtn_addr, code_ptr, subq_l_q_mem_6 - cb  // 51B4  SUBQ.L    #8,(d8,A4,Xn)
-        b       move_add_etc_l_any_any_5
+        b       fea_l_64_2
         ori     rtn_addr, code_ptr, subq_l_q_mem_6 - cb  // 51B5  SUBQ.L    #8,(d8,A5,Xn)
-        b       move_add_etc_l_any_any_6
+        b       fea_l_65_2
         ori     rtn_addr, code_ptr, subq_l_q_mem_6 - cb  // 51B6  SUBQ.L    #8,(d8,A6,Xn)
-        b       move_add_etc_l_any_any_7
+        b       fea_l_66_2
         ori     rtn_addr, code_ptr, subq_l_q_mem_6 - cb  // 51B7  SUBQ.L    #8,(d8,A7,Xn)
-        b       move_add_etc_l_any_any_8
+        b       fea_l_67_2
         mr      addr, prefetch_data                     // 51B8  SUBQ.L    #8,(xxx).W
         b       subq_l_q_mem_4
         ori     rtn_addr, code_ptr, subq_l_q_mem_6 - cb  // 51B9  SUBQ.L    #8,(xxx).L
@@ -1075,21 +1075,21 @@ op_5197:
         stbx    zero, a7, prefetch_data                 // 51EF  SF.B      (d16,A7)
         b       fetch_skip_word
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 51F0  SF.B      (d8,A0,Xn)
-        b       or_sub_etc_any_any
+        b       cea_x_60_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 51F1  SF.B      (d8,A1,Xn)
-        b       or_sub_etc_any_any_2
+        b       cea_x_61_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 51F2  SF.B      (d8,A2,Xn)
-        b       or_sub_etc_any_any_3
+        b       cea_x_62_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 51F3  SF.B      (d8,A3,Xn)
-        b       or_sub_etc_any_any_4
+        b       cea_x_63_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 51F4  SF.B      (d8,A4,Xn)
-        b       or_sub_etc_any_any_5
+        b       cea_x_64_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 51F5  SF.B      (d8,A5,Xn)
-        b       or_sub_etc_any_any_6
+        b       cea_x_65_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 51F6  SF.B      (d8,A6,Xn)
-        b       or_sub_etc_any_any_7
+        b       cea_x_66_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 51F7  SF.B      (d8,A7,Xn)
-        b       or_sub_etc_any_any_8
+        b       cea_x_67_2
         stb     zero, 0(prefetch_data)                  // 51F8  SF.B      (xxx).W
         b       fetch_skip_word
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 51F9  SF.B      (xxx).L
@@ -1213,21 +1213,21 @@ op_5217:
         add     addr, a7, prefetch_data                 // 522F  ADDQ.B    #1,(d16,A7)
         b       addq_b_q_mem
         ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5230  ADDQ.B    #1,(d8,A0,Xn)
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5231  ADDQ.B    #1,(d8,A1,Xn)
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5232  ADDQ.B    #1,(d8,A2,Xn)
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5233  ADDQ.B    #1,(d8,A3,Xn)
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5234  ADDQ.B    #1,(d8,A4,Xn)
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5235  ADDQ.B    #1,(d8,A5,Xn)
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5236  ADDQ.B    #1,(d8,A6,Xn)
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5237  ADDQ.B    #1,(d8,A7,Xn)
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         mr      addr, prefetch_data                     // 5238  ADDQ.B    #1,(xxx).W
         b       addq_b_q_mem
         ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5239  ADDQ.B    #1,(xxx).L
@@ -1351,21 +1351,21 @@ op_5257:
         add     addr, a7, prefetch_data                 // 526F  ADDQ.W    #1,(d16,A7)
         b       addq_w_q_mem
         ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5270  ADDQ.W    #1,(d8,A0,Xn)
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5271  ADDQ.W    #1,(d8,A1,Xn)
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5272  ADDQ.W    #1,(d8,A2,Xn)
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5273  ADDQ.W    #1,(d8,A3,Xn)
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5274  ADDQ.W    #1,(d8,A4,Xn)
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5275  ADDQ.W    #1,(d8,A5,Xn)
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5276  ADDQ.W    #1,(d8,A6,Xn)
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5277  ADDQ.W    #1,(d8,A7,Xn)
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         mr      addr, prefetch_data                     // 5278  ADDQ.W    #1,(xxx).W
         b       addq_w_q_mem
         ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5279  ADDQ.W    #1,(xxx).L
@@ -1489,21 +1489,21 @@ op_5297:
         add     addr, a7, prefetch_data                 // 52AF  ADDQ.L    #1,(d16,A7)
         b       addq_l_q_mem
         ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 52B0  ADDQ.L    #1,(d8,A0,Xn)
-        b       move_add_etc_l_any_any
+        b       fea_l_60_2
         ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 52B1  ADDQ.L    #1,(d8,A1,Xn)
-        b       move_add_etc_l_any_any_2
+        b       fea_l_61_2
         ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 52B2  ADDQ.L    #1,(d8,A2,Xn)
-        b       move_add_etc_l_any_any_3
+        b       fea_l_62_2
         ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 52B3  ADDQ.L    #1,(d8,A3,Xn)
-        b       move_add_etc_l_any_any_4
+        b       fea_l_63_2
         ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 52B4  ADDQ.L    #1,(d8,A4,Xn)
-        b       move_add_etc_l_any_any_5
+        b       fea_l_64_2
         ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 52B5  ADDQ.L    #1,(d8,A5,Xn)
-        b       move_add_etc_l_any_any_6
+        b       fea_l_65_2
         ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 52B6  ADDQ.L    #1,(d8,A6,Xn)
-        b       move_add_etc_l_any_any_7
+        b       fea_l_66_2
         ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 52B7  ADDQ.L    #1,(d8,A7,Xn)
-        b       move_add_etc_l_any_any_8
+        b       fea_l_67_2
         mr      addr, prefetch_data                     // 52B8  ADDQ.L    #1,(xxx).W
         b       addq_l_q_mem
         ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 52B9  ADDQ.L    #1,(xxx).L
@@ -1627,21 +1627,21 @@ op_52D7:
         add     addr, a7, prefetch_data                 // 52EF  SHI.B     (d16,A7)
         b       scc_b_mem
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 52F0  SHI.B     (d8,A0,Xn)
-        b       or_sub_etc_any_any
+        b       cea_x_60_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 52F1  SHI.B     (d8,A1,Xn)
-        b       or_sub_etc_any_any_2
+        b       cea_x_61_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 52F2  SHI.B     (d8,A2,Xn)
-        b       or_sub_etc_any_any_3
+        b       cea_x_62_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 52F3  SHI.B     (d8,A3,Xn)
-        b       or_sub_etc_any_any_4
+        b       cea_x_63_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 52F4  SHI.B     (d8,A4,Xn)
-        b       or_sub_etc_any_any_5
+        b       cea_x_64_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 52F5  SHI.B     (d8,A5,Xn)
-        b       or_sub_etc_any_any_6
+        b       cea_x_65_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 52F6  SHI.B     (d8,A6,Xn)
-        b       or_sub_etc_any_any_7
+        b       cea_x_66_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 52F7  SHI.B     (d8,A7,Xn)
-        b       or_sub_etc_any_any_8
+        b       cea_x_67_2
         mr      addr, prefetch_data                     // 52F8  SHI.B     (xxx).W
         b       scc_b_mem
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 52F9  SHI.B     (xxx).L
@@ -1765,21 +1765,21 @@ op_5317:
         add     addr, a7, prefetch_data                 // 532F  SUBQ.B    #1,(d16,A7)
         b       subq_b_q_mem
         ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5330  SUBQ.B    #1,(d8,A0,Xn)
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5331  SUBQ.B    #1,(d8,A1,Xn)
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5332  SUBQ.B    #1,(d8,A2,Xn)
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5333  SUBQ.B    #1,(d8,A3,Xn)
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5334  SUBQ.B    #1,(d8,A4,Xn)
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5335  SUBQ.B    #1,(d8,A5,Xn)
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5336  SUBQ.B    #1,(d8,A6,Xn)
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5337  SUBQ.B    #1,(d8,A7,Xn)
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         mr      addr, prefetch_data                     // 5338  SUBQ.B    #1,(xxx).W
         b       subq_b_q_mem
         ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5339  SUBQ.B    #1,(xxx).L
@@ -1903,21 +1903,21 @@ op_5357:
         add     addr, a7, prefetch_data                 // 536F  SUBQ.W    #1,(d16,A7)
         b       subq_w_q_mem
         ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5370  SUBQ.W    #1,(d8,A0,Xn)
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5371  SUBQ.W    #1,(d8,A1,Xn)
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5372  SUBQ.W    #1,(d8,A2,Xn)
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5373  SUBQ.W    #1,(d8,A3,Xn)
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5374  SUBQ.W    #1,(d8,A4,Xn)
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5375  SUBQ.W    #1,(d8,A5,Xn)
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5376  SUBQ.W    #1,(d8,A6,Xn)
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5377  SUBQ.W    #1,(d8,A7,Xn)
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         mr      addr, prefetch_data                     // 5378  SUBQ.W    #1,(xxx).W
         b       subq_w_q_mem
         ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5379  SUBQ.W    #1,(xxx).L
@@ -2041,21 +2041,21 @@ op_5397:
         add     addr, a7, prefetch_data                 // 53AF  SUBQ.L    #1,(d16,A7)
         b       subq_l_q_mem
         ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 53B0  SUBQ.L    #1,(d8,A0,Xn)
-        b       move_add_etc_l_any_any
+        b       fea_l_60_2
         ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 53B1  SUBQ.L    #1,(d8,A1,Xn)
-        b       move_add_etc_l_any_any_2
+        b       fea_l_61_2
         ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 53B2  SUBQ.L    #1,(d8,A2,Xn)
-        b       move_add_etc_l_any_any_3
+        b       fea_l_62_2
         ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 53B3  SUBQ.L    #1,(d8,A3,Xn)
-        b       move_add_etc_l_any_any_4
+        b       fea_l_63_2
         ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 53B4  SUBQ.L    #1,(d8,A4,Xn)
-        b       move_add_etc_l_any_any_5
+        b       fea_l_64_2
         ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 53B5  SUBQ.L    #1,(d8,A5,Xn)
-        b       move_add_etc_l_any_any_6
+        b       fea_l_65_2
         ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 53B6  SUBQ.L    #1,(d8,A6,Xn)
-        b       move_add_etc_l_any_any_7
+        b       fea_l_66_2
         ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 53B7  SUBQ.L    #1,(d8,A7,Xn)
-        b       move_add_etc_l_any_any_8
+        b       fea_l_67_2
         mr      addr, prefetch_data                     // 53B8  SUBQ.L    #1,(xxx).W
         b       subq_l_q_mem
         ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 53B9  SUBQ.L    #1,(xxx).L
@@ -2179,21 +2179,21 @@ op_53D7:
         add     addr, a7, prefetch_data                 // 53EF  SLS.B     (d16,A7)
         b       scc_b_mem
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 53F0  SLS.B     (d8,A0,Xn)
-        b       or_sub_etc_any_any
+        b       cea_x_60_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 53F1  SLS.B     (d8,A1,Xn)
-        b       or_sub_etc_any_any_2
+        b       cea_x_61_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 53F2  SLS.B     (d8,A2,Xn)
-        b       or_sub_etc_any_any_3
+        b       cea_x_62_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 53F3  SLS.B     (d8,A3,Xn)
-        b       or_sub_etc_any_any_4
+        b       cea_x_63_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 53F4  SLS.B     (d8,A4,Xn)
-        b       or_sub_etc_any_any_5
+        b       cea_x_64_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 53F5  SLS.B     (d8,A5,Xn)
-        b       or_sub_etc_any_any_6
+        b       cea_x_65_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 53F6  SLS.B     (d8,A6,Xn)
-        b       or_sub_etc_any_any_7
+        b       cea_x_66_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 53F7  SLS.B     (d8,A7,Xn)
-        b       or_sub_etc_any_any_8
+        b       cea_x_67_2
         mr      addr, prefetch_data                     // 53F8  SLS.B     (xxx).W
         b       scc_b_mem
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 53F9  SLS.B     (xxx).L
@@ -2317,21 +2317,21 @@ op_5417:
         add     addr, a7, prefetch_data                 // 542F  ADDQ.B    #2,(d16,A7)
         b       addq_b_q_mem
         ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5430  ADDQ.B    #2,(d8,A0,Xn)
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5431  ADDQ.B    #2,(d8,A1,Xn)
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5432  ADDQ.B    #2,(d8,A2,Xn)
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5433  ADDQ.B    #2,(d8,A3,Xn)
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5434  ADDQ.B    #2,(d8,A4,Xn)
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5435  ADDQ.B    #2,(d8,A5,Xn)
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5436  ADDQ.B    #2,(d8,A6,Xn)
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5437  ADDQ.B    #2,(d8,A7,Xn)
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         mr      addr, prefetch_data                     // 5438  ADDQ.B    #2,(xxx).W
         b       addq_b_q_mem
         ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5439  ADDQ.B    #2,(xxx).L
@@ -2455,21 +2455,21 @@ op_5457:
         add     addr, a7, prefetch_data                 // 546F  ADDQ.W    #2,(d16,A7)
         b       addq_w_q_mem
         ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5470  ADDQ.W    #2,(d8,A0,Xn)
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5471  ADDQ.W    #2,(d8,A1,Xn)
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5472  ADDQ.W    #2,(d8,A2,Xn)
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5473  ADDQ.W    #2,(d8,A3,Xn)
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5474  ADDQ.W    #2,(d8,A4,Xn)
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5475  ADDQ.W    #2,(d8,A5,Xn)
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5476  ADDQ.W    #2,(d8,A6,Xn)
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5477  ADDQ.W    #2,(d8,A7,Xn)
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         mr      addr, prefetch_data                     // 5478  ADDQ.W    #2,(xxx).W
         b       addq_w_q_mem
         ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5479  ADDQ.W    #2,(xxx).L
@@ -2593,21 +2593,21 @@ op_5497:
         add     addr, a7, prefetch_data                 // 54AF  ADDQ.L    #2,(d16,A7)
         b       addq_l_q_mem
         ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 54B0  ADDQ.L    #2,(d8,A0,Xn)
-        b       move_add_etc_l_any_any
+        b       fea_l_60_2
         ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 54B1  ADDQ.L    #2,(d8,A1,Xn)
-        b       move_add_etc_l_any_any_2
+        b       fea_l_61_2
         ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 54B2  ADDQ.L    #2,(d8,A2,Xn)
-        b       move_add_etc_l_any_any_3
+        b       fea_l_62_2
         ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 54B3  ADDQ.L    #2,(d8,A3,Xn)
-        b       move_add_etc_l_any_any_4
+        b       fea_l_63_2
         ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 54B4  ADDQ.L    #2,(d8,A4,Xn)
-        b       move_add_etc_l_any_any_5
+        b       fea_l_64_2
         ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 54B5  ADDQ.L    #2,(d8,A5,Xn)
-        b       move_add_etc_l_any_any_6
+        b       fea_l_65_2
         ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 54B6  ADDQ.L    #2,(d8,A6,Xn)
-        b       move_add_etc_l_any_any_7
+        b       fea_l_66_2
         ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 54B7  ADDQ.L    #2,(d8,A7,Xn)
-        b       move_add_etc_l_any_any_8
+        b       fea_l_67_2
         mr      addr, prefetch_data                     // 54B8  ADDQ.L    #2,(xxx).W
         b       addq_l_q_mem
         ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 54B9  ADDQ.L    #2,(xxx).L
@@ -2731,21 +2731,21 @@ op_54D7:
         add     addr, a7, prefetch_data                 // 54EF  SCC.B     (d16,A7)
         b       scc_b_mem
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 54F0  SCC.B     (d8,A0,Xn)
-        b       or_sub_etc_any_any
+        b       cea_x_60_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 54F1  SCC.B     (d8,A1,Xn)
-        b       or_sub_etc_any_any_2
+        b       cea_x_61_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 54F2  SCC.B     (d8,A2,Xn)
-        b       or_sub_etc_any_any_3
+        b       cea_x_62_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 54F3  SCC.B     (d8,A3,Xn)
-        b       or_sub_etc_any_any_4
+        b       cea_x_63_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 54F4  SCC.B     (d8,A4,Xn)
-        b       or_sub_etc_any_any_5
+        b       cea_x_64_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 54F5  SCC.B     (d8,A5,Xn)
-        b       or_sub_etc_any_any_6
+        b       cea_x_65_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 54F6  SCC.B     (d8,A6,Xn)
-        b       or_sub_etc_any_any_7
+        b       cea_x_66_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 54F7  SCC.B     (d8,A7,Xn)
-        b       or_sub_etc_any_any_8
+        b       cea_x_67_2
         mr      addr, prefetch_data                     // 54F8  SCC.B     (xxx).W
         b       scc_b_mem
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 54F9  SCC.B     (xxx).L
@@ -2869,21 +2869,21 @@ op_5517:
         add     addr, a7, prefetch_data                 // 552F  SUBQ.B    #2,(d16,A7)
         b       subq_b_q_mem
         ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5530  SUBQ.B    #2,(d8,A0,Xn)
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5531  SUBQ.B    #2,(d8,A1,Xn)
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5532  SUBQ.B    #2,(d8,A2,Xn)
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5533  SUBQ.B    #2,(d8,A3,Xn)
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5534  SUBQ.B    #2,(d8,A4,Xn)
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5535  SUBQ.B    #2,(d8,A5,Xn)
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5536  SUBQ.B    #2,(d8,A6,Xn)
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5537  SUBQ.B    #2,(d8,A7,Xn)
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         mr      addr, prefetch_data                     // 5538  SUBQ.B    #2,(xxx).W
         b       subq_b_q_mem
         ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5539  SUBQ.B    #2,(xxx).L
@@ -3007,21 +3007,21 @@ op_5557:
         add     addr, a7, prefetch_data                 // 556F  SUBQ.W    #2,(d16,A7)
         b       subq_w_q_mem
         ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5570  SUBQ.W    #2,(d8,A0,Xn)
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5571  SUBQ.W    #2,(d8,A1,Xn)
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5572  SUBQ.W    #2,(d8,A2,Xn)
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5573  SUBQ.W    #2,(d8,A3,Xn)
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5574  SUBQ.W    #2,(d8,A4,Xn)
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5575  SUBQ.W    #2,(d8,A5,Xn)
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5576  SUBQ.W    #2,(d8,A6,Xn)
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5577  SUBQ.W    #2,(d8,A7,Xn)
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         mr      addr, prefetch_data                     // 5578  SUBQ.W    #2,(xxx).W
         b       subq_w_q_mem
         ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5579  SUBQ.W    #2,(xxx).L
@@ -3145,21 +3145,21 @@ op_5597:
         add     addr, a7, prefetch_data                 // 55AF  SUBQ.L    #2,(d16,A7)
         b       subq_l_q_mem
         ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 55B0  SUBQ.L    #2,(d8,A0,Xn)
-        b       move_add_etc_l_any_any
+        b       fea_l_60_2
         ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 55B1  SUBQ.L    #2,(d8,A1,Xn)
-        b       move_add_etc_l_any_any_2
+        b       fea_l_61_2
         ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 55B2  SUBQ.L    #2,(d8,A2,Xn)
-        b       move_add_etc_l_any_any_3
+        b       fea_l_62_2
         ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 55B3  SUBQ.L    #2,(d8,A3,Xn)
-        b       move_add_etc_l_any_any_4
+        b       fea_l_63_2
         ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 55B4  SUBQ.L    #2,(d8,A4,Xn)
-        b       move_add_etc_l_any_any_5
+        b       fea_l_64_2
         ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 55B5  SUBQ.L    #2,(d8,A5,Xn)
-        b       move_add_etc_l_any_any_6
+        b       fea_l_65_2
         ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 55B6  SUBQ.L    #2,(d8,A6,Xn)
-        b       move_add_etc_l_any_any_7
+        b       fea_l_66_2
         ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 55B7  SUBQ.L    #2,(d8,A7,Xn)
-        b       move_add_etc_l_any_any_8
+        b       fea_l_67_2
         mr      addr, prefetch_data                     // 55B8  SUBQ.L    #2,(xxx).W
         b       subq_l_q_mem
         ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 55B9  SUBQ.L    #2,(xxx).L
@@ -3283,21 +3283,21 @@ op_55D7:
         add     addr, a7, prefetch_data                 // 55EF  SCS.B     (d16,A7)
         b       scc_b_mem
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 55F0  SCS.B     (d8,A0,Xn)
-        b       or_sub_etc_any_any
+        b       cea_x_60_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 55F1  SCS.B     (d8,A1,Xn)
-        b       or_sub_etc_any_any_2
+        b       cea_x_61_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 55F2  SCS.B     (d8,A2,Xn)
-        b       or_sub_etc_any_any_3
+        b       cea_x_62_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 55F3  SCS.B     (d8,A3,Xn)
-        b       or_sub_etc_any_any_4
+        b       cea_x_63_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 55F4  SCS.B     (d8,A4,Xn)
-        b       or_sub_etc_any_any_5
+        b       cea_x_64_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 55F5  SCS.B     (d8,A5,Xn)
-        b       or_sub_etc_any_any_6
+        b       cea_x_65_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 55F6  SCS.B     (d8,A6,Xn)
-        b       or_sub_etc_any_any_7
+        b       cea_x_66_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 55F7  SCS.B     (d8,A7,Xn)
-        b       or_sub_etc_any_any_8
+        b       cea_x_67_2
         mr      addr, prefetch_data                     // 55F8  SCS.B     (xxx).W
         b       scc_b_mem
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 55F9  SCS.B     (xxx).L
@@ -3421,21 +3421,21 @@ op_5617:
         add     addr, a7, prefetch_data                 // 562F  ADDQ.B    #3,(d16,A7)
         b       addq_b_q_mem
         ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5630  ADDQ.B    #3,(d8,A0,Xn)
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5631  ADDQ.B    #3,(d8,A1,Xn)
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5632  ADDQ.B    #3,(d8,A2,Xn)
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5633  ADDQ.B    #3,(d8,A3,Xn)
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5634  ADDQ.B    #3,(d8,A4,Xn)
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5635  ADDQ.B    #3,(d8,A5,Xn)
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5636  ADDQ.B    #3,(d8,A6,Xn)
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5637  ADDQ.B    #3,(d8,A7,Xn)
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         mr      addr, prefetch_data                     // 5638  ADDQ.B    #3,(xxx).W
         b       addq_b_q_mem
         ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5639  ADDQ.B    #3,(xxx).L
@@ -3559,21 +3559,21 @@ op_5657:
         add     addr, a7, prefetch_data                 // 566F  ADDQ.W    #3,(d16,A7)
         b       addq_w_q_mem
         ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5670  ADDQ.W    #3,(d8,A0,Xn)
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5671  ADDQ.W    #3,(d8,A1,Xn)
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5672  ADDQ.W    #3,(d8,A2,Xn)
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5673  ADDQ.W    #3,(d8,A3,Xn)
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5674  ADDQ.W    #3,(d8,A4,Xn)
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5675  ADDQ.W    #3,(d8,A5,Xn)
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5676  ADDQ.W    #3,(d8,A6,Xn)
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5677  ADDQ.W    #3,(d8,A7,Xn)
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         mr      addr, prefetch_data                     // 5678  ADDQ.W    #3,(xxx).W
         b       addq_w_q_mem
         ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5679  ADDQ.W    #3,(xxx).L
@@ -3697,21 +3697,21 @@ op_5697:
         add     addr, a7, prefetch_data                 // 56AF  ADDQ.L    #3,(d16,A7)
         b       addq_l_q_mem
         ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 56B0  ADDQ.L    #3,(d8,A0,Xn)
-        b       move_add_etc_l_any_any
+        b       fea_l_60_2
         ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 56B1  ADDQ.L    #3,(d8,A1,Xn)
-        b       move_add_etc_l_any_any_2
+        b       fea_l_61_2
         ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 56B2  ADDQ.L    #3,(d8,A2,Xn)
-        b       move_add_etc_l_any_any_3
+        b       fea_l_62_2
         ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 56B3  ADDQ.L    #3,(d8,A3,Xn)
-        b       move_add_etc_l_any_any_4
+        b       fea_l_63_2
         ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 56B4  ADDQ.L    #3,(d8,A4,Xn)
-        b       move_add_etc_l_any_any_5
+        b       fea_l_64_2
         ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 56B5  ADDQ.L    #3,(d8,A5,Xn)
-        b       move_add_etc_l_any_any_6
+        b       fea_l_65_2
         ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 56B6  ADDQ.L    #3,(d8,A6,Xn)
-        b       move_add_etc_l_any_any_7
+        b       fea_l_66_2
         ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 56B7  ADDQ.L    #3,(d8,A7,Xn)
-        b       move_add_etc_l_any_any_8
+        b       fea_l_67_2
         mr      addr, prefetch_data                     // 56B8  ADDQ.L    #3,(xxx).W
         b       addq_l_q_mem
         ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 56B9  ADDQ.L    #3,(xxx).L
@@ -3835,21 +3835,21 @@ op_56D7:
         add     addr, a7, prefetch_data                 // 56EF  SNE.B     (d16,A7)
         b       scc_b_mem
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 56F0  SNE.B     (d8,A0,Xn)
-        b       or_sub_etc_any_any
+        b       cea_x_60_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 56F1  SNE.B     (d8,A1,Xn)
-        b       or_sub_etc_any_any_2
+        b       cea_x_61_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 56F2  SNE.B     (d8,A2,Xn)
-        b       or_sub_etc_any_any_3
+        b       cea_x_62_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 56F3  SNE.B     (d8,A3,Xn)
-        b       or_sub_etc_any_any_4
+        b       cea_x_63_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 56F4  SNE.B     (d8,A4,Xn)
-        b       or_sub_etc_any_any_5
+        b       cea_x_64_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 56F5  SNE.B     (d8,A5,Xn)
-        b       or_sub_etc_any_any_6
+        b       cea_x_65_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 56F6  SNE.B     (d8,A6,Xn)
-        b       or_sub_etc_any_any_7
+        b       cea_x_66_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 56F7  SNE.B     (d8,A7,Xn)
-        b       or_sub_etc_any_any_8
+        b       cea_x_67_2
         mr      addr, prefetch_data                     // 56F8  SNE.B     (xxx).W
         b       scc_b_mem
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 56F9  SNE.B     (xxx).L
@@ -3973,21 +3973,21 @@ op_5717:
         add     addr, a7, prefetch_data                 // 572F  SUBQ.B    #3,(d16,A7)
         b       subq_b_q_mem
         ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5730  SUBQ.B    #3,(d8,A0,Xn)
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5731  SUBQ.B    #3,(d8,A1,Xn)
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5732  SUBQ.B    #3,(d8,A2,Xn)
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5733  SUBQ.B    #3,(d8,A3,Xn)
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5734  SUBQ.B    #3,(d8,A4,Xn)
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5735  SUBQ.B    #3,(d8,A5,Xn)
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5736  SUBQ.B    #3,(d8,A6,Xn)
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5737  SUBQ.B    #3,(d8,A7,Xn)
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         mr      addr, prefetch_data                     // 5738  SUBQ.B    #3,(xxx).W
         b       subq_b_q_mem
         ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5739  SUBQ.B    #3,(xxx).L
@@ -4111,21 +4111,21 @@ op_5757:
         add     addr, a7, prefetch_data                 // 576F  SUBQ.W    #3,(d16,A7)
         b       subq_w_q_mem
         ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5770  SUBQ.W    #3,(d8,A0,Xn)
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5771  SUBQ.W    #3,(d8,A1,Xn)
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5772  SUBQ.W    #3,(d8,A2,Xn)
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5773  SUBQ.W    #3,(d8,A3,Xn)
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5774  SUBQ.W    #3,(d8,A4,Xn)
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5775  SUBQ.W    #3,(d8,A5,Xn)
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5776  SUBQ.W    #3,(d8,A6,Xn)
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5777  SUBQ.W    #3,(d8,A7,Xn)
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         mr      addr, prefetch_data                     // 5778  SUBQ.W    #3,(xxx).W
         b       subq_w_q_mem
         ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5779  SUBQ.W    #3,(xxx).L
@@ -4249,21 +4249,21 @@ op_5797:
         add     addr, a7, prefetch_data                 // 57AF  SUBQ.L    #3,(d16,A7)
         b       subq_l_q_mem
         ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 57B0  SUBQ.L    #3,(d8,A0,Xn)
-        b       move_add_etc_l_any_any
+        b       fea_l_60_2
         ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 57B1  SUBQ.L    #3,(d8,A1,Xn)
-        b       move_add_etc_l_any_any_2
+        b       fea_l_61_2
         ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 57B2  SUBQ.L    #3,(d8,A2,Xn)
-        b       move_add_etc_l_any_any_3
+        b       fea_l_62_2
         ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 57B3  SUBQ.L    #3,(d8,A3,Xn)
-        b       move_add_etc_l_any_any_4
+        b       fea_l_63_2
         ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 57B4  SUBQ.L    #3,(d8,A4,Xn)
-        b       move_add_etc_l_any_any_5
+        b       fea_l_64_2
         ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 57B5  SUBQ.L    #3,(d8,A5,Xn)
-        b       move_add_etc_l_any_any_6
+        b       fea_l_65_2
         ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 57B6  SUBQ.L    #3,(d8,A6,Xn)
-        b       move_add_etc_l_any_any_7
+        b       fea_l_66_2
         ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 57B7  SUBQ.L    #3,(d8,A7,Xn)
-        b       move_add_etc_l_any_any_8
+        b       fea_l_67_2
         mr      addr, prefetch_data                     // 57B8  SUBQ.L    #3,(xxx).W
         b       subq_l_q_mem
         ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 57B9  SUBQ.L    #3,(xxx).L
@@ -4387,21 +4387,21 @@ op_57D7:
         add     addr, a7, prefetch_data                 // 57EF  SEQ.B     (d16,A7)
         b       scc_b_mem
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 57F0  SEQ.B     (d8,A0,Xn)
-        b       or_sub_etc_any_any
+        b       cea_x_60_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 57F1  SEQ.B     (d8,A1,Xn)
-        b       or_sub_etc_any_any_2
+        b       cea_x_61_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 57F2  SEQ.B     (d8,A2,Xn)
-        b       or_sub_etc_any_any_3
+        b       cea_x_62_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 57F3  SEQ.B     (d8,A3,Xn)
-        b       or_sub_etc_any_any_4
+        b       cea_x_63_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 57F4  SEQ.B     (d8,A4,Xn)
-        b       or_sub_etc_any_any_5
+        b       cea_x_64_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 57F5  SEQ.B     (d8,A5,Xn)
-        b       or_sub_etc_any_any_6
+        b       cea_x_65_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 57F6  SEQ.B     (d8,A6,Xn)
-        b       or_sub_etc_any_any_7
+        b       cea_x_66_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 57F7  SEQ.B     (d8,A7,Xn)
-        b       or_sub_etc_any_any_8
+        b       cea_x_67_2
         mr      addr, prefetch_data                     // 57F8  SEQ.B     (xxx).W
         b       scc_b_mem
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 57F9  SEQ.B     (xxx).L
@@ -4525,21 +4525,21 @@ op_5817:
         add     addr, a7, prefetch_data                 // 582F  ADDQ.B    #4,(d16,A7)
         b       addq_b_q_mem
         ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5830  ADDQ.B    #4,(d8,A0,Xn)
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5831  ADDQ.B    #4,(d8,A1,Xn)
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5832  ADDQ.B    #4,(d8,A2,Xn)
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5833  ADDQ.B    #4,(d8,A3,Xn)
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5834  ADDQ.B    #4,(d8,A4,Xn)
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5835  ADDQ.B    #4,(d8,A5,Xn)
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5836  ADDQ.B    #4,(d8,A6,Xn)
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5837  ADDQ.B    #4,(d8,A7,Xn)
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         mr      addr, prefetch_data                     // 5838  ADDQ.B    #4,(xxx).W
         b       addq_b_q_mem
         ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5839  ADDQ.B    #4,(xxx).L
@@ -4663,21 +4663,21 @@ op_5857:
         add     addr, a7, prefetch_data                 // 586F  ADDQ.W    #4,(d16,A7)
         b       addq_w_q_mem
         ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5870  ADDQ.W    #4,(d8,A0,Xn)
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5871  ADDQ.W    #4,(d8,A1,Xn)
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5872  ADDQ.W    #4,(d8,A2,Xn)
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5873  ADDQ.W    #4,(d8,A3,Xn)
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5874  ADDQ.W    #4,(d8,A4,Xn)
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5875  ADDQ.W    #4,(d8,A5,Xn)
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5876  ADDQ.W    #4,(d8,A6,Xn)
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5877  ADDQ.W    #4,(d8,A7,Xn)
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         mr      addr, prefetch_data                     // 5878  ADDQ.W    #4,(xxx).W
         b       addq_w_q_mem
         ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5879  ADDQ.W    #4,(xxx).L
@@ -4801,21 +4801,21 @@ op_5897:
         add     addr, a7, prefetch_data                 // 58AF  ADDQ.L    #4,(d16,A7)
         b       addq_l_q_mem
         ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 58B0  ADDQ.L    #4,(d8,A0,Xn)
-        b       move_add_etc_l_any_any
+        b       fea_l_60_2
         ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 58B1  ADDQ.L    #4,(d8,A1,Xn)
-        b       move_add_etc_l_any_any_2
+        b       fea_l_61_2
         ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 58B2  ADDQ.L    #4,(d8,A2,Xn)
-        b       move_add_etc_l_any_any_3
+        b       fea_l_62_2
         ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 58B3  ADDQ.L    #4,(d8,A3,Xn)
-        b       move_add_etc_l_any_any_4
+        b       fea_l_63_2
         ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 58B4  ADDQ.L    #4,(d8,A4,Xn)
-        b       move_add_etc_l_any_any_5
+        b       fea_l_64_2
         ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 58B5  ADDQ.L    #4,(d8,A5,Xn)
-        b       move_add_etc_l_any_any_6
+        b       fea_l_65_2
         ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 58B6  ADDQ.L    #4,(d8,A6,Xn)
-        b       move_add_etc_l_any_any_7
+        b       fea_l_66_2
         ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 58B7  ADDQ.L    #4,(d8,A7,Xn)
-        b       move_add_etc_l_any_any_8
+        b       fea_l_67_2
         mr      addr, prefetch_data                     // 58B8  ADDQ.L    #4,(xxx).W
         b       addq_l_q_mem
         ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 58B9  ADDQ.L    #4,(xxx).L
@@ -4939,21 +4939,21 @@ op_58D7:
         add     addr, a7, prefetch_data                 // 58EF  SVC.B     (d16,A7)
         b       scc_b_mem
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 58F0  SVC.B     (d8,A0,Xn)
-        b       or_sub_etc_any_any
+        b       cea_x_60_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 58F1  SVC.B     (d8,A1,Xn)
-        b       or_sub_etc_any_any_2
+        b       cea_x_61_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 58F2  SVC.B     (d8,A2,Xn)
-        b       or_sub_etc_any_any_3
+        b       cea_x_62_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 58F3  SVC.B     (d8,A3,Xn)
-        b       or_sub_etc_any_any_4
+        b       cea_x_63_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 58F4  SVC.B     (d8,A4,Xn)
-        b       or_sub_etc_any_any_5
+        b       cea_x_64_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 58F5  SVC.B     (d8,A5,Xn)
-        b       or_sub_etc_any_any_6
+        b       cea_x_65_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 58F6  SVC.B     (d8,A6,Xn)
-        b       or_sub_etc_any_any_7
+        b       cea_x_66_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 58F7  SVC.B     (d8,A7,Xn)
-        b       or_sub_etc_any_any_8
+        b       cea_x_67_2
         mr      addr, prefetch_data                     // 58F8  SVC.B     (xxx).W
         b       scc_b_mem
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 58F9  SVC.B     (xxx).L
@@ -5077,21 +5077,21 @@ op_5917:
         add     addr, a7, prefetch_data                 // 592F  SUBQ.B    #4,(d16,A7)
         b       subq_b_q_mem
         ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5930  SUBQ.B    #4,(d8,A0,Xn)
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5931  SUBQ.B    #4,(d8,A1,Xn)
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5932  SUBQ.B    #4,(d8,A2,Xn)
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5933  SUBQ.B    #4,(d8,A3,Xn)
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5934  SUBQ.B    #4,(d8,A4,Xn)
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5935  SUBQ.B    #4,(d8,A5,Xn)
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5936  SUBQ.B    #4,(d8,A6,Xn)
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5937  SUBQ.B    #4,(d8,A7,Xn)
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         mr      addr, prefetch_data                     // 5938  SUBQ.B    #4,(xxx).W
         b       subq_b_q_mem
         ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5939  SUBQ.B    #4,(xxx).L
@@ -5215,21 +5215,21 @@ op_5957:
         add     addr, a7, prefetch_data                 // 596F  SUBQ.W    #4,(d16,A7)
         b       subq_w_q_mem
         ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5970  SUBQ.W    #4,(d8,A0,Xn)
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5971  SUBQ.W    #4,(d8,A1,Xn)
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5972  SUBQ.W    #4,(d8,A2,Xn)
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5973  SUBQ.W    #4,(d8,A3,Xn)
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5974  SUBQ.W    #4,(d8,A4,Xn)
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5975  SUBQ.W    #4,(d8,A5,Xn)
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5976  SUBQ.W    #4,(d8,A6,Xn)
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5977  SUBQ.W    #4,(d8,A7,Xn)
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         mr      addr, prefetch_data                     // 5978  SUBQ.W    #4,(xxx).W
         b       subq_w_q_mem
         ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5979  SUBQ.W    #4,(xxx).L
@@ -5353,21 +5353,21 @@ op_5997:
         add     addr, a7, prefetch_data                 // 59AF  SUBQ.L    #4,(d16,A7)
         b       subq_l_q_mem
         ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 59B0  SUBQ.L    #4,(d8,A0,Xn)
-        b       move_add_etc_l_any_any
+        b       fea_l_60_2
         ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 59B1  SUBQ.L    #4,(d8,A1,Xn)
-        b       move_add_etc_l_any_any_2
+        b       fea_l_61_2
         ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 59B2  SUBQ.L    #4,(d8,A2,Xn)
-        b       move_add_etc_l_any_any_3
+        b       fea_l_62_2
         ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 59B3  SUBQ.L    #4,(d8,A3,Xn)
-        b       move_add_etc_l_any_any_4
+        b       fea_l_63_2
         ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 59B4  SUBQ.L    #4,(d8,A4,Xn)
-        b       move_add_etc_l_any_any_5
+        b       fea_l_64_2
         ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 59B5  SUBQ.L    #4,(d8,A5,Xn)
-        b       move_add_etc_l_any_any_6
+        b       fea_l_65_2
         ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 59B6  SUBQ.L    #4,(d8,A6,Xn)
-        b       move_add_etc_l_any_any_7
+        b       fea_l_66_2
         ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 59B7  SUBQ.L    #4,(d8,A7,Xn)
-        b       move_add_etc_l_any_any_8
+        b       fea_l_67_2
         mr      addr, prefetch_data                     // 59B8  SUBQ.L    #4,(xxx).W
         b       subq_l_q_mem
         ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 59B9  SUBQ.L    #4,(xxx).L
@@ -5491,21 +5491,21 @@ op_59D7:
         add     addr, a7, prefetch_data                 // 59EF  SVS.B     (d16,A7)
         b       scc_b_mem
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 59F0  SVS.B     (d8,A0,Xn)
-        b       or_sub_etc_any_any
+        b       cea_x_60_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 59F1  SVS.B     (d8,A1,Xn)
-        b       or_sub_etc_any_any_2
+        b       cea_x_61_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 59F2  SVS.B     (d8,A2,Xn)
-        b       or_sub_etc_any_any_3
+        b       cea_x_62_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 59F3  SVS.B     (d8,A3,Xn)
-        b       or_sub_etc_any_any_4
+        b       cea_x_63_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 59F4  SVS.B     (d8,A4,Xn)
-        b       or_sub_etc_any_any_5
+        b       cea_x_64_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 59F5  SVS.B     (d8,A5,Xn)
-        b       or_sub_etc_any_any_6
+        b       cea_x_65_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 59F6  SVS.B     (d8,A6,Xn)
-        b       or_sub_etc_any_any_7
+        b       cea_x_66_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 59F7  SVS.B     (d8,A7,Xn)
-        b       or_sub_etc_any_any_8
+        b       cea_x_67_2
         mr      addr, prefetch_data                     // 59F8  SVS.B     (xxx).W
         b       scc_b_mem
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 59F9  SVS.B     (xxx).L
@@ -5629,21 +5629,21 @@ op_5A17:
         add     addr, a7, prefetch_data                 // 5A2F  ADDQ.B    #5,(d16,A7)
         b       addq_b_q_mem
         ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5A30  ADDQ.B    #5,(d8,A0,Xn)
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5A31  ADDQ.B    #5,(d8,A1,Xn)
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5A32  ADDQ.B    #5,(d8,A2,Xn)
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5A33  ADDQ.B    #5,(d8,A3,Xn)
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5A34  ADDQ.B    #5,(d8,A4,Xn)
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5A35  ADDQ.B    #5,(d8,A5,Xn)
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5A36  ADDQ.B    #5,(d8,A6,Xn)
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5A37  ADDQ.B    #5,(d8,A7,Xn)
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         mr      addr, prefetch_data                     // 5A38  ADDQ.B    #5,(xxx).W
         b       addq_b_q_mem
         ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5A39  ADDQ.B    #5,(xxx).L
@@ -5767,21 +5767,21 @@ op_5A57:
         add     addr, a7, prefetch_data                 // 5A6F  ADDQ.W    #5,(d16,A7)
         b       addq_w_q_mem
         ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5A70  ADDQ.W    #5,(d8,A0,Xn)
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5A71  ADDQ.W    #5,(d8,A1,Xn)
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5A72  ADDQ.W    #5,(d8,A2,Xn)
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5A73  ADDQ.W    #5,(d8,A3,Xn)
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5A74  ADDQ.W    #5,(d8,A4,Xn)
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5A75  ADDQ.W    #5,(d8,A5,Xn)
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5A76  ADDQ.W    #5,(d8,A6,Xn)
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5A77  ADDQ.W    #5,(d8,A7,Xn)
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         mr      addr, prefetch_data                     // 5A78  ADDQ.W    #5,(xxx).W
         b       addq_w_q_mem
         ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5A79  ADDQ.W    #5,(xxx).L
@@ -5905,21 +5905,21 @@ op_5A97:
         add     addr, a7, prefetch_data                 // 5AAF  ADDQ.L    #5,(d16,A7)
         b       addq_l_q_mem
         ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 5AB0  ADDQ.L    #5,(d8,A0,Xn)
-        b       move_add_etc_l_any_any
+        b       fea_l_60_2
         ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 5AB1  ADDQ.L    #5,(d8,A1,Xn)
-        b       move_add_etc_l_any_any_2
+        b       fea_l_61_2
         ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 5AB2  ADDQ.L    #5,(d8,A2,Xn)
-        b       move_add_etc_l_any_any_3
+        b       fea_l_62_2
         ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 5AB3  ADDQ.L    #5,(d8,A3,Xn)
-        b       move_add_etc_l_any_any_4
+        b       fea_l_63_2
         ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 5AB4  ADDQ.L    #5,(d8,A4,Xn)
-        b       move_add_etc_l_any_any_5
+        b       fea_l_64_2
         ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 5AB5  ADDQ.L    #5,(d8,A5,Xn)
-        b       move_add_etc_l_any_any_6
+        b       fea_l_65_2
         ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 5AB6  ADDQ.L    #5,(d8,A6,Xn)
-        b       move_add_etc_l_any_any_7
+        b       fea_l_66_2
         ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 5AB7  ADDQ.L    #5,(d8,A7,Xn)
-        b       move_add_etc_l_any_any_8
+        b       fea_l_67_2
         mr      addr, prefetch_data                     // 5AB8  ADDQ.L    #5,(xxx).W
         b       addq_l_q_mem
         ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 5AB9  ADDQ.L    #5,(xxx).L
@@ -6043,21 +6043,21 @@ op_5AD7:
         add     addr, a7, prefetch_data                 // 5AEF  SPL.B     (d16,A7)
         b       scc_b_mem
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5AF0  SPL.B     (d8,A0,Xn)
-        b       or_sub_etc_any_any
+        b       cea_x_60_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5AF1  SPL.B     (d8,A1,Xn)
-        b       or_sub_etc_any_any_2
+        b       cea_x_61_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5AF2  SPL.B     (d8,A2,Xn)
-        b       or_sub_etc_any_any_3
+        b       cea_x_62_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5AF3  SPL.B     (d8,A3,Xn)
-        b       or_sub_etc_any_any_4
+        b       cea_x_63_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5AF4  SPL.B     (d8,A4,Xn)
-        b       or_sub_etc_any_any_5
+        b       cea_x_64_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5AF5  SPL.B     (d8,A5,Xn)
-        b       or_sub_etc_any_any_6
+        b       cea_x_65_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5AF6  SPL.B     (d8,A6,Xn)
-        b       or_sub_etc_any_any_7
+        b       cea_x_66_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5AF7  SPL.B     (d8,A7,Xn)
-        b       or_sub_etc_any_any_8
+        b       cea_x_67_2
         mr      addr, prefetch_data                     // 5AF8  SPL.B     (xxx).W
         b       scc_b_mem
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5AF9  SPL.B     (xxx).L
@@ -6181,21 +6181,21 @@ op_5B17:
         add     addr, a7, prefetch_data                 // 5B2F  SUBQ.B    #5,(d16,A7)
         b       subq_b_q_mem
         ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5B30  SUBQ.B    #5,(d8,A0,Xn)
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5B31  SUBQ.B    #5,(d8,A1,Xn)
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5B32  SUBQ.B    #5,(d8,A2,Xn)
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5B33  SUBQ.B    #5,(d8,A3,Xn)
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5B34  SUBQ.B    #5,(d8,A4,Xn)
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5B35  SUBQ.B    #5,(d8,A5,Xn)
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5B36  SUBQ.B    #5,(d8,A6,Xn)
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5B37  SUBQ.B    #5,(d8,A7,Xn)
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         mr      addr, prefetch_data                     // 5B38  SUBQ.B    #5,(xxx).W
         b       subq_b_q_mem
         ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5B39  SUBQ.B    #5,(xxx).L
@@ -6319,21 +6319,21 @@ op_5B57:
         add     addr, a7, prefetch_data                 // 5B6F  SUBQ.W    #5,(d16,A7)
         b       subq_w_q_mem
         ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5B70  SUBQ.W    #5,(d8,A0,Xn)
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5B71  SUBQ.W    #5,(d8,A1,Xn)
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5B72  SUBQ.W    #5,(d8,A2,Xn)
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5B73  SUBQ.W    #5,(d8,A3,Xn)
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5B74  SUBQ.W    #5,(d8,A4,Xn)
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5B75  SUBQ.W    #5,(d8,A5,Xn)
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5B76  SUBQ.W    #5,(d8,A6,Xn)
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5B77  SUBQ.W    #5,(d8,A7,Xn)
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         mr      addr, prefetch_data                     // 5B78  SUBQ.W    #5,(xxx).W
         b       subq_w_q_mem
         ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5B79  SUBQ.W    #5,(xxx).L
@@ -6457,21 +6457,21 @@ op_5B97:
         add     addr, a7, prefetch_data                 // 5BAF  SUBQ.L    #5,(d16,A7)
         b       subq_l_q_mem
         ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 5BB0  SUBQ.L    #5,(d8,A0,Xn)
-        b       move_add_etc_l_any_any
+        b       fea_l_60_2
         ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 5BB1  SUBQ.L    #5,(d8,A1,Xn)
-        b       move_add_etc_l_any_any_2
+        b       fea_l_61_2
         ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 5BB2  SUBQ.L    #5,(d8,A2,Xn)
-        b       move_add_etc_l_any_any_3
+        b       fea_l_62_2
         ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 5BB3  SUBQ.L    #5,(d8,A3,Xn)
-        b       move_add_etc_l_any_any_4
+        b       fea_l_63_2
         ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 5BB4  SUBQ.L    #5,(d8,A4,Xn)
-        b       move_add_etc_l_any_any_5
+        b       fea_l_64_2
         ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 5BB5  SUBQ.L    #5,(d8,A5,Xn)
-        b       move_add_etc_l_any_any_6
+        b       fea_l_65_2
         ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 5BB6  SUBQ.L    #5,(d8,A6,Xn)
-        b       move_add_etc_l_any_any_7
+        b       fea_l_66_2
         ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 5BB7  SUBQ.L    #5,(d8,A7,Xn)
-        b       move_add_etc_l_any_any_8
+        b       fea_l_67_2
         mr      addr, prefetch_data                     // 5BB8  SUBQ.L    #5,(xxx).W
         b       subq_l_q_mem
         ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 5BB9  SUBQ.L    #5,(xxx).L
@@ -6595,21 +6595,21 @@ op_5BD7:
         add     addr, a7, prefetch_data                 // 5BEF  SMI.B     (d16,A7)
         b       scc_b_mem
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5BF0  SMI.B     (d8,A0,Xn)
-        b       or_sub_etc_any_any
+        b       cea_x_60_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5BF1  SMI.B     (d8,A1,Xn)
-        b       or_sub_etc_any_any_2
+        b       cea_x_61_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5BF2  SMI.B     (d8,A2,Xn)
-        b       or_sub_etc_any_any_3
+        b       cea_x_62_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5BF3  SMI.B     (d8,A3,Xn)
-        b       or_sub_etc_any_any_4
+        b       cea_x_63_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5BF4  SMI.B     (d8,A4,Xn)
-        b       or_sub_etc_any_any_5
+        b       cea_x_64_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5BF5  SMI.B     (d8,A5,Xn)
-        b       or_sub_etc_any_any_6
+        b       cea_x_65_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5BF6  SMI.B     (d8,A6,Xn)
-        b       or_sub_etc_any_any_7
+        b       cea_x_66_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5BF7  SMI.B     (d8,A7,Xn)
-        b       or_sub_etc_any_any_8
+        b       cea_x_67_2
         mr      addr, prefetch_data                     // 5BF8  SMI.B     (xxx).W
         b       scc_b_mem
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5BF9  SMI.B     (xxx).L
@@ -6733,21 +6733,21 @@ op_5C17:
         add     addr, a7, prefetch_data                 // 5C2F  ADDQ.B    #6,(d16,A7)
         b       addq_b_q_mem
         ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5C30  ADDQ.B    #6,(d8,A0,Xn)
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5C31  ADDQ.B    #6,(d8,A1,Xn)
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5C32  ADDQ.B    #6,(d8,A2,Xn)
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5C33  ADDQ.B    #6,(d8,A3,Xn)
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5C34  ADDQ.B    #6,(d8,A4,Xn)
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5C35  ADDQ.B    #6,(d8,A5,Xn)
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5C36  ADDQ.B    #6,(d8,A6,Xn)
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5C37  ADDQ.B    #6,(d8,A7,Xn)
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         mr      addr, prefetch_data                     // 5C38  ADDQ.B    #6,(xxx).W
         b       addq_b_q_mem
         ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5C39  ADDQ.B    #6,(xxx).L
@@ -6871,21 +6871,21 @@ op_5C57:
         add     addr, a7, prefetch_data                 // 5C6F  ADDQ.W    #6,(d16,A7)
         b       addq_w_q_mem
         ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5C70  ADDQ.W    #6,(d8,A0,Xn)
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5C71  ADDQ.W    #6,(d8,A1,Xn)
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5C72  ADDQ.W    #6,(d8,A2,Xn)
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5C73  ADDQ.W    #6,(d8,A3,Xn)
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5C74  ADDQ.W    #6,(d8,A4,Xn)
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5C75  ADDQ.W    #6,(d8,A5,Xn)
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5C76  ADDQ.W    #6,(d8,A6,Xn)
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5C77  ADDQ.W    #6,(d8,A7,Xn)
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         mr      addr, prefetch_data                     // 5C78  ADDQ.W    #6,(xxx).W
         b       addq_w_q_mem
         ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5C79  ADDQ.W    #6,(xxx).L
@@ -7009,21 +7009,21 @@ op_5C97:
         add     addr, a7, prefetch_data                 // 5CAF  ADDQ.L    #6,(d16,A7)
         b       addq_l_q_mem
         ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 5CB0  ADDQ.L    #6,(d8,A0,Xn)
-        b       move_add_etc_l_any_any
+        b       fea_l_60_2
         ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 5CB1  ADDQ.L    #6,(d8,A1,Xn)
-        b       move_add_etc_l_any_any_2
+        b       fea_l_61_2
         ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 5CB2  ADDQ.L    #6,(d8,A2,Xn)
-        b       move_add_etc_l_any_any_3
+        b       fea_l_62_2
         ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 5CB3  ADDQ.L    #6,(d8,A3,Xn)
-        b       move_add_etc_l_any_any_4
+        b       fea_l_63_2
         ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 5CB4  ADDQ.L    #6,(d8,A4,Xn)
-        b       move_add_etc_l_any_any_5
+        b       fea_l_64_2
         ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 5CB5  ADDQ.L    #6,(d8,A5,Xn)
-        b       move_add_etc_l_any_any_6
+        b       fea_l_65_2
         ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 5CB6  ADDQ.L    #6,(d8,A6,Xn)
-        b       move_add_etc_l_any_any_7
+        b       fea_l_66_2
         ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 5CB7  ADDQ.L    #6,(d8,A7,Xn)
-        b       move_add_etc_l_any_any_8
+        b       fea_l_67_2
         mr      addr, prefetch_data                     // 5CB8  ADDQ.L    #6,(xxx).W
         b       addq_l_q_mem
         ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 5CB9  ADDQ.L    #6,(xxx).L
@@ -7147,21 +7147,21 @@ op_5CD7:
         add     addr, a7, prefetch_data                 // 5CEF  SGE.B     (d16,A7)
         b       scc_b_mem
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5CF0  SGE.B     (d8,A0,Xn)
-        b       or_sub_etc_any_any
+        b       cea_x_60_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5CF1  SGE.B     (d8,A1,Xn)
-        b       or_sub_etc_any_any_2
+        b       cea_x_61_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5CF2  SGE.B     (d8,A2,Xn)
-        b       or_sub_etc_any_any_3
+        b       cea_x_62_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5CF3  SGE.B     (d8,A3,Xn)
-        b       or_sub_etc_any_any_4
+        b       cea_x_63_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5CF4  SGE.B     (d8,A4,Xn)
-        b       or_sub_etc_any_any_5
+        b       cea_x_64_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5CF5  SGE.B     (d8,A5,Xn)
-        b       or_sub_etc_any_any_6
+        b       cea_x_65_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5CF6  SGE.B     (d8,A6,Xn)
-        b       or_sub_etc_any_any_7
+        b       cea_x_66_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5CF7  SGE.B     (d8,A7,Xn)
-        b       or_sub_etc_any_any_8
+        b       cea_x_67_2
         mr      addr, prefetch_data                     // 5CF8  SGE.B     (xxx).W
         b       scc_b_mem
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5CF9  SGE.B     (xxx).L
@@ -7285,21 +7285,21 @@ op_5D17:
         add     addr, a7, prefetch_data                 // 5D2F  SUBQ.B    #6,(d16,A7)
         b       subq_b_q_mem
         ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5D30  SUBQ.B    #6,(d8,A0,Xn)
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5D31  SUBQ.B    #6,(d8,A1,Xn)
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5D32  SUBQ.B    #6,(d8,A2,Xn)
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5D33  SUBQ.B    #6,(d8,A3,Xn)
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5D34  SUBQ.B    #6,(d8,A4,Xn)
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5D35  SUBQ.B    #6,(d8,A5,Xn)
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5D36  SUBQ.B    #6,(d8,A6,Xn)
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5D37  SUBQ.B    #6,(d8,A7,Xn)
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         mr      addr, prefetch_data                     // 5D38  SUBQ.B    #6,(xxx).W
         b       subq_b_q_mem
         ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5D39  SUBQ.B    #6,(xxx).L
@@ -7423,21 +7423,21 @@ op_5D57:
         add     addr, a7, prefetch_data                 // 5D6F  SUBQ.W    #6,(d16,A7)
         b       subq_w_q_mem
         ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5D70  SUBQ.W    #6,(d8,A0,Xn)
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5D71  SUBQ.W    #6,(d8,A1,Xn)
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5D72  SUBQ.W    #6,(d8,A2,Xn)
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5D73  SUBQ.W    #6,(d8,A3,Xn)
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5D74  SUBQ.W    #6,(d8,A4,Xn)
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5D75  SUBQ.W    #6,(d8,A5,Xn)
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5D76  SUBQ.W    #6,(d8,A6,Xn)
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5D77  SUBQ.W    #6,(d8,A7,Xn)
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         mr      addr, prefetch_data                     // 5D78  SUBQ.W    #6,(xxx).W
         b       subq_w_q_mem
         ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5D79  SUBQ.W    #6,(xxx).L
@@ -7561,21 +7561,21 @@ op_5D97:
         add     addr, a7, prefetch_data                 // 5DAF  SUBQ.L    #6,(d16,A7)
         b       subq_l_q_mem
         ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 5DB0  SUBQ.L    #6,(d8,A0,Xn)
-        b       move_add_etc_l_any_any
+        b       fea_l_60_2
         ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 5DB1  SUBQ.L    #6,(d8,A1,Xn)
-        b       move_add_etc_l_any_any_2
+        b       fea_l_61_2
         ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 5DB2  SUBQ.L    #6,(d8,A2,Xn)
-        b       move_add_etc_l_any_any_3
+        b       fea_l_62_2
         ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 5DB3  SUBQ.L    #6,(d8,A3,Xn)
-        b       move_add_etc_l_any_any_4
+        b       fea_l_63_2
         ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 5DB4  SUBQ.L    #6,(d8,A4,Xn)
-        b       move_add_etc_l_any_any_5
+        b       fea_l_64_2
         ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 5DB5  SUBQ.L    #6,(d8,A5,Xn)
-        b       move_add_etc_l_any_any_6
+        b       fea_l_65_2
         ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 5DB6  SUBQ.L    #6,(d8,A6,Xn)
-        b       move_add_etc_l_any_any_7
+        b       fea_l_66_2
         ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 5DB7  SUBQ.L    #6,(d8,A7,Xn)
-        b       move_add_etc_l_any_any_8
+        b       fea_l_67_2
         mr      addr, prefetch_data                     // 5DB8  SUBQ.L    #6,(xxx).W
         b       subq_l_q_mem
         ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 5DB9  SUBQ.L    #6,(xxx).L
@@ -7699,21 +7699,21 @@ op_5DD7:
         add     addr, a7, prefetch_data                 // 5DEF  SLT.B     (d16,A7)
         b       scc_b_mem
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5DF0  SLT.B     (d8,A0,Xn)
-        b       or_sub_etc_any_any
+        b       cea_x_60_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5DF1  SLT.B     (d8,A1,Xn)
-        b       or_sub_etc_any_any_2
+        b       cea_x_61_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5DF2  SLT.B     (d8,A2,Xn)
-        b       or_sub_etc_any_any_3
+        b       cea_x_62_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5DF3  SLT.B     (d8,A3,Xn)
-        b       or_sub_etc_any_any_4
+        b       cea_x_63_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5DF4  SLT.B     (d8,A4,Xn)
-        b       or_sub_etc_any_any_5
+        b       cea_x_64_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5DF5  SLT.B     (d8,A5,Xn)
-        b       or_sub_etc_any_any_6
+        b       cea_x_65_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5DF6  SLT.B     (d8,A6,Xn)
-        b       or_sub_etc_any_any_7
+        b       cea_x_66_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5DF7  SLT.B     (d8,A7,Xn)
-        b       or_sub_etc_any_any_8
+        b       cea_x_67_2
         mr      addr, prefetch_data                     // 5DF8  SLT.B     (xxx).W
         b       scc_b_mem
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5DF9  SLT.B     (xxx).L
@@ -7837,21 +7837,21 @@ op_5E17:
         add     addr, a7, prefetch_data                 // 5E2F  ADDQ.B    #7,(d16,A7)
         b       addq_b_q_mem
         ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5E30  ADDQ.B    #7,(d8,A0,Xn)
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5E31  ADDQ.B    #7,(d8,A1,Xn)
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5E32  ADDQ.B    #7,(d8,A2,Xn)
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5E33  ADDQ.B    #7,(d8,A3,Xn)
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5E34  ADDQ.B    #7,(d8,A4,Xn)
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5E35  ADDQ.B    #7,(d8,A5,Xn)
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5E36  ADDQ.B    #7,(d8,A6,Xn)
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5E37  ADDQ.B    #7,(d8,A7,Xn)
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         mr      addr, prefetch_data                     // 5E38  ADDQ.B    #7,(xxx).W
         b       addq_b_q_mem
         ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5E39  ADDQ.B    #7,(xxx).L
@@ -7975,21 +7975,21 @@ op_5E57:
         add     addr, a7, prefetch_data                 // 5E6F  ADDQ.W    #7,(d16,A7)
         b       addq_w_q_mem
         ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5E70  ADDQ.W    #7,(d8,A0,Xn)
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5E71  ADDQ.W    #7,(d8,A1,Xn)
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5E72  ADDQ.W    #7,(d8,A2,Xn)
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5E73  ADDQ.W    #7,(d8,A3,Xn)
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5E74  ADDQ.W    #7,(d8,A4,Xn)
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5E75  ADDQ.W    #7,(d8,A5,Xn)
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5E76  ADDQ.W    #7,(d8,A6,Xn)
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5E77  ADDQ.W    #7,(d8,A7,Xn)
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         mr      addr, prefetch_data                     // 5E78  ADDQ.W    #7,(xxx).W
         b       addq_w_q_mem
         ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5E79  ADDQ.W    #7,(xxx).L
@@ -8113,21 +8113,21 @@ op_5E97:
         add     addr, a7, prefetch_data                 // 5EAF  ADDQ.L    #7,(d16,A7)
         b       addq_l_q_mem
         ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 5EB0  ADDQ.L    #7,(d8,A0,Xn)
-        b       move_add_etc_l_any_any
+        b       fea_l_60_2
         ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 5EB1  ADDQ.L    #7,(d8,A1,Xn)
-        b       move_add_etc_l_any_any_2
+        b       fea_l_61_2
         ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 5EB2  ADDQ.L    #7,(d8,A2,Xn)
-        b       move_add_etc_l_any_any_3
+        b       fea_l_62_2
         ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 5EB3  ADDQ.L    #7,(d8,A3,Xn)
-        b       move_add_etc_l_any_any_4
+        b       fea_l_63_2
         ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 5EB4  ADDQ.L    #7,(d8,A4,Xn)
-        b       move_add_etc_l_any_any_5
+        b       fea_l_64_2
         ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 5EB5  ADDQ.L    #7,(d8,A5,Xn)
-        b       move_add_etc_l_any_any_6
+        b       fea_l_65_2
         ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 5EB6  ADDQ.L    #7,(d8,A6,Xn)
-        b       move_add_etc_l_any_any_7
+        b       fea_l_66_2
         ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 5EB7  ADDQ.L    #7,(d8,A7,Xn)
-        b       move_add_etc_l_any_any_8
+        b       fea_l_67_2
         mr      addr, prefetch_data                     // 5EB8  ADDQ.L    #7,(xxx).W
         b       addq_l_q_mem
         ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 5EB9  ADDQ.L    #7,(xxx).L
@@ -8251,21 +8251,21 @@ op_5ED7:
         add     addr, a7, prefetch_data                 // 5EEF  SGT.B     (d16,A7)
         b       scc_b_mem
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5EF0  SGT.B     (d8,A0,Xn)
-        b       or_sub_etc_any_any
+        b       cea_x_60_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5EF1  SGT.B     (d8,A1,Xn)
-        b       or_sub_etc_any_any_2
+        b       cea_x_61_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5EF2  SGT.B     (d8,A2,Xn)
-        b       or_sub_etc_any_any_3
+        b       cea_x_62_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5EF3  SGT.B     (d8,A3,Xn)
-        b       or_sub_etc_any_any_4
+        b       cea_x_63_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5EF4  SGT.B     (d8,A4,Xn)
-        b       or_sub_etc_any_any_5
+        b       cea_x_64_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5EF5  SGT.B     (d8,A5,Xn)
-        b       or_sub_etc_any_any_6
+        b       cea_x_65_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5EF6  SGT.B     (d8,A6,Xn)
-        b       or_sub_etc_any_any_7
+        b       cea_x_66_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5EF7  SGT.B     (d8,A7,Xn)
-        b       or_sub_etc_any_any_8
+        b       cea_x_67_2
         mr      addr, prefetch_data                     // 5EF8  SGT.B     (xxx).W
         b       scc_b_mem
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5EF9  SGT.B     (xxx).L
@@ -8389,21 +8389,21 @@ op_5F17:
         add     addr, a7, prefetch_data                 // 5F2F  SUBQ.B    #7,(d16,A7)
         b       subq_b_q_mem
         ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5F30  SUBQ.B    #7,(d8,A0,Xn)
-        b       move_add_etc_b_any_any
+        b       fea_b_60_2
         ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5F31  SUBQ.B    #7,(d8,A1,Xn)
-        b       move_add_etc_b_any_any_2
+        b       fea_b_61_2
         ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5F32  SUBQ.B    #7,(d8,A2,Xn)
-        b       move_add_etc_b_any_any_3
+        b       fea_b_62_2
         ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5F33  SUBQ.B    #7,(d8,A3,Xn)
-        b       move_add_etc_b_any_any_4
+        b       fea_b_63_2
         ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5F34  SUBQ.B    #7,(d8,A4,Xn)
-        b       move_add_etc_b_any_any_5
+        b       fea_b_64_2
         ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5F35  SUBQ.B    #7,(d8,A5,Xn)
-        b       move_add_etc_b_any_any_6
+        b       fea_b_65_2
         ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5F36  SUBQ.B    #7,(d8,A6,Xn)
-        b       move_add_etc_b_any_any_7
+        b       fea_b_66_2
         ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5F37  SUBQ.B    #7,(d8,A7,Xn)
-        b       move_add_etc_b_any_any_8
+        b       fea_b_67_2
         mr      addr, prefetch_data                     // 5F38  SUBQ.B    #7,(xxx).W
         b       subq_b_q_mem
         ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5F39  SUBQ.B    #7,(xxx).L
@@ -8527,21 +8527,21 @@ op_5F57:
         add     addr, a7, prefetch_data                 // 5F6F  SUBQ.W    #7,(d16,A7)
         b       subq_w_q_mem
         ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5F70  SUBQ.W    #7,(d8,A0,Xn)
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5F71  SUBQ.W    #7,(d8,A1,Xn)
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5F72  SUBQ.W    #7,(d8,A2,Xn)
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5F73  SUBQ.W    #7,(d8,A3,Xn)
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5F74  SUBQ.W    #7,(d8,A4,Xn)
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5F75  SUBQ.W    #7,(d8,A5,Xn)
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5F76  SUBQ.W    #7,(d8,A6,Xn)
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5F77  SUBQ.W    #7,(d8,A7,Xn)
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         mr      addr, prefetch_data                     // 5F78  SUBQ.W    #7,(xxx).W
         b       subq_w_q_mem
         ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5F79  SUBQ.W    #7,(xxx).L
@@ -8665,21 +8665,21 @@ op_5F97:
         add     addr, a7, prefetch_data                 // 5FAF  SUBQ.L    #7,(d16,A7)
         b       subq_l_q_mem
         ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 5FB0  SUBQ.L    #7,(d8,A0,Xn)
-        b       move_add_etc_l_any_any
+        b       fea_l_60_2
         ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 5FB1  SUBQ.L    #7,(d8,A1,Xn)
-        b       move_add_etc_l_any_any_2
+        b       fea_l_61_2
         ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 5FB2  SUBQ.L    #7,(d8,A2,Xn)
-        b       move_add_etc_l_any_any_3
+        b       fea_l_62_2
         ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 5FB3  SUBQ.L    #7,(d8,A3,Xn)
-        b       move_add_etc_l_any_any_4
+        b       fea_l_63_2
         ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 5FB4  SUBQ.L    #7,(d8,A4,Xn)
-        b       move_add_etc_l_any_any_5
+        b       fea_l_64_2
         ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 5FB5  SUBQ.L    #7,(d8,A5,Xn)
-        b       move_add_etc_l_any_any_6
+        b       fea_l_65_2
         ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 5FB6  SUBQ.L    #7,(d8,A6,Xn)
-        b       move_add_etc_l_any_any_7
+        b       fea_l_66_2
         ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 5FB7  SUBQ.L    #7,(d8,A7,Xn)
-        b       move_add_etc_l_any_any_8
+        b       fea_l_67_2
         mr      addr, prefetch_data                     // 5FB8  SUBQ.L    #7,(xxx).W
         b       subq_l_q_mem
         ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 5FB9  SUBQ.L    #7,(xxx).L
@@ -8803,21 +8803,21 @@ op_5FD7:
         add     addr, a7, prefetch_data                 // 5FEF  SLE.B     (d16,A7)
         b       scc_b_mem
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5FF0  SLE.B     (d8,A0,Xn)
-        b       or_sub_etc_any_any
+        b       cea_x_60_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5FF1  SLE.B     (d8,A1,Xn)
-        b       or_sub_etc_any_any_2
+        b       cea_x_61_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5FF2  SLE.B     (d8,A2,Xn)
-        b       or_sub_etc_any_any_3
+        b       cea_x_62_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5FF3  SLE.B     (d8,A3,Xn)
-        b       or_sub_etc_any_any_4
+        b       cea_x_63_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5FF4  SLE.B     (d8,A4,Xn)
-        b       or_sub_etc_any_any_5
+        b       cea_x_64_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5FF5  SLE.B     (d8,A5,Xn)
-        b       or_sub_etc_any_any_6
+        b       cea_x_65_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5FF6  SLE.B     (d8,A6,Xn)
-        b       or_sub_etc_any_any_7
+        b       cea_x_66_2
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5FF7  SLE.B     (d8,A7,Xn)
-        b       or_sub_etc_any_any_8
+        b       cea_x_67_2
         mr      addr, prefetch_data                     // 5FF8  SLE.B     (xxx).W
         b       scc_b_mem
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5FF9  SLE.B     (xxx).L

@@ -586,18 +586,25 @@ class Generator:
         return text + '  // ' + comment
 
     def routine_fetches(self, addr):
-        """True if the straight-line code at addr loads `data` from memory
-        before it returns (used to tell fea_ routines from cea_ ones)."""
+        """True if the code at addr loads `data` from memory before it
+        returns (used to tell fea_ routines from cea_ ones).  Follows
+        unconditional branches and steps over calls."""
         loads = ('lbz', 'lhz', 'lha', 'lwz', 'lbzx', 'lhzx', 'lhax', 'lwzx',
                  'lbzu', 'lhzu', 'lhau', 'lwzu')
-        for step in range(12):
-            kind, value = self.kind.get(addr + 4 * step, ('long', 0))
+        for step in range(24):
+            kind, value = self.kind.get(addr, ('long', 0))
             if kind != 'insn':
                 return False
             if value.mnem in loads and value.ops[0] == ('r', 4):
                 return True
-            if value.mnem in ('blr', 'bctr', 'b'):
+            if value.mnem in ('blr', 'bctr'):
                 return False
+            if value.mnem == 'b':
+                addr = value.ops[0][1]
+                if addr >= TABLE_START:
+                    return False
+                continue
+            addr += 4
         return False
 
     def uses_rtn_addr(self, addr):

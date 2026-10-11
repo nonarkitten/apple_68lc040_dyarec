@@ -499,21 +499,21 @@ op_E0D7:
         add     addr, a7, prefetch_data                 // E0EF  ASR.W     (d16,A7)
         b       asr_w_mem
         ori     rtn_addr, code_ptr, asr_w_mem_3 - cb    // E0F0  ASR.W     (d8,A0,Xn)
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, asr_w_mem_3 - cb    // E0F1  ASR.W     (d8,A1,Xn)
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, asr_w_mem_3 - cb    // E0F2  ASR.W     (d8,A2,Xn)
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, asr_w_mem_3 - cb    // E0F3  ASR.W     (d8,A3,Xn)
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, asr_w_mem_3 - cb    // E0F4  ASR.W     (d8,A4,Xn)
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, asr_w_mem_3 - cb    // E0F5  ASR.W     (d8,A5,Xn)
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, asr_w_mem_3 - cb    // E0F6  ASR.W     (d8,A6,Xn)
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, asr_w_mem_3 - cb    // E0F7  ASR.W     (d8,A7,Xn)
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         mr      addr, prefetch_data                     // E0F8  ASR.W     (xxx).W
         b       asr_w_mem
         ori     rtn_addr, code_ptr, asr_w_mem_3 - cb    // E0F9  ASR.W     (xxx).L
@@ -1027,21 +1027,21 @@ op_E1D7:
         add     addr, a7, prefetch_data                 // E1EF  ASL.W     (d16,A7)
         b       asl_w_mem
         ori     rtn_addr, code_ptr, asl_w_mem_3 - cb    // E1F0  ASL.W     (d8,A0,Xn)
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, asl_w_mem_3 - cb    // E1F1  ASL.W     (d8,A1,Xn)
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, asl_w_mem_3 - cb    // E1F2  ASL.W     (d8,A2,Xn)
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, asl_w_mem_3 - cb    // E1F3  ASL.W     (d8,A3,Xn)
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, asl_w_mem_3 - cb    // E1F4  ASL.W     (d8,A4,Xn)
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, asl_w_mem_3 - cb    // E1F5  ASL.W     (d8,A5,Xn)
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, asl_w_mem_3 - cb    // E1F6  ASL.W     (d8,A6,Xn)
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, asl_w_mem_3 - cb    // E1F7  ASL.W     (d8,A7,Xn)
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         mr      addr, prefetch_data                     // E1F8  ASL.W     (xxx).W
         b       asl_w_mem
         ori     rtn_addr, code_ptr, asl_w_mem_3 - cb    // E1F9  ASL.W     (xxx).L
@@ -1555,21 +1555,21 @@ op_E2D7:
         add     addr, a7, prefetch_data                 // E2EF  LSR.W     (d16,A7)
         b       lsr_w_mem
         ori     rtn_addr, code_ptr, lsr_w_mem_3 - cb    // E2F0  LSR.W     (d8,A0,Xn)
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, lsr_w_mem_3 - cb    // E2F1  LSR.W     (d8,A1,Xn)
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, lsr_w_mem_3 - cb    // E2F2  LSR.W     (d8,A2,Xn)
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, lsr_w_mem_3 - cb    // E2F3  LSR.W     (d8,A3,Xn)
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, lsr_w_mem_3 - cb    // E2F4  LSR.W     (d8,A4,Xn)
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, lsr_w_mem_3 - cb    // E2F5  LSR.W     (d8,A5,Xn)
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, lsr_w_mem_3 - cb    // E2F6  LSR.W     (d8,A6,Xn)
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, lsr_w_mem_3 - cb    // E2F7  LSR.W     (d8,A7,Xn)
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         mr      addr, prefetch_data                     // E2F8  LSR.W     (xxx).W
         b       lsr_w_mem
         ori     rtn_addr, code_ptr, lsr_w_mem_3 - cb    // E2F9  LSR.W     (xxx).L
@@ -2083,21 +2083,21 @@ op_E3D7:
         add     addr, a7, prefetch_data                 // E3EF  LSL.W     (d16,A7)
         b       lsl_w_mem
         ori     rtn_addr, code_ptr, lsl_w_mem_3 - cb    // E3F0  LSL.W     (d8,A0,Xn)
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, lsl_w_mem_3 - cb    // E3F1  LSL.W     (d8,A1,Xn)
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, lsl_w_mem_3 - cb    // E3F2  LSL.W     (d8,A2,Xn)
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, lsl_w_mem_3 - cb    // E3F3  LSL.W     (d8,A3,Xn)
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, lsl_w_mem_3 - cb    // E3F4  LSL.W     (d8,A4,Xn)
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, lsl_w_mem_3 - cb    // E3F5  LSL.W     (d8,A5,Xn)
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, lsl_w_mem_3 - cb    // E3F6  LSL.W     (d8,A6,Xn)
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, lsl_w_mem_3 - cb    // E3F7  LSL.W     (d8,A7,Xn)
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         mr      addr, prefetch_data                     // E3F8  LSL.W     (xxx).W
         b       lsl_w_mem
         ori     rtn_addr, code_ptr, lsl_w_mem_3 - cb    // E3F9  LSL.W     (xxx).L
@@ -2611,21 +2611,21 @@ op_E4D7:
         add     addr, a7, prefetch_data                 // E4EF  ROXR.W    (d16,A7)
         b       roxr_w_mem
         ori     rtn_addr, code_ptr, roxr_w_mem_3 - cb   // E4F0  ROXR.W    (d8,A0,Xn)
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, roxr_w_mem_3 - cb   // E4F1  ROXR.W    (d8,A1,Xn)
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, roxr_w_mem_3 - cb   // E4F2  ROXR.W    (d8,A2,Xn)
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, roxr_w_mem_3 - cb   // E4F3  ROXR.W    (d8,A3,Xn)
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, roxr_w_mem_3 - cb   // E4F4  ROXR.W    (d8,A4,Xn)
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, roxr_w_mem_3 - cb   // E4F5  ROXR.W    (d8,A5,Xn)
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, roxr_w_mem_3 - cb   // E4F6  ROXR.W    (d8,A6,Xn)
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, roxr_w_mem_3 - cb   // E4F7  ROXR.W    (d8,A7,Xn)
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         mr      addr, prefetch_data                     // E4F8  ROXR.W    (xxx).W
         b       roxr_w_mem
         ori     rtn_addr, code_ptr, roxr_w_mem_3 - cb   // E4F9  ROXR.W    (xxx).L
@@ -3139,21 +3139,21 @@ op_E5D7:
         add     addr, a7, prefetch_data                 // E5EF  ROXL.W    (d16,A7)
         b       roxl_w_mem
         ori     rtn_addr, code_ptr, roxl_w_mem_3 - cb   // E5F0  ROXL.W    (d8,A0,Xn)
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, roxl_w_mem_3 - cb   // E5F1  ROXL.W    (d8,A1,Xn)
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, roxl_w_mem_3 - cb   // E5F2  ROXL.W    (d8,A2,Xn)
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, roxl_w_mem_3 - cb   // E5F3  ROXL.W    (d8,A3,Xn)
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, roxl_w_mem_3 - cb   // E5F4  ROXL.W    (d8,A4,Xn)
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, roxl_w_mem_3 - cb   // E5F5  ROXL.W    (d8,A5,Xn)
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, roxl_w_mem_3 - cb   // E5F6  ROXL.W    (d8,A6,Xn)
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, roxl_w_mem_3 - cb   // E5F7  ROXL.W    (d8,A7,Xn)
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         mr      addr, prefetch_data                     // E5F8  ROXL.W    (xxx).W
         b       roxl_w_mem
         ori     rtn_addr, code_ptr, roxl_w_mem_3 - cb   // E5F9  ROXL.W    (xxx).L
@@ -3667,21 +3667,21 @@ op_E6D7:
         add     addr, a7, prefetch_data                 // E6EF  ROR.W     (d16,A7)
         b       ror_w_mem
         ori     rtn_addr, code_ptr, ror_w_mem_3 - cb    // E6F0  ROR.W     (d8,A0,Xn)
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, ror_w_mem_3 - cb    // E6F1  ROR.W     (d8,A1,Xn)
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, ror_w_mem_3 - cb    // E6F2  ROR.W     (d8,A2,Xn)
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, ror_w_mem_3 - cb    // E6F3  ROR.W     (d8,A3,Xn)
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, ror_w_mem_3 - cb    // E6F4  ROR.W     (d8,A4,Xn)
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, ror_w_mem_3 - cb    // E6F5  ROR.W     (d8,A5,Xn)
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, ror_w_mem_3 - cb    // E6F6  ROR.W     (d8,A6,Xn)
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, ror_w_mem_3 - cb    // E6F7  ROR.W     (d8,A7,Xn)
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         mr      addr, prefetch_data                     // E6F8  ROR.W     (xxx).W
         b       ror_w_mem
         ori     rtn_addr, code_ptr, ror_w_mem_3 - cb    // E6F9  ROR.W     (xxx).L
@@ -4195,21 +4195,21 @@ op_E7D7:
         add     addr, a7, prefetch_data                 // E7EF  ROL.W     (d16,A7)
         b       rol_w_mem
         ori     rtn_addr, code_ptr, rol_w_mem_3 - cb    // E7F0  ROL.W     (d8,A0,Xn)
-        b       move_add_etc_w_any_any
+        b       fea_w_60
         ori     rtn_addr, code_ptr, rol_w_mem_3 - cb    // E7F1  ROL.W     (d8,A1,Xn)
-        b       move_add_etc_w_any_any_2
+        b       fea_w_61
         ori     rtn_addr, code_ptr, rol_w_mem_3 - cb    // E7F2  ROL.W     (d8,A2,Xn)
-        b       move_add_etc_w_any_any_3
+        b       fea_w_62
         ori     rtn_addr, code_ptr, rol_w_mem_3 - cb    // E7F3  ROL.W     (d8,A3,Xn)
-        b       move_add_etc_w_any_any_4
+        b       fea_w_63
         ori     rtn_addr, code_ptr, rol_w_mem_3 - cb    // E7F4  ROL.W     (d8,A4,Xn)
-        b       move_add_etc_w_any_any_5
+        b       fea_w_64
         ori     rtn_addr, code_ptr, rol_w_mem_3 - cb    // E7F5  ROL.W     (d8,A5,Xn)
-        b       move_add_etc_w_any_any_6
+        b       fea_w_65
         ori     rtn_addr, code_ptr, rol_w_mem_3 - cb    // E7F6  ROL.W     (d8,A6,Xn)
-        b       move_add_etc_w_any_any_7
+        b       fea_w_66
         ori     rtn_addr, code_ptr, rol_w_mem_3 - cb    // E7F7  ROL.W     (d8,A7,Xn)
-        b       move_add_etc_w_any_any_8
+        b       fea_w_67
         mr      addr, prefetch_data                     // E7F8  ROL.W     (xxx).W
         b       rol_w_mem
         ori     rtn_addr, code_ptr, rol_w_mem_3 - cb    // E7F9  ROL.W     (xxx).L
@@ -4715,21 +4715,21 @@ op_E7D7:
         mr      addr, a7                                // E8EF  BFTST     (d16,A7){ofs:wid}
         b       bftst_mem_3
         ori     rtn_addr, code_ptr, bftst_mem_2 - cb    // E8F0  BFTST     (d8,A0,Xn){ofs:wid}
-        b       movem_cas_etc_any_any
+        b       cea_x_60
         ori     rtn_addr, code_ptr, bftst_mem_2 - cb    // E8F1  BFTST     (d8,A1,Xn){ofs:wid}
-        b       movem_cas_etc_any_any_2
+        b       cea_x_61
         ori     rtn_addr, code_ptr, bftst_mem_2 - cb    // E8F2  BFTST     (d8,A2,Xn){ofs:wid}
-        b       movem_cas_etc_any_any_3
+        b       cea_x_62
         ori     rtn_addr, code_ptr, bftst_mem_2 - cb    // E8F3  BFTST     (d8,A3,Xn){ofs:wid}
-        b       movem_cas_etc_any_any_4
+        b       cea_x_63
         ori     rtn_addr, code_ptr, bftst_mem_2 - cb    // E8F4  BFTST     (d8,A4,Xn){ofs:wid}
-        b       movem_cas_etc_any_any_5
+        b       cea_x_64
         ori     rtn_addr, code_ptr, bftst_mem_2 - cb    // E8F5  BFTST     (d8,A5,Xn){ofs:wid}
-        b       movem_cas_etc_any_any_6
+        b       cea_x_65
         ori     rtn_addr, code_ptr, bftst_mem_2 - cb    // E8F6  BFTST     (d8,A6,Xn){ofs:wid}
-        b       movem_cas_etc_any_any_7
+        b       cea_x_66
         ori     rtn_addr, code_ptr, bftst_mem_2 - cb    // E8F7  BFTST     (d8,A7,Xn){ofs:wid}
-        b       movem_cas_etc_any_any_8
+        b       cea_x_67
         lhau    addr, 2(pc)                             // E8F8  BFTST     (xxx).W{ofs:wid}
         b       bftst_mem
         ori     rtn_addr, code_ptr, bftst_mem_2 - cb    // E8F9  BFTST     (xxx).L{ofs:wid}
@@ -4737,7 +4737,7 @@ op_E7D7:
         addi    addr, pc, 2                             // E8FA  BFTST     (d16,PC){ofs:wid}
         b       bftst_mem_3
         ori     rtn_addr, code_ptr, bftst_mem_2 - cb    // E8FB  BFTST     (d8,PC,Xn){ofs:wid}
-        b       chk2_cmp2_movem_etc_mem_any
+        b       cea_x_73
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // E8FC  BFTST     #<data>{ofs:wid}   (illegal)
         b       take_illegal_instruction
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // E8FD  BFTST     <ea 7.5>{ofs:wid}   (illegal)
@@ -5235,21 +5235,21 @@ op_E7D7:
         mr      addr, a7                                // E9EF  BFEXTU    (d16,A7){ofs:wid},Dn
         b       bfextu_bfexts_bfffo_mem
         ori     rtn_addr, code_ptr, bfextu_bfexts_bfffo_mem_3 - cb  // E9F0  BFEXTU    (d8,A0,Xn){ofs:wid},Dn
-        b       movem_cas_etc_any_any
+        b       cea_x_60
         ori     rtn_addr, code_ptr, bfextu_bfexts_bfffo_mem_3 - cb  // E9F1  BFEXTU    (d8,A1,Xn){ofs:wid},Dn
-        b       movem_cas_etc_any_any_2
+        b       cea_x_61
         ori     rtn_addr, code_ptr, bfextu_bfexts_bfffo_mem_3 - cb  // E9F2  BFEXTU    (d8,A2,Xn){ofs:wid},Dn
-        b       movem_cas_etc_any_any_3
+        b       cea_x_62
         ori     rtn_addr, code_ptr, bfextu_bfexts_bfffo_mem_3 - cb  // E9F3  BFEXTU    (d8,A3,Xn){ofs:wid},Dn
-        b       movem_cas_etc_any_any_4
+        b       cea_x_63
         ori     rtn_addr, code_ptr, bfextu_bfexts_bfffo_mem_3 - cb  // E9F4  BFEXTU    (d8,A4,Xn){ofs:wid},Dn
-        b       movem_cas_etc_any_any_5
+        b       cea_x_64
         ori     rtn_addr, code_ptr, bfextu_bfexts_bfffo_mem_3 - cb  // E9F5  BFEXTU    (d8,A5,Xn){ofs:wid},Dn
-        b       movem_cas_etc_any_any_6
+        b       cea_x_65
         ori     rtn_addr, code_ptr, bfextu_bfexts_bfffo_mem_3 - cb  // E9F6  BFEXTU    (d8,A6,Xn){ofs:wid},Dn
-        b       movem_cas_etc_any_any_7
+        b       cea_x_66
         ori     rtn_addr, code_ptr, bfextu_bfexts_bfffo_mem_3 - cb  // E9F7  BFEXTU    (d8,A7,Xn){ofs:wid},Dn
-        b       movem_cas_etc_any_any_8
+        b       cea_x_67
         lhau    addr, 2(pc)                             // E9F8  BFEXTU    (xxx).W{ofs:wid},Dn
         b       bfextu_bfexts_bfffo_mem_2
         ori     rtn_addr, code_ptr, bfextu_bfexts_bfffo_mem_3 - cb  // E9F9  BFEXTU    (xxx).L{ofs:wid},Dn
@@ -5257,7 +5257,7 @@ op_E7D7:
         addi    addr, pc, 2                             // E9FA  BFEXTU    (d16,PC){ofs:wid},Dn
         b       bfextu_bfexts_bfffo_mem
         ori     rtn_addr, code_ptr, bfextu_bfexts_bfffo_mem_3 - cb  // E9FB  BFEXTU    (d8,PC,Xn){ofs:wid},Dn
-        b       chk2_cmp2_movem_etc_mem_any
+        b       cea_x_73
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // E9FC  BFEXTU    #<data>{ofs:wid},Dn   (illegal)
         b       take_illegal_instruction
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // E9FD  BFEXTU    <ea 7.5>{ofs:wid},Dn   (illegal)
@@ -5755,21 +5755,21 @@ op_E7D7:
         mr      addr, a7                                // EAEF  BFCHG     (d16,A7){ofs:wid}
         b       bfchg_bfclr_bfset_mem
         ori     rtn_addr, code_ptr, bfchg_bfclr_bfset_mem_3 - cb  // EAF0  BFCHG     (d8,A0,Xn){ofs:wid}
-        b       movem_cas_etc_any_any
+        b       cea_x_60
         ori     rtn_addr, code_ptr, bfchg_bfclr_bfset_mem_3 - cb  // EAF1  BFCHG     (d8,A1,Xn){ofs:wid}
-        b       movem_cas_etc_any_any_2
+        b       cea_x_61
         ori     rtn_addr, code_ptr, bfchg_bfclr_bfset_mem_3 - cb  // EAF2  BFCHG     (d8,A2,Xn){ofs:wid}
-        b       movem_cas_etc_any_any_3
+        b       cea_x_62
         ori     rtn_addr, code_ptr, bfchg_bfclr_bfset_mem_3 - cb  // EAF3  BFCHG     (d8,A3,Xn){ofs:wid}
-        b       movem_cas_etc_any_any_4
+        b       cea_x_63
         ori     rtn_addr, code_ptr, bfchg_bfclr_bfset_mem_3 - cb  // EAF4  BFCHG     (d8,A4,Xn){ofs:wid}
-        b       movem_cas_etc_any_any_5
+        b       cea_x_64
         ori     rtn_addr, code_ptr, bfchg_bfclr_bfset_mem_3 - cb  // EAF5  BFCHG     (d8,A5,Xn){ofs:wid}
-        b       movem_cas_etc_any_any_6
+        b       cea_x_65
         ori     rtn_addr, code_ptr, bfchg_bfclr_bfset_mem_3 - cb  // EAF6  BFCHG     (d8,A6,Xn){ofs:wid}
-        b       movem_cas_etc_any_any_7
+        b       cea_x_66
         ori     rtn_addr, code_ptr, bfchg_bfclr_bfset_mem_3 - cb  // EAF7  BFCHG     (d8,A7,Xn){ofs:wid}
-        b       movem_cas_etc_any_any_8
+        b       cea_x_67
         lhau    addr, 2(pc)                             // EAF8  BFCHG     (xxx).W{ofs:wid}
         b       bfchg_bfclr_bfset_mem_2
         ori     rtn_addr, code_ptr, bfchg_bfclr_bfset_mem_3 - cb  // EAF9  BFCHG     (xxx).L{ofs:wid}
@@ -6275,21 +6275,21 @@ op_E7D7:
         mr      addr, a7                                // EBEF  BFEXTS    (d16,A7){ofs:wid},Dn
         b       bfextu_bfexts_bfffo_mem
         ori     rtn_addr, code_ptr, bfextu_bfexts_bfffo_mem_3 - cb  // EBF0  BFEXTS    (d8,A0,Xn){ofs:wid},Dn
-        b       movem_cas_etc_any_any
+        b       cea_x_60
         ori     rtn_addr, code_ptr, bfextu_bfexts_bfffo_mem_3 - cb  // EBF1  BFEXTS    (d8,A1,Xn){ofs:wid},Dn
-        b       movem_cas_etc_any_any_2
+        b       cea_x_61
         ori     rtn_addr, code_ptr, bfextu_bfexts_bfffo_mem_3 - cb  // EBF2  BFEXTS    (d8,A2,Xn){ofs:wid},Dn
-        b       movem_cas_etc_any_any_3
+        b       cea_x_62
         ori     rtn_addr, code_ptr, bfextu_bfexts_bfffo_mem_3 - cb  // EBF3  BFEXTS    (d8,A3,Xn){ofs:wid},Dn
-        b       movem_cas_etc_any_any_4
+        b       cea_x_63
         ori     rtn_addr, code_ptr, bfextu_bfexts_bfffo_mem_3 - cb  // EBF4  BFEXTS    (d8,A4,Xn){ofs:wid},Dn
-        b       movem_cas_etc_any_any_5
+        b       cea_x_64
         ori     rtn_addr, code_ptr, bfextu_bfexts_bfffo_mem_3 - cb  // EBF5  BFEXTS    (d8,A5,Xn){ofs:wid},Dn
-        b       movem_cas_etc_any_any_6
+        b       cea_x_65
         ori     rtn_addr, code_ptr, bfextu_bfexts_bfffo_mem_3 - cb  // EBF6  BFEXTS    (d8,A6,Xn){ofs:wid},Dn
-        b       movem_cas_etc_any_any_7
+        b       cea_x_66
         ori     rtn_addr, code_ptr, bfextu_bfexts_bfffo_mem_3 - cb  // EBF7  BFEXTS    (d8,A7,Xn){ofs:wid},Dn
-        b       movem_cas_etc_any_any_8
+        b       cea_x_67
         lhau    addr, 2(pc)                             // EBF8  BFEXTS    (xxx).W{ofs:wid},Dn
         b       bfextu_bfexts_bfffo_mem_2
         ori     rtn_addr, code_ptr, bfextu_bfexts_bfffo_mem_3 - cb  // EBF9  BFEXTS    (xxx).L{ofs:wid},Dn
@@ -6297,7 +6297,7 @@ op_E7D7:
         addi    addr, pc, 2                             // EBFA  BFEXTS    (d16,PC){ofs:wid},Dn
         b       bfextu_bfexts_bfffo_mem
         ori     rtn_addr, code_ptr, bfextu_bfexts_bfffo_mem_3 - cb  // EBFB  BFEXTS    (d8,PC,Xn){ofs:wid},Dn
-        b       chk2_cmp2_movem_etc_mem_any
+        b       cea_x_73
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // EBFC  BFEXTS    #<data>{ofs:wid},Dn   (illegal)
         b       take_illegal_instruction
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // EBFD  BFEXTS    <ea 7.5>{ofs:wid},Dn   (illegal)
@@ -6795,21 +6795,21 @@ op_E7D7:
         mr      addr, a7                                // ECEF  BFCLR     (d16,A7){ofs:wid}
         b       bfchg_bfclr_bfset_mem
         ori     rtn_addr, code_ptr, bfchg_bfclr_bfset_mem_3 - cb  // ECF0  BFCLR     (d8,A0,Xn){ofs:wid}
-        b       movem_cas_etc_any_any
+        b       cea_x_60
         ori     rtn_addr, code_ptr, bfchg_bfclr_bfset_mem_3 - cb  // ECF1  BFCLR     (d8,A1,Xn){ofs:wid}
-        b       movem_cas_etc_any_any_2
+        b       cea_x_61
         ori     rtn_addr, code_ptr, bfchg_bfclr_bfset_mem_3 - cb  // ECF2  BFCLR     (d8,A2,Xn){ofs:wid}
-        b       movem_cas_etc_any_any_3
+        b       cea_x_62
         ori     rtn_addr, code_ptr, bfchg_bfclr_bfset_mem_3 - cb  // ECF3  BFCLR     (d8,A3,Xn){ofs:wid}
-        b       movem_cas_etc_any_any_4
+        b       cea_x_63
         ori     rtn_addr, code_ptr, bfchg_bfclr_bfset_mem_3 - cb  // ECF4  BFCLR     (d8,A4,Xn){ofs:wid}
-        b       movem_cas_etc_any_any_5
+        b       cea_x_64
         ori     rtn_addr, code_ptr, bfchg_bfclr_bfset_mem_3 - cb  // ECF5  BFCLR     (d8,A5,Xn){ofs:wid}
-        b       movem_cas_etc_any_any_6
+        b       cea_x_65
         ori     rtn_addr, code_ptr, bfchg_bfclr_bfset_mem_3 - cb  // ECF6  BFCLR     (d8,A6,Xn){ofs:wid}
-        b       movem_cas_etc_any_any_7
+        b       cea_x_66
         ori     rtn_addr, code_ptr, bfchg_bfclr_bfset_mem_3 - cb  // ECF7  BFCLR     (d8,A7,Xn){ofs:wid}
-        b       movem_cas_etc_any_any_8
+        b       cea_x_67
         lhau    addr, 2(pc)                             // ECF8  BFCLR     (xxx).W{ofs:wid}
         b       bfchg_bfclr_bfset_mem_2
         ori     rtn_addr, code_ptr, bfchg_bfclr_bfset_mem_3 - cb  // ECF9  BFCLR     (xxx).L{ofs:wid}
@@ -7315,21 +7315,21 @@ op_E7D7:
         mr      addr, a7                                // EDEF  BFFFO     (d16,A7){ofs:wid},Dn
         b       bfextu_bfexts_bfffo_mem
         ori     rtn_addr, code_ptr, bfextu_bfexts_bfffo_mem_3 - cb  // EDF0  BFFFO     (d8,A0,Xn){ofs:wid},Dn
-        b       movem_cas_etc_any_any
+        b       cea_x_60
         ori     rtn_addr, code_ptr, bfextu_bfexts_bfffo_mem_3 - cb  // EDF1  BFFFO     (d8,A1,Xn){ofs:wid},Dn
-        b       movem_cas_etc_any_any_2
+        b       cea_x_61
         ori     rtn_addr, code_ptr, bfextu_bfexts_bfffo_mem_3 - cb  // EDF2  BFFFO     (d8,A2,Xn){ofs:wid},Dn
-        b       movem_cas_etc_any_any_3
+        b       cea_x_62
         ori     rtn_addr, code_ptr, bfextu_bfexts_bfffo_mem_3 - cb  // EDF3  BFFFO     (d8,A3,Xn){ofs:wid},Dn
-        b       movem_cas_etc_any_any_4
+        b       cea_x_63
         ori     rtn_addr, code_ptr, bfextu_bfexts_bfffo_mem_3 - cb  // EDF4  BFFFO     (d8,A4,Xn){ofs:wid},Dn
-        b       movem_cas_etc_any_any_5
+        b       cea_x_64
         ori     rtn_addr, code_ptr, bfextu_bfexts_bfffo_mem_3 - cb  // EDF5  BFFFO     (d8,A5,Xn){ofs:wid},Dn
-        b       movem_cas_etc_any_any_6
+        b       cea_x_65
         ori     rtn_addr, code_ptr, bfextu_bfexts_bfffo_mem_3 - cb  // EDF6  BFFFO     (d8,A6,Xn){ofs:wid},Dn
-        b       movem_cas_etc_any_any_7
+        b       cea_x_66
         ori     rtn_addr, code_ptr, bfextu_bfexts_bfffo_mem_3 - cb  // EDF7  BFFFO     (d8,A7,Xn){ofs:wid},Dn
-        b       movem_cas_etc_any_any_8
+        b       cea_x_67
         lhau    addr, 2(pc)                             // EDF8  BFFFO     (xxx).W{ofs:wid},Dn
         b       bfextu_bfexts_bfffo_mem_2
         ori     rtn_addr, code_ptr, bfextu_bfexts_bfffo_mem_3 - cb  // EDF9  BFFFO     (xxx).L{ofs:wid},Dn
@@ -7337,7 +7337,7 @@ op_E7D7:
         addi    addr, pc, 2                             // EDFA  BFFFO     (d16,PC){ofs:wid},Dn
         b       bfextu_bfexts_bfffo_mem
         ori     rtn_addr, code_ptr, bfextu_bfexts_bfffo_mem_3 - cb  // EDFB  BFFFO     (d8,PC,Xn){ofs:wid},Dn
-        b       chk2_cmp2_movem_etc_mem_any
+        b       cea_x_73
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // EDFC  BFFFO     #<data>{ofs:wid},Dn   (illegal)
         b       take_illegal_instruction
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // EDFD  BFFFO     <ea 7.5>{ofs:wid},Dn   (illegal)
@@ -7835,21 +7835,21 @@ op_E7D7:
         mr      addr, a7                                // EEEF  BFSET     (d16,A7){ofs:wid}
         b       bfchg_bfclr_bfset_mem
         ori     rtn_addr, code_ptr, bfchg_bfclr_bfset_mem_3 - cb  // EEF0  BFSET     (d8,A0,Xn){ofs:wid}
-        b       movem_cas_etc_any_any
+        b       cea_x_60
         ori     rtn_addr, code_ptr, bfchg_bfclr_bfset_mem_3 - cb  // EEF1  BFSET     (d8,A1,Xn){ofs:wid}
-        b       movem_cas_etc_any_any_2
+        b       cea_x_61
         ori     rtn_addr, code_ptr, bfchg_bfclr_bfset_mem_3 - cb  // EEF2  BFSET     (d8,A2,Xn){ofs:wid}
-        b       movem_cas_etc_any_any_3
+        b       cea_x_62
         ori     rtn_addr, code_ptr, bfchg_bfclr_bfset_mem_3 - cb  // EEF3  BFSET     (d8,A3,Xn){ofs:wid}
-        b       movem_cas_etc_any_any_4
+        b       cea_x_63
         ori     rtn_addr, code_ptr, bfchg_bfclr_bfset_mem_3 - cb  // EEF4  BFSET     (d8,A4,Xn){ofs:wid}
-        b       movem_cas_etc_any_any_5
+        b       cea_x_64
         ori     rtn_addr, code_ptr, bfchg_bfclr_bfset_mem_3 - cb  // EEF5  BFSET     (d8,A5,Xn){ofs:wid}
-        b       movem_cas_etc_any_any_6
+        b       cea_x_65
         ori     rtn_addr, code_ptr, bfchg_bfclr_bfset_mem_3 - cb  // EEF6  BFSET     (d8,A6,Xn){ofs:wid}
-        b       movem_cas_etc_any_any_7
+        b       cea_x_66
         ori     rtn_addr, code_ptr, bfchg_bfclr_bfset_mem_3 - cb  // EEF7  BFSET     (d8,A7,Xn){ofs:wid}
-        b       movem_cas_etc_any_any_8
+        b       cea_x_67
         lhau    addr, 2(pc)                             // EEF8  BFSET     (xxx).W{ofs:wid}
         b       bfchg_bfclr_bfset_mem_2
         ori     rtn_addr, code_ptr, bfchg_bfclr_bfset_mem_3 - cb  // EEF9  BFSET     (xxx).L{ofs:wid}
@@ -8355,21 +8355,21 @@ op_E7D7:
         mr      addr, a7                                // EFEF  BFINS     Dn,(d16,A7){ofs:wid}
         b       bfins_mem_3
         ori     rtn_addr, code_ptr, bfins_mem_2 - cb    // EFF0  BFINS     Dn,(d8,A0,Xn){ofs:wid}
-        b       movem_cas_etc_any_any
+        b       cea_x_60
         ori     rtn_addr, code_ptr, bfins_mem_2 - cb    // EFF1  BFINS     Dn,(d8,A1,Xn){ofs:wid}
-        b       movem_cas_etc_any_any_2
+        b       cea_x_61
         ori     rtn_addr, code_ptr, bfins_mem_2 - cb    // EFF2  BFINS     Dn,(d8,A2,Xn){ofs:wid}
-        b       movem_cas_etc_any_any_3
+        b       cea_x_62
         ori     rtn_addr, code_ptr, bfins_mem_2 - cb    // EFF3  BFINS     Dn,(d8,A3,Xn){ofs:wid}
-        b       movem_cas_etc_any_any_4
+        b       cea_x_63
         ori     rtn_addr, code_ptr, bfins_mem_2 - cb    // EFF4  BFINS     Dn,(d8,A4,Xn){ofs:wid}
-        b       movem_cas_etc_any_any_5
+        b       cea_x_64
         ori     rtn_addr, code_ptr, bfins_mem_2 - cb    // EFF5  BFINS     Dn,(d8,A5,Xn){ofs:wid}
-        b       movem_cas_etc_any_any_6
+        b       cea_x_65
         ori     rtn_addr, code_ptr, bfins_mem_2 - cb    // EFF6  BFINS     Dn,(d8,A6,Xn){ofs:wid}
-        b       movem_cas_etc_any_any_7
+        b       cea_x_66
         ori     rtn_addr, code_ptr, bfins_mem_2 - cb    // EFF7  BFINS     Dn,(d8,A7,Xn){ofs:wid}
-        b       movem_cas_etc_any_any_8
+        b       cea_x_67
         lhau    addr, 2(pc)                             // EFF8  BFINS     Dn,(xxx).W{ofs:wid}
         b       bfins_mem
         ori     rtn_addr, code_ptr, bfins_mem_2 - cb    // EFF9  BFINS     Dn,(xxx).L{ofs:wid}
