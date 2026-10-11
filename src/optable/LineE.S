@@ -5,467 +5,467 @@
 
 // ---- $E000-$E03F --------------------------------------------------------
         li      addr, 8                                 // E000  ASR.B     #8,D0
-        b       L_0B2EC
+        b       asr_b_q_d0
         li      addr, 8                                 // E001  ASR.B     #8,D1
-        b       L_0B3AC
+        b       asr_b_q_d1
         li      addr, 8                                 // E002  ASR.B     #8,D2
-        b       L_0B46C
+        b       asr_b_q_d2
         li      addr, 8                                 // E003  ASR.B     #8,D3
-        b       L_0B52C
+        b       asr_b_q_d3
         li      addr, 8                                 // E004  ASR.B     #8,D4
-        b       L_0B5EC
+        b       asr_b_q_d4
         li      addr, 8                                 // E005  ASR.B     #8,D5
-        b       L_0B6AC
+        b       asr_b_q_d5
         li      addr, 8                                 // E006  ASR.B     #8,D6
-        b       L_0B76C
+        b       asr_b_q_d6
         li      addr, 8                                 // E007  ASR.B     #8,D7
-        b       L_0B82C
+        b       asr_b_q_d7
         rlwinm  data, d0, 25, 31, 31                    // E008  LSR.B     #8,D0
-        b       L_0B2CC
+        b       lsr_b_q_d0
         rlwinm  data, d1, 25, 31, 31                    // E009  LSR.B     #8,D1
-        b       L_0B38C
+        b       lsr_b_q_d1
         rlwinm  data, d2, 25, 31, 31                    // E00A  LSR.B     #8,D2
-        b       L_0B44C
+        b       lsr_b_q_d2
         rlwinm  data, d3, 25, 31, 31                    // E00B  LSR.B     #8,D3
-        b       L_0B50C
+        b       lsr_b_q_d3
         rlwinm  data, d4, 25, 31, 31                    // E00C  LSR.B     #8,D4
-        b       L_0B5CC
+        b       lsr_b_q_d4
         rlwinm  data, d5, 25, 31, 31                    // E00D  LSR.B     #8,D5
-        b       L_0B68C
+        b       lsr_b_q_d5
         rlwinm  data, d6, 25, 31, 31                    // E00E  LSR.B     #8,D6
-        b       L_0B74C
+        b       lsr_b_q_d6
         rlwinm  data, d7, 25, 31, 31                    // E00F  LSR.B     #8,D7
-        b       L_0B80C
+        b       lsr_b_q_d7
         li      addr, 1                                 // E010  ROXR.B    #8,D0
-        b       L_0B364
+        b       roxr_roxl_b_q_d0
         li      addr, 1                                 // E011  ROXR.B    #8,D1
-        b       L_0B424
+        b       roxr_roxl_b_q_d1
         li      addr, 1                                 // E012  ROXR.B    #8,D2
-        b       L_0B4E4
+        b       roxr_roxl_b_q_d2
         li      addr, 1                                 // E013  ROXR.B    #8,D3
-        b       L_0B5A4
+        b       roxr_roxl_b_q_d3
         li      addr, 1                                 // E014  ROXR.B    #8,D4
-        b       L_0B664
+        b       roxr_roxl_b_q_d4
         li      addr, 1                                 // E015  ROXR.B    #8,D5
-        b       L_0B724
+        b       roxr_roxl_b_q_d5
         li      addr, 1                                 // E016  ROXR.B    #8,D6
-        b       L_0B7E4
+        b       roxr_roxl_b_q_d6
         li      addr, 1                                 // E017  ROXR.B    #8,D7
-        b       L_0B8A4
+        b       roxr_roxl_b_q_d7
         slwi.   data, d0, 24                            // E018  ROR.B     #8,D0
-        b       L_07240
+        b       ror_b_q_dn
         slwi.   data, d1, 24                            // E019  ROR.B     #8,D1
-        b       L_07240
+        b       ror_b_q_dn
         slwi.   data, d2, 24                            // E01A  ROR.B     #8,D2
-        b       L_07240
+        b       ror_b_q_dn
         slwi.   data, d3, 24                            // E01B  ROR.B     #8,D3
-        b       L_07240
+        b       ror_b_q_dn
         slwi.   data, d4, 24                            // E01C  ROR.B     #8,D4
-        b       L_07240
+        b       ror_b_q_dn
         slwi.   data, d5, 24                            // E01D  ROR.B     #8,D5
-        b       L_07240
+        b       ror_b_q_dn
         slwi.   data, d6, 24                            // E01E  ROR.B     #8,D6
-        b       L_07240
+        b       ror_b_q_dn
         slwi.   data, d7, 24                            // E01F  ROR.B     #8,D7
-        b       L_07240
+        b       ror_b_q_dn
         clrlwi. addr, d0, 26                            // E020  ASR.B     D0,D0
-        b       L_0B2E8
+        b       asr_b_dn_d0
         clrlwi. addr, d0, 26                            // E021  ASR.B     D0,D1
-        b       L_0B3A8
+        b       asr_b_dn_d1
         clrlwi. addr, d0, 26                            // E022  ASR.B     D0,D2
-        b       L_0B468
+        b       asr_b_dn_d2
         clrlwi. addr, d0, 26                            // E023  ASR.B     D0,D3
-        b       L_0B528
+        b       asr_b_dn_d3
         clrlwi. addr, d0, 26                            // E024  ASR.B     D0,D4
-        b       L_0B5E8
+        b       asr_b_dn_d4
         clrlwi. addr, d0, 26                            // E025  ASR.B     D0,D5
-        b       L_0B6A8
+        b       asr_b_dn_d5
         clrlwi. addr, d0, 26                            // E026  ASR.B     D0,D6
-        b       L_0B768
+        b       asr_b_dn_d6
         clrlwi. addr, d0, 26                            // E027  ASR.B     D0,D7
-        b       L_0B828
+        b       asr_b_dn_d7
         clrlwi. addr, d0, 26                            // E028  LSR.B     D0,D0
-        b       L_0B2C0
+        b       lsr_b_dn_d0
         clrlwi. addr, d0, 26                            // E029  LSR.B     D0,D1
-        b       L_0B380
+        b       lsr_b_dn_d1
         clrlwi. addr, d0, 26                            // E02A  LSR.B     D0,D2
-        b       L_0B440
+        b       lsr_b_dn_d2
         clrlwi. addr, d0, 26                            // E02B  LSR.B     D0,D3
-        b       L_0B500
+        b       lsr_b_dn_d3
         clrlwi. addr, d0, 26                            // E02C  LSR.B     D0,D4
-        b       L_0B5C0
+        b       lsr_b_dn_d4
         clrlwi. addr, d0, 26                            // E02D  LSR.B     D0,D5
-        b       L_0B680
+        b       lsr_b_dn_d5
         clrlwi. addr, d0, 26                            // E02E  LSR.B     D0,D6
-        b       L_0B740
+        b       lsr_b_dn_d6
         clrlwi. addr, d0, 26                            // E02F  LSR.B     D0,D7
-        b       L_0B800
+        b       lsr_b_dn_d7
         clrlwi. addr, d0, 26                            // E030  ROXR.B    D0,D0
-        b       L_0B360
+        b       roxr_roxl_b_dn_d0
         clrlwi. addr, d0, 26                            // E031  ROXR.B    D0,D1
-        b       L_0B420
+        b       roxr_roxl_b_dn_d1
         clrlwi. addr, d0, 26                            // E032  ROXR.B    D0,D2
-        b       L_0B4E0
+        b       roxr_roxl_b_dn_d2
         clrlwi. addr, d0, 26                            // E033  ROXR.B    D0,D3
-        b       L_0B5A0
+        b       roxr_roxl_b_dn_d3
         clrlwi. addr, d0, 26                            // E034  ROXR.B    D0,D4
-        b       L_0B660
+        b       roxr_roxl_b_dn_d4
         clrlwi. addr, d0, 26                            // E035  ROXR.B    D0,D5
-        b       L_0B720
+        b       roxr_roxl_b_dn_d5
         clrlwi. addr, d0, 26                            // E036  ROXR.B    D0,D6
-        b       L_0B7E0
+        b       roxr_roxl_b_dn_d6
         clrlwi. addr, d0, 26                            // E037  ROXR.B    D0,D7
-        b       L_0B8A0
+        b       roxr_roxl_b_dn_d7
         clrlwi. addr, d0, 26                            // E038  ROR.B     D0,D0
-        b       L_0B320
+        b       ror_b_dn_d0
         clrlwi. addr, d0, 26                            // E039  ROR.B     D0,D1
-        b       L_0B3E0
+        b       ror_b_dn_d1
         clrlwi. addr, d0, 26                            // E03A  ROR.B     D0,D2
-        b       L_0B4A0
+        b       ror_b_dn_d2
         clrlwi. addr, d0, 26                            // E03B  ROR.B     D0,D3
-        b       L_0B560
+        b       ror_b_dn_d3
         clrlwi. addr, d0, 26                            // E03C  ROR.B     D0,D4
-        b       L_0B620
+        b       ror_b_dn_d4
         clrlwi. addr, d0, 26                            // E03D  ROR.B     D0,D5
-        b       L_0B6E0
+        b       ror_b_dn_d5
         clrlwi. addr, d0, 26                            // E03E  ROR.B     D0,D6
-        b       L_0B7A0
+        b       ror_b_dn_d6
         clrlwi. addr, d0, 26                            // E03F  ROR.B     D0,D7
-        b       L_0B860
+        b       ror_b_dn_d7
 
 // ---- $E040-$E07F --------------------------------------------------------
         li      addr, 8                                 // E040  ASR.W     #8,D0
-        b       L_04C2C
+        b       asr_w_q_d0
         li      addr, 8                                 // E041  ASR.W     #8,D1
-        b       L_04CEC
+        b       asr_w_q_d1
         li      addr, 8                                 // E042  ASR.W     #8,D2
-        b       L_04DAC
+        b       asr_w_q_d2
         li      addr, 8                                 // E043  ASR.W     #8,D3
-        b       L_04E6C
+        b       asr_w_q_d3
         li      addr, 8                                 // E044  ASR.W     #8,D4
-        b       L_04F2C
+        b       asr_w_q_d4
         li      addr, 8                                 // E045  ASR.W     #8,D5
-        b       L_04FEC
+        b       asr_w_q_d5
         li      addr, 8                                 // E046  ASR.W     #8,D6
-        b       L_050AC
+        b       asr_w_q_d6
         li      addr, 8                                 // E047  ASR.W     #8,D7
-        b       L_0516C
+        b       asr_w_q_d7
         rlwinm  data, d0, 25, 23, 31                    // E048  LSR.W     #8,D0
-        b       L_04C0C
+        b       lsr_w_q_d0
         rlwinm  data, d1, 25, 23, 31                    // E049  LSR.W     #8,D1
-        b       L_04CCC
+        b       lsr_w_q_d1
         rlwinm  data, d2, 25, 23, 31                    // E04A  LSR.W     #8,D2
-        b       L_04D8C
+        b       lsr_w_q_d2
         rlwinm  data, d3, 25, 23, 31                    // E04B  LSR.W     #8,D3
-        b       L_04E4C
+        b       lsr_w_q_d3
         rlwinm  data, d4, 25, 23, 31                    // E04C  LSR.W     #8,D4
-        b       L_04F0C
+        b       lsr_w_q_d4
         rlwinm  data, d5, 25, 23, 31                    // E04D  LSR.W     #8,D5
-        b       L_04FCC
+        b       lsr_w_q_d5
         rlwinm  data, d6, 25, 23, 31                    // E04E  LSR.W     #8,D6
-        b       L_0508C
+        b       lsr_w_q_d6
         rlwinm  data, d7, 25, 23, 31                    // E04F  LSR.W     #8,D7
-        b       L_0514C
+        b       lsr_w_q_d7
         addic.  addr, zero, 9                           // E050  ROXR.W    #8,D0
-        b       L_04CA4
+        b       roxr_roxl_w_q_d0
         addic.  addr, zero, 9                           // E051  ROXR.W    #8,D1
-        b       L_04D64
+        b       roxr_roxl_w_q_d1
         addic.  addr, zero, 9                           // E052  ROXR.W    #8,D2
-        b       L_04E24
+        b       roxr_roxl_w_q_d2
         addic.  addr, zero, 9                           // E053  ROXR.W    #8,D3
-        b       L_04EE4
+        b       roxr_roxl_w_q_d3
         addic.  addr, zero, 9                           // E054  ROXR.W    #8,D4
-        b       L_04FA4
+        b       roxr_roxl_w_q_d4
         addic.  addr, zero, 9                           // E055  ROXR.W    #8,D5
-        b       L_05064
+        b       roxr_roxl_w_q_d5
         addic.  addr, zero, 9                           // E056  ROXR.W    #8,D6
-        b       L_05124
+        b       roxr_roxl_w_q_d6
         addic.  addr, zero, 9                           // E057  ROXR.W    #8,D7
-        b       L_051E4
+        b       roxr_roxl_w_q_d7
         li      addr, 8                                 // E058  ROR.W     #8,D0
-        b       L_04C6C
+        b       ror_w_q_d0
         li      addr, 8                                 // E059  ROR.W     #8,D1
-        b       L_04D2C
+        b       ror_w_q_d1
         li      addr, 8                                 // E05A  ROR.W     #8,D2
-        b       L_04DEC
+        b       ror_w_q_d2
         li      addr, 8                                 // E05B  ROR.W     #8,D3
-        b       L_04EAC
+        b       ror_w_q_d3
         li      addr, 8                                 // E05C  ROR.W     #8,D4
-        b       L_04F6C
+        b       ror_w_q_d4
         li      addr, 8                                 // E05D  ROR.W     #8,D5
-        b       L_0502C
+        b       ror_w_q_d5
         li      addr, 8                                 // E05E  ROR.W     #8,D6
-        b       L_050EC
+        b       ror_w_q_d6
         li      addr, 8                                 // E05F  ROR.W     #8,D7
-        b       L_051AC
+        b       ror_w_q_d7
         clrlwi. addr, d0, 26                            // E060  ASR.W     D0,D0
-        b       L_04C28
+        b       asr_w_dn_d0
         clrlwi. addr, d0, 26                            // E061  ASR.W     D0,D1
-        b       L_04CE8
+        b       asr_w_dn_d1
         clrlwi. addr, d0, 26                            // E062  ASR.W     D0,D2
-        b       L_04DA8
+        b       asr_w_dn_d2
         clrlwi. addr, d0, 26                            // E063  ASR.W     D0,D3
-        b       L_04E68
+        b       asr_w_dn_d3
         clrlwi. addr, d0, 26                            // E064  ASR.W     D0,D4
-        b       L_04F28
+        b       asr_w_dn_d4
         clrlwi. addr, d0, 26                            // E065  ASR.W     D0,D5
-        b       L_04FE8
+        b       asr_w_dn_d5
         clrlwi. addr, d0, 26                            // E066  ASR.W     D0,D6
-        b       L_050A8
+        b       asr_w_dn_d6
         clrlwi. addr, d0, 26                            // E067  ASR.W     D0,D7
-        b       L_05168
+        b       asr_w_dn_d7
         clrlwi. addr, d0, 26                            // E068  LSR.W     D0,D0
-        b       L_04C00
+        b       lsr_w_dn_d0
         clrlwi. addr, d0, 26                            // E069  LSR.W     D0,D1
-        b       L_04CC0
+        b       lsr_w_dn_d1
         clrlwi. addr, d0, 26                            // E06A  LSR.W     D0,D2
-        b       L_04D80
+        b       lsr_w_dn_d2
         clrlwi. addr, d0, 26                            // E06B  LSR.W     D0,D3
-        b       L_04E40
+        b       lsr_w_dn_d3
         clrlwi. addr, d0, 26                            // E06C  LSR.W     D0,D4
-        b       L_04F00
+        b       lsr_w_dn_d4
         clrlwi. addr, d0, 26                            // E06D  LSR.W     D0,D5
-        b       L_04FC0
+        b       lsr_w_dn_d5
         clrlwi. addr, d0, 26                            // E06E  LSR.W     D0,D6
-        b       L_05080
+        b       lsr_w_dn_d6
         clrlwi. addr, d0, 26                            // E06F  LSR.W     D0,D7
-        b       L_05140
+        b       lsr_w_dn_d7
         clrlwi. addr, d0, 26                            // E070  ROXR.W    D0,D0
-        b       L_04CA0
+        b       roxr_roxl_w_dn_d0
         clrlwi. addr, d0, 26                            // E071  ROXR.W    D0,D1
-        b       L_04D60
+        b       roxr_roxl_w_dn_d1
         clrlwi. addr, d0, 26                            // E072  ROXR.W    D0,D2
-        b       L_04E20
+        b       roxr_roxl_w_dn_d2
         clrlwi. addr, d0, 26                            // E073  ROXR.W    D0,D3
-        b       L_04EE0
+        b       roxr_roxl_w_dn_d3
         clrlwi. addr, d0, 26                            // E074  ROXR.W    D0,D4
-        b       L_04FA0
+        b       roxr_roxl_w_dn_d4
         clrlwi. addr, d0, 26                            // E075  ROXR.W    D0,D5
-        b       L_05060
+        b       roxr_roxl_w_dn_d5
         clrlwi. addr, d0, 26                            // E076  ROXR.W    D0,D6
-        b       L_05120
+        b       roxr_roxl_w_dn_d6
         clrlwi. addr, d0, 26                            // E077  ROXR.W    D0,D7
-        b       L_051E0
+        b       roxr_roxl_w_dn_d7
         clrlwi. addr, d0, 26                            // E078  ROR.W     D0,D0
-        b       L_04C60
+        b       ror_w_dn_d0
         clrlwi. addr, d0, 26                            // E079  ROR.W     D0,D1
-        b       L_04D20
+        b       ror_w_dn_d1
         clrlwi. addr, d0, 26                            // E07A  ROR.W     D0,D2
-        b       L_04DE0
+        b       ror_w_dn_d2
         clrlwi. addr, d0, 26                            // E07B  ROR.W     D0,D3
-        b       L_04EA0
+        b       ror_w_dn_d3
         clrlwi. addr, d0, 26                            // E07C  ROR.W     D0,D4
-        b       L_04F60
+        b       ror_w_dn_d4
         clrlwi. addr, d0, 26                            // E07D  ROR.W     D0,D5
-        b       L_05020
+        b       ror_w_dn_d5
         clrlwi. addr, d0, 26                            // E07E  ROR.W     D0,D6
-        b       L_050E0
+        b       ror_w_dn_d6
         clrlwi. addr, d0, 26                            // E07F  ROR.W     D0,D7
-        b       L_051A0
+        b       ror_w_dn_d7
 
 // ---- $E080-$E0BF --------------------------------------------------------
         srawi   data, d0, 7                             // E080  ASR.L     #8,D0
-        b       L_05234
+        b       asr_l_q_d0
         srawi   data, d1, 7                             // E081  ASR.L     #8,D1
-        b       L_052D4
+        b       asr_l_q_d1
         srawi   data, d2, 7                             // E082  ASR.L     #8,D2
-        b       L_05374
+        b       asr_l_q_d2
         srawi   data, d3, 7                             // E083  ASR.L     #8,D3
-        b       L_05414
+        b       asr_l_q_d3
         srawi   data, d4, 7                             // E084  ASR.L     #8,D4
-        b       L_054B4
+        b       asr_l_q_d4
         srawi   data, d5, 7                             // E085  ASR.L     #8,D5
-        b       L_05554
+        b       asr_l_q_d5
         srawi   data, d6, 7                             // E086  ASR.L     #8,D6
-        b       L_055F4
+        b       asr_l_q_d6
         srawi   data, d7, 7                             // E087  ASR.L     #8,D7
-        b       L_05694
+        b       asr_l_q_d7
         srwi    data, d0, 7                             // E088  LSR.L     #8,D0
-        b       L_0520C
+        b       lsr_l_q_d0
         srwi    data, d1, 7                             // E089  LSR.L     #8,D1
-        b       L_052AC
+        b       lsr_l_q_d1
         srwi    data, d2, 7                             // E08A  LSR.L     #8,D2
-        b       L_0534C
+        b       lsr_l_q_d2
         srwi    data, d3, 7                             // E08B  LSR.L     #8,D3
-        b       L_053EC
+        b       lsr_l_q_d3
         srwi    data, d4, 7                             // E08C  LSR.L     #8,D4
-        b       L_0548C
+        b       lsr_l_q_d4
         srwi    data, d5, 7                             // E08D  LSR.L     #8,D5
-        b       L_0552C
+        b       lsr_l_q_d5
         srwi    data, d6, 7                             // E08E  LSR.L     #8,D6
-        b       L_055CC
+        b       lsr_l_q_d6
         srwi    data, d7, 7                             // E08F  LSR.L     #8,D7
-        b       L_0566C
+        b       lsr_l_q_d7
         addic.  addr, zero, 25                          // E090  ROXR.L    #8,D0
-        b       L_05284
+        b       roxr_roxl_l_q_d0
         addic.  addr, zero, 25                          // E091  ROXR.L    #8,D1
-        b       L_05324
+        b       roxr_roxl_l_q_d1
         addic.  addr, zero, 25                          // E092  ROXR.L    #8,D2
-        b       L_053C4
+        b       roxr_roxl_l_q_d2
         addic.  addr, zero, 25                          // E093  ROXR.L    #8,D3
-        b       L_05464
+        b       roxr_roxl_l_q_d3
         addic.  addr, zero, 25                          // E094  ROXR.L    #8,D4
-        b       L_05504
+        b       roxr_roxl_l_q_d4
         addic.  addr, zero, 25                          // E095  ROXR.L    #8,D5
-        b       L_055A4
+        b       roxr_roxl_l_q_d5
         addic.  addr, zero, 25                          // E096  ROXR.L    #8,D6
-        b       L_05644
+        b       roxr_roxl_l_q_d6
         addic.  addr, zero, 25                          // E097  ROXR.L    #8,D7
-        b       L_056E4
+        b       roxr_roxl_l_q_d7
         rotlwi  data, d0, 24                            // E098  ROR.L     #8,D0
-        b       L_05260
+        b       ror_l_q_d0
         rotlwi  data, d1, 24                            // E099  ROR.L     #8,D1
-        b       L_05300
+        b       ror_l_q_d1
         rotlwi  data, d2, 24                            // E09A  ROR.L     #8,D2
-        b       L_053A0
+        b       ror_l_q_d2
         rotlwi  data, d3, 24                            // E09B  ROR.L     #8,D3
-        b       L_05440
+        b       ror_l_q_d3
         rotlwi  data, d4, 24                            // E09C  ROR.L     #8,D4
-        b       L_054E0
+        b       ror_l_q_d4
         rotlwi  data, d5, 24                            // E09D  ROR.L     #8,D5
-        b       L_05580
+        b       ror_l_q_d5
         rotlwi  data, d6, 24                            // E09E  ROR.L     #8,D6
-        b       L_05620
+        b       ror_l_q_d6
         rotlwi  data, d7, 24                            // E09F  ROR.L     #8,D7
-        b       L_056C0
+        b       ror_l_q_d7
         clrlwi. addr, d0, 26                            // E0A0  ASR.L     D0,D0
-        b       L_05228
+        b       asr_l_dn_d0
         clrlwi. addr, d0, 26                            // E0A1  ASR.L     D0,D1
-        b       L_052C8
+        b       asr_l_dn_d1
         clrlwi. addr, d0, 26                            // E0A2  ASR.L     D0,D2
-        b       L_05368
+        b       asr_l_dn_d2
         clrlwi. addr, d0, 26                            // E0A3  ASR.L     D0,D3
-        b       L_05408
+        b       asr_l_dn_d3
         clrlwi. addr, d0, 26                            // E0A4  ASR.L     D0,D4
-        b       L_054A8
+        b       asr_l_dn_d4
         clrlwi. addr, d0, 26                            // E0A5  ASR.L     D0,D5
-        b       L_05548
+        b       asr_l_dn_d5
         clrlwi. addr, d0, 26                            // E0A6  ASR.L     D0,D6
-        b       L_055E8
+        b       asr_l_dn_d6
         clrlwi. addr, d0, 26                            // E0A7  ASR.L     D0,D7
-        b       L_05688
+        b       asr_l_dn_d7
         clrlwi. addr, d0, 26                            // E0A8  LSR.L     D0,D0
-        b       L_05200
+        b       lsr_l_dn_d0
         clrlwi. addr, d0, 26                            // E0A9  LSR.L     D0,D1
-        b       L_052A0
+        b       lsr_l_dn_d1
         clrlwi. addr, d0, 26                            // E0AA  LSR.L     D0,D2
-        b       L_05340
+        b       lsr_l_dn_d2
         clrlwi. addr, d0, 26                            // E0AB  LSR.L     D0,D3
-        b       L_053E0
+        b       lsr_l_dn_d3
         clrlwi. addr, d0, 26                            // E0AC  LSR.L     D0,D4
-        b       L_05480
+        b       lsr_l_dn_d4
         clrlwi. addr, d0, 26                            // E0AD  LSR.L     D0,D5
-        b       L_05520
+        b       lsr_l_dn_d5
         clrlwi. addr, d0, 26                            // E0AE  LSR.L     D0,D6
-        b       L_055C0
+        b       lsr_l_dn_d6
         clrlwi. addr, d0, 26                            // E0AF  LSR.L     D0,D7
-        b       L_05660
+        b       lsr_l_dn_d7
         clrlwi. addr, d0, 26                            // E0B0  ROXR.L    D0,D0
-        b       L_05280
+        b       roxr_roxl_l_dn_d0
         clrlwi. addr, d0, 26                            // E0B1  ROXR.L    D0,D1
-        b       L_05320
+        b       roxr_roxl_l_dn_d1
         clrlwi. addr, d0, 26                            // E0B2  ROXR.L    D0,D2
-        b       L_053C0
+        b       roxr_roxl_l_dn_d2
         clrlwi. addr, d0, 26                            // E0B3  ROXR.L    D0,D3
-        b       L_05460
+        b       roxr_roxl_l_dn_d3
         clrlwi. addr, d0, 26                            // E0B4  ROXR.L    D0,D4
-        b       L_05500
+        b       roxr_roxl_l_dn_d4
         clrlwi. addr, d0, 26                            // E0B5  ROXR.L    D0,D5
-        b       L_055A0
+        b       roxr_roxl_l_dn_d5
         clrlwi. addr, d0, 26                            // E0B6  ROXR.L    D0,D6
-        b       L_05640
+        b       roxr_roxl_l_dn_d6
         clrlwi. addr, d0, 26                            // E0B7  ROXR.L    D0,D7
-        b       L_056E0
+        b       roxr_roxl_l_dn_d7
         clrlwi. addr, d0, 26                            // E0B8  ROR.L     D0,D0
-        b       L_05254
+        b       ror_l_dn_d0
         clrlwi. addr, d0, 26                            // E0B9  ROR.L     D0,D1
-        b       L_052F4
+        b       ror_l_dn_d1
         clrlwi. addr, d0, 26                            // E0BA  ROR.L     D0,D2
-        b       L_05394
+        b       ror_l_dn_d2
         clrlwi. addr, d0, 26                            // E0BB  ROR.L     D0,D3
-        b       L_05434
+        b       ror_l_dn_d3
         clrlwi. addr, d0, 26                            // E0BC  ROR.L     D0,D4
-        b       L_054D4
+        b       ror_l_dn_d4
         clrlwi. addr, d0, 26                            // E0BD  ROR.L     D0,D5
-        b       L_05574
+        b       ror_l_dn_d5
         clrlwi. addr, d0, 26                            // E0BE  ROR.L     D0,D6
-        b       L_05614
+        b       ror_l_dn_d6
         clrlwi. addr, d0, 26                            // E0BF  ROR.L     D0,D7
-        b       L_056B4
+        b       ror_l_dn_d7
 
 // ---- $E0C0-$E0FF --------------------------------------------------------
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E0C0  ASR.W     D0   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E0C1  ASR.W     D1   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E0C2  ASR.W     D2   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E0C3  ASR.W     D3   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E0C4  ASR.W     D4   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E0C5  ASR.W     D5   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E0C6  ASR.W     D6   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E0C7  ASR.W     D7   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E0C8  ASR.W     A0   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E0C9  ASR.W     A1   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E0CA  ASR.W     A2   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E0CB  ASR.W     A3   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E0CC  ASR.W     A4   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E0CD  ASR.W     A5   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E0CE  ASR.W     A6   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E0CF  ASR.W     A7   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 op_E0D0:
         mr      addr, a0                                // E0D0  ASR.W     (A0)
-        b       L_07484
+        b       asr_w_mem_2
 op_E0D1:
         mr      addr, a1                                // E0D1  ASR.W     (A1)
-        b       L_07484
+        b       asr_w_mem_2
 op_E0D2:
         mr      addr, a2                                // E0D2  ASR.W     (A2)
-        b       L_07484
+        b       asr_w_mem_2
 op_E0D3:
         mr      addr, a3                                // E0D3  ASR.W     (A3)
-        b       L_07484
+        b       asr_w_mem_2
 op_E0D4:
         mr      addr, a4                                // E0D4  ASR.W     (A4)
-        b       L_07484
+        b       asr_w_mem_2
 op_E0D5:
         mr      addr, a5                                // E0D5  ASR.W     (A5)
-        b       L_07484
+        b       asr_w_mem_2
 op_E0D6:
         mr      addr, a6                                // E0D6  ASR.W     (A6)
-        b       L_07484
+        b       asr_w_mem_2
 op_E0D7:
         mr      addr, a7                                // E0D7  ASR.W     (A7)
-        b       L_07484
-        ori     rtn_addr, code_ptr, L_07484 - cb        // E0D8  ASR.W     (A0)+
-        b       L_00820
-        ori     rtn_addr, code_ptr, L_07484 - cb        // E0D9  ASR.W     (A1)+
-        b       L_008A0
-        ori     rtn_addr, code_ptr, L_07484 - cb        // E0DA  ASR.W     (A2)+
-        b       L_00920
-        ori     rtn_addr, code_ptr, L_07484 - cb        // E0DB  ASR.W     (A3)+
-        b       L_009A0
-        ori     rtn_addr, code_ptr, L_07484 - cb        // E0DC  ASR.W     (A4)+
-        b       L_00A20
-        ori     rtn_addr, code_ptr, L_07484 - cb        // E0DD  ASR.W     (A5)+
-        b       L_00AA0
-        ori     rtn_addr, code_ptr, L_07484 - cb        // E0DE  ASR.W     (A6)+
-        b       L_00B20
-        ori     rtn_addr, code_ptr, L_07484 - cb        // E0DF  ASR.W     (A7)+
-        b       L_00BA0
+        b       asr_w_mem_2
+        ori     rtn_addr, code_ptr, asr_w_mem_2 - cb    // E0D8  ASR.W     (A0)+
+        b       cea_w_30
+        ori     rtn_addr, code_ptr, asr_w_mem_2 - cb    // E0D9  ASR.W     (A1)+
+        b       cea_w_31
+        ori     rtn_addr, code_ptr, asr_w_mem_2 - cb    // E0DA  ASR.W     (A2)+
+        b       cea_w_32
+        ori     rtn_addr, code_ptr, asr_w_mem_2 - cb    // E0DB  ASR.W     (A3)+
+        b       cea_w_33
+        ori     rtn_addr, code_ptr, asr_w_mem_2 - cb    // E0DC  ASR.W     (A4)+
+        b       cea_w_34
+        ori     rtn_addr, code_ptr, asr_w_mem_2 - cb    // E0DD  ASR.W     (A5)+
+        b       cea_w_35
+        ori     rtn_addr, code_ptr, asr_w_mem_2 - cb    // E0DE  ASR.W     (A6)+
+        b       cea_w_36
+        ori     rtn_addr, code_ptr, asr_w_mem_2 - cb    // E0DF  ASR.W     (A7)+
+        b       cea_w_37
         addi    a0, a0, -2                              // E0E0  ASR.W     -(A0)
         b       op_E0D0
         addi    a1, a1, -2                              // E0E1  ASR.W     -(A1)
@@ -483,517 +483,517 @@ op_E0D7:
         addi    a7, a7, -2                              // E0E7  ASR.W     -(A7)
         b       op_E0D7
         add     addr, a0, prefetch_data                 // E0E8  ASR.W     (d16,A0)
-        b       L_07480
+        b       asr_w_mem
         add     addr, a1, prefetch_data                 // E0E9  ASR.W     (d16,A1)
-        b       L_07480
+        b       asr_w_mem
         add     addr, a2, prefetch_data                 // E0EA  ASR.W     (d16,A2)
-        b       L_07480
+        b       asr_w_mem
         add     addr, a3, prefetch_data                 // E0EB  ASR.W     (d16,A3)
-        b       L_07480
+        b       asr_w_mem
         add     addr, a4, prefetch_data                 // E0EC  ASR.W     (d16,A4)
-        b       L_07480
+        b       asr_w_mem
         add     addr, a5, prefetch_data                 // E0ED  ASR.W     (d16,A5)
-        b       L_07480
+        b       asr_w_mem
         add     addr, a6, prefetch_data                 // E0EE  ASR.W     (d16,A6)
-        b       L_07480
+        b       asr_w_mem
         add     addr, a7, prefetch_data                 // E0EF  ASR.W     (d16,A7)
-        b       L_07480
-        ori     rtn_addr, code_ptr, L_07488 - cb        // E0F0  ASR.W     (d8,A0,Xn)
-        b       L_059B0
-        ori     rtn_addr, code_ptr, L_07488 - cb        // E0F1  ASR.W     (d8,A1,Xn)
-        b       L_05A10
-        ori     rtn_addr, code_ptr, L_07488 - cb        // E0F2  ASR.W     (d8,A2,Xn)
-        b       L_05A70
-        ori     rtn_addr, code_ptr, L_07488 - cb        // E0F3  ASR.W     (d8,A3,Xn)
-        b       L_05AD0
-        ori     rtn_addr, code_ptr, L_07488 - cb        // E0F4  ASR.W     (d8,A4,Xn)
-        b       L_05B30
-        ori     rtn_addr, code_ptr, L_07488 - cb        // E0F5  ASR.W     (d8,A5,Xn)
-        b       L_05B90
-        ori     rtn_addr, code_ptr, L_07488 - cb        // E0F6  ASR.W     (d8,A6,Xn)
-        b       L_05BF0
-        ori     rtn_addr, code_ptr, L_07488 - cb        // E0F7  ASR.W     (d8,A7,Xn)
-        b       L_05C50
+        b       asr_w_mem
+        ori     rtn_addr, code_ptr, asr_w_mem_3 - cb    // E0F0  ASR.W     (d8,A0,Xn)
+        b       move_add_etc_w_any_any
+        ori     rtn_addr, code_ptr, asr_w_mem_3 - cb    // E0F1  ASR.W     (d8,A1,Xn)
+        b       move_add_etc_w_any_any_2
+        ori     rtn_addr, code_ptr, asr_w_mem_3 - cb    // E0F2  ASR.W     (d8,A2,Xn)
+        b       move_add_etc_w_any_any_3
+        ori     rtn_addr, code_ptr, asr_w_mem_3 - cb    // E0F3  ASR.W     (d8,A3,Xn)
+        b       move_add_etc_w_any_any_4
+        ori     rtn_addr, code_ptr, asr_w_mem_3 - cb    // E0F4  ASR.W     (d8,A4,Xn)
+        b       move_add_etc_w_any_any_5
+        ori     rtn_addr, code_ptr, asr_w_mem_3 - cb    // E0F5  ASR.W     (d8,A5,Xn)
+        b       move_add_etc_w_any_any_6
+        ori     rtn_addr, code_ptr, asr_w_mem_3 - cb    // E0F6  ASR.W     (d8,A6,Xn)
+        b       move_add_etc_w_any_any_7
+        ori     rtn_addr, code_ptr, asr_w_mem_3 - cb    // E0F7  ASR.W     (d8,A7,Xn)
+        b       move_add_etc_w_any_any_8
         mr      addr, prefetch_data                     // E0F8  ASR.W     (xxx).W
-        b       L_07480
-        ori     rtn_addr, code_ptr, L_07488 - cb        // E0F9  ASR.W     (xxx).L
-        b       L_05E70
+        b       asr_w_mem
+        ori     rtn_addr, code_ptr, asr_w_mem_3 - cb    // E0F9  ASR.W     (xxx).L
+        b       fea_w_71
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E0FA  ASR.W     (d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E0FB  ASR.W     (d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E0FC  ASR.W     #<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E0FD  ASR.W     <ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E0FE  ASR.W     <ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E0FF  ASR.W     <ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $E100-$E13F --------------------------------------------------------
         li      addr, 8                                 // E100  ASL.B     #8,D0
-        b       L_0B304
+        b       asl_b_q_d0
         li      addr, 8                                 // E101  ASL.B     #8,D1
-        b       L_0B3C4
+        b       asl_b_q_d1
         li      addr, 8                                 // E102  ASL.B     #8,D2
-        b       L_0B484
+        b       asl_b_q_d2
         li      addr, 8                                 // E103  ASL.B     #8,D3
-        b       L_0B544
+        b       asl_b_q_d3
         li      addr, 8                                 // E104  ASL.B     #8,D4
-        b       L_0B604
+        b       asl_b_q_d4
         li      addr, 8                                 // E105  ASL.B     #8,D5
-        b       L_0B6C4
+        b       asl_b_q_d5
         li      addr, 8                                 // E106  ASL.B     #8,D6
-        b       L_0B784
+        b       asl_b_q_d6
         li      addr, 8                                 // E107  ASL.B     #8,D7
-        b       L_0B844
+        b       asl_b_q_d7
         slwi    data, d0, 31                            // E108  LSL.B     #8,D0
-        b       L_0B2E0
+        b       lsl_b_q_d0
         slwi    data, d1, 31                            // E109  LSL.B     #8,D1
-        b       L_0B3A0
+        b       lsl_b_q_d1
         slwi    data, d2, 31                            // E10A  LSL.B     #8,D2
-        b       L_0B460
+        b       lsl_b_q_d2
         slwi    data, d3, 31                            // E10B  LSL.B     #8,D3
-        b       L_0B520
+        b       lsl_b_q_d3
         slwi    data, d4, 31                            // E10C  LSL.B     #8,D4
-        b       L_0B5E0
+        b       lsl_b_q_d4
         slwi    data, d5, 31                            // E10D  LSL.B     #8,D5
-        b       L_0B6A0
+        b       lsl_b_q_d5
         slwi    data, d6, 31                            // E10E  LSL.B     #8,D6
-        b       L_0B760
+        b       lsl_b_q_d6
         slwi    data, d7, 31                            // E10F  LSL.B     #8,D7
-        b       L_0B820
+        b       lsl_b_q_d7
         li      addr, 8                                 // E110  ROXL.B    #8,D0
-        b       L_0B364
+        b       roxr_roxl_b_q_d0
         li      addr, 8                                 // E111  ROXL.B    #8,D1
-        b       L_0B424
+        b       roxr_roxl_b_q_d1
         li      addr, 8                                 // E112  ROXL.B    #8,D2
-        b       L_0B4E4
+        b       roxr_roxl_b_q_d2
         li      addr, 8                                 // E113  ROXL.B    #8,D3
-        b       L_0B5A4
+        b       roxr_roxl_b_q_d3
         li      addr, 8                                 // E114  ROXL.B    #8,D4
-        b       L_0B664
+        b       roxr_roxl_b_q_d4
         li      addr, 8                                 // E115  ROXL.B    #8,D5
-        b       L_0B724
+        b       roxr_roxl_b_q_d5
         li      addr, 8                                 // E116  ROXL.B    #8,D6
-        b       L_0B7E4
+        b       roxr_roxl_b_q_d6
         li      addr, 8                                 // E117  ROXL.B    #8,D7
-        b       L_0B8A4
+        b       roxr_roxl_b_q_d7
         li      addr, 0                                 // E118  ROL.B     #8,D0
-        b       L_0B348
+        b       rol_b_q_d0
         li      addr, 0                                 // E119  ROL.B     #8,D1
-        b       L_0B408
+        b       rol_b_q_d1
         li      addr, 0                                 // E11A  ROL.B     #8,D2
-        b       L_0B4C8
+        b       rol_b_q_d2
         li      addr, 0                                 // E11B  ROL.B     #8,D3
-        b       L_0B588
+        b       rol_b_q_d3
         li      addr, 0                                 // E11C  ROL.B     #8,D4
-        b       L_0B648
+        b       rol_b_q_d4
         li      addr, 0                                 // E11D  ROL.B     #8,D5
-        b       L_0B708
+        b       rol_b_q_d5
         li      addr, 0                                 // E11E  ROL.B     #8,D6
-        b       L_0B7C8
+        b       rol_b_q_d6
         li      addr, 0                                 // E11F  ROL.B     #8,D7
-        b       L_0B888
+        b       rol_b_q_d7
         clrlwi. addr, d0, 26                            // E120  ASL.B     D0,D0
-        b       L_0B300
+        b       asl_b_dn_d0
         clrlwi. addr, d0, 26                            // E121  ASL.B     D0,D1
-        b       L_0B3C0
+        b       asl_b_dn_d1
         clrlwi. addr, d0, 26                            // E122  ASL.B     D0,D2
-        b       L_0B480
+        b       asl_b_dn_d2
         clrlwi. addr, d0, 26                            // E123  ASL.B     D0,D3
-        b       L_0B540
+        b       asl_b_dn_d3
         clrlwi. addr, d0, 26                            // E124  ASL.B     D0,D4
-        b       L_0B600
+        b       asl_b_dn_d4
         clrlwi. addr, d0, 26                            // E125  ASL.B     D0,D5
-        b       L_0B6C0
+        b       asl_b_dn_d5
         clrlwi. addr, d0, 26                            // E126  ASL.B     D0,D6
-        b       L_0B780
+        b       asl_b_dn_d6
         clrlwi. addr, d0, 26                            // E127  ASL.B     D0,D7
-        b       L_0B840
+        b       asl_b_dn_d7
         clrlwi. addr, d0, 26                            // E128  LSL.B     D0,D0
-        b       L_0B2D4
+        b       lsl_b_dn_d0
         clrlwi. addr, d0, 26                            // E129  LSL.B     D0,D1
-        b       L_0B394
+        b       lsl_b_dn_d1
         clrlwi. addr, d0, 26                            // E12A  LSL.B     D0,D2
-        b       L_0B454
+        b       lsl_b_dn_d2
         clrlwi. addr, d0, 26                            // E12B  LSL.B     D0,D3
-        b       L_0B514
+        b       lsl_b_dn_d3
         clrlwi. addr, d0, 26                            // E12C  LSL.B     D0,D4
-        b       L_0B5D4
+        b       lsl_b_dn_d4
         clrlwi. addr, d0, 26                            // E12D  LSL.B     D0,D5
-        b       L_0B694
+        b       lsl_b_dn_d5
         clrlwi. addr, d0, 26                            // E12E  LSL.B     D0,D6
-        b       L_0B754
+        b       lsl_b_dn_d6
         clrlwi. addr, d0, 26                            // E12F  LSL.B     D0,D7
-        b       L_0B814
+        b       lsl_b_dn_d7
         clrlwi. addr, d0, 26                            // E130  ROXL.B    D0,D0
-        b       L_0B360
+        b       roxr_roxl_b_dn_d0
         clrlwi. addr, d0, 26                            // E131  ROXL.B    D0,D1
-        b       L_0B420
+        b       roxr_roxl_b_dn_d1
         clrlwi. addr, d0, 26                            // E132  ROXL.B    D0,D2
-        b       L_0B4E0
+        b       roxr_roxl_b_dn_d2
         clrlwi. addr, d0, 26                            // E133  ROXL.B    D0,D3
-        b       L_0B5A0
+        b       roxr_roxl_b_dn_d3
         clrlwi. addr, d0, 26                            // E134  ROXL.B    D0,D4
-        b       L_0B660
+        b       roxr_roxl_b_dn_d4
         clrlwi. addr, d0, 26                            // E135  ROXL.B    D0,D5
-        b       L_0B720
+        b       roxr_roxl_b_dn_d5
         clrlwi. addr, d0, 26                            // E136  ROXL.B    D0,D6
-        b       L_0B7E0
+        b       roxr_roxl_b_dn_d6
         clrlwi. addr, d0, 26                            // E137  ROXL.B    D0,D7
-        b       L_0B8A0
+        b       roxr_roxl_b_dn_d7
         clrlwi. addr, d0, 26                            // E138  ROL.B     D0,D0
-        b       L_0B340
+        b       rol_b_dn_d0
         clrlwi. addr, d0, 26                            // E139  ROL.B     D0,D1
-        b       L_0B400
+        b       rol_b_dn_d1
         clrlwi. addr, d0, 26                            // E13A  ROL.B     D0,D2
-        b       L_0B4C0
+        b       rol_b_dn_d2
         clrlwi. addr, d0, 26                            // E13B  ROL.B     D0,D3
-        b       L_0B580
+        b       rol_b_dn_d3
         clrlwi. addr, d0, 26                            // E13C  ROL.B     D0,D4
-        b       L_0B640
+        b       rol_b_dn_d4
         clrlwi. addr, d0, 26                            // E13D  ROL.B     D0,D5
-        b       L_0B700
+        b       rol_b_dn_d5
         clrlwi. addr, d0, 26                            // E13E  ROL.B     D0,D6
-        b       L_0B7C0
+        b       rol_b_dn_d6
         clrlwi. addr, d0, 26                            // E13F  ROL.B     D0,D7
-        b       L_0B880
+        b       rol_b_dn_d7
 
 // ---- $E140-$E17F --------------------------------------------------------
         li      addr, 8                                 // E140  ASL.W     #8,D0
-        b       L_04C44
+        b       asl_w_q_d0
         li      addr, 8                                 // E141  ASL.W     #8,D1
-        b       L_04D04
+        b       asl_w_q_d1
         li      addr, 8                                 // E142  ASL.W     #8,D2
-        b       L_04DC4
+        b       asl_w_q_d2
         li      addr, 8                                 // E143  ASL.W     #8,D3
-        b       L_04E84
+        b       asl_w_q_d3
         li      addr, 8                                 // E144  ASL.W     #8,D4
-        b       L_04F44
+        b       asl_w_q_d4
         li      addr, 8                                 // E145  ASL.W     #8,D5
-        b       L_05004
+        b       asl_w_q_d5
         li      addr, 8                                 // E146  ASL.W     #8,D6
-        b       L_050C4
+        b       asl_w_q_d6
         li      addr, 8                                 // E147  ASL.W     #8,D7
-        b       L_05184
+        b       asl_w_q_d7
         slwi    data, d0, 23                            // E148  LSL.W     #8,D0
-        b       L_04C20
+        b       lsl_w_q_d0
         slwi    data, d1, 23                            // E149  LSL.W     #8,D1
-        b       L_04CE0
+        b       lsl_w_q_d1
         slwi    data, d2, 23                            // E14A  LSL.W     #8,D2
-        b       L_04DA0
+        b       lsl_w_q_d2
         slwi    data, d3, 23                            // E14B  LSL.W     #8,D3
-        b       L_04E60
+        b       lsl_w_q_d3
         slwi    data, d4, 23                            // E14C  LSL.W     #8,D4
-        b       L_04F20
+        b       lsl_w_q_d4
         slwi    data, d5, 23                            // E14D  LSL.W     #8,D5
-        b       L_04FE0
+        b       lsl_w_q_d5
         slwi    data, d6, 23                            // E14E  LSL.W     #8,D6
-        b       L_050A0
+        b       lsl_w_q_d6
         slwi    data, d7, 23                            // E14F  LSL.W     #8,D7
-        b       L_05160
+        b       lsl_w_q_d7
         addic.  addr, zero, 8                           // E150  ROXL.W    #8,D0
-        b       L_04CA4
+        b       roxr_roxl_w_q_d0
         addic.  addr, zero, 8                           // E151  ROXL.W    #8,D1
-        b       L_04D64
+        b       roxr_roxl_w_q_d1
         addic.  addr, zero, 8                           // E152  ROXL.W    #8,D2
-        b       L_04E24
+        b       roxr_roxl_w_q_d2
         addic.  addr, zero, 8                           // E153  ROXL.W    #8,D3
-        b       L_04EE4
+        b       roxr_roxl_w_q_d3
         addic.  addr, zero, 8                           // E154  ROXL.W    #8,D4
-        b       L_04FA4
+        b       roxr_roxl_w_q_d4
         addic.  addr, zero, 8                           // E155  ROXL.W    #8,D5
-        b       L_05064
+        b       roxr_roxl_w_q_d5
         addic.  addr, zero, 8                           // E156  ROXL.W    #8,D6
-        b       L_05124
+        b       roxr_roxl_w_q_d6
         addic.  addr, zero, 8                           // E157  ROXL.W    #8,D7
-        b       L_051E4
+        b       roxr_roxl_w_q_d7
         li      addr, 8                                 // E158  ROL.W     #8,D0
-        b       L_04C88
+        b       rol_w_q_d0
         li      addr, 8                                 // E159  ROL.W     #8,D1
-        b       L_04D48
+        b       rol_w_q_d1
         li      addr, 8                                 // E15A  ROL.W     #8,D2
-        b       L_04E08
+        b       rol_w_q_d2
         li      addr, 8                                 // E15B  ROL.W     #8,D3
-        b       L_04EC8
+        b       rol_w_q_d3
         li      addr, 8                                 // E15C  ROL.W     #8,D4
-        b       L_04F88
+        b       rol_w_q_d4
         li      addr, 8                                 // E15D  ROL.W     #8,D5
-        b       L_05048
+        b       rol_w_q_d5
         li      addr, 8                                 // E15E  ROL.W     #8,D6
-        b       L_05108
+        b       rol_w_q_d6
         li      addr, 8                                 // E15F  ROL.W     #8,D7
-        b       L_051C8
+        b       rol_w_q_d7
         clrlwi. addr, d0, 26                            // E160  ASL.W     D0,D0
-        b       L_04C40
+        b       asl_w_dn_d0
         clrlwi. addr, d0, 26                            // E161  ASL.W     D0,D1
-        b       L_04D00
+        b       asl_w_dn_d1
         clrlwi. addr, d0, 26                            // E162  ASL.W     D0,D2
-        b       L_04DC0
+        b       asl_w_dn_d2
         clrlwi. addr, d0, 26                            // E163  ASL.W     D0,D3
-        b       L_04E80
+        b       asl_w_dn_d3
         clrlwi. addr, d0, 26                            // E164  ASL.W     D0,D4
-        b       L_04F40
+        b       asl_w_dn_d4
         clrlwi. addr, d0, 26                            // E165  ASL.W     D0,D5
-        b       L_05000
+        b       asl_w_dn_d5
         clrlwi. addr, d0, 26                            // E166  ASL.W     D0,D6
-        b       L_050C0
+        b       asl_w_dn_d6
         clrlwi. addr, d0, 26                            // E167  ASL.W     D0,D7
-        b       L_05180
+        b       asl_w_dn_d7
         clrlwi. addr, d0, 26                            // E168  LSL.W     D0,D0
-        b       L_04C14
+        b       lsl_w_dn_d0
         clrlwi. addr, d0, 26                            // E169  LSL.W     D0,D1
-        b       L_04CD4
+        b       lsl_w_dn_d1
         clrlwi. addr, d0, 26                            // E16A  LSL.W     D0,D2
-        b       L_04D94
+        b       lsl_w_dn_d2
         clrlwi. addr, d0, 26                            // E16B  LSL.W     D0,D3
-        b       L_04E54
+        b       lsl_w_dn_d3
         clrlwi. addr, d0, 26                            // E16C  LSL.W     D0,D4
-        b       L_04F14
+        b       lsl_w_dn_d4
         clrlwi. addr, d0, 26                            // E16D  LSL.W     D0,D5
-        b       L_04FD4
+        b       lsl_w_dn_d5
         clrlwi. addr, d0, 26                            // E16E  LSL.W     D0,D6
-        b       L_05094
+        b       lsl_w_dn_d6
         clrlwi. addr, d0, 26                            // E16F  LSL.W     D0,D7
-        b       L_05154
+        b       lsl_w_dn_d7
         clrlwi. addr, d0, 26                            // E170  ROXL.W    D0,D0
-        b       L_04CA0
+        b       roxr_roxl_w_dn_d0
         clrlwi. addr, d0, 26                            // E171  ROXL.W    D0,D1
-        b       L_04D60
+        b       roxr_roxl_w_dn_d1
         clrlwi. addr, d0, 26                            // E172  ROXL.W    D0,D2
-        b       L_04E20
+        b       roxr_roxl_w_dn_d2
         clrlwi. addr, d0, 26                            // E173  ROXL.W    D0,D3
-        b       L_04EE0
+        b       roxr_roxl_w_dn_d3
         clrlwi. addr, d0, 26                            // E174  ROXL.W    D0,D4
-        b       L_04FA0
+        b       roxr_roxl_w_dn_d4
         clrlwi. addr, d0, 26                            // E175  ROXL.W    D0,D5
-        b       L_05060
+        b       roxr_roxl_w_dn_d5
         clrlwi. addr, d0, 26                            // E176  ROXL.W    D0,D6
-        b       L_05120
+        b       roxr_roxl_w_dn_d6
         clrlwi. addr, d0, 26                            // E177  ROXL.W    D0,D7
-        b       L_051E0
+        b       roxr_roxl_w_dn_d7
         clrlwi. addr, d0, 26                            // E178  ROL.W     D0,D0
-        b       L_04C80
+        b       rol_w_dn_d0
         clrlwi. addr, d0, 26                            // E179  ROL.W     D0,D1
-        b       L_04D40
+        b       rol_w_dn_d1
         clrlwi. addr, d0, 26                            // E17A  ROL.W     D0,D2
-        b       L_04E00
+        b       rol_w_dn_d2
         clrlwi. addr, d0, 26                            // E17B  ROL.W     D0,D3
-        b       L_04EC0
+        b       rol_w_dn_d3
         clrlwi. addr, d0, 26                            // E17C  ROL.W     D0,D4
-        b       L_04F80
+        b       rol_w_dn_d4
         clrlwi. addr, d0, 26                            // E17D  ROL.W     D0,D5
-        b       L_05040
+        b       rol_w_dn_d5
         clrlwi. addr, d0, 26                            // E17E  ROL.W     D0,D6
-        b       L_05100
+        b       rol_w_dn_d6
         clrlwi. addr, d0, 26                            // E17F  ROL.W     D0,D7
-        b       L_051C0
+        b       rol_w_dn_d7
 
 // ---- $E180-$E1BF --------------------------------------------------------
         li      addr, 8                                 // E180  ASL.L     #8,D0
-        b       L_05244
+        b       asl_l_q_d0
         li      addr, 8                                 // E181  ASL.L     #8,D1
-        b       L_052E4
+        b       asl_l_q_d1
         li      addr, 8                                 // E182  ASL.L     #8,D2
-        b       L_05384
+        b       asl_l_q_d2
         li      addr, 8                                 // E183  ASL.L     #8,D3
-        b       L_05424
+        b       asl_l_q_d3
         li      addr, 8                                 // E184  ASL.L     #8,D4
-        b       L_054C4
+        b       asl_l_q_d4
         li      addr, 8                                 // E185  ASL.L     #8,D5
-        b       L_05564
+        b       asl_l_q_d5
         li      addr, 8                                 // E186  ASL.L     #8,D6
-        b       L_05604
+        b       asl_l_q_d6
         li      addr, 8                                 // E187  ASL.L     #8,D7
-        b       L_056A4
+        b       asl_l_q_d7
         slwi    data, d0, 7                             // E188  LSL.L     #8,D0
-        b       L_05220
+        b       lsl_l_q_d0
         slwi    data, d1, 7                             // E189  LSL.L     #8,D1
-        b       L_052C0
+        b       lsl_l_q_d1
         slwi    data, d2, 7                             // E18A  LSL.L     #8,D2
-        b       L_05360
+        b       lsl_l_q_d2
         slwi    data, d3, 7                             // E18B  LSL.L     #8,D3
-        b       L_05400
+        b       lsl_l_q_d3
         slwi    data, d4, 7                             // E18C  LSL.L     #8,D4
-        b       L_054A0
+        b       lsl_l_q_d4
         slwi    data, d5, 7                             // E18D  LSL.L     #8,D5
-        b       L_05540
+        b       lsl_l_q_d5
         slwi    data, d6, 7                             // E18E  LSL.L     #8,D6
-        b       L_055E0
+        b       lsl_l_q_d6
         slwi    data, d7, 7                             // E18F  LSL.L     #8,D7
-        b       L_05680
+        b       lsl_l_q_d7
         addic.  addr, zero, 8                           // E190  ROXL.L    #8,D0
-        b       L_05284
+        b       roxr_roxl_l_q_d0
         addic.  addr, zero, 8                           // E191  ROXL.L    #8,D1
-        b       L_05324
+        b       roxr_roxl_l_q_d1
         addic.  addr, zero, 8                           // E192  ROXL.L    #8,D2
-        b       L_053C4
+        b       roxr_roxl_l_q_d2
         addic.  addr, zero, 8                           // E193  ROXL.L    #8,D3
-        b       L_05464
+        b       roxr_roxl_l_q_d3
         addic.  addr, zero, 8                           // E194  ROXL.L    #8,D4
-        b       L_05504
+        b       roxr_roxl_l_q_d4
         addic.  addr, zero, 8                           // E195  ROXL.L    #8,D5
-        b       L_055A4
+        b       roxr_roxl_l_q_d5
         addic.  addr, zero, 8                           // E196  ROXL.L    #8,D6
-        b       L_05644
+        b       roxr_roxl_l_q_d6
         addic.  addr, zero, 8                           // E197  ROXL.L    #8,D7
-        b       L_056E4
+        b       roxr_roxl_l_q_d7
         rotlwi  data, d0, 8                             // E198  ROL.L     #8,D0
-        b       L_05270
+        b       rol_l_q_d0
         rotlwi  data, d1, 8                             // E199  ROL.L     #8,D1
-        b       L_05310
+        b       rol_l_q_d1
         rotlwi  data, d2, 8                             // E19A  ROL.L     #8,D2
-        b       L_053B0
+        b       rol_l_q_d2
         rotlwi  data, d3, 8                             // E19B  ROL.L     #8,D3
-        b       L_05450
+        b       rol_l_q_d3
         rotlwi  data, d4, 8                             // E19C  ROL.L     #8,D4
-        b       L_054F0
+        b       rol_l_q_d4
         rotlwi  data, d5, 8                             // E19D  ROL.L     #8,D5
-        b       L_05590
+        b       rol_l_q_d5
         rotlwi  data, d6, 8                             // E19E  ROL.L     #8,D6
-        b       L_05630
+        b       rol_l_q_d6
         rotlwi  data, d7, 8                             // E19F  ROL.L     #8,D7
-        b       L_056D0
+        b       rol_l_q_d7
         clrlwi. addr, d0, 26                            // E1A0  ASL.L     D0,D0
-        b       L_05240
+        b       asl_l_dn_d0
         clrlwi. addr, d0, 26                            // E1A1  ASL.L     D0,D1
-        b       L_052E0
+        b       asl_l_dn_d1
         clrlwi. addr, d0, 26                            // E1A2  ASL.L     D0,D2
-        b       L_05380
+        b       asl_l_dn_d2
         clrlwi. addr, d0, 26                            // E1A3  ASL.L     D0,D3
-        b       L_05420
+        b       asl_l_dn_d3
         clrlwi. addr, d0, 26                            // E1A4  ASL.L     D0,D4
-        b       L_054C0
+        b       asl_l_dn_d4
         clrlwi. addr, d0, 26                            // E1A5  ASL.L     D0,D5
-        b       L_05560
+        b       asl_l_dn_d5
         clrlwi. addr, d0, 26                            // E1A6  ASL.L     D0,D6
-        b       L_05600
+        b       asl_l_dn_d6
         clrlwi. addr, d0, 26                            // E1A7  ASL.L     D0,D7
-        b       L_056A0
+        b       asl_l_dn_d7
         clrlwi. addr, d0, 26                            // E1A8  LSL.L     D0,D0
-        b       L_05214
+        b       lsl_l_dn_d0
         clrlwi. addr, d0, 26                            // E1A9  LSL.L     D0,D1
-        b       L_052B4
+        b       lsl_l_dn_d1
         clrlwi. addr, d0, 26                            // E1AA  LSL.L     D0,D2
-        b       L_05354
+        b       lsl_l_dn_d2
         clrlwi. addr, d0, 26                            // E1AB  LSL.L     D0,D3
-        b       L_053F4
+        b       lsl_l_dn_d3
         clrlwi. addr, d0, 26                            // E1AC  LSL.L     D0,D4
-        b       L_05494
+        b       lsl_l_dn_d4
         clrlwi. addr, d0, 26                            // E1AD  LSL.L     D0,D5
-        b       L_05534
+        b       lsl_l_dn_d5
         clrlwi. addr, d0, 26                            // E1AE  LSL.L     D0,D6
-        b       L_055D4
+        b       lsl_l_dn_d6
         clrlwi. addr, d0, 26                            // E1AF  LSL.L     D0,D7
-        b       L_05674
+        b       lsl_l_dn_d7
         clrlwi. addr, d0, 26                            // E1B0  ROXL.L    D0,D0
-        b       L_05280
+        b       roxr_roxl_l_dn_d0
         clrlwi. addr, d0, 26                            // E1B1  ROXL.L    D0,D1
-        b       L_05320
+        b       roxr_roxl_l_dn_d1
         clrlwi. addr, d0, 26                            // E1B2  ROXL.L    D0,D2
-        b       L_053C0
+        b       roxr_roxl_l_dn_d2
         clrlwi. addr, d0, 26                            // E1B3  ROXL.L    D0,D3
-        b       L_05460
+        b       roxr_roxl_l_dn_d3
         clrlwi. addr, d0, 26                            // E1B4  ROXL.L    D0,D4
-        b       L_05500
+        b       roxr_roxl_l_dn_d4
         clrlwi. addr, d0, 26                            // E1B5  ROXL.L    D0,D5
-        b       L_055A0
+        b       roxr_roxl_l_dn_d5
         clrlwi. addr, d0, 26                            // E1B6  ROXL.L    D0,D6
-        b       L_05640
+        b       roxr_roxl_l_dn_d6
         clrlwi. addr, d0, 26                            // E1B7  ROXL.L    D0,D7
-        b       L_056E0
+        b       roxr_roxl_l_dn_d7
         clrlwi. addr, d0, 26                            // E1B8  ROL.L     D0,D0
-        b       L_05268
+        b       rol_l_dn_d0
         clrlwi. addr, d0, 26                            // E1B9  ROL.L     D0,D1
-        b       L_05308
+        b       rol_l_dn_d1
         clrlwi. addr, d0, 26                            // E1BA  ROL.L     D0,D2
-        b       L_053A8
+        b       rol_l_dn_d2
         clrlwi. addr, d0, 26                            // E1BB  ROL.L     D0,D3
-        b       L_05448
+        b       rol_l_dn_d3
         clrlwi. addr, d0, 26                            // E1BC  ROL.L     D0,D4
-        b       L_054E8
+        b       rol_l_dn_d4
         clrlwi. addr, d0, 26                            // E1BD  ROL.L     D0,D5
-        b       L_05588
+        b       rol_l_dn_d5
         clrlwi. addr, d0, 26                            // E1BE  ROL.L     D0,D6
-        b       L_05628
+        b       rol_l_dn_d6
         clrlwi. addr, d0, 26                            // E1BF  ROL.L     D0,D7
-        b       L_056C8
+        b       rol_l_dn_d7
 
 // ---- $E1C0-$E1FF --------------------------------------------------------
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E1C0  ASL.W     D0   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E1C1  ASL.W     D1   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E1C2  ASL.W     D2   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E1C3  ASL.W     D3   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E1C4  ASL.W     D4   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E1C5  ASL.W     D5   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E1C6  ASL.W     D6   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E1C7  ASL.W     D7   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E1C8  ASL.W     A0   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E1C9  ASL.W     A1   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E1CA  ASL.W     A2   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E1CB  ASL.W     A3   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E1CC  ASL.W     A4   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E1CD  ASL.W     A5   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E1CE  ASL.W     A6   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E1CF  ASL.W     A7   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 op_E1D0:
         mr      addr, a0                                // E1D0  ASL.W     (A0)
-        b       L_074C4
+        b       asl_w_mem_2
 op_E1D1:
         mr      addr, a1                                // E1D1  ASL.W     (A1)
-        b       L_074C4
+        b       asl_w_mem_2
 op_E1D2:
         mr      addr, a2                                // E1D2  ASL.W     (A2)
-        b       L_074C4
+        b       asl_w_mem_2
 op_E1D3:
         mr      addr, a3                                // E1D3  ASL.W     (A3)
-        b       L_074C4
+        b       asl_w_mem_2
 op_E1D4:
         mr      addr, a4                                // E1D4  ASL.W     (A4)
-        b       L_074C4
+        b       asl_w_mem_2
 op_E1D5:
         mr      addr, a5                                // E1D5  ASL.W     (A5)
-        b       L_074C4
+        b       asl_w_mem_2
 op_E1D6:
         mr      addr, a6                                // E1D6  ASL.W     (A6)
-        b       L_074C4
+        b       asl_w_mem_2
 op_E1D7:
         mr      addr, a7                                // E1D7  ASL.W     (A7)
-        b       L_074C4
-        ori     rtn_addr, code_ptr, L_074C4 - cb        // E1D8  ASL.W     (A0)+
-        b       L_00820
-        ori     rtn_addr, code_ptr, L_074C4 - cb        // E1D9  ASL.W     (A1)+
-        b       L_008A0
-        ori     rtn_addr, code_ptr, L_074C4 - cb        // E1DA  ASL.W     (A2)+
-        b       L_00920
-        ori     rtn_addr, code_ptr, L_074C4 - cb        // E1DB  ASL.W     (A3)+
-        b       L_009A0
-        ori     rtn_addr, code_ptr, L_074C4 - cb        // E1DC  ASL.W     (A4)+
-        b       L_00A20
-        ori     rtn_addr, code_ptr, L_074C4 - cb        // E1DD  ASL.W     (A5)+
-        b       L_00AA0
-        ori     rtn_addr, code_ptr, L_074C4 - cb        // E1DE  ASL.W     (A6)+
-        b       L_00B20
-        ori     rtn_addr, code_ptr, L_074C4 - cb        // E1DF  ASL.W     (A7)+
-        b       L_00BA0
+        b       asl_w_mem_2
+        ori     rtn_addr, code_ptr, asl_w_mem_2 - cb    // E1D8  ASL.W     (A0)+
+        b       cea_w_30
+        ori     rtn_addr, code_ptr, asl_w_mem_2 - cb    // E1D9  ASL.W     (A1)+
+        b       cea_w_31
+        ori     rtn_addr, code_ptr, asl_w_mem_2 - cb    // E1DA  ASL.W     (A2)+
+        b       cea_w_32
+        ori     rtn_addr, code_ptr, asl_w_mem_2 - cb    // E1DB  ASL.W     (A3)+
+        b       cea_w_33
+        ori     rtn_addr, code_ptr, asl_w_mem_2 - cb    // E1DC  ASL.W     (A4)+
+        b       cea_w_34
+        ori     rtn_addr, code_ptr, asl_w_mem_2 - cb    // E1DD  ASL.W     (A5)+
+        b       cea_w_35
+        ori     rtn_addr, code_ptr, asl_w_mem_2 - cb    // E1DE  ASL.W     (A6)+
+        b       cea_w_36
+        ori     rtn_addr, code_ptr, asl_w_mem_2 - cb    // E1DF  ASL.W     (A7)+
+        b       cea_w_37
         addi    a0, a0, -2                              // E1E0  ASL.W     -(A0)
         b       op_E1D0
         addi    a1, a1, -2                              // E1E1  ASL.W     -(A1)
@@ -1011,517 +1011,517 @@ op_E1D7:
         addi    a7, a7, -2                              // E1E7  ASL.W     -(A7)
         b       op_E1D7
         add     addr, a0, prefetch_data                 // E1E8  ASL.W     (d16,A0)
-        b       L_074C0
+        b       asl_w_mem
         add     addr, a1, prefetch_data                 // E1E9  ASL.W     (d16,A1)
-        b       L_074C0
+        b       asl_w_mem
         add     addr, a2, prefetch_data                 // E1EA  ASL.W     (d16,A2)
-        b       L_074C0
+        b       asl_w_mem
         add     addr, a3, prefetch_data                 // E1EB  ASL.W     (d16,A3)
-        b       L_074C0
+        b       asl_w_mem
         add     addr, a4, prefetch_data                 // E1EC  ASL.W     (d16,A4)
-        b       L_074C0
+        b       asl_w_mem
         add     addr, a5, prefetch_data                 // E1ED  ASL.W     (d16,A5)
-        b       L_074C0
+        b       asl_w_mem
         add     addr, a6, prefetch_data                 // E1EE  ASL.W     (d16,A6)
-        b       L_074C0
+        b       asl_w_mem
         add     addr, a7, prefetch_data                 // E1EF  ASL.W     (d16,A7)
-        b       L_074C0
-        ori     rtn_addr, code_ptr, L_074C8 - cb        // E1F0  ASL.W     (d8,A0,Xn)
-        b       L_059B0
-        ori     rtn_addr, code_ptr, L_074C8 - cb        // E1F1  ASL.W     (d8,A1,Xn)
-        b       L_05A10
-        ori     rtn_addr, code_ptr, L_074C8 - cb        // E1F2  ASL.W     (d8,A2,Xn)
-        b       L_05A70
-        ori     rtn_addr, code_ptr, L_074C8 - cb        // E1F3  ASL.W     (d8,A3,Xn)
-        b       L_05AD0
-        ori     rtn_addr, code_ptr, L_074C8 - cb        // E1F4  ASL.W     (d8,A4,Xn)
-        b       L_05B30
-        ori     rtn_addr, code_ptr, L_074C8 - cb        // E1F5  ASL.W     (d8,A5,Xn)
-        b       L_05B90
-        ori     rtn_addr, code_ptr, L_074C8 - cb        // E1F6  ASL.W     (d8,A6,Xn)
-        b       L_05BF0
-        ori     rtn_addr, code_ptr, L_074C8 - cb        // E1F7  ASL.W     (d8,A7,Xn)
-        b       L_05C50
+        b       asl_w_mem
+        ori     rtn_addr, code_ptr, asl_w_mem_3 - cb    // E1F0  ASL.W     (d8,A0,Xn)
+        b       move_add_etc_w_any_any
+        ori     rtn_addr, code_ptr, asl_w_mem_3 - cb    // E1F1  ASL.W     (d8,A1,Xn)
+        b       move_add_etc_w_any_any_2
+        ori     rtn_addr, code_ptr, asl_w_mem_3 - cb    // E1F2  ASL.W     (d8,A2,Xn)
+        b       move_add_etc_w_any_any_3
+        ori     rtn_addr, code_ptr, asl_w_mem_3 - cb    // E1F3  ASL.W     (d8,A3,Xn)
+        b       move_add_etc_w_any_any_4
+        ori     rtn_addr, code_ptr, asl_w_mem_3 - cb    // E1F4  ASL.W     (d8,A4,Xn)
+        b       move_add_etc_w_any_any_5
+        ori     rtn_addr, code_ptr, asl_w_mem_3 - cb    // E1F5  ASL.W     (d8,A5,Xn)
+        b       move_add_etc_w_any_any_6
+        ori     rtn_addr, code_ptr, asl_w_mem_3 - cb    // E1F6  ASL.W     (d8,A6,Xn)
+        b       move_add_etc_w_any_any_7
+        ori     rtn_addr, code_ptr, asl_w_mem_3 - cb    // E1F7  ASL.W     (d8,A7,Xn)
+        b       move_add_etc_w_any_any_8
         mr      addr, prefetch_data                     // E1F8  ASL.W     (xxx).W
-        b       L_074C0
-        ori     rtn_addr, code_ptr, L_074C8 - cb        // E1F9  ASL.W     (xxx).L
-        b       L_05E70
+        b       asl_w_mem
+        ori     rtn_addr, code_ptr, asl_w_mem_3 - cb    // E1F9  ASL.W     (xxx).L
+        b       fea_w_71
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E1FA  ASL.W     (d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E1FB  ASL.W     (d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E1FC  ASL.W     #<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E1FD  ASL.W     <ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E1FE  ASL.W     <ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E1FF  ASL.W     <ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $E200-$E23F --------------------------------------------------------
         rlwinm  data, d0, 23, 1, 8                      // E200  ASR.B     #1,D0
-        b       L_0B2F4
+        b       asr_b_q_d0_2
         rlwinm  data, d1, 23, 1, 8                      // E201  ASR.B     #1,D1
-        b       L_0B3B4
+        b       asr_b_q_d1_2
         rlwinm  data, d2, 23, 1, 8                      // E202  ASR.B     #1,D2
-        b       L_0B474
+        b       asr_b_q_d2_2
         rlwinm  data, d3, 23, 1, 8                      // E203  ASR.B     #1,D3
-        b       L_0B534
+        b       asr_b_q_d3_2
         rlwinm  data, d4, 23, 1, 8                      // E204  ASR.B     #1,D4
-        b       L_0B5F4
+        b       asr_b_q_d4_2
         rlwinm  data, d5, 23, 1, 8                      // E205  ASR.B     #1,D5
-        b       L_0B6B4
+        b       asr_b_q_d5_2
         rlwinm  data, d6, 23, 1, 8                      // E206  ASR.B     #1,D6
-        b       L_0B774
+        b       asr_b_q_d6_2
         rlwinm  data, d7, 23, 1, 8                      // E207  ASR.B     #1,D7
-        b       L_0B834
+        b       asr_b_q_d7_2
         clrlwi  data, d0, 24                            // E208  LSR.B     #1,D0
-        b       L_0B2CC
+        b       lsr_b_q_d0
         clrlwi  data, d1, 24                            // E209  LSR.B     #1,D1
-        b       L_0B38C
+        b       lsr_b_q_d1
         clrlwi  data, d2, 24                            // E20A  LSR.B     #1,D2
-        b       L_0B44C
+        b       lsr_b_q_d2
         clrlwi  data, d3, 24                            // E20B  LSR.B     #1,D3
-        b       L_0B50C
+        b       lsr_b_q_d3
         clrlwi  data, d4, 24                            // E20C  LSR.B     #1,D4
-        b       L_0B5CC
+        b       lsr_b_q_d4
         clrlwi  data, d5, 24                            // E20D  LSR.B     #1,D5
-        b       L_0B68C
+        b       lsr_b_q_d5
         clrlwi  data, d6, 24                            // E20E  LSR.B     #1,D6
-        b       L_0B74C
+        b       lsr_b_q_d6
         clrlwi  data, d7, 24                            // E20F  LSR.B     #1,D7
-        b       L_0B80C
+        b       lsr_b_q_d7
         li      addr, 8                                 // E210  ROXR.B    #1,D0
-        b       L_0B364
+        b       roxr_roxl_b_q_d0
         li      addr, 8                                 // E211  ROXR.B    #1,D1
-        b       L_0B424
+        b       roxr_roxl_b_q_d1
         li      addr, 8                                 // E212  ROXR.B    #1,D2
-        b       L_0B4E4
+        b       roxr_roxl_b_q_d2
         li      addr, 8                                 // E213  ROXR.B    #1,D3
-        b       L_0B5A4
+        b       roxr_roxl_b_q_d3
         li      addr, 8                                 // E214  ROXR.B    #1,D4
-        b       L_0B664
+        b       roxr_roxl_b_q_d4
         li      addr, 8                                 // E215  ROXR.B    #1,D5
-        b       L_0B724
+        b       roxr_roxl_b_q_d5
         li      addr, 8                                 // E216  ROXR.B    #1,D6
-        b       L_0B7E4
+        b       roxr_roxl_b_q_d6
         li      addr, 8                                 // E217  ROXR.B    #1,D7
-        b       L_0B8A4
+        b       roxr_roxl_b_q_d7
         li      addr, 7                                 // E218  ROR.B     #1,D0
-        b       L_0B32C
+        b       ror_b_q_d0
         li      addr, 7                                 // E219  ROR.B     #1,D1
-        b       L_0B3EC
+        b       ror_b_q_d1
         li      addr, 7                                 // E21A  ROR.B     #1,D2
-        b       L_0B4AC
+        b       ror_b_q_d2
         li      addr, 7                                 // E21B  ROR.B     #1,D3
-        b       L_0B56C
+        b       ror_b_q_d3
         li      addr, 7                                 // E21C  ROR.B     #1,D4
-        b       L_0B62C
+        b       ror_b_q_d4
         li      addr, 7                                 // E21D  ROR.B     #1,D5
-        b       L_0B6EC
+        b       ror_b_q_d5
         li      addr, 7                                 // E21E  ROR.B     #1,D6
-        b       L_0B7AC
+        b       ror_b_q_d6
         li      addr, 7                                 // E21F  ROR.B     #1,D7
-        b       L_0B86C
+        b       ror_b_q_d7
         clrlwi. addr, d1, 26                            // E220  ASR.B     D1,D0
-        b       L_0B2E8
+        b       asr_b_dn_d0
         clrlwi. addr, d1, 26                            // E221  ASR.B     D1,D1
-        b       L_0B3A8
+        b       asr_b_dn_d1
         clrlwi. addr, d1, 26                            // E222  ASR.B     D1,D2
-        b       L_0B468
+        b       asr_b_dn_d2
         clrlwi. addr, d1, 26                            // E223  ASR.B     D1,D3
-        b       L_0B528
+        b       asr_b_dn_d3
         clrlwi. addr, d1, 26                            // E224  ASR.B     D1,D4
-        b       L_0B5E8
+        b       asr_b_dn_d4
         clrlwi. addr, d1, 26                            // E225  ASR.B     D1,D5
-        b       L_0B6A8
+        b       asr_b_dn_d5
         clrlwi. addr, d1, 26                            // E226  ASR.B     D1,D6
-        b       L_0B768
+        b       asr_b_dn_d6
         clrlwi. addr, d1, 26                            // E227  ASR.B     D1,D7
-        b       L_0B828
+        b       asr_b_dn_d7
         clrlwi. addr, d1, 26                            // E228  LSR.B     D1,D0
-        b       L_0B2C0
+        b       lsr_b_dn_d0
         clrlwi. addr, d1, 26                            // E229  LSR.B     D1,D1
-        b       L_0B380
+        b       lsr_b_dn_d1
         clrlwi. addr, d1, 26                            // E22A  LSR.B     D1,D2
-        b       L_0B440
+        b       lsr_b_dn_d2
         clrlwi. addr, d1, 26                            // E22B  LSR.B     D1,D3
-        b       L_0B500
+        b       lsr_b_dn_d3
         clrlwi. addr, d1, 26                            // E22C  LSR.B     D1,D4
-        b       L_0B5C0
+        b       lsr_b_dn_d4
         clrlwi. addr, d1, 26                            // E22D  LSR.B     D1,D5
-        b       L_0B680
+        b       lsr_b_dn_d5
         clrlwi. addr, d1, 26                            // E22E  LSR.B     D1,D6
-        b       L_0B740
+        b       lsr_b_dn_d6
         clrlwi. addr, d1, 26                            // E22F  LSR.B     D1,D7
-        b       L_0B800
+        b       lsr_b_dn_d7
         clrlwi. addr, d1, 26                            // E230  ROXR.B    D1,D0
-        b       L_0B360
+        b       roxr_roxl_b_dn_d0
         clrlwi. addr, d1, 26                            // E231  ROXR.B    D1,D1
-        b       L_0B420
+        b       roxr_roxl_b_dn_d1
         clrlwi. addr, d1, 26                            // E232  ROXR.B    D1,D2
-        b       L_0B4E0
+        b       roxr_roxl_b_dn_d2
         clrlwi. addr, d1, 26                            // E233  ROXR.B    D1,D3
-        b       L_0B5A0
+        b       roxr_roxl_b_dn_d3
         clrlwi. addr, d1, 26                            // E234  ROXR.B    D1,D4
-        b       L_0B660
+        b       roxr_roxl_b_dn_d4
         clrlwi. addr, d1, 26                            // E235  ROXR.B    D1,D5
-        b       L_0B720
+        b       roxr_roxl_b_dn_d5
         clrlwi. addr, d1, 26                            // E236  ROXR.B    D1,D6
-        b       L_0B7E0
+        b       roxr_roxl_b_dn_d6
         clrlwi. addr, d1, 26                            // E237  ROXR.B    D1,D7
-        b       L_0B8A0
+        b       roxr_roxl_b_dn_d7
         clrlwi. addr, d1, 26                            // E238  ROR.B     D1,D0
-        b       L_0B320
+        b       ror_b_dn_d0
         clrlwi. addr, d1, 26                            // E239  ROR.B     D1,D1
-        b       L_0B3E0
+        b       ror_b_dn_d1
         clrlwi. addr, d1, 26                            // E23A  ROR.B     D1,D2
-        b       L_0B4A0
+        b       ror_b_dn_d2
         clrlwi. addr, d1, 26                            // E23B  ROR.B     D1,D3
-        b       L_0B560
+        b       ror_b_dn_d3
         clrlwi. addr, d1, 26                            // E23C  ROR.B     D1,D4
-        b       L_0B620
+        b       ror_b_dn_d4
         clrlwi. addr, d1, 26                            // E23D  ROR.B     D1,D5
-        b       L_0B6E0
+        b       ror_b_dn_d5
         clrlwi. addr, d1, 26                            // E23E  ROR.B     D1,D6
-        b       L_0B7A0
+        b       ror_b_dn_d6
         clrlwi. addr, d1, 26                            // E23F  ROR.B     D1,D7
-        b       L_0B860
+        b       ror_b_dn_d7
 
 // ---- $E240-$E27F --------------------------------------------------------
         rlwinm  data, d0, 15, 1, 16                     // E240  ASR.W     #1,D0
-        b       L_04C34
+        b       asr_w_q_d0_2
         rlwinm  data, d1, 15, 1, 16                     // E241  ASR.W     #1,D1
-        b       L_04CF4
+        b       asr_w_q_d1_2
         rlwinm  data, d2, 15, 1, 16                     // E242  ASR.W     #1,D2
-        b       L_04DB4
+        b       asr_w_q_d2_2
         rlwinm  data, d3, 15, 1, 16                     // E243  ASR.W     #1,D3
-        b       L_04E74
+        b       asr_w_q_d3_2
         rlwinm  data, d4, 15, 1, 16                     // E244  ASR.W     #1,D4
-        b       L_04F34
+        b       asr_w_q_d4_2
         rlwinm  data, d5, 15, 1, 16                     // E245  ASR.W     #1,D5
-        b       L_04FF4
+        b       asr_w_q_d5_2
         rlwinm  data, d6, 15, 1, 16                     // E246  ASR.W     #1,D6
-        b       L_050B4
+        b       asr_w_q_d6_2
         rlwinm  data, d7, 15, 1, 16                     // E247  ASR.W     #1,D7
-        b       L_05174
+        b       asr_w_q_d7_2
         clrlwi  data, d0, 16                            // E248  LSR.W     #1,D0
-        b       L_04C0C
+        b       lsr_w_q_d0
         clrlwi  data, d1, 16                            // E249  LSR.W     #1,D1
-        b       L_04CCC
+        b       lsr_w_q_d1
         clrlwi  data, d2, 16                            // E24A  LSR.W     #1,D2
-        b       L_04D8C
+        b       lsr_w_q_d2
         clrlwi  data, d3, 16                            // E24B  LSR.W     #1,D3
-        b       L_04E4C
+        b       lsr_w_q_d3
         clrlwi  data, d4, 16                            // E24C  LSR.W     #1,D4
-        b       L_04F0C
+        b       lsr_w_q_d4
         clrlwi  data, d5, 16                            // E24D  LSR.W     #1,D5
-        b       L_04FCC
+        b       lsr_w_q_d5
         clrlwi  data, d6, 16                            // E24E  LSR.W     #1,D6
-        b       L_0508C
+        b       lsr_w_q_d6
         clrlwi  data, d7, 16                            // E24F  LSR.W     #1,D7
-        b       L_0514C
+        b       lsr_w_q_d7
         addic.  addr, zero, 16                          // E250  ROXR.W    #1,D0
-        b       L_04CA4
+        b       roxr_roxl_w_q_d0
         addic.  addr, zero, 16                          // E251  ROXR.W    #1,D1
-        b       L_04D64
+        b       roxr_roxl_w_q_d1
         addic.  addr, zero, 16                          // E252  ROXR.W    #1,D2
-        b       L_04E24
+        b       roxr_roxl_w_q_d2
         addic.  addr, zero, 16                          // E253  ROXR.W    #1,D3
-        b       L_04EE4
+        b       roxr_roxl_w_q_d3
         addic.  addr, zero, 16                          // E254  ROXR.W    #1,D4
-        b       L_04FA4
+        b       roxr_roxl_w_q_d4
         addic.  addr, zero, 16                          // E255  ROXR.W    #1,D5
-        b       L_05064
+        b       roxr_roxl_w_q_d5
         addic.  addr, zero, 16                          // E256  ROXR.W    #1,D6
-        b       L_05124
+        b       roxr_roxl_w_q_d6
         addic.  addr, zero, 16                          // E257  ROXR.W    #1,D7
-        b       L_051E4
+        b       roxr_roxl_w_q_d7
         li      addr, 15                                // E258  ROR.W     #1,D0
-        b       L_04C6C
+        b       ror_w_q_d0
         li      addr, 15                                // E259  ROR.W     #1,D1
-        b       L_04D2C
+        b       ror_w_q_d1
         li      addr, 15                                // E25A  ROR.W     #1,D2
-        b       L_04DEC
+        b       ror_w_q_d2
         li      addr, 15                                // E25B  ROR.W     #1,D3
-        b       L_04EAC
+        b       ror_w_q_d3
         li      addr, 15                                // E25C  ROR.W     #1,D4
-        b       L_04F6C
+        b       ror_w_q_d4
         li      addr, 15                                // E25D  ROR.W     #1,D5
-        b       L_0502C
+        b       ror_w_q_d5
         li      addr, 15                                // E25E  ROR.W     #1,D6
-        b       L_050EC
+        b       ror_w_q_d6
         li      addr, 15                                // E25F  ROR.W     #1,D7
-        b       L_051AC
+        b       ror_w_q_d7
         clrlwi. addr, d1, 26                            // E260  ASR.W     D1,D0
-        b       L_04C28
+        b       asr_w_dn_d0
         clrlwi. addr, d1, 26                            // E261  ASR.W     D1,D1
-        b       L_04CE8
+        b       asr_w_dn_d1
         clrlwi. addr, d1, 26                            // E262  ASR.W     D1,D2
-        b       L_04DA8
+        b       asr_w_dn_d2
         clrlwi. addr, d1, 26                            // E263  ASR.W     D1,D3
-        b       L_04E68
+        b       asr_w_dn_d3
         clrlwi. addr, d1, 26                            // E264  ASR.W     D1,D4
-        b       L_04F28
+        b       asr_w_dn_d4
         clrlwi. addr, d1, 26                            // E265  ASR.W     D1,D5
-        b       L_04FE8
+        b       asr_w_dn_d5
         clrlwi. addr, d1, 26                            // E266  ASR.W     D1,D6
-        b       L_050A8
+        b       asr_w_dn_d6
         clrlwi. addr, d1, 26                            // E267  ASR.W     D1,D7
-        b       L_05168
+        b       asr_w_dn_d7
         clrlwi. addr, d1, 26                            // E268  LSR.W     D1,D0
-        b       L_04C00
+        b       lsr_w_dn_d0
         clrlwi. addr, d1, 26                            // E269  LSR.W     D1,D1
-        b       L_04CC0
+        b       lsr_w_dn_d1
         clrlwi. addr, d1, 26                            // E26A  LSR.W     D1,D2
-        b       L_04D80
+        b       lsr_w_dn_d2
         clrlwi. addr, d1, 26                            // E26B  LSR.W     D1,D3
-        b       L_04E40
+        b       lsr_w_dn_d3
         clrlwi. addr, d1, 26                            // E26C  LSR.W     D1,D4
-        b       L_04F00
+        b       lsr_w_dn_d4
         clrlwi. addr, d1, 26                            // E26D  LSR.W     D1,D5
-        b       L_04FC0
+        b       lsr_w_dn_d5
         clrlwi. addr, d1, 26                            // E26E  LSR.W     D1,D6
-        b       L_05080
+        b       lsr_w_dn_d6
         clrlwi. addr, d1, 26                            // E26F  LSR.W     D1,D7
-        b       L_05140
+        b       lsr_w_dn_d7
         clrlwi. addr, d1, 26                            // E270  ROXR.W    D1,D0
-        b       L_04CA0
+        b       roxr_roxl_w_dn_d0
         clrlwi. addr, d1, 26                            // E271  ROXR.W    D1,D1
-        b       L_04D60
+        b       roxr_roxl_w_dn_d1
         clrlwi. addr, d1, 26                            // E272  ROXR.W    D1,D2
-        b       L_04E20
+        b       roxr_roxl_w_dn_d2
         clrlwi. addr, d1, 26                            // E273  ROXR.W    D1,D3
-        b       L_04EE0
+        b       roxr_roxl_w_dn_d3
         clrlwi. addr, d1, 26                            // E274  ROXR.W    D1,D4
-        b       L_04FA0
+        b       roxr_roxl_w_dn_d4
         clrlwi. addr, d1, 26                            // E275  ROXR.W    D1,D5
-        b       L_05060
+        b       roxr_roxl_w_dn_d5
         clrlwi. addr, d1, 26                            // E276  ROXR.W    D1,D6
-        b       L_05120
+        b       roxr_roxl_w_dn_d6
         clrlwi. addr, d1, 26                            // E277  ROXR.W    D1,D7
-        b       L_051E0
+        b       roxr_roxl_w_dn_d7
         clrlwi. addr, d1, 26                            // E278  ROR.W     D1,D0
-        b       L_04C60
+        b       ror_w_dn_d0
         clrlwi. addr, d1, 26                            // E279  ROR.W     D1,D1
-        b       L_04D20
+        b       ror_w_dn_d1
         clrlwi. addr, d1, 26                            // E27A  ROR.W     D1,D2
-        b       L_04DE0
+        b       ror_w_dn_d2
         clrlwi. addr, d1, 26                            // E27B  ROR.W     D1,D3
-        b       L_04EA0
+        b       ror_w_dn_d3
         clrlwi. addr, d1, 26                            // E27C  ROR.W     D1,D4
-        b       L_04F60
+        b       ror_w_dn_d4
         clrlwi. addr, d1, 26                            // E27D  ROR.W     D1,D5
-        b       L_05020
+        b       ror_w_dn_d5
         clrlwi. addr, d1, 26                            // E27E  ROR.W     D1,D6
-        b       L_050E0
+        b       ror_w_dn_d6
         clrlwi. addr, d1, 26                            // E27F  ROR.W     D1,D7
-        b       L_051A0
+        b       ror_w_dn_d7
 
 // ---- $E280-$E2BF --------------------------------------------------------
         srawi   data, d0, 0                             // E280  ASR.L     #1,D0
-        b       L_05234
+        b       asr_l_q_d0
         srawi   data, d1, 0                             // E281  ASR.L     #1,D1
-        b       L_052D4
+        b       asr_l_q_d1
         srawi   data, d2, 0                             // E282  ASR.L     #1,D2
-        b       L_05374
+        b       asr_l_q_d2
         srawi   data, d3, 0                             // E283  ASR.L     #1,D3
-        b       L_05414
+        b       asr_l_q_d3
         srawi   data, d4, 0                             // E284  ASR.L     #1,D4
-        b       L_054B4
+        b       asr_l_q_d4
         srawi   data, d5, 0                             // E285  ASR.L     #1,D5
-        b       L_05554
+        b       asr_l_q_d5
         srawi   data, d6, 0                             // E286  ASR.L     #1,D6
-        b       L_055F4
+        b       asr_l_q_d6
         srawi   data, d7, 0                             // E287  ASR.L     #1,D7
-        b       L_05694
+        b       asr_l_q_d7
         mr      data, d0                                // E288  LSR.L     #1,D0
-        b       L_0520C
+        b       lsr_l_q_d0
         mr      data, d1                                // E289  LSR.L     #1,D1
-        b       L_052AC
+        b       lsr_l_q_d1
         mr      data, d2                                // E28A  LSR.L     #1,D2
-        b       L_0534C
+        b       lsr_l_q_d2
         mr      data, d3                                // E28B  LSR.L     #1,D3
-        b       L_053EC
+        b       lsr_l_q_d3
         mr      data, d4                                // E28C  LSR.L     #1,D4
-        b       L_0548C
+        b       lsr_l_q_d4
         mr      data, d5                                // E28D  LSR.L     #1,D5
-        b       L_0552C
+        b       lsr_l_q_d5
         mr      data, d6                                // E28E  LSR.L     #1,D6
-        b       L_055CC
+        b       lsr_l_q_d6
         mr      data, d7                                // E28F  LSR.L     #1,D7
-        b       L_0566C
+        b       lsr_l_q_d7
         addic.  addr, zero, 32                          // E290  ROXR.L    #1,D0
-        b       L_05284
+        b       roxr_roxl_l_q_d0
         addic.  addr, zero, 32                          // E291  ROXR.L    #1,D1
-        b       L_05324
+        b       roxr_roxl_l_q_d1
         addic.  addr, zero, 32                          // E292  ROXR.L    #1,D2
-        b       L_053C4
+        b       roxr_roxl_l_q_d2
         addic.  addr, zero, 32                          // E293  ROXR.L    #1,D3
-        b       L_05464
+        b       roxr_roxl_l_q_d3
         addic.  addr, zero, 32                          // E294  ROXR.L    #1,D4
-        b       L_05504
+        b       roxr_roxl_l_q_d4
         addic.  addr, zero, 32                          // E295  ROXR.L    #1,D5
-        b       L_055A4
+        b       roxr_roxl_l_q_d5
         addic.  addr, zero, 32                          // E296  ROXR.L    #1,D6
-        b       L_05644
+        b       roxr_roxl_l_q_d6
         addic.  addr, zero, 32                          // E297  ROXR.L    #1,D7
-        b       L_056E4
+        b       roxr_roxl_l_q_d7
         rotlwi  data, d0, 31                            // E298  ROR.L     #1,D0
-        b       L_05260
+        b       ror_l_q_d0
         rotlwi  data, d1, 31                            // E299  ROR.L     #1,D1
-        b       L_05300
+        b       ror_l_q_d1
         rotlwi  data, d2, 31                            // E29A  ROR.L     #1,D2
-        b       L_053A0
+        b       ror_l_q_d2
         rotlwi  data, d3, 31                            // E29B  ROR.L     #1,D3
-        b       L_05440
+        b       ror_l_q_d3
         rotlwi  data, d4, 31                            // E29C  ROR.L     #1,D4
-        b       L_054E0
+        b       ror_l_q_d4
         rotlwi  data, d5, 31                            // E29D  ROR.L     #1,D5
-        b       L_05580
+        b       ror_l_q_d5
         rotlwi  data, d6, 31                            // E29E  ROR.L     #1,D6
-        b       L_05620
+        b       ror_l_q_d6
         rotlwi  data, d7, 31                            // E29F  ROR.L     #1,D7
-        b       L_056C0
+        b       ror_l_q_d7
         clrlwi. addr, d1, 26                            // E2A0  ASR.L     D1,D0
-        b       L_05228
+        b       asr_l_dn_d0
         clrlwi. addr, d1, 26                            // E2A1  ASR.L     D1,D1
-        b       L_052C8
+        b       asr_l_dn_d1
         clrlwi. addr, d1, 26                            // E2A2  ASR.L     D1,D2
-        b       L_05368
+        b       asr_l_dn_d2
         clrlwi. addr, d1, 26                            // E2A3  ASR.L     D1,D3
-        b       L_05408
+        b       asr_l_dn_d3
         clrlwi. addr, d1, 26                            // E2A4  ASR.L     D1,D4
-        b       L_054A8
+        b       asr_l_dn_d4
         clrlwi. addr, d1, 26                            // E2A5  ASR.L     D1,D5
-        b       L_05548
+        b       asr_l_dn_d5
         clrlwi. addr, d1, 26                            // E2A6  ASR.L     D1,D6
-        b       L_055E8
+        b       asr_l_dn_d6
         clrlwi. addr, d1, 26                            // E2A7  ASR.L     D1,D7
-        b       L_05688
+        b       asr_l_dn_d7
         clrlwi. addr, d1, 26                            // E2A8  LSR.L     D1,D0
-        b       L_05200
+        b       lsr_l_dn_d0
         clrlwi. addr, d1, 26                            // E2A9  LSR.L     D1,D1
-        b       L_052A0
+        b       lsr_l_dn_d1
         clrlwi. addr, d1, 26                            // E2AA  LSR.L     D1,D2
-        b       L_05340
+        b       lsr_l_dn_d2
         clrlwi. addr, d1, 26                            // E2AB  LSR.L     D1,D3
-        b       L_053E0
+        b       lsr_l_dn_d3
         clrlwi. addr, d1, 26                            // E2AC  LSR.L     D1,D4
-        b       L_05480
+        b       lsr_l_dn_d4
         clrlwi. addr, d1, 26                            // E2AD  LSR.L     D1,D5
-        b       L_05520
+        b       lsr_l_dn_d5
         clrlwi. addr, d1, 26                            // E2AE  LSR.L     D1,D6
-        b       L_055C0
+        b       lsr_l_dn_d6
         clrlwi. addr, d1, 26                            // E2AF  LSR.L     D1,D7
-        b       L_05660
+        b       lsr_l_dn_d7
         clrlwi. addr, d1, 26                            // E2B0  ROXR.L    D1,D0
-        b       L_05280
+        b       roxr_roxl_l_dn_d0
         clrlwi. addr, d1, 26                            // E2B1  ROXR.L    D1,D1
-        b       L_05320
+        b       roxr_roxl_l_dn_d1
         clrlwi. addr, d1, 26                            // E2B2  ROXR.L    D1,D2
-        b       L_053C0
+        b       roxr_roxl_l_dn_d2
         clrlwi. addr, d1, 26                            // E2B3  ROXR.L    D1,D3
-        b       L_05460
+        b       roxr_roxl_l_dn_d3
         clrlwi. addr, d1, 26                            // E2B4  ROXR.L    D1,D4
-        b       L_05500
+        b       roxr_roxl_l_dn_d4
         clrlwi. addr, d1, 26                            // E2B5  ROXR.L    D1,D5
-        b       L_055A0
+        b       roxr_roxl_l_dn_d5
         clrlwi. addr, d1, 26                            // E2B6  ROXR.L    D1,D6
-        b       L_05640
+        b       roxr_roxl_l_dn_d6
         clrlwi. addr, d1, 26                            // E2B7  ROXR.L    D1,D7
-        b       L_056E0
+        b       roxr_roxl_l_dn_d7
         clrlwi. addr, d1, 26                            // E2B8  ROR.L     D1,D0
-        b       L_05254
+        b       ror_l_dn_d0
         clrlwi. addr, d1, 26                            // E2B9  ROR.L     D1,D1
-        b       L_052F4
+        b       ror_l_dn_d1
         clrlwi. addr, d1, 26                            // E2BA  ROR.L     D1,D2
-        b       L_05394
+        b       ror_l_dn_d2
         clrlwi. addr, d1, 26                            // E2BB  ROR.L     D1,D3
-        b       L_05434
+        b       ror_l_dn_d3
         clrlwi. addr, d1, 26                            // E2BC  ROR.L     D1,D4
-        b       L_054D4
+        b       ror_l_dn_d4
         clrlwi. addr, d1, 26                            // E2BD  ROR.L     D1,D5
-        b       L_05574
+        b       ror_l_dn_d5
         clrlwi. addr, d1, 26                            // E2BE  ROR.L     D1,D6
-        b       L_05614
+        b       ror_l_dn_d6
         clrlwi. addr, d1, 26                            // E2BF  ROR.L     D1,D7
-        b       L_056B4
+        b       ror_l_dn_d7
 
 // ---- $E2C0-$E2FF --------------------------------------------------------
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E2C0  LSR.W     D0   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E2C1  LSR.W     D1   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E2C2  LSR.W     D2   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E2C3  LSR.W     D3   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E2C4  LSR.W     D4   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E2C5  LSR.W     D5   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E2C6  LSR.W     D6   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E2C7  LSR.W     D7   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E2C8  LSR.W     A0   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E2C9  LSR.W     A1   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E2CA  LSR.W     A2   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E2CB  LSR.W     A3   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E2CC  LSR.W     A4   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E2CD  LSR.W     A5   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E2CE  LSR.W     A6   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E2CF  LSR.W     A7   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 op_E2D0:
         mr      addr, a0                                // E2D0  LSR.W     (A0)
-        b       L_07404
+        b       lsr_w_mem_2
 op_E2D1:
         mr      addr, a1                                // E2D1  LSR.W     (A1)
-        b       L_07404
+        b       lsr_w_mem_2
 op_E2D2:
         mr      addr, a2                                // E2D2  LSR.W     (A2)
-        b       L_07404
+        b       lsr_w_mem_2
 op_E2D3:
         mr      addr, a3                                // E2D3  LSR.W     (A3)
-        b       L_07404
+        b       lsr_w_mem_2
 op_E2D4:
         mr      addr, a4                                // E2D4  LSR.W     (A4)
-        b       L_07404
+        b       lsr_w_mem_2
 op_E2D5:
         mr      addr, a5                                // E2D5  LSR.W     (A5)
-        b       L_07404
+        b       lsr_w_mem_2
 op_E2D6:
         mr      addr, a6                                // E2D6  LSR.W     (A6)
-        b       L_07404
+        b       lsr_w_mem_2
 op_E2D7:
         mr      addr, a7                                // E2D7  LSR.W     (A7)
-        b       L_07404
-        ori     rtn_addr, code_ptr, L_07404 - cb        // E2D8  LSR.W     (A0)+
-        b       L_00820
-        ori     rtn_addr, code_ptr, L_07404 - cb        // E2D9  LSR.W     (A1)+
-        b       L_008A0
-        ori     rtn_addr, code_ptr, L_07404 - cb        // E2DA  LSR.W     (A2)+
-        b       L_00920
-        ori     rtn_addr, code_ptr, L_07404 - cb        // E2DB  LSR.W     (A3)+
-        b       L_009A0
-        ori     rtn_addr, code_ptr, L_07404 - cb        // E2DC  LSR.W     (A4)+
-        b       L_00A20
-        ori     rtn_addr, code_ptr, L_07404 - cb        // E2DD  LSR.W     (A5)+
-        b       L_00AA0
-        ori     rtn_addr, code_ptr, L_07404 - cb        // E2DE  LSR.W     (A6)+
-        b       L_00B20
-        ori     rtn_addr, code_ptr, L_07404 - cb        // E2DF  LSR.W     (A7)+
-        b       L_00BA0
+        b       lsr_w_mem_2
+        ori     rtn_addr, code_ptr, lsr_w_mem_2 - cb    // E2D8  LSR.W     (A0)+
+        b       cea_w_30
+        ori     rtn_addr, code_ptr, lsr_w_mem_2 - cb    // E2D9  LSR.W     (A1)+
+        b       cea_w_31
+        ori     rtn_addr, code_ptr, lsr_w_mem_2 - cb    // E2DA  LSR.W     (A2)+
+        b       cea_w_32
+        ori     rtn_addr, code_ptr, lsr_w_mem_2 - cb    // E2DB  LSR.W     (A3)+
+        b       cea_w_33
+        ori     rtn_addr, code_ptr, lsr_w_mem_2 - cb    // E2DC  LSR.W     (A4)+
+        b       cea_w_34
+        ori     rtn_addr, code_ptr, lsr_w_mem_2 - cb    // E2DD  LSR.W     (A5)+
+        b       cea_w_35
+        ori     rtn_addr, code_ptr, lsr_w_mem_2 - cb    // E2DE  LSR.W     (A6)+
+        b       cea_w_36
+        ori     rtn_addr, code_ptr, lsr_w_mem_2 - cb    // E2DF  LSR.W     (A7)+
+        b       cea_w_37
         addi    a0, a0, -2                              // E2E0  LSR.W     -(A0)
         b       op_E2D0
         addi    a1, a1, -2                              // E2E1  LSR.W     -(A1)
@@ -1539,517 +1539,517 @@ op_E2D7:
         addi    a7, a7, -2                              // E2E7  LSR.W     -(A7)
         b       op_E2D7
         add     addr, a0, prefetch_data                 // E2E8  LSR.W     (d16,A0)
-        b       L_07400
+        b       lsr_w_mem
         add     addr, a1, prefetch_data                 // E2E9  LSR.W     (d16,A1)
-        b       L_07400
+        b       lsr_w_mem
         add     addr, a2, prefetch_data                 // E2EA  LSR.W     (d16,A2)
-        b       L_07400
+        b       lsr_w_mem
         add     addr, a3, prefetch_data                 // E2EB  LSR.W     (d16,A3)
-        b       L_07400
+        b       lsr_w_mem
         add     addr, a4, prefetch_data                 // E2EC  LSR.W     (d16,A4)
-        b       L_07400
+        b       lsr_w_mem
         add     addr, a5, prefetch_data                 // E2ED  LSR.W     (d16,A5)
-        b       L_07400
+        b       lsr_w_mem
         add     addr, a6, prefetch_data                 // E2EE  LSR.W     (d16,A6)
-        b       L_07400
+        b       lsr_w_mem
         add     addr, a7, prefetch_data                 // E2EF  LSR.W     (d16,A7)
-        b       L_07400
-        ori     rtn_addr, code_ptr, L_07408 - cb        // E2F0  LSR.W     (d8,A0,Xn)
-        b       L_059B0
-        ori     rtn_addr, code_ptr, L_07408 - cb        // E2F1  LSR.W     (d8,A1,Xn)
-        b       L_05A10
-        ori     rtn_addr, code_ptr, L_07408 - cb        // E2F2  LSR.W     (d8,A2,Xn)
-        b       L_05A70
-        ori     rtn_addr, code_ptr, L_07408 - cb        // E2F3  LSR.W     (d8,A3,Xn)
-        b       L_05AD0
-        ori     rtn_addr, code_ptr, L_07408 - cb        // E2F4  LSR.W     (d8,A4,Xn)
-        b       L_05B30
-        ori     rtn_addr, code_ptr, L_07408 - cb        // E2F5  LSR.W     (d8,A5,Xn)
-        b       L_05B90
-        ori     rtn_addr, code_ptr, L_07408 - cb        // E2F6  LSR.W     (d8,A6,Xn)
-        b       L_05BF0
-        ori     rtn_addr, code_ptr, L_07408 - cb        // E2F7  LSR.W     (d8,A7,Xn)
-        b       L_05C50
+        b       lsr_w_mem
+        ori     rtn_addr, code_ptr, lsr_w_mem_3 - cb    // E2F0  LSR.W     (d8,A0,Xn)
+        b       move_add_etc_w_any_any
+        ori     rtn_addr, code_ptr, lsr_w_mem_3 - cb    // E2F1  LSR.W     (d8,A1,Xn)
+        b       move_add_etc_w_any_any_2
+        ori     rtn_addr, code_ptr, lsr_w_mem_3 - cb    // E2F2  LSR.W     (d8,A2,Xn)
+        b       move_add_etc_w_any_any_3
+        ori     rtn_addr, code_ptr, lsr_w_mem_3 - cb    // E2F3  LSR.W     (d8,A3,Xn)
+        b       move_add_etc_w_any_any_4
+        ori     rtn_addr, code_ptr, lsr_w_mem_3 - cb    // E2F4  LSR.W     (d8,A4,Xn)
+        b       move_add_etc_w_any_any_5
+        ori     rtn_addr, code_ptr, lsr_w_mem_3 - cb    // E2F5  LSR.W     (d8,A5,Xn)
+        b       move_add_etc_w_any_any_6
+        ori     rtn_addr, code_ptr, lsr_w_mem_3 - cb    // E2F6  LSR.W     (d8,A6,Xn)
+        b       move_add_etc_w_any_any_7
+        ori     rtn_addr, code_ptr, lsr_w_mem_3 - cb    // E2F7  LSR.W     (d8,A7,Xn)
+        b       move_add_etc_w_any_any_8
         mr      addr, prefetch_data                     // E2F8  LSR.W     (xxx).W
-        b       L_07400
-        ori     rtn_addr, code_ptr, L_07408 - cb        // E2F9  LSR.W     (xxx).L
-        b       L_05E70
+        b       lsr_w_mem
+        ori     rtn_addr, code_ptr, lsr_w_mem_3 - cb    // E2F9  LSR.W     (xxx).L
+        b       fea_w_71
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E2FA  LSR.W     (d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E2FB  LSR.W     (d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E2FC  LSR.W     #<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E2FD  LSR.W     <ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E2FE  LSR.W     <ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E2FF  LSR.W     <ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $E300-$E33F --------------------------------------------------------
         slwi    data, d0, 24                            // E300  ASL.B     #1,D0
-        b       L_0B0C8
+        b       add_asl_b_any_d0
         slwi    data, d1, 24                            // E301  ASL.B     #1,D1
-        b       L_0B108
+        b       add_asl_b_any_d1
         slwi    data, d2, 24                            // E302  ASL.B     #1,D2
-        b       L_0B148
+        b       add_asl_b_any_d2
         slwi    data, d3, 24                            // E303  ASL.B     #1,D3
-        b       L_0B188
+        b       add_asl_b_any_d3
         slwi    data, d4, 24                            // E304  ASL.B     #1,D4
-        b       L_0B1C8
+        b       add_asl_b_any_d4
         slwi    data, d5, 24                            // E305  ASL.B     #1,D5
-        b       L_0B208
+        b       add_asl_b_any_d5
         slwi    data, d6, 24                            // E306  ASL.B     #1,D6
-        b       L_0B248
+        b       add_asl_b_any_d6
         slwi    data, d7, 24                            // E307  ASL.B     #1,D7
-        b       L_0B288
+        b       add_asl_b_any_d7
         slwi    data, d0, 24                            // E308  LSL.B     #1,D0
-        b       L_0B2E0
+        b       lsl_b_q_d0
         slwi    data, d1, 24                            // E309  LSL.B     #1,D1
-        b       L_0B3A0
+        b       lsl_b_q_d1
         slwi    data, d2, 24                            // E30A  LSL.B     #1,D2
-        b       L_0B460
+        b       lsl_b_q_d2
         slwi    data, d3, 24                            // E30B  LSL.B     #1,D3
-        b       L_0B520
+        b       lsl_b_q_d3
         slwi    data, d4, 24                            // E30C  LSL.B     #1,D4
-        b       L_0B5E0
+        b       lsl_b_q_d4
         slwi    data, d5, 24                            // E30D  LSL.B     #1,D5
-        b       L_0B6A0
+        b       lsl_b_q_d5
         slwi    data, d6, 24                            // E30E  LSL.B     #1,D6
-        b       L_0B760
+        b       lsl_b_q_d6
         slwi    data, d7, 24                            // E30F  LSL.B     #1,D7
-        b       L_0B820
+        b       lsl_b_q_d7
         li      addr, 1                                 // E310  ROXL.B    #1,D0
-        b       L_0B364
+        b       roxr_roxl_b_q_d0
         li      addr, 1                                 // E311  ROXL.B    #1,D1
-        b       L_0B424
+        b       roxr_roxl_b_q_d1
         li      addr, 1                                 // E312  ROXL.B    #1,D2
-        b       L_0B4E4
+        b       roxr_roxl_b_q_d2
         li      addr, 1                                 // E313  ROXL.B    #1,D3
-        b       L_0B5A4
+        b       roxr_roxl_b_q_d3
         li      addr, 1                                 // E314  ROXL.B    #1,D4
-        b       L_0B664
+        b       roxr_roxl_b_q_d4
         li      addr, 1                                 // E315  ROXL.B    #1,D5
-        b       L_0B724
+        b       roxr_roxl_b_q_d5
         li      addr, 1                                 // E316  ROXL.B    #1,D6
-        b       L_0B7E4
+        b       roxr_roxl_b_q_d6
         li      addr, 1                                 // E317  ROXL.B    #1,D7
-        b       L_0B8A4
+        b       roxr_roxl_b_q_d7
         li      addr, 1                                 // E318  ROL.B     #1,D0
-        b       L_0B348
+        b       rol_b_q_d0
         li      addr, 1                                 // E319  ROL.B     #1,D1
-        b       L_0B408
+        b       rol_b_q_d1
         li      addr, 1                                 // E31A  ROL.B     #1,D2
-        b       L_0B4C8
+        b       rol_b_q_d2
         li      addr, 1                                 // E31B  ROL.B     #1,D3
-        b       L_0B588
+        b       rol_b_q_d3
         li      addr, 1                                 // E31C  ROL.B     #1,D4
-        b       L_0B648
+        b       rol_b_q_d4
         li      addr, 1                                 // E31D  ROL.B     #1,D5
-        b       L_0B708
+        b       rol_b_q_d5
         li      addr, 1                                 // E31E  ROL.B     #1,D6
-        b       L_0B7C8
+        b       rol_b_q_d6
         li      addr, 1                                 // E31F  ROL.B     #1,D7
-        b       L_0B888
+        b       rol_b_q_d7
         clrlwi. addr, d1, 26                            // E320  ASL.B     D1,D0
-        b       L_0B300
+        b       asl_b_dn_d0
         clrlwi. addr, d1, 26                            // E321  ASL.B     D1,D1
-        b       L_0B3C0
+        b       asl_b_dn_d1
         clrlwi. addr, d1, 26                            // E322  ASL.B     D1,D2
-        b       L_0B480
+        b       asl_b_dn_d2
         clrlwi. addr, d1, 26                            // E323  ASL.B     D1,D3
-        b       L_0B540
+        b       asl_b_dn_d3
         clrlwi. addr, d1, 26                            // E324  ASL.B     D1,D4
-        b       L_0B600
+        b       asl_b_dn_d4
         clrlwi. addr, d1, 26                            // E325  ASL.B     D1,D5
-        b       L_0B6C0
+        b       asl_b_dn_d5
         clrlwi. addr, d1, 26                            // E326  ASL.B     D1,D6
-        b       L_0B780
+        b       asl_b_dn_d6
         clrlwi. addr, d1, 26                            // E327  ASL.B     D1,D7
-        b       L_0B840
+        b       asl_b_dn_d7
         clrlwi. addr, d1, 26                            // E328  LSL.B     D1,D0
-        b       L_0B2D4
+        b       lsl_b_dn_d0
         clrlwi. addr, d1, 26                            // E329  LSL.B     D1,D1
-        b       L_0B394
+        b       lsl_b_dn_d1
         clrlwi. addr, d1, 26                            // E32A  LSL.B     D1,D2
-        b       L_0B454
+        b       lsl_b_dn_d2
         clrlwi. addr, d1, 26                            // E32B  LSL.B     D1,D3
-        b       L_0B514
+        b       lsl_b_dn_d3
         clrlwi. addr, d1, 26                            // E32C  LSL.B     D1,D4
-        b       L_0B5D4
+        b       lsl_b_dn_d4
         clrlwi. addr, d1, 26                            // E32D  LSL.B     D1,D5
-        b       L_0B694
+        b       lsl_b_dn_d5
         clrlwi. addr, d1, 26                            // E32E  LSL.B     D1,D6
-        b       L_0B754
+        b       lsl_b_dn_d6
         clrlwi. addr, d1, 26                            // E32F  LSL.B     D1,D7
-        b       L_0B814
+        b       lsl_b_dn_d7
         clrlwi. addr, d1, 26                            // E330  ROXL.B    D1,D0
-        b       L_0B360
+        b       roxr_roxl_b_dn_d0
         clrlwi. addr, d1, 26                            // E331  ROXL.B    D1,D1
-        b       L_0B420
+        b       roxr_roxl_b_dn_d1
         clrlwi. addr, d1, 26                            // E332  ROXL.B    D1,D2
-        b       L_0B4E0
+        b       roxr_roxl_b_dn_d2
         clrlwi. addr, d1, 26                            // E333  ROXL.B    D1,D3
-        b       L_0B5A0
+        b       roxr_roxl_b_dn_d3
         clrlwi. addr, d1, 26                            // E334  ROXL.B    D1,D4
-        b       L_0B660
+        b       roxr_roxl_b_dn_d4
         clrlwi. addr, d1, 26                            // E335  ROXL.B    D1,D5
-        b       L_0B720
+        b       roxr_roxl_b_dn_d5
         clrlwi. addr, d1, 26                            // E336  ROXL.B    D1,D6
-        b       L_0B7E0
+        b       roxr_roxl_b_dn_d6
         clrlwi. addr, d1, 26                            // E337  ROXL.B    D1,D7
-        b       L_0B8A0
+        b       roxr_roxl_b_dn_d7
         clrlwi. addr, d1, 26                            // E338  ROL.B     D1,D0
-        b       L_0B340
+        b       rol_b_dn_d0
         clrlwi. addr, d1, 26                            // E339  ROL.B     D1,D1
-        b       L_0B400
+        b       rol_b_dn_d1
         clrlwi. addr, d1, 26                            // E33A  ROL.B     D1,D2
-        b       L_0B4C0
+        b       rol_b_dn_d2
         clrlwi. addr, d1, 26                            // E33B  ROL.B     D1,D3
-        b       L_0B580
+        b       rol_b_dn_d3
         clrlwi. addr, d1, 26                            // E33C  ROL.B     D1,D4
-        b       L_0B640
+        b       rol_b_dn_d4
         clrlwi. addr, d1, 26                            // E33D  ROL.B     D1,D5
-        b       L_0B700
+        b       rol_b_dn_d5
         clrlwi. addr, d1, 26                            // E33E  ROL.B     D1,D6
-        b       L_0B7C0
+        b       rol_b_dn_d6
         clrlwi. addr, d1, 26                            // E33F  ROL.B     D1,D7
-        b       L_0B880
+        b       rol_b_dn_d7
 
 // ---- $E340-$E37F --------------------------------------------------------
         slwi    data, d0, 16                            // E340  ASL.W     #1,D0
-        b       L_03808
+        b       add_asl_w_any_d0
         slwi    data, d1, 16                            // E341  ASL.W     #1,D1
-        b       L_03848
+        b       add_asl_w_any_d1
         slwi    data, d2, 16                            // E342  ASL.W     #1,D2
-        b       L_03888
+        b       add_asl_w_any_d2
         slwi    data, d3, 16                            // E343  ASL.W     #1,D3
-        b       L_038C8
+        b       add_asl_w_any_d3
         slwi    data, d4, 16                            // E344  ASL.W     #1,D4
-        b       L_03908
+        b       add_asl_w_any_d4
         slwi    data, d5, 16                            // E345  ASL.W     #1,D5
-        b       L_03948
+        b       add_asl_w_any_d5
         slwi    data, d6, 16                            // E346  ASL.W     #1,D6
-        b       L_03988
+        b       add_asl_w_any_d6
         slwi    data, d7, 16                            // E347  ASL.W     #1,D7
-        b       L_039C8
+        b       add_asl_w_any_d7
         slwi    data, d0, 16                            // E348  LSL.W     #1,D0
-        b       L_04C20
+        b       lsl_w_q_d0
         slwi    data, d1, 16                            // E349  LSL.W     #1,D1
-        b       L_04CE0
+        b       lsl_w_q_d1
         slwi    data, d2, 16                            // E34A  LSL.W     #1,D2
-        b       L_04DA0
+        b       lsl_w_q_d2
         slwi    data, d3, 16                            // E34B  LSL.W     #1,D3
-        b       L_04E60
+        b       lsl_w_q_d3
         slwi    data, d4, 16                            // E34C  LSL.W     #1,D4
-        b       L_04F20
+        b       lsl_w_q_d4
         slwi    data, d5, 16                            // E34D  LSL.W     #1,D5
-        b       L_04FE0
+        b       lsl_w_q_d5
         slwi    data, d6, 16                            // E34E  LSL.W     #1,D6
-        b       L_050A0
+        b       lsl_w_q_d6
         slwi    data, d7, 16                            // E34F  LSL.W     #1,D7
-        b       L_05160
+        b       lsl_w_q_d7
         addic.  addr, zero, 1                           // E350  ROXL.W    #1,D0
-        b       L_04CA4
+        b       roxr_roxl_w_q_d0
         addic.  addr, zero, 1                           // E351  ROXL.W    #1,D1
-        b       L_04D64
+        b       roxr_roxl_w_q_d1
         addic.  addr, zero, 1                           // E352  ROXL.W    #1,D2
-        b       L_04E24
+        b       roxr_roxl_w_q_d2
         addic.  addr, zero, 1                           // E353  ROXL.W    #1,D3
-        b       L_04EE4
+        b       roxr_roxl_w_q_d3
         addic.  addr, zero, 1                           // E354  ROXL.W    #1,D4
-        b       L_04FA4
+        b       roxr_roxl_w_q_d4
         addic.  addr, zero, 1                           // E355  ROXL.W    #1,D5
-        b       L_05064
+        b       roxr_roxl_w_q_d5
         addic.  addr, zero, 1                           // E356  ROXL.W    #1,D6
-        b       L_05124
+        b       roxr_roxl_w_q_d6
         addic.  addr, zero, 1                           // E357  ROXL.W    #1,D7
-        b       L_051E4
+        b       roxr_roxl_w_q_d7
         li      addr, 1                                 // E358  ROL.W     #1,D0
-        b       L_04C88
+        b       rol_w_q_d0
         li      addr, 1                                 // E359  ROL.W     #1,D1
-        b       L_04D48
+        b       rol_w_q_d1
         li      addr, 1                                 // E35A  ROL.W     #1,D2
-        b       L_04E08
+        b       rol_w_q_d2
         li      addr, 1                                 // E35B  ROL.W     #1,D3
-        b       L_04EC8
+        b       rol_w_q_d3
         li      addr, 1                                 // E35C  ROL.W     #1,D4
-        b       L_04F88
+        b       rol_w_q_d4
         li      addr, 1                                 // E35D  ROL.W     #1,D5
-        b       L_05048
+        b       rol_w_q_d5
         li      addr, 1                                 // E35E  ROL.W     #1,D6
-        b       L_05108
+        b       rol_w_q_d6
         li      addr, 1                                 // E35F  ROL.W     #1,D7
-        b       L_051C8
+        b       rol_w_q_d7
         clrlwi. addr, d1, 26                            // E360  ASL.W     D1,D0
-        b       L_04C40
+        b       asl_w_dn_d0
         clrlwi. addr, d1, 26                            // E361  ASL.W     D1,D1
-        b       L_04D00
+        b       asl_w_dn_d1
         clrlwi. addr, d1, 26                            // E362  ASL.W     D1,D2
-        b       L_04DC0
+        b       asl_w_dn_d2
         clrlwi. addr, d1, 26                            // E363  ASL.W     D1,D3
-        b       L_04E80
+        b       asl_w_dn_d3
         clrlwi. addr, d1, 26                            // E364  ASL.W     D1,D4
-        b       L_04F40
+        b       asl_w_dn_d4
         clrlwi. addr, d1, 26                            // E365  ASL.W     D1,D5
-        b       L_05000
+        b       asl_w_dn_d5
         clrlwi. addr, d1, 26                            // E366  ASL.W     D1,D6
-        b       L_050C0
+        b       asl_w_dn_d6
         clrlwi. addr, d1, 26                            // E367  ASL.W     D1,D7
-        b       L_05180
+        b       asl_w_dn_d7
         clrlwi. addr, d1, 26                            // E368  LSL.W     D1,D0
-        b       L_04C14
+        b       lsl_w_dn_d0
         clrlwi. addr, d1, 26                            // E369  LSL.W     D1,D1
-        b       L_04CD4
+        b       lsl_w_dn_d1
         clrlwi. addr, d1, 26                            // E36A  LSL.W     D1,D2
-        b       L_04D94
+        b       lsl_w_dn_d2
         clrlwi. addr, d1, 26                            // E36B  LSL.W     D1,D3
-        b       L_04E54
+        b       lsl_w_dn_d3
         clrlwi. addr, d1, 26                            // E36C  LSL.W     D1,D4
-        b       L_04F14
+        b       lsl_w_dn_d4
         clrlwi. addr, d1, 26                            // E36D  LSL.W     D1,D5
-        b       L_04FD4
+        b       lsl_w_dn_d5
         clrlwi. addr, d1, 26                            // E36E  LSL.W     D1,D6
-        b       L_05094
+        b       lsl_w_dn_d6
         clrlwi. addr, d1, 26                            // E36F  LSL.W     D1,D7
-        b       L_05154
+        b       lsl_w_dn_d7
         clrlwi. addr, d1, 26                            // E370  ROXL.W    D1,D0
-        b       L_04CA0
+        b       roxr_roxl_w_dn_d0
         clrlwi. addr, d1, 26                            // E371  ROXL.W    D1,D1
-        b       L_04D60
+        b       roxr_roxl_w_dn_d1
         clrlwi. addr, d1, 26                            // E372  ROXL.W    D1,D2
-        b       L_04E20
+        b       roxr_roxl_w_dn_d2
         clrlwi. addr, d1, 26                            // E373  ROXL.W    D1,D3
-        b       L_04EE0
+        b       roxr_roxl_w_dn_d3
         clrlwi. addr, d1, 26                            // E374  ROXL.W    D1,D4
-        b       L_04FA0
+        b       roxr_roxl_w_dn_d4
         clrlwi. addr, d1, 26                            // E375  ROXL.W    D1,D5
-        b       L_05060
+        b       roxr_roxl_w_dn_d5
         clrlwi. addr, d1, 26                            // E376  ROXL.W    D1,D6
-        b       L_05120
+        b       roxr_roxl_w_dn_d6
         clrlwi. addr, d1, 26                            // E377  ROXL.W    D1,D7
-        b       L_051E0
+        b       roxr_roxl_w_dn_d7
         clrlwi. addr, d1, 26                            // E378  ROL.W     D1,D0
-        b       L_04C80
+        b       rol_w_dn_d0
         clrlwi. addr, d1, 26                            // E379  ROL.W     D1,D1
-        b       L_04D40
+        b       rol_w_dn_d1
         clrlwi. addr, d1, 26                            // E37A  ROL.W     D1,D2
-        b       L_04E00
+        b       rol_w_dn_d2
         clrlwi. addr, d1, 26                            // E37B  ROL.W     D1,D3
-        b       L_04EC0
+        b       rol_w_dn_d3
         clrlwi. addr, d1, 26                            // E37C  ROL.W     D1,D4
-        b       L_04F80
+        b       rol_w_dn_d4
         clrlwi. addr, d1, 26                            // E37D  ROL.W     D1,D5
-        b       L_05040
+        b       rol_w_dn_d5
         clrlwi. addr, d1, 26                            // E37E  ROL.W     D1,D6
-        b       L_05100
+        b       rol_w_dn_d6
         clrlwi. addr, d1, 26                            // E37F  ROL.W     D1,D7
-        b       L_051C0
+        b       rol_w_dn_d7
 
 // ---- $E380-$E3BF --------------------------------------------------------
         addco.  d0, d0, d0                              // E380  ASL.L     #1,D0
-        b       L_064E0
+        b       add_asl_l_any_dn
         addco.  d1, d1, d1                              // E381  ASL.L     #1,D1
-        b       L_064E0
+        b       add_asl_l_any_dn
         addco.  d2, d2, d2                              // E382  ASL.L     #1,D2
-        b       L_064E0
+        b       add_asl_l_any_dn
         addco.  d3, d3, d3                              // E383  ASL.L     #1,D3
-        b       L_064E0
+        b       add_asl_l_any_dn
         addco.  d4, d4, d4                              // E384  ASL.L     #1,D4
-        b       L_064E0
+        b       add_asl_l_any_dn
         addco.  d5, d5, d5                              // E385  ASL.L     #1,D5
-        b       L_064E0
+        b       add_asl_l_any_dn
         addco.  d6, d6, d6                              // E386  ASL.L     #1,D6
-        b       L_064E0
+        b       add_asl_l_any_dn
         addco.  d7, d7, d7                              // E387  ASL.L     #1,D7
-        b       L_064E0
+        b       add_asl_l_any_dn
         addc.   d0, d0, d0                              // E388  LSL.L     #1,D0
-        b       L_071A4
+        b       lsl_l_q_dn
         addc.   d1, d1, d1                              // E389  LSL.L     #1,D1
-        b       L_071A4
+        b       lsl_l_q_dn
         addc.   d2, d2, d2                              // E38A  LSL.L     #1,D2
-        b       L_071A4
+        b       lsl_l_q_dn
         addc.   d3, d3, d3                              // E38B  LSL.L     #1,D3
-        b       L_071A4
+        b       lsl_l_q_dn
         addc.   d4, d4, d4                              // E38C  LSL.L     #1,D4
-        b       L_071A4
+        b       lsl_l_q_dn
         addc.   d5, d5, d5                              // E38D  LSL.L     #1,D5
-        b       L_071A4
+        b       lsl_l_q_dn
         addc.   d6, d6, d6                              // E38E  LSL.L     #1,D6
-        b       L_071A4
+        b       lsl_l_q_dn
         addc.   d7, d7, d7                              // E38F  LSL.L     #1,D7
-        b       L_071A4
+        b       lsl_l_q_dn
         addic.  addr, zero, 1                           // E390  ROXL.L    #1,D0
-        b       L_05284
+        b       roxr_roxl_l_q_d0
         addic.  addr, zero, 1                           // E391  ROXL.L    #1,D1
-        b       L_05324
+        b       roxr_roxl_l_q_d1
         addic.  addr, zero, 1                           // E392  ROXL.L    #1,D2
-        b       L_053C4
+        b       roxr_roxl_l_q_d2
         addic.  addr, zero, 1                           // E393  ROXL.L    #1,D3
-        b       L_05464
+        b       roxr_roxl_l_q_d3
         addic.  addr, zero, 1                           // E394  ROXL.L    #1,D4
-        b       L_05504
+        b       roxr_roxl_l_q_d4
         addic.  addr, zero, 1                           // E395  ROXL.L    #1,D5
-        b       L_055A4
+        b       roxr_roxl_l_q_d5
         addic.  addr, zero, 1                           // E396  ROXL.L    #1,D6
-        b       L_05644
+        b       roxr_roxl_l_q_d6
         addic.  addr, zero, 1                           // E397  ROXL.L    #1,D7
-        b       L_056E4
+        b       roxr_roxl_l_q_d7
         rotlwi  data, d0, 1                             // E398  ROL.L     #1,D0
-        b       L_05270
+        b       rol_l_q_d0
         rotlwi  data, d1, 1                             // E399  ROL.L     #1,D1
-        b       L_05310
+        b       rol_l_q_d1
         rotlwi  data, d2, 1                             // E39A  ROL.L     #1,D2
-        b       L_053B0
+        b       rol_l_q_d2
         rotlwi  data, d3, 1                             // E39B  ROL.L     #1,D3
-        b       L_05450
+        b       rol_l_q_d3
         rotlwi  data, d4, 1                             // E39C  ROL.L     #1,D4
-        b       L_054F0
+        b       rol_l_q_d4
         rotlwi  data, d5, 1                             // E39D  ROL.L     #1,D5
-        b       L_05590
+        b       rol_l_q_d5
         rotlwi  data, d6, 1                             // E39E  ROL.L     #1,D6
-        b       L_05630
+        b       rol_l_q_d6
         rotlwi  data, d7, 1                             // E39F  ROL.L     #1,D7
-        b       L_056D0
+        b       rol_l_q_d7
         clrlwi. addr, d1, 26                            // E3A0  ASL.L     D1,D0
-        b       L_05240
+        b       asl_l_dn_d0
         clrlwi. addr, d1, 26                            // E3A1  ASL.L     D1,D1
-        b       L_052E0
+        b       asl_l_dn_d1
         clrlwi. addr, d1, 26                            // E3A2  ASL.L     D1,D2
-        b       L_05380
+        b       asl_l_dn_d2
         clrlwi. addr, d1, 26                            // E3A3  ASL.L     D1,D3
-        b       L_05420
+        b       asl_l_dn_d3
         clrlwi. addr, d1, 26                            // E3A4  ASL.L     D1,D4
-        b       L_054C0
+        b       asl_l_dn_d4
         clrlwi. addr, d1, 26                            // E3A5  ASL.L     D1,D5
-        b       L_05560
+        b       asl_l_dn_d5
         clrlwi. addr, d1, 26                            // E3A6  ASL.L     D1,D6
-        b       L_05600
+        b       asl_l_dn_d6
         clrlwi. addr, d1, 26                            // E3A7  ASL.L     D1,D7
-        b       L_056A0
+        b       asl_l_dn_d7
         clrlwi. addr, d1, 26                            // E3A8  LSL.L     D1,D0
-        b       L_05214
+        b       lsl_l_dn_d0
         clrlwi. addr, d1, 26                            // E3A9  LSL.L     D1,D1
-        b       L_052B4
+        b       lsl_l_dn_d1
         clrlwi. addr, d1, 26                            // E3AA  LSL.L     D1,D2
-        b       L_05354
+        b       lsl_l_dn_d2
         clrlwi. addr, d1, 26                            // E3AB  LSL.L     D1,D3
-        b       L_053F4
+        b       lsl_l_dn_d3
         clrlwi. addr, d1, 26                            // E3AC  LSL.L     D1,D4
-        b       L_05494
+        b       lsl_l_dn_d4
         clrlwi. addr, d1, 26                            // E3AD  LSL.L     D1,D5
-        b       L_05534
+        b       lsl_l_dn_d5
         clrlwi. addr, d1, 26                            // E3AE  LSL.L     D1,D6
-        b       L_055D4
+        b       lsl_l_dn_d6
         clrlwi. addr, d1, 26                            // E3AF  LSL.L     D1,D7
-        b       L_05674
+        b       lsl_l_dn_d7
         clrlwi. addr, d1, 26                            // E3B0  ROXL.L    D1,D0
-        b       L_05280
+        b       roxr_roxl_l_dn_d0
         clrlwi. addr, d1, 26                            // E3B1  ROXL.L    D1,D1
-        b       L_05320
+        b       roxr_roxl_l_dn_d1
         clrlwi. addr, d1, 26                            // E3B2  ROXL.L    D1,D2
-        b       L_053C0
+        b       roxr_roxl_l_dn_d2
         clrlwi. addr, d1, 26                            // E3B3  ROXL.L    D1,D3
-        b       L_05460
+        b       roxr_roxl_l_dn_d3
         clrlwi. addr, d1, 26                            // E3B4  ROXL.L    D1,D4
-        b       L_05500
+        b       roxr_roxl_l_dn_d4
         clrlwi. addr, d1, 26                            // E3B5  ROXL.L    D1,D5
-        b       L_055A0
+        b       roxr_roxl_l_dn_d5
         clrlwi. addr, d1, 26                            // E3B6  ROXL.L    D1,D6
-        b       L_05640
+        b       roxr_roxl_l_dn_d6
         clrlwi. addr, d1, 26                            // E3B7  ROXL.L    D1,D7
-        b       L_056E0
+        b       roxr_roxl_l_dn_d7
         clrlwi. addr, d1, 26                            // E3B8  ROL.L     D1,D0
-        b       L_05268
+        b       rol_l_dn_d0
         clrlwi. addr, d1, 26                            // E3B9  ROL.L     D1,D1
-        b       L_05308
+        b       rol_l_dn_d1
         clrlwi. addr, d1, 26                            // E3BA  ROL.L     D1,D2
-        b       L_053A8
+        b       rol_l_dn_d2
         clrlwi. addr, d1, 26                            // E3BB  ROL.L     D1,D3
-        b       L_05448
+        b       rol_l_dn_d3
         clrlwi. addr, d1, 26                            // E3BC  ROL.L     D1,D4
-        b       L_054E8
+        b       rol_l_dn_d4
         clrlwi. addr, d1, 26                            // E3BD  ROL.L     D1,D5
-        b       L_05588
+        b       rol_l_dn_d5
         clrlwi. addr, d1, 26                            // E3BE  ROL.L     D1,D6
-        b       L_05628
+        b       rol_l_dn_d6
         clrlwi. addr, d1, 26                            // E3BF  ROL.L     D1,D7
-        b       L_056C8
+        b       rol_l_dn_d7
 
 // ---- $E3C0-$E3FF --------------------------------------------------------
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E3C0  LSL.W     D0   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E3C1  LSL.W     D1   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E3C2  LSL.W     D2   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E3C3  LSL.W     D3   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E3C4  LSL.W     D4   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E3C5  LSL.W     D5   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E3C6  LSL.W     D6   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E3C7  LSL.W     D7   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E3C8  LSL.W     A0   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E3C9  LSL.W     A1   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E3CA  LSL.W     A2   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E3CB  LSL.W     A3   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E3CC  LSL.W     A4   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E3CD  LSL.W     A5   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E3CE  LSL.W     A6   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E3CF  LSL.W     A7   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 op_E3D0:
         mr      addr, a0                                // E3D0  LSL.W     (A0)
-        b       L_07444
+        b       lsl_w_mem_2
 op_E3D1:
         mr      addr, a1                                // E3D1  LSL.W     (A1)
-        b       L_07444
+        b       lsl_w_mem_2
 op_E3D2:
         mr      addr, a2                                // E3D2  LSL.W     (A2)
-        b       L_07444
+        b       lsl_w_mem_2
 op_E3D3:
         mr      addr, a3                                // E3D3  LSL.W     (A3)
-        b       L_07444
+        b       lsl_w_mem_2
 op_E3D4:
         mr      addr, a4                                // E3D4  LSL.W     (A4)
-        b       L_07444
+        b       lsl_w_mem_2
 op_E3D5:
         mr      addr, a5                                // E3D5  LSL.W     (A5)
-        b       L_07444
+        b       lsl_w_mem_2
 op_E3D6:
         mr      addr, a6                                // E3D6  LSL.W     (A6)
-        b       L_07444
+        b       lsl_w_mem_2
 op_E3D7:
         mr      addr, a7                                // E3D7  LSL.W     (A7)
-        b       L_07444
-        ori     rtn_addr, code_ptr, L_07444 - cb        // E3D8  LSL.W     (A0)+
-        b       L_00820
-        ori     rtn_addr, code_ptr, L_07444 - cb        // E3D9  LSL.W     (A1)+
-        b       L_008A0
-        ori     rtn_addr, code_ptr, L_07444 - cb        // E3DA  LSL.W     (A2)+
-        b       L_00920
-        ori     rtn_addr, code_ptr, L_07444 - cb        // E3DB  LSL.W     (A3)+
-        b       L_009A0
-        ori     rtn_addr, code_ptr, L_07444 - cb        // E3DC  LSL.W     (A4)+
-        b       L_00A20
-        ori     rtn_addr, code_ptr, L_07444 - cb        // E3DD  LSL.W     (A5)+
-        b       L_00AA0
-        ori     rtn_addr, code_ptr, L_07444 - cb        // E3DE  LSL.W     (A6)+
-        b       L_00B20
-        ori     rtn_addr, code_ptr, L_07444 - cb        // E3DF  LSL.W     (A7)+
-        b       L_00BA0
+        b       lsl_w_mem_2
+        ori     rtn_addr, code_ptr, lsl_w_mem_2 - cb    // E3D8  LSL.W     (A0)+
+        b       cea_w_30
+        ori     rtn_addr, code_ptr, lsl_w_mem_2 - cb    // E3D9  LSL.W     (A1)+
+        b       cea_w_31
+        ori     rtn_addr, code_ptr, lsl_w_mem_2 - cb    // E3DA  LSL.W     (A2)+
+        b       cea_w_32
+        ori     rtn_addr, code_ptr, lsl_w_mem_2 - cb    // E3DB  LSL.W     (A3)+
+        b       cea_w_33
+        ori     rtn_addr, code_ptr, lsl_w_mem_2 - cb    // E3DC  LSL.W     (A4)+
+        b       cea_w_34
+        ori     rtn_addr, code_ptr, lsl_w_mem_2 - cb    // E3DD  LSL.W     (A5)+
+        b       cea_w_35
+        ori     rtn_addr, code_ptr, lsl_w_mem_2 - cb    // E3DE  LSL.W     (A6)+
+        b       cea_w_36
+        ori     rtn_addr, code_ptr, lsl_w_mem_2 - cb    // E3DF  LSL.W     (A7)+
+        b       cea_w_37
         addi    a0, a0, -2                              // E3E0  LSL.W     -(A0)
         b       op_E3D0
         addi    a1, a1, -2                              // E3E1  LSL.W     -(A1)
@@ -2067,517 +2067,517 @@ op_E3D7:
         addi    a7, a7, -2                              // E3E7  LSL.W     -(A7)
         b       op_E3D7
         add     addr, a0, prefetch_data                 // E3E8  LSL.W     (d16,A0)
-        b       L_07440
+        b       lsl_w_mem
         add     addr, a1, prefetch_data                 // E3E9  LSL.W     (d16,A1)
-        b       L_07440
+        b       lsl_w_mem
         add     addr, a2, prefetch_data                 // E3EA  LSL.W     (d16,A2)
-        b       L_07440
+        b       lsl_w_mem
         add     addr, a3, prefetch_data                 // E3EB  LSL.W     (d16,A3)
-        b       L_07440
+        b       lsl_w_mem
         add     addr, a4, prefetch_data                 // E3EC  LSL.W     (d16,A4)
-        b       L_07440
+        b       lsl_w_mem
         add     addr, a5, prefetch_data                 // E3ED  LSL.W     (d16,A5)
-        b       L_07440
+        b       lsl_w_mem
         add     addr, a6, prefetch_data                 // E3EE  LSL.W     (d16,A6)
-        b       L_07440
+        b       lsl_w_mem
         add     addr, a7, prefetch_data                 // E3EF  LSL.W     (d16,A7)
-        b       L_07440
-        ori     rtn_addr, code_ptr, L_07448 - cb        // E3F0  LSL.W     (d8,A0,Xn)
-        b       L_059B0
-        ori     rtn_addr, code_ptr, L_07448 - cb        // E3F1  LSL.W     (d8,A1,Xn)
-        b       L_05A10
-        ori     rtn_addr, code_ptr, L_07448 - cb        // E3F2  LSL.W     (d8,A2,Xn)
-        b       L_05A70
-        ori     rtn_addr, code_ptr, L_07448 - cb        // E3F3  LSL.W     (d8,A3,Xn)
-        b       L_05AD0
-        ori     rtn_addr, code_ptr, L_07448 - cb        // E3F4  LSL.W     (d8,A4,Xn)
-        b       L_05B30
-        ori     rtn_addr, code_ptr, L_07448 - cb        // E3F5  LSL.W     (d8,A5,Xn)
-        b       L_05B90
-        ori     rtn_addr, code_ptr, L_07448 - cb        // E3F6  LSL.W     (d8,A6,Xn)
-        b       L_05BF0
-        ori     rtn_addr, code_ptr, L_07448 - cb        // E3F7  LSL.W     (d8,A7,Xn)
-        b       L_05C50
+        b       lsl_w_mem
+        ori     rtn_addr, code_ptr, lsl_w_mem_3 - cb    // E3F0  LSL.W     (d8,A0,Xn)
+        b       move_add_etc_w_any_any
+        ori     rtn_addr, code_ptr, lsl_w_mem_3 - cb    // E3F1  LSL.W     (d8,A1,Xn)
+        b       move_add_etc_w_any_any_2
+        ori     rtn_addr, code_ptr, lsl_w_mem_3 - cb    // E3F2  LSL.W     (d8,A2,Xn)
+        b       move_add_etc_w_any_any_3
+        ori     rtn_addr, code_ptr, lsl_w_mem_3 - cb    // E3F3  LSL.W     (d8,A3,Xn)
+        b       move_add_etc_w_any_any_4
+        ori     rtn_addr, code_ptr, lsl_w_mem_3 - cb    // E3F4  LSL.W     (d8,A4,Xn)
+        b       move_add_etc_w_any_any_5
+        ori     rtn_addr, code_ptr, lsl_w_mem_3 - cb    // E3F5  LSL.W     (d8,A5,Xn)
+        b       move_add_etc_w_any_any_6
+        ori     rtn_addr, code_ptr, lsl_w_mem_3 - cb    // E3F6  LSL.W     (d8,A6,Xn)
+        b       move_add_etc_w_any_any_7
+        ori     rtn_addr, code_ptr, lsl_w_mem_3 - cb    // E3F7  LSL.W     (d8,A7,Xn)
+        b       move_add_etc_w_any_any_8
         mr      addr, prefetch_data                     // E3F8  LSL.W     (xxx).W
-        b       L_07440
-        ori     rtn_addr, code_ptr, L_07448 - cb        // E3F9  LSL.W     (xxx).L
-        b       L_05E70
+        b       lsl_w_mem
+        ori     rtn_addr, code_ptr, lsl_w_mem_3 - cb    // E3F9  LSL.W     (xxx).L
+        b       fea_w_71
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E3FA  LSL.W     (d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E3FB  LSL.W     (d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E3FC  LSL.W     #<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E3FD  LSL.W     <ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E3FE  LSL.W     <ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E3FF  LSL.W     <ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $E400-$E43F --------------------------------------------------------
         li      addr, 2                                 // E400  ASR.B     #2,D0
-        b       L_0B2EC
+        b       asr_b_q_d0
         li      addr, 2                                 // E401  ASR.B     #2,D1
-        b       L_0B3AC
+        b       asr_b_q_d1
         li      addr, 2                                 // E402  ASR.B     #2,D2
-        b       L_0B46C
+        b       asr_b_q_d2
         li      addr, 2                                 // E403  ASR.B     #2,D3
-        b       L_0B52C
+        b       asr_b_q_d3
         li      addr, 2                                 // E404  ASR.B     #2,D4
-        b       L_0B5EC
+        b       asr_b_q_d4
         li      addr, 2                                 // E405  ASR.B     #2,D5
-        b       L_0B6AC
+        b       asr_b_q_d5
         li      addr, 2                                 // E406  ASR.B     #2,D6
-        b       L_0B76C
+        b       asr_b_q_d6
         li      addr, 2                                 // E407  ASR.B     #2,D7
-        b       L_0B82C
+        b       asr_b_q_d7
         rlwinm  data, d0, 31, 25, 31                    // E408  LSR.B     #2,D0
-        b       L_0B2CC
+        b       lsr_b_q_d0
         rlwinm  data, d1, 31, 25, 31                    // E409  LSR.B     #2,D1
-        b       L_0B38C
+        b       lsr_b_q_d1
         rlwinm  data, d2, 31, 25, 31                    // E40A  LSR.B     #2,D2
-        b       L_0B44C
+        b       lsr_b_q_d2
         rlwinm  data, d3, 31, 25, 31                    // E40B  LSR.B     #2,D3
-        b       L_0B50C
+        b       lsr_b_q_d3
         rlwinm  data, d4, 31, 25, 31                    // E40C  LSR.B     #2,D4
-        b       L_0B5CC
+        b       lsr_b_q_d4
         rlwinm  data, d5, 31, 25, 31                    // E40D  LSR.B     #2,D5
-        b       L_0B68C
+        b       lsr_b_q_d5
         rlwinm  data, d6, 31, 25, 31                    // E40E  LSR.B     #2,D6
-        b       L_0B74C
+        b       lsr_b_q_d6
         rlwinm  data, d7, 31, 25, 31                    // E40F  LSR.B     #2,D7
-        b       L_0B80C
+        b       lsr_b_q_d7
         li      addr, 7                                 // E410  ROXR.B    #2,D0
-        b       L_0B364
+        b       roxr_roxl_b_q_d0
         li      addr, 7                                 // E411  ROXR.B    #2,D1
-        b       L_0B424
+        b       roxr_roxl_b_q_d1
         li      addr, 7                                 // E412  ROXR.B    #2,D2
-        b       L_0B4E4
+        b       roxr_roxl_b_q_d2
         li      addr, 7                                 // E413  ROXR.B    #2,D3
-        b       L_0B5A4
+        b       roxr_roxl_b_q_d3
         li      addr, 7                                 // E414  ROXR.B    #2,D4
-        b       L_0B664
+        b       roxr_roxl_b_q_d4
         li      addr, 7                                 // E415  ROXR.B    #2,D5
-        b       L_0B724
+        b       roxr_roxl_b_q_d5
         li      addr, 7                                 // E416  ROXR.B    #2,D6
-        b       L_0B7E4
+        b       roxr_roxl_b_q_d6
         li      addr, 7                                 // E417  ROXR.B    #2,D7
-        b       L_0B8A4
+        b       roxr_roxl_b_q_d7
         li      addr, 6                                 // E418  ROR.B     #2,D0
-        b       L_0B32C
+        b       ror_b_q_d0
         li      addr, 6                                 // E419  ROR.B     #2,D1
-        b       L_0B3EC
+        b       ror_b_q_d1
         li      addr, 6                                 // E41A  ROR.B     #2,D2
-        b       L_0B4AC
+        b       ror_b_q_d2
         li      addr, 6                                 // E41B  ROR.B     #2,D3
-        b       L_0B56C
+        b       ror_b_q_d3
         li      addr, 6                                 // E41C  ROR.B     #2,D4
-        b       L_0B62C
+        b       ror_b_q_d4
         li      addr, 6                                 // E41D  ROR.B     #2,D5
-        b       L_0B6EC
+        b       ror_b_q_d5
         li      addr, 6                                 // E41E  ROR.B     #2,D6
-        b       L_0B7AC
+        b       ror_b_q_d6
         li      addr, 6                                 // E41F  ROR.B     #2,D7
-        b       L_0B86C
+        b       ror_b_q_d7
         clrlwi. addr, d2, 26                            // E420  ASR.B     D2,D0
-        b       L_0B2E8
+        b       asr_b_dn_d0
         clrlwi. addr, d2, 26                            // E421  ASR.B     D2,D1
-        b       L_0B3A8
+        b       asr_b_dn_d1
         clrlwi. addr, d2, 26                            // E422  ASR.B     D2,D2
-        b       L_0B468
+        b       asr_b_dn_d2
         clrlwi. addr, d2, 26                            // E423  ASR.B     D2,D3
-        b       L_0B528
+        b       asr_b_dn_d3
         clrlwi. addr, d2, 26                            // E424  ASR.B     D2,D4
-        b       L_0B5E8
+        b       asr_b_dn_d4
         clrlwi. addr, d2, 26                            // E425  ASR.B     D2,D5
-        b       L_0B6A8
+        b       asr_b_dn_d5
         clrlwi. addr, d2, 26                            // E426  ASR.B     D2,D6
-        b       L_0B768
+        b       asr_b_dn_d6
         clrlwi. addr, d2, 26                            // E427  ASR.B     D2,D7
-        b       L_0B828
+        b       asr_b_dn_d7
         clrlwi. addr, d2, 26                            // E428  LSR.B     D2,D0
-        b       L_0B2C0
+        b       lsr_b_dn_d0
         clrlwi. addr, d2, 26                            // E429  LSR.B     D2,D1
-        b       L_0B380
+        b       lsr_b_dn_d1
         clrlwi. addr, d2, 26                            // E42A  LSR.B     D2,D2
-        b       L_0B440
+        b       lsr_b_dn_d2
         clrlwi. addr, d2, 26                            // E42B  LSR.B     D2,D3
-        b       L_0B500
+        b       lsr_b_dn_d3
         clrlwi. addr, d2, 26                            // E42C  LSR.B     D2,D4
-        b       L_0B5C0
+        b       lsr_b_dn_d4
         clrlwi. addr, d2, 26                            // E42D  LSR.B     D2,D5
-        b       L_0B680
+        b       lsr_b_dn_d5
         clrlwi. addr, d2, 26                            // E42E  LSR.B     D2,D6
-        b       L_0B740
+        b       lsr_b_dn_d6
         clrlwi. addr, d2, 26                            // E42F  LSR.B     D2,D7
-        b       L_0B800
+        b       lsr_b_dn_d7
         clrlwi. addr, d2, 26                            // E430  ROXR.B    D2,D0
-        b       L_0B360
+        b       roxr_roxl_b_dn_d0
         clrlwi. addr, d2, 26                            // E431  ROXR.B    D2,D1
-        b       L_0B420
+        b       roxr_roxl_b_dn_d1
         clrlwi. addr, d2, 26                            // E432  ROXR.B    D2,D2
-        b       L_0B4E0
+        b       roxr_roxl_b_dn_d2
         clrlwi. addr, d2, 26                            // E433  ROXR.B    D2,D3
-        b       L_0B5A0
+        b       roxr_roxl_b_dn_d3
         clrlwi. addr, d2, 26                            // E434  ROXR.B    D2,D4
-        b       L_0B660
+        b       roxr_roxl_b_dn_d4
         clrlwi. addr, d2, 26                            // E435  ROXR.B    D2,D5
-        b       L_0B720
+        b       roxr_roxl_b_dn_d5
         clrlwi. addr, d2, 26                            // E436  ROXR.B    D2,D6
-        b       L_0B7E0
+        b       roxr_roxl_b_dn_d6
         clrlwi. addr, d2, 26                            // E437  ROXR.B    D2,D7
-        b       L_0B8A0
+        b       roxr_roxl_b_dn_d7
         clrlwi. addr, d2, 26                            // E438  ROR.B     D2,D0
-        b       L_0B320
+        b       ror_b_dn_d0
         clrlwi. addr, d2, 26                            // E439  ROR.B     D2,D1
-        b       L_0B3E0
+        b       ror_b_dn_d1
         clrlwi. addr, d2, 26                            // E43A  ROR.B     D2,D2
-        b       L_0B4A0
+        b       ror_b_dn_d2
         clrlwi. addr, d2, 26                            // E43B  ROR.B     D2,D3
-        b       L_0B560
+        b       ror_b_dn_d3
         clrlwi. addr, d2, 26                            // E43C  ROR.B     D2,D4
-        b       L_0B620
+        b       ror_b_dn_d4
         clrlwi. addr, d2, 26                            // E43D  ROR.B     D2,D5
-        b       L_0B6E0
+        b       ror_b_dn_d5
         clrlwi. addr, d2, 26                            // E43E  ROR.B     D2,D6
-        b       L_0B7A0
+        b       ror_b_dn_d6
         clrlwi. addr, d2, 26                            // E43F  ROR.B     D2,D7
-        b       L_0B860
+        b       ror_b_dn_d7
 
 // ---- $E440-$E47F --------------------------------------------------------
         li      addr, 2                                 // E440  ASR.W     #2,D0
-        b       L_04C2C
+        b       asr_w_q_d0
         li      addr, 2                                 // E441  ASR.W     #2,D1
-        b       L_04CEC
+        b       asr_w_q_d1
         li      addr, 2                                 // E442  ASR.W     #2,D2
-        b       L_04DAC
+        b       asr_w_q_d2
         li      addr, 2                                 // E443  ASR.W     #2,D3
-        b       L_04E6C
+        b       asr_w_q_d3
         li      addr, 2                                 // E444  ASR.W     #2,D4
-        b       L_04F2C
+        b       asr_w_q_d4
         li      addr, 2                                 // E445  ASR.W     #2,D5
-        b       L_04FEC
+        b       asr_w_q_d5
         li      addr, 2                                 // E446  ASR.W     #2,D6
-        b       L_050AC
+        b       asr_w_q_d6
         li      addr, 2                                 // E447  ASR.W     #2,D7
-        b       L_0516C
+        b       asr_w_q_d7
         rlwinm  data, d0, 31, 17, 31                    // E448  LSR.W     #2,D0
-        b       L_04C0C
+        b       lsr_w_q_d0
         rlwinm  data, d1, 31, 17, 31                    // E449  LSR.W     #2,D1
-        b       L_04CCC
+        b       lsr_w_q_d1
         rlwinm  data, d2, 31, 17, 31                    // E44A  LSR.W     #2,D2
-        b       L_04D8C
+        b       lsr_w_q_d2
         rlwinm  data, d3, 31, 17, 31                    // E44B  LSR.W     #2,D3
-        b       L_04E4C
+        b       lsr_w_q_d3
         rlwinm  data, d4, 31, 17, 31                    // E44C  LSR.W     #2,D4
-        b       L_04F0C
+        b       lsr_w_q_d4
         rlwinm  data, d5, 31, 17, 31                    // E44D  LSR.W     #2,D5
-        b       L_04FCC
+        b       lsr_w_q_d5
         rlwinm  data, d6, 31, 17, 31                    // E44E  LSR.W     #2,D6
-        b       L_0508C
+        b       lsr_w_q_d6
         rlwinm  data, d7, 31, 17, 31                    // E44F  LSR.W     #2,D7
-        b       L_0514C
+        b       lsr_w_q_d7
         addic.  addr, zero, 15                          // E450  ROXR.W    #2,D0
-        b       L_04CA4
+        b       roxr_roxl_w_q_d0
         addic.  addr, zero, 15                          // E451  ROXR.W    #2,D1
-        b       L_04D64
+        b       roxr_roxl_w_q_d1
         addic.  addr, zero, 15                          // E452  ROXR.W    #2,D2
-        b       L_04E24
+        b       roxr_roxl_w_q_d2
         addic.  addr, zero, 15                          // E453  ROXR.W    #2,D3
-        b       L_04EE4
+        b       roxr_roxl_w_q_d3
         addic.  addr, zero, 15                          // E454  ROXR.W    #2,D4
-        b       L_04FA4
+        b       roxr_roxl_w_q_d4
         addic.  addr, zero, 15                          // E455  ROXR.W    #2,D5
-        b       L_05064
+        b       roxr_roxl_w_q_d5
         addic.  addr, zero, 15                          // E456  ROXR.W    #2,D6
-        b       L_05124
+        b       roxr_roxl_w_q_d6
         addic.  addr, zero, 15                          // E457  ROXR.W    #2,D7
-        b       L_051E4
+        b       roxr_roxl_w_q_d7
         li      addr, 14                                // E458  ROR.W     #2,D0
-        b       L_04C6C
+        b       ror_w_q_d0
         li      addr, 14                                // E459  ROR.W     #2,D1
-        b       L_04D2C
+        b       ror_w_q_d1
         li      addr, 14                                // E45A  ROR.W     #2,D2
-        b       L_04DEC
+        b       ror_w_q_d2
         li      addr, 14                                // E45B  ROR.W     #2,D3
-        b       L_04EAC
+        b       ror_w_q_d3
         li      addr, 14                                // E45C  ROR.W     #2,D4
-        b       L_04F6C
+        b       ror_w_q_d4
         li      addr, 14                                // E45D  ROR.W     #2,D5
-        b       L_0502C
+        b       ror_w_q_d5
         li      addr, 14                                // E45E  ROR.W     #2,D6
-        b       L_050EC
+        b       ror_w_q_d6
         li      addr, 14                                // E45F  ROR.W     #2,D7
-        b       L_051AC
+        b       ror_w_q_d7
         clrlwi. addr, d2, 26                            // E460  ASR.W     D2,D0
-        b       L_04C28
+        b       asr_w_dn_d0
         clrlwi. addr, d2, 26                            // E461  ASR.W     D2,D1
-        b       L_04CE8
+        b       asr_w_dn_d1
         clrlwi. addr, d2, 26                            // E462  ASR.W     D2,D2
-        b       L_04DA8
+        b       asr_w_dn_d2
         clrlwi. addr, d2, 26                            // E463  ASR.W     D2,D3
-        b       L_04E68
+        b       asr_w_dn_d3
         clrlwi. addr, d2, 26                            // E464  ASR.W     D2,D4
-        b       L_04F28
+        b       asr_w_dn_d4
         clrlwi. addr, d2, 26                            // E465  ASR.W     D2,D5
-        b       L_04FE8
+        b       asr_w_dn_d5
         clrlwi. addr, d2, 26                            // E466  ASR.W     D2,D6
-        b       L_050A8
+        b       asr_w_dn_d6
         clrlwi. addr, d2, 26                            // E467  ASR.W     D2,D7
-        b       L_05168
+        b       asr_w_dn_d7
         clrlwi. addr, d2, 26                            // E468  LSR.W     D2,D0
-        b       L_04C00
+        b       lsr_w_dn_d0
         clrlwi. addr, d2, 26                            // E469  LSR.W     D2,D1
-        b       L_04CC0
+        b       lsr_w_dn_d1
         clrlwi. addr, d2, 26                            // E46A  LSR.W     D2,D2
-        b       L_04D80
+        b       lsr_w_dn_d2
         clrlwi. addr, d2, 26                            // E46B  LSR.W     D2,D3
-        b       L_04E40
+        b       lsr_w_dn_d3
         clrlwi. addr, d2, 26                            // E46C  LSR.W     D2,D4
-        b       L_04F00
+        b       lsr_w_dn_d4
         clrlwi. addr, d2, 26                            // E46D  LSR.W     D2,D5
-        b       L_04FC0
+        b       lsr_w_dn_d5
         clrlwi. addr, d2, 26                            // E46E  LSR.W     D2,D6
-        b       L_05080
+        b       lsr_w_dn_d6
         clrlwi. addr, d2, 26                            // E46F  LSR.W     D2,D7
-        b       L_05140
+        b       lsr_w_dn_d7
         clrlwi. addr, d2, 26                            // E470  ROXR.W    D2,D0
-        b       L_04CA0
+        b       roxr_roxl_w_dn_d0
         clrlwi. addr, d2, 26                            // E471  ROXR.W    D2,D1
-        b       L_04D60
+        b       roxr_roxl_w_dn_d1
         clrlwi. addr, d2, 26                            // E472  ROXR.W    D2,D2
-        b       L_04E20
+        b       roxr_roxl_w_dn_d2
         clrlwi. addr, d2, 26                            // E473  ROXR.W    D2,D3
-        b       L_04EE0
+        b       roxr_roxl_w_dn_d3
         clrlwi. addr, d2, 26                            // E474  ROXR.W    D2,D4
-        b       L_04FA0
+        b       roxr_roxl_w_dn_d4
         clrlwi. addr, d2, 26                            // E475  ROXR.W    D2,D5
-        b       L_05060
+        b       roxr_roxl_w_dn_d5
         clrlwi. addr, d2, 26                            // E476  ROXR.W    D2,D6
-        b       L_05120
+        b       roxr_roxl_w_dn_d6
         clrlwi. addr, d2, 26                            // E477  ROXR.W    D2,D7
-        b       L_051E0
+        b       roxr_roxl_w_dn_d7
         clrlwi. addr, d2, 26                            // E478  ROR.W     D2,D0
-        b       L_04C60
+        b       ror_w_dn_d0
         clrlwi. addr, d2, 26                            // E479  ROR.W     D2,D1
-        b       L_04D20
+        b       ror_w_dn_d1
         clrlwi. addr, d2, 26                            // E47A  ROR.W     D2,D2
-        b       L_04DE0
+        b       ror_w_dn_d2
         clrlwi. addr, d2, 26                            // E47B  ROR.W     D2,D3
-        b       L_04EA0
+        b       ror_w_dn_d3
         clrlwi. addr, d2, 26                            // E47C  ROR.W     D2,D4
-        b       L_04F60
+        b       ror_w_dn_d4
         clrlwi. addr, d2, 26                            // E47D  ROR.W     D2,D5
-        b       L_05020
+        b       ror_w_dn_d5
         clrlwi. addr, d2, 26                            // E47E  ROR.W     D2,D6
-        b       L_050E0
+        b       ror_w_dn_d6
         clrlwi. addr, d2, 26                            // E47F  ROR.W     D2,D7
-        b       L_051A0
+        b       ror_w_dn_d7
 
 // ---- $E480-$E4BF --------------------------------------------------------
         srawi   data, d0, 1                             // E480  ASR.L     #2,D0
-        b       L_05234
+        b       asr_l_q_d0
         srawi   data, d1, 1                             // E481  ASR.L     #2,D1
-        b       L_052D4
+        b       asr_l_q_d1
         srawi   data, d2, 1                             // E482  ASR.L     #2,D2
-        b       L_05374
+        b       asr_l_q_d2
         srawi   data, d3, 1                             // E483  ASR.L     #2,D3
-        b       L_05414
+        b       asr_l_q_d3
         srawi   data, d4, 1                             // E484  ASR.L     #2,D4
-        b       L_054B4
+        b       asr_l_q_d4
         srawi   data, d5, 1                             // E485  ASR.L     #2,D5
-        b       L_05554
+        b       asr_l_q_d5
         srawi   data, d6, 1                             // E486  ASR.L     #2,D6
-        b       L_055F4
+        b       asr_l_q_d6
         srawi   data, d7, 1                             // E487  ASR.L     #2,D7
-        b       L_05694
+        b       asr_l_q_d7
         srwi    data, d0, 1                             // E488  LSR.L     #2,D0
-        b       L_0520C
+        b       lsr_l_q_d0
         srwi    data, d1, 1                             // E489  LSR.L     #2,D1
-        b       L_052AC
+        b       lsr_l_q_d1
         srwi    data, d2, 1                             // E48A  LSR.L     #2,D2
-        b       L_0534C
+        b       lsr_l_q_d2
         srwi    data, d3, 1                             // E48B  LSR.L     #2,D3
-        b       L_053EC
+        b       lsr_l_q_d3
         srwi    data, d4, 1                             // E48C  LSR.L     #2,D4
-        b       L_0548C
+        b       lsr_l_q_d4
         srwi    data, d5, 1                             // E48D  LSR.L     #2,D5
-        b       L_0552C
+        b       lsr_l_q_d5
         srwi    data, d6, 1                             // E48E  LSR.L     #2,D6
-        b       L_055CC
+        b       lsr_l_q_d6
         srwi    data, d7, 1                             // E48F  LSR.L     #2,D7
-        b       L_0566C
+        b       lsr_l_q_d7
         addic.  addr, zero, 31                          // E490  ROXR.L    #2,D0
-        b       L_05284
+        b       roxr_roxl_l_q_d0
         addic.  addr, zero, 31                          // E491  ROXR.L    #2,D1
-        b       L_05324
+        b       roxr_roxl_l_q_d1
         addic.  addr, zero, 31                          // E492  ROXR.L    #2,D2
-        b       L_053C4
+        b       roxr_roxl_l_q_d2
         addic.  addr, zero, 31                          // E493  ROXR.L    #2,D3
-        b       L_05464
+        b       roxr_roxl_l_q_d3
         addic.  addr, zero, 31                          // E494  ROXR.L    #2,D4
-        b       L_05504
+        b       roxr_roxl_l_q_d4
         addic.  addr, zero, 31                          // E495  ROXR.L    #2,D5
-        b       L_055A4
+        b       roxr_roxl_l_q_d5
         addic.  addr, zero, 31                          // E496  ROXR.L    #2,D6
-        b       L_05644
+        b       roxr_roxl_l_q_d6
         addic.  addr, zero, 31                          // E497  ROXR.L    #2,D7
-        b       L_056E4
+        b       roxr_roxl_l_q_d7
         rotlwi  data, d0, 30                            // E498  ROR.L     #2,D0
-        b       L_05260
+        b       ror_l_q_d0
         rotlwi  data, d1, 30                            // E499  ROR.L     #2,D1
-        b       L_05300
+        b       ror_l_q_d1
         rotlwi  data, d2, 30                            // E49A  ROR.L     #2,D2
-        b       L_053A0
+        b       ror_l_q_d2
         rotlwi  data, d3, 30                            // E49B  ROR.L     #2,D3
-        b       L_05440
+        b       ror_l_q_d3
         rotlwi  data, d4, 30                            // E49C  ROR.L     #2,D4
-        b       L_054E0
+        b       ror_l_q_d4
         rotlwi  data, d5, 30                            // E49D  ROR.L     #2,D5
-        b       L_05580
+        b       ror_l_q_d5
         rotlwi  data, d6, 30                            // E49E  ROR.L     #2,D6
-        b       L_05620
+        b       ror_l_q_d6
         rotlwi  data, d7, 30                            // E49F  ROR.L     #2,D7
-        b       L_056C0
+        b       ror_l_q_d7
         clrlwi. addr, d2, 26                            // E4A0  ASR.L     D2,D0
-        b       L_05228
+        b       asr_l_dn_d0
         clrlwi. addr, d2, 26                            // E4A1  ASR.L     D2,D1
-        b       L_052C8
+        b       asr_l_dn_d1
         clrlwi. addr, d2, 26                            // E4A2  ASR.L     D2,D2
-        b       L_05368
+        b       asr_l_dn_d2
         clrlwi. addr, d2, 26                            // E4A3  ASR.L     D2,D3
-        b       L_05408
+        b       asr_l_dn_d3
         clrlwi. addr, d2, 26                            // E4A4  ASR.L     D2,D4
-        b       L_054A8
+        b       asr_l_dn_d4
         clrlwi. addr, d2, 26                            // E4A5  ASR.L     D2,D5
-        b       L_05548
+        b       asr_l_dn_d5
         clrlwi. addr, d2, 26                            // E4A6  ASR.L     D2,D6
-        b       L_055E8
+        b       asr_l_dn_d6
         clrlwi. addr, d2, 26                            // E4A7  ASR.L     D2,D7
-        b       L_05688
+        b       asr_l_dn_d7
         clrlwi. addr, d2, 26                            // E4A8  LSR.L     D2,D0
-        b       L_05200
+        b       lsr_l_dn_d0
         clrlwi. addr, d2, 26                            // E4A9  LSR.L     D2,D1
-        b       L_052A0
+        b       lsr_l_dn_d1
         clrlwi. addr, d2, 26                            // E4AA  LSR.L     D2,D2
-        b       L_05340
+        b       lsr_l_dn_d2
         clrlwi. addr, d2, 26                            // E4AB  LSR.L     D2,D3
-        b       L_053E0
+        b       lsr_l_dn_d3
         clrlwi. addr, d2, 26                            // E4AC  LSR.L     D2,D4
-        b       L_05480
+        b       lsr_l_dn_d4
         clrlwi. addr, d2, 26                            // E4AD  LSR.L     D2,D5
-        b       L_05520
+        b       lsr_l_dn_d5
         clrlwi. addr, d2, 26                            // E4AE  LSR.L     D2,D6
-        b       L_055C0
+        b       lsr_l_dn_d6
         clrlwi. addr, d2, 26                            // E4AF  LSR.L     D2,D7
-        b       L_05660
+        b       lsr_l_dn_d7
         clrlwi. addr, d2, 26                            // E4B0  ROXR.L    D2,D0
-        b       L_05280
+        b       roxr_roxl_l_dn_d0
         clrlwi. addr, d2, 26                            // E4B1  ROXR.L    D2,D1
-        b       L_05320
+        b       roxr_roxl_l_dn_d1
         clrlwi. addr, d2, 26                            // E4B2  ROXR.L    D2,D2
-        b       L_053C0
+        b       roxr_roxl_l_dn_d2
         clrlwi. addr, d2, 26                            // E4B3  ROXR.L    D2,D3
-        b       L_05460
+        b       roxr_roxl_l_dn_d3
         clrlwi. addr, d2, 26                            // E4B4  ROXR.L    D2,D4
-        b       L_05500
+        b       roxr_roxl_l_dn_d4
         clrlwi. addr, d2, 26                            // E4B5  ROXR.L    D2,D5
-        b       L_055A0
+        b       roxr_roxl_l_dn_d5
         clrlwi. addr, d2, 26                            // E4B6  ROXR.L    D2,D6
-        b       L_05640
+        b       roxr_roxl_l_dn_d6
         clrlwi. addr, d2, 26                            // E4B7  ROXR.L    D2,D7
-        b       L_056E0
+        b       roxr_roxl_l_dn_d7
         clrlwi. addr, d2, 26                            // E4B8  ROR.L     D2,D0
-        b       L_05254
+        b       ror_l_dn_d0
         clrlwi. addr, d2, 26                            // E4B9  ROR.L     D2,D1
-        b       L_052F4
+        b       ror_l_dn_d1
         clrlwi. addr, d2, 26                            // E4BA  ROR.L     D2,D2
-        b       L_05394
+        b       ror_l_dn_d2
         clrlwi. addr, d2, 26                            // E4BB  ROR.L     D2,D3
-        b       L_05434
+        b       ror_l_dn_d3
         clrlwi. addr, d2, 26                            // E4BC  ROR.L     D2,D4
-        b       L_054D4
+        b       ror_l_dn_d4
         clrlwi. addr, d2, 26                            // E4BD  ROR.L     D2,D5
-        b       L_05574
+        b       ror_l_dn_d5
         clrlwi. addr, d2, 26                            // E4BE  ROR.L     D2,D6
-        b       L_05614
+        b       ror_l_dn_d6
         clrlwi. addr, d2, 26                            // E4BF  ROR.L     D2,D7
-        b       L_056B4
+        b       ror_l_dn_d7
 
 // ---- $E4C0-$E4FF --------------------------------------------------------
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E4C0  ROXR.W    D0   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E4C1  ROXR.W    D1   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E4C2  ROXR.W    D2   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E4C3  ROXR.W    D3   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E4C4  ROXR.W    D4   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E4C5  ROXR.W    D5   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E4C6  ROXR.W    D6   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E4C7  ROXR.W    D7   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E4C8  ROXR.W    A0   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E4C9  ROXR.W    A1   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E4CA  ROXR.W    A2   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E4CB  ROXR.W    A3   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E4CC  ROXR.W    A4   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E4CD  ROXR.W    A5   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E4CE  ROXR.W    A6   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E4CF  ROXR.W    A7   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 op_E4D0:
         mr      addr, a0                                // E4D0  ROXR.W    (A0)
-        b       L_07584
+        b       roxr_w_mem_2
 op_E4D1:
         mr      addr, a1                                // E4D1  ROXR.W    (A1)
-        b       L_07584
+        b       roxr_w_mem_2
 op_E4D2:
         mr      addr, a2                                // E4D2  ROXR.W    (A2)
-        b       L_07584
+        b       roxr_w_mem_2
 op_E4D3:
         mr      addr, a3                                // E4D3  ROXR.W    (A3)
-        b       L_07584
+        b       roxr_w_mem_2
 op_E4D4:
         mr      addr, a4                                // E4D4  ROXR.W    (A4)
-        b       L_07584
+        b       roxr_w_mem_2
 op_E4D5:
         mr      addr, a5                                // E4D5  ROXR.W    (A5)
-        b       L_07584
+        b       roxr_w_mem_2
 op_E4D6:
         mr      addr, a6                                // E4D6  ROXR.W    (A6)
-        b       L_07584
+        b       roxr_w_mem_2
 op_E4D7:
         mr      addr, a7                                // E4D7  ROXR.W    (A7)
-        b       L_07584
-        ori     rtn_addr, code_ptr, L_07584 - cb        // E4D8  ROXR.W    (A0)+
-        b       L_00820
-        ori     rtn_addr, code_ptr, L_07584 - cb        // E4D9  ROXR.W    (A1)+
-        b       L_008A0
-        ori     rtn_addr, code_ptr, L_07584 - cb        // E4DA  ROXR.W    (A2)+
-        b       L_00920
-        ori     rtn_addr, code_ptr, L_07584 - cb        // E4DB  ROXR.W    (A3)+
-        b       L_009A0
-        ori     rtn_addr, code_ptr, L_07584 - cb        // E4DC  ROXR.W    (A4)+
-        b       L_00A20
-        ori     rtn_addr, code_ptr, L_07584 - cb        // E4DD  ROXR.W    (A5)+
-        b       L_00AA0
-        ori     rtn_addr, code_ptr, L_07584 - cb        // E4DE  ROXR.W    (A6)+
-        b       L_00B20
-        ori     rtn_addr, code_ptr, L_07584 - cb        // E4DF  ROXR.W    (A7)+
-        b       L_00BA0
+        b       roxr_w_mem_2
+        ori     rtn_addr, code_ptr, roxr_w_mem_2 - cb   // E4D8  ROXR.W    (A0)+
+        b       cea_w_30
+        ori     rtn_addr, code_ptr, roxr_w_mem_2 - cb   // E4D9  ROXR.W    (A1)+
+        b       cea_w_31
+        ori     rtn_addr, code_ptr, roxr_w_mem_2 - cb   // E4DA  ROXR.W    (A2)+
+        b       cea_w_32
+        ori     rtn_addr, code_ptr, roxr_w_mem_2 - cb   // E4DB  ROXR.W    (A3)+
+        b       cea_w_33
+        ori     rtn_addr, code_ptr, roxr_w_mem_2 - cb   // E4DC  ROXR.W    (A4)+
+        b       cea_w_34
+        ori     rtn_addr, code_ptr, roxr_w_mem_2 - cb   // E4DD  ROXR.W    (A5)+
+        b       cea_w_35
+        ori     rtn_addr, code_ptr, roxr_w_mem_2 - cb   // E4DE  ROXR.W    (A6)+
+        b       cea_w_36
+        ori     rtn_addr, code_ptr, roxr_w_mem_2 - cb   // E4DF  ROXR.W    (A7)+
+        b       cea_w_37
         addi    a0, a0, -2                              // E4E0  ROXR.W    -(A0)
         b       op_E4D0
         addi    a1, a1, -2                              // E4E1  ROXR.W    -(A1)
@@ -2595,517 +2595,517 @@ op_E4D7:
         addi    a7, a7, -2                              // E4E7  ROXR.W    -(A7)
         b       op_E4D7
         add     addr, a0, prefetch_data                 // E4E8  ROXR.W    (d16,A0)
-        b       L_07580
+        b       roxr_w_mem
         add     addr, a1, prefetch_data                 // E4E9  ROXR.W    (d16,A1)
-        b       L_07580
+        b       roxr_w_mem
         add     addr, a2, prefetch_data                 // E4EA  ROXR.W    (d16,A2)
-        b       L_07580
+        b       roxr_w_mem
         add     addr, a3, prefetch_data                 // E4EB  ROXR.W    (d16,A3)
-        b       L_07580
+        b       roxr_w_mem
         add     addr, a4, prefetch_data                 // E4EC  ROXR.W    (d16,A4)
-        b       L_07580
+        b       roxr_w_mem
         add     addr, a5, prefetch_data                 // E4ED  ROXR.W    (d16,A5)
-        b       L_07580
+        b       roxr_w_mem
         add     addr, a6, prefetch_data                 // E4EE  ROXR.W    (d16,A6)
-        b       L_07580
+        b       roxr_w_mem
         add     addr, a7, prefetch_data                 // E4EF  ROXR.W    (d16,A7)
-        b       L_07580
-        ori     rtn_addr, code_ptr, L_07588 - cb        // E4F0  ROXR.W    (d8,A0,Xn)
-        b       L_059B0
-        ori     rtn_addr, code_ptr, L_07588 - cb        // E4F1  ROXR.W    (d8,A1,Xn)
-        b       L_05A10
-        ori     rtn_addr, code_ptr, L_07588 - cb        // E4F2  ROXR.W    (d8,A2,Xn)
-        b       L_05A70
-        ori     rtn_addr, code_ptr, L_07588 - cb        // E4F3  ROXR.W    (d8,A3,Xn)
-        b       L_05AD0
-        ori     rtn_addr, code_ptr, L_07588 - cb        // E4F4  ROXR.W    (d8,A4,Xn)
-        b       L_05B30
-        ori     rtn_addr, code_ptr, L_07588 - cb        // E4F5  ROXR.W    (d8,A5,Xn)
-        b       L_05B90
-        ori     rtn_addr, code_ptr, L_07588 - cb        // E4F6  ROXR.W    (d8,A6,Xn)
-        b       L_05BF0
-        ori     rtn_addr, code_ptr, L_07588 - cb        // E4F7  ROXR.W    (d8,A7,Xn)
-        b       L_05C50
+        b       roxr_w_mem
+        ori     rtn_addr, code_ptr, roxr_w_mem_3 - cb   // E4F0  ROXR.W    (d8,A0,Xn)
+        b       move_add_etc_w_any_any
+        ori     rtn_addr, code_ptr, roxr_w_mem_3 - cb   // E4F1  ROXR.W    (d8,A1,Xn)
+        b       move_add_etc_w_any_any_2
+        ori     rtn_addr, code_ptr, roxr_w_mem_3 - cb   // E4F2  ROXR.W    (d8,A2,Xn)
+        b       move_add_etc_w_any_any_3
+        ori     rtn_addr, code_ptr, roxr_w_mem_3 - cb   // E4F3  ROXR.W    (d8,A3,Xn)
+        b       move_add_etc_w_any_any_4
+        ori     rtn_addr, code_ptr, roxr_w_mem_3 - cb   // E4F4  ROXR.W    (d8,A4,Xn)
+        b       move_add_etc_w_any_any_5
+        ori     rtn_addr, code_ptr, roxr_w_mem_3 - cb   // E4F5  ROXR.W    (d8,A5,Xn)
+        b       move_add_etc_w_any_any_6
+        ori     rtn_addr, code_ptr, roxr_w_mem_3 - cb   // E4F6  ROXR.W    (d8,A6,Xn)
+        b       move_add_etc_w_any_any_7
+        ori     rtn_addr, code_ptr, roxr_w_mem_3 - cb   // E4F7  ROXR.W    (d8,A7,Xn)
+        b       move_add_etc_w_any_any_8
         mr      addr, prefetch_data                     // E4F8  ROXR.W    (xxx).W
-        b       L_07580
-        ori     rtn_addr, code_ptr, L_07588 - cb        // E4F9  ROXR.W    (xxx).L
-        b       L_05E70
+        b       roxr_w_mem
+        ori     rtn_addr, code_ptr, roxr_w_mem_3 - cb   // E4F9  ROXR.W    (xxx).L
+        b       fea_w_71
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E4FA  ROXR.W    (d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E4FB  ROXR.W    (d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E4FC  ROXR.W    #<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E4FD  ROXR.W    <ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E4FE  ROXR.W    <ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E4FF  ROXR.W    <ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $E500-$E53F --------------------------------------------------------
         li      addr, 2                                 // E500  ASL.B     #2,D0
-        b       L_0B304
+        b       asl_b_q_d0
         li      addr, 2                                 // E501  ASL.B     #2,D1
-        b       L_0B3C4
+        b       asl_b_q_d1
         li      addr, 2                                 // E502  ASL.B     #2,D2
-        b       L_0B484
+        b       asl_b_q_d2
         li      addr, 2                                 // E503  ASL.B     #2,D3
-        b       L_0B544
+        b       asl_b_q_d3
         li      addr, 2                                 // E504  ASL.B     #2,D4
-        b       L_0B604
+        b       asl_b_q_d4
         li      addr, 2                                 // E505  ASL.B     #2,D5
-        b       L_0B6C4
+        b       asl_b_q_d5
         li      addr, 2                                 // E506  ASL.B     #2,D6
-        b       L_0B784
+        b       asl_b_q_d6
         li      addr, 2                                 // E507  ASL.B     #2,D7
-        b       L_0B844
+        b       asl_b_q_d7
         slwi    data, d0, 25                            // E508  LSL.B     #2,D0
-        b       L_0B2E0
+        b       lsl_b_q_d0
         slwi    data, d1, 25                            // E509  LSL.B     #2,D1
-        b       L_0B3A0
+        b       lsl_b_q_d1
         slwi    data, d2, 25                            // E50A  LSL.B     #2,D2
-        b       L_0B460
+        b       lsl_b_q_d2
         slwi    data, d3, 25                            // E50B  LSL.B     #2,D3
-        b       L_0B520
+        b       lsl_b_q_d3
         slwi    data, d4, 25                            // E50C  LSL.B     #2,D4
-        b       L_0B5E0
+        b       lsl_b_q_d4
         slwi    data, d5, 25                            // E50D  LSL.B     #2,D5
-        b       L_0B6A0
+        b       lsl_b_q_d5
         slwi    data, d6, 25                            // E50E  LSL.B     #2,D6
-        b       L_0B760
+        b       lsl_b_q_d6
         slwi    data, d7, 25                            // E50F  LSL.B     #2,D7
-        b       L_0B820
+        b       lsl_b_q_d7
         li      addr, 2                                 // E510  ROXL.B    #2,D0
-        b       L_0B364
+        b       roxr_roxl_b_q_d0
         li      addr, 2                                 // E511  ROXL.B    #2,D1
-        b       L_0B424
+        b       roxr_roxl_b_q_d1
         li      addr, 2                                 // E512  ROXL.B    #2,D2
-        b       L_0B4E4
+        b       roxr_roxl_b_q_d2
         li      addr, 2                                 // E513  ROXL.B    #2,D3
-        b       L_0B5A4
+        b       roxr_roxl_b_q_d3
         li      addr, 2                                 // E514  ROXL.B    #2,D4
-        b       L_0B664
+        b       roxr_roxl_b_q_d4
         li      addr, 2                                 // E515  ROXL.B    #2,D5
-        b       L_0B724
+        b       roxr_roxl_b_q_d5
         li      addr, 2                                 // E516  ROXL.B    #2,D6
-        b       L_0B7E4
+        b       roxr_roxl_b_q_d6
         li      addr, 2                                 // E517  ROXL.B    #2,D7
-        b       L_0B8A4
+        b       roxr_roxl_b_q_d7
         li      addr, 2                                 // E518  ROL.B     #2,D0
-        b       L_0B348
+        b       rol_b_q_d0
         li      addr, 2                                 // E519  ROL.B     #2,D1
-        b       L_0B408
+        b       rol_b_q_d1
         li      addr, 2                                 // E51A  ROL.B     #2,D2
-        b       L_0B4C8
+        b       rol_b_q_d2
         li      addr, 2                                 // E51B  ROL.B     #2,D3
-        b       L_0B588
+        b       rol_b_q_d3
         li      addr, 2                                 // E51C  ROL.B     #2,D4
-        b       L_0B648
+        b       rol_b_q_d4
         li      addr, 2                                 // E51D  ROL.B     #2,D5
-        b       L_0B708
+        b       rol_b_q_d5
         li      addr, 2                                 // E51E  ROL.B     #2,D6
-        b       L_0B7C8
+        b       rol_b_q_d6
         li      addr, 2                                 // E51F  ROL.B     #2,D7
-        b       L_0B888
+        b       rol_b_q_d7
         clrlwi. addr, d2, 26                            // E520  ASL.B     D2,D0
-        b       L_0B300
+        b       asl_b_dn_d0
         clrlwi. addr, d2, 26                            // E521  ASL.B     D2,D1
-        b       L_0B3C0
+        b       asl_b_dn_d1
         clrlwi. addr, d2, 26                            // E522  ASL.B     D2,D2
-        b       L_0B480
+        b       asl_b_dn_d2
         clrlwi. addr, d2, 26                            // E523  ASL.B     D2,D3
-        b       L_0B540
+        b       asl_b_dn_d3
         clrlwi. addr, d2, 26                            // E524  ASL.B     D2,D4
-        b       L_0B600
+        b       asl_b_dn_d4
         clrlwi. addr, d2, 26                            // E525  ASL.B     D2,D5
-        b       L_0B6C0
+        b       asl_b_dn_d5
         clrlwi. addr, d2, 26                            // E526  ASL.B     D2,D6
-        b       L_0B780
+        b       asl_b_dn_d6
         clrlwi. addr, d2, 26                            // E527  ASL.B     D2,D7
-        b       L_0B840
+        b       asl_b_dn_d7
         clrlwi. addr, d2, 26                            // E528  LSL.B     D2,D0
-        b       L_0B2D4
+        b       lsl_b_dn_d0
         clrlwi. addr, d2, 26                            // E529  LSL.B     D2,D1
-        b       L_0B394
+        b       lsl_b_dn_d1
         clrlwi. addr, d2, 26                            // E52A  LSL.B     D2,D2
-        b       L_0B454
+        b       lsl_b_dn_d2
         clrlwi. addr, d2, 26                            // E52B  LSL.B     D2,D3
-        b       L_0B514
+        b       lsl_b_dn_d3
         clrlwi. addr, d2, 26                            // E52C  LSL.B     D2,D4
-        b       L_0B5D4
+        b       lsl_b_dn_d4
         clrlwi. addr, d2, 26                            // E52D  LSL.B     D2,D5
-        b       L_0B694
+        b       lsl_b_dn_d5
         clrlwi. addr, d2, 26                            // E52E  LSL.B     D2,D6
-        b       L_0B754
+        b       lsl_b_dn_d6
         clrlwi. addr, d2, 26                            // E52F  LSL.B     D2,D7
-        b       L_0B814
+        b       lsl_b_dn_d7
         clrlwi. addr, d2, 26                            // E530  ROXL.B    D2,D0
-        b       L_0B360
+        b       roxr_roxl_b_dn_d0
         clrlwi. addr, d2, 26                            // E531  ROXL.B    D2,D1
-        b       L_0B420
+        b       roxr_roxl_b_dn_d1
         clrlwi. addr, d2, 26                            // E532  ROXL.B    D2,D2
-        b       L_0B4E0
+        b       roxr_roxl_b_dn_d2
         clrlwi. addr, d2, 26                            // E533  ROXL.B    D2,D3
-        b       L_0B5A0
+        b       roxr_roxl_b_dn_d3
         clrlwi. addr, d2, 26                            // E534  ROXL.B    D2,D4
-        b       L_0B660
+        b       roxr_roxl_b_dn_d4
         clrlwi. addr, d2, 26                            // E535  ROXL.B    D2,D5
-        b       L_0B720
+        b       roxr_roxl_b_dn_d5
         clrlwi. addr, d2, 26                            // E536  ROXL.B    D2,D6
-        b       L_0B7E0
+        b       roxr_roxl_b_dn_d6
         clrlwi. addr, d2, 26                            // E537  ROXL.B    D2,D7
-        b       L_0B8A0
+        b       roxr_roxl_b_dn_d7
         clrlwi. addr, d2, 26                            // E538  ROL.B     D2,D0
-        b       L_0B340
+        b       rol_b_dn_d0
         clrlwi. addr, d2, 26                            // E539  ROL.B     D2,D1
-        b       L_0B400
+        b       rol_b_dn_d1
         clrlwi. addr, d2, 26                            // E53A  ROL.B     D2,D2
-        b       L_0B4C0
+        b       rol_b_dn_d2
         clrlwi. addr, d2, 26                            // E53B  ROL.B     D2,D3
-        b       L_0B580
+        b       rol_b_dn_d3
         clrlwi. addr, d2, 26                            // E53C  ROL.B     D2,D4
-        b       L_0B640
+        b       rol_b_dn_d4
         clrlwi. addr, d2, 26                            // E53D  ROL.B     D2,D5
-        b       L_0B700
+        b       rol_b_dn_d5
         clrlwi. addr, d2, 26                            // E53E  ROL.B     D2,D6
-        b       L_0B7C0
+        b       rol_b_dn_d6
         clrlwi. addr, d2, 26                            // E53F  ROL.B     D2,D7
-        b       L_0B880
+        b       rol_b_dn_d7
 
 // ---- $E540-$E57F --------------------------------------------------------
         li      addr, 2                                 // E540  ASL.W     #2,D0
-        b       L_04C44
+        b       asl_w_q_d0
         li      addr, 2                                 // E541  ASL.W     #2,D1
-        b       L_04D04
+        b       asl_w_q_d1
         li      addr, 2                                 // E542  ASL.W     #2,D2
-        b       L_04DC4
+        b       asl_w_q_d2
         li      addr, 2                                 // E543  ASL.W     #2,D3
-        b       L_04E84
+        b       asl_w_q_d3
         li      addr, 2                                 // E544  ASL.W     #2,D4
-        b       L_04F44
+        b       asl_w_q_d4
         li      addr, 2                                 // E545  ASL.W     #2,D5
-        b       L_05004
+        b       asl_w_q_d5
         li      addr, 2                                 // E546  ASL.W     #2,D6
-        b       L_050C4
+        b       asl_w_q_d6
         li      addr, 2                                 // E547  ASL.W     #2,D7
-        b       L_05184
+        b       asl_w_q_d7
         slwi    data, d0, 17                            // E548  LSL.W     #2,D0
-        b       L_04C20
+        b       lsl_w_q_d0
         slwi    data, d1, 17                            // E549  LSL.W     #2,D1
-        b       L_04CE0
+        b       lsl_w_q_d1
         slwi    data, d2, 17                            // E54A  LSL.W     #2,D2
-        b       L_04DA0
+        b       lsl_w_q_d2
         slwi    data, d3, 17                            // E54B  LSL.W     #2,D3
-        b       L_04E60
+        b       lsl_w_q_d3
         slwi    data, d4, 17                            // E54C  LSL.W     #2,D4
-        b       L_04F20
+        b       lsl_w_q_d4
         slwi    data, d5, 17                            // E54D  LSL.W     #2,D5
-        b       L_04FE0
+        b       lsl_w_q_d5
         slwi    data, d6, 17                            // E54E  LSL.W     #2,D6
-        b       L_050A0
+        b       lsl_w_q_d6
         slwi    data, d7, 17                            // E54F  LSL.W     #2,D7
-        b       L_05160
+        b       lsl_w_q_d7
         addic.  addr, zero, 2                           // E550  ROXL.W    #2,D0
-        b       L_04CA4
+        b       roxr_roxl_w_q_d0
         addic.  addr, zero, 2                           // E551  ROXL.W    #2,D1
-        b       L_04D64
+        b       roxr_roxl_w_q_d1
         addic.  addr, zero, 2                           // E552  ROXL.W    #2,D2
-        b       L_04E24
+        b       roxr_roxl_w_q_d2
         addic.  addr, zero, 2                           // E553  ROXL.W    #2,D3
-        b       L_04EE4
+        b       roxr_roxl_w_q_d3
         addic.  addr, zero, 2                           // E554  ROXL.W    #2,D4
-        b       L_04FA4
+        b       roxr_roxl_w_q_d4
         addic.  addr, zero, 2                           // E555  ROXL.W    #2,D5
-        b       L_05064
+        b       roxr_roxl_w_q_d5
         addic.  addr, zero, 2                           // E556  ROXL.W    #2,D6
-        b       L_05124
+        b       roxr_roxl_w_q_d6
         addic.  addr, zero, 2                           // E557  ROXL.W    #2,D7
-        b       L_051E4
+        b       roxr_roxl_w_q_d7
         li      addr, 2                                 // E558  ROL.W     #2,D0
-        b       L_04C88
+        b       rol_w_q_d0
         li      addr, 2                                 // E559  ROL.W     #2,D1
-        b       L_04D48
+        b       rol_w_q_d1
         li      addr, 2                                 // E55A  ROL.W     #2,D2
-        b       L_04E08
+        b       rol_w_q_d2
         li      addr, 2                                 // E55B  ROL.W     #2,D3
-        b       L_04EC8
+        b       rol_w_q_d3
         li      addr, 2                                 // E55C  ROL.W     #2,D4
-        b       L_04F88
+        b       rol_w_q_d4
         li      addr, 2                                 // E55D  ROL.W     #2,D5
-        b       L_05048
+        b       rol_w_q_d5
         li      addr, 2                                 // E55E  ROL.W     #2,D6
-        b       L_05108
+        b       rol_w_q_d6
         li      addr, 2                                 // E55F  ROL.W     #2,D7
-        b       L_051C8
+        b       rol_w_q_d7
         clrlwi. addr, d2, 26                            // E560  ASL.W     D2,D0
-        b       L_04C40
+        b       asl_w_dn_d0
         clrlwi. addr, d2, 26                            // E561  ASL.W     D2,D1
-        b       L_04D00
+        b       asl_w_dn_d1
         clrlwi. addr, d2, 26                            // E562  ASL.W     D2,D2
-        b       L_04DC0
+        b       asl_w_dn_d2
         clrlwi. addr, d2, 26                            // E563  ASL.W     D2,D3
-        b       L_04E80
+        b       asl_w_dn_d3
         clrlwi. addr, d2, 26                            // E564  ASL.W     D2,D4
-        b       L_04F40
+        b       asl_w_dn_d4
         clrlwi. addr, d2, 26                            // E565  ASL.W     D2,D5
-        b       L_05000
+        b       asl_w_dn_d5
         clrlwi. addr, d2, 26                            // E566  ASL.W     D2,D6
-        b       L_050C0
+        b       asl_w_dn_d6
         clrlwi. addr, d2, 26                            // E567  ASL.W     D2,D7
-        b       L_05180
+        b       asl_w_dn_d7
         clrlwi. addr, d2, 26                            // E568  LSL.W     D2,D0
-        b       L_04C14
+        b       lsl_w_dn_d0
         clrlwi. addr, d2, 26                            // E569  LSL.W     D2,D1
-        b       L_04CD4
+        b       lsl_w_dn_d1
         clrlwi. addr, d2, 26                            // E56A  LSL.W     D2,D2
-        b       L_04D94
+        b       lsl_w_dn_d2
         clrlwi. addr, d2, 26                            // E56B  LSL.W     D2,D3
-        b       L_04E54
+        b       lsl_w_dn_d3
         clrlwi. addr, d2, 26                            // E56C  LSL.W     D2,D4
-        b       L_04F14
+        b       lsl_w_dn_d4
         clrlwi. addr, d2, 26                            // E56D  LSL.W     D2,D5
-        b       L_04FD4
+        b       lsl_w_dn_d5
         clrlwi. addr, d2, 26                            // E56E  LSL.W     D2,D6
-        b       L_05094
+        b       lsl_w_dn_d6
         clrlwi. addr, d2, 26                            // E56F  LSL.W     D2,D7
-        b       L_05154
+        b       lsl_w_dn_d7
         clrlwi. addr, d2, 26                            // E570  ROXL.W    D2,D0
-        b       L_04CA0
+        b       roxr_roxl_w_dn_d0
         clrlwi. addr, d2, 26                            // E571  ROXL.W    D2,D1
-        b       L_04D60
+        b       roxr_roxl_w_dn_d1
         clrlwi. addr, d2, 26                            // E572  ROXL.W    D2,D2
-        b       L_04E20
+        b       roxr_roxl_w_dn_d2
         clrlwi. addr, d2, 26                            // E573  ROXL.W    D2,D3
-        b       L_04EE0
+        b       roxr_roxl_w_dn_d3
         clrlwi. addr, d2, 26                            // E574  ROXL.W    D2,D4
-        b       L_04FA0
+        b       roxr_roxl_w_dn_d4
         clrlwi. addr, d2, 26                            // E575  ROXL.W    D2,D5
-        b       L_05060
+        b       roxr_roxl_w_dn_d5
         clrlwi. addr, d2, 26                            // E576  ROXL.W    D2,D6
-        b       L_05120
+        b       roxr_roxl_w_dn_d6
         clrlwi. addr, d2, 26                            // E577  ROXL.W    D2,D7
-        b       L_051E0
+        b       roxr_roxl_w_dn_d7
         clrlwi. addr, d2, 26                            // E578  ROL.W     D2,D0
-        b       L_04C80
+        b       rol_w_dn_d0
         clrlwi. addr, d2, 26                            // E579  ROL.W     D2,D1
-        b       L_04D40
+        b       rol_w_dn_d1
         clrlwi. addr, d2, 26                            // E57A  ROL.W     D2,D2
-        b       L_04E00
+        b       rol_w_dn_d2
         clrlwi. addr, d2, 26                            // E57B  ROL.W     D2,D3
-        b       L_04EC0
+        b       rol_w_dn_d3
         clrlwi. addr, d2, 26                            // E57C  ROL.W     D2,D4
-        b       L_04F80
+        b       rol_w_dn_d4
         clrlwi. addr, d2, 26                            // E57D  ROL.W     D2,D5
-        b       L_05040
+        b       rol_w_dn_d5
         clrlwi. addr, d2, 26                            // E57E  ROL.W     D2,D6
-        b       L_05100
+        b       rol_w_dn_d6
         clrlwi. addr, d2, 26                            // E57F  ROL.W     D2,D7
-        b       L_051C0
+        b       rol_w_dn_d7
 
 // ---- $E580-$E5BF --------------------------------------------------------
         li      addr, 2                                 // E580  ASL.L     #2,D0
-        b       L_05244
+        b       asl_l_q_d0
         li      addr, 2                                 // E581  ASL.L     #2,D1
-        b       L_052E4
+        b       asl_l_q_d1
         li      addr, 2                                 // E582  ASL.L     #2,D2
-        b       L_05384
+        b       asl_l_q_d2
         li      addr, 2                                 // E583  ASL.L     #2,D3
-        b       L_05424
+        b       asl_l_q_d3
         li      addr, 2                                 // E584  ASL.L     #2,D4
-        b       L_054C4
+        b       asl_l_q_d4
         li      addr, 2                                 // E585  ASL.L     #2,D5
-        b       L_05564
+        b       asl_l_q_d5
         li      addr, 2                                 // E586  ASL.L     #2,D6
-        b       L_05604
+        b       asl_l_q_d6
         li      addr, 2                                 // E587  ASL.L     #2,D7
-        b       L_056A4
+        b       asl_l_q_d7
         slwi    data, d0, 1                             // E588  LSL.L     #2,D0
-        b       L_05220
+        b       lsl_l_q_d0
         slwi    data, d1, 1                             // E589  LSL.L     #2,D1
-        b       L_052C0
+        b       lsl_l_q_d1
         slwi    data, d2, 1                             // E58A  LSL.L     #2,D2
-        b       L_05360
+        b       lsl_l_q_d2
         slwi    data, d3, 1                             // E58B  LSL.L     #2,D3
-        b       L_05400
+        b       lsl_l_q_d3
         slwi    data, d4, 1                             // E58C  LSL.L     #2,D4
-        b       L_054A0
+        b       lsl_l_q_d4
         slwi    data, d5, 1                             // E58D  LSL.L     #2,D5
-        b       L_05540
+        b       lsl_l_q_d5
         slwi    data, d6, 1                             // E58E  LSL.L     #2,D6
-        b       L_055E0
+        b       lsl_l_q_d6
         slwi    data, d7, 1                             // E58F  LSL.L     #2,D7
-        b       L_05680
+        b       lsl_l_q_d7
         addic.  addr, zero, 2                           // E590  ROXL.L    #2,D0
-        b       L_05284
+        b       roxr_roxl_l_q_d0
         addic.  addr, zero, 2                           // E591  ROXL.L    #2,D1
-        b       L_05324
+        b       roxr_roxl_l_q_d1
         addic.  addr, zero, 2                           // E592  ROXL.L    #2,D2
-        b       L_053C4
+        b       roxr_roxl_l_q_d2
         addic.  addr, zero, 2                           // E593  ROXL.L    #2,D3
-        b       L_05464
+        b       roxr_roxl_l_q_d3
         addic.  addr, zero, 2                           // E594  ROXL.L    #2,D4
-        b       L_05504
+        b       roxr_roxl_l_q_d4
         addic.  addr, zero, 2                           // E595  ROXL.L    #2,D5
-        b       L_055A4
+        b       roxr_roxl_l_q_d5
         addic.  addr, zero, 2                           // E596  ROXL.L    #2,D6
-        b       L_05644
+        b       roxr_roxl_l_q_d6
         addic.  addr, zero, 2                           // E597  ROXL.L    #2,D7
-        b       L_056E4
+        b       roxr_roxl_l_q_d7
         rotlwi  data, d0, 2                             // E598  ROL.L     #2,D0
-        b       L_05270
+        b       rol_l_q_d0
         rotlwi  data, d1, 2                             // E599  ROL.L     #2,D1
-        b       L_05310
+        b       rol_l_q_d1
         rotlwi  data, d2, 2                             // E59A  ROL.L     #2,D2
-        b       L_053B0
+        b       rol_l_q_d2
         rotlwi  data, d3, 2                             // E59B  ROL.L     #2,D3
-        b       L_05450
+        b       rol_l_q_d3
         rotlwi  data, d4, 2                             // E59C  ROL.L     #2,D4
-        b       L_054F0
+        b       rol_l_q_d4
         rotlwi  data, d5, 2                             // E59D  ROL.L     #2,D5
-        b       L_05590
+        b       rol_l_q_d5
         rotlwi  data, d6, 2                             // E59E  ROL.L     #2,D6
-        b       L_05630
+        b       rol_l_q_d6
         rotlwi  data, d7, 2                             // E59F  ROL.L     #2,D7
-        b       L_056D0
+        b       rol_l_q_d7
         clrlwi. addr, d2, 26                            // E5A0  ASL.L     D2,D0
-        b       L_05240
+        b       asl_l_dn_d0
         clrlwi. addr, d2, 26                            // E5A1  ASL.L     D2,D1
-        b       L_052E0
+        b       asl_l_dn_d1
         clrlwi. addr, d2, 26                            // E5A2  ASL.L     D2,D2
-        b       L_05380
+        b       asl_l_dn_d2
         clrlwi. addr, d2, 26                            // E5A3  ASL.L     D2,D3
-        b       L_05420
+        b       asl_l_dn_d3
         clrlwi. addr, d2, 26                            // E5A4  ASL.L     D2,D4
-        b       L_054C0
+        b       asl_l_dn_d4
         clrlwi. addr, d2, 26                            // E5A5  ASL.L     D2,D5
-        b       L_05560
+        b       asl_l_dn_d5
         clrlwi. addr, d2, 26                            // E5A6  ASL.L     D2,D6
-        b       L_05600
+        b       asl_l_dn_d6
         clrlwi. addr, d2, 26                            // E5A7  ASL.L     D2,D7
-        b       L_056A0
+        b       asl_l_dn_d7
         clrlwi. addr, d2, 26                            // E5A8  LSL.L     D2,D0
-        b       L_05214
+        b       lsl_l_dn_d0
         clrlwi. addr, d2, 26                            // E5A9  LSL.L     D2,D1
-        b       L_052B4
+        b       lsl_l_dn_d1
         clrlwi. addr, d2, 26                            // E5AA  LSL.L     D2,D2
-        b       L_05354
+        b       lsl_l_dn_d2
         clrlwi. addr, d2, 26                            // E5AB  LSL.L     D2,D3
-        b       L_053F4
+        b       lsl_l_dn_d3
         clrlwi. addr, d2, 26                            // E5AC  LSL.L     D2,D4
-        b       L_05494
+        b       lsl_l_dn_d4
         clrlwi. addr, d2, 26                            // E5AD  LSL.L     D2,D5
-        b       L_05534
+        b       lsl_l_dn_d5
         clrlwi. addr, d2, 26                            // E5AE  LSL.L     D2,D6
-        b       L_055D4
+        b       lsl_l_dn_d6
         clrlwi. addr, d2, 26                            // E5AF  LSL.L     D2,D7
-        b       L_05674
+        b       lsl_l_dn_d7
         clrlwi. addr, d2, 26                            // E5B0  ROXL.L    D2,D0
-        b       L_05280
+        b       roxr_roxl_l_dn_d0
         clrlwi. addr, d2, 26                            // E5B1  ROXL.L    D2,D1
-        b       L_05320
+        b       roxr_roxl_l_dn_d1
         clrlwi. addr, d2, 26                            // E5B2  ROXL.L    D2,D2
-        b       L_053C0
+        b       roxr_roxl_l_dn_d2
         clrlwi. addr, d2, 26                            // E5B3  ROXL.L    D2,D3
-        b       L_05460
+        b       roxr_roxl_l_dn_d3
         clrlwi. addr, d2, 26                            // E5B4  ROXL.L    D2,D4
-        b       L_05500
+        b       roxr_roxl_l_dn_d4
         clrlwi. addr, d2, 26                            // E5B5  ROXL.L    D2,D5
-        b       L_055A0
+        b       roxr_roxl_l_dn_d5
         clrlwi. addr, d2, 26                            // E5B6  ROXL.L    D2,D6
-        b       L_05640
+        b       roxr_roxl_l_dn_d6
         clrlwi. addr, d2, 26                            // E5B7  ROXL.L    D2,D7
-        b       L_056E0
+        b       roxr_roxl_l_dn_d7
         clrlwi. addr, d2, 26                            // E5B8  ROL.L     D2,D0
-        b       L_05268
+        b       rol_l_dn_d0
         clrlwi. addr, d2, 26                            // E5B9  ROL.L     D2,D1
-        b       L_05308
+        b       rol_l_dn_d1
         clrlwi. addr, d2, 26                            // E5BA  ROL.L     D2,D2
-        b       L_053A8
+        b       rol_l_dn_d2
         clrlwi. addr, d2, 26                            // E5BB  ROL.L     D2,D3
-        b       L_05448
+        b       rol_l_dn_d3
         clrlwi. addr, d2, 26                            // E5BC  ROL.L     D2,D4
-        b       L_054E8
+        b       rol_l_dn_d4
         clrlwi. addr, d2, 26                            // E5BD  ROL.L     D2,D5
-        b       L_05588
+        b       rol_l_dn_d5
         clrlwi. addr, d2, 26                            // E5BE  ROL.L     D2,D6
-        b       L_05628
+        b       rol_l_dn_d6
         clrlwi. addr, d2, 26                            // E5BF  ROL.L     D2,D7
-        b       L_056C8
+        b       rol_l_dn_d7
 
 // ---- $E5C0-$E5FF --------------------------------------------------------
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E5C0  ROXL.W    D0   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E5C1  ROXL.W    D1   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E5C2  ROXL.W    D2   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E5C3  ROXL.W    D3   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E5C4  ROXL.W    D4   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E5C5  ROXL.W    D5   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E5C6  ROXL.W    D6   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E5C7  ROXL.W    D7   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E5C8  ROXL.W    A0   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E5C9  ROXL.W    A1   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E5CA  ROXL.W    A2   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E5CB  ROXL.W    A3   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E5CC  ROXL.W    A4   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E5CD  ROXL.W    A5   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E5CE  ROXL.W    A6   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E5CF  ROXL.W    A7   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 op_E5D0:
         mr      addr, a0                                // E5D0  ROXL.W    (A0)
-        b       L_075C4
+        b       roxl_w_mem_2
 op_E5D1:
         mr      addr, a1                                // E5D1  ROXL.W    (A1)
-        b       L_075C4
+        b       roxl_w_mem_2
 op_E5D2:
         mr      addr, a2                                // E5D2  ROXL.W    (A2)
-        b       L_075C4
+        b       roxl_w_mem_2
 op_E5D3:
         mr      addr, a3                                // E5D3  ROXL.W    (A3)
-        b       L_075C4
+        b       roxl_w_mem_2
 op_E5D4:
         mr      addr, a4                                // E5D4  ROXL.W    (A4)
-        b       L_075C4
+        b       roxl_w_mem_2
 op_E5D5:
         mr      addr, a5                                // E5D5  ROXL.W    (A5)
-        b       L_075C4
+        b       roxl_w_mem_2
 op_E5D6:
         mr      addr, a6                                // E5D6  ROXL.W    (A6)
-        b       L_075C4
+        b       roxl_w_mem_2
 op_E5D7:
         mr      addr, a7                                // E5D7  ROXL.W    (A7)
-        b       L_075C4
-        ori     rtn_addr, code_ptr, L_075C4 - cb        // E5D8  ROXL.W    (A0)+
-        b       L_00820
-        ori     rtn_addr, code_ptr, L_075C4 - cb        // E5D9  ROXL.W    (A1)+
-        b       L_008A0
-        ori     rtn_addr, code_ptr, L_075C4 - cb        // E5DA  ROXL.W    (A2)+
-        b       L_00920
-        ori     rtn_addr, code_ptr, L_075C4 - cb        // E5DB  ROXL.W    (A3)+
-        b       L_009A0
-        ori     rtn_addr, code_ptr, L_075C4 - cb        // E5DC  ROXL.W    (A4)+
-        b       L_00A20
-        ori     rtn_addr, code_ptr, L_075C4 - cb        // E5DD  ROXL.W    (A5)+
-        b       L_00AA0
-        ori     rtn_addr, code_ptr, L_075C4 - cb        // E5DE  ROXL.W    (A6)+
-        b       L_00B20
-        ori     rtn_addr, code_ptr, L_075C4 - cb        // E5DF  ROXL.W    (A7)+
-        b       L_00BA0
+        b       roxl_w_mem_2
+        ori     rtn_addr, code_ptr, roxl_w_mem_2 - cb   // E5D8  ROXL.W    (A0)+
+        b       cea_w_30
+        ori     rtn_addr, code_ptr, roxl_w_mem_2 - cb   // E5D9  ROXL.W    (A1)+
+        b       cea_w_31
+        ori     rtn_addr, code_ptr, roxl_w_mem_2 - cb   // E5DA  ROXL.W    (A2)+
+        b       cea_w_32
+        ori     rtn_addr, code_ptr, roxl_w_mem_2 - cb   // E5DB  ROXL.W    (A3)+
+        b       cea_w_33
+        ori     rtn_addr, code_ptr, roxl_w_mem_2 - cb   // E5DC  ROXL.W    (A4)+
+        b       cea_w_34
+        ori     rtn_addr, code_ptr, roxl_w_mem_2 - cb   // E5DD  ROXL.W    (A5)+
+        b       cea_w_35
+        ori     rtn_addr, code_ptr, roxl_w_mem_2 - cb   // E5DE  ROXL.W    (A6)+
+        b       cea_w_36
+        ori     rtn_addr, code_ptr, roxl_w_mem_2 - cb   // E5DF  ROXL.W    (A7)+
+        b       cea_w_37
         addi    a0, a0, -2                              // E5E0  ROXL.W    -(A0)
         b       op_E5D0
         addi    a1, a1, -2                              // E5E1  ROXL.W    -(A1)
@@ -3123,517 +3123,517 @@ op_E5D7:
         addi    a7, a7, -2                              // E5E7  ROXL.W    -(A7)
         b       op_E5D7
         add     addr, a0, prefetch_data                 // E5E8  ROXL.W    (d16,A0)
-        b       L_075C0
+        b       roxl_w_mem
         add     addr, a1, prefetch_data                 // E5E9  ROXL.W    (d16,A1)
-        b       L_075C0
+        b       roxl_w_mem
         add     addr, a2, prefetch_data                 // E5EA  ROXL.W    (d16,A2)
-        b       L_075C0
+        b       roxl_w_mem
         add     addr, a3, prefetch_data                 // E5EB  ROXL.W    (d16,A3)
-        b       L_075C0
+        b       roxl_w_mem
         add     addr, a4, prefetch_data                 // E5EC  ROXL.W    (d16,A4)
-        b       L_075C0
+        b       roxl_w_mem
         add     addr, a5, prefetch_data                 // E5ED  ROXL.W    (d16,A5)
-        b       L_075C0
+        b       roxl_w_mem
         add     addr, a6, prefetch_data                 // E5EE  ROXL.W    (d16,A6)
-        b       L_075C0
+        b       roxl_w_mem
         add     addr, a7, prefetch_data                 // E5EF  ROXL.W    (d16,A7)
-        b       L_075C0
-        ori     rtn_addr, code_ptr, L_075C8 - cb        // E5F0  ROXL.W    (d8,A0,Xn)
-        b       L_059B0
-        ori     rtn_addr, code_ptr, L_075C8 - cb        // E5F1  ROXL.W    (d8,A1,Xn)
-        b       L_05A10
-        ori     rtn_addr, code_ptr, L_075C8 - cb        // E5F2  ROXL.W    (d8,A2,Xn)
-        b       L_05A70
-        ori     rtn_addr, code_ptr, L_075C8 - cb        // E5F3  ROXL.W    (d8,A3,Xn)
-        b       L_05AD0
-        ori     rtn_addr, code_ptr, L_075C8 - cb        // E5F4  ROXL.W    (d8,A4,Xn)
-        b       L_05B30
-        ori     rtn_addr, code_ptr, L_075C8 - cb        // E5F5  ROXL.W    (d8,A5,Xn)
-        b       L_05B90
-        ori     rtn_addr, code_ptr, L_075C8 - cb        // E5F6  ROXL.W    (d8,A6,Xn)
-        b       L_05BF0
-        ori     rtn_addr, code_ptr, L_075C8 - cb        // E5F7  ROXL.W    (d8,A7,Xn)
-        b       L_05C50
+        b       roxl_w_mem
+        ori     rtn_addr, code_ptr, roxl_w_mem_3 - cb   // E5F0  ROXL.W    (d8,A0,Xn)
+        b       move_add_etc_w_any_any
+        ori     rtn_addr, code_ptr, roxl_w_mem_3 - cb   // E5F1  ROXL.W    (d8,A1,Xn)
+        b       move_add_etc_w_any_any_2
+        ori     rtn_addr, code_ptr, roxl_w_mem_3 - cb   // E5F2  ROXL.W    (d8,A2,Xn)
+        b       move_add_etc_w_any_any_3
+        ori     rtn_addr, code_ptr, roxl_w_mem_3 - cb   // E5F3  ROXL.W    (d8,A3,Xn)
+        b       move_add_etc_w_any_any_4
+        ori     rtn_addr, code_ptr, roxl_w_mem_3 - cb   // E5F4  ROXL.W    (d8,A4,Xn)
+        b       move_add_etc_w_any_any_5
+        ori     rtn_addr, code_ptr, roxl_w_mem_3 - cb   // E5F5  ROXL.W    (d8,A5,Xn)
+        b       move_add_etc_w_any_any_6
+        ori     rtn_addr, code_ptr, roxl_w_mem_3 - cb   // E5F6  ROXL.W    (d8,A6,Xn)
+        b       move_add_etc_w_any_any_7
+        ori     rtn_addr, code_ptr, roxl_w_mem_3 - cb   // E5F7  ROXL.W    (d8,A7,Xn)
+        b       move_add_etc_w_any_any_8
         mr      addr, prefetch_data                     // E5F8  ROXL.W    (xxx).W
-        b       L_075C0
-        ori     rtn_addr, code_ptr, L_075C8 - cb        // E5F9  ROXL.W    (xxx).L
-        b       L_05E70
+        b       roxl_w_mem
+        ori     rtn_addr, code_ptr, roxl_w_mem_3 - cb   // E5F9  ROXL.W    (xxx).L
+        b       fea_w_71
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E5FA  ROXL.W    (d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E5FB  ROXL.W    (d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E5FC  ROXL.W    #<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E5FD  ROXL.W    <ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E5FE  ROXL.W    <ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E5FF  ROXL.W    <ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $E600-$E63F --------------------------------------------------------
         li      addr, 3                                 // E600  ASR.B     #3,D0
-        b       L_0B2EC
+        b       asr_b_q_d0
         li      addr, 3                                 // E601  ASR.B     #3,D1
-        b       L_0B3AC
+        b       asr_b_q_d1
         li      addr, 3                                 // E602  ASR.B     #3,D2
-        b       L_0B46C
+        b       asr_b_q_d2
         li      addr, 3                                 // E603  ASR.B     #3,D3
-        b       L_0B52C
+        b       asr_b_q_d3
         li      addr, 3                                 // E604  ASR.B     #3,D4
-        b       L_0B5EC
+        b       asr_b_q_d4
         li      addr, 3                                 // E605  ASR.B     #3,D5
-        b       L_0B6AC
+        b       asr_b_q_d5
         li      addr, 3                                 // E606  ASR.B     #3,D6
-        b       L_0B76C
+        b       asr_b_q_d6
         li      addr, 3                                 // E607  ASR.B     #3,D7
-        b       L_0B82C
+        b       asr_b_q_d7
         rlwinm  data, d0, 30, 26, 31                    // E608  LSR.B     #3,D0
-        b       L_0B2CC
+        b       lsr_b_q_d0
         rlwinm  data, d1, 30, 26, 31                    // E609  LSR.B     #3,D1
-        b       L_0B38C
+        b       lsr_b_q_d1
         rlwinm  data, d2, 30, 26, 31                    // E60A  LSR.B     #3,D2
-        b       L_0B44C
+        b       lsr_b_q_d2
         rlwinm  data, d3, 30, 26, 31                    // E60B  LSR.B     #3,D3
-        b       L_0B50C
+        b       lsr_b_q_d3
         rlwinm  data, d4, 30, 26, 31                    // E60C  LSR.B     #3,D4
-        b       L_0B5CC
+        b       lsr_b_q_d4
         rlwinm  data, d5, 30, 26, 31                    // E60D  LSR.B     #3,D5
-        b       L_0B68C
+        b       lsr_b_q_d5
         rlwinm  data, d6, 30, 26, 31                    // E60E  LSR.B     #3,D6
-        b       L_0B74C
+        b       lsr_b_q_d6
         rlwinm  data, d7, 30, 26, 31                    // E60F  LSR.B     #3,D7
-        b       L_0B80C
+        b       lsr_b_q_d7
         li      addr, 6                                 // E610  ROXR.B    #3,D0
-        b       L_0B364
+        b       roxr_roxl_b_q_d0
         li      addr, 6                                 // E611  ROXR.B    #3,D1
-        b       L_0B424
+        b       roxr_roxl_b_q_d1
         li      addr, 6                                 // E612  ROXR.B    #3,D2
-        b       L_0B4E4
+        b       roxr_roxl_b_q_d2
         li      addr, 6                                 // E613  ROXR.B    #3,D3
-        b       L_0B5A4
+        b       roxr_roxl_b_q_d3
         li      addr, 6                                 // E614  ROXR.B    #3,D4
-        b       L_0B664
+        b       roxr_roxl_b_q_d4
         li      addr, 6                                 // E615  ROXR.B    #3,D5
-        b       L_0B724
+        b       roxr_roxl_b_q_d5
         li      addr, 6                                 // E616  ROXR.B    #3,D6
-        b       L_0B7E4
+        b       roxr_roxl_b_q_d6
         li      addr, 6                                 // E617  ROXR.B    #3,D7
-        b       L_0B8A4
+        b       roxr_roxl_b_q_d7
         li      addr, 5                                 // E618  ROR.B     #3,D0
-        b       L_0B32C
+        b       ror_b_q_d0
         li      addr, 5                                 // E619  ROR.B     #3,D1
-        b       L_0B3EC
+        b       ror_b_q_d1
         li      addr, 5                                 // E61A  ROR.B     #3,D2
-        b       L_0B4AC
+        b       ror_b_q_d2
         li      addr, 5                                 // E61B  ROR.B     #3,D3
-        b       L_0B56C
+        b       ror_b_q_d3
         li      addr, 5                                 // E61C  ROR.B     #3,D4
-        b       L_0B62C
+        b       ror_b_q_d4
         li      addr, 5                                 // E61D  ROR.B     #3,D5
-        b       L_0B6EC
+        b       ror_b_q_d5
         li      addr, 5                                 // E61E  ROR.B     #3,D6
-        b       L_0B7AC
+        b       ror_b_q_d6
         li      addr, 5                                 // E61F  ROR.B     #3,D7
-        b       L_0B86C
+        b       ror_b_q_d7
         clrlwi. addr, d3, 26                            // E620  ASR.B     D3,D0
-        b       L_0B2E8
+        b       asr_b_dn_d0
         clrlwi. addr, d3, 26                            // E621  ASR.B     D3,D1
-        b       L_0B3A8
+        b       asr_b_dn_d1
         clrlwi. addr, d3, 26                            // E622  ASR.B     D3,D2
-        b       L_0B468
+        b       asr_b_dn_d2
         clrlwi. addr, d3, 26                            // E623  ASR.B     D3,D3
-        b       L_0B528
+        b       asr_b_dn_d3
         clrlwi. addr, d3, 26                            // E624  ASR.B     D3,D4
-        b       L_0B5E8
+        b       asr_b_dn_d4
         clrlwi. addr, d3, 26                            // E625  ASR.B     D3,D5
-        b       L_0B6A8
+        b       asr_b_dn_d5
         clrlwi. addr, d3, 26                            // E626  ASR.B     D3,D6
-        b       L_0B768
+        b       asr_b_dn_d6
         clrlwi. addr, d3, 26                            // E627  ASR.B     D3,D7
-        b       L_0B828
+        b       asr_b_dn_d7
         clrlwi. addr, d3, 26                            // E628  LSR.B     D3,D0
-        b       L_0B2C0
+        b       lsr_b_dn_d0
         clrlwi. addr, d3, 26                            // E629  LSR.B     D3,D1
-        b       L_0B380
+        b       lsr_b_dn_d1
         clrlwi. addr, d3, 26                            // E62A  LSR.B     D3,D2
-        b       L_0B440
+        b       lsr_b_dn_d2
         clrlwi. addr, d3, 26                            // E62B  LSR.B     D3,D3
-        b       L_0B500
+        b       lsr_b_dn_d3
         clrlwi. addr, d3, 26                            // E62C  LSR.B     D3,D4
-        b       L_0B5C0
+        b       lsr_b_dn_d4
         clrlwi. addr, d3, 26                            // E62D  LSR.B     D3,D5
-        b       L_0B680
+        b       lsr_b_dn_d5
         clrlwi. addr, d3, 26                            // E62E  LSR.B     D3,D6
-        b       L_0B740
+        b       lsr_b_dn_d6
         clrlwi. addr, d3, 26                            // E62F  LSR.B     D3,D7
-        b       L_0B800
+        b       lsr_b_dn_d7
         clrlwi. addr, d3, 26                            // E630  ROXR.B    D3,D0
-        b       L_0B360
+        b       roxr_roxl_b_dn_d0
         clrlwi. addr, d3, 26                            // E631  ROXR.B    D3,D1
-        b       L_0B420
+        b       roxr_roxl_b_dn_d1
         clrlwi. addr, d3, 26                            // E632  ROXR.B    D3,D2
-        b       L_0B4E0
+        b       roxr_roxl_b_dn_d2
         clrlwi. addr, d3, 26                            // E633  ROXR.B    D3,D3
-        b       L_0B5A0
+        b       roxr_roxl_b_dn_d3
         clrlwi. addr, d3, 26                            // E634  ROXR.B    D3,D4
-        b       L_0B660
+        b       roxr_roxl_b_dn_d4
         clrlwi. addr, d3, 26                            // E635  ROXR.B    D3,D5
-        b       L_0B720
+        b       roxr_roxl_b_dn_d5
         clrlwi. addr, d3, 26                            // E636  ROXR.B    D3,D6
-        b       L_0B7E0
+        b       roxr_roxl_b_dn_d6
         clrlwi. addr, d3, 26                            // E637  ROXR.B    D3,D7
-        b       L_0B8A0
+        b       roxr_roxl_b_dn_d7
         clrlwi. addr, d3, 26                            // E638  ROR.B     D3,D0
-        b       L_0B320
+        b       ror_b_dn_d0
         clrlwi. addr, d3, 26                            // E639  ROR.B     D3,D1
-        b       L_0B3E0
+        b       ror_b_dn_d1
         clrlwi. addr, d3, 26                            // E63A  ROR.B     D3,D2
-        b       L_0B4A0
+        b       ror_b_dn_d2
         clrlwi. addr, d3, 26                            // E63B  ROR.B     D3,D3
-        b       L_0B560
+        b       ror_b_dn_d3
         clrlwi. addr, d3, 26                            // E63C  ROR.B     D3,D4
-        b       L_0B620
+        b       ror_b_dn_d4
         clrlwi. addr, d3, 26                            // E63D  ROR.B     D3,D5
-        b       L_0B6E0
+        b       ror_b_dn_d5
         clrlwi. addr, d3, 26                            // E63E  ROR.B     D3,D6
-        b       L_0B7A0
+        b       ror_b_dn_d6
         clrlwi. addr, d3, 26                            // E63F  ROR.B     D3,D7
-        b       L_0B860
+        b       ror_b_dn_d7
 
 // ---- $E640-$E67F --------------------------------------------------------
         li      addr, 3                                 // E640  ASR.W     #3,D0
-        b       L_04C2C
+        b       asr_w_q_d0
         li      addr, 3                                 // E641  ASR.W     #3,D1
-        b       L_04CEC
+        b       asr_w_q_d1
         li      addr, 3                                 // E642  ASR.W     #3,D2
-        b       L_04DAC
+        b       asr_w_q_d2
         li      addr, 3                                 // E643  ASR.W     #3,D3
-        b       L_04E6C
+        b       asr_w_q_d3
         li      addr, 3                                 // E644  ASR.W     #3,D4
-        b       L_04F2C
+        b       asr_w_q_d4
         li      addr, 3                                 // E645  ASR.W     #3,D5
-        b       L_04FEC
+        b       asr_w_q_d5
         li      addr, 3                                 // E646  ASR.W     #3,D6
-        b       L_050AC
+        b       asr_w_q_d6
         li      addr, 3                                 // E647  ASR.W     #3,D7
-        b       L_0516C
+        b       asr_w_q_d7
         rlwinm  data, d0, 30, 18, 31                    // E648  LSR.W     #3,D0
-        b       L_04C0C
+        b       lsr_w_q_d0
         rlwinm  data, d1, 30, 18, 31                    // E649  LSR.W     #3,D1
-        b       L_04CCC
+        b       lsr_w_q_d1
         rlwinm  data, d2, 30, 18, 31                    // E64A  LSR.W     #3,D2
-        b       L_04D8C
+        b       lsr_w_q_d2
         rlwinm  data, d3, 30, 18, 31                    // E64B  LSR.W     #3,D3
-        b       L_04E4C
+        b       lsr_w_q_d3
         rlwinm  data, d4, 30, 18, 31                    // E64C  LSR.W     #3,D4
-        b       L_04F0C
+        b       lsr_w_q_d4
         rlwinm  data, d5, 30, 18, 31                    // E64D  LSR.W     #3,D5
-        b       L_04FCC
+        b       lsr_w_q_d5
         rlwinm  data, d6, 30, 18, 31                    // E64E  LSR.W     #3,D6
-        b       L_0508C
+        b       lsr_w_q_d6
         rlwinm  data, d7, 30, 18, 31                    // E64F  LSR.W     #3,D7
-        b       L_0514C
+        b       lsr_w_q_d7
         addic.  addr, zero, 14                          // E650  ROXR.W    #3,D0
-        b       L_04CA4
+        b       roxr_roxl_w_q_d0
         addic.  addr, zero, 14                          // E651  ROXR.W    #3,D1
-        b       L_04D64
+        b       roxr_roxl_w_q_d1
         addic.  addr, zero, 14                          // E652  ROXR.W    #3,D2
-        b       L_04E24
+        b       roxr_roxl_w_q_d2
         addic.  addr, zero, 14                          // E653  ROXR.W    #3,D3
-        b       L_04EE4
+        b       roxr_roxl_w_q_d3
         addic.  addr, zero, 14                          // E654  ROXR.W    #3,D4
-        b       L_04FA4
+        b       roxr_roxl_w_q_d4
         addic.  addr, zero, 14                          // E655  ROXR.W    #3,D5
-        b       L_05064
+        b       roxr_roxl_w_q_d5
         addic.  addr, zero, 14                          // E656  ROXR.W    #3,D6
-        b       L_05124
+        b       roxr_roxl_w_q_d6
         addic.  addr, zero, 14                          // E657  ROXR.W    #3,D7
-        b       L_051E4
+        b       roxr_roxl_w_q_d7
         li      addr, 13                                // E658  ROR.W     #3,D0
-        b       L_04C6C
+        b       ror_w_q_d0
         li      addr, 13                                // E659  ROR.W     #3,D1
-        b       L_04D2C
+        b       ror_w_q_d1
         li      addr, 13                                // E65A  ROR.W     #3,D2
-        b       L_04DEC
+        b       ror_w_q_d2
         li      addr, 13                                // E65B  ROR.W     #3,D3
-        b       L_04EAC
+        b       ror_w_q_d3
         li      addr, 13                                // E65C  ROR.W     #3,D4
-        b       L_04F6C
+        b       ror_w_q_d4
         li      addr, 13                                // E65D  ROR.W     #3,D5
-        b       L_0502C
+        b       ror_w_q_d5
         li      addr, 13                                // E65E  ROR.W     #3,D6
-        b       L_050EC
+        b       ror_w_q_d6
         li      addr, 13                                // E65F  ROR.W     #3,D7
-        b       L_051AC
+        b       ror_w_q_d7
         clrlwi. addr, d3, 26                            // E660  ASR.W     D3,D0
-        b       L_04C28
+        b       asr_w_dn_d0
         clrlwi. addr, d3, 26                            // E661  ASR.W     D3,D1
-        b       L_04CE8
+        b       asr_w_dn_d1
         clrlwi. addr, d3, 26                            // E662  ASR.W     D3,D2
-        b       L_04DA8
+        b       asr_w_dn_d2
         clrlwi. addr, d3, 26                            // E663  ASR.W     D3,D3
-        b       L_04E68
+        b       asr_w_dn_d3
         clrlwi. addr, d3, 26                            // E664  ASR.W     D3,D4
-        b       L_04F28
+        b       asr_w_dn_d4
         clrlwi. addr, d3, 26                            // E665  ASR.W     D3,D5
-        b       L_04FE8
+        b       asr_w_dn_d5
         clrlwi. addr, d3, 26                            // E666  ASR.W     D3,D6
-        b       L_050A8
+        b       asr_w_dn_d6
         clrlwi. addr, d3, 26                            // E667  ASR.W     D3,D7
-        b       L_05168
+        b       asr_w_dn_d7
         clrlwi. addr, d3, 26                            // E668  LSR.W     D3,D0
-        b       L_04C00
+        b       lsr_w_dn_d0
         clrlwi. addr, d3, 26                            // E669  LSR.W     D3,D1
-        b       L_04CC0
+        b       lsr_w_dn_d1
         clrlwi. addr, d3, 26                            // E66A  LSR.W     D3,D2
-        b       L_04D80
+        b       lsr_w_dn_d2
         clrlwi. addr, d3, 26                            // E66B  LSR.W     D3,D3
-        b       L_04E40
+        b       lsr_w_dn_d3
         clrlwi. addr, d3, 26                            // E66C  LSR.W     D3,D4
-        b       L_04F00
+        b       lsr_w_dn_d4
         clrlwi. addr, d3, 26                            // E66D  LSR.W     D3,D5
-        b       L_04FC0
+        b       lsr_w_dn_d5
         clrlwi. addr, d3, 26                            // E66E  LSR.W     D3,D6
-        b       L_05080
+        b       lsr_w_dn_d6
         clrlwi. addr, d3, 26                            // E66F  LSR.W     D3,D7
-        b       L_05140
+        b       lsr_w_dn_d7
         clrlwi. addr, d3, 26                            // E670  ROXR.W    D3,D0
-        b       L_04CA0
+        b       roxr_roxl_w_dn_d0
         clrlwi. addr, d3, 26                            // E671  ROXR.W    D3,D1
-        b       L_04D60
+        b       roxr_roxl_w_dn_d1
         clrlwi. addr, d3, 26                            // E672  ROXR.W    D3,D2
-        b       L_04E20
+        b       roxr_roxl_w_dn_d2
         clrlwi. addr, d3, 26                            // E673  ROXR.W    D3,D3
-        b       L_04EE0
+        b       roxr_roxl_w_dn_d3
         clrlwi. addr, d3, 26                            // E674  ROXR.W    D3,D4
-        b       L_04FA0
+        b       roxr_roxl_w_dn_d4
         clrlwi. addr, d3, 26                            // E675  ROXR.W    D3,D5
-        b       L_05060
+        b       roxr_roxl_w_dn_d5
         clrlwi. addr, d3, 26                            // E676  ROXR.W    D3,D6
-        b       L_05120
+        b       roxr_roxl_w_dn_d6
         clrlwi. addr, d3, 26                            // E677  ROXR.W    D3,D7
-        b       L_051E0
+        b       roxr_roxl_w_dn_d7
         clrlwi. addr, d3, 26                            // E678  ROR.W     D3,D0
-        b       L_04C60
+        b       ror_w_dn_d0
         clrlwi. addr, d3, 26                            // E679  ROR.W     D3,D1
-        b       L_04D20
+        b       ror_w_dn_d1
         clrlwi. addr, d3, 26                            // E67A  ROR.W     D3,D2
-        b       L_04DE0
+        b       ror_w_dn_d2
         clrlwi. addr, d3, 26                            // E67B  ROR.W     D3,D3
-        b       L_04EA0
+        b       ror_w_dn_d3
         clrlwi. addr, d3, 26                            // E67C  ROR.W     D3,D4
-        b       L_04F60
+        b       ror_w_dn_d4
         clrlwi. addr, d3, 26                            // E67D  ROR.W     D3,D5
-        b       L_05020
+        b       ror_w_dn_d5
         clrlwi. addr, d3, 26                            // E67E  ROR.W     D3,D6
-        b       L_050E0
+        b       ror_w_dn_d6
         clrlwi. addr, d3, 26                            // E67F  ROR.W     D3,D7
-        b       L_051A0
+        b       ror_w_dn_d7
 
 // ---- $E680-$E6BF --------------------------------------------------------
         srawi   data, d0, 2                             // E680  ASR.L     #3,D0
-        b       L_05234
+        b       asr_l_q_d0
         srawi   data, d1, 2                             // E681  ASR.L     #3,D1
-        b       L_052D4
+        b       asr_l_q_d1
         srawi   data, d2, 2                             // E682  ASR.L     #3,D2
-        b       L_05374
+        b       asr_l_q_d2
         srawi   data, d3, 2                             // E683  ASR.L     #3,D3
-        b       L_05414
+        b       asr_l_q_d3
         srawi   data, d4, 2                             // E684  ASR.L     #3,D4
-        b       L_054B4
+        b       asr_l_q_d4
         srawi   data, d5, 2                             // E685  ASR.L     #3,D5
-        b       L_05554
+        b       asr_l_q_d5
         srawi   data, d6, 2                             // E686  ASR.L     #3,D6
-        b       L_055F4
+        b       asr_l_q_d6
         srawi   data, d7, 2                             // E687  ASR.L     #3,D7
-        b       L_05694
+        b       asr_l_q_d7
         srwi    data, d0, 2                             // E688  LSR.L     #3,D0
-        b       L_0520C
+        b       lsr_l_q_d0
         srwi    data, d1, 2                             // E689  LSR.L     #3,D1
-        b       L_052AC
+        b       lsr_l_q_d1
         srwi    data, d2, 2                             // E68A  LSR.L     #3,D2
-        b       L_0534C
+        b       lsr_l_q_d2
         srwi    data, d3, 2                             // E68B  LSR.L     #3,D3
-        b       L_053EC
+        b       lsr_l_q_d3
         srwi    data, d4, 2                             // E68C  LSR.L     #3,D4
-        b       L_0548C
+        b       lsr_l_q_d4
         srwi    data, d5, 2                             // E68D  LSR.L     #3,D5
-        b       L_0552C
+        b       lsr_l_q_d5
         srwi    data, d6, 2                             // E68E  LSR.L     #3,D6
-        b       L_055CC
+        b       lsr_l_q_d6
         srwi    data, d7, 2                             // E68F  LSR.L     #3,D7
-        b       L_0566C
+        b       lsr_l_q_d7
         addic.  addr, zero, 30                          // E690  ROXR.L    #3,D0
-        b       L_05284
+        b       roxr_roxl_l_q_d0
         addic.  addr, zero, 30                          // E691  ROXR.L    #3,D1
-        b       L_05324
+        b       roxr_roxl_l_q_d1
         addic.  addr, zero, 30                          // E692  ROXR.L    #3,D2
-        b       L_053C4
+        b       roxr_roxl_l_q_d2
         addic.  addr, zero, 30                          // E693  ROXR.L    #3,D3
-        b       L_05464
+        b       roxr_roxl_l_q_d3
         addic.  addr, zero, 30                          // E694  ROXR.L    #3,D4
-        b       L_05504
+        b       roxr_roxl_l_q_d4
         addic.  addr, zero, 30                          // E695  ROXR.L    #3,D5
-        b       L_055A4
+        b       roxr_roxl_l_q_d5
         addic.  addr, zero, 30                          // E696  ROXR.L    #3,D6
-        b       L_05644
+        b       roxr_roxl_l_q_d6
         addic.  addr, zero, 30                          // E697  ROXR.L    #3,D7
-        b       L_056E4
+        b       roxr_roxl_l_q_d7
         rotlwi  data, d0, 29                            // E698  ROR.L     #3,D0
-        b       L_05260
+        b       ror_l_q_d0
         rotlwi  data, d1, 29                            // E699  ROR.L     #3,D1
-        b       L_05300
+        b       ror_l_q_d1
         rotlwi  data, d2, 29                            // E69A  ROR.L     #3,D2
-        b       L_053A0
+        b       ror_l_q_d2
         rotlwi  data, d3, 29                            // E69B  ROR.L     #3,D3
-        b       L_05440
+        b       ror_l_q_d3
         rotlwi  data, d4, 29                            // E69C  ROR.L     #3,D4
-        b       L_054E0
+        b       ror_l_q_d4
         rotlwi  data, d5, 29                            // E69D  ROR.L     #3,D5
-        b       L_05580
+        b       ror_l_q_d5
         rotlwi  data, d6, 29                            // E69E  ROR.L     #3,D6
-        b       L_05620
+        b       ror_l_q_d6
         rotlwi  data, d7, 29                            // E69F  ROR.L     #3,D7
-        b       L_056C0
+        b       ror_l_q_d7
         clrlwi. addr, d3, 26                            // E6A0  ASR.L     D3,D0
-        b       L_05228
+        b       asr_l_dn_d0
         clrlwi. addr, d3, 26                            // E6A1  ASR.L     D3,D1
-        b       L_052C8
+        b       asr_l_dn_d1
         clrlwi. addr, d3, 26                            // E6A2  ASR.L     D3,D2
-        b       L_05368
+        b       asr_l_dn_d2
         clrlwi. addr, d3, 26                            // E6A3  ASR.L     D3,D3
-        b       L_05408
+        b       asr_l_dn_d3
         clrlwi. addr, d3, 26                            // E6A4  ASR.L     D3,D4
-        b       L_054A8
+        b       asr_l_dn_d4
         clrlwi. addr, d3, 26                            // E6A5  ASR.L     D3,D5
-        b       L_05548
+        b       asr_l_dn_d5
         clrlwi. addr, d3, 26                            // E6A6  ASR.L     D3,D6
-        b       L_055E8
+        b       asr_l_dn_d6
         clrlwi. addr, d3, 26                            // E6A7  ASR.L     D3,D7
-        b       L_05688
+        b       asr_l_dn_d7
         clrlwi. addr, d3, 26                            // E6A8  LSR.L     D3,D0
-        b       L_05200
+        b       lsr_l_dn_d0
         clrlwi. addr, d3, 26                            // E6A9  LSR.L     D3,D1
-        b       L_052A0
+        b       lsr_l_dn_d1
         clrlwi. addr, d3, 26                            // E6AA  LSR.L     D3,D2
-        b       L_05340
+        b       lsr_l_dn_d2
         clrlwi. addr, d3, 26                            // E6AB  LSR.L     D3,D3
-        b       L_053E0
+        b       lsr_l_dn_d3
         clrlwi. addr, d3, 26                            // E6AC  LSR.L     D3,D4
-        b       L_05480
+        b       lsr_l_dn_d4
         clrlwi. addr, d3, 26                            // E6AD  LSR.L     D3,D5
-        b       L_05520
+        b       lsr_l_dn_d5
         clrlwi. addr, d3, 26                            // E6AE  LSR.L     D3,D6
-        b       L_055C0
+        b       lsr_l_dn_d6
         clrlwi. addr, d3, 26                            // E6AF  LSR.L     D3,D7
-        b       L_05660
+        b       lsr_l_dn_d7
         clrlwi. addr, d3, 26                            // E6B0  ROXR.L    D3,D0
-        b       L_05280
+        b       roxr_roxl_l_dn_d0
         clrlwi. addr, d3, 26                            // E6B1  ROXR.L    D3,D1
-        b       L_05320
+        b       roxr_roxl_l_dn_d1
         clrlwi. addr, d3, 26                            // E6B2  ROXR.L    D3,D2
-        b       L_053C0
+        b       roxr_roxl_l_dn_d2
         clrlwi. addr, d3, 26                            // E6B3  ROXR.L    D3,D3
-        b       L_05460
+        b       roxr_roxl_l_dn_d3
         clrlwi. addr, d3, 26                            // E6B4  ROXR.L    D3,D4
-        b       L_05500
+        b       roxr_roxl_l_dn_d4
         clrlwi. addr, d3, 26                            // E6B5  ROXR.L    D3,D5
-        b       L_055A0
+        b       roxr_roxl_l_dn_d5
         clrlwi. addr, d3, 26                            // E6B6  ROXR.L    D3,D6
-        b       L_05640
+        b       roxr_roxl_l_dn_d6
         clrlwi. addr, d3, 26                            // E6B7  ROXR.L    D3,D7
-        b       L_056E0
+        b       roxr_roxl_l_dn_d7
         clrlwi. addr, d3, 26                            // E6B8  ROR.L     D3,D0
-        b       L_05254
+        b       ror_l_dn_d0
         clrlwi. addr, d3, 26                            // E6B9  ROR.L     D3,D1
-        b       L_052F4
+        b       ror_l_dn_d1
         clrlwi. addr, d3, 26                            // E6BA  ROR.L     D3,D2
-        b       L_05394
+        b       ror_l_dn_d2
         clrlwi. addr, d3, 26                            // E6BB  ROR.L     D3,D3
-        b       L_05434
+        b       ror_l_dn_d3
         clrlwi. addr, d3, 26                            // E6BC  ROR.L     D3,D4
-        b       L_054D4
+        b       ror_l_dn_d4
         clrlwi. addr, d3, 26                            // E6BD  ROR.L     D3,D5
-        b       L_05574
+        b       ror_l_dn_d5
         clrlwi. addr, d3, 26                            // E6BE  ROR.L     D3,D6
-        b       L_05614
+        b       ror_l_dn_d6
         clrlwi. addr, d3, 26                            // E6BF  ROR.L     D3,D7
-        b       L_056B4
+        b       ror_l_dn_d7
 
 // ---- $E6C0-$E6FF --------------------------------------------------------
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E6C0  ROR.W     D0   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E6C1  ROR.W     D1   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E6C2  ROR.W     D2   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E6C3  ROR.W     D3   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E6C4  ROR.W     D4   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E6C5  ROR.W     D5   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E6C6  ROR.W     D6   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E6C7  ROR.W     D7   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E6C8  ROR.W     A0   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E6C9  ROR.W     A1   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E6CA  ROR.W     A2   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E6CB  ROR.W     A3   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E6CC  ROR.W     A4   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E6CD  ROR.W     A5   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E6CE  ROR.W     A6   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E6CF  ROR.W     A7   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 op_E6D0:
         mr      addr, a0                                // E6D0  ROR.W     (A0)
-        b       L_07504
+        b       ror_w_mem_2
 op_E6D1:
         mr      addr, a1                                // E6D1  ROR.W     (A1)
-        b       L_07504
+        b       ror_w_mem_2
 op_E6D2:
         mr      addr, a2                                // E6D2  ROR.W     (A2)
-        b       L_07504
+        b       ror_w_mem_2
 op_E6D3:
         mr      addr, a3                                // E6D3  ROR.W     (A3)
-        b       L_07504
+        b       ror_w_mem_2
 op_E6D4:
         mr      addr, a4                                // E6D4  ROR.W     (A4)
-        b       L_07504
+        b       ror_w_mem_2
 op_E6D5:
         mr      addr, a5                                // E6D5  ROR.W     (A5)
-        b       L_07504
+        b       ror_w_mem_2
 op_E6D6:
         mr      addr, a6                                // E6D6  ROR.W     (A6)
-        b       L_07504
+        b       ror_w_mem_2
 op_E6D7:
         mr      addr, a7                                // E6D7  ROR.W     (A7)
-        b       L_07504
-        ori     rtn_addr, code_ptr, L_07504 - cb        // E6D8  ROR.W     (A0)+
-        b       L_00820
-        ori     rtn_addr, code_ptr, L_07504 - cb        // E6D9  ROR.W     (A1)+
-        b       L_008A0
-        ori     rtn_addr, code_ptr, L_07504 - cb        // E6DA  ROR.W     (A2)+
-        b       L_00920
-        ori     rtn_addr, code_ptr, L_07504 - cb        // E6DB  ROR.W     (A3)+
-        b       L_009A0
-        ori     rtn_addr, code_ptr, L_07504 - cb        // E6DC  ROR.W     (A4)+
-        b       L_00A20
-        ori     rtn_addr, code_ptr, L_07504 - cb        // E6DD  ROR.W     (A5)+
-        b       L_00AA0
-        ori     rtn_addr, code_ptr, L_07504 - cb        // E6DE  ROR.W     (A6)+
-        b       L_00B20
-        ori     rtn_addr, code_ptr, L_07504 - cb        // E6DF  ROR.W     (A7)+
-        b       L_00BA0
+        b       ror_w_mem_2
+        ori     rtn_addr, code_ptr, ror_w_mem_2 - cb    // E6D8  ROR.W     (A0)+
+        b       cea_w_30
+        ori     rtn_addr, code_ptr, ror_w_mem_2 - cb    // E6D9  ROR.W     (A1)+
+        b       cea_w_31
+        ori     rtn_addr, code_ptr, ror_w_mem_2 - cb    // E6DA  ROR.W     (A2)+
+        b       cea_w_32
+        ori     rtn_addr, code_ptr, ror_w_mem_2 - cb    // E6DB  ROR.W     (A3)+
+        b       cea_w_33
+        ori     rtn_addr, code_ptr, ror_w_mem_2 - cb    // E6DC  ROR.W     (A4)+
+        b       cea_w_34
+        ori     rtn_addr, code_ptr, ror_w_mem_2 - cb    // E6DD  ROR.W     (A5)+
+        b       cea_w_35
+        ori     rtn_addr, code_ptr, ror_w_mem_2 - cb    // E6DE  ROR.W     (A6)+
+        b       cea_w_36
+        ori     rtn_addr, code_ptr, ror_w_mem_2 - cb    // E6DF  ROR.W     (A7)+
+        b       cea_w_37
         addi    a0, a0, -2                              // E6E0  ROR.W     -(A0)
         b       op_E6D0
         addi    a1, a1, -2                              // E6E1  ROR.W     -(A1)
@@ -3651,517 +3651,517 @@ op_E6D7:
         addi    a7, a7, -2                              // E6E7  ROR.W     -(A7)
         b       op_E6D7
         add     addr, a0, prefetch_data                 // E6E8  ROR.W     (d16,A0)
-        b       L_07500
+        b       ror_w_mem
         add     addr, a1, prefetch_data                 // E6E9  ROR.W     (d16,A1)
-        b       L_07500
+        b       ror_w_mem
         add     addr, a2, prefetch_data                 // E6EA  ROR.W     (d16,A2)
-        b       L_07500
+        b       ror_w_mem
         add     addr, a3, prefetch_data                 // E6EB  ROR.W     (d16,A3)
-        b       L_07500
+        b       ror_w_mem
         add     addr, a4, prefetch_data                 // E6EC  ROR.W     (d16,A4)
-        b       L_07500
+        b       ror_w_mem
         add     addr, a5, prefetch_data                 // E6ED  ROR.W     (d16,A5)
-        b       L_07500
+        b       ror_w_mem
         add     addr, a6, prefetch_data                 // E6EE  ROR.W     (d16,A6)
-        b       L_07500
+        b       ror_w_mem
         add     addr, a7, prefetch_data                 // E6EF  ROR.W     (d16,A7)
-        b       L_07500
-        ori     rtn_addr, code_ptr, L_07508 - cb        // E6F0  ROR.W     (d8,A0,Xn)
-        b       L_059B0
-        ori     rtn_addr, code_ptr, L_07508 - cb        // E6F1  ROR.W     (d8,A1,Xn)
-        b       L_05A10
-        ori     rtn_addr, code_ptr, L_07508 - cb        // E6F2  ROR.W     (d8,A2,Xn)
-        b       L_05A70
-        ori     rtn_addr, code_ptr, L_07508 - cb        // E6F3  ROR.W     (d8,A3,Xn)
-        b       L_05AD0
-        ori     rtn_addr, code_ptr, L_07508 - cb        // E6F4  ROR.W     (d8,A4,Xn)
-        b       L_05B30
-        ori     rtn_addr, code_ptr, L_07508 - cb        // E6F5  ROR.W     (d8,A5,Xn)
-        b       L_05B90
-        ori     rtn_addr, code_ptr, L_07508 - cb        // E6F6  ROR.W     (d8,A6,Xn)
-        b       L_05BF0
-        ori     rtn_addr, code_ptr, L_07508 - cb        // E6F7  ROR.W     (d8,A7,Xn)
-        b       L_05C50
+        b       ror_w_mem
+        ori     rtn_addr, code_ptr, ror_w_mem_3 - cb    // E6F0  ROR.W     (d8,A0,Xn)
+        b       move_add_etc_w_any_any
+        ori     rtn_addr, code_ptr, ror_w_mem_3 - cb    // E6F1  ROR.W     (d8,A1,Xn)
+        b       move_add_etc_w_any_any_2
+        ori     rtn_addr, code_ptr, ror_w_mem_3 - cb    // E6F2  ROR.W     (d8,A2,Xn)
+        b       move_add_etc_w_any_any_3
+        ori     rtn_addr, code_ptr, ror_w_mem_3 - cb    // E6F3  ROR.W     (d8,A3,Xn)
+        b       move_add_etc_w_any_any_4
+        ori     rtn_addr, code_ptr, ror_w_mem_3 - cb    // E6F4  ROR.W     (d8,A4,Xn)
+        b       move_add_etc_w_any_any_5
+        ori     rtn_addr, code_ptr, ror_w_mem_3 - cb    // E6F5  ROR.W     (d8,A5,Xn)
+        b       move_add_etc_w_any_any_6
+        ori     rtn_addr, code_ptr, ror_w_mem_3 - cb    // E6F6  ROR.W     (d8,A6,Xn)
+        b       move_add_etc_w_any_any_7
+        ori     rtn_addr, code_ptr, ror_w_mem_3 - cb    // E6F7  ROR.W     (d8,A7,Xn)
+        b       move_add_etc_w_any_any_8
         mr      addr, prefetch_data                     // E6F8  ROR.W     (xxx).W
-        b       L_07500
-        ori     rtn_addr, code_ptr, L_07508 - cb        // E6F9  ROR.W     (xxx).L
-        b       L_05E70
+        b       ror_w_mem
+        ori     rtn_addr, code_ptr, ror_w_mem_3 - cb    // E6F9  ROR.W     (xxx).L
+        b       fea_w_71
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E6FA  ROR.W     (d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E6FB  ROR.W     (d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E6FC  ROR.W     #<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E6FD  ROR.W     <ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E6FE  ROR.W     <ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E6FF  ROR.W     <ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $E700-$E73F --------------------------------------------------------
         li      addr, 3                                 // E700  ASL.B     #3,D0
-        b       L_0B304
+        b       asl_b_q_d0
         li      addr, 3                                 // E701  ASL.B     #3,D1
-        b       L_0B3C4
+        b       asl_b_q_d1
         li      addr, 3                                 // E702  ASL.B     #3,D2
-        b       L_0B484
+        b       asl_b_q_d2
         li      addr, 3                                 // E703  ASL.B     #3,D3
-        b       L_0B544
+        b       asl_b_q_d3
         li      addr, 3                                 // E704  ASL.B     #3,D4
-        b       L_0B604
+        b       asl_b_q_d4
         li      addr, 3                                 // E705  ASL.B     #3,D5
-        b       L_0B6C4
+        b       asl_b_q_d5
         li      addr, 3                                 // E706  ASL.B     #3,D6
-        b       L_0B784
+        b       asl_b_q_d6
         li      addr, 3                                 // E707  ASL.B     #3,D7
-        b       L_0B844
+        b       asl_b_q_d7
         slwi    data, d0, 26                            // E708  LSL.B     #3,D0
-        b       L_0B2E0
+        b       lsl_b_q_d0
         slwi    data, d1, 26                            // E709  LSL.B     #3,D1
-        b       L_0B3A0
+        b       lsl_b_q_d1
         slwi    data, d2, 26                            // E70A  LSL.B     #3,D2
-        b       L_0B460
+        b       lsl_b_q_d2
         slwi    data, d3, 26                            // E70B  LSL.B     #3,D3
-        b       L_0B520
+        b       lsl_b_q_d3
         slwi    data, d4, 26                            // E70C  LSL.B     #3,D4
-        b       L_0B5E0
+        b       lsl_b_q_d4
         slwi    data, d5, 26                            // E70D  LSL.B     #3,D5
-        b       L_0B6A0
+        b       lsl_b_q_d5
         slwi    data, d6, 26                            // E70E  LSL.B     #3,D6
-        b       L_0B760
+        b       lsl_b_q_d6
         slwi    data, d7, 26                            // E70F  LSL.B     #3,D7
-        b       L_0B820
+        b       lsl_b_q_d7
         li      addr, 3                                 // E710  ROXL.B    #3,D0
-        b       L_0B364
+        b       roxr_roxl_b_q_d0
         li      addr, 3                                 // E711  ROXL.B    #3,D1
-        b       L_0B424
+        b       roxr_roxl_b_q_d1
         li      addr, 3                                 // E712  ROXL.B    #3,D2
-        b       L_0B4E4
+        b       roxr_roxl_b_q_d2
         li      addr, 3                                 // E713  ROXL.B    #3,D3
-        b       L_0B5A4
+        b       roxr_roxl_b_q_d3
         li      addr, 3                                 // E714  ROXL.B    #3,D4
-        b       L_0B664
+        b       roxr_roxl_b_q_d4
         li      addr, 3                                 // E715  ROXL.B    #3,D5
-        b       L_0B724
+        b       roxr_roxl_b_q_d5
         li      addr, 3                                 // E716  ROXL.B    #3,D6
-        b       L_0B7E4
+        b       roxr_roxl_b_q_d6
         li      addr, 3                                 // E717  ROXL.B    #3,D7
-        b       L_0B8A4
+        b       roxr_roxl_b_q_d7
         li      addr, 3                                 // E718  ROL.B     #3,D0
-        b       L_0B348
+        b       rol_b_q_d0
         li      addr, 3                                 // E719  ROL.B     #3,D1
-        b       L_0B408
+        b       rol_b_q_d1
         li      addr, 3                                 // E71A  ROL.B     #3,D2
-        b       L_0B4C8
+        b       rol_b_q_d2
         li      addr, 3                                 // E71B  ROL.B     #3,D3
-        b       L_0B588
+        b       rol_b_q_d3
         li      addr, 3                                 // E71C  ROL.B     #3,D4
-        b       L_0B648
+        b       rol_b_q_d4
         li      addr, 3                                 // E71D  ROL.B     #3,D5
-        b       L_0B708
+        b       rol_b_q_d5
         li      addr, 3                                 // E71E  ROL.B     #3,D6
-        b       L_0B7C8
+        b       rol_b_q_d6
         li      addr, 3                                 // E71F  ROL.B     #3,D7
-        b       L_0B888
+        b       rol_b_q_d7
         clrlwi. addr, d3, 26                            // E720  ASL.B     D3,D0
-        b       L_0B300
+        b       asl_b_dn_d0
         clrlwi. addr, d3, 26                            // E721  ASL.B     D3,D1
-        b       L_0B3C0
+        b       asl_b_dn_d1
         clrlwi. addr, d3, 26                            // E722  ASL.B     D3,D2
-        b       L_0B480
+        b       asl_b_dn_d2
         clrlwi. addr, d3, 26                            // E723  ASL.B     D3,D3
-        b       L_0B540
+        b       asl_b_dn_d3
         clrlwi. addr, d3, 26                            // E724  ASL.B     D3,D4
-        b       L_0B600
+        b       asl_b_dn_d4
         clrlwi. addr, d3, 26                            // E725  ASL.B     D3,D5
-        b       L_0B6C0
+        b       asl_b_dn_d5
         clrlwi. addr, d3, 26                            // E726  ASL.B     D3,D6
-        b       L_0B780
+        b       asl_b_dn_d6
         clrlwi. addr, d3, 26                            // E727  ASL.B     D3,D7
-        b       L_0B840
+        b       asl_b_dn_d7
         clrlwi. addr, d3, 26                            // E728  LSL.B     D3,D0
-        b       L_0B2D4
+        b       lsl_b_dn_d0
         clrlwi. addr, d3, 26                            // E729  LSL.B     D3,D1
-        b       L_0B394
+        b       lsl_b_dn_d1
         clrlwi. addr, d3, 26                            // E72A  LSL.B     D3,D2
-        b       L_0B454
+        b       lsl_b_dn_d2
         clrlwi. addr, d3, 26                            // E72B  LSL.B     D3,D3
-        b       L_0B514
+        b       lsl_b_dn_d3
         clrlwi. addr, d3, 26                            // E72C  LSL.B     D3,D4
-        b       L_0B5D4
+        b       lsl_b_dn_d4
         clrlwi. addr, d3, 26                            // E72D  LSL.B     D3,D5
-        b       L_0B694
+        b       lsl_b_dn_d5
         clrlwi. addr, d3, 26                            // E72E  LSL.B     D3,D6
-        b       L_0B754
+        b       lsl_b_dn_d6
         clrlwi. addr, d3, 26                            // E72F  LSL.B     D3,D7
-        b       L_0B814
+        b       lsl_b_dn_d7
         clrlwi. addr, d3, 26                            // E730  ROXL.B    D3,D0
-        b       L_0B360
+        b       roxr_roxl_b_dn_d0
         clrlwi. addr, d3, 26                            // E731  ROXL.B    D3,D1
-        b       L_0B420
+        b       roxr_roxl_b_dn_d1
         clrlwi. addr, d3, 26                            // E732  ROXL.B    D3,D2
-        b       L_0B4E0
+        b       roxr_roxl_b_dn_d2
         clrlwi. addr, d3, 26                            // E733  ROXL.B    D3,D3
-        b       L_0B5A0
+        b       roxr_roxl_b_dn_d3
         clrlwi. addr, d3, 26                            // E734  ROXL.B    D3,D4
-        b       L_0B660
+        b       roxr_roxl_b_dn_d4
         clrlwi. addr, d3, 26                            // E735  ROXL.B    D3,D5
-        b       L_0B720
+        b       roxr_roxl_b_dn_d5
         clrlwi. addr, d3, 26                            // E736  ROXL.B    D3,D6
-        b       L_0B7E0
+        b       roxr_roxl_b_dn_d6
         clrlwi. addr, d3, 26                            // E737  ROXL.B    D3,D7
-        b       L_0B8A0
+        b       roxr_roxl_b_dn_d7
         clrlwi. addr, d3, 26                            // E738  ROL.B     D3,D0
-        b       L_0B340
+        b       rol_b_dn_d0
         clrlwi. addr, d3, 26                            // E739  ROL.B     D3,D1
-        b       L_0B400
+        b       rol_b_dn_d1
         clrlwi. addr, d3, 26                            // E73A  ROL.B     D3,D2
-        b       L_0B4C0
+        b       rol_b_dn_d2
         clrlwi. addr, d3, 26                            // E73B  ROL.B     D3,D3
-        b       L_0B580
+        b       rol_b_dn_d3
         clrlwi. addr, d3, 26                            // E73C  ROL.B     D3,D4
-        b       L_0B640
+        b       rol_b_dn_d4
         clrlwi. addr, d3, 26                            // E73D  ROL.B     D3,D5
-        b       L_0B700
+        b       rol_b_dn_d5
         clrlwi. addr, d3, 26                            // E73E  ROL.B     D3,D6
-        b       L_0B7C0
+        b       rol_b_dn_d6
         clrlwi. addr, d3, 26                            // E73F  ROL.B     D3,D7
-        b       L_0B880
+        b       rol_b_dn_d7
 
 // ---- $E740-$E77F --------------------------------------------------------
         li      addr, 3                                 // E740  ASL.W     #3,D0
-        b       L_04C44
+        b       asl_w_q_d0
         li      addr, 3                                 // E741  ASL.W     #3,D1
-        b       L_04D04
+        b       asl_w_q_d1
         li      addr, 3                                 // E742  ASL.W     #3,D2
-        b       L_04DC4
+        b       asl_w_q_d2
         li      addr, 3                                 // E743  ASL.W     #3,D3
-        b       L_04E84
+        b       asl_w_q_d3
         li      addr, 3                                 // E744  ASL.W     #3,D4
-        b       L_04F44
+        b       asl_w_q_d4
         li      addr, 3                                 // E745  ASL.W     #3,D5
-        b       L_05004
+        b       asl_w_q_d5
         li      addr, 3                                 // E746  ASL.W     #3,D6
-        b       L_050C4
+        b       asl_w_q_d6
         li      addr, 3                                 // E747  ASL.W     #3,D7
-        b       L_05184
+        b       asl_w_q_d7
         slwi    data, d0, 18                            // E748  LSL.W     #3,D0
-        b       L_04C20
+        b       lsl_w_q_d0
         slwi    data, d1, 18                            // E749  LSL.W     #3,D1
-        b       L_04CE0
+        b       lsl_w_q_d1
         slwi    data, d2, 18                            // E74A  LSL.W     #3,D2
-        b       L_04DA0
+        b       lsl_w_q_d2
         slwi    data, d3, 18                            // E74B  LSL.W     #3,D3
-        b       L_04E60
+        b       lsl_w_q_d3
         slwi    data, d4, 18                            // E74C  LSL.W     #3,D4
-        b       L_04F20
+        b       lsl_w_q_d4
         slwi    data, d5, 18                            // E74D  LSL.W     #3,D5
-        b       L_04FE0
+        b       lsl_w_q_d5
         slwi    data, d6, 18                            // E74E  LSL.W     #3,D6
-        b       L_050A0
+        b       lsl_w_q_d6
         slwi    data, d7, 18                            // E74F  LSL.W     #3,D7
-        b       L_05160
+        b       lsl_w_q_d7
         addic.  addr, zero, 3                           // E750  ROXL.W    #3,D0
-        b       L_04CA4
+        b       roxr_roxl_w_q_d0
         addic.  addr, zero, 3                           // E751  ROXL.W    #3,D1
-        b       L_04D64
+        b       roxr_roxl_w_q_d1
         addic.  addr, zero, 3                           // E752  ROXL.W    #3,D2
-        b       L_04E24
+        b       roxr_roxl_w_q_d2
         addic.  addr, zero, 3                           // E753  ROXL.W    #3,D3
-        b       L_04EE4
+        b       roxr_roxl_w_q_d3
         addic.  addr, zero, 3                           // E754  ROXL.W    #3,D4
-        b       L_04FA4
+        b       roxr_roxl_w_q_d4
         addic.  addr, zero, 3                           // E755  ROXL.W    #3,D5
-        b       L_05064
+        b       roxr_roxl_w_q_d5
         addic.  addr, zero, 3                           // E756  ROXL.W    #3,D6
-        b       L_05124
+        b       roxr_roxl_w_q_d6
         addic.  addr, zero, 3                           // E757  ROXL.W    #3,D7
-        b       L_051E4
+        b       roxr_roxl_w_q_d7
         li      addr, 3                                 // E758  ROL.W     #3,D0
-        b       L_04C88
+        b       rol_w_q_d0
         li      addr, 3                                 // E759  ROL.W     #3,D1
-        b       L_04D48
+        b       rol_w_q_d1
         li      addr, 3                                 // E75A  ROL.W     #3,D2
-        b       L_04E08
+        b       rol_w_q_d2
         li      addr, 3                                 // E75B  ROL.W     #3,D3
-        b       L_04EC8
+        b       rol_w_q_d3
         li      addr, 3                                 // E75C  ROL.W     #3,D4
-        b       L_04F88
+        b       rol_w_q_d4
         li      addr, 3                                 // E75D  ROL.W     #3,D5
-        b       L_05048
+        b       rol_w_q_d5
         li      addr, 3                                 // E75E  ROL.W     #3,D6
-        b       L_05108
+        b       rol_w_q_d6
         li      addr, 3                                 // E75F  ROL.W     #3,D7
-        b       L_051C8
+        b       rol_w_q_d7
         clrlwi. addr, d3, 26                            // E760  ASL.W     D3,D0
-        b       L_04C40
+        b       asl_w_dn_d0
         clrlwi. addr, d3, 26                            // E761  ASL.W     D3,D1
-        b       L_04D00
+        b       asl_w_dn_d1
         clrlwi. addr, d3, 26                            // E762  ASL.W     D3,D2
-        b       L_04DC0
+        b       asl_w_dn_d2
         clrlwi. addr, d3, 26                            // E763  ASL.W     D3,D3
-        b       L_04E80
+        b       asl_w_dn_d3
         clrlwi. addr, d3, 26                            // E764  ASL.W     D3,D4
-        b       L_04F40
+        b       asl_w_dn_d4
         clrlwi. addr, d3, 26                            // E765  ASL.W     D3,D5
-        b       L_05000
+        b       asl_w_dn_d5
         clrlwi. addr, d3, 26                            // E766  ASL.W     D3,D6
-        b       L_050C0
+        b       asl_w_dn_d6
         clrlwi. addr, d3, 26                            // E767  ASL.W     D3,D7
-        b       L_05180
+        b       asl_w_dn_d7
         clrlwi. addr, d3, 26                            // E768  LSL.W     D3,D0
-        b       L_04C14
+        b       lsl_w_dn_d0
         clrlwi. addr, d3, 26                            // E769  LSL.W     D3,D1
-        b       L_04CD4
+        b       lsl_w_dn_d1
         clrlwi. addr, d3, 26                            // E76A  LSL.W     D3,D2
-        b       L_04D94
+        b       lsl_w_dn_d2
         clrlwi. addr, d3, 26                            // E76B  LSL.W     D3,D3
-        b       L_04E54
+        b       lsl_w_dn_d3
         clrlwi. addr, d3, 26                            // E76C  LSL.W     D3,D4
-        b       L_04F14
+        b       lsl_w_dn_d4
         clrlwi. addr, d3, 26                            // E76D  LSL.W     D3,D5
-        b       L_04FD4
+        b       lsl_w_dn_d5
         clrlwi. addr, d3, 26                            // E76E  LSL.W     D3,D6
-        b       L_05094
+        b       lsl_w_dn_d6
         clrlwi. addr, d3, 26                            // E76F  LSL.W     D3,D7
-        b       L_05154
+        b       lsl_w_dn_d7
         clrlwi. addr, d3, 26                            // E770  ROXL.W    D3,D0
-        b       L_04CA0
+        b       roxr_roxl_w_dn_d0
         clrlwi. addr, d3, 26                            // E771  ROXL.W    D3,D1
-        b       L_04D60
+        b       roxr_roxl_w_dn_d1
         clrlwi. addr, d3, 26                            // E772  ROXL.W    D3,D2
-        b       L_04E20
+        b       roxr_roxl_w_dn_d2
         clrlwi. addr, d3, 26                            // E773  ROXL.W    D3,D3
-        b       L_04EE0
+        b       roxr_roxl_w_dn_d3
         clrlwi. addr, d3, 26                            // E774  ROXL.W    D3,D4
-        b       L_04FA0
+        b       roxr_roxl_w_dn_d4
         clrlwi. addr, d3, 26                            // E775  ROXL.W    D3,D5
-        b       L_05060
+        b       roxr_roxl_w_dn_d5
         clrlwi. addr, d3, 26                            // E776  ROXL.W    D3,D6
-        b       L_05120
+        b       roxr_roxl_w_dn_d6
         clrlwi. addr, d3, 26                            // E777  ROXL.W    D3,D7
-        b       L_051E0
+        b       roxr_roxl_w_dn_d7
         clrlwi. addr, d3, 26                            // E778  ROL.W     D3,D0
-        b       L_04C80
+        b       rol_w_dn_d0
         clrlwi. addr, d3, 26                            // E779  ROL.W     D3,D1
-        b       L_04D40
+        b       rol_w_dn_d1
         clrlwi. addr, d3, 26                            // E77A  ROL.W     D3,D2
-        b       L_04E00
+        b       rol_w_dn_d2
         clrlwi. addr, d3, 26                            // E77B  ROL.W     D3,D3
-        b       L_04EC0
+        b       rol_w_dn_d3
         clrlwi. addr, d3, 26                            // E77C  ROL.W     D3,D4
-        b       L_04F80
+        b       rol_w_dn_d4
         clrlwi. addr, d3, 26                            // E77D  ROL.W     D3,D5
-        b       L_05040
+        b       rol_w_dn_d5
         clrlwi. addr, d3, 26                            // E77E  ROL.W     D3,D6
-        b       L_05100
+        b       rol_w_dn_d6
         clrlwi. addr, d3, 26                            // E77F  ROL.W     D3,D7
-        b       L_051C0
+        b       rol_w_dn_d7
 
 // ---- $E780-$E7BF --------------------------------------------------------
         li      addr, 3                                 // E780  ASL.L     #3,D0
-        b       L_05244
+        b       asl_l_q_d0
         li      addr, 3                                 // E781  ASL.L     #3,D1
-        b       L_052E4
+        b       asl_l_q_d1
         li      addr, 3                                 // E782  ASL.L     #3,D2
-        b       L_05384
+        b       asl_l_q_d2
         li      addr, 3                                 // E783  ASL.L     #3,D3
-        b       L_05424
+        b       asl_l_q_d3
         li      addr, 3                                 // E784  ASL.L     #3,D4
-        b       L_054C4
+        b       asl_l_q_d4
         li      addr, 3                                 // E785  ASL.L     #3,D5
-        b       L_05564
+        b       asl_l_q_d5
         li      addr, 3                                 // E786  ASL.L     #3,D6
-        b       L_05604
+        b       asl_l_q_d6
         li      addr, 3                                 // E787  ASL.L     #3,D7
-        b       L_056A4
+        b       asl_l_q_d7
         slwi    data, d0, 2                             // E788  LSL.L     #3,D0
-        b       L_05220
+        b       lsl_l_q_d0
         slwi    data, d1, 2                             // E789  LSL.L     #3,D1
-        b       L_052C0
+        b       lsl_l_q_d1
         slwi    data, d2, 2                             // E78A  LSL.L     #3,D2
-        b       L_05360
+        b       lsl_l_q_d2
         slwi    data, d3, 2                             // E78B  LSL.L     #3,D3
-        b       L_05400
+        b       lsl_l_q_d3
         slwi    data, d4, 2                             // E78C  LSL.L     #3,D4
-        b       L_054A0
+        b       lsl_l_q_d4
         slwi    data, d5, 2                             // E78D  LSL.L     #3,D5
-        b       L_05540
+        b       lsl_l_q_d5
         slwi    data, d6, 2                             // E78E  LSL.L     #3,D6
-        b       L_055E0
+        b       lsl_l_q_d6
         slwi    data, d7, 2                             // E78F  LSL.L     #3,D7
-        b       L_05680
+        b       lsl_l_q_d7
         addic.  addr, zero, 3                           // E790  ROXL.L    #3,D0
-        b       L_05284
+        b       roxr_roxl_l_q_d0
         addic.  addr, zero, 3                           // E791  ROXL.L    #3,D1
-        b       L_05324
+        b       roxr_roxl_l_q_d1
         addic.  addr, zero, 3                           // E792  ROXL.L    #3,D2
-        b       L_053C4
+        b       roxr_roxl_l_q_d2
         addic.  addr, zero, 3                           // E793  ROXL.L    #3,D3
-        b       L_05464
+        b       roxr_roxl_l_q_d3
         addic.  addr, zero, 3                           // E794  ROXL.L    #3,D4
-        b       L_05504
+        b       roxr_roxl_l_q_d4
         addic.  addr, zero, 3                           // E795  ROXL.L    #3,D5
-        b       L_055A4
+        b       roxr_roxl_l_q_d5
         addic.  addr, zero, 3                           // E796  ROXL.L    #3,D6
-        b       L_05644
+        b       roxr_roxl_l_q_d6
         addic.  addr, zero, 3                           // E797  ROXL.L    #3,D7
-        b       L_056E4
+        b       roxr_roxl_l_q_d7
         rotlwi  data, d0, 3                             // E798  ROL.L     #3,D0
-        b       L_05270
+        b       rol_l_q_d0
         rotlwi  data, d1, 3                             // E799  ROL.L     #3,D1
-        b       L_05310
+        b       rol_l_q_d1
         rotlwi  data, d2, 3                             // E79A  ROL.L     #3,D2
-        b       L_053B0
+        b       rol_l_q_d2
         rotlwi  data, d3, 3                             // E79B  ROL.L     #3,D3
-        b       L_05450
+        b       rol_l_q_d3
         rotlwi  data, d4, 3                             // E79C  ROL.L     #3,D4
-        b       L_054F0
+        b       rol_l_q_d4
         rotlwi  data, d5, 3                             // E79D  ROL.L     #3,D5
-        b       L_05590
+        b       rol_l_q_d5
         rotlwi  data, d6, 3                             // E79E  ROL.L     #3,D6
-        b       L_05630
+        b       rol_l_q_d6
         rotlwi  data, d7, 3                             // E79F  ROL.L     #3,D7
-        b       L_056D0
+        b       rol_l_q_d7
         clrlwi. addr, d3, 26                            // E7A0  ASL.L     D3,D0
-        b       L_05240
+        b       asl_l_dn_d0
         clrlwi. addr, d3, 26                            // E7A1  ASL.L     D3,D1
-        b       L_052E0
+        b       asl_l_dn_d1
         clrlwi. addr, d3, 26                            // E7A2  ASL.L     D3,D2
-        b       L_05380
+        b       asl_l_dn_d2
         clrlwi. addr, d3, 26                            // E7A3  ASL.L     D3,D3
-        b       L_05420
+        b       asl_l_dn_d3
         clrlwi. addr, d3, 26                            // E7A4  ASL.L     D3,D4
-        b       L_054C0
+        b       asl_l_dn_d4
         clrlwi. addr, d3, 26                            // E7A5  ASL.L     D3,D5
-        b       L_05560
+        b       asl_l_dn_d5
         clrlwi. addr, d3, 26                            // E7A6  ASL.L     D3,D6
-        b       L_05600
+        b       asl_l_dn_d6
         clrlwi. addr, d3, 26                            // E7A7  ASL.L     D3,D7
-        b       L_056A0
+        b       asl_l_dn_d7
         clrlwi. addr, d3, 26                            // E7A8  LSL.L     D3,D0
-        b       L_05214
+        b       lsl_l_dn_d0
         clrlwi. addr, d3, 26                            // E7A9  LSL.L     D3,D1
-        b       L_052B4
+        b       lsl_l_dn_d1
         clrlwi. addr, d3, 26                            // E7AA  LSL.L     D3,D2
-        b       L_05354
+        b       lsl_l_dn_d2
         clrlwi. addr, d3, 26                            // E7AB  LSL.L     D3,D3
-        b       L_053F4
+        b       lsl_l_dn_d3
         clrlwi. addr, d3, 26                            // E7AC  LSL.L     D3,D4
-        b       L_05494
+        b       lsl_l_dn_d4
         clrlwi. addr, d3, 26                            // E7AD  LSL.L     D3,D5
-        b       L_05534
+        b       lsl_l_dn_d5
         clrlwi. addr, d3, 26                            // E7AE  LSL.L     D3,D6
-        b       L_055D4
+        b       lsl_l_dn_d6
         clrlwi. addr, d3, 26                            // E7AF  LSL.L     D3,D7
-        b       L_05674
+        b       lsl_l_dn_d7
         clrlwi. addr, d3, 26                            // E7B0  ROXL.L    D3,D0
-        b       L_05280
+        b       roxr_roxl_l_dn_d0
         clrlwi. addr, d3, 26                            // E7B1  ROXL.L    D3,D1
-        b       L_05320
+        b       roxr_roxl_l_dn_d1
         clrlwi. addr, d3, 26                            // E7B2  ROXL.L    D3,D2
-        b       L_053C0
+        b       roxr_roxl_l_dn_d2
         clrlwi. addr, d3, 26                            // E7B3  ROXL.L    D3,D3
-        b       L_05460
+        b       roxr_roxl_l_dn_d3
         clrlwi. addr, d3, 26                            // E7B4  ROXL.L    D3,D4
-        b       L_05500
+        b       roxr_roxl_l_dn_d4
         clrlwi. addr, d3, 26                            // E7B5  ROXL.L    D3,D5
-        b       L_055A0
+        b       roxr_roxl_l_dn_d5
         clrlwi. addr, d3, 26                            // E7B6  ROXL.L    D3,D6
-        b       L_05640
+        b       roxr_roxl_l_dn_d6
         clrlwi. addr, d3, 26                            // E7B7  ROXL.L    D3,D7
-        b       L_056E0
+        b       roxr_roxl_l_dn_d7
         clrlwi. addr, d3, 26                            // E7B8  ROL.L     D3,D0
-        b       L_05268
+        b       rol_l_dn_d0
         clrlwi. addr, d3, 26                            // E7B9  ROL.L     D3,D1
-        b       L_05308
+        b       rol_l_dn_d1
         clrlwi. addr, d3, 26                            // E7BA  ROL.L     D3,D2
-        b       L_053A8
+        b       rol_l_dn_d2
         clrlwi. addr, d3, 26                            // E7BB  ROL.L     D3,D3
-        b       L_05448
+        b       rol_l_dn_d3
         clrlwi. addr, d3, 26                            // E7BC  ROL.L     D3,D4
-        b       L_054E8
+        b       rol_l_dn_d4
         clrlwi. addr, d3, 26                            // E7BD  ROL.L     D3,D5
-        b       L_05588
+        b       rol_l_dn_d5
         clrlwi. addr, d3, 26                            // E7BE  ROL.L     D3,D6
-        b       L_05628
+        b       rol_l_dn_d6
         clrlwi. addr, d3, 26                            // E7BF  ROL.L     D3,D7
-        b       L_056C8
+        b       rol_l_dn_d7
 
 // ---- $E7C0-$E7FF --------------------------------------------------------
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E7C0  ROL.W     D0   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E7C1  ROL.W     D1   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E7C2  ROL.W     D2   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E7C3  ROL.W     D3   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E7C4  ROL.W     D4   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E7C5  ROL.W     D5   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E7C6  ROL.W     D6   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E7C7  ROL.W     D7   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E7C8  ROL.W     A0   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E7C9  ROL.W     A1   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E7CA  ROL.W     A2   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E7CB  ROL.W     A3   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E7CC  ROL.W     A4   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E7CD  ROL.W     A5   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E7CE  ROL.W     A6   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E7CF  ROL.W     A7   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 op_E7D0:
         mr      addr, a0                                // E7D0  ROL.W     (A0)
-        b       L_07544
+        b       rol_w_mem_2
 op_E7D1:
         mr      addr, a1                                // E7D1  ROL.W     (A1)
-        b       L_07544
+        b       rol_w_mem_2
 op_E7D2:
         mr      addr, a2                                // E7D2  ROL.W     (A2)
-        b       L_07544
+        b       rol_w_mem_2
 op_E7D3:
         mr      addr, a3                                // E7D3  ROL.W     (A3)
-        b       L_07544
+        b       rol_w_mem_2
 op_E7D4:
         mr      addr, a4                                // E7D4  ROL.W     (A4)
-        b       L_07544
+        b       rol_w_mem_2
 op_E7D5:
         mr      addr, a5                                // E7D5  ROL.W     (A5)
-        b       L_07544
+        b       rol_w_mem_2
 op_E7D6:
         mr      addr, a6                                // E7D6  ROL.W     (A6)
-        b       L_07544
+        b       rol_w_mem_2
 op_E7D7:
         mr      addr, a7                                // E7D7  ROL.W     (A7)
-        b       L_07544
-        ori     rtn_addr, code_ptr, L_07544 - cb        // E7D8  ROL.W     (A0)+
-        b       L_00820
-        ori     rtn_addr, code_ptr, L_07544 - cb        // E7D9  ROL.W     (A1)+
-        b       L_008A0
-        ori     rtn_addr, code_ptr, L_07544 - cb        // E7DA  ROL.W     (A2)+
-        b       L_00920
-        ori     rtn_addr, code_ptr, L_07544 - cb        // E7DB  ROL.W     (A3)+
-        b       L_009A0
-        ori     rtn_addr, code_ptr, L_07544 - cb        // E7DC  ROL.W     (A4)+
-        b       L_00A20
-        ori     rtn_addr, code_ptr, L_07544 - cb        // E7DD  ROL.W     (A5)+
-        b       L_00AA0
-        ori     rtn_addr, code_ptr, L_07544 - cb        // E7DE  ROL.W     (A6)+
-        b       L_00B20
-        ori     rtn_addr, code_ptr, L_07544 - cb        // E7DF  ROL.W     (A7)+
-        b       L_00BA0
+        b       rol_w_mem_2
+        ori     rtn_addr, code_ptr, rol_w_mem_2 - cb    // E7D8  ROL.W     (A0)+
+        b       cea_w_30
+        ori     rtn_addr, code_ptr, rol_w_mem_2 - cb    // E7D9  ROL.W     (A1)+
+        b       cea_w_31
+        ori     rtn_addr, code_ptr, rol_w_mem_2 - cb    // E7DA  ROL.W     (A2)+
+        b       cea_w_32
+        ori     rtn_addr, code_ptr, rol_w_mem_2 - cb    // E7DB  ROL.W     (A3)+
+        b       cea_w_33
+        ori     rtn_addr, code_ptr, rol_w_mem_2 - cb    // E7DC  ROL.W     (A4)+
+        b       cea_w_34
+        ori     rtn_addr, code_ptr, rol_w_mem_2 - cb    // E7DD  ROL.W     (A5)+
+        b       cea_w_35
+        ori     rtn_addr, code_ptr, rol_w_mem_2 - cb    // E7DE  ROL.W     (A6)+
+        b       cea_w_36
+        ori     rtn_addr, code_ptr, rol_w_mem_2 - cb    // E7DF  ROL.W     (A7)+
+        b       cea_w_37
         addi    a0, a0, -2                              // E7E0  ROL.W     -(A0)
         b       op_E7D0
         addi    a1, a1, -2                              // E7E1  ROL.W     -(A1)
@@ -4179,4210 +4179,4210 @@ op_E7D7:
         addi    a7, a7, -2                              // E7E7  ROL.W     -(A7)
         b       op_E7D7
         add     addr, a0, prefetch_data                 // E7E8  ROL.W     (d16,A0)
-        b       L_07540
+        b       rol_w_mem
         add     addr, a1, prefetch_data                 // E7E9  ROL.W     (d16,A1)
-        b       L_07540
+        b       rol_w_mem
         add     addr, a2, prefetch_data                 // E7EA  ROL.W     (d16,A2)
-        b       L_07540
+        b       rol_w_mem
         add     addr, a3, prefetch_data                 // E7EB  ROL.W     (d16,A3)
-        b       L_07540
+        b       rol_w_mem
         add     addr, a4, prefetch_data                 // E7EC  ROL.W     (d16,A4)
-        b       L_07540
+        b       rol_w_mem
         add     addr, a5, prefetch_data                 // E7ED  ROL.W     (d16,A5)
-        b       L_07540
+        b       rol_w_mem
         add     addr, a6, prefetch_data                 // E7EE  ROL.W     (d16,A6)
-        b       L_07540
+        b       rol_w_mem
         add     addr, a7, prefetch_data                 // E7EF  ROL.W     (d16,A7)
-        b       L_07540
-        ori     rtn_addr, code_ptr, L_07548 - cb        // E7F0  ROL.W     (d8,A0,Xn)
-        b       L_059B0
-        ori     rtn_addr, code_ptr, L_07548 - cb        // E7F1  ROL.W     (d8,A1,Xn)
-        b       L_05A10
-        ori     rtn_addr, code_ptr, L_07548 - cb        // E7F2  ROL.W     (d8,A2,Xn)
-        b       L_05A70
-        ori     rtn_addr, code_ptr, L_07548 - cb        // E7F3  ROL.W     (d8,A3,Xn)
-        b       L_05AD0
-        ori     rtn_addr, code_ptr, L_07548 - cb        // E7F4  ROL.W     (d8,A4,Xn)
-        b       L_05B30
-        ori     rtn_addr, code_ptr, L_07548 - cb        // E7F5  ROL.W     (d8,A5,Xn)
-        b       L_05B90
-        ori     rtn_addr, code_ptr, L_07548 - cb        // E7F6  ROL.W     (d8,A6,Xn)
-        b       L_05BF0
-        ori     rtn_addr, code_ptr, L_07548 - cb        // E7F7  ROL.W     (d8,A7,Xn)
-        b       L_05C50
+        b       rol_w_mem
+        ori     rtn_addr, code_ptr, rol_w_mem_3 - cb    // E7F0  ROL.W     (d8,A0,Xn)
+        b       move_add_etc_w_any_any
+        ori     rtn_addr, code_ptr, rol_w_mem_3 - cb    // E7F1  ROL.W     (d8,A1,Xn)
+        b       move_add_etc_w_any_any_2
+        ori     rtn_addr, code_ptr, rol_w_mem_3 - cb    // E7F2  ROL.W     (d8,A2,Xn)
+        b       move_add_etc_w_any_any_3
+        ori     rtn_addr, code_ptr, rol_w_mem_3 - cb    // E7F3  ROL.W     (d8,A3,Xn)
+        b       move_add_etc_w_any_any_4
+        ori     rtn_addr, code_ptr, rol_w_mem_3 - cb    // E7F4  ROL.W     (d8,A4,Xn)
+        b       move_add_etc_w_any_any_5
+        ori     rtn_addr, code_ptr, rol_w_mem_3 - cb    // E7F5  ROL.W     (d8,A5,Xn)
+        b       move_add_etc_w_any_any_6
+        ori     rtn_addr, code_ptr, rol_w_mem_3 - cb    // E7F6  ROL.W     (d8,A6,Xn)
+        b       move_add_etc_w_any_any_7
+        ori     rtn_addr, code_ptr, rol_w_mem_3 - cb    // E7F7  ROL.W     (d8,A7,Xn)
+        b       move_add_etc_w_any_any_8
         mr      addr, prefetch_data                     // E7F8  ROL.W     (xxx).W
-        b       L_07540
-        ori     rtn_addr, code_ptr, L_07548 - cb        // E7F9  ROL.W     (xxx).L
-        b       L_05E70
+        b       rol_w_mem
+        ori     rtn_addr, code_ptr, rol_w_mem_3 - cb    // E7F9  ROL.W     (xxx).L
+        b       fea_w_71
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E7FA  ROL.W     (d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E7FB  ROL.W     (d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E7FC  ROL.W     #<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E7FD  ROL.W     <ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E7FE  ROL.W     <ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E7FF  ROL.W     <ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $E800-$E83F --------------------------------------------------------
         li      addr, 4                                 // E800  ASR.B     #4,D0
-        b       L_0B2EC
+        b       asr_b_q_d0
         li      addr, 4                                 // E801  ASR.B     #4,D1
-        b       L_0B3AC
+        b       asr_b_q_d1
         li      addr, 4                                 // E802  ASR.B     #4,D2
-        b       L_0B46C
+        b       asr_b_q_d2
         li      addr, 4                                 // E803  ASR.B     #4,D3
-        b       L_0B52C
+        b       asr_b_q_d3
         li      addr, 4                                 // E804  ASR.B     #4,D4
-        b       L_0B5EC
+        b       asr_b_q_d4
         li      addr, 4                                 // E805  ASR.B     #4,D5
-        b       L_0B6AC
+        b       asr_b_q_d5
         li      addr, 4                                 // E806  ASR.B     #4,D6
-        b       L_0B76C
+        b       asr_b_q_d6
         li      addr, 4                                 // E807  ASR.B     #4,D7
-        b       L_0B82C
+        b       asr_b_q_d7
         rlwinm  data, d0, 29, 27, 31                    // E808  LSR.B     #4,D0
-        b       L_0B2CC
+        b       lsr_b_q_d0
         rlwinm  data, d1, 29, 27, 31                    // E809  LSR.B     #4,D1
-        b       L_0B38C
+        b       lsr_b_q_d1
         rlwinm  data, d2, 29, 27, 31                    // E80A  LSR.B     #4,D2
-        b       L_0B44C
+        b       lsr_b_q_d2
         rlwinm  data, d3, 29, 27, 31                    // E80B  LSR.B     #4,D3
-        b       L_0B50C
+        b       lsr_b_q_d3
         rlwinm  data, d4, 29, 27, 31                    // E80C  LSR.B     #4,D4
-        b       L_0B5CC
+        b       lsr_b_q_d4
         rlwinm  data, d5, 29, 27, 31                    // E80D  LSR.B     #4,D5
-        b       L_0B68C
+        b       lsr_b_q_d5
         rlwinm  data, d6, 29, 27, 31                    // E80E  LSR.B     #4,D6
-        b       L_0B74C
+        b       lsr_b_q_d6
         rlwinm  data, d7, 29, 27, 31                    // E80F  LSR.B     #4,D7
-        b       L_0B80C
+        b       lsr_b_q_d7
         li      addr, 5                                 // E810  ROXR.B    #4,D0
-        b       L_0B364
+        b       roxr_roxl_b_q_d0
         li      addr, 5                                 // E811  ROXR.B    #4,D1
-        b       L_0B424
+        b       roxr_roxl_b_q_d1
         li      addr, 5                                 // E812  ROXR.B    #4,D2
-        b       L_0B4E4
+        b       roxr_roxl_b_q_d2
         li      addr, 5                                 // E813  ROXR.B    #4,D3
-        b       L_0B5A4
+        b       roxr_roxl_b_q_d3
         li      addr, 5                                 // E814  ROXR.B    #4,D4
-        b       L_0B664
+        b       roxr_roxl_b_q_d4
         li      addr, 5                                 // E815  ROXR.B    #4,D5
-        b       L_0B724
+        b       roxr_roxl_b_q_d5
         li      addr, 5                                 // E816  ROXR.B    #4,D6
-        b       L_0B7E4
+        b       roxr_roxl_b_q_d6
         li      addr, 5                                 // E817  ROXR.B    #4,D7
-        b       L_0B8A4
+        b       roxr_roxl_b_q_d7
         li      addr, 4                                 // E818  ROR.B     #4,D0
-        b       L_0B32C
+        b       ror_b_q_d0
         li      addr, 4                                 // E819  ROR.B     #4,D1
-        b       L_0B3EC
+        b       ror_b_q_d1
         li      addr, 4                                 // E81A  ROR.B     #4,D2
-        b       L_0B4AC
+        b       ror_b_q_d2
         li      addr, 4                                 // E81B  ROR.B     #4,D3
-        b       L_0B56C
+        b       ror_b_q_d3
         li      addr, 4                                 // E81C  ROR.B     #4,D4
-        b       L_0B62C
+        b       ror_b_q_d4
         li      addr, 4                                 // E81D  ROR.B     #4,D5
-        b       L_0B6EC
+        b       ror_b_q_d5
         li      addr, 4                                 // E81E  ROR.B     #4,D6
-        b       L_0B7AC
+        b       ror_b_q_d6
         li      addr, 4                                 // E81F  ROR.B     #4,D7
-        b       L_0B86C
+        b       ror_b_q_d7
         clrlwi. addr, d4, 26                            // E820  ASR.B     D4,D0
-        b       L_0B2E8
+        b       asr_b_dn_d0
         clrlwi. addr, d4, 26                            // E821  ASR.B     D4,D1
-        b       L_0B3A8
+        b       asr_b_dn_d1
         clrlwi. addr, d4, 26                            // E822  ASR.B     D4,D2
-        b       L_0B468
+        b       asr_b_dn_d2
         clrlwi. addr, d4, 26                            // E823  ASR.B     D4,D3
-        b       L_0B528
+        b       asr_b_dn_d3
         clrlwi. addr, d4, 26                            // E824  ASR.B     D4,D4
-        b       L_0B5E8
+        b       asr_b_dn_d4
         clrlwi. addr, d4, 26                            // E825  ASR.B     D4,D5
-        b       L_0B6A8
+        b       asr_b_dn_d5
         clrlwi. addr, d4, 26                            // E826  ASR.B     D4,D6
-        b       L_0B768
+        b       asr_b_dn_d6
         clrlwi. addr, d4, 26                            // E827  ASR.B     D4,D7
-        b       L_0B828
+        b       asr_b_dn_d7
         clrlwi. addr, d4, 26                            // E828  LSR.B     D4,D0
-        b       L_0B2C0
+        b       lsr_b_dn_d0
         clrlwi. addr, d4, 26                            // E829  LSR.B     D4,D1
-        b       L_0B380
+        b       lsr_b_dn_d1
         clrlwi. addr, d4, 26                            // E82A  LSR.B     D4,D2
-        b       L_0B440
+        b       lsr_b_dn_d2
         clrlwi. addr, d4, 26                            // E82B  LSR.B     D4,D3
-        b       L_0B500
+        b       lsr_b_dn_d3
         clrlwi. addr, d4, 26                            // E82C  LSR.B     D4,D4
-        b       L_0B5C0
+        b       lsr_b_dn_d4
         clrlwi. addr, d4, 26                            // E82D  LSR.B     D4,D5
-        b       L_0B680
+        b       lsr_b_dn_d5
         clrlwi. addr, d4, 26                            // E82E  LSR.B     D4,D6
-        b       L_0B740
+        b       lsr_b_dn_d6
         clrlwi. addr, d4, 26                            // E82F  LSR.B     D4,D7
-        b       L_0B800
+        b       lsr_b_dn_d7
         clrlwi. addr, d4, 26                            // E830  ROXR.B    D4,D0
-        b       L_0B360
+        b       roxr_roxl_b_dn_d0
         clrlwi. addr, d4, 26                            // E831  ROXR.B    D4,D1
-        b       L_0B420
+        b       roxr_roxl_b_dn_d1
         clrlwi. addr, d4, 26                            // E832  ROXR.B    D4,D2
-        b       L_0B4E0
+        b       roxr_roxl_b_dn_d2
         clrlwi. addr, d4, 26                            // E833  ROXR.B    D4,D3
-        b       L_0B5A0
+        b       roxr_roxl_b_dn_d3
         clrlwi. addr, d4, 26                            // E834  ROXR.B    D4,D4
-        b       L_0B660
+        b       roxr_roxl_b_dn_d4
         clrlwi. addr, d4, 26                            // E835  ROXR.B    D4,D5
-        b       L_0B720
+        b       roxr_roxl_b_dn_d5
         clrlwi. addr, d4, 26                            // E836  ROXR.B    D4,D6
-        b       L_0B7E0
+        b       roxr_roxl_b_dn_d6
         clrlwi. addr, d4, 26                            // E837  ROXR.B    D4,D7
-        b       L_0B8A0
+        b       roxr_roxl_b_dn_d7
         clrlwi. addr, d4, 26                            // E838  ROR.B     D4,D0
-        b       L_0B320
+        b       ror_b_dn_d0
         clrlwi. addr, d4, 26                            // E839  ROR.B     D4,D1
-        b       L_0B3E0
+        b       ror_b_dn_d1
         clrlwi. addr, d4, 26                            // E83A  ROR.B     D4,D2
-        b       L_0B4A0
+        b       ror_b_dn_d2
         clrlwi. addr, d4, 26                            // E83B  ROR.B     D4,D3
-        b       L_0B560
+        b       ror_b_dn_d3
         clrlwi. addr, d4, 26                            // E83C  ROR.B     D4,D4
-        b       L_0B620
+        b       ror_b_dn_d4
         clrlwi. addr, d4, 26                            // E83D  ROR.B     D4,D5
-        b       L_0B6E0
+        b       ror_b_dn_d5
         clrlwi. addr, d4, 26                            // E83E  ROR.B     D4,D6
-        b       L_0B7A0
+        b       ror_b_dn_d6
         clrlwi. addr, d4, 26                            // E83F  ROR.B     D4,D7
-        b       L_0B860
+        b       ror_b_dn_d7
 
 // ---- $E840-$E87F --------------------------------------------------------
         li      addr, 4                                 // E840  ASR.W     #4,D0
-        b       L_04C2C
+        b       asr_w_q_d0
         li      addr, 4                                 // E841  ASR.W     #4,D1
-        b       L_04CEC
+        b       asr_w_q_d1
         li      addr, 4                                 // E842  ASR.W     #4,D2
-        b       L_04DAC
+        b       asr_w_q_d2
         li      addr, 4                                 // E843  ASR.W     #4,D3
-        b       L_04E6C
+        b       asr_w_q_d3
         li      addr, 4                                 // E844  ASR.W     #4,D4
-        b       L_04F2C
+        b       asr_w_q_d4
         li      addr, 4                                 // E845  ASR.W     #4,D5
-        b       L_04FEC
+        b       asr_w_q_d5
         li      addr, 4                                 // E846  ASR.W     #4,D6
-        b       L_050AC
+        b       asr_w_q_d6
         li      addr, 4                                 // E847  ASR.W     #4,D7
-        b       L_0516C
+        b       asr_w_q_d7
         rlwinm  data, d0, 29, 19, 31                    // E848  LSR.W     #4,D0
-        b       L_04C0C
+        b       lsr_w_q_d0
         rlwinm  data, d1, 29, 19, 31                    // E849  LSR.W     #4,D1
-        b       L_04CCC
+        b       lsr_w_q_d1
         rlwinm  data, d2, 29, 19, 31                    // E84A  LSR.W     #4,D2
-        b       L_04D8C
+        b       lsr_w_q_d2
         rlwinm  data, d3, 29, 19, 31                    // E84B  LSR.W     #4,D3
-        b       L_04E4C
+        b       lsr_w_q_d3
         rlwinm  data, d4, 29, 19, 31                    // E84C  LSR.W     #4,D4
-        b       L_04F0C
+        b       lsr_w_q_d4
         rlwinm  data, d5, 29, 19, 31                    // E84D  LSR.W     #4,D5
-        b       L_04FCC
+        b       lsr_w_q_d5
         rlwinm  data, d6, 29, 19, 31                    // E84E  LSR.W     #4,D6
-        b       L_0508C
+        b       lsr_w_q_d6
         rlwinm  data, d7, 29, 19, 31                    // E84F  LSR.W     #4,D7
-        b       L_0514C
+        b       lsr_w_q_d7
         addic.  addr, zero, 13                          // E850  ROXR.W    #4,D0
-        b       L_04CA4
+        b       roxr_roxl_w_q_d0
         addic.  addr, zero, 13                          // E851  ROXR.W    #4,D1
-        b       L_04D64
+        b       roxr_roxl_w_q_d1
         addic.  addr, zero, 13                          // E852  ROXR.W    #4,D2
-        b       L_04E24
+        b       roxr_roxl_w_q_d2
         addic.  addr, zero, 13                          // E853  ROXR.W    #4,D3
-        b       L_04EE4
+        b       roxr_roxl_w_q_d3
         addic.  addr, zero, 13                          // E854  ROXR.W    #4,D4
-        b       L_04FA4
+        b       roxr_roxl_w_q_d4
         addic.  addr, zero, 13                          // E855  ROXR.W    #4,D5
-        b       L_05064
+        b       roxr_roxl_w_q_d5
         addic.  addr, zero, 13                          // E856  ROXR.W    #4,D6
-        b       L_05124
+        b       roxr_roxl_w_q_d6
         addic.  addr, zero, 13                          // E857  ROXR.W    #4,D7
-        b       L_051E4
+        b       roxr_roxl_w_q_d7
         li      addr, 12                                // E858  ROR.W     #4,D0
-        b       L_04C6C
+        b       ror_w_q_d0
         li      addr, 12                                // E859  ROR.W     #4,D1
-        b       L_04D2C
+        b       ror_w_q_d1
         li      addr, 12                                // E85A  ROR.W     #4,D2
-        b       L_04DEC
+        b       ror_w_q_d2
         li      addr, 12                                // E85B  ROR.W     #4,D3
-        b       L_04EAC
+        b       ror_w_q_d3
         li      addr, 12                                // E85C  ROR.W     #4,D4
-        b       L_04F6C
+        b       ror_w_q_d4
         li      addr, 12                                // E85D  ROR.W     #4,D5
-        b       L_0502C
+        b       ror_w_q_d5
         li      addr, 12                                // E85E  ROR.W     #4,D6
-        b       L_050EC
+        b       ror_w_q_d6
         li      addr, 12                                // E85F  ROR.W     #4,D7
-        b       L_051AC
+        b       ror_w_q_d7
         clrlwi. addr, d4, 26                            // E860  ASR.W     D4,D0
-        b       L_04C28
+        b       asr_w_dn_d0
         clrlwi. addr, d4, 26                            // E861  ASR.W     D4,D1
-        b       L_04CE8
+        b       asr_w_dn_d1
         clrlwi. addr, d4, 26                            // E862  ASR.W     D4,D2
-        b       L_04DA8
+        b       asr_w_dn_d2
         clrlwi. addr, d4, 26                            // E863  ASR.W     D4,D3
-        b       L_04E68
+        b       asr_w_dn_d3
         clrlwi. addr, d4, 26                            // E864  ASR.W     D4,D4
-        b       L_04F28
+        b       asr_w_dn_d4
         clrlwi. addr, d4, 26                            // E865  ASR.W     D4,D5
-        b       L_04FE8
+        b       asr_w_dn_d5
         clrlwi. addr, d4, 26                            // E866  ASR.W     D4,D6
-        b       L_050A8
+        b       asr_w_dn_d6
         clrlwi. addr, d4, 26                            // E867  ASR.W     D4,D7
-        b       L_05168
+        b       asr_w_dn_d7
         clrlwi. addr, d4, 26                            // E868  LSR.W     D4,D0
-        b       L_04C00
+        b       lsr_w_dn_d0
         clrlwi. addr, d4, 26                            // E869  LSR.W     D4,D1
-        b       L_04CC0
+        b       lsr_w_dn_d1
         clrlwi. addr, d4, 26                            // E86A  LSR.W     D4,D2
-        b       L_04D80
+        b       lsr_w_dn_d2
         clrlwi. addr, d4, 26                            // E86B  LSR.W     D4,D3
-        b       L_04E40
+        b       lsr_w_dn_d3
         clrlwi. addr, d4, 26                            // E86C  LSR.W     D4,D4
-        b       L_04F00
+        b       lsr_w_dn_d4
         clrlwi. addr, d4, 26                            // E86D  LSR.W     D4,D5
-        b       L_04FC0
+        b       lsr_w_dn_d5
         clrlwi. addr, d4, 26                            // E86E  LSR.W     D4,D6
-        b       L_05080
+        b       lsr_w_dn_d6
         clrlwi. addr, d4, 26                            // E86F  LSR.W     D4,D7
-        b       L_05140
+        b       lsr_w_dn_d7
         clrlwi. addr, d4, 26                            // E870  ROXR.W    D4,D0
-        b       L_04CA0
+        b       roxr_roxl_w_dn_d0
         clrlwi. addr, d4, 26                            // E871  ROXR.W    D4,D1
-        b       L_04D60
+        b       roxr_roxl_w_dn_d1
         clrlwi. addr, d4, 26                            // E872  ROXR.W    D4,D2
-        b       L_04E20
+        b       roxr_roxl_w_dn_d2
         clrlwi. addr, d4, 26                            // E873  ROXR.W    D4,D3
-        b       L_04EE0
+        b       roxr_roxl_w_dn_d3
         clrlwi. addr, d4, 26                            // E874  ROXR.W    D4,D4
-        b       L_04FA0
+        b       roxr_roxl_w_dn_d4
         clrlwi. addr, d4, 26                            // E875  ROXR.W    D4,D5
-        b       L_05060
+        b       roxr_roxl_w_dn_d5
         clrlwi. addr, d4, 26                            // E876  ROXR.W    D4,D6
-        b       L_05120
+        b       roxr_roxl_w_dn_d6
         clrlwi. addr, d4, 26                            // E877  ROXR.W    D4,D7
-        b       L_051E0
+        b       roxr_roxl_w_dn_d7
         clrlwi. addr, d4, 26                            // E878  ROR.W     D4,D0
-        b       L_04C60
+        b       ror_w_dn_d0
         clrlwi. addr, d4, 26                            // E879  ROR.W     D4,D1
-        b       L_04D20
+        b       ror_w_dn_d1
         clrlwi. addr, d4, 26                            // E87A  ROR.W     D4,D2
-        b       L_04DE0
+        b       ror_w_dn_d2
         clrlwi. addr, d4, 26                            // E87B  ROR.W     D4,D3
-        b       L_04EA0
+        b       ror_w_dn_d3
         clrlwi. addr, d4, 26                            // E87C  ROR.W     D4,D4
-        b       L_04F60
+        b       ror_w_dn_d4
         clrlwi. addr, d4, 26                            // E87D  ROR.W     D4,D5
-        b       L_05020
+        b       ror_w_dn_d5
         clrlwi. addr, d4, 26                            // E87E  ROR.W     D4,D6
-        b       L_050E0
+        b       ror_w_dn_d6
         clrlwi. addr, d4, 26                            // E87F  ROR.W     D4,D7
-        b       L_051A0
+        b       ror_w_dn_d7
 
 // ---- $E880-$E8BF --------------------------------------------------------
         srawi   data, d0, 3                             // E880  ASR.L     #4,D0
-        b       L_05234
+        b       asr_l_q_d0
         srawi   data, d1, 3                             // E881  ASR.L     #4,D1
-        b       L_052D4
+        b       asr_l_q_d1
         srawi   data, d2, 3                             // E882  ASR.L     #4,D2
-        b       L_05374
+        b       asr_l_q_d2
         srawi   data, d3, 3                             // E883  ASR.L     #4,D3
-        b       L_05414
+        b       asr_l_q_d3
         srawi   data, d4, 3                             // E884  ASR.L     #4,D4
-        b       L_054B4
+        b       asr_l_q_d4
         srawi   data, d5, 3                             // E885  ASR.L     #4,D5
-        b       L_05554
+        b       asr_l_q_d5
         srawi   data, d6, 3                             // E886  ASR.L     #4,D6
-        b       L_055F4
+        b       asr_l_q_d6
         srawi   data, d7, 3                             // E887  ASR.L     #4,D7
-        b       L_05694
+        b       asr_l_q_d7
         srwi    data, d0, 3                             // E888  LSR.L     #4,D0
-        b       L_0520C
+        b       lsr_l_q_d0
         srwi    data, d1, 3                             // E889  LSR.L     #4,D1
-        b       L_052AC
+        b       lsr_l_q_d1
         srwi    data, d2, 3                             // E88A  LSR.L     #4,D2
-        b       L_0534C
+        b       lsr_l_q_d2
         srwi    data, d3, 3                             // E88B  LSR.L     #4,D3
-        b       L_053EC
+        b       lsr_l_q_d3
         srwi    data, d4, 3                             // E88C  LSR.L     #4,D4
-        b       L_0548C
+        b       lsr_l_q_d4
         srwi    data, d5, 3                             // E88D  LSR.L     #4,D5
-        b       L_0552C
+        b       lsr_l_q_d5
         srwi    data, d6, 3                             // E88E  LSR.L     #4,D6
-        b       L_055CC
+        b       lsr_l_q_d6
         srwi    data, d7, 3                             // E88F  LSR.L     #4,D7
-        b       L_0566C
+        b       lsr_l_q_d7
         addic.  addr, zero, 29                          // E890  ROXR.L    #4,D0
-        b       L_05284
+        b       roxr_roxl_l_q_d0
         addic.  addr, zero, 29                          // E891  ROXR.L    #4,D1
-        b       L_05324
+        b       roxr_roxl_l_q_d1
         addic.  addr, zero, 29                          // E892  ROXR.L    #4,D2
-        b       L_053C4
+        b       roxr_roxl_l_q_d2
         addic.  addr, zero, 29                          // E893  ROXR.L    #4,D3
-        b       L_05464
+        b       roxr_roxl_l_q_d3
         addic.  addr, zero, 29                          // E894  ROXR.L    #4,D4
-        b       L_05504
+        b       roxr_roxl_l_q_d4
         addic.  addr, zero, 29                          // E895  ROXR.L    #4,D5
-        b       L_055A4
+        b       roxr_roxl_l_q_d5
         addic.  addr, zero, 29                          // E896  ROXR.L    #4,D6
-        b       L_05644
+        b       roxr_roxl_l_q_d6
         addic.  addr, zero, 29                          // E897  ROXR.L    #4,D7
-        b       L_056E4
+        b       roxr_roxl_l_q_d7
         rotlwi  data, d0, 28                            // E898  ROR.L     #4,D0
-        b       L_05260
+        b       ror_l_q_d0
         rotlwi  data, d1, 28                            // E899  ROR.L     #4,D1
-        b       L_05300
+        b       ror_l_q_d1
         rotlwi  data, d2, 28                            // E89A  ROR.L     #4,D2
-        b       L_053A0
+        b       ror_l_q_d2
         rotlwi  data, d3, 28                            // E89B  ROR.L     #4,D3
-        b       L_05440
+        b       ror_l_q_d3
         rotlwi  data, d4, 28                            // E89C  ROR.L     #4,D4
-        b       L_054E0
+        b       ror_l_q_d4
         rotlwi  data, d5, 28                            // E89D  ROR.L     #4,D5
-        b       L_05580
+        b       ror_l_q_d5
         rotlwi  data, d6, 28                            // E89E  ROR.L     #4,D6
-        b       L_05620
+        b       ror_l_q_d6
         rotlwi  data, d7, 28                            // E89F  ROR.L     #4,D7
-        b       L_056C0
+        b       ror_l_q_d7
         clrlwi. addr, d4, 26                            // E8A0  ASR.L     D4,D0
-        b       L_05228
+        b       asr_l_dn_d0
         clrlwi. addr, d4, 26                            // E8A1  ASR.L     D4,D1
-        b       L_052C8
+        b       asr_l_dn_d1
         clrlwi. addr, d4, 26                            // E8A2  ASR.L     D4,D2
-        b       L_05368
+        b       asr_l_dn_d2
         clrlwi. addr, d4, 26                            // E8A3  ASR.L     D4,D3
-        b       L_05408
+        b       asr_l_dn_d3
         clrlwi. addr, d4, 26                            // E8A4  ASR.L     D4,D4
-        b       L_054A8
+        b       asr_l_dn_d4
         clrlwi. addr, d4, 26                            // E8A5  ASR.L     D4,D5
-        b       L_05548
+        b       asr_l_dn_d5
         clrlwi. addr, d4, 26                            // E8A6  ASR.L     D4,D6
-        b       L_055E8
+        b       asr_l_dn_d6
         clrlwi. addr, d4, 26                            // E8A7  ASR.L     D4,D7
-        b       L_05688
+        b       asr_l_dn_d7
         clrlwi. addr, d4, 26                            // E8A8  LSR.L     D4,D0
-        b       L_05200
+        b       lsr_l_dn_d0
         clrlwi. addr, d4, 26                            // E8A9  LSR.L     D4,D1
-        b       L_052A0
+        b       lsr_l_dn_d1
         clrlwi. addr, d4, 26                            // E8AA  LSR.L     D4,D2
-        b       L_05340
+        b       lsr_l_dn_d2
         clrlwi. addr, d4, 26                            // E8AB  LSR.L     D4,D3
-        b       L_053E0
+        b       lsr_l_dn_d3
         clrlwi. addr, d4, 26                            // E8AC  LSR.L     D4,D4
-        b       L_05480
+        b       lsr_l_dn_d4
         clrlwi. addr, d4, 26                            // E8AD  LSR.L     D4,D5
-        b       L_05520
+        b       lsr_l_dn_d5
         clrlwi. addr, d4, 26                            // E8AE  LSR.L     D4,D6
-        b       L_055C0
+        b       lsr_l_dn_d6
         clrlwi. addr, d4, 26                            // E8AF  LSR.L     D4,D7
-        b       L_05660
+        b       lsr_l_dn_d7
         clrlwi. addr, d4, 26                            // E8B0  ROXR.L    D4,D0
-        b       L_05280
+        b       roxr_roxl_l_dn_d0
         clrlwi. addr, d4, 26                            // E8B1  ROXR.L    D4,D1
-        b       L_05320
+        b       roxr_roxl_l_dn_d1
         clrlwi. addr, d4, 26                            // E8B2  ROXR.L    D4,D2
-        b       L_053C0
+        b       roxr_roxl_l_dn_d2
         clrlwi. addr, d4, 26                            // E8B3  ROXR.L    D4,D3
-        b       L_05460
+        b       roxr_roxl_l_dn_d3
         clrlwi. addr, d4, 26                            // E8B4  ROXR.L    D4,D4
-        b       L_05500
+        b       roxr_roxl_l_dn_d4
         clrlwi. addr, d4, 26                            // E8B5  ROXR.L    D4,D5
-        b       L_055A0
+        b       roxr_roxl_l_dn_d5
         clrlwi. addr, d4, 26                            // E8B6  ROXR.L    D4,D6
-        b       L_05640
+        b       roxr_roxl_l_dn_d6
         clrlwi. addr, d4, 26                            // E8B7  ROXR.L    D4,D7
-        b       L_056E0
+        b       roxr_roxl_l_dn_d7
         clrlwi. addr, d4, 26                            // E8B8  ROR.L     D4,D0
-        b       L_05254
+        b       ror_l_dn_d0
         clrlwi. addr, d4, 26                            // E8B9  ROR.L     D4,D1
-        b       L_052F4
+        b       ror_l_dn_d1
         clrlwi. addr, d4, 26                            // E8BA  ROR.L     D4,D2
-        b       L_05394
+        b       ror_l_dn_d2
         clrlwi. addr, d4, 26                            // E8BB  ROR.L     D4,D3
-        b       L_05434
+        b       ror_l_dn_d3
         clrlwi. addr, d4, 26                            // E8BC  ROR.L     D4,D4
-        b       L_054D4
+        b       ror_l_dn_d4
         clrlwi. addr, d4, 26                            // E8BD  ROR.L     D4,D5
-        b       L_05574
+        b       ror_l_dn_d5
         clrlwi. addr, d4, 26                            // E8BE  ROR.L     D4,D6
-        b       L_05614
+        b       ror_l_dn_d6
         clrlwi. addr, d4, 26                            // E8BF  ROR.L     D4,D7
-        b       L_056B4
+        b       ror_l_dn_d7
 
 // ---- $E8C0-$E8FF --------------------------------------------------------
         mr      data, d0                                // E8C0  BFTST     D0{ofs:wid}
-        b       L_07780
+        b       bftst
         mr      data, d1                                // E8C1  BFTST     D1{ofs:wid}
-        b       L_07780
+        b       bftst
         mr      data, d2                                // E8C2  BFTST     D2{ofs:wid}
-        b       L_07780
+        b       bftst
         mr      data, d3                                // E8C3  BFTST     D3{ofs:wid}
-        b       L_07780
+        b       bftst
         mr      data, d4                                // E8C4  BFTST     D4{ofs:wid}
-        b       L_07780
+        b       bftst
         mr      data, d5                                // E8C5  BFTST     D5{ofs:wid}
-        b       L_07780
+        b       bftst
         mr      data, d6                                // E8C6  BFTST     D6{ofs:wid}
-        b       L_07780
+        b       bftst
         mr      data, d7                                // E8C7  BFTST     D7{ofs:wid}
-        b       L_07780
+        b       bftst
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E8C8  BFTST     A0{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E8C9  BFTST     A1{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E8CA  BFTST     A2{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E8CB  BFTST     A3{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E8CC  BFTST     A4{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E8CD  BFTST     A5{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E8CE  BFTST     A6{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E8CF  BFTST     A7{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         mr      addr, a0                                // E8D0  BFTST     (A0){ofs:wid}
-        b       L_077C0
+        b       bftst_mem
         mr      addr, a1                                // E8D1  BFTST     (A1){ofs:wid}
-        b       L_077C0
+        b       bftst_mem
         mr      addr, a2                                // E8D2  BFTST     (A2){ofs:wid}
-        b       L_077C0
+        b       bftst_mem
         mr      addr, a3                                // E8D3  BFTST     (A3){ofs:wid}
-        b       L_077C0
+        b       bftst_mem
         mr      addr, a4                                // E8D4  BFTST     (A4){ofs:wid}
-        b       L_077C0
+        b       bftst_mem
         mr      addr, a5                                // E8D5  BFTST     (A5){ofs:wid}
-        b       L_077C0
+        b       bftst_mem
         mr      addr, a6                                // E8D6  BFTST     (A6){ofs:wid}
-        b       L_077C0
+        b       bftst_mem
         mr      addr, a7                                // E8D7  BFTST     (A7){ofs:wid}
-        b       L_077C0
+        b       bftst_mem
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E8D8  BFTST     (A0)+{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E8D9  BFTST     (A1)+{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E8DA  BFTST     (A2)+{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E8DB  BFTST     (A3)+{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E8DC  BFTST     (A4)+{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E8DD  BFTST     (A5)+{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E8DE  BFTST     (A6)+{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E8DF  BFTST     (A7)+{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E8E0  BFTST     -(A0){ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E8E1  BFTST     -(A1){ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E8E2  BFTST     -(A2){ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E8E3  BFTST     -(A3){ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E8E4  BFTST     -(A4){ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E8E5  BFTST     -(A5){ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E8E6  BFTST     -(A6){ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E8E7  BFTST     -(A7){ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         mr      addr, a0                                // E8E8  BFTST     (d16,A0){ofs:wid}
-        b       L_07820
+        b       bftst_mem_3
         mr      addr, a1                                // E8E9  BFTST     (d16,A1){ofs:wid}
-        b       L_07820
+        b       bftst_mem_3
         mr      addr, a2                                // E8EA  BFTST     (d16,A2){ofs:wid}
-        b       L_07820
+        b       bftst_mem_3
         mr      addr, a3                                // E8EB  BFTST     (d16,A3){ofs:wid}
-        b       L_07820
+        b       bftst_mem_3
         mr      addr, a4                                // E8EC  BFTST     (d16,A4){ofs:wid}
-        b       L_07820
+        b       bftst_mem_3
         mr      addr, a5                                // E8ED  BFTST     (d16,A5){ofs:wid}
-        b       L_07820
+        b       bftst_mem_3
         mr      addr, a6                                // E8EE  BFTST     (d16,A6){ofs:wid}
-        b       L_07820
+        b       bftst_mem_3
         mr      addr, a7                                // E8EF  BFTST     (d16,A7){ofs:wid}
-        b       L_07820
-        ori     rtn_addr, code_ptr, L_077C8 - cb        // E8F0  BFTST     (d8,A0,Xn){ofs:wid}
-        b       L_05980
-        ori     rtn_addr, code_ptr, L_077C8 - cb        // E8F1  BFTST     (d8,A1,Xn){ofs:wid}
-        b       L_059E0
-        ori     rtn_addr, code_ptr, L_077C8 - cb        // E8F2  BFTST     (d8,A2,Xn){ofs:wid}
-        b       L_05A40
-        ori     rtn_addr, code_ptr, L_077C8 - cb        // E8F3  BFTST     (d8,A3,Xn){ofs:wid}
-        b       L_05AA0
-        ori     rtn_addr, code_ptr, L_077C8 - cb        // E8F4  BFTST     (d8,A4,Xn){ofs:wid}
-        b       L_05B00
-        ori     rtn_addr, code_ptr, L_077C8 - cb        // E8F5  BFTST     (d8,A5,Xn){ofs:wid}
-        b       L_05B60
-        ori     rtn_addr, code_ptr, L_077C8 - cb        // E8F6  BFTST     (d8,A6,Xn){ofs:wid}
-        b       L_05BC0
-        ori     rtn_addr, code_ptr, L_077C8 - cb        // E8F7  BFTST     (d8,A7,Xn){ofs:wid}
-        b       L_05C20
+        b       bftst_mem_3
+        ori     rtn_addr, code_ptr, bftst_mem_2 - cb    // E8F0  BFTST     (d8,A0,Xn){ofs:wid}
+        b       movem_cas_etc_any_any
+        ori     rtn_addr, code_ptr, bftst_mem_2 - cb    // E8F1  BFTST     (d8,A1,Xn){ofs:wid}
+        b       movem_cas_etc_any_any_2
+        ori     rtn_addr, code_ptr, bftst_mem_2 - cb    // E8F2  BFTST     (d8,A2,Xn){ofs:wid}
+        b       movem_cas_etc_any_any_3
+        ori     rtn_addr, code_ptr, bftst_mem_2 - cb    // E8F3  BFTST     (d8,A3,Xn){ofs:wid}
+        b       movem_cas_etc_any_any_4
+        ori     rtn_addr, code_ptr, bftst_mem_2 - cb    // E8F4  BFTST     (d8,A4,Xn){ofs:wid}
+        b       movem_cas_etc_any_any_5
+        ori     rtn_addr, code_ptr, bftst_mem_2 - cb    // E8F5  BFTST     (d8,A5,Xn){ofs:wid}
+        b       movem_cas_etc_any_any_6
+        ori     rtn_addr, code_ptr, bftst_mem_2 - cb    // E8F6  BFTST     (d8,A6,Xn){ofs:wid}
+        b       movem_cas_etc_any_any_7
+        ori     rtn_addr, code_ptr, bftst_mem_2 - cb    // E8F7  BFTST     (d8,A7,Xn){ofs:wid}
+        b       movem_cas_etc_any_any_8
         lhau    addr, 2(pc)                             // E8F8  BFTST     (xxx).W{ofs:wid}
-        b       L_077C0
-        ori     rtn_addr, code_ptr, L_077C8 - cb        // E8F9  BFTST     (xxx).L{ofs:wid}
-        b       L_05E00
+        b       bftst_mem
+        ori     rtn_addr, code_ptr, bftst_mem_2 - cb    // E8F9  BFTST     (xxx).L{ofs:wid}
+        b       cea_x_71
         addi    addr, pc, 2                             // E8FA  BFTST     (d16,PC){ofs:wid}
-        b       L_07820
-        ori     rtn_addr, code_ptr, L_077C8 - cb        // E8FB  BFTST     (d8,PC,Xn){ofs:wid}
-        b       L_05E40
+        b       bftst_mem_3
+        ori     rtn_addr, code_ptr, bftst_mem_2 - cb    // E8FB  BFTST     (d8,PC,Xn){ofs:wid}
+        b       chk2_cmp2_movem_etc_mem_any
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E8FC  BFTST     #<data>{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E8FD  BFTST     <ea 7.5>{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E8FE  BFTST     <ea 7.6>{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E8FF  BFTST     <ea 7.7>{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $E900-$E93F --------------------------------------------------------
         li      addr, 4                                 // E900  ASL.B     #4,D0
-        b       L_0B304
+        b       asl_b_q_d0
         li      addr, 4                                 // E901  ASL.B     #4,D1
-        b       L_0B3C4
+        b       asl_b_q_d1
         li      addr, 4                                 // E902  ASL.B     #4,D2
-        b       L_0B484
+        b       asl_b_q_d2
         li      addr, 4                                 // E903  ASL.B     #4,D3
-        b       L_0B544
+        b       asl_b_q_d3
         li      addr, 4                                 // E904  ASL.B     #4,D4
-        b       L_0B604
+        b       asl_b_q_d4
         li      addr, 4                                 // E905  ASL.B     #4,D5
-        b       L_0B6C4
+        b       asl_b_q_d5
         li      addr, 4                                 // E906  ASL.B     #4,D6
-        b       L_0B784
+        b       asl_b_q_d6
         li      addr, 4                                 // E907  ASL.B     #4,D7
-        b       L_0B844
+        b       asl_b_q_d7
         slwi    data, d0, 27                            // E908  LSL.B     #4,D0
-        b       L_0B2E0
+        b       lsl_b_q_d0
         slwi    data, d1, 27                            // E909  LSL.B     #4,D1
-        b       L_0B3A0
+        b       lsl_b_q_d1
         slwi    data, d2, 27                            // E90A  LSL.B     #4,D2
-        b       L_0B460
+        b       lsl_b_q_d2
         slwi    data, d3, 27                            // E90B  LSL.B     #4,D3
-        b       L_0B520
+        b       lsl_b_q_d3
         slwi    data, d4, 27                            // E90C  LSL.B     #4,D4
-        b       L_0B5E0
+        b       lsl_b_q_d4
         slwi    data, d5, 27                            // E90D  LSL.B     #4,D5
-        b       L_0B6A0
+        b       lsl_b_q_d5
         slwi    data, d6, 27                            // E90E  LSL.B     #4,D6
-        b       L_0B760
+        b       lsl_b_q_d6
         slwi    data, d7, 27                            // E90F  LSL.B     #4,D7
-        b       L_0B820
+        b       lsl_b_q_d7
         li      addr, 4                                 // E910  ROXL.B    #4,D0
-        b       L_0B364
+        b       roxr_roxl_b_q_d0
         li      addr, 4                                 // E911  ROXL.B    #4,D1
-        b       L_0B424
+        b       roxr_roxl_b_q_d1
         li      addr, 4                                 // E912  ROXL.B    #4,D2
-        b       L_0B4E4
+        b       roxr_roxl_b_q_d2
         li      addr, 4                                 // E913  ROXL.B    #4,D3
-        b       L_0B5A4
+        b       roxr_roxl_b_q_d3
         li      addr, 4                                 // E914  ROXL.B    #4,D4
-        b       L_0B664
+        b       roxr_roxl_b_q_d4
         li      addr, 4                                 // E915  ROXL.B    #4,D5
-        b       L_0B724
+        b       roxr_roxl_b_q_d5
         li      addr, 4                                 // E916  ROXL.B    #4,D6
-        b       L_0B7E4
+        b       roxr_roxl_b_q_d6
         li      addr, 4                                 // E917  ROXL.B    #4,D7
-        b       L_0B8A4
+        b       roxr_roxl_b_q_d7
         li      addr, 4                                 // E918  ROL.B     #4,D0
-        b       L_0B348
+        b       rol_b_q_d0
         li      addr, 4                                 // E919  ROL.B     #4,D1
-        b       L_0B408
+        b       rol_b_q_d1
         li      addr, 4                                 // E91A  ROL.B     #4,D2
-        b       L_0B4C8
+        b       rol_b_q_d2
         li      addr, 4                                 // E91B  ROL.B     #4,D3
-        b       L_0B588
+        b       rol_b_q_d3
         li      addr, 4                                 // E91C  ROL.B     #4,D4
-        b       L_0B648
+        b       rol_b_q_d4
         li      addr, 4                                 // E91D  ROL.B     #4,D5
-        b       L_0B708
+        b       rol_b_q_d5
         li      addr, 4                                 // E91E  ROL.B     #4,D6
-        b       L_0B7C8
+        b       rol_b_q_d6
         li      addr, 4                                 // E91F  ROL.B     #4,D7
-        b       L_0B888
+        b       rol_b_q_d7
         clrlwi. addr, d4, 26                            // E920  ASL.B     D4,D0
-        b       L_0B300
+        b       asl_b_dn_d0
         clrlwi. addr, d4, 26                            // E921  ASL.B     D4,D1
-        b       L_0B3C0
+        b       asl_b_dn_d1
         clrlwi. addr, d4, 26                            // E922  ASL.B     D4,D2
-        b       L_0B480
+        b       asl_b_dn_d2
         clrlwi. addr, d4, 26                            // E923  ASL.B     D4,D3
-        b       L_0B540
+        b       asl_b_dn_d3
         clrlwi. addr, d4, 26                            // E924  ASL.B     D4,D4
-        b       L_0B600
+        b       asl_b_dn_d4
         clrlwi. addr, d4, 26                            // E925  ASL.B     D4,D5
-        b       L_0B6C0
+        b       asl_b_dn_d5
         clrlwi. addr, d4, 26                            // E926  ASL.B     D4,D6
-        b       L_0B780
+        b       asl_b_dn_d6
         clrlwi. addr, d4, 26                            // E927  ASL.B     D4,D7
-        b       L_0B840
+        b       asl_b_dn_d7
         clrlwi. addr, d4, 26                            // E928  LSL.B     D4,D0
-        b       L_0B2D4
+        b       lsl_b_dn_d0
         clrlwi. addr, d4, 26                            // E929  LSL.B     D4,D1
-        b       L_0B394
+        b       lsl_b_dn_d1
         clrlwi. addr, d4, 26                            // E92A  LSL.B     D4,D2
-        b       L_0B454
+        b       lsl_b_dn_d2
         clrlwi. addr, d4, 26                            // E92B  LSL.B     D4,D3
-        b       L_0B514
+        b       lsl_b_dn_d3
         clrlwi. addr, d4, 26                            // E92C  LSL.B     D4,D4
-        b       L_0B5D4
+        b       lsl_b_dn_d4
         clrlwi. addr, d4, 26                            // E92D  LSL.B     D4,D5
-        b       L_0B694
+        b       lsl_b_dn_d5
         clrlwi. addr, d4, 26                            // E92E  LSL.B     D4,D6
-        b       L_0B754
+        b       lsl_b_dn_d6
         clrlwi. addr, d4, 26                            // E92F  LSL.B     D4,D7
-        b       L_0B814
+        b       lsl_b_dn_d7
         clrlwi. addr, d4, 26                            // E930  ROXL.B    D4,D0
-        b       L_0B360
+        b       roxr_roxl_b_dn_d0
         clrlwi. addr, d4, 26                            // E931  ROXL.B    D4,D1
-        b       L_0B420
+        b       roxr_roxl_b_dn_d1
         clrlwi. addr, d4, 26                            // E932  ROXL.B    D4,D2
-        b       L_0B4E0
+        b       roxr_roxl_b_dn_d2
         clrlwi. addr, d4, 26                            // E933  ROXL.B    D4,D3
-        b       L_0B5A0
+        b       roxr_roxl_b_dn_d3
         clrlwi. addr, d4, 26                            // E934  ROXL.B    D4,D4
-        b       L_0B660
+        b       roxr_roxl_b_dn_d4
         clrlwi. addr, d4, 26                            // E935  ROXL.B    D4,D5
-        b       L_0B720
+        b       roxr_roxl_b_dn_d5
         clrlwi. addr, d4, 26                            // E936  ROXL.B    D4,D6
-        b       L_0B7E0
+        b       roxr_roxl_b_dn_d6
         clrlwi. addr, d4, 26                            // E937  ROXL.B    D4,D7
-        b       L_0B8A0
+        b       roxr_roxl_b_dn_d7
         clrlwi. addr, d4, 26                            // E938  ROL.B     D4,D0
-        b       L_0B340
+        b       rol_b_dn_d0
         clrlwi. addr, d4, 26                            // E939  ROL.B     D4,D1
-        b       L_0B400
+        b       rol_b_dn_d1
         clrlwi. addr, d4, 26                            // E93A  ROL.B     D4,D2
-        b       L_0B4C0
+        b       rol_b_dn_d2
         clrlwi. addr, d4, 26                            // E93B  ROL.B     D4,D3
-        b       L_0B580
+        b       rol_b_dn_d3
         clrlwi. addr, d4, 26                            // E93C  ROL.B     D4,D4
-        b       L_0B640
+        b       rol_b_dn_d4
         clrlwi. addr, d4, 26                            // E93D  ROL.B     D4,D5
-        b       L_0B700
+        b       rol_b_dn_d5
         clrlwi. addr, d4, 26                            // E93E  ROL.B     D4,D6
-        b       L_0B7C0
+        b       rol_b_dn_d6
         clrlwi. addr, d4, 26                            // E93F  ROL.B     D4,D7
-        b       L_0B880
+        b       rol_b_dn_d7
 
 // ---- $E940-$E97F --------------------------------------------------------
         li      addr, 4                                 // E940  ASL.W     #4,D0
-        b       L_04C44
+        b       asl_w_q_d0
         li      addr, 4                                 // E941  ASL.W     #4,D1
-        b       L_04D04
+        b       asl_w_q_d1
         li      addr, 4                                 // E942  ASL.W     #4,D2
-        b       L_04DC4
+        b       asl_w_q_d2
         li      addr, 4                                 // E943  ASL.W     #4,D3
-        b       L_04E84
+        b       asl_w_q_d3
         li      addr, 4                                 // E944  ASL.W     #4,D4
-        b       L_04F44
+        b       asl_w_q_d4
         li      addr, 4                                 // E945  ASL.W     #4,D5
-        b       L_05004
+        b       asl_w_q_d5
         li      addr, 4                                 // E946  ASL.W     #4,D6
-        b       L_050C4
+        b       asl_w_q_d6
         li      addr, 4                                 // E947  ASL.W     #4,D7
-        b       L_05184
+        b       asl_w_q_d7
         slwi    data, d0, 19                            // E948  LSL.W     #4,D0
-        b       L_04C20
+        b       lsl_w_q_d0
         slwi    data, d1, 19                            // E949  LSL.W     #4,D1
-        b       L_04CE0
+        b       lsl_w_q_d1
         slwi    data, d2, 19                            // E94A  LSL.W     #4,D2
-        b       L_04DA0
+        b       lsl_w_q_d2
         slwi    data, d3, 19                            // E94B  LSL.W     #4,D3
-        b       L_04E60
+        b       lsl_w_q_d3
         slwi    data, d4, 19                            // E94C  LSL.W     #4,D4
-        b       L_04F20
+        b       lsl_w_q_d4
         slwi    data, d5, 19                            // E94D  LSL.W     #4,D5
-        b       L_04FE0
+        b       lsl_w_q_d5
         slwi    data, d6, 19                            // E94E  LSL.W     #4,D6
-        b       L_050A0
+        b       lsl_w_q_d6
         slwi    data, d7, 19                            // E94F  LSL.W     #4,D7
-        b       L_05160
+        b       lsl_w_q_d7
         addic.  addr, zero, 4                           // E950  ROXL.W    #4,D0
-        b       L_04CA4
+        b       roxr_roxl_w_q_d0
         addic.  addr, zero, 4                           // E951  ROXL.W    #4,D1
-        b       L_04D64
+        b       roxr_roxl_w_q_d1
         addic.  addr, zero, 4                           // E952  ROXL.W    #4,D2
-        b       L_04E24
+        b       roxr_roxl_w_q_d2
         addic.  addr, zero, 4                           // E953  ROXL.W    #4,D3
-        b       L_04EE4
+        b       roxr_roxl_w_q_d3
         addic.  addr, zero, 4                           // E954  ROXL.W    #4,D4
-        b       L_04FA4
+        b       roxr_roxl_w_q_d4
         addic.  addr, zero, 4                           // E955  ROXL.W    #4,D5
-        b       L_05064
+        b       roxr_roxl_w_q_d5
         addic.  addr, zero, 4                           // E956  ROXL.W    #4,D6
-        b       L_05124
+        b       roxr_roxl_w_q_d6
         addic.  addr, zero, 4                           // E957  ROXL.W    #4,D7
-        b       L_051E4
+        b       roxr_roxl_w_q_d7
         li      addr, 4                                 // E958  ROL.W     #4,D0
-        b       L_04C88
+        b       rol_w_q_d0
         li      addr, 4                                 // E959  ROL.W     #4,D1
-        b       L_04D48
+        b       rol_w_q_d1
         li      addr, 4                                 // E95A  ROL.W     #4,D2
-        b       L_04E08
+        b       rol_w_q_d2
         li      addr, 4                                 // E95B  ROL.W     #4,D3
-        b       L_04EC8
+        b       rol_w_q_d3
         li      addr, 4                                 // E95C  ROL.W     #4,D4
-        b       L_04F88
+        b       rol_w_q_d4
         li      addr, 4                                 // E95D  ROL.W     #4,D5
-        b       L_05048
+        b       rol_w_q_d5
         li      addr, 4                                 // E95E  ROL.W     #4,D6
-        b       L_05108
+        b       rol_w_q_d6
         li      addr, 4                                 // E95F  ROL.W     #4,D7
-        b       L_051C8
+        b       rol_w_q_d7
         clrlwi. addr, d4, 26                            // E960  ASL.W     D4,D0
-        b       L_04C40
+        b       asl_w_dn_d0
         clrlwi. addr, d4, 26                            // E961  ASL.W     D4,D1
-        b       L_04D00
+        b       asl_w_dn_d1
         clrlwi. addr, d4, 26                            // E962  ASL.W     D4,D2
-        b       L_04DC0
+        b       asl_w_dn_d2
         clrlwi. addr, d4, 26                            // E963  ASL.W     D4,D3
-        b       L_04E80
+        b       asl_w_dn_d3
         clrlwi. addr, d4, 26                            // E964  ASL.W     D4,D4
-        b       L_04F40
+        b       asl_w_dn_d4
         clrlwi. addr, d4, 26                            // E965  ASL.W     D4,D5
-        b       L_05000
+        b       asl_w_dn_d5
         clrlwi. addr, d4, 26                            // E966  ASL.W     D4,D6
-        b       L_050C0
+        b       asl_w_dn_d6
         clrlwi. addr, d4, 26                            // E967  ASL.W     D4,D7
-        b       L_05180
+        b       asl_w_dn_d7
         clrlwi. addr, d4, 26                            // E968  LSL.W     D4,D0
-        b       L_04C14
+        b       lsl_w_dn_d0
         clrlwi. addr, d4, 26                            // E969  LSL.W     D4,D1
-        b       L_04CD4
+        b       lsl_w_dn_d1
         clrlwi. addr, d4, 26                            // E96A  LSL.W     D4,D2
-        b       L_04D94
+        b       lsl_w_dn_d2
         clrlwi. addr, d4, 26                            // E96B  LSL.W     D4,D3
-        b       L_04E54
+        b       lsl_w_dn_d3
         clrlwi. addr, d4, 26                            // E96C  LSL.W     D4,D4
-        b       L_04F14
+        b       lsl_w_dn_d4
         clrlwi. addr, d4, 26                            // E96D  LSL.W     D4,D5
-        b       L_04FD4
+        b       lsl_w_dn_d5
         clrlwi. addr, d4, 26                            // E96E  LSL.W     D4,D6
-        b       L_05094
+        b       lsl_w_dn_d6
         clrlwi. addr, d4, 26                            // E96F  LSL.W     D4,D7
-        b       L_05154
+        b       lsl_w_dn_d7
         clrlwi. addr, d4, 26                            // E970  ROXL.W    D4,D0
-        b       L_04CA0
+        b       roxr_roxl_w_dn_d0
         clrlwi. addr, d4, 26                            // E971  ROXL.W    D4,D1
-        b       L_04D60
+        b       roxr_roxl_w_dn_d1
         clrlwi. addr, d4, 26                            // E972  ROXL.W    D4,D2
-        b       L_04E20
+        b       roxr_roxl_w_dn_d2
         clrlwi. addr, d4, 26                            // E973  ROXL.W    D4,D3
-        b       L_04EE0
+        b       roxr_roxl_w_dn_d3
         clrlwi. addr, d4, 26                            // E974  ROXL.W    D4,D4
-        b       L_04FA0
+        b       roxr_roxl_w_dn_d4
         clrlwi. addr, d4, 26                            // E975  ROXL.W    D4,D5
-        b       L_05060
+        b       roxr_roxl_w_dn_d5
         clrlwi. addr, d4, 26                            // E976  ROXL.W    D4,D6
-        b       L_05120
+        b       roxr_roxl_w_dn_d6
         clrlwi. addr, d4, 26                            // E977  ROXL.W    D4,D7
-        b       L_051E0
+        b       roxr_roxl_w_dn_d7
         clrlwi. addr, d4, 26                            // E978  ROL.W     D4,D0
-        b       L_04C80
+        b       rol_w_dn_d0
         clrlwi. addr, d4, 26                            // E979  ROL.W     D4,D1
-        b       L_04D40
+        b       rol_w_dn_d1
         clrlwi. addr, d4, 26                            // E97A  ROL.W     D4,D2
-        b       L_04E00
+        b       rol_w_dn_d2
         clrlwi. addr, d4, 26                            // E97B  ROL.W     D4,D3
-        b       L_04EC0
+        b       rol_w_dn_d3
         clrlwi. addr, d4, 26                            // E97C  ROL.W     D4,D4
-        b       L_04F80
+        b       rol_w_dn_d4
         clrlwi. addr, d4, 26                            // E97D  ROL.W     D4,D5
-        b       L_05040
+        b       rol_w_dn_d5
         clrlwi. addr, d4, 26                            // E97E  ROL.W     D4,D6
-        b       L_05100
+        b       rol_w_dn_d6
         clrlwi. addr, d4, 26                            // E97F  ROL.W     D4,D7
-        b       L_051C0
+        b       rol_w_dn_d7
 
 // ---- $E980-$E9BF --------------------------------------------------------
         li      addr, 4                                 // E980  ASL.L     #4,D0
-        b       L_05244
+        b       asl_l_q_d0
         li      addr, 4                                 // E981  ASL.L     #4,D1
-        b       L_052E4
+        b       asl_l_q_d1
         li      addr, 4                                 // E982  ASL.L     #4,D2
-        b       L_05384
+        b       asl_l_q_d2
         li      addr, 4                                 // E983  ASL.L     #4,D3
-        b       L_05424
+        b       asl_l_q_d3
         li      addr, 4                                 // E984  ASL.L     #4,D4
-        b       L_054C4
+        b       asl_l_q_d4
         li      addr, 4                                 // E985  ASL.L     #4,D5
-        b       L_05564
+        b       asl_l_q_d5
         li      addr, 4                                 // E986  ASL.L     #4,D6
-        b       L_05604
+        b       asl_l_q_d6
         li      addr, 4                                 // E987  ASL.L     #4,D7
-        b       L_056A4
+        b       asl_l_q_d7
         slwi    data, d0, 3                             // E988  LSL.L     #4,D0
-        b       L_05220
+        b       lsl_l_q_d0
         slwi    data, d1, 3                             // E989  LSL.L     #4,D1
-        b       L_052C0
+        b       lsl_l_q_d1
         slwi    data, d2, 3                             // E98A  LSL.L     #4,D2
-        b       L_05360
+        b       lsl_l_q_d2
         slwi    data, d3, 3                             // E98B  LSL.L     #4,D3
-        b       L_05400
+        b       lsl_l_q_d3
         slwi    data, d4, 3                             // E98C  LSL.L     #4,D4
-        b       L_054A0
+        b       lsl_l_q_d4
         slwi    data, d5, 3                             // E98D  LSL.L     #4,D5
-        b       L_05540
+        b       lsl_l_q_d5
         slwi    data, d6, 3                             // E98E  LSL.L     #4,D6
-        b       L_055E0
+        b       lsl_l_q_d6
         slwi    data, d7, 3                             // E98F  LSL.L     #4,D7
-        b       L_05680
+        b       lsl_l_q_d7
         addic.  addr, zero, 4                           // E990  ROXL.L    #4,D0
-        b       L_05284
+        b       roxr_roxl_l_q_d0
         addic.  addr, zero, 4                           // E991  ROXL.L    #4,D1
-        b       L_05324
+        b       roxr_roxl_l_q_d1
         addic.  addr, zero, 4                           // E992  ROXL.L    #4,D2
-        b       L_053C4
+        b       roxr_roxl_l_q_d2
         addic.  addr, zero, 4                           // E993  ROXL.L    #4,D3
-        b       L_05464
+        b       roxr_roxl_l_q_d3
         addic.  addr, zero, 4                           // E994  ROXL.L    #4,D4
-        b       L_05504
+        b       roxr_roxl_l_q_d4
         addic.  addr, zero, 4                           // E995  ROXL.L    #4,D5
-        b       L_055A4
+        b       roxr_roxl_l_q_d5
         addic.  addr, zero, 4                           // E996  ROXL.L    #4,D6
-        b       L_05644
+        b       roxr_roxl_l_q_d6
         addic.  addr, zero, 4                           // E997  ROXL.L    #4,D7
-        b       L_056E4
+        b       roxr_roxl_l_q_d7
         rotlwi  data, d0, 4                             // E998  ROL.L     #4,D0
-        b       L_05270
+        b       rol_l_q_d0
         rotlwi  data, d1, 4                             // E999  ROL.L     #4,D1
-        b       L_05310
+        b       rol_l_q_d1
         rotlwi  data, d2, 4                             // E99A  ROL.L     #4,D2
-        b       L_053B0
+        b       rol_l_q_d2
         rotlwi  data, d3, 4                             // E99B  ROL.L     #4,D3
-        b       L_05450
+        b       rol_l_q_d3
         rotlwi  data, d4, 4                             // E99C  ROL.L     #4,D4
-        b       L_054F0
+        b       rol_l_q_d4
         rotlwi  data, d5, 4                             // E99D  ROL.L     #4,D5
-        b       L_05590
+        b       rol_l_q_d5
         rotlwi  data, d6, 4                             // E99E  ROL.L     #4,D6
-        b       L_05630
+        b       rol_l_q_d6
         rotlwi  data, d7, 4                             // E99F  ROL.L     #4,D7
-        b       L_056D0
+        b       rol_l_q_d7
         clrlwi. addr, d4, 26                            // E9A0  ASL.L     D4,D0
-        b       L_05240
+        b       asl_l_dn_d0
         clrlwi. addr, d4, 26                            // E9A1  ASL.L     D4,D1
-        b       L_052E0
+        b       asl_l_dn_d1
         clrlwi. addr, d4, 26                            // E9A2  ASL.L     D4,D2
-        b       L_05380
+        b       asl_l_dn_d2
         clrlwi. addr, d4, 26                            // E9A3  ASL.L     D4,D3
-        b       L_05420
+        b       asl_l_dn_d3
         clrlwi. addr, d4, 26                            // E9A4  ASL.L     D4,D4
-        b       L_054C0
+        b       asl_l_dn_d4
         clrlwi. addr, d4, 26                            // E9A5  ASL.L     D4,D5
-        b       L_05560
+        b       asl_l_dn_d5
         clrlwi. addr, d4, 26                            // E9A6  ASL.L     D4,D6
-        b       L_05600
+        b       asl_l_dn_d6
         clrlwi. addr, d4, 26                            // E9A7  ASL.L     D4,D7
-        b       L_056A0
+        b       asl_l_dn_d7
         clrlwi. addr, d4, 26                            // E9A8  LSL.L     D4,D0
-        b       L_05214
+        b       lsl_l_dn_d0
         clrlwi. addr, d4, 26                            // E9A9  LSL.L     D4,D1
-        b       L_052B4
+        b       lsl_l_dn_d1
         clrlwi. addr, d4, 26                            // E9AA  LSL.L     D4,D2
-        b       L_05354
+        b       lsl_l_dn_d2
         clrlwi. addr, d4, 26                            // E9AB  LSL.L     D4,D3
-        b       L_053F4
+        b       lsl_l_dn_d3
         clrlwi. addr, d4, 26                            // E9AC  LSL.L     D4,D4
-        b       L_05494
+        b       lsl_l_dn_d4
         clrlwi. addr, d4, 26                            // E9AD  LSL.L     D4,D5
-        b       L_05534
+        b       lsl_l_dn_d5
         clrlwi. addr, d4, 26                            // E9AE  LSL.L     D4,D6
-        b       L_055D4
+        b       lsl_l_dn_d6
         clrlwi. addr, d4, 26                            // E9AF  LSL.L     D4,D7
-        b       L_05674
+        b       lsl_l_dn_d7
         clrlwi. addr, d4, 26                            // E9B0  ROXL.L    D4,D0
-        b       L_05280
+        b       roxr_roxl_l_dn_d0
         clrlwi. addr, d4, 26                            // E9B1  ROXL.L    D4,D1
-        b       L_05320
+        b       roxr_roxl_l_dn_d1
         clrlwi. addr, d4, 26                            // E9B2  ROXL.L    D4,D2
-        b       L_053C0
+        b       roxr_roxl_l_dn_d2
         clrlwi. addr, d4, 26                            // E9B3  ROXL.L    D4,D3
-        b       L_05460
+        b       roxr_roxl_l_dn_d3
         clrlwi. addr, d4, 26                            // E9B4  ROXL.L    D4,D4
-        b       L_05500
+        b       roxr_roxl_l_dn_d4
         clrlwi. addr, d4, 26                            // E9B5  ROXL.L    D4,D5
-        b       L_055A0
+        b       roxr_roxl_l_dn_d5
         clrlwi. addr, d4, 26                            // E9B6  ROXL.L    D4,D6
-        b       L_05640
+        b       roxr_roxl_l_dn_d6
         clrlwi. addr, d4, 26                            // E9B7  ROXL.L    D4,D7
-        b       L_056E0
+        b       roxr_roxl_l_dn_d7
         clrlwi. addr, d4, 26                            // E9B8  ROL.L     D4,D0
-        b       L_05268
+        b       rol_l_dn_d0
         clrlwi. addr, d4, 26                            // E9B9  ROL.L     D4,D1
-        b       L_05308
+        b       rol_l_dn_d1
         clrlwi. addr, d4, 26                            // E9BA  ROL.L     D4,D2
-        b       L_053A8
+        b       rol_l_dn_d2
         clrlwi. addr, d4, 26                            // E9BB  ROL.L     D4,D3
-        b       L_05448
+        b       rol_l_dn_d3
         clrlwi. addr, d4, 26                            // E9BC  ROL.L     D4,D4
-        b       L_054E8
+        b       rol_l_dn_d4
         clrlwi. addr, d4, 26                            // E9BD  ROL.L     D4,D5
-        b       L_05588
+        b       rol_l_dn_d5
         clrlwi. addr, d4, 26                            // E9BE  ROL.L     D4,D6
-        b       L_05628
+        b       rol_l_dn_d6
         clrlwi. addr, d4, 26                            // E9BF  ROL.L     D4,D7
-        b       L_056C8
+        b       rol_l_dn_d7
 
 // ---- $E9C0-$E9FF --------------------------------------------------------
         mr      data, d0                                // E9C0  BFEXTU    D0{ofs:wid},Dn
-        b       L_07840
+        b       bfextu
         mr      data, d1                                // E9C1  BFEXTU    D1{ofs:wid},Dn
-        b       L_07840
+        b       bfextu
         mr      data, d2                                // E9C2  BFEXTU    D2{ofs:wid},Dn
-        b       L_07840
+        b       bfextu
         mr      data, d3                                // E9C3  BFEXTU    D3{ofs:wid},Dn
-        b       L_07840
+        b       bfextu
         mr      data, d4                                // E9C4  BFEXTU    D4{ofs:wid},Dn
-        b       L_07840
+        b       bfextu
         mr      data, d5                                // E9C5  BFEXTU    D5{ofs:wid},Dn
-        b       L_07840
+        b       bfextu
         mr      data, d6                                // E9C6  BFEXTU    D6{ofs:wid},Dn
-        b       L_07840
+        b       bfextu
         mr      data, d7                                // E9C7  BFEXTU    D7{ofs:wid},Dn
-        b       L_07840
+        b       bfextu
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E9C8  BFEXTU    A0{ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E9C9  BFEXTU    A1{ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E9CA  BFEXTU    A2{ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E9CB  BFEXTU    A3{ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E9CC  BFEXTU    A4{ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E9CD  BFEXTU    A5{ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E9CE  BFEXTU    A6{ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E9CF  BFEXTU    A7{ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         mr      addr, a0                                // E9D0  BFEXTU    (A0){ofs:wid},Dn
-        b       L_07918
+        b       bfextu_bfexts_bfffo_mem_2
         mr      addr, a1                                // E9D1  BFEXTU    (A1){ofs:wid},Dn
-        b       L_07918
+        b       bfextu_bfexts_bfffo_mem_2
         mr      addr, a2                                // E9D2  BFEXTU    (A2){ofs:wid},Dn
-        b       L_07918
+        b       bfextu_bfexts_bfffo_mem_2
         mr      addr, a3                                // E9D3  BFEXTU    (A3){ofs:wid},Dn
-        b       L_07918
+        b       bfextu_bfexts_bfffo_mem_2
         mr      addr, a4                                // E9D4  BFEXTU    (A4){ofs:wid},Dn
-        b       L_07918
+        b       bfextu_bfexts_bfffo_mem_2
         mr      addr, a5                                // E9D5  BFEXTU    (A5){ofs:wid},Dn
-        b       L_07918
+        b       bfextu_bfexts_bfffo_mem_2
         mr      addr, a6                                // E9D6  BFEXTU    (A6){ofs:wid},Dn
-        b       L_07918
+        b       bfextu_bfexts_bfffo_mem_2
         mr      addr, a7                                // E9D7  BFEXTU    (A7){ofs:wid},Dn
-        b       L_07918
+        b       bfextu_bfexts_bfffo_mem_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E9D8  BFEXTU    (A0)+{ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E9D9  BFEXTU    (A1)+{ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E9DA  BFEXTU    (A2)+{ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E9DB  BFEXTU    (A3)+{ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E9DC  BFEXTU    (A4)+{ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E9DD  BFEXTU    (A5)+{ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E9DE  BFEXTU    (A6)+{ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E9DF  BFEXTU    (A7)+{ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E9E0  BFEXTU    -(A0){ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E9E1  BFEXTU    -(A1){ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E9E2  BFEXTU    -(A2){ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E9E3  BFEXTU    -(A3){ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E9E4  BFEXTU    -(A4){ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E9E5  BFEXTU    -(A5){ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E9E6  BFEXTU    -(A6){ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E9E7  BFEXTU    -(A7){ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         mr      addr, a0                                // E9E8  BFEXTU    (d16,A0){ofs:wid},Dn
-        b       L_07900
+        b       bfextu_bfexts_bfffo_mem
         mr      addr, a1                                // E9E9  BFEXTU    (d16,A1){ofs:wid},Dn
-        b       L_07900
+        b       bfextu_bfexts_bfffo_mem
         mr      addr, a2                                // E9EA  BFEXTU    (d16,A2){ofs:wid},Dn
-        b       L_07900
+        b       bfextu_bfexts_bfffo_mem
         mr      addr, a3                                // E9EB  BFEXTU    (d16,A3){ofs:wid},Dn
-        b       L_07900
+        b       bfextu_bfexts_bfffo_mem
         mr      addr, a4                                // E9EC  BFEXTU    (d16,A4){ofs:wid},Dn
-        b       L_07900
+        b       bfextu_bfexts_bfffo_mem
         mr      addr, a5                                // E9ED  BFEXTU    (d16,A5){ofs:wid},Dn
-        b       L_07900
+        b       bfextu_bfexts_bfffo_mem
         mr      addr, a6                                // E9EE  BFEXTU    (d16,A6){ofs:wid},Dn
-        b       L_07900
+        b       bfextu_bfexts_bfffo_mem
         mr      addr, a7                                // E9EF  BFEXTU    (d16,A7){ofs:wid},Dn
-        b       L_07900
-        ori     rtn_addr, code_ptr, L_07920 - cb        // E9F0  BFEXTU    (d8,A0,Xn){ofs:wid},Dn
-        b       L_05980
-        ori     rtn_addr, code_ptr, L_07920 - cb        // E9F1  BFEXTU    (d8,A1,Xn){ofs:wid},Dn
-        b       L_059E0
-        ori     rtn_addr, code_ptr, L_07920 - cb        // E9F2  BFEXTU    (d8,A2,Xn){ofs:wid},Dn
-        b       L_05A40
-        ori     rtn_addr, code_ptr, L_07920 - cb        // E9F3  BFEXTU    (d8,A3,Xn){ofs:wid},Dn
-        b       L_05AA0
-        ori     rtn_addr, code_ptr, L_07920 - cb        // E9F4  BFEXTU    (d8,A4,Xn){ofs:wid},Dn
-        b       L_05B00
-        ori     rtn_addr, code_ptr, L_07920 - cb        // E9F5  BFEXTU    (d8,A5,Xn){ofs:wid},Dn
-        b       L_05B60
-        ori     rtn_addr, code_ptr, L_07920 - cb        // E9F6  BFEXTU    (d8,A6,Xn){ofs:wid},Dn
-        b       L_05BC0
-        ori     rtn_addr, code_ptr, L_07920 - cb        // E9F7  BFEXTU    (d8,A7,Xn){ofs:wid},Dn
-        b       L_05C20
+        b       bfextu_bfexts_bfffo_mem
+        ori     rtn_addr, code_ptr, bfextu_bfexts_bfffo_mem_3 - cb  // E9F0  BFEXTU    (d8,A0,Xn){ofs:wid},Dn
+        b       movem_cas_etc_any_any
+        ori     rtn_addr, code_ptr, bfextu_bfexts_bfffo_mem_3 - cb  // E9F1  BFEXTU    (d8,A1,Xn){ofs:wid},Dn
+        b       movem_cas_etc_any_any_2
+        ori     rtn_addr, code_ptr, bfextu_bfexts_bfffo_mem_3 - cb  // E9F2  BFEXTU    (d8,A2,Xn){ofs:wid},Dn
+        b       movem_cas_etc_any_any_3
+        ori     rtn_addr, code_ptr, bfextu_bfexts_bfffo_mem_3 - cb  // E9F3  BFEXTU    (d8,A3,Xn){ofs:wid},Dn
+        b       movem_cas_etc_any_any_4
+        ori     rtn_addr, code_ptr, bfextu_bfexts_bfffo_mem_3 - cb  // E9F4  BFEXTU    (d8,A4,Xn){ofs:wid},Dn
+        b       movem_cas_etc_any_any_5
+        ori     rtn_addr, code_ptr, bfextu_bfexts_bfffo_mem_3 - cb  // E9F5  BFEXTU    (d8,A5,Xn){ofs:wid},Dn
+        b       movem_cas_etc_any_any_6
+        ori     rtn_addr, code_ptr, bfextu_bfexts_bfffo_mem_3 - cb  // E9F6  BFEXTU    (d8,A6,Xn){ofs:wid},Dn
+        b       movem_cas_etc_any_any_7
+        ori     rtn_addr, code_ptr, bfextu_bfexts_bfffo_mem_3 - cb  // E9F7  BFEXTU    (d8,A7,Xn){ofs:wid},Dn
+        b       movem_cas_etc_any_any_8
         lhau    addr, 2(pc)                             // E9F8  BFEXTU    (xxx).W{ofs:wid},Dn
-        b       L_07918
-        ori     rtn_addr, code_ptr, L_07920 - cb        // E9F9  BFEXTU    (xxx).L{ofs:wid},Dn
-        b       L_05E00
+        b       bfextu_bfexts_bfffo_mem_2
+        ori     rtn_addr, code_ptr, bfextu_bfexts_bfffo_mem_3 - cb  // E9F9  BFEXTU    (xxx).L{ofs:wid},Dn
+        b       cea_x_71
         addi    addr, pc, 2                             // E9FA  BFEXTU    (d16,PC){ofs:wid},Dn
-        b       L_07900
-        ori     rtn_addr, code_ptr, L_07920 - cb        // E9FB  BFEXTU    (d8,PC,Xn){ofs:wid},Dn
-        b       L_05E40
+        b       bfextu_bfexts_bfffo_mem
+        ori     rtn_addr, code_ptr, bfextu_bfexts_bfffo_mem_3 - cb  // E9FB  BFEXTU    (d8,PC,Xn){ofs:wid},Dn
+        b       chk2_cmp2_movem_etc_mem_any
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E9FC  BFEXTU    #<data>{ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E9FD  BFEXTU    <ea 7.5>{ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E9FE  BFEXTU    <ea 7.6>{ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E9FF  BFEXTU    <ea 7.7>{ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $EA00-$EA3F --------------------------------------------------------
         li      addr, 5                                 // EA00  ASR.B     #5,D0
-        b       L_0B2EC
+        b       asr_b_q_d0
         li      addr, 5                                 // EA01  ASR.B     #5,D1
-        b       L_0B3AC
+        b       asr_b_q_d1
         li      addr, 5                                 // EA02  ASR.B     #5,D2
-        b       L_0B46C
+        b       asr_b_q_d2
         li      addr, 5                                 // EA03  ASR.B     #5,D3
-        b       L_0B52C
+        b       asr_b_q_d3
         li      addr, 5                                 // EA04  ASR.B     #5,D4
-        b       L_0B5EC
+        b       asr_b_q_d4
         li      addr, 5                                 // EA05  ASR.B     #5,D5
-        b       L_0B6AC
+        b       asr_b_q_d5
         li      addr, 5                                 // EA06  ASR.B     #5,D6
-        b       L_0B76C
+        b       asr_b_q_d6
         li      addr, 5                                 // EA07  ASR.B     #5,D7
-        b       L_0B82C
+        b       asr_b_q_d7
         rlwinm  data, d0, 28, 28, 31                    // EA08  LSR.B     #5,D0
-        b       L_0B2CC
+        b       lsr_b_q_d0
         rlwinm  data, d1, 28, 28, 31                    // EA09  LSR.B     #5,D1
-        b       L_0B38C
+        b       lsr_b_q_d1
         rlwinm  data, d2, 28, 28, 31                    // EA0A  LSR.B     #5,D2
-        b       L_0B44C
+        b       lsr_b_q_d2
         rlwinm  data, d3, 28, 28, 31                    // EA0B  LSR.B     #5,D3
-        b       L_0B50C
+        b       lsr_b_q_d3
         rlwinm  data, d4, 28, 28, 31                    // EA0C  LSR.B     #5,D4
-        b       L_0B5CC
+        b       lsr_b_q_d4
         rlwinm  data, d5, 28, 28, 31                    // EA0D  LSR.B     #5,D5
-        b       L_0B68C
+        b       lsr_b_q_d5
         rlwinm  data, d6, 28, 28, 31                    // EA0E  LSR.B     #5,D6
-        b       L_0B74C
+        b       lsr_b_q_d6
         rlwinm  data, d7, 28, 28, 31                    // EA0F  LSR.B     #5,D7
-        b       L_0B80C
+        b       lsr_b_q_d7
         li      addr, 4                                 // EA10  ROXR.B    #5,D0
-        b       L_0B364
+        b       roxr_roxl_b_q_d0
         li      addr, 4                                 // EA11  ROXR.B    #5,D1
-        b       L_0B424
+        b       roxr_roxl_b_q_d1
         li      addr, 4                                 // EA12  ROXR.B    #5,D2
-        b       L_0B4E4
+        b       roxr_roxl_b_q_d2
         li      addr, 4                                 // EA13  ROXR.B    #5,D3
-        b       L_0B5A4
+        b       roxr_roxl_b_q_d3
         li      addr, 4                                 // EA14  ROXR.B    #5,D4
-        b       L_0B664
+        b       roxr_roxl_b_q_d4
         li      addr, 4                                 // EA15  ROXR.B    #5,D5
-        b       L_0B724
+        b       roxr_roxl_b_q_d5
         li      addr, 4                                 // EA16  ROXR.B    #5,D6
-        b       L_0B7E4
+        b       roxr_roxl_b_q_d6
         li      addr, 4                                 // EA17  ROXR.B    #5,D7
-        b       L_0B8A4
+        b       roxr_roxl_b_q_d7
         li      addr, 3                                 // EA18  ROR.B     #5,D0
-        b       L_0B32C
+        b       ror_b_q_d0
         li      addr, 3                                 // EA19  ROR.B     #5,D1
-        b       L_0B3EC
+        b       ror_b_q_d1
         li      addr, 3                                 // EA1A  ROR.B     #5,D2
-        b       L_0B4AC
+        b       ror_b_q_d2
         li      addr, 3                                 // EA1B  ROR.B     #5,D3
-        b       L_0B56C
+        b       ror_b_q_d3
         li      addr, 3                                 // EA1C  ROR.B     #5,D4
-        b       L_0B62C
+        b       ror_b_q_d4
         li      addr, 3                                 // EA1D  ROR.B     #5,D5
-        b       L_0B6EC
+        b       ror_b_q_d5
         li      addr, 3                                 // EA1E  ROR.B     #5,D6
-        b       L_0B7AC
+        b       ror_b_q_d6
         li      addr, 3                                 // EA1F  ROR.B     #5,D7
-        b       L_0B86C
+        b       ror_b_q_d7
         clrlwi. addr, d5, 26                            // EA20  ASR.B     D5,D0
-        b       L_0B2E8
+        b       asr_b_dn_d0
         clrlwi. addr, d5, 26                            // EA21  ASR.B     D5,D1
-        b       L_0B3A8
+        b       asr_b_dn_d1
         clrlwi. addr, d5, 26                            // EA22  ASR.B     D5,D2
-        b       L_0B468
+        b       asr_b_dn_d2
         clrlwi. addr, d5, 26                            // EA23  ASR.B     D5,D3
-        b       L_0B528
+        b       asr_b_dn_d3
         clrlwi. addr, d5, 26                            // EA24  ASR.B     D5,D4
-        b       L_0B5E8
+        b       asr_b_dn_d4
         clrlwi. addr, d5, 26                            // EA25  ASR.B     D5,D5
-        b       L_0B6A8
+        b       asr_b_dn_d5
         clrlwi. addr, d5, 26                            // EA26  ASR.B     D5,D6
-        b       L_0B768
+        b       asr_b_dn_d6
         clrlwi. addr, d5, 26                            // EA27  ASR.B     D5,D7
-        b       L_0B828
+        b       asr_b_dn_d7
         clrlwi. addr, d5, 26                            // EA28  LSR.B     D5,D0
-        b       L_0B2C0
+        b       lsr_b_dn_d0
         clrlwi. addr, d5, 26                            // EA29  LSR.B     D5,D1
-        b       L_0B380
+        b       lsr_b_dn_d1
         clrlwi. addr, d5, 26                            // EA2A  LSR.B     D5,D2
-        b       L_0B440
+        b       lsr_b_dn_d2
         clrlwi. addr, d5, 26                            // EA2B  LSR.B     D5,D3
-        b       L_0B500
+        b       lsr_b_dn_d3
         clrlwi. addr, d5, 26                            // EA2C  LSR.B     D5,D4
-        b       L_0B5C0
+        b       lsr_b_dn_d4
         clrlwi. addr, d5, 26                            // EA2D  LSR.B     D5,D5
-        b       L_0B680
+        b       lsr_b_dn_d5
         clrlwi. addr, d5, 26                            // EA2E  LSR.B     D5,D6
-        b       L_0B740
+        b       lsr_b_dn_d6
         clrlwi. addr, d5, 26                            // EA2F  LSR.B     D5,D7
-        b       L_0B800
+        b       lsr_b_dn_d7
         clrlwi. addr, d5, 26                            // EA30  ROXR.B    D5,D0
-        b       L_0B360
+        b       roxr_roxl_b_dn_d0
         clrlwi. addr, d5, 26                            // EA31  ROXR.B    D5,D1
-        b       L_0B420
+        b       roxr_roxl_b_dn_d1
         clrlwi. addr, d5, 26                            // EA32  ROXR.B    D5,D2
-        b       L_0B4E0
+        b       roxr_roxl_b_dn_d2
         clrlwi. addr, d5, 26                            // EA33  ROXR.B    D5,D3
-        b       L_0B5A0
+        b       roxr_roxl_b_dn_d3
         clrlwi. addr, d5, 26                            // EA34  ROXR.B    D5,D4
-        b       L_0B660
+        b       roxr_roxl_b_dn_d4
         clrlwi. addr, d5, 26                            // EA35  ROXR.B    D5,D5
-        b       L_0B720
+        b       roxr_roxl_b_dn_d5
         clrlwi. addr, d5, 26                            // EA36  ROXR.B    D5,D6
-        b       L_0B7E0
+        b       roxr_roxl_b_dn_d6
         clrlwi. addr, d5, 26                            // EA37  ROXR.B    D5,D7
-        b       L_0B8A0
+        b       roxr_roxl_b_dn_d7
         clrlwi. addr, d5, 26                            // EA38  ROR.B     D5,D0
-        b       L_0B320
+        b       ror_b_dn_d0
         clrlwi. addr, d5, 26                            // EA39  ROR.B     D5,D1
-        b       L_0B3E0
+        b       ror_b_dn_d1
         clrlwi. addr, d5, 26                            // EA3A  ROR.B     D5,D2
-        b       L_0B4A0
+        b       ror_b_dn_d2
         clrlwi. addr, d5, 26                            // EA3B  ROR.B     D5,D3
-        b       L_0B560
+        b       ror_b_dn_d3
         clrlwi. addr, d5, 26                            // EA3C  ROR.B     D5,D4
-        b       L_0B620
+        b       ror_b_dn_d4
         clrlwi. addr, d5, 26                            // EA3D  ROR.B     D5,D5
-        b       L_0B6E0
+        b       ror_b_dn_d5
         clrlwi. addr, d5, 26                            // EA3E  ROR.B     D5,D6
-        b       L_0B7A0
+        b       ror_b_dn_d6
         clrlwi. addr, d5, 26                            // EA3F  ROR.B     D5,D7
-        b       L_0B860
+        b       ror_b_dn_d7
 
 // ---- $EA40-$EA7F --------------------------------------------------------
         li      addr, 5                                 // EA40  ASR.W     #5,D0
-        b       L_04C2C
+        b       asr_w_q_d0
         li      addr, 5                                 // EA41  ASR.W     #5,D1
-        b       L_04CEC
+        b       asr_w_q_d1
         li      addr, 5                                 // EA42  ASR.W     #5,D2
-        b       L_04DAC
+        b       asr_w_q_d2
         li      addr, 5                                 // EA43  ASR.W     #5,D3
-        b       L_04E6C
+        b       asr_w_q_d3
         li      addr, 5                                 // EA44  ASR.W     #5,D4
-        b       L_04F2C
+        b       asr_w_q_d4
         li      addr, 5                                 // EA45  ASR.W     #5,D5
-        b       L_04FEC
+        b       asr_w_q_d5
         li      addr, 5                                 // EA46  ASR.W     #5,D6
-        b       L_050AC
+        b       asr_w_q_d6
         li      addr, 5                                 // EA47  ASR.W     #5,D7
-        b       L_0516C
+        b       asr_w_q_d7
         rlwinm  data, d0, 28, 20, 31                    // EA48  LSR.W     #5,D0
-        b       L_04C0C
+        b       lsr_w_q_d0
         rlwinm  data, d1, 28, 20, 31                    // EA49  LSR.W     #5,D1
-        b       L_04CCC
+        b       lsr_w_q_d1
         rlwinm  data, d2, 28, 20, 31                    // EA4A  LSR.W     #5,D2
-        b       L_04D8C
+        b       lsr_w_q_d2
         rlwinm  data, d3, 28, 20, 31                    // EA4B  LSR.W     #5,D3
-        b       L_04E4C
+        b       lsr_w_q_d3
         rlwinm  data, d4, 28, 20, 31                    // EA4C  LSR.W     #5,D4
-        b       L_04F0C
+        b       lsr_w_q_d4
         rlwinm  data, d5, 28, 20, 31                    // EA4D  LSR.W     #5,D5
-        b       L_04FCC
+        b       lsr_w_q_d5
         rlwinm  data, d6, 28, 20, 31                    // EA4E  LSR.W     #5,D6
-        b       L_0508C
+        b       lsr_w_q_d6
         rlwinm  data, d7, 28, 20, 31                    // EA4F  LSR.W     #5,D7
-        b       L_0514C
+        b       lsr_w_q_d7
         addic.  addr, zero, 12                          // EA50  ROXR.W    #5,D0
-        b       L_04CA4
+        b       roxr_roxl_w_q_d0
         addic.  addr, zero, 12                          // EA51  ROXR.W    #5,D1
-        b       L_04D64
+        b       roxr_roxl_w_q_d1
         addic.  addr, zero, 12                          // EA52  ROXR.W    #5,D2
-        b       L_04E24
+        b       roxr_roxl_w_q_d2
         addic.  addr, zero, 12                          // EA53  ROXR.W    #5,D3
-        b       L_04EE4
+        b       roxr_roxl_w_q_d3
         addic.  addr, zero, 12                          // EA54  ROXR.W    #5,D4
-        b       L_04FA4
+        b       roxr_roxl_w_q_d4
         addic.  addr, zero, 12                          // EA55  ROXR.W    #5,D5
-        b       L_05064
+        b       roxr_roxl_w_q_d5
         addic.  addr, zero, 12                          // EA56  ROXR.W    #5,D6
-        b       L_05124
+        b       roxr_roxl_w_q_d6
         addic.  addr, zero, 12                          // EA57  ROXR.W    #5,D7
-        b       L_051E4
+        b       roxr_roxl_w_q_d7
         li      addr, 11                                // EA58  ROR.W     #5,D0
-        b       L_04C6C
+        b       ror_w_q_d0
         li      addr, 11                                // EA59  ROR.W     #5,D1
-        b       L_04D2C
+        b       ror_w_q_d1
         li      addr, 11                                // EA5A  ROR.W     #5,D2
-        b       L_04DEC
+        b       ror_w_q_d2
         li      addr, 11                                // EA5B  ROR.W     #5,D3
-        b       L_04EAC
+        b       ror_w_q_d3
         li      addr, 11                                // EA5C  ROR.W     #5,D4
-        b       L_04F6C
+        b       ror_w_q_d4
         li      addr, 11                                // EA5D  ROR.W     #5,D5
-        b       L_0502C
+        b       ror_w_q_d5
         li      addr, 11                                // EA5E  ROR.W     #5,D6
-        b       L_050EC
+        b       ror_w_q_d6
         li      addr, 11                                // EA5F  ROR.W     #5,D7
-        b       L_051AC
+        b       ror_w_q_d7
         clrlwi. addr, d5, 26                            // EA60  ASR.W     D5,D0
-        b       L_04C28
+        b       asr_w_dn_d0
         clrlwi. addr, d5, 26                            // EA61  ASR.W     D5,D1
-        b       L_04CE8
+        b       asr_w_dn_d1
         clrlwi. addr, d5, 26                            // EA62  ASR.W     D5,D2
-        b       L_04DA8
+        b       asr_w_dn_d2
         clrlwi. addr, d5, 26                            // EA63  ASR.W     D5,D3
-        b       L_04E68
+        b       asr_w_dn_d3
         clrlwi. addr, d5, 26                            // EA64  ASR.W     D5,D4
-        b       L_04F28
+        b       asr_w_dn_d4
         clrlwi. addr, d5, 26                            // EA65  ASR.W     D5,D5
-        b       L_04FE8
+        b       asr_w_dn_d5
         clrlwi. addr, d5, 26                            // EA66  ASR.W     D5,D6
-        b       L_050A8
+        b       asr_w_dn_d6
         clrlwi. addr, d5, 26                            // EA67  ASR.W     D5,D7
-        b       L_05168
+        b       asr_w_dn_d7
         clrlwi. addr, d5, 26                            // EA68  LSR.W     D5,D0
-        b       L_04C00
+        b       lsr_w_dn_d0
         clrlwi. addr, d5, 26                            // EA69  LSR.W     D5,D1
-        b       L_04CC0
+        b       lsr_w_dn_d1
         clrlwi. addr, d5, 26                            // EA6A  LSR.W     D5,D2
-        b       L_04D80
+        b       lsr_w_dn_d2
         clrlwi. addr, d5, 26                            // EA6B  LSR.W     D5,D3
-        b       L_04E40
+        b       lsr_w_dn_d3
         clrlwi. addr, d5, 26                            // EA6C  LSR.W     D5,D4
-        b       L_04F00
+        b       lsr_w_dn_d4
         clrlwi. addr, d5, 26                            // EA6D  LSR.W     D5,D5
-        b       L_04FC0
+        b       lsr_w_dn_d5
         clrlwi. addr, d5, 26                            // EA6E  LSR.W     D5,D6
-        b       L_05080
+        b       lsr_w_dn_d6
         clrlwi. addr, d5, 26                            // EA6F  LSR.W     D5,D7
-        b       L_05140
+        b       lsr_w_dn_d7
         clrlwi. addr, d5, 26                            // EA70  ROXR.W    D5,D0
-        b       L_04CA0
+        b       roxr_roxl_w_dn_d0
         clrlwi. addr, d5, 26                            // EA71  ROXR.W    D5,D1
-        b       L_04D60
+        b       roxr_roxl_w_dn_d1
         clrlwi. addr, d5, 26                            // EA72  ROXR.W    D5,D2
-        b       L_04E20
+        b       roxr_roxl_w_dn_d2
         clrlwi. addr, d5, 26                            // EA73  ROXR.W    D5,D3
-        b       L_04EE0
+        b       roxr_roxl_w_dn_d3
         clrlwi. addr, d5, 26                            // EA74  ROXR.W    D5,D4
-        b       L_04FA0
+        b       roxr_roxl_w_dn_d4
         clrlwi. addr, d5, 26                            // EA75  ROXR.W    D5,D5
-        b       L_05060
+        b       roxr_roxl_w_dn_d5
         clrlwi. addr, d5, 26                            // EA76  ROXR.W    D5,D6
-        b       L_05120
+        b       roxr_roxl_w_dn_d6
         clrlwi. addr, d5, 26                            // EA77  ROXR.W    D5,D7
-        b       L_051E0
+        b       roxr_roxl_w_dn_d7
         clrlwi. addr, d5, 26                            // EA78  ROR.W     D5,D0
-        b       L_04C60
+        b       ror_w_dn_d0
         clrlwi. addr, d5, 26                            // EA79  ROR.W     D5,D1
-        b       L_04D20
+        b       ror_w_dn_d1
         clrlwi. addr, d5, 26                            // EA7A  ROR.W     D5,D2
-        b       L_04DE0
+        b       ror_w_dn_d2
         clrlwi. addr, d5, 26                            // EA7B  ROR.W     D5,D3
-        b       L_04EA0
+        b       ror_w_dn_d3
         clrlwi. addr, d5, 26                            // EA7C  ROR.W     D5,D4
-        b       L_04F60
+        b       ror_w_dn_d4
         clrlwi. addr, d5, 26                            // EA7D  ROR.W     D5,D5
-        b       L_05020
+        b       ror_w_dn_d5
         clrlwi. addr, d5, 26                            // EA7E  ROR.W     D5,D6
-        b       L_050E0
+        b       ror_w_dn_d6
         clrlwi. addr, d5, 26                            // EA7F  ROR.W     D5,D7
-        b       L_051A0
+        b       ror_w_dn_d7
 
 // ---- $EA80-$EABF --------------------------------------------------------
         srawi   data, d0, 4                             // EA80  ASR.L     #5,D0
-        b       L_05234
+        b       asr_l_q_d0
         srawi   data, d1, 4                             // EA81  ASR.L     #5,D1
-        b       L_052D4
+        b       asr_l_q_d1
         srawi   data, d2, 4                             // EA82  ASR.L     #5,D2
-        b       L_05374
+        b       asr_l_q_d2
         srawi   data, d3, 4                             // EA83  ASR.L     #5,D3
-        b       L_05414
+        b       asr_l_q_d3
         srawi   data, d4, 4                             // EA84  ASR.L     #5,D4
-        b       L_054B4
+        b       asr_l_q_d4
         srawi   data, d5, 4                             // EA85  ASR.L     #5,D5
-        b       L_05554
+        b       asr_l_q_d5
         srawi   data, d6, 4                             // EA86  ASR.L     #5,D6
-        b       L_055F4
+        b       asr_l_q_d6
         srawi   data, d7, 4                             // EA87  ASR.L     #5,D7
-        b       L_05694
+        b       asr_l_q_d7
         srwi    data, d0, 4                             // EA88  LSR.L     #5,D0
-        b       L_0520C
+        b       lsr_l_q_d0
         srwi    data, d1, 4                             // EA89  LSR.L     #5,D1
-        b       L_052AC
+        b       lsr_l_q_d1
         srwi    data, d2, 4                             // EA8A  LSR.L     #5,D2
-        b       L_0534C
+        b       lsr_l_q_d2
         srwi    data, d3, 4                             // EA8B  LSR.L     #5,D3
-        b       L_053EC
+        b       lsr_l_q_d3
         srwi    data, d4, 4                             // EA8C  LSR.L     #5,D4
-        b       L_0548C
+        b       lsr_l_q_d4
         srwi    data, d5, 4                             // EA8D  LSR.L     #5,D5
-        b       L_0552C
+        b       lsr_l_q_d5
         srwi    data, d6, 4                             // EA8E  LSR.L     #5,D6
-        b       L_055CC
+        b       lsr_l_q_d6
         srwi    data, d7, 4                             // EA8F  LSR.L     #5,D7
-        b       L_0566C
+        b       lsr_l_q_d7
         addic.  addr, zero, 28                          // EA90  ROXR.L    #5,D0
-        b       L_05284
+        b       roxr_roxl_l_q_d0
         addic.  addr, zero, 28                          // EA91  ROXR.L    #5,D1
-        b       L_05324
+        b       roxr_roxl_l_q_d1
         addic.  addr, zero, 28                          // EA92  ROXR.L    #5,D2
-        b       L_053C4
+        b       roxr_roxl_l_q_d2
         addic.  addr, zero, 28                          // EA93  ROXR.L    #5,D3
-        b       L_05464
+        b       roxr_roxl_l_q_d3
         addic.  addr, zero, 28                          // EA94  ROXR.L    #5,D4
-        b       L_05504
+        b       roxr_roxl_l_q_d4
         addic.  addr, zero, 28                          // EA95  ROXR.L    #5,D5
-        b       L_055A4
+        b       roxr_roxl_l_q_d5
         addic.  addr, zero, 28                          // EA96  ROXR.L    #5,D6
-        b       L_05644
+        b       roxr_roxl_l_q_d6
         addic.  addr, zero, 28                          // EA97  ROXR.L    #5,D7
-        b       L_056E4
+        b       roxr_roxl_l_q_d7
         rotlwi  data, d0, 27                            // EA98  ROR.L     #5,D0
-        b       L_05260
+        b       ror_l_q_d0
         rotlwi  data, d1, 27                            // EA99  ROR.L     #5,D1
-        b       L_05300
+        b       ror_l_q_d1
         rotlwi  data, d2, 27                            // EA9A  ROR.L     #5,D2
-        b       L_053A0
+        b       ror_l_q_d2
         rotlwi  data, d3, 27                            // EA9B  ROR.L     #5,D3
-        b       L_05440
+        b       ror_l_q_d3
         rotlwi  data, d4, 27                            // EA9C  ROR.L     #5,D4
-        b       L_054E0
+        b       ror_l_q_d4
         rotlwi  data, d5, 27                            // EA9D  ROR.L     #5,D5
-        b       L_05580
+        b       ror_l_q_d5
         rotlwi  data, d6, 27                            // EA9E  ROR.L     #5,D6
-        b       L_05620
+        b       ror_l_q_d6
         rotlwi  data, d7, 27                            // EA9F  ROR.L     #5,D7
-        b       L_056C0
+        b       ror_l_q_d7
         clrlwi. addr, d5, 26                            // EAA0  ASR.L     D5,D0
-        b       L_05228
+        b       asr_l_dn_d0
         clrlwi. addr, d5, 26                            // EAA1  ASR.L     D5,D1
-        b       L_052C8
+        b       asr_l_dn_d1
         clrlwi. addr, d5, 26                            // EAA2  ASR.L     D5,D2
-        b       L_05368
+        b       asr_l_dn_d2
         clrlwi. addr, d5, 26                            // EAA3  ASR.L     D5,D3
-        b       L_05408
+        b       asr_l_dn_d3
         clrlwi. addr, d5, 26                            // EAA4  ASR.L     D5,D4
-        b       L_054A8
+        b       asr_l_dn_d4
         clrlwi. addr, d5, 26                            // EAA5  ASR.L     D5,D5
-        b       L_05548
+        b       asr_l_dn_d5
         clrlwi. addr, d5, 26                            // EAA6  ASR.L     D5,D6
-        b       L_055E8
+        b       asr_l_dn_d6
         clrlwi. addr, d5, 26                            // EAA7  ASR.L     D5,D7
-        b       L_05688
+        b       asr_l_dn_d7
         clrlwi. addr, d5, 26                            // EAA8  LSR.L     D5,D0
-        b       L_05200
+        b       lsr_l_dn_d0
         clrlwi. addr, d5, 26                            // EAA9  LSR.L     D5,D1
-        b       L_052A0
+        b       lsr_l_dn_d1
         clrlwi. addr, d5, 26                            // EAAA  LSR.L     D5,D2
-        b       L_05340
+        b       lsr_l_dn_d2
         clrlwi. addr, d5, 26                            // EAAB  LSR.L     D5,D3
-        b       L_053E0
+        b       lsr_l_dn_d3
         clrlwi. addr, d5, 26                            // EAAC  LSR.L     D5,D4
-        b       L_05480
+        b       lsr_l_dn_d4
         clrlwi. addr, d5, 26                            // EAAD  LSR.L     D5,D5
-        b       L_05520
+        b       lsr_l_dn_d5
         clrlwi. addr, d5, 26                            // EAAE  LSR.L     D5,D6
-        b       L_055C0
+        b       lsr_l_dn_d6
         clrlwi. addr, d5, 26                            // EAAF  LSR.L     D5,D7
-        b       L_05660
+        b       lsr_l_dn_d7
         clrlwi. addr, d5, 26                            // EAB0  ROXR.L    D5,D0
-        b       L_05280
+        b       roxr_roxl_l_dn_d0
         clrlwi. addr, d5, 26                            // EAB1  ROXR.L    D5,D1
-        b       L_05320
+        b       roxr_roxl_l_dn_d1
         clrlwi. addr, d5, 26                            // EAB2  ROXR.L    D5,D2
-        b       L_053C0
+        b       roxr_roxl_l_dn_d2
         clrlwi. addr, d5, 26                            // EAB3  ROXR.L    D5,D3
-        b       L_05460
+        b       roxr_roxl_l_dn_d3
         clrlwi. addr, d5, 26                            // EAB4  ROXR.L    D5,D4
-        b       L_05500
+        b       roxr_roxl_l_dn_d4
         clrlwi. addr, d5, 26                            // EAB5  ROXR.L    D5,D5
-        b       L_055A0
+        b       roxr_roxl_l_dn_d5
         clrlwi. addr, d5, 26                            // EAB6  ROXR.L    D5,D6
-        b       L_05640
+        b       roxr_roxl_l_dn_d6
         clrlwi. addr, d5, 26                            // EAB7  ROXR.L    D5,D7
-        b       L_056E0
+        b       roxr_roxl_l_dn_d7
         clrlwi. addr, d5, 26                            // EAB8  ROR.L     D5,D0
-        b       L_05254
+        b       ror_l_dn_d0
         clrlwi. addr, d5, 26                            // EAB9  ROR.L     D5,D1
-        b       L_052F4
+        b       ror_l_dn_d1
         clrlwi. addr, d5, 26                            // EABA  ROR.L     D5,D2
-        b       L_05394
+        b       ror_l_dn_d2
         clrlwi. addr, d5, 26                            // EABB  ROR.L     D5,D3
-        b       L_05434
+        b       ror_l_dn_d3
         clrlwi. addr, d5, 26                            // EABC  ROR.L     D5,D4
-        b       L_054D4
+        b       ror_l_dn_d4
         clrlwi. addr, d5, 26                            // EABD  ROR.L     D5,D5
-        b       L_05574
+        b       ror_l_dn_d5
         clrlwi. addr, d5, 26                            // EABE  ROR.L     D5,D6
-        b       L_05614
+        b       ror_l_dn_d6
         clrlwi. addr, d5, 26                            // EABF  ROR.L     D5,D7
-        b       L_056B4
+        b       ror_l_dn_d7
 
 // ---- $EAC0-$EAFF --------------------------------------------------------
         ori     addr, code_ptr, L_05700 - cb            // EAC0  BFCHG     D0{ofs:wid}
-        b       L_079C0
+        b       bfchg_bfclr_bfset
         ori     addr, code_ptr, L_05710 - cb            // EAC1  BFCHG     D1{ofs:wid}
-        b       L_079C0
+        b       bfchg_bfclr_bfset
         ori     addr, code_ptr, L_05720 - cb            // EAC2  BFCHG     D2{ofs:wid}
-        b       L_079C0
+        b       bfchg_bfclr_bfset
         ori     addr, code_ptr, L_05730 - cb            // EAC3  BFCHG     D3{ofs:wid}
-        b       L_079C0
+        b       bfchg_bfclr_bfset
         ori     addr, code_ptr, L_05740 - cb            // EAC4  BFCHG     D4{ofs:wid}
-        b       L_079C0
+        b       bfchg_bfclr_bfset
         ori     addr, code_ptr, L_05750 - cb            // EAC5  BFCHG     D5{ofs:wid}
-        b       L_079C0
+        b       bfchg_bfclr_bfset
         ori     addr, code_ptr, L_05760 - cb            // EAC6  BFCHG     D6{ofs:wid}
-        b       L_079C0
+        b       bfchg_bfclr_bfset
         ori     addr, code_ptr, L_05770 - cb            // EAC7  BFCHG     D7{ofs:wid}
-        b       L_079C0
+        b       bfchg_bfclr_bfset
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EAC8  BFCHG     A0{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EAC9  BFCHG     A1{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EACA  BFCHG     A2{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EACB  BFCHG     A3{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EACC  BFCHG     A4{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EACD  BFCHG     A5{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EACE  BFCHG     A6{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EACF  BFCHG     A7{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         mr      addr, a0                                // EAD0  BFCHG     (A0){ofs:wid}
-        b       L_07A34
+        b       bfchg_bfclr_bfset_mem_2
         mr      addr, a1                                // EAD1  BFCHG     (A1){ofs:wid}
-        b       L_07A34
+        b       bfchg_bfclr_bfset_mem_2
         mr      addr, a2                                // EAD2  BFCHG     (A2){ofs:wid}
-        b       L_07A34
+        b       bfchg_bfclr_bfset_mem_2
         mr      addr, a3                                // EAD3  BFCHG     (A3){ofs:wid}
-        b       L_07A34
+        b       bfchg_bfclr_bfset_mem_2
         mr      addr, a4                                // EAD4  BFCHG     (A4){ofs:wid}
-        b       L_07A34
+        b       bfchg_bfclr_bfset_mem_2
         mr      addr, a5                                // EAD5  BFCHG     (A5){ofs:wid}
-        b       L_07A34
+        b       bfchg_bfclr_bfset_mem_2
         mr      addr, a6                                // EAD6  BFCHG     (A6){ofs:wid}
-        b       L_07A34
+        b       bfchg_bfclr_bfset_mem_2
         mr      addr, a7                                // EAD7  BFCHG     (A7){ofs:wid}
-        b       L_07A34
+        b       bfchg_bfclr_bfset_mem_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EAD8  BFCHG     (A0)+{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EAD9  BFCHG     (A1)+{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EADA  BFCHG     (A2)+{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EADB  BFCHG     (A3)+{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EADC  BFCHG     (A4)+{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EADD  BFCHG     (A5)+{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EADE  BFCHG     (A6)+{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EADF  BFCHG     (A7)+{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EAE0  BFCHG     -(A0){ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EAE1  BFCHG     -(A1){ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EAE2  BFCHG     -(A2){ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EAE3  BFCHG     -(A3){ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EAE4  BFCHG     -(A4){ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EAE5  BFCHG     -(A5){ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EAE6  BFCHG     -(A6){ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EAE7  BFCHG     -(A7){ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         mr      addr, a0                                // EAE8  BFCHG     (d16,A0){ofs:wid}
-        b       L_07A20
+        b       bfchg_bfclr_bfset_mem
         mr      addr, a1                                // EAE9  BFCHG     (d16,A1){ofs:wid}
-        b       L_07A20
+        b       bfchg_bfclr_bfset_mem
         mr      addr, a2                                // EAEA  BFCHG     (d16,A2){ofs:wid}
-        b       L_07A20
+        b       bfchg_bfclr_bfset_mem
         mr      addr, a3                                // EAEB  BFCHG     (d16,A3){ofs:wid}
-        b       L_07A20
+        b       bfchg_bfclr_bfset_mem
         mr      addr, a4                                // EAEC  BFCHG     (d16,A4){ofs:wid}
-        b       L_07A20
+        b       bfchg_bfclr_bfset_mem
         mr      addr, a5                                // EAED  BFCHG     (d16,A5){ofs:wid}
-        b       L_07A20
+        b       bfchg_bfclr_bfset_mem
         mr      addr, a6                                // EAEE  BFCHG     (d16,A6){ofs:wid}
-        b       L_07A20
+        b       bfchg_bfclr_bfset_mem
         mr      addr, a7                                // EAEF  BFCHG     (d16,A7){ofs:wid}
-        b       L_07A20
-        ori     rtn_addr, code_ptr, L_07A3C - cb        // EAF0  BFCHG     (d8,A0,Xn){ofs:wid}
-        b       L_05980
-        ori     rtn_addr, code_ptr, L_07A3C - cb        // EAF1  BFCHG     (d8,A1,Xn){ofs:wid}
-        b       L_059E0
-        ori     rtn_addr, code_ptr, L_07A3C - cb        // EAF2  BFCHG     (d8,A2,Xn){ofs:wid}
-        b       L_05A40
-        ori     rtn_addr, code_ptr, L_07A3C - cb        // EAF3  BFCHG     (d8,A3,Xn){ofs:wid}
-        b       L_05AA0
-        ori     rtn_addr, code_ptr, L_07A3C - cb        // EAF4  BFCHG     (d8,A4,Xn){ofs:wid}
-        b       L_05B00
-        ori     rtn_addr, code_ptr, L_07A3C - cb        // EAF5  BFCHG     (d8,A5,Xn){ofs:wid}
-        b       L_05B60
-        ori     rtn_addr, code_ptr, L_07A3C - cb        // EAF6  BFCHG     (d8,A6,Xn){ofs:wid}
-        b       L_05BC0
-        ori     rtn_addr, code_ptr, L_07A3C - cb        // EAF7  BFCHG     (d8,A7,Xn){ofs:wid}
-        b       L_05C20
+        b       bfchg_bfclr_bfset_mem
+        ori     rtn_addr, code_ptr, bfchg_bfclr_bfset_mem_3 - cb  // EAF0  BFCHG     (d8,A0,Xn){ofs:wid}
+        b       movem_cas_etc_any_any
+        ori     rtn_addr, code_ptr, bfchg_bfclr_bfset_mem_3 - cb  // EAF1  BFCHG     (d8,A1,Xn){ofs:wid}
+        b       movem_cas_etc_any_any_2
+        ori     rtn_addr, code_ptr, bfchg_bfclr_bfset_mem_3 - cb  // EAF2  BFCHG     (d8,A2,Xn){ofs:wid}
+        b       movem_cas_etc_any_any_3
+        ori     rtn_addr, code_ptr, bfchg_bfclr_bfset_mem_3 - cb  // EAF3  BFCHG     (d8,A3,Xn){ofs:wid}
+        b       movem_cas_etc_any_any_4
+        ori     rtn_addr, code_ptr, bfchg_bfclr_bfset_mem_3 - cb  // EAF4  BFCHG     (d8,A4,Xn){ofs:wid}
+        b       movem_cas_etc_any_any_5
+        ori     rtn_addr, code_ptr, bfchg_bfclr_bfset_mem_3 - cb  // EAF5  BFCHG     (d8,A5,Xn){ofs:wid}
+        b       movem_cas_etc_any_any_6
+        ori     rtn_addr, code_ptr, bfchg_bfclr_bfset_mem_3 - cb  // EAF6  BFCHG     (d8,A6,Xn){ofs:wid}
+        b       movem_cas_etc_any_any_7
+        ori     rtn_addr, code_ptr, bfchg_bfclr_bfset_mem_3 - cb  // EAF7  BFCHG     (d8,A7,Xn){ofs:wid}
+        b       movem_cas_etc_any_any_8
         lhau    addr, 2(pc)                             // EAF8  BFCHG     (xxx).W{ofs:wid}
-        b       L_07A34
-        ori     rtn_addr, code_ptr, L_07A3C - cb        // EAF9  BFCHG     (xxx).L{ofs:wid}
-        b       L_05E00
+        b       bfchg_bfclr_bfset_mem_2
+        ori     rtn_addr, code_ptr, bfchg_bfclr_bfset_mem_3 - cb  // EAF9  BFCHG     (xxx).L{ofs:wid}
+        b       cea_x_71
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EAFA  BFCHG     (d16,PC){ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EAFB  BFCHG     (d8,PC,Xn){ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EAFC  BFCHG     #<data>{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EAFD  BFCHG     <ea 7.5>{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EAFE  BFCHG     <ea 7.6>{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EAFF  BFCHG     <ea 7.7>{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $EB00-$EB3F --------------------------------------------------------
         li      addr, 5                                 // EB00  ASL.B     #5,D0
-        b       L_0B304
+        b       asl_b_q_d0
         li      addr, 5                                 // EB01  ASL.B     #5,D1
-        b       L_0B3C4
+        b       asl_b_q_d1
         li      addr, 5                                 // EB02  ASL.B     #5,D2
-        b       L_0B484
+        b       asl_b_q_d2
         li      addr, 5                                 // EB03  ASL.B     #5,D3
-        b       L_0B544
+        b       asl_b_q_d3
         li      addr, 5                                 // EB04  ASL.B     #5,D4
-        b       L_0B604
+        b       asl_b_q_d4
         li      addr, 5                                 // EB05  ASL.B     #5,D5
-        b       L_0B6C4
+        b       asl_b_q_d5
         li      addr, 5                                 // EB06  ASL.B     #5,D6
-        b       L_0B784
+        b       asl_b_q_d6
         li      addr, 5                                 // EB07  ASL.B     #5,D7
-        b       L_0B844
+        b       asl_b_q_d7
         slwi    data, d0, 28                            // EB08  LSL.B     #5,D0
-        b       L_0B2E0
+        b       lsl_b_q_d0
         slwi    data, d1, 28                            // EB09  LSL.B     #5,D1
-        b       L_0B3A0
+        b       lsl_b_q_d1
         slwi    data, d2, 28                            // EB0A  LSL.B     #5,D2
-        b       L_0B460
+        b       lsl_b_q_d2
         slwi    data, d3, 28                            // EB0B  LSL.B     #5,D3
-        b       L_0B520
+        b       lsl_b_q_d3
         slwi    data, d4, 28                            // EB0C  LSL.B     #5,D4
-        b       L_0B5E0
+        b       lsl_b_q_d4
         slwi    data, d5, 28                            // EB0D  LSL.B     #5,D5
-        b       L_0B6A0
+        b       lsl_b_q_d5
         slwi    data, d6, 28                            // EB0E  LSL.B     #5,D6
-        b       L_0B760
+        b       lsl_b_q_d6
         slwi    data, d7, 28                            // EB0F  LSL.B     #5,D7
-        b       L_0B820
+        b       lsl_b_q_d7
         li      addr, 5                                 // EB10  ROXL.B    #5,D0
-        b       L_0B364
+        b       roxr_roxl_b_q_d0
         li      addr, 5                                 // EB11  ROXL.B    #5,D1
-        b       L_0B424
+        b       roxr_roxl_b_q_d1
         li      addr, 5                                 // EB12  ROXL.B    #5,D2
-        b       L_0B4E4
+        b       roxr_roxl_b_q_d2
         li      addr, 5                                 // EB13  ROXL.B    #5,D3
-        b       L_0B5A4
+        b       roxr_roxl_b_q_d3
         li      addr, 5                                 // EB14  ROXL.B    #5,D4
-        b       L_0B664
+        b       roxr_roxl_b_q_d4
         li      addr, 5                                 // EB15  ROXL.B    #5,D5
-        b       L_0B724
+        b       roxr_roxl_b_q_d5
         li      addr, 5                                 // EB16  ROXL.B    #5,D6
-        b       L_0B7E4
+        b       roxr_roxl_b_q_d6
         li      addr, 5                                 // EB17  ROXL.B    #5,D7
-        b       L_0B8A4
+        b       roxr_roxl_b_q_d7
         li      addr, 5                                 // EB18  ROL.B     #5,D0
-        b       L_0B348
+        b       rol_b_q_d0
         li      addr, 5                                 // EB19  ROL.B     #5,D1
-        b       L_0B408
+        b       rol_b_q_d1
         li      addr, 5                                 // EB1A  ROL.B     #5,D2
-        b       L_0B4C8
+        b       rol_b_q_d2
         li      addr, 5                                 // EB1B  ROL.B     #5,D3
-        b       L_0B588
+        b       rol_b_q_d3
         li      addr, 5                                 // EB1C  ROL.B     #5,D4
-        b       L_0B648
+        b       rol_b_q_d4
         li      addr, 5                                 // EB1D  ROL.B     #5,D5
-        b       L_0B708
+        b       rol_b_q_d5
         li      addr, 5                                 // EB1E  ROL.B     #5,D6
-        b       L_0B7C8
+        b       rol_b_q_d6
         li      addr, 5                                 // EB1F  ROL.B     #5,D7
-        b       L_0B888
+        b       rol_b_q_d7
         clrlwi. addr, d5, 26                            // EB20  ASL.B     D5,D0
-        b       L_0B300
+        b       asl_b_dn_d0
         clrlwi. addr, d5, 26                            // EB21  ASL.B     D5,D1
-        b       L_0B3C0
+        b       asl_b_dn_d1
         clrlwi. addr, d5, 26                            // EB22  ASL.B     D5,D2
-        b       L_0B480
+        b       asl_b_dn_d2
         clrlwi. addr, d5, 26                            // EB23  ASL.B     D5,D3
-        b       L_0B540
+        b       asl_b_dn_d3
         clrlwi. addr, d5, 26                            // EB24  ASL.B     D5,D4
-        b       L_0B600
+        b       asl_b_dn_d4
         clrlwi. addr, d5, 26                            // EB25  ASL.B     D5,D5
-        b       L_0B6C0
+        b       asl_b_dn_d5
         clrlwi. addr, d5, 26                            // EB26  ASL.B     D5,D6
-        b       L_0B780
+        b       asl_b_dn_d6
         clrlwi. addr, d5, 26                            // EB27  ASL.B     D5,D7
-        b       L_0B840
+        b       asl_b_dn_d7
         clrlwi. addr, d5, 26                            // EB28  LSL.B     D5,D0
-        b       L_0B2D4
+        b       lsl_b_dn_d0
         clrlwi. addr, d5, 26                            // EB29  LSL.B     D5,D1
-        b       L_0B394
+        b       lsl_b_dn_d1
         clrlwi. addr, d5, 26                            // EB2A  LSL.B     D5,D2
-        b       L_0B454
+        b       lsl_b_dn_d2
         clrlwi. addr, d5, 26                            // EB2B  LSL.B     D5,D3
-        b       L_0B514
+        b       lsl_b_dn_d3
         clrlwi. addr, d5, 26                            // EB2C  LSL.B     D5,D4
-        b       L_0B5D4
+        b       lsl_b_dn_d4
         clrlwi. addr, d5, 26                            // EB2D  LSL.B     D5,D5
-        b       L_0B694
+        b       lsl_b_dn_d5
         clrlwi. addr, d5, 26                            // EB2E  LSL.B     D5,D6
-        b       L_0B754
+        b       lsl_b_dn_d6
         clrlwi. addr, d5, 26                            // EB2F  LSL.B     D5,D7
-        b       L_0B814
+        b       lsl_b_dn_d7
         clrlwi. addr, d5, 26                            // EB30  ROXL.B    D5,D0
-        b       L_0B360
+        b       roxr_roxl_b_dn_d0
         clrlwi. addr, d5, 26                            // EB31  ROXL.B    D5,D1
-        b       L_0B420
+        b       roxr_roxl_b_dn_d1
         clrlwi. addr, d5, 26                            // EB32  ROXL.B    D5,D2
-        b       L_0B4E0
+        b       roxr_roxl_b_dn_d2
         clrlwi. addr, d5, 26                            // EB33  ROXL.B    D5,D3
-        b       L_0B5A0
+        b       roxr_roxl_b_dn_d3
         clrlwi. addr, d5, 26                            // EB34  ROXL.B    D5,D4
-        b       L_0B660
+        b       roxr_roxl_b_dn_d4
         clrlwi. addr, d5, 26                            // EB35  ROXL.B    D5,D5
-        b       L_0B720
+        b       roxr_roxl_b_dn_d5
         clrlwi. addr, d5, 26                            // EB36  ROXL.B    D5,D6
-        b       L_0B7E0
+        b       roxr_roxl_b_dn_d6
         clrlwi. addr, d5, 26                            // EB37  ROXL.B    D5,D7
-        b       L_0B8A0
+        b       roxr_roxl_b_dn_d7
         clrlwi. addr, d5, 26                            // EB38  ROL.B     D5,D0
-        b       L_0B340
+        b       rol_b_dn_d0
         clrlwi. addr, d5, 26                            // EB39  ROL.B     D5,D1
-        b       L_0B400
+        b       rol_b_dn_d1
         clrlwi. addr, d5, 26                            // EB3A  ROL.B     D5,D2
-        b       L_0B4C0
+        b       rol_b_dn_d2
         clrlwi. addr, d5, 26                            // EB3B  ROL.B     D5,D3
-        b       L_0B580
+        b       rol_b_dn_d3
         clrlwi. addr, d5, 26                            // EB3C  ROL.B     D5,D4
-        b       L_0B640
+        b       rol_b_dn_d4
         clrlwi. addr, d5, 26                            // EB3D  ROL.B     D5,D5
-        b       L_0B700
+        b       rol_b_dn_d5
         clrlwi. addr, d5, 26                            // EB3E  ROL.B     D5,D6
-        b       L_0B7C0
+        b       rol_b_dn_d6
         clrlwi. addr, d5, 26                            // EB3F  ROL.B     D5,D7
-        b       L_0B880
+        b       rol_b_dn_d7
 
 // ---- $EB40-$EB7F --------------------------------------------------------
         li      addr, 5                                 // EB40  ASL.W     #5,D0
-        b       L_04C44
+        b       asl_w_q_d0
         li      addr, 5                                 // EB41  ASL.W     #5,D1
-        b       L_04D04
+        b       asl_w_q_d1
         li      addr, 5                                 // EB42  ASL.W     #5,D2
-        b       L_04DC4
+        b       asl_w_q_d2
         li      addr, 5                                 // EB43  ASL.W     #5,D3
-        b       L_04E84
+        b       asl_w_q_d3
         li      addr, 5                                 // EB44  ASL.W     #5,D4
-        b       L_04F44
+        b       asl_w_q_d4
         li      addr, 5                                 // EB45  ASL.W     #5,D5
-        b       L_05004
+        b       asl_w_q_d5
         li      addr, 5                                 // EB46  ASL.W     #5,D6
-        b       L_050C4
+        b       asl_w_q_d6
         li      addr, 5                                 // EB47  ASL.W     #5,D7
-        b       L_05184
+        b       asl_w_q_d7
         slwi    data, d0, 20                            // EB48  LSL.W     #5,D0
-        b       L_04C20
+        b       lsl_w_q_d0
         slwi    data, d1, 20                            // EB49  LSL.W     #5,D1
-        b       L_04CE0
+        b       lsl_w_q_d1
         slwi    data, d2, 20                            // EB4A  LSL.W     #5,D2
-        b       L_04DA0
+        b       lsl_w_q_d2
         slwi    data, d3, 20                            // EB4B  LSL.W     #5,D3
-        b       L_04E60
+        b       lsl_w_q_d3
         slwi    data, d4, 20                            // EB4C  LSL.W     #5,D4
-        b       L_04F20
+        b       lsl_w_q_d4
         slwi    data, d5, 20                            // EB4D  LSL.W     #5,D5
-        b       L_04FE0
+        b       lsl_w_q_d5
         slwi    data, d6, 20                            // EB4E  LSL.W     #5,D6
-        b       L_050A0
+        b       lsl_w_q_d6
         slwi    data, d7, 20                            // EB4F  LSL.W     #5,D7
-        b       L_05160
+        b       lsl_w_q_d7
         addic.  addr, zero, 5                           // EB50  ROXL.W    #5,D0
-        b       L_04CA4
+        b       roxr_roxl_w_q_d0
         addic.  addr, zero, 5                           // EB51  ROXL.W    #5,D1
-        b       L_04D64
+        b       roxr_roxl_w_q_d1
         addic.  addr, zero, 5                           // EB52  ROXL.W    #5,D2
-        b       L_04E24
+        b       roxr_roxl_w_q_d2
         addic.  addr, zero, 5                           // EB53  ROXL.W    #5,D3
-        b       L_04EE4
+        b       roxr_roxl_w_q_d3
         addic.  addr, zero, 5                           // EB54  ROXL.W    #5,D4
-        b       L_04FA4
+        b       roxr_roxl_w_q_d4
         addic.  addr, zero, 5                           // EB55  ROXL.W    #5,D5
-        b       L_05064
+        b       roxr_roxl_w_q_d5
         addic.  addr, zero, 5                           // EB56  ROXL.W    #5,D6
-        b       L_05124
+        b       roxr_roxl_w_q_d6
         addic.  addr, zero, 5                           // EB57  ROXL.W    #5,D7
-        b       L_051E4
+        b       roxr_roxl_w_q_d7
         li      addr, 5                                 // EB58  ROL.W     #5,D0
-        b       L_04C88
+        b       rol_w_q_d0
         li      addr, 5                                 // EB59  ROL.W     #5,D1
-        b       L_04D48
+        b       rol_w_q_d1
         li      addr, 5                                 // EB5A  ROL.W     #5,D2
-        b       L_04E08
+        b       rol_w_q_d2
         li      addr, 5                                 // EB5B  ROL.W     #5,D3
-        b       L_04EC8
+        b       rol_w_q_d3
         li      addr, 5                                 // EB5C  ROL.W     #5,D4
-        b       L_04F88
+        b       rol_w_q_d4
         li      addr, 5                                 // EB5D  ROL.W     #5,D5
-        b       L_05048
+        b       rol_w_q_d5
         li      addr, 5                                 // EB5E  ROL.W     #5,D6
-        b       L_05108
+        b       rol_w_q_d6
         li      addr, 5                                 // EB5F  ROL.W     #5,D7
-        b       L_051C8
+        b       rol_w_q_d7
         clrlwi. addr, d5, 26                            // EB60  ASL.W     D5,D0
-        b       L_04C40
+        b       asl_w_dn_d0
         clrlwi. addr, d5, 26                            // EB61  ASL.W     D5,D1
-        b       L_04D00
+        b       asl_w_dn_d1
         clrlwi. addr, d5, 26                            // EB62  ASL.W     D5,D2
-        b       L_04DC0
+        b       asl_w_dn_d2
         clrlwi. addr, d5, 26                            // EB63  ASL.W     D5,D3
-        b       L_04E80
+        b       asl_w_dn_d3
         clrlwi. addr, d5, 26                            // EB64  ASL.W     D5,D4
-        b       L_04F40
+        b       asl_w_dn_d4
         clrlwi. addr, d5, 26                            // EB65  ASL.W     D5,D5
-        b       L_05000
+        b       asl_w_dn_d5
         clrlwi. addr, d5, 26                            // EB66  ASL.W     D5,D6
-        b       L_050C0
+        b       asl_w_dn_d6
         clrlwi. addr, d5, 26                            // EB67  ASL.W     D5,D7
-        b       L_05180
+        b       asl_w_dn_d7
         clrlwi. addr, d5, 26                            // EB68  LSL.W     D5,D0
-        b       L_04C14
+        b       lsl_w_dn_d0
         clrlwi. addr, d5, 26                            // EB69  LSL.W     D5,D1
-        b       L_04CD4
+        b       lsl_w_dn_d1
         clrlwi. addr, d5, 26                            // EB6A  LSL.W     D5,D2
-        b       L_04D94
+        b       lsl_w_dn_d2
         clrlwi. addr, d5, 26                            // EB6B  LSL.W     D5,D3
-        b       L_04E54
+        b       lsl_w_dn_d3
         clrlwi. addr, d5, 26                            // EB6C  LSL.W     D5,D4
-        b       L_04F14
+        b       lsl_w_dn_d4
         clrlwi. addr, d5, 26                            // EB6D  LSL.W     D5,D5
-        b       L_04FD4
+        b       lsl_w_dn_d5
         clrlwi. addr, d5, 26                            // EB6E  LSL.W     D5,D6
-        b       L_05094
+        b       lsl_w_dn_d6
         clrlwi. addr, d5, 26                            // EB6F  LSL.W     D5,D7
-        b       L_05154
+        b       lsl_w_dn_d7
         clrlwi. addr, d5, 26                            // EB70  ROXL.W    D5,D0
-        b       L_04CA0
+        b       roxr_roxl_w_dn_d0
         clrlwi. addr, d5, 26                            // EB71  ROXL.W    D5,D1
-        b       L_04D60
+        b       roxr_roxl_w_dn_d1
         clrlwi. addr, d5, 26                            // EB72  ROXL.W    D5,D2
-        b       L_04E20
+        b       roxr_roxl_w_dn_d2
         clrlwi. addr, d5, 26                            // EB73  ROXL.W    D5,D3
-        b       L_04EE0
+        b       roxr_roxl_w_dn_d3
         clrlwi. addr, d5, 26                            // EB74  ROXL.W    D5,D4
-        b       L_04FA0
+        b       roxr_roxl_w_dn_d4
         clrlwi. addr, d5, 26                            // EB75  ROXL.W    D5,D5
-        b       L_05060
+        b       roxr_roxl_w_dn_d5
         clrlwi. addr, d5, 26                            // EB76  ROXL.W    D5,D6
-        b       L_05120
+        b       roxr_roxl_w_dn_d6
         clrlwi. addr, d5, 26                            // EB77  ROXL.W    D5,D7
-        b       L_051E0
+        b       roxr_roxl_w_dn_d7
         clrlwi. addr, d5, 26                            // EB78  ROL.W     D5,D0
-        b       L_04C80
+        b       rol_w_dn_d0
         clrlwi. addr, d5, 26                            // EB79  ROL.W     D5,D1
-        b       L_04D40
+        b       rol_w_dn_d1
         clrlwi. addr, d5, 26                            // EB7A  ROL.W     D5,D2
-        b       L_04E00
+        b       rol_w_dn_d2
         clrlwi. addr, d5, 26                            // EB7B  ROL.W     D5,D3
-        b       L_04EC0
+        b       rol_w_dn_d3
         clrlwi. addr, d5, 26                            // EB7C  ROL.W     D5,D4
-        b       L_04F80
+        b       rol_w_dn_d4
         clrlwi. addr, d5, 26                            // EB7D  ROL.W     D5,D5
-        b       L_05040
+        b       rol_w_dn_d5
         clrlwi. addr, d5, 26                            // EB7E  ROL.W     D5,D6
-        b       L_05100
+        b       rol_w_dn_d6
         clrlwi. addr, d5, 26                            // EB7F  ROL.W     D5,D7
-        b       L_051C0
+        b       rol_w_dn_d7
 
 // ---- $EB80-$EBBF --------------------------------------------------------
         li      addr, 5                                 // EB80  ASL.L     #5,D0
-        b       L_05244
+        b       asl_l_q_d0
         li      addr, 5                                 // EB81  ASL.L     #5,D1
-        b       L_052E4
+        b       asl_l_q_d1
         li      addr, 5                                 // EB82  ASL.L     #5,D2
-        b       L_05384
+        b       asl_l_q_d2
         li      addr, 5                                 // EB83  ASL.L     #5,D3
-        b       L_05424
+        b       asl_l_q_d3
         li      addr, 5                                 // EB84  ASL.L     #5,D4
-        b       L_054C4
+        b       asl_l_q_d4
         li      addr, 5                                 // EB85  ASL.L     #5,D5
-        b       L_05564
+        b       asl_l_q_d5
         li      addr, 5                                 // EB86  ASL.L     #5,D6
-        b       L_05604
+        b       asl_l_q_d6
         li      addr, 5                                 // EB87  ASL.L     #5,D7
-        b       L_056A4
+        b       asl_l_q_d7
         slwi    data, d0, 4                             // EB88  LSL.L     #5,D0
-        b       L_05220
+        b       lsl_l_q_d0
         slwi    data, d1, 4                             // EB89  LSL.L     #5,D1
-        b       L_052C0
+        b       lsl_l_q_d1
         slwi    data, d2, 4                             // EB8A  LSL.L     #5,D2
-        b       L_05360
+        b       lsl_l_q_d2
         slwi    data, d3, 4                             // EB8B  LSL.L     #5,D3
-        b       L_05400
+        b       lsl_l_q_d3
         slwi    data, d4, 4                             // EB8C  LSL.L     #5,D4
-        b       L_054A0
+        b       lsl_l_q_d4
         slwi    data, d5, 4                             // EB8D  LSL.L     #5,D5
-        b       L_05540
+        b       lsl_l_q_d5
         slwi    data, d6, 4                             // EB8E  LSL.L     #5,D6
-        b       L_055E0
+        b       lsl_l_q_d6
         slwi    data, d7, 4                             // EB8F  LSL.L     #5,D7
-        b       L_05680
+        b       lsl_l_q_d7
         addic.  addr, zero, 5                           // EB90  ROXL.L    #5,D0
-        b       L_05284
+        b       roxr_roxl_l_q_d0
         addic.  addr, zero, 5                           // EB91  ROXL.L    #5,D1
-        b       L_05324
+        b       roxr_roxl_l_q_d1
         addic.  addr, zero, 5                           // EB92  ROXL.L    #5,D2
-        b       L_053C4
+        b       roxr_roxl_l_q_d2
         addic.  addr, zero, 5                           // EB93  ROXL.L    #5,D3
-        b       L_05464
+        b       roxr_roxl_l_q_d3
         addic.  addr, zero, 5                           // EB94  ROXL.L    #5,D4
-        b       L_05504
+        b       roxr_roxl_l_q_d4
         addic.  addr, zero, 5                           // EB95  ROXL.L    #5,D5
-        b       L_055A4
+        b       roxr_roxl_l_q_d5
         addic.  addr, zero, 5                           // EB96  ROXL.L    #5,D6
-        b       L_05644
+        b       roxr_roxl_l_q_d6
         addic.  addr, zero, 5                           // EB97  ROXL.L    #5,D7
-        b       L_056E4
+        b       roxr_roxl_l_q_d7
         rotlwi  data, d0, 5                             // EB98  ROL.L     #5,D0
-        b       L_05270
+        b       rol_l_q_d0
         rotlwi  data, d1, 5                             // EB99  ROL.L     #5,D1
-        b       L_05310
+        b       rol_l_q_d1
         rotlwi  data, d2, 5                             // EB9A  ROL.L     #5,D2
-        b       L_053B0
+        b       rol_l_q_d2
         rotlwi  data, d3, 5                             // EB9B  ROL.L     #5,D3
-        b       L_05450
+        b       rol_l_q_d3
         rotlwi  data, d4, 5                             // EB9C  ROL.L     #5,D4
-        b       L_054F0
+        b       rol_l_q_d4
         rotlwi  data, d5, 5                             // EB9D  ROL.L     #5,D5
-        b       L_05590
+        b       rol_l_q_d5
         rotlwi  data, d6, 5                             // EB9E  ROL.L     #5,D6
-        b       L_05630
+        b       rol_l_q_d6
         rotlwi  data, d7, 5                             // EB9F  ROL.L     #5,D7
-        b       L_056D0
+        b       rol_l_q_d7
         clrlwi. addr, d5, 26                            // EBA0  ASL.L     D5,D0
-        b       L_05240
+        b       asl_l_dn_d0
         clrlwi. addr, d5, 26                            // EBA1  ASL.L     D5,D1
-        b       L_052E0
+        b       asl_l_dn_d1
         clrlwi. addr, d5, 26                            // EBA2  ASL.L     D5,D2
-        b       L_05380
+        b       asl_l_dn_d2
         clrlwi. addr, d5, 26                            // EBA3  ASL.L     D5,D3
-        b       L_05420
+        b       asl_l_dn_d3
         clrlwi. addr, d5, 26                            // EBA4  ASL.L     D5,D4
-        b       L_054C0
+        b       asl_l_dn_d4
         clrlwi. addr, d5, 26                            // EBA5  ASL.L     D5,D5
-        b       L_05560
+        b       asl_l_dn_d5
         clrlwi. addr, d5, 26                            // EBA6  ASL.L     D5,D6
-        b       L_05600
+        b       asl_l_dn_d6
         clrlwi. addr, d5, 26                            // EBA7  ASL.L     D5,D7
-        b       L_056A0
+        b       asl_l_dn_d7
         clrlwi. addr, d5, 26                            // EBA8  LSL.L     D5,D0
-        b       L_05214
+        b       lsl_l_dn_d0
         clrlwi. addr, d5, 26                            // EBA9  LSL.L     D5,D1
-        b       L_052B4
+        b       lsl_l_dn_d1
         clrlwi. addr, d5, 26                            // EBAA  LSL.L     D5,D2
-        b       L_05354
+        b       lsl_l_dn_d2
         clrlwi. addr, d5, 26                            // EBAB  LSL.L     D5,D3
-        b       L_053F4
+        b       lsl_l_dn_d3
         clrlwi. addr, d5, 26                            // EBAC  LSL.L     D5,D4
-        b       L_05494
+        b       lsl_l_dn_d4
         clrlwi. addr, d5, 26                            // EBAD  LSL.L     D5,D5
-        b       L_05534
+        b       lsl_l_dn_d5
         clrlwi. addr, d5, 26                            // EBAE  LSL.L     D5,D6
-        b       L_055D4
+        b       lsl_l_dn_d6
         clrlwi. addr, d5, 26                            // EBAF  LSL.L     D5,D7
-        b       L_05674
+        b       lsl_l_dn_d7
         clrlwi. addr, d5, 26                            // EBB0  ROXL.L    D5,D0
-        b       L_05280
+        b       roxr_roxl_l_dn_d0
         clrlwi. addr, d5, 26                            // EBB1  ROXL.L    D5,D1
-        b       L_05320
+        b       roxr_roxl_l_dn_d1
         clrlwi. addr, d5, 26                            // EBB2  ROXL.L    D5,D2
-        b       L_053C0
+        b       roxr_roxl_l_dn_d2
         clrlwi. addr, d5, 26                            // EBB3  ROXL.L    D5,D3
-        b       L_05460
+        b       roxr_roxl_l_dn_d3
         clrlwi. addr, d5, 26                            // EBB4  ROXL.L    D5,D4
-        b       L_05500
+        b       roxr_roxl_l_dn_d4
         clrlwi. addr, d5, 26                            // EBB5  ROXL.L    D5,D5
-        b       L_055A0
+        b       roxr_roxl_l_dn_d5
         clrlwi. addr, d5, 26                            // EBB6  ROXL.L    D5,D6
-        b       L_05640
+        b       roxr_roxl_l_dn_d6
         clrlwi. addr, d5, 26                            // EBB7  ROXL.L    D5,D7
-        b       L_056E0
+        b       roxr_roxl_l_dn_d7
         clrlwi. addr, d5, 26                            // EBB8  ROL.L     D5,D0
-        b       L_05268
+        b       rol_l_dn_d0
         clrlwi. addr, d5, 26                            // EBB9  ROL.L     D5,D1
-        b       L_05308
+        b       rol_l_dn_d1
         clrlwi. addr, d5, 26                            // EBBA  ROL.L     D5,D2
-        b       L_053A8
+        b       rol_l_dn_d2
         clrlwi. addr, d5, 26                            // EBBB  ROL.L     D5,D3
-        b       L_05448
+        b       rol_l_dn_d3
         clrlwi. addr, d5, 26                            // EBBC  ROL.L     D5,D4
-        b       L_054E8
+        b       rol_l_dn_d4
         clrlwi. addr, d5, 26                            // EBBD  ROL.L     D5,D5
-        b       L_05588
+        b       rol_l_dn_d5
         clrlwi. addr, d5, 26                            // EBBE  ROL.L     D5,D6
-        b       L_05628
+        b       rol_l_dn_d6
         clrlwi. addr, d5, 26                            // EBBF  ROL.L     D5,D7
-        b       L_056C8
+        b       rol_l_dn_d7
 
 // ---- $EBC0-$EBFF --------------------------------------------------------
         mr      data, d0                                // EBC0  BFEXTS    D0{ofs:wid},Dn
-        b       L_078C8
+        b       bfexts
         mr      data, d1                                // EBC1  BFEXTS    D1{ofs:wid},Dn
-        b       L_078C8
+        b       bfexts
         mr      data, d2                                // EBC2  BFEXTS    D2{ofs:wid},Dn
-        b       L_078C8
+        b       bfexts
         mr      data, d3                                // EBC3  BFEXTS    D3{ofs:wid},Dn
-        b       L_078C8
+        b       bfexts
         mr      data, d4                                // EBC4  BFEXTS    D4{ofs:wid},Dn
-        b       L_078C8
+        b       bfexts
         mr      data, d5                                // EBC5  BFEXTS    D5{ofs:wid},Dn
-        b       L_078C8
+        b       bfexts
         mr      data, d6                                // EBC6  BFEXTS    D6{ofs:wid},Dn
-        b       L_078C8
+        b       bfexts
         mr      data, d7                                // EBC7  BFEXTS    D7{ofs:wid},Dn
-        b       L_078C8
+        b       bfexts
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EBC8  BFEXTS    A0{ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EBC9  BFEXTS    A1{ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EBCA  BFEXTS    A2{ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EBCB  BFEXTS    A3{ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EBCC  BFEXTS    A4{ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EBCD  BFEXTS    A5{ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EBCE  BFEXTS    A6{ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EBCF  BFEXTS    A7{ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         mr      addr, a0                                // EBD0  BFEXTS    (A0){ofs:wid},Dn
-        b       L_07918
+        b       bfextu_bfexts_bfffo_mem_2
         mr      addr, a1                                // EBD1  BFEXTS    (A1){ofs:wid},Dn
-        b       L_07918
+        b       bfextu_bfexts_bfffo_mem_2
         mr      addr, a2                                // EBD2  BFEXTS    (A2){ofs:wid},Dn
-        b       L_07918
+        b       bfextu_bfexts_bfffo_mem_2
         mr      addr, a3                                // EBD3  BFEXTS    (A3){ofs:wid},Dn
-        b       L_07918
+        b       bfextu_bfexts_bfffo_mem_2
         mr      addr, a4                                // EBD4  BFEXTS    (A4){ofs:wid},Dn
-        b       L_07918
+        b       bfextu_bfexts_bfffo_mem_2
         mr      addr, a5                                // EBD5  BFEXTS    (A5){ofs:wid},Dn
-        b       L_07918
+        b       bfextu_bfexts_bfffo_mem_2
         mr      addr, a6                                // EBD6  BFEXTS    (A6){ofs:wid},Dn
-        b       L_07918
+        b       bfextu_bfexts_bfffo_mem_2
         mr      addr, a7                                // EBD7  BFEXTS    (A7){ofs:wid},Dn
-        b       L_07918
+        b       bfextu_bfexts_bfffo_mem_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EBD8  BFEXTS    (A0)+{ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EBD9  BFEXTS    (A1)+{ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EBDA  BFEXTS    (A2)+{ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EBDB  BFEXTS    (A3)+{ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EBDC  BFEXTS    (A4)+{ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EBDD  BFEXTS    (A5)+{ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EBDE  BFEXTS    (A6)+{ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EBDF  BFEXTS    (A7)+{ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EBE0  BFEXTS    -(A0){ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EBE1  BFEXTS    -(A1){ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EBE2  BFEXTS    -(A2){ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EBE3  BFEXTS    -(A3){ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EBE4  BFEXTS    -(A4){ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EBE5  BFEXTS    -(A5){ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EBE6  BFEXTS    -(A6){ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EBE7  BFEXTS    -(A7){ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         mr      addr, a0                                // EBE8  BFEXTS    (d16,A0){ofs:wid},Dn
-        b       L_07900
+        b       bfextu_bfexts_bfffo_mem
         mr      addr, a1                                // EBE9  BFEXTS    (d16,A1){ofs:wid},Dn
-        b       L_07900
+        b       bfextu_bfexts_bfffo_mem
         mr      addr, a2                                // EBEA  BFEXTS    (d16,A2){ofs:wid},Dn
-        b       L_07900
+        b       bfextu_bfexts_bfffo_mem
         mr      addr, a3                                // EBEB  BFEXTS    (d16,A3){ofs:wid},Dn
-        b       L_07900
+        b       bfextu_bfexts_bfffo_mem
         mr      addr, a4                                // EBEC  BFEXTS    (d16,A4){ofs:wid},Dn
-        b       L_07900
+        b       bfextu_bfexts_bfffo_mem
         mr      addr, a5                                // EBED  BFEXTS    (d16,A5){ofs:wid},Dn
-        b       L_07900
+        b       bfextu_bfexts_bfffo_mem
         mr      addr, a6                                // EBEE  BFEXTS    (d16,A6){ofs:wid},Dn
-        b       L_07900
+        b       bfextu_bfexts_bfffo_mem
         mr      addr, a7                                // EBEF  BFEXTS    (d16,A7){ofs:wid},Dn
-        b       L_07900
-        ori     rtn_addr, code_ptr, L_07920 - cb        // EBF0  BFEXTS    (d8,A0,Xn){ofs:wid},Dn
-        b       L_05980
-        ori     rtn_addr, code_ptr, L_07920 - cb        // EBF1  BFEXTS    (d8,A1,Xn){ofs:wid},Dn
-        b       L_059E0
-        ori     rtn_addr, code_ptr, L_07920 - cb        // EBF2  BFEXTS    (d8,A2,Xn){ofs:wid},Dn
-        b       L_05A40
-        ori     rtn_addr, code_ptr, L_07920 - cb        // EBF3  BFEXTS    (d8,A3,Xn){ofs:wid},Dn
-        b       L_05AA0
-        ori     rtn_addr, code_ptr, L_07920 - cb        // EBF4  BFEXTS    (d8,A4,Xn){ofs:wid},Dn
-        b       L_05B00
-        ori     rtn_addr, code_ptr, L_07920 - cb        // EBF5  BFEXTS    (d8,A5,Xn){ofs:wid},Dn
-        b       L_05B60
-        ori     rtn_addr, code_ptr, L_07920 - cb        // EBF6  BFEXTS    (d8,A6,Xn){ofs:wid},Dn
-        b       L_05BC0
-        ori     rtn_addr, code_ptr, L_07920 - cb        // EBF7  BFEXTS    (d8,A7,Xn){ofs:wid},Dn
-        b       L_05C20
+        b       bfextu_bfexts_bfffo_mem
+        ori     rtn_addr, code_ptr, bfextu_bfexts_bfffo_mem_3 - cb  // EBF0  BFEXTS    (d8,A0,Xn){ofs:wid},Dn
+        b       movem_cas_etc_any_any
+        ori     rtn_addr, code_ptr, bfextu_bfexts_bfffo_mem_3 - cb  // EBF1  BFEXTS    (d8,A1,Xn){ofs:wid},Dn
+        b       movem_cas_etc_any_any_2
+        ori     rtn_addr, code_ptr, bfextu_bfexts_bfffo_mem_3 - cb  // EBF2  BFEXTS    (d8,A2,Xn){ofs:wid},Dn
+        b       movem_cas_etc_any_any_3
+        ori     rtn_addr, code_ptr, bfextu_bfexts_bfffo_mem_3 - cb  // EBF3  BFEXTS    (d8,A3,Xn){ofs:wid},Dn
+        b       movem_cas_etc_any_any_4
+        ori     rtn_addr, code_ptr, bfextu_bfexts_bfffo_mem_3 - cb  // EBF4  BFEXTS    (d8,A4,Xn){ofs:wid},Dn
+        b       movem_cas_etc_any_any_5
+        ori     rtn_addr, code_ptr, bfextu_bfexts_bfffo_mem_3 - cb  // EBF5  BFEXTS    (d8,A5,Xn){ofs:wid},Dn
+        b       movem_cas_etc_any_any_6
+        ori     rtn_addr, code_ptr, bfextu_bfexts_bfffo_mem_3 - cb  // EBF6  BFEXTS    (d8,A6,Xn){ofs:wid},Dn
+        b       movem_cas_etc_any_any_7
+        ori     rtn_addr, code_ptr, bfextu_bfexts_bfffo_mem_3 - cb  // EBF7  BFEXTS    (d8,A7,Xn){ofs:wid},Dn
+        b       movem_cas_etc_any_any_8
         lhau    addr, 2(pc)                             // EBF8  BFEXTS    (xxx).W{ofs:wid},Dn
-        b       L_07918
-        ori     rtn_addr, code_ptr, L_07920 - cb        // EBF9  BFEXTS    (xxx).L{ofs:wid},Dn
-        b       L_05E00
+        b       bfextu_bfexts_bfffo_mem_2
+        ori     rtn_addr, code_ptr, bfextu_bfexts_bfffo_mem_3 - cb  // EBF9  BFEXTS    (xxx).L{ofs:wid},Dn
+        b       cea_x_71
         addi    addr, pc, 2                             // EBFA  BFEXTS    (d16,PC){ofs:wid},Dn
-        b       L_07900
-        ori     rtn_addr, code_ptr, L_07920 - cb        // EBFB  BFEXTS    (d8,PC,Xn){ofs:wid},Dn
-        b       L_05E40
+        b       bfextu_bfexts_bfffo_mem
+        ori     rtn_addr, code_ptr, bfextu_bfexts_bfffo_mem_3 - cb  // EBFB  BFEXTS    (d8,PC,Xn){ofs:wid},Dn
+        b       chk2_cmp2_movem_etc_mem_any
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EBFC  BFEXTS    #<data>{ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EBFD  BFEXTS    <ea 7.5>{ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EBFE  BFEXTS    <ea 7.6>{ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EBFF  BFEXTS    <ea 7.7>{ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $EC00-$EC3F --------------------------------------------------------
         li      addr, 6                                 // EC00  ASR.B     #6,D0
-        b       L_0B2EC
+        b       asr_b_q_d0
         li      addr, 6                                 // EC01  ASR.B     #6,D1
-        b       L_0B3AC
+        b       asr_b_q_d1
         li      addr, 6                                 // EC02  ASR.B     #6,D2
-        b       L_0B46C
+        b       asr_b_q_d2
         li      addr, 6                                 // EC03  ASR.B     #6,D3
-        b       L_0B52C
+        b       asr_b_q_d3
         li      addr, 6                                 // EC04  ASR.B     #6,D4
-        b       L_0B5EC
+        b       asr_b_q_d4
         li      addr, 6                                 // EC05  ASR.B     #6,D5
-        b       L_0B6AC
+        b       asr_b_q_d5
         li      addr, 6                                 // EC06  ASR.B     #6,D6
-        b       L_0B76C
+        b       asr_b_q_d6
         li      addr, 6                                 // EC07  ASR.B     #6,D7
-        b       L_0B82C
+        b       asr_b_q_d7
         rlwinm  data, d0, 27, 29, 31                    // EC08  LSR.B     #6,D0
-        b       L_0B2CC
+        b       lsr_b_q_d0
         rlwinm  data, d1, 27, 29, 31                    // EC09  LSR.B     #6,D1
-        b       L_0B38C
+        b       lsr_b_q_d1
         rlwinm  data, d2, 27, 29, 31                    // EC0A  LSR.B     #6,D2
-        b       L_0B44C
+        b       lsr_b_q_d2
         rlwinm  data, d3, 27, 29, 31                    // EC0B  LSR.B     #6,D3
-        b       L_0B50C
+        b       lsr_b_q_d3
         rlwinm  data, d4, 27, 29, 31                    // EC0C  LSR.B     #6,D4
-        b       L_0B5CC
+        b       lsr_b_q_d4
         rlwinm  data, d5, 27, 29, 31                    // EC0D  LSR.B     #6,D5
-        b       L_0B68C
+        b       lsr_b_q_d5
         rlwinm  data, d6, 27, 29, 31                    // EC0E  LSR.B     #6,D6
-        b       L_0B74C
+        b       lsr_b_q_d6
         rlwinm  data, d7, 27, 29, 31                    // EC0F  LSR.B     #6,D7
-        b       L_0B80C
+        b       lsr_b_q_d7
         li      addr, 3                                 // EC10  ROXR.B    #6,D0
-        b       L_0B364
+        b       roxr_roxl_b_q_d0
         li      addr, 3                                 // EC11  ROXR.B    #6,D1
-        b       L_0B424
+        b       roxr_roxl_b_q_d1
         li      addr, 3                                 // EC12  ROXR.B    #6,D2
-        b       L_0B4E4
+        b       roxr_roxl_b_q_d2
         li      addr, 3                                 // EC13  ROXR.B    #6,D3
-        b       L_0B5A4
+        b       roxr_roxl_b_q_d3
         li      addr, 3                                 // EC14  ROXR.B    #6,D4
-        b       L_0B664
+        b       roxr_roxl_b_q_d4
         li      addr, 3                                 // EC15  ROXR.B    #6,D5
-        b       L_0B724
+        b       roxr_roxl_b_q_d5
         li      addr, 3                                 // EC16  ROXR.B    #6,D6
-        b       L_0B7E4
+        b       roxr_roxl_b_q_d6
         li      addr, 3                                 // EC17  ROXR.B    #6,D7
-        b       L_0B8A4
+        b       roxr_roxl_b_q_d7
         li      addr, 2                                 // EC18  ROR.B     #6,D0
-        b       L_0B32C
+        b       ror_b_q_d0
         li      addr, 2                                 // EC19  ROR.B     #6,D1
-        b       L_0B3EC
+        b       ror_b_q_d1
         li      addr, 2                                 // EC1A  ROR.B     #6,D2
-        b       L_0B4AC
+        b       ror_b_q_d2
         li      addr, 2                                 // EC1B  ROR.B     #6,D3
-        b       L_0B56C
+        b       ror_b_q_d3
         li      addr, 2                                 // EC1C  ROR.B     #6,D4
-        b       L_0B62C
+        b       ror_b_q_d4
         li      addr, 2                                 // EC1D  ROR.B     #6,D5
-        b       L_0B6EC
+        b       ror_b_q_d5
         li      addr, 2                                 // EC1E  ROR.B     #6,D6
-        b       L_0B7AC
+        b       ror_b_q_d6
         li      addr, 2                                 // EC1F  ROR.B     #6,D7
-        b       L_0B86C
+        b       ror_b_q_d7
         clrlwi. addr, d6, 26                            // EC20  ASR.B     D6,D0
-        b       L_0B2E8
+        b       asr_b_dn_d0
         clrlwi. addr, d6, 26                            // EC21  ASR.B     D6,D1
-        b       L_0B3A8
+        b       asr_b_dn_d1
         clrlwi. addr, d6, 26                            // EC22  ASR.B     D6,D2
-        b       L_0B468
+        b       asr_b_dn_d2
         clrlwi. addr, d6, 26                            // EC23  ASR.B     D6,D3
-        b       L_0B528
+        b       asr_b_dn_d3
         clrlwi. addr, d6, 26                            // EC24  ASR.B     D6,D4
-        b       L_0B5E8
+        b       asr_b_dn_d4
         clrlwi. addr, d6, 26                            // EC25  ASR.B     D6,D5
-        b       L_0B6A8
+        b       asr_b_dn_d5
         clrlwi. addr, d6, 26                            // EC26  ASR.B     D6,D6
-        b       L_0B768
+        b       asr_b_dn_d6
         clrlwi. addr, d6, 26                            // EC27  ASR.B     D6,D7
-        b       L_0B828
+        b       asr_b_dn_d7
         clrlwi. addr, d6, 26                            // EC28  LSR.B     D6,D0
-        b       L_0B2C0
+        b       lsr_b_dn_d0
         clrlwi. addr, d6, 26                            // EC29  LSR.B     D6,D1
-        b       L_0B380
+        b       lsr_b_dn_d1
         clrlwi. addr, d6, 26                            // EC2A  LSR.B     D6,D2
-        b       L_0B440
+        b       lsr_b_dn_d2
         clrlwi. addr, d6, 26                            // EC2B  LSR.B     D6,D3
-        b       L_0B500
+        b       lsr_b_dn_d3
         clrlwi. addr, d6, 26                            // EC2C  LSR.B     D6,D4
-        b       L_0B5C0
+        b       lsr_b_dn_d4
         clrlwi. addr, d6, 26                            // EC2D  LSR.B     D6,D5
-        b       L_0B680
+        b       lsr_b_dn_d5
         clrlwi. addr, d6, 26                            // EC2E  LSR.B     D6,D6
-        b       L_0B740
+        b       lsr_b_dn_d6
         clrlwi. addr, d6, 26                            // EC2F  LSR.B     D6,D7
-        b       L_0B800
+        b       lsr_b_dn_d7
         clrlwi. addr, d6, 26                            // EC30  ROXR.B    D6,D0
-        b       L_0B360
+        b       roxr_roxl_b_dn_d0
         clrlwi. addr, d6, 26                            // EC31  ROXR.B    D6,D1
-        b       L_0B420
+        b       roxr_roxl_b_dn_d1
         clrlwi. addr, d6, 26                            // EC32  ROXR.B    D6,D2
-        b       L_0B4E0
+        b       roxr_roxl_b_dn_d2
         clrlwi. addr, d6, 26                            // EC33  ROXR.B    D6,D3
-        b       L_0B5A0
+        b       roxr_roxl_b_dn_d3
         clrlwi. addr, d6, 26                            // EC34  ROXR.B    D6,D4
-        b       L_0B660
+        b       roxr_roxl_b_dn_d4
         clrlwi. addr, d6, 26                            // EC35  ROXR.B    D6,D5
-        b       L_0B720
+        b       roxr_roxl_b_dn_d5
         clrlwi. addr, d6, 26                            // EC36  ROXR.B    D6,D6
-        b       L_0B7E0
+        b       roxr_roxl_b_dn_d6
         clrlwi. addr, d6, 26                            // EC37  ROXR.B    D6,D7
-        b       L_0B8A0
+        b       roxr_roxl_b_dn_d7
         clrlwi. addr, d6, 26                            // EC38  ROR.B     D6,D0
-        b       L_0B320
+        b       ror_b_dn_d0
         clrlwi. addr, d6, 26                            // EC39  ROR.B     D6,D1
-        b       L_0B3E0
+        b       ror_b_dn_d1
         clrlwi. addr, d6, 26                            // EC3A  ROR.B     D6,D2
-        b       L_0B4A0
+        b       ror_b_dn_d2
         clrlwi. addr, d6, 26                            // EC3B  ROR.B     D6,D3
-        b       L_0B560
+        b       ror_b_dn_d3
         clrlwi. addr, d6, 26                            // EC3C  ROR.B     D6,D4
-        b       L_0B620
+        b       ror_b_dn_d4
         clrlwi. addr, d6, 26                            // EC3D  ROR.B     D6,D5
-        b       L_0B6E0
+        b       ror_b_dn_d5
         clrlwi. addr, d6, 26                            // EC3E  ROR.B     D6,D6
-        b       L_0B7A0
+        b       ror_b_dn_d6
         clrlwi. addr, d6, 26                            // EC3F  ROR.B     D6,D7
-        b       L_0B860
+        b       ror_b_dn_d7
 
 // ---- $EC40-$EC7F --------------------------------------------------------
         li      addr, 6                                 // EC40  ASR.W     #6,D0
-        b       L_04C2C
+        b       asr_w_q_d0
         li      addr, 6                                 // EC41  ASR.W     #6,D1
-        b       L_04CEC
+        b       asr_w_q_d1
         li      addr, 6                                 // EC42  ASR.W     #6,D2
-        b       L_04DAC
+        b       asr_w_q_d2
         li      addr, 6                                 // EC43  ASR.W     #6,D3
-        b       L_04E6C
+        b       asr_w_q_d3
         li      addr, 6                                 // EC44  ASR.W     #6,D4
-        b       L_04F2C
+        b       asr_w_q_d4
         li      addr, 6                                 // EC45  ASR.W     #6,D5
-        b       L_04FEC
+        b       asr_w_q_d5
         li      addr, 6                                 // EC46  ASR.W     #6,D6
-        b       L_050AC
+        b       asr_w_q_d6
         li      addr, 6                                 // EC47  ASR.W     #6,D7
-        b       L_0516C
+        b       asr_w_q_d7
         rlwinm  data, d0, 27, 21, 31                    // EC48  LSR.W     #6,D0
-        b       L_04C0C
+        b       lsr_w_q_d0
         rlwinm  data, d1, 27, 21, 31                    // EC49  LSR.W     #6,D1
-        b       L_04CCC
+        b       lsr_w_q_d1
         rlwinm  data, d2, 27, 21, 31                    // EC4A  LSR.W     #6,D2
-        b       L_04D8C
+        b       lsr_w_q_d2
         rlwinm  data, d3, 27, 21, 31                    // EC4B  LSR.W     #6,D3
-        b       L_04E4C
+        b       lsr_w_q_d3
         rlwinm  data, d4, 27, 21, 31                    // EC4C  LSR.W     #6,D4
-        b       L_04F0C
+        b       lsr_w_q_d4
         rlwinm  data, d5, 27, 21, 31                    // EC4D  LSR.W     #6,D5
-        b       L_04FCC
+        b       lsr_w_q_d5
         rlwinm  data, d6, 27, 21, 31                    // EC4E  LSR.W     #6,D6
-        b       L_0508C
+        b       lsr_w_q_d6
         rlwinm  data, d7, 27, 21, 31                    // EC4F  LSR.W     #6,D7
-        b       L_0514C
+        b       lsr_w_q_d7
         addic.  addr, zero, 11                          // EC50  ROXR.W    #6,D0
-        b       L_04CA4
+        b       roxr_roxl_w_q_d0
         addic.  addr, zero, 11                          // EC51  ROXR.W    #6,D1
-        b       L_04D64
+        b       roxr_roxl_w_q_d1
         addic.  addr, zero, 11                          // EC52  ROXR.W    #6,D2
-        b       L_04E24
+        b       roxr_roxl_w_q_d2
         addic.  addr, zero, 11                          // EC53  ROXR.W    #6,D3
-        b       L_04EE4
+        b       roxr_roxl_w_q_d3
         addic.  addr, zero, 11                          // EC54  ROXR.W    #6,D4
-        b       L_04FA4
+        b       roxr_roxl_w_q_d4
         addic.  addr, zero, 11                          // EC55  ROXR.W    #6,D5
-        b       L_05064
+        b       roxr_roxl_w_q_d5
         addic.  addr, zero, 11                          // EC56  ROXR.W    #6,D6
-        b       L_05124
+        b       roxr_roxl_w_q_d6
         addic.  addr, zero, 11                          // EC57  ROXR.W    #6,D7
-        b       L_051E4
+        b       roxr_roxl_w_q_d7
         li      addr, 10                                // EC58  ROR.W     #6,D0
-        b       L_04C6C
+        b       ror_w_q_d0
         li      addr, 10                                // EC59  ROR.W     #6,D1
-        b       L_04D2C
+        b       ror_w_q_d1
         li      addr, 10                                // EC5A  ROR.W     #6,D2
-        b       L_04DEC
+        b       ror_w_q_d2
         li      addr, 10                                // EC5B  ROR.W     #6,D3
-        b       L_04EAC
+        b       ror_w_q_d3
         li      addr, 10                                // EC5C  ROR.W     #6,D4
-        b       L_04F6C
+        b       ror_w_q_d4
         li      addr, 10                                // EC5D  ROR.W     #6,D5
-        b       L_0502C
+        b       ror_w_q_d5
         li      addr, 10                                // EC5E  ROR.W     #6,D6
-        b       L_050EC
+        b       ror_w_q_d6
         li      addr, 10                                // EC5F  ROR.W     #6,D7
-        b       L_051AC
+        b       ror_w_q_d7
         clrlwi. addr, d6, 26                            // EC60  ASR.W     D6,D0
-        b       L_04C28
+        b       asr_w_dn_d0
         clrlwi. addr, d6, 26                            // EC61  ASR.W     D6,D1
-        b       L_04CE8
+        b       asr_w_dn_d1
         clrlwi. addr, d6, 26                            // EC62  ASR.W     D6,D2
-        b       L_04DA8
+        b       asr_w_dn_d2
         clrlwi. addr, d6, 26                            // EC63  ASR.W     D6,D3
-        b       L_04E68
+        b       asr_w_dn_d3
         clrlwi. addr, d6, 26                            // EC64  ASR.W     D6,D4
-        b       L_04F28
+        b       asr_w_dn_d4
         clrlwi. addr, d6, 26                            // EC65  ASR.W     D6,D5
-        b       L_04FE8
+        b       asr_w_dn_d5
         clrlwi. addr, d6, 26                            // EC66  ASR.W     D6,D6
-        b       L_050A8
+        b       asr_w_dn_d6
         clrlwi. addr, d6, 26                            // EC67  ASR.W     D6,D7
-        b       L_05168
+        b       asr_w_dn_d7
         clrlwi. addr, d6, 26                            // EC68  LSR.W     D6,D0
-        b       L_04C00
+        b       lsr_w_dn_d0
         clrlwi. addr, d6, 26                            // EC69  LSR.W     D6,D1
-        b       L_04CC0
+        b       lsr_w_dn_d1
         clrlwi. addr, d6, 26                            // EC6A  LSR.W     D6,D2
-        b       L_04D80
+        b       lsr_w_dn_d2
         clrlwi. addr, d6, 26                            // EC6B  LSR.W     D6,D3
-        b       L_04E40
+        b       lsr_w_dn_d3
         clrlwi. addr, d6, 26                            // EC6C  LSR.W     D6,D4
-        b       L_04F00
+        b       lsr_w_dn_d4
         clrlwi. addr, d6, 26                            // EC6D  LSR.W     D6,D5
-        b       L_04FC0
+        b       lsr_w_dn_d5
         clrlwi. addr, d6, 26                            // EC6E  LSR.W     D6,D6
-        b       L_05080
+        b       lsr_w_dn_d6
         clrlwi. addr, d6, 26                            // EC6F  LSR.W     D6,D7
-        b       L_05140
+        b       lsr_w_dn_d7
         clrlwi. addr, d6, 26                            // EC70  ROXR.W    D6,D0
-        b       L_04CA0
+        b       roxr_roxl_w_dn_d0
         clrlwi. addr, d6, 26                            // EC71  ROXR.W    D6,D1
-        b       L_04D60
+        b       roxr_roxl_w_dn_d1
         clrlwi. addr, d6, 26                            // EC72  ROXR.W    D6,D2
-        b       L_04E20
+        b       roxr_roxl_w_dn_d2
         clrlwi. addr, d6, 26                            // EC73  ROXR.W    D6,D3
-        b       L_04EE0
+        b       roxr_roxl_w_dn_d3
         clrlwi. addr, d6, 26                            // EC74  ROXR.W    D6,D4
-        b       L_04FA0
+        b       roxr_roxl_w_dn_d4
         clrlwi. addr, d6, 26                            // EC75  ROXR.W    D6,D5
-        b       L_05060
+        b       roxr_roxl_w_dn_d5
         clrlwi. addr, d6, 26                            // EC76  ROXR.W    D6,D6
-        b       L_05120
+        b       roxr_roxl_w_dn_d6
         clrlwi. addr, d6, 26                            // EC77  ROXR.W    D6,D7
-        b       L_051E0
+        b       roxr_roxl_w_dn_d7
         clrlwi. addr, d6, 26                            // EC78  ROR.W     D6,D0
-        b       L_04C60
+        b       ror_w_dn_d0
         clrlwi. addr, d6, 26                            // EC79  ROR.W     D6,D1
-        b       L_04D20
+        b       ror_w_dn_d1
         clrlwi. addr, d6, 26                            // EC7A  ROR.W     D6,D2
-        b       L_04DE0
+        b       ror_w_dn_d2
         clrlwi. addr, d6, 26                            // EC7B  ROR.W     D6,D3
-        b       L_04EA0
+        b       ror_w_dn_d3
         clrlwi. addr, d6, 26                            // EC7C  ROR.W     D6,D4
-        b       L_04F60
+        b       ror_w_dn_d4
         clrlwi. addr, d6, 26                            // EC7D  ROR.W     D6,D5
-        b       L_05020
+        b       ror_w_dn_d5
         clrlwi. addr, d6, 26                            // EC7E  ROR.W     D6,D6
-        b       L_050E0
+        b       ror_w_dn_d6
         clrlwi. addr, d6, 26                            // EC7F  ROR.W     D6,D7
-        b       L_051A0
+        b       ror_w_dn_d7
 
 // ---- $EC80-$ECBF --------------------------------------------------------
         srawi   data, d0, 5                             // EC80  ASR.L     #6,D0
-        b       L_05234
+        b       asr_l_q_d0
         srawi   data, d1, 5                             // EC81  ASR.L     #6,D1
-        b       L_052D4
+        b       asr_l_q_d1
         srawi   data, d2, 5                             // EC82  ASR.L     #6,D2
-        b       L_05374
+        b       asr_l_q_d2
         srawi   data, d3, 5                             // EC83  ASR.L     #6,D3
-        b       L_05414
+        b       asr_l_q_d3
         srawi   data, d4, 5                             // EC84  ASR.L     #6,D4
-        b       L_054B4
+        b       asr_l_q_d4
         srawi   data, d5, 5                             // EC85  ASR.L     #6,D5
-        b       L_05554
+        b       asr_l_q_d5
         srawi   data, d6, 5                             // EC86  ASR.L     #6,D6
-        b       L_055F4
+        b       asr_l_q_d6
         srawi   data, d7, 5                             // EC87  ASR.L     #6,D7
-        b       L_05694
+        b       asr_l_q_d7
         srwi    data, d0, 5                             // EC88  LSR.L     #6,D0
-        b       L_0520C
+        b       lsr_l_q_d0
         srwi    data, d1, 5                             // EC89  LSR.L     #6,D1
-        b       L_052AC
+        b       lsr_l_q_d1
         srwi    data, d2, 5                             // EC8A  LSR.L     #6,D2
-        b       L_0534C
+        b       lsr_l_q_d2
         srwi    data, d3, 5                             // EC8B  LSR.L     #6,D3
-        b       L_053EC
+        b       lsr_l_q_d3
         srwi    data, d4, 5                             // EC8C  LSR.L     #6,D4
-        b       L_0548C
+        b       lsr_l_q_d4
         srwi    data, d5, 5                             // EC8D  LSR.L     #6,D5
-        b       L_0552C
+        b       lsr_l_q_d5
         srwi    data, d6, 5                             // EC8E  LSR.L     #6,D6
-        b       L_055CC
+        b       lsr_l_q_d6
         srwi    data, d7, 5                             // EC8F  LSR.L     #6,D7
-        b       L_0566C
+        b       lsr_l_q_d7
         addic.  addr, zero, 27                          // EC90  ROXR.L    #6,D0
-        b       L_05284
+        b       roxr_roxl_l_q_d0
         addic.  addr, zero, 27                          // EC91  ROXR.L    #6,D1
-        b       L_05324
+        b       roxr_roxl_l_q_d1
         addic.  addr, zero, 27                          // EC92  ROXR.L    #6,D2
-        b       L_053C4
+        b       roxr_roxl_l_q_d2
         addic.  addr, zero, 27                          // EC93  ROXR.L    #6,D3
-        b       L_05464
+        b       roxr_roxl_l_q_d3
         addic.  addr, zero, 27                          // EC94  ROXR.L    #6,D4
-        b       L_05504
+        b       roxr_roxl_l_q_d4
         addic.  addr, zero, 27                          // EC95  ROXR.L    #6,D5
-        b       L_055A4
+        b       roxr_roxl_l_q_d5
         addic.  addr, zero, 27                          // EC96  ROXR.L    #6,D6
-        b       L_05644
+        b       roxr_roxl_l_q_d6
         addic.  addr, zero, 27                          // EC97  ROXR.L    #6,D7
-        b       L_056E4
+        b       roxr_roxl_l_q_d7
         rotlwi  data, d0, 26                            // EC98  ROR.L     #6,D0
-        b       L_05260
+        b       ror_l_q_d0
         rotlwi  data, d1, 26                            // EC99  ROR.L     #6,D1
-        b       L_05300
+        b       ror_l_q_d1
         rotlwi  data, d2, 26                            // EC9A  ROR.L     #6,D2
-        b       L_053A0
+        b       ror_l_q_d2
         rotlwi  data, d3, 26                            // EC9B  ROR.L     #6,D3
-        b       L_05440
+        b       ror_l_q_d3
         rotlwi  data, d4, 26                            // EC9C  ROR.L     #6,D4
-        b       L_054E0
+        b       ror_l_q_d4
         rotlwi  data, d5, 26                            // EC9D  ROR.L     #6,D5
-        b       L_05580
+        b       ror_l_q_d5
         rotlwi  data, d6, 26                            // EC9E  ROR.L     #6,D6
-        b       L_05620
+        b       ror_l_q_d6
         rotlwi  data, d7, 26                            // EC9F  ROR.L     #6,D7
-        b       L_056C0
+        b       ror_l_q_d7
         clrlwi. addr, d6, 26                            // ECA0  ASR.L     D6,D0
-        b       L_05228
+        b       asr_l_dn_d0
         clrlwi. addr, d6, 26                            // ECA1  ASR.L     D6,D1
-        b       L_052C8
+        b       asr_l_dn_d1
         clrlwi. addr, d6, 26                            // ECA2  ASR.L     D6,D2
-        b       L_05368
+        b       asr_l_dn_d2
         clrlwi. addr, d6, 26                            // ECA3  ASR.L     D6,D3
-        b       L_05408
+        b       asr_l_dn_d3
         clrlwi. addr, d6, 26                            // ECA4  ASR.L     D6,D4
-        b       L_054A8
+        b       asr_l_dn_d4
         clrlwi. addr, d6, 26                            // ECA5  ASR.L     D6,D5
-        b       L_05548
+        b       asr_l_dn_d5
         clrlwi. addr, d6, 26                            // ECA6  ASR.L     D6,D6
-        b       L_055E8
+        b       asr_l_dn_d6
         clrlwi. addr, d6, 26                            // ECA7  ASR.L     D6,D7
-        b       L_05688
+        b       asr_l_dn_d7
         clrlwi. addr, d6, 26                            // ECA8  LSR.L     D6,D0
-        b       L_05200
+        b       lsr_l_dn_d0
         clrlwi. addr, d6, 26                            // ECA9  LSR.L     D6,D1
-        b       L_052A0
+        b       lsr_l_dn_d1
         clrlwi. addr, d6, 26                            // ECAA  LSR.L     D6,D2
-        b       L_05340
+        b       lsr_l_dn_d2
         clrlwi. addr, d6, 26                            // ECAB  LSR.L     D6,D3
-        b       L_053E0
+        b       lsr_l_dn_d3
         clrlwi. addr, d6, 26                            // ECAC  LSR.L     D6,D4
-        b       L_05480
+        b       lsr_l_dn_d4
         clrlwi. addr, d6, 26                            // ECAD  LSR.L     D6,D5
-        b       L_05520
+        b       lsr_l_dn_d5
         clrlwi. addr, d6, 26                            // ECAE  LSR.L     D6,D6
-        b       L_055C0
+        b       lsr_l_dn_d6
         clrlwi. addr, d6, 26                            // ECAF  LSR.L     D6,D7
-        b       L_05660
+        b       lsr_l_dn_d7
         clrlwi. addr, d6, 26                            // ECB0  ROXR.L    D6,D0
-        b       L_05280
+        b       roxr_roxl_l_dn_d0
         clrlwi. addr, d6, 26                            // ECB1  ROXR.L    D6,D1
-        b       L_05320
+        b       roxr_roxl_l_dn_d1
         clrlwi. addr, d6, 26                            // ECB2  ROXR.L    D6,D2
-        b       L_053C0
+        b       roxr_roxl_l_dn_d2
         clrlwi. addr, d6, 26                            // ECB3  ROXR.L    D6,D3
-        b       L_05460
+        b       roxr_roxl_l_dn_d3
         clrlwi. addr, d6, 26                            // ECB4  ROXR.L    D6,D4
-        b       L_05500
+        b       roxr_roxl_l_dn_d4
         clrlwi. addr, d6, 26                            // ECB5  ROXR.L    D6,D5
-        b       L_055A0
+        b       roxr_roxl_l_dn_d5
         clrlwi. addr, d6, 26                            // ECB6  ROXR.L    D6,D6
-        b       L_05640
+        b       roxr_roxl_l_dn_d6
         clrlwi. addr, d6, 26                            // ECB7  ROXR.L    D6,D7
-        b       L_056E0
+        b       roxr_roxl_l_dn_d7
         clrlwi. addr, d6, 26                            // ECB8  ROR.L     D6,D0
-        b       L_05254
+        b       ror_l_dn_d0
         clrlwi. addr, d6, 26                            // ECB9  ROR.L     D6,D1
-        b       L_052F4
+        b       ror_l_dn_d1
         clrlwi. addr, d6, 26                            // ECBA  ROR.L     D6,D2
-        b       L_05394
+        b       ror_l_dn_d2
         clrlwi. addr, d6, 26                            // ECBB  ROR.L     D6,D3
-        b       L_05434
+        b       ror_l_dn_d3
         clrlwi. addr, d6, 26                            // ECBC  ROR.L     D6,D4
-        b       L_054D4
+        b       ror_l_dn_d4
         clrlwi. addr, d6, 26                            // ECBD  ROR.L     D6,D5
-        b       L_05574
+        b       ror_l_dn_d5
         clrlwi. addr, d6, 26                            // ECBE  ROR.L     D6,D6
-        b       L_05614
+        b       ror_l_dn_d6
         clrlwi. addr, d6, 26                            // ECBF  ROR.L     D6,D7
-        b       L_056B4
+        b       ror_l_dn_d7
 
 // ---- $ECC0-$ECFF --------------------------------------------------------
         ori     addr, code_ptr, L_05700 - cb            // ECC0  BFCLR     D0{ofs:wid}
-        b       L_079C0
+        b       bfchg_bfclr_bfset
         ori     addr, code_ptr, L_05710 - cb            // ECC1  BFCLR     D1{ofs:wid}
-        b       L_079C0
+        b       bfchg_bfclr_bfset
         ori     addr, code_ptr, L_05720 - cb            // ECC2  BFCLR     D2{ofs:wid}
-        b       L_079C0
+        b       bfchg_bfclr_bfset
         ori     addr, code_ptr, L_05730 - cb            // ECC3  BFCLR     D3{ofs:wid}
-        b       L_079C0
+        b       bfchg_bfclr_bfset
         ori     addr, code_ptr, L_05740 - cb            // ECC4  BFCLR     D4{ofs:wid}
-        b       L_079C0
+        b       bfchg_bfclr_bfset
         ori     addr, code_ptr, L_05750 - cb            // ECC5  BFCLR     D5{ofs:wid}
-        b       L_079C0
+        b       bfchg_bfclr_bfset
         ori     addr, code_ptr, L_05760 - cb            // ECC6  BFCLR     D6{ofs:wid}
-        b       L_079C0
+        b       bfchg_bfclr_bfset
         ori     addr, code_ptr, L_05770 - cb            // ECC7  BFCLR     D7{ofs:wid}
-        b       L_079C0
+        b       bfchg_bfclr_bfset
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // ECC8  BFCLR     A0{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // ECC9  BFCLR     A1{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // ECCA  BFCLR     A2{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // ECCB  BFCLR     A3{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // ECCC  BFCLR     A4{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // ECCD  BFCLR     A5{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // ECCE  BFCLR     A6{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // ECCF  BFCLR     A7{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         mr      addr, a0                                // ECD0  BFCLR     (A0){ofs:wid}
-        b       L_07A34
+        b       bfchg_bfclr_bfset_mem_2
         mr      addr, a1                                // ECD1  BFCLR     (A1){ofs:wid}
-        b       L_07A34
+        b       bfchg_bfclr_bfset_mem_2
         mr      addr, a2                                // ECD2  BFCLR     (A2){ofs:wid}
-        b       L_07A34
+        b       bfchg_bfclr_bfset_mem_2
         mr      addr, a3                                // ECD3  BFCLR     (A3){ofs:wid}
-        b       L_07A34
+        b       bfchg_bfclr_bfset_mem_2
         mr      addr, a4                                // ECD4  BFCLR     (A4){ofs:wid}
-        b       L_07A34
+        b       bfchg_bfclr_bfset_mem_2
         mr      addr, a5                                // ECD5  BFCLR     (A5){ofs:wid}
-        b       L_07A34
+        b       bfchg_bfclr_bfset_mem_2
         mr      addr, a6                                // ECD6  BFCLR     (A6){ofs:wid}
-        b       L_07A34
+        b       bfchg_bfclr_bfset_mem_2
         mr      addr, a7                                // ECD7  BFCLR     (A7){ofs:wid}
-        b       L_07A34
+        b       bfchg_bfclr_bfset_mem_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // ECD8  BFCLR     (A0)+{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // ECD9  BFCLR     (A1)+{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // ECDA  BFCLR     (A2)+{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // ECDB  BFCLR     (A3)+{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // ECDC  BFCLR     (A4)+{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // ECDD  BFCLR     (A5)+{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // ECDE  BFCLR     (A6)+{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // ECDF  BFCLR     (A7)+{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // ECE0  BFCLR     -(A0){ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // ECE1  BFCLR     -(A1){ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // ECE2  BFCLR     -(A2){ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // ECE3  BFCLR     -(A3){ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // ECE4  BFCLR     -(A4){ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // ECE5  BFCLR     -(A5){ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // ECE6  BFCLR     -(A6){ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // ECE7  BFCLR     -(A7){ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         mr      addr, a0                                // ECE8  BFCLR     (d16,A0){ofs:wid}
-        b       L_07A20
+        b       bfchg_bfclr_bfset_mem
         mr      addr, a1                                // ECE9  BFCLR     (d16,A1){ofs:wid}
-        b       L_07A20
+        b       bfchg_bfclr_bfset_mem
         mr      addr, a2                                // ECEA  BFCLR     (d16,A2){ofs:wid}
-        b       L_07A20
+        b       bfchg_bfclr_bfset_mem
         mr      addr, a3                                // ECEB  BFCLR     (d16,A3){ofs:wid}
-        b       L_07A20
+        b       bfchg_bfclr_bfset_mem
         mr      addr, a4                                // ECEC  BFCLR     (d16,A4){ofs:wid}
-        b       L_07A20
+        b       bfchg_bfclr_bfset_mem
         mr      addr, a5                                // ECED  BFCLR     (d16,A5){ofs:wid}
-        b       L_07A20
+        b       bfchg_bfclr_bfset_mem
         mr      addr, a6                                // ECEE  BFCLR     (d16,A6){ofs:wid}
-        b       L_07A20
+        b       bfchg_bfclr_bfset_mem
         mr      addr, a7                                // ECEF  BFCLR     (d16,A7){ofs:wid}
-        b       L_07A20
-        ori     rtn_addr, code_ptr, L_07A3C - cb        // ECF0  BFCLR     (d8,A0,Xn){ofs:wid}
-        b       L_05980
-        ori     rtn_addr, code_ptr, L_07A3C - cb        // ECF1  BFCLR     (d8,A1,Xn){ofs:wid}
-        b       L_059E0
-        ori     rtn_addr, code_ptr, L_07A3C - cb        // ECF2  BFCLR     (d8,A2,Xn){ofs:wid}
-        b       L_05A40
-        ori     rtn_addr, code_ptr, L_07A3C - cb        // ECF3  BFCLR     (d8,A3,Xn){ofs:wid}
-        b       L_05AA0
-        ori     rtn_addr, code_ptr, L_07A3C - cb        // ECF4  BFCLR     (d8,A4,Xn){ofs:wid}
-        b       L_05B00
-        ori     rtn_addr, code_ptr, L_07A3C - cb        // ECF5  BFCLR     (d8,A5,Xn){ofs:wid}
-        b       L_05B60
-        ori     rtn_addr, code_ptr, L_07A3C - cb        // ECF6  BFCLR     (d8,A6,Xn){ofs:wid}
-        b       L_05BC0
-        ori     rtn_addr, code_ptr, L_07A3C - cb        // ECF7  BFCLR     (d8,A7,Xn){ofs:wid}
-        b       L_05C20
+        b       bfchg_bfclr_bfset_mem
+        ori     rtn_addr, code_ptr, bfchg_bfclr_bfset_mem_3 - cb  // ECF0  BFCLR     (d8,A0,Xn){ofs:wid}
+        b       movem_cas_etc_any_any
+        ori     rtn_addr, code_ptr, bfchg_bfclr_bfset_mem_3 - cb  // ECF1  BFCLR     (d8,A1,Xn){ofs:wid}
+        b       movem_cas_etc_any_any_2
+        ori     rtn_addr, code_ptr, bfchg_bfclr_bfset_mem_3 - cb  // ECF2  BFCLR     (d8,A2,Xn){ofs:wid}
+        b       movem_cas_etc_any_any_3
+        ori     rtn_addr, code_ptr, bfchg_bfclr_bfset_mem_3 - cb  // ECF3  BFCLR     (d8,A3,Xn){ofs:wid}
+        b       movem_cas_etc_any_any_4
+        ori     rtn_addr, code_ptr, bfchg_bfclr_bfset_mem_3 - cb  // ECF4  BFCLR     (d8,A4,Xn){ofs:wid}
+        b       movem_cas_etc_any_any_5
+        ori     rtn_addr, code_ptr, bfchg_bfclr_bfset_mem_3 - cb  // ECF5  BFCLR     (d8,A5,Xn){ofs:wid}
+        b       movem_cas_etc_any_any_6
+        ori     rtn_addr, code_ptr, bfchg_bfclr_bfset_mem_3 - cb  // ECF6  BFCLR     (d8,A6,Xn){ofs:wid}
+        b       movem_cas_etc_any_any_7
+        ori     rtn_addr, code_ptr, bfchg_bfclr_bfset_mem_3 - cb  // ECF7  BFCLR     (d8,A7,Xn){ofs:wid}
+        b       movem_cas_etc_any_any_8
         lhau    addr, 2(pc)                             // ECF8  BFCLR     (xxx).W{ofs:wid}
-        b       L_07A34
-        ori     rtn_addr, code_ptr, L_07A3C - cb        // ECF9  BFCLR     (xxx).L{ofs:wid}
-        b       L_05E00
+        b       bfchg_bfclr_bfset_mem_2
+        ori     rtn_addr, code_ptr, bfchg_bfclr_bfset_mem_3 - cb  // ECF9  BFCLR     (xxx).L{ofs:wid}
+        b       cea_x_71
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // ECFA  BFCLR     (d16,PC){ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // ECFB  BFCLR     (d8,PC,Xn){ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // ECFC  BFCLR     #<data>{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // ECFD  BFCLR     <ea 7.5>{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // ECFE  BFCLR     <ea 7.6>{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // ECFF  BFCLR     <ea 7.7>{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $ED00-$ED3F --------------------------------------------------------
         li      addr, 6                                 // ED00  ASL.B     #6,D0
-        b       L_0B304
+        b       asl_b_q_d0
         li      addr, 6                                 // ED01  ASL.B     #6,D1
-        b       L_0B3C4
+        b       asl_b_q_d1
         li      addr, 6                                 // ED02  ASL.B     #6,D2
-        b       L_0B484
+        b       asl_b_q_d2
         li      addr, 6                                 // ED03  ASL.B     #6,D3
-        b       L_0B544
+        b       asl_b_q_d3
         li      addr, 6                                 // ED04  ASL.B     #6,D4
-        b       L_0B604
+        b       asl_b_q_d4
         li      addr, 6                                 // ED05  ASL.B     #6,D5
-        b       L_0B6C4
+        b       asl_b_q_d5
         li      addr, 6                                 // ED06  ASL.B     #6,D6
-        b       L_0B784
+        b       asl_b_q_d6
         li      addr, 6                                 // ED07  ASL.B     #6,D7
-        b       L_0B844
+        b       asl_b_q_d7
         slwi    data, d0, 29                            // ED08  LSL.B     #6,D0
-        b       L_0B2E0
+        b       lsl_b_q_d0
         slwi    data, d1, 29                            // ED09  LSL.B     #6,D1
-        b       L_0B3A0
+        b       lsl_b_q_d1
         slwi    data, d2, 29                            // ED0A  LSL.B     #6,D2
-        b       L_0B460
+        b       lsl_b_q_d2
         slwi    data, d3, 29                            // ED0B  LSL.B     #6,D3
-        b       L_0B520
+        b       lsl_b_q_d3
         slwi    data, d4, 29                            // ED0C  LSL.B     #6,D4
-        b       L_0B5E0
+        b       lsl_b_q_d4
         slwi    data, d5, 29                            // ED0D  LSL.B     #6,D5
-        b       L_0B6A0
+        b       lsl_b_q_d5
         slwi    data, d6, 29                            // ED0E  LSL.B     #6,D6
-        b       L_0B760
+        b       lsl_b_q_d6
         slwi    data, d7, 29                            // ED0F  LSL.B     #6,D7
-        b       L_0B820
+        b       lsl_b_q_d7
         li      addr, 6                                 // ED10  ROXL.B    #6,D0
-        b       L_0B364
+        b       roxr_roxl_b_q_d0
         li      addr, 6                                 // ED11  ROXL.B    #6,D1
-        b       L_0B424
+        b       roxr_roxl_b_q_d1
         li      addr, 6                                 // ED12  ROXL.B    #6,D2
-        b       L_0B4E4
+        b       roxr_roxl_b_q_d2
         li      addr, 6                                 // ED13  ROXL.B    #6,D3
-        b       L_0B5A4
+        b       roxr_roxl_b_q_d3
         li      addr, 6                                 // ED14  ROXL.B    #6,D4
-        b       L_0B664
+        b       roxr_roxl_b_q_d4
         li      addr, 6                                 // ED15  ROXL.B    #6,D5
-        b       L_0B724
+        b       roxr_roxl_b_q_d5
         li      addr, 6                                 // ED16  ROXL.B    #6,D6
-        b       L_0B7E4
+        b       roxr_roxl_b_q_d6
         li      addr, 6                                 // ED17  ROXL.B    #6,D7
-        b       L_0B8A4
+        b       roxr_roxl_b_q_d7
         li      addr, 6                                 // ED18  ROL.B     #6,D0
-        b       L_0B348
+        b       rol_b_q_d0
         li      addr, 6                                 // ED19  ROL.B     #6,D1
-        b       L_0B408
+        b       rol_b_q_d1
         li      addr, 6                                 // ED1A  ROL.B     #6,D2
-        b       L_0B4C8
+        b       rol_b_q_d2
         li      addr, 6                                 // ED1B  ROL.B     #6,D3
-        b       L_0B588
+        b       rol_b_q_d3
         li      addr, 6                                 // ED1C  ROL.B     #6,D4
-        b       L_0B648
+        b       rol_b_q_d4
         li      addr, 6                                 // ED1D  ROL.B     #6,D5
-        b       L_0B708
+        b       rol_b_q_d5
         li      addr, 6                                 // ED1E  ROL.B     #6,D6
-        b       L_0B7C8
+        b       rol_b_q_d6
         li      addr, 6                                 // ED1F  ROL.B     #6,D7
-        b       L_0B888
+        b       rol_b_q_d7
         clrlwi. addr, d6, 26                            // ED20  ASL.B     D6,D0
-        b       L_0B300
+        b       asl_b_dn_d0
         clrlwi. addr, d6, 26                            // ED21  ASL.B     D6,D1
-        b       L_0B3C0
+        b       asl_b_dn_d1
         clrlwi. addr, d6, 26                            // ED22  ASL.B     D6,D2
-        b       L_0B480
+        b       asl_b_dn_d2
         clrlwi. addr, d6, 26                            // ED23  ASL.B     D6,D3
-        b       L_0B540
+        b       asl_b_dn_d3
         clrlwi. addr, d6, 26                            // ED24  ASL.B     D6,D4
-        b       L_0B600
+        b       asl_b_dn_d4
         clrlwi. addr, d6, 26                            // ED25  ASL.B     D6,D5
-        b       L_0B6C0
+        b       asl_b_dn_d5
         clrlwi. addr, d6, 26                            // ED26  ASL.B     D6,D6
-        b       L_0B780
+        b       asl_b_dn_d6
         clrlwi. addr, d6, 26                            // ED27  ASL.B     D6,D7
-        b       L_0B840
+        b       asl_b_dn_d7
         clrlwi. addr, d6, 26                            // ED28  LSL.B     D6,D0
-        b       L_0B2D4
+        b       lsl_b_dn_d0
         clrlwi. addr, d6, 26                            // ED29  LSL.B     D6,D1
-        b       L_0B394
+        b       lsl_b_dn_d1
         clrlwi. addr, d6, 26                            // ED2A  LSL.B     D6,D2
-        b       L_0B454
+        b       lsl_b_dn_d2
         clrlwi. addr, d6, 26                            // ED2B  LSL.B     D6,D3
-        b       L_0B514
+        b       lsl_b_dn_d3
         clrlwi. addr, d6, 26                            // ED2C  LSL.B     D6,D4
-        b       L_0B5D4
+        b       lsl_b_dn_d4
         clrlwi. addr, d6, 26                            // ED2D  LSL.B     D6,D5
-        b       L_0B694
+        b       lsl_b_dn_d5
         clrlwi. addr, d6, 26                            // ED2E  LSL.B     D6,D6
-        b       L_0B754
+        b       lsl_b_dn_d6
         clrlwi. addr, d6, 26                            // ED2F  LSL.B     D6,D7
-        b       L_0B814
+        b       lsl_b_dn_d7
         clrlwi. addr, d6, 26                            // ED30  ROXL.B    D6,D0
-        b       L_0B360
+        b       roxr_roxl_b_dn_d0
         clrlwi. addr, d6, 26                            // ED31  ROXL.B    D6,D1
-        b       L_0B420
+        b       roxr_roxl_b_dn_d1
         clrlwi. addr, d6, 26                            // ED32  ROXL.B    D6,D2
-        b       L_0B4E0
+        b       roxr_roxl_b_dn_d2
         clrlwi. addr, d6, 26                            // ED33  ROXL.B    D6,D3
-        b       L_0B5A0
+        b       roxr_roxl_b_dn_d3
         clrlwi. addr, d6, 26                            // ED34  ROXL.B    D6,D4
-        b       L_0B660
+        b       roxr_roxl_b_dn_d4
         clrlwi. addr, d6, 26                            // ED35  ROXL.B    D6,D5
-        b       L_0B720
+        b       roxr_roxl_b_dn_d5
         clrlwi. addr, d6, 26                            // ED36  ROXL.B    D6,D6
-        b       L_0B7E0
+        b       roxr_roxl_b_dn_d6
         clrlwi. addr, d6, 26                            // ED37  ROXL.B    D6,D7
-        b       L_0B8A0
+        b       roxr_roxl_b_dn_d7
         clrlwi. addr, d6, 26                            // ED38  ROL.B     D6,D0
-        b       L_0B340
+        b       rol_b_dn_d0
         clrlwi. addr, d6, 26                            // ED39  ROL.B     D6,D1
-        b       L_0B400
+        b       rol_b_dn_d1
         clrlwi. addr, d6, 26                            // ED3A  ROL.B     D6,D2
-        b       L_0B4C0
+        b       rol_b_dn_d2
         clrlwi. addr, d6, 26                            // ED3B  ROL.B     D6,D3
-        b       L_0B580
+        b       rol_b_dn_d3
         clrlwi. addr, d6, 26                            // ED3C  ROL.B     D6,D4
-        b       L_0B640
+        b       rol_b_dn_d4
         clrlwi. addr, d6, 26                            // ED3D  ROL.B     D6,D5
-        b       L_0B700
+        b       rol_b_dn_d5
         clrlwi. addr, d6, 26                            // ED3E  ROL.B     D6,D6
-        b       L_0B7C0
+        b       rol_b_dn_d6
         clrlwi. addr, d6, 26                            // ED3F  ROL.B     D6,D7
-        b       L_0B880
+        b       rol_b_dn_d7
 
 // ---- $ED40-$ED7F --------------------------------------------------------
         li      addr, 6                                 // ED40  ASL.W     #6,D0
-        b       L_04C44
+        b       asl_w_q_d0
         li      addr, 6                                 // ED41  ASL.W     #6,D1
-        b       L_04D04
+        b       asl_w_q_d1
         li      addr, 6                                 // ED42  ASL.W     #6,D2
-        b       L_04DC4
+        b       asl_w_q_d2
         li      addr, 6                                 // ED43  ASL.W     #6,D3
-        b       L_04E84
+        b       asl_w_q_d3
         li      addr, 6                                 // ED44  ASL.W     #6,D4
-        b       L_04F44
+        b       asl_w_q_d4
         li      addr, 6                                 // ED45  ASL.W     #6,D5
-        b       L_05004
+        b       asl_w_q_d5
         li      addr, 6                                 // ED46  ASL.W     #6,D6
-        b       L_050C4
+        b       asl_w_q_d6
         li      addr, 6                                 // ED47  ASL.W     #6,D7
-        b       L_05184
+        b       asl_w_q_d7
         slwi    data, d0, 21                            // ED48  LSL.W     #6,D0
-        b       L_04C20
+        b       lsl_w_q_d0
         slwi    data, d1, 21                            // ED49  LSL.W     #6,D1
-        b       L_04CE0
+        b       lsl_w_q_d1
         slwi    data, d2, 21                            // ED4A  LSL.W     #6,D2
-        b       L_04DA0
+        b       lsl_w_q_d2
         slwi    data, d3, 21                            // ED4B  LSL.W     #6,D3
-        b       L_04E60
+        b       lsl_w_q_d3
         slwi    data, d4, 21                            // ED4C  LSL.W     #6,D4
-        b       L_04F20
+        b       lsl_w_q_d4
         slwi    data, d5, 21                            // ED4D  LSL.W     #6,D5
-        b       L_04FE0
+        b       lsl_w_q_d5
         slwi    data, d6, 21                            // ED4E  LSL.W     #6,D6
-        b       L_050A0
+        b       lsl_w_q_d6
         slwi    data, d7, 21                            // ED4F  LSL.W     #6,D7
-        b       L_05160
+        b       lsl_w_q_d7
         addic.  addr, zero, 6                           // ED50  ROXL.W    #6,D0
-        b       L_04CA4
+        b       roxr_roxl_w_q_d0
         addic.  addr, zero, 6                           // ED51  ROXL.W    #6,D1
-        b       L_04D64
+        b       roxr_roxl_w_q_d1
         addic.  addr, zero, 6                           // ED52  ROXL.W    #6,D2
-        b       L_04E24
+        b       roxr_roxl_w_q_d2
         addic.  addr, zero, 6                           // ED53  ROXL.W    #6,D3
-        b       L_04EE4
+        b       roxr_roxl_w_q_d3
         addic.  addr, zero, 6                           // ED54  ROXL.W    #6,D4
-        b       L_04FA4
+        b       roxr_roxl_w_q_d4
         addic.  addr, zero, 6                           // ED55  ROXL.W    #6,D5
-        b       L_05064
+        b       roxr_roxl_w_q_d5
         addic.  addr, zero, 6                           // ED56  ROXL.W    #6,D6
-        b       L_05124
+        b       roxr_roxl_w_q_d6
         addic.  addr, zero, 6                           // ED57  ROXL.W    #6,D7
-        b       L_051E4
+        b       roxr_roxl_w_q_d7
         li      addr, 6                                 // ED58  ROL.W     #6,D0
-        b       L_04C88
+        b       rol_w_q_d0
         li      addr, 6                                 // ED59  ROL.W     #6,D1
-        b       L_04D48
+        b       rol_w_q_d1
         li      addr, 6                                 // ED5A  ROL.W     #6,D2
-        b       L_04E08
+        b       rol_w_q_d2
         li      addr, 6                                 // ED5B  ROL.W     #6,D3
-        b       L_04EC8
+        b       rol_w_q_d3
         li      addr, 6                                 // ED5C  ROL.W     #6,D4
-        b       L_04F88
+        b       rol_w_q_d4
         li      addr, 6                                 // ED5D  ROL.W     #6,D5
-        b       L_05048
+        b       rol_w_q_d5
         li      addr, 6                                 // ED5E  ROL.W     #6,D6
-        b       L_05108
+        b       rol_w_q_d6
         li      addr, 6                                 // ED5F  ROL.W     #6,D7
-        b       L_051C8
+        b       rol_w_q_d7
         clrlwi. addr, d6, 26                            // ED60  ASL.W     D6,D0
-        b       L_04C40
+        b       asl_w_dn_d0
         clrlwi. addr, d6, 26                            // ED61  ASL.W     D6,D1
-        b       L_04D00
+        b       asl_w_dn_d1
         clrlwi. addr, d6, 26                            // ED62  ASL.W     D6,D2
-        b       L_04DC0
+        b       asl_w_dn_d2
         clrlwi. addr, d6, 26                            // ED63  ASL.W     D6,D3
-        b       L_04E80
+        b       asl_w_dn_d3
         clrlwi. addr, d6, 26                            // ED64  ASL.W     D6,D4
-        b       L_04F40
+        b       asl_w_dn_d4
         clrlwi. addr, d6, 26                            // ED65  ASL.W     D6,D5
-        b       L_05000
+        b       asl_w_dn_d5
         clrlwi. addr, d6, 26                            // ED66  ASL.W     D6,D6
-        b       L_050C0
+        b       asl_w_dn_d6
         clrlwi. addr, d6, 26                            // ED67  ASL.W     D6,D7
-        b       L_05180
+        b       asl_w_dn_d7
         clrlwi. addr, d6, 26                            // ED68  LSL.W     D6,D0
-        b       L_04C14
+        b       lsl_w_dn_d0
         clrlwi. addr, d6, 26                            // ED69  LSL.W     D6,D1
-        b       L_04CD4
+        b       lsl_w_dn_d1
         clrlwi. addr, d6, 26                            // ED6A  LSL.W     D6,D2
-        b       L_04D94
+        b       lsl_w_dn_d2
         clrlwi. addr, d6, 26                            // ED6B  LSL.W     D6,D3
-        b       L_04E54
+        b       lsl_w_dn_d3
         clrlwi. addr, d6, 26                            // ED6C  LSL.W     D6,D4
-        b       L_04F14
+        b       lsl_w_dn_d4
         clrlwi. addr, d6, 26                            // ED6D  LSL.W     D6,D5
-        b       L_04FD4
+        b       lsl_w_dn_d5
         clrlwi. addr, d6, 26                            // ED6E  LSL.W     D6,D6
-        b       L_05094
+        b       lsl_w_dn_d6
         clrlwi. addr, d6, 26                            // ED6F  LSL.W     D6,D7
-        b       L_05154
+        b       lsl_w_dn_d7
         clrlwi. addr, d6, 26                            // ED70  ROXL.W    D6,D0
-        b       L_04CA0
+        b       roxr_roxl_w_dn_d0
         clrlwi. addr, d6, 26                            // ED71  ROXL.W    D6,D1
-        b       L_04D60
+        b       roxr_roxl_w_dn_d1
         clrlwi. addr, d6, 26                            // ED72  ROXL.W    D6,D2
-        b       L_04E20
+        b       roxr_roxl_w_dn_d2
         clrlwi. addr, d6, 26                            // ED73  ROXL.W    D6,D3
-        b       L_04EE0
+        b       roxr_roxl_w_dn_d3
         clrlwi. addr, d6, 26                            // ED74  ROXL.W    D6,D4
-        b       L_04FA0
+        b       roxr_roxl_w_dn_d4
         clrlwi. addr, d6, 26                            // ED75  ROXL.W    D6,D5
-        b       L_05060
+        b       roxr_roxl_w_dn_d5
         clrlwi. addr, d6, 26                            // ED76  ROXL.W    D6,D6
-        b       L_05120
+        b       roxr_roxl_w_dn_d6
         clrlwi. addr, d6, 26                            // ED77  ROXL.W    D6,D7
-        b       L_051E0
+        b       roxr_roxl_w_dn_d7
         clrlwi. addr, d6, 26                            // ED78  ROL.W     D6,D0
-        b       L_04C80
+        b       rol_w_dn_d0
         clrlwi. addr, d6, 26                            // ED79  ROL.W     D6,D1
-        b       L_04D40
+        b       rol_w_dn_d1
         clrlwi. addr, d6, 26                            // ED7A  ROL.W     D6,D2
-        b       L_04E00
+        b       rol_w_dn_d2
         clrlwi. addr, d6, 26                            // ED7B  ROL.W     D6,D3
-        b       L_04EC0
+        b       rol_w_dn_d3
         clrlwi. addr, d6, 26                            // ED7C  ROL.W     D6,D4
-        b       L_04F80
+        b       rol_w_dn_d4
         clrlwi. addr, d6, 26                            // ED7D  ROL.W     D6,D5
-        b       L_05040
+        b       rol_w_dn_d5
         clrlwi. addr, d6, 26                            // ED7E  ROL.W     D6,D6
-        b       L_05100
+        b       rol_w_dn_d6
         clrlwi. addr, d6, 26                            // ED7F  ROL.W     D6,D7
-        b       L_051C0
+        b       rol_w_dn_d7
 
 // ---- $ED80-$EDBF --------------------------------------------------------
         li      addr, 6                                 // ED80  ASL.L     #6,D0
-        b       L_05244
+        b       asl_l_q_d0
         li      addr, 6                                 // ED81  ASL.L     #6,D1
-        b       L_052E4
+        b       asl_l_q_d1
         li      addr, 6                                 // ED82  ASL.L     #6,D2
-        b       L_05384
+        b       asl_l_q_d2
         li      addr, 6                                 // ED83  ASL.L     #6,D3
-        b       L_05424
+        b       asl_l_q_d3
         li      addr, 6                                 // ED84  ASL.L     #6,D4
-        b       L_054C4
+        b       asl_l_q_d4
         li      addr, 6                                 // ED85  ASL.L     #6,D5
-        b       L_05564
+        b       asl_l_q_d5
         li      addr, 6                                 // ED86  ASL.L     #6,D6
-        b       L_05604
+        b       asl_l_q_d6
         li      addr, 6                                 // ED87  ASL.L     #6,D7
-        b       L_056A4
+        b       asl_l_q_d7
         slwi    data, d0, 5                             // ED88  LSL.L     #6,D0
-        b       L_05220
+        b       lsl_l_q_d0
         slwi    data, d1, 5                             // ED89  LSL.L     #6,D1
-        b       L_052C0
+        b       lsl_l_q_d1
         slwi    data, d2, 5                             // ED8A  LSL.L     #6,D2
-        b       L_05360
+        b       lsl_l_q_d2
         slwi    data, d3, 5                             // ED8B  LSL.L     #6,D3
-        b       L_05400
+        b       lsl_l_q_d3
         slwi    data, d4, 5                             // ED8C  LSL.L     #6,D4
-        b       L_054A0
+        b       lsl_l_q_d4
         slwi    data, d5, 5                             // ED8D  LSL.L     #6,D5
-        b       L_05540
+        b       lsl_l_q_d5
         slwi    data, d6, 5                             // ED8E  LSL.L     #6,D6
-        b       L_055E0
+        b       lsl_l_q_d6
         slwi    data, d7, 5                             // ED8F  LSL.L     #6,D7
-        b       L_05680
+        b       lsl_l_q_d7
         addic.  addr, zero, 6                           // ED90  ROXL.L    #6,D0
-        b       L_05284
+        b       roxr_roxl_l_q_d0
         addic.  addr, zero, 6                           // ED91  ROXL.L    #6,D1
-        b       L_05324
+        b       roxr_roxl_l_q_d1
         addic.  addr, zero, 6                           // ED92  ROXL.L    #6,D2
-        b       L_053C4
+        b       roxr_roxl_l_q_d2
         addic.  addr, zero, 6                           // ED93  ROXL.L    #6,D3
-        b       L_05464
+        b       roxr_roxl_l_q_d3
         addic.  addr, zero, 6                           // ED94  ROXL.L    #6,D4
-        b       L_05504
+        b       roxr_roxl_l_q_d4
         addic.  addr, zero, 6                           // ED95  ROXL.L    #6,D5
-        b       L_055A4
+        b       roxr_roxl_l_q_d5
         addic.  addr, zero, 6                           // ED96  ROXL.L    #6,D6
-        b       L_05644
+        b       roxr_roxl_l_q_d6
         addic.  addr, zero, 6                           // ED97  ROXL.L    #6,D7
-        b       L_056E4
+        b       roxr_roxl_l_q_d7
         rotlwi  data, d0, 6                             // ED98  ROL.L     #6,D0
-        b       L_05270
+        b       rol_l_q_d0
         rotlwi  data, d1, 6                             // ED99  ROL.L     #6,D1
-        b       L_05310
+        b       rol_l_q_d1
         rotlwi  data, d2, 6                             // ED9A  ROL.L     #6,D2
-        b       L_053B0
+        b       rol_l_q_d2
         rotlwi  data, d3, 6                             // ED9B  ROL.L     #6,D3
-        b       L_05450
+        b       rol_l_q_d3
         rotlwi  data, d4, 6                             // ED9C  ROL.L     #6,D4
-        b       L_054F0
+        b       rol_l_q_d4
         rotlwi  data, d5, 6                             // ED9D  ROL.L     #6,D5
-        b       L_05590
+        b       rol_l_q_d5
         rotlwi  data, d6, 6                             // ED9E  ROL.L     #6,D6
-        b       L_05630
+        b       rol_l_q_d6
         rotlwi  data, d7, 6                             // ED9F  ROL.L     #6,D7
-        b       L_056D0
+        b       rol_l_q_d7
         clrlwi. addr, d6, 26                            // EDA0  ASL.L     D6,D0
-        b       L_05240
+        b       asl_l_dn_d0
         clrlwi. addr, d6, 26                            // EDA1  ASL.L     D6,D1
-        b       L_052E0
+        b       asl_l_dn_d1
         clrlwi. addr, d6, 26                            // EDA2  ASL.L     D6,D2
-        b       L_05380
+        b       asl_l_dn_d2
         clrlwi. addr, d6, 26                            // EDA3  ASL.L     D6,D3
-        b       L_05420
+        b       asl_l_dn_d3
         clrlwi. addr, d6, 26                            // EDA4  ASL.L     D6,D4
-        b       L_054C0
+        b       asl_l_dn_d4
         clrlwi. addr, d6, 26                            // EDA5  ASL.L     D6,D5
-        b       L_05560
+        b       asl_l_dn_d5
         clrlwi. addr, d6, 26                            // EDA6  ASL.L     D6,D6
-        b       L_05600
+        b       asl_l_dn_d6
         clrlwi. addr, d6, 26                            // EDA7  ASL.L     D6,D7
-        b       L_056A0
+        b       asl_l_dn_d7
         clrlwi. addr, d6, 26                            // EDA8  LSL.L     D6,D0
-        b       L_05214
+        b       lsl_l_dn_d0
         clrlwi. addr, d6, 26                            // EDA9  LSL.L     D6,D1
-        b       L_052B4
+        b       lsl_l_dn_d1
         clrlwi. addr, d6, 26                            // EDAA  LSL.L     D6,D2
-        b       L_05354
+        b       lsl_l_dn_d2
         clrlwi. addr, d6, 26                            // EDAB  LSL.L     D6,D3
-        b       L_053F4
+        b       lsl_l_dn_d3
         clrlwi. addr, d6, 26                            // EDAC  LSL.L     D6,D4
-        b       L_05494
+        b       lsl_l_dn_d4
         clrlwi. addr, d6, 26                            // EDAD  LSL.L     D6,D5
-        b       L_05534
+        b       lsl_l_dn_d5
         clrlwi. addr, d6, 26                            // EDAE  LSL.L     D6,D6
-        b       L_055D4
+        b       lsl_l_dn_d6
         clrlwi. addr, d6, 26                            // EDAF  LSL.L     D6,D7
-        b       L_05674
+        b       lsl_l_dn_d7
         clrlwi. addr, d6, 26                            // EDB0  ROXL.L    D6,D0
-        b       L_05280
+        b       roxr_roxl_l_dn_d0
         clrlwi. addr, d6, 26                            // EDB1  ROXL.L    D6,D1
-        b       L_05320
+        b       roxr_roxl_l_dn_d1
         clrlwi. addr, d6, 26                            // EDB2  ROXL.L    D6,D2
-        b       L_053C0
+        b       roxr_roxl_l_dn_d2
         clrlwi. addr, d6, 26                            // EDB3  ROXL.L    D6,D3
-        b       L_05460
+        b       roxr_roxl_l_dn_d3
         clrlwi. addr, d6, 26                            // EDB4  ROXL.L    D6,D4
-        b       L_05500
+        b       roxr_roxl_l_dn_d4
         clrlwi. addr, d6, 26                            // EDB5  ROXL.L    D6,D5
-        b       L_055A0
+        b       roxr_roxl_l_dn_d5
         clrlwi. addr, d6, 26                            // EDB6  ROXL.L    D6,D6
-        b       L_05640
+        b       roxr_roxl_l_dn_d6
         clrlwi. addr, d6, 26                            // EDB7  ROXL.L    D6,D7
-        b       L_056E0
+        b       roxr_roxl_l_dn_d7
         clrlwi. addr, d6, 26                            // EDB8  ROL.L     D6,D0
-        b       L_05268
+        b       rol_l_dn_d0
         clrlwi. addr, d6, 26                            // EDB9  ROL.L     D6,D1
-        b       L_05308
+        b       rol_l_dn_d1
         clrlwi. addr, d6, 26                            // EDBA  ROL.L     D6,D2
-        b       L_053A8
+        b       rol_l_dn_d2
         clrlwi. addr, d6, 26                            // EDBB  ROL.L     D6,D3
-        b       L_05448
+        b       rol_l_dn_d3
         clrlwi. addr, d6, 26                            // EDBC  ROL.L     D6,D4
-        b       L_054E8
+        b       rol_l_dn_d4
         clrlwi. addr, d6, 26                            // EDBD  ROL.L     D6,D5
-        b       L_05588
+        b       rol_l_dn_d5
         clrlwi. addr, d6, 26                            // EDBE  ROL.L     D6,D6
-        b       L_05628
+        b       rol_l_dn_d6
         clrlwi. addr, d6, 26                            // EDBF  ROL.L     D6,D7
-        b       L_056C8
+        b       rol_l_dn_d7
 
 // ---- $EDC0-$EDFF --------------------------------------------------------
         mr      data, d0                                // EDC0  BFFFO     D0{ofs:wid},Dn
-        b       L_07880
+        b       bfffo
         mr      data, d1                                // EDC1  BFFFO     D1{ofs:wid},Dn
-        b       L_07880
+        b       bfffo
         mr      data, d2                                // EDC2  BFFFO     D2{ofs:wid},Dn
-        b       L_07880
+        b       bfffo
         mr      data, d3                                // EDC3  BFFFO     D3{ofs:wid},Dn
-        b       L_07880
+        b       bfffo
         mr      data, d4                                // EDC4  BFFFO     D4{ofs:wid},Dn
-        b       L_07880
+        b       bfffo
         mr      data, d5                                // EDC5  BFFFO     D5{ofs:wid},Dn
-        b       L_07880
+        b       bfffo
         mr      data, d6                                // EDC6  BFFFO     D6{ofs:wid},Dn
-        b       L_07880
+        b       bfffo
         mr      data, d7                                // EDC7  BFFFO     D7{ofs:wid},Dn
-        b       L_07880
+        b       bfffo
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EDC8  BFFFO     A0{ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EDC9  BFFFO     A1{ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EDCA  BFFFO     A2{ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EDCB  BFFFO     A3{ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EDCC  BFFFO     A4{ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EDCD  BFFFO     A5{ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EDCE  BFFFO     A6{ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EDCF  BFFFO     A7{ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         mr      addr, a0                                // EDD0  BFFFO     (A0){ofs:wid},Dn
-        b       L_07918
+        b       bfextu_bfexts_bfffo_mem_2
         mr      addr, a1                                // EDD1  BFFFO     (A1){ofs:wid},Dn
-        b       L_07918
+        b       bfextu_bfexts_bfffo_mem_2
         mr      addr, a2                                // EDD2  BFFFO     (A2){ofs:wid},Dn
-        b       L_07918
+        b       bfextu_bfexts_bfffo_mem_2
         mr      addr, a3                                // EDD3  BFFFO     (A3){ofs:wid},Dn
-        b       L_07918
+        b       bfextu_bfexts_bfffo_mem_2
         mr      addr, a4                                // EDD4  BFFFO     (A4){ofs:wid},Dn
-        b       L_07918
+        b       bfextu_bfexts_bfffo_mem_2
         mr      addr, a5                                // EDD5  BFFFO     (A5){ofs:wid},Dn
-        b       L_07918
+        b       bfextu_bfexts_bfffo_mem_2
         mr      addr, a6                                // EDD6  BFFFO     (A6){ofs:wid},Dn
-        b       L_07918
+        b       bfextu_bfexts_bfffo_mem_2
         mr      addr, a7                                // EDD7  BFFFO     (A7){ofs:wid},Dn
-        b       L_07918
+        b       bfextu_bfexts_bfffo_mem_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EDD8  BFFFO     (A0)+{ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EDD9  BFFFO     (A1)+{ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EDDA  BFFFO     (A2)+{ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EDDB  BFFFO     (A3)+{ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EDDC  BFFFO     (A4)+{ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EDDD  BFFFO     (A5)+{ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EDDE  BFFFO     (A6)+{ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EDDF  BFFFO     (A7)+{ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EDE0  BFFFO     -(A0){ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EDE1  BFFFO     -(A1){ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EDE2  BFFFO     -(A2){ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EDE3  BFFFO     -(A3){ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EDE4  BFFFO     -(A4){ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EDE5  BFFFO     -(A5){ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EDE6  BFFFO     -(A6){ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EDE7  BFFFO     -(A7){ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         mr      addr, a0                                // EDE8  BFFFO     (d16,A0){ofs:wid},Dn
-        b       L_07900
+        b       bfextu_bfexts_bfffo_mem
         mr      addr, a1                                // EDE9  BFFFO     (d16,A1){ofs:wid},Dn
-        b       L_07900
+        b       bfextu_bfexts_bfffo_mem
         mr      addr, a2                                // EDEA  BFFFO     (d16,A2){ofs:wid},Dn
-        b       L_07900
+        b       bfextu_bfexts_bfffo_mem
         mr      addr, a3                                // EDEB  BFFFO     (d16,A3){ofs:wid},Dn
-        b       L_07900
+        b       bfextu_bfexts_bfffo_mem
         mr      addr, a4                                // EDEC  BFFFO     (d16,A4){ofs:wid},Dn
-        b       L_07900
+        b       bfextu_bfexts_bfffo_mem
         mr      addr, a5                                // EDED  BFFFO     (d16,A5){ofs:wid},Dn
-        b       L_07900
+        b       bfextu_bfexts_bfffo_mem
         mr      addr, a6                                // EDEE  BFFFO     (d16,A6){ofs:wid},Dn
-        b       L_07900
+        b       bfextu_bfexts_bfffo_mem
         mr      addr, a7                                // EDEF  BFFFO     (d16,A7){ofs:wid},Dn
-        b       L_07900
-        ori     rtn_addr, code_ptr, L_07920 - cb        // EDF0  BFFFO     (d8,A0,Xn){ofs:wid},Dn
-        b       L_05980
-        ori     rtn_addr, code_ptr, L_07920 - cb        // EDF1  BFFFO     (d8,A1,Xn){ofs:wid},Dn
-        b       L_059E0
-        ori     rtn_addr, code_ptr, L_07920 - cb        // EDF2  BFFFO     (d8,A2,Xn){ofs:wid},Dn
-        b       L_05A40
-        ori     rtn_addr, code_ptr, L_07920 - cb        // EDF3  BFFFO     (d8,A3,Xn){ofs:wid},Dn
-        b       L_05AA0
-        ori     rtn_addr, code_ptr, L_07920 - cb        // EDF4  BFFFO     (d8,A4,Xn){ofs:wid},Dn
-        b       L_05B00
-        ori     rtn_addr, code_ptr, L_07920 - cb        // EDF5  BFFFO     (d8,A5,Xn){ofs:wid},Dn
-        b       L_05B60
-        ori     rtn_addr, code_ptr, L_07920 - cb        // EDF6  BFFFO     (d8,A6,Xn){ofs:wid},Dn
-        b       L_05BC0
-        ori     rtn_addr, code_ptr, L_07920 - cb        // EDF7  BFFFO     (d8,A7,Xn){ofs:wid},Dn
-        b       L_05C20
+        b       bfextu_bfexts_bfffo_mem
+        ori     rtn_addr, code_ptr, bfextu_bfexts_bfffo_mem_3 - cb  // EDF0  BFFFO     (d8,A0,Xn){ofs:wid},Dn
+        b       movem_cas_etc_any_any
+        ori     rtn_addr, code_ptr, bfextu_bfexts_bfffo_mem_3 - cb  // EDF1  BFFFO     (d8,A1,Xn){ofs:wid},Dn
+        b       movem_cas_etc_any_any_2
+        ori     rtn_addr, code_ptr, bfextu_bfexts_bfffo_mem_3 - cb  // EDF2  BFFFO     (d8,A2,Xn){ofs:wid},Dn
+        b       movem_cas_etc_any_any_3
+        ori     rtn_addr, code_ptr, bfextu_bfexts_bfffo_mem_3 - cb  // EDF3  BFFFO     (d8,A3,Xn){ofs:wid},Dn
+        b       movem_cas_etc_any_any_4
+        ori     rtn_addr, code_ptr, bfextu_bfexts_bfffo_mem_3 - cb  // EDF4  BFFFO     (d8,A4,Xn){ofs:wid},Dn
+        b       movem_cas_etc_any_any_5
+        ori     rtn_addr, code_ptr, bfextu_bfexts_bfffo_mem_3 - cb  // EDF5  BFFFO     (d8,A5,Xn){ofs:wid},Dn
+        b       movem_cas_etc_any_any_6
+        ori     rtn_addr, code_ptr, bfextu_bfexts_bfffo_mem_3 - cb  // EDF6  BFFFO     (d8,A6,Xn){ofs:wid},Dn
+        b       movem_cas_etc_any_any_7
+        ori     rtn_addr, code_ptr, bfextu_bfexts_bfffo_mem_3 - cb  // EDF7  BFFFO     (d8,A7,Xn){ofs:wid},Dn
+        b       movem_cas_etc_any_any_8
         lhau    addr, 2(pc)                             // EDF8  BFFFO     (xxx).W{ofs:wid},Dn
-        b       L_07918
-        ori     rtn_addr, code_ptr, L_07920 - cb        // EDF9  BFFFO     (xxx).L{ofs:wid},Dn
-        b       L_05E00
+        b       bfextu_bfexts_bfffo_mem_2
+        ori     rtn_addr, code_ptr, bfextu_bfexts_bfffo_mem_3 - cb  // EDF9  BFFFO     (xxx).L{ofs:wid},Dn
+        b       cea_x_71
         addi    addr, pc, 2                             // EDFA  BFFFO     (d16,PC){ofs:wid},Dn
-        b       L_07900
-        ori     rtn_addr, code_ptr, L_07920 - cb        // EDFB  BFFFO     (d8,PC,Xn){ofs:wid},Dn
-        b       L_05E40
+        b       bfextu_bfexts_bfffo_mem
+        ori     rtn_addr, code_ptr, bfextu_bfexts_bfffo_mem_3 - cb  // EDFB  BFFFO     (d8,PC,Xn){ofs:wid},Dn
+        b       chk2_cmp2_movem_etc_mem_any
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EDFC  BFFFO     #<data>{ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EDFD  BFFFO     <ea 7.5>{ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EDFE  BFFFO     <ea 7.6>{ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EDFF  BFFFO     <ea 7.7>{ofs:wid},Dn   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $EE00-$EE3F --------------------------------------------------------
         li      addr, 7                                 // EE00  ASR.B     #7,D0
-        b       L_0B2EC
+        b       asr_b_q_d0
         li      addr, 7                                 // EE01  ASR.B     #7,D1
-        b       L_0B3AC
+        b       asr_b_q_d1
         li      addr, 7                                 // EE02  ASR.B     #7,D2
-        b       L_0B46C
+        b       asr_b_q_d2
         li      addr, 7                                 // EE03  ASR.B     #7,D3
-        b       L_0B52C
+        b       asr_b_q_d3
         li      addr, 7                                 // EE04  ASR.B     #7,D4
-        b       L_0B5EC
+        b       asr_b_q_d4
         li      addr, 7                                 // EE05  ASR.B     #7,D5
-        b       L_0B6AC
+        b       asr_b_q_d5
         li      addr, 7                                 // EE06  ASR.B     #7,D6
-        b       L_0B76C
+        b       asr_b_q_d6
         li      addr, 7                                 // EE07  ASR.B     #7,D7
-        b       L_0B82C
+        b       asr_b_q_d7
         rlwinm  data, d0, 26, 30, 31                    // EE08  LSR.B     #7,D0
-        b       L_0B2CC
+        b       lsr_b_q_d0
         rlwinm  data, d1, 26, 30, 31                    // EE09  LSR.B     #7,D1
-        b       L_0B38C
+        b       lsr_b_q_d1
         rlwinm  data, d2, 26, 30, 31                    // EE0A  LSR.B     #7,D2
-        b       L_0B44C
+        b       lsr_b_q_d2
         rlwinm  data, d3, 26, 30, 31                    // EE0B  LSR.B     #7,D3
-        b       L_0B50C
+        b       lsr_b_q_d3
         rlwinm  data, d4, 26, 30, 31                    // EE0C  LSR.B     #7,D4
-        b       L_0B5CC
+        b       lsr_b_q_d4
         rlwinm  data, d5, 26, 30, 31                    // EE0D  LSR.B     #7,D5
-        b       L_0B68C
+        b       lsr_b_q_d5
         rlwinm  data, d6, 26, 30, 31                    // EE0E  LSR.B     #7,D6
-        b       L_0B74C
+        b       lsr_b_q_d6
         rlwinm  data, d7, 26, 30, 31                    // EE0F  LSR.B     #7,D7
-        b       L_0B80C
+        b       lsr_b_q_d7
         li      addr, 2                                 // EE10  ROXR.B    #7,D0
-        b       L_0B364
+        b       roxr_roxl_b_q_d0
         li      addr, 2                                 // EE11  ROXR.B    #7,D1
-        b       L_0B424
+        b       roxr_roxl_b_q_d1
         li      addr, 2                                 // EE12  ROXR.B    #7,D2
-        b       L_0B4E4
+        b       roxr_roxl_b_q_d2
         li      addr, 2                                 // EE13  ROXR.B    #7,D3
-        b       L_0B5A4
+        b       roxr_roxl_b_q_d3
         li      addr, 2                                 // EE14  ROXR.B    #7,D4
-        b       L_0B664
+        b       roxr_roxl_b_q_d4
         li      addr, 2                                 // EE15  ROXR.B    #7,D5
-        b       L_0B724
+        b       roxr_roxl_b_q_d5
         li      addr, 2                                 // EE16  ROXR.B    #7,D6
-        b       L_0B7E4
+        b       roxr_roxl_b_q_d6
         li      addr, 2                                 // EE17  ROXR.B    #7,D7
-        b       L_0B8A4
+        b       roxr_roxl_b_q_d7
         li      addr, 1                                 // EE18  ROR.B     #7,D0
-        b       L_0B32C
+        b       ror_b_q_d0
         li      addr, 1                                 // EE19  ROR.B     #7,D1
-        b       L_0B3EC
+        b       ror_b_q_d1
         li      addr, 1                                 // EE1A  ROR.B     #7,D2
-        b       L_0B4AC
+        b       ror_b_q_d2
         li      addr, 1                                 // EE1B  ROR.B     #7,D3
-        b       L_0B56C
+        b       ror_b_q_d3
         li      addr, 1                                 // EE1C  ROR.B     #7,D4
-        b       L_0B62C
+        b       ror_b_q_d4
         li      addr, 1                                 // EE1D  ROR.B     #7,D5
-        b       L_0B6EC
+        b       ror_b_q_d5
         li      addr, 1                                 // EE1E  ROR.B     #7,D6
-        b       L_0B7AC
+        b       ror_b_q_d6
         li      addr, 1                                 // EE1F  ROR.B     #7,D7
-        b       L_0B86C
+        b       ror_b_q_d7
         clrlwi. addr, d7, 26                            // EE20  ASR.B     D7,D0
-        b       L_0B2E8
+        b       asr_b_dn_d0
         clrlwi. addr, d7, 26                            // EE21  ASR.B     D7,D1
-        b       L_0B3A8
+        b       asr_b_dn_d1
         clrlwi. addr, d7, 26                            // EE22  ASR.B     D7,D2
-        b       L_0B468
+        b       asr_b_dn_d2
         clrlwi. addr, d7, 26                            // EE23  ASR.B     D7,D3
-        b       L_0B528
+        b       asr_b_dn_d3
         clrlwi. addr, d7, 26                            // EE24  ASR.B     D7,D4
-        b       L_0B5E8
+        b       asr_b_dn_d4
         clrlwi. addr, d7, 26                            // EE25  ASR.B     D7,D5
-        b       L_0B6A8
+        b       asr_b_dn_d5
         clrlwi. addr, d7, 26                            // EE26  ASR.B     D7,D6
-        b       L_0B768
+        b       asr_b_dn_d6
         clrlwi. addr, d7, 26                            // EE27  ASR.B     D7,D7
-        b       L_0B828
+        b       asr_b_dn_d7
         clrlwi. addr, d7, 26                            // EE28  LSR.B     D7,D0
-        b       L_0B2C0
+        b       lsr_b_dn_d0
         clrlwi. addr, d7, 26                            // EE29  LSR.B     D7,D1
-        b       L_0B380
+        b       lsr_b_dn_d1
         clrlwi. addr, d7, 26                            // EE2A  LSR.B     D7,D2
-        b       L_0B440
+        b       lsr_b_dn_d2
         clrlwi. addr, d7, 26                            // EE2B  LSR.B     D7,D3
-        b       L_0B500
+        b       lsr_b_dn_d3
         clrlwi. addr, d7, 26                            // EE2C  LSR.B     D7,D4
-        b       L_0B5C0
+        b       lsr_b_dn_d4
         clrlwi. addr, d7, 26                            // EE2D  LSR.B     D7,D5
-        b       L_0B680
+        b       lsr_b_dn_d5
         clrlwi. addr, d7, 26                            // EE2E  LSR.B     D7,D6
-        b       L_0B740
+        b       lsr_b_dn_d6
         clrlwi. addr, d7, 26                            // EE2F  LSR.B     D7,D7
-        b       L_0B800
+        b       lsr_b_dn_d7
         clrlwi. addr, d7, 26                            // EE30  ROXR.B    D7,D0
-        b       L_0B360
+        b       roxr_roxl_b_dn_d0
         clrlwi. addr, d7, 26                            // EE31  ROXR.B    D7,D1
-        b       L_0B420
+        b       roxr_roxl_b_dn_d1
         clrlwi. addr, d7, 26                            // EE32  ROXR.B    D7,D2
-        b       L_0B4E0
+        b       roxr_roxl_b_dn_d2
         clrlwi. addr, d7, 26                            // EE33  ROXR.B    D7,D3
-        b       L_0B5A0
+        b       roxr_roxl_b_dn_d3
         clrlwi. addr, d7, 26                            // EE34  ROXR.B    D7,D4
-        b       L_0B660
+        b       roxr_roxl_b_dn_d4
         clrlwi. addr, d7, 26                            // EE35  ROXR.B    D7,D5
-        b       L_0B720
+        b       roxr_roxl_b_dn_d5
         clrlwi. addr, d7, 26                            // EE36  ROXR.B    D7,D6
-        b       L_0B7E0
+        b       roxr_roxl_b_dn_d6
         clrlwi. addr, d7, 26                            // EE37  ROXR.B    D7,D7
-        b       L_0B8A0
+        b       roxr_roxl_b_dn_d7
         clrlwi. addr, d7, 26                            // EE38  ROR.B     D7,D0
-        b       L_0B320
+        b       ror_b_dn_d0
         clrlwi. addr, d7, 26                            // EE39  ROR.B     D7,D1
-        b       L_0B3E0
+        b       ror_b_dn_d1
         clrlwi. addr, d7, 26                            // EE3A  ROR.B     D7,D2
-        b       L_0B4A0
+        b       ror_b_dn_d2
         clrlwi. addr, d7, 26                            // EE3B  ROR.B     D7,D3
-        b       L_0B560
+        b       ror_b_dn_d3
         clrlwi. addr, d7, 26                            // EE3C  ROR.B     D7,D4
-        b       L_0B620
+        b       ror_b_dn_d4
         clrlwi. addr, d7, 26                            // EE3D  ROR.B     D7,D5
-        b       L_0B6E0
+        b       ror_b_dn_d5
         clrlwi. addr, d7, 26                            // EE3E  ROR.B     D7,D6
-        b       L_0B7A0
+        b       ror_b_dn_d6
         clrlwi. addr, d7, 26                            // EE3F  ROR.B     D7,D7
-        b       L_0B860
+        b       ror_b_dn_d7
 
 // ---- $EE40-$EE7F --------------------------------------------------------
         li      addr, 7                                 // EE40  ASR.W     #7,D0
-        b       L_04C2C
+        b       asr_w_q_d0
         li      addr, 7                                 // EE41  ASR.W     #7,D1
-        b       L_04CEC
+        b       asr_w_q_d1
         li      addr, 7                                 // EE42  ASR.W     #7,D2
-        b       L_04DAC
+        b       asr_w_q_d2
         li      addr, 7                                 // EE43  ASR.W     #7,D3
-        b       L_04E6C
+        b       asr_w_q_d3
         li      addr, 7                                 // EE44  ASR.W     #7,D4
-        b       L_04F2C
+        b       asr_w_q_d4
         li      addr, 7                                 // EE45  ASR.W     #7,D5
-        b       L_04FEC
+        b       asr_w_q_d5
         li      addr, 7                                 // EE46  ASR.W     #7,D6
-        b       L_050AC
+        b       asr_w_q_d6
         li      addr, 7                                 // EE47  ASR.W     #7,D7
-        b       L_0516C
+        b       asr_w_q_d7
         rlwinm  data, d0, 26, 22, 31                    // EE48  LSR.W     #7,D0
-        b       L_04C0C
+        b       lsr_w_q_d0
         rlwinm  data, d1, 26, 22, 31                    // EE49  LSR.W     #7,D1
-        b       L_04CCC
+        b       lsr_w_q_d1
         rlwinm  data, d2, 26, 22, 31                    // EE4A  LSR.W     #7,D2
-        b       L_04D8C
+        b       lsr_w_q_d2
         rlwinm  data, d3, 26, 22, 31                    // EE4B  LSR.W     #7,D3
-        b       L_04E4C
+        b       lsr_w_q_d3
         rlwinm  data, d4, 26, 22, 31                    // EE4C  LSR.W     #7,D4
-        b       L_04F0C
+        b       lsr_w_q_d4
         rlwinm  data, d5, 26, 22, 31                    // EE4D  LSR.W     #7,D5
-        b       L_04FCC
+        b       lsr_w_q_d5
         rlwinm  data, d6, 26, 22, 31                    // EE4E  LSR.W     #7,D6
-        b       L_0508C
+        b       lsr_w_q_d6
         rlwinm  data, d7, 26, 22, 31                    // EE4F  LSR.W     #7,D7
-        b       L_0514C
+        b       lsr_w_q_d7
         addic.  addr, zero, 10                          // EE50  ROXR.W    #7,D0
-        b       L_04CA4
+        b       roxr_roxl_w_q_d0
         addic.  addr, zero, 10                          // EE51  ROXR.W    #7,D1
-        b       L_04D64
+        b       roxr_roxl_w_q_d1
         addic.  addr, zero, 10                          // EE52  ROXR.W    #7,D2
-        b       L_04E24
+        b       roxr_roxl_w_q_d2
         addic.  addr, zero, 10                          // EE53  ROXR.W    #7,D3
-        b       L_04EE4
+        b       roxr_roxl_w_q_d3
         addic.  addr, zero, 10                          // EE54  ROXR.W    #7,D4
-        b       L_04FA4
+        b       roxr_roxl_w_q_d4
         addic.  addr, zero, 10                          // EE55  ROXR.W    #7,D5
-        b       L_05064
+        b       roxr_roxl_w_q_d5
         addic.  addr, zero, 10                          // EE56  ROXR.W    #7,D6
-        b       L_05124
+        b       roxr_roxl_w_q_d6
         addic.  addr, zero, 10                          // EE57  ROXR.W    #7,D7
-        b       L_051E4
+        b       roxr_roxl_w_q_d7
         li      addr, 9                                 // EE58  ROR.W     #7,D0
-        b       L_04C6C
+        b       ror_w_q_d0
         li      addr, 9                                 // EE59  ROR.W     #7,D1
-        b       L_04D2C
+        b       ror_w_q_d1
         li      addr, 9                                 // EE5A  ROR.W     #7,D2
-        b       L_04DEC
+        b       ror_w_q_d2
         li      addr, 9                                 // EE5B  ROR.W     #7,D3
-        b       L_04EAC
+        b       ror_w_q_d3
         li      addr, 9                                 // EE5C  ROR.W     #7,D4
-        b       L_04F6C
+        b       ror_w_q_d4
         li      addr, 9                                 // EE5D  ROR.W     #7,D5
-        b       L_0502C
+        b       ror_w_q_d5
         li      addr, 9                                 // EE5E  ROR.W     #7,D6
-        b       L_050EC
+        b       ror_w_q_d6
         li      addr, 9                                 // EE5F  ROR.W     #7,D7
-        b       L_051AC
+        b       ror_w_q_d7
         clrlwi. addr, d7, 26                            // EE60  ASR.W     D7,D0
-        b       L_04C28
+        b       asr_w_dn_d0
         clrlwi. addr, d7, 26                            // EE61  ASR.W     D7,D1
-        b       L_04CE8
+        b       asr_w_dn_d1
         clrlwi. addr, d7, 26                            // EE62  ASR.W     D7,D2
-        b       L_04DA8
+        b       asr_w_dn_d2
         clrlwi. addr, d7, 26                            // EE63  ASR.W     D7,D3
-        b       L_04E68
+        b       asr_w_dn_d3
         clrlwi. addr, d7, 26                            // EE64  ASR.W     D7,D4
-        b       L_04F28
+        b       asr_w_dn_d4
         clrlwi. addr, d7, 26                            // EE65  ASR.W     D7,D5
-        b       L_04FE8
+        b       asr_w_dn_d5
         clrlwi. addr, d7, 26                            // EE66  ASR.W     D7,D6
-        b       L_050A8
+        b       asr_w_dn_d6
         clrlwi. addr, d7, 26                            // EE67  ASR.W     D7,D7
-        b       L_05168
+        b       asr_w_dn_d7
         clrlwi. addr, d7, 26                            // EE68  LSR.W     D7,D0
-        b       L_04C00
+        b       lsr_w_dn_d0
         clrlwi. addr, d7, 26                            // EE69  LSR.W     D7,D1
-        b       L_04CC0
+        b       lsr_w_dn_d1
         clrlwi. addr, d7, 26                            // EE6A  LSR.W     D7,D2
-        b       L_04D80
+        b       lsr_w_dn_d2
         clrlwi. addr, d7, 26                            // EE6B  LSR.W     D7,D3
-        b       L_04E40
+        b       lsr_w_dn_d3
         clrlwi. addr, d7, 26                            // EE6C  LSR.W     D7,D4
-        b       L_04F00
+        b       lsr_w_dn_d4
         clrlwi. addr, d7, 26                            // EE6D  LSR.W     D7,D5
-        b       L_04FC0
+        b       lsr_w_dn_d5
         clrlwi. addr, d7, 26                            // EE6E  LSR.W     D7,D6
-        b       L_05080
+        b       lsr_w_dn_d6
         clrlwi. addr, d7, 26                            // EE6F  LSR.W     D7,D7
-        b       L_05140
+        b       lsr_w_dn_d7
         clrlwi. addr, d7, 26                            // EE70  ROXR.W    D7,D0
-        b       L_04CA0
+        b       roxr_roxl_w_dn_d0
         clrlwi. addr, d7, 26                            // EE71  ROXR.W    D7,D1
-        b       L_04D60
+        b       roxr_roxl_w_dn_d1
         clrlwi. addr, d7, 26                            // EE72  ROXR.W    D7,D2
-        b       L_04E20
+        b       roxr_roxl_w_dn_d2
         clrlwi. addr, d7, 26                            // EE73  ROXR.W    D7,D3
-        b       L_04EE0
+        b       roxr_roxl_w_dn_d3
         clrlwi. addr, d7, 26                            // EE74  ROXR.W    D7,D4
-        b       L_04FA0
+        b       roxr_roxl_w_dn_d4
         clrlwi. addr, d7, 26                            // EE75  ROXR.W    D7,D5
-        b       L_05060
+        b       roxr_roxl_w_dn_d5
         clrlwi. addr, d7, 26                            // EE76  ROXR.W    D7,D6
-        b       L_05120
+        b       roxr_roxl_w_dn_d6
         clrlwi. addr, d7, 26                            // EE77  ROXR.W    D7,D7
-        b       L_051E0
+        b       roxr_roxl_w_dn_d7
         clrlwi. addr, d7, 26                            // EE78  ROR.W     D7,D0
-        b       L_04C60
+        b       ror_w_dn_d0
         clrlwi. addr, d7, 26                            // EE79  ROR.W     D7,D1
-        b       L_04D20
+        b       ror_w_dn_d1
         clrlwi. addr, d7, 26                            // EE7A  ROR.W     D7,D2
-        b       L_04DE0
+        b       ror_w_dn_d2
         clrlwi. addr, d7, 26                            // EE7B  ROR.W     D7,D3
-        b       L_04EA0
+        b       ror_w_dn_d3
         clrlwi. addr, d7, 26                            // EE7C  ROR.W     D7,D4
-        b       L_04F60
+        b       ror_w_dn_d4
         clrlwi. addr, d7, 26                            // EE7D  ROR.W     D7,D5
-        b       L_05020
+        b       ror_w_dn_d5
         clrlwi. addr, d7, 26                            // EE7E  ROR.W     D7,D6
-        b       L_050E0
+        b       ror_w_dn_d6
         clrlwi. addr, d7, 26                            // EE7F  ROR.W     D7,D7
-        b       L_051A0
+        b       ror_w_dn_d7
 
 // ---- $EE80-$EEBF --------------------------------------------------------
         srawi   data, d0, 6                             // EE80  ASR.L     #7,D0
-        b       L_05234
+        b       asr_l_q_d0
         srawi   data, d1, 6                             // EE81  ASR.L     #7,D1
-        b       L_052D4
+        b       asr_l_q_d1
         srawi   data, d2, 6                             // EE82  ASR.L     #7,D2
-        b       L_05374
+        b       asr_l_q_d2
         srawi   data, d3, 6                             // EE83  ASR.L     #7,D3
-        b       L_05414
+        b       asr_l_q_d3
         srawi   data, d4, 6                             // EE84  ASR.L     #7,D4
-        b       L_054B4
+        b       asr_l_q_d4
         srawi   data, d5, 6                             // EE85  ASR.L     #7,D5
-        b       L_05554
+        b       asr_l_q_d5
         srawi   data, d6, 6                             // EE86  ASR.L     #7,D6
-        b       L_055F4
+        b       asr_l_q_d6
         srawi   data, d7, 6                             // EE87  ASR.L     #7,D7
-        b       L_05694
+        b       asr_l_q_d7
         srwi    data, d0, 6                             // EE88  LSR.L     #7,D0
-        b       L_0520C
+        b       lsr_l_q_d0
         srwi    data, d1, 6                             // EE89  LSR.L     #7,D1
-        b       L_052AC
+        b       lsr_l_q_d1
         srwi    data, d2, 6                             // EE8A  LSR.L     #7,D2
-        b       L_0534C
+        b       lsr_l_q_d2
         srwi    data, d3, 6                             // EE8B  LSR.L     #7,D3
-        b       L_053EC
+        b       lsr_l_q_d3
         srwi    data, d4, 6                             // EE8C  LSR.L     #7,D4
-        b       L_0548C
+        b       lsr_l_q_d4
         srwi    data, d5, 6                             // EE8D  LSR.L     #7,D5
-        b       L_0552C
+        b       lsr_l_q_d5
         srwi    data, d6, 6                             // EE8E  LSR.L     #7,D6
-        b       L_055CC
+        b       lsr_l_q_d6
         srwi    data, d7, 6                             // EE8F  LSR.L     #7,D7
-        b       L_0566C
+        b       lsr_l_q_d7
         addic.  addr, zero, 26                          // EE90  ROXR.L    #7,D0
-        b       L_05284
+        b       roxr_roxl_l_q_d0
         addic.  addr, zero, 26                          // EE91  ROXR.L    #7,D1
-        b       L_05324
+        b       roxr_roxl_l_q_d1
         addic.  addr, zero, 26                          // EE92  ROXR.L    #7,D2
-        b       L_053C4
+        b       roxr_roxl_l_q_d2
         addic.  addr, zero, 26                          // EE93  ROXR.L    #7,D3
-        b       L_05464
+        b       roxr_roxl_l_q_d3
         addic.  addr, zero, 26                          // EE94  ROXR.L    #7,D4
-        b       L_05504
+        b       roxr_roxl_l_q_d4
         addic.  addr, zero, 26                          // EE95  ROXR.L    #7,D5
-        b       L_055A4
+        b       roxr_roxl_l_q_d5
         addic.  addr, zero, 26                          // EE96  ROXR.L    #7,D6
-        b       L_05644
+        b       roxr_roxl_l_q_d6
         addic.  addr, zero, 26                          // EE97  ROXR.L    #7,D7
-        b       L_056E4
+        b       roxr_roxl_l_q_d7
         rotlwi  data, d0, 25                            // EE98  ROR.L     #7,D0
-        b       L_05260
+        b       ror_l_q_d0
         rotlwi  data, d1, 25                            // EE99  ROR.L     #7,D1
-        b       L_05300
+        b       ror_l_q_d1
         rotlwi  data, d2, 25                            // EE9A  ROR.L     #7,D2
-        b       L_053A0
+        b       ror_l_q_d2
         rotlwi  data, d3, 25                            // EE9B  ROR.L     #7,D3
-        b       L_05440
+        b       ror_l_q_d3
         rotlwi  data, d4, 25                            // EE9C  ROR.L     #7,D4
-        b       L_054E0
+        b       ror_l_q_d4
         rotlwi  data, d5, 25                            // EE9D  ROR.L     #7,D5
-        b       L_05580
+        b       ror_l_q_d5
         rotlwi  data, d6, 25                            // EE9E  ROR.L     #7,D6
-        b       L_05620
+        b       ror_l_q_d6
         rotlwi  data, d7, 25                            // EE9F  ROR.L     #7,D7
-        b       L_056C0
+        b       ror_l_q_d7
         clrlwi. addr, d7, 26                            // EEA0  ASR.L     D7,D0
-        b       L_05228
+        b       asr_l_dn_d0
         clrlwi. addr, d7, 26                            // EEA1  ASR.L     D7,D1
-        b       L_052C8
+        b       asr_l_dn_d1
         clrlwi. addr, d7, 26                            // EEA2  ASR.L     D7,D2
-        b       L_05368
+        b       asr_l_dn_d2
         clrlwi. addr, d7, 26                            // EEA3  ASR.L     D7,D3
-        b       L_05408
+        b       asr_l_dn_d3
         clrlwi. addr, d7, 26                            // EEA4  ASR.L     D7,D4
-        b       L_054A8
+        b       asr_l_dn_d4
         clrlwi. addr, d7, 26                            // EEA5  ASR.L     D7,D5
-        b       L_05548
+        b       asr_l_dn_d5
         clrlwi. addr, d7, 26                            // EEA6  ASR.L     D7,D6
-        b       L_055E8
+        b       asr_l_dn_d6
         clrlwi. addr, d7, 26                            // EEA7  ASR.L     D7,D7
-        b       L_05688
+        b       asr_l_dn_d7
         clrlwi. addr, d7, 26                            // EEA8  LSR.L     D7,D0
-        b       L_05200
+        b       lsr_l_dn_d0
         clrlwi. addr, d7, 26                            // EEA9  LSR.L     D7,D1
-        b       L_052A0
+        b       lsr_l_dn_d1
         clrlwi. addr, d7, 26                            // EEAA  LSR.L     D7,D2
-        b       L_05340
+        b       lsr_l_dn_d2
         clrlwi. addr, d7, 26                            // EEAB  LSR.L     D7,D3
-        b       L_053E0
+        b       lsr_l_dn_d3
         clrlwi. addr, d7, 26                            // EEAC  LSR.L     D7,D4
-        b       L_05480
+        b       lsr_l_dn_d4
         clrlwi. addr, d7, 26                            // EEAD  LSR.L     D7,D5
-        b       L_05520
+        b       lsr_l_dn_d5
         clrlwi. addr, d7, 26                            // EEAE  LSR.L     D7,D6
-        b       L_055C0
+        b       lsr_l_dn_d6
         clrlwi. addr, d7, 26                            // EEAF  LSR.L     D7,D7
-        b       L_05660
+        b       lsr_l_dn_d7
         clrlwi. addr, d7, 26                            // EEB0  ROXR.L    D7,D0
-        b       L_05280
+        b       roxr_roxl_l_dn_d0
         clrlwi. addr, d7, 26                            // EEB1  ROXR.L    D7,D1
-        b       L_05320
+        b       roxr_roxl_l_dn_d1
         clrlwi. addr, d7, 26                            // EEB2  ROXR.L    D7,D2
-        b       L_053C0
+        b       roxr_roxl_l_dn_d2
         clrlwi. addr, d7, 26                            // EEB3  ROXR.L    D7,D3
-        b       L_05460
+        b       roxr_roxl_l_dn_d3
         clrlwi. addr, d7, 26                            // EEB4  ROXR.L    D7,D4
-        b       L_05500
+        b       roxr_roxl_l_dn_d4
         clrlwi. addr, d7, 26                            // EEB5  ROXR.L    D7,D5
-        b       L_055A0
+        b       roxr_roxl_l_dn_d5
         clrlwi. addr, d7, 26                            // EEB6  ROXR.L    D7,D6
-        b       L_05640
+        b       roxr_roxl_l_dn_d6
         clrlwi. addr, d7, 26                            // EEB7  ROXR.L    D7,D7
-        b       L_056E0
+        b       roxr_roxl_l_dn_d7
         clrlwi. addr, d7, 26                            // EEB8  ROR.L     D7,D0
-        b       L_05254
+        b       ror_l_dn_d0
         clrlwi. addr, d7, 26                            // EEB9  ROR.L     D7,D1
-        b       L_052F4
+        b       ror_l_dn_d1
         clrlwi. addr, d7, 26                            // EEBA  ROR.L     D7,D2
-        b       L_05394
+        b       ror_l_dn_d2
         clrlwi. addr, d7, 26                            // EEBB  ROR.L     D7,D3
-        b       L_05434
+        b       ror_l_dn_d3
         clrlwi. addr, d7, 26                            // EEBC  ROR.L     D7,D4
-        b       L_054D4
+        b       ror_l_dn_d4
         clrlwi. addr, d7, 26                            // EEBD  ROR.L     D7,D5
-        b       L_05574
+        b       ror_l_dn_d5
         clrlwi. addr, d7, 26                            // EEBE  ROR.L     D7,D6
-        b       L_05614
+        b       ror_l_dn_d6
         clrlwi. addr, d7, 26                            // EEBF  ROR.L     D7,D7
-        b       L_056B4
+        b       ror_l_dn_d7
 
 // ---- $EEC0-$EEFF --------------------------------------------------------
         ori     addr, code_ptr, L_05700 - cb            // EEC0  BFSET     D0{ofs:wid}
-        b       L_079C0
+        b       bfchg_bfclr_bfset
         ori     addr, code_ptr, L_05710 - cb            // EEC1  BFSET     D1{ofs:wid}
-        b       L_079C0
+        b       bfchg_bfclr_bfset
         ori     addr, code_ptr, L_05720 - cb            // EEC2  BFSET     D2{ofs:wid}
-        b       L_079C0
+        b       bfchg_bfclr_bfset
         ori     addr, code_ptr, L_05730 - cb            // EEC3  BFSET     D3{ofs:wid}
-        b       L_079C0
+        b       bfchg_bfclr_bfset
         ori     addr, code_ptr, L_05740 - cb            // EEC4  BFSET     D4{ofs:wid}
-        b       L_079C0
+        b       bfchg_bfclr_bfset
         ori     addr, code_ptr, L_05750 - cb            // EEC5  BFSET     D5{ofs:wid}
-        b       L_079C0
+        b       bfchg_bfclr_bfset
         ori     addr, code_ptr, L_05760 - cb            // EEC6  BFSET     D6{ofs:wid}
-        b       L_079C0
+        b       bfchg_bfclr_bfset
         ori     addr, code_ptr, L_05770 - cb            // EEC7  BFSET     D7{ofs:wid}
-        b       L_079C0
+        b       bfchg_bfclr_bfset
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EEC8  BFSET     A0{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EEC9  BFSET     A1{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EECA  BFSET     A2{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EECB  BFSET     A3{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EECC  BFSET     A4{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EECD  BFSET     A5{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EECE  BFSET     A6{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EECF  BFSET     A7{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         mr      addr, a0                                // EED0  BFSET     (A0){ofs:wid}
-        b       L_07A34
+        b       bfchg_bfclr_bfset_mem_2
         mr      addr, a1                                // EED1  BFSET     (A1){ofs:wid}
-        b       L_07A34
+        b       bfchg_bfclr_bfset_mem_2
         mr      addr, a2                                // EED2  BFSET     (A2){ofs:wid}
-        b       L_07A34
+        b       bfchg_bfclr_bfset_mem_2
         mr      addr, a3                                // EED3  BFSET     (A3){ofs:wid}
-        b       L_07A34
+        b       bfchg_bfclr_bfset_mem_2
         mr      addr, a4                                // EED4  BFSET     (A4){ofs:wid}
-        b       L_07A34
+        b       bfchg_bfclr_bfset_mem_2
         mr      addr, a5                                // EED5  BFSET     (A5){ofs:wid}
-        b       L_07A34
+        b       bfchg_bfclr_bfset_mem_2
         mr      addr, a6                                // EED6  BFSET     (A6){ofs:wid}
-        b       L_07A34
+        b       bfchg_bfclr_bfset_mem_2
         mr      addr, a7                                // EED7  BFSET     (A7){ofs:wid}
-        b       L_07A34
+        b       bfchg_bfclr_bfset_mem_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EED8  BFSET     (A0)+{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EED9  BFSET     (A1)+{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EEDA  BFSET     (A2)+{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EEDB  BFSET     (A3)+{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EEDC  BFSET     (A4)+{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EEDD  BFSET     (A5)+{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EEDE  BFSET     (A6)+{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EEDF  BFSET     (A7)+{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EEE0  BFSET     -(A0){ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EEE1  BFSET     -(A1){ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EEE2  BFSET     -(A2){ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EEE3  BFSET     -(A3){ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EEE4  BFSET     -(A4){ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EEE5  BFSET     -(A5){ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EEE6  BFSET     -(A6){ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EEE7  BFSET     -(A7){ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         mr      addr, a0                                // EEE8  BFSET     (d16,A0){ofs:wid}
-        b       L_07A20
+        b       bfchg_bfclr_bfset_mem
         mr      addr, a1                                // EEE9  BFSET     (d16,A1){ofs:wid}
-        b       L_07A20
+        b       bfchg_bfclr_bfset_mem
         mr      addr, a2                                // EEEA  BFSET     (d16,A2){ofs:wid}
-        b       L_07A20
+        b       bfchg_bfclr_bfset_mem
         mr      addr, a3                                // EEEB  BFSET     (d16,A3){ofs:wid}
-        b       L_07A20
+        b       bfchg_bfclr_bfset_mem
         mr      addr, a4                                // EEEC  BFSET     (d16,A4){ofs:wid}
-        b       L_07A20
+        b       bfchg_bfclr_bfset_mem
         mr      addr, a5                                // EEED  BFSET     (d16,A5){ofs:wid}
-        b       L_07A20
+        b       bfchg_bfclr_bfset_mem
         mr      addr, a6                                // EEEE  BFSET     (d16,A6){ofs:wid}
-        b       L_07A20
+        b       bfchg_bfclr_bfset_mem
         mr      addr, a7                                // EEEF  BFSET     (d16,A7){ofs:wid}
-        b       L_07A20
-        ori     rtn_addr, code_ptr, L_07A3C - cb        // EEF0  BFSET     (d8,A0,Xn){ofs:wid}
-        b       L_05980
-        ori     rtn_addr, code_ptr, L_07A3C - cb        // EEF1  BFSET     (d8,A1,Xn){ofs:wid}
-        b       L_059E0
-        ori     rtn_addr, code_ptr, L_07A3C - cb        // EEF2  BFSET     (d8,A2,Xn){ofs:wid}
-        b       L_05A40
-        ori     rtn_addr, code_ptr, L_07A3C - cb        // EEF3  BFSET     (d8,A3,Xn){ofs:wid}
-        b       L_05AA0
-        ori     rtn_addr, code_ptr, L_07A3C - cb        // EEF4  BFSET     (d8,A4,Xn){ofs:wid}
-        b       L_05B00
-        ori     rtn_addr, code_ptr, L_07A3C - cb        // EEF5  BFSET     (d8,A5,Xn){ofs:wid}
-        b       L_05B60
-        ori     rtn_addr, code_ptr, L_07A3C - cb        // EEF6  BFSET     (d8,A6,Xn){ofs:wid}
-        b       L_05BC0
-        ori     rtn_addr, code_ptr, L_07A3C - cb        // EEF7  BFSET     (d8,A7,Xn){ofs:wid}
-        b       L_05C20
+        b       bfchg_bfclr_bfset_mem
+        ori     rtn_addr, code_ptr, bfchg_bfclr_bfset_mem_3 - cb  // EEF0  BFSET     (d8,A0,Xn){ofs:wid}
+        b       movem_cas_etc_any_any
+        ori     rtn_addr, code_ptr, bfchg_bfclr_bfset_mem_3 - cb  // EEF1  BFSET     (d8,A1,Xn){ofs:wid}
+        b       movem_cas_etc_any_any_2
+        ori     rtn_addr, code_ptr, bfchg_bfclr_bfset_mem_3 - cb  // EEF2  BFSET     (d8,A2,Xn){ofs:wid}
+        b       movem_cas_etc_any_any_3
+        ori     rtn_addr, code_ptr, bfchg_bfclr_bfset_mem_3 - cb  // EEF3  BFSET     (d8,A3,Xn){ofs:wid}
+        b       movem_cas_etc_any_any_4
+        ori     rtn_addr, code_ptr, bfchg_bfclr_bfset_mem_3 - cb  // EEF4  BFSET     (d8,A4,Xn){ofs:wid}
+        b       movem_cas_etc_any_any_5
+        ori     rtn_addr, code_ptr, bfchg_bfclr_bfset_mem_3 - cb  // EEF5  BFSET     (d8,A5,Xn){ofs:wid}
+        b       movem_cas_etc_any_any_6
+        ori     rtn_addr, code_ptr, bfchg_bfclr_bfset_mem_3 - cb  // EEF6  BFSET     (d8,A6,Xn){ofs:wid}
+        b       movem_cas_etc_any_any_7
+        ori     rtn_addr, code_ptr, bfchg_bfclr_bfset_mem_3 - cb  // EEF7  BFSET     (d8,A7,Xn){ofs:wid}
+        b       movem_cas_etc_any_any_8
         lhau    addr, 2(pc)                             // EEF8  BFSET     (xxx).W{ofs:wid}
-        b       L_07A34
-        ori     rtn_addr, code_ptr, L_07A3C - cb        // EEF9  BFSET     (xxx).L{ofs:wid}
-        b       L_05E00
+        b       bfchg_bfclr_bfset_mem_2
+        ori     rtn_addr, code_ptr, bfchg_bfclr_bfset_mem_3 - cb  // EEF9  BFSET     (xxx).L{ofs:wid}
+        b       cea_x_71
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EEFA  BFSET     (d16,PC){ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EEFB  BFSET     (d8,PC,Xn){ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EEFC  BFSET     #<data>{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EEFD  BFSET     <ea 7.5>{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EEFE  BFSET     <ea 7.6>{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EEFF  BFSET     <ea 7.7>{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $EF00-$EF3F --------------------------------------------------------
         li      addr, 7                                 // EF00  ASL.B     #7,D0
-        b       L_0B304
+        b       asl_b_q_d0
         li      addr, 7                                 // EF01  ASL.B     #7,D1
-        b       L_0B3C4
+        b       asl_b_q_d1
         li      addr, 7                                 // EF02  ASL.B     #7,D2
-        b       L_0B484
+        b       asl_b_q_d2
         li      addr, 7                                 // EF03  ASL.B     #7,D3
-        b       L_0B544
+        b       asl_b_q_d3
         li      addr, 7                                 // EF04  ASL.B     #7,D4
-        b       L_0B604
+        b       asl_b_q_d4
         li      addr, 7                                 // EF05  ASL.B     #7,D5
-        b       L_0B6C4
+        b       asl_b_q_d5
         li      addr, 7                                 // EF06  ASL.B     #7,D6
-        b       L_0B784
+        b       asl_b_q_d6
         li      addr, 7                                 // EF07  ASL.B     #7,D7
-        b       L_0B844
+        b       asl_b_q_d7
         slwi    data, d0, 30                            // EF08  LSL.B     #7,D0
-        b       L_0B2E0
+        b       lsl_b_q_d0
         slwi    data, d1, 30                            // EF09  LSL.B     #7,D1
-        b       L_0B3A0
+        b       lsl_b_q_d1
         slwi    data, d2, 30                            // EF0A  LSL.B     #7,D2
-        b       L_0B460
+        b       lsl_b_q_d2
         slwi    data, d3, 30                            // EF0B  LSL.B     #7,D3
-        b       L_0B520
+        b       lsl_b_q_d3
         slwi    data, d4, 30                            // EF0C  LSL.B     #7,D4
-        b       L_0B5E0
+        b       lsl_b_q_d4
         slwi    data, d5, 30                            // EF0D  LSL.B     #7,D5
-        b       L_0B6A0
+        b       lsl_b_q_d5
         slwi    data, d6, 30                            // EF0E  LSL.B     #7,D6
-        b       L_0B760
+        b       lsl_b_q_d6
         slwi    data, d7, 30                            // EF0F  LSL.B     #7,D7
-        b       L_0B820
+        b       lsl_b_q_d7
         li      addr, 7                                 // EF10  ROXL.B    #7,D0
-        b       L_0B364
+        b       roxr_roxl_b_q_d0
         li      addr, 7                                 // EF11  ROXL.B    #7,D1
-        b       L_0B424
+        b       roxr_roxl_b_q_d1
         li      addr, 7                                 // EF12  ROXL.B    #7,D2
-        b       L_0B4E4
+        b       roxr_roxl_b_q_d2
         li      addr, 7                                 // EF13  ROXL.B    #7,D3
-        b       L_0B5A4
+        b       roxr_roxl_b_q_d3
         li      addr, 7                                 // EF14  ROXL.B    #7,D4
-        b       L_0B664
+        b       roxr_roxl_b_q_d4
         li      addr, 7                                 // EF15  ROXL.B    #7,D5
-        b       L_0B724
+        b       roxr_roxl_b_q_d5
         li      addr, 7                                 // EF16  ROXL.B    #7,D6
-        b       L_0B7E4
+        b       roxr_roxl_b_q_d6
         li      addr, 7                                 // EF17  ROXL.B    #7,D7
-        b       L_0B8A4
+        b       roxr_roxl_b_q_d7
         li      addr, 7                                 // EF18  ROL.B     #7,D0
-        b       L_0B348
+        b       rol_b_q_d0
         li      addr, 7                                 // EF19  ROL.B     #7,D1
-        b       L_0B408
+        b       rol_b_q_d1
         li      addr, 7                                 // EF1A  ROL.B     #7,D2
-        b       L_0B4C8
+        b       rol_b_q_d2
         li      addr, 7                                 // EF1B  ROL.B     #7,D3
-        b       L_0B588
+        b       rol_b_q_d3
         li      addr, 7                                 // EF1C  ROL.B     #7,D4
-        b       L_0B648
+        b       rol_b_q_d4
         li      addr, 7                                 // EF1D  ROL.B     #7,D5
-        b       L_0B708
+        b       rol_b_q_d5
         li      addr, 7                                 // EF1E  ROL.B     #7,D6
-        b       L_0B7C8
+        b       rol_b_q_d6
         li      addr, 7                                 // EF1F  ROL.B     #7,D7
-        b       L_0B888
+        b       rol_b_q_d7
         clrlwi. addr, d7, 26                            // EF20  ASL.B     D7,D0
-        b       L_0B300
+        b       asl_b_dn_d0
         clrlwi. addr, d7, 26                            // EF21  ASL.B     D7,D1
-        b       L_0B3C0
+        b       asl_b_dn_d1
         clrlwi. addr, d7, 26                            // EF22  ASL.B     D7,D2
-        b       L_0B480
+        b       asl_b_dn_d2
         clrlwi. addr, d7, 26                            // EF23  ASL.B     D7,D3
-        b       L_0B540
+        b       asl_b_dn_d3
         clrlwi. addr, d7, 26                            // EF24  ASL.B     D7,D4
-        b       L_0B600
+        b       asl_b_dn_d4
         clrlwi. addr, d7, 26                            // EF25  ASL.B     D7,D5
-        b       L_0B6C0
+        b       asl_b_dn_d5
         clrlwi. addr, d7, 26                            // EF26  ASL.B     D7,D6
-        b       L_0B780
+        b       asl_b_dn_d6
         clrlwi. addr, d7, 26                            // EF27  ASL.B     D7,D7
-        b       L_0B840
+        b       asl_b_dn_d7
         clrlwi. addr, d7, 26                            // EF28  LSL.B     D7,D0
-        b       L_0B2D4
+        b       lsl_b_dn_d0
         clrlwi. addr, d7, 26                            // EF29  LSL.B     D7,D1
-        b       L_0B394
+        b       lsl_b_dn_d1
         clrlwi. addr, d7, 26                            // EF2A  LSL.B     D7,D2
-        b       L_0B454
+        b       lsl_b_dn_d2
         clrlwi. addr, d7, 26                            // EF2B  LSL.B     D7,D3
-        b       L_0B514
+        b       lsl_b_dn_d3
         clrlwi. addr, d7, 26                            // EF2C  LSL.B     D7,D4
-        b       L_0B5D4
+        b       lsl_b_dn_d4
         clrlwi. addr, d7, 26                            // EF2D  LSL.B     D7,D5
-        b       L_0B694
+        b       lsl_b_dn_d5
         clrlwi. addr, d7, 26                            // EF2E  LSL.B     D7,D6
-        b       L_0B754
+        b       lsl_b_dn_d6
         clrlwi. addr, d7, 26                            // EF2F  LSL.B     D7,D7
-        b       L_0B814
+        b       lsl_b_dn_d7
         clrlwi. addr, d7, 26                            // EF30  ROXL.B    D7,D0
-        b       L_0B360
+        b       roxr_roxl_b_dn_d0
         clrlwi. addr, d7, 26                            // EF31  ROXL.B    D7,D1
-        b       L_0B420
+        b       roxr_roxl_b_dn_d1
         clrlwi. addr, d7, 26                            // EF32  ROXL.B    D7,D2
-        b       L_0B4E0
+        b       roxr_roxl_b_dn_d2
         clrlwi. addr, d7, 26                            // EF33  ROXL.B    D7,D3
-        b       L_0B5A0
+        b       roxr_roxl_b_dn_d3
         clrlwi. addr, d7, 26                            // EF34  ROXL.B    D7,D4
-        b       L_0B660
+        b       roxr_roxl_b_dn_d4
         clrlwi. addr, d7, 26                            // EF35  ROXL.B    D7,D5
-        b       L_0B720
+        b       roxr_roxl_b_dn_d5
         clrlwi. addr, d7, 26                            // EF36  ROXL.B    D7,D6
-        b       L_0B7E0
+        b       roxr_roxl_b_dn_d6
         clrlwi. addr, d7, 26                            // EF37  ROXL.B    D7,D7
-        b       L_0B8A0
+        b       roxr_roxl_b_dn_d7
         clrlwi. addr, d7, 26                            // EF38  ROL.B     D7,D0
-        b       L_0B340
+        b       rol_b_dn_d0
         clrlwi. addr, d7, 26                            // EF39  ROL.B     D7,D1
-        b       L_0B400
+        b       rol_b_dn_d1
         clrlwi. addr, d7, 26                            // EF3A  ROL.B     D7,D2
-        b       L_0B4C0
+        b       rol_b_dn_d2
         clrlwi. addr, d7, 26                            // EF3B  ROL.B     D7,D3
-        b       L_0B580
+        b       rol_b_dn_d3
         clrlwi. addr, d7, 26                            // EF3C  ROL.B     D7,D4
-        b       L_0B640
+        b       rol_b_dn_d4
         clrlwi. addr, d7, 26                            // EF3D  ROL.B     D7,D5
-        b       L_0B700
+        b       rol_b_dn_d5
         clrlwi. addr, d7, 26                            // EF3E  ROL.B     D7,D6
-        b       L_0B7C0
+        b       rol_b_dn_d6
         clrlwi. addr, d7, 26                            // EF3F  ROL.B     D7,D7
-        b       L_0B880
+        b       rol_b_dn_d7
 
 // ---- $EF40-$EF7F --------------------------------------------------------
         li      addr, 7                                 // EF40  ASL.W     #7,D0
-        b       L_04C44
+        b       asl_w_q_d0
         li      addr, 7                                 // EF41  ASL.W     #7,D1
-        b       L_04D04
+        b       asl_w_q_d1
         li      addr, 7                                 // EF42  ASL.W     #7,D2
-        b       L_04DC4
+        b       asl_w_q_d2
         li      addr, 7                                 // EF43  ASL.W     #7,D3
-        b       L_04E84
+        b       asl_w_q_d3
         li      addr, 7                                 // EF44  ASL.W     #7,D4
-        b       L_04F44
+        b       asl_w_q_d4
         li      addr, 7                                 // EF45  ASL.W     #7,D5
-        b       L_05004
+        b       asl_w_q_d5
         li      addr, 7                                 // EF46  ASL.W     #7,D6
-        b       L_050C4
+        b       asl_w_q_d6
         li      addr, 7                                 // EF47  ASL.W     #7,D7
-        b       L_05184
+        b       asl_w_q_d7
         slwi    data, d0, 22                            // EF48  LSL.W     #7,D0
-        b       L_04C20
+        b       lsl_w_q_d0
         slwi    data, d1, 22                            // EF49  LSL.W     #7,D1
-        b       L_04CE0
+        b       lsl_w_q_d1
         slwi    data, d2, 22                            // EF4A  LSL.W     #7,D2
-        b       L_04DA0
+        b       lsl_w_q_d2
         slwi    data, d3, 22                            // EF4B  LSL.W     #7,D3
-        b       L_04E60
+        b       lsl_w_q_d3
         slwi    data, d4, 22                            // EF4C  LSL.W     #7,D4
-        b       L_04F20
+        b       lsl_w_q_d4
         slwi    data, d5, 22                            // EF4D  LSL.W     #7,D5
-        b       L_04FE0
+        b       lsl_w_q_d5
         slwi    data, d6, 22                            // EF4E  LSL.W     #7,D6
-        b       L_050A0
+        b       lsl_w_q_d6
         slwi    data, d7, 22                            // EF4F  LSL.W     #7,D7
-        b       L_05160
+        b       lsl_w_q_d7
         addic.  addr, zero, 7                           // EF50  ROXL.W    #7,D0
-        b       L_04CA4
+        b       roxr_roxl_w_q_d0
         addic.  addr, zero, 7                           // EF51  ROXL.W    #7,D1
-        b       L_04D64
+        b       roxr_roxl_w_q_d1
         addic.  addr, zero, 7                           // EF52  ROXL.W    #7,D2
-        b       L_04E24
+        b       roxr_roxl_w_q_d2
         addic.  addr, zero, 7                           // EF53  ROXL.W    #7,D3
-        b       L_04EE4
+        b       roxr_roxl_w_q_d3
         addic.  addr, zero, 7                           // EF54  ROXL.W    #7,D4
-        b       L_04FA4
+        b       roxr_roxl_w_q_d4
         addic.  addr, zero, 7                           // EF55  ROXL.W    #7,D5
-        b       L_05064
+        b       roxr_roxl_w_q_d5
         addic.  addr, zero, 7                           // EF56  ROXL.W    #7,D6
-        b       L_05124
+        b       roxr_roxl_w_q_d6
         addic.  addr, zero, 7                           // EF57  ROXL.W    #7,D7
-        b       L_051E4
+        b       roxr_roxl_w_q_d7
         li      addr, 7                                 // EF58  ROL.W     #7,D0
-        b       L_04C88
+        b       rol_w_q_d0
         li      addr, 7                                 // EF59  ROL.W     #7,D1
-        b       L_04D48
+        b       rol_w_q_d1
         li      addr, 7                                 // EF5A  ROL.W     #7,D2
-        b       L_04E08
+        b       rol_w_q_d2
         li      addr, 7                                 // EF5B  ROL.W     #7,D3
-        b       L_04EC8
+        b       rol_w_q_d3
         li      addr, 7                                 // EF5C  ROL.W     #7,D4
-        b       L_04F88
+        b       rol_w_q_d4
         li      addr, 7                                 // EF5D  ROL.W     #7,D5
-        b       L_05048
+        b       rol_w_q_d5
         li      addr, 7                                 // EF5E  ROL.W     #7,D6
-        b       L_05108
+        b       rol_w_q_d6
         li      addr, 7                                 // EF5F  ROL.W     #7,D7
-        b       L_051C8
+        b       rol_w_q_d7
         clrlwi. addr, d7, 26                            // EF60  ASL.W     D7,D0
-        b       L_04C40
+        b       asl_w_dn_d0
         clrlwi. addr, d7, 26                            // EF61  ASL.W     D7,D1
-        b       L_04D00
+        b       asl_w_dn_d1
         clrlwi. addr, d7, 26                            // EF62  ASL.W     D7,D2
-        b       L_04DC0
+        b       asl_w_dn_d2
         clrlwi. addr, d7, 26                            // EF63  ASL.W     D7,D3
-        b       L_04E80
+        b       asl_w_dn_d3
         clrlwi. addr, d7, 26                            // EF64  ASL.W     D7,D4
-        b       L_04F40
+        b       asl_w_dn_d4
         clrlwi. addr, d7, 26                            // EF65  ASL.W     D7,D5
-        b       L_05000
+        b       asl_w_dn_d5
         clrlwi. addr, d7, 26                            // EF66  ASL.W     D7,D6
-        b       L_050C0
+        b       asl_w_dn_d6
         clrlwi. addr, d7, 26                            // EF67  ASL.W     D7,D7
-        b       L_05180
+        b       asl_w_dn_d7
         clrlwi. addr, d7, 26                            // EF68  LSL.W     D7,D0
-        b       L_04C14
+        b       lsl_w_dn_d0
         clrlwi. addr, d7, 26                            // EF69  LSL.W     D7,D1
-        b       L_04CD4
+        b       lsl_w_dn_d1
         clrlwi. addr, d7, 26                            // EF6A  LSL.W     D7,D2
-        b       L_04D94
+        b       lsl_w_dn_d2
         clrlwi. addr, d7, 26                            // EF6B  LSL.W     D7,D3
-        b       L_04E54
+        b       lsl_w_dn_d3
         clrlwi. addr, d7, 26                            // EF6C  LSL.W     D7,D4
-        b       L_04F14
+        b       lsl_w_dn_d4
         clrlwi. addr, d7, 26                            // EF6D  LSL.W     D7,D5
-        b       L_04FD4
+        b       lsl_w_dn_d5
         clrlwi. addr, d7, 26                            // EF6E  LSL.W     D7,D6
-        b       L_05094
+        b       lsl_w_dn_d6
         clrlwi. addr, d7, 26                            // EF6F  LSL.W     D7,D7
-        b       L_05154
+        b       lsl_w_dn_d7
         clrlwi. addr, d7, 26                            // EF70  ROXL.W    D7,D0
-        b       L_04CA0
+        b       roxr_roxl_w_dn_d0
         clrlwi. addr, d7, 26                            // EF71  ROXL.W    D7,D1
-        b       L_04D60
+        b       roxr_roxl_w_dn_d1
         clrlwi. addr, d7, 26                            // EF72  ROXL.W    D7,D2
-        b       L_04E20
+        b       roxr_roxl_w_dn_d2
         clrlwi. addr, d7, 26                            // EF73  ROXL.W    D7,D3
-        b       L_04EE0
+        b       roxr_roxl_w_dn_d3
         clrlwi. addr, d7, 26                            // EF74  ROXL.W    D7,D4
-        b       L_04FA0
+        b       roxr_roxl_w_dn_d4
         clrlwi. addr, d7, 26                            // EF75  ROXL.W    D7,D5
-        b       L_05060
+        b       roxr_roxl_w_dn_d5
         clrlwi. addr, d7, 26                            // EF76  ROXL.W    D7,D6
-        b       L_05120
+        b       roxr_roxl_w_dn_d6
         clrlwi. addr, d7, 26                            // EF77  ROXL.W    D7,D7
-        b       L_051E0
+        b       roxr_roxl_w_dn_d7
         clrlwi. addr, d7, 26                            // EF78  ROL.W     D7,D0
-        b       L_04C80
+        b       rol_w_dn_d0
         clrlwi. addr, d7, 26                            // EF79  ROL.W     D7,D1
-        b       L_04D40
+        b       rol_w_dn_d1
         clrlwi. addr, d7, 26                            // EF7A  ROL.W     D7,D2
-        b       L_04E00
+        b       rol_w_dn_d2
         clrlwi. addr, d7, 26                            // EF7B  ROL.W     D7,D3
-        b       L_04EC0
+        b       rol_w_dn_d3
         clrlwi. addr, d7, 26                            // EF7C  ROL.W     D7,D4
-        b       L_04F80
+        b       rol_w_dn_d4
         clrlwi. addr, d7, 26                            // EF7D  ROL.W     D7,D5
-        b       L_05040
+        b       rol_w_dn_d5
         clrlwi. addr, d7, 26                            // EF7E  ROL.W     D7,D6
-        b       L_05100
+        b       rol_w_dn_d6
         clrlwi. addr, d7, 26                            // EF7F  ROL.W     D7,D7
-        b       L_051C0
+        b       rol_w_dn_d7
 
 // ---- $EF80-$EFBF --------------------------------------------------------
         li      addr, 7                                 // EF80  ASL.L     #7,D0
-        b       L_05244
+        b       asl_l_q_d0
         li      addr, 7                                 // EF81  ASL.L     #7,D1
-        b       L_052E4
+        b       asl_l_q_d1
         li      addr, 7                                 // EF82  ASL.L     #7,D2
-        b       L_05384
+        b       asl_l_q_d2
         li      addr, 7                                 // EF83  ASL.L     #7,D3
-        b       L_05424
+        b       asl_l_q_d3
         li      addr, 7                                 // EF84  ASL.L     #7,D4
-        b       L_054C4
+        b       asl_l_q_d4
         li      addr, 7                                 // EF85  ASL.L     #7,D5
-        b       L_05564
+        b       asl_l_q_d5
         li      addr, 7                                 // EF86  ASL.L     #7,D6
-        b       L_05604
+        b       asl_l_q_d6
         li      addr, 7                                 // EF87  ASL.L     #7,D7
-        b       L_056A4
+        b       asl_l_q_d7
         slwi    data, d0, 6                             // EF88  LSL.L     #7,D0
-        b       L_05220
+        b       lsl_l_q_d0
         slwi    data, d1, 6                             // EF89  LSL.L     #7,D1
-        b       L_052C0
+        b       lsl_l_q_d1
         slwi    data, d2, 6                             // EF8A  LSL.L     #7,D2
-        b       L_05360
+        b       lsl_l_q_d2
         slwi    data, d3, 6                             // EF8B  LSL.L     #7,D3
-        b       L_05400
+        b       lsl_l_q_d3
         slwi    data, d4, 6                             // EF8C  LSL.L     #7,D4
-        b       L_054A0
+        b       lsl_l_q_d4
         slwi    data, d5, 6                             // EF8D  LSL.L     #7,D5
-        b       L_05540
+        b       lsl_l_q_d5
         slwi    data, d6, 6                             // EF8E  LSL.L     #7,D6
-        b       L_055E0
+        b       lsl_l_q_d6
         slwi    data, d7, 6                             // EF8F  LSL.L     #7,D7
-        b       L_05680
+        b       lsl_l_q_d7
         addic.  addr, zero, 7                           // EF90  ROXL.L    #7,D0
-        b       L_05284
+        b       roxr_roxl_l_q_d0
         addic.  addr, zero, 7                           // EF91  ROXL.L    #7,D1
-        b       L_05324
+        b       roxr_roxl_l_q_d1
         addic.  addr, zero, 7                           // EF92  ROXL.L    #7,D2
-        b       L_053C4
+        b       roxr_roxl_l_q_d2
         addic.  addr, zero, 7                           // EF93  ROXL.L    #7,D3
-        b       L_05464
+        b       roxr_roxl_l_q_d3
         addic.  addr, zero, 7                           // EF94  ROXL.L    #7,D4
-        b       L_05504
+        b       roxr_roxl_l_q_d4
         addic.  addr, zero, 7                           // EF95  ROXL.L    #7,D5
-        b       L_055A4
+        b       roxr_roxl_l_q_d5
         addic.  addr, zero, 7                           // EF96  ROXL.L    #7,D6
-        b       L_05644
+        b       roxr_roxl_l_q_d6
         addic.  addr, zero, 7                           // EF97  ROXL.L    #7,D7
-        b       L_056E4
+        b       roxr_roxl_l_q_d7
         rotlwi  data, d0, 7                             // EF98  ROL.L     #7,D0
-        b       L_05270
+        b       rol_l_q_d0
         rotlwi  data, d1, 7                             // EF99  ROL.L     #7,D1
-        b       L_05310
+        b       rol_l_q_d1
         rotlwi  data, d2, 7                             // EF9A  ROL.L     #7,D2
-        b       L_053B0
+        b       rol_l_q_d2
         rotlwi  data, d3, 7                             // EF9B  ROL.L     #7,D3
-        b       L_05450
+        b       rol_l_q_d3
         rotlwi  data, d4, 7                             // EF9C  ROL.L     #7,D4
-        b       L_054F0
+        b       rol_l_q_d4
         rotlwi  data, d5, 7                             // EF9D  ROL.L     #7,D5
-        b       L_05590
+        b       rol_l_q_d5
         rotlwi  data, d6, 7                             // EF9E  ROL.L     #7,D6
-        b       L_05630
+        b       rol_l_q_d6
         rotlwi  data, d7, 7                             // EF9F  ROL.L     #7,D7
-        b       L_056D0
+        b       rol_l_q_d7
         clrlwi. addr, d7, 26                            // EFA0  ASL.L     D7,D0
-        b       L_05240
+        b       asl_l_dn_d0
         clrlwi. addr, d7, 26                            // EFA1  ASL.L     D7,D1
-        b       L_052E0
+        b       asl_l_dn_d1
         clrlwi. addr, d7, 26                            // EFA2  ASL.L     D7,D2
-        b       L_05380
+        b       asl_l_dn_d2
         clrlwi. addr, d7, 26                            // EFA3  ASL.L     D7,D3
-        b       L_05420
+        b       asl_l_dn_d3
         clrlwi. addr, d7, 26                            // EFA4  ASL.L     D7,D4
-        b       L_054C0
+        b       asl_l_dn_d4
         clrlwi. addr, d7, 26                            // EFA5  ASL.L     D7,D5
-        b       L_05560
+        b       asl_l_dn_d5
         clrlwi. addr, d7, 26                            // EFA6  ASL.L     D7,D6
-        b       L_05600
+        b       asl_l_dn_d6
         clrlwi. addr, d7, 26                            // EFA7  ASL.L     D7,D7
-        b       L_056A0
+        b       asl_l_dn_d7
         clrlwi. addr, d7, 26                            // EFA8  LSL.L     D7,D0
-        b       L_05214
+        b       lsl_l_dn_d0
         clrlwi. addr, d7, 26                            // EFA9  LSL.L     D7,D1
-        b       L_052B4
+        b       lsl_l_dn_d1
         clrlwi. addr, d7, 26                            // EFAA  LSL.L     D7,D2
-        b       L_05354
+        b       lsl_l_dn_d2
         clrlwi. addr, d7, 26                            // EFAB  LSL.L     D7,D3
-        b       L_053F4
+        b       lsl_l_dn_d3
         clrlwi. addr, d7, 26                            // EFAC  LSL.L     D7,D4
-        b       L_05494
+        b       lsl_l_dn_d4
         clrlwi. addr, d7, 26                            // EFAD  LSL.L     D7,D5
-        b       L_05534
+        b       lsl_l_dn_d5
         clrlwi. addr, d7, 26                            // EFAE  LSL.L     D7,D6
-        b       L_055D4
+        b       lsl_l_dn_d6
         clrlwi. addr, d7, 26                            // EFAF  LSL.L     D7,D7
-        b       L_05674
+        b       lsl_l_dn_d7
         clrlwi. addr, d7, 26                            // EFB0  ROXL.L    D7,D0
-        b       L_05280
+        b       roxr_roxl_l_dn_d0
         clrlwi. addr, d7, 26                            // EFB1  ROXL.L    D7,D1
-        b       L_05320
+        b       roxr_roxl_l_dn_d1
         clrlwi. addr, d7, 26                            // EFB2  ROXL.L    D7,D2
-        b       L_053C0
+        b       roxr_roxl_l_dn_d2
         clrlwi. addr, d7, 26                            // EFB3  ROXL.L    D7,D3
-        b       L_05460
+        b       roxr_roxl_l_dn_d3
         clrlwi. addr, d7, 26                            // EFB4  ROXL.L    D7,D4
-        b       L_05500
+        b       roxr_roxl_l_dn_d4
         clrlwi. addr, d7, 26                            // EFB5  ROXL.L    D7,D5
-        b       L_055A0
+        b       roxr_roxl_l_dn_d5
         clrlwi. addr, d7, 26                            // EFB6  ROXL.L    D7,D6
-        b       L_05640
+        b       roxr_roxl_l_dn_d6
         clrlwi. addr, d7, 26                            // EFB7  ROXL.L    D7,D7
-        b       L_056E0
+        b       roxr_roxl_l_dn_d7
         clrlwi. addr, d7, 26                            // EFB8  ROL.L     D7,D0
-        b       L_05268
+        b       rol_l_dn_d0
         clrlwi. addr, d7, 26                            // EFB9  ROL.L     D7,D1
-        b       L_05308
+        b       rol_l_dn_d1
         clrlwi. addr, d7, 26                            // EFBA  ROL.L     D7,D2
-        b       L_053A8
+        b       rol_l_dn_d2
         clrlwi. addr, d7, 26                            // EFBB  ROL.L     D7,D3
-        b       L_05448
+        b       rol_l_dn_d3
         clrlwi. addr, d7, 26                            // EFBC  ROL.L     D7,D4
-        b       L_054E8
+        b       rol_l_dn_d4
         clrlwi. addr, d7, 26                            // EFBD  ROL.L     D7,D5
-        b       L_05588
+        b       rol_l_dn_d5
         clrlwi. addr, d7, 26                            // EFBE  ROL.L     D7,D6
-        b       L_05628
+        b       rol_l_dn_d6
         clrlwi. addr, d7, 26                            // EFBF  ROL.L     D7,D7
-        b       L_056C8
+        b       rol_l_dn_d7
 
 // ---- $EFC0-$EFFF --------------------------------------------------------
         ori     addr, code_ptr, L_05700 - cb            // EFC0  BFINS     Dn,D0{ofs:wid}
-        b       L_07B00
+        b       bfins
         ori     addr, code_ptr, L_05710 - cb            // EFC1  BFINS     Dn,D1{ofs:wid}
-        b       L_07B00
+        b       bfins
         ori     addr, code_ptr, L_05720 - cb            // EFC2  BFINS     Dn,D2{ofs:wid}
-        b       L_07B00
+        b       bfins
         ori     addr, code_ptr, L_05730 - cb            // EFC3  BFINS     Dn,D3{ofs:wid}
-        b       L_07B00
+        b       bfins
         ori     addr, code_ptr, L_05740 - cb            // EFC4  BFINS     Dn,D4{ofs:wid}
-        b       L_07B00
+        b       bfins
         ori     addr, code_ptr, L_05750 - cb            // EFC5  BFINS     Dn,D5{ofs:wid}
-        b       L_07B00
+        b       bfins
         ori     addr, code_ptr, L_05760 - cb            // EFC6  BFINS     Dn,D6{ofs:wid}
-        b       L_07B00
+        b       bfins
         ori     addr, code_ptr, L_05770 - cb            // EFC7  BFINS     Dn,D7{ofs:wid}
-        b       L_07B00
+        b       bfins
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EFC8  BFINS     Dn,A0{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EFC9  BFINS     Dn,A1{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EFCA  BFINS     Dn,A2{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EFCB  BFINS     Dn,A3{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EFCC  BFINS     Dn,A4{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EFCD  BFINS     Dn,A5{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EFCE  BFINS     Dn,A6{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EFCF  BFINS     Dn,A7{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         mr      addr, a0                                // EFD0  BFINS     Dn,(A0){ofs:wid}
-        b       L_07B60
+        b       bfins_mem
         mr      addr, a1                                // EFD1  BFINS     Dn,(A1){ofs:wid}
-        b       L_07B60
+        b       bfins_mem
         mr      addr, a2                                // EFD2  BFINS     Dn,(A2){ofs:wid}
-        b       L_07B60
+        b       bfins_mem
         mr      addr, a3                                // EFD3  BFINS     Dn,(A3){ofs:wid}
-        b       L_07B60
+        b       bfins_mem
         mr      addr, a4                                // EFD4  BFINS     Dn,(A4){ofs:wid}
-        b       L_07B60
+        b       bfins_mem
         mr      addr, a5                                // EFD5  BFINS     Dn,(A5){ofs:wid}
-        b       L_07B60
+        b       bfins_mem
         mr      addr, a6                                // EFD6  BFINS     Dn,(A6){ofs:wid}
-        b       L_07B60
+        b       bfins_mem
         mr      addr, a7                                // EFD7  BFINS     Dn,(A7){ofs:wid}
-        b       L_07B60
+        b       bfins_mem
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EFD8  BFINS     Dn,(A0)+{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EFD9  BFINS     Dn,(A1)+{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EFDA  BFINS     Dn,(A2)+{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EFDB  BFINS     Dn,(A3)+{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EFDC  BFINS     Dn,(A4)+{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EFDD  BFINS     Dn,(A5)+{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EFDE  BFINS     Dn,(A6)+{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EFDF  BFINS     Dn,(A7)+{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EFE0  BFINS     Dn,-(A0){ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EFE1  BFINS     Dn,-(A1){ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EFE2  BFINS     Dn,-(A2){ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EFE3  BFINS     Dn,-(A3){ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EFE4  BFINS     Dn,-(A4){ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EFE5  BFINS     Dn,-(A5){ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EFE6  BFINS     Dn,-(A6){ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EFE7  BFINS     Dn,-(A7){ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         mr      addr, a0                                // EFE8  BFINS     Dn,(d16,A0){ofs:wid}
-        b       L_07C2C
+        b       bfins_mem_3
         mr      addr, a1                                // EFE9  BFINS     Dn,(d16,A1){ofs:wid}
-        b       L_07C2C
+        b       bfins_mem_3
         mr      addr, a2                                // EFEA  BFINS     Dn,(d16,A2){ofs:wid}
-        b       L_07C2C
+        b       bfins_mem_3
         mr      addr, a3                                // EFEB  BFINS     Dn,(d16,A3){ofs:wid}
-        b       L_07C2C
+        b       bfins_mem_3
         mr      addr, a4                                // EFEC  BFINS     Dn,(d16,A4){ofs:wid}
-        b       L_07C2C
+        b       bfins_mem_3
         mr      addr, a5                                // EFED  BFINS     Dn,(d16,A5){ofs:wid}
-        b       L_07C2C
+        b       bfins_mem_3
         mr      addr, a6                                // EFEE  BFINS     Dn,(d16,A6){ofs:wid}
-        b       L_07C2C
+        b       bfins_mem_3
         mr      addr, a7                                // EFEF  BFINS     Dn,(d16,A7){ofs:wid}
-        b       L_07C2C
-        ori     rtn_addr, code_ptr, L_07B68 - cb        // EFF0  BFINS     Dn,(d8,A0,Xn){ofs:wid}
-        b       L_05980
-        ori     rtn_addr, code_ptr, L_07B68 - cb        // EFF1  BFINS     Dn,(d8,A1,Xn){ofs:wid}
-        b       L_059E0
-        ori     rtn_addr, code_ptr, L_07B68 - cb        // EFF2  BFINS     Dn,(d8,A2,Xn){ofs:wid}
-        b       L_05A40
-        ori     rtn_addr, code_ptr, L_07B68 - cb        // EFF3  BFINS     Dn,(d8,A3,Xn){ofs:wid}
-        b       L_05AA0
-        ori     rtn_addr, code_ptr, L_07B68 - cb        // EFF4  BFINS     Dn,(d8,A4,Xn){ofs:wid}
-        b       L_05B00
-        ori     rtn_addr, code_ptr, L_07B68 - cb        // EFF5  BFINS     Dn,(d8,A5,Xn){ofs:wid}
-        b       L_05B60
-        ori     rtn_addr, code_ptr, L_07B68 - cb        // EFF6  BFINS     Dn,(d8,A6,Xn){ofs:wid}
-        b       L_05BC0
-        ori     rtn_addr, code_ptr, L_07B68 - cb        // EFF7  BFINS     Dn,(d8,A7,Xn){ofs:wid}
-        b       L_05C20
+        b       bfins_mem_3
+        ori     rtn_addr, code_ptr, bfins_mem_2 - cb    // EFF0  BFINS     Dn,(d8,A0,Xn){ofs:wid}
+        b       movem_cas_etc_any_any
+        ori     rtn_addr, code_ptr, bfins_mem_2 - cb    // EFF1  BFINS     Dn,(d8,A1,Xn){ofs:wid}
+        b       movem_cas_etc_any_any_2
+        ori     rtn_addr, code_ptr, bfins_mem_2 - cb    // EFF2  BFINS     Dn,(d8,A2,Xn){ofs:wid}
+        b       movem_cas_etc_any_any_3
+        ori     rtn_addr, code_ptr, bfins_mem_2 - cb    // EFF3  BFINS     Dn,(d8,A3,Xn){ofs:wid}
+        b       movem_cas_etc_any_any_4
+        ori     rtn_addr, code_ptr, bfins_mem_2 - cb    // EFF4  BFINS     Dn,(d8,A4,Xn){ofs:wid}
+        b       movem_cas_etc_any_any_5
+        ori     rtn_addr, code_ptr, bfins_mem_2 - cb    // EFF5  BFINS     Dn,(d8,A5,Xn){ofs:wid}
+        b       movem_cas_etc_any_any_6
+        ori     rtn_addr, code_ptr, bfins_mem_2 - cb    // EFF6  BFINS     Dn,(d8,A6,Xn){ofs:wid}
+        b       movem_cas_etc_any_any_7
+        ori     rtn_addr, code_ptr, bfins_mem_2 - cb    // EFF7  BFINS     Dn,(d8,A7,Xn){ofs:wid}
+        b       movem_cas_etc_any_any_8
         lhau    addr, 2(pc)                             // EFF8  BFINS     Dn,(xxx).W{ofs:wid}
-        b       L_07B60
-        ori     rtn_addr, code_ptr, L_07B68 - cb        // EFF9  BFINS     Dn,(xxx).L{ofs:wid}
-        b       L_05E00
+        b       bfins_mem
+        ori     rtn_addr, code_ptr, bfins_mem_2 - cb    // EFF9  BFINS     Dn,(xxx).L{ofs:wid}
+        b       cea_x_71
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EFFA  BFINS     Dn,(d16,PC){ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EFFB  BFINS     Dn,(d8,PC,Xn){ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EFFC  BFINS     Dn,#<data>{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EFFD  BFINS     Dn,<ea 7.5>{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EFFE  BFINS     Dn,<ea 7.6>{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EFFF  BFINS     Dn,<ea 7.7>{ofs:wid}   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm

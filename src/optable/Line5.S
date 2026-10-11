@@ -5,77 +5,77 @@
 
 // ---- $5000-$503F --------------------------------------------------------
         lis     data, 0x0800                            // 5000  ADDQ.B    #8,D0
-        b       L_0B0C8
+        b       add_asl_b_any_d0
         lis     data, 0x0800                            // 5001  ADDQ.B    #8,D1
-        b       L_0B108
+        b       add_asl_b_any_d1
         lis     data, 0x0800                            // 5002  ADDQ.B    #8,D2
-        b       L_0B148
+        b       add_asl_b_any_d2
         lis     data, 0x0800                            // 5003  ADDQ.B    #8,D3
-        b       L_0B188
+        b       add_asl_b_any_d3
         lis     data, 0x0800                            // 5004  ADDQ.B    #8,D4
-        b       L_0B1C8
+        b       add_asl_b_any_d4
         lis     data, 0x0800                            // 5005  ADDQ.B    #8,D5
-        b       L_0B208
+        b       add_asl_b_any_d5
         lis     data, 0x0800                            // 5006  ADDQ.B    #8,D6
-        b       L_0B248
+        b       add_asl_b_any_d6
         lis     data, 0x0800                            // 5007  ADDQ.B    #8,D7
-        b       L_0B288
+        b       add_asl_b_any_d7
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5008  ADDQ.B    #8,A0   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5009  ADDQ.B    #8,A1   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 500A  ADDQ.B    #8,A2   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 500B  ADDQ.B    #8,A3   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 500C  ADDQ.B    #8,A4   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 500D  ADDQ.B    #8,A5   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 500E  ADDQ.B    #8,A6   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 500F  ADDQ.B    #8,A7   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 op_5010:
         mr      addr, a0                                // 5010  ADDQ.B    #8,(A0)
-        b       L_06584
+        b       addq_b_q_mem_5
 op_5011:
         mr      addr, a1                                // 5011  ADDQ.B    #8,(A1)
-        b       L_06584
+        b       addq_b_q_mem_5
 op_5012:
         mr      addr, a2                                // 5012  ADDQ.B    #8,(A2)
-        b       L_06584
+        b       addq_b_q_mem_5
 op_5013:
         mr      addr, a3                                // 5013  ADDQ.B    #8,(A3)
-        b       L_06584
+        b       addq_b_q_mem_5
 op_5014:
         mr      addr, a4                                // 5014  ADDQ.B    #8,(A4)
-        b       L_06584
+        b       addq_b_q_mem_5
 op_5015:
         mr      addr, a5                                // 5015  ADDQ.B    #8,(A5)
-        b       L_06584
+        b       addq_b_q_mem_5
 op_5016:
         mr      addr, a6                                // 5016  ADDQ.B    #8,(A6)
-        b       L_06584
+        b       addq_b_q_mem_5
 op_5017:
         mr      addr, a7                                // 5017  ADDQ.B    #8,(A7)
-        b       L_06584
-        ori     rtn_addr, code_ptr, L_06584 - cb        // 5018  ADDQ.B    #8,(A0)+
-        b       L_00800
-        ori     rtn_addr, code_ptr, L_06584 - cb        // 5019  ADDQ.B    #8,(A1)+
-        b       L_00880
-        ori     rtn_addr, code_ptr, L_06584 - cb        // 501A  ADDQ.B    #8,(A2)+
-        b       L_00900
-        ori     rtn_addr, code_ptr, L_06584 - cb        // 501B  ADDQ.B    #8,(A3)+
-        b       L_00980
-        ori     rtn_addr, code_ptr, L_06584 - cb        // 501C  ADDQ.B    #8,(A4)+
-        b       L_00A00
-        ori     rtn_addr, code_ptr, L_06584 - cb        // 501D  ADDQ.B    #8,(A5)+
-        b       L_00A80
-        ori     rtn_addr, code_ptr, L_06584 - cb        // 501E  ADDQ.B    #8,(A6)+
-        b       L_00B00
-        ori     rtn_addr, code_ptr, L_06584 - cb        // 501F  ADDQ.B    #8,(A7)+
-        b       L_00B80
+        b       addq_b_q_mem_5
+        ori     rtn_addr, code_ptr, addq_b_q_mem_5 - cb  // 5018  ADDQ.B    #8,(A0)+
+        b       cea_b_30
+        ori     rtn_addr, code_ptr, addq_b_q_mem_5 - cb  // 5019  ADDQ.B    #8,(A1)+
+        b       cea_b_31
+        ori     rtn_addr, code_ptr, addq_b_q_mem_5 - cb  // 501A  ADDQ.B    #8,(A2)+
+        b       cea_b_32
+        ori     rtn_addr, code_ptr, addq_b_q_mem_5 - cb  // 501B  ADDQ.B    #8,(A3)+
+        b       cea_b_33
+        ori     rtn_addr, code_ptr, addq_b_q_mem_5 - cb  // 501C  ADDQ.B    #8,(A4)+
+        b       cea_b_34
+        ori     rtn_addr, code_ptr, addq_b_q_mem_5 - cb  // 501D  ADDQ.B    #8,(A5)+
+        b       cea_b_35
+        ori     rtn_addr, code_ptr, addq_b_q_mem_5 - cb  // 501E  ADDQ.B    #8,(A6)+
+        b       cea_b_36
+        ori     rtn_addr, code_ptr, addq_b_q_mem_5 - cb  // 501F  ADDQ.B    #8,(A7)+
+        b       cea_b_37
         addi    a0, a0, -1                              // 5020  ADDQ.B    #8,-(A0)
         b       op_5010
         addi    a1, a1, -1                              // 5021  ADDQ.B    #8,-(A1)
@@ -93,127 +93,127 @@ op_5017:
         addi    a7, a7, -2                              // 5027  ADDQ.B    #8,-(A7)
         b       op_5017
         add     addr, a0, prefetch_data                 // 5028  ADDQ.B    #8,(d16,A0)
-        b       L_06580
+        b       addq_b_q_mem_4
         add     addr, a1, prefetch_data                 // 5029  ADDQ.B    #8,(d16,A1)
-        b       L_06580
+        b       addq_b_q_mem_4
         add     addr, a2, prefetch_data                 // 502A  ADDQ.B    #8,(d16,A2)
-        b       L_06580
+        b       addq_b_q_mem_4
         add     addr, a3, prefetch_data                 // 502B  ADDQ.B    #8,(d16,A3)
-        b       L_06580
+        b       addq_b_q_mem_4
         add     addr, a4, prefetch_data                 // 502C  ADDQ.B    #8,(d16,A4)
-        b       L_06580
+        b       addq_b_q_mem_4
         add     addr, a5, prefetch_data                 // 502D  ADDQ.B    #8,(d16,A5)
-        b       L_06580
+        b       addq_b_q_mem_4
         add     addr, a6, prefetch_data                 // 502E  ADDQ.B    #8,(d16,A6)
-        b       L_06580
+        b       addq_b_q_mem_4
         add     addr, a7, prefetch_data                 // 502F  ADDQ.B    #8,(d16,A7)
-        b       L_06580
-        ori     rtn_addr, code_ptr, L_06588 - cb        // 5030  ADDQ.B    #8,(d8,A0,Xn)
-        b       L_0599C
-        ori     rtn_addr, code_ptr, L_06588 - cb        // 5031  ADDQ.B    #8,(d8,A1,Xn)
-        b       L_059FC
-        ori     rtn_addr, code_ptr, L_06588 - cb        // 5032  ADDQ.B    #8,(d8,A2,Xn)
-        b       L_05A5C
-        ori     rtn_addr, code_ptr, L_06588 - cb        // 5033  ADDQ.B    #8,(d8,A3,Xn)
-        b       L_05ABC
-        ori     rtn_addr, code_ptr, L_06588 - cb        // 5034  ADDQ.B    #8,(d8,A4,Xn)
-        b       L_05B1C
-        ori     rtn_addr, code_ptr, L_06588 - cb        // 5035  ADDQ.B    #8,(d8,A5,Xn)
-        b       L_05B7C
-        ori     rtn_addr, code_ptr, L_06588 - cb        // 5036  ADDQ.B    #8,(d8,A6,Xn)
-        b       L_05BDC
-        ori     rtn_addr, code_ptr, L_06588 - cb        // 5037  ADDQ.B    #8,(d8,A7,Xn)
-        b       L_05C3C
+        b       addq_b_q_mem_4
+        ori     rtn_addr, code_ptr, addq_b_q_mem_6 - cb  // 5030  ADDQ.B    #8,(d8,A0,Xn)
+        b       move_add_etc_b_any_any
+        ori     rtn_addr, code_ptr, addq_b_q_mem_6 - cb  // 5031  ADDQ.B    #8,(d8,A1,Xn)
+        b       move_add_etc_b_any_any_2
+        ori     rtn_addr, code_ptr, addq_b_q_mem_6 - cb  // 5032  ADDQ.B    #8,(d8,A2,Xn)
+        b       move_add_etc_b_any_any_3
+        ori     rtn_addr, code_ptr, addq_b_q_mem_6 - cb  // 5033  ADDQ.B    #8,(d8,A3,Xn)
+        b       move_add_etc_b_any_any_4
+        ori     rtn_addr, code_ptr, addq_b_q_mem_6 - cb  // 5034  ADDQ.B    #8,(d8,A4,Xn)
+        b       move_add_etc_b_any_any_5
+        ori     rtn_addr, code_ptr, addq_b_q_mem_6 - cb  // 5035  ADDQ.B    #8,(d8,A5,Xn)
+        b       move_add_etc_b_any_any_6
+        ori     rtn_addr, code_ptr, addq_b_q_mem_6 - cb  // 5036  ADDQ.B    #8,(d8,A6,Xn)
+        b       move_add_etc_b_any_any_7
+        ori     rtn_addr, code_ptr, addq_b_q_mem_6 - cb  // 5037  ADDQ.B    #8,(d8,A7,Xn)
+        b       move_add_etc_b_any_any_8
         mr      addr, prefetch_data                     // 5038  ADDQ.B    #8,(xxx).W
-        b       L_06580
-        ori     rtn_addr, code_ptr, L_06588 - cb        // 5039  ADDQ.B    #8,(xxx).L
-        b       L_05E2C
+        b       addq_b_q_mem_4
+        ori     rtn_addr, code_ptr, addq_b_q_mem_6 - cb  // 5039  ADDQ.B    #8,(xxx).L
+        b       fea_b_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 503A  ADDQ.B    #8,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 503B  ADDQ.B    #8,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 503C  ADDQ.B    #8,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 503D  ADDQ.B    #8,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 503E  ADDQ.B    #8,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 503F  ADDQ.B    #8,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $5040-$507F --------------------------------------------------------
         lis     data, 0x0008                            // 5040  ADDQ.W    #8,D0
-        b       L_03808
+        b       add_asl_w_any_d0
         lis     data, 0x0008                            // 5041  ADDQ.W    #8,D1
-        b       L_03848
+        b       add_asl_w_any_d1
         lis     data, 0x0008                            // 5042  ADDQ.W    #8,D2
-        b       L_03888
+        b       add_asl_w_any_d2
         lis     data, 0x0008                            // 5043  ADDQ.W    #8,D3
-        b       L_038C8
+        b       add_asl_w_any_d3
         lis     data, 0x0008                            // 5044  ADDQ.W    #8,D4
-        b       L_03908
+        b       add_asl_w_any_d4
         lis     data, 0x0008                            // 5045  ADDQ.W    #8,D5
-        b       L_03948
+        b       add_asl_w_any_d5
         lis     data, 0x0008                            // 5046  ADDQ.W    #8,D6
-        b       L_03988
+        b       add_asl_w_any_d6
         lis     data, 0x0008                            // 5047  ADDQ.W    #8,D7
-        b       L_039C8
+        b       add_asl_w_any_d7
         addi    a0, a0, 8                               // 5048  ADDQ.W    #8,A0
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a1, a1, 8                               // 5049  ADDQ.W    #8,A1
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a2, a2, 8                               // 504A  ADDQ.W    #8,A2
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a3, a3, 8                               // 504B  ADDQ.W    #8,A3
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a4, a4, 8                               // 504C  ADDQ.W    #8,A4
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a5, a5, 8                               // 504D  ADDQ.W    #8,A5
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a6, a6, 8                               // 504E  ADDQ.W    #8,A6
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a7, a7, 8                               // 504F  ADDQ.W    #8,A7
-        b       L_06084
+        b       move_add_etc_any_any
 op_5050:
         mr      addr, a0                                // 5050  ADDQ.W    #8,(A0)
-        b       L_067A4
+        b       addq_w_q_mem_5
 op_5051:
         mr      addr, a1                                // 5051  ADDQ.W    #8,(A1)
-        b       L_067A4
+        b       addq_w_q_mem_5
 op_5052:
         mr      addr, a2                                // 5052  ADDQ.W    #8,(A2)
-        b       L_067A4
+        b       addq_w_q_mem_5
 op_5053:
         mr      addr, a3                                // 5053  ADDQ.W    #8,(A3)
-        b       L_067A4
+        b       addq_w_q_mem_5
 op_5054:
         mr      addr, a4                                // 5054  ADDQ.W    #8,(A4)
-        b       L_067A4
+        b       addq_w_q_mem_5
 op_5055:
         mr      addr, a5                                // 5055  ADDQ.W    #8,(A5)
-        b       L_067A4
+        b       addq_w_q_mem_5
 op_5056:
         mr      addr, a6                                // 5056  ADDQ.W    #8,(A6)
-        b       L_067A4
+        b       addq_w_q_mem_5
 op_5057:
         mr      addr, a7                                // 5057  ADDQ.W    #8,(A7)
-        b       L_067A4
-        ori     rtn_addr, code_ptr, L_067A4 - cb        // 5058  ADDQ.W    #8,(A0)+
-        b       L_00820
-        ori     rtn_addr, code_ptr, L_067A4 - cb        // 5059  ADDQ.W    #8,(A1)+
-        b       L_008A0
-        ori     rtn_addr, code_ptr, L_067A4 - cb        // 505A  ADDQ.W    #8,(A2)+
-        b       L_00920
-        ori     rtn_addr, code_ptr, L_067A4 - cb        // 505B  ADDQ.W    #8,(A3)+
-        b       L_009A0
-        ori     rtn_addr, code_ptr, L_067A4 - cb        // 505C  ADDQ.W    #8,(A4)+
-        b       L_00A20
-        ori     rtn_addr, code_ptr, L_067A4 - cb        // 505D  ADDQ.W    #8,(A5)+
-        b       L_00AA0
-        ori     rtn_addr, code_ptr, L_067A4 - cb        // 505E  ADDQ.W    #8,(A6)+
-        b       L_00B20
-        ori     rtn_addr, code_ptr, L_067A4 - cb        // 505F  ADDQ.W    #8,(A7)+
-        b       L_00BA0
+        b       addq_w_q_mem_5
+        ori     rtn_addr, code_ptr, addq_w_q_mem_5 - cb  // 5058  ADDQ.W    #8,(A0)+
+        b       cea_w_30
+        ori     rtn_addr, code_ptr, addq_w_q_mem_5 - cb  // 5059  ADDQ.W    #8,(A1)+
+        b       cea_w_31
+        ori     rtn_addr, code_ptr, addq_w_q_mem_5 - cb  // 505A  ADDQ.W    #8,(A2)+
+        b       cea_w_32
+        ori     rtn_addr, code_ptr, addq_w_q_mem_5 - cb  // 505B  ADDQ.W    #8,(A3)+
+        b       cea_w_33
+        ori     rtn_addr, code_ptr, addq_w_q_mem_5 - cb  // 505C  ADDQ.W    #8,(A4)+
+        b       cea_w_34
+        ori     rtn_addr, code_ptr, addq_w_q_mem_5 - cb  // 505D  ADDQ.W    #8,(A5)+
+        b       cea_w_35
+        ori     rtn_addr, code_ptr, addq_w_q_mem_5 - cb  // 505E  ADDQ.W    #8,(A6)+
+        b       cea_w_36
+        ori     rtn_addr, code_ptr, addq_w_q_mem_5 - cb  // 505F  ADDQ.W    #8,(A7)+
+        b       cea_w_37
         addi    a0, a0, -2                              // 5060  ADDQ.W    #8,-(A0)
         b       op_5050
         addi    a1, a1, -2                              // 5061  ADDQ.W    #8,-(A1)
@@ -231,127 +231,127 @@ op_5057:
         addi    a7, a7, -2                              // 5067  ADDQ.W    #8,-(A7)
         b       op_5057
         add     addr, a0, prefetch_data                 // 5068  ADDQ.W    #8,(d16,A0)
-        b       L_067A0
+        b       addq_w_q_mem_4
         add     addr, a1, prefetch_data                 // 5069  ADDQ.W    #8,(d16,A1)
-        b       L_067A0
+        b       addq_w_q_mem_4
         add     addr, a2, prefetch_data                 // 506A  ADDQ.W    #8,(d16,A2)
-        b       L_067A0
+        b       addq_w_q_mem_4
         add     addr, a3, prefetch_data                 // 506B  ADDQ.W    #8,(d16,A3)
-        b       L_067A0
+        b       addq_w_q_mem_4
         add     addr, a4, prefetch_data                 // 506C  ADDQ.W    #8,(d16,A4)
-        b       L_067A0
+        b       addq_w_q_mem_4
         add     addr, a5, prefetch_data                 // 506D  ADDQ.W    #8,(d16,A5)
-        b       L_067A0
+        b       addq_w_q_mem_4
         add     addr, a6, prefetch_data                 // 506E  ADDQ.W    #8,(d16,A6)
-        b       L_067A0
+        b       addq_w_q_mem_4
         add     addr, a7, prefetch_data                 // 506F  ADDQ.W    #8,(d16,A7)
-        b       L_067A0
-        ori     rtn_addr, code_ptr, L_067A8 - cb        // 5070  ADDQ.W    #8,(d8,A0,Xn)
-        b       L_059B0
-        ori     rtn_addr, code_ptr, L_067A8 - cb        // 5071  ADDQ.W    #8,(d8,A1,Xn)
-        b       L_05A10
-        ori     rtn_addr, code_ptr, L_067A8 - cb        // 5072  ADDQ.W    #8,(d8,A2,Xn)
-        b       L_05A70
-        ori     rtn_addr, code_ptr, L_067A8 - cb        // 5073  ADDQ.W    #8,(d8,A3,Xn)
-        b       L_05AD0
-        ori     rtn_addr, code_ptr, L_067A8 - cb        // 5074  ADDQ.W    #8,(d8,A4,Xn)
-        b       L_05B30
-        ori     rtn_addr, code_ptr, L_067A8 - cb        // 5075  ADDQ.W    #8,(d8,A5,Xn)
-        b       L_05B90
-        ori     rtn_addr, code_ptr, L_067A8 - cb        // 5076  ADDQ.W    #8,(d8,A6,Xn)
-        b       L_05BF0
-        ori     rtn_addr, code_ptr, L_067A8 - cb        // 5077  ADDQ.W    #8,(d8,A7,Xn)
-        b       L_05C50
+        b       addq_w_q_mem_4
+        ori     rtn_addr, code_ptr, addq_w_q_mem_6 - cb  // 5070  ADDQ.W    #8,(d8,A0,Xn)
+        b       move_add_etc_w_any_any
+        ori     rtn_addr, code_ptr, addq_w_q_mem_6 - cb  // 5071  ADDQ.W    #8,(d8,A1,Xn)
+        b       move_add_etc_w_any_any_2
+        ori     rtn_addr, code_ptr, addq_w_q_mem_6 - cb  // 5072  ADDQ.W    #8,(d8,A2,Xn)
+        b       move_add_etc_w_any_any_3
+        ori     rtn_addr, code_ptr, addq_w_q_mem_6 - cb  // 5073  ADDQ.W    #8,(d8,A3,Xn)
+        b       move_add_etc_w_any_any_4
+        ori     rtn_addr, code_ptr, addq_w_q_mem_6 - cb  // 5074  ADDQ.W    #8,(d8,A4,Xn)
+        b       move_add_etc_w_any_any_5
+        ori     rtn_addr, code_ptr, addq_w_q_mem_6 - cb  // 5075  ADDQ.W    #8,(d8,A5,Xn)
+        b       move_add_etc_w_any_any_6
+        ori     rtn_addr, code_ptr, addq_w_q_mem_6 - cb  // 5076  ADDQ.W    #8,(d8,A6,Xn)
+        b       move_add_etc_w_any_any_7
+        ori     rtn_addr, code_ptr, addq_w_q_mem_6 - cb  // 5077  ADDQ.W    #8,(d8,A7,Xn)
+        b       move_add_etc_w_any_any_8
         mr      addr, prefetch_data                     // 5078  ADDQ.W    #8,(xxx).W
-        b       L_067A0
-        ori     rtn_addr, code_ptr, L_067A8 - cb        // 5079  ADDQ.W    #8,(xxx).L
-        b       L_05E70
+        b       addq_w_q_mem_4
+        ori     rtn_addr, code_ptr, addq_w_q_mem_6 - cb  // 5079  ADDQ.W    #8,(xxx).L
+        b       fea_w_71
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 507A  ADDQ.W    #8,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 507B  ADDQ.W    #8,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 507C  ADDQ.W    #8,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 507D  ADDQ.W    #8,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 507E  ADDQ.W    #8,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 507F  ADDQ.W    #8,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $5080-$50BF --------------------------------------------------------
         li      data, 8                                 // 5080  ADDQ.L    #8,D0
-        b       L_03E04
+        b       add_l_mem_d0_2
         li      data, 8                                 // 5081  ADDQ.L    #8,D1
-        b       L_03E44
+        b       add_l_mem_d1_2
         li      data, 8                                 // 5082  ADDQ.L    #8,D2
-        b       L_03E84
+        b       add_l_mem_d2_2
         li      data, 8                                 // 5083  ADDQ.L    #8,D3
-        b       L_03EC4
+        b       add_l_mem_d3_2
         li      data, 8                                 // 5084  ADDQ.L    #8,D4
-        b       L_03F04
+        b       add_l_mem_d4_2
         li      data, 8                                 // 5085  ADDQ.L    #8,D5
-        b       L_03F44
+        b       add_l_mem_d5_2
         li      data, 8                                 // 5086  ADDQ.L    #8,D6
-        b       L_03F84
+        b       add_l_mem_d6_2
         li      data, 8                                 // 5087  ADDQ.L    #8,D7
-        b       L_03FC4
+        b       add_l_mem_d7_2
         addi    a0, a0, 8                               // 5088  ADDQ.L    #8,A0
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a1, a1, 8                               // 5089  ADDQ.L    #8,A1
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a2, a2, 8                               // 508A  ADDQ.L    #8,A2
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a3, a3, 8                               // 508B  ADDQ.L    #8,A3
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a4, a4, 8                               // 508C  ADDQ.L    #8,A4
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a5, a5, 8                               // 508D  ADDQ.L    #8,A5
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a6, a6, 8                               // 508E  ADDQ.L    #8,A6
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a7, a7, 8                               // 508F  ADDQ.L    #8,A7
-        b       L_06084
+        b       move_add_etc_any_any
 op_5090:
         mr      addr, a0                                // 5090  ADDQ.L    #8,(A0)
-        b       L_06A44
+        b       addq_l_q_mem_5
 op_5091:
         mr      addr, a1                                // 5091  ADDQ.L    #8,(A1)
-        b       L_06A44
+        b       addq_l_q_mem_5
 op_5092:
         mr      addr, a2                                // 5092  ADDQ.L    #8,(A2)
-        b       L_06A44
+        b       addq_l_q_mem_5
 op_5093:
         mr      addr, a3                                // 5093  ADDQ.L    #8,(A3)
-        b       L_06A44
+        b       addq_l_q_mem_5
 op_5094:
         mr      addr, a4                                // 5094  ADDQ.L    #8,(A4)
-        b       L_06A44
+        b       addq_l_q_mem_5
 op_5095:
         mr      addr, a5                                // 5095  ADDQ.L    #8,(A5)
-        b       L_06A44
+        b       addq_l_q_mem_5
 op_5096:
         mr      addr, a6                                // 5096  ADDQ.L    #8,(A6)
-        b       L_06A44
+        b       addq_l_q_mem_5
 op_5097:
         mr      addr, a7                                // 5097  ADDQ.L    #8,(A7)
-        b       L_06A44
-        ori     rtn_addr, code_ptr, L_06A44 - cb        // 5098  ADDQ.L    #8,(A0)+
-        b       L_00840
-        ori     rtn_addr, code_ptr, L_06A44 - cb        // 5099  ADDQ.L    #8,(A1)+
-        b       L_008C0
-        ori     rtn_addr, code_ptr, L_06A44 - cb        // 509A  ADDQ.L    #8,(A2)+
-        b       L_00940
-        ori     rtn_addr, code_ptr, L_06A44 - cb        // 509B  ADDQ.L    #8,(A3)+
-        b       L_009C0
-        ori     rtn_addr, code_ptr, L_06A44 - cb        // 509C  ADDQ.L    #8,(A4)+
-        b       L_00A40
-        ori     rtn_addr, code_ptr, L_06A44 - cb        // 509D  ADDQ.L    #8,(A5)+
-        b       L_00AC0
-        ori     rtn_addr, code_ptr, L_06A44 - cb        // 509E  ADDQ.L    #8,(A6)+
-        b       L_00B40
-        ori     rtn_addr, code_ptr, L_06A44 - cb        // 509F  ADDQ.L    #8,(A7)+
-        b       L_00BC0
+        b       addq_l_q_mem_5
+        ori     rtn_addr, code_ptr, addq_l_q_mem_5 - cb  // 5098  ADDQ.L    #8,(A0)+
+        b       cea_l_30
+        ori     rtn_addr, code_ptr, addq_l_q_mem_5 - cb  // 5099  ADDQ.L    #8,(A1)+
+        b       cea_l_31
+        ori     rtn_addr, code_ptr, addq_l_q_mem_5 - cb  // 509A  ADDQ.L    #8,(A2)+
+        b       cea_l_32
+        ori     rtn_addr, code_ptr, addq_l_q_mem_5 - cb  // 509B  ADDQ.L    #8,(A3)+
+        b       cea_l_33
+        ori     rtn_addr, code_ptr, addq_l_q_mem_5 - cb  // 509C  ADDQ.L    #8,(A4)+
+        b       cea_l_34
+        ori     rtn_addr, code_ptr, addq_l_q_mem_5 - cb  // 509D  ADDQ.L    #8,(A5)+
+        b       cea_l_35
+        ori     rtn_addr, code_ptr, addq_l_q_mem_5 - cb  // 509E  ADDQ.L    #8,(A6)+
+        b       cea_l_36
+        ori     rtn_addr, code_ptr, addq_l_q_mem_5 - cb  // 509F  ADDQ.L    #8,(A7)+
+        b       cea_l_37
         addi    a0, a0, -4                              // 50A0  ADDQ.L    #8,-(A0)
         b       op_5090
         addi    a1, a1, -4                              // 50A1  ADDQ.L    #8,-(A1)
@@ -369,135 +369,135 @@ op_5097:
         addi    a7, a7, -4                              // 50A7  ADDQ.L    #8,-(A7)
         b       op_5097
         add     addr, a0, prefetch_data                 // 50A8  ADDQ.L    #8,(d16,A0)
-        b       L_06A40
+        b       addq_l_q_mem_4
         add     addr, a1, prefetch_data                 // 50A9  ADDQ.L    #8,(d16,A1)
-        b       L_06A40
+        b       addq_l_q_mem_4
         add     addr, a2, prefetch_data                 // 50AA  ADDQ.L    #8,(d16,A2)
-        b       L_06A40
+        b       addq_l_q_mem_4
         add     addr, a3, prefetch_data                 // 50AB  ADDQ.L    #8,(d16,A3)
-        b       L_06A40
+        b       addq_l_q_mem_4
         add     addr, a4, prefetch_data                 // 50AC  ADDQ.L    #8,(d16,A4)
-        b       L_06A40
+        b       addq_l_q_mem_4
         add     addr, a5, prefetch_data                 // 50AD  ADDQ.L    #8,(d16,A5)
-        b       L_06A40
+        b       addq_l_q_mem_4
         add     addr, a6, prefetch_data                 // 50AE  ADDQ.L    #8,(d16,A6)
-        b       L_06A40
+        b       addq_l_q_mem_4
         add     addr, a7, prefetch_data                 // 50AF  ADDQ.L    #8,(d16,A7)
-        b       L_06A40
-        ori     rtn_addr, code_ptr, L_06A48 - cb        // 50B0  ADDQ.L    #8,(d8,A0,Xn)
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_06A48 - cb        // 50B1  ADDQ.L    #8,(d8,A1,Xn)
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_06A48 - cb        // 50B2  ADDQ.L    #8,(d8,A2,Xn)
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_06A48 - cb        // 50B3  ADDQ.L    #8,(d8,A3,Xn)
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_06A48 - cb        // 50B4  ADDQ.L    #8,(d8,A4,Xn)
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_06A48 - cb        // 50B5  ADDQ.L    #8,(d8,A5,Xn)
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_06A48 - cb        // 50B6  ADDQ.L    #8,(d8,A6,Xn)
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_06A48 - cb        // 50B7  ADDQ.L    #8,(d8,A7,Xn)
-        b       L_05C68
+        b       addq_l_q_mem_4
+        ori     rtn_addr, code_ptr, addq_l_q_mem_6 - cb  // 50B0  ADDQ.L    #8,(d8,A0,Xn)
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, addq_l_q_mem_6 - cb  // 50B1  ADDQ.L    #8,(d8,A1,Xn)
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, addq_l_q_mem_6 - cb  // 50B2  ADDQ.L    #8,(d8,A2,Xn)
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, addq_l_q_mem_6 - cb  // 50B3  ADDQ.L    #8,(d8,A3,Xn)
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, addq_l_q_mem_6 - cb  // 50B4  ADDQ.L    #8,(d8,A4,Xn)
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, addq_l_q_mem_6 - cb  // 50B5  ADDQ.L    #8,(d8,A5,Xn)
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, addq_l_q_mem_6 - cb  // 50B6  ADDQ.L    #8,(d8,A6,Xn)
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, addq_l_q_mem_6 - cb  // 50B7  ADDQ.L    #8,(d8,A7,Xn)
+        b       move_add_etc_l_any_any_8
         mr      addr, prefetch_data                     // 50B8  ADDQ.L    #8,(xxx).W
-        b       L_06A40
-        ori     rtn_addr, code_ptr, L_06A48 - cb        // 50B9  ADDQ.L    #8,(xxx).L
-        b       L_05E8C
+        b       addq_l_q_mem_4
+        ori     rtn_addr, code_ptr, addq_l_q_mem_6 - cb  // 50B9  ADDQ.L    #8,(xxx).L
+        b       fea_l_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 50BA  ADDQ.L    #8,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 50BB  ADDQ.L    #8,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 50BC  ADDQ.L    #8,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 50BD  ADDQ.L    #8,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 50BE  ADDQ.L    #8,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 50BF  ADDQ.L    #8,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $50C0-$50FF --------------------------------------------------------
         ori     d0, d0, 0x00FF                          // 50C0  ST.B      D0
-        b       L_06084
+        b       move_add_etc_any_any
         ori     d1, d1, 0x00FF                          // 50C1  ST.B      D1
-        b       L_06084
+        b       move_add_etc_any_any
         ori     d2, d2, 0x00FF                          // 50C2  ST.B      D2
-        b       L_06084
+        b       move_add_etc_any_any
         ori     d3, d3, 0x00FF                          // 50C3  ST.B      D3
-        b       L_06084
+        b       move_add_etc_any_any
         ori     d4, d4, 0x00FF                          // 50C4  ST.B      D4
-        b       L_06084
+        b       move_add_etc_any_any
         ori     d5, d5, 0x00FF                          // 50C5  ST.B      D5
-        b       L_06084
+        b       move_add_etc_any_any
         ori     d6, d6, 0x00FF                          // 50C6  ST.B      D6
-        b       L_06084
+        b       move_add_etc_any_any
         ori     d7, d7, 0x00FF                          // 50C7  ST.B      D7
-        b       L_06084
+        b       move_add_etc_any_any
 op_50C8:
         lhau    prefetch_data, 2(pc)                    // 50C8  DBT.W     D0,<label>
-        b       L_06084
+        b       move_add_etc_any_any
 op_50C9:
         lhau    prefetch_data, 2(pc)                    // 50C9  DBT.W     D1,<label>
-        b       L_06084
+        b       move_add_etc_any_any
 op_50CA:
         lhau    prefetch_data, 2(pc)                    // 50CA  DBT.W     D2,<label>
-        b       L_06084
+        b       move_add_etc_any_any
 op_50CB:
         lhau    prefetch_data, 2(pc)                    // 50CB  DBT.W     D3,<label>
-        b       L_06084
+        b       move_add_etc_any_any
 op_50CC:
         lhau    prefetch_data, 2(pc)                    // 50CC  DBT.W     D4,<label>
-        b       L_06084
+        b       move_add_etc_any_any
 op_50CD:
         lhau    prefetch_data, 2(pc)                    // 50CD  DBT.W     D5,<label>
-        b       L_06084
+        b       move_add_etc_any_any
 op_50CE:
         lhau    prefetch_data, 2(pc)                    // 50CE  DBT.W     D6,<label>
-        b       L_06084
+        b       move_add_etc_any_any
 op_50CF:
         lhau    prefetch_data, 2(pc)                    // 50CF  DBT.W     D7,<label>
-        b       L_06084
+        b       move_add_etc_any_any
 op_50D0:
         mr      addr, a0                                // 50D0  ST.B      (A0)
-        b       L_08584
+        b       scc_b_mem_2
 op_50D1:
         mr      addr, a1                                // 50D1  ST.B      (A1)
-        b       L_08584
+        b       scc_b_mem_2
 op_50D2:
         mr      addr, a2                                // 50D2  ST.B      (A2)
-        b       L_08584
+        b       scc_b_mem_2
 op_50D3:
         mr      addr, a3                                // 50D3  ST.B      (A3)
-        b       L_08584
+        b       scc_b_mem_2
 op_50D4:
         mr      addr, a4                                // 50D4  ST.B      (A4)
-        b       L_08584
+        b       scc_b_mem_2
 op_50D5:
         mr      addr, a5                                // 50D5  ST.B      (A5)
-        b       L_08584
+        b       scc_b_mem_2
 op_50D6:
         mr      addr, a6                                // 50D6  ST.B      (A6)
-        b       L_08584
+        b       scc_b_mem_2
 op_50D7:
         mr      addr, a7                                // 50D7  ST.B      (A7)
-        b       L_08584
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 50D8  ST.B      (A0)+
-        b       L_00800
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 50D9  ST.B      (A1)+
-        b       L_00880
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 50DA  ST.B      (A2)+
-        b       L_00900
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 50DB  ST.B      (A3)+
-        b       L_00980
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 50DC  ST.B      (A4)+
-        b       L_00A00
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 50DD  ST.B      (A5)+
-        b       L_00A80
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 50DE  ST.B      (A6)+
-        b       L_00B00
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 50DF  ST.B      (A7)+
-        b       L_00B80
+        b       scc_b_mem_2
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 50D8  ST.B      (A0)+
+        b       cea_b_30
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 50D9  ST.B      (A1)+
+        b       cea_b_31
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 50DA  ST.B      (A2)+
+        b       cea_b_32
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 50DB  ST.B      (A3)+
+        b       cea_b_33
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 50DC  ST.B      (A4)+
+        b       cea_b_34
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 50DD  ST.B      (A5)+
+        b       cea_b_35
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 50DE  ST.B      (A6)+
+        b       cea_b_36
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 50DF  ST.B      (A7)+
+        b       cea_b_37
         addi    a0, a0, -1                              // 50E0  ST.B      -(A0)
         b       op_50D0
         addi    a1, a1, -1                              // 50E1  ST.B      -(A1)
@@ -515,127 +515,127 @@ op_50D7:
         addi    a7, a7, -2                              // 50E7  ST.B      -(A7)
         b       op_50D7
         add     addr, a0, prefetch_data                 // 50E8  ST.B      (d16,A0)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a1, prefetch_data                 // 50E9  ST.B      (d16,A1)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a2, prefetch_data                 // 50EA  ST.B      (d16,A2)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a3, prefetch_data                 // 50EB  ST.B      (d16,A3)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a4, prefetch_data                 // 50EC  ST.B      (d16,A4)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a5, prefetch_data                 // 50ED  ST.B      (d16,A5)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a6, prefetch_data                 // 50EE  ST.B      (d16,A6)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a7, prefetch_data                 // 50EF  ST.B      (d16,A7)
-        b       L_08580
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 50F0  ST.B      (d8,A0,Xn)
-        b       L_05988
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 50F1  ST.B      (d8,A1,Xn)
-        b       L_059E8
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 50F2  ST.B      (d8,A2,Xn)
-        b       L_05A48
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 50F3  ST.B      (d8,A3,Xn)
-        b       L_05AA8
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 50F4  ST.B      (d8,A4,Xn)
-        b       L_05B08
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 50F5  ST.B      (d8,A5,Xn)
-        b       L_05B68
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 50F6  ST.B      (d8,A6,Xn)
-        b       L_05BC8
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 50F7  ST.B      (d8,A7,Xn)
-        b       L_05C28
+        b       scc_b_mem
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 50F0  ST.B      (d8,A0,Xn)
+        b       or_sub_etc_any_any
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 50F1  ST.B      (d8,A1,Xn)
+        b       or_sub_etc_any_any_2
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 50F2  ST.B      (d8,A2,Xn)
+        b       or_sub_etc_any_any_3
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 50F3  ST.B      (d8,A3,Xn)
+        b       or_sub_etc_any_any_4
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 50F4  ST.B      (d8,A4,Xn)
+        b       or_sub_etc_any_any_5
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 50F5  ST.B      (d8,A5,Xn)
+        b       or_sub_etc_any_any_6
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 50F6  ST.B      (d8,A6,Xn)
+        b       or_sub_etc_any_any_7
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 50F7  ST.B      (d8,A7,Xn)
+        b       or_sub_etc_any_any_8
         mr      addr, prefetch_data                     // 50F8  ST.B      (xxx).W
-        b       L_08580
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 50F9  ST.B      (xxx).L
-        b       L_05E14
+        b       scc_b_mem
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 50F9  ST.B      (xxx).L
+        b       cea_x_71_2
         crset   4*cr7+so                                // 50FA  TRAPT     #<data>.W
-        b       L_0CD28
+        b       trapcc_4
         crset   4*cr7+so                                // 50FB  TRAPT     #<data>.L
-        b       L_0CD24
+        b       trapcc_3
         crset   4*cr7+so                                // 50FC  TRAPT
-        b       L_0CD2C
+        b       trapcc_5
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 50FD  ST.B      <ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 50FE  ST.B      <ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 50FF  ST.B      <ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $5100-$513F --------------------------------------------------------
         lis     data, 0x0800                            // 5100  SUBQ.B    #8,D0
-        b       L_03608
+        b       sub_b_any_d0
         lis     data, 0x0800                            // 5101  SUBQ.B    #8,D1
-        b       L_03648
+        b       sub_b_any_d1
         lis     data, 0x0800                            // 5102  SUBQ.B    #8,D2
-        b       L_03688
+        b       sub_b_any_d2
         lis     data, 0x0800                            // 5103  SUBQ.B    #8,D3
-        b       L_036C8
+        b       sub_b_any_d3
         lis     data, 0x0800                            // 5104  SUBQ.B    #8,D4
-        b       L_03708
+        b       sub_b_any_d4
         lis     data, 0x0800                            // 5105  SUBQ.B    #8,D5
-        b       L_03748
+        b       sub_b_any_d5
         lis     data, 0x0800                            // 5106  SUBQ.B    #8,D6
-        b       L_03788
+        b       sub_b_any_d6
         lis     data, 0x0800                            // 5107  SUBQ.B    #8,D7
-        b       L_037C8
+        b       sub_b_any_d7
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5108  SUBQ.B    #8,A0   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5109  SUBQ.B    #8,A1   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 510A  SUBQ.B    #8,A2   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 510B  SUBQ.B    #8,A3   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 510C  SUBQ.B    #8,A4   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 510D  SUBQ.B    #8,A5   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 510E  SUBQ.B    #8,A6   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 510F  SUBQ.B    #8,A7   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 op_5110:
         mr      addr, a0                                // 5110  SUBQ.B    #8,(A0)
-        b       L_06624
+        b       subq_b_q_mem_5
 op_5111:
         mr      addr, a1                                // 5111  SUBQ.B    #8,(A1)
-        b       L_06624
+        b       subq_b_q_mem_5
 op_5112:
         mr      addr, a2                                // 5112  SUBQ.B    #8,(A2)
-        b       L_06624
+        b       subq_b_q_mem_5
 op_5113:
         mr      addr, a3                                // 5113  SUBQ.B    #8,(A3)
-        b       L_06624
+        b       subq_b_q_mem_5
 op_5114:
         mr      addr, a4                                // 5114  SUBQ.B    #8,(A4)
-        b       L_06624
+        b       subq_b_q_mem_5
 op_5115:
         mr      addr, a5                                // 5115  SUBQ.B    #8,(A5)
-        b       L_06624
+        b       subq_b_q_mem_5
 op_5116:
         mr      addr, a6                                // 5116  SUBQ.B    #8,(A6)
-        b       L_06624
+        b       subq_b_q_mem_5
 op_5117:
         mr      addr, a7                                // 5117  SUBQ.B    #8,(A7)
-        b       L_06624
-        ori     rtn_addr, code_ptr, L_06624 - cb        // 5118  SUBQ.B    #8,(A0)+
-        b       L_00800
-        ori     rtn_addr, code_ptr, L_06624 - cb        // 5119  SUBQ.B    #8,(A1)+
-        b       L_00880
-        ori     rtn_addr, code_ptr, L_06624 - cb        // 511A  SUBQ.B    #8,(A2)+
-        b       L_00900
-        ori     rtn_addr, code_ptr, L_06624 - cb        // 511B  SUBQ.B    #8,(A3)+
-        b       L_00980
-        ori     rtn_addr, code_ptr, L_06624 - cb        // 511C  SUBQ.B    #8,(A4)+
-        b       L_00A00
-        ori     rtn_addr, code_ptr, L_06624 - cb        // 511D  SUBQ.B    #8,(A5)+
-        b       L_00A80
-        ori     rtn_addr, code_ptr, L_06624 - cb        // 511E  SUBQ.B    #8,(A6)+
-        b       L_00B00
-        ori     rtn_addr, code_ptr, L_06624 - cb        // 511F  SUBQ.B    #8,(A7)+
-        b       L_00B80
+        b       subq_b_q_mem_5
+        ori     rtn_addr, code_ptr, subq_b_q_mem_5 - cb  // 5118  SUBQ.B    #8,(A0)+
+        b       cea_b_30
+        ori     rtn_addr, code_ptr, subq_b_q_mem_5 - cb  // 5119  SUBQ.B    #8,(A1)+
+        b       cea_b_31
+        ori     rtn_addr, code_ptr, subq_b_q_mem_5 - cb  // 511A  SUBQ.B    #8,(A2)+
+        b       cea_b_32
+        ori     rtn_addr, code_ptr, subq_b_q_mem_5 - cb  // 511B  SUBQ.B    #8,(A3)+
+        b       cea_b_33
+        ori     rtn_addr, code_ptr, subq_b_q_mem_5 - cb  // 511C  SUBQ.B    #8,(A4)+
+        b       cea_b_34
+        ori     rtn_addr, code_ptr, subq_b_q_mem_5 - cb  // 511D  SUBQ.B    #8,(A5)+
+        b       cea_b_35
+        ori     rtn_addr, code_ptr, subq_b_q_mem_5 - cb  // 511E  SUBQ.B    #8,(A6)+
+        b       cea_b_36
+        ori     rtn_addr, code_ptr, subq_b_q_mem_5 - cb  // 511F  SUBQ.B    #8,(A7)+
+        b       cea_b_37
         addi    a0, a0, -1                              // 5120  SUBQ.B    #8,-(A0)
         b       op_5110
         addi    a1, a1, -1                              // 5121  SUBQ.B    #8,-(A1)
@@ -653,127 +653,127 @@ op_5117:
         addi    a7, a7, -2                              // 5127  SUBQ.B    #8,-(A7)
         b       op_5117
         add     addr, a0, prefetch_data                 // 5128  SUBQ.B    #8,(d16,A0)
-        b       L_06620
+        b       subq_b_q_mem_4
         add     addr, a1, prefetch_data                 // 5129  SUBQ.B    #8,(d16,A1)
-        b       L_06620
+        b       subq_b_q_mem_4
         add     addr, a2, prefetch_data                 // 512A  SUBQ.B    #8,(d16,A2)
-        b       L_06620
+        b       subq_b_q_mem_4
         add     addr, a3, prefetch_data                 // 512B  SUBQ.B    #8,(d16,A3)
-        b       L_06620
+        b       subq_b_q_mem_4
         add     addr, a4, prefetch_data                 // 512C  SUBQ.B    #8,(d16,A4)
-        b       L_06620
+        b       subq_b_q_mem_4
         add     addr, a5, prefetch_data                 // 512D  SUBQ.B    #8,(d16,A5)
-        b       L_06620
+        b       subq_b_q_mem_4
         add     addr, a6, prefetch_data                 // 512E  SUBQ.B    #8,(d16,A6)
-        b       L_06620
+        b       subq_b_q_mem_4
         add     addr, a7, prefetch_data                 // 512F  SUBQ.B    #8,(d16,A7)
-        b       L_06620
-        ori     rtn_addr, code_ptr, L_06628 - cb        // 5130  SUBQ.B    #8,(d8,A0,Xn)
-        b       L_0599C
-        ori     rtn_addr, code_ptr, L_06628 - cb        // 5131  SUBQ.B    #8,(d8,A1,Xn)
-        b       L_059FC
-        ori     rtn_addr, code_ptr, L_06628 - cb        // 5132  SUBQ.B    #8,(d8,A2,Xn)
-        b       L_05A5C
-        ori     rtn_addr, code_ptr, L_06628 - cb        // 5133  SUBQ.B    #8,(d8,A3,Xn)
-        b       L_05ABC
-        ori     rtn_addr, code_ptr, L_06628 - cb        // 5134  SUBQ.B    #8,(d8,A4,Xn)
-        b       L_05B1C
-        ori     rtn_addr, code_ptr, L_06628 - cb        // 5135  SUBQ.B    #8,(d8,A5,Xn)
-        b       L_05B7C
-        ori     rtn_addr, code_ptr, L_06628 - cb        // 5136  SUBQ.B    #8,(d8,A6,Xn)
-        b       L_05BDC
-        ori     rtn_addr, code_ptr, L_06628 - cb        // 5137  SUBQ.B    #8,(d8,A7,Xn)
-        b       L_05C3C
+        b       subq_b_q_mem_4
+        ori     rtn_addr, code_ptr, subq_b_q_mem_6 - cb  // 5130  SUBQ.B    #8,(d8,A0,Xn)
+        b       move_add_etc_b_any_any
+        ori     rtn_addr, code_ptr, subq_b_q_mem_6 - cb  // 5131  SUBQ.B    #8,(d8,A1,Xn)
+        b       move_add_etc_b_any_any_2
+        ori     rtn_addr, code_ptr, subq_b_q_mem_6 - cb  // 5132  SUBQ.B    #8,(d8,A2,Xn)
+        b       move_add_etc_b_any_any_3
+        ori     rtn_addr, code_ptr, subq_b_q_mem_6 - cb  // 5133  SUBQ.B    #8,(d8,A3,Xn)
+        b       move_add_etc_b_any_any_4
+        ori     rtn_addr, code_ptr, subq_b_q_mem_6 - cb  // 5134  SUBQ.B    #8,(d8,A4,Xn)
+        b       move_add_etc_b_any_any_5
+        ori     rtn_addr, code_ptr, subq_b_q_mem_6 - cb  // 5135  SUBQ.B    #8,(d8,A5,Xn)
+        b       move_add_etc_b_any_any_6
+        ori     rtn_addr, code_ptr, subq_b_q_mem_6 - cb  // 5136  SUBQ.B    #8,(d8,A6,Xn)
+        b       move_add_etc_b_any_any_7
+        ori     rtn_addr, code_ptr, subq_b_q_mem_6 - cb  // 5137  SUBQ.B    #8,(d8,A7,Xn)
+        b       move_add_etc_b_any_any_8
         mr      addr, prefetch_data                     // 5138  SUBQ.B    #8,(xxx).W
-        b       L_06620
-        ori     rtn_addr, code_ptr, L_06628 - cb        // 5139  SUBQ.B    #8,(xxx).L
-        b       L_05E2C
+        b       subq_b_q_mem_4
+        ori     rtn_addr, code_ptr, subq_b_q_mem_6 - cb  // 5139  SUBQ.B    #8,(xxx).L
+        b       fea_b_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 513A  SUBQ.B    #8,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 513B  SUBQ.B    #8,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 513C  SUBQ.B    #8,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 513D  SUBQ.B    #8,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 513E  SUBQ.B    #8,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 513F  SUBQ.B    #8,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $5140-$517F --------------------------------------------------------
         lis     data, 0x0008                            // 5140  SUBQ.W    #8,D0
-        b       L_03C30
+        b       sub_w_any_d0
         lis     data, 0x0008                            // 5141  SUBQ.W    #8,D1
-        b       L_03C70
+        b       sub_w_any_d1
         lis     data, 0x0008                            // 5142  SUBQ.W    #8,D2
-        b       L_03CB0
+        b       sub_w_any_d2
         lis     data, 0x0008                            // 5143  SUBQ.W    #8,D3
-        b       L_03CF0
+        b       sub_w_any_d3
         lis     data, 0x0008                            // 5144  SUBQ.W    #8,D4
-        b       L_03D30
+        b       sub_w_any_d4
         lis     data, 0x0008                            // 5145  SUBQ.W    #8,D5
-        b       L_03D70
+        b       sub_w_any_d5
         lis     data, 0x0008                            // 5146  SUBQ.W    #8,D6
-        b       L_03DB0
+        b       sub_w_any_d6
         lis     data, 0x0008                            // 5147  SUBQ.W    #8,D7
-        b       L_03DF0
+        b       sub_w_any_d7
         addi    a0, a0, -8                              // 5148  SUBQ.W    #8,A0
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a1, a1, -8                              // 5149  SUBQ.W    #8,A1
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a2, a2, -8                              // 514A  SUBQ.W    #8,A2
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a3, a3, -8                              // 514B  SUBQ.W    #8,A3
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a4, a4, -8                              // 514C  SUBQ.W    #8,A4
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a5, a5, -8                              // 514D  SUBQ.W    #8,A5
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a6, a6, -8                              // 514E  SUBQ.W    #8,A6
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a7, a7, -8                              // 514F  SUBQ.W    #8,A7
-        b       L_06084
+        b       move_add_etc_any_any
 op_5150:
         mr      addr, a0                                // 5150  SUBQ.W    #8,(A0)
-        b       L_06844
+        b       subq_w_q_mem_5
 op_5151:
         mr      addr, a1                                // 5151  SUBQ.W    #8,(A1)
-        b       L_06844
+        b       subq_w_q_mem_5
 op_5152:
         mr      addr, a2                                // 5152  SUBQ.W    #8,(A2)
-        b       L_06844
+        b       subq_w_q_mem_5
 op_5153:
         mr      addr, a3                                // 5153  SUBQ.W    #8,(A3)
-        b       L_06844
+        b       subq_w_q_mem_5
 op_5154:
         mr      addr, a4                                // 5154  SUBQ.W    #8,(A4)
-        b       L_06844
+        b       subq_w_q_mem_5
 op_5155:
         mr      addr, a5                                // 5155  SUBQ.W    #8,(A5)
-        b       L_06844
+        b       subq_w_q_mem_5
 op_5156:
         mr      addr, a6                                // 5156  SUBQ.W    #8,(A6)
-        b       L_06844
+        b       subq_w_q_mem_5
 op_5157:
         mr      addr, a7                                // 5157  SUBQ.W    #8,(A7)
-        b       L_06844
-        ori     rtn_addr, code_ptr, L_06844 - cb        // 5158  SUBQ.W    #8,(A0)+
-        b       L_00820
-        ori     rtn_addr, code_ptr, L_06844 - cb        // 5159  SUBQ.W    #8,(A1)+
-        b       L_008A0
-        ori     rtn_addr, code_ptr, L_06844 - cb        // 515A  SUBQ.W    #8,(A2)+
-        b       L_00920
-        ori     rtn_addr, code_ptr, L_06844 - cb        // 515B  SUBQ.W    #8,(A3)+
-        b       L_009A0
-        ori     rtn_addr, code_ptr, L_06844 - cb        // 515C  SUBQ.W    #8,(A4)+
-        b       L_00A20
-        ori     rtn_addr, code_ptr, L_06844 - cb        // 515D  SUBQ.W    #8,(A5)+
-        b       L_00AA0
-        ori     rtn_addr, code_ptr, L_06844 - cb        // 515E  SUBQ.W    #8,(A6)+
-        b       L_00B20
-        ori     rtn_addr, code_ptr, L_06844 - cb        // 515F  SUBQ.W    #8,(A7)+
-        b       L_00BA0
+        b       subq_w_q_mem_5
+        ori     rtn_addr, code_ptr, subq_w_q_mem_5 - cb  // 5158  SUBQ.W    #8,(A0)+
+        b       cea_w_30
+        ori     rtn_addr, code_ptr, subq_w_q_mem_5 - cb  // 5159  SUBQ.W    #8,(A1)+
+        b       cea_w_31
+        ori     rtn_addr, code_ptr, subq_w_q_mem_5 - cb  // 515A  SUBQ.W    #8,(A2)+
+        b       cea_w_32
+        ori     rtn_addr, code_ptr, subq_w_q_mem_5 - cb  // 515B  SUBQ.W    #8,(A3)+
+        b       cea_w_33
+        ori     rtn_addr, code_ptr, subq_w_q_mem_5 - cb  // 515C  SUBQ.W    #8,(A4)+
+        b       cea_w_34
+        ori     rtn_addr, code_ptr, subq_w_q_mem_5 - cb  // 515D  SUBQ.W    #8,(A5)+
+        b       cea_w_35
+        ori     rtn_addr, code_ptr, subq_w_q_mem_5 - cb  // 515E  SUBQ.W    #8,(A6)+
+        b       cea_w_36
+        ori     rtn_addr, code_ptr, subq_w_q_mem_5 - cb  // 515F  SUBQ.W    #8,(A7)+
+        b       cea_w_37
         addi    a0, a0, -2                              // 5160  SUBQ.W    #8,-(A0)
         b       op_5150
         addi    a1, a1, -2                              // 5161  SUBQ.W    #8,-(A1)
@@ -791,127 +791,127 @@ op_5157:
         addi    a7, a7, -2                              // 5167  SUBQ.W    #8,-(A7)
         b       op_5157
         add     addr, a0, prefetch_data                 // 5168  SUBQ.W    #8,(d16,A0)
-        b       L_06840
+        b       subq_w_q_mem_4
         add     addr, a1, prefetch_data                 // 5169  SUBQ.W    #8,(d16,A1)
-        b       L_06840
+        b       subq_w_q_mem_4
         add     addr, a2, prefetch_data                 // 516A  SUBQ.W    #8,(d16,A2)
-        b       L_06840
+        b       subq_w_q_mem_4
         add     addr, a3, prefetch_data                 // 516B  SUBQ.W    #8,(d16,A3)
-        b       L_06840
+        b       subq_w_q_mem_4
         add     addr, a4, prefetch_data                 // 516C  SUBQ.W    #8,(d16,A4)
-        b       L_06840
+        b       subq_w_q_mem_4
         add     addr, a5, prefetch_data                 // 516D  SUBQ.W    #8,(d16,A5)
-        b       L_06840
+        b       subq_w_q_mem_4
         add     addr, a6, prefetch_data                 // 516E  SUBQ.W    #8,(d16,A6)
-        b       L_06840
+        b       subq_w_q_mem_4
         add     addr, a7, prefetch_data                 // 516F  SUBQ.W    #8,(d16,A7)
-        b       L_06840
-        ori     rtn_addr, code_ptr, L_06848 - cb        // 5170  SUBQ.W    #8,(d8,A0,Xn)
-        b       L_059B0
-        ori     rtn_addr, code_ptr, L_06848 - cb        // 5171  SUBQ.W    #8,(d8,A1,Xn)
-        b       L_05A10
-        ori     rtn_addr, code_ptr, L_06848 - cb        // 5172  SUBQ.W    #8,(d8,A2,Xn)
-        b       L_05A70
-        ori     rtn_addr, code_ptr, L_06848 - cb        // 5173  SUBQ.W    #8,(d8,A3,Xn)
-        b       L_05AD0
-        ori     rtn_addr, code_ptr, L_06848 - cb        // 5174  SUBQ.W    #8,(d8,A4,Xn)
-        b       L_05B30
-        ori     rtn_addr, code_ptr, L_06848 - cb        // 5175  SUBQ.W    #8,(d8,A5,Xn)
-        b       L_05B90
-        ori     rtn_addr, code_ptr, L_06848 - cb        // 5176  SUBQ.W    #8,(d8,A6,Xn)
-        b       L_05BF0
-        ori     rtn_addr, code_ptr, L_06848 - cb        // 5177  SUBQ.W    #8,(d8,A7,Xn)
-        b       L_05C50
+        b       subq_w_q_mem_4
+        ori     rtn_addr, code_ptr, subq_w_q_mem_6 - cb  // 5170  SUBQ.W    #8,(d8,A0,Xn)
+        b       move_add_etc_w_any_any
+        ori     rtn_addr, code_ptr, subq_w_q_mem_6 - cb  // 5171  SUBQ.W    #8,(d8,A1,Xn)
+        b       move_add_etc_w_any_any_2
+        ori     rtn_addr, code_ptr, subq_w_q_mem_6 - cb  // 5172  SUBQ.W    #8,(d8,A2,Xn)
+        b       move_add_etc_w_any_any_3
+        ori     rtn_addr, code_ptr, subq_w_q_mem_6 - cb  // 5173  SUBQ.W    #8,(d8,A3,Xn)
+        b       move_add_etc_w_any_any_4
+        ori     rtn_addr, code_ptr, subq_w_q_mem_6 - cb  // 5174  SUBQ.W    #8,(d8,A4,Xn)
+        b       move_add_etc_w_any_any_5
+        ori     rtn_addr, code_ptr, subq_w_q_mem_6 - cb  // 5175  SUBQ.W    #8,(d8,A5,Xn)
+        b       move_add_etc_w_any_any_6
+        ori     rtn_addr, code_ptr, subq_w_q_mem_6 - cb  // 5176  SUBQ.W    #8,(d8,A6,Xn)
+        b       move_add_etc_w_any_any_7
+        ori     rtn_addr, code_ptr, subq_w_q_mem_6 - cb  // 5177  SUBQ.W    #8,(d8,A7,Xn)
+        b       move_add_etc_w_any_any_8
         mr      addr, prefetch_data                     // 5178  SUBQ.W    #8,(xxx).W
-        b       L_06840
-        ori     rtn_addr, code_ptr, L_06848 - cb        // 5179  SUBQ.W    #8,(xxx).L
-        b       L_05E70
+        b       subq_w_q_mem_4
+        ori     rtn_addr, code_ptr, subq_w_q_mem_6 - cb  // 5179  SUBQ.W    #8,(xxx).L
+        b       fea_w_71
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 517A  SUBQ.W    #8,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 517B  SUBQ.W    #8,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 517C  SUBQ.W    #8,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 517D  SUBQ.W    #8,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 517E  SUBQ.W    #8,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 517F  SUBQ.W    #8,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $5180-$51BF --------------------------------------------------------
         li      data, 8                                 // 5180  SUBQ.L    #8,D0
-        b       L_04204
+        b       sub_l_mem_d0_2
         li      data, 8                                 // 5181  SUBQ.L    #8,D1
-        b       L_04244
+        b       sub_l_mem_d1_2
         li      data, 8                                 // 5182  SUBQ.L    #8,D2
-        b       L_04284
+        b       sub_l_mem_d2_2
         li      data, 8                                 // 5183  SUBQ.L    #8,D3
-        b       L_042C4
+        b       sub_l_mem_d3_2
         li      data, 8                                 // 5184  SUBQ.L    #8,D4
-        b       L_04304
+        b       sub_l_mem_d4_2
         li      data, 8                                 // 5185  SUBQ.L    #8,D5
-        b       L_04344
+        b       sub_l_mem_d5_2
         li      data, 8                                 // 5186  SUBQ.L    #8,D6
-        b       L_04384
+        b       sub_l_mem_d6_2
         li      data, 8                                 // 5187  SUBQ.L    #8,D7
-        b       L_043C4
+        b       sub_l_mem_d7_2
         addi    a0, a0, -8                              // 5188  SUBQ.L    #8,A0
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a1, a1, -8                              // 5189  SUBQ.L    #8,A1
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a2, a2, -8                              // 518A  SUBQ.L    #8,A2
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a3, a3, -8                              // 518B  SUBQ.L    #8,A3
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a4, a4, -8                              // 518C  SUBQ.L    #8,A4
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a5, a5, -8                              // 518D  SUBQ.L    #8,A5
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a6, a6, -8                              // 518E  SUBQ.L    #8,A6
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a7, a7, -8                              // 518F  SUBQ.L    #8,A7
-        b       L_06084
+        b       move_add_etc_any_any
 op_5190:
         mr      addr, a0                                // 5190  SUBQ.L    #8,(A0)
-        b       L_06AE4
+        b       subq_l_q_mem_5
 op_5191:
         mr      addr, a1                                // 5191  SUBQ.L    #8,(A1)
-        b       L_06AE4
+        b       subq_l_q_mem_5
 op_5192:
         mr      addr, a2                                // 5192  SUBQ.L    #8,(A2)
-        b       L_06AE4
+        b       subq_l_q_mem_5
 op_5193:
         mr      addr, a3                                // 5193  SUBQ.L    #8,(A3)
-        b       L_06AE4
+        b       subq_l_q_mem_5
 op_5194:
         mr      addr, a4                                // 5194  SUBQ.L    #8,(A4)
-        b       L_06AE4
+        b       subq_l_q_mem_5
 op_5195:
         mr      addr, a5                                // 5195  SUBQ.L    #8,(A5)
-        b       L_06AE4
+        b       subq_l_q_mem_5
 op_5196:
         mr      addr, a6                                // 5196  SUBQ.L    #8,(A6)
-        b       L_06AE4
+        b       subq_l_q_mem_5
 op_5197:
         mr      addr, a7                                // 5197  SUBQ.L    #8,(A7)
-        b       L_06AE4
-        ori     rtn_addr, code_ptr, L_06AE4 - cb        // 5198  SUBQ.L    #8,(A0)+
-        b       L_00840
-        ori     rtn_addr, code_ptr, L_06AE4 - cb        // 5199  SUBQ.L    #8,(A1)+
-        b       L_008C0
-        ori     rtn_addr, code_ptr, L_06AE4 - cb        // 519A  SUBQ.L    #8,(A2)+
-        b       L_00940
-        ori     rtn_addr, code_ptr, L_06AE4 - cb        // 519B  SUBQ.L    #8,(A3)+
-        b       L_009C0
-        ori     rtn_addr, code_ptr, L_06AE4 - cb        // 519C  SUBQ.L    #8,(A4)+
-        b       L_00A40
-        ori     rtn_addr, code_ptr, L_06AE4 - cb        // 519D  SUBQ.L    #8,(A5)+
-        b       L_00AC0
-        ori     rtn_addr, code_ptr, L_06AE4 - cb        // 519E  SUBQ.L    #8,(A6)+
-        b       L_00B40
-        ori     rtn_addr, code_ptr, L_06AE4 - cb        // 519F  SUBQ.L    #8,(A7)+
-        b       L_00BC0
+        b       subq_l_q_mem_5
+        ori     rtn_addr, code_ptr, subq_l_q_mem_5 - cb  // 5198  SUBQ.L    #8,(A0)+
+        b       cea_l_30
+        ori     rtn_addr, code_ptr, subq_l_q_mem_5 - cb  // 5199  SUBQ.L    #8,(A1)+
+        b       cea_l_31
+        ori     rtn_addr, code_ptr, subq_l_q_mem_5 - cb  // 519A  SUBQ.L    #8,(A2)+
+        b       cea_l_32
+        ori     rtn_addr, code_ptr, subq_l_q_mem_5 - cb  // 519B  SUBQ.L    #8,(A3)+
+        b       cea_l_33
+        ori     rtn_addr, code_ptr, subq_l_q_mem_5 - cb  // 519C  SUBQ.L    #8,(A4)+
+        b       cea_l_34
+        ori     rtn_addr, code_ptr, subq_l_q_mem_5 - cb  // 519D  SUBQ.L    #8,(A5)+
+        b       cea_l_35
+        ori     rtn_addr, code_ptr, subq_l_q_mem_5 - cb  // 519E  SUBQ.L    #8,(A6)+
+        b       cea_l_36
+        ori     rtn_addr, code_ptr, subq_l_q_mem_5 - cb  // 519F  SUBQ.L    #8,(A7)+
+        b       cea_l_37
         addi    a0, a0, -4                              // 51A0  SUBQ.L    #8,-(A0)
         b       op_5190
         addi    a1, a1, -4                              // 51A1  SUBQ.L    #8,-(A1)
@@ -929,257 +929,257 @@ op_5197:
         addi    a7, a7, -4                              // 51A7  SUBQ.L    #8,-(A7)
         b       op_5197
         add     addr, a0, prefetch_data                 // 51A8  SUBQ.L    #8,(d16,A0)
-        b       L_06AE0
+        b       subq_l_q_mem_4
         add     addr, a1, prefetch_data                 // 51A9  SUBQ.L    #8,(d16,A1)
-        b       L_06AE0
+        b       subq_l_q_mem_4
         add     addr, a2, prefetch_data                 // 51AA  SUBQ.L    #8,(d16,A2)
-        b       L_06AE0
+        b       subq_l_q_mem_4
         add     addr, a3, prefetch_data                 // 51AB  SUBQ.L    #8,(d16,A3)
-        b       L_06AE0
+        b       subq_l_q_mem_4
         add     addr, a4, prefetch_data                 // 51AC  SUBQ.L    #8,(d16,A4)
-        b       L_06AE0
+        b       subq_l_q_mem_4
         add     addr, a5, prefetch_data                 // 51AD  SUBQ.L    #8,(d16,A5)
-        b       L_06AE0
+        b       subq_l_q_mem_4
         add     addr, a6, prefetch_data                 // 51AE  SUBQ.L    #8,(d16,A6)
-        b       L_06AE0
+        b       subq_l_q_mem_4
         add     addr, a7, prefetch_data                 // 51AF  SUBQ.L    #8,(d16,A7)
-        b       L_06AE0
-        ori     rtn_addr, code_ptr, L_06AE8 - cb        // 51B0  SUBQ.L    #8,(d8,A0,Xn)
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_06AE8 - cb        // 51B1  SUBQ.L    #8,(d8,A1,Xn)
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_06AE8 - cb        // 51B2  SUBQ.L    #8,(d8,A2,Xn)
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_06AE8 - cb        // 51B3  SUBQ.L    #8,(d8,A3,Xn)
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_06AE8 - cb        // 51B4  SUBQ.L    #8,(d8,A4,Xn)
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_06AE8 - cb        // 51B5  SUBQ.L    #8,(d8,A5,Xn)
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_06AE8 - cb        // 51B6  SUBQ.L    #8,(d8,A6,Xn)
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_06AE8 - cb        // 51B7  SUBQ.L    #8,(d8,A7,Xn)
-        b       L_05C68
+        b       subq_l_q_mem_4
+        ori     rtn_addr, code_ptr, subq_l_q_mem_6 - cb  // 51B0  SUBQ.L    #8,(d8,A0,Xn)
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, subq_l_q_mem_6 - cb  // 51B1  SUBQ.L    #8,(d8,A1,Xn)
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, subq_l_q_mem_6 - cb  // 51B2  SUBQ.L    #8,(d8,A2,Xn)
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, subq_l_q_mem_6 - cb  // 51B3  SUBQ.L    #8,(d8,A3,Xn)
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, subq_l_q_mem_6 - cb  // 51B4  SUBQ.L    #8,(d8,A4,Xn)
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, subq_l_q_mem_6 - cb  // 51B5  SUBQ.L    #8,(d8,A5,Xn)
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, subq_l_q_mem_6 - cb  // 51B6  SUBQ.L    #8,(d8,A6,Xn)
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, subq_l_q_mem_6 - cb  // 51B7  SUBQ.L    #8,(d8,A7,Xn)
+        b       move_add_etc_l_any_any_8
         mr      addr, prefetch_data                     // 51B8  SUBQ.L    #8,(xxx).W
-        b       L_06AE0
-        ori     rtn_addr, code_ptr, L_06AE8 - cb        // 51B9  SUBQ.L    #8,(xxx).L
-        b       L_05E8C
+        b       subq_l_q_mem_4
+        ori     rtn_addr, code_ptr, subq_l_q_mem_6 - cb  // 51B9  SUBQ.L    #8,(xxx).L
+        b       fea_l_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 51BA  SUBQ.L    #8,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 51BB  SUBQ.L    #8,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 51BC  SUBQ.L    #8,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 51BD  SUBQ.L    #8,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 51BE  SUBQ.L    #8,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 51BF  SUBQ.L    #8,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $51C0-$51FF --------------------------------------------------------
         clrrwi  d0, d0, 8                               // 51C0  SF.B      D0
-        b       L_06084
+        b       move_add_etc_any_any
         clrrwi  d1, d1, 8                               // 51C1  SF.B      D1
-        b       L_06084
+        b       move_add_etc_any_any
         clrrwi  d2, d2, 8                               // 51C2  SF.B      D2
-        b       L_06084
+        b       move_add_etc_any_any
         clrrwi  d3, d3, 8                               // 51C3  SF.B      D3
-        b       L_06084
+        b       move_add_etc_any_any
         clrrwi  d4, d4, 8                               // 51C4  SF.B      D4
-        b       L_06084
+        b       move_add_etc_any_any
         clrrwi  d5, d5, 8                               // 51C5  SF.B      D5
-        b       L_06084
+        b       move_add_etc_any_any
         clrrwi  d6, d6, 8                               // 51C6  SF.B      D6
-        b       L_06084
+        b       move_add_etc_any_any
         clrrwi  d7, d7, 8                               // 51C7  SF.B      D7
-        b       L_06084
+        b       move_add_etc_any_any
         lhaux   data, pc, prefetch_data                 // 51C8  DBF.W     D0,<label>
-        b       L_03004
+        b       dbf_w_d0
         lhaux   data, pc, prefetch_data                 // 51C9  DBF.W     D1,<label>
-        b       L_03044
+        b       dbf_w_d1
         lhaux   data, pc, prefetch_data                 // 51CA  DBF.W     D2,<label>
-        b       L_03084
+        b       dbf_w_d2
         lhaux   data, pc, prefetch_data                 // 51CB  DBF.W     D3,<label>
-        b       L_030C4
+        b       dbf_w_d3
         lhaux   data, pc, prefetch_data                 // 51CC  DBF.W     D4,<label>
-        b       L_03104
+        b       dbf_w_d4
         lhaux   data, pc, prefetch_data                 // 51CD  DBF.W     D5,<label>
-        b       L_03144
+        b       dbf_w_d5
         lhaux   data, pc, prefetch_data                 // 51CE  DBF.W     D6,<label>
-        b       L_03184
+        b       dbf_w_d6
         lhaux   data, pc, prefetch_data                 // 51CF  DBF.W     D7,<label>
-        b       L_031C4
+        b       dbf_w_d7
         stb     zero, 0(a0)                             // 51D0  SF.B      (A0)
-        b       L_06084
+        b       move_add_etc_any_any
         stb     zero, 0(a1)                             // 51D1  SF.B      (A1)
-        b       L_06084
+        b       move_add_etc_any_any
         stb     zero, 0(a2)                             // 51D2  SF.B      (A2)
-        b       L_06084
+        b       move_add_etc_any_any
         stb     zero, 0(a3)                             // 51D3  SF.B      (A3)
-        b       L_06084
+        b       move_add_etc_any_any
         stb     zero, 0(a4)                             // 51D4  SF.B      (A4)
-        b       L_06084
+        b       move_add_etc_any_any
         stb     zero, 0(a5)                             // 51D5  SF.B      (A5)
-        b       L_06084
+        b       move_add_etc_any_any
         stb     zero, 0(a6)                             // 51D6  SF.B      (A6)
-        b       L_06084
+        b       move_add_etc_any_any
         stb     zero, 0(a7)                             // 51D7  SF.B      (A7)
-        b       L_06084
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 51D8  SF.B      (A0)+
-        b       L_00800
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 51D9  SF.B      (A1)+
-        b       L_00880
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 51DA  SF.B      (A2)+
-        b       L_00900
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 51DB  SF.B      (A3)+
-        b       L_00980
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 51DC  SF.B      (A4)+
-        b       L_00A00
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 51DD  SF.B      (A5)+
-        b       L_00A80
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 51DE  SF.B      (A6)+
-        b       L_00B00
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 51DF  SF.B      (A7)+
-        b       L_00B80
+        b       move_add_etc_any_any
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 51D8  SF.B      (A0)+
+        b       cea_b_30
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 51D9  SF.B      (A1)+
+        b       cea_b_31
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 51DA  SF.B      (A2)+
+        b       cea_b_32
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 51DB  SF.B      (A3)+
+        b       cea_b_33
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 51DC  SF.B      (A4)+
+        b       cea_b_34
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 51DD  SF.B      (A5)+
+        b       cea_b_35
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 51DE  SF.B      (A6)+
+        b       cea_b_36
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 51DF  SF.B      (A7)+
+        b       cea_b_37
         stbu    zero, -1(a0)                            // 51E0  SF.B      -(A0)
-        b       L_06084
+        b       move_add_etc_any_any
         stbu    zero, -1(a1)                            // 51E1  SF.B      -(A1)
-        b       L_06084
+        b       move_add_etc_any_any
         stbu    zero, -1(a2)                            // 51E2  SF.B      -(A2)
-        b       L_06084
+        b       move_add_etc_any_any
         stbu    zero, -1(a3)                            // 51E3  SF.B      -(A3)
-        b       L_06084
+        b       move_add_etc_any_any
         stbu    zero, -1(a4)                            // 51E4  SF.B      -(A4)
-        b       L_06084
+        b       move_add_etc_any_any
         stbu    zero, -1(a5)                            // 51E5  SF.B      -(A5)
-        b       L_06084
+        b       move_add_etc_any_any
         stbu    zero, -1(a6)                            // 51E6  SF.B      -(A6)
-        b       L_06084
+        b       move_add_etc_any_any
         stbu    zero, -2(a7)                            // 51E7  SF.B      -(A7)
-        b       L_06084
+        b       move_add_etc_any_any
         stbx    zero, a0, prefetch_data                 // 51E8  SF.B      (d16,A0)
-        b       L_06080
+        b       move_lea_etc_ea_any
         stbx    zero, a1, prefetch_data                 // 51E9  SF.B      (d16,A1)
-        b       L_06080
+        b       move_lea_etc_ea_any
         stbx    zero, a2, prefetch_data                 // 51EA  SF.B      (d16,A2)
-        b       L_06080
+        b       move_lea_etc_ea_any
         stbx    zero, a3, prefetch_data                 // 51EB  SF.B      (d16,A3)
-        b       L_06080
+        b       move_lea_etc_ea_any
         stbx    zero, a4, prefetch_data                 // 51EC  SF.B      (d16,A4)
-        b       L_06080
+        b       move_lea_etc_ea_any
         stbx    zero, a5, prefetch_data                 // 51ED  SF.B      (d16,A5)
-        b       L_06080
+        b       move_lea_etc_ea_any
         stbx    zero, a6, prefetch_data                 // 51EE  SF.B      (d16,A6)
-        b       L_06080
+        b       move_lea_etc_ea_any
         stbx    zero, a7, prefetch_data                 // 51EF  SF.B      (d16,A7)
-        b       L_06080
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 51F0  SF.B      (d8,A0,Xn)
-        b       L_05988
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 51F1  SF.B      (d8,A1,Xn)
-        b       L_059E8
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 51F2  SF.B      (d8,A2,Xn)
-        b       L_05A48
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 51F3  SF.B      (d8,A3,Xn)
-        b       L_05AA8
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 51F4  SF.B      (d8,A4,Xn)
-        b       L_05B08
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 51F5  SF.B      (d8,A5,Xn)
-        b       L_05B68
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 51F6  SF.B      (d8,A6,Xn)
-        b       L_05BC8
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 51F7  SF.B      (d8,A7,Xn)
-        b       L_05C28
+        b       move_lea_etc_ea_any
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 51F0  SF.B      (d8,A0,Xn)
+        b       or_sub_etc_any_any
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 51F1  SF.B      (d8,A1,Xn)
+        b       or_sub_etc_any_any_2
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 51F2  SF.B      (d8,A2,Xn)
+        b       or_sub_etc_any_any_3
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 51F3  SF.B      (d8,A3,Xn)
+        b       or_sub_etc_any_any_4
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 51F4  SF.B      (d8,A4,Xn)
+        b       or_sub_etc_any_any_5
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 51F5  SF.B      (d8,A5,Xn)
+        b       or_sub_etc_any_any_6
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 51F6  SF.B      (d8,A6,Xn)
+        b       or_sub_etc_any_any_7
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 51F7  SF.B      (d8,A7,Xn)
+        b       or_sub_etc_any_any_8
         stb     zero, 0(prefetch_data)                  // 51F8  SF.B      (xxx).W
-        b       L_06080
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 51F9  SF.B      (xxx).L
-        b       L_05E14
+        b       move_lea_etc_ea_any
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 51F9  SF.B      (xxx).L
+        b       cea_x_71_2
         lhau    prefetch_data, 2(pc)                    // 51FA  TRAPF     #<data>.W
-        b       L_06084
+        b       move_add_etc_any_any
         lhau    prefetch_data, 4(pc)                    // 51FB  TRAPF     #<data>.L
-        b       L_06084
+        b       move_add_etc_any_any
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // 51FC  TRAPF
-        b       L_06088
+        b       exg_move_etc_any_reg
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 51FD  SF.B      <ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 51FE  SF.B      <ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 51FF  SF.B      <ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $5200-$523F --------------------------------------------------------
         lis     data, 0x0100                            // 5200  ADDQ.B    #1,D0
-        b       L_0B0C8
+        b       add_asl_b_any_d0
         lis     data, 0x0100                            // 5201  ADDQ.B    #1,D1
-        b       L_0B108
+        b       add_asl_b_any_d1
         lis     data, 0x0100                            // 5202  ADDQ.B    #1,D2
-        b       L_0B148
+        b       add_asl_b_any_d2
         lis     data, 0x0100                            // 5203  ADDQ.B    #1,D3
-        b       L_0B188
+        b       add_asl_b_any_d3
         lis     data, 0x0100                            // 5204  ADDQ.B    #1,D4
-        b       L_0B1C8
+        b       add_asl_b_any_d4
         lis     data, 0x0100                            // 5205  ADDQ.B    #1,D5
-        b       L_0B208
+        b       add_asl_b_any_d5
         lis     data, 0x0100                            // 5206  ADDQ.B    #1,D6
-        b       L_0B248
+        b       add_asl_b_any_d6
         lis     data, 0x0100                            // 5207  ADDQ.B    #1,D7
-        b       L_0B288
+        b       add_asl_b_any_d7
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5208  ADDQ.B    #1,A0   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5209  ADDQ.B    #1,A1   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 520A  ADDQ.B    #1,A2   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 520B  ADDQ.B    #1,A3   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 520C  ADDQ.B    #1,A4   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 520D  ADDQ.B    #1,A5   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 520E  ADDQ.B    #1,A6   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 520F  ADDQ.B    #1,A7   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 op_5210:
         mr      addr, a0                                // 5210  ADDQ.B    #1,(A0)
-        b       L_06564
+        b       addq_b_q_mem_2
 op_5211:
         mr      addr, a1                                // 5211  ADDQ.B    #1,(A1)
-        b       L_06564
+        b       addq_b_q_mem_2
 op_5212:
         mr      addr, a2                                // 5212  ADDQ.B    #1,(A2)
-        b       L_06564
+        b       addq_b_q_mem_2
 op_5213:
         mr      addr, a3                                // 5213  ADDQ.B    #1,(A3)
-        b       L_06564
+        b       addq_b_q_mem_2
 op_5214:
         mr      addr, a4                                // 5214  ADDQ.B    #1,(A4)
-        b       L_06564
+        b       addq_b_q_mem_2
 op_5215:
         mr      addr, a5                                // 5215  ADDQ.B    #1,(A5)
-        b       L_06564
+        b       addq_b_q_mem_2
 op_5216:
         mr      addr, a6                                // 5216  ADDQ.B    #1,(A6)
-        b       L_06564
+        b       addq_b_q_mem_2
 op_5217:
         mr      addr, a7                                // 5217  ADDQ.B    #1,(A7)
-        b       L_06564
-        ori     rtn_addr, code_ptr, L_06564 - cb        // 5218  ADDQ.B    #1,(A0)+
-        b       L_00800
-        ori     rtn_addr, code_ptr, L_06564 - cb        // 5219  ADDQ.B    #1,(A1)+
-        b       L_00880
-        ori     rtn_addr, code_ptr, L_06564 - cb        // 521A  ADDQ.B    #1,(A2)+
-        b       L_00900
-        ori     rtn_addr, code_ptr, L_06564 - cb        // 521B  ADDQ.B    #1,(A3)+
-        b       L_00980
-        ori     rtn_addr, code_ptr, L_06564 - cb        // 521C  ADDQ.B    #1,(A4)+
-        b       L_00A00
-        ori     rtn_addr, code_ptr, L_06564 - cb        // 521D  ADDQ.B    #1,(A5)+
-        b       L_00A80
-        ori     rtn_addr, code_ptr, L_06564 - cb        // 521E  ADDQ.B    #1,(A6)+
-        b       L_00B00
-        ori     rtn_addr, code_ptr, L_06564 - cb        // 521F  ADDQ.B    #1,(A7)+
-        b       L_00B80
+        b       addq_b_q_mem_2
+        ori     rtn_addr, code_ptr, addq_b_q_mem_2 - cb  // 5218  ADDQ.B    #1,(A0)+
+        b       cea_b_30
+        ori     rtn_addr, code_ptr, addq_b_q_mem_2 - cb  // 5219  ADDQ.B    #1,(A1)+
+        b       cea_b_31
+        ori     rtn_addr, code_ptr, addq_b_q_mem_2 - cb  // 521A  ADDQ.B    #1,(A2)+
+        b       cea_b_32
+        ori     rtn_addr, code_ptr, addq_b_q_mem_2 - cb  // 521B  ADDQ.B    #1,(A3)+
+        b       cea_b_33
+        ori     rtn_addr, code_ptr, addq_b_q_mem_2 - cb  // 521C  ADDQ.B    #1,(A4)+
+        b       cea_b_34
+        ori     rtn_addr, code_ptr, addq_b_q_mem_2 - cb  // 521D  ADDQ.B    #1,(A5)+
+        b       cea_b_35
+        ori     rtn_addr, code_ptr, addq_b_q_mem_2 - cb  // 521E  ADDQ.B    #1,(A6)+
+        b       cea_b_36
+        ori     rtn_addr, code_ptr, addq_b_q_mem_2 - cb  // 521F  ADDQ.B    #1,(A7)+
+        b       cea_b_37
         addi    a0, a0, -1                              // 5220  ADDQ.B    #1,-(A0)
         b       op_5210
         addi    a1, a1, -1                              // 5221  ADDQ.B    #1,-(A1)
@@ -1197,127 +1197,127 @@ op_5217:
         addi    a7, a7, -2                              // 5227  ADDQ.B    #1,-(A7)
         b       op_5217
         add     addr, a0, prefetch_data                 // 5228  ADDQ.B    #1,(d16,A0)
-        b       L_06560
+        b       addq_b_q_mem
         add     addr, a1, prefetch_data                 // 5229  ADDQ.B    #1,(d16,A1)
-        b       L_06560
+        b       addq_b_q_mem
         add     addr, a2, prefetch_data                 // 522A  ADDQ.B    #1,(d16,A2)
-        b       L_06560
+        b       addq_b_q_mem
         add     addr, a3, prefetch_data                 // 522B  ADDQ.B    #1,(d16,A3)
-        b       L_06560
+        b       addq_b_q_mem
         add     addr, a4, prefetch_data                 // 522C  ADDQ.B    #1,(d16,A4)
-        b       L_06560
+        b       addq_b_q_mem
         add     addr, a5, prefetch_data                 // 522D  ADDQ.B    #1,(d16,A5)
-        b       L_06560
+        b       addq_b_q_mem
         add     addr, a6, prefetch_data                 // 522E  ADDQ.B    #1,(d16,A6)
-        b       L_06560
+        b       addq_b_q_mem
         add     addr, a7, prefetch_data                 // 522F  ADDQ.B    #1,(d16,A7)
-        b       L_06560
-        ori     rtn_addr, code_ptr, L_06568 - cb        // 5230  ADDQ.B    #1,(d8,A0,Xn)
-        b       L_0599C
-        ori     rtn_addr, code_ptr, L_06568 - cb        // 5231  ADDQ.B    #1,(d8,A1,Xn)
-        b       L_059FC
-        ori     rtn_addr, code_ptr, L_06568 - cb        // 5232  ADDQ.B    #1,(d8,A2,Xn)
-        b       L_05A5C
-        ori     rtn_addr, code_ptr, L_06568 - cb        // 5233  ADDQ.B    #1,(d8,A3,Xn)
-        b       L_05ABC
-        ori     rtn_addr, code_ptr, L_06568 - cb        // 5234  ADDQ.B    #1,(d8,A4,Xn)
-        b       L_05B1C
-        ori     rtn_addr, code_ptr, L_06568 - cb        // 5235  ADDQ.B    #1,(d8,A5,Xn)
-        b       L_05B7C
-        ori     rtn_addr, code_ptr, L_06568 - cb        // 5236  ADDQ.B    #1,(d8,A6,Xn)
-        b       L_05BDC
-        ori     rtn_addr, code_ptr, L_06568 - cb        // 5237  ADDQ.B    #1,(d8,A7,Xn)
-        b       L_05C3C
+        b       addq_b_q_mem
+        ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5230  ADDQ.B    #1,(d8,A0,Xn)
+        b       move_add_etc_b_any_any
+        ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5231  ADDQ.B    #1,(d8,A1,Xn)
+        b       move_add_etc_b_any_any_2
+        ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5232  ADDQ.B    #1,(d8,A2,Xn)
+        b       move_add_etc_b_any_any_3
+        ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5233  ADDQ.B    #1,(d8,A3,Xn)
+        b       move_add_etc_b_any_any_4
+        ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5234  ADDQ.B    #1,(d8,A4,Xn)
+        b       move_add_etc_b_any_any_5
+        ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5235  ADDQ.B    #1,(d8,A5,Xn)
+        b       move_add_etc_b_any_any_6
+        ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5236  ADDQ.B    #1,(d8,A6,Xn)
+        b       move_add_etc_b_any_any_7
+        ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5237  ADDQ.B    #1,(d8,A7,Xn)
+        b       move_add_etc_b_any_any_8
         mr      addr, prefetch_data                     // 5238  ADDQ.B    #1,(xxx).W
-        b       L_06560
-        ori     rtn_addr, code_ptr, L_06568 - cb        // 5239  ADDQ.B    #1,(xxx).L
-        b       L_05E2C
+        b       addq_b_q_mem
+        ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5239  ADDQ.B    #1,(xxx).L
+        b       fea_b_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 523A  ADDQ.B    #1,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 523B  ADDQ.B    #1,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 523C  ADDQ.B    #1,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 523D  ADDQ.B    #1,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 523E  ADDQ.B    #1,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 523F  ADDQ.B    #1,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $5240-$527F --------------------------------------------------------
         lis     data, 0x0001                            // 5240  ADDQ.W    #1,D0
-        b       L_03808
+        b       add_asl_w_any_d0
         lis     data, 0x0001                            // 5241  ADDQ.W    #1,D1
-        b       L_03848
+        b       add_asl_w_any_d1
         lis     data, 0x0001                            // 5242  ADDQ.W    #1,D2
-        b       L_03888
+        b       add_asl_w_any_d2
         lis     data, 0x0001                            // 5243  ADDQ.W    #1,D3
-        b       L_038C8
+        b       add_asl_w_any_d3
         lis     data, 0x0001                            // 5244  ADDQ.W    #1,D4
-        b       L_03908
+        b       add_asl_w_any_d4
         lis     data, 0x0001                            // 5245  ADDQ.W    #1,D5
-        b       L_03948
+        b       add_asl_w_any_d5
         lis     data, 0x0001                            // 5246  ADDQ.W    #1,D6
-        b       L_03988
+        b       add_asl_w_any_d6
         lis     data, 0x0001                            // 5247  ADDQ.W    #1,D7
-        b       L_039C8
+        b       add_asl_w_any_d7
         addi    a0, a0, 1                               // 5248  ADDQ.W    #1,A0
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a1, a1, 1                               // 5249  ADDQ.W    #1,A1
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a2, a2, 1                               // 524A  ADDQ.W    #1,A2
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a3, a3, 1                               // 524B  ADDQ.W    #1,A3
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a4, a4, 1                               // 524C  ADDQ.W    #1,A4
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a5, a5, 1                               // 524D  ADDQ.W    #1,A5
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a6, a6, 1                               // 524E  ADDQ.W    #1,A6
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a7, a7, 1                               // 524F  ADDQ.W    #1,A7
-        b       L_06084
+        b       move_add_etc_any_any
 op_5250:
         mr      addr, a0                                // 5250  ADDQ.W    #1,(A0)
-        b       L_06784
+        b       addq_w_q_mem_2
 op_5251:
         mr      addr, a1                                // 5251  ADDQ.W    #1,(A1)
-        b       L_06784
+        b       addq_w_q_mem_2
 op_5252:
         mr      addr, a2                                // 5252  ADDQ.W    #1,(A2)
-        b       L_06784
+        b       addq_w_q_mem_2
 op_5253:
         mr      addr, a3                                // 5253  ADDQ.W    #1,(A3)
-        b       L_06784
+        b       addq_w_q_mem_2
 op_5254:
         mr      addr, a4                                // 5254  ADDQ.W    #1,(A4)
-        b       L_06784
+        b       addq_w_q_mem_2
 op_5255:
         mr      addr, a5                                // 5255  ADDQ.W    #1,(A5)
-        b       L_06784
+        b       addq_w_q_mem_2
 op_5256:
         mr      addr, a6                                // 5256  ADDQ.W    #1,(A6)
-        b       L_06784
+        b       addq_w_q_mem_2
 op_5257:
         mr      addr, a7                                // 5257  ADDQ.W    #1,(A7)
-        b       L_06784
-        ori     rtn_addr, code_ptr, L_06784 - cb        // 5258  ADDQ.W    #1,(A0)+
-        b       L_00820
-        ori     rtn_addr, code_ptr, L_06784 - cb        // 5259  ADDQ.W    #1,(A1)+
-        b       L_008A0
-        ori     rtn_addr, code_ptr, L_06784 - cb        // 525A  ADDQ.W    #1,(A2)+
-        b       L_00920
-        ori     rtn_addr, code_ptr, L_06784 - cb        // 525B  ADDQ.W    #1,(A3)+
-        b       L_009A0
-        ori     rtn_addr, code_ptr, L_06784 - cb        // 525C  ADDQ.W    #1,(A4)+
-        b       L_00A20
-        ori     rtn_addr, code_ptr, L_06784 - cb        // 525D  ADDQ.W    #1,(A5)+
-        b       L_00AA0
-        ori     rtn_addr, code_ptr, L_06784 - cb        // 525E  ADDQ.W    #1,(A6)+
-        b       L_00B20
-        ori     rtn_addr, code_ptr, L_06784 - cb        // 525F  ADDQ.W    #1,(A7)+
-        b       L_00BA0
+        b       addq_w_q_mem_2
+        ori     rtn_addr, code_ptr, addq_w_q_mem_2 - cb  // 5258  ADDQ.W    #1,(A0)+
+        b       cea_w_30
+        ori     rtn_addr, code_ptr, addq_w_q_mem_2 - cb  // 5259  ADDQ.W    #1,(A1)+
+        b       cea_w_31
+        ori     rtn_addr, code_ptr, addq_w_q_mem_2 - cb  // 525A  ADDQ.W    #1,(A2)+
+        b       cea_w_32
+        ori     rtn_addr, code_ptr, addq_w_q_mem_2 - cb  // 525B  ADDQ.W    #1,(A3)+
+        b       cea_w_33
+        ori     rtn_addr, code_ptr, addq_w_q_mem_2 - cb  // 525C  ADDQ.W    #1,(A4)+
+        b       cea_w_34
+        ori     rtn_addr, code_ptr, addq_w_q_mem_2 - cb  // 525D  ADDQ.W    #1,(A5)+
+        b       cea_w_35
+        ori     rtn_addr, code_ptr, addq_w_q_mem_2 - cb  // 525E  ADDQ.W    #1,(A6)+
+        b       cea_w_36
+        ori     rtn_addr, code_ptr, addq_w_q_mem_2 - cb  // 525F  ADDQ.W    #1,(A7)+
+        b       cea_w_37
         addi    a0, a0, -2                              // 5260  ADDQ.W    #1,-(A0)
         b       op_5250
         addi    a1, a1, -2                              // 5261  ADDQ.W    #1,-(A1)
@@ -1335,127 +1335,127 @@ op_5257:
         addi    a7, a7, -2                              // 5267  ADDQ.W    #1,-(A7)
         b       op_5257
         add     addr, a0, prefetch_data                 // 5268  ADDQ.W    #1,(d16,A0)
-        b       L_06780
+        b       addq_w_q_mem
         add     addr, a1, prefetch_data                 // 5269  ADDQ.W    #1,(d16,A1)
-        b       L_06780
+        b       addq_w_q_mem
         add     addr, a2, prefetch_data                 // 526A  ADDQ.W    #1,(d16,A2)
-        b       L_06780
+        b       addq_w_q_mem
         add     addr, a3, prefetch_data                 // 526B  ADDQ.W    #1,(d16,A3)
-        b       L_06780
+        b       addq_w_q_mem
         add     addr, a4, prefetch_data                 // 526C  ADDQ.W    #1,(d16,A4)
-        b       L_06780
+        b       addq_w_q_mem
         add     addr, a5, prefetch_data                 // 526D  ADDQ.W    #1,(d16,A5)
-        b       L_06780
+        b       addq_w_q_mem
         add     addr, a6, prefetch_data                 // 526E  ADDQ.W    #1,(d16,A6)
-        b       L_06780
+        b       addq_w_q_mem
         add     addr, a7, prefetch_data                 // 526F  ADDQ.W    #1,(d16,A7)
-        b       L_06780
-        ori     rtn_addr, code_ptr, L_06788 - cb        // 5270  ADDQ.W    #1,(d8,A0,Xn)
-        b       L_059B0
-        ori     rtn_addr, code_ptr, L_06788 - cb        // 5271  ADDQ.W    #1,(d8,A1,Xn)
-        b       L_05A10
-        ori     rtn_addr, code_ptr, L_06788 - cb        // 5272  ADDQ.W    #1,(d8,A2,Xn)
-        b       L_05A70
-        ori     rtn_addr, code_ptr, L_06788 - cb        // 5273  ADDQ.W    #1,(d8,A3,Xn)
-        b       L_05AD0
-        ori     rtn_addr, code_ptr, L_06788 - cb        // 5274  ADDQ.W    #1,(d8,A4,Xn)
-        b       L_05B30
-        ori     rtn_addr, code_ptr, L_06788 - cb        // 5275  ADDQ.W    #1,(d8,A5,Xn)
-        b       L_05B90
-        ori     rtn_addr, code_ptr, L_06788 - cb        // 5276  ADDQ.W    #1,(d8,A6,Xn)
-        b       L_05BF0
-        ori     rtn_addr, code_ptr, L_06788 - cb        // 5277  ADDQ.W    #1,(d8,A7,Xn)
-        b       L_05C50
+        b       addq_w_q_mem
+        ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5270  ADDQ.W    #1,(d8,A0,Xn)
+        b       move_add_etc_w_any_any
+        ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5271  ADDQ.W    #1,(d8,A1,Xn)
+        b       move_add_etc_w_any_any_2
+        ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5272  ADDQ.W    #1,(d8,A2,Xn)
+        b       move_add_etc_w_any_any_3
+        ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5273  ADDQ.W    #1,(d8,A3,Xn)
+        b       move_add_etc_w_any_any_4
+        ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5274  ADDQ.W    #1,(d8,A4,Xn)
+        b       move_add_etc_w_any_any_5
+        ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5275  ADDQ.W    #1,(d8,A5,Xn)
+        b       move_add_etc_w_any_any_6
+        ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5276  ADDQ.W    #1,(d8,A6,Xn)
+        b       move_add_etc_w_any_any_7
+        ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5277  ADDQ.W    #1,(d8,A7,Xn)
+        b       move_add_etc_w_any_any_8
         mr      addr, prefetch_data                     // 5278  ADDQ.W    #1,(xxx).W
-        b       L_06780
-        ori     rtn_addr, code_ptr, L_06788 - cb        // 5279  ADDQ.W    #1,(xxx).L
-        b       L_05E70
+        b       addq_w_q_mem
+        ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5279  ADDQ.W    #1,(xxx).L
+        b       fea_w_71
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 527A  ADDQ.W    #1,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 527B  ADDQ.W    #1,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 527C  ADDQ.W    #1,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 527D  ADDQ.W    #1,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 527E  ADDQ.W    #1,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 527F  ADDQ.W    #1,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $5280-$52BF --------------------------------------------------------
         li      data, 1                                 // 5280  ADDQ.L    #1,D0
-        b       L_03E04
+        b       add_l_mem_d0_2
         li      data, 1                                 // 5281  ADDQ.L    #1,D1
-        b       L_03E44
+        b       add_l_mem_d1_2
         li      data, 1                                 // 5282  ADDQ.L    #1,D2
-        b       L_03E84
+        b       add_l_mem_d2_2
         li      data, 1                                 // 5283  ADDQ.L    #1,D3
-        b       L_03EC4
+        b       add_l_mem_d3_2
         li      data, 1                                 // 5284  ADDQ.L    #1,D4
-        b       L_03F04
+        b       add_l_mem_d4_2
         li      data, 1                                 // 5285  ADDQ.L    #1,D5
-        b       L_03F44
+        b       add_l_mem_d5_2
         li      data, 1                                 // 5286  ADDQ.L    #1,D6
-        b       L_03F84
+        b       add_l_mem_d6_2
         li      data, 1                                 // 5287  ADDQ.L    #1,D7
-        b       L_03FC4
+        b       add_l_mem_d7_2
         addi    a0, a0, 1                               // 5288  ADDQ.L    #1,A0
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a1, a1, 1                               // 5289  ADDQ.L    #1,A1
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a2, a2, 1                               // 528A  ADDQ.L    #1,A2
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a3, a3, 1                               // 528B  ADDQ.L    #1,A3
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a4, a4, 1                               // 528C  ADDQ.L    #1,A4
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a5, a5, 1                               // 528D  ADDQ.L    #1,A5
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a6, a6, 1                               // 528E  ADDQ.L    #1,A6
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a7, a7, 1                               // 528F  ADDQ.L    #1,A7
-        b       L_06084
+        b       move_add_etc_any_any
 op_5290:
         mr      addr, a0                                // 5290  ADDQ.L    #1,(A0)
-        b       L_06A24
+        b       addq_l_q_mem_2
 op_5291:
         mr      addr, a1                                // 5291  ADDQ.L    #1,(A1)
-        b       L_06A24
+        b       addq_l_q_mem_2
 op_5292:
         mr      addr, a2                                // 5292  ADDQ.L    #1,(A2)
-        b       L_06A24
+        b       addq_l_q_mem_2
 op_5293:
         mr      addr, a3                                // 5293  ADDQ.L    #1,(A3)
-        b       L_06A24
+        b       addq_l_q_mem_2
 op_5294:
         mr      addr, a4                                // 5294  ADDQ.L    #1,(A4)
-        b       L_06A24
+        b       addq_l_q_mem_2
 op_5295:
         mr      addr, a5                                // 5295  ADDQ.L    #1,(A5)
-        b       L_06A24
+        b       addq_l_q_mem_2
 op_5296:
         mr      addr, a6                                // 5296  ADDQ.L    #1,(A6)
-        b       L_06A24
+        b       addq_l_q_mem_2
 op_5297:
         mr      addr, a7                                // 5297  ADDQ.L    #1,(A7)
-        b       L_06A24
-        ori     rtn_addr, code_ptr, L_06A24 - cb        // 5298  ADDQ.L    #1,(A0)+
-        b       L_00840
-        ori     rtn_addr, code_ptr, L_06A24 - cb        // 5299  ADDQ.L    #1,(A1)+
-        b       L_008C0
-        ori     rtn_addr, code_ptr, L_06A24 - cb        // 529A  ADDQ.L    #1,(A2)+
-        b       L_00940
-        ori     rtn_addr, code_ptr, L_06A24 - cb        // 529B  ADDQ.L    #1,(A3)+
-        b       L_009C0
-        ori     rtn_addr, code_ptr, L_06A24 - cb        // 529C  ADDQ.L    #1,(A4)+
-        b       L_00A40
-        ori     rtn_addr, code_ptr, L_06A24 - cb        // 529D  ADDQ.L    #1,(A5)+
-        b       L_00AC0
-        ori     rtn_addr, code_ptr, L_06A24 - cb        // 529E  ADDQ.L    #1,(A6)+
-        b       L_00B40
-        ori     rtn_addr, code_ptr, L_06A24 - cb        // 529F  ADDQ.L    #1,(A7)+
-        b       L_00BC0
+        b       addq_l_q_mem_2
+        ori     rtn_addr, code_ptr, addq_l_q_mem_2 - cb  // 5298  ADDQ.L    #1,(A0)+
+        b       cea_l_30
+        ori     rtn_addr, code_ptr, addq_l_q_mem_2 - cb  // 5299  ADDQ.L    #1,(A1)+
+        b       cea_l_31
+        ori     rtn_addr, code_ptr, addq_l_q_mem_2 - cb  // 529A  ADDQ.L    #1,(A2)+
+        b       cea_l_32
+        ori     rtn_addr, code_ptr, addq_l_q_mem_2 - cb  // 529B  ADDQ.L    #1,(A3)+
+        b       cea_l_33
+        ori     rtn_addr, code_ptr, addq_l_q_mem_2 - cb  // 529C  ADDQ.L    #1,(A4)+
+        b       cea_l_34
+        ori     rtn_addr, code_ptr, addq_l_q_mem_2 - cb  // 529D  ADDQ.L    #1,(A5)+
+        b       cea_l_35
+        ori     rtn_addr, code_ptr, addq_l_q_mem_2 - cb  // 529E  ADDQ.L    #1,(A6)+
+        b       cea_l_36
+        ori     rtn_addr, code_ptr, addq_l_q_mem_2 - cb  // 529F  ADDQ.L    #1,(A7)+
+        b       cea_l_37
         addi    a0, a0, -4                              // 52A0  ADDQ.L    #1,-(A0)
         b       op_5290
         addi    a1, a1, -4                              // 52A1  ADDQ.L    #1,-(A1)
@@ -1473,127 +1473,127 @@ op_5297:
         addi    a7, a7, -4                              // 52A7  ADDQ.L    #1,-(A7)
         b       op_5297
         add     addr, a0, prefetch_data                 // 52A8  ADDQ.L    #1,(d16,A0)
-        b       L_06A20
+        b       addq_l_q_mem
         add     addr, a1, prefetch_data                 // 52A9  ADDQ.L    #1,(d16,A1)
-        b       L_06A20
+        b       addq_l_q_mem
         add     addr, a2, prefetch_data                 // 52AA  ADDQ.L    #1,(d16,A2)
-        b       L_06A20
+        b       addq_l_q_mem
         add     addr, a3, prefetch_data                 // 52AB  ADDQ.L    #1,(d16,A3)
-        b       L_06A20
+        b       addq_l_q_mem
         add     addr, a4, prefetch_data                 // 52AC  ADDQ.L    #1,(d16,A4)
-        b       L_06A20
+        b       addq_l_q_mem
         add     addr, a5, prefetch_data                 // 52AD  ADDQ.L    #1,(d16,A5)
-        b       L_06A20
+        b       addq_l_q_mem
         add     addr, a6, prefetch_data                 // 52AE  ADDQ.L    #1,(d16,A6)
-        b       L_06A20
+        b       addq_l_q_mem
         add     addr, a7, prefetch_data                 // 52AF  ADDQ.L    #1,(d16,A7)
-        b       L_06A20
-        ori     rtn_addr, code_ptr, L_06A28 - cb        // 52B0  ADDQ.L    #1,(d8,A0,Xn)
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_06A28 - cb        // 52B1  ADDQ.L    #1,(d8,A1,Xn)
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_06A28 - cb        // 52B2  ADDQ.L    #1,(d8,A2,Xn)
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_06A28 - cb        // 52B3  ADDQ.L    #1,(d8,A3,Xn)
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_06A28 - cb        // 52B4  ADDQ.L    #1,(d8,A4,Xn)
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_06A28 - cb        // 52B5  ADDQ.L    #1,(d8,A5,Xn)
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_06A28 - cb        // 52B6  ADDQ.L    #1,(d8,A6,Xn)
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_06A28 - cb        // 52B7  ADDQ.L    #1,(d8,A7,Xn)
-        b       L_05C68
+        b       addq_l_q_mem
+        ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 52B0  ADDQ.L    #1,(d8,A0,Xn)
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 52B1  ADDQ.L    #1,(d8,A1,Xn)
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 52B2  ADDQ.L    #1,(d8,A2,Xn)
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 52B3  ADDQ.L    #1,(d8,A3,Xn)
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 52B4  ADDQ.L    #1,(d8,A4,Xn)
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 52B5  ADDQ.L    #1,(d8,A5,Xn)
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 52B6  ADDQ.L    #1,(d8,A6,Xn)
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 52B7  ADDQ.L    #1,(d8,A7,Xn)
+        b       move_add_etc_l_any_any_8
         mr      addr, prefetch_data                     // 52B8  ADDQ.L    #1,(xxx).W
-        b       L_06A20
-        ori     rtn_addr, code_ptr, L_06A28 - cb        // 52B9  ADDQ.L    #1,(xxx).L
-        b       L_05E8C
+        b       addq_l_q_mem
+        ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 52B9  ADDQ.L    #1,(xxx).L
+        b       fea_l_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 52BA  ADDQ.L    #1,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 52BB  ADDQ.L    #1,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 52BC  ADDQ.L    #1,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 52BD  ADDQ.L    #1,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 52BE  ADDQ.L    #1,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 52BF  ADDQ.L    #1,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $52C0-$52FF --------------------------------------------------------
-        ori     rtn_addr, code_ptr, L_03624 - cb        // 52C0  SHI.B     D0
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_03664 - cb        // 52C1  SHI.B     D1
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_036A4 - cb        // 52C2  SHI.B     D2
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_036E4 - cb        // 52C3  SHI.B     D3
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_03724 - cb        // 52C4  SHI.B     D4
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_03764 - cb        // 52C5  SHI.B     D5
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_037A4 - cb        // 52C6  SHI.B     D6
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_037E4 - cb        // 52C7  SHI.B     D7
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_03000 - cb        // 52C8  DBHI.W    D0,<label>
-        b       L_08500
-        ori     rtn_addr, code_ptr, L_03040 - cb        // 52C9  DBHI.W    D1,<label>
-        b       L_08500
-        ori     rtn_addr, code_ptr, L_03080 - cb        // 52CA  DBHI.W    D2,<label>
-        b       L_08500
-        ori     rtn_addr, code_ptr, L_030C0 - cb        // 52CB  DBHI.W    D3,<label>
-        b       L_08500
-        ori     rtn_addr, code_ptr, L_03100 - cb        // 52CC  DBHI.W    D4,<label>
-        b       L_08500
-        ori     rtn_addr, code_ptr, L_03140 - cb        // 52CD  DBHI.W    D5,<label>
-        b       L_08500
-        ori     rtn_addr, code_ptr, L_03180 - cb        // 52CE  DBHI.W    D6,<label>
-        b       L_08500
-        ori     rtn_addr, code_ptr, L_031C0 - cb        // 52CF  DBHI.W    D7,<label>
-        b       L_08500
+        ori     rtn_addr, code_ptr, scc_b_d0 - cb       // 52C0  SHI.B     D0
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d1 - cb       // 52C1  SHI.B     D1
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d2 - cb       // 52C2  SHI.B     D2
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d3 - cb       // 52C3  SHI.B     D3
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d4 - cb       // 52C4  SHI.B     D4
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d5 - cb       // 52C5  SHI.B     D5
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d6 - cb       // 52C6  SHI.B     D6
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d7 - cb       // 52C7  SHI.B     D7
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d0 - cb      // 52C8  DBHI.W    D0,<label>
+        b       dbcc_w_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d1 - cb      // 52C9  DBHI.W    D1,<label>
+        b       dbcc_w_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d2 - cb      // 52CA  DBHI.W    D2,<label>
+        b       dbcc_w_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d3 - cb      // 52CB  DBHI.W    D3,<label>
+        b       dbcc_w_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d4 - cb      // 52CC  DBHI.W    D4,<label>
+        b       dbcc_w_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d5 - cb      // 52CD  DBHI.W    D5,<label>
+        b       dbcc_w_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d6 - cb      // 52CE  DBHI.W    D6,<label>
+        b       dbcc_w_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d7 - cb      // 52CF  DBHI.W    D7,<label>
+        b       dbcc_w_dn
 op_52D0:
         mr      addr, a0                                // 52D0  SHI.B     (A0)
-        b       L_08584
+        b       scc_b_mem_2
 op_52D1:
         mr      addr, a1                                // 52D1  SHI.B     (A1)
-        b       L_08584
+        b       scc_b_mem_2
 op_52D2:
         mr      addr, a2                                // 52D2  SHI.B     (A2)
-        b       L_08584
+        b       scc_b_mem_2
 op_52D3:
         mr      addr, a3                                // 52D3  SHI.B     (A3)
-        b       L_08584
+        b       scc_b_mem_2
 op_52D4:
         mr      addr, a4                                // 52D4  SHI.B     (A4)
-        b       L_08584
+        b       scc_b_mem_2
 op_52D5:
         mr      addr, a5                                // 52D5  SHI.B     (A5)
-        b       L_08584
+        b       scc_b_mem_2
 op_52D6:
         mr      addr, a6                                // 52D6  SHI.B     (A6)
-        b       L_08584
+        b       scc_b_mem_2
 op_52D7:
         mr      addr, a7                                // 52D7  SHI.B     (A7)
-        b       L_08584
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 52D8  SHI.B     (A0)+
-        b       L_00800
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 52D9  SHI.B     (A1)+
-        b       L_00880
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 52DA  SHI.B     (A2)+
-        b       L_00900
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 52DB  SHI.B     (A3)+
-        b       L_00980
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 52DC  SHI.B     (A4)+
-        b       L_00A00
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 52DD  SHI.B     (A5)+
-        b       L_00A80
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 52DE  SHI.B     (A6)+
-        b       L_00B00
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 52DF  SHI.B     (A7)+
-        b       L_00B80
+        b       scc_b_mem_2
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 52D8  SHI.B     (A0)+
+        b       cea_b_30
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 52D9  SHI.B     (A1)+
+        b       cea_b_31
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 52DA  SHI.B     (A2)+
+        b       cea_b_32
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 52DB  SHI.B     (A3)+
+        b       cea_b_33
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 52DC  SHI.B     (A4)+
+        b       cea_b_34
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 52DD  SHI.B     (A5)+
+        b       cea_b_35
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 52DE  SHI.B     (A6)+
+        b       cea_b_36
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 52DF  SHI.B     (A7)+
+        b       cea_b_37
         addi    a0, a0, -1                              // 52E0  SHI.B     -(A0)
         b       op_52D0
         addi    a1, a1, -1                              // 52E1  SHI.B     -(A1)
@@ -1611,127 +1611,127 @@ op_52D7:
         addi    a7, a7, -2                              // 52E7  SHI.B     -(A7)
         b       op_52D7
         add     addr, a0, prefetch_data                 // 52E8  SHI.B     (d16,A0)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a1, prefetch_data                 // 52E9  SHI.B     (d16,A1)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a2, prefetch_data                 // 52EA  SHI.B     (d16,A2)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a3, prefetch_data                 // 52EB  SHI.B     (d16,A3)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a4, prefetch_data                 // 52EC  SHI.B     (d16,A4)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a5, prefetch_data                 // 52ED  SHI.B     (d16,A5)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a6, prefetch_data                 // 52EE  SHI.B     (d16,A6)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a7, prefetch_data                 // 52EF  SHI.B     (d16,A7)
-        b       L_08580
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 52F0  SHI.B     (d8,A0,Xn)
-        b       L_05988
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 52F1  SHI.B     (d8,A1,Xn)
-        b       L_059E8
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 52F2  SHI.B     (d8,A2,Xn)
-        b       L_05A48
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 52F3  SHI.B     (d8,A3,Xn)
-        b       L_05AA8
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 52F4  SHI.B     (d8,A4,Xn)
-        b       L_05B08
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 52F5  SHI.B     (d8,A5,Xn)
-        b       L_05B68
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 52F6  SHI.B     (d8,A6,Xn)
-        b       L_05BC8
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 52F7  SHI.B     (d8,A7,Xn)
-        b       L_05C28
+        b       scc_b_mem
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 52F0  SHI.B     (d8,A0,Xn)
+        b       or_sub_etc_any_any
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 52F1  SHI.B     (d8,A1,Xn)
+        b       or_sub_etc_any_any_2
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 52F2  SHI.B     (d8,A2,Xn)
+        b       or_sub_etc_any_any_3
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 52F3  SHI.B     (d8,A3,Xn)
+        b       or_sub_etc_any_any_4
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 52F4  SHI.B     (d8,A4,Xn)
+        b       or_sub_etc_any_any_5
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 52F5  SHI.B     (d8,A5,Xn)
+        b       or_sub_etc_any_any_6
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 52F6  SHI.B     (d8,A6,Xn)
+        b       or_sub_etc_any_any_7
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 52F7  SHI.B     (d8,A7,Xn)
+        b       or_sub_etc_any_any_8
         mr      addr, prefetch_data                     // 52F8  SHI.B     (xxx).W
-        b       L_08580
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 52F9  SHI.B     (xxx).L
-        b       L_05E14
+        b       scc_b_mem
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 52F9  SHI.B     (xxx).L
+        b       cea_x_71_2
         lhau    prefetch_data, 2(pc)                    // 52FA  TRAPHI    #<data>.W
-        b       L_0CCE8
+        b       trapcc
         lhau    prefetch_data, 4(pc)                    // 52FB  TRAPHI    #<data>.L
-        b       L_0CCE8
+        b       trapcc
         ori     base_disp, code_ptr, D_085C0 - cb       // 52FC  TRAPHI
-        b       L_0CCEC
+        b       trapcc_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 52FD  SHI.B     <ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 52FE  SHI.B     <ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 52FF  SHI.B     <ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $5300-$533F --------------------------------------------------------
         lis     data, 0x0100                            // 5300  SUBQ.B    #1,D0
-        b       L_03608
+        b       sub_b_any_d0
         lis     data, 0x0100                            // 5301  SUBQ.B    #1,D1
-        b       L_03648
+        b       sub_b_any_d1
         lis     data, 0x0100                            // 5302  SUBQ.B    #1,D2
-        b       L_03688
+        b       sub_b_any_d2
         lis     data, 0x0100                            // 5303  SUBQ.B    #1,D3
-        b       L_036C8
+        b       sub_b_any_d3
         lis     data, 0x0100                            // 5304  SUBQ.B    #1,D4
-        b       L_03708
+        b       sub_b_any_d4
         lis     data, 0x0100                            // 5305  SUBQ.B    #1,D5
-        b       L_03748
+        b       sub_b_any_d5
         lis     data, 0x0100                            // 5306  SUBQ.B    #1,D6
-        b       L_03788
+        b       sub_b_any_d6
         lis     data, 0x0100                            // 5307  SUBQ.B    #1,D7
-        b       L_037C8
+        b       sub_b_any_d7
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5308  SUBQ.B    #1,A0   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5309  SUBQ.B    #1,A1   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 530A  SUBQ.B    #1,A2   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 530B  SUBQ.B    #1,A3   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 530C  SUBQ.B    #1,A4   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 530D  SUBQ.B    #1,A5   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 530E  SUBQ.B    #1,A6   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 530F  SUBQ.B    #1,A7   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 op_5310:
         mr      addr, a0                                // 5310  SUBQ.B    #1,(A0)
-        b       L_06604
+        b       subq_b_q_mem_2
 op_5311:
         mr      addr, a1                                // 5311  SUBQ.B    #1,(A1)
-        b       L_06604
+        b       subq_b_q_mem_2
 op_5312:
         mr      addr, a2                                // 5312  SUBQ.B    #1,(A2)
-        b       L_06604
+        b       subq_b_q_mem_2
 op_5313:
         mr      addr, a3                                // 5313  SUBQ.B    #1,(A3)
-        b       L_06604
+        b       subq_b_q_mem_2
 op_5314:
         mr      addr, a4                                // 5314  SUBQ.B    #1,(A4)
-        b       L_06604
+        b       subq_b_q_mem_2
 op_5315:
         mr      addr, a5                                // 5315  SUBQ.B    #1,(A5)
-        b       L_06604
+        b       subq_b_q_mem_2
 op_5316:
         mr      addr, a6                                // 5316  SUBQ.B    #1,(A6)
-        b       L_06604
+        b       subq_b_q_mem_2
 op_5317:
         mr      addr, a7                                // 5317  SUBQ.B    #1,(A7)
-        b       L_06604
-        ori     rtn_addr, code_ptr, L_06604 - cb        // 5318  SUBQ.B    #1,(A0)+
-        b       L_00800
-        ori     rtn_addr, code_ptr, L_06604 - cb        // 5319  SUBQ.B    #1,(A1)+
-        b       L_00880
-        ori     rtn_addr, code_ptr, L_06604 - cb        // 531A  SUBQ.B    #1,(A2)+
-        b       L_00900
-        ori     rtn_addr, code_ptr, L_06604 - cb        // 531B  SUBQ.B    #1,(A3)+
-        b       L_00980
-        ori     rtn_addr, code_ptr, L_06604 - cb        // 531C  SUBQ.B    #1,(A4)+
-        b       L_00A00
-        ori     rtn_addr, code_ptr, L_06604 - cb        // 531D  SUBQ.B    #1,(A5)+
-        b       L_00A80
-        ori     rtn_addr, code_ptr, L_06604 - cb        // 531E  SUBQ.B    #1,(A6)+
-        b       L_00B00
-        ori     rtn_addr, code_ptr, L_06604 - cb        // 531F  SUBQ.B    #1,(A7)+
-        b       L_00B80
+        b       subq_b_q_mem_2
+        ori     rtn_addr, code_ptr, subq_b_q_mem_2 - cb  // 5318  SUBQ.B    #1,(A0)+
+        b       cea_b_30
+        ori     rtn_addr, code_ptr, subq_b_q_mem_2 - cb  // 5319  SUBQ.B    #1,(A1)+
+        b       cea_b_31
+        ori     rtn_addr, code_ptr, subq_b_q_mem_2 - cb  // 531A  SUBQ.B    #1,(A2)+
+        b       cea_b_32
+        ori     rtn_addr, code_ptr, subq_b_q_mem_2 - cb  // 531B  SUBQ.B    #1,(A3)+
+        b       cea_b_33
+        ori     rtn_addr, code_ptr, subq_b_q_mem_2 - cb  // 531C  SUBQ.B    #1,(A4)+
+        b       cea_b_34
+        ori     rtn_addr, code_ptr, subq_b_q_mem_2 - cb  // 531D  SUBQ.B    #1,(A5)+
+        b       cea_b_35
+        ori     rtn_addr, code_ptr, subq_b_q_mem_2 - cb  // 531E  SUBQ.B    #1,(A6)+
+        b       cea_b_36
+        ori     rtn_addr, code_ptr, subq_b_q_mem_2 - cb  // 531F  SUBQ.B    #1,(A7)+
+        b       cea_b_37
         addi    a0, a0, -1                              // 5320  SUBQ.B    #1,-(A0)
         b       op_5310
         addi    a1, a1, -1                              // 5321  SUBQ.B    #1,-(A1)
@@ -1749,127 +1749,127 @@ op_5317:
         addi    a7, a7, -2                              // 5327  SUBQ.B    #1,-(A7)
         b       op_5317
         add     addr, a0, prefetch_data                 // 5328  SUBQ.B    #1,(d16,A0)
-        b       L_06600
+        b       subq_b_q_mem
         add     addr, a1, prefetch_data                 // 5329  SUBQ.B    #1,(d16,A1)
-        b       L_06600
+        b       subq_b_q_mem
         add     addr, a2, prefetch_data                 // 532A  SUBQ.B    #1,(d16,A2)
-        b       L_06600
+        b       subq_b_q_mem
         add     addr, a3, prefetch_data                 // 532B  SUBQ.B    #1,(d16,A3)
-        b       L_06600
+        b       subq_b_q_mem
         add     addr, a4, prefetch_data                 // 532C  SUBQ.B    #1,(d16,A4)
-        b       L_06600
+        b       subq_b_q_mem
         add     addr, a5, prefetch_data                 // 532D  SUBQ.B    #1,(d16,A5)
-        b       L_06600
+        b       subq_b_q_mem
         add     addr, a6, prefetch_data                 // 532E  SUBQ.B    #1,(d16,A6)
-        b       L_06600
+        b       subq_b_q_mem
         add     addr, a7, prefetch_data                 // 532F  SUBQ.B    #1,(d16,A7)
-        b       L_06600
-        ori     rtn_addr, code_ptr, L_06608 - cb        // 5330  SUBQ.B    #1,(d8,A0,Xn)
-        b       L_0599C
-        ori     rtn_addr, code_ptr, L_06608 - cb        // 5331  SUBQ.B    #1,(d8,A1,Xn)
-        b       L_059FC
-        ori     rtn_addr, code_ptr, L_06608 - cb        // 5332  SUBQ.B    #1,(d8,A2,Xn)
-        b       L_05A5C
-        ori     rtn_addr, code_ptr, L_06608 - cb        // 5333  SUBQ.B    #1,(d8,A3,Xn)
-        b       L_05ABC
-        ori     rtn_addr, code_ptr, L_06608 - cb        // 5334  SUBQ.B    #1,(d8,A4,Xn)
-        b       L_05B1C
-        ori     rtn_addr, code_ptr, L_06608 - cb        // 5335  SUBQ.B    #1,(d8,A5,Xn)
-        b       L_05B7C
-        ori     rtn_addr, code_ptr, L_06608 - cb        // 5336  SUBQ.B    #1,(d8,A6,Xn)
-        b       L_05BDC
-        ori     rtn_addr, code_ptr, L_06608 - cb        // 5337  SUBQ.B    #1,(d8,A7,Xn)
-        b       L_05C3C
+        b       subq_b_q_mem
+        ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5330  SUBQ.B    #1,(d8,A0,Xn)
+        b       move_add_etc_b_any_any
+        ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5331  SUBQ.B    #1,(d8,A1,Xn)
+        b       move_add_etc_b_any_any_2
+        ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5332  SUBQ.B    #1,(d8,A2,Xn)
+        b       move_add_etc_b_any_any_3
+        ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5333  SUBQ.B    #1,(d8,A3,Xn)
+        b       move_add_etc_b_any_any_4
+        ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5334  SUBQ.B    #1,(d8,A4,Xn)
+        b       move_add_etc_b_any_any_5
+        ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5335  SUBQ.B    #1,(d8,A5,Xn)
+        b       move_add_etc_b_any_any_6
+        ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5336  SUBQ.B    #1,(d8,A6,Xn)
+        b       move_add_etc_b_any_any_7
+        ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5337  SUBQ.B    #1,(d8,A7,Xn)
+        b       move_add_etc_b_any_any_8
         mr      addr, prefetch_data                     // 5338  SUBQ.B    #1,(xxx).W
-        b       L_06600
-        ori     rtn_addr, code_ptr, L_06608 - cb        // 5339  SUBQ.B    #1,(xxx).L
-        b       L_05E2C
+        b       subq_b_q_mem
+        ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5339  SUBQ.B    #1,(xxx).L
+        b       fea_b_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 533A  SUBQ.B    #1,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 533B  SUBQ.B    #1,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 533C  SUBQ.B    #1,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 533D  SUBQ.B    #1,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 533E  SUBQ.B    #1,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 533F  SUBQ.B    #1,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $5340-$537F --------------------------------------------------------
         lis     data, 0x0001                            // 5340  SUBQ.W    #1,D0
-        b       L_03C30
+        b       sub_w_any_d0
         lis     data, 0x0001                            // 5341  SUBQ.W    #1,D1
-        b       L_03C70
+        b       sub_w_any_d1
         lis     data, 0x0001                            // 5342  SUBQ.W    #1,D2
-        b       L_03CB0
+        b       sub_w_any_d2
         lis     data, 0x0001                            // 5343  SUBQ.W    #1,D3
-        b       L_03CF0
+        b       sub_w_any_d3
         lis     data, 0x0001                            // 5344  SUBQ.W    #1,D4
-        b       L_03D30
+        b       sub_w_any_d4
         lis     data, 0x0001                            // 5345  SUBQ.W    #1,D5
-        b       L_03D70
+        b       sub_w_any_d5
         lis     data, 0x0001                            // 5346  SUBQ.W    #1,D6
-        b       L_03DB0
+        b       sub_w_any_d6
         lis     data, 0x0001                            // 5347  SUBQ.W    #1,D7
-        b       L_03DF0
+        b       sub_w_any_d7
         addi    a0, a0, -1                              // 5348  SUBQ.W    #1,A0
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a1, a1, -1                              // 5349  SUBQ.W    #1,A1
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a2, a2, -1                              // 534A  SUBQ.W    #1,A2
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a3, a3, -1                              // 534B  SUBQ.W    #1,A3
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a4, a4, -1                              // 534C  SUBQ.W    #1,A4
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a5, a5, -1                              // 534D  SUBQ.W    #1,A5
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a6, a6, -1                              // 534E  SUBQ.W    #1,A6
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a7, a7, -1                              // 534F  SUBQ.W    #1,A7
-        b       L_06084
+        b       move_add_etc_any_any
 op_5350:
         mr      addr, a0                                // 5350  SUBQ.W    #1,(A0)
-        b       L_06824
+        b       subq_w_q_mem_2
 op_5351:
         mr      addr, a1                                // 5351  SUBQ.W    #1,(A1)
-        b       L_06824
+        b       subq_w_q_mem_2
 op_5352:
         mr      addr, a2                                // 5352  SUBQ.W    #1,(A2)
-        b       L_06824
+        b       subq_w_q_mem_2
 op_5353:
         mr      addr, a3                                // 5353  SUBQ.W    #1,(A3)
-        b       L_06824
+        b       subq_w_q_mem_2
 op_5354:
         mr      addr, a4                                // 5354  SUBQ.W    #1,(A4)
-        b       L_06824
+        b       subq_w_q_mem_2
 op_5355:
         mr      addr, a5                                // 5355  SUBQ.W    #1,(A5)
-        b       L_06824
+        b       subq_w_q_mem_2
 op_5356:
         mr      addr, a6                                // 5356  SUBQ.W    #1,(A6)
-        b       L_06824
+        b       subq_w_q_mem_2
 op_5357:
         mr      addr, a7                                // 5357  SUBQ.W    #1,(A7)
-        b       L_06824
-        ori     rtn_addr, code_ptr, L_06824 - cb        // 5358  SUBQ.W    #1,(A0)+
-        b       L_00820
-        ori     rtn_addr, code_ptr, L_06824 - cb        // 5359  SUBQ.W    #1,(A1)+
-        b       L_008A0
-        ori     rtn_addr, code_ptr, L_06824 - cb        // 535A  SUBQ.W    #1,(A2)+
-        b       L_00920
-        ori     rtn_addr, code_ptr, L_06824 - cb        // 535B  SUBQ.W    #1,(A3)+
-        b       L_009A0
-        ori     rtn_addr, code_ptr, L_06824 - cb        // 535C  SUBQ.W    #1,(A4)+
-        b       L_00A20
-        ori     rtn_addr, code_ptr, L_06824 - cb        // 535D  SUBQ.W    #1,(A5)+
-        b       L_00AA0
-        ori     rtn_addr, code_ptr, L_06824 - cb        // 535E  SUBQ.W    #1,(A6)+
-        b       L_00B20
-        ori     rtn_addr, code_ptr, L_06824 - cb        // 535F  SUBQ.W    #1,(A7)+
-        b       L_00BA0
+        b       subq_w_q_mem_2
+        ori     rtn_addr, code_ptr, subq_w_q_mem_2 - cb  // 5358  SUBQ.W    #1,(A0)+
+        b       cea_w_30
+        ori     rtn_addr, code_ptr, subq_w_q_mem_2 - cb  // 5359  SUBQ.W    #1,(A1)+
+        b       cea_w_31
+        ori     rtn_addr, code_ptr, subq_w_q_mem_2 - cb  // 535A  SUBQ.W    #1,(A2)+
+        b       cea_w_32
+        ori     rtn_addr, code_ptr, subq_w_q_mem_2 - cb  // 535B  SUBQ.W    #1,(A3)+
+        b       cea_w_33
+        ori     rtn_addr, code_ptr, subq_w_q_mem_2 - cb  // 535C  SUBQ.W    #1,(A4)+
+        b       cea_w_34
+        ori     rtn_addr, code_ptr, subq_w_q_mem_2 - cb  // 535D  SUBQ.W    #1,(A5)+
+        b       cea_w_35
+        ori     rtn_addr, code_ptr, subq_w_q_mem_2 - cb  // 535E  SUBQ.W    #1,(A6)+
+        b       cea_w_36
+        ori     rtn_addr, code_ptr, subq_w_q_mem_2 - cb  // 535F  SUBQ.W    #1,(A7)+
+        b       cea_w_37
         addi    a0, a0, -2                              // 5360  SUBQ.W    #1,-(A0)
         b       op_5350
         addi    a1, a1, -2                              // 5361  SUBQ.W    #1,-(A1)
@@ -1887,127 +1887,127 @@ op_5357:
         addi    a7, a7, -2                              // 5367  SUBQ.W    #1,-(A7)
         b       op_5357
         add     addr, a0, prefetch_data                 // 5368  SUBQ.W    #1,(d16,A0)
-        b       L_06820
+        b       subq_w_q_mem
         add     addr, a1, prefetch_data                 // 5369  SUBQ.W    #1,(d16,A1)
-        b       L_06820
+        b       subq_w_q_mem
         add     addr, a2, prefetch_data                 // 536A  SUBQ.W    #1,(d16,A2)
-        b       L_06820
+        b       subq_w_q_mem
         add     addr, a3, prefetch_data                 // 536B  SUBQ.W    #1,(d16,A3)
-        b       L_06820
+        b       subq_w_q_mem
         add     addr, a4, prefetch_data                 // 536C  SUBQ.W    #1,(d16,A4)
-        b       L_06820
+        b       subq_w_q_mem
         add     addr, a5, prefetch_data                 // 536D  SUBQ.W    #1,(d16,A5)
-        b       L_06820
+        b       subq_w_q_mem
         add     addr, a6, prefetch_data                 // 536E  SUBQ.W    #1,(d16,A6)
-        b       L_06820
+        b       subq_w_q_mem
         add     addr, a7, prefetch_data                 // 536F  SUBQ.W    #1,(d16,A7)
-        b       L_06820
-        ori     rtn_addr, code_ptr, L_06828 - cb        // 5370  SUBQ.W    #1,(d8,A0,Xn)
-        b       L_059B0
-        ori     rtn_addr, code_ptr, L_06828 - cb        // 5371  SUBQ.W    #1,(d8,A1,Xn)
-        b       L_05A10
-        ori     rtn_addr, code_ptr, L_06828 - cb        // 5372  SUBQ.W    #1,(d8,A2,Xn)
-        b       L_05A70
-        ori     rtn_addr, code_ptr, L_06828 - cb        // 5373  SUBQ.W    #1,(d8,A3,Xn)
-        b       L_05AD0
-        ori     rtn_addr, code_ptr, L_06828 - cb        // 5374  SUBQ.W    #1,(d8,A4,Xn)
-        b       L_05B30
-        ori     rtn_addr, code_ptr, L_06828 - cb        // 5375  SUBQ.W    #1,(d8,A5,Xn)
-        b       L_05B90
-        ori     rtn_addr, code_ptr, L_06828 - cb        // 5376  SUBQ.W    #1,(d8,A6,Xn)
-        b       L_05BF0
-        ori     rtn_addr, code_ptr, L_06828 - cb        // 5377  SUBQ.W    #1,(d8,A7,Xn)
-        b       L_05C50
+        b       subq_w_q_mem
+        ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5370  SUBQ.W    #1,(d8,A0,Xn)
+        b       move_add_etc_w_any_any
+        ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5371  SUBQ.W    #1,(d8,A1,Xn)
+        b       move_add_etc_w_any_any_2
+        ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5372  SUBQ.W    #1,(d8,A2,Xn)
+        b       move_add_etc_w_any_any_3
+        ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5373  SUBQ.W    #1,(d8,A3,Xn)
+        b       move_add_etc_w_any_any_4
+        ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5374  SUBQ.W    #1,(d8,A4,Xn)
+        b       move_add_etc_w_any_any_5
+        ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5375  SUBQ.W    #1,(d8,A5,Xn)
+        b       move_add_etc_w_any_any_6
+        ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5376  SUBQ.W    #1,(d8,A6,Xn)
+        b       move_add_etc_w_any_any_7
+        ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5377  SUBQ.W    #1,(d8,A7,Xn)
+        b       move_add_etc_w_any_any_8
         mr      addr, prefetch_data                     // 5378  SUBQ.W    #1,(xxx).W
-        b       L_06820
-        ori     rtn_addr, code_ptr, L_06828 - cb        // 5379  SUBQ.W    #1,(xxx).L
-        b       L_05E70
+        b       subq_w_q_mem
+        ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5379  SUBQ.W    #1,(xxx).L
+        b       fea_w_71
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 537A  SUBQ.W    #1,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 537B  SUBQ.W    #1,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 537C  SUBQ.W    #1,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 537D  SUBQ.W    #1,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 537E  SUBQ.W    #1,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 537F  SUBQ.W    #1,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $5380-$53BF --------------------------------------------------------
         li      data, 1                                 // 5380  SUBQ.L    #1,D0
-        b       L_04204
+        b       sub_l_mem_d0_2
         li      data, 1                                 // 5381  SUBQ.L    #1,D1
-        b       L_04244
+        b       sub_l_mem_d1_2
         li      data, 1                                 // 5382  SUBQ.L    #1,D2
-        b       L_04284
+        b       sub_l_mem_d2_2
         li      data, 1                                 // 5383  SUBQ.L    #1,D3
-        b       L_042C4
+        b       sub_l_mem_d3_2
         li      data, 1                                 // 5384  SUBQ.L    #1,D4
-        b       L_04304
+        b       sub_l_mem_d4_2
         li      data, 1                                 // 5385  SUBQ.L    #1,D5
-        b       L_04344
+        b       sub_l_mem_d5_2
         li      data, 1                                 // 5386  SUBQ.L    #1,D6
-        b       L_04384
+        b       sub_l_mem_d6_2
         li      data, 1                                 // 5387  SUBQ.L    #1,D7
-        b       L_043C4
+        b       sub_l_mem_d7_2
         addi    a0, a0, -1                              // 5388  SUBQ.L    #1,A0
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a1, a1, -1                              // 5389  SUBQ.L    #1,A1
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a2, a2, -1                              // 538A  SUBQ.L    #1,A2
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a3, a3, -1                              // 538B  SUBQ.L    #1,A3
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a4, a4, -1                              // 538C  SUBQ.L    #1,A4
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a5, a5, -1                              // 538D  SUBQ.L    #1,A5
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a6, a6, -1                              // 538E  SUBQ.L    #1,A6
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a7, a7, -1                              // 538F  SUBQ.L    #1,A7
-        b       L_06084
+        b       move_add_etc_any_any
 op_5390:
         mr      addr, a0                                // 5390  SUBQ.L    #1,(A0)
-        b       L_06AC4
+        b       subq_l_q_mem_2
 op_5391:
         mr      addr, a1                                // 5391  SUBQ.L    #1,(A1)
-        b       L_06AC4
+        b       subq_l_q_mem_2
 op_5392:
         mr      addr, a2                                // 5392  SUBQ.L    #1,(A2)
-        b       L_06AC4
+        b       subq_l_q_mem_2
 op_5393:
         mr      addr, a3                                // 5393  SUBQ.L    #1,(A3)
-        b       L_06AC4
+        b       subq_l_q_mem_2
 op_5394:
         mr      addr, a4                                // 5394  SUBQ.L    #1,(A4)
-        b       L_06AC4
+        b       subq_l_q_mem_2
 op_5395:
         mr      addr, a5                                // 5395  SUBQ.L    #1,(A5)
-        b       L_06AC4
+        b       subq_l_q_mem_2
 op_5396:
         mr      addr, a6                                // 5396  SUBQ.L    #1,(A6)
-        b       L_06AC4
+        b       subq_l_q_mem_2
 op_5397:
         mr      addr, a7                                // 5397  SUBQ.L    #1,(A7)
-        b       L_06AC4
-        ori     rtn_addr, code_ptr, L_06AC4 - cb        // 5398  SUBQ.L    #1,(A0)+
-        b       L_00840
-        ori     rtn_addr, code_ptr, L_06AC4 - cb        // 5399  SUBQ.L    #1,(A1)+
-        b       L_008C0
-        ori     rtn_addr, code_ptr, L_06AC4 - cb        // 539A  SUBQ.L    #1,(A2)+
-        b       L_00940
-        ori     rtn_addr, code_ptr, L_06AC4 - cb        // 539B  SUBQ.L    #1,(A3)+
-        b       L_009C0
-        ori     rtn_addr, code_ptr, L_06AC4 - cb        // 539C  SUBQ.L    #1,(A4)+
-        b       L_00A40
-        ori     rtn_addr, code_ptr, L_06AC4 - cb        // 539D  SUBQ.L    #1,(A5)+
-        b       L_00AC0
-        ori     rtn_addr, code_ptr, L_06AC4 - cb        // 539E  SUBQ.L    #1,(A6)+
-        b       L_00B40
-        ori     rtn_addr, code_ptr, L_06AC4 - cb        // 539F  SUBQ.L    #1,(A7)+
-        b       L_00BC0
+        b       subq_l_q_mem_2
+        ori     rtn_addr, code_ptr, subq_l_q_mem_2 - cb  // 5398  SUBQ.L    #1,(A0)+
+        b       cea_l_30
+        ori     rtn_addr, code_ptr, subq_l_q_mem_2 - cb  // 5399  SUBQ.L    #1,(A1)+
+        b       cea_l_31
+        ori     rtn_addr, code_ptr, subq_l_q_mem_2 - cb  // 539A  SUBQ.L    #1,(A2)+
+        b       cea_l_32
+        ori     rtn_addr, code_ptr, subq_l_q_mem_2 - cb  // 539B  SUBQ.L    #1,(A3)+
+        b       cea_l_33
+        ori     rtn_addr, code_ptr, subq_l_q_mem_2 - cb  // 539C  SUBQ.L    #1,(A4)+
+        b       cea_l_34
+        ori     rtn_addr, code_ptr, subq_l_q_mem_2 - cb  // 539D  SUBQ.L    #1,(A5)+
+        b       cea_l_35
+        ori     rtn_addr, code_ptr, subq_l_q_mem_2 - cb  // 539E  SUBQ.L    #1,(A6)+
+        b       cea_l_36
+        ori     rtn_addr, code_ptr, subq_l_q_mem_2 - cb  // 539F  SUBQ.L    #1,(A7)+
+        b       cea_l_37
         addi    a0, a0, -4                              // 53A0  SUBQ.L    #1,-(A0)
         b       op_5390
         addi    a1, a1, -4                              // 53A1  SUBQ.L    #1,-(A1)
@@ -2025,127 +2025,127 @@ op_5397:
         addi    a7, a7, -4                              // 53A7  SUBQ.L    #1,-(A7)
         b       op_5397
         add     addr, a0, prefetch_data                 // 53A8  SUBQ.L    #1,(d16,A0)
-        b       L_06AC0
+        b       subq_l_q_mem
         add     addr, a1, prefetch_data                 // 53A9  SUBQ.L    #1,(d16,A1)
-        b       L_06AC0
+        b       subq_l_q_mem
         add     addr, a2, prefetch_data                 // 53AA  SUBQ.L    #1,(d16,A2)
-        b       L_06AC0
+        b       subq_l_q_mem
         add     addr, a3, prefetch_data                 // 53AB  SUBQ.L    #1,(d16,A3)
-        b       L_06AC0
+        b       subq_l_q_mem
         add     addr, a4, prefetch_data                 // 53AC  SUBQ.L    #1,(d16,A4)
-        b       L_06AC0
+        b       subq_l_q_mem
         add     addr, a5, prefetch_data                 // 53AD  SUBQ.L    #1,(d16,A5)
-        b       L_06AC0
+        b       subq_l_q_mem
         add     addr, a6, prefetch_data                 // 53AE  SUBQ.L    #1,(d16,A6)
-        b       L_06AC0
+        b       subq_l_q_mem
         add     addr, a7, prefetch_data                 // 53AF  SUBQ.L    #1,(d16,A7)
-        b       L_06AC0
-        ori     rtn_addr, code_ptr, L_06AC8 - cb        // 53B0  SUBQ.L    #1,(d8,A0,Xn)
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_06AC8 - cb        // 53B1  SUBQ.L    #1,(d8,A1,Xn)
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_06AC8 - cb        // 53B2  SUBQ.L    #1,(d8,A2,Xn)
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_06AC8 - cb        // 53B3  SUBQ.L    #1,(d8,A3,Xn)
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_06AC8 - cb        // 53B4  SUBQ.L    #1,(d8,A4,Xn)
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_06AC8 - cb        // 53B5  SUBQ.L    #1,(d8,A5,Xn)
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_06AC8 - cb        // 53B6  SUBQ.L    #1,(d8,A6,Xn)
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_06AC8 - cb        // 53B7  SUBQ.L    #1,(d8,A7,Xn)
-        b       L_05C68
+        b       subq_l_q_mem
+        ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 53B0  SUBQ.L    #1,(d8,A0,Xn)
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 53B1  SUBQ.L    #1,(d8,A1,Xn)
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 53B2  SUBQ.L    #1,(d8,A2,Xn)
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 53B3  SUBQ.L    #1,(d8,A3,Xn)
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 53B4  SUBQ.L    #1,(d8,A4,Xn)
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 53B5  SUBQ.L    #1,(d8,A5,Xn)
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 53B6  SUBQ.L    #1,(d8,A6,Xn)
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 53B7  SUBQ.L    #1,(d8,A7,Xn)
+        b       move_add_etc_l_any_any_8
         mr      addr, prefetch_data                     // 53B8  SUBQ.L    #1,(xxx).W
-        b       L_06AC0
-        ori     rtn_addr, code_ptr, L_06AC8 - cb        // 53B9  SUBQ.L    #1,(xxx).L
-        b       L_05E8C
+        b       subq_l_q_mem
+        ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 53B9  SUBQ.L    #1,(xxx).L
+        b       fea_l_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 53BA  SUBQ.L    #1,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 53BB  SUBQ.L    #1,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 53BC  SUBQ.L    #1,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 53BD  SUBQ.L    #1,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 53BE  SUBQ.L    #1,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 53BF  SUBQ.L    #1,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $53C0-$53FF --------------------------------------------------------
-        ori     rtn_addr, code_ptr, L_03624 - cb        // 53C0  SLS.B     D0
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_03664 - cb        // 53C1  SLS.B     D1
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_036A4 - cb        // 53C2  SLS.B     D2
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_036E4 - cb        // 53C3  SLS.B     D3
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_03724 - cb        // 53C4  SLS.B     D4
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_03764 - cb        // 53C5  SLS.B     D5
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_037A4 - cb        // 53C6  SLS.B     D6
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_037E4 - cb        // 53C7  SLS.B     D7
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_03000 - cb        // 53C8  DBLS.W    D0,<label>
-        b       L_08500
-        ori     rtn_addr, code_ptr, L_03040 - cb        // 53C9  DBLS.W    D1,<label>
-        b       L_08500
-        ori     rtn_addr, code_ptr, L_03080 - cb        // 53CA  DBLS.W    D2,<label>
-        b       L_08500
-        ori     rtn_addr, code_ptr, L_030C0 - cb        // 53CB  DBLS.W    D3,<label>
-        b       L_08500
-        ori     rtn_addr, code_ptr, L_03100 - cb        // 53CC  DBLS.W    D4,<label>
-        b       L_08500
-        ori     rtn_addr, code_ptr, L_03140 - cb        // 53CD  DBLS.W    D5,<label>
-        b       L_08500
-        ori     rtn_addr, code_ptr, L_03180 - cb        // 53CE  DBLS.W    D6,<label>
-        b       L_08500
-        ori     rtn_addr, code_ptr, L_031C0 - cb        // 53CF  DBLS.W    D7,<label>
-        b       L_08500
+        ori     rtn_addr, code_ptr, scc_b_d0 - cb       // 53C0  SLS.B     D0
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d1 - cb       // 53C1  SLS.B     D1
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d2 - cb       // 53C2  SLS.B     D2
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d3 - cb       // 53C3  SLS.B     D3
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d4 - cb       // 53C4  SLS.B     D4
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d5 - cb       // 53C5  SLS.B     D5
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d6 - cb       // 53C6  SLS.B     D6
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d7 - cb       // 53C7  SLS.B     D7
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d0 - cb      // 53C8  DBLS.W    D0,<label>
+        b       dbcc_w_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d1 - cb      // 53C9  DBLS.W    D1,<label>
+        b       dbcc_w_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d2 - cb      // 53CA  DBLS.W    D2,<label>
+        b       dbcc_w_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d3 - cb      // 53CB  DBLS.W    D3,<label>
+        b       dbcc_w_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d4 - cb      // 53CC  DBLS.W    D4,<label>
+        b       dbcc_w_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d5 - cb      // 53CD  DBLS.W    D5,<label>
+        b       dbcc_w_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d6 - cb      // 53CE  DBLS.W    D6,<label>
+        b       dbcc_w_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d7 - cb      // 53CF  DBLS.W    D7,<label>
+        b       dbcc_w_dn
 op_53D0:
         mr      addr, a0                                // 53D0  SLS.B     (A0)
-        b       L_08584
+        b       scc_b_mem_2
 op_53D1:
         mr      addr, a1                                // 53D1  SLS.B     (A1)
-        b       L_08584
+        b       scc_b_mem_2
 op_53D2:
         mr      addr, a2                                // 53D2  SLS.B     (A2)
-        b       L_08584
+        b       scc_b_mem_2
 op_53D3:
         mr      addr, a3                                // 53D3  SLS.B     (A3)
-        b       L_08584
+        b       scc_b_mem_2
 op_53D4:
         mr      addr, a4                                // 53D4  SLS.B     (A4)
-        b       L_08584
+        b       scc_b_mem_2
 op_53D5:
         mr      addr, a5                                // 53D5  SLS.B     (A5)
-        b       L_08584
+        b       scc_b_mem_2
 op_53D6:
         mr      addr, a6                                // 53D6  SLS.B     (A6)
-        b       L_08584
+        b       scc_b_mem_2
 op_53D7:
         mr      addr, a7                                // 53D7  SLS.B     (A7)
-        b       L_08584
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 53D8  SLS.B     (A0)+
-        b       L_00800
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 53D9  SLS.B     (A1)+
-        b       L_00880
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 53DA  SLS.B     (A2)+
-        b       L_00900
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 53DB  SLS.B     (A3)+
-        b       L_00980
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 53DC  SLS.B     (A4)+
-        b       L_00A00
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 53DD  SLS.B     (A5)+
-        b       L_00A80
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 53DE  SLS.B     (A6)+
-        b       L_00B00
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 53DF  SLS.B     (A7)+
-        b       L_00B80
+        b       scc_b_mem_2
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 53D8  SLS.B     (A0)+
+        b       cea_b_30
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 53D9  SLS.B     (A1)+
+        b       cea_b_31
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 53DA  SLS.B     (A2)+
+        b       cea_b_32
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 53DB  SLS.B     (A3)+
+        b       cea_b_33
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 53DC  SLS.B     (A4)+
+        b       cea_b_34
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 53DD  SLS.B     (A5)+
+        b       cea_b_35
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 53DE  SLS.B     (A6)+
+        b       cea_b_36
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 53DF  SLS.B     (A7)+
+        b       cea_b_37
         addi    a0, a0, -1                              // 53E0  SLS.B     -(A0)
         b       op_53D0
         addi    a1, a1, -1                              // 53E1  SLS.B     -(A1)
@@ -2163,127 +2163,127 @@ op_53D7:
         addi    a7, a7, -2                              // 53E7  SLS.B     -(A7)
         b       op_53D7
         add     addr, a0, prefetch_data                 // 53E8  SLS.B     (d16,A0)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a1, prefetch_data                 // 53E9  SLS.B     (d16,A1)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a2, prefetch_data                 // 53EA  SLS.B     (d16,A2)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a3, prefetch_data                 // 53EB  SLS.B     (d16,A3)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a4, prefetch_data                 // 53EC  SLS.B     (d16,A4)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a5, prefetch_data                 // 53ED  SLS.B     (d16,A5)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a6, prefetch_data                 // 53EE  SLS.B     (d16,A6)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a7, prefetch_data                 // 53EF  SLS.B     (d16,A7)
-        b       L_08580
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 53F0  SLS.B     (d8,A0,Xn)
-        b       L_05988
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 53F1  SLS.B     (d8,A1,Xn)
-        b       L_059E8
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 53F2  SLS.B     (d8,A2,Xn)
-        b       L_05A48
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 53F3  SLS.B     (d8,A3,Xn)
-        b       L_05AA8
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 53F4  SLS.B     (d8,A4,Xn)
-        b       L_05B08
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 53F5  SLS.B     (d8,A5,Xn)
-        b       L_05B68
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 53F6  SLS.B     (d8,A6,Xn)
-        b       L_05BC8
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 53F7  SLS.B     (d8,A7,Xn)
-        b       L_05C28
+        b       scc_b_mem
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 53F0  SLS.B     (d8,A0,Xn)
+        b       or_sub_etc_any_any
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 53F1  SLS.B     (d8,A1,Xn)
+        b       or_sub_etc_any_any_2
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 53F2  SLS.B     (d8,A2,Xn)
+        b       or_sub_etc_any_any_3
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 53F3  SLS.B     (d8,A3,Xn)
+        b       or_sub_etc_any_any_4
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 53F4  SLS.B     (d8,A4,Xn)
+        b       or_sub_etc_any_any_5
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 53F5  SLS.B     (d8,A5,Xn)
+        b       or_sub_etc_any_any_6
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 53F6  SLS.B     (d8,A6,Xn)
+        b       or_sub_etc_any_any_7
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 53F7  SLS.B     (d8,A7,Xn)
+        b       or_sub_etc_any_any_8
         mr      addr, prefetch_data                     // 53F8  SLS.B     (xxx).W
-        b       L_08580
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 53F9  SLS.B     (xxx).L
-        b       L_05E14
+        b       scc_b_mem
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 53F9  SLS.B     (xxx).L
+        b       cea_x_71_2
         lhau    prefetch_data, 2(pc)                    // 53FA  TRAPLS    #<data>.W
-        b       L_0CCE8
+        b       trapcc
         lhau    prefetch_data, 4(pc)                    // 53FB  TRAPLS    #<data>.L
-        b       L_0CCE8
+        b       trapcc
         ori     base_disp, code_ptr, D_085C0 - cb       // 53FC  TRAPLS
-        b       L_0CCEC
+        b       trapcc_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 53FD  SLS.B     <ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 53FE  SLS.B     <ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 53FF  SLS.B     <ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $5400-$543F --------------------------------------------------------
         lis     data, 0x0200                            // 5400  ADDQ.B    #2,D0
-        b       L_0B0C8
+        b       add_asl_b_any_d0
         lis     data, 0x0200                            // 5401  ADDQ.B    #2,D1
-        b       L_0B108
+        b       add_asl_b_any_d1
         lis     data, 0x0200                            // 5402  ADDQ.B    #2,D2
-        b       L_0B148
+        b       add_asl_b_any_d2
         lis     data, 0x0200                            // 5403  ADDQ.B    #2,D3
-        b       L_0B188
+        b       add_asl_b_any_d3
         lis     data, 0x0200                            // 5404  ADDQ.B    #2,D4
-        b       L_0B1C8
+        b       add_asl_b_any_d4
         lis     data, 0x0200                            // 5405  ADDQ.B    #2,D5
-        b       L_0B208
+        b       add_asl_b_any_d5
         lis     data, 0x0200                            // 5406  ADDQ.B    #2,D6
-        b       L_0B248
+        b       add_asl_b_any_d6
         lis     data, 0x0200                            // 5407  ADDQ.B    #2,D7
-        b       L_0B288
+        b       add_asl_b_any_d7
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5408  ADDQ.B    #2,A0   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5409  ADDQ.B    #2,A1   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 540A  ADDQ.B    #2,A2   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 540B  ADDQ.B    #2,A3   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 540C  ADDQ.B    #2,A4   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 540D  ADDQ.B    #2,A5   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 540E  ADDQ.B    #2,A6   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 540F  ADDQ.B    #2,A7   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 op_5410:
         mr      addr, a0                                // 5410  ADDQ.B    #2,(A0)
-        b       L_06564
+        b       addq_b_q_mem_2
 op_5411:
         mr      addr, a1                                // 5411  ADDQ.B    #2,(A1)
-        b       L_06564
+        b       addq_b_q_mem_2
 op_5412:
         mr      addr, a2                                // 5412  ADDQ.B    #2,(A2)
-        b       L_06564
+        b       addq_b_q_mem_2
 op_5413:
         mr      addr, a3                                // 5413  ADDQ.B    #2,(A3)
-        b       L_06564
+        b       addq_b_q_mem_2
 op_5414:
         mr      addr, a4                                // 5414  ADDQ.B    #2,(A4)
-        b       L_06564
+        b       addq_b_q_mem_2
 op_5415:
         mr      addr, a5                                // 5415  ADDQ.B    #2,(A5)
-        b       L_06564
+        b       addq_b_q_mem_2
 op_5416:
         mr      addr, a6                                // 5416  ADDQ.B    #2,(A6)
-        b       L_06564
+        b       addq_b_q_mem_2
 op_5417:
         mr      addr, a7                                // 5417  ADDQ.B    #2,(A7)
-        b       L_06564
-        ori     rtn_addr, code_ptr, L_06564 - cb        // 5418  ADDQ.B    #2,(A0)+
-        b       L_00800
-        ori     rtn_addr, code_ptr, L_06564 - cb        // 5419  ADDQ.B    #2,(A1)+
-        b       L_00880
-        ori     rtn_addr, code_ptr, L_06564 - cb        // 541A  ADDQ.B    #2,(A2)+
-        b       L_00900
-        ori     rtn_addr, code_ptr, L_06564 - cb        // 541B  ADDQ.B    #2,(A3)+
-        b       L_00980
-        ori     rtn_addr, code_ptr, L_06564 - cb        // 541C  ADDQ.B    #2,(A4)+
-        b       L_00A00
-        ori     rtn_addr, code_ptr, L_06564 - cb        // 541D  ADDQ.B    #2,(A5)+
-        b       L_00A80
-        ori     rtn_addr, code_ptr, L_06564 - cb        // 541E  ADDQ.B    #2,(A6)+
-        b       L_00B00
-        ori     rtn_addr, code_ptr, L_06564 - cb        // 541F  ADDQ.B    #2,(A7)+
-        b       L_00B80
+        b       addq_b_q_mem_2
+        ori     rtn_addr, code_ptr, addq_b_q_mem_2 - cb  // 5418  ADDQ.B    #2,(A0)+
+        b       cea_b_30
+        ori     rtn_addr, code_ptr, addq_b_q_mem_2 - cb  // 5419  ADDQ.B    #2,(A1)+
+        b       cea_b_31
+        ori     rtn_addr, code_ptr, addq_b_q_mem_2 - cb  // 541A  ADDQ.B    #2,(A2)+
+        b       cea_b_32
+        ori     rtn_addr, code_ptr, addq_b_q_mem_2 - cb  // 541B  ADDQ.B    #2,(A3)+
+        b       cea_b_33
+        ori     rtn_addr, code_ptr, addq_b_q_mem_2 - cb  // 541C  ADDQ.B    #2,(A4)+
+        b       cea_b_34
+        ori     rtn_addr, code_ptr, addq_b_q_mem_2 - cb  // 541D  ADDQ.B    #2,(A5)+
+        b       cea_b_35
+        ori     rtn_addr, code_ptr, addq_b_q_mem_2 - cb  // 541E  ADDQ.B    #2,(A6)+
+        b       cea_b_36
+        ori     rtn_addr, code_ptr, addq_b_q_mem_2 - cb  // 541F  ADDQ.B    #2,(A7)+
+        b       cea_b_37
         addi    a0, a0, -1                              // 5420  ADDQ.B    #2,-(A0)
         b       op_5410
         addi    a1, a1, -1                              // 5421  ADDQ.B    #2,-(A1)
@@ -2301,127 +2301,127 @@ op_5417:
         addi    a7, a7, -2                              // 5427  ADDQ.B    #2,-(A7)
         b       op_5417
         add     addr, a0, prefetch_data                 // 5428  ADDQ.B    #2,(d16,A0)
-        b       L_06560
+        b       addq_b_q_mem
         add     addr, a1, prefetch_data                 // 5429  ADDQ.B    #2,(d16,A1)
-        b       L_06560
+        b       addq_b_q_mem
         add     addr, a2, prefetch_data                 // 542A  ADDQ.B    #2,(d16,A2)
-        b       L_06560
+        b       addq_b_q_mem
         add     addr, a3, prefetch_data                 // 542B  ADDQ.B    #2,(d16,A3)
-        b       L_06560
+        b       addq_b_q_mem
         add     addr, a4, prefetch_data                 // 542C  ADDQ.B    #2,(d16,A4)
-        b       L_06560
+        b       addq_b_q_mem
         add     addr, a5, prefetch_data                 // 542D  ADDQ.B    #2,(d16,A5)
-        b       L_06560
+        b       addq_b_q_mem
         add     addr, a6, prefetch_data                 // 542E  ADDQ.B    #2,(d16,A6)
-        b       L_06560
+        b       addq_b_q_mem
         add     addr, a7, prefetch_data                 // 542F  ADDQ.B    #2,(d16,A7)
-        b       L_06560
-        ori     rtn_addr, code_ptr, L_06568 - cb        // 5430  ADDQ.B    #2,(d8,A0,Xn)
-        b       L_0599C
-        ori     rtn_addr, code_ptr, L_06568 - cb        // 5431  ADDQ.B    #2,(d8,A1,Xn)
-        b       L_059FC
-        ori     rtn_addr, code_ptr, L_06568 - cb        // 5432  ADDQ.B    #2,(d8,A2,Xn)
-        b       L_05A5C
-        ori     rtn_addr, code_ptr, L_06568 - cb        // 5433  ADDQ.B    #2,(d8,A3,Xn)
-        b       L_05ABC
-        ori     rtn_addr, code_ptr, L_06568 - cb        // 5434  ADDQ.B    #2,(d8,A4,Xn)
-        b       L_05B1C
-        ori     rtn_addr, code_ptr, L_06568 - cb        // 5435  ADDQ.B    #2,(d8,A5,Xn)
-        b       L_05B7C
-        ori     rtn_addr, code_ptr, L_06568 - cb        // 5436  ADDQ.B    #2,(d8,A6,Xn)
-        b       L_05BDC
-        ori     rtn_addr, code_ptr, L_06568 - cb        // 5437  ADDQ.B    #2,(d8,A7,Xn)
-        b       L_05C3C
+        b       addq_b_q_mem
+        ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5430  ADDQ.B    #2,(d8,A0,Xn)
+        b       move_add_etc_b_any_any
+        ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5431  ADDQ.B    #2,(d8,A1,Xn)
+        b       move_add_etc_b_any_any_2
+        ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5432  ADDQ.B    #2,(d8,A2,Xn)
+        b       move_add_etc_b_any_any_3
+        ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5433  ADDQ.B    #2,(d8,A3,Xn)
+        b       move_add_etc_b_any_any_4
+        ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5434  ADDQ.B    #2,(d8,A4,Xn)
+        b       move_add_etc_b_any_any_5
+        ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5435  ADDQ.B    #2,(d8,A5,Xn)
+        b       move_add_etc_b_any_any_6
+        ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5436  ADDQ.B    #2,(d8,A6,Xn)
+        b       move_add_etc_b_any_any_7
+        ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5437  ADDQ.B    #2,(d8,A7,Xn)
+        b       move_add_etc_b_any_any_8
         mr      addr, prefetch_data                     // 5438  ADDQ.B    #2,(xxx).W
-        b       L_06560
-        ori     rtn_addr, code_ptr, L_06568 - cb        // 5439  ADDQ.B    #2,(xxx).L
-        b       L_05E2C
+        b       addq_b_q_mem
+        ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5439  ADDQ.B    #2,(xxx).L
+        b       fea_b_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 543A  ADDQ.B    #2,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 543B  ADDQ.B    #2,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 543C  ADDQ.B    #2,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 543D  ADDQ.B    #2,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 543E  ADDQ.B    #2,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 543F  ADDQ.B    #2,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $5440-$547F --------------------------------------------------------
         lis     data, 0x0002                            // 5440  ADDQ.W    #2,D0
-        b       L_03808
+        b       add_asl_w_any_d0
         lis     data, 0x0002                            // 5441  ADDQ.W    #2,D1
-        b       L_03848
+        b       add_asl_w_any_d1
         lis     data, 0x0002                            // 5442  ADDQ.W    #2,D2
-        b       L_03888
+        b       add_asl_w_any_d2
         lis     data, 0x0002                            // 5443  ADDQ.W    #2,D3
-        b       L_038C8
+        b       add_asl_w_any_d3
         lis     data, 0x0002                            // 5444  ADDQ.W    #2,D4
-        b       L_03908
+        b       add_asl_w_any_d4
         lis     data, 0x0002                            // 5445  ADDQ.W    #2,D5
-        b       L_03948
+        b       add_asl_w_any_d5
         lis     data, 0x0002                            // 5446  ADDQ.W    #2,D6
-        b       L_03988
+        b       add_asl_w_any_d6
         lis     data, 0x0002                            // 5447  ADDQ.W    #2,D7
-        b       L_039C8
+        b       add_asl_w_any_d7
         addi    a0, a0, 2                               // 5448  ADDQ.W    #2,A0
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a1, a1, 2                               // 5449  ADDQ.W    #2,A1
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a2, a2, 2                               // 544A  ADDQ.W    #2,A2
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a3, a3, 2                               // 544B  ADDQ.W    #2,A3
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a4, a4, 2                               // 544C  ADDQ.W    #2,A4
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a5, a5, 2                               // 544D  ADDQ.W    #2,A5
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a6, a6, 2                               // 544E  ADDQ.W    #2,A6
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a7, a7, 2                               // 544F  ADDQ.W    #2,A7
-        b       L_06084
+        b       move_add_etc_any_any
 op_5450:
         mr      addr, a0                                // 5450  ADDQ.W    #2,(A0)
-        b       L_06784
+        b       addq_w_q_mem_2
 op_5451:
         mr      addr, a1                                // 5451  ADDQ.W    #2,(A1)
-        b       L_06784
+        b       addq_w_q_mem_2
 op_5452:
         mr      addr, a2                                // 5452  ADDQ.W    #2,(A2)
-        b       L_06784
+        b       addq_w_q_mem_2
 op_5453:
         mr      addr, a3                                // 5453  ADDQ.W    #2,(A3)
-        b       L_06784
+        b       addq_w_q_mem_2
 op_5454:
         mr      addr, a4                                // 5454  ADDQ.W    #2,(A4)
-        b       L_06784
+        b       addq_w_q_mem_2
 op_5455:
         mr      addr, a5                                // 5455  ADDQ.W    #2,(A5)
-        b       L_06784
+        b       addq_w_q_mem_2
 op_5456:
         mr      addr, a6                                // 5456  ADDQ.W    #2,(A6)
-        b       L_06784
+        b       addq_w_q_mem_2
 op_5457:
         mr      addr, a7                                // 5457  ADDQ.W    #2,(A7)
-        b       L_06784
-        ori     rtn_addr, code_ptr, L_06784 - cb        // 5458  ADDQ.W    #2,(A0)+
-        b       L_00820
-        ori     rtn_addr, code_ptr, L_06784 - cb        // 5459  ADDQ.W    #2,(A1)+
-        b       L_008A0
-        ori     rtn_addr, code_ptr, L_06784 - cb        // 545A  ADDQ.W    #2,(A2)+
-        b       L_00920
-        ori     rtn_addr, code_ptr, L_06784 - cb        // 545B  ADDQ.W    #2,(A3)+
-        b       L_009A0
-        ori     rtn_addr, code_ptr, L_06784 - cb        // 545C  ADDQ.W    #2,(A4)+
-        b       L_00A20
-        ori     rtn_addr, code_ptr, L_06784 - cb        // 545D  ADDQ.W    #2,(A5)+
-        b       L_00AA0
-        ori     rtn_addr, code_ptr, L_06784 - cb        // 545E  ADDQ.W    #2,(A6)+
-        b       L_00B20
-        ori     rtn_addr, code_ptr, L_06784 - cb        // 545F  ADDQ.W    #2,(A7)+
-        b       L_00BA0
+        b       addq_w_q_mem_2
+        ori     rtn_addr, code_ptr, addq_w_q_mem_2 - cb  // 5458  ADDQ.W    #2,(A0)+
+        b       cea_w_30
+        ori     rtn_addr, code_ptr, addq_w_q_mem_2 - cb  // 5459  ADDQ.W    #2,(A1)+
+        b       cea_w_31
+        ori     rtn_addr, code_ptr, addq_w_q_mem_2 - cb  // 545A  ADDQ.W    #2,(A2)+
+        b       cea_w_32
+        ori     rtn_addr, code_ptr, addq_w_q_mem_2 - cb  // 545B  ADDQ.W    #2,(A3)+
+        b       cea_w_33
+        ori     rtn_addr, code_ptr, addq_w_q_mem_2 - cb  // 545C  ADDQ.W    #2,(A4)+
+        b       cea_w_34
+        ori     rtn_addr, code_ptr, addq_w_q_mem_2 - cb  // 545D  ADDQ.W    #2,(A5)+
+        b       cea_w_35
+        ori     rtn_addr, code_ptr, addq_w_q_mem_2 - cb  // 545E  ADDQ.W    #2,(A6)+
+        b       cea_w_36
+        ori     rtn_addr, code_ptr, addq_w_q_mem_2 - cb  // 545F  ADDQ.W    #2,(A7)+
+        b       cea_w_37
         addi    a0, a0, -2                              // 5460  ADDQ.W    #2,-(A0)
         b       op_5450
         addi    a1, a1, -2                              // 5461  ADDQ.W    #2,-(A1)
@@ -2439,127 +2439,127 @@ op_5457:
         addi    a7, a7, -2                              // 5467  ADDQ.W    #2,-(A7)
         b       op_5457
         add     addr, a0, prefetch_data                 // 5468  ADDQ.W    #2,(d16,A0)
-        b       L_06780
+        b       addq_w_q_mem
         add     addr, a1, prefetch_data                 // 5469  ADDQ.W    #2,(d16,A1)
-        b       L_06780
+        b       addq_w_q_mem
         add     addr, a2, prefetch_data                 // 546A  ADDQ.W    #2,(d16,A2)
-        b       L_06780
+        b       addq_w_q_mem
         add     addr, a3, prefetch_data                 // 546B  ADDQ.W    #2,(d16,A3)
-        b       L_06780
+        b       addq_w_q_mem
         add     addr, a4, prefetch_data                 // 546C  ADDQ.W    #2,(d16,A4)
-        b       L_06780
+        b       addq_w_q_mem
         add     addr, a5, prefetch_data                 // 546D  ADDQ.W    #2,(d16,A5)
-        b       L_06780
+        b       addq_w_q_mem
         add     addr, a6, prefetch_data                 // 546E  ADDQ.W    #2,(d16,A6)
-        b       L_06780
+        b       addq_w_q_mem
         add     addr, a7, prefetch_data                 // 546F  ADDQ.W    #2,(d16,A7)
-        b       L_06780
-        ori     rtn_addr, code_ptr, L_06788 - cb        // 5470  ADDQ.W    #2,(d8,A0,Xn)
-        b       L_059B0
-        ori     rtn_addr, code_ptr, L_06788 - cb        // 5471  ADDQ.W    #2,(d8,A1,Xn)
-        b       L_05A10
-        ori     rtn_addr, code_ptr, L_06788 - cb        // 5472  ADDQ.W    #2,(d8,A2,Xn)
-        b       L_05A70
-        ori     rtn_addr, code_ptr, L_06788 - cb        // 5473  ADDQ.W    #2,(d8,A3,Xn)
-        b       L_05AD0
-        ori     rtn_addr, code_ptr, L_06788 - cb        // 5474  ADDQ.W    #2,(d8,A4,Xn)
-        b       L_05B30
-        ori     rtn_addr, code_ptr, L_06788 - cb        // 5475  ADDQ.W    #2,(d8,A5,Xn)
-        b       L_05B90
-        ori     rtn_addr, code_ptr, L_06788 - cb        // 5476  ADDQ.W    #2,(d8,A6,Xn)
-        b       L_05BF0
-        ori     rtn_addr, code_ptr, L_06788 - cb        // 5477  ADDQ.W    #2,(d8,A7,Xn)
-        b       L_05C50
+        b       addq_w_q_mem
+        ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5470  ADDQ.W    #2,(d8,A0,Xn)
+        b       move_add_etc_w_any_any
+        ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5471  ADDQ.W    #2,(d8,A1,Xn)
+        b       move_add_etc_w_any_any_2
+        ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5472  ADDQ.W    #2,(d8,A2,Xn)
+        b       move_add_etc_w_any_any_3
+        ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5473  ADDQ.W    #2,(d8,A3,Xn)
+        b       move_add_etc_w_any_any_4
+        ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5474  ADDQ.W    #2,(d8,A4,Xn)
+        b       move_add_etc_w_any_any_5
+        ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5475  ADDQ.W    #2,(d8,A5,Xn)
+        b       move_add_etc_w_any_any_6
+        ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5476  ADDQ.W    #2,(d8,A6,Xn)
+        b       move_add_etc_w_any_any_7
+        ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5477  ADDQ.W    #2,(d8,A7,Xn)
+        b       move_add_etc_w_any_any_8
         mr      addr, prefetch_data                     // 5478  ADDQ.W    #2,(xxx).W
-        b       L_06780
-        ori     rtn_addr, code_ptr, L_06788 - cb        // 5479  ADDQ.W    #2,(xxx).L
-        b       L_05E70
+        b       addq_w_q_mem
+        ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5479  ADDQ.W    #2,(xxx).L
+        b       fea_w_71
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 547A  ADDQ.W    #2,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 547B  ADDQ.W    #2,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 547C  ADDQ.W    #2,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 547D  ADDQ.W    #2,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 547E  ADDQ.W    #2,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 547F  ADDQ.W    #2,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $5480-$54BF --------------------------------------------------------
         li      data, 2                                 // 5480  ADDQ.L    #2,D0
-        b       L_03E04
+        b       add_l_mem_d0_2
         li      data, 2                                 // 5481  ADDQ.L    #2,D1
-        b       L_03E44
+        b       add_l_mem_d1_2
         li      data, 2                                 // 5482  ADDQ.L    #2,D2
-        b       L_03E84
+        b       add_l_mem_d2_2
         li      data, 2                                 // 5483  ADDQ.L    #2,D3
-        b       L_03EC4
+        b       add_l_mem_d3_2
         li      data, 2                                 // 5484  ADDQ.L    #2,D4
-        b       L_03F04
+        b       add_l_mem_d4_2
         li      data, 2                                 // 5485  ADDQ.L    #2,D5
-        b       L_03F44
+        b       add_l_mem_d5_2
         li      data, 2                                 // 5486  ADDQ.L    #2,D6
-        b       L_03F84
+        b       add_l_mem_d6_2
         li      data, 2                                 // 5487  ADDQ.L    #2,D7
-        b       L_03FC4
+        b       add_l_mem_d7_2
         addi    a0, a0, 2                               // 5488  ADDQ.L    #2,A0
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a1, a1, 2                               // 5489  ADDQ.L    #2,A1
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a2, a2, 2                               // 548A  ADDQ.L    #2,A2
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a3, a3, 2                               // 548B  ADDQ.L    #2,A3
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a4, a4, 2                               // 548C  ADDQ.L    #2,A4
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a5, a5, 2                               // 548D  ADDQ.L    #2,A5
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a6, a6, 2                               // 548E  ADDQ.L    #2,A6
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a7, a7, 2                               // 548F  ADDQ.L    #2,A7
-        b       L_06084
+        b       move_add_etc_any_any
 op_5490:
         mr      addr, a0                                // 5490  ADDQ.L    #2,(A0)
-        b       L_06A24
+        b       addq_l_q_mem_2
 op_5491:
         mr      addr, a1                                // 5491  ADDQ.L    #2,(A1)
-        b       L_06A24
+        b       addq_l_q_mem_2
 op_5492:
         mr      addr, a2                                // 5492  ADDQ.L    #2,(A2)
-        b       L_06A24
+        b       addq_l_q_mem_2
 op_5493:
         mr      addr, a3                                // 5493  ADDQ.L    #2,(A3)
-        b       L_06A24
+        b       addq_l_q_mem_2
 op_5494:
         mr      addr, a4                                // 5494  ADDQ.L    #2,(A4)
-        b       L_06A24
+        b       addq_l_q_mem_2
 op_5495:
         mr      addr, a5                                // 5495  ADDQ.L    #2,(A5)
-        b       L_06A24
+        b       addq_l_q_mem_2
 op_5496:
         mr      addr, a6                                // 5496  ADDQ.L    #2,(A6)
-        b       L_06A24
+        b       addq_l_q_mem_2
 op_5497:
         mr      addr, a7                                // 5497  ADDQ.L    #2,(A7)
-        b       L_06A24
-        ori     rtn_addr, code_ptr, L_06A24 - cb        // 5498  ADDQ.L    #2,(A0)+
-        b       L_00840
-        ori     rtn_addr, code_ptr, L_06A24 - cb        // 5499  ADDQ.L    #2,(A1)+
-        b       L_008C0
-        ori     rtn_addr, code_ptr, L_06A24 - cb        // 549A  ADDQ.L    #2,(A2)+
-        b       L_00940
-        ori     rtn_addr, code_ptr, L_06A24 - cb        // 549B  ADDQ.L    #2,(A3)+
-        b       L_009C0
-        ori     rtn_addr, code_ptr, L_06A24 - cb        // 549C  ADDQ.L    #2,(A4)+
-        b       L_00A40
-        ori     rtn_addr, code_ptr, L_06A24 - cb        // 549D  ADDQ.L    #2,(A5)+
-        b       L_00AC0
-        ori     rtn_addr, code_ptr, L_06A24 - cb        // 549E  ADDQ.L    #2,(A6)+
-        b       L_00B40
-        ori     rtn_addr, code_ptr, L_06A24 - cb        // 549F  ADDQ.L    #2,(A7)+
-        b       L_00BC0
+        b       addq_l_q_mem_2
+        ori     rtn_addr, code_ptr, addq_l_q_mem_2 - cb  // 5498  ADDQ.L    #2,(A0)+
+        b       cea_l_30
+        ori     rtn_addr, code_ptr, addq_l_q_mem_2 - cb  // 5499  ADDQ.L    #2,(A1)+
+        b       cea_l_31
+        ori     rtn_addr, code_ptr, addq_l_q_mem_2 - cb  // 549A  ADDQ.L    #2,(A2)+
+        b       cea_l_32
+        ori     rtn_addr, code_ptr, addq_l_q_mem_2 - cb  // 549B  ADDQ.L    #2,(A3)+
+        b       cea_l_33
+        ori     rtn_addr, code_ptr, addq_l_q_mem_2 - cb  // 549C  ADDQ.L    #2,(A4)+
+        b       cea_l_34
+        ori     rtn_addr, code_ptr, addq_l_q_mem_2 - cb  // 549D  ADDQ.L    #2,(A5)+
+        b       cea_l_35
+        ori     rtn_addr, code_ptr, addq_l_q_mem_2 - cb  // 549E  ADDQ.L    #2,(A6)+
+        b       cea_l_36
+        ori     rtn_addr, code_ptr, addq_l_q_mem_2 - cb  // 549F  ADDQ.L    #2,(A7)+
+        b       cea_l_37
         addi    a0, a0, -4                              // 54A0  ADDQ.L    #2,-(A0)
         b       op_5490
         addi    a1, a1, -4                              // 54A1  ADDQ.L    #2,-(A1)
@@ -2577,127 +2577,127 @@ op_5497:
         addi    a7, a7, -4                              // 54A7  ADDQ.L    #2,-(A7)
         b       op_5497
         add     addr, a0, prefetch_data                 // 54A8  ADDQ.L    #2,(d16,A0)
-        b       L_06A20
+        b       addq_l_q_mem
         add     addr, a1, prefetch_data                 // 54A9  ADDQ.L    #2,(d16,A1)
-        b       L_06A20
+        b       addq_l_q_mem
         add     addr, a2, prefetch_data                 // 54AA  ADDQ.L    #2,(d16,A2)
-        b       L_06A20
+        b       addq_l_q_mem
         add     addr, a3, prefetch_data                 // 54AB  ADDQ.L    #2,(d16,A3)
-        b       L_06A20
+        b       addq_l_q_mem
         add     addr, a4, prefetch_data                 // 54AC  ADDQ.L    #2,(d16,A4)
-        b       L_06A20
+        b       addq_l_q_mem
         add     addr, a5, prefetch_data                 // 54AD  ADDQ.L    #2,(d16,A5)
-        b       L_06A20
+        b       addq_l_q_mem
         add     addr, a6, prefetch_data                 // 54AE  ADDQ.L    #2,(d16,A6)
-        b       L_06A20
+        b       addq_l_q_mem
         add     addr, a7, prefetch_data                 // 54AF  ADDQ.L    #2,(d16,A7)
-        b       L_06A20
-        ori     rtn_addr, code_ptr, L_06A28 - cb        // 54B0  ADDQ.L    #2,(d8,A0,Xn)
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_06A28 - cb        // 54B1  ADDQ.L    #2,(d8,A1,Xn)
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_06A28 - cb        // 54B2  ADDQ.L    #2,(d8,A2,Xn)
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_06A28 - cb        // 54B3  ADDQ.L    #2,(d8,A3,Xn)
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_06A28 - cb        // 54B4  ADDQ.L    #2,(d8,A4,Xn)
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_06A28 - cb        // 54B5  ADDQ.L    #2,(d8,A5,Xn)
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_06A28 - cb        // 54B6  ADDQ.L    #2,(d8,A6,Xn)
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_06A28 - cb        // 54B7  ADDQ.L    #2,(d8,A7,Xn)
-        b       L_05C68
+        b       addq_l_q_mem
+        ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 54B0  ADDQ.L    #2,(d8,A0,Xn)
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 54B1  ADDQ.L    #2,(d8,A1,Xn)
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 54B2  ADDQ.L    #2,(d8,A2,Xn)
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 54B3  ADDQ.L    #2,(d8,A3,Xn)
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 54B4  ADDQ.L    #2,(d8,A4,Xn)
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 54B5  ADDQ.L    #2,(d8,A5,Xn)
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 54B6  ADDQ.L    #2,(d8,A6,Xn)
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 54B7  ADDQ.L    #2,(d8,A7,Xn)
+        b       move_add_etc_l_any_any_8
         mr      addr, prefetch_data                     // 54B8  ADDQ.L    #2,(xxx).W
-        b       L_06A20
-        ori     rtn_addr, code_ptr, L_06A28 - cb        // 54B9  ADDQ.L    #2,(xxx).L
-        b       L_05E8C
+        b       addq_l_q_mem
+        ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 54B9  ADDQ.L    #2,(xxx).L
+        b       fea_l_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 54BA  ADDQ.L    #2,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 54BB  ADDQ.L    #2,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 54BC  ADDQ.L    #2,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 54BD  ADDQ.L    #2,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 54BE  ADDQ.L    #2,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 54BF  ADDQ.L    #2,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $54C0-$54FF --------------------------------------------------------
-        ori     rtn_addr, code_ptr, L_03624 - cb        // 54C0  SCC.B     D0
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_03664 - cb        // 54C1  SCC.B     D1
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_036A4 - cb        // 54C2  SCC.B     D2
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_036E4 - cb        // 54C3  SCC.B     D3
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_03724 - cb        // 54C4  SCC.B     D4
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_03764 - cb        // 54C5  SCC.B     D5
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_037A4 - cb        // 54C6  SCC.B     D6
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_037E4 - cb        // 54C7  SCC.B     D7
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_03000 - cb        // 54C8  DBCC.W    D0,<label>
-        b       L_08500
-        ori     rtn_addr, code_ptr, L_03040 - cb        // 54C9  DBCC.W    D1,<label>
-        b       L_08500
-        ori     rtn_addr, code_ptr, L_03080 - cb        // 54CA  DBCC.W    D2,<label>
-        b       L_08500
-        ori     rtn_addr, code_ptr, L_030C0 - cb        // 54CB  DBCC.W    D3,<label>
-        b       L_08500
-        ori     rtn_addr, code_ptr, L_03100 - cb        // 54CC  DBCC.W    D4,<label>
-        b       L_08500
-        ori     rtn_addr, code_ptr, L_03140 - cb        // 54CD  DBCC.W    D5,<label>
-        b       L_08500
-        ori     rtn_addr, code_ptr, L_03180 - cb        // 54CE  DBCC.W    D6,<label>
-        b       L_08500
-        ori     rtn_addr, code_ptr, L_031C0 - cb        // 54CF  DBCC.W    D7,<label>
-        b       L_08500
+        ori     rtn_addr, code_ptr, scc_b_d0 - cb       // 54C0  SCC.B     D0
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d1 - cb       // 54C1  SCC.B     D1
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d2 - cb       // 54C2  SCC.B     D2
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d3 - cb       // 54C3  SCC.B     D3
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d4 - cb       // 54C4  SCC.B     D4
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d5 - cb       // 54C5  SCC.B     D5
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d6 - cb       // 54C6  SCC.B     D6
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d7 - cb       // 54C7  SCC.B     D7
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d0 - cb      // 54C8  DBCC.W    D0,<label>
+        b       dbcc_w_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d1 - cb      // 54C9  DBCC.W    D1,<label>
+        b       dbcc_w_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d2 - cb      // 54CA  DBCC.W    D2,<label>
+        b       dbcc_w_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d3 - cb      // 54CB  DBCC.W    D3,<label>
+        b       dbcc_w_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d4 - cb      // 54CC  DBCC.W    D4,<label>
+        b       dbcc_w_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d5 - cb      // 54CD  DBCC.W    D5,<label>
+        b       dbcc_w_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d6 - cb      // 54CE  DBCC.W    D6,<label>
+        b       dbcc_w_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d7 - cb      // 54CF  DBCC.W    D7,<label>
+        b       dbcc_w_dn
 op_54D0:
         mr      addr, a0                                // 54D0  SCC.B     (A0)
-        b       L_08584
+        b       scc_b_mem_2
 op_54D1:
         mr      addr, a1                                // 54D1  SCC.B     (A1)
-        b       L_08584
+        b       scc_b_mem_2
 op_54D2:
         mr      addr, a2                                // 54D2  SCC.B     (A2)
-        b       L_08584
+        b       scc_b_mem_2
 op_54D3:
         mr      addr, a3                                // 54D3  SCC.B     (A3)
-        b       L_08584
+        b       scc_b_mem_2
 op_54D4:
         mr      addr, a4                                // 54D4  SCC.B     (A4)
-        b       L_08584
+        b       scc_b_mem_2
 op_54D5:
         mr      addr, a5                                // 54D5  SCC.B     (A5)
-        b       L_08584
+        b       scc_b_mem_2
 op_54D6:
         mr      addr, a6                                // 54D6  SCC.B     (A6)
-        b       L_08584
+        b       scc_b_mem_2
 op_54D7:
         mr      addr, a7                                // 54D7  SCC.B     (A7)
-        b       L_08584
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 54D8  SCC.B     (A0)+
-        b       L_00800
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 54D9  SCC.B     (A1)+
-        b       L_00880
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 54DA  SCC.B     (A2)+
-        b       L_00900
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 54DB  SCC.B     (A3)+
-        b       L_00980
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 54DC  SCC.B     (A4)+
-        b       L_00A00
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 54DD  SCC.B     (A5)+
-        b       L_00A80
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 54DE  SCC.B     (A6)+
-        b       L_00B00
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 54DF  SCC.B     (A7)+
-        b       L_00B80
+        b       scc_b_mem_2
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 54D8  SCC.B     (A0)+
+        b       cea_b_30
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 54D9  SCC.B     (A1)+
+        b       cea_b_31
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 54DA  SCC.B     (A2)+
+        b       cea_b_32
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 54DB  SCC.B     (A3)+
+        b       cea_b_33
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 54DC  SCC.B     (A4)+
+        b       cea_b_34
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 54DD  SCC.B     (A5)+
+        b       cea_b_35
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 54DE  SCC.B     (A6)+
+        b       cea_b_36
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 54DF  SCC.B     (A7)+
+        b       cea_b_37
         addi    a0, a0, -1                              // 54E0  SCC.B     -(A0)
         b       op_54D0
         addi    a1, a1, -1                              // 54E1  SCC.B     -(A1)
@@ -2715,127 +2715,127 @@ op_54D7:
         addi    a7, a7, -2                              // 54E7  SCC.B     -(A7)
         b       op_54D7
         add     addr, a0, prefetch_data                 // 54E8  SCC.B     (d16,A0)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a1, prefetch_data                 // 54E9  SCC.B     (d16,A1)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a2, prefetch_data                 // 54EA  SCC.B     (d16,A2)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a3, prefetch_data                 // 54EB  SCC.B     (d16,A3)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a4, prefetch_data                 // 54EC  SCC.B     (d16,A4)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a5, prefetch_data                 // 54ED  SCC.B     (d16,A5)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a6, prefetch_data                 // 54EE  SCC.B     (d16,A6)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a7, prefetch_data                 // 54EF  SCC.B     (d16,A7)
-        b       L_08580
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 54F0  SCC.B     (d8,A0,Xn)
-        b       L_05988
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 54F1  SCC.B     (d8,A1,Xn)
-        b       L_059E8
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 54F2  SCC.B     (d8,A2,Xn)
-        b       L_05A48
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 54F3  SCC.B     (d8,A3,Xn)
-        b       L_05AA8
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 54F4  SCC.B     (d8,A4,Xn)
-        b       L_05B08
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 54F5  SCC.B     (d8,A5,Xn)
-        b       L_05B68
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 54F6  SCC.B     (d8,A6,Xn)
-        b       L_05BC8
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 54F7  SCC.B     (d8,A7,Xn)
-        b       L_05C28
+        b       scc_b_mem
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 54F0  SCC.B     (d8,A0,Xn)
+        b       or_sub_etc_any_any
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 54F1  SCC.B     (d8,A1,Xn)
+        b       or_sub_etc_any_any_2
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 54F2  SCC.B     (d8,A2,Xn)
+        b       or_sub_etc_any_any_3
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 54F3  SCC.B     (d8,A3,Xn)
+        b       or_sub_etc_any_any_4
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 54F4  SCC.B     (d8,A4,Xn)
+        b       or_sub_etc_any_any_5
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 54F5  SCC.B     (d8,A5,Xn)
+        b       or_sub_etc_any_any_6
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 54F6  SCC.B     (d8,A6,Xn)
+        b       or_sub_etc_any_any_7
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 54F7  SCC.B     (d8,A7,Xn)
+        b       or_sub_etc_any_any_8
         mr      addr, prefetch_data                     // 54F8  SCC.B     (xxx).W
-        b       L_08580
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 54F9  SCC.B     (xxx).L
-        b       L_05E14
+        b       scc_b_mem
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 54F9  SCC.B     (xxx).L
+        b       cea_x_71_2
         lhau    prefetch_data, 2(pc)                    // 54FA  TRAPCC    #<data>.W
-        b       L_0CCE8
+        b       trapcc
         lhau    prefetch_data, 4(pc)                    // 54FB  TRAPCC    #<data>.L
-        b       L_0CCE8
+        b       trapcc
         ori     base_disp, code_ptr, D_085C0 - cb       // 54FC  TRAPCC
-        b       L_0CCEC
+        b       trapcc_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 54FD  SCC.B     <ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 54FE  SCC.B     <ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 54FF  SCC.B     <ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $5500-$553F --------------------------------------------------------
         lis     data, 0x0200                            // 5500  SUBQ.B    #2,D0
-        b       L_03608
+        b       sub_b_any_d0
         lis     data, 0x0200                            // 5501  SUBQ.B    #2,D1
-        b       L_03648
+        b       sub_b_any_d1
         lis     data, 0x0200                            // 5502  SUBQ.B    #2,D2
-        b       L_03688
+        b       sub_b_any_d2
         lis     data, 0x0200                            // 5503  SUBQ.B    #2,D3
-        b       L_036C8
+        b       sub_b_any_d3
         lis     data, 0x0200                            // 5504  SUBQ.B    #2,D4
-        b       L_03708
+        b       sub_b_any_d4
         lis     data, 0x0200                            // 5505  SUBQ.B    #2,D5
-        b       L_03748
+        b       sub_b_any_d5
         lis     data, 0x0200                            // 5506  SUBQ.B    #2,D6
-        b       L_03788
+        b       sub_b_any_d6
         lis     data, 0x0200                            // 5507  SUBQ.B    #2,D7
-        b       L_037C8
+        b       sub_b_any_d7
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5508  SUBQ.B    #2,A0   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5509  SUBQ.B    #2,A1   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 550A  SUBQ.B    #2,A2   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 550B  SUBQ.B    #2,A3   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 550C  SUBQ.B    #2,A4   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 550D  SUBQ.B    #2,A5   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 550E  SUBQ.B    #2,A6   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 550F  SUBQ.B    #2,A7   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 op_5510:
         mr      addr, a0                                // 5510  SUBQ.B    #2,(A0)
-        b       L_06604
+        b       subq_b_q_mem_2
 op_5511:
         mr      addr, a1                                // 5511  SUBQ.B    #2,(A1)
-        b       L_06604
+        b       subq_b_q_mem_2
 op_5512:
         mr      addr, a2                                // 5512  SUBQ.B    #2,(A2)
-        b       L_06604
+        b       subq_b_q_mem_2
 op_5513:
         mr      addr, a3                                // 5513  SUBQ.B    #2,(A3)
-        b       L_06604
+        b       subq_b_q_mem_2
 op_5514:
         mr      addr, a4                                // 5514  SUBQ.B    #2,(A4)
-        b       L_06604
+        b       subq_b_q_mem_2
 op_5515:
         mr      addr, a5                                // 5515  SUBQ.B    #2,(A5)
-        b       L_06604
+        b       subq_b_q_mem_2
 op_5516:
         mr      addr, a6                                // 5516  SUBQ.B    #2,(A6)
-        b       L_06604
+        b       subq_b_q_mem_2
 op_5517:
         mr      addr, a7                                // 5517  SUBQ.B    #2,(A7)
-        b       L_06604
-        ori     rtn_addr, code_ptr, L_06604 - cb        // 5518  SUBQ.B    #2,(A0)+
-        b       L_00800
-        ori     rtn_addr, code_ptr, L_06604 - cb        // 5519  SUBQ.B    #2,(A1)+
-        b       L_00880
-        ori     rtn_addr, code_ptr, L_06604 - cb        // 551A  SUBQ.B    #2,(A2)+
-        b       L_00900
-        ori     rtn_addr, code_ptr, L_06604 - cb        // 551B  SUBQ.B    #2,(A3)+
-        b       L_00980
-        ori     rtn_addr, code_ptr, L_06604 - cb        // 551C  SUBQ.B    #2,(A4)+
-        b       L_00A00
-        ori     rtn_addr, code_ptr, L_06604 - cb        // 551D  SUBQ.B    #2,(A5)+
-        b       L_00A80
-        ori     rtn_addr, code_ptr, L_06604 - cb        // 551E  SUBQ.B    #2,(A6)+
-        b       L_00B00
-        ori     rtn_addr, code_ptr, L_06604 - cb        // 551F  SUBQ.B    #2,(A7)+
-        b       L_00B80
+        b       subq_b_q_mem_2
+        ori     rtn_addr, code_ptr, subq_b_q_mem_2 - cb  // 5518  SUBQ.B    #2,(A0)+
+        b       cea_b_30
+        ori     rtn_addr, code_ptr, subq_b_q_mem_2 - cb  // 5519  SUBQ.B    #2,(A1)+
+        b       cea_b_31
+        ori     rtn_addr, code_ptr, subq_b_q_mem_2 - cb  // 551A  SUBQ.B    #2,(A2)+
+        b       cea_b_32
+        ori     rtn_addr, code_ptr, subq_b_q_mem_2 - cb  // 551B  SUBQ.B    #2,(A3)+
+        b       cea_b_33
+        ori     rtn_addr, code_ptr, subq_b_q_mem_2 - cb  // 551C  SUBQ.B    #2,(A4)+
+        b       cea_b_34
+        ori     rtn_addr, code_ptr, subq_b_q_mem_2 - cb  // 551D  SUBQ.B    #2,(A5)+
+        b       cea_b_35
+        ori     rtn_addr, code_ptr, subq_b_q_mem_2 - cb  // 551E  SUBQ.B    #2,(A6)+
+        b       cea_b_36
+        ori     rtn_addr, code_ptr, subq_b_q_mem_2 - cb  // 551F  SUBQ.B    #2,(A7)+
+        b       cea_b_37
         addi    a0, a0, -1                              // 5520  SUBQ.B    #2,-(A0)
         b       op_5510
         addi    a1, a1, -1                              // 5521  SUBQ.B    #2,-(A1)
@@ -2853,127 +2853,127 @@ op_5517:
         addi    a7, a7, -2                              // 5527  SUBQ.B    #2,-(A7)
         b       op_5517
         add     addr, a0, prefetch_data                 // 5528  SUBQ.B    #2,(d16,A0)
-        b       L_06600
+        b       subq_b_q_mem
         add     addr, a1, prefetch_data                 // 5529  SUBQ.B    #2,(d16,A1)
-        b       L_06600
+        b       subq_b_q_mem
         add     addr, a2, prefetch_data                 // 552A  SUBQ.B    #2,(d16,A2)
-        b       L_06600
+        b       subq_b_q_mem
         add     addr, a3, prefetch_data                 // 552B  SUBQ.B    #2,(d16,A3)
-        b       L_06600
+        b       subq_b_q_mem
         add     addr, a4, prefetch_data                 // 552C  SUBQ.B    #2,(d16,A4)
-        b       L_06600
+        b       subq_b_q_mem
         add     addr, a5, prefetch_data                 // 552D  SUBQ.B    #2,(d16,A5)
-        b       L_06600
+        b       subq_b_q_mem
         add     addr, a6, prefetch_data                 // 552E  SUBQ.B    #2,(d16,A6)
-        b       L_06600
+        b       subq_b_q_mem
         add     addr, a7, prefetch_data                 // 552F  SUBQ.B    #2,(d16,A7)
-        b       L_06600
-        ori     rtn_addr, code_ptr, L_06608 - cb        // 5530  SUBQ.B    #2,(d8,A0,Xn)
-        b       L_0599C
-        ori     rtn_addr, code_ptr, L_06608 - cb        // 5531  SUBQ.B    #2,(d8,A1,Xn)
-        b       L_059FC
-        ori     rtn_addr, code_ptr, L_06608 - cb        // 5532  SUBQ.B    #2,(d8,A2,Xn)
-        b       L_05A5C
-        ori     rtn_addr, code_ptr, L_06608 - cb        // 5533  SUBQ.B    #2,(d8,A3,Xn)
-        b       L_05ABC
-        ori     rtn_addr, code_ptr, L_06608 - cb        // 5534  SUBQ.B    #2,(d8,A4,Xn)
-        b       L_05B1C
-        ori     rtn_addr, code_ptr, L_06608 - cb        // 5535  SUBQ.B    #2,(d8,A5,Xn)
-        b       L_05B7C
-        ori     rtn_addr, code_ptr, L_06608 - cb        // 5536  SUBQ.B    #2,(d8,A6,Xn)
-        b       L_05BDC
-        ori     rtn_addr, code_ptr, L_06608 - cb        // 5537  SUBQ.B    #2,(d8,A7,Xn)
-        b       L_05C3C
+        b       subq_b_q_mem
+        ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5530  SUBQ.B    #2,(d8,A0,Xn)
+        b       move_add_etc_b_any_any
+        ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5531  SUBQ.B    #2,(d8,A1,Xn)
+        b       move_add_etc_b_any_any_2
+        ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5532  SUBQ.B    #2,(d8,A2,Xn)
+        b       move_add_etc_b_any_any_3
+        ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5533  SUBQ.B    #2,(d8,A3,Xn)
+        b       move_add_etc_b_any_any_4
+        ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5534  SUBQ.B    #2,(d8,A4,Xn)
+        b       move_add_etc_b_any_any_5
+        ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5535  SUBQ.B    #2,(d8,A5,Xn)
+        b       move_add_etc_b_any_any_6
+        ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5536  SUBQ.B    #2,(d8,A6,Xn)
+        b       move_add_etc_b_any_any_7
+        ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5537  SUBQ.B    #2,(d8,A7,Xn)
+        b       move_add_etc_b_any_any_8
         mr      addr, prefetch_data                     // 5538  SUBQ.B    #2,(xxx).W
-        b       L_06600
-        ori     rtn_addr, code_ptr, L_06608 - cb        // 5539  SUBQ.B    #2,(xxx).L
-        b       L_05E2C
+        b       subq_b_q_mem
+        ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5539  SUBQ.B    #2,(xxx).L
+        b       fea_b_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 553A  SUBQ.B    #2,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 553B  SUBQ.B    #2,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 553C  SUBQ.B    #2,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 553D  SUBQ.B    #2,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 553E  SUBQ.B    #2,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 553F  SUBQ.B    #2,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $5540-$557F --------------------------------------------------------
         lis     data, 0x0002                            // 5540  SUBQ.W    #2,D0
-        b       L_03C30
+        b       sub_w_any_d0
         lis     data, 0x0002                            // 5541  SUBQ.W    #2,D1
-        b       L_03C70
+        b       sub_w_any_d1
         lis     data, 0x0002                            // 5542  SUBQ.W    #2,D2
-        b       L_03CB0
+        b       sub_w_any_d2
         lis     data, 0x0002                            // 5543  SUBQ.W    #2,D3
-        b       L_03CF0
+        b       sub_w_any_d3
         lis     data, 0x0002                            // 5544  SUBQ.W    #2,D4
-        b       L_03D30
+        b       sub_w_any_d4
         lis     data, 0x0002                            // 5545  SUBQ.W    #2,D5
-        b       L_03D70
+        b       sub_w_any_d5
         lis     data, 0x0002                            // 5546  SUBQ.W    #2,D6
-        b       L_03DB0
+        b       sub_w_any_d6
         lis     data, 0x0002                            // 5547  SUBQ.W    #2,D7
-        b       L_03DF0
+        b       sub_w_any_d7
         addi    a0, a0, -2                              // 5548  SUBQ.W    #2,A0
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a1, a1, -2                              // 5549  SUBQ.W    #2,A1
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a2, a2, -2                              // 554A  SUBQ.W    #2,A2
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a3, a3, -2                              // 554B  SUBQ.W    #2,A3
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a4, a4, -2                              // 554C  SUBQ.W    #2,A4
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a5, a5, -2                              // 554D  SUBQ.W    #2,A5
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a6, a6, -2                              // 554E  SUBQ.W    #2,A6
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a7, a7, -2                              // 554F  SUBQ.W    #2,A7
-        b       L_06084
+        b       move_add_etc_any_any
 op_5550:
         mr      addr, a0                                // 5550  SUBQ.W    #2,(A0)
-        b       L_06824
+        b       subq_w_q_mem_2
 op_5551:
         mr      addr, a1                                // 5551  SUBQ.W    #2,(A1)
-        b       L_06824
+        b       subq_w_q_mem_2
 op_5552:
         mr      addr, a2                                // 5552  SUBQ.W    #2,(A2)
-        b       L_06824
+        b       subq_w_q_mem_2
 op_5553:
         mr      addr, a3                                // 5553  SUBQ.W    #2,(A3)
-        b       L_06824
+        b       subq_w_q_mem_2
 op_5554:
         mr      addr, a4                                // 5554  SUBQ.W    #2,(A4)
-        b       L_06824
+        b       subq_w_q_mem_2
 op_5555:
         mr      addr, a5                                // 5555  SUBQ.W    #2,(A5)
-        b       L_06824
+        b       subq_w_q_mem_2
 op_5556:
         mr      addr, a6                                // 5556  SUBQ.W    #2,(A6)
-        b       L_06824
+        b       subq_w_q_mem_2
 op_5557:
         mr      addr, a7                                // 5557  SUBQ.W    #2,(A7)
-        b       L_06824
-        ori     rtn_addr, code_ptr, L_06824 - cb        // 5558  SUBQ.W    #2,(A0)+
-        b       L_00820
-        ori     rtn_addr, code_ptr, L_06824 - cb        // 5559  SUBQ.W    #2,(A1)+
-        b       L_008A0
-        ori     rtn_addr, code_ptr, L_06824 - cb        // 555A  SUBQ.W    #2,(A2)+
-        b       L_00920
-        ori     rtn_addr, code_ptr, L_06824 - cb        // 555B  SUBQ.W    #2,(A3)+
-        b       L_009A0
-        ori     rtn_addr, code_ptr, L_06824 - cb        // 555C  SUBQ.W    #2,(A4)+
-        b       L_00A20
-        ori     rtn_addr, code_ptr, L_06824 - cb        // 555D  SUBQ.W    #2,(A5)+
-        b       L_00AA0
-        ori     rtn_addr, code_ptr, L_06824 - cb        // 555E  SUBQ.W    #2,(A6)+
-        b       L_00B20
-        ori     rtn_addr, code_ptr, L_06824 - cb        // 555F  SUBQ.W    #2,(A7)+
-        b       L_00BA0
+        b       subq_w_q_mem_2
+        ori     rtn_addr, code_ptr, subq_w_q_mem_2 - cb  // 5558  SUBQ.W    #2,(A0)+
+        b       cea_w_30
+        ori     rtn_addr, code_ptr, subq_w_q_mem_2 - cb  // 5559  SUBQ.W    #2,(A1)+
+        b       cea_w_31
+        ori     rtn_addr, code_ptr, subq_w_q_mem_2 - cb  // 555A  SUBQ.W    #2,(A2)+
+        b       cea_w_32
+        ori     rtn_addr, code_ptr, subq_w_q_mem_2 - cb  // 555B  SUBQ.W    #2,(A3)+
+        b       cea_w_33
+        ori     rtn_addr, code_ptr, subq_w_q_mem_2 - cb  // 555C  SUBQ.W    #2,(A4)+
+        b       cea_w_34
+        ori     rtn_addr, code_ptr, subq_w_q_mem_2 - cb  // 555D  SUBQ.W    #2,(A5)+
+        b       cea_w_35
+        ori     rtn_addr, code_ptr, subq_w_q_mem_2 - cb  // 555E  SUBQ.W    #2,(A6)+
+        b       cea_w_36
+        ori     rtn_addr, code_ptr, subq_w_q_mem_2 - cb  // 555F  SUBQ.W    #2,(A7)+
+        b       cea_w_37
         addi    a0, a0, -2                              // 5560  SUBQ.W    #2,-(A0)
         b       op_5550
         addi    a1, a1, -2                              // 5561  SUBQ.W    #2,-(A1)
@@ -2991,127 +2991,127 @@ op_5557:
         addi    a7, a7, -2                              // 5567  SUBQ.W    #2,-(A7)
         b       op_5557
         add     addr, a0, prefetch_data                 // 5568  SUBQ.W    #2,(d16,A0)
-        b       L_06820
+        b       subq_w_q_mem
         add     addr, a1, prefetch_data                 // 5569  SUBQ.W    #2,(d16,A1)
-        b       L_06820
+        b       subq_w_q_mem
         add     addr, a2, prefetch_data                 // 556A  SUBQ.W    #2,(d16,A2)
-        b       L_06820
+        b       subq_w_q_mem
         add     addr, a3, prefetch_data                 // 556B  SUBQ.W    #2,(d16,A3)
-        b       L_06820
+        b       subq_w_q_mem
         add     addr, a4, prefetch_data                 // 556C  SUBQ.W    #2,(d16,A4)
-        b       L_06820
+        b       subq_w_q_mem
         add     addr, a5, prefetch_data                 // 556D  SUBQ.W    #2,(d16,A5)
-        b       L_06820
+        b       subq_w_q_mem
         add     addr, a6, prefetch_data                 // 556E  SUBQ.W    #2,(d16,A6)
-        b       L_06820
+        b       subq_w_q_mem
         add     addr, a7, prefetch_data                 // 556F  SUBQ.W    #2,(d16,A7)
-        b       L_06820
-        ori     rtn_addr, code_ptr, L_06828 - cb        // 5570  SUBQ.W    #2,(d8,A0,Xn)
-        b       L_059B0
-        ori     rtn_addr, code_ptr, L_06828 - cb        // 5571  SUBQ.W    #2,(d8,A1,Xn)
-        b       L_05A10
-        ori     rtn_addr, code_ptr, L_06828 - cb        // 5572  SUBQ.W    #2,(d8,A2,Xn)
-        b       L_05A70
-        ori     rtn_addr, code_ptr, L_06828 - cb        // 5573  SUBQ.W    #2,(d8,A3,Xn)
-        b       L_05AD0
-        ori     rtn_addr, code_ptr, L_06828 - cb        // 5574  SUBQ.W    #2,(d8,A4,Xn)
-        b       L_05B30
-        ori     rtn_addr, code_ptr, L_06828 - cb        // 5575  SUBQ.W    #2,(d8,A5,Xn)
-        b       L_05B90
-        ori     rtn_addr, code_ptr, L_06828 - cb        // 5576  SUBQ.W    #2,(d8,A6,Xn)
-        b       L_05BF0
-        ori     rtn_addr, code_ptr, L_06828 - cb        // 5577  SUBQ.W    #2,(d8,A7,Xn)
-        b       L_05C50
+        b       subq_w_q_mem
+        ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5570  SUBQ.W    #2,(d8,A0,Xn)
+        b       move_add_etc_w_any_any
+        ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5571  SUBQ.W    #2,(d8,A1,Xn)
+        b       move_add_etc_w_any_any_2
+        ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5572  SUBQ.W    #2,(d8,A2,Xn)
+        b       move_add_etc_w_any_any_3
+        ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5573  SUBQ.W    #2,(d8,A3,Xn)
+        b       move_add_etc_w_any_any_4
+        ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5574  SUBQ.W    #2,(d8,A4,Xn)
+        b       move_add_etc_w_any_any_5
+        ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5575  SUBQ.W    #2,(d8,A5,Xn)
+        b       move_add_etc_w_any_any_6
+        ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5576  SUBQ.W    #2,(d8,A6,Xn)
+        b       move_add_etc_w_any_any_7
+        ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5577  SUBQ.W    #2,(d8,A7,Xn)
+        b       move_add_etc_w_any_any_8
         mr      addr, prefetch_data                     // 5578  SUBQ.W    #2,(xxx).W
-        b       L_06820
-        ori     rtn_addr, code_ptr, L_06828 - cb        // 5579  SUBQ.W    #2,(xxx).L
-        b       L_05E70
+        b       subq_w_q_mem
+        ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5579  SUBQ.W    #2,(xxx).L
+        b       fea_w_71
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 557A  SUBQ.W    #2,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 557B  SUBQ.W    #2,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 557C  SUBQ.W    #2,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 557D  SUBQ.W    #2,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 557E  SUBQ.W    #2,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 557F  SUBQ.W    #2,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $5580-$55BF --------------------------------------------------------
         li      data, 2                                 // 5580  SUBQ.L    #2,D0
-        b       L_04204
+        b       sub_l_mem_d0_2
         li      data, 2                                 // 5581  SUBQ.L    #2,D1
-        b       L_04244
+        b       sub_l_mem_d1_2
         li      data, 2                                 // 5582  SUBQ.L    #2,D2
-        b       L_04284
+        b       sub_l_mem_d2_2
         li      data, 2                                 // 5583  SUBQ.L    #2,D3
-        b       L_042C4
+        b       sub_l_mem_d3_2
         li      data, 2                                 // 5584  SUBQ.L    #2,D4
-        b       L_04304
+        b       sub_l_mem_d4_2
         li      data, 2                                 // 5585  SUBQ.L    #2,D5
-        b       L_04344
+        b       sub_l_mem_d5_2
         li      data, 2                                 // 5586  SUBQ.L    #2,D6
-        b       L_04384
+        b       sub_l_mem_d6_2
         li      data, 2                                 // 5587  SUBQ.L    #2,D7
-        b       L_043C4
+        b       sub_l_mem_d7_2
         addi    a0, a0, -2                              // 5588  SUBQ.L    #2,A0
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a1, a1, -2                              // 5589  SUBQ.L    #2,A1
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a2, a2, -2                              // 558A  SUBQ.L    #2,A2
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a3, a3, -2                              // 558B  SUBQ.L    #2,A3
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a4, a4, -2                              // 558C  SUBQ.L    #2,A4
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a5, a5, -2                              // 558D  SUBQ.L    #2,A5
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a6, a6, -2                              // 558E  SUBQ.L    #2,A6
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a7, a7, -2                              // 558F  SUBQ.L    #2,A7
-        b       L_06084
+        b       move_add_etc_any_any
 op_5590:
         mr      addr, a0                                // 5590  SUBQ.L    #2,(A0)
-        b       L_06AC4
+        b       subq_l_q_mem_2
 op_5591:
         mr      addr, a1                                // 5591  SUBQ.L    #2,(A1)
-        b       L_06AC4
+        b       subq_l_q_mem_2
 op_5592:
         mr      addr, a2                                // 5592  SUBQ.L    #2,(A2)
-        b       L_06AC4
+        b       subq_l_q_mem_2
 op_5593:
         mr      addr, a3                                // 5593  SUBQ.L    #2,(A3)
-        b       L_06AC4
+        b       subq_l_q_mem_2
 op_5594:
         mr      addr, a4                                // 5594  SUBQ.L    #2,(A4)
-        b       L_06AC4
+        b       subq_l_q_mem_2
 op_5595:
         mr      addr, a5                                // 5595  SUBQ.L    #2,(A5)
-        b       L_06AC4
+        b       subq_l_q_mem_2
 op_5596:
         mr      addr, a6                                // 5596  SUBQ.L    #2,(A6)
-        b       L_06AC4
+        b       subq_l_q_mem_2
 op_5597:
         mr      addr, a7                                // 5597  SUBQ.L    #2,(A7)
-        b       L_06AC4
-        ori     rtn_addr, code_ptr, L_06AC4 - cb        // 5598  SUBQ.L    #2,(A0)+
-        b       L_00840
-        ori     rtn_addr, code_ptr, L_06AC4 - cb        // 5599  SUBQ.L    #2,(A1)+
-        b       L_008C0
-        ori     rtn_addr, code_ptr, L_06AC4 - cb        // 559A  SUBQ.L    #2,(A2)+
-        b       L_00940
-        ori     rtn_addr, code_ptr, L_06AC4 - cb        // 559B  SUBQ.L    #2,(A3)+
-        b       L_009C0
-        ori     rtn_addr, code_ptr, L_06AC4 - cb        // 559C  SUBQ.L    #2,(A4)+
-        b       L_00A40
-        ori     rtn_addr, code_ptr, L_06AC4 - cb        // 559D  SUBQ.L    #2,(A5)+
-        b       L_00AC0
-        ori     rtn_addr, code_ptr, L_06AC4 - cb        // 559E  SUBQ.L    #2,(A6)+
-        b       L_00B40
-        ori     rtn_addr, code_ptr, L_06AC4 - cb        // 559F  SUBQ.L    #2,(A7)+
-        b       L_00BC0
+        b       subq_l_q_mem_2
+        ori     rtn_addr, code_ptr, subq_l_q_mem_2 - cb  // 5598  SUBQ.L    #2,(A0)+
+        b       cea_l_30
+        ori     rtn_addr, code_ptr, subq_l_q_mem_2 - cb  // 5599  SUBQ.L    #2,(A1)+
+        b       cea_l_31
+        ori     rtn_addr, code_ptr, subq_l_q_mem_2 - cb  // 559A  SUBQ.L    #2,(A2)+
+        b       cea_l_32
+        ori     rtn_addr, code_ptr, subq_l_q_mem_2 - cb  // 559B  SUBQ.L    #2,(A3)+
+        b       cea_l_33
+        ori     rtn_addr, code_ptr, subq_l_q_mem_2 - cb  // 559C  SUBQ.L    #2,(A4)+
+        b       cea_l_34
+        ori     rtn_addr, code_ptr, subq_l_q_mem_2 - cb  // 559D  SUBQ.L    #2,(A5)+
+        b       cea_l_35
+        ori     rtn_addr, code_ptr, subq_l_q_mem_2 - cb  // 559E  SUBQ.L    #2,(A6)+
+        b       cea_l_36
+        ori     rtn_addr, code_ptr, subq_l_q_mem_2 - cb  // 559F  SUBQ.L    #2,(A7)+
+        b       cea_l_37
         addi    a0, a0, -4                              // 55A0  SUBQ.L    #2,-(A0)
         b       op_5590
         addi    a1, a1, -4                              // 55A1  SUBQ.L    #2,-(A1)
@@ -3129,127 +3129,127 @@ op_5597:
         addi    a7, a7, -4                              // 55A7  SUBQ.L    #2,-(A7)
         b       op_5597
         add     addr, a0, prefetch_data                 // 55A8  SUBQ.L    #2,(d16,A0)
-        b       L_06AC0
+        b       subq_l_q_mem
         add     addr, a1, prefetch_data                 // 55A9  SUBQ.L    #2,(d16,A1)
-        b       L_06AC0
+        b       subq_l_q_mem
         add     addr, a2, prefetch_data                 // 55AA  SUBQ.L    #2,(d16,A2)
-        b       L_06AC0
+        b       subq_l_q_mem
         add     addr, a3, prefetch_data                 // 55AB  SUBQ.L    #2,(d16,A3)
-        b       L_06AC0
+        b       subq_l_q_mem
         add     addr, a4, prefetch_data                 // 55AC  SUBQ.L    #2,(d16,A4)
-        b       L_06AC0
+        b       subq_l_q_mem
         add     addr, a5, prefetch_data                 // 55AD  SUBQ.L    #2,(d16,A5)
-        b       L_06AC0
+        b       subq_l_q_mem
         add     addr, a6, prefetch_data                 // 55AE  SUBQ.L    #2,(d16,A6)
-        b       L_06AC0
+        b       subq_l_q_mem
         add     addr, a7, prefetch_data                 // 55AF  SUBQ.L    #2,(d16,A7)
-        b       L_06AC0
-        ori     rtn_addr, code_ptr, L_06AC8 - cb        // 55B0  SUBQ.L    #2,(d8,A0,Xn)
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_06AC8 - cb        // 55B1  SUBQ.L    #2,(d8,A1,Xn)
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_06AC8 - cb        // 55B2  SUBQ.L    #2,(d8,A2,Xn)
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_06AC8 - cb        // 55B3  SUBQ.L    #2,(d8,A3,Xn)
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_06AC8 - cb        // 55B4  SUBQ.L    #2,(d8,A4,Xn)
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_06AC8 - cb        // 55B5  SUBQ.L    #2,(d8,A5,Xn)
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_06AC8 - cb        // 55B6  SUBQ.L    #2,(d8,A6,Xn)
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_06AC8 - cb        // 55B7  SUBQ.L    #2,(d8,A7,Xn)
-        b       L_05C68
+        b       subq_l_q_mem
+        ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 55B0  SUBQ.L    #2,(d8,A0,Xn)
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 55B1  SUBQ.L    #2,(d8,A1,Xn)
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 55B2  SUBQ.L    #2,(d8,A2,Xn)
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 55B3  SUBQ.L    #2,(d8,A3,Xn)
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 55B4  SUBQ.L    #2,(d8,A4,Xn)
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 55B5  SUBQ.L    #2,(d8,A5,Xn)
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 55B6  SUBQ.L    #2,(d8,A6,Xn)
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 55B7  SUBQ.L    #2,(d8,A7,Xn)
+        b       move_add_etc_l_any_any_8
         mr      addr, prefetch_data                     // 55B8  SUBQ.L    #2,(xxx).W
-        b       L_06AC0
-        ori     rtn_addr, code_ptr, L_06AC8 - cb        // 55B9  SUBQ.L    #2,(xxx).L
-        b       L_05E8C
+        b       subq_l_q_mem
+        ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 55B9  SUBQ.L    #2,(xxx).L
+        b       fea_l_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 55BA  SUBQ.L    #2,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 55BB  SUBQ.L    #2,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 55BC  SUBQ.L    #2,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 55BD  SUBQ.L    #2,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 55BE  SUBQ.L    #2,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 55BF  SUBQ.L    #2,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $55C0-$55FF --------------------------------------------------------
-        ori     rtn_addr, code_ptr, L_03624 - cb        // 55C0  SCS.B     D0
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_03664 - cb        // 55C1  SCS.B     D1
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_036A4 - cb        // 55C2  SCS.B     D2
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_036E4 - cb        // 55C3  SCS.B     D3
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_03724 - cb        // 55C4  SCS.B     D4
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_03764 - cb        // 55C5  SCS.B     D5
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_037A4 - cb        // 55C6  SCS.B     D6
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_037E4 - cb        // 55C7  SCS.B     D7
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_03000 - cb        // 55C8  DBCS.W    D0,<label>
-        b       L_08500
-        ori     rtn_addr, code_ptr, L_03040 - cb        // 55C9  DBCS.W    D1,<label>
-        b       L_08500
-        ori     rtn_addr, code_ptr, L_03080 - cb        // 55CA  DBCS.W    D2,<label>
-        b       L_08500
-        ori     rtn_addr, code_ptr, L_030C0 - cb        // 55CB  DBCS.W    D3,<label>
-        b       L_08500
-        ori     rtn_addr, code_ptr, L_03100 - cb        // 55CC  DBCS.W    D4,<label>
-        b       L_08500
-        ori     rtn_addr, code_ptr, L_03140 - cb        // 55CD  DBCS.W    D5,<label>
-        b       L_08500
-        ori     rtn_addr, code_ptr, L_03180 - cb        // 55CE  DBCS.W    D6,<label>
-        b       L_08500
-        ori     rtn_addr, code_ptr, L_031C0 - cb        // 55CF  DBCS.W    D7,<label>
-        b       L_08500
+        ori     rtn_addr, code_ptr, scc_b_d0 - cb       // 55C0  SCS.B     D0
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d1 - cb       // 55C1  SCS.B     D1
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d2 - cb       // 55C2  SCS.B     D2
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d3 - cb       // 55C3  SCS.B     D3
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d4 - cb       // 55C4  SCS.B     D4
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d5 - cb       // 55C5  SCS.B     D5
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d6 - cb       // 55C6  SCS.B     D6
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d7 - cb       // 55C7  SCS.B     D7
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d0 - cb      // 55C8  DBCS.W    D0,<label>
+        b       dbcc_w_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d1 - cb      // 55C9  DBCS.W    D1,<label>
+        b       dbcc_w_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d2 - cb      // 55CA  DBCS.W    D2,<label>
+        b       dbcc_w_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d3 - cb      // 55CB  DBCS.W    D3,<label>
+        b       dbcc_w_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d4 - cb      // 55CC  DBCS.W    D4,<label>
+        b       dbcc_w_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d5 - cb      // 55CD  DBCS.W    D5,<label>
+        b       dbcc_w_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d6 - cb      // 55CE  DBCS.W    D6,<label>
+        b       dbcc_w_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d7 - cb      // 55CF  DBCS.W    D7,<label>
+        b       dbcc_w_dn
 op_55D0:
         mr      addr, a0                                // 55D0  SCS.B     (A0)
-        b       L_08584
+        b       scc_b_mem_2
 op_55D1:
         mr      addr, a1                                // 55D1  SCS.B     (A1)
-        b       L_08584
+        b       scc_b_mem_2
 op_55D2:
         mr      addr, a2                                // 55D2  SCS.B     (A2)
-        b       L_08584
+        b       scc_b_mem_2
 op_55D3:
         mr      addr, a3                                // 55D3  SCS.B     (A3)
-        b       L_08584
+        b       scc_b_mem_2
 op_55D4:
         mr      addr, a4                                // 55D4  SCS.B     (A4)
-        b       L_08584
+        b       scc_b_mem_2
 op_55D5:
         mr      addr, a5                                // 55D5  SCS.B     (A5)
-        b       L_08584
+        b       scc_b_mem_2
 op_55D6:
         mr      addr, a6                                // 55D6  SCS.B     (A6)
-        b       L_08584
+        b       scc_b_mem_2
 op_55D7:
         mr      addr, a7                                // 55D7  SCS.B     (A7)
-        b       L_08584
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 55D8  SCS.B     (A0)+
-        b       L_00800
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 55D9  SCS.B     (A1)+
-        b       L_00880
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 55DA  SCS.B     (A2)+
-        b       L_00900
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 55DB  SCS.B     (A3)+
-        b       L_00980
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 55DC  SCS.B     (A4)+
-        b       L_00A00
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 55DD  SCS.B     (A5)+
-        b       L_00A80
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 55DE  SCS.B     (A6)+
-        b       L_00B00
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 55DF  SCS.B     (A7)+
-        b       L_00B80
+        b       scc_b_mem_2
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 55D8  SCS.B     (A0)+
+        b       cea_b_30
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 55D9  SCS.B     (A1)+
+        b       cea_b_31
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 55DA  SCS.B     (A2)+
+        b       cea_b_32
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 55DB  SCS.B     (A3)+
+        b       cea_b_33
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 55DC  SCS.B     (A4)+
+        b       cea_b_34
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 55DD  SCS.B     (A5)+
+        b       cea_b_35
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 55DE  SCS.B     (A6)+
+        b       cea_b_36
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 55DF  SCS.B     (A7)+
+        b       cea_b_37
         addi    a0, a0, -1                              // 55E0  SCS.B     -(A0)
         b       op_55D0
         addi    a1, a1, -1                              // 55E1  SCS.B     -(A1)
@@ -3267,127 +3267,127 @@ op_55D7:
         addi    a7, a7, -2                              // 55E7  SCS.B     -(A7)
         b       op_55D7
         add     addr, a0, prefetch_data                 // 55E8  SCS.B     (d16,A0)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a1, prefetch_data                 // 55E9  SCS.B     (d16,A1)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a2, prefetch_data                 // 55EA  SCS.B     (d16,A2)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a3, prefetch_data                 // 55EB  SCS.B     (d16,A3)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a4, prefetch_data                 // 55EC  SCS.B     (d16,A4)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a5, prefetch_data                 // 55ED  SCS.B     (d16,A5)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a6, prefetch_data                 // 55EE  SCS.B     (d16,A6)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a7, prefetch_data                 // 55EF  SCS.B     (d16,A7)
-        b       L_08580
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 55F0  SCS.B     (d8,A0,Xn)
-        b       L_05988
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 55F1  SCS.B     (d8,A1,Xn)
-        b       L_059E8
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 55F2  SCS.B     (d8,A2,Xn)
-        b       L_05A48
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 55F3  SCS.B     (d8,A3,Xn)
-        b       L_05AA8
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 55F4  SCS.B     (d8,A4,Xn)
-        b       L_05B08
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 55F5  SCS.B     (d8,A5,Xn)
-        b       L_05B68
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 55F6  SCS.B     (d8,A6,Xn)
-        b       L_05BC8
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 55F7  SCS.B     (d8,A7,Xn)
-        b       L_05C28
+        b       scc_b_mem
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 55F0  SCS.B     (d8,A0,Xn)
+        b       or_sub_etc_any_any
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 55F1  SCS.B     (d8,A1,Xn)
+        b       or_sub_etc_any_any_2
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 55F2  SCS.B     (d8,A2,Xn)
+        b       or_sub_etc_any_any_3
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 55F3  SCS.B     (d8,A3,Xn)
+        b       or_sub_etc_any_any_4
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 55F4  SCS.B     (d8,A4,Xn)
+        b       or_sub_etc_any_any_5
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 55F5  SCS.B     (d8,A5,Xn)
+        b       or_sub_etc_any_any_6
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 55F6  SCS.B     (d8,A6,Xn)
+        b       or_sub_etc_any_any_7
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 55F7  SCS.B     (d8,A7,Xn)
+        b       or_sub_etc_any_any_8
         mr      addr, prefetch_data                     // 55F8  SCS.B     (xxx).W
-        b       L_08580
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 55F9  SCS.B     (xxx).L
-        b       L_05E14
+        b       scc_b_mem
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 55F9  SCS.B     (xxx).L
+        b       cea_x_71_2
         lhau    prefetch_data, 2(pc)                    // 55FA  TRAPCS    #<data>.W
-        b       L_0CCE8
+        b       trapcc
         lhau    prefetch_data, 4(pc)                    // 55FB  TRAPCS    #<data>.L
-        b       L_0CCE8
+        b       trapcc
         ori     base_disp, code_ptr, D_085C0 - cb       // 55FC  TRAPCS
-        b       L_0CCEC
+        b       trapcc_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 55FD  SCS.B     <ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 55FE  SCS.B     <ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 55FF  SCS.B     <ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $5600-$563F --------------------------------------------------------
         lis     data, 0x0300                            // 5600  ADDQ.B    #3,D0
-        b       L_0B0C8
+        b       add_asl_b_any_d0
         lis     data, 0x0300                            // 5601  ADDQ.B    #3,D1
-        b       L_0B108
+        b       add_asl_b_any_d1
         lis     data, 0x0300                            // 5602  ADDQ.B    #3,D2
-        b       L_0B148
+        b       add_asl_b_any_d2
         lis     data, 0x0300                            // 5603  ADDQ.B    #3,D3
-        b       L_0B188
+        b       add_asl_b_any_d3
         lis     data, 0x0300                            // 5604  ADDQ.B    #3,D4
-        b       L_0B1C8
+        b       add_asl_b_any_d4
         lis     data, 0x0300                            // 5605  ADDQ.B    #3,D5
-        b       L_0B208
+        b       add_asl_b_any_d5
         lis     data, 0x0300                            // 5606  ADDQ.B    #3,D6
-        b       L_0B248
+        b       add_asl_b_any_d6
         lis     data, 0x0300                            // 5607  ADDQ.B    #3,D7
-        b       L_0B288
+        b       add_asl_b_any_d7
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5608  ADDQ.B    #3,A0   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5609  ADDQ.B    #3,A1   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 560A  ADDQ.B    #3,A2   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 560B  ADDQ.B    #3,A3   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 560C  ADDQ.B    #3,A4   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 560D  ADDQ.B    #3,A5   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 560E  ADDQ.B    #3,A6   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 560F  ADDQ.B    #3,A7   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 op_5610:
         mr      addr, a0                                // 5610  ADDQ.B    #3,(A0)
-        b       L_06564
+        b       addq_b_q_mem_2
 op_5611:
         mr      addr, a1                                // 5611  ADDQ.B    #3,(A1)
-        b       L_06564
+        b       addq_b_q_mem_2
 op_5612:
         mr      addr, a2                                // 5612  ADDQ.B    #3,(A2)
-        b       L_06564
+        b       addq_b_q_mem_2
 op_5613:
         mr      addr, a3                                // 5613  ADDQ.B    #3,(A3)
-        b       L_06564
+        b       addq_b_q_mem_2
 op_5614:
         mr      addr, a4                                // 5614  ADDQ.B    #3,(A4)
-        b       L_06564
+        b       addq_b_q_mem_2
 op_5615:
         mr      addr, a5                                // 5615  ADDQ.B    #3,(A5)
-        b       L_06564
+        b       addq_b_q_mem_2
 op_5616:
         mr      addr, a6                                // 5616  ADDQ.B    #3,(A6)
-        b       L_06564
+        b       addq_b_q_mem_2
 op_5617:
         mr      addr, a7                                // 5617  ADDQ.B    #3,(A7)
-        b       L_06564
-        ori     rtn_addr, code_ptr, L_06564 - cb        // 5618  ADDQ.B    #3,(A0)+
-        b       L_00800
-        ori     rtn_addr, code_ptr, L_06564 - cb        // 5619  ADDQ.B    #3,(A1)+
-        b       L_00880
-        ori     rtn_addr, code_ptr, L_06564 - cb        // 561A  ADDQ.B    #3,(A2)+
-        b       L_00900
-        ori     rtn_addr, code_ptr, L_06564 - cb        // 561B  ADDQ.B    #3,(A3)+
-        b       L_00980
-        ori     rtn_addr, code_ptr, L_06564 - cb        // 561C  ADDQ.B    #3,(A4)+
-        b       L_00A00
-        ori     rtn_addr, code_ptr, L_06564 - cb        // 561D  ADDQ.B    #3,(A5)+
-        b       L_00A80
-        ori     rtn_addr, code_ptr, L_06564 - cb        // 561E  ADDQ.B    #3,(A6)+
-        b       L_00B00
-        ori     rtn_addr, code_ptr, L_06564 - cb        // 561F  ADDQ.B    #3,(A7)+
-        b       L_00B80
+        b       addq_b_q_mem_2
+        ori     rtn_addr, code_ptr, addq_b_q_mem_2 - cb  // 5618  ADDQ.B    #3,(A0)+
+        b       cea_b_30
+        ori     rtn_addr, code_ptr, addq_b_q_mem_2 - cb  // 5619  ADDQ.B    #3,(A1)+
+        b       cea_b_31
+        ori     rtn_addr, code_ptr, addq_b_q_mem_2 - cb  // 561A  ADDQ.B    #3,(A2)+
+        b       cea_b_32
+        ori     rtn_addr, code_ptr, addq_b_q_mem_2 - cb  // 561B  ADDQ.B    #3,(A3)+
+        b       cea_b_33
+        ori     rtn_addr, code_ptr, addq_b_q_mem_2 - cb  // 561C  ADDQ.B    #3,(A4)+
+        b       cea_b_34
+        ori     rtn_addr, code_ptr, addq_b_q_mem_2 - cb  // 561D  ADDQ.B    #3,(A5)+
+        b       cea_b_35
+        ori     rtn_addr, code_ptr, addq_b_q_mem_2 - cb  // 561E  ADDQ.B    #3,(A6)+
+        b       cea_b_36
+        ori     rtn_addr, code_ptr, addq_b_q_mem_2 - cb  // 561F  ADDQ.B    #3,(A7)+
+        b       cea_b_37
         addi    a0, a0, -1                              // 5620  ADDQ.B    #3,-(A0)
         b       op_5610
         addi    a1, a1, -1                              // 5621  ADDQ.B    #3,-(A1)
@@ -3405,127 +3405,127 @@ op_5617:
         addi    a7, a7, -2                              // 5627  ADDQ.B    #3,-(A7)
         b       op_5617
         add     addr, a0, prefetch_data                 // 5628  ADDQ.B    #3,(d16,A0)
-        b       L_06560
+        b       addq_b_q_mem
         add     addr, a1, prefetch_data                 // 5629  ADDQ.B    #3,(d16,A1)
-        b       L_06560
+        b       addq_b_q_mem
         add     addr, a2, prefetch_data                 // 562A  ADDQ.B    #3,(d16,A2)
-        b       L_06560
+        b       addq_b_q_mem
         add     addr, a3, prefetch_data                 // 562B  ADDQ.B    #3,(d16,A3)
-        b       L_06560
+        b       addq_b_q_mem
         add     addr, a4, prefetch_data                 // 562C  ADDQ.B    #3,(d16,A4)
-        b       L_06560
+        b       addq_b_q_mem
         add     addr, a5, prefetch_data                 // 562D  ADDQ.B    #3,(d16,A5)
-        b       L_06560
+        b       addq_b_q_mem
         add     addr, a6, prefetch_data                 // 562E  ADDQ.B    #3,(d16,A6)
-        b       L_06560
+        b       addq_b_q_mem
         add     addr, a7, prefetch_data                 // 562F  ADDQ.B    #3,(d16,A7)
-        b       L_06560
-        ori     rtn_addr, code_ptr, L_06568 - cb        // 5630  ADDQ.B    #3,(d8,A0,Xn)
-        b       L_0599C
-        ori     rtn_addr, code_ptr, L_06568 - cb        // 5631  ADDQ.B    #3,(d8,A1,Xn)
-        b       L_059FC
-        ori     rtn_addr, code_ptr, L_06568 - cb        // 5632  ADDQ.B    #3,(d8,A2,Xn)
-        b       L_05A5C
-        ori     rtn_addr, code_ptr, L_06568 - cb        // 5633  ADDQ.B    #3,(d8,A3,Xn)
-        b       L_05ABC
-        ori     rtn_addr, code_ptr, L_06568 - cb        // 5634  ADDQ.B    #3,(d8,A4,Xn)
-        b       L_05B1C
-        ori     rtn_addr, code_ptr, L_06568 - cb        // 5635  ADDQ.B    #3,(d8,A5,Xn)
-        b       L_05B7C
-        ori     rtn_addr, code_ptr, L_06568 - cb        // 5636  ADDQ.B    #3,(d8,A6,Xn)
-        b       L_05BDC
-        ori     rtn_addr, code_ptr, L_06568 - cb        // 5637  ADDQ.B    #3,(d8,A7,Xn)
-        b       L_05C3C
+        b       addq_b_q_mem
+        ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5630  ADDQ.B    #3,(d8,A0,Xn)
+        b       move_add_etc_b_any_any
+        ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5631  ADDQ.B    #3,(d8,A1,Xn)
+        b       move_add_etc_b_any_any_2
+        ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5632  ADDQ.B    #3,(d8,A2,Xn)
+        b       move_add_etc_b_any_any_3
+        ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5633  ADDQ.B    #3,(d8,A3,Xn)
+        b       move_add_etc_b_any_any_4
+        ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5634  ADDQ.B    #3,(d8,A4,Xn)
+        b       move_add_etc_b_any_any_5
+        ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5635  ADDQ.B    #3,(d8,A5,Xn)
+        b       move_add_etc_b_any_any_6
+        ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5636  ADDQ.B    #3,(d8,A6,Xn)
+        b       move_add_etc_b_any_any_7
+        ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5637  ADDQ.B    #3,(d8,A7,Xn)
+        b       move_add_etc_b_any_any_8
         mr      addr, prefetch_data                     // 5638  ADDQ.B    #3,(xxx).W
-        b       L_06560
-        ori     rtn_addr, code_ptr, L_06568 - cb        // 5639  ADDQ.B    #3,(xxx).L
-        b       L_05E2C
+        b       addq_b_q_mem
+        ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5639  ADDQ.B    #3,(xxx).L
+        b       fea_b_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 563A  ADDQ.B    #3,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 563B  ADDQ.B    #3,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 563C  ADDQ.B    #3,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 563D  ADDQ.B    #3,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 563E  ADDQ.B    #3,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 563F  ADDQ.B    #3,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $5640-$567F --------------------------------------------------------
         lis     data, 0x0003                            // 5640  ADDQ.W    #3,D0
-        b       L_03808
+        b       add_asl_w_any_d0
         lis     data, 0x0003                            // 5641  ADDQ.W    #3,D1
-        b       L_03848
+        b       add_asl_w_any_d1
         lis     data, 0x0003                            // 5642  ADDQ.W    #3,D2
-        b       L_03888
+        b       add_asl_w_any_d2
         lis     data, 0x0003                            // 5643  ADDQ.W    #3,D3
-        b       L_038C8
+        b       add_asl_w_any_d3
         lis     data, 0x0003                            // 5644  ADDQ.W    #3,D4
-        b       L_03908
+        b       add_asl_w_any_d4
         lis     data, 0x0003                            // 5645  ADDQ.W    #3,D5
-        b       L_03948
+        b       add_asl_w_any_d5
         lis     data, 0x0003                            // 5646  ADDQ.W    #3,D6
-        b       L_03988
+        b       add_asl_w_any_d6
         lis     data, 0x0003                            // 5647  ADDQ.W    #3,D7
-        b       L_039C8
+        b       add_asl_w_any_d7
         addi    a0, a0, 3                               // 5648  ADDQ.W    #3,A0
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a1, a1, 3                               // 5649  ADDQ.W    #3,A1
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a2, a2, 3                               // 564A  ADDQ.W    #3,A2
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a3, a3, 3                               // 564B  ADDQ.W    #3,A3
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a4, a4, 3                               // 564C  ADDQ.W    #3,A4
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a5, a5, 3                               // 564D  ADDQ.W    #3,A5
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a6, a6, 3                               // 564E  ADDQ.W    #3,A6
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a7, a7, 3                               // 564F  ADDQ.W    #3,A7
-        b       L_06084
+        b       move_add_etc_any_any
 op_5650:
         mr      addr, a0                                // 5650  ADDQ.W    #3,(A0)
-        b       L_06784
+        b       addq_w_q_mem_2
 op_5651:
         mr      addr, a1                                // 5651  ADDQ.W    #3,(A1)
-        b       L_06784
+        b       addq_w_q_mem_2
 op_5652:
         mr      addr, a2                                // 5652  ADDQ.W    #3,(A2)
-        b       L_06784
+        b       addq_w_q_mem_2
 op_5653:
         mr      addr, a3                                // 5653  ADDQ.W    #3,(A3)
-        b       L_06784
+        b       addq_w_q_mem_2
 op_5654:
         mr      addr, a4                                // 5654  ADDQ.W    #3,(A4)
-        b       L_06784
+        b       addq_w_q_mem_2
 op_5655:
         mr      addr, a5                                // 5655  ADDQ.W    #3,(A5)
-        b       L_06784
+        b       addq_w_q_mem_2
 op_5656:
         mr      addr, a6                                // 5656  ADDQ.W    #3,(A6)
-        b       L_06784
+        b       addq_w_q_mem_2
 op_5657:
         mr      addr, a7                                // 5657  ADDQ.W    #3,(A7)
-        b       L_06784
-        ori     rtn_addr, code_ptr, L_06784 - cb        // 5658  ADDQ.W    #3,(A0)+
-        b       L_00820
-        ori     rtn_addr, code_ptr, L_06784 - cb        // 5659  ADDQ.W    #3,(A1)+
-        b       L_008A0
-        ori     rtn_addr, code_ptr, L_06784 - cb        // 565A  ADDQ.W    #3,(A2)+
-        b       L_00920
-        ori     rtn_addr, code_ptr, L_06784 - cb        // 565B  ADDQ.W    #3,(A3)+
-        b       L_009A0
-        ori     rtn_addr, code_ptr, L_06784 - cb        // 565C  ADDQ.W    #3,(A4)+
-        b       L_00A20
-        ori     rtn_addr, code_ptr, L_06784 - cb        // 565D  ADDQ.W    #3,(A5)+
-        b       L_00AA0
-        ori     rtn_addr, code_ptr, L_06784 - cb        // 565E  ADDQ.W    #3,(A6)+
-        b       L_00B20
-        ori     rtn_addr, code_ptr, L_06784 - cb        // 565F  ADDQ.W    #3,(A7)+
-        b       L_00BA0
+        b       addq_w_q_mem_2
+        ori     rtn_addr, code_ptr, addq_w_q_mem_2 - cb  // 5658  ADDQ.W    #3,(A0)+
+        b       cea_w_30
+        ori     rtn_addr, code_ptr, addq_w_q_mem_2 - cb  // 5659  ADDQ.W    #3,(A1)+
+        b       cea_w_31
+        ori     rtn_addr, code_ptr, addq_w_q_mem_2 - cb  // 565A  ADDQ.W    #3,(A2)+
+        b       cea_w_32
+        ori     rtn_addr, code_ptr, addq_w_q_mem_2 - cb  // 565B  ADDQ.W    #3,(A3)+
+        b       cea_w_33
+        ori     rtn_addr, code_ptr, addq_w_q_mem_2 - cb  // 565C  ADDQ.W    #3,(A4)+
+        b       cea_w_34
+        ori     rtn_addr, code_ptr, addq_w_q_mem_2 - cb  // 565D  ADDQ.W    #3,(A5)+
+        b       cea_w_35
+        ori     rtn_addr, code_ptr, addq_w_q_mem_2 - cb  // 565E  ADDQ.W    #3,(A6)+
+        b       cea_w_36
+        ori     rtn_addr, code_ptr, addq_w_q_mem_2 - cb  // 565F  ADDQ.W    #3,(A7)+
+        b       cea_w_37
         addi    a0, a0, -2                              // 5660  ADDQ.W    #3,-(A0)
         b       op_5650
         addi    a1, a1, -2                              // 5661  ADDQ.W    #3,-(A1)
@@ -3543,127 +3543,127 @@ op_5657:
         addi    a7, a7, -2                              // 5667  ADDQ.W    #3,-(A7)
         b       op_5657
         add     addr, a0, prefetch_data                 // 5668  ADDQ.W    #3,(d16,A0)
-        b       L_06780
+        b       addq_w_q_mem
         add     addr, a1, prefetch_data                 // 5669  ADDQ.W    #3,(d16,A1)
-        b       L_06780
+        b       addq_w_q_mem
         add     addr, a2, prefetch_data                 // 566A  ADDQ.W    #3,(d16,A2)
-        b       L_06780
+        b       addq_w_q_mem
         add     addr, a3, prefetch_data                 // 566B  ADDQ.W    #3,(d16,A3)
-        b       L_06780
+        b       addq_w_q_mem
         add     addr, a4, prefetch_data                 // 566C  ADDQ.W    #3,(d16,A4)
-        b       L_06780
+        b       addq_w_q_mem
         add     addr, a5, prefetch_data                 // 566D  ADDQ.W    #3,(d16,A5)
-        b       L_06780
+        b       addq_w_q_mem
         add     addr, a6, prefetch_data                 // 566E  ADDQ.W    #3,(d16,A6)
-        b       L_06780
+        b       addq_w_q_mem
         add     addr, a7, prefetch_data                 // 566F  ADDQ.W    #3,(d16,A7)
-        b       L_06780
-        ori     rtn_addr, code_ptr, L_06788 - cb        // 5670  ADDQ.W    #3,(d8,A0,Xn)
-        b       L_059B0
-        ori     rtn_addr, code_ptr, L_06788 - cb        // 5671  ADDQ.W    #3,(d8,A1,Xn)
-        b       L_05A10
-        ori     rtn_addr, code_ptr, L_06788 - cb        // 5672  ADDQ.W    #3,(d8,A2,Xn)
-        b       L_05A70
-        ori     rtn_addr, code_ptr, L_06788 - cb        // 5673  ADDQ.W    #3,(d8,A3,Xn)
-        b       L_05AD0
-        ori     rtn_addr, code_ptr, L_06788 - cb        // 5674  ADDQ.W    #3,(d8,A4,Xn)
-        b       L_05B30
-        ori     rtn_addr, code_ptr, L_06788 - cb        // 5675  ADDQ.W    #3,(d8,A5,Xn)
-        b       L_05B90
-        ori     rtn_addr, code_ptr, L_06788 - cb        // 5676  ADDQ.W    #3,(d8,A6,Xn)
-        b       L_05BF0
-        ori     rtn_addr, code_ptr, L_06788 - cb        // 5677  ADDQ.W    #3,(d8,A7,Xn)
-        b       L_05C50
+        b       addq_w_q_mem
+        ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5670  ADDQ.W    #3,(d8,A0,Xn)
+        b       move_add_etc_w_any_any
+        ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5671  ADDQ.W    #3,(d8,A1,Xn)
+        b       move_add_etc_w_any_any_2
+        ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5672  ADDQ.W    #3,(d8,A2,Xn)
+        b       move_add_etc_w_any_any_3
+        ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5673  ADDQ.W    #3,(d8,A3,Xn)
+        b       move_add_etc_w_any_any_4
+        ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5674  ADDQ.W    #3,(d8,A4,Xn)
+        b       move_add_etc_w_any_any_5
+        ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5675  ADDQ.W    #3,(d8,A5,Xn)
+        b       move_add_etc_w_any_any_6
+        ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5676  ADDQ.W    #3,(d8,A6,Xn)
+        b       move_add_etc_w_any_any_7
+        ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5677  ADDQ.W    #3,(d8,A7,Xn)
+        b       move_add_etc_w_any_any_8
         mr      addr, prefetch_data                     // 5678  ADDQ.W    #3,(xxx).W
-        b       L_06780
-        ori     rtn_addr, code_ptr, L_06788 - cb        // 5679  ADDQ.W    #3,(xxx).L
-        b       L_05E70
+        b       addq_w_q_mem
+        ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5679  ADDQ.W    #3,(xxx).L
+        b       fea_w_71
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 567A  ADDQ.W    #3,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 567B  ADDQ.W    #3,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 567C  ADDQ.W    #3,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 567D  ADDQ.W    #3,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 567E  ADDQ.W    #3,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 567F  ADDQ.W    #3,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $5680-$56BF --------------------------------------------------------
         li      data, 3                                 // 5680  ADDQ.L    #3,D0
-        b       L_03E04
+        b       add_l_mem_d0_2
         li      data, 3                                 // 5681  ADDQ.L    #3,D1
-        b       L_03E44
+        b       add_l_mem_d1_2
         li      data, 3                                 // 5682  ADDQ.L    #3,D2
-        b       L_03E84
+        b       add_l_mem_d2_2
         li      data, 3                                 // 5683  ADDQ.L    #3,D3
-        b       L_03EC4
+        b       add_l_mem_d3_2
         li      data, 3                                 // 5684  ADDQ.L    #3,D4
-        b       L_03F04
+        b       add_l_mem_d4_2
         li      data, 3                                 // 5685  ADDQ.L    #3,D5
-        b       L_03F44
+        b       add_l_mem_d5_2
         li      data, 3                                 // 5686  ADDQ.L    #3,D6
-        b       L_03F84
+        b       add_l_mem_d6_2
         li      data, 3                                 // 5687  ADDQ.L    #3,D7
-        b       L_03FC4
+        b       add_l_mem_d7_2
         addi    a0, a0, 3                               // 5688  ADDQ.L    #3,A0
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a1, a1, 3                               // 5689  ADDQ.L    #3,A1
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a2, a2, 3                               // 568A  ADDQ.L    #3,A2
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a3, a3, 3                               // 568B  ADDQ.L    #3,A3
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a4, a4, 3                               // 568C  ADDQ.L    #3,A4
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a5, a5, 3                               // 568D  ADDQ.L    #3,A5
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a6, a6, 3                               // 568E  ADDQ.L    #3,A6
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a7, a7, 3                               // 568F  ADDQ.L    #3,A7
-        b       L_06084
+        b       move_add_etc_any_any
 op_5690:
         mr      addr, a0                                // 5690  ADDQ.L    #3,(A0)
-        b       L_06A24
+        b       addq_l_q_mem_2
 op_5691:
         mr      addr, a1                                // 5691  ADDQ.L    #3,(A1)
-        b       L_06A24
+        b       addq_l_q_mem_2
 op_5692:
         mr      addr, a2                                // 5692  ADDQ.L    #3,(A2)
-        b       L_06A24
+        b       addq_l_q_mem_2
 op_5693:
         mr      addr, a3                                // 5693  ADDQ.L    #3,(A3)
-        b       L_06A24
+        b       addq_l_q_mem_2
 op_5694:
         mr      addr, a4                                // 5694  ADDQ.L    #3,(A4)
-        b       L_06A24
+        b       addq_l_q_mem_2
 op_5695:
         mr      addr, a5                                // 5695  ADDQ.L    #3,(A5)
-        b       L_06A24
+        b       addq_l_q_mem_2
 op_5696:
         mr      addr, a6                                // 5696  ADDQ.L    #3,(A6)
-        b       L_06A24
+        b       addq_l_q_mem_2
 op_5697:
         mr      addr, a7                                // 5697  ADDQ.L    #3,(A7)
-        b       L_06A24
-        ori     rtn_addr, code_ptr, L_06A24 - cb        // 5698  ADDQ.L    #3,(A0)+
-        b       L_00840
-        ori     rtn_addr, code_ptr, L_06A24 - cb        // 5699  ADDQ.L    #3,(A1)+
-        b       L_008C0
-        ori     rtn_addr, code_ptr, L_06A24 - cb        // 569A  ADDQ.L    #3,(A2)+
-        b       L_00940
-        ori     rtn_addr, code_ptr, L_06A24 - cb        // 569B  ADDQ.L    #3,(A3)+
-        b       L_009C0
-        ori     rtn_addr, code_ptr, L_06A24 - cb        // 569C  ADDQ.L    #3,(A4)+
-        b       L_00A40
-        ori     rtn_addr, code_ptr, L_06A24 - cb        // 569D  ADDQ.L    #3,(A5)+
-        b       L_00AC0
-        ori     rtn_addr, code_ptr, L_06A24 - cb        // 569E  ADDQ.L    #3,(A6)+
-        b       L_00B40
-        ori     rtn_addr, code_ptr, L_06A24 - cb        // 569F  ADDQ.L    #3,(A7)+
-        b       L_00BC0
+        b       addq_l_q_mem_2
+        ori     rtn_addr, code_ptr, addq_l_q_mem_2 - cb  // 5698  ADDQ.L    #3,(A0)+
+        b       cea_l_30
+        ori     rtn_addr, code_ptr, addq_l_q_mem_2 - cb  // 5699  ADDQ.L    #3,(A1)+
+        b       cea_l_31
+        ori     rtn_addr, code_ptr, addq_l_q_mem_2 - cb  // 569A  ADDQ.L    #3,(A2)+
+        b       cea_l_32
+        ori     rtn_addr, code_ptr, addq_l_q_mem_2 - cb  // 569B  ADDQ.L    #3,(A3)+
+        b       cea_l_33
+        ori     rtn_addr, code_ptr, addq_l_q_mem_2 - cb  // 569C  ADDQ.L    #3,(A4)+
+        b       cea_l_34
+        ori     rtn_addr, code_ptr, addq_l_q_mem_2 - cb  // 569D  ADDQ.L    #3,(A5)+
+        b       cea_l_35
+        ori     rtn_addr, code_ptr, addq_l_q_mem_2 - cb  // 569E  ADDQ.L    #3,(A6)+
+        b       cea_l_36
+        ori     rtn_addr, code_ptr, addq_l_q_mem_2 - cb  // 569F  ADDQ.L    #3,(A7)+
+        b       cea_l_37
         addi    a0, a0, -4                              // 56A0  ADDQ.L    #3,-(A0)
         b       op_5690
         addi    a1, a1, -4                              // 56A1  ADDQ.L    #3,-(A1)
@@ -3681,127 +3681,127 @@ op_5697:
         addi    a7, a7, -4                              // 56A7  ADDQ.L    #3,-(A7)
         b       op_5697
         add     addr, a0, prefetch_data                 // 56A8  ADDQ.L    #3,(d16,A0)
-        b       L_06A20
+        b       addq_l_q_mem
         add     addr, a1, prefetch_data                 // 56A9  ADDQ.L    #3,(d16,A1)
-        b       L_06A20
+        b       addq_l_q_mem
         add     addr, a2, prefetch_data                 // 56AA  ADDQ.L    #3,(d16,A2)
-        b       L_06A20
+        b       addq_l_q_mem
         add     addr, a3, prefetch_data                 // 56AB  ADDQ.L    #3,(d16,A3)
-        b       L_06A20
+        b       addq_l_q_mem
         add     addr, a4, prefetch_data                 // 56AC  ADDQ.L    #3,(d16,A4)
-        b       L_06A20
+        b       addq_l_q_mem
         add     addr, a5, prefetch_data                 // 56AD  ADDQ.L    #3,(d16,A5)
-        b       L_06A20
+        b       addq_l_q_mem
         add     addr, a6, prefetch_data                 // 56AE  ADDQ.L    #3,(d16,A6)
-        b       L_06A20
+        b       addq_l_q_mem
         add     addr, a7, prefetch_data                 // 56AF  ADDQ.L    #3,(d16,A7)
-        b       L_06A20
-        ori     rtn_addr, code_ptr, L_06A28 - cb        // 56B0  ADDQ.L    #3,(d8,A0,Xn)
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_06A28 - cb        // 56B1  ADDQ.L    #3,(d8,A1,Xn)
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_06A28 - cb        // 56B2  ADDQ.L    #3,(d8,A2,Xn)
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_06A28 - cb        // 56B3  ADDQ.L    #3,(d8,A3,Xn)
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_06A28 - cb        // 56B4  ADDQ.L    #3,(d8,A4,Xn)
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_06A28 - cb        // 56B5  ADDQ.L    #3,(d8,A5,Xn)
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_06A28 - cb        // 56B6  ADDQ.L    #3,(d8,A6,Xn)
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_06A28 - cb        // 56B7  ADDQ.L    #3,(d8,A7,Xn)
-        b       L_05C68
+        b       addq_l_q_mem
+        ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 56B0  ADDQ.L    #3,(d8,A0,Xn)
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 56B1  ADDQ.L    #3,(d8,A1,Xn)
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 56B2  ADDQ.L    #3,(d8,A2,Xn)
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 56B3  ADDQ.L    #3,(d8,A3,Xn)
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 56B4  ADDQ.L    #3,(d8,A4,Xn)
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 56B5  ADDQ.L    #3,(d8,A5,Xn)
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 56B6  ADDQ.L    #3,(d8,A6,Xn)
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 56B7  ADDQ.L    #3,(d8,A7,Xn)
+        b       move_add_etc_l_any_any_8
         mr      addr, prefetch_data                     // 56B8  ADDQ.L    #3,(xxx).W
-        b       L_06A20
-        ori     rtn_addr, code_ptr, L_06A28 - cb        // 56B9  ADDQ.L    #3,(xxx).L
-        b       L_05E8C
+        b       addq_l_q_mem
+        ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 56B9  ADDQ.L    #3,(xxx).L
+        b       fea_l_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 56BA  ADDQ.L    #3,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 56BB  ADDQ.L    #3,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 56BC  ADDQ.L    #3,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 56BD  ADDQ.L    #3,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 56BE  ADDQ.L    #3,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 56BF  ADDQ.L    #3,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $56C0-$56FF --------------------------------------------------------
-        ori     rtn_addr, code_ptr, L_03624 - cb        // 56C0  SNE.B     D0
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_03664 - cb        // 56C1  SNE.B     D1
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_036A4 - cb        // 56C2  SNE.B     D2
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_036E4 - cb        // 56C3  SNE.B     D3
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_03724 - cb        // 56C4  SNE.B     D4
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_03764 - cb        // 56C5  SNE.B     D5
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_037A4 - cb        // 56C6  SNE.B     D6
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_037E4 - cb        // 56C7  SNE.B     D7
-        b       L_08540
+        ori     rtn_addr, code_ptr, scc_b_d0 - cb       // 56C0  SNE.B     D0
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d1 - cb       // 56C1  SNE.B     D1
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d2 - cb       // 56C2  SNE.B     D2
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d3 - cb       // 56C3  SNE.B     D3
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d4 - cb       // 56C4  SNE.B     D4
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d5 - cb       // 56C5  SNE.B     D5
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d6 - cb       // 56C6  SNE.B     D6
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d7 - cb       // 56C7  SNE.B     D7
+        b       scc_b_dn
         bne     op_50C8                                 // 56C8  DBNE.W    D0,<label>
-        b       L_03000
+        b       dbcc_w_d0
         bne     op_50C9                                 // 56C9  DBNE.W    D1,<label>
-        b       L_03040
+        b       dbcc_w_d1
         bne     op_50CA                                 // 56CA  DBNE.W    D2,<label>
-        b       L_03080
+        b       dbcc_w_d2
         bne     op_50CB                                 // 56CB  DBNE.W    D3,<label>
-        b       L_030C0
+        b       dbcc_w_d3
         bne     op_50CC                                 // 56CC  DBNE.W    D4,<label>
-        b       L_03100
+        b       dbcc_w_d4
         bne     op_50CD                                 // 56CD  DBNE.W    D5,<label>
-        b       L_03140
+        b       dbcc_w_d5
         bne     op_50CE                                 // 56CE  DBNE.W    D6,<label>
-        b       L_03180
+        b       dbcc_w_d6
         bne     op_50CF                                 // 56CF  DBNE.W    D7,<label>
-        b       L_031C0
+        b       dbcc_w_d7
 op_56D0:
         mr      addr, a0                                // 56D0  SNE.B     (A0)
-        b       L_08584
+        b       scc_b_mem_2
 op_56D1:
         mr      addr, a1                                // 56D1  SNE.B     (A1)
-        b       L_08584
+        b       scc_b_mem_2
 op_56D2:
         mr      addr, a2                                // 56D2  SNE.B     (A2)
-        b       L_08584
+        b       scc_b_mem_2
 op_56D3:
         mr      addr, a3                                // 56D3  SNE.B     (A3)
-        b       L_08584
+        b       scc_b_mem_2
 op_56D4:
         mr      addr, a4                                // 56D4  SNE.B     (A4)
-        b       L_08584
+        b       scc_b_mem_2
 op_56D5:
         mr      addr, a5                                // 56D5  SNE.B     (A5)
-        b       L_08584
+        b       scc_b_mem_2
 op_56D6:
         mr      addr, a6                                // 56D6  SNE.B     (A6)
-        b       L_08584
+        b       scc_b_mem_2
 op_56D7:
         mr      addr, a7                                // 56D7  SNE.B     (A7)
-        b       L_08584
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 56D8  SNE.B     (A0)+
-        b       L_00800
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 56D9  SNE.B     (A1)+
-        b       L_00880
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 56DA  SNE.B     (A2)+
-        b       L_00900
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 56DB  SNE.B     (A3)+
-        b       L_00980
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 56DC  SNE.B     (A4)+
-        b       L_00A00
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 56DD  SNE.B     (A5)+
-        b       L_00A80
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 56DE  SNE.B     (A6)+
-        b       L_00B00
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 56DF  SNE.B     (A7)+
-        b       L_00B80
+        b       scc_b_mem_2
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 56D8  SNE.B     (A0)+
+        b       cea_b_30
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 56D9  SNE.B     (A1)+
+        b       cea_b_31
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 56DA  SNE.B     (A2)+
+        b       cea_b_32
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 56DB  SNE.B     (A3)+
+        b       cea_b_33
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 56DC  SNE.B     (A4)+
+        b       cea_b_34
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 56DD  SNE.B     (A5)+
+        b       cea_b_35
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 56DE  SNE.B     (A6)+
+        b       cea_b_36
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 56DF  SNE.B     (A7)+
+        b       cea_b_37
         addi    a0, a0, -1                              // 56E0  SNE.B     -(A0)
         b       op_56D0
         addi    a1, a1, -1                              // 56E1  SNE.B     -(A1)
@@ -3819,127 +3819,127 @@ op_56D7:
         addi    a7, a7, -2                              // 56E7  SNE.B     -(A7)
         b       op_56D7
         add     addr, a0, prefetch_data                 // 56E8  SNE.B     (d16,A0)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a1, prefetch_data                 // 56E9  SNE.B     (d16,A1)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a2, prefetch_data                 // 56EA  SNE.B     (d16,A2)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a3, prefetch_data                 // 56EB  SNE.B     (d16,A3)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a4, prefetch_data                 // 56EC  SNE.B     (d16,A4)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a5, prefetch_data                 // 56ED  SNE.B     (d16,A5)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a6, prefetch_data                 // 56EE  SNE.B     (d16,A6)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a7, prefetch_data                 // 56EF  SNE.B     (d16,A7)
-        b       L_08580
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 56F0  SNE.B     (d8,A0,Xn)
-        b       L_05988
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 56F1  SNE.B     (d8,A1,Xn)
-        b       L_059E8
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 56F2  SNE.B     (d8,A2,Xn)
-        b       L_05A48
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 56F3  SNE.B     (d8,A3,Xn)
-        b       L_05AA8
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 56F4  SNE.B     (d8,A4,Xn)
-        b       L_05B08
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 56F5  SNE.B     (d8,A5,Xn)
-        b       L_05B68
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 56F6  SNE.B     (d8,A6,Xn)
-        b       L_05BC8
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 56F7  SNE.B     (d8,A7,Xn)
-        b       L_05C28
+        b       scc_b_mem
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 56F0  SNE.B     (d8,A0,Xn)
+        b       or_sub_etc_any_any
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 56F1  SNE.B     (d8,A1,Xn)
+        b       or_sub_etc_any_any_2
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 56F2  SNE.B     (d8,A2,Xn)
+        b       or_sub_etc_any_any_3
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 56F3  SNE.B     (d8,A3,Xn)
+        b       or_sub_etc_any_any_4
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 56F4  SNE.B     (d8,A4,Xn)
+        b       or_sub_etc_any_any_5
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 56F5  SNE.B     (d8,A5,Xn)
+        b       or_sub_etc_any_any_6
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 56F6  SNE.B     (d8,A6,Xn)
+        b       or_sub_etc_any_any_7
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 56F7  SNE.B     (d8,A7,Xn)
+        b       or_sub_etc_any_any_8
         mr      addr, prefetch_data                     // 56F8  SNE.B     (xxx).W
-        b       L_08580
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 56F9  SNE.B     (xxx).L
-        b       L_05E14
+        b       scc_b_mem
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 56F9  SNE.B     (xxx).L
+        b       cea_x_71_2
         crnot   4*cr7+so, eq                            // 56FA  TRAPNE    #<data>.W
-        b       L_0CD28
+        b       trapcc_4
         crnot   4*cr7+so, eq                            // 56FB  TRAPNE    #<data>.L
-        b       L_0CD24
+        b       trapcc_3
         crnot   4*cr7+so, eq                            // 56FC  TRAPNE
-        b       L_0CD2C
+        b       trapcc_5
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 56FD  SNE.B     <ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 56FE  SNE.B     <ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 56FF  SNE.B     <ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $5700-$573F --------------------------------------------------------
         lis     data, 0x0300                            // 5700  SUBQ.B    #3,D0
-        b       L_03608
+        b       sub_b_any_d0
         lis     data, 0x0300                            // 5701  SUBQ.B    #3,D1
-        b       L_03648
+        b       sub_b_any_d1
         lis     data, 0x0300                            // 5702  SUBQ.B    #3,D2
-        b       L_03688
+        b       sub_b_any_d2
         lis     data, 0x0300                            // 5703  SUBQ.B    #3,D3
-        b       L_036C8
+        b       sub_b_any_d3
         lis     data, 0x0300                            // 5704  SUBQ.B    #3,D4
-        b       L_03708
+        b       sub_b_any_d4
         lis     data, 0x0300                            // 5705  SUBQ.B    #3,D5
-        b       L_03748
+        b       sub_b_any_d5
         lis     data, 0x0300                            // 5706  SUBQ.B    #3,D6
-        b       L_03788
+        b       sub_b_any_d6
         lis     data, 0x0300                            // 5707  SUBQ.B    #3,D7
-        b       L_037C8
+        b       sub_b_any_d7
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5708  SUBQ.B    #3,A0   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5709  SUBQ.B    #3,A1   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 570A  SUBQ.B    #3,A2   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 570B  SUBQ.B    #3,A3   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 570C  SUBQ.B    #3,A4   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 570D  SUBQ.B    #3,A5   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 570E  SUBQ.B    #3,A6   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 570F  SUBQ.B    #3,A7   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 op_5710:
         mr      addr, a0                                // 5710  SUBQ.B    #3,(A0)
-        b       L_06604
+        b       subq_b_q_mem_2
 op_5711:
         mr      addr, a1                                // 5711  SUBQ.B    #3,(A1)
-        b       L_06604
+        b       subq_b_q_mem_2
 op_5712:
         mr      addr, a2                                // 5712  SUBQ.B    #3,(A2)
-        b       L_06604
+        b       subq_b_q_mem_2
 op_5713:
         mr      addr, a3                                // 5713  SUBQ.B    #3,(A3)
-        b       L_06604
+        b       subq_b_q_mem_2
 op_5714:
         mr      addr, a4                                // 5714  SUBQ.B    #3,(A4)
-        b       L_06604
+        b       subq_b_q_mem_2
 op_5715:
         mr      addr, a5                                // 5715  SUBQ.B    #3,(A5)
-        b       L_06604
+        b       subq_b_q_mem_2
 op_5716:
         mr      addr, a6                                // 5716  SUBQ.B    #3,(A6)
-        b       L_06604
+        b       subq_b_q_mem_2
 op_5717:
         mr      addr, a7                                // 5717  SUBQ.B    #3,(A7)
-        b       L_06604
-        ori     rtn_addr, code_ptr, L_06604 - cb        // 5718  SUBQ.B    #3,(A0)+
-        b       L_00800
-        ori     rtn_addr, code_ptr, L_06604 - cb        // 5719  SUBQ.B    #3,(A1)+
-        b       L_00880
-        ori     rtn_addr, code_ptr, L_06604 - cb        // 571A  SUBQ.B    #3,(A2)+
-        b       L_00900
-        ori     rtn_addr, code_ptr, L_06604 - cb        // 571B  SUBQ.B    #3,(A3)+
-        b       L_00980
-        ori     rtn_addr, code_ptr, L_06604 - cb        // 571C  SUBQ.B    #3,(A4)+
-        b       L_00A00
-        ori     rtn_addr, code_ptr, L_06604 - cb        // 571D  SUBQ.B    #3,(A5)+
-        b       L_00A80
-        ori     rtn_addr, code_ptr, L_06604 - cb        // 571E  SUBQ.B    #3,(A6)+
-        b       L_00B00
-        ori     rtn_addr, code_ptr, L_06604 - cb        // 571F  SUBQ.B    #3,(A7)+
-        b       L_00B80
+        b       subq_b_q_mem_2
+        ori     rtn_addr, code_ptr, subq_b_q_mem_2 - cb  // 5718  SUBQ.B    #3,(A0)+
+        b       cea_b_30
+        ori     rtn_addr, code_ptr, subq_b_q_mem_2 - cb  // 5719  SUBQ.B    #3,(A1)+
+        b       cea_b_31
+        ori     rtn_addr, code_ptr, subq_b_q_mem_2 - cb  // 571A  SUBQ.B    #3,(A2)+
+        b       cea_b_32
+        ori     rtn_addr, code_ptr, subq_b_q_mem_2 - cb  // 571B  SUBQ.B    #3,(A3)+
+        b       cea_b_33
+        ori     rtn_addr, code_ptr, subq_b_q_mem_2 - cb  // 571C  SUBQ.B    #3,(A4)+
+        b       cea_b_34
+        ori     rtn_addr, code_ptr, subq_b_q_mem_2 - cb  // 571D  SUBQ.B    #3,(A5)+
+        b       cea_b_35
+        ori     rtn_addr, code_ptr, subq_b_q_mem_2 - cb  // 571E  SUBQ.B    #3,(A6)+
+        b       cea_b_36
+        ori     rtn_addr, code_ptr, subq_b_q_mem_2 - cb  // 571F  SUBQ.B    #3,(A7)+
+        b       cea_b_37
         addi    a0, a0, -1                              // 5720  SUBQ.B    #3,-(A0)
         b       op_5710
         addi    a1, a1, -1                              // 5721  SUBQ.B    #3,-(A1)
@@ -3957,127 +3957,127 @@ op_5717:
         addi    a7, a7, -2                              // 5727  SUBQ.B    #3,-(A7)
         b       op_5717
         add     addr, a0, prefetch_data                 // 5728  SUBQ.B    #3,(d16,A0)
-        b       L_06600
+        b       subq_b_q_mem
         add     addr, a1, prefetch_data                 // 5729  SUBQ.B    #3,(d16,A1)
-        b       L_06600
+        b       subq_b_q_mem
         add     addr, a2, prefetch_data                 // 572A  SUBQ.B    #3,(d16,A2)
-        b       L_06600
+        b       subq_b_q_mem
         add     addr, a3, prefetch_data                 // 572B  SUBQ.B    #3,(d16,A3)
-        b       L_06600
+        b       subq_b_q_mem
         add     addr, a4, prefetch_data                 // 572C  SUBQ.B    #3,(d16,A4)
-        b       L_06600
+        b       subq_b_q_mem
         add     addr, a5, prefetch_data                 // 572D  SUBQ.B    #3,(d16,A5)
-        b       L_06600
+        b       subq_b_q_mem
         add     addr, a6, prefetch_data                 // 572E  SUBQ.B    #3,(d16,A6)
-        b       L_06600
+        b       subq_b_q_mem
         add     addr, a7, prefetch_data                 // 572F  SUBQ.B    #3,(d16,A7)
-        b       L_06600
-        ori     rtn_addr, code_ptr, L_06608 - cb        // 5730  SUBQ.B    #3,(d8,A0,Xn)
-        b       L_0599C
-        ori     rtn_addr, code_ptr, L_06608 - cb        // 5731  SUBQ.B    #3,(d8,A1,Xn)
-        b       L_059FC
-        ori     rtn_addr, code_ptr, L_06608 - cb        // 5732  SUBQ.B    #3,(d8,A2,Xn)
-        b       L_05A5C
-        ori     rtn_addr, code_ptr, L_06608 - cb        // 5733  SUBQ.B    #3,(d8,A3,Xn)
-        b       L_05ABC
-        ori     rtn_addr, code_ptr, L_06608 - cb        // 5734  SUBQ.B    #3,(d8,A4,Xn)
-        b       L_05B1C
-        ori     rtn_addr, code_ptr, L_06608 - cb        // 5735  SUBQ.B    #3,(d8,A5,Xn)
-        b       L_05B7C
-        ori     rtn_addr, code_ptr, L_06608 - cb        // 5736  SUBQ.B    #3,(d8,A6,Xn)
-        b       L_05BDC
-        ori     rtn_addr, code_ptr, L_06608 - cb        // 5737  SUBQ.B    #3,(d8,A7,Xn)
-        b       L_05C3C
+        b       subq_b_q_mem
+        ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5730  SUBQ.B    #3,(d8,A0,Xn)
+        b       move_add_etc_b_any_any
+        ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5731  SUBQ.B    #3,(d8,A1,Xn)
+        b       move_add_etc_b_any_any_2
+        ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5732  SUBQ.B    #3,(d8,A2,Xn)
+        b       move_add_etc_b_any_any_3
+        ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5733  SUBQ.B    #3,(d8,A3,Xn)
+        b       move_add_etc_b_any_any_4
+        ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5734  SUBQ.B    #3,(d8,A4,Xn)
+        b       move_add_etc_b_any_any_5
+        ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5735  SUBQ.B    #3,(d8,A5,Xn)
+        b       move_add_etc_b_any_any_6
+        ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5736  SUBQ.B    #3,(d8,A6,Xn)
+        b       move_add_etc_b_any_any_7
+        ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5737  SUBQ.B    #3,(d8,A7,Xn)
+        b       move_add_etc_b_any_any_8
         mr      addr, prefetch_data                     // 5738  SUBQ.B    #3,(xxx).W
-        b       L_06600
-        ori     rtn_addr, code_ptr, L_06608 - cb        // 5739  SUBQ.B    #3,(xxx).L
-        b       L_05E2C
+        b       subq_b_q_mem
+        ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5739  SUBQ.B    #3,(xxx).L
+        b       fea_b_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 573A  SUBQ.B    #3,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 573B  SUBQ.B    #3,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 573C  SUBQ.B    #3,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 573D  SUBQ.B    #3,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 573E  SUBQ.B    #3,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 573F  SUBQ.B    #3,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $5740-$577F --------------------------------------------------------
         lis     data, 0x0003                            // 5740  SUBQ.W    #3,D0
-        b       L_03C30
+        b       sub_w_any_d0
         lis     data, 0x0003                            // 5741  SUBQ.W    #3,D1
-        b       L_03C70
+        b       sub_w_any_d1
         lis     data, 0x0003                            // 5742  SUBQ.W    #3,D2
-        b       L_03CB0
+        b       sub_w_any_d2
         lis     data, 0x0003                            // 5743  SUBQ.W    #3,D3
-        b       L_03CF0
+        b       sub_w_any_d3
         lis     data, 0x0003                            // 5744  SUBQ.W    #3,D4
-        b       L_03D30
+        b       sub_w_any_d4
         lis     data, 0x0003                            // 5745  SUBQ.W    #3,D5
-        b       L_03D70
+        b       sub_w_any_d5
         lis     data, 0x0003                            // 5746  SUBQ.W    #3,D6
-        b       L_03DB0
+        b       sub_w_any_d6
         lis     data, 0x0003                            // 5747  SUBQ.W    #3,D7
-        b       L_03DF0
+        b       sub_w_any_d7
         addi    a0, a0, -3                              // 5748  SUBQ.W    #3,A0
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a1, a1, -3                              // 5749  SUBQ.W    #3,A1
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a2, a2, -3                              // 574A  SUBQ.W    #3,A2
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a3, a3, -3                              // 574B  SUBQ.W    #3,A3
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a4, a4, -3                              // 574C  SUBQ.W    #3,A4
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a5, a5, -3                              // 574D  SUBQ.W    #3,A5
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a6, a6, -3                              // 574E  SUBQ.W    #3,A6
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a7, a7, -3                              // 574F  SUBQ.W    #3,A7
-        b       L_06084
+        b       move_add_etc_any_any
 op_5750:
         mr      addr, a0                                // 5750  SUBQ.W    #3,(A0)
-        b       L_06824
+        b       subq_w_q_mem_2
 op_5751:
         mr      addr, a1                                // 5751  SUBQ.W    #3,(A1)
-        b       L_06824
+        b       subq_w_q_mem_2
 op_5752:
         mr      addr, a2                                // 5752  SUBQ.W    #3,(A2)
-        b       L_06824
+        b       subq_w_q_mem_2
 op_5753:
         mr      addr, a3                                // 5753  SUBQ.W    #3,(A3)
-        b       L_06824
+        b       subq_w_q_mem_2
 op_5754:
         mr      addr, a4                                // 5754  SUBQ.W    #3,(A4)
-        b       L_06824
+        b       subq_w_q_mem_2
 op_5755:
         mr      addr, a5                                // 5755  SUBQ.W    #3,(A5)
-        b       L_06824
+        b       subq_w_q_mem_2
 op_5756:
         mr      addr, a6                                // 5756  SUBQ.W    #3,(A6)
-        b       L_06824
+        b       subq_w_q_mem_2
 op_5757:
         mr      addr, a7                                // 5757  SUBQ.W    #3,(A7)
-        b       L_06824
-        ori     rtn_addr, code_ptr, L_06824 - cb        // 5758  SUBQ.W    #3,(A0)+
-        b       L_00820
-        ori     rtn_addr, code_ptr, L_06824 - cb        // 5759  SUBQ.W    #3,(A1)+
-        b       L_008A0
-        ori     rtn_addr, code_ptr, L_06824 - cb        // 575A  SUBQ.W    #3,(A2)+
-        b       L_00920
-        ori     rtn_addr, code_ptr, L_06824 - cb        // 575B  SUBQ.W    #3,(A3)+
-        b       L_009A0
-        ori     rtn_addr, code_ptr, L_06824 - cb        // 575C  SUBQ.W    #3,(A4)+
-        b       L_00A20
-        ori     rtn_addr, code_ptr, L_06824 - cb        // 575D  SUBQ.W    #3,(A5)+
-        b       L_00AA0
-        ori     rtn_addr, code_ptr, L_06824 - cb        // 575E  SUBQ.W    #3,(A6)+
-        b       L_00B20
-        ori     rtn_addr, code_ptr, L_06824 - cb        // 575F  SUBQ.W    #3,(A7)+
-        b       L_00BA0
+        b       subq_w_q_mem_2
+        ori     rtn_addr, code_ptr, subq_w_q_mem_2 - cb  // 5758  SUBQ.W    #3,(A0)+
+        b       cea_w_30
+        ori     rtn_addr, code_ptr, subq_w_q_mem_2 - cb  // 5759  SUBQ.W    #3,(A1)+
+        b       cea_w_31
+        ori     rtn_addr, code_ptr, subq_w_q_mem_2 - cb  // 575A  SUBQ.W    #3,(A2)+
+        b       cea_w_32
+        ori     rtn_addr, code_ptr, subq_w_q_mem_2 - cb  // 575B  SUBQ.W    #3,(A3)+
+        b       cea_w_33
+        ori     rtn_addr, code_ptr, subq_w_q_mem_2 - cb  // 575C  SUBQ.W    #3,(A4)+
+        b       cea_w_34
+        ori     rtn_addr, code_ptr, subq_w_q_mem_2 - cb  // 575D  SUBQ.W    #3,(A5)+
+        b       cea_w_35
+        ori     rtn_addr, code_ptr, subq_w_q_mem_2 - cb  // 575E  SUBQ.W    #3,(A6)+
+        b       cea_w_36
+        ori     rtn_addr, code_ptr, subq_w_q_mem_2 - cb  // 575F  SUBQ.W    #3,(A7)+
+        b       cea_w_37
         addi    a0, a0, -2                              // 5760  SUBQ.W    #3,-(A0)
         b       op_5750
         addi    a1, a1, -2                              // 5761  SUBQ.W    #3,-(A1)
@@ -4095,127 +4095,127 @@ op_5757:
         addi    a7, a7, -2                              // 5767  SUBQ.W    #3,-(A7)
         b       op_5757
         add     addr, a0, prefetch_data                 // 5768  SUBQ.W    #3,(d16,A0)
-        b       L_06820
+        b       subq_w_q_mem
         add     addr, a1, prefetch_data                 // 5769  SUBQ.W    #3,(d16,A1)
-        b       L_06820
+        b       subq_w_q_mem
         add     addr, a2, prefetch_data                 // 576A  SUBQ.W    #3,(d16,A2)
-        b       L_06820
+        b       subq_w_q_mem
         add     addr, a3, prefetch_data                 // 576B  SUBQ.W    #3,(d16,A3)
-        b       L_06820
+        b       subq_w_q_mem
         add     addr, a4, prefetch_data                 // 576C  SUBQ.W    #3,(d16,A4)
-        b       L_06820
+        b       subq_w_q_mem
         add     addr, a5, prefetch_data                 // 576D  SUBQ.W    #3,(d16,A5)
-        b       L_06820
+        b       subq_w_q_mem
         add     addr, a6, prefetch_data                 // 576E  SUBQ.W    #3,(d16,A6)
-        b       L_06820
+        b       subq_w_q_mem
         add     addr, a7, prefetch_data                 // 576F  SUBQ.W    #3,(d16,A7)
-        b       L_06820
-        ori     rtn_addr, code_ptr, L_06828 - cb        // 5770  SUBQ.W    #3,(d8,A0,Xn)
-        b       L_059B0
-        ori     rtn_addr, code_ptr, L_06828 - cb        // 5771  SUBQ.W    #3,(d8,A1,Xn)
-        b       L_05A10
-        ori     rtn_addr, code_ptr, L_06828 - cb        // 5772  SUBQ.W    #3,(d8,A2,Xn)
-        b       L_05A70
-        ori     rtn_addr, code_ptr, L_06828 - cb        // 5773  SUBQ.W    #3,(d8,A3,Xn)
-        b       L_05AD0
-        ori     rtn_addr, code_ptr, L_06828 - cb        // 5774  SUBQ.W    #3,(d8,A4,Xn)
-        b       L_05B30
-        ori     rtn_addr, code_ptr, L_06828 - cb        // 5775  SUBQ.W    #3,(d8,A5,Xn)
-        b       L_05B90
-        ori     rtn_addr, code_ptr, L_06828 - cb        // 5776  SUBQ.W    #3,(d8,A6,Xn)
-        b       L_05BF0
-        ori     rtn_addr, code_ptr, L_06828 - cb        // 5777  SUBQ.W    #3,(d8,A7,Xn)
-        b       L_05C50
+        b       subq_w_q_mem
+        ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5770  SUBQ.W    #3,(d8,A0,Xn)
+        b       move_add_etc_w_any_any
+        ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5771  SUBQ.W    #3,(d8,A1,Xn)
+        b       move_add_etc_w_any_any_2
+        ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5772  SUBQ.W    #3,(d8,A2,Xn)
+        b       move_add_etc_w_any_any_3
+        ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5773  SUBQ.W    #3,(d8,A3,Xn)
+        b       move_add_etc_w_any_any_4
+        ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5774  SUBQ.W    #3,(d8,A4,Xn)
+        b       move_add_etc_w_any_any_5
+        ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5775  SUBQ.W    #3,(d8,A5,Xn)
+        b       move_add_etc_w_any_any_6
+        ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5776  SUBQ.W    #3,(d8,A6,Xn)
+        b       move_add_etc_w_any_any_7
+        ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5777  SUBQ.W    #3,(d8,A7,Xn)
+        b       move_add_etc_w_any_any_8
         mr      addr, prefetch_data                     // 5778  SUBQ.W    #3,(xxx).W
-        b       L_06820
-        ori     rtn_addr, code_ptr, L_06828 - cb        // 5779  SUBQ.W    #3,(xxx).L
-        b       L_05E70
+        b       subq_w_q_mem
+        ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5779  SUBQ.W    #3,(xxx).L
+        b       fea_w_71
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 577A  SUBQ.W    #3,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 577B  SUBQ.W    #3,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 577C  SUBQ.W    #3,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 577D  SUBQ.W    #3,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 577E  SUBQ.W    #3,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 577F  SUBQ.W    #3,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $5780-$57BF --------------------------------------------------------
         li      data, 3                                 // 5780  SUBQ.L    #3,D0
-        b       L_04204
+        b       sub_l_mem_d0_2
         li      data, 3                                 // 5781  SUBQ.L    #3,D1
-        b       L_04244
+        b       sub_l_mem_d1_2
         li      data, 3                                 // 5782  SUBQ.L    #3,D2
-        b       L_04284
+        b       sub_l_mem_d2_2
         li      data, 3                                 // 5783  SUBQ.L    #3,D3
-        b       L_042C4
+        b       sub_l_mem_d3_2
         li      data, 3                                 // 5784  SUBQ.L    #3,D4
-        b       L_04304
+        b       sub_l_mem_d4_2
         li      data, 3                                 // 5785  SUBQ.L    #3,D5
-        b       L_04344
+        b       sub_l_mem_d5_2
         li      data, 3                                 // 5786  SUBQ.L    #3,D6
-        b       L_04384
+        b       sub_l_mem_d6_2
         li      data, 3                                 // 5787  SUBQ.L    #3,D7
-        b       L_043C4
+        b       sub_l_mem_d7_2
         addi    a0, a0, -3                              // 5788  SUBQ.L    #3,A0
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a1, a1, -3                              // 5789  SUBQ.L    #3,A1
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a2, a2, -3                              // 578A  SUBQ.L    #3,A2
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a3, a3, -3                              // 578B  SUBQ.L    #3,A3
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a4, a4, -3                              // 578C  SUBQ.L    #3,A4
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a5, a5, -3                              // 578D  SUBQ.L    #3,A5
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a6, a6, -3                              // 578E  SUBQ.L    #3,A6
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a7, a7, -3                              // 578F  SUBQ.L    #3,A7
-        b       L_06084
+        b       move_add_etc_any_any
 op_5790:
         mr      addr, a0                                // 5790  SUBQ.L    #3,(A0)
-        b       L_06AC4
+        b       subq_l_q_mem_2
 op_5791:
         mr      addr, a1                                // 5791  SUBQ.L    #3,(A1)
-        b       L_06AC4
+        b       subq_l_q_mem_2
 op_5792:
         mr      addr, a2                                // 5792  SUBQ.L    #3,(A2)
-        b       L_06AC4
+        b       subq_l_q_mem_2
 op_5793:
         mr      addr, a3                                // 5793  SUBQ.L    #3,(A3)
-        b       L_06AC4
+        b       subq_l_q_mem_2
 op_5794:
         mr      addr, a4                                // 5794  SUBQ.L    #3,(A4)
-        b       L_06AC4
+        b       subq_l_q_mem_2
 op_5795:
         mr      addr, a5                                // 5795  SUBQ.L    #3,(A5)
-        b       L_06AC4
+        b       subq_l_q_mem_2
 op_5796:
         mr      addr, a6                                // 5796  SUBQ.L    #3,(A6)
-        b       L_06AC4
+        b       subq_l_q_mem_2
 op_5797:
         mr      addr, a7                                // 5797  SUBQ.L    #3,(A7)
-        b       L_06AC4
-        ori     rtn_addr, code_ptr, L_06AC4 - cb        // 5798  SUBQ.L    #3,(A0)+
-        b       L_00840
-        ori     rtn_addr, code_ptr, L_06AC4 - cb        // 5799  SUBQ.L    #3,(A1)+
-        b       L_008C0
-        ori     rtn_addr, code_ptr, L_06AC4 - cb        // 579A  SUBQ.L    #3,(A2)+
-        b       L_00940
-        ori     rtn_addr, code_ptr, L_06AC4 - cb        // 579B  SUBQ.L    #3,(A3)+
-        b       L_009C0
-        ori     rtn_addr, code_ptr, L_06AC4 - cb        // 579C  SUBQ.L    #3,(A4)+
-        b       L_00A40
-        ori     rtn_addr, code_ptr, L_06AC4 - cb        // 579D  SUBQ.L    #3,(A5)+
-        b       L_00AC0
-        ori     rtn_addr, code_ptr, L_06AC4 - cb        // 579E  SUBQ.L    #3,(A6)+
-        b       L_00B40
-        ori     rtn_addr, code_ptr, L_06AC4 - cb        // 579F  SUBQ.L    #3,(A7)+
-        b       L_00BC0
+        b       subq_l_q_mem_2
+        ori     rtn_addr, code_ptr, subq_l_q_mem_2 - cb  // 5798  SUBQ.L    #3,(A0)+
+        b       cea_l_30
+        ori     rtn_addr, code_ptr, subq_l_q_mem_2 - cb  // 5799  SUBQ.L    #3,(A1)+
+        b       cea_l_31
+        ori     rtn_addr, code_ptr, subq_l_q_mem_2 - cb  // 579A  SUBQ.L    #3,(A2)+
+        b       cea_l_32
+        ori     rtn_addr, code_ptr, subq_l_q_mem_2 - cb  // 579B  SUBQ.L    #3,(A3)+
+        b       cea_l_33
+        ori     rtn_addr, code_ptr, subq_l_q_mem_2 - cb  // 579C  SUBQ.L    #3,(A4)+
+        b       cea_l_34
+        ori     rtn_addr, code_ptr, subq_l_q_mem_2 - cb  // 579D  SUBQ.L    #3,(A5)+
+        b       cea_l_35
+        ori     rtn_addr, code_ptr, subq_l_q_mem_2 - cb  // 579E  SUBQ.L    #3,(A6)+
+        b       cea_l_36
+        ori     rtn_addr, code_ptr, subq_l_q_mem_2 - cb  // 579F  SUBQ.L    #3,(A7)+
+        b       cea_l_37
         addi    a0, a0, -4                              // 57A0  SUBQ.L    #3,-(A0)
         b       op_5790
         addi    a1, a1, -4                              // 57A1  SUBQ.L    #3,-(A1)
@@ -4233,127 +4233,127 @@ op_5797:
         addi    a7, a7, -4                              // 57A7  SUBQ.L    #3,-(A7)
         b       op_5797
         add     addr, a0, prefetch_data                 // 57A8  SUBQ.L    #3,(d16,A0)
-        b       L_06AC0
+        b       subq_l_q_mem
         add     addr, a1, prefetch_data                 // 57A9  SUBQ.L    #3,(d16,A1)
-        b       L_06AC0
+        b       subq_l_q_mem
         add     addr, a2, prefetch_data                 // 57AA  SUBQ.L    #3,(d16,A2)
-        b       L_06AC0
+        b       subq_l_q_mem
         add     addr, a3, prefetch_data                 // 57AB  SUBQ.L    #3,(d16,A3)
-        b       L_06AC0
+        b       subq_l_q_mem
         add     addr, a4, prefetch_data                 // 57AC  SUBQ.L    #3,(d16,A4)
-        b       L_06AC0
+        b       subq_l_q_mem
         add     addr, a5, prefetch_data                 // 57AD  SUBQ.L    #3,(d16,A5)
-        b       L_06AC0
+        b       subq_l_q_mem
         add     addr, a6, prefetch_data                 // 57AE  SUBQ.L    #3,(d16,A6)
-        b       L_06AC0
+        b       subq_l_q_mem
         add     addr, a7, prefetch_data                 // 57AF  SUBQ.L    #3,(d16,A7)
-        b       L_06AC0
-        ori     rtn_addr, code_ptr, L_06AC8 - cb        // 57B0  SUBQ.L    #3,(d8,A0,Xn)
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_06AC8 - cb        // 57B1  SUBQ.L    #3,(d8,A1,Xn)
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_06AC8 - cb        // 57B2  SUBQ.L    #3,(d8,A2,Xn)
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_06AC8 - cb        // 57B3  SUBQ.L    #3,(d8,A3,Xn)
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_06AC8 - cb        // 57B4  SUBQ.L    #3,(d8,A4,Xn)
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_06AC8 - cb        // 57B5  SUBQ.L    #3,(d8,A5,Xn)
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_06AC8 - cb        // 57B6  SUBQ.L    #3,(d8,A6,Xn)
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_06AC8 - cb        // 57B7  SUBQ.L    #3,(d8,A7,Xn)
-        b       L_05C68
+        b       subq_l_q_mem
+        ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 57B0  SUBQ.L    #3,(d8,A0,Xn)
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 57B1  SUBQ.L    #3,(d8,A1,Xn)
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 57B2  SUBQ.L    #3,(d8,A2,Xn)
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 57B3  SUBQ.L    #3,(d8,A3,Xn)
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 57B4  SUBQ.L    #3,(d8,A4,Xn)
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 57B5  SUBQ.L    #3,(d8,A5,Xn)
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 57B6  SUBQ.L    #3,(d8,A6,Xn)
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 57B7  SUBQ.L    #3,(d8,A7,Xn)
+        b       move_add_etc_l_any_any_8
         mr      addr, prefetch_data                     // 57B8  SUBQ.L    #3,(xxx).W
-        b       L_06AC0
-        ori     rtn_addr, code_ptr, L_06AC8 - cb        // 57B9  SUBQ.L    #3,(xxx).L
-        b       L_05E8C
+        b       subq_l_q_mem
+        ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 57B9  SUBQ.L    #3,(xxx).L
+        b       fea_l_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 57BA  SUBQ.L    #3,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 57BB  SUBQ.L    #3,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 57BC  SUBQ.L    #3,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 57BD  SUBQ.L    #3,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 57BE  SUBQ.L    #3,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 57BF  SUBQ.L    #3,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $57C0-$57FF --------------------------------------------------------
-        ori     rtn_addr, code_ptr, L_03624 - cb        // 57C0  SEQ.B     D0
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_03664 - cb        // 57C1  SEQ.B     D1
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_036A4 - cb        // 57C2  SEQ.B     D2
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_036E4 - cb        // 57C3  SEQ.B     D3
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_03724 - cb        // 57C4  SEQ.B     D4
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_03764 - cb        // 57C5  SEQ.B     D5
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_037A4 - cb        // 57C6  SEQ.B     D6
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_037E4 - cb        // 57C7  SEQ.B     D7
-        b       L_08540
+        ori     rtn_addr, code_ptr, scc_b_d0 - cb       // 57C0  SEQ.B     D0
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d1 - cb       // 57C1  SEQ.B     D1
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d2 - cb       // 57C2  SEQ.B     D2
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d3 - cb       // 57C3  SEQ.B     D3
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d4 - cb       // 57C4  SEQ.B     D4
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d5 - cb       // 57C5  SEQ.B     D5
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d6 - cb       // 57C6  SEQ.B     D6
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d7 - cb       // 57C7  SEQ.B     D7
+        b       scc_b_dn
         beq     op_50C8                                 // 57C8  DBEQ.W    D0,<label>
-        b       L_03000
+        b       dbcc_w_d0
         beq     op_50C9                                 // 57C9  DBEQ.W    D1,<label>
-        b       L_03040
+        b       dbcc_w_d1
         beq     op_50CA                                 // 57CA  DBEQ.W    D2,<label>
-        b       L_03080
+        b       dbcc_w_d2
         beq     op_50CB                                 // 57CB  DBEQ.W    D3,<label>
-        b       L_030C0
+        b       dbcc_w_d3
         beq     op_50CC                                 // 57CC  DBEQ.W    D4,<label>
-        b       L_03100
+        b       dbcc_w_d4
         beq     op_50CD                                 // 57CD  DBEQ.W    D5,<label>
-        b       L_03140
+        b       dbcc_w_d5
         beq     op_50CE                                 // 57CE  DBEQ.W    D6,<label>
-        b       L_03180
+        b       dbcc_w_d6
         beq     op_50CF                                 // 57CF  DBEQ.W    D7,<label>
-        b       L_031C0
+        b       dbcc_w_d7
 op_57D0:
         mr      addr, a0                                // 57D0  SEQ.B     (A0)
-        b       L_08584
+        b       scc_b_mem_2
 op_57D1:
         mr      addr, a1                                // 57D1  SEQ.B     (A1)
-        b       L_08584
+        b       scc_b_mem_2
 op_57D2:
         mr      addr, a2                                // 57D2  SEQ.B     (A2)
-        b       L_08584
+        b       scc_b_mem_2
 op_57D3:
         mr      addr, a3                                // 57D3  SEQ.B     (A3)
-        b       L_08584
+        b       scc_b_mem_2
 op_57D4:
         mr      addr, a4                                // 57D4  SEQ.B     (A4)
-        b       L_08584
+        b       scc_b_mem_2
 op_57D5:
         mr      addr, a5                                // 57D5  SEQ.B     (A5)
-        b       L_08584
+        b       scc_b_mem_2
 op_57D6:
         mr      addr, a6                                // 57D6  SEQ.B     (A6)
-        b       L_08584
+        b       scc_b_mem_2
 op_57D7:
         mr      addr, a7                                // 57D7  SEQ.B     (A7)
-        b       L_08584
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 57D8  SEQ.B     (A0)+
-        b       L_00800
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 57D9  SEQ.B     (A1)+
-        b       L_00880
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 57DA  SEQ.B     (A2)+
-        b       L_00900
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 57DB  SEQ.B     (A3)+
-        b       L_00980
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 57DC  SEQ.B     (A4)+
-        b       L_00A00
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 57DD  SEQ.B     (A5)+
-        b       L_00A80
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 57DE  SEQ.B     (A6)+
-        b       L_00B00
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 57DF  SEQ.B     (A7)+
-        b       L_00B80
+        b       scc_b_mem_2
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 57D8  SEQ.B     (A0)+
+        b       cea_b_30
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 57D9  SEQ.B     (A1)+
+        b       cea_b_31
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 57DA  SEQ.B     (A2)+
+        b       cea_b_32
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 57DB  SEQ.B     (A3)+
+        b       cea_b_33
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 57DC  SEQ.B     (A4)+
+        b       cea_b_34
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 57DD  SEQ.B     (A5)+
+        b       cea_b_35
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 57DE  SEQ.B     (A6)+
+        b       cea_b_36
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 57DF  SEQ.B     (A7)+
+        b       cea_b_37
         addi    a0, a0, -1                              // 57E0  SEQ.B     -(A0)
         b       op_57D0
         addi    a1, a1, -1                              // 57E1  SEQ.B     -(A1)
@@ -4371,127 +4371,127 @@ op_57D7:
         addi    a7, a7, -2                              // 57E7  SEQ.B     -(A7)
         b       op_57D7
         add     addr, a0, prefetch_data                 // 57E8  SEQ.B     (d16,A0)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a1, prefetch_data                 // 57E9  SEQ.B     (d16,A1)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a2, prefetch_data                 // 57EA  SEQ.B     (d16,A2)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a3, prefetch_data                 // 57EB  SEQ.B     (d16,A3)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a4, prefetch_data                 // 57EC  SEQ.B     (d16,A4)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a5, prefetch_data                 // 57ED  SEQ.B     (d16,A5)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a6, prefetch_data                 // 57EE  SEQ.B     (d16,A6)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a7, prefetch_data                 // 57EF  SEQ.B     (d16,A7)
-        b       L_08580
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 57F0  SEQ.B     (d8,A0,Xn)
-        b       L_05988
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 57F1  SEQ.B     (d8,A1,Xn)
-        b       L_059E8
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 57F2  SEQ.B     (d8,A2,Xn)
-        b       L_05A48
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 57F3  SEQ.B     (d8,A3,Xn)
-        b       L_05AA8
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 57F4  SEQ.B     (d8,A4,Xn)
-        b       L_05B08
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 57F5  SEQ.B     (d8,A5,Xn)
-        b       L_05B68
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 57F6  SEQ.B     (d8,A6,Xn)
-        b       L_05BC8
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 57F7  SEQ.B     (d8,A7,Xn)
-        b       L_05C28
+        b       scc_b_mem
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 57F0  SEQ.B     (d8,A0,Xn)
+        b       or_sub_etc_any_any
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 57F1  SEQ.B     (d8,A1,Xn)
+        b       or_sub_etc_any_any_2
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 57F2  SEQ.B     (d8,A2,Xn)
+        b       or_sub_etc_any_any_3
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 57F3  SEQ.B     (d8,A3,Xn)
+        b       or_sub_etc_any_any_4
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 57F4  SEQ.B     (d8,A4,Xn)
+        b       or_sub_etc_any_any_5
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 57F5  SEQ.B     (d8,A5,Xn)
+        b       or_sub_etc_any_any_6
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 57F6  SEQ.B     (d8,A6,Xn)
+        b       or_sub_etc_any_any_7
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 57F7  SEQ.B     (d8,A7,Xn)
+        b       or_sub_etc_any_any_8
         mr      addr, prefetch_data                     // 57F8  SEQ.B     (xxx).W
-        b       L_08580
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 57F9  SEQ.B     (xxx).L
-        b       L_05E14
+        b       scc_b_mem
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 57F9  SEQ.B     (xxx).L
+        b       cea_x_71_2
         crmove  4*cr7+so, eq                            // 57FA  TRAPEQ    #<data>.W
-        b       L_0CD28
+        b       trapcc_4
         crmove  4*cr7+so, eq                            // 57FB  TRAPEQ    #<data>.L
-        b       L_0CD24
+        b       trapcc_3
         crmove  4*cr7+so, eq                            // 57FC  TRAPEQ
-        b       L_0CD2C
+        b       trapcc_5
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 57FD  SEQ.B     <ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 57FE  SEQ.B     <ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 57FF  SEQ.B     <ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $5800-$583F --------------------------------------------------------
         lis     data, 0x0400                            // 5800  ADDQ.B    #4,D0
-        b       L_0B0C8
+        b       add_asl_b_any_d0
         lis     data, 0x0400                            // 5801  ADDQ.B    #4,D1
-        b       L_0B108
+        b       add_asl_b_any_d1
         lis     data, 0x0400                            // 5802  ADDQ.B    #4,D2
-        b       L_0B148
+        b       add_asl_b_any_d2
         lis     data, 0x0400                            // 5803  ADDQ.B    #4,D3
-        b       L_0B188
+        b       add_asl_b_any_d3
         lis     data, 0x0400                            // 5804  ADDQ.B    #4,D4
-        b       L_0B1C8
+        b       add_asl_b_any_d4
         lis     data, 0x0400                            // 5805  ADDQ.B    #4,D5
-        b       L_0B208
+        b       add_asl_b_any_d5
         lis     data, 0x0400                            // 5806  ADDQ.B    #4,D6
-        b       L_0B248
+        b       add_asl_b_any_d6
         lis     data, 0x0400                            // 5807  ADDQ.B    #4,D7
-        b       L_0B288
+        b       add_asl_b_any_d7
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5808  ADDQ.B    #4,A0   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5809  ADDQ.B    #4,A1   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 580A  ADDQ.B    #4,A2   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 580B  ADDQ.B    #4,A3   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 580C  ADDQ.B    #4,A4   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 580D  ADDQ.B    #4,A5   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 580E  ADDQ.B    #4,A6   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 580F  ADDQ.B    #4,A7   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 op_5810:
         mr      addr, a0                                // 5810  ADDQ.B    #4,(A0)
-        b       L_06564
+        b       addq_b_q_mem_2
 op_5811:
         mr      addr, a1                                // 5811  ADDQ.B    #4,(A1)
-        b       L_06564
+        b       addq_b_q_mem_2
 op_5812:
         mr      addr, a2                                // 5812  ADDQ.B    #4,(A2)
-        b       L_06564
+        b       addq_b_q_mem_2
 op_5813:
         mr      addr, a3                                // 5813  ADDQ.B    #4,(A3)
-        b       L_06564
+        b       addq_b_q_mem_2
 op_5814:
         mr      addr, a4                                // 5814  ADDQ.B    #4,(A4)
-        b       L_06564
+        b       addq_b_q_mem_2
 op_5815:
         mr      addr, a5                                // 5815  ADDQ.B    #4,(A5)
-        b       L_06564
+        b       addq_b_q_mem_2
 op_5816:
         mr      addr, a6                                // 5816  ADDQ.B    #4,(A6)
-        b       L_06564
+        b       addq_b_q_mem_2
 op_5817:
         mr      addr, a7                                // 5817  ADDQ.B    #4,(A7)
-        b       L_06564
-        ori     rtn_addr, code_ptr, L_06564 - cb        // 5818  ADDQ.B    #4,(A0)+
-        b       L_00800
-        ori     rtn_addr, code_ptr, L_06564 - cb        // 5819  ADDQ.B    #4,(A1)+
-        b       L_00880
-        ori     rtn_addr, code_ptr, L_06564 - cb        // 581A  ADDQ.B    #4,(A2)+
-        b       L_00900
-        ori     rtn_addr, code_ptr, L_06564 - cb        // 581B  ADDQ.B    #4,(A3)+
-        b       L_00980
-        ori     rtn_addr, code_ptr, L_06564 - cb        // 581C  ADDQ.B    #4,(A4)+
-        b       L_00A00
-        ori     rtn_addr, code_ptr, L_06564 - cb        // 581D  ADDQ.B    #4,(A5)+
-        b       L_00A80
-        ori     rtn_addr, code_ptr, L_06564 - cb        // 581E  ADDQ.B    #4,(A6)+
-        b       L_00B00
-        ori     rtn_addr, code_ptr, L_06564 - cb        // 581F  ADDQ.B    #4,(A7)+
-        b       L_00B80
+        b       addq_b_q_mem_2
+        ori     rtn_addr, code_ptr, addq_b_q_mem_2 - cb  // 5818  ADDQ.B    #4,(A0)+
+        b       cea_b_30
+        ori     rtn_addr, code_ptr, addq_b_q_mem_2 - cb  // 5819  ADDQ.B    #4,(A1)+
+        b       cea_b_31
+        ori     rtn_addr, code_ptr, addq_b_q_mem_2 - cb  // 581A  ADDQ.B    #4,(A2)+
+        b       cea_b_32
+        ori     rtn_addr, code_ptr, addq_b_q_mem_2 - cb  // 581B  ADDQ.B    #4,(A3)+
+        b       cea_b_33
+        ori     rtn_addr, code_ptr, addq_b_q_mem_2 - cb  // 581C  ADDQ.B    #4,(A4)+
+        b       cea_b_34
+        ori     rtn_addr, code_ptr, addq_b_q_mem_2 - cb  // 581D  ADDQ.B    #4,(A5)+
+        b       cea_b_35
+        ori     rtn_addr, code_ptr, addq_b_q_mem_2 - cb  // 581E  ADDQ.B    #4,(A6)+
+        b       cea_b_36
+        ori     rtn_addr, code_ptr, addq_b_q_mem_2 - cb  // 581F  ADDQ.B    #4,(A7)+
+        b       cea_b_37
         addi    a0, a0, -1                              // 5820  ADDQ.B    #4,-(A0)
         b       op_5810
         addi    a1, a1, -1                              // 5821  ADDQ.B    #4,-(A1)
@@ -4509,127 +4509,127 @@ op_5817:
         addi    a7, a7, -2                              // 5827  ADDQ.B    #4,-(A7)
         b       op_5817
         add     addr, a0, prefetch_data                 // 5828  ADDQ.B    #4,(d16,A0)
-        b       L_06560
+        b       addq_b_q_mem
         add     addr, a1, prefetch_data                 // 5829  ADDQ.B    #4,(d16,A1)
-        b       L_06560
+        b       addq_b_q_mem
         add     addr, a2, prefetch_data                 // 582A  ADDQ.B    #4,(d16,A2)
-        b       L_06560
+        b       addq_b_q_mem
         add     addr, a3, prefetch_data                 // 582B  ADDQ.B    #4,(d16,A3)
-        b       L_06560
+        b       addq_b_q_mem
         add     addr, a4, prefetch_data                 // 582C  ADDQ.B    #4,(d16,A4)
-        b       L_06560
+        b       addq_b_q_mem
         add     addr, a5, prefetch_data                 // 582D  ADDQ.B    #4,(d16,A5)
-        b       L_06560
+        b       addq_b_q_mem
         add     addr, a6, prefetch_data                 // 582E  ADDQ.B    #4,(d16,A6)
-        b       L_06560
+        b       addq_b_q_mem
         add     addr, a7, prefetch_data                 // 582F  ADDQ.B    #4,(d16,A7)
-        b       L_06560
-        ori     rtn_addr, code_ptr, L_06568 - cb        // 5830  ADDQ.B    #4,(d8,A0,Xn)
-        b       L_0599C
-        ori     rtn_addr, code_ptr, L_06568 - cb        // 5831  ADDQ.B    #4,(d8,A1,Xn)
-        b       L_059FC
-        ori     rtn_addr, code_ptr, L_06568 - cb        // 5832  ADDQ.B    #4,(d8,A2,Xn)
-        b       L_05A5C
-        ori     rtn_addr, code_ptr, L_06568 - cb        // 5833  ADDQ.B    #4,(d8,A3,Xn)
-        b       L_05ABC
-        ori     rtn_addr, code_ptr, L_06568 - cb        // 5834  ADDQ.B    #4,(d8,A4,Xn)
-        b       L_05B1C
-        ori     rtn_addr, code_ptr, L_06568 - cb        // 5835  ADDQ.B    #4,(d8,A5,Xn)
-        b       L_05B7C
-        ori     rtn_addr, code_ptr, L_06568 - cb        // 5836  ADDQ.B    #4,(d8,A6,Xn)
-        b       L_05BDC
-        ori     rtn_addr, code_ptr, L_06568 - cb        // 5837  ADDQ.B    #4,(d8,A7,Xn)
-        b       L_05C3C
+        b       addq_b_q_mem
+        ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5830  ADDQ.B    #4,(d8,A0,Xn)
+        b       move_add_etc_b_any_any
+        ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5831  ADDQ.B    #4,(d8,A1,Xn)
+        b       move_add_etc_b_any_any_2
+        ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5832  ADDQ.B    #4,(d8,A2,Xn)
+        b       move_add_etc_b_any_any_3
+        ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5833  ADDQ.B    #4,(d8,A3,Xn)
+        b       move_add_etc_b_any_any_4
+        ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5834  ADDQ.B    #4,(d8,A4,Xn)
+        b       move_add_etc_b_any_any_5
+        ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5835  ADDQ.B    #4,(d8,A5,Xn)
+        b       move_add_etc_b_any_any_6
+        ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5836  ADDQ.B    #4,(d8,A6,Xn)
+        b       move_add_etc_b_any_any_7
+        ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5837  ADDQ.B    #4,(d8,A7,Xn)
+        b       move_add_etc_b_any_any_8
         mr      addr, prefetch_data                     // 5838  ADDQ.B    #4,(xxx).W
-        b       L_06560
-        ori     rtn_addr, code_ptr, L_06568 - cb        // 5839  ADDQ.B    #4,(xxx).L
-        b       L_05E2C
+        b       addq_b_q_mem
+        ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5839  ADDQ.B    #4,(xxx).L
+        b       fea_b_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 583A  ADDQ.B    #4,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 583B  ADDQ.B    #4,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 583C  ADDQ.B    #4,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 583D  ADDQ.B    #4,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 583E  ADDQ.B    #4,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 583F  ADDQ.B    #4,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $5840-$587F --------------------------------------------------------
         lis     data, 0x0004                            // 5840  ADDQ.W    #4,D0
-        b       L_03808
+        b       add_asl_w_any_d0
         lis     data, 0x0004                            // 5841  ADDQ.W    #4,D1
-        b       L_03848
+        b       add_asl_w_any_d1
         lis     data, 0x0004                            // 5842  ADDQ.W    #4,D2
-        b       L_03888
+        b       add_asl_w_any_d2
         lis     data, 0x0004                            // 5843  ADDQ.W    #4,D3
-        b       L_038C8
+        b       add_asl_w_any_d3
         lis     data, 0x0004                            // 5844  ADDQ.W    #4,D4
-        b       L_03908
+        b       add_asl_w_any_d4
         lis     data, 0x0004                            // 5845  ADDQ.W    #4,D5
-        b       L_03948
+        b       add_asl_w_any_d5
         lis     data, 0x0004                            // 5846  ADDQ.W    #4,D6
-        b       L_03988
+        b       add_asl_w_any_d6
         lis     data, 0x0004                            // 5847  ADDQ.W    #4,D7
-        b       L_039C8
+        b       add_asl_w_any_d7
         addi    a0, a0, 4                               // 5848  ADDQ.W    #4,A0
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a1, a1, 4                               // 5849  ADDQ.W    #4,A1
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a2, a2, 4                               // 584A  ADDQ.W    #4,A2
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a3, a3, 4                               // 584B  ADDQ.W    #4,A3
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a4, a4, 4                               // 584C  ADDQ.W    #4,A4
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a5, a5, 4                               // 584D  ADDQ.W    #4,A5
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a6, a6, 4                               // 584E  ADDQ.W    #4,A6
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a7, a7, 4                               // 584F  ADDQ.W    #4,A7
-        b       L_06084
+        b       move_add_etc_any_any
 op_5850:
         mr      addr, a0                                // 5850  ADDQ.W    #4,(A0)
-        b       L_06784
+        b       addq_w_q_mem_2
 op_5851:
         mr      addr, a1                                // 5851  ADDQ.W    #4,(A1)
-        b       L_06784
+        b       addq_w_q_mem_2
 op_5852:
         mr      addr, a2                                // 5852  ADDQ.W    #4,(A2)
-        b       L_06784
+        b       addq_w_q_mem_2
 op_5853:
         mr      addr, a3                                // 5853  ADDQ.W    #4,(A3)
-        b       L_06784
+        b       addq_w_q_mem_2
 op_5854:
         mr      addr, a4                                // 5854  ADDQ.W    #4,(A4)
-        b       L_06784
+        b       addq_w_q_mem_2
 op_5855:
         mr      addr, a5                                // 5855  ADDQ.W    #4,(A5)
-        b       L_06784
+        b       addq_w_q_mem_2
 op_5856:
         mr      addr, a6                                // 5856  ADDQ.W    #4,(A6)
-        b       L_06784
+        b       addq_w_q_mem_2
 op_5857:
         mr      addr, a7                                // 5857  ADDQ.W    #4,(A7)
-        b       L_06784
-        ori     rtn_addr, code_ptr, L_06784 - cb        // 5858  ADDQ.W    #4,(A0)+
-        b       L_00820
-        ori     rtn_addr, code_ptr, L_06784 - cb        // 5859  ADDQ.W    #4,(A1)+
-        b       L_008A0
-        ori     rtn_addr, code_ptr, L_06784 - cb        // 585A  ADDQ.W    #4,(A2)+
-        b       L_00920
-        ori     rtn_addr, code_ptr, L_06784 - cb        // 585B  ADDQ.W    #4,(A3)+
-        b       L_009A0
-        ori     rtn_addr, code_ptr, L_06784 - cb        // 585C  ADDQ.W    #4,(A4)+
-        b       L_00A20
-        ori     rtn_addr, code_ptr, L_06784 - cb        // 585D  ADDQ.W    #4,(A5)+
-        b       L_00AA0
-        ori     rtn_addr, code_ptr, L_06784 - cb        // 585E  ADDQ.W    #4,(A6)+
-        b       L_00B20
-        ori     rtn_addr, code_ptr, L_06784 - cb        // 585F  ADDQ.W    #4,(A7)+
-        b       L_00BA0
+        b       addq_w_q_mem_2
+        ori     rtn_addr, code_ptr, addq_w_q_mem_2 - cb  // 5858  ADDQ.W    #4,(A0)+
+        b       cea_w_30
+        ori     rtn_addr, code_ptr, addq_w_q_mem_2 - cb  // 5859  ADDQ.W    #4,(A1)+
+        b       cea_w_31
+        ori     rtn_addr, code_ptr, addq_w_q_mem_2 - cb  // 585A  ADDQ.W    #4,(A2)+
+        b       cea_w_32
+        ori     rtn_addr, code_ptr, addq_w_q_mem_2 - cb  // 585B  ADDQ.W    #4,(A3)+
+        b       cea_w_33
+        ori     rtn_addr, code_ptr, addq_w_q_mem_2 - cb  // 585C  ADDQ.W    #4,(A4)+
+        b       cea_w_34
+        ori     rtn_addr, code_ptr, addq_w_q_mem_2 - cb  // 585D  ADDQ.W    #4,(A5)+
+        b       cea_w_35
+        ori     rtn_addr, code_ptr, addq_w_q_mem_2 - cb  // 585E  ADDQ.W    #4,(A6)+
+        b       cea_w_36
+        ori     rtn_addr, code_ptr, addq_w_q_mem_2 - cb  // 585F  ADDQ.W    #4,(A7)+
+        b       cea_w_37
         addi    a0, a0, -2                              // 5860  ADDQ.W    #4,-(A0)
         b       op_5850
         addi    a1, a1, -2                              // 5861  ADDQ.W    #4,-(A1)
@@ -4647,127 +4647,127 @@ op_5857:
         addi    a7, a7, -2                              // 5867  ADDQ.W    #4,-(A7)
         b       op_5857
         add     addr, a0, prefetch_data                 // 5868  ADDQ.W    #4,(d16,A0)
-        b       L_06780
+        b       addq_w_q_mem
         add     addr, a1, prefetch_data                 // 5869  ADDQ.W    #4,(d16,A1)
-        b       L_06780
+        b       addq_w_q_mem
         add     addr, a2, prefetch_data                 // 586A  ADDQ.W    #4,(d16,A2)
-        b       L_06780
+        b       addq_w_q_mem
         add     addr, a3, prefetch_data                 // 586B  ADDQ.W    #4,(d16,A3)
-        b       L_06780
+        b       addq_w_q_mem
         add     addr, a4, prefetch_data                 // 586C  ADDQ.W    #4,(d16,A4)
-        b       L_06780
+        b       addq_w_q_mem
         add     addr, a5, prefetch_data                 // 586D  ADDQ.W    #4,(d16,A5)
-        b       L_06780
+        b       addq_w_q_mem
         add     addr, a6, prefetch_data                 // 586E  ADDQ.W    #4,(d16,A6)
-        b       L_06780
+        b       addq_w_q_mem
         add     addr, a7, prefetch_data                 // 586F  ADDQ.W    #4,(d16,A7)
-        b       L_06780
-        ori     rtn_addr, code_ptr, L_06788 - cb        // 5870  ADDQ.W    #4,(d8,A0,Xn)
-        b       L_059B0
-        ori     rtn_addr, code_ptr, L_06788 - cb        // 5871  ADDQ.W    #4,(d8,A1,Xn)
-        b       L_05A10
-        ori     rtn_addr, code_ptr, L_06788 - cb        // 5872  ADDQ.W    #4,(d8,A2,Xn)
-        b       L_05A70
-        ori     rtn_addr, code_ptr, L_06788 - cb        // 5873  ADDQ.W    #4,(d8,A3,Xn)
-        b       L_05AD0
-        ori     rtn_addr, code_ptr, L_06788 - cb        // 5874  ADDQ.W    #4,(d8,A4,Xn)
-        b       L_05B30
-        ori     rtn_addr, code_ptr, L_06788 - cb        // 5875  ADDQ.W    #4,(d8,A5,Xn)
-        b       L_05B90
-        ori     rtn_addr, code_ptr, L_06788 - cb        // 5876  ADDQ.W    #4,(d8,A6,Xn)
-        b       L_05BF0
-        ori     rtn_addr, code_ptr, L_06788 - cb        // 5877  ADDQ.W    #4,(d8,A7,Xn)
-        b       L_05C50
+        b       addq_w_q_mem
+        ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5870  ADDQ.W    #4,(d8,A0,Xn)
+        b       move_add_etc_w_any_any
+        ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5871  ADDQ.W    #4,(d8,A1,Xn)
+        b       move_add_etc_w_any_any_2
+        ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5872  ADDQ.W    #4,(d8,A2,Xn)
+        b       move_add_etc_w_any_any_3
+        ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5873  ADDQ.W    #4,(d8,A3,Xn)
+        b       move_add_etc_w_any_any_4
+        ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5874  ADDQ.W    #4,(d8,A4,Xn)
+        b       move_add_etc_w_any_any_5
+        ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5875  ADDQ.W    #4,(d8,A5,Xn)
+        b       move_add_etc_w_any_any_6
+        ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5876  ADDQ.W    #4,(d8,A6,Xn)
+        b       move_add_etc_w_any_any_7
+        ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5877  ADDQ.W    #4,(d8,A7,Xn)
+        b       move_add_etc_w_any_any_8
         mr      addr, prefetch_data                     // 5878  ADDQ.W    #4,(xxx).W
-        b       L_06780
-        ori     rtn_addr, code_ptr, L_06788 - cb        // 5879  ADDQ.W    #4,(xxx).L
-        b       L_05E70
+        b       addq_w_q_mem
+        ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5879  ADDQ.W    #4,(xxx).L
+        b       fea_w_71
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 587A  ADDQ.W    #4,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 587B  ADDQ.W    #4,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 587C  ADDQ.W    #4,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 587D  ADDQ.W    #4,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 587E  ADDQ.W    #4,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 587F  ADDQ.W    #4,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $5880-$58BF --------------------------------------------------------
         li      data, 4                                 // 5880  ADDQ.L    #4,D0
-        b       L_03E04
+        b       add_l_mem_d0_2
         li      data, 4                                 // 5881  ADDQ.L    #4,D1
-        b       L_03E44
+        b       add_l_mem_d1_2
         li      data, 4                                 // 5882  ADDQ.L    #4,D2
-        b       L_03E84
+        b       add_l_mem_d2_2
         li      data, 4                                 // 5883  ADDQ.L    #4,D3
-        b       L_03EC4
+        b       add_l_mem_d3_2
         li      data, 4                                 // 5884  ADDQ.L    #4,D4
-        b       L_03F04
+        b       add_l_mem_d4_2
         li      data, 4                                 // 5885  ADDQ.L    #4,D5
-        b       L_03F44
+        b       add_l_mem_d5_2
         li      data, 4                                 // 5886  ADDQ.L    #4,D6
-        b       L_03F84
+        b       add_l_mem_d6_2
         li      data, 4                                 // 5887  ADDQ.L    #4,D7
-        b       L_03FC4
+        b       add_l_mem_d7_2
         addi    a0, a0, 4                               // 5888  ADDQ.L    #4,A0
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a1, a1, 4                               // 5889  ADDQ.L    #4,A1
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a2, a2, 4                               // 588A  ADDQ.L    #4,A2
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a3, a3, 4                               // 588B  ADDQ.L    #4,A3
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a4, a4, 4                               // 588C  ADDQ.L    #4,A4
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a5, a5, 4                               // 588D  ADDQ.L    #4,A5
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a6, a6, 4                               // 588E  ADDQ.L    #4,A6
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a7, a7, 4                               // 588F  ADDQ.L    #4,A7
-        b       L_06084
+        b       move_add_etc_any_any
 op_5890:
         mr      addr, a0                                // 5890  ADDQ.L    #4,(A0)
-        b       L_06A24
+        b       addq_l_q_mem_2
 op_5891:
         mr      addr, a1                                // 5891  ADDQ.L    #4,(A1)
-        b       L_06A24
+        b       addq_l_q_mem_2
 op_5892:
         mr      addr, a2                                // 5892  ADDQ.L    #4,(A2)
-        b       L_06A24
+        b       addq_l_q_mem_2
 op_5893:
         mr      addr, a3                                // 5893  ADDQ.L    #4,(A3)
-        b       L_06A24
+        b       addq_l_q_mem_2
 op_5894:
         mr      addr, a4                                // 5894  ADDQ.L    #4,(A4)
-        b       L_06A24
+        b       addq_l_q_mem_2
 op_5895:
         mr      addr, a5                                // 5895  ADDQ.L    #4,(A5)
-        b       L_06A24
+        b       addq_l_q_mem_2
 op_5896:
         mr      addr, a6                                // 5896  ADDQ.L    #4,(A6)
-        b       L_06A24
+        b       addq_l_q_mem_2
 op_5897:
         mr      addr, a7                                // 5897  ADDQ.L    #4,(A7)
-        b       L_06A24
-        ori     rtn_addr, code_ptr, L_06A24 - cb        // 5898  ADDQ.L    #4,(A0)+
-        b       L_00840
-        ori     rtn_addr, code_ptr, L_06A24 - cb        // 5899  ADDQ.L    #4,(A1)+
-        b       L_008C0
-        ori     rtn_addr, code_ptr, L_06A24 - cb        // 589A  ADDQ.L    #4,(A2)+
-        b       L_00940
-        ori     rtn_addr, code_ptr, L_06A24 - cb        // 589B  ADDQ.L    #4,(A3)+
-        b       L_009C0
-        ori     rtn_addr, code_ptr, L_06A24 - cb        // 589C  ADDQ.L    #4,(A4)+
-        b       L_00A40
-        ori     rtn_addr, code_ptr, L_06A24 - cb        // 589D  ADDQ.L    #4,(A5)+
-        b       L_00AC0
-        ori     rtn_addr, code_ptr, L_06A24 - cb        // 589E  ADDQ.L    #4,(A6)+
-        b       L_00B40
-        ori     rtn_addr, code_ptr, L_06A24 - cb        // 589F  ADDQ.L    #4,(A7)+
-        b       L_00BC0
+        b       addq_l_q_mem_2
+        ori     rtn_addr, code_ptr, addq_l_q_mem_2 - cb  // 5898  ADDQ.L    #4,(A0)+
+        b       cea_l_30
+        ori     rtn_addr, code_ptr, addq_l_q_mem_2 - cb  // 5899  ADDQ.L    #4,(A1)+
+        b       cea_l_31
+        ori     rtn_addr, code_ptr, addq_l_q_mem_2 - cb  // 589A  ADDQ.L    #4,(A2)+
+        b       cea_l_32
+        ori     rtn_addr, code_ptr, addq_l_q_mem_2 - cb  // 589B  ADDQ.L    #4,(A3)+
+        b       cea_l_33
+        ori     rtn_addr, code_ptr, addq_l_q_mem_2 - cb  // 589C  ADDQ.L    #4,(A4)+
+        b       cea_l_34
+        ori     rtn_addr, code_ptr, addq_l_q_mem_2 - cb  // 589D  ADDQ.L    #4,(A5)+
+        b       cea_l_35
+        ori     rtn_addr, code_ptr, addq_l_q_mem_2 - cb  // 589E  ADDQ.L    #4,(A6)+
+        b       cea_l_36
+        ori     rtn_addr, code_ptr, addq_l_q_mem_2 - cb  // 589F  ADDQ.L    #4,(A7)+
+        b       cea_l_37
         addi    a0, a0, -4                              // 58A0  ADDQ.L    #4,-(A0)
         b       op_5890
         addi    a1, a1, -4                              // 58A1  ADDQ.L    #4,-(A1)
@@ -4785,127 +4785,127 @@ op_5897:
         addi    a7, a7, -4                              // 58A7  ADDQ.L    #4,-(A7)
         b       op_5897
         add     addr, a0, prefetch_data                 // 58A8  ADDQ.L    #4,(d16,A0)
-        b       L_06A20
+        b       addq_l_q_mem
         add     addr, a1, prefetch_data                 // 58A9  ADDQ.L    #4,(d16,A1)
-        b       L_06A20
+        b       addq_l_q_mem
         add     addr, a2, prefetch_data                 // 58AA  ADDQ.L    #4,(d16,A2)
-        b       L_06A20
+        b       addq_l_q_mem
         add     addr, a3, prefetch_data                 // 58AB  ADDQ.L    #4,(d16,A3)
-        b       L_06A20
+        b       addq_l_q_mem
         add     addr, a4, prefetch_data                 // 58AC  ADDQ.L    #4,(d16,A4)
-        b       L_06A20
+        b       addq_l_q_mem
         add     addr, a5, prefetch_data                 // 58AD  ADDQ.L    #4,(d16,A5)
-        b       L_06A20
+        b       addq_l_q_mem
         add     addr, a6, prefetch_data                 // 58AE  ADDQ.L    #4,(d16,A6)
-        b       L_06A20
+        b       addq_l_q_mem
         add     addr, a7, prefetch_data                 // 58AF  ADDQ.L    #4,(d16,A7)
-        b       L_06A20
-        ori     rtn_addr, code_ptr, L_06A28 - cb        // 58B0  ADDQ.L    #4,(d8,A0,Xn)
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_06A28 - cb        // 58B1  ADDQ.L    #4,(d8,A1,Xn)
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_06A28 - cb        // 58B2  ADDQ.L    #4,(d8,A2,Xn)
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_06A28 - cb        // 58B3  ADDQ.L    #4,(d8,A3,Xn)
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_06A28 - cb        // 58B4  ADDQ.L    #4,(d8,A4,Xn)
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_06A28 - cb        // 58B5  ADDQ.L    #4,(d8,A5,Xn)
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_06A28 - cb        // 58B6  ADDQ.L    #4,(d8,A6,Xn)
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_06A28 - cb        // 58B7  ADDQ.L    #4,(d8,A7,Xn)
-        b       L_05C68
+        b       addq_l_q_mem
+        ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 58B0  ADDQ.L    #4,(d8,A0,Xn)
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 58B1  ADDQ.L    #4,(d8,A1,Xn)
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 58B2  ADDQ.L    #4,(d8,A2,Xn)
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 58B3  ADDQ.L    #4,(d8,A3,Xn)
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 58B4  ADDQ.L    #4,(d8,A4,Xn)
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 58B5  ADDQ.L    #4,(d8,A5,Xn)
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 58B6  ADDQ.L    #4,(d8,A6,Xn)
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 58B7  ADDQ.L    #4,(d8,A7,Xn)
+        b       move_add_etc_l_any_any_8
         mr      addr, prefetch_data                     // 58B8  ADDQ.L    #4,(xxx).W
-        b       L_06A20
-        ori     rtn_addr, code_ptr, L_06A28 - cb        // 58B9  ADDQ.L    #4,(xxx).L
-        b       L_05E8C
+        b       addq_l_q_mem
+        ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 58B9  ADDQ.L    #4,(xxx).L
+        b       fea_l_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 58BA  ADDQ.L    #4,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 58BB  ADDQ.L    #4,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 58BC  ADDQ.L    #4,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 58BD  ADDQ.L    #4,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 58BE  ADDQ.L    #4,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 58BF  ADDQ.L    #4,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $58C0-$58FF --------------------------------------------------------
-        ori     rtn_addr, code_ptr, L_03624 - cb        // 58C0  SVC.B     D0
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_03664 - cb        // 58C1  SVC.B     D1
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_036A4 - cb        // 58C2  SVC.B     D2
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_036E4 - cb        // 58C3  SVC.B     D3
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_03724 - cb        // 58C4  SVC.B     D4
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_03764 - cb        // 58C5  SVC.B     D5
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_037A4 - cb        // 58C6  SVC.B     D6
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_037E4 - cb        // 58C7  SVC.B     D7
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_03000 - cb        // 58C8  DBVC.W    D0,<label>
-        b       L_08500
-        ori     rtn_addr, code_ptr, L_03040 - cb        // 58C9  DBVC.W    D1,<label>
-        b       L_08500
-        ori     rtn_addr, code_ptr, L_03080 - cb        // 58CA  DBVC.W    D2,<label>
-        b       L_08500
-        ori     rtn_addr, code_ptr, L_030C0 - cb        // 58CB  DBVC.W    D3,<label>
-        b       L_08500
-        ori     rtn_addr, code_ptr, L_03100 - cb        // 58CC  DBVC.W    D4,<label>
-        b       L_08500
-        ori     rtn_addr, code_ptr, L_03140 - cb        // 58CD  DBVC.W    D5,<label>
-        b       L_08500
-        ori     rtn_addr, code_ptr, L_03180 - cb        // 58CE  DBVC.W    D6,<label>
-        b       L_08500
-        ori     rtn_addr, code_ptr, L_031C0 - cb        // 58CF  DBVC.W    D7,<label>
-        b       L_08500
+        ori     rtn_addr, code_ptr, scc_b_d0 - cb       // 58C0  SVC.B     D0
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d1 - cb       // 58C1  SVC.B     D1
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d2 - cb       // 58C2  SVC.B     D2
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d3 - cb       // 58C3  SVC.B     D3
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d4 - cb       // 58C4  SVC.B     D4
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d5 - cb       // 58C5  SVC.B     D5
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d6 - cb       // 58C6  SVC.B     D6
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d7 - cb       // 58C7  SVC.B     D7
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d0 - cb      // 58C8  DBVC.W    D0,<label>
+        b       dbcc_w_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d1 - cb      // 58C9  DBVC.W    D1,<label>
+        b       dbcc_w_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d2 - cb      // 58CA  DBVC.W    D2,<label>
+        b       dbcc_w_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d3 - cb      // 58CB  DBVC.W    D3,<label>
+        b       dbcc_w_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d4 - cb      // 58CC  DBVC.W    D4,<label>
+        b       dbcc_w_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d5 - cb      // 58CD  DBVC.W    D5,<label>
+        b       dbcc_w_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d6 - cb      // 58CE  DBVC.W    D6,<label>
+        b       dbcc_w_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d7 - cb      // 58CF  DBVC.W    D7,<label>
+        b       dbcc_w_dn
 op_58D0:
         mr      addr, a0                                // 58D0  SVC.B     (A0)
-        b       L_08584
+        b       scc_b_mem_2
 op_58D1:
         mr      addr, a1                                // 58D1  SVC.B     (A1)
-        b       L_08584
+        b       scc_b_mem_2
 op_58D2:
         mr      addr, a2                                // 58D2  SVC.B     (A2)
-        b       L_08584
+        b       scc_b_mem_2
 op_58D3:
         mr      addr, a3                                // 58D3  SVC.B     (A3)
-        b       L_08584
+        b       scc_b_mem_2
 op_58D4:
         mr      addr, a4                                // 58D4  SVC.B     (A4)
-        b       L_08584
+        b       scc_b_mem_2
 op_58D5:
         mr      addr, a5                                // 58D5  SVC.B     (A5)
-        b       L_08584
+        b       scc_b_mem_2
 op_58D6:
         mr      addr, a6                                // 58D6  SVC.B     (A6)
-        b       L_08584
+        b       scc_b_mem_2
 op_58D7:
         mr      addr, a7                                // 58D7  SVC.B     (A7)
-        b       L_08584
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 58D8  SVC.B     (A0)+
-        b       L_00800
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 58D9  SVC.B     (A1)+
-        b       L_00880
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 58DA  SVC.B     (A2)+
-        b       L_00900
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 58DB  SVC.B     (A3)+
-        b       L_00980
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 58DC  SVC.B     (A4)+
-        b       L_00A00
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 58DD  SVC.B     (A5)+
-        b       L_00A80
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 58DE  SVC.B     (A6)+
-        b       L_00B00
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 58DF  SVC.B     (A7)+
-        b       L_00B80
+        b       scc_b_mem_2
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 58D8  SVC.B     (A0)+
+        b       cea_b_30
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 58D9  SVC.B     (A1)+
+        b       cea_b_31
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 58DA  SVC.B     (A2)+
+        b       cea_b_32
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 58DB  SVC.B     (A3)+
+        b       cea_b_33
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 58DC  SVC.B     (A4)+
+        b       cea_b_34
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 58DD  SVC.B     (A5)+
+        b       cea_b_35
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 58DE  SVC.B     (A6)+
+        b       cea_b_36
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 58DF  SVC.B     (A7)+
+        b       cea_b_37
         addi    a0, a0, -1                              // 58E0  SVC.B     -(A0)
         b       op_58D0
         addi    a1, a1, -1                              // 58E1  SVC.B     -(A1)
@@ -4923,127 +4923,127 @@ op_58D7:
         addi    a7, a7, -2                              // 58E7  SVC.B     -(A7)
         b       op_58D7
         add     addr, a0, prefetch_data                 // 58E8  SVC.B     (d16,A0)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a1, prefetch_data                 // 58E9  SVC.B     (d16,A1)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a2, prefetch_data                 // 58EA  SVC.B     (d16,A2)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a3, prefetch_data                 // 58EB  SVC.B     (d16,A3)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a4, prefetch_data                 // 58EC  SVC.B     (d16,A4)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a5, prefetch_data                 // 58ED  SVC.B     (d16,A5)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a6, prefetch_data                 // 58EE  SVC.B     (d16,A6)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a7, prefetch_data                 // 58EF  SVC.B     (d16,A7)
-        b       L_08580
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 58F0  SVC.B     (d8,A0,Xn)
-        b       L_05988
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 58F1  SVC.B     (d8,A1,Xn)
-        b       L_059E8
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 58F2  SVC.B     (d8,A2,Xn)
-        b       L_05A48
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 58F3  SVC.B     (d8,A3,Xn)
-        b       L_05AA8
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 58F4  SVC.B     (d8,A4,Xn)
-        b       L_05B08
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 58F5  SVC.B     (d8,A5,Xn)
-        b       L_05B68
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 58F6  SVC.B     (d8,A6,Xn)
-        b       L_05BC8
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 58F7  SVC.B     (d8,A7,Xn)
-        b       L_05C28
+        b       scc_b_mem
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 58F0  SVC.B     (d8,A0,Xn)
+        b       or_sub_etc_any_any
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 58F1  SVC.B     (d8,A1,Xn)
+        b       or_sub_etc_any_any_2
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 58F2  SVC.B     (d8,A2,Xn)
+        b       or_sub_etc_any_any_3
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 58F3  SVC.B     (d8,A3,Xn)
+        b       or_sub_etc_any_any_4
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 58F4  SVC.B     (d8,A4,Xn)
+        b       or_sub_etc_any_any_5
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 58F5  SVC.B     (d8,A5,Xn)
+        b       or_sub_etc_any_any_6
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 58F6  SVC.B     (d8,A6,Xn)
+        b       or_sub_etc_any_any_7
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 58F7  SVC.B     (d8,A7,Xn)
+        b       or_sub_etc_any_any_8
         mr      addr, prefetch_data                     // 58F8  SVC.B     (xxx).W
-        b       L_08580
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 58F9  SVC.B     (xxx).L
-        b       L_05E14
+        b       scc_b_mem
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 58F9  SVC.B     (xxx).L
+        b       cea_x_71_2
         lhau    prefetch_data, 2(pc)                    // 58FA  TRAPVC    #<data>.W
-        b       L_0CCE8
+        b       trapcc
         lhau    prefetch_data, 4(pc)                    // 58FB  TRAPVC    #<data>.L
-        b       L_0CCE8
+        b       trapcc
         ori     base_disp, code_ptr, D_085C0 - cb       // 58FC  TRAPVC
-        b       L_0CCEC
+        b       trapcc_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 58FD  SVC.B     <ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 58FE  SVC.B     <ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 58FF  SVC.B     <ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $5900-$593F --------------------------------------------------------
         lis     data, 0x0400                            // 5900  SUBQ.B    #4,D0
-        b       L_03608
+        b       sub_b_any_d0
         lis     data, 0x0400                            // 5901  SUBQ.B    #4,D1
-        b       L_03648
+        b       sub_b_any_d1
         lis     data, 0x0400                            // 5902  SUBQ.B    #4,D2
-        b       L_03688
+        b       sub_b_any_d2
         lis     data, 0x0400                            // 5903  SUBQ.B    #4,D3
-        b       L_036C8
+        b       sub_b_any_d3
         lis     data, 0x0400                            // 5904  SUBQ.B    #4,D4
-        b       L_03708
+        b       sub_b_any_d4
         lis     data, 0x0400                            // 5905  SUBQ.B    #4,D5
-        b       L_03748
+        b       sub_b_any_d5
         lis     data, 0x0400                            // 5906  SUBQ.B    #4,D6
-        b       L_03788
+        b       sub_b_any_d6
         lis     data, 0x0400                            // 5907  SUBQ.B    #4,D7
-        b       L_037C8
+        b       sub_b_any_d7
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5908  SUBQ.B    #4,A0   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5909  SUBQ.B    #4,A1   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 590A  SUBQ.B    #4,A2   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 590B  SUBQ.B    #4,A3   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 590C  SUBQ.B    #4,A4   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 590D  SUBQ.B    #4,A5   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 590E  SUBQ.B    #4,A6   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 590F  SUBQ.B    #4,A7   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 op_5910:
         mr      addr, a0                                // 5910  SUBQ.B    #4,(A0)
-        b       L_06604
+        b       subq_b_q_mem_2
 op_5911:
         mr      addr, a1                                // 5911  SUBQ.B    #4,(A1)
-        b       L_06604
+        b       subq_b_q_mem_2
 op_5912:
         mr      addr, a2                                // 5912  SUBQ.B    #4,(A2)
-        b       L_06604
+        b       subq_b_q_mem_2
 op_5913:
         mr      addr, a3                                // 5913  SUBQ.B    #4,(A3)
-        b       L_06604
+        b       subq_b_q_mem_2
 op_5914:
         mr      addr, a4                                // 5914  SUBQ.B    #4,(A4)
-        b       L_06604
+        b       subq_b_q_mem_2
 op_5915:
         mr      addr, a5                                // 5915  SUBQ.B    #4,(A5)
-        b       L_06604
+        b       subq_b_q_mem_2
 op_5916:
         mr      addr, a6                                // 5916  SUBQ.B    #4,(A6)
-        b       L_06604
+        b       subq_b_q_mem_2
 op_5917:
         mr      addr, a7                                // 5917  SUBQ.B    #4,(A7)
-        b       L_06604
-        ori     rtn_addr, code_ptr, L_06604 - cb        // 5918  SUBQ.B    #4,(A0)+
-        b       L_00800
-        ori     rtn_addr, code_ptr, L_06604 - cb        // 5919  SUBQ.B    #4,(A1)+
-        b       L_00880
-        ori     rtn_addr, code_ptr, L_06604 - cb        // 591A  SUBQ.B    #4,(A2)+
-        b       L_00900
-        ori     rtn_addr, code_ptr, L_06604 - cb        // 591B  SUBQ.B    #4,(A3)+
-        b       L_00980
-        ori     rtn_addr, code_ptr, L_06604 - cb        // 591C  SUBQ.B    #4,(A4)+
-        b       L_00A00
-        ori     rtn_addr, code_ptr, L_06604 - cb        // 591D  SUBQ.B    #4,(A5)+
-        b       L_00A80
-        ori     rtn_addr, code_ptr, L_06604 - cb        // 591E  SUBQ.B    #4,(A6)+
-        b       L_00B00
-        ori     rtn_addr, code_ptr, L_06604 - cb        // 591F  SUBQ.B    #4,(A7)+
-        b       L_00B80
+        b       subq_b_q_mem_2
+        ori     rtn_addr, code_ptr, subq_b_q_mem_2 - cb  // 5918  SUBQ.B    #4,(A0)+
+        b       cea_b_30
+        ori     rtn_addr, code_ptr, subq_b_q_mem_2 - cb  // 5919  SUBQ.B    #4,(A1)+
+        b       cea_b_31
+        ori     rtn_addr, code_ptr, subq_b_q_mem_2 - cb  // 591A  SUBQ.B    #4,(A2)+
+        b       cea_b_32
+        ori     rtn_addr, code_ptr, subq_b_q_mem_2 - cb  // 591B  SUBQ.B    #4,(A3)+
+        b       cea_b_33
+        ori     rtn_addr, code_ptr, subq_b_q_mem_2 - cb  // 591C  SUBQ.B    #4,(A4)+
+        b       cea_b_34
+        ori     rtn_addr, code_ptr, subq_b_q_mem_2 - cb  // 591D  SUBQ.B    #4,(A5)+
+        b       cea_b_35
+        ori     rtn_addr, code_ptr, subq_b_q_mem_2 - cb  // 591E  SUBQ.B    #4,(A6)+
+        b       cea_b_36
+        ori     rtn_addr, code_ptr, subq_b_q_mem_2 - cb  // 591F  SUBQ.B    #4,(A7)+
+        b       cea_b_37
         addi    a0, a0, -1                              // 5920  SUBQ.B    #4,-(A0)
         b       op_5910
         addi    a1, a1, -1                              // 5921  SUBQ.B    #4,-(A1)
@@ -5061,127 +5061,127 @@ op_5917:
         addi    a7, a7, -2                              // 5927  SUBQ.B    #4,-(A7)
         b       op_5917
         add     addr, a0, prefetch_data                 // 5928  SUBQ.B    #4,(d16,A0)
-        b       L_06600
+        b       subq_b_q_mem
         add     addr, a1, prefetch_data                 // 5929  SUBQ.B    #4,(d16,A1)
-        b       L_06600
+        b       subq_b_q_mem
         add     addr, a2, prefetch_data                 // 592A  SUBQ.B    #4,(d16,A2)
-        b       L_06600
+        b       subq_b_q_mem
         add     addr, a3, prefetch_data                 // 592B  SUBQ.B    #4,(d16,A3)
-        b       L_06600
+        b       subq_b_q_mem
         add     addr, a4, prefetch_data                 // 592C  SUBQ.B    #4,(d16,A4)
-        b       L_06600
+        b       subq_b_q_mem
         add     addr, a5, prefetch_data                 // 592D  SUBQ.B    #4,(d16,A5)
-        b       L_06600
+        b       subq_b_q_mem
         add     addr, a6, prefetch_data                 // 592E  SUBQ.B    #4,(d16,A6)
-        b       L_06600
+        b       subq_b_q_mem
         add     addr, a7, prefetch_data                 // 592F  SUBQ.B    #4,(d16,A7)
-        b       L_06600
-        ori     rtn_addr, code_ptr, L_06608 - cb        // 5930  SUBQ.B    #4,(d8,A0,Xn)
-        b       L_0599C
-        ori     rtn_addr, code_ptr, L_06608 - cb        // 5931  SUBQ.B    #4,(d8,A1,Xn)
-        b       L_059FC
-        ori     rtn_addr, code_ptr, L_06608 - cb        // 5932  SUBQ.B    #4,(d8,A2,Xn)
-        b       L_05A5C
-        ori     rtn_addr, code_ptr, L_06608 - cb        // 5933  SUBQ.B    #4,(d8,A3,Xn)
-        b       L_05ABC
-        ori     rtn_addr, code_ptr, L_06608 - cb        // 5934  SUBQ.B    #4,(d8,A4,Xn)
-        b       L_05B1C
-        ori     rtn_addr, code_ptr, L_06608 - cb        // 5935  SUBQ.B    #4,(d8,A5,Xn)
-        b       L_05B7C
-        ori     rtn_addr, code_ptr, L_06608 - cb        // 5936  SUBQ.B    #4,(d8,A6,Xn)
-        b       L_05BDC
-        ori     rtn_addr, code_ptr, L_06608 - cb        // 5937  SUBQ.B    #4,(d8,A7,Xn)
-        b       L_05C3C
+        b       subq_b_q_mem
+        ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5930  SUBQ.B    #4,(d8,A0,Xn)
+        b       move_add_etc_b_any_any
+        ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5931  SUBQ.B    #4,(d8,A1,Xn)
+        b       move_add_etc_b_any_any_2
+        ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5932  SUBQ.B    #4,(d8,A2,Xn)
+        b       move_add_etc_b_any_any_3
+        ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5933  SUBQ.B    #4,(d8,A3,Xn)
+        b       move_add_etc_b_any_any_4
+        ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5934  SUBQ.B    #4,(d8,A4,Xn)
+        b       move_add_etc_b_any_any_5
+        ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5935  SUBQ.B    #4,(d8,A5,Xn)
+        b       move_add_etc_b_any_any_6
+        ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5936  SUBQ.B    #4,(d8,A6,Xn)
+        b       move_add_etc_b_any_any_7
+        ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5937  SUBQ.B    #4,(d8,A7,Xn)
+        b       move_add_etc_b_any_any_8
         mr      addr, prefetch_data                     // 5938  SUBQ.B    #4,(xxx).W
-        b       L_06600
-        ori     rtn_addr, code_ptr, L_06608 - cb        // 5939  SUBQ.B    #4,(xxx).L
-        b       L_05E2C
+        b       subq_b_q_mem
+        ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5939  SUBQ.B    #4,(xxx).L
+        b       fea_b_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 593A  SUBQ.B    #4,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 593B  SUBQ.B    #4,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 593C  SUBQ.B    #4,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 593D  SUBQ.B    #4,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 593E  SUBQ.B    #4,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 593F  SUBQ.B    #4,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $5940-$597F --------------------------------------------------------
         lis     data, 0x0004                            // 5940  SUBQ.W    #4,D0
-        b       L_03C30
+        b       sub_w_any_d0
         lis     data, 0x0004                            // 5941  SUBQ.W    #4,D1
-        b       L_03C70
+        b       sub_w_any_d1
         lis     data, 0x0004                            // 5942  SUBQ.W    #4,D2
-        b       L_03CB0
+        b       sub_w_any_d2
         lis     data, 0x0004                            // 5943  SUBQ.W    #4,D3
-        b       L_03CF0
+        b       sub_w_any_d3
         lis     data, 0x0004                            // 5944  SUBQ.W    #4,D4
-        b       L_03D30
+        b       sub_w_any_d4
         lis     data, 0x0004                            // 5945  SUBQ.W    #4,D5
-        b       L_03D70
+        b       sub_w_any_d5
         lis     data, 0x0004                            // 5946  SUBQ.W    #4,D6
-        b       L_03DB0
+        b       sub_w_any_d6
         lis     data, 0x0004                            // 5947  SUBQ.W    #4,D7
-        b       L_03DF0
+        b       sub_w_any_d7
         addi    a0, a0, -4                              // 5948  SUBQ.W    #4,A0
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a1, a1, -4                              // 5949  SUBQ.W    #4,A1
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a2, a2, -4                              // 594A  SUBQ.W    #4,A2
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a3, a3, -4                              // 594B  SUBQ.W    #4,A3
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a4, a4, -4                              // 594C  SUBQ.W    #4,A4
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a5, a5, -4                              // 594D  SUBQ.W    #4,A5
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a6, a6, -4                              // 594E  SUBQ.W    #4,A6
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a7, a7, -4                              // 594F  SUBQ.W    #4,A7
-        b       L_06084
+        b       move_add_etc_any_any
 op_5950:
         mr      addr, a0                                // 5950  SUBQ.W    #4,(A0)
-        b       L_06824
+        b       subq_w_q_mem_2
 op_5951:
         mr      addr, a1                                // 5951  SUBQ.W    #4,(A1)
-        b       L_06824
+        b       subq_w_q_mem_2
 op_5952:
         mr      addr, a2                                // 5952  SUBQ.W    #4,(A2)
-        b       L_06824
+        b       subq_w_q_mem_2
 op_5953:
         mr      addr, a3                                // 5953  SUBQ.W    #4,(A3)
-        b       L_06824
+        b       subq_w_q_mem_2
 op_5954:
         mr      addr, a4                                // 5954  SUBQ.W    #4,(A4)
-        b       L_06824
+        b       subq_w_q_mem_2
 op_5955:
         mr      addr, a5                                // 5955  SUBQ.W    #4,(A5)
-        b       L_06824
+        b       subq_w_q_mem_2
 op_5956:
         mr      addr, a6                                // 5956  SUBQ.W    #4,(A6)
-        b       L_06824
+        b       subq_w_q_mem_2
 op_5957:
         mr      addr, a7                                // 5957  SUBQ.W    #4,(A7)
-        b       L_06824
-        ori     rtn_addr, code_ptr, L_06824 - cb        // 5958  SUBQ.W    #4,(A0)+
-        b       L_00820
-        ori     rtn_addr, code_ptr, L_06824 - cb        // 5959  SUBQ.W    #4,(A1)+
-        b       L_008A0
-        ori     rtn_addr, code_ptr, L_06824 - cb        // 595A  SUBQ.W    #4,(A2)+
-        b       L_00920
-        ori     rtn_addr, code_ptr, L_06824 - cb        // 595B  SUBQ.W    #4,(A3)+
-        b       L_009A0
-        ori     rtn_addr, code_ptr, L_06824 - cb        // 595C  SUBQ.W    #4,(A4)+
-        b       L_00A20
-        ori     rtn_addr, code_ptr, L_06824 - cb        // 595D  SUBQ.W    #4,(A5)+
-        b       L_00AA0
-        ori     rtn_addr, code_ptr, L_06824 - cb        // 595E  SUBQ.W    #4,(A6)+
-        b       L_00B20
-        ori     rtn_addr, code_ptr, L_06824 - cb        // 595F  SUBQ.W    #4,(A7)+
-        b       L_00BA0
+        b       subq_w_q_mem_2
+        ori     rtn_addr, code_ptr, subq_w_q_mem_2 - cb  // 5958  SUBQ.W    #4,(A0)+
+        b       cea_w_30
+        ori     rtn_addr, code_ptr, subq_w_q_mem_2 - cb  // 5959  SUBQ.W    #4,(A1)+
+        b       cea_w_31
+        ori     rtn_addr, code_ptr, subq_w_q_mem_2 - cb  // 595A  SUBQ.W    #4,(A2)+
+        b       cea_w_32
+        ori     rtn_addr, code_ptr, subq_w_q_mem_2 - cb  // 595B  SUBQ.W    #4,(A3)+
+        b       cea_w_33
+        ori     rtn_addr, code_ptr, subq_w_q_mem_2 - cb  // 595C  SUBQ.W    #4,(A4)+
+        b       cea_w_34
+        ori     rtn_addr, code_ptr, subq_w_q_mem_2 - cb  // 595D  SUBQ.W    #4,(A5)+
+        b       cea_w_35
+        ori     rtn_addr, code_ptr, subq_w_q_mem_2 - cb  // 595E  SUBQ.W    #4,(A6)+
+        b       cea_w_36
+        ori     rtn_addr, code_ptr, subq_w_q_mem_2 - cb  // 595F  SUBQ.W    #4,(A7)+
+        b       cea_w_37
         addi    a0, a0, -2                              // 5960  SUBQ.W    #4,-(A0)
         b       op_5950
         addi    a1, a1, -2                              // 5961  SUBQ.W    #4,-(A1)
@@ -5199,127 +5199,127 @@ op_5957:
         addi    a7, a7, -2                              // 5967  SUBQ.W    #4,-(A7)
         b       op_5957
         add     addr, a0, prefetch_data                 // 5968  SUBQ.W    #4,(d16,A0)
-        b       L_06820
+        b       subq_w_q_mem
         add     addr, a1, prefetch_data                 // 5969  SUBQ.W    #4,(d16,A1)
-        b       L_06820
+        b       subq_w_q_mem
         add     addr, a2, prefetch_data                 // 596A  SUBQ.W    #4,(d16,A2)
-        b       L_06820
+        b       subq_w_q_mem
         add     addr, a3, prefetch_data                 // 596B  SUBQ.W    #4,(d16,A3)
-        b       L_06820
+        b       subq_w_q_mem
         add     addr, a4, prefetch_data                 // 596C  SUBQ.W    #4,(d16,A4)
-        b       L_06820
+        b       subq_w_q_mem
         add     addr, a5, prefetch_data                 // 596D  SUBQ.W    #4,(d16,A5)
-        b       L_06820
+        b       subq_w_q_mem
         add     addr, a6, prefetch_data                 // 596E  SUBQ.W    #4,(d16,A6)
-        b       L_06820
+        b       subq_w_q_mem
         add     addr, a7, prefetch_data                 // 596F  SUBQ.W    #4,(d16,A7)
-        b       L_06820
-        ori     rtn_addr, code_ptr, L_06828 - cb        // 5970  SUBQ.W    #4,(d8,A0,Xn)
-        b       L_059B0
-        ori     rtn_addr, code_ptr, L_06828 - cb        // 5971  SUBQ.W    #4,(d8,A1,Xn)
-        b       L_05A10
-        ori     rtn_addr, code_ptr, L_06828 - cb        // 5972  SUBQ.W    #4,(d8,A2,Xn)
-        b       L_05A70
-        ori     rtn_addr, code_ptr, L_06828 - cb        // 5973  SUBQ.W    #4,(d8,A3,Xn)
-        b       L_05AD0
-        ori     rtn_addr, code_ptr, L_06828 - cb        // 5974  SUBQ.W    #4,(d8,A4,Xn)
-        b       L_05B30
-        ori     rtn_addr, code_ptr, L_06828 - cb        // 5975  SUBQ.W    #4,(d8,A5,Xn)
-        b       L_05B90
-        ori     rtn_addr, code_ptr, L_06828 - cb        // 5976  SUBQ.W    #4,(d8,A6,Xn)
-        b       L_05BF0
-        ori     rtn_addr, code_ptr, L_06828 - cb        // 5977  SUBQ.W    #4,(d8,A7,Xn)
-        b       L_05C50
+        b       subq_w_q_mem
+        ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5970  SUBQ.W    #4,(d8,A0,Xn)
+        b       move_add_etc_w_any_any
+        ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5971  SUBQ.W    #4,(d8,A1,Xn)
+        b       move_add_etc_w_any_any_2
+        ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5972  SUBQ.W    #4,(d8,A2,Xn)
+        b       move_add_etc_w_any_any_3
+        ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5973  SUBQ.W    #4,(d8,A3,Xn)
+        b       move_add_etc_w_any_any_4
+        ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5974  SUBQ.W    #4,(d8,A4,Xn)
+        b       move_add_etc_w_any_any_5
+        ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5975  SUBQ.W    #4,(d8,A5,Xn)
+        b       move_add_etc_w_any_any_6
+        ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5976  SUBQ.W    #4,(d8,A6,Xn)
+        b       move_add_etc_w_any_any_7
+        ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5977  SUBQ.W    #4,(d8,A7,Xn)
+        b       move_add_etc_w_any_any_8
         mr      addr, prefetch_data                     // 5978  SUBQ.W    #4,(xxx).W
-        b       L_06820
-        ori     rtn_addr, code_ptr, L_06828 - cb        // 5979  SUBQ.W    #4,(xxx).L
-        b       L_05E70
+        b       subq_w_q_mem
+        ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5979  SUBQ.W    #4,(xxx).L
+        b       fea_w_71
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 597A  SUBQ.W    #4,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 597B  SUBQ.W    #4,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 597C  SUBQ.W    #4,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 597D  SUBQ.W    #4,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 597E  SUBQ.W    #4,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 597F  SUBQ.W    #4,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $5980-$59BF --------------------------------------------------------
         li      data, 4                                 // 5980  SUBQ.L    #4,D0
-        b       L_04204
+        b       sub_l_mem_d0_2
         li      data, 4                                 // 5981  SUBQ.L    #4,D1
-        b       L_04244
+        b       sub_l_mem_d1_2
         li      data, 4                                 // 5982  SUBQ.L    #4,D2
-        b       L_04284
+        b       sub_l_mem_d2_2
         li      data, 4                                 // 5983  SUBQ.L    #4,D3
-        b       L_042C4
+        b       sub_l_mem_d3_2
         li      data, 4                                 // 5984  SUBQ.L    #4,D4
-        b       L_04304
+        b       sub_l_mem_d4_2
         li      data, 4                                 // 5985  SUBQ.L    #4,D5
-        b       L_04344
+        b       sub_l_mem_d5_2
         li      data, 4                                 // 5986  SUBQ.L    #4,D6
-        b       L_04384
+        b       sub_l_mem_d6_2
         li      data, 4                                 // 5987  SUBQ.L    #4,D7
-        b       L_043C4
+        b       sub_l_mem_d7_2
         addi    a0, a0, -4                              // 5988  SUBQ.L    #4,A0
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a1, a1, -4                              // 5989  SUBQ.L    #4,A1
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a2, a2, -4                              // 598A  SUBQ.L    #4,A2
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a3, a3, -4                              // 598B  SUBQ.L    #4,A3
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a4, a4, -4                              // 598C  SUBQ.L    #4,A4
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a5, a5, -4                              // 598D  SUBQ.L    #4,A5
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a6, a6, -4                              // 598E  SUBQ.L    #4,A6
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a7, a7, -4                              // 598F  SUBQ.L    #4,A7
-        b       L_06084
+        b       move_add_etc_any_any
 op_5990:
         mr      addr, a0                                // 5990  SUBQ.L    #4,(A0)
-        b       L_06AC4
+        b       subq_l_q_mem_2
 op_5991:
         mr      addr, a1                                // 5991  SUBQ.L    #4,(A1)
-        b       L_06AC4
+        b       subq_l_q_mem_2
 op_5992:
         mr      addr, a2                                // 5992  SUBQ.L    #4,(A2)
-        b       L_06AC4
+        b       subq_l_q_mem_2
 op_5993:
         mr      addr, a3                                // 5993  SUBQ.L    #4,(A3)
-        b       L_06AC4
+        b       subq_l_q_mem_2
 op_5994:
         mr      addr, a4                                // 5994  SUBQ.L    #4,(A4)
-        b       L_06AC4
+        b       subq_l_q_mem_2
 op_5995:
         mr      addr, a5                                // 5995  SUBQ.L    #4,(A5)
-        b       L_06AC4
+        b       subq_l_q_mem_2
 op_5996:
         mr      addr, a6                                // 5996  SUBQ.L    #4,(A6)
-        b       L_06AC4
+        b       subq_l_q_mem_2
 op_5997:
         mr      addr, a7                                // 5997  SUBQ.L    #4,(A7)
-        b       L_06AC4
-        ori     rtn_addr, code_ptr, L_06AC4 - cb        // 5998  SUBQ.L    #4,(A0)+
-        b       L_00840
-        ori     rtn_addr, code_ptr, L_06AC4 - cb        // 5999  SUBQ.L    #4,(A1)+
-        b       L_008C0
-        ori     rtn_addr, code_ptr, L_06AC4 - cb        // 599A  SUBQ.L    #4,(A2)+
-        b       L_00940
-        ori     rtn_addr, code_ptr, L_06AC4 - cb        // 599B  SUBQ.L    #4,(A3)+
-        b       L_009C0
-        ori     rtn_addr, code_ptr, L_06AC4 - cb        // 599C  SUBQ.L    #4,(A4)+
-        b       L_00A40
-        ori     rtn_addr, code_ptr, L_06AC4 - cb        // 599D  SUBQ.L    #4,(A5)+
-        b       L_00AC0
-        ori     rtn_addr, code_ptr, L_06AC4 - cb        // 599E  SUBQ.L    #4,(A6)+
-        b       L_00B40
-        ori     rtn_addr, code_ptr, L_06AC4 - cb        // 599F  SUBQ.L    #4,(A7)+
-        b       L_00BC0
+        b       subq_l_q_mem_2
+        ori     rtn_addr, code_ptr, subq_l_q_mem_2 - cb  // 5998  SUBQ.L    #4,(A0)+
+        b       cea_l_30
+        ori     rtn_addr, code_ptr, subq_l_q_mem_2 - cb  // 5999  SUBQ.L    #4,(A1)+
+        b       cea_l_31
+        ori     rtn_addr, code_ptr, subq_l_q_mem_2 - cb  // 599A  SUBQ.L    #4,(A2)+
+        b       cea_l_32
+        ori     rtn_addr, code_ptr, subq_l_q_mem_2 - cb  // 599B  SUBQ.L    #4,(A3)+
+        b       cea_l_33
+        ori     rtn_addr, code_ptr, subq_l_q_mem_2 - cb  // 599C  SUBQ.L    #4,(A4)+
+        b       cea_l_34
+        ori     rtn_addr, code_ptr, subq_l_q_mem_2 - cb  // 599D  SUBQ.L    #4,(A5)+
+        b       cea_l_35
+        ori     rtn_addr, code_ptr, subq_l_q_mem_2 - cb  // 599E  SUBQ.L    #4,(A6)+
+        b       cea_l_36
+        ori     rtn_addr, code_ptr, subq_l_q_mem_2 - cb  // 599F  SUBQ.L    #4,(A7)+
+        b       cea_l_37
         addi    a0, a0, -4                              // 59A0  SUBQ.L    #4,-(A0)
         b       op_5990
         addi    a1, a1, -4                              // 59A1  SUBQ.L    #4,-(A1)
@@ -5337,127 +5337,127 @@ op_5997:
         addi    a7, a7, -4                              // 59A7  SUBQ.L    #4,-(A7)
         b       op_5997
         add     addr, a0, prefetch_data                 // 59A8  SUBQ.L    #4,(d16,A0)
-        b       L_06AC0
+        b       subq_l_q_mem
         add     addr, a1, prefetch_data                 // 59A9  SUBQ.L    #4,(d16,A1)
-        b       L_06AC0
+        b       subq_l_q_mem
         add     addr, a2, prefetch_data                 // 59AA  SUBQ.L    #4,(d16,A2)
-        b       L_06AC0
+        b       subq_l_q_mem
         add     addr, a3, prefetch_data                 // 59AB  SUBQ.L    #4,(d16,A3)
-        b       L_06AC0
+        b       subq_l_q_mem
         add     addr, a4, prefetch_data                 // 59AC  SUBQ.L    #4,(d16,A4)
-        b       L_06AC0
+        b       subq_l_q_mem
         add     addr, a5, prefetch_data                 // 59AD  SUBQ.L    #4,(d16,A5)
-        b       L_06AC0
+        b       subq_l_q_mem
         add     addr, a6, prefetch_data                 // 59AE  SUBQ.L    #4,(d16,A6)
-        b       L_06AC0
+        b       subq_l_q_mem
         add     addr, a7, prefetch_data                 // 59AF  SUBQ.L    #4,(d16,A7)
-        b       L_06AC0
-        ori     rtn_addr, code_ptr, L_06AC8 - cb        // 59B0  SUBQ.L    #4,(d8,A0,Xn)
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_06AC8 - cb        // 59B1  SUBQ.L    #4,(d8,A1,Xn)
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_06AC8 - cb        // 59B2  SUBQ.L    #4,(d8,A2,Xn)
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_06AC8 - cb        // 59B3  SUBQ.L    #4,(d8,A3,Xn)
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_06AC8 - cb        // 59B4  SUBQ.L    #4,(d8,A4,Xn)
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_06AC8 - cb        // 59B5  SUBQ.L    #4,(d8,A5,Xn)
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_06AC8 - cb        // 59B6  SUBQ.L    #4,(d8,A6,Xn)
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_06AC8 - cb        // 59B7  SUBQ.L    #4,(d8,A7,Xn)
-        b       L_05C68
+        b       subq_l_q_mem
+        ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 59B0  SUBQ.L    #4,(d8,A0,Xn)
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 59B1  SUBQ.L    #4,(d8,A1,Xn)
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 59B2  SUBQ.L    #4,(d8,A2,Xn)
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 59B3  SUBQ.L    #4,(d8,A3,Xn)
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 59B4  SUBQ.L    #4,(d8,A4,Xn)
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 59B5  SUBQ.L    #4,(d8,A5,Xn)
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 59B6  SUBQ.L    #4,(d8,A6,Xn)
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 59B7  SUBQ.L    #4,(d8,A7,Xn)
+        b       move_add_etc_l_any_any_8
         mr      addr, prefetch_data                     // 59B8  SUBQ.L    #4,(xxx).W
-        b       L_06AC0
-        ori     rtn_addr, code_ptr, L_06AC8 - cb        // 59B9  SUBQ.L    #4,(xxx).L
-        b       L_05E8C
+        b       subq_l_q_mem
+        ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 59B9  SUBQ.L    #4,(xxx).L
+        b       fea_l_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 59BA  SUBQ.L    #4,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 59BB  SUBQ.L    #4,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 59BC  SUBQ.L    #4,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 59BD  SUBQ.L    #4,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 59BE  SUBQ.L    #4,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 59BF  SUBQ.L    #4,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $59C0-$59FF --------------------------------------------------------
-        ori     rtn_addr, code_ptr, L_03624 - cb        // 59C0  SVS.B     D0
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_03664 - cb        // 59C1  SVS.B     D1
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_036A4 - cb        // 59C2  SVS.B     D2
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_036E4 - cb        // 59C3  SVS.B     D3
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_03724 - cb        // 59C4  SVS.B     D4
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_03764 - cb        // 59C5  SVS.B     D5
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_037A4 - cb        // 59C6  SVS.B     D6
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_037E4 - cb        // 59C7  SVS.B     D7
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_03000 - cb        // 59C8  DBVS.W    D0,<label>
-        b       L_08500
-        ori     rtn_addr, code_ptr, L_03040 - cb        // 59C9  DBVS.W    D1,<label>
-        b       L_08500
-        ori     rtn_addr, code_ptr, L_03080 - cb        // 59CA  DBVS.W    D2,<label>
-        b       L_08500
-        ori     rtn_addr, code_ptr, L_030C0 - cb        // 59CB  DBVS.W    D3,<label>
-        b       L_08500
-        ori     rtn_addr, code_ptr, L_03100 - cb        // 59CC  DBVS.W    D4,<label>
-        b       L_08500
-        ori     rtn_addr, code_ptr, L_03140 - cb        // 59CD  DBVS.W    D5,<label>
-        b       L_08500
-        ori     rtn_addr, code_ptr, L_03180 - cb        // 59CE  DBVS.W    D6,<label>
-        b       L_08500
-        ori     rtn_addr, code_ptr, L_031C0 - cb        // 59CF  DBVS.W    D7,<label>
-        b       L_08500
+        ori     rtn_addr, code_ptr, scc_b_d0 - cb       // 59C0  SVS.B     D0
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d1 - cb       // 59C1  SVS.B     D1
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d2 - cb       // 59C2  SVS.B     D2
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d3 - cb       // 59C3  SVS.B     D3
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d4 - cb       // 59C4  SVS.B     D4
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d5 - cb       // 59C5  SVS.B     D5
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d6 - cb       // 59C6  SVS.B     D6
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d7 - cb       // 59C7  SVS.B     D7
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d0 - cb      // 59C8  DBVS.W    D0,<label>
+        b       dbcc_w_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d1 - cb      // 59C9  DBVS.W    D1,<label>
+        b       dbcc_w_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d2 - cb      // 59CA  DBVS.W    D2,<label>
+        b       dbcc_w_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d3 - cb      // 59CB  DBVS.W    D3,<label>
+        b       dbcc_w_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d4 - cb      // 59CC  DBVS.W    D4,<label>
+        b       dbcc_w_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d5 - cb      // 59CD  DBVS.W    D5,<label>
+        b       dbcc_w_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d6 - cb      // 59CE  DBVS.W    D6,<label>
+        b       dbcc_w_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d7 - cb      // 59CF  DBVS.W    D7,<label>
+        b       dbcc_w_dn
 op_59D0:
         mr      addr, a0                                // 59D0  SVS.B     (A0)
-        b       L_08584
+        b       scc_b_mem_2
 op_59D1:
         mr      addr, a1                                // 59D1  SVS.B     (A1)
-        b       L_08584
+        b       scc_b_mem_2
 op_59D2:
         mr      addr, a2                                // 59D2  SVS.B     (A2)
-        b       L_08584
+        b       scc_b_mem_2
 op_59D3:
         mr      addr, a3                                // 59D3  SVS.B     (A3)
-        b       L_08584
+        b       scc_b_mem_2
 op_59D4:
         mr      addr, a4                                // 59D4  SVS.B     (A4)
-        b       L_08584
+        b       scc_b_mem_2
 op_59D5:
         mr      addr, a5                                // 59D5  SVS.B     (A5)
-        b       L_08584
+        b       scc_b_mem_2
 op_59D6:
         mr      addr, a6                                // 59D6  SVS.B     (A6)
-        b       L_08584
+        b       scc_b_mem_2
 op_59D7:
         mr      addr, a7                                // 59D7  SVS.B     (A7)
-        b       L_08584
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 59D8  SVS.B     (A0)+
-        b       L_00800
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 59D9  SVS.B     (A1)+
-        b       L_00880
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 59DA  SVS.B     (A2)+
-        b       L_00900
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 59DB  SVS.B     (A3)+
-        b       L_00980
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 59DC  SVS.B     (A4)+
-        b       L_00A00
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 59DD  SVS.B     (A5)+
-        b       L_00A80
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 59DE  SVS.B     (A6)+
-        b       L_00B00
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 59DF  SVS.B     (A7)+
-        b       L_00B80
+        b       scc_b_mem_2
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 59D8  SVS.B     (A0)+
+        b       cea_b_30
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 59D9  SVS.B     (A1)+
+        b       cea_b_31
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 59DA  SVS.B     (A2)+
+        b       cea_b_32
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 59DB  SVS.B     (A3)+
+        b       cea_b_33
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 59DC  SVS.B     (A4)+
+        b       cea_b_34
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 59DD  SVS.B     (A5)+
+        b       cea_b_35
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 59DE  SVS.B     (A6)+
+        b       cea_b_36
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 59DF  SVS.B     (A7)+
+        b       cea_b_37
         addi    a0, a0, -1                              // 59E0  SVS.B     -(A0)
         b       op_59D0
         addi    a1, a1, -1                              // 59E1  SVS.B     -(A1)
@@ -5475,127 +5475,127 @@ op_59D7:
         addi    a7, a7, -2                              // 59E7  SVS.B     -(A7)
         b       op_59D7
         add     addr, a0, prefetch_data                 // 59E8  SVS.B     (d16,A0)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a1, prefetch_data                 // 59E9  SVS.B     (d16,A1)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a2, prefetch_data                 // 59EA  SVS.B     (d16,A2)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a3, prefetch_data                 // 59EB  SVS.B     (d16,A3)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a4, prefetch_data                 // 59EC  SVS.B     (d16,A4)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a5, prefetch_data                 // 59ED  SVS.B     (d16,A5)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a6, prefetch_data                 // 59EE  SVS.B     (d16,A6)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a7, prefetch_data                 // 59EF  SVS.B     (d16,A7)
-        b       L_08580
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 59F0  SVS.B     (d8,A0,Xn)
-        b       L_05988
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 59F1  SVS.B     (d8,A1,Xn)
-        b       L_059E8
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 59F2  SVS.B     (d8,A2,Xn)
-        b       L_05A48
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 59F3  SVS.B     (d8,A3,Xn)
-        b       L_05AA8
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 59F4  SVS.B     (d8,A4,Xn)
-        b       L_05B08
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 59F5  SVS.B     (d8,A5,Xn)
-        b       L_05B68
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 59F6  SVS.B     (d8,A6,Xn)
-        b       L_05BC8
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 59F7  SVS.B     (d8,A7,Xn)
-        b       L_05C28
+        b       scc_b_mem
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 59F0  SVS.B     (d8,A0,Xn)
+        b       or_sub_etc_any_any
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 59F1  SVS.B     (d8,A1,Xn)
+        b       or_sub_etc_any_any_2
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 59F2  SVS.B     (d8,A2,Xn)
+        b       or_sub_etc_any_any_3
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 59F3  SVS.B     (d8,A3,Xn)
+        b       or_sub_etc_any_any_4
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 59F4  SVS.B     (d8,A4,Xn)
+        b       or_sub_etc_any_any_5
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 59F5  SVS.B     (d8,A5,Xn)
+        b       or_sub_etc_any_any_6
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 59F6  SVS.B     (d8,A6,Xn)
+        b       or_sub_etc_any_any_7
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 59F7  SVS.B     (d8,A7,Xn)
+        b       or_sub_etc_any_any_8
         mr      addr, prefetch_data                     // 59F8  SVS.B     (xxx).W
-        b       L_08580
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 59F9  SVS.B     (xxx).L
-        b       L_05E14
+        b       scc_b_mem
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 59F9  SVS.B     (xxx).L
+        b       cea_x_71_2
         lhau    prefetch_data, 2(pc)                    // 59FA  TRAPVS    #<data>.W
-        b       L_0CCE8
+        b       trapcc
         lhau    prefetch_data, 4(pc)                    // 59FB  TRAPVS    #<data>.L
-        b       L_0CCE8
+        b       trapcc
         mfxer   data                                    // 59FC  TRAPVS
-        b       L_0CD44
+        b       trapv_trapvs
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 59FD  SVS.B     <ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 59FE  SVS.B     <ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 59FF  SVS.B     <ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $5A00-$5A3F --------------------------------------------------------
         lis     data, 0x0500                            // 5A00  ADDQ.B    #5,D0
-        b       L_0B0C8
+        b       add_asl_b_any_d0
         lis     data, 0x0500                            // 5A01  ADDQ.B    #5,D1
-        b       L_0B108
+        b       add_asl_b_any_d1
         lis     data, 0x0500                            // 5A02  ADDQ.B    #5,D2
-        b       L_0B148
+        b       add_asl_b_any_d2
         lis     data, 0x0500                            // 5A03  ADDQ.B    #5,D3
-        b       L_0B188
+        b       add_asl_b_any_d3
         lis     data, 0x0500                            // 5A04  ADDQ.B    #5,D4
-        b       L_0B1C8
+        b       add_asl_b_any_d4
         lis     data, 0x0500                            // 5A05  ADDQ.B    #5,D5
-        b       L_0B208
+        b       add_asl_b_any_d5
         lis     data, 0x0500                            // 5A06  ADDQ.B    #5,D6
-        b       L_0B248
+        b       add_asl_b_any_d6
         lis     data, 0x0500                            // 5A07  ADDQ.B    #5,D7
-        b       L_0B288
+        b       add_asl_b_any_d7
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5A08  ADDQ.B    #5,A0   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5A09  ADDQ.B    #5,A1   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5A0A  ADDQ.B    #5,A2   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5A0B  ADDQ.B    #5,A3   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5A0C  ADDQ.B    #5,A4   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5A0D  ADDQ.B    #5,A5   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5A0E  ADDQ.B    #5,A6   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5A0F  ADDQ.B    #5,A7   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 op_5A10:
         mr      addr, a0                                // 5A10  ADDQ.B    #5,(A0)
-        b       L_06564
+        b       addq_b_q_mem_2
 op_5A11:
         mr      addr, a1                                // 5A11  ADDQ.B    #5,(A1)
-        b       L_06564
+        b       addq_b_q_mem_2
 op_5A12:
         mr      addr, a2                                // 5A12  ADDQ.B    #5,(A2)
-        b       L_06564
+        b       addq_b_q_mem_2
 op_5A13:
         mr      addr, a3                                // 5A13  ADDQ.B    #5,(A3)
-        b       L_06564
+        b       addq_b_q_mem_2
 op_5A14:
         mr      addr, a4                                // 5A14  ADDQ.B    #5,(A4)
-        b       L_06564
+        b       addq_b_q_mem_2
 op_5A15:
         mr      addr, a5                                // 5A15  ADDQ.B    #5,(A5)
-        b       L_06564
+        b       addq_b_q_mem_2
 op_5A16:
         mr      addr, a6                                // 5A16  ADDQ.B    #5,(A6)
-        b       L_06564
+        b       addq_b_q_mem_2
 op_5A17:
         mr      addr, a7                                // 5A17  ADDQ.B    #5,(A7)
-        b       L_06564
-        ori     rtn_addr, code_ptr, L_06564 - cb        // 5A18  ADDQ.B    #5,(A0)+
-        b       L_00800
-        ori     rtn_addr, code_ptr, L_06564 - cb        // 5A19  ADDQ.B    #5,(A1)+
-        b       L_00880
-        ori     rtn_addr, code_ptr, L_06564 - cb        // 5A1A  ADDQ.B    #5,(A2)+
-        b       L_00900
-        ori     rtn_addr, code_ptr, L_06564 - cb        // 5A1B  ADDQ.B    #5,(A3)+
-        b       L_00980
-        ori     rtn_addr, code_ptr, L_06564 - cb        // 5A1C  ADDQ.B    #5,(A4)+
-        b       L_00A00
-        ori     rtn_addr, code_ptr, L_06564 - cb        // 5A1D  ADDQ.B    #5,(A5)+
-        b       L_00A80
-        ori     rtn_addr, code_ptr, L_06564 - cb        // 5A1E  ADDQ.B    #5,(A6)+
-        b       L_00B00
-        ori     rtn_addr, code_ptr, L_06564 - cb        // 5A1F  ADDQ.B    #5,(A7)+
-        b       L_00B80
+        b       addq_b_q_mem_2
+        ori     rtn_addr, code_ptr, addq_b_q_mem_2 - cb  // 5A18  ADDQ.B    #5,(A0)+
+        b       cea_b_30
+        ori     rtn_addr, code_ptr, addq_b_q_mem_2 - cb  // 5A19  ADDQ.B    #5,(A1)+
+        b       cea_b_31
+        ori     rtn_addr, code_ptr, addq_b_q_mem_2 - cb  // 5A1A  ADDQ.B    #5,(A2)+
+        b       cea_b_32
+        ori     rtn_addr, code_ptr, addq_b_q_mem_2 - cb  // 5A1B  ADDQ.B    #5,(A3)+
+        b       cea_b_33
+        ori     rtn_addr, code_ptr, addq_b_q_mem_2 - cb  // 5A1C  ADDQ.B    #5,(A4)+
+        b       cea_b_34
+        ori     rtn_addr, code_ptr, addq_b_q_mem_2 - cb  // 5A1D  ADDQ.B    #5,(A5)+
+        b       cea_b_35
+        ori     rtn_addr, code_ptr, addq_b_q_mem_2 - cb  // 5A1E  ADDQ.B    #5,(A6)+
+        b       cea_b_36
+        ori     rtn_addr, code_ptr, addq_b_q_mem_2 - cb  // 5A1F  ADDQ.B    #5,(A7)+
+        b       cea_b_37
         addi    a0, a0, -1                              // 5A20  ADDQ.B    #5,-(A0)
         b       op_5A10
         addi    a1, a1, -1                              // 5A21  ADDQ.B    #5,-(A1)
@@ -5613,127 +5613,127 @@ op_5A17:
         addi    a7, a7, -2                              // 5A27  ADDQ.B    #5,-(A7)
         b       op_5A17
         add     addr, a0, prefetch_data                 // 5A28  ADDQ.B    #5,(d16,A0)
-        b       L_06560
+        b       addq_b_q_mem
         add     addr, a1, prefetch_data                 // 5A29  ADDQ.B    #5,(d16,A1)
-        b       L_06560
+        b       addq_b_q_mem
         add     addr, a2, prefetch_data                 // 5A2A  ADDQ.B    #5,(d16,A2)
-        b       L_06560
+        b       addq_b_q_mem
         add     addr, a3, prefetch_data                 // 5A2B  ADDQ.B    #5,(d16,A3)
-        b       L_06560
+        b       addq_b_q_mem
         add     addr, a4, prefetch_data                 // 5A2C  ADDQ.B    #5,(d16,A4)
-        b       L_06560
+        b       addq_b_q_mem
         add     addr, a5, prefetch_data                 // 5A2D  ADDQ.B    #5,(d16,A5)
-        b       L_06560
+        b       addq_b_q_mem
         add     addr, a6, prefetch_data                 // 5A2E  ADDQ.B    #5,(d16,A6)
-        b       L_06560
+        b       addq_b_q_mem
         add     addr, a7, prefetch_data                 // 5A2F  ADDQ.B    #5,(d16,A7)
-        b       L_06560
-        ori     rtn_addr, code_ptr, L_06568 - cb        // 5A30  ADDQ.B    #5,(d8,A0,Xn)
-        b       L_0599C
-        ori     rtn_addr, code_ptr, L_06568 - cb        // 5A31  ADDQ.B    #5,(d8,A1,Xn)
-        b       L_059FC
-        ori     rtn_addr, code_ptr, L_06568 - cb        // 5A32  ADDQ.B    #5,(d8,A2,Xn)
-        b       L_05A5C
-        ori     rtn_addr, code_ptr, L_06568 - cb        // 5A33  ADDQ.B    #5,(d8,A3,Xn)
-        b       L_05ABC
-        ori     rtn_addr, code_ptr, L_06568 - cb        // 5A34  ADDQ.B    #5,(d8,A4,Xn)
-        b       L_05B1C
-        ori     rtn_addr, code_ptr, L_06568 - cb        // 5A35  ADDQ.B    #5,(d8,A5,Xn)
-        b       L_05B7C
-        ori     rtn_addr, code_ptr, L_06568 - cb        // 5A36  ADDQ.B    #5,(d8,A6,Xn)
-        b       L_05BDC
-        ori     rtn_addr, code_ptr, L_06568 - cb        // 5A37  ADDQ.B    #5,(d8,A7,Xn)
-        b       L_05C3C
+        b       addq_b_q_mem
+        ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5A30  ADDQ.B    #5,(d8,A0,Xn)
+        b       move_add_etc_b_any_any
+        ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5A31  ADDQ.B    #5,(d8,A1,Xn)
+        b       move_add_etc_b_any_any_2
+        ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5A32  ADDQ.B    #5,(d8,A2,Xn)
+        b       move_add_etc_b_any_any_3
+        ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5A33  ADDQ.B    #5,(d8,A3,Xn)
+        b       move_add_etc_b_any_any_4
+        ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5A34  ADDQ.B    #5,(d8,A4,Xn)
+        b       move_add_etc_b_any_any_5
+        ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5A35  ADDQ.B    #5,(d8,A5,Xn)
+        b       move_add_etc_b_any_any_6
+        ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5A36  ADDQ.B    #5,(d8,A6,Xn)
+        b       move_add_etc_b_any_any_7
+        ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5A37  ADDQ.B    #5,(d8,A7,Xn)
+        b       move_add_etc_b_any_any_8
         mr      addr, prefetch_data                     // 5A38  ADDQ.B    #5,(xxx).W
-        b       L_06560
-        ori     rtn_addr, code_ptr, L_06568 - cb        // 5A39  ADDQ.B    #5,(xxx).L
-        b       L_05E2C
+        b       addq_b_q_mem
+        ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5A39  ADDQ.B    #5,(xxx).L
+        b       fea_b_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5A3A  ADDQ.B    #5,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5A3B  ADDQ.B    #5,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5A3C  ADDQ.B    #5,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5A3D  ADDQ.B    #5,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5A3E  ADDQ.B    #5,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5A3F  ADDQ.B    #5,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $5A40-$5A7F --------------------------------------------------------
         lis     data, 0x0005                            // 5A40  ADDQ.W    #5,D0
-        b       L_03808
+        b       add_asl_w_any_d0
         lis     data, 0x0005                            // 5A41  ADDQ.W    #5,D1
-        b       L_03848
+        b       add_asl_w_any_d1
         lis     data, 0x0005                            // 5A42  ADDQ.W    #5,D2
-        b       L_03888
+        b       add_asl_w_any_d2
         lis     data, 0x0005                            // 5A43  ADDQ.W    #5,D3
-        b       L_038C8
+        b       add_asl_w_any_d3
         lis     data, 0x0005                            // 5A44  ADDQ.W    #5,D4
-        b       L_03908
+        b       add_asl_w_any_d4
         lis     data, 0x0005                            // 5A45  ADDQ.W    #5,D5
-        b       L_03948
+        b       add_asl_w_any_d5
         lis     data, 0x0005                            // 5A46  ADDQ.W    #5,D6
-        b       L_03988
+        b       add_asl_w_any_d6
         lis     data, 0x0005                            // 5A47  ADDQ.W    #5,D7
-        b       L_039C8
+        b       add_asl_w_any_d7
         addi    a0, a0, 5                               // 5A48  ADDQ.W    #5,A0
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a1, a1, 5                               // 5A49  ADDQ.W    #5,A1
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a2, a2, 5                               // 5A4A  ADDQ.W    #5,A2
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a3, a3, 5                               // 5A4B  ADDQ.W    #5,A3
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a4, a4, 5                               // 5A4C  ADDQ.W    #5,A4
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a5, a5, 5                               // 5A4D  ADDQ.W    #5,A5
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a6, a6, 5                               // 5A4E  ADDQ.W    #5,A6
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a7, a7, 5                               // 5A4F  ADDQ.W    #5,A7
-        b       L_06084
+        b       move_add_etc_any_any
 op_5A50:
         mr      addr, a0                                // 5A50  ADDQ.W    #5,(A0)
-        b       L_06784
+        b       addq_w_q_mem_2
 op_5A51:
         mr      addr, a1                                // 5A51  ADDQ.W    #5,(A1)
-        b       L_06784
+        b       addq_w_q_mem_2
 op_5A52:
         mr      addr, a2                                // 5A52  ADDQ.W    #5,(A2)
-        b       L_06784
+        b       addq_w_q_mem_2
 op_5A53:
         mr      addr, a3                                // 5A53  ADDQ.W    #5,(A3)
-        b       L_06784
+        b       addq_w_q_mem_2
 op_5A54:
         mr      addr, a4                                // 5A54  ADDQ.W    #5,(A4)
-        b       L_06784
+        b       addq_w_q_mem_2
 op_5A55:
         mr      addr, a5                                // 5A55  ADDQ.W    #5,(A5)
-        b       L_06784
+        b       addq_w_q_mem_2
 op_5A56:
         mr      addr, a6                                // 5A56  ADDQ.W    #5,(A6)
-        b       L_06784
+        b       addq_w_q_mem_2
 op_5A57:
         mr      addr, a7                                // 5A57  ADDQ.W    #5,(A7)
-        b       L_06784
-        ori     rtn_addr, code_ptr, L_06784 - cb        // 5A58  ADDQ.W    #5,(A0)+
-        b       L_00820
-        ori     rtn_addr, code_ptr, L_06784 - cb        // 5A59  ADDQ.W    #5,(A1)+
-        b       L_008A0
-        ori     rtn_addr, code_ptr, L_06784 - cb        // 5A5A  ADDQ.W    #5,(A2)+
-        b       L_00920
-        ori     rtn_addr, code_ptr, L_06784 - cb        // 5A5B  ADDQ.W    #5,(A3)+
-        b       L_009A0
-        ori     rtn_addr, code_ptr, L_06784 - cb        // 5A5C  ADDQ.W    #5,(A4)+
-        b       L_00A20
-        ori     rtn_addr, code_ptr, L_06784 - cb        // 5A5D  ADDQ.W    #5,(A5)+
-        b       L_00AA0
-        ori     rtn_addr, code_ptr, L_06784 - cb        // 5A5E  ADDQ.W    #5,(A6)+
-        b       L_00B20
-        ori     rtn_addr, code_ptr, L_06784 - cb        // 5A5F  ADDQ.W    #5,(A7)+
-        b       L_00BA0
+        b       addq_w_q_mem_2
+        ori     rtn_addr, code_ptr, addq_w_q_mem_2 - cb  // 5A58  ADDQ.W    #5,(A0)+
+        b       cea_w_30
+        ori     rtn_addr, code_ptr, addq_w_q_mem_2 - cb  // 5A59  ADDQ.W    #5,(A1)+
+        b       cea_w_31
+        ori     rtn_addr, code_ptr, addq_w_q_mem_2 - cb  // 5A5A  ADDQ.W    #5,(A2)+
+        b       cea_w_32
+        ori     rtn_addr, code_ptr, addq_w_q_mem_2 - cb  // 5A5B  ADDQ.W    #5,(A3)+
+        b       cea_w_33
+        ori     rtn_addr, code_ptr, addq_w_q_mem_2 - cb  // 5A5C  ADDQ.W    #5,(A4)+
+        b       cea_w_34
+        ori     rtn_addr, code_ptr, addq_w_q_mem_2 - cb  // 5A5D  ADDQ.W    #5,(A5)+
+        b       cea_w_35
+        ori     rtn_addr, code_ptr, addq_w_q_mem_2 - cb  // 5A5E  ADDQ.W    #5,(A6)+
+        b       cea_w_36
+        ori     rtn_addr, code_ptr, addq_w_q_mem_2 - cb  // 5A5F  ADDQ.W    #5,(A7)+
+        b       cea_w_37
         addi    a0, a0, -2                              // 5A60  ADDQ.W    #5,-(A0)
         b       op_5A50
         addi    a1, a1, -2                              // 5A61  ADDQ.W    #5,-(A1)
@@ -5751,127 +5751,127 @@ op_5A57:
         addi    a7, a7, -2                              // 5A67  ADDQ.W    #5,-(A7)
         b       op_5A57
         add     addr, a0, prefetch_data                 // 5A68  ADDQ.W    #5,(d16,A0)
-        b       L_06780
+        b       addq_w_q_mem
         add     addr, a1, prefetch_data                 // 5A69  ADDQ.W    #5,(d16,A1)
-        b       L_06780
+        b       addq_w_q_mem
         add     addr, a2, prefetch_data                 // 5A6A  ADDQ.W    #5,(d16,A2)
-        b       L_06780
+        b       addq_w_q_mem
         add     addr, a3, prefetch_data                 // 5A6B  ADDQ.W    #5,(d16,A3)
-        b       L_06780
+        b       addq_w_q_mem
         add     addr, a4, prefetch_data                 // 5A6C  ADDQ.W    #5,(d16,A4)
-        b       L_06780
+        b       addq_w_q_mem
         add     addr, a5, prefetch_data                 // 5A6D  ADDQ.W    #5,(d16,A5)
-        b       L_06780
+        b       addq_w_q_mem
         add     addr, a6, prefetch_data                 // 5A6E  ADDQ.W    #5,(d16,A6)
-        b       L_06780
+        b       addq_w_q_mem
         add     addr, a7, prefetch_data                 // 5A6F  ADDQ.W    #5,(d16,A7)
-        b       L_06780
-        ori     rtn_addr, code_ptr, L_06788 - cb        // 5A70  ADDQ.W    #5,(d8,A0,Xn)
-        b       L_059B0
-        ori     rtn_addr, code_ptr, L_06788 - cb        // 5A71  ADDQ.W    #5,(d8,A1,Xn)
-        b       L_05A10
-        ori     rtn_addr, code_ptr, L_06788 - cb        // 5A72  ADDQ.W    #5,(d8,A2,Xn)
-        b       L_05A70
-        ori     rtn_addr, code_ptr, L_06788 - cb        // 5A73  ADDQ.W    #5,(d8,A3,Xn)
-        b       L_05AD0
-        ori     rtn_addr, code_ptr, L_06788 - cb        // 5A74  ADDQ.W    #5,(d8,A4,Xn)
-        b       L_05B30
-        ori     rtn_addr, code_ptr, L_06788 - cb        // 5A75  ADDQ.W    #5,(d8,A5,Xn)
-        b       L_05B90
-        ori     rtn_addr, code_ptr, L_06788 - cb        // 5A76  ADDQ.W    #5,(d8,A6,Xn)
-        b       L_05BF0
-        ori     rtn_addr, code_ptr, L_06788 - cb        // 5A77  ADDQ.W    #5,(d8,A7,Xn)
-        b       L_05C50
+        b       addq_w_q_mem
+        ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5A70  ADDQ.W    #5,(d8,A0,Xn)
+        b       move_add_etc_w_any_any
+        ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5A71  ADDQ.W    #5,(d8,A1,Xn)
+        b       move_add_etc_w_any_any_2
+        ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5A72  ADDQ.W    #5,(d8,A2,Xn)
+        b       move_add_etc_w_any_any_3
+        ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5A73  ADDQ.W    #5,(d8,A3,Xn)
+        b       move_add_etc_w_any_any_4
+        ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5A74  ADDQ.W    #5,(d8,A4,Xn)
+        b       move_add_etc_w_any_any_5
+        ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5A75  ADDQ.W    #5,(d8,A5,Xn)
+        b       move_add_etc_w_any_any_6
+        ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5A76  ADDQ.W    #5,(d8,A6,Xn)
+        b       move_add_etc_w_any_any_7
+        ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5A77  ADDQ.W    #5,(d8,A7,Xn)
+        b       move_add_etc_w_any_any_8
         mr      addr, prefetch_data                     // 5A78  ADDQ.W    #5,(xxx).W
-        b       L_06780
-        ori     rtn_addr, code_ptr, L_06788 - cb        // 5A79  ADDQ.W    #5,(xxx).L
-        b       L_05E70
+        b       addq_w_q_mem
+        ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5A79  ADDQ.W    #5,(xxx).L
+        b       fea_w_71
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5A7A  ADDQ.W    #5,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5A7B  ADDQ.W    #5,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5A7C  ADDQ.W    #5,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5A7D  ADDQ.W    #5,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5A7E  ADDQ.W    #5,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5A7F  ADDQ.W    #5,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $5A80-$5ABF --------------------------------------------------------
         li      data, 5                                 // 5A80  ADDQ.L    #5,D0
-        b       L_03E04
+        b       add_l_mem_d0_2
         li      data, 5                                 // 5A81  ADDQ.L    #5,D1
-        b       L_03E44
+        b       add_l_mem_d1_2
         li      data, 5                                 // 5A82  ADDQ.L    #5,D2
-        b       L_03E84
+        b       add_l_mem_d2_2
         li      data, 5                                 // 5A83  ADDQ.L    #5,D3
-        b       L_03EC4
+        b       add_l_mem_d3_2
         li      data, 5                                 // 5A84  ADDQ.L    #5,D4
-        b       L_03F04
+        b       add_l_mem_d4_2
         li      data, 5                                 // 5A85  ADDQ.L    #5,D5
-        b       L_03F44
+        b       add_l_mem_d5_2
         li      data, 5                                 // 5A86  ADDQ.L    #5,D6
-        b       L_03F84
+        b       add_l_mem_d6_2
         li      data, 5                                 // 5A87  ADDQ.L    #5,D7
-        b       L_03FC4
+        b       add_l_mem_d7_2
         addi    a0, a0, 5                               // 5A88  ADDQ.L    #5,A0
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a1, a1, 5                               // 5A89  ADDQ.L    #5,A1
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a2, a2, 5                               // 5A8A  ADDQ.L    #5,A2
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a3, a3, 5                               // 5A8B  ADDQ.L    #5,A3
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a4, a4, 5                               // 5A8C  ADDQ.L    #5,A4
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a5, a5, 5                               // 5A8D  ADDQ.L    #5,A5
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a6, a6, 5                               // 5A8E  ADDQ.L    #5,A6
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a7, a7, 5                               // 5A8F  ADDQ.L    #5,A7
-        b       L_06084
+        b       move_add_etc_any_any
 op_5A90:
         mr      addr, a0                                // 5A90  ADDQ.L    #5,(A0)
-        b       L_06A24
+        b       addq_l_q_mem_2
 op_5A91:
         mr      addr, a1                                // 5A91  ADDQ.L    #5,(A1)
-        b       L_06A24
+        b       addq_l_q_mem_2
 op_5A92:
         mr      addr, a2                                // 5A92  ADDQ.L    #5,(A2)
-        b       L_06A24
+        b       addq_l_q_mem_2
 op_5A93:
         mr      addr, a3                                // 5A93  ADDQ.L    #5,(A3)
-        b       L_06A24
+        b       addq_l_q_mem_2
 op_5A94:
         mr      addr, a4                                // 5A94  ADDQ.L    #5,(A4)
-        b       L_06A24
+        b       addq_l_q_mem_2
 op_5A95:
         mr      addr, a5                                // 5A95  ADDQ.L    #5,(A5)
-        b       L_06A24
+        b       addq_l_q_mem_2
 op_5A96:
         mr      addr, a6                                // 5A96  ADDQ.L    #5,(A6)
-        b       L_06A24
+        b       addq_l_q_mem_2
 op_5A97:
         mr      addr, a7                                // 5A97  ADDQ.L    #5,(A7)
-        b       L_06A24
-        ori     rtn_addr, code_ptr, L_06A24 - cb        // 5A98  ADDQ.L    #5,(A0)+
-        b       L_00840
-        ori     rtn_addr, code_ptr, L_06A24 - cb        // 5A99  ADDQ.L    #5,(A1)+
-        b       L_008C0
-        ori     rtn_addr, code_ptr, L_06A24 - cb        // 5A9A  ADDQ.L    #5,(A2)+
-        b       L_00940
-        ori     rtn_addr, code_ptr, L_06A24 - cb        // 5A9B  ADDQ.L    #5,(A3)+
-        b       L_009C0
-        ori     rtn_addr, code_ptr, L_06A24 - cb        // 5A9C  ADDQ.L    #5,(A4)+
-        b       L_00A40
-        ori     rtn_addr, code_ptr, L_06A24 - cb        // 5A9D  ADDQ.L    #5,(A5)+
-        b       L_00AC0
-        ori     rtn_addr, code_ptr, L_06A24 - cb        // 5A9E  ADDQ.L    #5,(A6)+
-        b       L_00B40
-        ori     rtn_addr, code_ptr, L_06A24 - cb        // 5A9F  ADDQ.L    #5,(A7)+
-        b       L_00BC0
+        b       addq_l_q_mem_2
+        ori     rtn_addr, code_ptr, addq_l_q_mem_2 - cb  // 5A98  ADDQ.L    #5,(A0)+
+        b       cea_l_30
+        ori     rtn_addr, code_ptr, addq_l_q_mem_2 - cb  // 5A99  ADDQ.L    #5,(A1)+
+        b       cea_l_31
+        ori     rtn_addr, code_ptr, addq_l_q_mem_2 - cb  // 5A9A  ADDQ.L    #5,(A2)+
+        b       cea_l_32
+        ori     rtn_addr, code_ptr, addq_l_q_mem_2 - cb  // 5A9B  ADDQ.L    #5,(A3)+
+        b       cea_l_33
+        ori     rtn_addr, code_ptr, addq_l_q_mem_2 - cb  // 5A9C  ADDQ.L    #5,(A4)+
+        b       cea_l_34
+        ori     rtn_addr, code_ptr, addq_l_q_mem_2 - cb  // 5A9D  ADDQ.L    #5,(A5)+
+        b       cea_l_35
+        ori     rtn_addr, code_ptr, addq_l_q_mem_2 - cb  // 5A9E  ADDQ.L    #5,(A6)+
+        b       cea_l_36
+        ori     rtn_addr, code_ptr, addq_l_q_mem_2 - cb  // 5A9F  ADDQ.L    #5,(A7)+
+        b       cea_l_37
         addi    a0, a0, -4                              // 5AA0  ADDQ.L    #5,-(A0)
         b       op_5A90
         addi    a1, a1, -4                              // 5AA1  ADDQ.L    #5,-(A1)
@@ -5889,127 +5889,127 @@ op_5A97:
         addi    a7, a7, -4                              // 5AA7  ADDQ.L    #5,-(A7)
         b       op_5A97
         add     addr, a0, prefetch_data                 // 5AA8  ADDQ.L    #5,(d16,A0)
-        b       L_06A20
+        b       addq_l_q_mem
         add     addr, a1, prefetch_data                 // 5AA9  ADDQ.L    #5,(d16,A1)
-        b       L_06A20
+        b       addq_l_q_mem
         add     addr, a2, prefetch_data                 // 5AAA  ADDQ.L    #5,(d16,A2)
-        b       L_06A20
+        b       addq_l_q_mem
         add     addr, a3, prefetch_data                 // 5AAB  ADDQ.L    #5,(d16,A3)
-        b       L_06A20
+        b       addq_l_q_mem
         add     addr, a4, prefetch_data                 // 5AAC  ADDQ.L    #5,(d16,A4)
-        b       L_06A20
+        b       addq_l_q_mem
         add     addr, a5, prefetch_data                 // 5AAD  ADDQ.L    #5,(d16,A5)
-        b       L_06A20
+        b       addq_l_q_mem
         add     addr, a6, prefetch_data                 // 5AAE  ADDQ.L    #5,(d16,A6)
-        b       L_06A20
+        b       addq_l_q_mem
         add     addr, a7, prefetch_data                 // 5AAF  ADDQ.L    #5,(d16,A7)
-        b       L_06A20
-        ori     rtn_addr, code_ptr, L_06A28 - cb        // 5AB0  ADDQ.L    #5,(d8,A0,Xn)
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_06A28 - cb        // 5AB1  ADDQ.L    #5,(d8,A1,Xn)
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_06A28 - cb        // 5AB2  ADDQ.L    #5,(d8,A2,Xn)
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_06A28 - cb        // 5AB3  ADDQ.L    #5,(d8,A3,Xn)
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_06A28 - cb        // 5AB4  ADDQ.L    #5,(d8,A4,Xn)
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_06A28 - cb        // 5AB5  ADDQ.L    #5,(d8,A5,Xn)
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_06A28 - cb        // 5AB6  ADDQ.L    #5,(d8,A6,Xn)
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_06A28 - cb        // 5AB7  ADDQ.L    #5,(d8,A7,Xn)
-        b       L_05C68
+        b       addq_l_q_mem
+        ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 5AB0  ADDQ.L    #5,(d8,A0,Xn)
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 5AB1  ADDQ.L    #5,(d8,A1,Xn)
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 5AB2  ADDQ.L    #5,(d8,A2,Xn)
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 5AB3  ADDQ.L    #5,(d8,A3,Xn)
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 5AB4  ADDQ.L    #5,(d8,A4,Xn)
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 5AB5  ADDQ.L    #5,(d8,A5,Xn)
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 5AB6  ADDQ.L    #5,(d8,A6,Xn)
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 5AB7  ADDQ.L    #5,(d8,A7,Xn)
+        b       move_add_etc_l_any_any_8
         mr      addr, prefetch_data                     // 5AB8  ADDQ.L    #5,(xxx).W
-        b       L_06A20
-        ori     rtn_addr, code_ptr, L_06A28 - cb        // 5AB9  ADDQ.L    #5,(xxx).L
-        b       L_05E8C
+        b       addq_l_q_mem
+        ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 5AB9  ADDQ.L    #5,(xxx).L
+        b       fea_l_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5ABA  ADDQ.L    #5,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5ABB  ADDQ.L    #5,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5ABC  ADDQ.L    #5,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5ABD  ADDQ.L    #5,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5ABE  ADDQ.L    #5,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5ABF  ADDQ.L    #5,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $5AC0-$5AFF --------------------------------------------------------
-        ori     rtn_addr, code_ptr, L_03624 - cb        // 5AC0  SPL.B     D0
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_03664 - cb        // 5AC1  SPL.B     D1
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_036A4 - cb        // 5AC2  SPL.B     D2
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_036E4 - cb        // 5AC3  SPL.B     D3
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_03724 - cb        // 5AC4  SPL.B     D4
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_03764 - cb        // 5AC5  SPL.B     D5
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_037A4 - cb        // 5AC6  SPL.B     D6
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_037E4 - cb        // 5AC7  SPL.B     D7
-        b       L_08540
+        ori     rtn_addr, code_ptr, scc_b_d0 - cb       // 5AC0  SPL.B     D0
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d1 - cb       // 5AC1  SPL.B     D1
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d2 - cb       // 5AC2  SPL.B     D2
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d3 - cb       // 5AC3  SPL.B     D3
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d4 - cb       // 5AC4  SPL.B     D4
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d5 - cb       // 5AC5  SPL.B     D5
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d6 - cb       // 5AC6  SPL.B     D6
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d7 - cb       // 5AC7  SPL.B     D7
+        b       scc_b_dn
         bge     op_50C8                                 // 5AC8  DBPL.W    D0,<label>
-        b       L_03000
+        b       dbcc_w_d0
         bge     op_50C9                                 // 5AC9  DBPL.W    D1,<label>
-        b       L_03040
+        b       dbcc_w_d1
         bge     op_50CA                                 // 5ACA  DBPL.W    D2,<label>
-        b       L_03080
+        b       dbcc_w_d2
         bge     op_50CB                                 // 5ACB  DBPL.W    D3,<label>
-        b       L_030C0
+        b       dbcc_w_d3
         bge     op_50CC                                 // 5ACC  DBPL.W    D4,<label>
-        b       L_03100
+        b       dbcc_w_d4
         bge     op_50CD                                 // 5ACD  DBPL.W    D5,<label>
-        b       L_03140
+        b       dbcc_w_d5
         bge     op_50CE                                 // 5ACE  DBPL.W    D6,<label>
-        b       L_03180
+        b       dbcc_w_d6
         bge     op_50CF                                 // 5ACF  DBPL.W    D7,<label>
-        b       L_031C0
+        b       dbcc_w_d7
 op_5AD0:
         mr      addr, a0                                // 5AD0  SPL.B     (A0)
-        b       L_08584
+        b       scc_b_mem_2
 op_5AD1:
         mr      addr, a1                                // 5AD1  SPL.B     (A1)
-        b       L_08584
+        b       scc_b_mem_2
 op_5AD2:
         mr      addr, a2                                // 5AD2  SPL.B     (A2)
-        b       L_08584
+        b       scc_b_mem_2
 op_5AD3:
         mr      addr, a3                                // 5AD3  SPL.B     (A3)
-        b       L_08584
+        b       scc_b_mem_2
 op_5AD4:
         mr      addr, a4                                // 5AD4  SPL.B     (A4)
-        b       L_08584
+        b       scc_b_mem_2
 op_5AD5:
         mr      addr, a5                                // 5AD5  SPL.B     (A5)
-        b       L_08584
+        b       scc_b_mem_2
 op_5AD6:
         mr      addr, a6                                // 5AD6  SPL.B     (A6)
-        b       L_08584
+        b       scc_b_mem_2
 op_5AD7:
         mr      addr, a7                                // 5AD7  SPL.B     (A7)
-        b       L_08584
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5AD8  SPL.B     (A0)+
-        b       L_00800
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5AD9  SPL.B     (A1)+
-        b       L_00880
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5ADA  SPL.B     (A2)+
-        b       L_00900
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5ADB  SPL.B     (A3)+
-        b       L_00980
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5ADC  SPL.B     (A4)+
-        b       L_00A00
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5ADD  SPL.B     (A5)+
-        b       L_00A80
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5ADE  SPL.B     (A6)+
-        b       L_00B00
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5ADF  SPL.B     (A7)+
-        b       L_00B80
+        b       scc_b_mem_2
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5AD8  SPL.B     (A0)+
+        b       cea_b_30
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5AD9  SPL.B     (A1)+
+        b       cea_b_31
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5ADA  SPL.B     (A2)+
+        b       cea_b_32
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5ADB  SPL.B     (A3)+
+        b       cea_b_33
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5ADC  SPL.B     (A4)+
+        b       cea_b_34
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5ADD  SPL.B     (A5)+
+        b       cea_b_35
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5ADE  SPL.B     (A6)+
+        b       cea_b_36
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5ADF  SPL.B     (A7)+
+        b       cea_b_37
         addi    a0, a0, -1                              // 5AE0  SPL.B     -(A0)
         b       op_5AD0
         addi    a1, a1, -1                              // 5AE1  SPL.B     -(A1)
@@ -6027,127 +6027,127 @@ op_5AD7:
         addi    a7, a7, -2                              // 5AE7  SPL.B     -(A7)
         b       op_5AD7
         add     addr, a0, prefetch_data                 // 5AE8  SPL.B     (d16,A0)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a1, prefetch_data                 // 5AE9  SPL.B     (d16,A1)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a2, prefetch_data                 // 5AEA  SPL.B     (d16,A2)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a3, prefetch_data                 // 5AEB  SPL.B     (d16,A3)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a4, prefetch_data                 // 5AEC  SPL.B     (d16,A4)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a5, prefetch_data                 // 5AED  SPL.B     (d16,A5)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a6, prefetch_data                 // 5AEE  SPL.B     (d16,A6)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a7, prefetch_data                 // 5AEF  SPL.B     (d16,A7)
-        b       L_08580
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5AF0  SPL.B     (d8,A0,Xn)
-        b       L_05988
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5AF1  SPL.B     (d8,A1,Xn)
-        b       L_059E8
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5AF2  SPL.B     (d8,A2,Xn)
-        b       L_05A48
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5AF3  SPL.B     (d8,A3,Xn)
-        b       L_05AA8
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5AF4  SPL.B     (d8,A4,Xn)
-        b       L_05B08
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5AF5  SPL.B     (d8,A5,Xn)
-        b       L_05B68
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5AF6  SPL.B     (d8,A6,Xn)
-        b       L_05BC8
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5AF7  SPL.B     (d8,A7,Xn)
-        b       L_05C28
+        b       scc_b_mem
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5AF0  SPL.B     (d8,A0,Xn)
+        b       or_sub_etc_any_any
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5AF1  SPL.B     (d8,A1,Xn)
+        b       or_sub_etc_any_any_2
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5AF2  SPL.B     (d8,A2,Xn)
+        b       or_sub_etc_any_any_3
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5AF3  SPL.B     (d8,A3,Xn)
+        b       or_sub_etc_any_any_4
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5AF4  SPL.B     (d8,A4,Xn)
+        b       or_sub_etc_any_any_5
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5AF5  SPL.B     (d8,A5,Xn)
+        b       or_sub_etc_any_any_6
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5AF6  SPL.B     (d8,A6,Xn)
+        b       or_sub_etc_any_any_7
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5AF7  SPL.B     (d8,A7,Xn)
+        b       or_sub_etc_any_any_8
         mr      addr, prefetch_data                     // 5AF8  SPL.B     (xxx).W
-        b       L_08580
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5AF9  SPL.B     (xxx).L
-        b       L_05E14
+        b       scc_b_mem
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5AF9  SPL.B     (xxx).L
+        b       cea_x_71_2
         crnot   4*cr7+so, lt                            // 5AFA  TRAPPL    #<data>.W
-        b       L_0CD28
+        b       trapcc_4
         crnot   4*cr7+so, lt                            // 5AFB  TRAPPL    #<data>.L
-        b       L_0CD24
+        b       trapcc_3
         crnot   4*cr7+so, lt                            // 5AFC  TRAPPL
-        b       L_0CD2C
+        b       trapcc_5
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5AFD  SPL.B     <ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5AFE  SPL.B     <ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5AFF  SPL.B     <ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $5B00-$5B3F --------------------------------------------------------
         lis     data, 0x0500                            // 5B00  SUBQ.B    #5,D0
-        b       L_03608
+        b       sub_b_any_d0
         lis     data, 0x0500                            // 5B01  SUBQ.B    #5,D1
-        b       L_03648
+        b       sub_b_any_d1
         lis     data, 0x0500                            // 5B02  SUBQ.B    #5,D2
-        b       L_03688
+        b       sub_b_any_d2
         lis     data, 0x0500                            // 5B03  SUBQ.B    #5,D3
-        b       L_036C8
+        b       sub_b_any_d3
         lis     data, 0x0500                            // 5B04  SUBQ.B    #5,D4
-        b       L_03708
+        b       sub_b_any_d4
         lis     data, 0x0500                            // 5B05  SUBQ.B    #5,D5
-        b       L_03748
+        b       sub_b_any_d5
         lis     data, 0x0500                            // 5B06  SUBQ.B    #5,D6
-        b       L_03788
+        b       sub_b_any_d6
         lis     data, 0x0500                            // 5B07  SUBQ.B    #5,D7
-        b       L_037C8
+        b       sub_b_any_d7
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5B08  SUBQ.B    #5,A0   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5B09  SUBQ.B    #5,A1   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5B0A  SUBQ.B    #5,A2   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5B0B  SUBQ.B    #5,A3   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5B0C  SUBQ.B    #5,A4   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5B0D  SUBQ.B    #5,A5   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5B0E  SUBQ.B    #5,A6   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5B0F  SUBQ.B    #5,A7   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 op_5B10:
         mr      addr, a0                                // 5B10  SUBQ.B    #5,(A0)
-        b       L_06604
+        b       subq_b_q_mem_2
 op_5B11:
         mr      addr, a1                                // 5B11  SUBQ.B    #5,(A1)
-        b       L_06604
+        b       subq_b_q_mem_2
 op_5B12:
         mr      addr, a2                                // 5B12  SUBQ.B    #5,(A2)
-        b       L_06604
+        b       subq_b_q_mem_2
 op_5B13:
         mr      addr, a3                                // 5B13  SUBQ.B    #5,(A3)
-        b       L_06604
+        b       subq_b_q_mem_2
 op_5B14:
         mr      addr, a4                                // 5B14  SUBQ.B    #5,(A4)
-        b       L_06604
+        b       subq_b_q_mem_2
 op_5B15:
         mr      addr, a5                                // 5B15  SUBQ.B    #5,(A5)
-        b       L_06604
+        b       subq_b_q_mem_2
 op_5B16:
         mr      addr, a6                                // 5B16  SUBQ.B    #5,(A6)
-        b       L_06604
+        b       subq_b_q_mem_2
 op_5B17:
         mr      addr, a7                                // 5B17  SUBQ.B    #5,(A7)
-        b       L_06604
-        ori     rtn_addr, code_ptr, L_06604 - cb        // 5B18  SUBQ.B    #5,(A0)+
-        b       L_00800
-        ori     rtn_addr, code_ptr, L_06604 - cb        // 5B19  SUBQ.B    #5,(A1)+
-        b       L_00880
-        ori     rtn_addr, code_ptr, L_06604 - cb        // 5B1A  SUBQ.B    #5,(A2)+
-        b       L_00900
-        ori     rtn_addr, code_ptr, L_06604 - cb        // 5B1B  SUBQ.B    #5,(A3)+
-        b       L_00980
-        ori     rtn_addr, code_ptr, L_06604 - cb        // 5B1C  SUBQ.B    #5,(A4)+
-        b       L_00A00
-        ori     rtn_addr, code_ptr, L_06604 - cb        // 5B1D  SUBQ.B    #5,(A5)+
-        b       L_00A80
-        ori     rtn_addr, code_ptr, L_06604 - cb        // 5B1E  SUBQ.B    #5,(A6)+
-        b       L_00B00
-        ori     rtn_addr, code_ptr, L_06604 - cb        // 5B1F  SUBQ.B    #5,(A7)+
-        b       L_00B80
+        b       subq_b_q_mem_2
+        ori     rtn_addr, code_ptr, subq_b_q_mem_2 - cb  // 5B18  SUBQ.B    #5,(A0)+
+        b       cea_b_30
+        ori     rtn_addr, code_ptr, subq_b_q_mem_2 - cb  // 5B19  SUBQ.B    #5,(A1)+
+        b       cea_b_31
+        ori     rtn_addr, code_ptr, subq_b_q_mem_2 - cb  // 5B1A  SUBQ.B    #5,(A2)+
+        b       cea_b_32
+        ori     rtn_addr, code_ptr, subq_b_q_mem_2 - cb  // 5B1B  SUBQ.B    #5,(A3)+
+        b       cea_b_33
+        ori     rtn_addr, code_ptr, subq_b_q_mem_2 - cb  // 5B1C  SUBQ.B    #5,(A4)+
+        b       cea_b_34
+        ori     rtn_addr, code_ptr, subq_b_q_mem_2 - cb  // 5B1D  SUBQ.B    #5,(A5)+
+        b       cea_b_35
+        ori     rtn_addr, code_ptr, subq_b_q_mem_2 - cb  // 5B1E  SUBQ.B    #5,(A6)+
+        b       cea_b_36
+        ori     rtn_addr, code_ptr, subq_b_q_mem_2 - cb  // 5B1F  SUBQ.B    #5,(A7)+
+        b       cea_b_37
         addi    a0, a0, -1                              // 5B20  SUBQ.B    #5,-(A0)
         b       op_5B10
         addi    a1, a1, -1                              // 5B21  SUBQ.B    #5,-(A1)
@@ -6165,127 +6165,127 @@ op_5B17:
         addi    a7, a7, -2                              // 5B27  SUBQ.B    #5,-(A7)
         b       op_5B17
         add     addr, a0, prefetch_data                 // 5B28  SUBQ.B    #5,(d16,A0)
-        b       L_06600
+        b       subq_b_q_mem
         add     addr, a1, prefetch_data                 // 5B29  SUBQ.B    #5,(d16,A1)
-        b       L_06600
+        b       subq_b_q_mem
         add     addr, a2, prefetch_data                 // 5B2A  SUBQ.B    #5,(d16,A2)
-        b       L_06600
+        b       subq_b_q_mem
         add     addr, a3, prefetch_data                 // 5B2B  SUBQ.B    #5,(d16,A3)
-        b       L_06600
+        b       subq_b_q_mem
         add     addr, a4, prefetch_data                 // 5B2C  SUBQ.B    #5,(d16,A4)
-        b       L_06600
+        b       subq_b_q_mem
         add     addr, a5, prefetch_data                 // 5B2D  SUBQ.B    #5,(d16,A5)
-        b       L_06600
+        b       subq_b_q_mem
         add     addr, a6, prefetch_data                 // 5B2E  SUBQ.B    #5,(d16,A6)
-        b       L_06600
+        b       subq_b_q_mem
         add     addr, a7, prefetch_data                 // 5B2F  SUBQ.B    #5,(d16,A7)
-        b       L_06600
-        ori     rtn_addr, code_ptr, L_06608 - cb        // 5B30  SUBQ.B    #5,(d8,A0,Xn)
-        b       L_0599C
-        ori     rtn_addr, code_ptr, L_06608 - cb        // 5B31  SUBQ.B    #5,(d8,A1,Xn)
-        b       L_059FC
-        ori     rtn_addr, code_ptr, L_06608 - cb        // 5B32  SUBQ.B    #5,(d8,A2,Xn)
-        b       L_05A5C
-        ori     rtn_addr, code_ptr, L_06608 - cb        // 5B33  SUBQ.B    #5,(d8,A3,Xn)
-        b       L_05ABC
-        ori     rtn_addr, code_ptr, L_06608 - cb        // 5B34  SUBQ.B    #5,(d8,A4,Xn)
-        b       L_05B1C
-        ori     rtn_addr, code_ptr, L_06608 - cb        // 5B35  SUBQ.B    #5,(d8,A5,Xn)
-        b       L_05B7C
-        ori     rtn_addr, code_ptr, L_06608 - cb        // 5B36  SUBQ.B    #5,(d8,A6,Xn)
-        b       L_05BDC
-        ori     rtn_addr, code_ptr, L_06608 - cb        // 5B37  SUBQ.B    #5,(d8,A7,Xn)
-        b       L_05C3C
+        b       subq_b_q_mem
+        ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5B30  SUBQ.B    #5,(d8,A0,Xn)
+        b       move_add_etc_b_any_any
+        ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5B31  SUBQ.B    #5,(d8,A1,Xn)
+        b       move_add_etc_b_any_any_2
+        ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5B32  SUBQ.B    #5,(d8,A2,Xn)
+        b       move_add_etc_b_any_any_3
+        ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5B33  SUBQ.B    #5,(d8,A3,Xn)
+        b       move_add_etc_b_any_any_4
+        ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5B34  SUBQ.B    #5,(d8,A4,Xn)
+        b       move_add_etc_b_any_any_5
+        ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5B35  SUBQ.B    #5,(d8,A5,Xn)
+        b       move_add_etc_b_any_any_6
+        ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5B36  SUBQ.B    #5,(d8,A6,Xn)
+        b       move_add_etc_b_any_any_7
+        ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5B37  SUBQ.B    #5,(d8,A7,Xn)
+        b       move_add_etc_b_any_any_8
         mr      addr, prefetch_data                     // 5B38  SUBQ.B    #5,(xxx).W
-        b       L_06600
-        ori     rtn_addr, code_ptr, L_06608 - cb        // 5B39  SUBQ.B    #5,(xxx).L
-        b       L_05E2C
+        b       subq_b_q_mem
+        ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5B39  SUBQ.B    #5,(xxx).L
+        b       fea_b_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5B3A  SUBQ.B    #5,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5B3B  SUBQ.B    #5,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5B3C  SUBQ.B    #5,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5B3D  SUBQ.B    #5,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5B3E  SUBQ.B    #5,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5B3F  SUBQ.B    #5,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $5B40-$5B7F --------------------------------------------------------
         lis     data, 0x0005                            // 5B40  SUBQ.W    #5,D0
-        b       L_03C30
+        b       sub_w_any_d0
         lis     data, 0x0005                            // 5B41  SUBQ.W    #5,D1
-        b       L_03C70
+        b       sub_w_any_d1
         lis     data, 0x0005                            // 5B42  SUBQ.W    #5,D2
-        b       L_03CB0
+        b       sub_w_any_d2
         lis     data, 0x0005                            // 5B43  SUBQ.W    #5,D3
-        b       L_03CF0
+        b       sub_w_any_d3
         lis     data, 0x0005                            // 5B44  SUBQ.W    #5,D4
-        b       L_03D30
+        b       sub_w_any_d4
         lis     data, 0x0005                            // 5B45  SUBQ.W    #5,D5
-        b       L_03D70
+        b       sub_w_any_d5
         lis     data, 0x0005                            // 5B46  SUBQ.W    #5,D6
-        b       L_03DB0
+        b       sub_w_any_d6
         lis     data, 0x0005                            // 5B47  SUBQ.W    #5,D7
-        b       L_03DF0
+        b       sub_w_any_d7
         addi    a0, a0, -5                              // 5B48  SUBQ.W    #5,A0
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a1, a1, -5                              // 5B49  SUBQ.W    #5,A1
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a2, a2, -5                              // 5B4A  SUBQ.W    #5,A2
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a3, a3, -5                              // 5B4B  SUBQ.W    #5,A3
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a4, a4, -5                              // 5B4C  SUBQ.W    #5,A4
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a5, a5, -5                              // 5B4D  SUBQ.W    #5,A5
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a6, a6, -5                              // 5B4E  SUBQ.W    #5,A6
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a7, a7, -5                              // 5B4F  SUBQ.W    #5,A7
-        b       L_06084
+        b       move_add_etc_any_any
 op_5B50:
         mr      addr, a0                                // 5B50  SUBQ.W    #5,(A0)
-        b       L_06824
+        b       subq_w_q_mem_2
 op_5B51:
         mr      addr, a1                                // 5B51  SUBQ.W    #5,(A1)
-        b       L_06824
+        b       subq_w_q_mem_2
 op_5B52:
         mr      addr, a2                                // 5B52  SUBQ.W    #5,(A2)
-        b       L_06824
+        b       subq_w_q_mem_2
 op_5B53:
         mr      addr, a3                                // 5B53  SUBQ.W    #5,(A3)
-        b       L_06824
+        b       subq_w_q_mem_2
 op_5B54:
         mr      addr, a4                                // 5B54  SUBQ.W    #5,(A4)
-        b       L_06824
+        b       subq_w_q_mem_2
 op_5B55:
         mr      addr, a5                                // 5B55  SUBQ.W    #5,(A5)
-        b       L_06824
+        b       subq_w_q_mem_2
 op_5B56:
         mr      addr, a6                                // 5B56  SUBQ.W    #5,(A6)
-        b       L_06824
+        b       subq_w_q_mem_2
 op_5B57:
         mr      addr, a7                                // 5B57  SUBQ.W    #5,(A7)
-        b       L_06824
-        ori     rtn_addr, code_ptr, L_06824 - cb        // 5B58  SUBQ.W    #5,(A0)+
-        b       L_00820
-        ori     rtn_addr, code_ptr, L_06824 - cb        // 5B59  SUBQ.W    #5,(A1)+
-        b       L_008A0
-        ori     rtn_addr, code_ptr, L_06824 - cb        // 5B5A  SUBQ.W    #5,(A2)+
-        b       L_00920
-        ori     rtn_addr, code_ptr, L_06824 - cb        // 5B5B  SUBQ.W    #5,(A3)+
-        b       L_009A0
-        ori     rtn_addr, code_ptr, L_06824 - cb        // 5B5C  SUBQ.W    #5,(A4)+
-        b       L_00A20
-        ori     rtn_addr, code_ptr, L_06824 - cb        // 5B5D  SUBQ.W    #5,(A5)+
-        b       L_00AA0
-        ori     rtn_addr, code_ptr, L_06824 - cb        // 5B5E  SUBQ.W    #5,(A6)+
-        b       L_00B20
-        ori     rtn_addr, code_ptr, L_06824 - cb        // 5B5F  SUBQ.W    #5,(A7)+
-        b       L_00BA0
+        b       subq_w_q_mem_2
+        ori     rtn_addr, code_ptr, subq_w_q_mem_2 - cb  // 5B58  SUBQ.W    #5,(A0)+
+        b       cea_w_30
+        ori     rtn_addr, code_ptr, subq_w_q_mem_2 - cb  // 5B59  SUBQ.W    #5,(A1)+
+        b       cea_w_31
+        ori     rtn_addr, code_ptr, subq_w_q_mem_2 - cb  // 5B5A  SUBQ.W    #5,(A2)+
+        b       cea_w_32
+        ori     rtn_addr, code_ptr, subq_w_q_mem_2 - cb  // 5B5B  SUBQ.W    #5,(A3)+
+        b       cea_w_33
+        ori     rtn_addr, code_ptr, subq_w_q_mem_2 - cb  // 5B5C  SUBQ.W    #5,(A4)+
+        b       cea_w_34
+        ori     rtn_addr, code_ptr, subq_w_q_mem_2 - cb  // 5B5D  SUBQ.W    #5,(A5)+
+        b       cea_w_35
+        ori     rtn_addr, code_ptr, subq_w_q_mem_2 - cb  // 5B5E  SUBQ.W    #5,(A6)+
+        b       cea_w_36
+        ori     rtn_addr, code_ptr, subq_w_q_mem_2 - cb  // 5B5F  SUBQ.W    #5,(A7)+
+        b       cea_w_37
         addi    a0, a0, -2                              // 5B60  SUBQ.W    #5,-(A0)
         b       op_5B50
         addi    a1, a1, -2                              // 5B61  SUBQ.W    #5,-(A1)
@@ -6303,127 +6303,127 @@ op_5B57:
         addi    a7, a7, -2                              // 5B67  SUBQ.W    #5,-(A7)
         b       op_5B57
         add     addr, a0, prefetch_data                 // 5B68  SUBQ.W    #5,(d16,A0)
-        b       L_06820
+        b       subq_w_q_mem
         add     addr, a1, prefetch_data                 // 5B69  SUBQ.W    #5,(d16,A1)
-        b       L_06820
+        b       subq_w_q_mem
         add     addr, a2, prefetch_data                 // 5B6A  SUBQ.W    #5,(d16,A2)
-        b       L_06820
+        b       subq_w_q_mem
         add     addr, a3, prefetch_data                 // 5B6B  SUBQ.W    #5,(d16,A3)
-        b       L_06820
+        b       subq_w_q_mem
         add     addr, a4, prefetch_data                 // 5B6C  SUBQ.W    #5,(d16,A4)
-        b       L_06820
+        b       subq_w_q_mem
         add     addr, a5, prefetch_data                 // 5B6D  SUBQ.W    #5,(d16,A5)
-        b       L_06820
+        b       subq_w_q_mem
         add     addr, a6, prefetch_data                 // 5B6E  SUBQ.W    #5,(d16,A6)
-        b       L_06820
+        b       subq_w_q_mem
         add     addr, a7, prefetch_data                 // 5B6F  SUBQ.W    #5,(d16,A7)
-        b       L_06820
-        ori     rtn_addr, code_ptr, L_06828 - cb        // 5B70  SUBQ.W    #5,(d8,A0,Xn)
-        b       L_059B0
-        ori     rtn_addr, code_ptr, L_06828 - cb        // 5B71  SUBQ.W    #5,(d8,A1,Xn)
-        b       L_05A10
-        ori     rtn_addr, code_ptr, L_06828 - cb        // 5B72  SUBQ.W    #5,(d8,A2,Xn)
-        b       L_05A70
-        ori     rtn_addr, code_ptr, L_06828 - cb        // 5B73  SUBQ.W    #5,(d8,A3,Xn)
-        b       L_05AD0
-        ori     rtn_addr, code_ptr, L_06828 - cb        // 5B74  SUBQ.W    #5,(d8,A4,Xn)
-        b       L_05B30
-        ori     rtn_addr, code_ptr, L_06828 - cb        // 5B75  SUBQ.W    #5,(d8,A5,Xn)
-        b       L_05B90
-        ori     rtn_addr, code_ptr, L_06828 - cb        // 5B76  SUBQ.W    #5,(d8,A6,Xn)
-        b       L_05BF0
-        ori     rtn_addr, code_ptr, L_06828 - cb        // 5B77  SUBQ.W    #5,(d8,A7,Xn)
-        b       L_05C50
+        b       subq_w_q_mem
+        ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5B70  SUBQ.W    #5,(d8,A0,Xn)
+        b       move_add_etc_w_any_any
+        ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5B71  SUBQ.W    #5,(d8,A1,Xn)
+        b       move_add_etc_w_any_any_2
+        ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5B72  SUBQ.W    #5,(d8,A2,Xn)
+        b       move_add_etc_w_any_any_3
+        ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5B73  SUBQ.W    #5,(d8,A3,Xn)
+        b       move_add_etc_w_any_any_4
+        ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5B74  SUBQ.W    #5,(d8,A4,Xn)
+        b       move_add_etc_w_any_any_5
+        ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5B75  SUBQ.W    #5,(d8,A5,Xn)
+        b       move_add_etc_w_any_any_6
+        ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5B76  SUBQ.W    #5,(d8,A6,Xn)
+        b       move_add_etc_w_any_any_7
+        ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5B77  SUBQ.W    #5,(d8,A7,Xn)
+        b       move_add_etc_w_any_any_8
         mr      addr, prefetch_data                     // 5B78  SUBQ.W    #5,(xxx).W
-        b       L_06820
-        ori     rtn_addr, code_ptr, L_06828 - cb        // 5B79  SUBQ.W    #5,(xxx).L
-        b       L_05E70
+        b       subq_w_q_mem
+        ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5B79  SUBQ.W    #5,(xxx).L
+        b       fea_w_71
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5B7A  SUBQ.W    #5,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5B7B  SUBQ.W    #5,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5B7C  SUBQ.W    #5,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5B7D  SUBQ.W    #5,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5B7E  SUBQ.W    #5,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5B7F  SUBQ.W    #5,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $5B80-$5BBF --------------------------------------------------------
         li      data, 5                                 // 5B80  SUBQ.L    #5,D0
-        b       L_04204
+        b       sub_l_mem_d0_2
         li      data, 5                                 // 5B81  SUBQ.L    #5,D1
-        b       L_04244
+        b       sub_l_mem_d1_2
         li      data, 5                                 // 5B82  SUBQ.L    #5,D2
-        b       L_04284
+        b       sub_l_mem_d2_2
         li      data, 5                                 // 5B83  SUBQ.L    #5,D3
-        b       L_042C4
+        b       sub_l_mem_d3_2
         li      data, 5                                 // 5B84  SUBQ.L    #5,D4
-        b       L_04304
+        b       sub_l_mem_d4_2
         li      data, 5                                 // 5B85  SUBQ.L    #5,D5
-        b       L_04344
+        b       sub_l_mem_d5_2
         li      data, 5                                 // 5B86  SUBQ.L    #5,D6
-        b       L_04384
+        b       sub_l_mem_d6_2
         li      data, 5                                 // 5B87  SUBQ.L    #5,D7
-        b       L_043C4
+        b       sub_l_mem_d7_2
         addi    a0, a0, -5                              // 5B88  SUBQ.L    #5,A0
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a1, a1, -5                              // 5B89  SUBQ.L    #5,A1
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a2, a2, -5                              // 5B8A  SUBQ.L    #5,A2
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a3, a3, -5                              // 5B8B  SUBQ.L    #5,A3
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a4, a4, -5                              // 5B8C  SUBQ.L    #5,A4
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a5, a5, -5                              // 5B8D  SUBQ.L    #5,A5
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a6, a6, -5                              // 5B8E  SUBQ.L    #5,A6
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a7, a7, -5                              // 5B8F  SUBQ.L    #5,A7
-        b       L_06084
+        b       move_add_etc_any_any
 op_5B90:
         mr      addr, a0                                // 5B90  SUBQ.L    #5,(A0)
-        b       L_06AC4
+        b       subq_l_q_mem_2
 op_5B91:
         mr      addr, a1                                // 5B91  SUBQ.L    #5,(A1)
-        b       L_06AC4
+        b       subq_l_q_mem_2
 op_5B92:
         mr      addr, a2                                // 5B92  SUBQ.L    #5,(A2)
-        b       L_06AC4
+        b       subq_l_q_mem_2
 op_5B93:
         mr      addr, a3                                // 5B93  SUBQ.L    #5,(A3)
-        b       L_06AC4
+        b       subq_l_q_mem_2
 op_5B94:
         mr      addr, a4                                // 5B94  SUBQ.L    #5,(A4)
-        b       L_06AC4
+        b       subq_l_q_mem_2
 op_5B95:
         mr      addr, a5                                // 5B95  SUBQ.L    #5,(A5)
-        b       L_06AC4
+        b       subq_l_q_mem_2
 op_5B96:
         mr      addr, a6                                // 5B96  SUBQ.L    #5,(A6)
-        b       L_06AC4
+        b       subq_l_q_mem_2
 op_5B97:
         mr      addr, a7                                // 5B97  SUBQ.L    #5,(A7)
-        b       L_06AC4
-        ori     rtn_addr, code_ptr, L_06AC4 - cb        // 5B98  SUBQ.L    #5,(A0)+
-        b       L_00840
-        ori     rtn_addr, code_ptr, L_06AC4 - cb        // 5B99  SUBQ.L    #5,(A1)+
-        b       L_008C0
-        ori     rtn_addr, code_ptr, L_06AC4 - cb        // 5B9A  SUBQ.L    #5,(A2)+
-        b       L_00940
-        ori     rtn_addr, code_ptr, L_06AC4 - cb        // 5B9B  SUBQ.L    #5,(A3)+
-        b       L_009C0
-        ori     rtn_addr, code_ptr, L_06AC4 - cb        // 5B9C  SUBQ.L    #5,(A4)+
-        b       L_00A40
-        ori     rtn_addr, code_ptr, L_06AC4 - cb        // 5B9D  SUBQ.L    #5,(A5)+
-        b       L_00AC0
-        ori     rtn_addr, code_ptr, L_06AC4 - cb        // 5B9E  SUBQ.L    #5,(A6)+
-        b       L_00B40
-        ori     rtn_addr, code_ptr, L_06AC4 - cb        // 5B9F  SUBQ.L    #5,(A7)+
-        b       L_00BC0
+        b       subq_l_q_mem_2
+        ori     rtn_addr, code_ptr, subq_l_q_mem_2 - cb  // 5B98  SUBQ.L    #5,(A0)+
+        b       cea_l_30
+        ori     rtn_addr, code_ptr, subq_l_q_mem_2 - cb  // 5B99  SUBQ.L    #5,(A1)+
+        b       cea_l_31
+        ori     rtn_addr, code_ptr, subq_l_q_mem_2 - cb  // 5B9A  SUBQ.L    #5,(A2)+
+        b       cea_l_32
+        ori     rtn_addr, code_ptr, subq_l_q_mem_2 - cb  // 5B9B  SUBQ.L    #5,(A3)+
+        b       cea_l_33
+        ori     rtn_addr, code_ptr, subq_l_q_mem_2 - cb  // 5B9C  SUBQ.L    #5,(A4)+
+        b       cea_l_34
+        ori     rtn_addr, code_ptr, subq_l_q_mem_2 - cb  // 5B9D  SUBQ.L    #5,(A5)+
+        b       cea_l_35
+        ori     rtn_addr, code_ptr, subq_l_q_mem_2 - cb  // 5B9E  SUBQ.L    #5,(A6)+
+        b       cea_l_36
+        ori     rtn_addr, code_ptr, subq_l_q_mem_2 - cb  // 5B9F  SUBQ.L    #5,(A7)+
+        b       cea_l_37
         addi    a0, a0, -4                              // 5BA0  SUBQ.L    #5,-(A0)
         b       op_5B90
         addi    a1, a1, -4                              // 5BA1  SUBQ.L    #5,-(A1)
@@ -6441,127 +6441,127 @@ op_5B97:
         addi    a7, a7, -4                              // 5BA7  SUBQ.L    #5,-(A7)
         b       op_5B97
         add     addr, a0, prefetch_data                 // 5BA8  SUBQ.L    #5,(d16,A0)
-        b       L_06AC0
+        b       subq_l_q_mem
         add     addr, a1, prefetch_data                 // 5BA9  SUBQ.L    #5,(d16,A1)
-        b       L_06AC0
+        b       subq_l_q_mem
         add     addr, a2, prefetch_data                 // 5BAA  SUBQ.L    #5,(d16,A2)
-        b       L_06AC0
+        b       subq_l_q_mem
         add     addr, a3, prefetch_data                 // 5BAB  SUBQ.L    #5,(d16,A3)
-        b       L_06AC0
+        b       subq_l_q_mem
         add     addr, a4, prefetch_data                 // 5BAC  SUBQ.L    #5,(d16,A4)
-        b       L_06AC0
+        b       subq_l_q_mem
         add     addr, a5, prefetch_data                 // 5BAD  SUBQ.L    #5,(d16,A5)
-        b       L_06AC0
+        b       subq_l_q_mem
         add     addr, a6, prefetch_data                 // 5BAE  SUBQ.L    #5,(d16,A6)
-        b       L_06AC0
+        b       subq_l_q_mem
         add     addr, a7, prefetch_data                 // 5BAF  SUBQ.L    #5,(d16,A7)
-        b       L_06AC0
-        ori     rtn_addr, code_ptr, L_06AC8 - cb        // 5BB0  SUBQ.L    #5,(d8,A0,Xn)
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_06AC8 - cb        // 5BB1  SUBQ.L    #5,(d8,A1,Xn)
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_06AC8 - cb        // 5BB2  SUBQ.L    #5,(d8,A2,Xn)
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_06AC8 - cb        // 5BB3  SUBQ.L    #5,(d8,A3,Xn)
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_06AC8 - cb        // 5BB4  SUBQ.L    #5,(d8,A4,Xn)
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_06AC8 - cb        // 5BB5  SUBQ.L    #5,(d8,A5,Xn)
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_06AC8 - cb        // 5BB6  SUBQ.L    #5,(d8,A6,Xn)
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_06AC8 - cb        // 5BB7  SUBQ.L    #5,(d8,A7,Xn)
-        b       L_05C68
+        b       subq_l_q_mem
+        ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 5BB0  SUBQ.L    #5,(d8,A0,Xn)
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 5BB1  SUBQ.L    #5,(d8,A1,Xn)
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 5BB2  SUBQ.L    #5,(d8,A2,Xn)
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 5BB3  SUBQ.L    #5,(d8,A3,Xn)
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 5BB4  SUBQ.L    #5,(d8,A4,Xn)
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 5BB5  SUBQ.L    #5,(d8,A5,Xn)
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 5BB6  SUBQ.L    #5,(d8,A6,Xn)
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 5BB7  SUBQ.L    #5,(d8,A7,Xn)
+        b       move_add_etc_l_any_any_8
         mr      addr, prefetch_data                     // 5BB8  SUBQ.L    #5,(xxx).W
-        b       L_06AC0
-        ori     rtn_addr, code_ptr, L_06AC8 - cb        // 5BB9  SUBQ.L    #5,(xxx).L
-        b       L_05E8C
+        b       subq_l_q_mem
+        ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 5BB9  SUBQ.L    #5,(xxx).L
+        b       fea_l_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5BBA  SUBQ.L    #5,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5BBB  SUBQ.L    #5,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5BBC  SUBQ.L    #5,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5BBD  SUBQ.L    #5,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5BBE  SUBQ.L    #5,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5BBF  SUBQ.L    #5,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $5BC0-$5BFF --------------------------------------------------------
-        ori     rtn_addr, code_ptr, L_03624 - cb        // 5BC0  SMI.B     D0
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_03664 - cb        // 5BC1  SMI.B     D1
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_036A4 - cb        // 5BC2  SMI.B     D2
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_036E4 - cb        // 5BC3  SMI.B     D3
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_03724 - cb        // 5BC4  SMI.B     D4
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_03764 - cb        // 5BC5  SMI.B     D5
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_037A4 - cb        // 5BC6  SMI.B     D6
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_037E4 - cb        // 5BC7  SMI.B     D7
-        b       L_08540
+        ori     rtn_addr, code_ptr, scc_b_d0 - cb       // 5BC0  SMI.B     D0
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d1 - cb       // 5BC1  SMI.B     D1
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d2 - cb       // 5BC2  SMI.B     D2
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d3 - cb       // 5BC3  SMI.B     D3
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d4 - cb       // 5BC4  SMI.B     D4
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d5 - cb       // 5BC5  SMI.B     D5
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d6 - cb       // 5BC6  SMI.B     D6
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d7 - cb       // 5BC7  SMI.B     D7
+        b       scc_b_dn
         blt     op_50C8                                 // 5BC8  DBMI.W    D0,<label>
-        b       L_03000
+        b       dbcc_w_d0
         blt     op_50C9                                 // 5BC9  DBMI.W    D1,<label>
-        b       L_03040
+        b       dbcc_w_d1
         blt     op_50CA                                 // 5BCA  DBMI.W    D2,<label>
-        b       L_03080
+        b       dbcc_w_d2
         blt     op_50CB                                 // 5BCB  DBMI.W    D3,<label>
-        b       L_030C0
+        b       dbcc_w_d3
         blt     op_50CC                                 // 5BCC  DBMI.W    D4,<label>
-        b       L_03100
+        b       dbcc_w_d4
         blt     op_50CD                                 // 5BCD  DBMI.W    D5,<label>
-        b       L_03140
+        b       dbcc_w_d5
         blt     op_50CE                                 // 5BCE  DBMI.W    D6,<label>
-        b       L_03180
+        b       dbcc_w_d6
         blt     op_50CF                                 // 5BCF  DBMI.W    D7,<label>
-        b       L_031C0
+        b       dbcc_w_d7
 op_5BD0:
         mr      addr, a0                                // 5BD0  SMI.B     (A0)
-        b       L_08584
+        b       scc_b_mem_2
 op_5BD1:
         mr      addr, a1                                // 5BD1  SMI.B     (A1)
-        b       L_08584
+        b       scc_b_mem_2
 op_5BD2:
         mr      addr, a2                                // 5BD2  SMI.B     (A2)
-        b       L_08584
+        b       scc_b_mem_2
 op_5BD3:
         mr      addr, a3                                // 5BD3  SMI.B     (A3)
-        b       L_08584
+        b       scc_b_mem_2
 op_5BD4:
         mr      addr, a4                                // 5BD4  SMI.B     (A4)
-        b       L_08584
+        b       scc_b_mem_2
 op_5BD5:
         mr      addr, a5                                // 5BD5  SMI.B     (A5)
-        b       L_08584
+        b       scc_b_mem_2
 op_5BD6:
         mr      addr, a6                                // 5BD6  SMI.B     (A6)
-        b       L_08584
+        b       scc_b_mem_2
 op_5BD7:
         mr      addr, a7                                // 5BD7  SMI.B     (A7)
-        b       L_08584
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5BD8  SMI.B     (A0)+
-        b       L_00800
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5BD9  SMI.B     (A1)+
-        b       L_00880
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5BDA  SMI.B     (A2)+
-        b       L_00900
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5BDB  SMI.B     (A3)+
-        b       L_00980
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5BDC  SMI.B     (A4)+
-        b       L_00A00
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5BDD  SMI.B     (A5)+
-        b       L_00A80
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5BDE  SMI.B     (A6)+
-        b       L_00B00
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5BDF  SMI.B     (A7)+
-        b       L_00B80
+        b       scc_b_mem_2
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5BD8  SMI.B     (A0)+
+        b       cea_b_30
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5BD9  SMI.B     (A1)+
+        b       cea_b_31
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5BDA  SMI.B     (A2)+
+        b       cea_b_32
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5BDB  SMI.B     (A3)+
+        b       cea_b_33
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5BDC  SMI.B     (A4)+
+        b       cea_b_34
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5BDD  SMI.B     (A5)+
+        b       cea_b_35
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5BDE  SMI.B     (A6)+
+        b       cea_b_36
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5BDF  SMI.B     (A7)+
+        b       cea_b_37
         addi    a0, a0, -1                              // 5BE0  SMI.B     -(A0)
         b       op_5BD0
         addi    a1, a1, -1                              // 5BE1  SMI.B     -(A1)
@@ -6579,127 +6579,127 @@ op_5BD7:
         addi    a7, a7, -2                              // 5BE7  SMI.B     -(A7)
         b       op_5BD7
         add     addr, a0, prefetch_data                 // 5BE8  SMI.B     (d16,A0)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a1, prefetch_data                 // 5BE9  SMI.B     (d16,A1)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a2, prefetch_data                 // 5BEA  SMI.B     (d16,A2)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a3, prefetch_data                 // 5BEB  SMI.B     (d16,A3)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a4, prefetch_data                 // 5BEC  SMI.B     (d16,A4)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a5, prefetch_data                 // 5BED  SMI.B     (d16,A5)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a6, prefetch_data                 // 5BEE  SMI.B     (d16,A6)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a7, prefetch_data                 // 5BEF  SMI.B     (d16,A7)
-        b       L_08580
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5BF0  SMI.B     (d8,A0,Xn)
-        b       L_05988
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5BF1  SMI.B     (d8,A1,Xn)
-        b       L_059E8
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5BF2  SMI.B     (d8,A2,Xn)
-        b       L_05A48
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5BF3  SMI.B     (d8,A3,Xn)
-        b       L_05AA8
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5BF4  SMI.B     (d8,A4,Xn)
-        b       L_05B08
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5BF5  SMI.B     (d8,A5,Xn)
-        b       L_05B68
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5BF6  SMI.B     (d8,A6,Xn)
-        b       L_05BC8
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5BF7  SMI.B     (d8,A7,Xn)
-        b       L_05C28
+        b       scc_b_mem
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5BF0  SMI.B     (d8,A0,Xn)
+        b       or_sub_etc_any_any
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5BF1  SMI.B     (d8,A1,Xn)
+        b       or_sub_etc_any_any_2
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5BF2  SMI.B     (d8,A2,Xn)
+        b       or_sub_etc_any_any_3
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5BF3  SMI.B     (d8,A3,Xn)
+        b       or_sub_etc_any_any_4
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5BF4  SMI.B     (d8,A4,Xn)
+        b       or_sub_etc_any_any_5
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5BF5  SMI.B     (d8,A5,Xn)
+        b       or_sub_etc_any_any_6
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5BF6  SMI.B     (d8,A6,Xn)
+        b       or_sub_etc_any_any_7
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5BF7  SMI.B     (d8,A7,Xn)
+        b       or_sub_etc_any_any_8
         mr      addr, prefetch_data                     // 5BF8  SMI.B     (xxx).W
-        b       L_08580
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5BF9  SMI.B     (xxx).L
-        b       L_05E14
+        b       scc_b_mem
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5BF9  SMI.B     (xxx).L
+        b       cea_x_71_2
         crmove  4*cr7+so, lt                            // 5BFA  TRAPMI    #<data>.W
-        b       L_0CD28
+        b       trapcc_4
         crmove  4*cr7+so, lt                            // 5BFB  TRAPMI    #<data>.L
-        b       L_0CD24
+        b       trapcc_3
         crmove  4*cr7+so, lt                            // 5BFC  TRAPMI
-        b       L_0CD2C
+        b       trapcc_5
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5BFD  SMI.B     <ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5BFE  SMI.B     <ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5BFF  SMI.B     <ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $5C00-$5C3F --------------------------------------------------------
         lis     data, 0x0600                            // 5C00  ADDQ.B    #6,D0
-        b       L_0B0C8
+        b       add_asl_b_any_d0
         lis     data, 0x0600                            // 5C01  ADDQ.B    #6,D1
-        b       L_0B108
+        b       add_asl_b_any_d1
         lis     data, 0x0600                            // 5C02  ADDQ.B    #6,D2
-        b       L_0B148
+        b       add_asl_b_any_d2
         lis     data, 0x0600                            // 5C03  ADDQ.B    #6,D3
-        b       L_0B188
+        b       add_asl_b_any_d3
         lis     data, 0x0600                            // 5C04  ADDQ.B    #6,D4
-        b       L_0B1C8
+        b       add_asl_b_any_d4
         lis     data, 0x0600                            // 5C05  ADDQ.B    #6,D5
-        b       L_0B208
+        b       add_asl_b_any_d5
         lis     data, 0x0600                            // 5C06  ADDQ.B    #6,D6
-        b       L_0B248
+        b       add_asl_b_any_d6
         lis     data, 0x0600                            // 5C07  ADDQ.B    #6,D7
-        b       L_0B288
+        b       add_asl_b_any_d7
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5C08  ADDQ.B    #6,A0   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5C09  ADDQ.B    #6,A1   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5C0A  ADDQ.B    #6,A2   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5C0B  ADDQ.B    #6,A3   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5C0C  ADDQ.B    #6,A4   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5C0D  ADDQ.B    #6,A5   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5C0E  ADDQ.B    #6,A6   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5C0F  ADDQ.B    #6,A7   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 op_5C10:
         mr      addr, a0                                // 5C10  ADDQ.B    #6,(A0)
-        b       L_06564
+        b       addq_b_q_mem_2
 op_5C11:
         mr      addr, a1                                // 5C11  ADDQ.B    #6,(A1)
-        b       L_06564
+        b       addq_b_q_mem_2
 op_5C12:
         mr      addr, a2                                // 5C12  ADDQ.B    #6,(A2)
-        b       L_06564
+        b       addq_b_q_mem_2
 op_5C13:
         mr      addr, a3                                // 5C13  ADDQ.B    #6,(A3)
-        b       L_06564
+        b       addq_b_q_mem_2
 op_5C14:
         mr      addr, a4                                // 5C14  ADDQ.B    #6,(A4)
-        b       L_06564
+        b       addq_b_q_mem_2
 op_5C15:
         mr      addr, a5                                // 5C15  ADDQ.B    #6,(A5)
-        b       L_06564
+        b       addq_b_q_mem_2
 op_5C16:
         mr      addr, a6                                // 5C16  ADDQ.B    #6,(A6)
-        b       L_06564
+        b       addq_b_q_mem_2
 op_5C17:
         mr      addr, a7                                // 5C17  ADDQ.B    #6,(A7)
-        b       L_06564
-        ori     rtn_addr, code_ptr, L_06564 - cb        // 5C18  ADDQ.B    #6,(A0)+
-        b       L_00800
-        ori     rtn_addr, code_ptr, L_06564 - cb        // 5C19  ADDQ.B    #6,(A1)+
-        b       L_00880
-        ori     rtn_addr, code_ptr, L_06564 - cb        // 5C1A  ADDQ.B    #6,(A2)+
-        b       L_00900
-        ori     rtn_addr, code_ptr, L_06564 - cb        // 5C1B  ADDQ.B    #6,(A3)+
-        b       L_00980
-        ori     rtn_addr, code_ptr, L_06564 - cb        // 5C1C  ADDQ.B    #6,(A4)+
-        b       L_00A00
-        ori     rtn_addr, code_ptr, L_06564 - cb        // 5C1D  ADDQ.B    #6,(A5)+
-        b       L_00A80
-        ori     rtn_addr, code_ptr, L_06564 - cb        // 5C1E  ADDQ.B    #6,(A6)+
-        b       L_00B00
-        ori     rtn_addr, code_ptr, L_06564 - cb        // 5C1F  ADDQ.B    #6,(A7)+
-        b       L_00B80
+        b       addq_b_q_mem_2
+        ori     rtn_addr, code_ptr, addq_b_q_mem_2 - cb  // 5C18  ADDQ.B    #6,(A0)+
+        b       cea_b_30
+        ori     rtn_addr, code_ptr, addq_b_q_mem_2 - cb  // 5C19  ADDQ.B    #6,(A1)+
+        b       cea_b_31
+        ori     rtn_addr, code_ptr, addq_b_q_mem_2 - cb  // 5C1A  ADDQ.B    #6,(A2)+
+        b       cea_b_32
+        ori     rtn_addr, code_ptr, addq_b_q_mem_2 - cb  // 5C1B  ADDQ.B    #6,(A3)+
+        b       cea_b_33
+        ori     rtn_addr, code_ptr, addq_b_q_mem_2 - cb  // 5C1C  ADDQ.B    #6,(A4)+
+        b       cea_b_34
+        ori     rtn_addr, code_ptr, addq_b_q_mem_2 - cb  // 5C1D  ADDQ.B    #6,(A5)+
+        b       cea_b_35
+        ori     rtn_addr, code_ptr, addq_b_q_mem_2 - cb  // 5C1E  ADDQ.B    #6,(A6)+
+        b       cea_b_36
+        ori     rtn_addr, code_ptr, addq_b_q_mem_2 - cb  // 5C1F  ADDQ.B    #6,(A7)+
+        b       cea_b_37
         addi    a0, a0, -1                              // 5C20  ADDQ.B    #6,-(A0)
         b       op_5C10
         addi    a1, a1, -1                              // 5C21  ADDQ.B    #6,-(A1)
@@ -6717,127 +6717,127 @@ op_5C17:
         addi    a7, a7, -2                              // 5C27  ADDQ.B    #6,-(A7)
         b       op_5C17
         add     addr, a0, prefetch_data                 // 5C28  ADDQ.B    #6,(d16,A0)
-        b       L_06560
+        b       addq_b_q_mem
         add     addr, a1, prefetch_data                 // 5C29  ADDQ.B    #6,(d16,A1)
-        b       L_06560
+        b       addq_b_q_mem
         add     addr, a2, prefetch_data                 // 5C2A  ADDQ.B    #6,(d16,A2)
-        b       L_06560
+        b       addq_b_q_mem
         add     addr, a3, prefetch_data                 // 5C2B  ADDQ.B    #6,(d16,A3)
-        b       L_06560
+        b       addq_b_q_mem
         add     addr, a4, prefetch_data                 // 5C2C  ADDQ.B    #6,(d16,A4)
-        b       L_06560
+        b       addq_b_q_mem
         add     addr, a5, prefetch_data                 // 5C2D  ADDQ.B    #6,(d16,A5)
-        b       L_06560
+        b       addq_b_q_mem
         add     addr, a6, prefetch_data                 // 5C2E  ADDQ.B    #6,(d16,A6)
-        b       L_06560
+        b       addq_b_q_mem
         add     addr, a7, prefetch_data                 // 5C2F  ADDQ.B    #6,(d16,A7)
-        b       L_06560
-        ori     rtn_addr, code_ptr, L_06568 - cb        // 5C30  ADDQ.B    #6,(d8,A0,Xn)
-        b       L_0599C
-        ori     rtn_addr, code_ptr, L_06568 - cb        // 5C31  ADDQ.B    #6,(d8,A1,Xn)
-        b       L_059FC
-        ori     rtn_addr, code_ptr, L_06568 - cb        // 5C32  ADDQ.B    #6,(d8,A2,Xn)
-        b       L_05A5C
-        ori     rtn_addr, code_ptr, L_06568 - cb        // 5C33  ADDQ.B    #6,(d8,A3,Xn)
-        b       L_05ABC
-        ori     rtn_addr, code_ptr, L_06568 - cb        // 5C34  ADDQ.B    #6,(d8,A4,Xn)
-        b       L_05B1C
-        ori     rtn_addr, code_ptr, L_06568 - cb        // 5C35  ADDQ.B    #6,(d8,A5,Xn)
-        b       L_05B7C
-        ori     rtn_addr, code_ptr, L_06568 - cb        // 5C36  ADDQ.B    #6,(d8,A6,Xn)
-        b       L_05BDC
-        ori     rtn_addr, code_ptr, L_06568 - cb        // 5C37  ADDQ.B    #6,(d8,A7,Xn)
-        b       L_05C3C
+        b       addq_b_q_mem
+        ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5C30  ADDQ.B    #6,(d8,A0,Xn)
+        b       move_add_etc_b_any_any
+        ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5C31  ADDQ.B    #6,(d8,A1,Xn)
+        b       move_add_etc_b_any_any_2
+        ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5C32  ADDQ.B    #6,(d8,A2,Xn)
+        b       move_add_etc_b_any_any_3
+        ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5C33  ADDQ.B    #6,(d8,A3,Xn)
+        b       move_add_etc_b_any_any_4
+        ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5C34  ADDQ.B    #6,(d8,A4,Xn)
+        b       move_add_etc_b_any_any_5
+        ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5C35  ADDQ.B    #6,(d8,A5,Xn)
+        b       move_add_etc_b_any_any_6
+        ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5C36  ADDQ.B    #6,(d8,A6,Xn)
+        b       move_add_etc_b_any_any_7
+        ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5C37  ADDQ.B    #6,(d8,A7,Xn)
+        b       move_add_etc_b_any_any_8
         mr      addr, prefetch_data                     // 5C38  ADDQ.B    #6,(xxx).W
-        b       L_06560
-        ori     rtn_addr, code_ptr, L_06568 - cb        // 5C39  ADDQ.B    #6,(xxx).L
-        b       L_05E2C
+        b       addq_b_q_mem
+        ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5C39  ADDQ.B    #6,(xxx).L
+        b       fea_b_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5C3A  ADDQ.B    #6,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5C3B  ADDQ.B    #6,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5C3C  ADDQ.B    #6,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5C3D  ADDQ.B    #6,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5C3E  ADDQ.B    #6,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5C3F  ADDQ.B    #6,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $5C40-$5C7F --------------------------------------------------------
         lis     data, 0x0006                            // 5C40  ADDQ.W    #6,D0
-        b       L_03808
+        b       add_asl_w_any_d0
         lis     data, 0x0006                            // 5C41  ADDQ.W    #6,D1
-        b       L_03848
+        b       add_asl_w_any_d1
         lis     data, 0x0006                            // 5C42  ADDQ.W    #6,D2
-        b       L_03888
+        b       add_asl_w_any_d2
         lis     data, 0x0006                            // 5C43  ADDQ.W    #6,D3
-        b       L_038C8
+        b       add_asl_w_any_d3
         lis     data, 0x0006                            // 5C44  ADDQ.W    #6,D4
-        b       L_03908
+        b       add_asl_w_any_d4
         lis     data, 0x0006                            // 5C45  ADDQ.W    #6,D5
-        b       L_03948
+        b       add_asl_w_any_d5
         lis     data, 0x0006                            // 5C46  ADDQ.W    #6,D6
-        b       L_03988
+        b       add_asl_w_any_d6
         lis     data, 0x0006                            // 5C47  ADDQ.W    #6,D7
-        b       L_039C8
+        b       add_asl_w_any_d7
         addi    a0, a0, 6                               // 5C48  ADDQ.W    #6,A0
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a1, a1, 6                               // 5C49  ADDQ.W    #6,A1
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a2, a2, 6                               // 5C4A  ADDQ.W    #6,A2
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a3, a3, 6                               // 5C4B  ADDQ.W    #6,A3
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a4, a4, 6                               // 5C4C  ADDQ.W    #6,A4
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a5, a5, 6                               // 5C4D  ADDQ.W    #6,A5
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a6, a6, 6                               // 5C4E  ADDQ.W    #6,A6
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a7, a7, 6                               // 5C4F  ADDQ.W    #6,A7
-        b       L_06084
+        b       move_add_etc_any_any
 op_5C50:
         mr      addr, a0                                // 5C50  ADDQ.W    #6,(A0)
-        b       L_06784
+        b       addq_w_q_mem_2
 op_5C51:
         mr      addr, a1                                // 5C51  ADDQ.W    #6,(A1)
-        b       L_06784
+        b       addq_w_q_mem_2
 op_5C52:
         mr      addr, a2                                // 5C52  ADDQ.W    #6,(A2)
-        b       L_06784
+        b       addq_w_q_mem_2
 op_5C53:
         mr      addr, a3                                // 5C53  ADDQ.W    #6,(A3)
-        b       L_06784
+        b       addq_w_q_mem_2
 op_5C54:
         mr      addr, a4                                // 5C54  ADDQ.W    #6,(A4)
-        b       L_06784
+        b       addq_w_q_mem_2
 op_5C55:
         mr      addr, a5                                // 5C55  ADDQ.W    #6,(A5)
-        b       L_06784
+        b       addq_w_q_mem_2
 op_5C56:
         mr      addr, a6                                // 5C56  ADDQ.W    #6,(A6)
-        b       L_06784
+        b       addq_w_q_mem_2
 op_5C57:
         mr      addr, a7                                // 5C57  ADDQ.W    #6,(A7)
-        b       L_06784
-        ori     rtn_addr, code_ptr, L_06784 - cb        // 5C58  ADDQ.W    #6,(A0)+
-        b       L_00820
-        ori     rtn_addr, code_ptr, L_06784 - cb        // 5C59  ADDQ.W    #6,(A1)+
-        b       L_008A0
-        ori     rtn_addr, code_ptr, L_06784 - cb        // 5C5A  ADDQ.W    #6,(A2)+
-        b       L_00920
-        ori     rtn_addr, code_ptr, L_06784 - cb        // 5C5B  ADDQ.W    #6,(A3)+
-        b       L_009A0
-        ori     rtn_addr, code_ptr, L_06784 - cb        // 5C5C  ADDQ.W    #6,(A4)+
-        b       L_00A20
-        ori     rtn_addr, code_ptr, L_06784 - cb        // 5C5D  ADDQ.W    #6,(A5)+
-        b       L_00AA0
-        ori     rtn_addr, code_ptr, L_06784 - cb        // 5C5E  ADDQ.W    #6,(A6)+
-        b       L_00B20
-        ori     rtn_addr, code_ptr, L_06784 - cb        // 5C5F  ADDQ.W    #6,(A7)+
-        b       L_00BA0
+        b       addq_w_q_mem_2
+        ori     rtn_addr, code_ptr, addq_w_q_mem_2 - cb  // 5C58  ADDQ.W    #6,(A0)+
+        b       cea_w_30
+        ori     rtn_addr, code_ptr, addq_w_q_mem_2 - cb  // 5C59  ADDQ.W    #6,(A1)+
+        b       cea_w_31
+        ori     rtn_addr, code_ptr, addq_w_q_mem_2 - cb  // 5C5A  ADDQ.W    #6,(A2)+
+        b       cea_w_32
+        ori     rtn_addr, code_ptr, addq_w_q_mem_2 - cb  // 5C5B  ADDQ.W    #6,(A3)+
+        b       cea_w_33
+        ori     rtn_addr, code_ptr, addq_w_q_mem_2 - cb  // 5C5C  ADDQ.W    #6,(A4)+
+        b       cea_w_34
+        ori     rtn_addr, code_ptr, addq_w_q_mem_2 - cb  // 5C5D  ADDQ.W    #6,(A5)+
+        b       cea_w_35
+        ori     rtn_addr, code_ptr, addq_w_q_mem_2 - cb  // 5C5E  ADDQ.W    #6,(A6)+
+        b       cea_w_36
+        ori     rtn_addr, code_ptr, addq_w_q_mem_2 - cb  // 5C5F  ADDQ.W    #6,(A7)+
+        b       cea_w_37
         addi    a0, a0, -2                              // 5C60  ADDQ.W    #6,-(A0)
         b       op_5C50
         addi    a1, a1, -2                              // 5C61  ADDQ.W    #6,-(A1)
@@ -6855,127 +6855,127 @@ op_5C57:
         addi    a7, a7, -2                              // 5C67  ADDQ.W    #6,-(A7)
         b       op_5C57
         add     addr, a0, prefetch_data                 // 5C68  ADDQ.W    #6,(d16,A0)
-        b       L_06780
+        b       addq_w_q_mem
         add     addr, a1, prefetch_data                 // 5C69  ADDQ.W    #6,(d16,A1)
-        b       L_06780
+        b       addq_w_q_mem
         add     addr, a2, prefetch_data                 // 5C6A  ADDQ.W    #6,(d16,A2)
-        b       L_06780
+        b       addq_w_q_mem
         add     addr, a3, prefetch_data                 // 5C6B  ADDQ.W    #6,(d16,A3)
-        b       L_06780
+        b       addq_w_q_mem
         add     addr, a4, prefetch_data                 // 5C6C  ADDQ.W    #6,(d16,A4)
-        b       L_06780
+        b       addq_w_q_mem
         add     addr, a5, prefetch_data                 // 5C6D  ADDQ.W    #6,(d16,A5)
-        b       L_06780
+        b       addq_w_q_mem
         add     addr, a6, prefetch_data                 // 5C6E  ADDQ.W    #6,(d16,A6)
-        b       L_06780
+        b       addq_w_q_mem
         add     addr, a7, prefetch_data                 // 5C6F  ADDQ.W    #6,(d16,A7)
-        b       L_06780
-        ori     rtn_addr, code_ptr, L_06788 - cb        // 5C70  ADDQ.W    #6,(d8,A0,Xn)
-        b       L_059B0
-        ori     rtn_addr, code_ptr, L_06788 - cb        // 5C71  ADDQ.W    #6,(d8,A1,Xn)
-        b       L_05A10
-        ori     rtn_addr, code_ptr, L_06788 - cb        // 5C72  ADDQ.W    #6,(d8,A2,Xn)
-        b       L_05A70
-        ori     rtn_addr, code_ptr, L_06788 - cb        // 5C73  ADDQ.W    #6,(d8,A3,Xn)
-        b       L_05AD0
-        ori     rtn_addr, code_ptr, L_06788 - cb        // 5C74  ADDQ.W    #6,(d8,A4,Xn)
-        b       L_05B30
-        ori     rtn_addr, code_ptr, L_06788 - cb        // 5C75  ADDQ.W    #6,(d8,A5,Xn)
-        b       L_05B90
-        ori     rtn_addr, code_ptr, L_06788 - cb        // 5C76  ADDQ.W    #6,(d8,A6,Xn)
-        b       L_05BF0
-        ori     rtn_addr, code_ptr, L_06788 - cb        // 5C77  ADDQ.W    #6,(d8,A7,Xn)
-        b       L_05C50
+        b       addq_w_q_mem
+        ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5C70  ADDQ.W    #6,(d8,A0,Xn)
+        b       move_add_etc_w_any_any
+        ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5C71  ADDQ.W    #6,(d8,A1,Xn)
+        b       move_add_etc_w_any_any_2
+        ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5C72  ADDQ.W    #6,(d8,A2,Xn)
+        b       move_add_etc_w_any_any_3
+        ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5C73  ADDQ.W    #6,(d8,A3,Xn)
+        b       move_add_etc_w_any_any_4
+        ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5C74  ADDQ.W    #6,(d8,A4,Xn)
+        b       move_add_etc_w_any_any_5
+        ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5C75  ADDQ.W    #6,(d8,A5,Xn)
+        b       move_add_etc_w_any_any_6
+        ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5C76  ADDQ.W    #6,(d8,A6,Xn)
+        b       move_add_etc_w_any_any_7
+        ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5C77  ADDQ.W    #6,(d8,A7,Xn)
+        b       move_add_etc_w_any_any_8
         mr      addr, prefetch_data                     // 5C78  ADDQ.W    #6,(xxx).W
-        b       L_06780
-        ori     rtn_addr, code_ptr, L_06788 - cb        // 5C79  ADDQ.W    #6,(xxx).L
-        b       L_05E70
+        b       addq_w_q_mem
+        ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5C79  ADDQ.W    #6,(xxx).L
+        b       fea_w_71
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5C7A  ADDQ.W    #6,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5C7B  ADDQ.W    #6,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5C7C  ADDQ.W    #6,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5C7D  ADDQ.W    #6,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5C7E  ADDQ.W    #6,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5C7F  ADDQ.W    #6,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $5C80-$5CBF --------------------------------------------------------
         li      data, 6                                 // 5C80  ADDQ.L    #6,D0
-        b       L_03E04
+        b       add_l_mem_d0_2
         li      data, 6                                 // 5C81  ADDQ.L    #6,D1
-        b       L_03E44
+        b       add_l_mem_d1_2
         li      data, 6                                 // 5C82  ADDQ.L    #6,D2
-        b       L_03E84
+        b       add_l_mem_d2_2
         li      data, 6                                 // 5C83  ADDQ.L    #6,D3
-        b       L_03EC4
+        b       add_l_mem_d3_2
         li      data, 6                                 // 5C84  ADDQ.L    #6,D4
-        b       L_03F04
+        b       add_l_mem_d4_2
         li      data, 6                                 // 5C85  ADDQ.L    #6,D5
-        b       L_03F44
+        b       add_l_mem_d5_2
         li      data, 6                                 // 5C86  ADDQ.L    #6,D6
-        b       L_03F84
+        b       add_l_mem_d6_2
         li      data, 6                                 // 5C87  ADDQ.L    #6,D7
-        b       L_03FC4
+        b       add_l_mem_d7_2
         addi    a0, a0, 6                               // 5C88  ADDQ.L    #6,A0
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a1, a1, 6                               // 5C89  ADDQ.L    #6,A1
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a2, a2, 6                               // 5C8A  ADDQ.L    #6,A2
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a3, a3, 6                               // 5C8B  ADDQ.L    #6,A3
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a4, a4, 6                               // 5C8C  ADDQ.L    #6,A4
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a5, a5, 6                               // 5C8D  ADDQ.L    #6,A5
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a6, a6, 6                               // 5C8E  ADDQ.L    #6,A6
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a7, a7, 6                               // 5C8F  ADDQ.L    #6,A7
-        b       L_06084
+        b       move_add_etc_any_any
 op_5C90:
         mr      addr, a0                                // 5C90  ADDQ.L    #6,(A0)
-        b       L_06A24
+        b       addq_l_q_mem_2
 op_5C91:
         mr      addr, a1                                // 5C91  ADDQ.L    #6,(A1)
-        b       L_06A24
+        b       addq_l_q_mem_2
 op_5C92:
         mr      addr, a2                                // 5C92  ADDQ.L    #6,(A2)
-        b       L_06A24
+        b       addq_l_q_mem_2
 op_5C93:
         mr      addr, a3                                // 5C93  ADDQ.L    #6,(A3)
-        b       L_06A24
+        b       addq_l_q_mem_2
 op_5C94:
         mr      addr, a4                                // 5C94  ADDQ.L    #6,(A4)
-        b       L_06A24
+        b       addq_l_q_mem_2
 op_5C95:
         mr      addr, a5                                // 5C95  ADDQ.L    #6,(A5)
-        b       L_06A24
+        b       addq_l_q_mem_2
 op_5C96:
         mr      addr, a6                                // 5C96  ADDQ.L    #6,(A6)
-        b       L_06A24
+        b       addq_l_q_mem_2
 op_5C97:
         mr      addr, a7                                // 5C97  ADDQ.L    #6,(A7)
-        b       L_06A24
-        ori     rtn_addr, code_ptr, L_06A24 - cb        // 5C98  ADDQ.L    #6,(A0)+
-        b       L_00840
-        ori     rtn_addr, code_ptr, L_06A24 - cb        // 5C99  ADDQ.L    #6,(A1)+
-        b       L_008C0
-        ori     rtn_addr, code_ptr, L_06A24 - cb        // 5C9A  ADDQ.L    #6,(A2)+
-        b       L_00940
-        ori     rtn_addr, code_ptr, L_06A24 - cb        // 5C9B  ADDQ.L    #6,(A3)+
-        b       L_009C0
-        ori     rtn_addr, code_ptr, L_06A24 - cb        // 5C9C  ADDQ.L    #6,(A4)+
-        b       L_00A40
-        ori     rtn_addr, code_ptr, L_06A24 - cb        // 5C9D  ADDQ.L    #6,(A5)+
-        b       L_00AC0
-        ori     rtn_addr, code_ptr, L_06A24 - cb        // 5C9E  ADDQ.L    #6,(A6)+
-        b       L_00B40
-        ori     rtn_addr, code_ptr, L_06A24 - cb        // 5C9F  ADDQ.L    #6,(A7)+
-        b       L_00BC0
+        b       addq_l_q_mem_2
+        ori     rtn_addr, code_ptr, addq_l_q_mem_2 - cb  // 5C98  ADDQ.L    #6,(A0)+
+        b       cea_l_30
+        ori     rtn_addr, code_ptr, addq_l_q_mem_2 - cb  // 5C99  ADDQ.L    #6,(A1)+
+        b       cea_l_31
+        ori     rtn_addr, code_ptr, addq_l_q_mem_2 - cb  // 5C9A  ADDQ.L    #6,(A2)+
+        b       cea_l_32
+        ori     rtn_addr, code_ptr, addq_l_q_mem_2 - cb  // 5C9B  ADDQ.L    #6,(A3)+
+        b       cea_l_33
+        ori     rtn_addr, code_ptr, addq_l_q_mem_2 - cb  // 5C9C  ADDQ.L    #6,(A4)+
+        b       cea_l_34
+        ori     rtn_addr, code_ptr, addq_l_q_mem_2 - cb  // 5C9D  ADDQ.L    #6,(A5)+
+        b       cea_l_35
+        ori     rtn_addr, code_ptr, addq_l_q_mem_2 - cb  // 5C9E  ADDQ.L    #6,(A6)+
+        b       cea_l_36
+        ori     rtn_addr, code_ptr, addq_l_q_mem_2 - cb  // 5C9F  ADDQ.L    #6,(A7)+
+        b       cea_l_37
         addi    a0, a0, -4                              // 5CA0  ADDQ.L    #6,-(A0)
         b       op_5C90
         addi    a1, a1, -4                              // 5CA1  ADDQ.L    #6,-(A1)
@@ -6993,127 +6993,127 @@ op_5C97:
         addi    a7, a7, -4                              // 5CA7  ADDQ.L    #6,-(A7)
         b       op_5C97
         add     addr, a0, prefetch_data                 // 5CA8  ADDQ.L    #6,(d16,A0)
-        b       L_06A20
+        b       addq_l_q_mem
         add     addr, a1, prefetch_data                 // 5CA9  ADDQ.L    #6,(d16,A1)
-        b       L_06A20
+        b       addq_l_q_mem
         add     addr, a2, prefetch_data                 // 5CAA  ADDQ.L    #6,(d16,A2)
-        b       L_06A20
+        b       addq_l_q_mem
         add     addr, a3, prefetch_data                 // 5CAB  ADDQ.L    #6,(d16,A3)
-        b       L_06A20
+        b       addq_l_q_mem
         add     addr, a4, prefetch_data                 // 5CAC  ADDQ.L    #6,(d16,A4)
-        b       L_06A20
+        b       addq_l_q_mem
         add     addr, a5, prefetch_data                 // 5CAD  ADDQ.L    #6,(d16,A5)
-        b       L_06A20
+        b       addq_l_q_mem
         add     addr, a6, prefetch_data                 // 5CAE  ADDQ.L    #6,(d16,A6)
-        b       L_06A20
+        b       addq_l_q_mem
         add     addr, a7, prefetch_data                 // 5CAF  ADDQ.L    #6,(d16,A7)
-        b       L_06A20
-        ori     rtn_addr, code_ptr, L_06A28 - cb        // 5CB0  ADDQ.L    #6,(d8,A0,Xn)
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_06A28 - cb        // 5CB1  ADDQ.L    #6,(d8,A1,Xn)
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_06A28 - cb        // 5CB2  ADDQ.L    #6,(d8,A2,Xn)
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_06A28 - cb        // 5CB3  ADDQ.L    #6,(d8,A3,Xn)
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_06A28 - cb        // 5CB4  ADDQ.L    #6,(d8,A4,Xn)
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_06A28 - cb        // 5CB5  ADDQ.L    #6,(d8,A5,Xn)
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_06A28 - cb        // 5CB6  ADDQ.L    #6,(d8,A6,Xn)
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_06A28 - cb        // 5CB7  ADDQ.L    #6,(d8,A7,Xn)
-        b       L_05C68
+        b       addq_l_q_mem
+        ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 5CB0  ADDQ.L    #6,(d8,A0,Xn)
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 5CB1  ADDQ.L    #6,(d8,A1,Xn)
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 5CB2  ADDQ.L    #6,(d8,A2,Xn)
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 5CB3  ADDQ.L    #6,(d8,A3,Xn)
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 5CB4  ADDQ.L    #6,(d8,A4,Xn)
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 5CB5  ADDQ.L    #6,(d8,A5,Xn)
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 5CB6  ADDQ.L    #6,(d8,A6,Xn)
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 5CB7  ADDQ.L    #6,(d8,A7,Xn)
+        b       move_add_etc_l_any_any_8
         mr      addr, prefetch_data                     // 5CB8  ADDQ.L    #6,(xxx).W
-        b       L_06A20
-        ori     rtn_addr, code_ptr, L_06A28 - cb        // 5CB9  ADDQ.L    #6,(xxx).L
-        b       L_05E8C
+        b       addq_l_q_mem
+        ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 5CB9  ADDQ.L    #6,(xxx).L
+        b       fea_l_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5CBA  ADDQ.L    #6,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5CBB  ADDQ.L    #6,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5CBC  ADDQ.L    #6,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5CBD  ADDQ.L    #6,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5CBE  ADDQ.L    #6,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5CBF  ADDQ.L    #6,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $5CC0-$5CFF --------------------------------------------------------
-        ori     rtn_addr, code_ptr, L_03624 - cb        // 5CC0  SGE.B     D0
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_03664 - cb        // 5CC1  SGE.B     D1
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_036A4 - cb        // 5CC2  SGE.B     D2
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_036E4 - cb        // 5CC3  SGE.B     D3
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_03724 - cb        // 5CC4  SGE.B     D4
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_03764 - cb        // 5CC5  SGE.B     D5
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_037A4 - cb        // 5CC6  SGE.B     D6
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_037E4 - cb        // 5CC7  SGE.B     D7
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_03000 - cb        // 5CC8  DBGE.W    D0,<label>
-        b       L_08500
-        ori     rtn_addr, code_ptr, L_03040 - cb        // 5CC9  DBGE.W    D1,<label>
-        b       L_08500
-        ori     rtn_addr, code_ptr, L_03080 - cb        // 5CCA  DBGE.W    D2,<label>
-        b       L_08500
-        ori     rtn_addr, code_ptr, L_030C0 - cb        // 5CCB  DBGE.W    D3,<label>
-        b       L_08500
-        ori     rtn_addr, code_ptr, L_03100 - cb        // 5CCC  DBGE.W    D4,<label>
-        b       L_08500
-        ori     rtn_addr, code_ptr, L_03140 - cb        // 5CCD  DBGE.W    D5,<label>
-        b       L_08500
-        ori     rtn_addr, code_ptr, L_03180 - cb        // 5CCE  DBGE.W    D6,<label>
-        b       L_08500
-        ori     rtn_addr, code_ptr, L_031C0 - cb        // 5CCF  DBGE.W    D7,<label>
-        b       L_08500
+        ori     rtn_addr, code_ptr, scc_b_d0 - cb       // 5CC0  SGE.B     D0
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d1 - cb       // 5CC1  SGE.B     D1
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d2 - cb       // 5CC2  SGE.B     D2
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d3 - cb       // 5CC3  SGE.B     D3
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d4 - cb       // 5CC4  SGE.B     D4
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d5 - cb       // 5CC5  SGE.B     D5
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d6 - cb       // 5CC6  SGE.B     D6
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d7 - cb       // 5CC7  SGE.B     D7
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d0 - cb      // 5CC8  DBGE.W    D0,<label>
+        b       dbcc_w_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d1 - cb      // 5CC9  DBGE.W    D1,<label>
+        b       dbcc_w_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d2 - cb      // 5CCA  DBGE.W    D2,<label>
+        b       dbcc_w_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d3 - cb      // 5CCB  DBGE.W    D3,<label>
+        b       dbcc_w_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d4 - cb      // 5CCC  DBGE.W    D4,<label>
+        b       dbcc_w_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d5 - cb      // 5CCD  DBGE.W    D5,<label>
+        b       dbcc_w_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d6 - cb      // 5CCE  DBGE.W    D6,<label>
+        b       dbcc_w_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d7 - cb      // 5CCF  DBGE.W    D7,<label>
+        b       dbcc_w_dn
 op_5CD0:
         mr      addr, a0                                // 5CD0  SGE.B     (A0)
-        b       L_08584
+        b       scc_b_mem_2
 op_5CD1:
         mr      addr, a1                                // 5CD1  SGE.B     (A1)
-        b       L_08584
+        b       scc_b_mem_2
 op_5CD2:
         mr      addr, a2                                // 5CD2  SGE.B     (A2)
-        b       L_08584
+        b       scc_b_mem_2
 op_5CD3:
         mr      addr, a3                                // 5CD3  SGE.B     (A3)
-        b       L_08584
+        b       scc_b_mem_2
 op_5CD4:
         mr      addr, a4                                // 5CD4  SGE.B     (A4)
-        b       L_08584
+        b       scc_b_mem_2
 op_5CD5:
         mr      addr, a5                                // 5CD5  SGE.B     (A5)
-        b       L_08584
+        b       scc_b_mem_2
 op_5CD6:
         mr      addr, a6                                // 5CD6  SGE.B     (A6)
-        b       L_08584
+        b       scc_b_mem_2
 op_5CD7:
         mr      addr, a7                                // 5CD7  SGE.B     (A7)
-        b       L_08584
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5CD8  SGE.B     (A0)+
-        b       L_00800
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5CD9  SGE.B     (A1)+
-        b       L_00880
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5CDA  SGE.B     (A2)+
-        b       L_00900
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5CDB  SGE.B     (A3)+
-        b       L_00980
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5CDC  SGE.B     (A4)+
-        b       L_00A00
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5CDD  SGE.B     (A5)+
-        b       L_00A80
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5CDE  SGE.B     (A6)+
-        b       L_00B00
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5CDF  SGE.B     (A7)+
-        b       L_00B80
+        b       scc_b_mem_2
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5CD8  SGE.B     (A0)+
+        b       cea_b_30
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5CD9  SGE.B     (A1)+
+        b       cea_b_31
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5CDA  SGE.B     (A2)+
+        b       cea_b_32
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5CDB  SGE.B     (A3)+
+        b       cea_b_33
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5CDC  SGE.B     (A4)+
+        b       cea_b_34
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5CDD  SGE.B     (A5)+
+        b       cea_b_35
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5CDE  SGE.B     (A6)+
+        b       cea_b_36
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5CDF  SGE.B     (A7)+
+        b       cea_b_37
         addi    a0, a0, -1                              // 5CE0  SGE.B     -(A0)
         b       op_5CD0
         addi    a1, a1, -1                              // 5CE1  SGE.B     -(A1)
@@ -7131,127 +7131,127 @@ op_5CD7:
         addi    a7, a7, -2                              // 5CE7  SGE.B     -(A7)
         b       op_5CD7
         add     addr, a0, prefetch_data                 // 5CE8  SGE.B     (d16,A0)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a1, prefetch_data                 // 5CE9  SGE.B     (d16,A1)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a2, prefetch_data                 // 5CEA  SGE.B     (d16,A2)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a3, prefetch_data                 // 5CEB  SGE.B     (d16,A3)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a4, prefetch_data                 // 5CEC  SGE.B     (d16,A4)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a5, prefetch_data                 // 5CED  SGE.B     (d16,A5)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a6, prefetch_data                 // 5CEE  SGE.B     (d16,A6)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a7, prefetch_data                 // 5CEF  SGE.B     (d16,A7)
-        b       L_08580
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5CF0  SGE.B     (d8,A0,Xn)
-        b       L_05988
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5CF1  SGE.B     (d8,A1,Xn)
-        b       L_059E8
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5CF2  SGE.B     (d8,A2,Xn)
-        b       L_05A48
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5CF3  SGE.B     (d8,A3,Xn)
-        b       L_05AA8
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5CF4  SGE.B     (d8,A4,Xn)
-        b       L_05B08
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5CF5  SGE.B     (d8,A5,Xn)
-        b       L_05B68
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5CF6  SGE.B     (d8,A6,Xn)
-        b       L_05BC8
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5CF7  SGE.B     (d8,A7,Xn)
-        b       L_05C28
+        b       scc_b_mem
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5CF0  SGE.B     (d8,A0,Xn)
+        b       or_sub_etc_any_any
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5CF1  SGE.B     (d8,A1,Xn)
+        b       or_sub_etc_any_any_2
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5CF2  SGE.B     (d8,A2,Xn)
+        b       or_sub_etc_any_any_3
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5CF3  SGE.B     (d8,A3,Xn)
+        b       or_sub_etc_any_any_4
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5CF4  SGE.B     (d8,A4,Xn)
+        b       or_sub_etc_any_any_5
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5CF5  SGE.B     (d8,A5,Xn)
+        b       or_sub_etc_any_any_6
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5CF6  SGE.B     (d8,A6,Xn)
+        b       or_sub_etc_any_any_7
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5CF7  SGE.B     (d8,A7,Xn)
+        b       or_sub_etc_any_any_8
         mr      addr, prefetch_data                     // 5CF8  SGE.B     (xxx).W
-        b       L_08580
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5CF9  SGE.B     (xxx).L
-        b       L_05E14
+        b       scc_b_mem
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5CF9  SGE.B     (xxx).L
+        b       cea_x_71_2
         lhau    prefetch_data, 2(pc)                    // 5CFA  TRAPGE    #<data>.W
-        b       L_0CCE8
+        b       trapcc
         lhau    prefetch_data, 4(pc)                    // 5CFB  TRAPGE    #<data>.L
-        b       L_0CCE8
+        b       trapcc
         ori     base_disp, code_ptr, D_085C0 - cb       // 5CFC  TRAPGE
-        b       L_0CCEC
+        b       trapcc_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5CFD  SGE.B     <ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5CFE  SGE.B     <ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5CFF  SGE.B     <ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $5D00-$5D3F --------------------------------------------------------
         lis     data, 0x0600                            // 5D00  SUBQ.B    #6,D0
-        b       L_03608
+        b       sub_b_any_d0
         lis     data, 0x0600                            // 5D01  SUBQ.B    #6,D1
-        b       L_03648
+        b       sub_b_any_d1
         lis     data, 0x0600                            // 5D02  SUBQ.B    #6,D2
-        b       L_03688
+        b       sub_b_any_d2
         lis     data, 0x0600                            // 5D03  SUBQ.B    #6,D3
-        b       L_036C8
+        b       sub_b_any_d3
         lis     data, 0x0600                            // 5D04  SUBQ.B    #6,D4
-        b       L_03708
+        b       sub_b_any_d4
         lis     data, 0x0600                            // 5D05  SUBQ.B    #6,D5
-        b       L_03748
+        b       sub_b_any_d5
         lis     data, 0x0600                            // 5D06  SUBQ.B    #6,D6
-        b       L_03788
+        b       sub_b_any_d6
         lis     data, 0x0600                            // 5D07  SUBQ.B    #6,D7
-        b       L_037C8
+        b       sub_b_any_d7
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5D08  SUBQ.B    #6,A0   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5D09  SUBQ.B    #6,A1   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5D0A  SUBQ.B    #6,A2   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5D0B  SUBQ.B    #6,A3   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5D0C  SUBQ.B    #6,A4   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5D0D  SUBQ.B    #6,A5   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5D0E  SUBQ.B    #6,A6   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5D0F  SUBQ.B    #6,A7   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 op_5D10:
         mr      addr, a0                                // 5D10  SUBQ.B    #6,(A0)
-        b       L_06604
+        b       subq_b_q_mem_2
 op_5D11:
         mr      addr, a1                                // 5D11  SUBQ.B    #6,(A1)
-        b       L_06604
+        b       subq_b_q_mem_2
 op_5D12:
         mr      addr, a2                                // 5D12  SUBQ.B    #6,(A2)
-        b       L_06604
+        b       subq_b_q_mem_2
 op_5D13:
         mr      addr, a3                                // 5D13  SUBQ.B    #6,(A3)
-        b       L_06604
+        b       subq_b_q_mem_2
 op_5D14:
         mr      addr, a4                                // 5D14  SUBQ.B    #6,(A4)
-        b       L_06604
+        b       subq_b_q_mem_2
 op_5D15:
         mr      addr, a5                                // 5D15  SUBQ.B    #6,(A5)
-        b       L_06604
+        b       subq_b_q_mem_2
 op_5D16:
         mr      addr, a6                                // 5D16  SUBQ.B    #6,(A6)
-        b       L_06604
+        b       subq_b_q_mem_2
 op_5D17:
         mr      addr, a7                                // 5D17  SUBQ.B    #6,(A7)
-        b       L_06604
-        ori     rtn_addr, code_ptr, L_06604 - cb        // 5D18  SUBQ.B    #6,(A0)+
-        b       L_00800
-        ori     rtn_addr, code_ptr, L_06604 - cb        // 5D19  SUBQ.B    #6,(A1)+
-        b       L_00880
-        ori     rtn_addr, code_ptr, L_06604 - cb        // 5D1A  SUBQ.B    #6,(A2)+
-        b       L_00900
-        ori     rtn_addr, code_ptr, L_06604 - cb        // 5D1B  SUBQ.B    #6,(A3)+
-        b       L_00980
-        ori     rtn_addr, code_ptr, L_06604 - cb        // 5D1C  SUBQ.B    #6,(A4)+
-        b       L_00A00
-        ori     rtn_addr, code_ptr, L_06604 - cb        // 5D1D  SUBQ.B    #6,(A5)+
-        b       L_00A80
-        ori     rtn_addr, code_ptr, L_06604 - cb        // 5D1E  SUBQ.B    #6,(A6)+
-        b       L_00B00
-        ori     rtn_addr, code_ptr, L_06604 - cb        // 5D1F  SUBQ.B    #6,(A7)+
-        b       L_00B80
+        b       subq_b_q_mem_2
+        ori     rtn_addr, code_ptr, subq_b_q_mem_2 - cb  // 5D18  SUBQ.B    #6,(A0)+
+        b       cea_b_30
+        ori     rtn_addr, code_ptr, subq_b_q_mem_2 - cb  // 5D19  SUBQ.B    #6,(A1)+
+        b       cea_b_31
+        ori     rtn_addr, code_ptr, subq_b_q_mem_2 - cb  // 5D1A  SUBQ.B    #6,(A2)+
+        b       cea_b_32
+        ori     rtn_addr, code_ptr, subq_b_q_mem_2 - cb  // 5D1B  SUBQ.B    #6,(A3)+
+        b       cea_b_33
+        ori     rtn_addr, code_ptr, subq_b_q_mem_2 - cb  // 5D1C  SUBQ.B    #6,(A4)+
+        b       cea_b_34
+        ori     rtn_addr, code_ptr, subq_b_q_mem_2 - cb  // 5D1D  SUBQ.B    #6,(A5)+
+        b       cea_b_35
+        ori     rtn_addr, code_ptr, subq_b_q_mem_2 - cb  // 5D1E  SUBQ.B    #6,(A6)+
+        b       cea_b_36
+        ori     rtn_addr, code_ptr, subq_b_q_mem_2 - cb  // 5D1F  SUBQ.B    #6,(A7)+
+        b       cea_b_37
         addi    a0, a0, -1                              // 5D20  SUBQ.B    #6,-(A0)
         b       op_5D10
         addi    a1, a1, -1                              // 5D21  SUBQ.B    #6,-(A1)
@@ -7269,127 +7269,127 @@ op_5D17:
         addi    a7, a7, -2                              // 5D27  SUBQ.B    #6,-(A7)
         b       op_5D17
         add     addr, a0, prefetch_data                 // 5D28  SUBQ.B    #6,(d16,A0)
-        b       L_06600
+        b       subq_b_q_mem
         add     addr, a1, prefetch_data                 // 5D29  SUBQ.B    #6,(d16,A1)
-        b       L_06600
+        b       subq_b_q_mem
         add     addr, a2, prefetch_data                 // 5D2A  SUBQ.B    #6,(d16,A2)
-        b       L_06600
+        b       subq_b_q_mem
         add     addr, a3, prefetch_data                 // 5D2B  SUBQ.B    #6,(d16,A3)
-        b       L_06600
+        b       subq_b_q_mem
         add     addr, a4, prefetch_data                 // 5D2C  SUBQ.B    #6,(d16,A4)
-        b       L_06600
+        b       subq_b_q_mem
         add     addr, a5, prefetch_data                 // 5D2D  SUBQ.B    #6,(d16,A5)
-        b       L_06600
+        b       subq_b_q_mem
         add     addr, a6, prefetch_data                 // 5D2E  SUBQ.B    #6,(d16,A6)
-        b       L_06600
+        b       subq_b_q_mem
         add     addr, a7, prefetch_data                 // 5D2F  SUBQ.B    #6,(d16,A7)
-        b       L_06600
-        ori     rtn_addr, code_ptr, L_06608 - cb        // 5D30  SUBQ.B    #6,(d8,A0,Xn)
-        b       L_0599C
-        ori     rtn_addr, code_ptr, L_06608 - cb        // 5D31  SUBQ.B    #6,(d8,A1,Xn)
-        b       L_059FC
-        ori     rtn_addr, code_ptr, L_06608 - cb        // 5D32  SUBQ.B    #6,(d8,A2,Xn)
-        b       L_05A5C
-        ori     rtn_addr, code_ptr, L_06608 - cb        // 5D33  SUBQ.B    #6,(d8,A3,Xn)
-        b       L_05ABC
-        ori     rtn_addr, code_ptr, L_06608 - cb        // 5D34  SUBQ.B    #6,(d8,A4,Xn)
-        b       L_05B1C
-        ori     rtn_addr, code_ptr, L_06608 - cb        // 5D35  SUBQ.B    #6,(d8,A5,Xn)
-        b       L_05B7C
-        ori     rtn_addr, code_ptr, L_06608 - cb        // 5D36  SUBQ.B    #6,(d8,A6,Xn)
-        b       L_05BDC
-        ori     rtn_addr, code_ptr, L_06608 - cb        // 5D37  SUBQ.B    #6,(d8,A7,Xn)
-        b       L_05C3C
+        b       subq_b_q_mem
+        ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5D30  SUBQ.B    #6,(d8,A0,Xn)
+        b       move_add_etc_b_any_any
+        ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5D31  SUBQ.B    #6,(d8,A1,Xn)
+        b       move_add_etc_b_any_any_2
+        ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5D32  SUBQ.B    #6,(d8,A2,Xn)
+        b       move_add_etc_b_any_any_3
+        ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5D33  SUBQ.B    #6,(d8,A3,Xn)
+        b       move_add_etc_b_any_any_4
+        ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5D34  SUBQ.B    #6,(d8,A4,Xn)
+        b       move_add_etc_b_any_any_5
+        ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5D35  SUBQ.B    #6,(d8,A5,Xn)
+        b       move_add_etc_b_any_any_6
+        ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5D36  SUBQ.B    #6,(d8,A6,Xn)
+        b       move_add_etc_b_any_any_7
+        ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5D37  SUBQ.B    #6,(d8,A7,Xn)
+        b       move_add_etc_b_any_any_8
         mr      addr, prefetch_data                     // 5D38  SUBQ.B    #6,(xxx).W
-        b       L_06600
-        ori     rtn_addr, code_ptr, L_06608 - cb        // 5D39  SUBQ.B    #6,(xxx).L
-        b       L_05E2C
+        b       subq_b_q_mem
+        ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5D39  SUBQ.B    #6,(xxx).L
+        b       fea_b_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5D3A  SUBQ.B    #6,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5D3B  SUBQ.B    #6,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5D3C  SUBQ.B    #6,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5D3D  SUBQ.B    #6,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5D3E  SUBQ.B    #6,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5D3F  SUBQ.B    #6,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $5D40-$5D7F --------------------------------------------------------
         lis     data, 0x0006                            // 5D40  SUBQ.W    #6,D0
-        b       L_03C30
+        b       sub_w_any_d0
         lis     data, 0x0006                            // 5D41  SUBQ.W    #6,D1
-        b       L_03C70
+        b       sub_w_any_d1
         lis     data, 0x0006                            // 5D42  SUBQ.W    #6,D2
-        b       L_03CB0
+        b       sub_w_any_d2
         lis     data, 0x0006                            // 5D43  SUBQ.W    #6,D3
-        b       L_03CF0
+        b       sub_w_any_d3
         lis     data, 0x0006                            // 5D44  SUBQ.W    #6,D4
-        b       L_03D30
+        b       sub_w_any_d4
         lis     data, 0x0006                            // 5D45  SUBQ.W    #6,D5
-        b       L_03D70
+        b       sub_w_any_d5
         lis     data, 0x0006                            // 5D46  SUBQ.W    #6,D6
-        b       L_03DB0
+        b       sub_w_any_d6
         lis     data, 0x0006                            // 5D47  SUBQ.W    #6,D7
-        b       L_03DF0
+        b       sub_w_any_d7
         addi    a0, a0, -6                              // 5D48  SUBQ.W    #6,A0
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a1, a1, -6                              // 5D49  SUBQ.W    #6,A1
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a2, a2, -6                              // 5D4A  SUBQ.W    #6,A2
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a3, a3, -6                              // 5D4B  SUBQ.W    #6,A3
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a4, a4, -6                              // 5D4C  SUBQ.W    #6,A4
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a5, a5, -6                              // 5D4D  SUBQ.W    #6,A5
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a6, a6, -6                              // 5D4E  SUBQ.W    #6,A6
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a7, a7, -6                              // 5D4F  SUBQ.W    #6,A7
-        b       L_06084
+        b       move_add_etc_any_any
 op_5D50:
         mr      addr, a0                                // 5D50  SUBQ.W    #6,(A0)
-        b       L_06824
+        b       subq_w_q_mem_2
 op_5D51:
         mr      addr, a1                                // 5D51  SUBQ.W    #6,(A1)
-        b       L_06824
+        b       subq_w_q_mem_2
 op_5D52:
         mr      addr, a2                                // 5D52  SUBQ.W    #6,(A2)
-        b       L_06824
+        b       subq_w_q_mem_2
 op_5D53:
         mr      addr, a3                                // 5D53  SUBQ.W    #6,(A3)
-        b       L_06824
+        b       subq_w_q_mem_2
 op_5D54:
         mr      addr, a4                                // 5D54  SUBQ.W    #6,(A4)
-        b       L_06824
+        b       subq_w_q_mem_2
 op_5D55:
         mr      addr, a5                                // 5D55  SUBQ.W    #6,(A5)
-        b       L_06824
+        b       subq_w_q_mem_2
 op_5D56:
         mr      addr, a6                                // 5D56  SUBQ.W    #6,(A6)
-        b       L_06824
+        b       subq_w_q_mem_2
 op_5D57:
         mr      addr, a7                                // 5D57  SUBQ.W    #6,(A7)
-        b       L_06824
-        ori     rtn_addr, code_ptr, L_06824 - cb        // 5D58  SUBQ.W    #6,(A0)+
-        b       L_00820
-        ori     rtn_addr, code_ptr, L_06824 - cb        // 5D59  SUBQ.W    #6,(A1)+
-        b       L_008A0
-        ori     rtn_addr, code_ptr, L_06824 - cb        // 5D5A  SUBQ.W    #6,(A2)+
-        b       L_00920
-        ori     rtn_addr, code_ptr, L_06824 - cb        // 5D5B  SUBQ.W    #6,(A3)+
-        b       L_009A0
-        ori     rtn_addr, code_ptr, L_06824 - cb        // 5D5C  SUBQ.W    #6,(A4)+
-        b       L_00A20
-        ori     rtn_addr, code_ptr, L_06824 - cb        // 5D5D  SUBQ.W    #6,(A5)+
-        b       L_00AA0
-        ori     rtn_addr, code_ptr, L_06824 - cb        // 5D5E  SUBQ.W    #6,(A6)+
-        b       L_00B20
-        ori     rtn_addr, code_ptr, L_06824 - cb        // 5D5F  SUBQ.W    #6,(A7)+
-        b       L_00BA0
+        b       subq_w_q_mem_2
+        ori     rtn_addr, code_ptr, subq_w_q_mem_2 - cb  // 5D58  SUBQ.W    #6,(A0)+
+        b       cea_w_30
+        ori     rtn_addr, code_ptr, subq_w_q_mem_2 - cb  // 5D59  SUBQ.W    #6,(A1)+
+        b       cea_w_31
+        ori     rtn_addr, code_ptr, subq_w_q_mem_2 - cb  // 5D5A  SUBQ.W    #6,(A2)+
+        b       cea_w_32
+        ori     rtn_addr, code_ptr, subq_w_q_mem_2 - cb  // 5D5B  SUBQ.W    #6,(A3)+
+        b       cea_w_33
+        ori     rtn_addr, code_ptr, subq_w_q_mem_2 - cb  // 5D5C  SUBQ.W    #6,(A4)+
+        b       cea_w_34
+        ori     rtn_addr, code_ptr, subq_w_q_mem_2 - cb  // 5D5D  SUBQ.W    #6,(A5)+
+        b       cea_w_35
+        ori     rtn_addr, code_ptr, subq_w_q_mem_2 - cb  // 5D5E  SUBQ.W    #6,(A6)+
+        b       cea_w_36
+        ori     rtn_addr, code_ptr, subq_w_q_mem_2 - cb  // 5D5F  SUBQ.W    #6,(A7)+
+        b       cea_w_37
         addi    a0, a0, -2                              // 5D60  SUBQ.W    #6,-(A0)
         b       op_5D50
         addi    a1, a1, -2                              // 5D61  SUBQ.W    #6,-(A1)
@@ -7407,127 +7407,127 @@ op_5D57:
         addi    a7, a7, -2                              // 5D67  SUBQ.W    #6,-(A7)
         b       op_5D57
         add     addr, a0, prefetch_data                 // 5D68  SUBQ.W    #6,(d16,A0)
-        b       L_06820
+        b       subq_w_q_mem
         add     addr, a1, prefetch_data                 // 5D69  SUBQ.W    #6,(d16,A1)
-        b       L_06820
+        b       subq_w_q_mem
         add     addr, a2, prefetch_data                 // 5D6A  SUBQ.W    #6,(d16,A2)
-        b       L_06820
+        b       subq_w_q_mem
         add     addr, a3, prefetch_data                 // 5D6B  SUBQ.W    #6,(d16,A3)
-        b       L_06820
+        b       subq_w_q_mem
         add     addr, a4, prefetch_data                 // 5D6C  SUBQ.W    #6,(d16,A4)
-        b       L_06820
+        b       subq_w_q_mem
         add     addr, a5, prefetch_data                 // 5D6D  SUBQ.W    #6,(d16,A5)
-        b       L_06820
+        b       subq_w_q_mem
         add     addr, a6, prefetch_data                 // 5D6E  SUBQ.W    #6,(d16,A6)
-        b       L_06820
+        b       subq_w_q_mem
         add     addr, a7, prefetch_data                 // 5D6F  SUBQ.W    #6,(d16,A7)
-        b       L_06820
-        ori     rtn_addr, code_ptr, L_06828 - cb        // 5D70  SUBQ.W    #6,(d8,A0,Xn)
-        b       L_059B0
-        ori     rtn_addr, code_ptr, L_06828 - cb        // 5D71  SUBQ.W    #6,(d8,A1,Xn)
-        b       L_05A10
-        ori     rtn_addr, code_ptr, L_06828 - cb        // 5D72  SUBQ.W    #6,(d8,A2,Xn)
-        b       L_05A70
-        ori     rtn_addr, code_ptr, L_06828 - cb        // 5D73  SUBQ.W    #6,(d8,A3,Xn)
-        b       L_05AD0
-        ori     rtn_addr, code_ptr, L_06828 - cb        // 5D74  SUBQ.W    #6,(d8,A4,Xn)
-        b       L_05B30
-        ori     rtn_addr, code_ptr, L_06828 - cb        // 5D75  SUBQ.W    #6,(d8,A5,Xn)
-        b       L_05B90
-        ori     rtn_addr, code_ptr, L_06828 - cb        // 5D76  SUBQ.W    #6,(d8,A6,Xn)
-        b       L_05BF0
-        ori     rtn_addr, code_ptr, L_06828 - cb        // 5D77  SUBQ.W    #6,(d8,A7,Xn)
-        b       L_05C50
+        b       subq_w_q_mem
+        ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5D70  SUBQ.W    #6,(d8,A0,Xn)
+        b       move_add_etc_w_any_any
+        ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5D71  SUBQ.W    #6,(d8,A1,Xn)
+        b       move_add_etc_w_any_any_2
+        ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5D72  SUBQ.W    #6,(d8,A2,Xn)
+        b       move_add_etc_w_any_any_3
+        ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5D73  SUBQ.W    #6,(d8,A3,Xn)
+        b       move_add_etc_w_any_any_4
+        ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5D74  SUBQ.W    #6,(d8,A4,Xn)
+        b       move_add_etc_w_any_any_5
+        ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5D75  SUBQ.W    #6,(d8,A5,Xn)
+        b       move_add_etc_w_any_any_6
+        ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5D76  SUBQ.W    #6,(d8,A6,Xn)
+        b       move_add_etc_w_any_any_7
+        ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5D77  SUBQ.W    #6,(d8,A7,Xn)
+        b       move_add_etc_w_any_any_8
         mr      addr, prefetch_data                     // 5D78  SUBQ.W    #6,(xxx).W
-        b       L_06820
-        ori     rtn_addr, code_ptr, L_06828 - cb        // 5D79  SUBQ.W    #6,(xxx).L
-        b       L_05E70
+        b       subq_w_q_mem
+        ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5D79  SUBQ.W    #6,(xxx).L
+        b       fea_w_71
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5D7A  SUBQ.W    #6,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5D7B  SUBQ.W    #6,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5D7C  SUBQ.W    #6,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5D7D  SUBQ.W    #6,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5D7E  SUBQ.W    #6,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5D7F  SUBQ.W    #6,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $5D80-$5DBF --------------------------------------------------------
         li      data, 6                                 // 5D80  SUBQ.L    #6,D0
-        b       L_04204
+        b       sub_l_mem_d0_2
         li      data, 6                                 // 5D81  SUBQ.L    #6,D1
-        b       L_04244
+        b       sub_l_mem_d1_2
         li      data, 6                                 // 5D82  SUBQ.L    #6,D2
-        b       L_04284
+        b       sub_l_mem_d2_2
         li      data, 6                                 // 5D83  SUBQ.L    #6,D3
-        b       L_042C4
+        b       sub_l_mem_d3_2
         li      data, 6                                 // 5D84  SUBQ.L    #6,D4
-        b       L_04304
+        b       sub_l_mem_d4_2
         li      data, 6                                 // 5D85  SUBQ.L    #6,D5
-        b       L_04344
+        b       sub_l_mem_d5_2
         li      data, 6                                 // 5D86  SUBQ.L    #6,D6
-        b       L_04384
+        b       sub_l_mem_d6_2
         li      data, 6                                 // 5D87  SUBQ.L    #6,D7
-        b       L_043C4
+        b       sub_l_mem_d7_2
         addi    a0, a0, -6                              // 5D88  SUBQ.L    #6,A0
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a1, a1, -6                              // 5D89  SUBQ.L    #6,A1
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a2, a2, -6                              // 5D8A  SUBQ.L    #6,A2
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a3, a3, -6                              // 5D8B  SUBQ.L    #6,A3
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a4, a4, -6                              // 5D8C  SUBQ.L    #6,A4
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a5, a5, -6                              // 5D8D  SUBQ.L    #6,A5
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a6, a6, -6                              // 5D8E  SUBQ.L    #6,A6
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a7, a7, -6                              // 5D8F  SUBQ.L    #6,A7
-        b       L_06084
+        b       move_add_etc_any_any
 op_5D90:
         mr      addr, a0                                // 5D90  SUBQ.L    #6,(A0)
-        b       L_06AC4
+        b       subq_l_q_mem_2
 op_5D91:
         mr      addr, a1                                // 5D91  SUBQ.L    #6,(A1)
-        b       L_06AC4
+        b       subq_l_q_mem_2
 op_5D92:
         mr      addr, a2                                // 5D92  SUBQ.L    #6,(A2)
-        b       L_06AC4
+        b       subq_l_q_mem_2
 op_5D93:
         mr      addr, a3                                // 5D93  SUBQ.L    #6,(A3)
-        b       L_06AC4
+        b       subq_l_q_mem_2
 op_5D94:
         mr      addr, a4                                // 5D94  SUBQ.L    #6,(A4)
-        b       L_06AC4
+        b       subq_l_q_mem_2
 op_5D95:
         mr      addr, a5                                // 5D95  SUBQ.L    #6,(A5)
-        b       L_06AC4
+        b       subq_l_q_mem_2
 op_5D96:
         mr      addr, a6                                // 5D96  SUBQ.L    #6,(A6)
-        b       L_06AC4
+        b       subq_l_q_mem_2
 op_5D97:
         mr      addr, a7                                // 5D97  SUBQ.L    #6,(A7)
-        b       L_06AC4
-        ori     rtn_addr, code_ptr, L_06AC4 - cb        // 5D98  SUBQ.L    #6,(A0)+
-        b       L_00840
-        ori     rtn_addr, code_ptr, L_06AC4 - cb        // 5D99  SUBQ.L    #6,(A1)+
-        b       L_008C0
-        ori     rtn_addr, code_ptr, L_06AC4 - cb        // 5D9A  SUBQ.L    #6,(A2)+
-        b       L_00940
-        ori     rtn_addr, code_ptr, L_06AC4 - cb        // 5D9B  SUBQ.L    #6,(A3)+
-        b       L_009C0
-        ori     rtn_addr, code_ptr, L_06AC4 - cb        // 5D9C  SUBQ.L    #6,(A4)+
-        b       L_00A40
-        ori     rtn_addr, code_ptr, L_06AC4 - cb        // 5D9D  SUBQ.L    #6,(A5)+
-        b       L_00AC0
-        ori     rtn_addr, code_ptr, L_06AC4 - cb        // 5D9E  SUBQ.L    #6,(A6)+
-        b       L_00B40
-        ori     rtn_addr, code_ptr, L_06AC4 - cb        // 5D9F  SUBQ.L    #6,(A7)+
-        b       L_00BC0
+        b       subq_l_q_mem_2
+        ori     rtn_addr, code_ptr, subq_l_q_mem_2 - cb  // 5D98  SUBQ.L    #6,(A0)+
+        b       cea_l_30
+        ori     rtn_addr, code_ptr, subq_l_q_mem_2 - cb  // 5D99  SUBQ.L    #6,(A1)+
+        b       cea_l_31
+        ori     rtn_addr, code_ptr, subq_l_q_mem_2 - cb  // 5D9A  SUBQ.L    #6,(A2)+
+        b       cea_l_32
+        ori     rtn_addr, code_ptr, subq_l_q_mem_2 - cb  // 5D9B  SUBQ.L    #6,(A3)+
+        b       cea_l_33
+        ori     rtn_addr, code_ptr, subq_l_q_mem_2 - cb  // 5D9C  SUBQ.L    #6,(A4)+
+        b       cea_l_34
+        ori     rtn_addr, code_ptr, subq_l_q_mem_2 - cb  // 5D9D  SUBQ.L    #6,(A5)+
+        b       cea_l_35
+        ori     rtn_addr, code_ptr, subq_l_q_mem_2 - cb  // 5D9E  SUBQ.L    #6,(A6)+
+        b       cea_l_36
+        ori     rtn_addr, code_ptr, subq_l_q_mem_2 - cb  // 5D9F  SUBQ.L    #6,(A7)+
+        b       cea_l_37
         addi    a0, a0, -4                              // 5DA0  SUBQ.L    #6,-(A0)
         b       op_5D90
         addi    a1, a1, -4                              // 5DA1  SUBQ.L    #6,-(A1)
@@ -7545,127 +7545,127 @@ op_5D97:
         addi    a7, a7, -4                              // 5DA7  SUBQ.L    #6,-(A7)
         b       op_5D97
         add     addr, a0, prefetch_data                 // 5DA8  SUBQ.L    #6,(d16,A0)
-        b       L_06AC0
+        b       subq_l_q_mem
         add     addr, a1, prefetch_data                 // 5DA9  SUBQ.L    #6,(d16,A1)
-        b       L_06AC0
+        b       subq_l_q_mem
         add     addr, a2, prefetch_data                 // 5DAA  SUBQ.L    #6,(d16,A2)
-        b       L_06AC0
+        b       subq_l_q_mem
         add     addr, a3, prefetch_data                 // 5DAB  SUBQ.L    #6,(d16,A3)
-        b       L_06AC0
+        b       subq_l_q_mem
         add     addr, a4, prefetch_data                 // 5DAC  SUBQ.L    #6,(d16,A4)
-        b       L_06AC0
+        b       subq_l_q_mem
         add     addr, a5, prefetch_data                 // 5DAD  SUBQ.L    #6,(d16,A5)
-        b       L_06AC0
+        b       subq_l_q_mem
         add     addr, a6, prefetch_data                 // 5DAE  SUBQ.L    #6,(d16,A6)
-        b       L_06AC0
+        b       subq_l_q_mem
         add     addr, a7, prefetch_data                 // 5DAF  SUBQ.L    #6,(d16,A7)
-        b       L_06AC0
-        ori     rtn_addr, code_ptr, L_06AC8 - cb        // 5DB0  SUBQ.L    #6,(d8,A0,Xn)
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_06AC8 - cb        // 5DB1  SUBQ.L    #6,(d8,A1,Xn)
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_06AC8 - cb        // 5DB2  SUBQ.L    #6,(d8,A2,Xn)
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_06AC8 - cb        // 5DB3  SUBQ.L    #6,(d8,A3,Xn)
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_06AC8 - cb        // 5DB4  SUBQ.L    #6,(d8,A4,Xn)
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_06AC8 - cb        // 5DB5  SUBQ.L    #6,(d8,A5,Xn)
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_06AC8 - cb        // 5DB6  SUBQ.L    #6,(d8,A6,Xn)
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_06AC8 - cb        // 5DB7  SUBQ.L    #6,(d8,A7,Xn)
-        b       L_05C68
+        b       subq_l_q_mem
+        ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 5DB0  SUBQ.L    #6,(d8,A0,Xn)
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 5DB1  SUBQ.L    #6,(d8,A1,Xn)
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 5DB2  SUBQ.L    #6,(d8,A2,Xn)
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 5DB3  SUBQ.L    #6,(d8,A3,Xn)
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 5DB4  SUBQ.L    #6,(d8,A4,Xn)
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 5DB5  SUBQ.L    #6,(d8,A5,Xn)
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 5DB6  SUBQ.L    #6,(d8,A6,Xn)
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 5DB7  SUBQ.L    #6,(d8,A7,Xn)
+        b       move_add_etc_l_any_any_8
         mr      addr, prefetch_data                     // 5DB8  SUBQ.L    #6,(xxx).W
-        b       L_06AC0
-        ori     rtn_addr, code_ptr, L_06AC8 - cb        // 5DB9  SUBQ.L    #6,(xxx).L
-        b       L_05E8C
+        b       subq_l_q_mem
+        ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 5DB9  SUBQ.L    #6,(xxx).L
+        b       fea_l_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5DBA  SUBQ.L    #6,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5DBB  SUBQ.L    #6,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5DBC  SUBQ.L    #6,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5DBD  SUBQ.L    #6,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5DBE  SUBQ.L    #6,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5DBF  SUBQ.L    #6,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $5DC0-$5DFF --------------------------------------------------------
-        ori     rtn_addr, code_ptr, L_03624 - cb        // 5DC0  SLT.B     D0
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_03664 - cb        // 5DC1  SLT.B     D1
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_036A4 - cb        // 5DC2  SLT.B     D2
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_036E4 - cb        // 5DC3  SLT.B     D3
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_03724 - cb        // 5DC4  SLT.B     D4
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_03764 - cb        // 5DC5  SLT.B     D5
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_037A4 - cb        // 5DC6  SLT.B     D6
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_037E4 - cb        // 5DC7  SLT.B     D7
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_03000 - cb        // 5DC8  DBLT.W    D0,<label>
-        b       L_08500
-        ori     rtn_addr, code_ptr, L_03040 - cb        // 5DC9  DBLT.W    D1,<label>
-        b       L_08500
-        ori     rtn_addr, code_ptr, L_03080 - cb        // 5DCA  DBLT.W    D2,<label>
-        b       L_08500
-        ori     rtn_addr, code_ptr, L_030C0 - cb        // 5DCB  DBLT.W    D3,<label>
-        b       L_08500
-        ori     rtn_addr, code_ptr, L_03100 - cb        // 5DCC  DBLT.W    D4,<label>
-        b       L_08500
-        ori     rtn_addr, code_ptr, L_03140 - cb        // 5DCD  DBLT.W    D5,<label>
-        b       L_08500
-        ori     rtn_addr, code_ptr, L_03180 - cb        // 5DCE  DBLT.W    D6,<label>
-        b       L_08500
-        ori     rtn_addr, code_ptr, L_031C0 - cb        // 5DCF  DBLT.W    D7,<label>
-        b       L_08500
+        ori     rtn_addr, code_ptr, scc_b_d0 - cb       // 5DC0  SLT.B     D0
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d1 - cb       // 5DC1  SLT.B     D1
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d2 - cb       // 5DC2  SLT.B     D2
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d3 - cb       // 5DC3  SLT.B     D3
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d4 - cb       // 5DC4  SLT.B     D4
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d5 - cb       // 5DC5  SLT.B     D5
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d6 - cb       // 5DC6  SLT.B     D6
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d7 - cb       // 5DC7  SLT.B     D7
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d0 - cb      // 5DC8  DBLT.W    D0,<label>
+        b       dbcc_w_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d1 - cb      // 5DC9  DBLT.W    D1,<label>
+        b       dbcc_w_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d2 - cb      // 5DCA  DBLT.W    D2,<label>
+        b       dbcc_w_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d3 - cb      // 5DCB  DBLT.W    D3,<label>
+        b       dbcc_w_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d4 - cb      // 5DCC  DBLT.W    D4,<label>
+        b       dbcc_w_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d5 - cb      // 5DCD  DBLT.W    D5,<label>
+        b       dbcc_w_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d6 - cb      // 5DCE  DBLT.W    D6,<label>
+        b       dbcc_w_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d7 - cb      // 5DCF  DBLT.W    D7,<label>
+        b       dbcc_w_dn
 op_5DD0:
         mr      addr, a0                                // 5DD0  SLT.B     (A0)
-        b       L_08584
+        b       scc_b_mem_2
 op_5DD1:
         mr      addr, a1                                // 5DD1  SLT.B     (A1)
-        b       L_08584
+        b       scc_b_mem_2
 op_5DD2:
         mr      addr, a2                                // 5DD2  SLT.B     (A2)
-        b       L_08584
+        b       scc_b_mem_2
 op_5DD3:
         mr      addr, a3                                // 5DD3  SLT.B     (A3)
-        b       L_08584
+        b       scc_b_mem_2
 op_5DD4:
         mr      addr, a4                                // 5DD4  SLT.B     (A4)
-        b       L_08584
+        b       scc_b_mem_2
 op_5DD5:
         mr      addr, a5                                // 5DD5  SLT.B     (A5)
-        b       L_08584
+        b       scc_b_mem_2
 op_5DD6:
         mr      addr, a6                                // 5DD6  SLT.B     (A6)
-        b       L_08584
+        b       scc_b_mem_2
 op_5DD7:
         mr      addr, a7                                // 5DD7  SLT.B     (A7)
-        b       L_08584
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5DD8  SLT.B     (A0)+
-        b       L_00800
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5DD9  SLT.B     (A1)+
-        b       L_00880
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5DDA  SLT.B     (A2)+
-        b       L_00900
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5DDB  SLT.B     (A3)+
-        b       L_00980
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5DDC  SLT.B     (A4)+
-        b       L_00A00
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5DDD  SLT.B     (A5)+
-        b       L_00A80
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5DDE  SLT.B     (A6)+
-        b       L_00B00
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5DDF  SLT.B     (A7)+
-        b       L_00B80
+        b       scc_b_mem_2
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5DD8  SLT.B     (A0)+
+        b       cea_b_30
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5DD9  SLT.B     (A1)+
+        b       cea_b_31
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5DDA  SLT.B     (A2)+
+        b       cea_b_32
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5DDB  SLT.B     (A3)+
+        b       cea_b_33
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5DDC  SLT.B     (A4)+
+        b       cea_b_34
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5DDD  SLT.B     (A5)+
+        b       cea_b_35
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5DDE  SLT.B     (A6)+
+        b       cea_b_36
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5DDF  SLT.B     (A7)+
+        b       cea_b_37
         addi    a0, a0, -1                              // 5DE0  SLT.B     -(A0)
         b       op_5DD0
         addi    a1, a1, -1                              // 5DE1  SLT.B     -(A1)
@@ -7683,127 +7683,127 @@ op_5DD7:
         addi    a7, a7, -2                              // 5DE7  SLT.B     -(A7)
         b       op_5DD7
         add     addr, a0, prefetch_data                 // 5DE8  SLT.B     (d16,A0)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a1, prefetch_data                 // 5DE9  SLT.B     (d16,A1)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a2, prefetch_data                 // 5DEA  SLT.B     (d16,A2)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a3, prefetch_data                 // 5DEB  SLT.B     (d16,A3)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a4, prefetch_data                 // 5DEC  SLT.B     (d16,A4)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a5, prefetch_data                 // 5DED  SLT.B     (d16,A5)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a6, prefetch_data                 // 5DEE  SLT.B     (d16,A6)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a7, prefetch_data                 // 5DEF  SLT.B     (d16,A7)
-        b       L_08580
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5DF0  SLT.B     (d8,A0,Xn)
-        b       L_05988
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5DF1  SLT.B     (d8,A1,Xn)
-        b       L_059E8
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5DF2  SLT.B     (d8,A2,Xn)
-        b       L_05A48
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5DF3  SLT.B     (d8,A3,Xn)
-        b       L_05AA8
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5DF4  SLT.B     (d8,A4,Xn)
-        b       L_05B08
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5DF5  SLT.B     (d8,A5,Xn)
-        b       L_05B68
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5DF6  SLT.B     (d8,A6,Xn)
-        b       L_05BC8
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5DF7  SLT.B     (d8,A7,Xn)
-        b       L_05C28
+        b       scc_b_mem
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5DF0  SLT.B     (d8,A0,Xn)
+        b       or_sub_etc_any_any
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5DF1  SLT.B     (d8,A1,Xn)
+        b       or_sub_etc_any_any_2
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5DF2  SLT.B     (d8,A2,Xn)
+        b       or_sub_etc_any_any_3
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5DF3  SLT.B     (d8,A3,Xn)
+        b       or_sub_etc_any_any_4
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5DF4  SLT.B     (d8,A4,Xn)
+        b       or_sub_etc_any_any_5
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5DF5  SLT.B     (d8,A5,Xn)
+        b       or_sub_etc_any_any_6
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5DF6  SLT.B     (d8,A6,Xn)
+        b       or_sub_etc_any_any_7
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5DF7  SLT.B     (d8,A7,Xn)
+        b       or_sub_etc_any_any_8
         mr      addr, prefetch_data                     // 5DF8  SLT.B     (xxx).W
-        b       L_08580
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5DF9  SLT.B     (xxx).L
-        b       L_05E14
+        b       scc_b_mem
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5DF9  SLT.B     (xxx).L
+        b       cea_x_71_2
         lhau    prefetch_data, 2(pc)                    // 5DFA  TRAPLT    #<data>.W
-        b       L_0CCE8
+        b       trapcc
         lhau    prefetch_data, 4(pc)                    // 5DFB  TRAPLT    #<data>.L
-        b       L_0CCE8
+        b       trapcc
         ori     base_disp, code_ptr, D_085C0 - cb       // 5DFC  TRAPLT
-        b       L_0CCEC
+        b       trapcc_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5DFD  SLT.B     <ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5DFE  SLT.B     <ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5DFF  SLT.B     <ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $5E00-$5E3F --------------------------------------------------------
         lis     data, 0x0700                            // 5E00  ADDQ.B    #7,D0
-        b       L_0B0C8
+        b       add_asl_b_any_d0
         lis     data, 0x0700                            // 5E01  ADDQ.B    #7,D1
-        b       L_0B108
+        b       add_asl_b_any_d1
         lis     data, 0x0700                            // 5E02  ADDQ.B    #7,D2
-        b       L_0B148
+        b       add_asl_b_any_d2
         lis     data, 0x0700                            // 5E03  ADDQ.B    #7,D3
-        b       L_0B188
+        b       add_asl_b_any_d3
         lis     data, 0x0700                            // 5E04  ADDQ.B    #7,D4
-        b       L_0B1C8
+        b       add_asl_b_any_d4
         lis     data, 0x0700                            // 5E05  ADDQ.B    #7,D5
-        b       L_0B208
+        b       add_asl_b_any_d5
         lis     data, 0x0700                            // 5E06  ADDQ.B    #7,D6
-        b       L_0B248
+        b       add_asl_b_any_d6
         lis     data, 0x0700                            // 5E07  ADDQ.B    #7,D7
-        b       L_0B288
+        b       add_asl_b_any_d7
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5E08  ADDQ.B    #7,A0   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5E09  ADDQ.B    #7,A1   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5E0A  ADDQ.B    #7,A2   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5E0B  ADDQ.B    #7,A3   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5E0C  ADDQ.B    #7,A4   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5E0D  ADDQ.B    #7,A5   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5E0E  ADDQ.B    #7,A6   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5E0F  ADDQ.B    #7,A7   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 op_5E10:
         mr      addr, a0                                // 5E10  ADDQ.B    #7,(A0)
-        b       L_06564
+        b       addq_b_q_mem_2
 op_5E11:
         mr      addr, a1                                // 5E11  ADDQ.B    #7,(A1)
-        b       L_06564
+        b       addq_b_q_mem_2
 op_5E12:
         mr      addr, a2                                // 5E12  ADDQ.B    #7,(A2)
-        b       L_06564
+        b       addq_b_q_mem_2
 op_5E13:
         mr      addr, a3                                // 5E13  ADDQ.B    #7,(A3)
-        b       L_06564
+        b       addq_b_q_mem_2
 op_5E14:
         mr      addr, a4                                // 5E14  ADDQ.B    #7,(A4)
-        b       L_06564
+        b       addq_b_q_mem_2
 op_5E15:
         mr      addr, a5                                // 5E15  ADDQ.B    #7,(A5)
-        b       L_06564
+        b       addq_b_q_mem_2
 op_5E16:
         mr      addr, a6                                // 5E16  ADDQ.B    #7,(A6)
-        b       L_06564
+        b       addq_b_q_mem_2
 op_5E17:
         mr      addr, a7                                // 5E17  ADDQ.B    #7,(A7)
-        b       L_06564
-        ori     rtn_addr, code_ptr, L_06564 - cb        // 5E18  ADDQ.B    #7,(A0)+
-        b       L_00800
-        ori     rtn_addr, code_ptr, L_06564 - cb        // 5E19  ADDQ.B    #7,(A1)+
-        b       L_00880
-        ori     rtn_addr, code_ptr, L_06564 - cb        // 5E1A  ADDQ.B    #7,(A2)+
-        b       L_00900
-        ori     rtn_addr, code_ptr, L_06564 - cb        // 5E1B  ADDQ.B    #7,(A3)+
-        b       L_00980
-        ori     rtn_addr, code_ptr, L_06564 - cb        // 5E1C  ADDQ.B    #7,(A4)+
-        b       L_00A00
-        ori     rtn_addr, code_ptr, L_06564 - cb        // 5E1D  ADDQ.B    #7,(A5)+
-        b       L_00A80
-        ori     rtn_addr, code_ptr, L_06564 - cb        // 5E1E  ADDQ.B    #7,(A6)+
-        b       L_00B00
-        ori     rtn_addr, code_ptr, L_06564 - cb        // 5E1F  ADDQ.B    #7,(A7)+
-        b       L_00B80
+        b       addq_b_q_mem_2
+        ori     rtn_addr, code_ptr, addq_b_q_mem_2 - cb  // 5E18  ADDQ.B    #7,(A0)+
+        b       cea_b_30
+        ori     rtn_addr, code_ptr, addq_b_q_mem_2 - cb  // 5E19  ADDQ.B    #7,(A1)+
+        b       cea_b_31
+        ori     rtn_addr, code_ptr, addq_b_q_mem_2 - cb  // 5E1A  ADDQ.B    #7,(A2)+
+        b       cea_b_32
+        ori     rtn_addr, code_ptr, addq_b_q_mem_2 - cb  // 5E1B  ADDQ.B    #7,(A3)+
+        b       cea_b_33
+        ori     rtn_addr, code_ptr, addq_b_q_mem_2 - cb  // 5E1C  ADDQ.B    #7,(A4)+
+        b       cea_b_34
+        ori     rtn_addr, code_ptr, addq_b_q_mem_2 - cb  // 5E1D  ADDQ.B    #7,(A5)+
+        b       cea_b_35
+        ori     rtn_addr, code_ptr, addq_b_q_mem_2 - cb  // 5E1E  ADDQ.B    #7,(A6)+
+        b       cea_b_36
+        ori     rtn_addr, code_ptr, addq_b_q_mem_2 - cb  // 5E1F  ADDQ.B    #7,(A7)+
+        b       cea_b_37
         addi    a0, a0, -1                              // 5E20  ADDQ.B    #7,-(A0)
         b       op_5E10
         addi    a1, a1, -1                              // 5E21  ADDQ.B    #7,-(A1)
@@ -7821,127 +7821,127 @@ op_5E17:
         addi    a7, a7, -2                              // 5E27  ADDQ.B    #7,-(A7)
         b       op_5E17
         add     addr, a0, prefetch_data                 // 5E28  ADDQ.B    #7,(d16,A0)
-        b       L_06560
+        b       addq_b_q_mem
         add     addr, a1, prefetch_data                 // 5E29  ADDQ.B    #7,(d16,A1)
-        b       L_06560
+        b       addq_b_q_mem
         add     addr, a2, prefetch_data                 // 5E2A  ADDQ.B    #7,(d16,A2)
-        b       L_06560
+        b       addq_b_q_mem
         add     addr, a3, prefetch_data                 // 5E2B  ADDQ.B    #7,(d16,A3)
-        b       L_06560
+        b       addq_b_q_mem
         add     addr, a4, prefetch_data                 // 5E2C  ADDQ.B    #7,(d16,A4)
-        b       L_06560
+        b       addq_b_q_mem
         add     addr, a5, prefetch_data                 // 5E2D  ADDQ.B    #7,(d16,A5)
-        b       L_06560
+        b       addq_b_q_mem
         add     addr, a6, prefetch_data                 // 5E2E  ADDQ.B    #7,(d16,A6)
-        b       L_06560
+        b       addq_b_q_mem
         add     addr, a7, prefetch_data                 // 5E2F  ADDQ.B    #7,(d16,A7)
-        b       L_06560
-        ori     rtn_addr, code_ptr, L_06568 - cb        // 5E30  ADDQ.B    #7,(d8,A0,Xn)
-        b       L_0599C
-        ori     rtn_addr, code_ptr, L_06568 - cb        // 5E31  ADDQ.B    #7,(d8,A1,Xn)
-        b       L_059FC
-        ori     rtn_addr, code_ptr, L_06568 - cb        // 5E32  ADDQ.B    #7,(d8,A2,Xn)
-        b       L_05A5C
-        ori     rtn_addr, code_ptr, L_06568 - cb        // 5E33  ADDQ.B    #7,(d8,A3,Xn)
-        b       L_05ABC
-        ori     rtn_addr, code_ptr, L_06568 - cb        // 5E34  ADDQ.B    #7,(d8,A4,Xn)
-        b       L_05B1C
-        ori     rtn_addr, code_ptr, L_06568 - cb        // 5E35  ADDQ.B    #7,(d8,A5,Xn)
-        b       L_05B7C
-        ori     rtn_addr, code_ptr, L_06568 - cb        // 5E36  ADDQ.B    #7,(d8,A6,Xn)
-        b       L_05BDC
-        ori     rtn_addr, code_ptr, L_06568 - cb        // 5E37  ADDQ.B    #7,(d8,A7,Xn)
-        b       L_05C3C
+        b       addq_b_q_mem
+        ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5E30  ADDQ.B    #7,(d8,A0,Xn)
+        b       move_add_etc_b_any_any
+        ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5E31  ADDQ.B    #7,(d8,A1,Xn)
+        b       move_add_etc_b_any_any_2
+        ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5E32  ADDQ.B    #7,(d8,A2,Xn)
+        b       move_add_etc_b_any_any_3
+        ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5E33  ADDQ.B    #7,(d8,A3,Xn)
+        b       move_add_etc_b_any_any_4
+        ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5E34  ADDQ.B    #7,(d8,A4,Xn)
+        b       move_add_etc_b_any_any_5
+        ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5E35  ADDQ.B    #7,(d8,A5,Xn)
+        b       move_add_etc_b_any_any_6
+        ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5E36  ADDQ.B    #7,(d8,A6,Xn)
+        b       move_add_etc_b_any_any_7
+        ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5E37  ADDQ.B    #7,(d8,A7,Xn)
+        b       move_add_etc_b_any_any_8
         mr      addr, prefetch_data                     // 5E38  ADDQ.B    #7,(xxx).W
-        b       L_06560
-        ori     rtn_addr, code_ptr, L_06568 - cb        // 5E39  ADDQ.B    #7,(xxx).L
-        b       L_05E2C
+        b       addq_b_q_mem
+        ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5E39  ADDQ.B    #7,(xxx).L
+        b       fea_b_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5E3A  ADDQ.B    #7,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5E3B  ADDQ.B    #7,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5E3C  ADDQ.B    #7,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5E3D  ADDQ.B    #7,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5E3E  ADDQ.B    #7,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5E3F  ADDQ.B    #7,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $5E40-$5E7F --------------------------------------------------------
         lis     data, 0x0007                            // 5E40  ADDQ.W    #7,D0
-        b       L_03808
+        b       add_asl_w_any_d0
         lis     data, 0x0007                            // 5E41  ADDQ.W    #7,D1
-        b       L_03848
+        b       add_asl_w_any_d1
         lis     data, 0x0007                            // 5E42  ADDQ.W    #7,D2
-        b       L_03888
+        b       add_asl_w_any_d2
         lis     data, 0x0007                            // 5E43  ADDQ.W    #7,D3
-        b       L_038C8
+        b       add_asl_w_any_d3
         lis     data, 0x0007                            // 5E44  ADDQ.W    #7,D4
-        b       L_03908
+        b       add_asl_w_any_d4
         lis     data, 0x0007                            // 5E45  ADDQ.W    #7,D5
-        b       L_03948
+        b       add_asl_w_any_d5
         lis     data, 0x0007                            // 5E46  ADDQ.W    #7,D6
-        b       L_03988
+        b       add_asl_w_any_d6
         lis     data, 0x0007                            // 5E47  ADDQ.W    #7,D7
-        b       L_039C8
+        b       add_asl_w_any_d7
         addi    a0, a0, 7                               // 5E48  ADDQ.W    #7,A0
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a1, a1, 7                               // 5E49  ADDQ.W    #7,A1
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a2, a2, 7                               // 5E4A  ADDQ.W    #7,A2
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a3, a3, 7                               // 5E4B  ADDQ.W    #7,A3
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a4, a4, 7                               // 5E4C  ADDQ.W    #7,A4
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a5, a5, 7                               // 5E4D  ADDQ.W    #7,A5
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a6, a6, 7                               // 5E4E  ADDQ.W    #7,A6
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a7, a7, 7                               // 5E4F  ADDQ.W    #7,A7
-        b       L_06084
+        b       move_add_etc_any_any
 op_5E50:
         mr      addr, a0                                // 5E50  ADDQ.W    #7,(A0)
-        b       L_06784
+        b       addq_w_q_mem_2
 op_5E51:
         mr      addr, a1                                // 5E51  ADDQ.W    #7,(A1)
-        b       L_06784
+        b       addq_w_q_mem_2
 op_5E52:
         mr      addr, a2                                // 5E52  ADDQ.W    #7,(A2)
-        b       L_06784
+        b       addq_w_q_mem_2
 op_5E53:
         mr      addr, a3                                // 5E53  ADDQ.W    #7,(A3)
-        b       L_06784
+        b       addq_w_q_mem_2
 op_5E54:
         mr      addr, a4                                // 5E54  ADDQ.W    #7,(A4)
-        b       L_06784
+        b       addq_w_q_mem_2
 op_5E55:
         mr      addr, a5                                // 5E55  ADDQ.W    #7,(A5)
-        b       L_06784
+        b       addq_w_q_mem_2
 op_5E56:
         mr      addr, a6                                // 5E56  ADDQ.W    #7,(A6)
-        b       L_06784
+        b       addq_w_q_mem_2
 op_5E57:
         mr      addr, a7                                // 5E57  ADDQ.W    #7,(A7)
-        b       L_06784
-        ori     rtn_addr, code_ptr, L_06784 - cb        // 5E58  ADDQ.W    #7,(A0)+
-        b       L_00820
-        ori     rtn_addr, code_ptr, L_06784 - cb        // 5E59  ADDQ.W    #7,(A1)+
-        b       L_008A0
-        ori     rtn_addr, code_ptr, L_06784 - cb        // 5E5A  ADDQ.W    #7,(A2)+
-        b       L_00920
-        ori     rtn_addr, code_ptr, L_06784 - cb        // 5E5B  ADDQ.W    #7,(A3)+
-        b       L_009A0
-        ori     rtn_addr, code_ptr, L_06784 - cb        // 5E5C  ADDQ.W    #7,(A4)+
-        b       L_00A20
-        ori     rtn_addr, code_ptr, L_06784 - cb        // 5E5D  ADDQ.W    #7,(A5)+
-        b       L_00AA0
-        ori     rtn_addr, code_ptr, L_06784 - cb        // 5E5E  ADDQ.W    #7,(A6)+
-        b       L_00B20
-        ori     rtn_addr, code_ptr, L_06784 - cb        // 5E5F  ADDQ.W    #7,(A7)+
-        b       L_00BA0
+        b       addq_w_q_mem_2
+        ori     rtn_addr, code_ptr, addq_w_q_mem_2 - cb  // 5E58  ADDQ.W    #7,(A0)+
+        b       cea_w_30
+        ori     rtn_addr, code_ptr, addq_w_q_mem_2 - cb  // 5E59  ADDQ.W    #7,(A1)+
+        b       cea_w_31
+        ori     rtn_addr, code_ptr, addq_w_q_mem_2 - cb  // 5E5A  ADDQ.W    #7,(A2)+
+        b       cea_w_32
+        ori     rtn_addr, code_ptr, addq_w_q_mem_2 - cb  // 5E5B  ADDQ.W    #7,(A3)+
+        b       cea_w_33
+        ori     rtn_addr, code_ptr, addq_w_q_mem_2 - cb  // 5E5C  ADDQ.W    #7,(A4)+
+        b       cea_w_34
+        ori     rtn_addr, code_ptr, addq_w_q_mem_2 - cb  // 5E5D  ADDQ.W    #7,(A5)+
+        b       cea_w_35
+        ori     rtn_addr, code_ptr, addq_w_q_mem_2 - cb  // 5E5E  ADDQ.W    #7,(A6)+
+        b       cea_w_36
+        ori     rtn_addr, code_ptr, addq_w_q_mem_2 - cb  // 5E5F  ADDQ.W    #7,(A7)+
+        b       cea_w_37
         addi    a0, a0, -2                              // 5E60  ADDQ.W    #7,-(A0)
         b       op_5E50
         addi    a1, a1, -2                              // 5E61  ADDQ.W    #7,-(A1)
@@ -7959,127 +7959,127 @@ op_5E57:
         addi    a7, a7, -2                              // 5E67  ADDQ.W    #7,-(A7)
         b       op_5E57
         add     addr, a0, prefetch_data                 // 5E68  ADDQ.W    #7,(d16,A0)
-        b       L_06780
+        b       addq_w_q_mem
         add     addr, a1, prefetch_data                 // 5E69  ADDQ.W    #7,(d16,A1)
-        b       L_06780
+        b       addq_w_q_mem
         add     addr, a2, prefetch_data                 // 5E6A  ADDQ.W    #7,(d16,A2)
-        b       L_06780
+        b       addq_w_q_mem
         add     addr, a3, prefetch_data                 // 5E6B  ADDQ.W    #7,(d16,A3)
-        b       L_06780
+        b       addq_w_q_mem
         add     addr, a4, prefetch_data                 // 5E6C  ADDQ.W    #7,(d16,A4)
-        b       L_06780
+        b       addq_w_q_mem
         add     addr, a5, prefetch_data                 // 5E6D  ADDQ.W    #7,(d16,A5)
-        b       L_06780
+        b       addq_w_q_mem
         add     addr, a6, prefetch_data                 // 5E6E  ADDQ.W    #7,(d16,A6)
-        b       L_06780
+        b       addq_w_q_mem
         add     addr, a7, prefetch_data                 // 5E6F  ADDQ.W    #7,(d16,A7)
-        b       L_06780
-        ori     rtn_addr, code_ptr, L_06788 - cb        // 5E70  ADDQ.W    #7,(d8,A0,Xn)
-        b       L_059B0
-        ori     rtn_addr, code_ptr, L_06788 - cb        // 5E71  ADDQ.W    #7,(d8,A1,Xn)
-        b       L_05A10
-        ori     rtn_addr, code_ptr, L_06788 - cb        // 5E72  ADDQ.W    #7,(d8,A2,Xn)
-        b       L_05A70
-        ori     rtn_addr, code_ptr, L_06788 - cb        // 5E73  ADDQ.W    #7,(d8,A3,Xn)
-        b       L_05AD0
-        ori     rtn_addr, code_ptr, L_06788 - cb        // 5E74  ADDQ.W    #7,(d8,A4,Xn)
-        b       L_05B30
-        ori     rtn_addr, code_ptr, L_06788 - cb        // 5E75  ADDQ.W    #7,(d8,A5,Xn)
-        b       L_05B90
-        ori     rtn_addr, code_ptr, L_06788 - cb        // 5E76  ADDQ.W    #7,(d8,A6,Xn)
-        b       L_05BF0
-        ori     rtn_addr, code_ptr, L_06788 - cb        // 5E77  ADDQ.W    #7,(d8,A7,Xn)
-        b       L_05C50
+        b       addq_w_q_mem
+        ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5E70  ADDQ.W    #7,(d8,A0,Xn)
+        b       move_add_etc_w_any_any
+        ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5E71  ADDQ.W    #7,(d8,A1,Xn)
+        b       move_add_etc_w_any_any_2
+        ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5E72  ADDQ.W    #7,(d8,A2,Xn)
+        b       move_add_etc_w_any_any_3
+        ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5E73  ADDQ.W    #7,(d8,A3,Xn)
+        b       move_add_etc_w_any_any_4
+        ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5E74  ADDQ.W    #7,(d8,A4,Xn)
+        b       move_add_etc_w_any_any_5
+        ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5E75  ADDQ.W    #7,(d8,A5,Xn)
+        b       move_add_etc_w_any_any_6
+        ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5E76  ADDQ.W    #7,(d8,A6,Xn)
+        b       move_add_etc_w_any_any_7
+        ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5E77  ADDQ.W    #7,(d8,A7,Xn)
+        b       move_add_etc_w_any_any_8
         mr      addr, prefetch_data                     // 5E78  ADDQ.W    #7,(xxx).W
-        b       L_06780
-        ori     rtn_addr, code_ptr, L_06788 - cb        // 5E79  ADDQ.W    #7,(xxx).L
-        b       L_05E70
+        b       addq_w_q_mem
+        ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5E79  ADDQ.W    #7,(xxx).L
+        b       fea_w_71
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5E7A  ADDQ.W    #7,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5E7B  ADDQ.W    #7,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5E7C  ADDQ.W    #7,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5E7D  ADDQ.W    #7,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5E7E  ADDQ.W    #7,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5E7F  ADDQ.W    #7,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $5E80-$5EBF --------------------------------------------------------
         li      data, 7                                 // 5E80  ADDQ.L    #7,D0
-        b       L_03E04
+        b       add_l_mem_d0_2
         li      data, 7                                 // 5E81  ADDQ.L    #7,D1
-        b       L_03E44
+        b       add_l_mem_d1_2
         li      data, 7                                 // 5E82  ADDQ.L    #7,D2
-        b       L_03E84
+        b       add_l_mem_d2_2
         li      data, 7                                 // 5E83  ADDQ.L    #7,D3
-        b       L_03EC4
+        b       add_l_mem_d3_2
         li      data, 7                                 // 5E84  ADDQ.L    #7,D4
-        b       L_03F04
+        b       add_l_mem_d4_2
         li      data, 7                                 // 5E85  ADDQ.L    #7,D5
-        b       L_03F44
+        b       add_l_mem_d5_2
         li      data, 7                                 // 5E86  ADDQ.L    #7,D6
-        b       L_03F84
+        b       add_l_mem_d6_2
         li      data, 7                                 // 5E87  ADDQ.L    #7,D7
-        b       L_03FC4
+        b       add_l_mem_d7_2
         addi    a0, a0, 7                               // 5E88  ADDQ.L    #7,A0
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a1, a1, 7                               // 5E89  ADDQ.L    #7,A1
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a2, a2, 7                               // 5E8A  ADDQ.L    #7,A2
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a3, a3, 7                               // 5E8B  ADDQ.L    #7,A3
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a4, a4, 7                               // 5E8C  ADDQ.L    #7,A4
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a5, a5, 7                               // 5E8D  ADDQ.L    #7,A5
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a6, a6, 7                               // 5E8E  ADDQ.L    #7,A6
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a7, a7, 7                               // 5E8F  ADDQ.L    #7,A7
-        b       L_06084
+        b       move_add_etc_any_any
 op_5E90:
         mr      addr, a0                                // 5E90  ADDQ.L    #7,(A0)
-        b       L_06A24
+        b       addq_l_q_mem_2
 op_5E91:
         mr      addr, a1                                // 5E91  ADDQ.L    #7,(A1)
-        b       L_06A24
+        b       addq_l_q_mem_2
 op_5E92:
         mr      addr, a2                                // 5E92  ADDQ.L    #7,(A2)
-        b       L_06A24
+        b       addq_l_q_mem_2
 op_5E93:
         mr      addr, a3                                // 5E93  ADDQ.L    #7,(A3)
-        b       L_06A24
+        b       addq_l_q_mem_2
 op_5E94:
         mr      addr, a4                                // 5E94  ADDQ.L    #7,(A4)
-        b       L_06A24
+        b       addq_l_q_mem_2
 op_5E95:
         mr      addr, a5                                // 5E95  ADDQ.L    #7,(A5)
-        b       L_06A24
+        b       addq_l_q_mem_2
 op_5E96:
         mr      addr, a6                                // 5E96  ADDQ.L    #7,(A6)
-        b       L_06A24
+        b       addq_l_q_mem_2
 op_5E97:
         mr      addr, a7                                // 5E97  ADDQ.L    #7,(A7)
-        b       L_06A24
-        ori     rtn_addr, code_ptr, L_06A24 - cb        // 5E98  ADDQ.L    #7,(A0)+
-        b       L_00840
-        ori     rtn_addr, code_ptr, L_06A24 - cb        // 5E99  ADDQ.L    #7,(A1)+
-        b       L_008C0
-        ori     rtn_addr, code_ptr, L_06A24 - cb        // 5E9A  ADDQ.L    #7,(A2)+
-        b       L_00940
-        ori     rtn_addr, code_ptr, L_06A24 - cb        // 5E9B  ADDQ.L    #7,(A3)+
-        b       L_009C0
-        ori     rtn_addr, code_ptr, L_06A24 - cb        // 5E9C  ADDQ.L    #7,(A4)+
-        b       L_00A40
-        ori     rtn_addr, code_ptr, L_06A24 - cb        // 5E9D  ADDQ.L    #7,(A5)+
-        b       L_00AC0
-        ori     rtn_addr, code_ptr, L_06A24 - cb        // 5E9E  ADDQ.L    #7,(A6)+
-        b       L_00B40
-        ori     rtn_addr, code_ptr, L_06A24 - cb        // 5E9F  ADDQ.L    #7,(A7)+
-        b       L_00BC0
+        b       addq_l_q_mem_2
+        ori     rtn_addr, code_ptr, addq_l_q_mem_2 - cb  // 5E98  ADDQ.L    #7,(A0)+
+        b       cea_l_30
+        ori     rtn_addr, code_ptr, addq_l_q_mem_2 - cb  // 5E99  ADDQ.L    #7,(A1)+
+        b       cea_l_31
+        ori     rtn_addr, code_ptr, addq_l_q_mem_2 - cb  // 5E9A  ADDQ.L    #7,(A2)+
+        b       cea_l_32
+        ori     rtn_addr, code_ptr, addq_l_q_mem_2 - cb  // 5E9B  ADDQ.L    #7,(A3)+
+        b       cea_l_33
+        ori     rtn_addr, code_ptr, addq_l_q_mem_2 - cb  // 5E9C  ADDQ.L    #7,(A4)+
+        b       cea_l_34
+        ori     rtn_addr, code_ptr, addq_l_q_mem_2 - cb  // 5E9D  ADDQ.L    #7,(A5)+
+        b       cea_l_35
+        ori     rtn_addr, code_ptr, addq_l_q_mem_2 - cb  // 5E9E  ADDQ.L    #7,(A6)+
+        b       cea_l_36
+        ori     rtn_addr, code_ptr, addq_l_q_mem_2 - cb  // 5E9F  ADDQ.L    #7,(A7)+
+        b       cea_l_37
         addi    a0, a0, -4                              // 5EA0  ADDQ.L    #7,-(A0)
         b       op_5E90
         addi    a1, a1, -4                              // 5EA1  ADDQ.L    #7,-(A1)
@@ -8097,127 +8097,127 @@ op_5E97:
         addi    a7, a7, -4                              // 5EA7  ADDQ.L    #7,-(A7)
         b       op_5E97
         add     addr, a0, prefetch_data                 // 5EA8  ADDQ.L    #7,(d16,A0)
-        b       L_06A20
+        b       addq_l_q_mem
         add     addr, a1, prefetch_data                 // 5EA9  ADDQ.L    #7,(d16,A1)
-        b       L_06A20
+        b       addq_l_q_mem
         add     addr, a2, prefetch_data                 // 5EAA  ADDQ.L    #7,(d16,A2)
-        b       L_06A20
+        b       addq_l_q_mem
         add     addr, a3, prefetch_data                 // 5EAB  ADDQ.L    #7,(d16,A3)
-        b       L_06A20
+        b       addq_l_q_mem
         add     addr, a4, prefetch_data                 // 5EAC  ADDQ.L    #7,(d16,A4)
-        b       L_06A20
+        b       addq_l_q_mem
         add     addr, a5, prefetch_data                 // 5EAD  ADDQ.L    #7,(d16,A5)
-        b       L_06A20
+        b       addq_l_q_mem
         add     addr, a6, prefetch_data                 // 5EAE  ADDQ.L    #7,(d16,A6)
-        b       L_06A20
+        b       addq_l_q_mem
         add     addr, a7, prefetch_data                 // 5EAF  ADDQ.L    #7,(d16,A7)
-        b       L_06A20
-        ori     rtn_addr, code_ptr, L_06A28 - cb        // 5EB0  ADDQ.L    #7,(d8,A0,Xn)
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_06A28 - cb        // 5EB1  ADDQ.L    #7,(d8,A1,Xn)
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_06A28 - cb        // 5EB2  ADDQ.L    #7,(d8,A2,Xn)
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_06A28 - cb        // 5EB3  ADDQ.L    #7,(d8,A3,Xn)
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_06A28 - cb        // 5EB4  ADDQ.L    #7,(d8,A4,Xn)
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_06A28 - cb        // 5EB5  ADDQ.L    #7,(d8,A5,Xn)
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_06A28 - cb        // 5EB6  ADDQ.L    #7,(d8,A6,Xn)
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_06A28 - cb        // 5EB7  ADDQ.L    #7,(d8,A7,Xn)
-        b       L_05C68
+        b       addq_l_q_mem
+        ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 5EB0  ADDQ.L    #7,(d8,A0,Xn)
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 5EB1  ADDQ.L    #7,(d8,A1,Xn)
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 5EB2  ADDQ.L    #7,(d8,A2,Xn)
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 5EB3  ADDQ.L    #7,(d8,A3,Xn)
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 5EB4  ADDQ.L    #7,(d8,A4,Xn)
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 5EB5  ADDQ.L    #7,(d8,A5,Xn)
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 5EB6  ADDQ.L    #7,(d8,A6,Xn)
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 5EB7  ADDQ.L    #7,(d8,A7,Xn)
+        b       move_add_etc_l_any_any_8
         mr      addr, prefetch_data                     // 5EB8  ADDQ.L    #7,(xxx).W
-        b       L_06A20
-        ori     rtn_addr, code_ptr, L_06A28 - cb        // 5EB9  ADDQ.L    #7,(xxx).L
-        b       L_05E8C
+        b       addq_l_q_mem
+        ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 5EB9  ADDQ.L    #7,(xxx).L
+        b       fea_l_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5EBA  ADDQ.L    #7,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5EBB  ADDQ.L    #7,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5EBC  ADDQ.L    #7,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5EBD  ADDQ.L    #7,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5EBE  ADDQ.L    #7,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5EBF  ADDQ.L    #7,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $5EC0-$5EFF --------------------------------------------------------
-        ori     rtn_addr, code_ptr, L_03624 - cb        // 5EC0  SGT.B     D0
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_03664 - cb        // 5EC1  SGT.B     D1
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_036A4 - cb        // 5EC2  SGT.B     D2
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_036E4 - cb        // 5EC3  SGT.B     D3
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_03724 - cb        // 5EC4  SGT.B     D4
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_03764 - cb        // 5EC5  SGT.B     D5
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_037A4 - cb        // 5EC6  SGT.B     D6
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_037E4 - cb        // 5EC7  SGT.B     D7
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_03000 - cb        // 5EC8  DBGT.W    D0,<label>
-        b       L_08500
-        ori     rtn_addr, code_ptr, L_03040 - cb        // 5EC9  DBGT.W    D1,<label>
-        b       L_08500
-        ori     rtn_addr, code_ptr, L_03080 - cb        // 5ECA  DBGT.W    D2,<label>
-        b       L_08500
-        ori     rtn_addr, code_ptr, L_030C0 - cb        // 5ECB  DBGT.W    D3,<label>
-        b       L_08500
-        ori     rtn_addr, code_ptr, L_03100 - cb        // 5ECC  DBGT.W    D4,<label>
-        b       L_08500
-        ori     rtn_addr, code_ptr, L_03140 - cb        // 5ECD  DBGT.W    D5,<label>
-        b       L_08500
-        ori     rtn_addr, code_ptr, L_03180 - cb        // 5ECE  DBGT.W    D6,<label>
-        b       L_08500
-        ori     rtn_addr, code_ptr, L_031C0 - cb        // 5ECF  DBGT.W    D7,<label>
-        b       L_08500
+        ori     rtn_addr, code_ptr, scc_b_d0 - cb       // 5EC0  SGT.B     D0
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d1 - cb       // 5EC1  SGT.B     D1
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d2 - cb       // 5EC2  SGT.B     D2
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d3 - cb       // 5EC3  SGT.B     D3
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d4 - cb       // 5EC4  SGT.B     D4
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d5 - cb       // 5EC5  SGT.B     D5
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d6 - cb       // 5EC6  SGT.B     D6
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d7 - cb       // 5EC7  SGT.B     D7
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d0 - cb      // 5EC8  DBGT.W    D0,<label>
+        b       dbcc_w_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d1 - cb      // 5EC9  DBGT.W    D1,<label>
+        b       dbcc_w_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d2 - cb      // 5ECA  DBGT.W    D2,<label>
+        b       dbcc_w_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d3 - cb      // 5ECB  DBGT.W    D3,<label>
+        b       dbcc_w_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d4 - cb      // 5ECC  DBGT.W    D4,<label>
+        b       dbcc_w_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d5 - cb      // 5ECD  DBGT.W    D5,<label>
+        b       dbcc_w_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d6 - cb      // 5ECE  DBGT.W    D6,<label>
+        b       dbcc_w_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d7 - cb      // 5ECF  DBGT.W    D7,<label>
+        b       dbcc_w_dn
 op_5ED0:
         mr      addr, a0                                // 5ED0  SGT.B     (A0)
-        b       L_08584
+        b       scc_b_mem_2
 op_5ED1:
         mr      addr, a1                                // 5ED1  SGT.B     (A1)
-        b       L_08584
+        b       scc_b_mem_2
 op_5ED2:
         mr      addr, a2                                // 5ED2  SGT.B     (A2)
-        b       L_08584
+        b       scc_b_mem_2
 op_5ED3:
         mr      addr, a3                                // 5ED3  SGT.B     (A3)
-        b       L_08584
+        b       scc_b_mem_2
 op_5ED4:
         mr      addr, a4                                // 5ED4  SGT.B     (A4)
-        b       L_08584
+        b       scc_b_mem_2
 op_5ED5:
         mr      addr, a5                                // 5ED5  SGT.B     (A5)
-        b       L_08584
+        b       scc_b_mem_2
 op_5ED6:
         mr      addr, a6                                // 5ED6  SGT.B     (A6)
-        b       L_08584
+        b       scc_b_mem_2
 op_5ED7:
         mr      addr, a7                                // 5ED7  SGT.B     (A7)
-        b       L_08584
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5ED8  SGT.B     (A0)+
-        b       L_00800
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5ED9  SGT.B     (A1)+
-        b       L_00880
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5EDA  SGT.B     (A2)+
-        b       L_00900
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5EDB  SGT.B     (A3)+
-        b       L_00980
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5EDC  SGT.B     (A4)+
-        b       L_00A00
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5EDD  SGT.B     (A5)+
-        b       L_00A80
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5EDE  SGT.B     (A6)+
-        b       L_00B00
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5EDF  SGT.B     (A7)+
-        b       L_00B80
+        b       scc_b_mem_2
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5ED8  SGT.B     (A0)+
+        b       cea_b_30
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5ED9  SGT.B     (A1)+
+        b       cea_b_31
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5EDA  SGT.B     (A2)+
+        b       cea_b_32
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5EDB  SGT.B     (A3)+
+        b       cea_b_33
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5EDC  SGT.B     (A4)+
+        b       cea_b_34
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5EDD  SGT.B     (A5)+
+        b       cea_b_35
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5EDE  SGT.B     (A6)+
+        b       cea_b_36
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5EDF  SGT.B     (A7)+
+        b       cea_b_37
         addi    a0, a0, -1                              // 5EE0  SGT.B     -(A0)
         b       op_5ED0
         addi    a1, a1, -1                              // 5EE1  SGT.B     -(A1)
@@ -8235,127 +8235,127 @@ op_5ED7:
         addi    a7, a7, -2                              // 5EE7  SGT.B     -(A7)
         b       op_5ED7
         add     addr, a0, prefetch_data                 // 5EE8  SGT.B     (d16,A0)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a1, prefetch_data                 // 5EE9  SGT.B     (d16,A1)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a2, prefetch_data                 // 5EEA  SGT.B     (d16,A2)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a3, prefetch_data                 // 5EEB  SGT.B     (d16,A3)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a4, prefetch_data                 // 5EEC  SGT.B     (d16,A4)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a5, prefetch_data                 // 5EED  SGT.B     (d16,A5)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a6, prefetch_data                 // 5EEE  SGT.B     (d16,A6)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a7, prefetch_data                 // 5EEF  SGT.B     (d16,A7)
-        b       L_08580
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5EF0  SGT.B     (d8,A0,Xn)
-        b       L_05988
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5EF1  SGT.B     (d8,A1,Xn)
-        b       L_059E8
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5EF2  SGT.B     (d8,A2,Xn)
-        b       L_05A48
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5EF3  SGT.B     (d8,A3,Xn)
-        b       L_05AA8
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5EF4  SGT.B     (d8,A4,Xn)
-        b       L_05B08
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5EF5  SGT.B     (d8,A5,Xn)
-        b       L_05B68
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5EF6  SGT.B     (d8,A6,Xn)
-        b       L_05BC8
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5EF7  SGT.B     (d8,A7,Xn)
-        b       L_05C28
+        b       scc_b_mem
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5EF0  SGT.B     (d8,A0,Xn)
+        b       or_sub_etc_any_any
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5EF1  SGT.B     (d8,A1,Xn)
+        b       or_sub_etc_any_any_2
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5EF2  SGT.B     (d8,A2,Xn)
+        b       or_sub_etc_any_any_3
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5EF3  SGT.B     (d8,A3,Xn)
+        b       or_sub_etc_any_any_4
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5EF4  SGT.B     (d8,A4,Xn)
+        b       or_sub_etc_any_any_5
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5EF5  SGT.B     (d8,A5,Xn)
+        b       or_sub_etc_any_any_6
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5EF6  SGT.B     (d8,A6,Xn)
+        b       or_sub_etc_any_any_7
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5EF7  SGT.B     (d8,A7,Xn)
+        b       or_sub_etc_any_any_8
         mr      addr, prefetch_data                     // 5EF8  SGT.B     (xxx).W
-        b       L_08580
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5EF9  SGT.B     (xxx).L
-        b       L_05E14
+        b       scc_b_mem
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5EF9  SGT.B     (xxx).L
+        b       cea_x_71_2
         lhau    prefetch_data, 2(pc)                    // 5EFA  TRAPGT    #<data>.W
-        b       L_0CCE8
+        b       trapcc
         lhau    prefetch_data, 4(pc)                    // 5EFB  TRAPGT    #<data>.L
-        b       L_0CCE8
+        b       trapcc
         ori     base_disp, code_ptr, D_085C0 - cb       // 5EFC  TRAPGT
-        b       L_0CCEC
+        b       trapcc_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5EFD  SGT.B     <ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5EFE  SGT.B     <ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5EFF  SGT.B     <ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $5F00-$5F3F --------------------------------------------------------
         lis     data, 0x0700                            // 5F00  SUBQ.B    #7,D0
-        b       L_03608
+        b       sub_b_any_d0
         lis     data, 0x0700                            // 5F01  SUBQ.B    #7,D1
-        b       L_03648
+        b       sub_b_any_d1
         lis     data, 0x0700                            // 5F02  SUBQ.B    #7,D2
-        b       L_03688
+        b       sub_b_any_d2
         lis     data, 0x0700                            // 5F03  SUBQ.B    #7,D3
-        b       L_036C8
+        b       sub_b_any_d3
         lis     data, 0x0700                            // 5F04  SUBQ.B    #7,D4
-        b       L_03708
+        b       sub_b_any_d4
         lis     data, 0x0700                            // 5F05  SUBQ.B    #7,D5
-        b       L_03748
+        b       sub_b_any_d5
         lis     data, 0x0700                            // 5F06  SUBQ.B    #7,D6
-        b       L_03788
+        b       sub_b_any_d6
         lis     data, 0x0700                            // 5F07  SUBQ.B    #7,D7
-        b       L_037C8
+        b       sub_b_any_d7
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5F08  SUBQ.B    #7,A0   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5F09  SUBQ.B    #7,A1   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5F0A  SUBQ.B    #7,A2   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5F0B  SUBQ.B    #7,A3   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5F0C  SUBQ.B    #7,A4   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5F0D  SUBQ.B    #7,A5   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5F0E  SUBQ.B    #7,A6   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5F0F  SUBQ.B    #7,A7   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 op_5F10:
         mr      addr, a0                                // 5F10  SUBQ.B    #7,(A0)
-        b       L_06604
+        b       subq_b_q_mem_2
 op_5F11:
         mr      addr, a1                                // 5F11  SUBQ.B    #7,(A1)
-        b       L_06604
+        b       subq_b_q_mem_2
 op_5F12:
         mr      addr, a2                                // 5F12  SUBQ.B    #7,(A2)
-        b       L_06604
+        b       subq_b_q_mem_2
 op_5F13:
         mr      addr, a3                                // 5F13  SUBQ.B    #7,(A3)
-        b       L_06604
+        b       subq_b_q_mem_2
 op_5F14:
         mr      addr, a4                                // 5F14  SUBQ.B    #7,(A4)
-        b       L_06604
+        b       subq_b_q_mem_2
 op_5F15:
         mr      addr, a5                                // 5F15  SUBQ.B    #7,(A5)
-        b       L_06604
+        b       subq_b_q_mem_2
 op_5F16:
         mr      addr, a6                                // 5F16  SUBQ.B    #7,(A6)
-        b       L_06604
+        b       subq_b_q_mem_2
 op_5F17:
         mr      addr, a7                                // 5F17  SUBQ.B    #7,(A7)
-        b       L_06604
-        ori     rtn_addr, code_ptr, L_06604 - cb        // 5F18  SUBQ.B    #7,(A0)+
-        b       L_00800
-        ori     rtn_addr, code_ptr, L_06604 - cb        // 5F19  SUBQ.B    #7,(A1)+
-        b       L_00880
-        ori     rtn_addr, code_ptr, L_06604 - cb        // 5F1A  SUBQ.B    #7,(A2)+
-        b       L_00900
-        ori     rtn_addr, code_ptr, L_06604 - cb        // 5F1B  SUBQ.B    #7,(A3)+
-        b       L_00980
-        ori     rtn_addr, code_ptr, L_06604 - cb        // 5F1C  SUBQ.B    #7,(A4)+
-        b       L_00A00
-        ori     rtn_addr, code_ptr, L_06604 - cb        // 5F1D  SUBQ.B    #7,(A5)+
-        b       L_00A80
-        ori     rtn_addr, code_ptr, L_06604 - cb        // 5F1E  SUBQ.B    #7,(A6)+
-        b       L_00B00
-        ori     rtn_addr, code_ptr, L_06604 - cb        // 5F1F  SUBQ.B    #7,(A7)+
-        b       L_00B80
+        b       subq_b_q_mem_2
+        ori     rtn_addr, code_ptr, subq_b_q_mem_2 - cb  // 5F18  SUBQ.B    #7,(A0)+
+        b       cea_b_30
+        ori     rtn_addr, code_ptr, subq_b_q_mem_2 - cb  // 5F19  SUBQ.B    #7,(A1)+
+        b       cea_b_31
+        ori     rtn_addr, code_ptr, subq_b_q_mem_2 - cb  // 5F1A  SUBQ.B    #7,(A2)+
+        b       cea_b_32
+        ori     rtn_addr, code_ptr, subq_b_q_mem_2 - cb  // 5F1B  SUBQ.B    #7,(A3)+
+        b       cea_b_33
+        ori     rtn_addr, code_ptr, subq_b_q_mem_2 - cb  // 5F1C  SUBQ.B    #7,(A4)+
+        b       cea_b_34
+        ori     rtn_addr, code_ptr, subq_b_q_mem_2 - cb  // 5F1D  SUBQ.B    #7,(A5)+
+        b       cea_b_35
+        ori     rtn_addr, code_ptr, subq_b_q_mem_2 - cb  // 5F1E  SUBQ.B    #7,(A6)+
+        b       cea_b_36
+        ori     rtn_addr, code_ptr, subq_b_q_mem_2 - cb  // 5F1F  SUBQ.B    #7,(A7)+
+        b       cea_b_37
         addi    a0, a0, -1                              // 5F20  SUBQ.B    #7,-(A0)
         b       op_5F10
         addi    a1, a1, -1                              // 5F21  SUBQ.B    #7,-(A1)
@@ -8373,127 +8373,127 @@ op_5F17:
         addi    a7, a7, -2                              // 5F27  SUBQ.B    #7,-(A7)
         b       op_5F17
         add     addr, a0, prefetch_data                 // 5F28  SUBQ.B    #7,(d16,A0)
-        b       L_06600
+        b       subq_b_q_mem
         add     addr, a1, prefetch_data                 // 5F29  SUBQ.B    #7,(d16,A1)
-        b       L_06600
+        b       subq_b_q_mem
         add     addr, a2, prefetch_data                 // 5F2A  SUBQ.B    #7,(d16,A2)
-        b       L_06600
+        b       subq_b_q_mem
         add     addr, a3, prefetch_data                 // 5F2B  SUBQ.B    #7,(d16,A3)
-        b       L_06600
+        b       subq_b_q_mem
         add     addr, a4, prefetch_data                 // 5F2C  SUBQ.B    #7,(d16,A4)
-        b       L_06600
+        b       subq_b_q_mem
         add     addr, a5, prefetch_data                 // 5F2D  SUBQ.B    #7,(d16,A5)
-        b       L_06600
+        b       subq_b_q_mem
         add     addr, a6, prefetch_data                 // 5F2E  SUBQ.B    #7,(d16,A6)
-        b       L_06600
+        b       subq_b_q_mem
         add     addr, a7, prefetch_data                 // 5F2F  SUBQ.B    #7,(d16,A7)
-        b       L_06600
-        ori     rtn_addr, code_ptr, L_06608 - cb        // 5F30  SUBQ.B    #7,(d8,A0,Xn)
-        b       L_0599C
-        ori     rtn_addr, code_ptr, L_06608 - cb        // 5F31  SUBQ.B    #7,(d8,A1,Xn)
-        b       L_059FC
-        ori     rtn_addr, code_ptr, L_06608 - cb        // 5F32  SUBQ.B    #7,(d8,A2,Xn)
-        b       L_05A5C
-        ori     rtn_addr, code_ptr, L_06608 - cb        // 5F33  SUBQ.B    #7,(d8,A3,Xn)
-        b       L_05ABC
-        ori     rtn_addr, code_ptr, L_06608 - cb        // 5F34  SUBQ.B    #7,(d8,A4,Xn)
-        b       L_05B1C
-        ori     rtn_addr, code_ptr, L_06608 - cb        // 5F35  SUBQ.B    #7,(d8,A5,Xn)
-        b       L_05B7C
-        ori     rtn_addr, code_ptr, L_06608 - cb        // 5F36  SUBQ.B    #7,(d8,A6,Xn)
-        b       L_05BDC
-        ori     rtn_addr, code_ptr, L_06608 - cb        // 5F37  SUBQ.B    #7,(d8,A7,Xn)
-        b       L_05C3C
+        b       subq_b_q_mem
+        ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5F30  SUBQ.B    #7,(d8,A0,Xn)
+        b       move_add_etc_b_any_any
+        ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5F31  SUBQ.B    #7,(d8,A1,Xn)
+        b       move_add_etc_b_any_any_2
+        ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5F32  SUBQ.B    #7,(d8,A2,Xn)
+        b       move_add_etc_b_any_any_3
+        ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5F33  SUBQ.B    #7,(d8,A3,Xn)
+        b       move_add_etc_b_any_any_4
+        ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5F34  SUBQ.B    #7,(d8,A4,Xn)
+        b       move_add_etc_b_any_any_5
+        ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5F35  SUBQ.B    #7,(d8,A5,Xn)
+        b       move_add_etc_b_any_any_6
+        ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5F36  SUBQ.B    #7,(d8,A6,Xn)
+        b       move_add_etc_b_any_any_7
+        ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5F37  SUBQ.B    #7,(d8,A7,Xn)
+        b       move_add_etc_b_any_any_8
         mr      addr, prefetch_data                     // 5F38  SUBQ.B    #7,(xxx).W
-        b       L_06600
-        ori     rtn_addr, code_ptr, L_06608 - cb        // 5F39  SUBQ.B    #7,(xxx).L
-        b       L_05E2C
+        b       subq_b_q_mem
+        ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5F39  SUBQ.B    #7,(xxx).L
+        b       fea_b_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5F3A  SUBQ.B    #7,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5F3B  SUBQ.B    #7,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5F3C  SUBQ.B    #7,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5F3D  SUBQ.B    #7,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5F3E  SUBQ.B    #7,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5F3F  SUBQ.B    #7,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $5F40-$5F7F --------------------------------------------------------
         lis     data, 0x0007                            // 5F40  SUBQ.W    #7,D0
-        b       L_03C30
+        b       sub_w_any_d0
         lis     data, 0x0007                            // 5F41  SUBQ.W    #7,D1
-        b       L_03C70
+        b       sub_w_any_d1
         lis     data, 0x0007                            // 5F42  SUBQ.W    #7,D2
-        b       L_03CB0
+        b       sub_w_any_d2
         lis     data, 0x0007                            // 5F43  SUBQ.W    #7,D3
-        b       L_03CF0
+        b       sub_w_any_d3
         lis     data, 0x0007                            // 5F44  SUBQ.W    #7,D4
-        b       L_03D30
+        b       sub_w_any_d4
         lis     data, 0x0007                            // 5F45  SUBQ.W    #7,D5
-        b       L_03D70
+        b       sub_w_any_d5
         lis     data, 0x0007                            // 5F46  SUBQ.W    #7,D6
-        b       L_03DB0
+        b       sub_w_any_d6
         lis     data, 0x0007                            // 5F47  SUBQ.W    #7,D7
-        b       L_03DF0
+        b       sub_w_any_d7
         addi    a0, a0, -7                              // 5F48  SUBQ.W    #7,A0
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a1, a1, -7                              // 5F49  SUBQ.W    #7,A1
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a2, a2, -7                              // 5F4A  SUBQ.W    #7,A2
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a3, a3, -7                              // 5F4B  SUBQ.W    #7,A3
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a4, a4, -7                              // 5F4C  SUBQ.W    #7,A4
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a5, a5, -7                              // 5F4D  SUBQ.W    #7,A5
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a6, a6, -7                              // 5F4E  SUBQ.W    #7,A6
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a7, a7, -7                              // 5F4F  SUBQ.W    #7,A7
-        b       L_06084
+        b       move_add_etc_any_any
 op_5F50:
         mr      addr, a0                                // 5F50  SUBQ.W    #7,(A0)
-        b       L_06824
+        b       subq_w_q_mem_2
 op_5F51:
         mr      addr, a1                                // 5F51  SUBQ.W    #7,(A1)
-        b       L_06824
+        b       subq_w_q_mem_2
 op_5F52:
         mr      addr, a2                                // 5F52  SUBQ.W    #7,(A2)
-        b       L_06824
+        b       subq_w_q_mem_2
 op_5F53:
         mr      addr, a3                                // 5F53  SUBQ.W    #7,(A3)
-        b       L_06824
+        b       subq_w_q_mem_2
 op_5F54:
         mr      addr, a4                                // 5F54  SUBQ.W    #7,(A4)
-        b       L_06824
+        b       subq_w_q_mem_2
 op_5F55:
         mr      addr, a5                                // 5F55  SUBQ.W    #7,(A5)
-        b       L_06824
+        b       subq_w_q_mem_2
 op_5F56:
         mr      addr, a6                                // 5F56  SUBQ.W    #7,(A6)
-        b       L_06824
+        b       subq_w_q_mem_2
 op_5F57:
         mr      addr, a7                                // 5F57  SUBQ.W    #7,(A7)
-        b       L_06824
-        ori     rtn_addr, code_ptr, L_06824 - cb        // 5F58  SUBQ.W    #7,(A0)+
-        b       L_00820
-        ori     rtn_addr, code_ptr, L_06824 - cb        // 5F59  SUBQ.W    #7,(A1)+
-        b       L_008A0
-        ori     rtn_addr, code_ptr, L_06824 - cb        // 5F5A  SUBQ.W    #7,(A2)+
-        b       L_00920
-        ori     rtn_addr, code_ptr, L_06824 - cb        // 5F5B  SUBQ.W    #7,(A3)+
-        b       L_009A0
-        ori     rtn_addr, code_ptr, L_06824 - cb        // 5F5C  SUBQ.W    #7,(A4)+
-        b       L_00A20
-        ori     rtn_addr, code_ptr, L_06824 - cb        // 5F5D  SUBQ.W    #7,(A5)+
-        b       L_00AA0
-        ori     rtn_addr, code_ptr, L_06824 - cb        // 5F5E  SUBQ.W    #7,(A6)+
-        b       L_00B20
-        ori     rtn_addr, code_ptr, L_06824 - cb        // 5F5F  SUBQ.W    #7,(A7)+
-        b       L_00BA0
+        b       subq_w_q_mem_2
+        ori     rtn_addr, code_ptr, subq_w_q_mem_2 - cb  // 5F58  SUBQ.W    #7,(A0)+
+        b       cea_w_30
+        ori     rtn_addr, code_ptr, subq_w_q_mem_2 - cb  // 5F59  SUBQ.W    #7,(A1)+
+        b       cea_w_31
+        ori     rtn_addr, code_ptr, subq_w_q_mem_2 - cb  // 5F5A  SUBQ.W    #7,(A2)+
+        b       cea_w_32
+        ori     rtn_addr, code_ptr, subq_w_q_mem_2 - cb  // 5F5B  SUBQ.W    #7,(A3)+
+        b       cea_w_33
+        ori     rtn_addr, code_ptr, subq_w_q_mem_2 - cb  // 5F5C  SUBQ.W    #7,(A4)+
+        b       cea_w_34
+        ori     rtn_addr, code_ptr, subq_w_q_mem_2 - cb  // 5F5D  SUBQ.W    #7,(A5)+
+        b       cea_w_35
+        ori     rtn_addr, code_ptr, subq_w_q_mem_2 - cb  // 5F5E  SUBQ.W    #7,(A6)+
+        b       cea_w_36
+        ori     rtn_addr, code_ptr, subq_w_q_mem_2 - cb  // 5F5F  SUBQ.W    #7,(A7)+
+        b       cea_w_37
         addi    a0, a0, -2                              // 5F60  SUBQ.W    #7,-(A0)
         b       op_5F50
         addi    a1, a1, -2                              // 5F61  SUBQ.W    #7,-(A1)
@@ -8511,127 +8511,127 @@ op_5F57:
         addi    a7, a7, -2                              // 5F67  SUBQ.W    #7,-(A7)
         b       op_5F57
         add     addr, a0, prefetch_data                 // 5F68  SUBQ.W    #7,(d16,A0)
-        b       L_06820
+        b       subq_w_q_mem
         add     addr, a1, prefetch_data                 // 5F69  SUBQ.W    #7,(d16,A1)
-        b       L_06820
+        b       subq_w_q_mem
         add     addr, a2, prefetch_data                 // 5F6A  SUBQ.W    #7,(d16,A2)
-        b       L_06820
+        b       subq_w_q_mem
         add     addr, a3, prefetch_data                 // 5F6B  SUBQ.W    #7,(d16,A3)
-        b       L_06820
+        b       subq_w_q_mem
         add     addr, a4, prefetch_data                 // 5F6C  SUBQ.W    #7,(d16,A4)
-        b       L_06820
+        b       subq_w_q_mem
         add     addr, a5, prefetch_data                 // 5F6D  SUBQ.W    #7,(d16,A5)
-        b       L_06820
+        b       subq_w_q_mem
         add     addr, a6, prefetch_data                 // 5F6E  SUBQ.W    #7,(d16,A6)
-        b       L_06820
+        b       subq_w_q_mem
         add     addr, a7, prefetch_data                 // 5F6F  SUBQ.W    #7,(d16,A7)
-        b       L_06820
-        ori     rtn_addr, code_ptr, L_06828 - cb        // 5F70  SUBQ.W    #7,(d8,A0,Xn)
-        b       L_059B0
-        ori     rtn_addr, code_ptr, L_06828 - cb        // 5F71  SUBQ.W    #7,(d8,A1,Xn)
-        b       L_05A10
-        ori     rtn_addr, code_ptr, L_06828 - cb        // 5F72  SUBQ.W    #7,(d8,A2,Xn)
-        b       L_05A70
-        ori     rtn_addr, code_ptr, L_06828 - cb        // 5F73  SUBQ.W    #7,(d8,A3,Xn)
-        b       L_05AD0
-        ori     rtn_addr, code_ptr, L_06828 - cb        // 5F74  SUBQ.W    #7,(d8,A4,Xn)
-        b       L_05B30
-        ori     rtn_addr, code_ptr, L_06828 - cb        // 5F75  SUBQ.W    #7,(d8,A5,Xn)
-        b       L_05B90
-        ori     rtn_addr, code_ptr, L_06828 - cb        // 5F76  SUBQ.W    #7,(d8,A6,Xn)
-        b       L_05BF0
-        ori     rtn_addr, code_ptr, L_06828 - cb        // 5F77  SUBQ.W    #7,(d8,A7,Xn)
-        b       L_05C50
+        b       subq_w_q_mem
+        ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5F70  SUBQ.W    #7,(d8,A0,Xn)
+        b       move_add_etc_w_any_any
+        ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5F71  SUBQ.W    #7,(d8,A1,Xn)
+        b       move_add_etc_w_any_any_2
+        ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5F72  SUBQ.W    #7,(d8,A2,Xn)
+        b       move_add_etc_w_any_any_3
+        ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5F73  SUBQ.W    #7,(d8,A3,Xn)
+        b       move_add_etc_w_any_any_4
+        ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5F74  SUBQ.W    #7,(d8,A4,Xn)
+        b       move_add_etc_w_any_any_5
+        ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5F75  SUBQ.W    #7,(d8,A5,Xn)
+        b       move_add_etc_w_any_any_6
+        ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5F76  SUBQ.W    #7,(d8,A6,Xn)
+        b       move_add_etc_w_any_any_7
+        ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5F77  SUBQ.W    #7,(d8,A7,Xn)
+        b       move_add_etc_w_any_any_8
         mr      addr, prefetch_data                     // 5F78  SUBQ.W    #7,(xxx).W
-        b       L_06820
-        ori     rtn_addr, code_ptr, L_06828 - cb        // 5F79  SUBQ.W    #7,(xxx).L
-        b       L_05E70
+        b       subq_w_q_mem
+        ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5F79  SUBQ.W    #7,(xxx).L
+        b       fea_w_71
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5F7A  SUBQ.W    #7,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5F7B  SUBQ.W    #7,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5F7C  SUBQ.W    #7,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5F7D  SUBQ.W    #7,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5F7E  SUBQ.W    #7,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5F7F  SUBQ.W    #7,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $5F80-$5FBF --------------------------------------------------------
         li      data, 7                                 // 5F80  SUBQ.L    #7,D0
-        b       L_04204
+        b       sub_l_mem_d0_2
         li      data, 7                                 // 5F81  SUBQ.L    #7,D1
-        b       L_04244
+        b       sub_l_mem_d1_2
         li      data, 7                                 // 5F82  SUBQ.L    #7,D2
-        b       L_04284
+        b       sub_l_mem_d2_2
         li      data, 7                                 // 5F83  SUBQ.L    #7,D3
-        b       L_042C4
+        b       sub_l_mem_d3_2
         li      data, 7                                 // 5F84  SUBQ.L    #7,D4
-        b       L_04304
+        b       sub_l_mem_d4_2
         li      data, 7                                 // 5F85  SUBQ.L    #7,D5
-        b       L_04344
+        b       sub_l_mem_d5_2
         li      data, 7                                 // 5F86  SUBQ.L    #7,D6
-        b       L_04384
+        b       sub_l_mem_d6_2
         li      data, 7                                 // 5F87  SUBQ.L    #7,D7
-        b       L_043C4
+        b       sub_l_mem_d7_2
         addi    a0, a0, -7                              // 5F88  SUBQ.L    #7,A0
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a1, a1, -7                              // 5F89  SUBQ.L    #7,A1
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a2, a2, -7                              // 5F8A  SUBQ.L    #7,A2
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a3, a3, -7                              // 5F8B  SUBQ.L    #7,A3
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a4, a4, -7                              // 5F8C  SUBQ.L    #7,A4
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a5, a5, -7                              // 5F8D  SUBQ.L    #7,A5
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a6, a6, -7                              // 5F8E  SUBQ.L    #7,A6
-        b       L_06084
+        b       move_add_etc_any_any
         addi    a7, a7, -7                              // 5F8F  SUBQ.L    #7,A7
-        b       L_06084
+        b       move_add_etc_any_any
 op_5F90:
         mr      addr, a0                                // 5F90  SUBQ.L    #7,(A0)
-        b       L_06AC4
+        b       subq_l_q_mem_2
 op_5F91:
         mr      addr, a1                                // 5F91  SUBQ.L    #7,(A1)
-        b       L_06AC4
+        b       subq_l_q_mem_2
 op_5F92:
         mr      addr, a2                                // 5F92  SUBQ.L    #7,(A2)
-        b       L_06AC4
+        b       subq_l_q_mem_2
 op_5F93:
         mr      addr, a3                                // 5F93  SUBQ.L    #7,(A3)
-        b       L_06AC4
+        b       subq_l_q_mem_2
 op_5F94:
         mr      addr, a4                                // 5F94  SUBQ.L    #7,(A4)
-        b       L_06AC4
+        b       subq_l_q_mem_2
 op_5F95:
         mr      addr, a5                                // 5F95  SUBQ.L    #7,(A5)
-        b       L_06AC4
+        b       subq_l_q_mem_2
 op_5F96:
         mr      addr, a6                                // 5F96  SUBQ.L    #7,(A6)
-        b       L_06AC4
+        b       subq_l_q_mem_2
 op_5F97:
         mr      addr, a7                                // 5F97  SUBQ.L    #7,(A7)
-        b       L_06AC4
-        ori     rtn_addr, code_ptr, L_06AC4 - cb        // 5F98  SUBQ.L    #7,(A0)+
-        b       L_00840
-        ori     rtn_addr, code_ptr, L_06AC4 - cb        // 5F99  SUBQ.L    #7,(A1)+
-        b       L_008C0
-        ori     rtn_addr, code_ptr, L_06AC4 - cb        // 5F9A  SUBQ.L    #7,(A2)+
-        b       L_00940
-        ori     rtn_addr, code_ptr, L_06AC4 - cb        // 5F9B  SUBQ.L    #7,(A3)+
-        b       L_009C0
-        ori     rtn_addr, code_ptr, L_06AC4 - cb        // 5F9C  SUBQ.L    #7,(A4)+
-        b       L_00A40
-        ori     rtn_addr, code_ptr, L_06AC4 - cb        // 5F9D  SUBQ.L    #7,(A5)+
-        b       L_00AC0
-        ori     rtn_addr, code_ptr, L_06AC4 - cb        // 5F9E  SUBQ.L    #7,(A6)+
-        b       L_00B40
-        ori     rtn_addr, code_ptr, L_06AC4 - cb        // 5F9F  SUBQ.L    #7,(A7)+
-        b       L_00BC0
+        b       subq_l_q_mem_2
+        ori     rtn_addr, code_ptr, subq_l_q_mem_2 - cb  // 5F98  SUBQ.L    #7,(A0)+
+        b       cea_l_30
+        ori     rtn_addr, code_ptr, subq_l_q_mem_2 - cb  // 5F99  SUBQ.L    #7,(A1)+
+        b       cea_l_31
+        ori     rtn_addr, code_ptr, subq_l_q_mem_2 - cb  // 5F9A  SUBQ.L    #7,(A2)+
+        b       cea_l_32
+        ori     rtn_addr, code_ptr, subq_l_q_mem_2 - cb  // 5F9B  SUBQ.L    #7,(A3)+
+        b       cea_l_33
+        ori     rtn_addr, code_ptr, subq_l_q_mem_2 - cb  // 5F9C  SUBQ.L    #7,(A4)+
+        b       cea_l_34
+        ori     rtn_addr, code_ptr, subq_l_q_mem_2 - cb  // 5F9D  SUBQ.L    #7,(A5)+
+        b       cea_l_35
+        ori     rtn_addr, code_ptr, subq_l_q_mem_2 - cb  // 5F9E  SUBQ.L    #7,(A6)+
+        b       cea_l_36
+        ori     rtn_addr, code_ptr, subq_l_q_mem_2 - cb  // 5F9F  SUBQ.L    #7,(A7)+
+        b       cea_l_37
         addi    a0, a0, -4                              // 5FA0  SUBQ.L    #7,-(A0)
         b       op_5F90
         addi    a1, a1, -4                              // 5FA1  SUBQ.L    #7,-(A1)
@@ -8649,127 +8649,127 @@ op_5F97:
         addi    a7, a7, -4                              // 5FA7  SUBQ.L    #7,-(A7)
         b       op_5F97
         add     addr, a0, prefetch_data                 // 5FA8  SUBQ.L    #7,(d16,A0)
-        b       L_06AC0
+        b       subq_l_q_mem
         add     addr, a1, prefetch_data                 // 5FA9  SUBQ.L    #7,(d16,A1)
-        b       L_06AC0
+        b       subq_l_q_mem
         add     addr, a2, prefetch_data                 // 5FAA  SUBQ.L    #7,(d16,A2)
-        b       L_06AC0
+        b       subq_l_q_mem
         add     addr, a3, prefetch_data                 // 5FAB  SUBQ.L    #7,(d16,A3)
-        b       L_06AC0
+        b       subq_l_q_mem
         add     addr, a4, prefetch_data                 // 5FAC  SUBQ.L    #7,(d16,A4)
-        b       L_06AC0
+        b       subq_l_q_mem
         add     addr, a5, prefetch_data                 // 5FAD  SUBQ.L    #7,(d16,A5)
-        b       L_06AC0
+        b       subq_l_q_mem
         add     addr, a6, prefetch_data                 // 5FAE  SUBQ.L    #7,(d16,A6)
-        b       L_06AC0
+        b       subq_l_q_mem
         add     addr, a7, prefetch_data                 // 5FAF  SUBQ.L    #7,(d16,A7)
-        b       L_06AC0
-        ori     rtn_addr, code_ptr, L_06AC8 - cb        // 5FB0  SUBQ.L    #7,(d8,A0,Xn)
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_06AC8 - cb        // 5FB1  SUBQ.L    #7,(d8,A1,Xn)
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_06AC8 - cb        // 5FB2  SUBQ.L    #7,(d8,A2,Xn)
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_06AC8 - cb        // 5FB3  SUBQ.L    #7,(d8,A3,Xn)
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_06AC8 - cb        // 5FB4  SUBQ.L    #7,(d8,A4,Xn)
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_06AC8 - cb        // 5FB5  SUBQ.L    #7,(d8,A5,Xn)
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_06AC8 - cb        // 5FB6  SUBQ.L    #7,(d8,A6,Xn)
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_06AC8 - cb        // 5FB7  SUBQ.L    #7,(d8,A7,Xn)
-        b       L_05C68
+        b       subq_l_q_mem
+        ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 5FB0  SUBQ.L    #7,(d8,A0,Xn)
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 5FB1  SUBQ.L    #7,(d8,A1,Xn)
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 5FB2  SUBQ.L    #7,(d8,A2,Xn)
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 5FB3  SUBQ.L    #7,(d8,A3,Xn)
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 5FB4  SUBQ.L    #7,(d8,A4,Xn)
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 5FB5  SUBQ.L    #7,(d8,A5,Xn)
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 5FB6  SUBQ.L    #7,(d8,A6,Xn)
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 5FB7  SUBQ.L    #7,(d8,A7,Xn)
+        b       move_add_etc_l_any_any_8
         mr      addr, prefetch_data                     // 5FB8  SUBQ.L    #7,(xxx).W
-        b       L_06AC0
-        ori     rtn_addr, code_ptr, L_06AC8 - cb        // 5FB9  SUBQ.L    #7,(xxx).L
-        b       L_05E8C
+        b       subq_l_q_mem
+        ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 5FB9  SUBQ.L    #7,(xxx).L
+        b       fea_l_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5FBA  SUBQ.L    #7,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5FBB  SUBQ.L    #7,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5FBC  SUBQ.L    #7,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5FBD  SUBQ.L    #7,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5FBE  SUBQ.L    #7,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5FBF  SUBQ.L    #7,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $5FC0-$5FFF --------------------------------------------------------
-        ori     rtn_addr, code_ptr, L_03624 - cb        // 5FC0  SLE.B     D0
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_03664 - cb        // 5FC1  SLE.B     D1
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_036A4 - cb        // 5FC2  SLE.B     D2
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_036E4 - cb        // 5FC3  SLE.B     D3
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_03724 - cb        // 5FC4  SLE.B     D4
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_03764 - cb        // 5FC5  SLE.B     D5
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_037A4 - cb        // 5FC6  SLE.B     D6
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_037E4 - cb        // 5FC7  SLE.B     D7
-        b       L_08540
-        ori     rtn_addr, code_ptr, L_03000 - cb        // 5FC8  DBLE.W    D0,<label>
-        b       L_08500
-        ori     rtn_addr, code_ptr, L_03040 - cb        // 5FC9  DBLE.W    D1,<label>
-        b       L_08500
-        ori     rtn_addr, code_ptr, L_03080 - cb        // 5FCA  DBLE.W    D2,<label>
-        b       L_08500
-        ori     rtn_addr, code_ptr, L_030C0 - cb        // 5FCB  DBLE.W    D3,<label>
-        b       L_08500
-        ori     rtn_addr, code_ptr, L_03100 - cb        // 5FCC  DBLE.W    D4,<label>
-        b       L_08500
-        ori     rtn_addr, code_ptr, L_03140 - cb        // 5FCD  DBLE.W    D5,<label>
-        b       L_08500
-        ori     rtn_addr, code_ptr, L_03180 - cb        // 5FCE  DBLE.W    D6,<label>
-        b       L_08500
-        ori     rtn_addr, code_ptr, L_031C0 - cb        // 5FCF  DBLE.W    D7,<label>
-        b       L_08500
+        ori     rtn_addr, code_ptr, scc_b_d0 - cb       // 5FC0  SLE.B     D0
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d1 - cb       // 5FC1  SLE.B     D1
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d2 - cb       // 5FC2  SLE.B     D2
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d3 - cb       // 5FC3  SLE.B     D3
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d4 - cb       // 5FC4  SLE.B     D4
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d5 - cb       // 5FC5  SLE.B     D5
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d6 - cb       // 5FC6  SLE.B     D6
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, scc_b_d7 - cb       // 5FC7  SLE.B     D7
+        b       scc_b_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d0 - cb      // 5FC8  DBLE.W    D0,<label>
+        b       dbcc_w_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d1 - cb      // 5FC9  DBLE.W    D1,<label>
+        b       dbcc_w_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d2 - cb      // 5FCA  DBLE.W    D2,<label>
+        b       dbcc_w_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d3 - cb      // 5FCB  DBLE.W    D3,<label>
+        b       dbcc_w_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d4 - cb      // 5FCC  DBLE.W    D4,<label>
+        b       dbcc_w_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d5 - cb      // 5FCD  DBLE.W    D5,<label>
+        b       dbcc_w_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d6 - cb      // 5FCE  DBLE.W    D6,<label>
+        b       dbcc_w_dn
+        ori     rtn_addr, code_ptr, dbcc_w_d7 - cb      // 5FCF  DBLE.W    D7,<label>
+        b       dbcc_w_dn
 op_5FD0:
         mr      addr, a0                                // 5FD0  SLE.B     (A0)
-        b       L_08584
+        b       scc_b_mem_2
 op_5FD1:
         mr      addr, a1                                // 5FD1  SLE.B     (A1)
-        b       L_08584
+        b       scc_b_mem_2
 op_5FD2:
         mr      addr, a2                                // 5FD2  SLE.B     (A2)
-        b       L_08584
+        b       scc_b_mem_2
 op_5FD3:
         mr      addr, a3                                // 5FD3  SLE.B     (A3)
-        b       L_08584
+        b       scc_b_mem_2
 op_5FD4:
         mr      addr, a4                                // 5FD4  SLE.B     (A4)
-        b       L_08584
+        b       scc_b_mem_2
 op_5FD5:
         mr      addr, a5                                // 5FD5  SLE.B     (A5)
-        b       L_08584
+        b       scc_b_mem_2
 op_5FD6:
         mr      addr, a6                                // 5FD6  SLE.B     (A6)
-        b       L_08584
+        b       scc_b_mem_2
 op_5FD7:
         mr      addr, a7                                // 5FD7  SLE.B     (A7)
-        b       L_08584
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5FD8  SLE.B     (A0)+
-        b       L_00800
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5FD9  SLE.B     (A1)+
-        b       L_00880
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5FDA  SLE.B     (A2)+
-        b       L_00900
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5FDB  SLE.B     (A3)+
-        b       L_00980
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5FDC  SLE.B     (A4)+
-        b       L_00A00
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5FDD  SLE.B     (A5)+
-        b       L_00A80
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5FDE  SLE.B     (A6)+
-        b       L_00B00
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5FDF  SLE.B     (A7)+
-        b       L_00B80
+        b       scc_b_mem_2
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5FD8  SLE.B     (A0)+
+        b       cea_b_30
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5FD9  SLE.B     (A1)+
+        b       cea_b_31
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5FDA  SLE.B     (A2)+
+        b       cea_b_32
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5FDB  SLE.B     (A3)+
+        b       cea_b_33
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5FDC  SLE.B     (A4)+
+        b       cea_b_34
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5FDD  SLE.B     (A5)+
+        b       cea_b_35
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5FDE  SLE.B     (A6)+
+        b       cea_b_36
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5FDF  SLE.B     (A7)+
+        b       cea_b_37
         addi    a0, a0, -1                              // 5FE0  SLE.B     -(A0)
         b       op_5FD0
         addi    a1, a1, -1                              // 5FE1  SLE.B     -(A1)
@@ -8787,50 +8787,50 @@ op_5FD7:
         addi    a7, a7, -2                              // 5FE7  SLE.B     -(A7)
         b       op_5FD7
         add     addr, a0, prefetch_data                 // 5FE8  SLE.B     (d16,A0)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a1, prefetch_data                 // 5FE9  SLE.B     (d16,A1)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a2, prefetch_data                 // 5FEA  SLE.B     (d16,A2)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a3, prefetch_data                 // 5FEB  SLE.B     (d16,A3)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a4, prefetch_data                 // 5FEC  SLE.B     (d16,A4)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a5, prefetch_data                 // 5FED  SLE.B     (d16,A5)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a6, prefetch_data                 // 5FEE  SLE.B     (d16,A6)
-        b       L_08580
+        b       scc_b_mem
         add     addr, a7, prefetch_data                 // 5FEF  SLE.B     (d16,A7)
-        b       L_08580
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5FF0  SLE.B     (d8,A0,Xn)
-        b       L_05988
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5FF1  SLE.B     (d8,A1,Xn)
-        b       L_059E8
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5FF2  SLE.B     (d8,A2,Xn)
-        b       L_05A48
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5FF3  SLE.B     (d8,A3,Xn)
-        b       L_05AA8
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5FF4  SLE.B     (d8,A4,Xn)
-        b       L_05B08
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5FF5  SLE.B     (d8,A5,Xn)
-        b       L_05B68
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5FF6  SLE.B     (d8,A6,Xn)
-        b       L_05BC8
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5FF7  SLE.B     (d8,A7,Xn)
-        b       L_05C28
+        b       scc_b_mem
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5FF0  SLE.B     (d8,A0,Xn)
+        b       or_sub_etc_any_any
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5FF1  SLE.B     (d8,A1,Xn)
+        b       or_sub_etc_any_any_2
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5FF2  SLE.B     (d8,A2,Xn)
+        b       or_sub_etc_any_any_3
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5FF3  SLE.B     (d8,A3,Xn)
+        b       or_sub_etc_any_any_4
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5FF4  SLE.B     (d8,A4,Xn)
+        b       or_sub_etc_any_any_5
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5FF5  SLE.B     (d8,A5,Xn)
+        b       or_sub_etc_any_any_6
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5FF6  SLE.B     (d8,A6,Xn)
+        b       or_sub_etc_any_any_7
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5FF7  SLE.B     (d8,A7,Xn)
+        b       or_sub_etc_any_any_8
         mr      addr, prefetch_data                     // 5FF8  SLE.B     (xxx).W
-        b       L_08580
-        ori     rtn_addr, code_ptr, L_08584 - cb        // 5FF9  SLE.B     (xxx).L
-        b       L_05E14
+        b       scc_b_mem
+        ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 5FF9  SLE.B     (xxx).L
+        b       cea_x_71_2
         lhau    prefetch_data, 2(pc)                    // 5FFA  TRAPLE    #<data>.W
-        b       L_0CCE8
+        b       trapcc
         lhau    prefetch_data, 4(pc)                    // 5FFB  TRAPLE    #<data>.L
-        b       L_0CCE8
+        b       trapcc
         ori     base_disp, code_ptr, D_085C0 - cb       // 5FFC  TRAPLE
-        b       L_0CCEC
+        b       trapcc_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5FFD  SLE.B     <ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5FFE  SLE.B     <ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5FFF  SLE.B     <ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm

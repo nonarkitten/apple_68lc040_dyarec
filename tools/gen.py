@@ -25,8 +25,9 @@ import struct
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-import m68k   # noqa: E402
-import ppc    # noqa: E402
+import m68k     # noqa: E402
+import naming   # noqa: E402
+import ppc      # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -239,6 +240,7 @@ class Generator:
         self.labels = dict(self.ann.labels)
         self.label_addrs = {}
         self.table_users = collections.defaultdict(list)    # handler -> [opcode]
+        self.continuation_users = collections.defaultdict(list)
         self.code_refs = {}     # addr of an "ori x, code_ptr, imm" -> referenced offset
 
     # -- analysis ----------------------------------------------------------
@@ -294,15 +296,36 @@ class Generator:
                         wanted.add(value)
             wanted.add(start)
 
-        # Which 68K opcodes reach each handler.
+        # Which 68K opcodes reach each routine, and how.
+        direct = collections.defaultdict(list)          # second instruction: b handler
+        ea_users = collections.defaultdict(list)        # ... with rtn_addr loaded
         for opcode in range(0x10000):
             entry = TABLE_START + opcode * 8
+            continuation = self.code_refs.get(entry)
+            if continuation is not None and self.kind[entry][1].ops[0] != ('r', 5):
+                continuation = None
+            if continuation is not None:
+                self.continuation_users[continuation].append(opcode)
             for addr in (entry, entry + 4):
                 kind, value = self.kind[addr]
-                if kind == 'insn':
-                    for operand in value.ops:
-                        if operand[0] == 'tgt':
-                            self.table_users[operand[1]].append(opcode)
+                if kind != 'insn':
+                    continue
+                for operand in value.ops:
+                    if operand[0] == 'tgt':
+                        self.table_users[operand[1]].append(opcode)
+                        if addr == entry + 4 and operand[1] < TABLE_START:
+                            direct[operand[1]].append(opcode)
+                            if continuation is not None:
+                                ea_users[operand[1]].append(opcode)
+
+        automatic = naming.assign(self, direct, self.continuation_users, ea_users)
+        taken = set(self.labels.values())
+        for addr, name in automatic.items():
+            if addr not in self.labels:
+                while name in taken:
+                    name += '_'
+                self.labels[addr] = name
+                taken.add(name)
 
         for addr in sorted(wanted):
             if addr not in self.labels:
@@ -517,23 +540,58 @@ class Generator:
             return text.ljust(COMMENT_COL - 1) + ' // ' + comment
         return text + '  // ' + comment
 
-    def handler_summary(self, addr):
-        """Block comment lines listing the 68K instructions that dispatch to
-        the handler at addr."""
-        users = self.table_users.get(addr)
-        if not users or addr >= TABLE_START:
-            return []
+    def routine_fetches(self, addr):
+        """True if the straight-line code at addr loads `data` from memory
+        before it returns (used to tell fea_ routines from cea_ ones)."""
+        loads = ('lbz', 'lhz', 'lha', 'lwz', 'lbzx', 'lhzx', 'lhax', 'lwzx',
+                 'lbzu', 'lhzu', 'lhau', 'lwzu')
+        for step in range(12):
+            kind, value = self.kind.get(addr + 4 * step, ('long', 0))
+            if kind != 'insn':
+                return False
+            if value.mnem in loads and value.ops[0] == ('r', 4):
+                return True
+            if value.mnem in ('blr', 'bctr', 'b'):
+                return False
+        return False
+
+    def uses_rtn_addr(self, addr):
+        """True if the routine at addr starts by moving rtn_addr to LR/CTR."""
+        for step in range(3):
+            kind, value = self.kind.get(addr + 4 * step, ('long', 0))
+            if kind != 'insn':
+                return False
+            if value.mnem in ('mtlr', 'mtctr') and value.ops[0] == ('r', 5):
+                return True
+        return False
+
+    @staticmethod
+    def _forms(opcodes, limit=6):
         counts = collections.Counter()
-        for opcode in users:
+        for opcode in opcodes:
             counts[generalise(m68k.text(opcode))] += 1
         forms = [form for form, _ in counts.most_common()]
-        shown = forms[:6]
-        lines = ['// Reached from %d dispatch table %s:' % (
-            len(users), 'entry' if len(users) == 1 else 'entries')]
-        for form in shown:
-            lines.append('//     ' + form)
-        if len(forms) > len(shown):
-            lines.append('//     ... and %d more forms' % (len(forms) - len(shown)))
+        lines = ['//     ' + form for form in forms[:limit]]
+        if len(forms) > limit:
+            lines.append('//     ... and %d more forms' % (len(forms) - limit))
+        return lines
+
+    def handler_summary(self, addr):
+        """Block comment lines listing the 68K instructions that use the
+        routine at addr."""
+        if addr >= TABLE_START:
+            return []
+        lines = []
+        users = self.table_users.get(addr)
+        if users:
+            lines.append('// Reached from %d dispatch table %s:' % (
+                len(users), 'entry' if len(users) == 1 else 'entries'))
+            lines += self._forms(users)
+        users = self.continuation_users.get(addr)
+        if users:
+            lines.append('// Continuation (via rtn_addr) of %d dispatch table %s:' % (
+                len(users), 'entry' if len(users) == 1 else 'entries'))
+            lines += self._forms(users)
         return lines
 
     def label_lines(self, addr, out):
@@ -761,9 +819,11 @@ class Generator:
     def report(self):
         auto = sum(1 for a, n in self.labels.items()
                    if a < TABLE_START and re.fullmatch(r'[LD]_[0-9A-F]{5}', n))
-        named = sum(1 for a in self.labels if a < TABLE_START) - auto
+        manual = sum(1 for a in self.ann.labels if a < TABLE_START)
+        named = sum(1 for a in self.labels if a < TABLE_START) - auto - manual
         longs = sum(1 for a, (k, _) in self.kind.items() if k == 'long' and a < TABLE_START)
-        print('labels below the table: %d named, %d automatic' % (named, auto))
+        print('labels below the table: %d hand-named, %d named from the dispatch '
+              'table, %d address-only' % (manual, named, auto))
         print('undecoded words emitted as .long: %d' % longs)
 
 

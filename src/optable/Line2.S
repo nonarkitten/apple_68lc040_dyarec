@@ -5,8320 +5,8320 @@
 
 // ---- $2000-$203F --------------------------------------------------------
         addco.  d0, d0, zero                            // 2000  MOVE.L    D0,D0
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d0, d1, zero                            // 2001  MOVE.L    D1,D0
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d0, d2, zero                            // 2002  MOVE.L    D2,D0
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d0, d3, zero                            // 2003  MOVE.L    D3,D0
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d0, d4, zero                            // 2004  MOVE.L    D4,D0
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d0, d5, zero                            // 2005  MOVE.L    D5,D0
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d0, d6, zero                            // 2006  MOVE.L    D6,D0
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d0, d7, zero                            // 2007  MOVE.L    D7,D0
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d0, a0, zero                            // 2008  MOVE.L    A0,D0
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d0, a1, zero                            // 2009  MOVE.L    A1,D0
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d0, a2, zero                            // 200A  MOVE.L    A2,D0
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d0, a3, zero                            // 200B  MOVE.L    A3,D0
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d0, a4, zero                            // 200C  MOVE.L    A4,D0
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d0, a5, zero                            // 200D  MOVE.L    A5,D0
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d0, a6, zero                            // 200E  MOVE.L    A6,D0
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d0, a7, zero                            // 200F  MOVE.L    A7,D0
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     data, 0(a0)                             // 2010  MOVE.L    (A0),D0
-        b       L_00C28
+        b       move_l_mem_d0
         lwz     data, 0(a1)                             // 2011  MOVE.L    (A1),D0
-        b       L_00C28
+        b       move_l_mem_d0
         lwz     data, 0(a2)                             // 2012  MOVE.L    (A2),D0
-        b       L_00C28
+        b       move_l_mem_d0
         lwz     data, 0(a3)                             // 2013  MOVE.L    (A3),D0
-        b       L_00C28
+        b       move_l_mem_d0
         lwz     data, 0(a4)                             // 2014  MOVE.L    (A4),D0
-        b       L_00C28
+        b       move_l_mem_d0
         lwz     data, 0(a5)                             // 2015  MOVE.L    (A5),D0
-        b       L_00C28
+        b       move_l_mem_d0
         lwz     data, 0(a6)                             // 2016  MOVE.L    (A6),D0
-        b       L_00C28
+        b       move_l_mem_d0
         lwz     data, 0(a7)                             // 2017  MOVE.L    (A7),D0
-        b       L_00C28
-        ori     rtn_addr, code_ptr, L_00C28 - cb        // 2018  MOVE.L    (A0)+,D0
-        b       L_00850
-        ori     rtn_addr, code_ptr, L_00C28 - cb        // 2019  MOVE.L    (A1)+,D0
-        b       L_008D0
-        ori     rtn_addr, code_ptr, L_00C28 - cb        // 201A  MOVE.L    (A2)+,D0
-        b       L_00950
-        ori     rtn_addr, code_ptr, L_00C28 - cb        // 201B  MOVE.L    (A3)+,D0
-        b       L_009D0
-        ori     rtn_addr, code_ptr, L_00C28 - cb        // 201C  MOVE.L    (A4)+,D0
-        b       L_00A50
-        ori     rtn_addr, code_ptr, L_00C28 - cb        // 201D  MOVE.L    (A5)+,D0
-        b       L_00AD0
-        ori     rtn_addr, code_ptr, L_00C28 - cb        // 201E  MOVE.L    (A6)+,D0
-        b       L_00B50
+        b       move_l_mem_d0
+        ori     rtn_addr, code_ptr, move_l_mem_d0 - cb  // 2018  MOVE.L    (A0)+,D0
+        b       fea_l_30
+        ori     rtn_addr, code_ptr, move_l_mem_d0 - cb  // 2019  MOVE.L    (A1)+,D0
+        b       fea_l_31
+        ori     rtn_addr, code_ptr, move_l_mem_d0 - cb  // 201A  MOVE.L    (A2)+,D0
+        b       fea_l_32
+        ori     rtn_addr, code_ptr, move_l_mem_d0 - cb  // 201B  MOVE.L    (A3)+,D0
+        b       fea_l_33
+        ori     rtn_addr, code_ptr, move_l_mem_d0 - cb  // 201C  MOVE.L    (A4)+,D0
+        b       fea_l_34
+        ori     rtn_addr, code_ptr, move_l_mem_d0 - cb  // 201D  MOVE.L    (A5)+,D0
+        b       fea_l_35
+        ori     rtn_addr, code_ptr, move_l_mem_d0 - cb  // 201E  MOVE.L    (A6)+,D0
+        b       fea_l_36
         lwz     d0, 0(a7)                               // 201F  MOVE.L    (A7)+,D0
-        b       L_08E40
+        b       move_l_mem_d0_3
         lwzu    data, -4(a0)                            // 2020  MOVE.L    -(A0),D0
-        b       L_00C28
+        b       move_l_mem_d0
         lwzu    data, -4(a1)                            // 2021  MOVE.L    -(A1),D0
-        b       L_00C28
+        b       move_l_mem_d0
         lwzu    data, -4(a2)                            // 2022  MOVE.L    -(A2),D0
-        b       L_00C28
+        b       move_l_mem_d0
         lwzu    data, -4(a3)                            // 2023  MOVE.L    -(A3),D0
-        b       L_00C28
+        b       move_l_mem_d0
         lwzu    data, -4(a4)                            // 2024  MOVE.L    -(A4),D0
-        b       L_00C28
+        b       move_l_mem_d0
         lwzu    data, -4(a5)                            // 2025  MOVE.L    -(A5),D0
-        b       L_00C28
+        b       move_l_mem_d0
         lwzu    data, -4(a6)                            // 2026  MOVE.L    -(A6),D0
-        b       L_00C28
+        b       move_l_mem_d0
         lwzu    data, -4(a7)                            // 2027  MOVE.L    -(A7),D0
-        b       L_00C28
+        b       move_l_mem_d0
         lwzx    data, a0, prefetch_data                 // 2028  MOVE.L    (d16,A0),D0
-        b       L_00C40
+        b       move_l_mem_d0_2
         lwzx    data, a1, prefetch_data                 // 2029  MOVE.L    (d16,A1),D0
-        b       L_00C40
+        b       move_l_mem_d0_2
         lwzx    data, a2, prefetch_data                 // 202A  MOVE.L    (d16,A2),D0
-        b       L_00C40
+        b       move_l_mem_d0_2
         lwzx    data, a3, prefetch_data                 // 202B  MOVE.L    (d16,A3),D0
-        b       L_00C40
+        b       move_l_mem_d0_2
         lwzx    data, a4, prefetch_data                 // 202C  MOVE.L    (d16,A4),D0
-        b       L_00C40
+        b       move_l_mem_d0_2
         lwzx    data, a5, prefetch_data                 // 202D  MOVE.L    (d16,A5),D0
-        b       L_00C40
+        b       move_l_mem_d0_2
         lwzx    data, a6, prefetch_data                 // 202E  MOVE.L    (d16,A6),D0
-        b       L_00C40
+        b       move_l_mem_d0_2
         lwzx    data, a7, prefetch_data                 // 202F  MOVE.L    (d16,A7),D0
-        b       L_00C40
-        ori     rtn_addr, code_ptr, L_00C28 - cb        // 2030  MOVE.L    (d8,A0,Xn),D0
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_00C28 - cb        // 2031  MOVE.L    (d8,A1,Xn),D0
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_00C28 - cb        // 2032  MOVE.L    (d8,A2,Xn),D0
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_00C28 - cb        // 2033  MOVE.L    (d8,A3,Xn),D0
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_00C28 - cb        // 2034  MOVE.L    (d8,A4,Xn),D0
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_00C28 - cb        // 2035  MOVE.L    (d8,A5,Xn),D0
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_00C28 - cb        // 2036  MOVE.L    (d8,A6,Xn),D0
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_00C28 - cb        // 2037  MOVE.L    (d8,A7,Xn),D0
-        b       L_05C68
+        b       move_l_mem_d0_2
+        ori     rtn_addr, code_ptr, move_l_mem_d0 - cb  // 2030  MOVE.L    (d8,A0,Xn),D0
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, move_l_mem_d0 - cb  // 2031  MOVE.L    (d8,A1,Xn),D0
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, move_l_mem_d0 - cb  // 2032  MOVE.L    (d8,A2,Xn),D0
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, move_l_mem_d0 - cb  // 2033  MOVE.L    (d8,A3,Xn),D0
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, move_l_mem_d0 - cb  // 2034  MOVE.L    (d8,A4,Xn),D0
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, move_l_mem_d0 - cb  // 2035  MOVE.L    (d8,A5,Xn),D0
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, move_l_mem_d0 - cb  // 2036  MOVE.L    (d8,A6,Xn),D0
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, move_l_mem_d0 - cb  // 2037  MOVE.L    (d8,A7,Xn),D0
+        b       move_add_etc_l_any_any_8
         lwz     data, 0(prefetch_data)                  // 2038  MOVE.L    (xxx).W,D0
-        b       L_00C40
-        ori     rtn_addr, code_ptr, L_00C28 - cb        // 2039  MOVE.L    (xxx).L,D0
-        b       L_05E8C
+        b       move_l_mem_d0_2
+        ori     rtn_addr, code_ptr, move_l_mem_d0 - cb  // 2039  MOVE.L    (xxx).L,D0
+        b       fea_l_71_2
         lwzx    data, pc, prefetch_data                 // 203A  MOVE.L    (d16,PC),D0
-        b       L_00C40
-        ori     rtn_addr, code_ptr, L_00C28 - cb        // 203B  MOVE.L    (d8,PC,Xn),D0
-        b       L_05F08
+        b       move_l_mem_d0_2
+        ori     rtn_addr, code_ptr, move_l_mem_d0 - cb  // 203B  MOVE.L    (d8,PC,Xn),D0
+        b       fea_l_73
         lhau    prefetch_data, 4(pc)                    // 203C  MOVE.L    #<data>,D0
-        b       L_00C24
+        b       move_l_imm_d0
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 203D  MOVE.L    <ea 7.5>,D0   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 203E  MOVE.L    <ea 7.6>,D0   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 203F  MOVE.L    <ea 7.7>,D0   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $2040-$207F --------------------------------------------------------
         mr      a0, d0                                  // 2040  MOVEA.L   D0,A0
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a0, d1                                  // 2041  MOVEA.L   D1,A0
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a0, d2                                  // 2042  MOVEA.L   D2,A0
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a0, d3                                  // 2043  MOVEA.L   D3,A0
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a0, d4                                  // 2044  MOVEA.L   D4,A0
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a0, d5                                  // 2045  MOVEA.L   D5,A0
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a0, d6                                  // 2046  MOVEA.L   D6,A0
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a0, d7                                  // 2047  MOVEA.L   D7,A0
-        b       L_06084
+        b       move_add_etc_any_any
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // 2048  MOVEA.L   A0,A0
-        b       L_06088
+        b       exg_move_etc_any_reg
         mr      a0, a1                                  // 2049  MOVEA.L   A1,A0
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a0, a2                                  // 204A  MOVEA.L   A2,A0
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a0, a3                                  // 204B  MOVEA.L   A3,A0
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a0, a4                                  // 204C  MOVEA.L   A4,A0
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a0, a5                                  // 204D  MOVEA.L   A5,A0
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a0, a6                                  // 204E  MOVEA.L   A6,A0
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a0, a7                                  // 204F  MOVEA.L   A7,A0
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     a0, 0(a0)                               // 2050  MOVEA.L   (A0),A0
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     a0, 0(a1)                               // 2051  MOVEA.L   (A1),A0
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     a0, 0(a2)                               // 2052  MOVEA.L   (A2),A0
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     a0, 0(a3)                               // 2053  MOVEA.L   (A3),A0
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     a0, 0(a4)                               // 2054  MOVEA.L   (A4),A0
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     a0, 0(a5)                               // 2055  MOVEA.L   (A5),A0
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     a0, 0(a6)                               // 2056  MOVEA.L   (A6),A0
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     a0, 0(a7)                               // 2057  MOVEA.L   (A7),A0
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     a0, 0(a0)                               // 2058  MOVEA.L   (A0)+,A0
-        b       L_06084
-        ori     rtn_addr, code_ptr, L_03200 - cb        // 2059  MOVEA.L   (A1)+,A0
-        b       L_008D0
-        ori     rtn_addr, code_ptr, L_03200 - cb        // 205A  MOVEA.L   (A2)+,A0
-        b       L_00950
-        ori     rtn_addr, code_ptr, L_03200 - cb        // 205B  MOVEA.L   (A3)+,A0
-        b       L_009D0
-        ori     rtn_addr, code_ptr, L_03200 - cb        // 205C  MOVEA.L   (A4)+,A0
-        b       L_00A50
-        ori     rtn_addr, code_ptr, L_03200 - cb        // 205D  MOVEA.L   (A5)+,A0
-        b       L_00AD0
-        ori     rtn_addr, code_ptr, L_03200 - cb        // 205E  MOVEA.L   (A6)+,A0
-        b       L_00B50
+        b       move_add_etc_any_any
+        ori     rtn_addr, code_ptr, movea_mem_a0 - cb   // 2059  MOVEA.L   (A1)+,A0
+        b       fea_l_31
+        ori     rtn_addr, code_ptr, movea_mem_a0 - cb   // 205A  MOVEA.L   (A2)+,A0
+        b       fea_l_32
+        ori     rtn_addr, code_ptr, movea_mem_a0 - cb   // 205B  MOVEA.L   (A3)+,A0
+        b       fea_l_33
+        ori     rtn_addr, code_ptr, movea_mem_a0 - cb   // 205C  MOVEA.L   (A4)+,A0
+        b       fea_l_34
+        ori     rtn_addr, code_ptr, movea_mem_a0 - cb   // 205D  MOVEA.L   (A5)+,A0
+        b       fea_l_35
+        ori     rtn_addr, code_ptr, movea_mem_a0 - cb   // 205E  MOVEA.L   (A6)+,A0
+        b       fea_l_36
         lwz     a0, 0(a7)                               // 205F  MOVEA.L   (A7)+,A0
-        b       L_08F40
+        b       movea_l_mem_an
         lwz     a0, -4(a0)                              // 2060  MOVEA.L   -(A0),A0
-        b       L_06084
+        b       move_add_etc_any_any
         lwzu    a0, -4(a1)                              // 2061  MOVEA.L   -(A1),A0
-        b       L_06084
+        b       move_add_etc_any_any
         lwzu    a0, -4(a2)                              // 2062  MOVEA.L   -(A2),A0
-        b       L_06084
+        b       move_add_etc_any_any
         lwzu    a0, -4(a3)                              // 2063  MOVEA.L   -(A3),A0
-        b       L_06084
+        b       move_add_etc_any_any
         lwzu    a0, -4(a4)                              // 2064  MOVEA.L   -(A4),A0
-        b       L_06084
+        b       move_add_etc_any_any
         lwzu    a0, -4(a5)                              // 2065  MOVEA.L   -(A5),A0
-        b       L_06084
+        b       move_add_etc_any_any
         lwzu    a0, -4(a6)                              // 2066  MOVEA.L   -(A6),A0
-        b       L_06084
+        b       move_add_etc_any_any
         lwzu    a0, -4(a7)                              // 2067  MOVEA.L   -(A7),A0
-        b       L_06084
+        b       move_add_etc_any_any
         lwzx    a0, a0, prefetch_data                   // 2068  MOVEA.L   (d16,A0),A0
-        b       L_06080
+        b       move_lea_etc_ea_any
         lwzx    a0, a1, prefetch_data                   // 2069  MOVEA.L   (d16,A1),A0
-        b       L_06080
+        b       move_lea_etc_ea_any
         lwzx    a0, a2, prefetch_data                   // 206A  MOVEA.L   (d16,A2),A0
-        b       L_06080
+        b       move_lea_etc_ea_any
         lwzx    a0, a3, prefetch_data                   // 206B  MOVEA.L   (d16,A3),A0
-        b       L_06080
+        b       move_lea_etc_ea_any
         lwzx    a0, a4, prefetch_data                   // 206C  MOVEA.L   (d16,A4),A0
-        b       L_06080
+        b       move_lea_etc_ea_any
         lwzx    a0, a5, prefetch_data                   // 206D  MOVEA.L   (d16,A5),A0
-        b       L_06080
+        b       move_lea_etc_ea_any
         lwzx    a0, a6, prefetch_data                   // 206E  MOVEA.L   (d16,A6),A0
-        b       L_06080
+        b       move_lea_etc_ea_any
         lwzx    a0, a7, prefetch_data                   // 206F  MOVEA.L   (d16,A7),A0
-        b       L_06080
-        ori     rtn_addr, code_ptr, L_03200 - cb        // 2070  MOVEA.L   (d8,A0,Xn),A0
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_03200 - cb        // 2071  MOVEA.L   (d8,A1,Xn),A0
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_03200 - cb        // 2072  MOVEA.L   (d8,A2,Xn),A0
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_03200 - cb        // 2073  MOVEA.L   (d8,A3,Xn),A0
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_03200 - cb        // 2074  MOVEA.L   (d8,A4,Xn),A0
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_03200 - cb        // 2075  MOVEA.L   (d8,A5,Xn),A0
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_03200 - cb        // 2076  MOVEA.L   (d8,A6,Xn),A0
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_03200 - cb        // 2077  MOVEA.L   (d8,A7,Xn),A0
-        b       L_05C68
+        b       move_lea_etc_ea_any
+        ori     rtn_addr, code_ptr, movea_mem_a0 - cb   // 2070  MOVEA.L   (d8,A0,Xn),A0
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, movea_mem_a0 - cb   // 2071  MOVEA.L   (d8,A1,Xn),A0
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, movea_mem_a0 - cb   // 2072  MOVEA.L   (d8,A2,Xn),A0
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, movea_mem_a0 - cb   // 2073  MOVEA.L   (d8,A3,Xn),A0
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, movea_mem_a0 - cb   // 2074  MOVEA.L   (d8,A4,Xn),A0
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, movea_mem_a0 - cb   // 2075  MOVEA.L   (d8,A5,Xn),A0
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, movea_mem_a0 - cb   // 2076  MOVEA.L   (d8,A6,Xn),A0
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, movea_mem_a0 - cb   // 2077  MOVEA.L   (d8,A7,Xn),A0
+        b       move_add_etc_l_any_any_8
         lwz     a0, 0(prefetch_data)                    // 2078  MOVEA.L   (xxx).W,A0
-        b       L_06080
-        ori     rtn_addr, code_ptr, L_03200 - cb        // 2079  MOVEA.L   (xxx).L,A0
-        b       L_05E8C
+        b       move_lea_etc_ea_any
+        ori     rtn_addr, code_ptr, movea_mem_a0 - cb   // 2079  MOVEA.L   (xxx).L,A0
+        b       fea_l_71_2
         lwzx    a0, pc, prefetch_data                   // 207A  MOVEA.L   (d16,PC),A0
-        b       L_06080
-        ori     rtn_addr, code_ptr, L_03200 - cb        // 207B  MOVEA.L   (d8,PC,Xn),A0
-        b       L_05F08
+        b       move_lea_etc_ea_any
+        ori     rtn_addr, code_ptr, movea_mem_a0 - cb   // 207B  MOVEA.L   (d8,PC,Xn),A0
+        b       fea_l_73
         lwz     a0, 0(pc)                               // 207C  MOVEA.L   #<data>,A0
-        b       L_060A0
+        b       move_lea_ea_an
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 207D  MOVEA.L   <ea 7.5>,A0   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 207E  MOVEA.L   <ea 7.6>,A0   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 207F  MOVEA.L   <ea 7.7>,A0   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $2080-$20BF --------------------------------------------------------
         addco.  data, d0, zero                          // 2080  MOVE.L    D0,(A0)
-        b       L_01028
+        b       move_l_reg_mem
         addco.  data, d1, zero                          // 2081  MOVE.L    D1,(A0)
-        b       L_01028
+        b       move_l_reg_mem
         addco.  data, d2, zero                          // 2082  MOVE.L    D2,(A0)
-        b       L_01028
+        b       move_l_reg_mem
         addco.  data, d3, zero                          // 2083  MOVE.L    D3,(A0)
-        b       L_01028
+        b       move_l_reg_mem
         addco.  data, d4, zero                          // 2084  MOVE.L    D4,(A0)
-        b       L_01028
+        b       move_l_reg_mem
         addco.  data, d5, zero                          // 2085  MOVE.L    D5,(A0)
-        b       L_01028
+        b       move_l_reg_mem
         addco.  data, d6, zero                          // 2086  MOVE.L    D6,(A0)
-        b       L_01028
+        b       move_l_reg_mem
         addco.  data, d7, zero                          // 2087  MOVE.L    D7,(A0)
-        b       L_01028
+        b       move_l_reg_mem
         addco.  data, a0, zero                          // 2088  MOVE.L    A0,(A0)
-        b       L_01028
+        b       move_l_reg_mem
         addco.  data, a1, zero                          // 2089  MOVE.L    A1,(A0)
-        b       L_01028
+        b       move_l_reg_mem
         addco.  data, a2, zero                          // 208A  MOVE.L    A2,(A0)
-        b       L_01028
+        b       move_l_reg_mem
         addco.  data, a3, zero                          // 208B  MOVE.L    A3,(A0)
-        b       L_01028
+        b       move_l_reg_mem
         addco.  data, a4, zero                          // 208C  MOVE.L    A4,(A0)
-        b       L_01028
+        b       move_l_reg_mem
         addco.  data, a5, zero                          // 208D  MOVE.L    A5,(A0)
-        b       L_01028
+        b       move_l_reg_mem
         addco.  data, a6, zero                          // 208E  MOVE.L    A6,(A0)
-        b       L_01028
+        b       move_l_reg_mem
         addco.  data, a7, zero                          // 208F  MOVE.L    A7,(A0)
-        b       L_01028
+        b       move_l_reg_mem
         lwz     data, 0(a0)                             // 2090  MOVE.L    (A0),(A0)
-        b       L_06144
+        b       tst_ea
         lwz     data, 0(a1)                             // 2091  MOVE.L    (A1),(A0)
-        b       L_01024
+        b       move_l_ea_mem
         lwz     data, 0(a2)                             // 2092  MOVE.L    (A2),(A0)
-        b       L_01024
+        b       move_l_ea_mem
         lwz     data, 0(a3)                             // 2093  MOVE.L    (A3),(A0)
-        b       L_01024
+        b       move_l_ea_mem
         lwz     data, 0(a4)                             // 2094  MOVE.L    (A4),(A0)
-        b       L_01024
+        b       move_l_ea_mem
         lwz     data, 0(a5)                             // 2095  MOVE.L    (A5),(A0)
-        b       L_01024
+        b       move_l_ea_mem
         lwz     data, 0(a6)                             // 2096  MOVE.L    (A6),(A0)
-        b       L_01024
+        b       move_l_ea_mem
         lwz     data, 0(a7)                             // 2097  MOVE.L    (A7),(A0)
-        b       L_01024
-        ori     rtn_addr, code_ptr, L_01024 - cb        // 2098  MOVE.L    (A0)+,(A0)
-        b       L_00850
-        ori     rtn_addr, code_ptr, L_01024 - cb        // 2099  MOVE.L    (A1)+,(A0)
-        b       L_008D0
-        ori     rtn_addr, code_ptr, L_01024 - cb        // 209A  MOVE.L    (A2)+,(A0)
-        b       L_00950
-        ori     rtn_addr, code_ptr, L_01024 - cb        // 209B  MOVE.L    (A3)+,(A0)
-        b       L_009D0
-        ori     rtn_addr, code_ptr, L_01024 - cb        // 209C  MOVE.L    (A4)+,(A0)
-        b       L_00A50
-        ori     rtn_addr, code_ptr, L_01024 - cb        // 209D  MOVE.L    (A5)+,(A0)
-        b       L_00AD0
-        ori     rtn_addr, code_ptr, L_01024 - cb        // 209E  MOVE.L    (A6)+,(A0)
-        b       L_00B50
-        ori     rtn_addr, code_ptr, L_01024 - cb        // 209F  MOVE.L    (A7)+,(A0)
-        b       L_00BD0
+        b       move_l_ea_mem
+        ori     rtn_addr, code_ptr, move_l_ea_mem - cb  // 2098  MOVE.L    (A0)+,(A0)
+        b       fea_l_30
+        ori     rtn_addr, code_ptr, move_l_ea_mem - cb  // 2099  MOVE.L    (A1)+,(A0)
+        b       fea_l_31
+        ori     rtn_addr, code_ptr, move_l_ea_mem - cb  // 209A  MOVE.L    (A2)+,(A0)
+        b       fea_l_32
+        ori     rtn_addr, code_ptr, move_l_ea_mem - cb  // 209B  MOVE.L    (A3)+,(A0)
+        b       fea_l_33
+        ori     rtn_addr, code_ptr, move_l_ea_mem - cb  // 209C  MOVE.L    (A4)+,(A0)
+        b       fea_l_34
+        ori     rtn_addr, code_ptr, move_l_ea_mem - cb  // 209D  MOVE.L    (A5)+,(A0)
+        b       fea_l_35
+        ori     rtn_addr, code_ptr, move_l_ea_mem - cb  // 209E  MOVE.L    (A6)+,(A0)
+        b       fea_l_36
+        ori     rtn_addr, code_ptr, move_l_ea_mem - cb  // 209F  MOVE.L    (A7)+,(A0)
+        b       fea_l_37
         lwzu    data, -4(a0)                            // 20A0  MOVE.L    -(A0),(A0)
-        b       L_06144
+        b       tst_ea
         lwzu    data, -4(a1)                            // 20A1  MOVE.L    -(A1),(A0)
-        b       L_01024
+        b       move_l_ea_mem
         lwzu    data, -4(a2)                            // 20A2  MOVE.L    -(A2),(A0)
-        b       L_01024
+        b       move_l_ea_mem
         lwzu    data, -4(a3)                            // 20A3  MOVE.L    -(A3),(A0)
-        b       L_01024
+        b       move_l_ea_mem
         lwzu    data, -4(a4)                            // 20A4  MOVE.L    -(A4),(A0)
-        b       L_01024
+        b       move_l_ea_mem
         lwzu    data, -4(a5)                            // 20A5  MOVE.L    -(A5),(A0)
-        b       L_01024
+        b       move_l_ea_mem
         lwzu    data, -4(a6)                            // 20A6  MOVE.L    -(A6),(A0)
-        b       L_01024
+        b       move_l_ea_mem
         lwzu    data, -4(a7)                            // 20A7  MOVE.L    -(A7),(A0)
-        b       L_01024
+        b       move_l_ea_mem
         lwzx    data, a0, prefetch_data                 // 20A8  MOVE.L    (d16,A0),(A0)
-        b       L_01020
+        b       move_l_mem_mem
         lwzx    data, a1, prefetch_data                 // 20A9  MOVE.L    (d16,A1),(A0)
-        b       L_01020
+        b       move_l_mem_mem
         lwzx    data, a2, prefetch_data                 // 20AA  MOVE.L    (d16,A2),(A0)
-        b       L_01020
+        b       move_l_mem_mem
         lwzx    data, a3, prefetch_data                 // 20AB  MOVE.L    (d16,A3),(A0)
-        b       L_01020
+        b       move_l_mem_mem
         lwzx    data, a4, prefetch_data                 // 20AC  MOVE.L    (d16,A4),(A0)
-        b       L_01020
+        b       move_l_mem_mem
         lwzx    data, a5, prefetch_data                 // 20AD  MOVE.L    (d16,A5),(A0)
-        b       L_01020
+        b       move_l_mem_mem
         lwzx    data, a6, prefetch_data                 // 20AE  MOVE.L    (d16,A6),(A0)
-        b       L_01020
+        b       move_l_mem_mem
         lwzx    data, a7, prefetch_data                 // 20AF  MOVE.L    (d16,A7),(A0)
-        b       L_01020
-        ori     rtn_addr, code_ptr, L_01024 - cb        // 20B0  MOVE.L    (d8,A0,Xn),(A0)
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_01024 - cb        // 20B1  MOVE.L    (d8,A1,Xn),(A0)
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_01024 - cb        // 20B2  MOVE.L    (d8,A2,Xn),(A0)
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_01024 - cb        // 20B3  MOVE.L    (d8,A3,Xn),(A0)
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_01024 - cb        // 20B4  MOVE.L    (d8,A4,Xn),(A0)
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_01024 - cb        // 20B5  MOVE.L    (d8,A5,Xn),(A0)
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_01024 - cb        // 20B6  MOVE.L    (d8,A6,Xn),(A0)
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_01024 - cb        // 20B7  MOVE.L    (d8,A7,Xn),(A0)
-        b       L_05C68
+        b       move_l_mem_mem
+        ori     rtn_addr, code_ptr, move_l_ea_mem - cb  // 20B0  MOVE.L    (d8,A0,Xn),(A0)
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, move_l_ea_mem - cb  // 20B1  MOVE.L    (d8,A1,Xn),(A0)
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, move_l_ea_mem - cb  // 20B2  MOVE.L    (d8,A2,Xn),(A0)
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, move_l_ea_mem - cb  // 20B3  MOVE.L    (d8,A3,Xn),(A0)
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, move_l_ea_mem - cb  // 20B4  MOVE.L    (d8,A4,Xn),(A0)
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, move_l_ea_mem - cb  // 20B5  MOVE.L    (d8,A5,Xn),(A0)
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, move_l_ea_mem - cb  // 20B6  MOVE.L    (d8,A6,Xn),(A0)
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, move_l_ea_mem - cb  // 20B7  MOVE.L    (d8,A7,Xn),(A0)
+        b       move_add_etc_l_any_any_8
         lwz     data, 0(prefetch_data)                  // 20B8  MOVE.L    (xxx).W,(A0)
-        b       L_01020
-        ori     rtn_addr, code_ptr, L_01024 - cb        // 20B9  MOVE.L    (xxx).L,(A0)
-        b       L_05E8C
+        b       move_l_mem_mem
+        ori     rtn_addr, code_ptr, move_l_ea_mem - cb  // 20B9  MOVE.L    (xxx).L,(A0)
+        b       fea_l_71_2
         lwzx    data, pc, prefetch_data                 // 20BA  MOVE.L    (d16,PC),(A0)
-        b       L_01020
-        ori     rtn_addr, code_ptr, L_01024 - cb        // 20BB  MOVE.L    (d8,PC,Xn),(A0)
-        b       L_05F08
-        ori     rtn_addr, code_ptr, L_01024 - cb        // 20BC  MOVE.L    #<data>,(A0)
-        b       L_05F30
+        b       move_l_mem_mem
+        ori     rtn_addr, code_ptr, move_l_ea_mem - cb  // 20BB  MOVE.L    (d8,PC,Xn),(A0)
+        b       fea_l_73
+        ori     rtn_addr, code_ptr, move_l_ea_mem - cb  // 20BC  MOVE.L    #<data>,(A0)
+        b       fea_l_74
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 20BD  MOVE.L    <ea 7.5>,(A0)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 20BE  MOVE.L    <ea 7.6>,(A0)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 20BF  MOVE.L    <ea 7.7>,(A0)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $20C0-$20FF --------------------------------------------------------
         addco.  data, d0, zero                          // 20C0  MOVE.L    D0,(A0)+
-        b       L_01408
+        b       move_clr_l_reg_mem
         addco.  data, d1, zero                          // 20C1  MOVE.L    D1,(A0)+
-        b       L_01408
+        b       move_clr_l_reg_mem
         addco.  data, d2, zero                          // 20C2  MOVE.L    D2,(A0)+
-        b       L_01408
+        b       move_clr_l_reg_mem
         addco.  data, d3, zero                          // 20C3  MOVE.L    D3,(A0)+
-        b       L_01408
+        b       move_clr_l_reg_mem
         addco.  data, d4, zero                          // 20C4  MOVE.L    D4,(A0)+
-        b       L_01408
+        b       move_clr_l_reg_mem
         addco.  data, d5, zero                          // 20C5  MOVE.L    D5,(A0)+
-        b       L_01408
+        b       move_clr_l_reg_mem
         addco.  data, d6, zero                          // 20C6  MOVE.L    D6,(A0)+
-        b       L_01408
+        b       move_clr_l_reg_mem
         addco.  data, d7, zero                          // 20C7  MOVE.L    D7,(A0)+
-        b       L_01408
+        b       move_clr_l_reg_mem
         addco.  data, a0, zero                          // 20C8  MOVE.L    A0,(A0)+
-        b       L_01408
+        b       move_clr_l_reg_mem
         addco.  data, a1, zero                          // 20C9  MOVE.L    A1,(A0)+
-        b       L_01408
+        b       move_clr_l_reg_mem
         addco.  data, a2, zero                          // 20CA  MOVE.L    A2,(A0)+
-        b       L_01408
+        b       move_clr_l_reg_mem
         addco.  data, a3, zero                          // 20CB  MOVE.L    A3,(A0)+
-        b       L_01408
+        b       move_clr_l_reg_mem
         addco.  data, a4, zero                          // 20CC  MOVE.L    A4,(A0)+
-        b       L_01408
+        b       move_clr_l_reg_mem
         addco.  data, a5, zero                          // 20CD  MOVE.L    A5,(A0)+
-        b       L_01408
+        b       move_clr_l_reg_mem
         addco.  data, a6, zero                          // 20CE  MOVE.L    A6,(A0)+
-        b       L_01408
+        b       move_clr_l_reg_mem
         addco.  data, a7, zero                          // 20CF  MOVE.L    A7,(A0)+
-        b       L_01408
+        b       move_clr_l_reg_mem
         lwz     data, 0(a0)                             // 20D0  MOVE.L    (A0),(A0)+
-        b       L_01404
+        b       move_l_ea_mem_17
         lwz     data, 0(a1)                             // 20D1  MOVE.L    (A1),(A0)+
-        b       L_01404
+        b       move_l_ea_mem_17
         lwz     data, 0(a2)                             // 20D2  MOVE.L    (A2),(A0)+
-        b       L_01404
+        b       move_l_ea_mem_17
         lwz     data, 0(a3)                             // 20D3  MOVE.L    (A3),(A0)+
-        b       L_01404
+        b       move_l_ea_mem_17
         lwz     data, 0(a4)                             // 20D4  MOVE.L    (A4),(A0)+
-        b       L_01404
+        b       move_l_ea_mem_17
         lwz     data, 0(a5)                             // 20D5  MOVE.L    (A5),(A0)+
-        b       L_01404
+        b       move_l_ea_mem_17
         lwz     data, 0(a6)                             // 20D6  MOVE.L    (A6),(A0)+
-        b       L_01404
+        b       move_l_ea_mem_17
         lwz     data, 0(a7)                             // 20D7  MOVE.L    (A7),(A0)+
-        b       L_01404
-        ori     rtn_addr, code_ptr, L_01404 - cb        // 20D8  MOVE.L    (A0)+,(A0)+
-        b       L_00850
+        b       move_l_ea_mem_17
+        ori     rtn_addr, code_ptr, move_l_ea_mem_17 - cb  // 20D8  MOVE.L    (A0)+,(A0)+
+        b       fea_l_30
         cmpwi   cr7, prefetch_data, 0x20D9              // 20D9  MOVE.L    (A1)+,(A0)+
-        b       L_09180
-        ori     rtn_addr, code_ptr, L_01404 - cb        // 20DA  MOVE.L    (A2)+,(A0)+
-        b       L_00950
-        ori     rtn_addr, code_ptr, L_01404 - cb        // 20DB  MOVE.L    (A3)+,(A0)+
-        b       L_009D0
-        ori     rtn_addr, code_ptr, L_01404 - cb        // 20DC  MOVE.L    (A4)+,(A0)+
-        b       L_00A50
-        ori     rtn_addr, code_ptr, L_01404 - cb        // 20DD  MOVE.L    (A5)+,(A0)+
-        b       L_00AD0
-        ori     rtn_addr, code_ptr, L_01404 - cb        // 20DE  MOVE.L    (A6)+,(A0)+
-        b       L_00B50
-        ori     rtn_addr, code_ptr, L_01404 - cb        // 20DF  MOVE.L    (A7)+,(A0)+
-        b       L_00BD0
+        b       move_l_mem_mem_45
+        ori     rtn_addr, code_ptr, move_l_ea_mem_17 - cb  // 20DA  MOVE.L    (A2)+,(A0)+
+        b       fea_l_32
+        ori     rtn_addr, code_ptr, move_l_ea_mem_17 - cb  // 20DB  MOVE.L    (A3)+,(A0)+
+        b       fea_l_33
+        ori     rtn_addr, code_ptr, move_l_ea_mem_17 - cb  // 20DC  MOVE.L    (A4)+,(A0)+
+        b       fea_l_34
+        ori     rtn_addr, code_ptr, move_l_ea_mem_17 - cb  // 20DD  MOVE.L    (A5)+,(A0)+
+        b       fea_l_35
+        ori     rtn_addr, code_ptr, move_l_ea_mem_17 - cb  // 20DE  MOVE.L    (A6)+,(A0)+
+        b       fea_l_36
+        ori     rtn_addr, code_ptr, move_l_ea_mem_17 - cb  // 20DF  MOVE.L    (A7)+,(A0)+
+        b       fea_l_37
         lwz     data, -4(a0)                            // 20E0  MOVE.L    -(A0),(A0)+
-        b       L_06144
+        b       tst_ea
         lwzu    data, -4(a1)                            // 20E1  MOVE.L    -(A1),(A0)+
-        b       L_01404
+        b       move_l_ea_mem_17
         lwzu    data, -4(a2)                            // 20E2  MOVE.L    -(A2),(A0)+
-        b       L_01404
+        b       move_l_ea_mem_17
         lwzu    data, -4(a3)                            // 20E3  MOVE.L    -(A3),(A0)+
-        b       L_01404
+        b       move_l_ea_mem_17
         lwzu    data, -4(a4)                            // 20E4  MOVE.L    -(A4),(A0)+
-        b       L_01404
+        b       move_l_ea_mem_17
         lwzu    data, -4(a5)                            // 20E5  MOVE.L    -(A5),(A0)+
-        b       L_01404
+        b       move_l_ea_mem_17
         lwzu    data, -4(a6)                            // 20E6  MOVE.L    -(A6),(A0)+
-        b       L_01404
+        b       move_l_ea_mem_17
         lwzu    data, -4(a7)                            // 20E7  MOVE.L    -(A7),(A0)+
-        b       L_01404
+        b       move_l_ea_mem_17
         lwzx    data, a0, prefetch_data                 // 20E8  MOVE.L    (d16,A0),(A0)+
-        b       L_01400
+        b       move_l_mem_mem_17
         lwzx    data, a1, prefetch_data                 // 20E9  MOVE.L    (d16,A1),(A0)+
-        b       L_01400
+        b       move_l_mem_mem_17
         lwzx    data, a2, prefetch_data                 // 20EA  MOVE.L    (d16,A2),(A0)+
-        b       L_01400
+        b       move_l_mem_mem_17
         lwzx    data, a3, prefetch_data                 // 20EB  MOVE.L    (d16,A3),(A0)+
-        b       L_01400
+        b       move_l_mem_mem_17
         lwzx    data, a4, prefetch_data                 // 20EC  MOVE.L    (d16,A4),(A0)+
-        b       L_01400
+        b       move_l_mem_mem_17
         lwzx    data, a5, prefetch_data                 // 20ED  MOVE.L    (d16,A5),(A0)+
-        b       L_01400
+        b       move_l_mem_mem_17
         lwzx    data, a6, prefetch_data                 // 20EE  MOVE.L    (d16,A6),(A0)+
-        b       L_01400
+        b       move_l_mem_mem_17
         lwzx    data, a7, prefetch_data                 // 20EF  MOVE.L    (d16,A7),(A0)+
-        b       L_01400
-        ori     rtn_addr, code_ptr, L_01404 - cb        // 20F0  MOVE.L    (d8,A0,Xn),(A0)+
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_01404 - cb        // 20F1  MOVE.L    (d8,A1,Xn),(A0)+
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_01404 - cb        // 20F2  MOVE.L    (d8,A2,Xn),(A0)+
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_01404 - cb        // 20F3  MOVE.L    (d8,A3,Xn),(A0)+
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_01404 - cb        // 20F4  MOVE.L    (d8,A4,Xn),(A0)+
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_01404 - cb        // 20F5  MOVE.L    (d8,A5,Xn),(A0)+
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_01404 - cb        // 20F6  MOVE.L    (d8,A6,Xn),(A0)+
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_01404 - cb        // 20F7  MOVE.L    (d8,A7,Xn),(A0)+
-        b       L_05C68
+        b       move_l_mem_mem_17
+        ori     rtn_addr, code_ptr, move_l_ea_mem_17 - cb  // 20F0  MOVE.L    (d8,A0,Xn),(A0)+
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, move_l_ea_mem_17 - cb  // 20F1  MOVE.L    (d8,A1,Xn),(A0)+
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, move_l_ea_mem_17 - cb  // 20F2  MOVE.L    (d8,A2,Xn),(A0)+
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, move_l_ea_mem_17 - cb  // 20F3  MOVE.L    (d8,A3,Xn),(A0)+
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, move_l_ea_mem_17 - cb  // 20F4  MOVE.L    (d8,A4,Xn),(A0)+
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, move_l_ea_mem_17 - cb  // 20F5  MOVE.L    (d8,A5,Xn),(A0)+
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, move_l_ea_mem_17 - cb  // 20F6  MOVE.L    (d8,A6,Xn),(A0)+
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, move_l_ea_mem_17 - cb  // 20F7  MOVE.L    (d8,A7,Xn),(A0)+
+        b       move_add_etc_l_any_any_8
         lwz     data, 0(prefetch_data)                  // 20F8  MOVE.L    (xxx).W,(A0)+
-        b       L_01400
-        ori     rtn_addr, code_ptr, L_01404 - cb        // 20F9  MOVE.L    (xxx).L,(A0)+
-        b       L_05E8C
+        b       move_l_mem_mem_17
+        ori     rtn_addr, code_ptr, move_l_ea_mem_17 - cb  // 20F9  MOVE.L    (xxx).L,(A0)+
+        b       fea_l_71_2
         lwzx    data, pc, prefetch_data                 // 20FA  MOVE.L    (d16,PC),(A0)+
-        b       L_01400
-        ori     rtn_addr, code_ptr, L_01404 - cb        // 20FB  MOVE.L    (d8,PC,Xn),(A0)+
-        b       L_05F08
-        ori     rtn_addr, code_ptr, L_01404 - cb        // 20FC  MOVE.L    #<data>,(A0)+
-        b       L_05F30
+        b       move_l_mem_mem_17
+        ori     rtn_addr, code_ptr, move_l_ea_mem_17 - cb  // 20FB  MOVE.L    (d8,PC,Xn),(A0)+
+        b       fea_l_73
+        ori     rtn_addr, code_ptr, move_l_ea_mem_17 - cb  // 20FC  MOVE.L    #<data>,(A0)+
+        b       fea_l_74
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 20FD  MOVE.L    <ea 7.5>,(A0)+   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 20FE  MOVE.L    <ea 7.6>,(A0)+   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 20FF  MOVE.L    <ea 7.7>,(A0)+   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $2100-$213F --------------------------------------------------------
         addco.  data, d0, zero                          // 2100  MOVE.L    D0,-(A0)
-        b       L_01228
+        b       move_l_reg_mem_9
         addco.  data, d1, zero                          // 2101  MOVE.L    D1,-(A0)
-        b       L_01228
+        b       move_l_reg_mem_9
         addco.  data, d2, zero                          // 2102  MOVE.L    D2,-(A0)
-        b       L_01228
+        b       move_l_reg_mem_9
         addco.  data, d3, zero                          // 2103  MOVE.L    D3,-(A0)
-        b       L_01228
+        b       move_l_reg_mem_9
         addco.  data, d4, zero                          // 2104  MOVE.L    D4,-(A0)
-        b       L_01228
+        b       move_l_reg_mem_9
         addco.  data, d5, zero                          // 2105  MOVE.L    D5,-(A0)
-        b       L_01228
+        b       move_l_reg_mem_9
         addco.  data, d6, zero                          // 2106  MOVE.L    D6,-(A0)
-        b       L_01228
+        b       move_l_reg_mem_9
         addco.  data, d7, zero                          // 2107  MOVE.L    D7,-(A0)
-        b       L_01228
+        b       move_l_reg_mem_9
         addco.  data, a0, zero                          // 2108  MOVE.L    A0,-(A0)
-        b       L_01228
+        b       move_l_reg_mem_9
         addco.  data, a1, zero                          // 2109  MOVE.L    A1,-(A0)
-        b       L_01228
+        b       move_l_reg_mem_9
         addco.  data, a2, zero                          // 210A  MOVE.L    A2,-(A0)
-        b       L_01228
+        b       move_l_reg_mem_9
         addco.  data, a3, zero                          // 210B  MOVE.L    A3,-(A0)
-        b       L_01228
+        b       move_l_reg_mem_9
         addco.  data, a4, zero                          // 210C  MOVE.L    A4,-(A0)
-        b       L_01228
+        b       move_l_reg_mem_9
         addco.  data, a5, zero                          // 210D  MOVE.L    A5,-(A0)
-        b       L_01228
+        b       move_l_reg_mem_9
         addco.  data, a6, zero                          // 210E  MOVE.L    A6,-(A0)
-        b       L_01228
+        b       move_l_reg_mem_9
         addco.  data, a7, zero                          // 210F  MOVE.L    A7,-(A0)
-        b       L_01228
+        b       move_l_reg_mem_9
         lwz     data, 0(a0)                             // 2110  MOVE.L    (A0),-(A0)
-        b       L_01224
+        b       move_l_ea_mem_9
         lwz     data, 0(a1)                             // 2111  MOVE.L    (A1),-(A0)
-        b       L_01224
+        b       move_l_ea_mem_9
         lwz     data, 0(a2)                             // 2112  MOVE.L    (A2),-(A0)
-        b       L_01224
+        b       move_l_ea_mem_9
         lwz     data, 0(a3)                             // 2113  MOVE.L    (A3),-(A0)
-        b       L_01224
+        b       move_l_ea_mem_9
         lwz     data, 0(a4)                             // 2114  MOVE.L    (A4),-(A0)
-        b       L_01224
+        b       move_l_ea_mem_9
         lwz     data, 0(a5)                             // 2115  MOVE.L    (A5),-(A0)
-        b       L_01224
+        b       move_l_ea_mem_9
         lwz     data, 0(a6)                             // 2116  MOVE.L    (A6),-(A0)
-        b       L_01224
+        b       move_l_ea_mem_9
         lwz     data, 0(a7)                             // 2117  MOVE.L    (A7),-(A0)
-        b       L_01224
+        b       move_l_ea_mem_9
         lwz     data, 0(a0)                             // 2118  MOVE.L    (A0)+,-(A0)
-        b       L_06144
-        ori     rtn_addr, code_ptr, L_01224 - cb        // 2119  MOVE.L    (A1)+,-(A0)
-        b       L_008D0
-        ori     rtn_addr, code_ptr, L_01224 - cb        // 211A  MOVE.L    (A2)+,-(A0)
-        b       L_00950
-        ori     rtn_addr, code_ptr, L_01224 - cb        // 211B  MOVE.L    (A3)+,-(A0)
-        b       L_009D0
-        ori     rtn_addr, code_ptr, L_01224 - cb        // 211C  MOVE.L    (A4)+,-(A0)
-        b       L_00A50
-        ori     rtn_addr, code_ptr, L_01224 - cb        // 211D  MOVE.L    (A5)+,-(A0)
-        b       L_00AD0
-        ori     rtn_addr, code_ptr, L_01224 - cb        // 211E  MOVE.L    (A6)+,-(A0)
-        b       L_00B50
-        ori     rtn_addr, code_ptr, L_01224 - cb        // 211F  MOVE.L    (A7)+,-(A0)
-        b       L_00BD0
+        b       tst_ea
+        ori     rtn_addr, code_ptr, move_l_ea_mem_9 - cb  // 2119  MOVE.L    (A1)+,-(A0)
+        b       fea_l_31
+        ori     rtn_addr, code_ptr, move_l_ea_mem_9 - cb  // 211A  MOVE.L    (A2)+,-(A0)
+        b       fea_l_32
+        ori     rtn_addr, code_ptr, move_l_ea_mem_9 - cb  // 211B  MOVE.L    (A3)+,-(A0)
+        b       fea_l_33
+        ori     rtn_addr, code_ptr, move_l_ea_mem_9 - cb  // 211C  MOVE.L    (A4)+,-(A0)
+        b       fea_l_34
+        ori     rtn_addr, code_ptr, move_l_ea_mem_9 - cb  // 211D  MOVE.L    (A5)+,-(A0)
+        b       fea_l_35
+        ori     rtn_addr, code_ptr, move_l_ea_mem_9 - cb  // 211E  MOVE.L    (A6)+,-(A0)
+        b       fea_l_36
+        ori     rtn_addr, code_ptr, move_l_ea_mem_9 - cb  // 211F  MOVE.L    (A7)+,-(A0)
+        b       fea_l_37
         lwzu    data, -4(a0)                            // 2120  MOVE.L    -(A0),-(A0)
-        b       L_01224
+        b       move_l_ea_mem_9
         lwzu    data, -4(a1)                            // 2121  MOVE.L    -(A1),-(A0)
-        b       L_01224
+        b       move_l_ea_mem_9
         lwzu    data, -4(a2)                            // 2122  MOVE.L    -(A2),-(A0)
-        b       L_01224
+        b       move_l_ea_mem_9
         lwzu    data, -4(a3)                            // 2123  MOVE.L    -(A3),-(A0)
-        b       L_01224
+        b       move_l_ea_mem_9
         lwzu    data, -4(a4)                            // 2124  MOVE.L    -(A4),-(A0)
-        b       L_01224
+        b       move_l_ea_mem_9
         lwzu    data, -4(a5)                            // 2125  MOVE.L    -(A5),-(A0)
-        b       L_01224
+        b       move_l_ea_mem_9
         lwzu    data, -4(a6)                            // 2126  MOVE.L    -(A6),-(A0)
-        b       L_01224
+        b       move_l_ea_mem_9
         lwzu    data, -4(a7)                            // 2127  MOVE.L    -(A7),-(A0)
-        b       L_01224
+        b       move_l_ea_mem_9
         lwzx    data, a0, prefetch_data                 // 2128  MOVE.L    (d16,A0),-(A0)
-        b       L_01220
+        b       move_l_mem_mem_9
         lwzx    data, a1, prefetch_data                 // 2129  MOVE.L    (d16,A1),-(A0)
-        b       L_01220
+        b       move_l_mem_mem_9
         lwzx    data, a2, prefetch_data                 // 212A  MOVE.L    (d16,A2),-(A0)
-        b       L_01220
+        b       move_l_mem_mem_9
         lwzx    data, a3, prefetch_data                 // 212B  MOVE.L    (d16,A3),-(A0)
-        b       L_01220
+        b       move_l_mem_mem_9
         lwzx    data, a4, prefetch_data                 // 212C  MOVE.L    (d16,A4),-(A0)
-        b       L_01220
+        b       move_l_mem_mem_9
         lwzx    data, a5, prefetch_data                 // 212D  MOVE.L    (d16,A5),-(A0)
-        b       L_01220
+        b       move_l_mem_mem_9
         lwzx    data, a6, prefetch_data                 // 212E  MOVE.L    (d16,A6),-(A0)
-        b       L_01220
+        b       move_l_mem_mem_9
         lwzx    data, a7, prefetch_data                 // 212F  MOVE.L    (d16,A7),-(A0)
-        b       L_01220
-        ori     rtn_addr, code_ptr, L_01224 - cb        // 2130  MOVE.L    (d8,A0,Xn),-(A0)
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_01224 - cb        // 2131  MOVE.L    (d8,A1,Xn),-(A0)
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_01224 - cb        // 2132  MOVE.L    (d8,A2,Xn),-(A0)
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_01224 - cb        // 2133  MOVE.L    (d8,A3,Xn),-(A0)
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_01224 - cb        // 2134  MOVE.L    (d8,A4,Xn),-(A0)
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_01224 - cb        // 2135  MOVE.L    (d8,A5,Xn),-(A0)
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_01224 - cb        // 2136  MOVE.L    (d8,A6,Xn),-(A0)
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_01224 - cb        // 2137  MOVE.L    (d8,A7,Xn),-(A0)
-        b       L_05C68
+        b       move_l_mem_mem_9
+        ori     rtn_addr, code_ptr, move_l_ea_mem_9 - cb  // 2130  MOVE.L    (d8,A0,Xn),-(A0)
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, move_l_ea_mem_9 - cb  // 2131  MOVE.L    (d8,A1,Xn),-(A0)
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, move_l_ea_mem_9 - cb  // 2132  MOVE.L    (d8,A2,Xn),-(A0)
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, move_l_ea_mem_9 - cb  // 2133  MOVE.L    (d8,A3,Xn),-(A0)
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, move_l_ea_mem_9 - cb  // 2134  MOVE.L    (d8,A4,Xn),-(A0)
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, move_l_ea_mem_9 - cb  // 2135  MOVE.L    (d8,A5,Xn),-(A0)
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, move_l_ea_mem_9 - cb  // 2136  MOVE.L    (d8,A6,Xn),-(A0)
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, move_l_ea_mem_9 - cb  // 2137  MOVE.L    (d8,A7,Xn),-(A0)
+        b       move_add_etc_l_any_any_8
         lwz     data, 0(prefetch_data)                  // 2138  MOVE.L    (xxx).W,-(A0)
-        b       L_01220
-        ori     rtn_addr, code_ptr, L_01224 - cb        // 2139  MOVE.L    (xxx).L,-(A0)
-        b       L_05E8C
+        b       move_l_mem_mem_9
+        ori     rtn_addr, code_ptr, move_l_ea_mem_9 - cb  // 2139  MOVE.L    (xxx).L,-(A0)
+        b       fea_l_71_2
         lwzx    data, pc, prefetch_data                 // 213A  MOVE.L    (d16,PC),-(A0)
-        b       L_01220
-        ori     rtn_addr, code_ptr, L_01224 - cb        // 213B  MOVE.L    (d8,PC,Xn),-(A0)
-        b       L_05F08
-        ori     rtn_addr, code_ptr, L_01224 - cb        // 213C  MOVE.L    #<data>,-(A0)
-        b       L_05F30
+        b       move_l_mem_mem_9
+        ori     rtn_addr, code_ptr, move_l_ea_mem_9 - cb  // 213B  MOVE.L    (d8,PC,Xn),-(A0)
+        b       fea_l_73
+        ori     rtn_addr, code_ptr, move_l_ea_mem_9 - cb  // 213C  MOVE.L    #<data>,-(A0)
+        b       fea_l_74
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 213D  MOVE.L    <ea 7.5>,-(A0)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 213E  MOVE.L    <ea 7.6>,-(A0)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 213F  MOVE.L    <ea 7.7>,-(A0)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $2140-$217F --------------------------------------------------------
         addco.  data, d0, zero                          // 2140  MOVE.L    D0,(d16,A0)
-        b       L_0142C
+        b       move_l_reg_mem_17
         addco.  data, d1, zero                          // 2141  MOVE.L    D1,(d16,A0)
-        b       L_0142C
+        b       move_l_reg_mem_17
         addco.  data, d2, zero                          // 2142  MOVE.L    D2,(d16,A0)
-        b       L_0142C
+        b       move_l_reg_mem_17
         addco.  data, d3, zero                          // 2143  MOVE.L    D3,(d16,A0)
-        b       L_0142C
+        b       move_l_reg_mem_17
         addco.  data, d4, zero                          // 2144  MOVE.L    D4,(d16,A0)
-        b       L_0142C
+        b       move_l_reg_mem_17
         addco.  data, d5, zero                          // 2145  MOVE.L    D5,(d16,A0)
-        b       L_0142C
+        b       move_l_reg_mem_17
         addco.  data, d6, zero                          // 2146  MOVE.L    D6,(d16,A0)
-        b       L_0142C
+        b       move_l_reg_mem_17
         addco.  data, d7, zero                          // 2147  MOVE.L    D7,(d16,A0)
-        b       L_0142C
+        b       move_l_reg_mem_17
         addco.  data, a0, zero                          // 2148  MOVE.L    A0,(d16,A0)
-        b       L_0142C
+        b       move_l_reg_mem_17
         addco.  data, a1, zero                          // 2149  MOVE.L    A1,(d16,A0)
-        b       L_0142C
+        b       move_l_reg_mem_17
         addco.  data, a2, zero                          // 214A  MOVE.L    A2,(d16,A0)
-        b       L_0142C
+        b       move_l_reg_mem_17
         addco.  data, a3, zero                          // 214B  MOVE.L    A3,(d16,A0)
-        b       L_0142C
+        b       move_l_reg_mem_17
         addco.  data, a4, zero                          // 214C  MOVE.L    A4,(d16,A0)
-        b       L_0142C
+        b       move_l_reg_mem_17
         addco.  data, a5, zero                          // 214D  MOVE.L    A5,(d16,A0)
-        b       L_0142C
+        b       move_l_reg_mem_17
         addco.  data, a6, zero                          // 214E  MOVE.L    A6,(d16,A0)
-        b       L_0142C
+        b       move_l_reg_mem_17
         addco.  data, a7, zero                          // 214F  MOVE.L    A7,(d16,A0)
-        b       L_0142C
+        b       move_l_reg_mem_17
         lwz     data, 0(a0)                             // 2150  MOVE.L    (A0),(d16,A0)
-        b       L_01428
+        b       move_l_ea_mem_18
         lwz     data, 0(a1)                             // 2151  MOVE.L    (A1),(d16,A0)
-        b       L_01428
+        b       move_l_ea_mem_18
         lwz     data, 0(a2)                             // 2152  MOVE.L    (A2),(d16,A0)
-        b       L_01428
+        b       move_l_ea_mem_18
         lwz     data, 0(a3)                             // 2153  MOVE.L    (A3),(d16,A0)
-        b       L_01428
+        b       move_l_ea_mem_18
         lwz     data, 0(a4)                             // 2154  MOVE.L    (A4),(d16,A0)
-        b       L_01428
+        b       move_l_ea_mem_18
         lwz     data, 0(a5)                             // 2155  MOVE.L    (A5),(d16,A0)
-        b       L_01428
+        b       move_l_ea_mem_18
         lwz     data, 0(a6)                             // 2156  MOVE.L    (A6),(d16,A0)
-        b       L_01428
+        b       move_l_ea_mem_18
         lwz     data, 0(a7)                             // 2157  MOVE.L    (A7),(d16,A0)
-        b       L_01428
-        ori     rtn_addr, code_ptr, L_01428 - cb        // 2158  MOVE.L    (A0)+,(d16,A0)
-        b       L_00850
-        ori     rtn_addr, code_ptr, L_01428 - cb        // 2159  MOVE.L    (A1)+,(d16,A0)
-        b       L_008D0
-        ori     rtn_addr, code_ptr, L_01428 - cb        // 215A  MOVE.L    (A2)+,(d16,A0)
-        b       L_00950
-        ori     rtn_addr, code_ptr, L_01428 - cb        // 215B  MOVE.L    (A3)+,(d16,A0)
-        b       L_009D0
-        ori     rtn_addr, code_ptr, L_01428 - cb        // 215C  MOVE.L    (A4)+,(d16,A0)
-        b       L_00A50
-        ori     rtn_addr, code_ptr, L_01428 - cb        // 215D  MOVE.L    (A5)+,(d16,A0)
-        b       L_00AD0
-        ori     rtn_addr, code_ptr, L_01428 - cb        // 215E  MOVE.L    (A6)+,(d16,A0)
-        b       L_00B50
-        ori     rtn_addr, code_ptr, L_01428 - cb        // 215F  MOVE.L    (A7)+,(d16,A0)
-        b       L_00BD0
+        b       move_l_ea_mem_18
+        ori     rtn_addr, code_ptr, move_l_ea_mem_18 - cb  // 2158  MOVE.L    (A0)+,(d16,A0)
+        b       fea_l_30
+        ori     rtn_addr, code_ptr, move_l_ea_mem_18 - cb  // 2159  MOVE.L    (A1)+,(d16,A0)
+        b       fea_l_31
+        ori     rtn_addr, code_ptr, move_l_ea_mem_18 - cb  // 215A  MOVE.L    (A2)+,(d16,A0)
+        b       fea_l_32
+        ori     rtn_addr, code_ptr, move_l_ea_mem_18 - cb  // 215B  MOVE.L    (A3)+,(d16,A0)
+        b       fea_l_33
+        ori     rtn_addr, code_ptr, move_l_ea_mem_18 - cb  // 215C  MOVE.L    (A4)+,(d16,A0)
+        b       fea_l_34
+        ori     rtn_addr, code_ptr, move_l_ea_mem_18 - cb  // 215D  MOVE.L    (A5)+,(d16,A0)
+        b       fea_l_35
+        ori     rtn_addr, code_ptr, move_l_ea_mem_18 - cb  // 215E  MOVE.L    (A6)+,(d16,A0)
+        b       fea_l_36
+        ori     rtn_addr, code_ptr, move_l_ea_mem_18 - cb  // 215F  MOVE.L    (A7)+,(d16,A0)
+        b       fea_l_37
         lwzu    data, -4(a0)                            // 2160  MOVE.L    -(A0),(d16,A0)
-        b       L_01428
+        b       move_l_ea_mem_18
         lwzu    data, -4(a1)                            // 2161  MOVE.L    -(A1),(d16,A0)
-        b       L_01428
+        b       move_l_ea_mem_18
         lwzu    data, -4(a2)                            // 2162  MOVE.L    -(A2),(d16,A0)
-        b       L_01428
+        b       move_l_ea_mem_18
         lwzu    data, -4(a3)                            // 2163  MOVE.L    -(A3),(d16,A0)
-        b       L_01428
+        b       move_l_ea_mem_18
         lwzu    data, -4(a4)                            // 2164  MOVE.L    -(A4),(d16,A0)
-        b       L_01428
+        b       move_l_ea_mem_18
         lwzu    data, -4(a5)                            // 2165  MOVE.L    -(A5),(d16,A0)
-        b       L_01428
+        b       move_l_ea_mem_18
         lwzu    data, -4(a6)                            // 2166  MOVE.L    -(A6),(d16,A0)
-        b       L_01428
+        b       move_l_ea_mem_18
         lwzu    data, -4(a7)                            // 2167  MOVE.L    -(A7),(d16,A0)
-        b       L_01428
+        b       move_l_ea_mem_18
         lwzx    data, a0, prefetch_data                 // 2168  MOVE.L    (d16,A0),(d16,A0)
-        b       L_01424
+        b       move_l_mem_mem_18
         lwzx    data, a1, prefetch_data                 // 2169  MOVE.L    (d16,A1),(d16,A0)
-        b       L_01424
+        b       move_l_mem_mem_18
         lwzx    data, a2, prefetch_data                 // 216A  MOVE.L    (d16,A2),(d16,A0)
-        b       L_01424
+        b       move_l_mem_mem_18
         lwzx    data, a3, prefetch_data                 // 216B  MOVE.L    (d16,A3),(d16,A0)
-        b       L_01424
+        b       move_l_mem_mem_18
         lwzx    data, a4, prefetch_data                 // 216C  MOVE.L    (d16,A4),(d16,A0)
-        b       L_01424
+        b       move_l_mem_mem_18
         lwzx    data, a5, prefetch_data                 // 216D  MOVE.L    (d16,A5),(d16,A0)
-        b       L_01424
+        b       move_l_mem_mem_18
         lwzx    data, a6, prefetch_data                 // 216E  MOVE.L    (d16,A6),(d16,A0)
-        b       L_01424
+        b       move_l_mem_mem_18
         lwzx    data, a7, prefetch_data                 // 216F  MOVE.L    (d16,A7),(d16,A0)
-        b       L_01424
-        ori     rtn_addr, code_ptr, L_01428 - cb        // 2170  MOVE.L    (d8,A0,Xn),(d16,A0)
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_01428 - cb        // 2171  MOVE.L    (d8,A1,Xn),(d16,A0)
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_01428 - cb        // 2172  MOVE.L    (d8,A2,Xn),(d16,A0)
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_01428 - cb        // 2173  MOVE.L    (d8,A3,Xn),(d16,A0)
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_01428 - cb        // 2174  MOVE.L    (d8,A4,Xn),(d16,A0)
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_01428 - cb        // 2175  MOVE.L    (d8,A5,Xn),(d16,A0)
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_01428 - cb        // 2176  MOVE.L    (d8,A6,Xn),(d16,A0)
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_01428 - cb        // 2177  MOVE.L    (d8,A7,Xn),(d16,A0)
-        b       L_05C68
+        b       move_l_mem_mem_18
+        ori     rtn_addr, code_ptr, move_l_ea_mem_18 - cb  // 2170  MOVE.L    (d8,A0,Xn),(d16,A0)
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, move_l_ea_mem_18 - cb  // 2171  MOVE.L    (d8,A1,Xn),(d16,A0)
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, move_l_ea_mem_18 - cb  // 2172  MOVE.L    (d8,A2,Xn),(d16,A0)
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, move_l_ea_mem_18 - cb  // 2173  MOVE.L    (d8,A3,Xn),(d16,A0)
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, move_l_ea_mem_18 - cb  // 2174  MOVE.L    (d8,A4,Xn),(d16,A0)
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, move_l_ea_mem_18 - cb  // 2175  MOVE.L    (d8,A5,Xn),(d16,A0)
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, move_l_ea_mem_18 - cb  // 2176  MOVE.L    (d8,A6,Xn),(d16,A0)
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, move_l_ea_mem_18 - cb  // 2177  MOVE.L    (d8,A7,Xn),(d16,A0)
+        b       move_add_etc_l_any_any_8
         lwz     data, 0(prefetch_data)                  // 2178  MOVE.L    (xxx).W,(d16,A0)
-        b       L_01424
-        ori     rtn_addr, code_ptr, L_01428 - cb        // 2179  MOVE.L    (xxx).L,(d16,A0)
-        b       L_05E8C
+        b       move_l_mem_mem_18
+        ori     rtn_addr, code_ptr, move_l_ea_mem_18 - cb  // 2179  MOVE.L    (xxx).L,(d16,A0)
+        b       fea_l_71_2
         lwzx    data, pc, prefetch_data                 // 217A  MOVE.L    (d16,PC),(d16,A0)
-        b       L_01424
-        ori     rtn_addr, code_ptr, L_01428 - cb        // 217B  MOVE.L    (d8,PC,Xn),(d16,A0)
-        b       L_05F08
-        ori     rtn_addr, code_ptr, L_01428 - cb        // 217C  MOVE.L    #<data>,(d16,A0)
-        b       L_05F30
+        b       move_l_mem_mem_18
+        ori     rtn_addr, code_ptr, move_l_ea_mem_18 - cb  // 217B  MOVE.L    (d8,PC,Xn),(d16,A0)
+        b       fea_l_73
+        ori     rtn_addr, code_ptr, move_l_ea_mem_18 - cb  // 217C  MOVE.L    #<data>,(d16,A0)
+        b       fea_l_74
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 217D  MOVE.L    <ea 7.5>,(d16,A0)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 217E  MOVE.L    <ea 7.6>,(d16,A0)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 217F  MOVE.L    <ea 7.7>,(d16,A0)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $2180-$21BF --------------------------------------------------------
         addco.  data, d0, zero                          // 2180  MOVE.L    D0,(d8,A0,Xn)
-        b       L_01450
+        b       move_clr_l_reg_mem_2
         addco.  data, d1, zero                          // 2181  MOVE.L    D1,(d8,A0,Xn)
-        b       L_01450
+        b       move_clr_l_reg_mem_2
         addco.  data, d2, zero                          // 2182  MOVE.L    D2,(d8,A0,Xn)
-        b       L_01450
+        b       move_clr_l_reg_mem_2
         addco.  data, d3, zero                          // 2183  MOVE.L    D3,(d8,A0,Xn)
-        b       L_01450
+        b       move_clr_l_reg_mem_2
         addco.  data, d4, zero                          // 2184  MOVE.L    D4,(d8,A0,Xn)
-        b       L_01450
+        b       move_clr_l_reg_mem_2
         addco.  data, d5, zero                          // 2185  MOVE.L    D5,(d8,A0,Xn)
-        b       L_01450
+        b       move_clr_l_reg_mem_2
         addco.  data, d6, zero                          // 2186  MOVE.L    D6,(d8,A0,Xn)
-        b       L_01450
+        b       move_clr_l_reg_mem_2
         addco.  data, d7, zero                          // 2187  MOVE.L    D7,(d8,A0,Xn)
-        b       L_01450
+        b       move_clr_l_reg_mem_2
         addco.  data, a0, zero                          // 2188  MOVE.L    A0,(d8,A0,Xn)
-        b       L_01450
+        b       move_clr_l_reg_mem_2
         addco.  data, a1, zero                          // 2189  MOVE.L    A1,(d8,A0,Xn)
-        b       L_01450
+        b       move_clr_l_reg_mem_2
         addco.  data, a2, zero                          // 218A  MOVE.L    A2,(d8,A0,Xn)
-        b       L_01450
+        b       move_clr_l_reg_mem_2
         addco.  data, a3, zero                          // 218B  MOVE.L    A3,(d8,A0,Xn)
-        b       L_01450
+        b       move_clr_l_reg_mem_2
         addco.  data, a4, zero                          // 218C  MOVE.L    A4,(d8,A0,Xn)
-        b       L_01450
+        b       move_clr_l_reg_mem_2
         addco.  data, a5, zero                          // 218D  MOVE.L    A5,(d8,A0,Xn)
-        b       L_01450
+        b       move_clr_l_reg_mem_2
         addco.  data, a6, zero                          // 218E  MOVE.L    A6,(d8,A0,Xn)
-        b       L_01450
+        b       move_clr_l_reg_mem_2
         addco.  data, a7, zero                          // 218F  MOVE.L    A7,(d8,A0,Xn)
-        b       L_01450
+        b       move_clr_l_reg_mem_2
         lwz     data, 0(a0)                             // 2190  MOVE.L    (A0),(d8,A0,Xn)
-        b       L_0144C
+        b       move_l_ea_mem_19
         lwz     data, 0(a1)                             // 2191  MOVE.L    (A1),(d8,A0,Xn)
-        b       L_0144C
+        b       move_l_ea_mem_19
         lwz     data, 0(a2)                             // 2192  MOVE.L    (A2),(d8,A0,Xn)
-        b       L_0144C
+        b       move_l_ea_mem_19
         lwz     data, 0(a3)                             // 2193  MOVE.L    (A3),(d8,A0,Xn)
-        b       L_0144C
+        b       move_l_ea_mem_19
         lwz     data, 0(a4)                             // 2194  MOVE.L    (A4),(d8,A0,Xn)
-        b       L_0144C
+        b       move_l_ea_mem_19
         lwz     data, 0(a5)                             // 2195  MOVE.L    (A5),(d8,A0,Xn)
-        b       L_0144C
+        b       move_l_ea_mem_19
         lwz     data, 0(a6)                             // 2196  MOVE.L    (A6),(d8,A0,Xn)
-        b       L_0144C
+        b       move_l_ea_mem_19
         lwz     data, 0(a7)                             // 2197  MOVE.L    (A7),(d8,A0,Xn)
-        b       L_0144C
-        ori     rtn_addr, code_ptr, L_0144C - cb        // 2198  MOVE.L    (A0)+,(d8,A0,Xn)
-        b       L_00850
-        ori     rtn_addr, code_ptr, L_0144C - cb        // 2199  MOVE.L    (A1)+,(d8,A0,Xn)
-        b       L_008D0
-        ori     rtn_addr, code_ptr, L_0144C - cb        // 219A  MOVE.L    (A2)+,(d8,A0,Xn)
-        b       L_00950
-        ori     rtn_addr, code_ptr, L_0144C - cb        // 219B  MOVE.L    (A3)+,(d8,A0,Xn)
-        b       L_009D0
-        ori     rtn_addr, code_ptr, L_0144C - cb        // 219C  MOVE.L    (A4)+,(d8,A0,Xn)
-        b       L_00A50
-        ori     rtn_addr, code_ptr, L_0144C - cb        // 219D  MOVE.L    (A5)+,(d8,A0,Xn)
-        b       L_00AD0
-        ori     rtn_addr, code_ptr, L_0144C - cb        // 219E  MOVE.L    (A6)+,(d8,A0,Xn)
-        b       L_00B50
-        ori     rtn_addr, code_ptr, L_0144C - cb        // 219F  MOVE.L    (A7)+,(d8,A0,Xn)
-        b       L_00BD0
+        b       move_l_ea_mem_19
+        ori     rtn_addr, code_ptr, move_l_ea_mem_19 - cb  // 2198  MOVE.L    (A0)+,(d8,A0,Xn)
+        b       fea_l_30
+        ori     rtn_addr, code_ptr, move_l_ea_mem_19 - cb  // 2199  MOVE.L    (A1)+,(d8,A0,Xn)
+        b       fea_l_31
+        ori     rtn_addr, code_ptr, move_l_ea_mem_19 - cb  // 219A  MOVE.L    (A2)+,(d8,A0,Xn)
+        b       fea_l_32
+        ori     rtn_addr, code_ptr, move_l_ea_mem_19 - cb  // 219B  MOVE.L    (A3)+,(d8,A0,Xn)
+        b       fea_l_33
+        ori     rtn_addr, code_ptr, move_l_ea_mem_19 - cb  // 219C  MOVE.L    (A4)+,(d8,A0,Xn)
+        b       fea_l_34
+        ori     rtn_addr, code_ptr, move_l_ea_mem_19 - cb  // 219D  MOVE.L    (A5)+,(d8,A0,Xn)
+        b       fea_l_35
+        ori     rtn_addr, code_ptr, move_l_ea_mem_19 - cb  // 219E  MOVE.L    (A6)+,(d8,A0,Xn)
+        b       fea_l_36
+        ori     rtn_addr, code_ptr, move_l_ea_mem_19 - cb  // 219F  MOVE.L    (A7)+,(d8,A0,Xn)
+        b       fea_l_37
         lwzu    data, -4(a0)                            // 21A0  MOVE.L    -(A0),(d8,A0,Xn)
-        b       L_0144C
+        b       move_l_ea_mem_19
         lwzu    data, -4(a1)                            // 21A1  MOVE.L    -(A1),(d8,A0,Xn)
-        b       L_0144C
+        b       move_l_ea_mem_19
         lwzu    data, -4(a2)                            // 21A2  MOVE.L    -(A2),(d8,A0,Xn)
-        b       L_0144C
+        b       move_l_ea_mem_19
         lwzu    data, -4(a3)                            // 21A3  MOVE.L    -(A3),(d8,A0,Xn)
-        b       L_0144C
+        b       move_l_ea_mem_19
         lwzu    data, -4(a4)                            // 21A4  MOVE.L    -(A4),(d8,A0,Xn)
-        b       L_0144C
+        b       move_l_ea_mem_19
         lwzu    data, -4(a5)                            // 21A5  MOVE.L    -(A5),(d8,A0,Xn)
-        b       L_0144C
+        b       move_l_ea_mem_19
         lwzu    data, -4(a6)                            // 21A6  MOVE.L    -(A6),(d8,A0,Xn)
-        b       L_0144C
+        b       move_l_ea_mem_19
         lwzu    data, -4(a7)                            // 21A7  MOVE.L    -(A7),(d8,A0,Xn)
-        b       L_0144C
+        b       move_l_ea_mem_19
         lwzx    data, a0, prefetch_data                 // 21A8  MOVE.L    (d16,A0),(d8,A0,Xn)
-        b       L_01448
+        b       move_l_mem_mem_19
         lwzx    data, a1, prefetch_data                 // 21A9  MOVE.L    (d16,A1),(d8,A0,Xn)
-        b       L_01448
+        b       move_l_mem_mem_19
         lwzx    data, a2, prefetch_data                 // 21AA  MOVE.L    (d16,A2),(d8,A0,Xn)
-        b       L_01448
+        b       move_l_mem_mem_19
         lwzx    data, a3, prefetch_data                 // 21AB  MOVE.L    (d16,A3),(d8,A0,Xn)
-        b       L_01448
+        b       move_l_mem_mem_19
         lwzx    data, a4, prefetch_data                 // 21AC  MOVE.L    (d16,A4),(d8,A0,Xn)
-        b       L_01448
+        b       move_l_mem_mem_19
         lwzx    data, a5, prefetch_data                 // 21AD  MOVE.L    (d16,A5),(d8,A0,Xn)
-        b       L_01448
+        b       move_l_mem_mem_19
         lwzx    data, a6, prefetch_data                 // 21AE  MOVE.L    (d16,A6),(d8,A0,Xn)
-        b       L_01448
+        b       move_l_mem_mem_19
         lwzx    data, a7, prefetch_data                 // 21AF  MOVE.L    (d16,A7),(d8,A0,Xn)
-        b       L_01448
-        ori     rtn_addr, code_ptr, L_0144C - cb        // 21B0  MOVE.L    (d8,A0,Xn),(d8,A0,Xn)
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_0144C - cb        // 21B1  MOVE.L    (d8,A1,Xn),(d8,A0,Xn)
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_0144C - cb        // 21B2  MOVE.L    (d8,A2,Xn),(d8,A0,Xn)
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_0144C - cb        // 21B3  MOVE.L    (d8,A3,Xn),(d8,A0,Xn)
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_0144C - cb        // 21B4  MOVE.L    (d8,A4,Xn),(d8,A0,Xn)
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_0144C - cb        // 21B5  MOVE.L    (d8,A5,Xn),(d8,A0,Xn)
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_0144C - cb        // 21B6  MOVE.L    (d8,A6,Xn),(d8,A0,Xn)
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_0144C - cb        // 21B7  MOVE.L    (d8,A7,Xn),(d8,A0,Xn)
-        b       L_05C68
+        b       move_l_mem_mem_19
+        ori     rtn_addr, code_ptr, move_l_ea_mem_19 - cb  // 21B0  MOVE.L    (d8,A0,Xn),(d8,A0,Xn)
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, move_l_ea_mem_19 - cb  // 21B1  MOVE.L    (d8,A1,Xn),(d8,A0,Xn)
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, move_l_ea_mem_19 - cb  // 21B2  MOVE.L    (d8,A2,Xn),(d8,A0,Xn)
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, move_l_ea_mem_19 - cb  // 21B3  MOVE.L    (d8,A3,Xn),(d8,A0,Xn)
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, move_l_ea_mem_19 - cb  // 21B4  MOVE.L    (d8,A4,Xn),(d8,A0,Xn)
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, move_l_ea_mem_19 - cb  // 21B5  MOVE.L    (d8,A5,Xn),(d8,A0,Xn)
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, move_l_ea_mem_19 - cb  // 21B6  MOVE.L    (d8,A6,Xn),(d8,A0,Xn)
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, move_l_ea_mem_19 - cb  // 21B7  MOVE.L    (d8,A7,Xn),(d8,A0,Xn)
+        b       move_add_etc_l_any_any_8
         lwz     data, 0(prefetch_data)                  // 21B8  MOVE.L    (xxx).W,(d8,A0,Xn)
-        b       L_01448
-        ori     rtn_addr, code_ptr, L_0144C - cb        // 21B9  MOVE.L    (xxx).L,(d8,A0,Xn)
-        b       L_05E8C
+        b       move_l_mem_mem_19
+        ori     rtn_addr, code_ptr, move_l_ea_mem_19 - cb  // 21B9  MOVE.L    (xxx).L,(d8,A0,Xn)
+        b       fea_l_71_2
         lwzx    data, pc, prefetch_data                 // 21BA  MOVE.L    (d16,PC),(d8,A0,Xn)
-        b       L_01448
-        ori     rtn_addr, code_ptr, L_0144C - cb        // 21BB  MOVE.L    (d8,PC,Xn),(d8,A0,Xn)
-        b       L_05F08
-        ori     rtn_addr, code_ptr, L_0144C - cb        // 21BC  MOVE.L    #<data>,(d8,A0,Xn)
-        b       L_05F30
+        b       move_l_mem_mem_19
+        ori     rtn_addr, code_ptr, move_l_ea_mem_19 - cb  // 21BB  MOVE.L    (d8,PC,Xn),(d8,A0,Xn)
+        b       fea_l_73
+        ori     rtn_addr, code_ptr, move_l_ea_mem_19 - cb  // 21BC  MOVE.L    #<data>,(d8,A0,Xn)
+        b       fea_l_74
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 21BD  MOVE.L    <ea 7.5>,(d8,A0,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 21BE  MOVE.L    <ea 7.6>,(d8,A0,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 21BF  MOVE.L    <ea 7.7>,(d8,A0,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $21C0-$21FF --------------------------------------------------------
         addco.  data, d0, zero                          // 21C0  MOVE.L    D0,(xxx).W
-        b       L_062A4
+        b       move_l_reg_mem_25
         addco.  data, d1, zero                          // 21C1  MOVE.L    D1,(xxx).W
-        b       L_062A4
+        b       move_l_reg_mem_25
         addco.  data, d2, zero                          // 21C2  MOVE.L    D2,(xxx).W
-        b       L_062A4
+        b       move_l_reg_mem_25
         addco.  data, d3, zero                          // 21C3  MOVE.L    D3,(xxx).W
-        b       L_062A4
+        b       move_l_reg_mem_25
         addco.  data, d4, zero                          // 21C4  MOVE.L    D4,(xxx).W
-        b       L_062A4
+        b       move_l_reg_mem_25
         addco.  data, d5, zero                          // 21C5  MOVE.L    D5,(xxx).W
-        b       L_062A4
+        b       move_l_reg_mem_25
         addco.  data, d6, zero                          // 21C6  MOVE.L    D6,(xxx).W
-        b       L_062A4
+        b       move_l_reg_mem_25
         addco.  data, d7, zero                          // 21C7  MOVE.L    D7,(xxx).W
-        b       L_062A4
+        b       move_l_reg_mem_25
         addco.  data, a0, zero                          // 21C8  MOVE.L    A0,(xxx).W
-        b       L_062A4
+        b       move_l_reg_mem_25
         addco.  data, a1, zero                          // 21C9  MOVE.L    A1,(xxx).W
-        b       L_062A4
+        b       move_l_reg_mem_25
         addco.  data, a2, zero                          // 21CA  MOVE.L    A2,(xxx).W
-        b       L_062A4
+        b       move_l_reg_mem_25
         addco.  data, a3, zero                          // 21CB  MOVE.L    A3,(xxx).W
-        b       L_062A4
+        b       move_l_reg_mem_25
         addco.  data, a4, zero                          // 21CC  MOVE.L    A4,(xxx).W
-        b       L_062A4
+        b       move_l_reg_mem_25
         addco.  data, a5, zero                          // 21CD  MOVE.L    A5,(xxx).W
-        b       L_062A4
+        b       move_l_reg_mem_25
         addco.  data, a6, zero                          // 21CE  MOVE.L    A6,(xxx).W
-        b       L_062A4
+        b       move_l_reg_mem_25
         addco.  data, a7, zero                          // 21CF  MOVE.L    A7,(xxx).W
-        b       L_062A4
+        b       move_l_reg_mem_25
         lwz     data, 0(a0)                             // 21D0  MOVE.L    (A0),(xxx).W
-        b       L_062A0
+        b       move_l_ea_mem_41
         lwz     data, 0(a1)                             // 21D1  MOVE.L    (A1),(xxx).W
-        b       L_062A0
+        b       move_l_ea_mem_41
         lwz     data, 0(a2)                             // 21D2  MOVE.L    (A2),(xxx).W
-        b       L_062A0
+        b       move_l_ea_mem_41
         lwz     data, 0(a3)                             // 21D3  MOVE.L    (A3),(xxx).W
-        b       L_062A0
+        b       move_l_ea_mem_41
         lwz     data, 0(a4)                             // 21D4  MOVE.L    (A4),(xxx).W
-        b       L_062A0
+        b       move_l_ea_mem_41
         lwz     data, 0(a5)                             // 21D5  MOVE.L    (A5),(xxx).W
-        b       L_062A0
+        b       move_l_ea_mem_41
         lwz     data, 0(a6)                             // 21D6  MOVE.L    (A6),(xxx).W
-        b       L_062A0
+        b       move_l_ea_mem_41
         lwz     data, 0(a7)                             // 21D7  MOVE.L    (A7),(xxx).W
-        b       L_062A0
-        ori     rtn_addr, code_ptr, L_062A0 - cb        // 21D8  MOVE.L    (A0)+,(xxx).W
-        b       L_00850
-        ori     rtn_addr, code_ptr, L_062A0 - cb        // 21D9  MOVE.L    (A1)+,(xxx).W
-        b       L_008D0
-        ori     rtn_addr, code_ptr, L_062A0 - cb        // 21DA  MOVE.L    (A2)+,(xxx).W
-        b       L_00950
-        ori     rtn_addr, code_ptr, L_062A0 - cb        // 21DB  MOVE.L    (A3)+,(xxx).W
-        b       L_009D0
-        ori     rtn_addr, code_ptr, L_062A0 - cb        // 21DC  MOVE.L    (A4)+,(xxx).W
-        b       L_00A50
-        ori     rtn_addr, code_ptr, L_062A0 - cb        // 21DD  MOVE.L    (A5)+,(xxx).W
-        b       L_00AD0
-        ori     rtn_addr, code_ptr, L_062A0 - cb        // 21DE  MOVE.L    (A6)+,(xxx).W
-        b       L_00B50
-        ori     rtn_addr, code_ptr, L_062A0 - cb        // 21DF  MOVE.L    (A7)+,(xxx).W
-        b       L_00BD0
+        b       move_l_ea_mem_41
+        ori     rtn_addr, code_ptr, move_l_ea_mem_41 - cb  // 21D8  MOVE.L    (A0)+,(xxx).W
+        b       fea_l_30
+        ori     rtn_addr, code_ptr, move_l_ea_mem_41 - cb  // 21D9  MOVE.L    (A1)+,(xxx).W
+        b       fea_l_31
+        ori     rtn_addr, code_ptr, move_l_ea_mem_41 - cb  // 21DA  MOVE.L    (A2)+,(xxx).W
+        b       fea_l_32
+        ori     rtn_addr, code_ptr, move_l_ea_mem_41 - cb  // 21DB  MOVE.L    (A3)+,(xxx).W
+        b       fea_l_33
+        ori     rtn_addr, code_ptr, move_l_ea_mem_41 - cb  // 21DC  MOVE.L    (A4)+,(xxx).W
+        b       fea_l_34
+        ori     rtn_addr, code_ptr, move_l_ea_mem_41 - cb  // 21DD  MOVE.L    (A5)+,(xxx).W
+        b       fea_l_35
+        ori     rtn_addr, code_ptr, move_l_ea_mem_41 - cb  // 21DE  MOVE.L    (A6)+,(xxx).W
+        b       fea_l_36
+        ori     rtn_addr, code_ptr, move_l_ea_mem_41 - cb  // 21DF  MOVE.L    (A7)+,(xxx).W
+        b       fea_l_37
         lwzu    data, -4(a0)                            // 21E0  MOVE.L    -(A0),(xxx).W
-        b       L_062A0
+        b       move_l_ea_mem_41
         lwzu    data, -4(a1)                            // 21E1  MOVE.L    -(A1),(xxx).W
-        b       L_062A0
+        b       move_l_ea_mem_41
         lwzu    data, -4(a2)                            // 21E2  MOVE.L    -(A2),(xxx).W
-        b       L_062A0
+        b       move_l_ea_mem_41
         lwzu    data, -4(a3)                            // 21E3  MOVE.L    -(A3),(xxx).W
-        b       L_062A0
+        b       move_l_ea_mem_41
         lwzu    data, -4(a4)                            // 21E4  MOVE.L    -(A4),(xxx).W
-        b       L_062A0
+        b       move_l_ea_mem_41
         lwzu    data, -4(a5)                            // 21E5  MOVE.L    -(A5),(xxx).W
-        b       L_062A0
+        b       move_l_ea_mem_41
         lwzu    data, -4(a6)                            // 21E6  MOVE.L    -(A6),(xxx).W
-        b       L_062A0
+        b       move_l_ea_mem_41
         lwzu    data, -4(a7)                            // 21E7  MOVE.L    -(A7),(xxx).W
-        b       L_062A0
+        b       move_l_ea_mem_41
         lwzx    data, a0, prefetch_data                 // 21E8  MOVE.L    (d16,A0),(xxx).W
-        b       L_0629C
+        b       move_l_mem_mem_41
         lwzx    data, a1, prefetch_data                 // 21E9  MOVE.L    (d16,A1),(xxx).W
-        b       L_0629C
+        b       move_l_mem_mem_41
         lwzx    data, a2, prefetch_data                 // 21EA  MOVE.L    (d16,A2),(xxx).W
-        b       L_0629C
+        b       move_l_mem_mem_41
         lwzx    data, a3, prefetch_data                 // 21EB  MOVE.L    (d16,A3),(xxx).W
-        b       L_0629C
+        b       move_l_mem_mem_41
         lwzx    data, a4, prefetch_data                 // 21EC  MOVE.L    (d16,A4),(xxx).W
-        b       L_0629C
+        b       move_l_mem_mem_41
         lwzx    data, a5, prefetch_data                 // 21ED  MOVE.L    (d16,A5),(xxx).W
-        b       L_0629C
+        b       move_l_mem_mem_41
         lwzx    data, a6, prefetch_data                 // 21EE  MOVE.L    (d16,A6),(xxx).W
-        b       L_0629C
+        b       move_l_mem_mem_41
         lwzx    data, a7, prefetch_data                 // 21EF  MOVE.L    (d16,A7),(xxx).W
-        b       L_0629C
-        ori     rtn_addr, code_ptr, L_062A0 - cb        // 21F0  MOVE.L    (d8,A0,Xn),(xxx).W
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_062A0 - cb        // 21F1  MOVE.L    (d8,A1,Xn),(xxx).W
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_062A0 - cb        // 21F2  MOVE.L    (d8,A2,Xn),(xxx).W
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_062A0 - cb        // 21F3  MOVE.L    (d8,A3,Xn),(xxx).W
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_062A0 - cb        // 21F4  MOVE.L    (d8,A4,Xn),(xxx).W
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_062A0 - cb        // 21F5  MOVE.L    (d8,A5,Xn),(xxx).W
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_062A0 - cb        // 21F6  MOVE.L    (d8,A6,Xn),(xxx).W
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_062A0 - cb        // 21F7  MOVE.L    (d8,A7,Xn),(xxx).W
-        b       L_05C68
+        b       move_l_mem_mem_41
+        ori     rtn_addr, code_ptr, move_l_ea_mem_41 - cb  // 21F0  MOVE.L    (d8,A0,Xn),(xxx).W
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, move_l_ea_mem_41 - cb  // 21F1  MOVE.L    (d8,A1,Xn),(xxx).W
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, move_l_ea_mem_41 - cb  // 21F2  MOVE.L    (d8,A2,Xn),(xxx).W
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, move_l_ea_mem_41 - cb  // 21F3  MOVE.L    (d8,A3,Xn),(xxx).W
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, move_l_ea_mem_41 - cb  // 21F4  MOVE.L    (d8,A4,Xn),(xxx).W
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, move_l_ea_mem_41 - cb  // 21F5  MOVE.L    (d8,A5,Xn),(xxx).W
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, move_l_ea_mem_41 - cb  // 21F6  MOVE.L    (d8,A6,Xn),(xxx).W
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, move_l_ea_mem_41 - cb  // 21F7  MOVE.L    (d8,A7,Xn),(xxx).W
+        b       move_add_etc_l_any_any_8
         lwz     data, 0(prefetch_data)                  // 21F8  MOVE.L    (xxx).W,(xxx).W
-        b       L_0629C
-        ori     rtn_addr, code_ptr, L_062A0 - cb        // 21F9  MOVE.L    (xxx).L,(xxx).W
-        b       L_05E8C
+        b       move_l_mem_mem_41
+        ori     rtn_addr, code_ptr, move_l_ea_mem_41 - cb  // 21F9  MOVE.L    (xxx).L,(xxx).W
+        b       fea_l_71_2
         lwzx    data, pc, prefetch_data                 // 21FA  MOVE.L    (d16,PC),(xxx).W
-        b       L_0629C
-        ori     rtn_addr, code_ptr, L_062A0 - cb        // 21FB  MOVE.L    (d8,PC,Xn),(xxx).W
-        b       L_05F08
-        ori     rtn_addr, code_ptr, L_062A0 - cb        // 21FC  MOVE.L    #<data>,(xxx).W
-        b       L_05F30
+        b       move_l_mem_mem_41
+        ori     rtn_addr, code_ptr, move_l_ea_mem_41 - cb  // 21FB  MOVE.L    (d8,PC,Xn),(xxx).W
+        b       fea_l_73
+        ori     rtn_addr, code_ptr, move_l_ea_mem_41 - cb  // 21FC  MOVE.L    #<data>,(xxx).W
+        b       fea_l_74
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 21FD  MOVE.L    <ea 7.5>,(xxx).W   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 21FE  MOVE.L    <ea 7.6>,(xxx).W   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 21FF  MOVE.L    <ea 7.7>,(xxx).W   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $2200-$223F --------------------------------------------------------
         addco.  d1, d0, zero                            // 2200  MOVE.L    D0,D1
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d1, d1, zero                            // 2201  MOVE.L    D1,D1
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d1, d2, zero                            // 2202  MOVE.L    D2,D1
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d1, d3, zero                            // 2203  MOVE.L    D3,D1
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d1, d4, zero                            // 2204  MOVE.L    D4,D1
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d1, d5, zero                            // 2205  MOVE.L    D5,D1
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d1, d6, zero                            // 2206  MOVE.L    D6,D1
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d1, d7, zero                            // 2207  MOVE.L    D7,D1
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d1, a0, zero                            // 2208  MOVE.L    A0,D1
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d1, a1, zero                            // 2209  MOVE.L    A1,D1
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d1, a2, zero                            // 220A  MOVE.L    A2,D1
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d1, a3, zero                            // 220B  MOVE.L    A3,D1
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d1, a4, zero                            // 220C  MOVE.L    A4,D1
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d1, a5, zero                            // 220D  MOVE.L    A5,D1
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d1, a6, zero                            // 220E  MOVE.L    A6,D1
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d1, a7, zero                            // 220F  MOVE.L    A7,D1
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     data, 0(a0)                             // 2210  MOVE.L    (A0),D1
-        b       L_00CA8
+        b       move_l_mem_d1
         lwz     data, 0(a1)                             // 2211  MOVE.L    (A1),D1
-        b       L_00CA8
+        b       move_l_mem_d1
         lwz     data, 0(a2)                             // 2212  MOVE.L    (A2),D1
-        b       L_00CA8
+        b       move_l_mem_d1
         lwz     data, 0(a3)                             // 2213  MOVE.L    (A3),D1
-        b       L_00CA8
+        b       move_l_mem_d1
         lwz     data, 0(a4)                             // 2214  MOVE.L    (A4),D1
-        b       L_00CA8
+        b       move_l_mem_d1
         lwz     data, 0(a5)                             // 2215  MOVE.L    (A5),D1
-        b       L_00CA8
+        b       move_l_mem_d1
         lwz     data, 0(a6)                             // 2216  MOVE.L    (A6),D1
-        b       L_00CA8
+        b       move_l_mem_d1
         lwz     data, 0(a7)                             // 2217  MOVE.L    (A7),D1
-        b       L_00CA8
-        ori     rtn_addr, code_ptr, L_00CA8 - cb        // 2218  MOVE.L    (A0)+,D1
-        b       L_00850
-        ori     rtn_addr, code_ptr, L_00CA8 - cb        // 2219  MOVE.L    (A1)+,D1
-        b       L_008D0
-        ori     rtn_addr, code_ptr, L_00CA8 - cb        // 221A  MOVE.L    (A2)+,D1
-        b       L_00950
-        ori     rtn_addr, code_ptr, L_00CA8 - cb        // 221B  MOVE.L    (A3)+,D1
-        b       L_009D0
-        ori     rtn_addr, code_ptr, L_00CA8 - cb        // 221C  MOVE.L    (A4)+,D1
-        b       L_00A50
-        ori     rtn_addr, code_ptr, L_00CA8 - cb        // 221D  MOVE.L    (A5)+,D1
-        b       L_00AD0
-        ori     rtn_addr, code_ptr, L_00CA8 - cb        // 221E  MOVE.L    (A6)+,D1
-        b       L_00B50
+        b       move_l_mem_d1
+        ori     rtn_addr, code_ptr, move_l_mem_d1 - cb  // 2218  MOVE.L    (A0)+,D1
+        b       fea_l_30
+        ori     rtn_addr, code_ptr, move_l_mem_d1 - cb  // 2219  MOVE.L    (A1)+,D1
+        b       fea_l_31
+        ori     rtn_addr, code_ptr, move_l_mem_d1 - cb  // 221A  MOVE.L    (A2)+,D1
+        b       fea_l_32
+        ori     rtn_addr, code_ptr, move_l_mem_d1 - cb  // 221B  MOVE.L    (A3)+,D1
+        b       fea_l_33
+        ori     rtn_addr, code_ptr, move_l_mem_d1 - cb  // 221C  MOVE.L    (A4)+,D1
+        b       fea_l_34
+        ori     rtn_addr, code_ptr, move_l_mem_d1 - cb  // 221D  MOVE.L    (A5)+,D1
+        b       fea_l_35
+        ori     rtn_addr, code_ptr, move_l_mem_d1 - cb  // 221E  MOVE.L    (A6)+,D1
+        b       fea_l_36
         lwz     d1, 0(a7)                               // 221F  MOVE.L    (A7)+,D1
-        b       L_08E60
+        b       move_l_mem_d1_3
         lwzu    data, -4(a0)                            // 2220  MOVE.L    -(A0),D1
-        b       L_00CA8
+        b       move_l_mem_d1
         lwzu    data, -4(a1)                            // 2221  MOVE.L    -(A1),D1
-        b       L_00CA8
+        b       move_l_mem_d1
         lwzu    data, -4(a2)                            // 2222  MOVE.L    -(A2),D1
-        b       L_00CA8
+        b       move_l_mem_d1
         lwzu    data, -4(a3)                            // 2223  MOVE.L    -(A3),D1
-        b       L_00CA8
+        b       move_l_mem_d1
         lwzu    data, -4(a4)                            // 2224  MOVE.L    -(A4),D1
-        b       L_00CA8
+        b       move_l_mem_d1
         lwzu    data, -4(a5)                            // 2225  MOVE.L    -(A5),D1
-        b       L_00CA8
+        b       move_l_mem_d1
         lwzu    data, -4(a6)                            // 2226  MOVE.L    -(A6),D1
-        b       L_00CA8
+        b       move_l_mem_d1
         lwzu    data, -4(a7)                            // 2227  MOVE.L    -(A7),D1
-        b       L_00CA8
+        b       move_l_mem_d1
         lwzx    data, a0, prefetch_data                 // 2228  MOVE.L    (d16,A0),D1
-        b       L_00CC0
+        b       move_l_mem_d1_2
         lwzx    data, a1, prefetch_data                 // 2229  MOVE.L    (d16,A1),D1
-        b       L_00CC0
+        b       move_l_mem_d1_2
         lwzx    data, a2, prefetch_data                 // 222A  MOVE.L    (d16,A2),D1
-        b       L_00CC0
+        b       move_l_mem_d1_2
         lwzx    data, a3, prefetch_data                 // 222B  MOVE.L    (d16,A3),D1
-        b       L_00CC0
+        b       move_l_mem_d1_2
         lwzx    data, a4, prefetch_data                 // 222C  MOVE.L    (d16,A4),D1
-        b       L_00CC0
+        b       move_l_mem_d1_2
         lwzx    data, a5, prefetch_data                 // 222D  MOVE.L    (d16,A5),D1
-        b       L_00CC0
+        b       move_l_mem_d1_2
         lwzx    data, a6, prefetch_data                 // 222E  MOVE.L    (d16,A6),D1
-        b       L_00CC0
+        b       move_l_mem_d1_2
         lwzx    data, a7, prefetch_data                 // 222F  MOVE.L    (d16,A7),D1
-        b       L_00CC0
-        ori     rtn_addr, code_ptr, L_00CA8 - cb        // 2230  MOVE.L    (d8,A0,Xn),D1
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_00CA8 - cb        // 2231  MOVE.L    (d8,A1,Xn),D1
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_00CA8 - cb        // 2232  MOVE.L    (d8,A2,Xn),D1
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_00CA8 - cb        // 2233  MOVE.L    (d8,A3,Xn),D1
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_00CA8 - cb        // 2234  MOVE.L    (d8,A4,Xn),D1
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_00CA8 - cb        // 2235  MOVE.L    (d8,A5,Xn),D1
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_00CA8 - cb        // 2236  MOVE.L    (d8,A6,Xn),D1
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_00CA8 - cb        // 2237  MOVE.L    (d8,A7,Xn),D1
-        b       L_05C68
+        b       move_l_mem_d1_2
+        ori     rtn_addr, code_ptr, move_l_mem_d1 - cb  // 2230  MOVE.L    (d8,A0,Xn),D1
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, move_l_mem_d1 - cb  // 2231  MOVE.L    (d8,A1,Xn),D1
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, move_l_mem_d1 - cb  // 2232  MOVE.L    (d8,A2,Xn),D1
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, move_l_mem_d1 - cb  // 2233  MOVE.L    (d8,A3,Xn),D1
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, move_l_mem_d1 - cb  // 2234  MOVE.L    (d8,A4,Xn),D1
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, move_l_mem_d1 - cb  // 2235  MOVE.L    (d8,A5,Xn),D1
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, move_l_mem_d1 - cb  // 2236  MOVE.L    (d8,A6,Xn),D1
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, move_l_mem_d1 - cb  // 2237  MOVE.L    (d8,A7,Xn),D1
+        b       move_add_etc_l_any_any_8
         lwz     data, 0(prefetch_data)                  // 2238  MOVE.L    (xxx).W,D1
-        b       L_00CC0
-        ori     rtn_addr, code_ptr, L_00CA8 - cb        // 2239  MOVE.L    (xxx).L,D1
-        b       L_05E8C
+        b       move_l_mem_d1_2
+        ori     rtn_addr, code_ptr, move_l_mem_d1 - cb  // 2239  MOVE.L    (xxx).L,D1
+        b       fea_l_71_2
         lwzx    data, pc, prefetch_data                 // 223A  MOVE.L    (d16,PC),D1
-        b       L_00CC0
-        ori     rtn_addr, code_ptr, L_00CA8 - cb        // 223B  MOVE.L    (d8,PC,Xn),D1
-        b       L_05F08
+        b       move_l_mem_d1_2
+        ori     rtn_addr, code_ptr, move_l_mem_d1 - cb  // 223B  MOVE.L    (d8,PC,Xn),D1
+        b       fea_l_73
         lhau    prefetch_data, 4(pc)                    // 223C  MOVE.L    #<data>,D1
-        b       L_00CA4
+        b       move_l_imm_d1
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 223D  MOVE.L    <ea 7.5>,D1   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 223E  MOVE.L    <ea 7.6>,D1   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 223F  MOVE.L    <ea 7.7>,D1   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $2240-$227F --------------------------------------------------------
         mr      a1, d0                                  // 2240  MOVEA.L   D0,A1
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a1, d1                                  // 2241  MOVEA.L   D1,A1
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a1, d2                                  // 2242  MOVEA.L   D2,A1
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a1, d3                                  // 2243  MOVEA.L   D3,A1
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a1, d4                                  // 2244  MOVEA.L   D4,A1
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a1, d5                                  // 2245  MOVEA.L   D5,A1
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a1, d6                                  // 2246  MOVEA.L   D6,A1
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a1, d7                                  // 2247  MOVEA.L   D7,A1
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a1, a0                                  // 2248  MOVEA.L   A0,A1
-        b       L_06084
+        b       move_add_etc_any_any
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // 2249  MOVEA.L   A1,A1
-        b       L_06088
+        b       exg_move_etc_any_reg
         mr      a1, a2                                  // 224A  MOVEA.L   A2,A1
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a1, a3                                  // 224B  MOVEA.L   A3,A1
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a1, a4                                  // 224C  MOVEA.L   A4,A1
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a1, a5                                  // 224D  MOVEA.L   A5,A1
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a1, a6                                  // 224E  MOVEA.L   A6,A1
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a1, a7                                  // 224F  MOVEA.L   A7,A1
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     a1, 0(a0)                               // 2250  MOVEA.L   (A0),A1
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     a1, 0(a1)                               // 2251  MOVEA.L   (A1),A1
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     a1, 0(a2)                               // 2252  MOVEA.L   (A2),A1
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     a1, 0(a3)                               // 2253  MOVEA.L   (A3),A1
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     a1, 0(a4)                               // 2254  MOVEA.L   (A4),A1
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     a1, 0(a5)                               // 2255  MOVEA.L   (A5),A1
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     a1, 0(a6)                               // 2256  MOVEA.L   (A6),A1
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     a1, 0(a7)                               // 2257  MOVEA.L   (A7),A1
-        b       L_06084
-        ori     rtn_addr, code_ptr, L_03240 - cb        // 2258  MOVEA.L   (A0)+,A1
-        b       L_00850
+        b       move_add_etc_any_any
+        ori     rtn_addr, code_ptr, movea_mem_a1 - cb   // 2258  MOVEA.L   (A0)+,A1
+        b       fea_l_30
         lwz     a1, 0(a1)                               // 2259  MOVEA.L   (A1)+,A1
-        b       L_06084
-        ori     rtn_addr, code_ptr, L_03240 - cb        // 225A  MOVEA.L   (A2)+,A1
-        b       L_00950
-        ori     rtn_addr, code_ptr, L_03240 - cb        // 225B  MOVEA.L   (A3)+,A1
-        b       L_009D0
-        ori     rtn_addr, code_ptr, L_03240 - cb        // 225C  MOVEA.L   (A4)+,A1
-        b       L_00A50
-        ori     rtn_addr, code_ptr, L_03240 - cb        // 225D  MOVEA.L   (A5)+,A1
-        b       L_00AD0
-        ori     rtn_addr, code_ptr, L_03240 - cb        // 225E  MOVEA.L   (A6)+,A1
-        b       L_00B50
+        b       move_add_etc_any_any
+        ori     rtn_addr, code_ptr, movea_mem_a1 - cb   // 225A  MOVEA.L   (A2)+,A1
+        b       fea_l_32
+        ori     rtn_addr, code_ptr, movea_mem_a1 - cb   // 225B  MOVEA.L   (A3)+,A1
+        b       fea_l_33
+        ori     rtn_addr, code_ptr, movea_mem_a1 - cb   // 225C  MOVEA.L   (A4)+,A1
+        b       fea_l_34
+        ori     rtn_addr, code_ptr, movea_mem_a1 - cb   // 225D  MOVEA.L   (A5)+,A1
+        b       fea_l_35
+        ori     rtn_addr, code_ptr, movea_mem_a1 - cb   // 225E  MOVEA.L   (A6)+,A1
+        b       fea_l_36
         lwz     a1, 0(a7)                               // 225F  MOVEA.L   (A7)+,A1
-        b       L_08F40
+        b       movea_l_mem_an
         lwzu    a1, -4(a0)                              // 2260  MOVEA.L   -(A0),A1
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     a1, -4(a1)                              // 2261  MOVEA.L   -(A1),A1
-        b       L_06084
+        b       move_add_etc_any_any
         lwzu    a1, -4(a2)                              // 2262  MOVEA.L   -(A2),A1
-        b       L_06084
+        b       move_add_etc_any_any
         lwzu    a1, -4(a3)                              // 2263  MOVEA.L   -(A3),A1
-        b       L_06084
+        b       move_add_etc_any_any
         lwzu    a1, -4(a4)                              // 2264  MOVEA.L   -(A4),A1
-        b       L_06084
+        b       move_add_etc_any_any
         lwzu    a1, -4(a5)                              // 2265  MOVEA.L   -(A5),A1
-        b       L_06084
+        b       move_add_etc_any_any
         lwzu    a1, -4(a6)                              // 2266  MOVEA.L   -(A6),A1
-        b       L_06084
+        b       move_add_etc_any_any
         lwzu    a1, -4(a7)                              // 2267  MOVEA.L   -(A7),A1
-        b       L_06084
+        b       move_add_etc_any_any
         lwzx    a1, a0, prefetch_data                   // 2268  MOVEA.L   (d16,A0),A1
-        b       L_06080
+        b       move_lea_etc_ea_any
         lwzx    a1, a1, prefetch_data                   // 2269  MOVEA.L   (d16,A1),A1
-        b       L_06080
+        b       move_lea_etc_ea_any
         lwzx    a1, a2, prefetch_data                   // 226A  MOVEA.L   (d16,A2),A1
-        b       L_06080
+        b       move_lea_etc_ea_any
         lwzx    a1, a3, prefetch_data                   // 226B  MOVEA.L   (d16,A3),A1
-        b       L_06080
+        b       move_lea_etc_ea_any
         lwzx    a1, a4, prefetch_data                   // 226C  MOVEA.L   (d16,A4),A1
-        b       L_06080
+        b       move_lea_etc_ea_any
         lwzx    a1, a5, prefetch_data                   // 226D  MOVEA.L   (d16,A5),A1
-        b       L_06080
+        b       move_lea_etc_ea_any
         lwzx    a1, a6, prefetch_data                   // 226E  MOVEA.L   (d16,A6),A1
-        b       L_06080
+        b       move_lea_etc_ea_any
         lwzx    a1, a7, prefetch_data                   // 226F  MOVEA.L   (d16,A7),A1
-        b       L_06080
-        ori     rtn_addr, code_ptr, L_03240 - cb        // 2270  MOVEA.L   (d8,A0,Xn),A1
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_03240 - cb        // 2271  MOVEA.L   (d8,A1,Xn),A1
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_03240 - cb        // 2272  MOVEA.L   (d8,A2,Xn),A1
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_03240 - cb        // 2273  MOVEA.L   (d8,A3,Xn),A1
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_03240 - cb        // 2274  MOVEA.L   (d8,A4,Xn),A1
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_03240 - cb        // 2275  MOVEA.L   (d8,A5,Xn),A1
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_03240 - cb        // 2276  MOVEA.L   (d8,A6,Xn),A1
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_03240 - cb        // 2277  MOVEA.L   (d8,A7,Xn),A1
-        b       L_05C68
+        b       move_lea_etc_ea_any
+        ori     rtn_addr, code_ptr, movea_mem_a1 - cb   // 2270  MOVEA.L   (d8,A0,Xn),A1
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, movea_mem_a1 - cb   // 2271  MOVEA.L   (d8,A1,Xn),A1
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, movea_mem_a1 - cb   // 2272  MOVEA.L   (d8,A2,Xn),A1
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, movea_mem_a1 - cb   // 2273  MOVEA.L   (d8,A3,Xn),A1
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, movea_mem_a1 - cb   // 2274  MOVEA.L   (d8,A4,Xn),A1
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, movea_mem_a1 - cb   // 2275  MOVEA.L   (d8,A5,Xn),A1
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, movea_mem_a1 - cb   // 2276  MOVEA.L   (d8,A6,Xn),A1
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, movea_mem_a1 - cb   // 2277  MOVEA.L   (d8,A7,Xn),A1
+        b       move_add_etc_l_any_any_8
         lwz     a1, 0(prefetch_data)                    // 2278  MOVEA.L   (xxx).W,A1
-        b       L_06080
-        ori     rtn_addr, code_ptr, L_03240 - cb        // 2279  MOVEA.L   (xxx).L,A1
-        b       L_05E8C
+        b       move_lea_etc_ea_any
+        ori     rtn_addr, code_ptr, movea_mem_a1 - cb   // 2279  MOVEA.L   (xxx).L,A1
+        b       fea_l_71_2
         lwzx    a1, pc, prefetch_data                   // 227A  MOVEA.L   (d16,PC),A1
-        b       L_06080
-        ori     rtn_addr, code_ptr, L_03240 - cb        // 227B  MOVEA.L   (d8,PC,Xn),A1
-        b       L_05F08
+        b       move_lea_etc_ea_any
+        ori     rtn_addr, code_ptr, movea_mem_a1 - cb   // 227B  MOVEA.L   (d8,PC,Xn),A1
+        b       fea_l_73
         lwz     a1, 0(pc)                               // 227C  MOVEA.L   #<data>,A1
-        b       L_060A0
+        b       move_lea_ea_an
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 227D  MOVEA.L   <ea 7.5>,A1   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 227E  MOVEA.L   <ea 7.6>,A1   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 227F  MOVEA.L   <ea 7.7>,A1   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $2280-$22BF --------------------------------------------------------
         addco.  data, d0, zero                          // 2280  MOVE.L    D0,(A1)
-        b       L_01068
+        b       move_l_reg_mem_2
         addco.  data, d1, zero                          // 2281  MOVE.L    D1,(A1)
-        b       L_01068
+        b       move_l_reg_mem_2
         addco.  data, d2, zero                          // 2282  MOVE.L    D2,(A1)
-        b       L_01068
+        b       move_l_reg_mem_2
         addco.  data, d3, zero                          // 2283  MOVE.L    D3,(A1)
-        b       L_01068
+        b       move_l_reg_mem_2
         addco.  data, d4, zero                          // 2284  MOVE.L    D4,(A1)
-        b       L_01068
+        b       move_l_reg_mem_2
         addco.  data, d5, zero                          // 2285  MOVE.L    D5,(A1)
-        b       L_01068
+        b       move_l_reg_mem_2
         addco.  data, d6, zero                          // 2286  MOVE.L    D6,(A1)
-        b       L_01068
+        b       move_l_reg_mem_2
         addco.  data, d7, zero                          // 2287  MOVE.L    D7,(A1)
-        b       L_01068
+        b       move_l_reg_mem_2
         addco.  data, a0, zero                          // 2288  MOVE.L    A0,(A1)
-        b       L_01068
+        b       move_l_reg_mem_2
         addco.  data, a1, zero                          // 2289  MOVE.L    A1,(A1)
-        b       L_01068
+        b       move_l_reg_mem_2
         addco.  data, a2, zero                          // 228A  MOVE.L    A2,(A1)
-        b       L_01068
+        b       move_l_reg_mem_2
         addco.  data, a3, zero                          // 228B  MOVE.L    A3,(A1)
-        b       L_01068
+        b       move_l_reg_mem_2
         addco.  data, a4, zero                          // 228C  MOVE.L    A4,(A1)
-        b       L_01068
+        b       move_l_reg_mem_2
         addco.  data, a5, zero                          // 228D  MOVE.L    A5,(A1)
-        b       L_01068
+        b       move_l_reg_mem_2
         addco.  data, a6, zero                          // 228E  MOVE.L    A6,(A1)
-        b       L_01068
+        b       move_l_reg_mem_2
         addco.  data, a7, zero                          // 228F  MOVE.L    A7,(A1)
-        b       L_01068
+        b       move_l_reg_mem_2
         lwz     data, 0(a0)                             // 2290  MOVE.L    (A0),(A1)
-        b       L_01064
+        b       move_l_ea_mem_2
         lwz     data, 0(a1)                             // 2291  MOVE.L    (A1),(A1)
-        b       L_06144
+        b       tst_ea
         lwz     data, 0(a2)                             // 2292  MOVE.L    (A2),(A1)
-        b       L_01064
+        b       move_l_ea_mem_2
         lwz     data, 0(a3)                             // 2293  MOVE.L    (A3),(A1)
-        b       L_01064
+        b       move_l_ea_mem_2
         lwz     data, 0(a4)                             // 2294  MOVE.L    (A4),(A1)
-        b       L_01064
+        b       move_l_ea_mem_2
         lwz     data, 0(a5)                             // 2295  MOVE.L    (A5),(A1)
-        b       L_01064
+        b       move_l_ea_mem_2
         lwz     data, 0(a6)                             // 2296  MOVE.L    (A6),(A1)
-        b       L_01064
+        b       move_l_ea_mem_2
         lwz     data, 0(a7)                             // 2297  MOVE.L    (A7),(A1)
-        b       L_01064
-        ori     rtn_addr, code_ptr, L_01064 - cb        // 2298  MOVE.L    (A0)+,(A1)
-        b       L_00850
-        ori     rtn_addr, code_ptr, L_01064 - cb        // 2299  MOVE.L    (A1)+,(A1)
-        b       L_008D0
-        ori     rtn_addr, code_ptr, L_01064 - cb        // 229A  MOVE.L    (A2)+,(A1)
-        b       L_00950
-        ori     rtn_addr, code_ptr, L_01064 - cb        // 229B  MOVE.L    (A3)+,(A1)
-        b       L_009D0
-        ori     rtn_addr, code_ptr, L_01064 - cb        // 229C  MOVE.L    (A4)+,(A1)
-        b       L_00A50
-        ori     rtn_addr, code_ptr, L_01064 - cb        // 229D  MOVE.L    (A5)+,(A1)
-        b       L_00AD0
-        ori     rtn_addr, code_ptr, L_01064 - cb        // 229E  MOVE.L    (A6)+,(A1)
-        b       L_00B50
-        ori     rtn_addr, code_ptr, L_01064 - cb        // 229F  MOVE.L    (A7)+,(A1)
-        b       L_00BD0
+        b       move_l_ea_mem_2
+        ori     rtn_addr, code_ptr, move_l_ea_mem_2 - cb  // 2298  MOVE.L    (A0)+,(A1)
+        b       fea_l_30
+        ori     rtn_addr, code_ptr, move_l_ea_mem_2 - cb  // 2299  MOVE.L    (A1)+,(A1)
+        b       fea_l_31
+        ori     rtn_addr, code_ptr, move_l_ea_mem_2 - cb  // 229A  MOVE.L    (A2)+,(A1)
+        b       fea_l_32
+        ori     rtn_addr, code_ptr, move_l_ea_mem_2 - cb  // 229B  MOVE.L    (A3)+,(A1)
+        b       fea_l_33
+        ori     rtn_addr, code_ptr, move_l_ea_mem_2 - cb  // 229C  MOVE.L    (A4)+,(A1)
+        b       fea_l_34
+        ori     rtn_addr, code_ptr, move_l_ea_mem_2 - cb  // 229D  MOVE.L    (A5)+,(A1)
+        b       fea_l_35
+        ori     rtn_addr, code_ptr, move_l_ea_mem_2 - cb  // 229E  MOVE.L    (A6)+,(A1)
+        b       fea_l_36
+        ori     rtn_addr, code_ptr, move_l_ea_mem_2 - cb  // 229F  MOVE.L    (A7)+,(A1)
+        b       fea_l_37
         lwzu    data, -4(a0)                            // 22A0  MOVE.L    -(A0),(A1)
-        b       L_01064
+        b       move_l_ea_mem_2
         lwzu    data, -4(a1)                            // 22A1  MOVE.L    -(A1),(A1)
-        b       L_06144
+        b       tst_ea
         lwzu    data, -4(a2)                            // 22A2  MOVE.L    -(A2),(A1)
-        b       L_01064
+        b       move_l_ea_mem_2
         lwzu    data, -4(a3)                            // 22A3  MOVE.L    -(A3),(A1)
-        b       L_01064
+        b       move_l_ea_mem_2
         lwzu    data, -4(a4)                            // 22A4  MOVE.L    -(A4),(A1)
-        b       L_01064
+        b       move_l_ea_mem_2
         lwzu    data, -4(a5)                            // 22A5  MOVE.L    -(A5),(A1)
-        b       L_01064
+        b       move_l_ea_mem_2
         lwzu    data, -4(a6)                            // 22A6  MOVE.L    -(A6),(A1)
-        b       L_01064
+        b       move_l_ea_mem_2
         lwzu    data, -4(a7)                            // 22A7  MOVE.L    -(A7),(A1)
-        b       L_01064
+        b       move_l_ea_mem_2
         lwzx    data, a0, prefetch_data                 // 22A8  MOVE.L    (d16,A0),(A1)
-        b       L_01060
+        b       move_l_mem_mem_2
         lwzx    data, a1, prefetch_data                 // 22A9  MOVE.L    (d16,A1),(A1)
-        b       L_01060
+        b       move_l_mem_mem_2
         lwzx    data, a2, prefetch_data                 // 22AA  MOVE.L    (d16,A2),(A1)
-        b       L_01060
+        b       move_l_mem_mem_2
         lwzx    data, a3, prefetch_data                 // 22AB  MOVE.L    (d16,A3),(A1)
-        b       L_01060
+        b       move_l_mem_mem_2
         lwzx    data, a4, prefetch_data                 // 22AC  MOVE.L    (d16,A4),(A1)
-        b       L_01060
+        b       move_l_mem_mem_2
         lwzx    data, a5, prefetch_data                 // 22AD  MOVE.L    (d16,A5),(A1)
-        b       L_01060
+        b       move_l_mem_mem_2
         lwzx    data, a6, prefetch_data                 // 22AE  MOVE.L    (d16,A6),(A1)
-        b       L_01060
+        b       move_l_mem_mem_2
         lwzx    data, a7, prefetch_data                 // 22AF  MOVE.L    (d16,A7),(A1)
-        b       L_01060
-        ori     rtn_addr, code_ptr, L_01064 - cb        // 22B0  MOVE.L    (d8,A0,Xn),(A1)
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_01064 - cb        // 22B1  MOVE.L    (d8,A1,Xn),(A1)
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_01064 - cb        // 22B2  MOVE.L    (d8,A2,Xn),(A1)
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_01064 - cb        // 22B3  MOVE.L    (d8,A3,Xn),(A1)
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_01064 - cb        // 22B4  MOVE.L    (d8,A4,Xn),(A1)
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_01064 - cb        // 22B5  MOVE.L    (d8,A5,Xn),(A1)
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_01064 - cb        // 22B6  MOVE.L    (d8,A6,Xn),(A1)
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_01064 - cb        // 22B7  MOVE.L    (d8,A7,Xn),(A1)
-        b       L_05C68
+        b       move_l_mem_mem_2
+        ori     rtn_addr, code_ptr, move_l_ea_mem_2 - cb  // 22B0  MOVE.L    (d8,A0,Xn),(A1)
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, move_l_ea_mem_2 - cb  // 22B1  MOVE.L    (d8,A1,Xn),(A1)
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, move_l_ea_mem_2 - cb  // 22B2  MOVE.L    (d8,A2,Xn),(A1)
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, move_l_ea_mem_2 - cb  // 22B3  MOVE.L    (d8,A3,Xn),(A1)
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, move_l_ea_mem_2 - cb  // 22B4  MOVE.L    (d8,A4,Xn),(A1)
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, move_l_ea_mem_2 - cb  // 22B5  MOVE.L    (d8,A5,Xn),(A1)
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, move_l_ea_mem_2 - cb  // 22B6  MOVE.L    (d8,A6,Xn),(A1)
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, move_l_ea_mem_2 - cb  // 22B7  MOVE.L    (d8,A7,Xn),(A1)
+        b       move_add_etc_l_any_any_8
         lwz     data, 0(prefetch_data)                  // 22B8  MOVE.L    (xxx).W,(A1)
-        b       L_01060
-        ori     rtn_addr, code_ptr, L_01064 - cb        // 22B9  MOVE.L    (xxx).L,(A1)
-        b       L_05E8C
+        b       move_l_mem_mem_2
+        ori     rtn_addr, code_ptr, move_l_ea_mem_2 - cb  // 22B9  MOVE.L    (xxx).L,(A1)
+        b       fea_l_71_2
         lwzx    data, pc, prefetch_data                 // 22BA  MOVE.L    (d16,PC),(A1)
-        b       L_01060
-        ori     rtn_addr, code_ptr, L_01064 - cb        // 22BB  MOVE.L    (d8,PC,Xn),(A1)
-        b       L_05F08
-        ori     rtn_addr, code_ptr, L_01064 - cb        // 22BC  MOVE.L    #<data>,(A1)
-        b       L_05F30
+        b       move_l_mem_mem_2
+        ori     rtn_addr, code_ptr, move_l_ea_mem_2 - cb  // 22BB  MOVE.L    (d8,PC,Xn),(A1)
+        b       fea_l_73
+        ori     rtn_addr, code_ptr, move_l_ea_mem_2 - cb  // 22BC  MOVE.L    #<data>,(A1)
+        b       fea_l_74
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 22BD  MOVE.L    <ea 7.5>,(A1)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 22BE  MOVE.L    <ea 7.6>,(A1)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 22BF  MOVE.L    <ea 7.7>,(A1)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $22C0-$22FF --------------------------------------------------------
         addco.  data, d0, zero                          // 22C0  MOVE.L    D0,(A1)+
-        b       L_01468
+        b       move_clr_l_reg_mem_3
         addco.  data, d1, zero                          // 22C1  MOVE.L    D1,(A1)+
-        b       L_01468
+        b       move_clr_l_reg_mem_3
         addco.  data, d2, zero                          // 22C2  MOVE.L    D2,(A1)+
-        b       L_01468
+        b       move_clr_l_reg_mem_3
         addco.  data, d3, zero                          // 22C3  MOVE.L    D3,(A1)+
-        b       L_01468
+        b       move_clr_l_reg_mem_3
         addco.  data, d4, zero                          // 22C4  MOVE.L    D4,(A1)+
-        b       L_01468
+        b       move_clr_l_reg_mem_3
         addco.  data, d5, zero                          // 22C5  MOVE.L    D5,(A1)+
-        b       L_01468
+        b       move_clr_l_reg_mem_3
         cmpwi   cr7, prefetch_data, 0x22C6              // 22C6  MOVE.L    D6,(A1)+
-        b       L_08F80
+        b       move_l_d6_mem
         addco.  data, d7, zero                          // 22C7  MOVE.L    D7,(A1)+
-        b       L_01468
+        b       move_clr_l_reg_mem_3
         addco.  data, a0, zero                          // 22C8  MOVE.L    A0,(A1)+
-        b       L_01468
+        b       move_clr_l_reg_mem_3
         addco.  data, a1, zero                          // 22C9  MOVE.L    A1,(A1)+
-        b       L_01468
+        b       move_clr_l_reg_mem_3
         addco.  data, a2, zero                          // 22CA  MOVE.L    A2,(A1)+
-        b       L_01468
+        b       move_clr_l_reg_mem_3
         addco.  data, a3, zero                          // 22CB  MOVE.L    A3,(A1)+
-        b       L_01468
+        b       move_clr_l_reg_mem_3
         addco.  data, a4, zero                          // 22CC  MOVE.L    A4,(A1)+
-        b       L_01468
+        b       move_clr_l_reg_mem_3
         addco.  data, a5, zero                          // 22CD  MOVE.L    A5,(A1)+
-        b       L_01468
+        b       move_clr_l_reg_mem_3
         addco.  data, a6, zero                          // 22CE  MOVE.L    A6,(A1)+
-        b       L_01468
+        b       move_clr_l_reg_mem_3
         addco.  data, a7, zero                          // 22CF  MOVE.L    A7,(A1)+
-        b       L_01468
+        b       move_clr_l_reg_mem_3
         lwz     data, 0(a0)                             // 22D0  MOVE.L    (A0),(A1)+
-        b       L_01464
+        b       move_l_ea_mem_20
         lwz     data, 0(a1)                             // 22D1  MOVE.L    (A1),(A1)+
-        b       L_01464
+        b       move_l_ea_mem_20
         lwz     data, 0(a2)                             // 22D2  MOVE.L    (A2),(A1)+
-        b       L_01464
+        b       move_l_ea_mem_20
         lwz     data, 0(a3)                             // 22D3  MOVE.L    (A3),(A1)+
-        b       L_01464
+        b       move_l_ea_mem_20
         lwz     data, 0(a4)                             // 22D4  MOVE.L    (A4),(A1)+
-        b       L_01464
+        b       move_l_ea_mem_20
         lwz     data, 0(a5)                             // 22D5  MOVE.L    (A5),(A1)+
-        b       L_01464
+        b       move_l_ea_mem_20
         lwz     data, 0(a6)                             // 22D6  MOVE.L    (A6),(A1)+
-        b       L_01464
+        b       move_l_ea_mem_20
         lwz     data, 0(a7)                             // 22D7  MOVE.L    (A7),(A1)+
-        b       L_01464
+        b       move_l_ea_mem_20
         cmpwi   cr7, prefetch_data, 0x22D8              // 22D8  MOVE.L    (A0)+,(A1)+
-        b       L_09040
-        ori     rtn_addr, code_ptr, L_01464 - cb        // 22D9  MOVE.L    (A1)+,(A1)+
-        b       L_008D0
+        b       move_l_mem_mem_43
+        ori     rtn_addr, code_ptr, move_l_ea_mem_20 - cb  // 22D9  MOVE.L    (A1)+,(A1)+
+        b       fea_l_31
         cmpwi   cr7, prefetch_data, 0x22DA              // 22DA  MOVE.L    (A2)+,(A1)+
-        b       L_09220
-        ori     rtn_addr, code_ptr, L_01464 - cb        // 22DB  MOVE.L    (A3)+,(A1)+
-        b       L_009D0
-        ori     rtn_addr, code_ptr, L_01464 - cb        // 22DC  MOVE.L    (A4)+,(A1)+
-        b       L_00A50
-        ori     rtn_addr, code_ptr, L_01464 - cb        // 22DD  MOVE.L    (A5)+,(A1)+
-        b       L_00AD0
-        ori     rtn_addr, code_ptr, L_01464 - cb        // 22DE  MOVE.L    (A6)+,(A1)+
-        b       L_00B50
-        ori     rtn_addr, code_ptr, L_01464 - cb        // 22DF  MOVE.L    (A7)+,(A1)+
-        b       L_00BD0
+        b       move_l_mem_mem_46
+        ori     rtn_addr, code_ptr, move_l_ea_mem_20 - cb  // 22DB  MOVE.L    (A3)+,(A1)+
+        b       fea_l_33
+        ori     rtn_addr, code_ptr, move_l_ea_mem_20 - cb  // 22DC  MOVE.L    (A4)+,(A1)+
+        b       fea_l_34
+        ori     rtn_addr, code_ptr, move_l_ea_mem_20 - cb  // 22DD  MOVE.L    (A5)+,(A1)+
+        b       fea_l_35
+        ori     rtn_addr, code_ptr, move_l_ea_mem_20 - cb  // 22DE  MOVE.L    (A6)+,(A1)+
+        b       fea_l_36
+        ori     rtn_addr, code_ptr, move_l_ea_mem_20 - cb  // 22DF  MOVE.L    (A7)+,(A1)+
+        b       fea_l_37
         lwzu    data, -4(a0)                            // 22E0  MOVE.L    -(A0),(A1)+
-        b       L_01464
+        b       move_l_ea_mem_20
         lwz     data, -4(a1)                            // 22E1  MOVE.L    -(A1),(A1)+
-        b       L_06144
+        b       tst_ea
         lwzu    data, -4(a2)                            // 22E2  MOVE.L    -(A2),(A1)+
-        b       L_01464
+        b       move_l_ea_mem_20
         lwzu    data, -4(a3)                            // 22E3  MOVE.L    -(A3),(A1)+
-        b       L_01464
+        b       move_l_ea_mem_20
         lwzu    data, -4(a4)                            // 22E4  MOVE.L    -(A4),(A1)+
-        b       L_01464
+        b       move_l_ea_mem_20
         lwzu    data, -4(a5)                            // 22E5  MOVE.L    -(A5),(A1)+
-        b       L_01464
+        b       move_l_ea_mem_20
         lwzu    data, -4(a6)                            // 22E6  MOVE.L    -(A6),(A1)+
-        b       L_01464
+        b       move_l_ea_mem_20
         lwzu    data, -4(a7)                            // 22E7  MOVE.L    -(A7),(A1)+
-        b       L_01464
+        b       move_l_ea_mem_20
         lwzx    data, a0, prefetch_data                 // 22E8  MOVE.L    (d16,A0),(A1)+
-        b       L_01460
+        b       move_l_mem_mem_20
         lwzx    data, a1, prefetch_data                 // 22E9  MOVE.L    (d16,A1),(A1)+
-        b       L_01460
+        b       move_l_mem_mem_20
         lwzx    data, a2, prefetch_data                 // 22EA  MOVE.L    (d16,A2),(A1)+
-        b       L_01460
+        b       move_l_mem_mem_20
         lwzx    data, a3, prefetch_data                 // 22EB  MOVE.L    (d16,A3),(A1)+
-        b       L_01460
+        b       move_l_mem_mem_20
         lwzx    data, a4, prefetch_data                 // 22EC  MOVE.L    (d16,A4),(A1)+
-        b       L_01460
+        b       move_l_mem_mem_20
         lwzx    data, a5, prefetch_data                 // 22ED  MOVE.L    (d16,A5),(A1)+
-        b       L_01460
+        b       move_l_mem_mem_20
         lwzx    data, a6, prefetch_data                 // 22EE  MOVE.L    (d16,A6),(A1)+
-        b       L_01460
+        b       move_l_mem_mem_20
         lwzx    data, a7, prefetch_data                 // 22EF  MOVE.L    (d16,A7),(A1)+
-        b       L_01460
-        ori     rtn_addr, code_ptr, L_01464 - cb        // 22F0  MOVE.L    (d8,A0,Xn),(A1)+
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_01464 - cb        // 22F1  MOVE.L    (d8,A1,Xn),(A1)+
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_01464 - cb        // 22F2  MOVE.L    (d8,A2,Xn),(A1)+
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_01464 - cb        // 22F3  MOVE.L    (d8,A3,Xn),(A1)+
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_01464 - cb        // 22F4  MOVE.L    (d8,A4,Xn),(A1)+
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_01464 - cb        // 22F5  MOVE.L    (d8,A5,Xn),(A1)+
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_01464 - cb        // 22F6  MOVE.L    (d8,A6,Xn),(A1)+
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_01464 - cb        // 22F7  MOVE.L    (d8,A7,Xn),(A1)+
-        b       L_05C68
+        b       move_l_mem_mem_20
+        ori     rtn_addr, code_ptr, move_l_ea_mem_20 - cb  // 22F0  MOVE.L    (d8,A0,Xn),(A1)+
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, move_l_ea_mem_20 - cb  // 22F1  MOVE.L    (d8,A1,Xn),(A1)+
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, move_l_ea_mem_20 - cb  // 22F2  MOVE.L    (d8,A2,Xn),(A1)+
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, move_l_ea_mem_20 - cb  // 22F3  MOVE.L    (d8,A3,Xn),(A1)+
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, move_l_ea_mem_20 - cb  // 22F4  MOVE.L    (d8,A4,Xn),(A1)+
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, move_l_ea_mem_20 - cb  // 22F5  MOVE.L    (d8,A5,Xn),(A1)+
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, move_l_ea_mem_20 - cb  // 22F6  MOVE.L    (d8,A6,Xn),(A1)+
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, move_l_ea_mem_20 - cb  // 22F7  MOVE.L    (d8,A7,Xn),(A1)+
+        b       move_add_etc_l_any_any_8
         lwz     data, 0(prefetch_data)                  // 22F8  MOVE.L    (xxx).W,(A1)+
-        b       L_01460
-        ori     rtn_addr, code_ptr, L_01464 - cb        // 22F9  MOVE.L    (xxx).L,(A1)+
-        b       L_05E8C
+        b       move_l_mem_mem_20
+        ori     rtn_addr, code_ptr, move_l_ea_mem_20 - cb  // 22F9  MOVE.L    (xxx).L,(A1)+
+        b       fea_l_71_2
         lwzx    data, pc, prefetch_data                 // 22FA  MOVE.L    (d16,PC),(A1)+
-        b       L_01460
-        ori     rtn_addr, code_ptr, L_01464 - cb        // 22FB  MOVE.L    (d8,PC,Xn),(A1)+
-        b       L_05F08
-        ori     rtn_addr, code_ptr, L_01464 - cb        // 22FC  MOVE.L    #<data>,(A1)+
-        b       L_05F30
+        b       move_l_mem_mem_20
+        ori     rtn_addr, code_ptr, move_l_ea_mem_20 - cb  // 22FB  MOVE.L    (d8,PC,Xn),(A1)+
+        b       fea_l_73
+        ori     rtn_addr, code_ptr, move_l_ea_mem_20 - cb  // 22FC  MOVE.L    #<data>,(A1)+
+        b       fea_l_74
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 22FD  MOVE.L    <ea 7.5>,(A1)+   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 22FE  MOVE.L    <ea 7.6>,(A1)+   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 22FF  MOVE.L    <ea 7.7>,(A1)+   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $2300-$233F --------------------------------------------------------
         addco.  data, d0, zero                          // 2300  MOVE.L    D0,-(A1)
-        b       L_01268
+        b       move_l_reg_mem_10
         addco.  data, d1, zero                          // 2301  MOVE.L    D1,-(A1)
-        b       L_01268
+        b       move_l_reg_mem_10
         addco.  data, d2, zero                          // 2302  MOVE.L    D2,-(A1)
-        b       L_01268
+        b       move_l_reg_mem_10
         addco.  data, d3, zero                          // 2303  MOVE.L    D3,-(A1)
-        b       L_01268
+        b       move_l_reg_mem_10
         addco.  data, d4, zero                          // 2304  MOVE.L    D4,-(A1)
-        b       L_01268
+        b       move_l_reg_mem_10
         addco.  data, d5, zero                          // 2305  MOVE.L    D5,-(A1)
-        b       L_01268
+        b       move_l_reg_mem_10
         addco.  data, d6, zero                          // 2306  MOVE.L    D6,-(A1)
-        b       L_01268
+        b       move_l_reg_mem_10
         addco.  data, d7, zero                          // 2307  MOVE.L    D7,-(A1)
-        b       L_01268
+        b       move_l_reg_mem_10
         addco.  data, a0, zero                          // 2308  MOVE.L    A0,-(A1)
-        b       L_01268
+        b       move_l_reg_mem_10
         addco.  data, a1, zero                          // 2309  MOVE.L    A1,-(A1)
-        b       L_01268
+        b       move_l_reg_mem_10
         addco.  data, a2, zero                          // 230A  MOVE.L    A2,-(A1)
-        b       L_01268
+        b       move_l_reg_mem_10
         addco.  data, a3, zero                          // 230B  MOVE.L    A3,-(A1)
-        b       L_01268
+        b       move_l_reg_mem_10
         addco.  data, a4, zero                          // 230C  MOVE.L    A4,-(A1)
-        b       L_01268
+        b       move_l_reg_mem_10
         addco.  data, a5, zero                          // 230D  MOVE.L    A5,-(A1)
-        b       L_01268
+        b       move_l_reg_mem_10
         addco.  data, a6, zero                          // 230E  MOVE.L    A6,-(A1)
-        b       L_01268
+        b       move_l_reg_mem_10
         addco.  data, a7, zero                          // 230F  MOVE.L    A7,-(A1)
-        b       L_01268
+        b       move_l_reg_mem_10
         lwz     data, 0(a0)                             // 2310  MOVE.L    (A0),-(A1)
-        b       L_01264
+        b       move_l_ea_mem_10
         lwz     data, 0(a1)                             // 2311  MOVE.L    (A1),-(A1)
-        b       L_01264
+        b       move_l_ea_mem_10
         lwz     data, 0(a2)                             // 2312  MOVE.L    (A2),-(A1)
-        b       L_01264
+        b       move_l_ea_mem_10
         lwz     data, 0(a3)                             // 2313  MOVE.L    (A3),-(A1)
-        b       L_01264
+        b       move_l_ea_mem_10
         lwz     data, 0(a4)                             // 2314  MOVE.L    (A4),-(A1)
-        b       L_01264
+        b       move_l_ea_mem_10
         lwz     data, 0(a5)                             // 2315  MOVE.L    (A5),-(A1)
-        b       L_01264
+        b       move_l_ea_mem_10
         lwz     data, 0(a6)                             // 2316  MOVE.L    (A6),-(A1)
-        b       L_01264
+        b       move_l_ea_mem_10
         lwz     data, 0(a7)                             // 2317  MOVE.L    (A7),-(A1)
-        b       L_01264
-        ori     rtn_addr, code_ptr, L_01264 - cb        // 2318  MOVE.L    (A0)+,-(A1)
-        b       L_00850
+        b       move_l_ea_mem_10
+        ori     rtn_addr, code_ptr, move_l_ea_mem_10 - cb  // 2318  MOVE.L    (A0)+,-(A1)
+        b       fea_l_30
         lwz     data, 0(a1)                             // 2319  MOVE.L    (A1)+,-(A1)
-        b       L_06144
-        ori     rtn_addr, code_ptr, L_01264 - cb        // 231A  MOVE.L    (A2)+,-(A1)
-        b       L_00950
-        ori     rtn_addr, code_ptr, L_01264 - cb        // 231B  MOVE.L    (A3)+,-(A1)
-        b       L_009D0
-        ori     rtn_addr, code_ptr, L_01264 - cb        // 231C  MOVE.L    (A4)+,-(A1)
-        b       L_00A50
-        ori     rtn_addr, code_ptr, L_01264 - cb        // 231D  MOVE.L    (A5)+,-(A1)
-        b       L_00AD0
-        ori     rtn_addr, code_ptr, L_01264 - cb        // 231E  MOVE.L    (A6)+,-(A1)
-        b       L_00B50
-        ori     rtn_addr, code_ptr, L_01264 - cb        // 231F  MOVE.L    (A7)+,-(A1)
-        b       L_00BD0
+        b       tst_ea
+        ori     rtn_addr, code_ptr, move_l_ea_mem_10 - cb  // 231A  MOVE.L    (A2)+,-(A1)
+        b       fea_l_32
+        ori     rtn_addr, code_ptr, move_l_ea_mem_10 - cb  // 231B  MOVE.L    (A3)+,-(A1)
+        b       fea_l_33
+        ori     rtn_addr, code_ptr, move_l_ea_mem_10 - cb  // 231C  MOVE.L    (A4)+,-(A1)
+        b       fea_l_34
+        ori     rtn_addr, code_ptr, move_l_ea_mem_10 - cb  // 231D  MOVE.L    (A5)+,-(A1)
+        b       fea_l_35
+        ori     rtn_addr, code_ptr, move_l_ea_mem_10 - cb  // 231E  MOVE.L    (A6)+,-(A1)
+        b       fea_l_36
+        ori     rtn_addr, code_ptr, move_l_ea_mem_10 - cb  // 231F  MOVE.L    (A7)+,-(A1)
+        b       fea_l_37
         lwzu    data, -4(a0)                            // 2320  MOVE.L    -(A0),-(A1)
-        b       L_01264
+        b       move_l_ea_mem_10
         lwzu    data, -4(a1)                            // 2321  MOVE.L    -(A1),-(A1)
-        b       L_01264
+        b       move_l_ea_mem_10
         lwzu    data, -4(a2)                            // 2322  MOVE.L    -(A2),-(A1)
-        b       L_01264
+        b       move_l_ea_mem_10
         lwzu    data, -4(a3)                            // 2323  MOVE.L    -(A3),-(A1)
-        b       L_01264
+        b       move_l_ea_mem_10
         lwzu    data, -4(a4)                            // 2324  MOVE.L    -(A4),-(A1)
-        b       L_01264
+        b       move_l_ea_mem_10
         lwzu    data, -4(a5)                            // 2325  MOVE.L    -(A5),-(A1)
-        b       L_01264
+        b       move_l_ea_mem_10
         lwzu    data, -4(a6)                            // 2326  MOVE.L    -(A6),-(A1)
-        b       L_01264
+        b       move_l_ea_mem_10
         lwzu    data, -4(a7)                            // 2327  MOVE.L    -(A7),-(A1)
-        b       L_01264
+        b       move_l_ea_mem_10
         lwzx    data, a0, prefetch_data                 // 2328  MOVE.L    (d16,A0),-(A1)
-        b       L_01260
+        b       move_l_mem_mem_10
         lwzx    data, a1, prefetch_data                 // 2329  MOVE.L    (d16,A1),-(A1)
-        b       L_01260
+        b       move_l_mem_mem_10
         lwzx    data, a2, prefetch_data                 // 232A  MOVE.L    (d16,A2),-(A1)
-        b       L_01260
+        b       move_l_mem_mem_10
         lwzx    data, a3, prefetch_data                 // 232B  MOVE.L    (d16,A3),-(A1)
-        b       L_01260
+        b       move_l_mem_mem_10
         lwzx    data, a4, prefetch_data                 // 232C  MOVE.L    (d16,A4),-(A1)
-        b       L_01260
+        b       move_l_mem_mem_10
         lwzx    data, a5, prefetch_data                 // 232D  MOVE.L    (d16,A5),-(A1)
-        b       L_01260
+        b       move_l_mem_mem_10
         lwzx    data, a6, prefetch_data                 // 232E  MOVE.L    (d16,A6),-(A1)
-        b       L_01260
+        b       move_l_mem_mem_10
         lwzx    data, a7, prefetch_data                 // 232F  MOVE.L    (d16,A7),-(A1)
-        b       L_01260
-        ori     rtn_addr, code_ptr, L_01264 - cb        // 2330  MOVE.L    (d8,A0,Xn),-(A1)
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_01264 - cb        // 2331  MOVE.L    (d8,A1,Xn),-(A1)
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_01264 - cb        // 2332  MOVE.L    (d8,A2,Xn),-(A1)
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_01264 - cb        // 2333  MOVE.L    (d8,A3,Xn),-(A1)
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_01264 - cb        // 2334  MOVE.L    (d8,A4,Xn),-(A1)
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_01264 - cb        // 2335  MOVE.L    (d8,A5,Xn),-(A1)
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_01264 - cb        // 2336  MOVE.L    (d8,A6,Xn),-(A1)
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_01264 - cb        // 2337  MOVE.L    (d8,A7,Xn),-(A1)
-        b       L_05C68
+        b       move_l_mem_mem_10
+        ori     rtn_addr, code_ptr, move_l_ea_mem_10 - cb  // 2330  MOVE.L    (d8,A0,Xn),-(A1)
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, move_l_ea_mem_10 - cb  // 2331  MOVE.L    (d8,A1,Xn),-(A1)
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, move_l_ea_mem_10 - cb  // 2332  MOVE.L    (d8,A2,Xn),-(A1)
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, move_l_ea_mem_10 - cb  // 2333  MOVE.L    (d8,A3,Xn),-(A1)
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, move_l_ea_mem_10 - cb  // 2334  MOVE.L    (d8,A4,Xn),-(A1)
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, move_l_ea_mem_10 - cb  // 2335  MOVE.L    (d8,A5,Xn),-(A1)
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, move_l_ea_mem_10 - cb  // 2336  MOVE.L    (d8,A6,Xn),-(A1)
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, move_l_ea_mem_10 - cb  // 2337  MOVE.L    (d8,A7,Xn),-(A1)
+        b       move_add_etc_l_any_any_8
         lwz     data, 0(prefetch_data)                  // 2338  MOVE.L    (xxx).W,-(A1)
-        b       L_01260
-        ori     rtn_addr, code_ptr, L_01264 - cb        // 2339  MOVE.L    (xxx).L,-(A1)
-        b       L_05E8C
+        b       move_l_mem_mem_10
+        ori     rtn_addr, code_ptr, move_l_ea_mem_10 - cb  // 2339  MOVE.L    (xxx).L,-(A1)
+        b       fea_l_71_2
         lwzx    data, pc, prefetch_data                 // 233A  MOVE.L    (d16,PC),-(A1)
-        b       L_01260
-        ori     rtn_addr, code_ptr, L_01264 - cb        // 233B  MOVE.L    (d8,PC,Xn),-(A1)
-        b       L_05F08
-        ori     rtn_addr, code_ptr, L_01264 - cb        // 233C  MOVE.L    #<data>,-(A1)
-        b       L_05F30
+        b       move_l_mem_mem_10
+        ori     rtn_addr, code_ptr, move_l_ea_mem_10 - cb  // 233B  MOVE.L    (d8,PC,Xn),-(A1)
+        b       fea_l_73
+        ori     rtn_addr, code_ptr, move_l_ea_mem_10 - cb  // 233C  MOVE.L    #<data>,-(A1)
+        b       fea_l_74
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 233D  MOVE.L    <ea 7.5>,-(A1)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 233E  MOVE.L    <ea 7.6>,-(A1)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 233F  MOVE.L    <ea 7.7>,-(A1)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $2340-$237F --------------------------------------------------------
         addco.  data, d0, zero                          // 2340  MOVE.L    D0,(d16,A1)
-        b       L_0148C
+        b       move_l_reg_mem_18
         addco.  data, d1, zero                          // 2341  MOVE.L    D1,(d16,A1)
-        b       L_0148C
+        b       move_l_reg_mem_18
         addco.  data, d2, zero                          // 2342  MOVE.L    D2,(d16,A1)
-        b       L_0148C
+        b       move_l_reg_mem_18
         addco.  data, d3, zero                          // 2343  MOVE.L    D3,(d16,A1)
-        b       L_0148C
+        b       move_l_reg_mem_18
         addco.  data, d4, zero                          // 2344  MOVE.L    D4,(d16,A1)
-        b       L_0148C
+        b       move_l_reg_mem_18
         addco.  data, d5, zero                          // 2345  MOVE.L    D5,(d16,A1)
-        b       L_0148C
+        b       move_l_reg_mem_18
         addco.  data, d6, zero                          // 2346  MOVE.L    D6,(d16,A1)
-        b       L_0148C
+        b       move_l_reg_mem_18
         addco.  data, d7, zero                          // 2347  MOVE.L    D7,(d16,A1)
-        b       L_0148C
+        b       move_l_reg_mem_18
         addco.  data, a0, zero                          // 2348  MOVE.L    A0,(d16,A1)
-        b       L_0148C
+        b       move_l_reg_mem_18
         addco.  data, a1, zero                          // 2349  MOVE.L    A1,(d16,A1)
-        b       L_0148C
+        b       move_l_reg_mem_18
         addco.  data, a2, zero                          // 234A  MOVE.L    A2,(d16,A1)
-        b       L_0148C
+        b       move_l_reg_mem_18
         addco.  data, a3, zero                          // 234B  MOVE.L    A3,(d16,A1)
-        b       L_0148C
+        b       move_l_reg_mem_18
         addco.  data, a4, zero                          // 234C  MOVE.L    A4,(d16,A1)
-        b       L_0148C
+        b       move_l_reg_mem_18
         addco.  data, a5, zero                          // 234D  MOVE.L    A5,(d16,A1)
-        b       L_0148C
+        b       move_l_reg_mem_18
         addco.  data, a6, zero                          // 234E  MOVE.L    A6,(d16,A1)
-        b       L_0148C
+        b       move_l_reg_mem_18
         addco.  data, a7, zero                          // 234F  MOVE.L    A7,(d16,A1)
-        b       L_0148C
+        b       move_l_reg_mem_18
         lwz     data, 0(a0)                             // 2350  MOVE.L    (A0),(d16,A1)
-        b       L_01488
+        b       move_l_ea_mem_21
         lwz     data, 0(a1)                             // 2351  MOVE.L    (A1),(d16,A1)
-        b       L_01488
+        b       move_l_ea_mem_21
         lwz     data, 0(a2)                             // 2352  MOVE.L    (A2),(d16,A1)
-        b       L_01488
+        b       move_l_ea_mem_21
         lwz     data, 0(a3)                             // 2353  MOVE.L    (A3),(d16,A1)
-        b       L_01488
+        b       move_l_ea_mem_21
         lwz     data, 0(a4)                             // 2354  MOVE.L    (A4),(d16,A1)
-        b       L_01488
+        b       move_l_ea_mem_21
         lwz     data, 0(a5)                             // 2355  MOVE.L    (A5),(d16,A1)
-        b       L_01488
+        b       move_l_ea_mem_21
         lwz     data, 0(a6)                             // 2356  MOVE.L    (A6),(d16,A1)
-        b       L_01488
+        b       move_l_ea_mem_21
         lwz     data, 0(a7)                             // 2357  MOVE.L    (A7),(d16,A1)
-        b       L_01488
-        ori     rtn_addr, code_ptr, L_01488 - cb        // 2358  MOVE.L    (A0)+,(d16,A1)
-        b       L_00850
-        ori     rtn_addr, code_ptr, L_01488 - cb        // 2359  MOVE.L    (A1)+,(d16,A1)
-        b       L_008D0
-        ori     rtn_addr, code_ptr, L_01488 - cb        // 235A  MOVE.L    (A2)+,(d16,A1)
-        b       L_00950
-        ori     rtn_addr, code_ptr, L_01488 - cb        // 235B  MOVE.L    (A3)+,(d16,A1)
-        b       L_009D0
-        ori     rtn_addr, code_ptr, L_01488 - cb        // 235C  MOVE.L    (A4)+,(d16,A1)
-        b       L_00A50
-        ori     rtn_addr, code_ptr, L_01488 - cb        // 235D  MOVE.L    (A5)+,(d16,A1)
-        b       L_00AD0
-        ori     rtn_addr, code_ptr, L_01488 - cb        // 235E  MOVE.L    (A6)+,(d16,A1)
-        b       L_00B50
-        ori     rtn_addr, code_ptr, L_01488 - cb        // 235F  MOVE.L    (A7)+,(d16,A1)
-        b       L_00BD0
+        b       move_l_ea_mem_21
+        ori     rtn_addr, code_ptr, move_l_ea_mem_21 - cb  // 2358  MOVE.L    (A0)+,(d16,A1)
+        b       fea_l_30
+        ori     rtn_addr, code_ptr, move_l_ea_mem_21 - cb  // 2359  MOVE.L    (A1)+,(d16,A1)
+        b       fea_l_31
+        ori     rtn_addr, code_ptr, move_l_ea_mem_21 - cb  // 235A  MOVE.L    (A2)+,(d16,A1)
+        b       fea_l_32
+        ori     rtn_addr, code_ptr, move_l_ea_mem_21 - cb  // 235B  MOVE.L    (A3)+,(d16,A1)
+        b       fea_l_33
+        ori     rtn_addr, code_ptr, move_l_ea_mem_21 - cb  // 235C  MOVE.L    (A4)+,(d16,A1)
+        b       fea_l_34
+        ori     rtn_addr, code_ptr, move_l_ea_mem_21 - cb  // 235D  MOVE.L    (A5)+,(d16,A1)
+        b       fea_l_35
+        ori     rtn_addr, code_ptr, move_l_ea_mem_21 - cb  // 235E  MOVE.L    (A6)+,(d16,A1)
+        b       fea_l_36
+        ori     rtn_addr, code_ptr, move_l_ea_mem_21 - cb  // 235F  MOVE.L    (A7)+,(d16,A1)
+        b       fea_l_37
         lwzu    data, -4(a0)                            // 2360  MOVE.L    -(A0),(d16,A1)
-        b       L_01488
+        b       move_l_ea_mem_21
         lwzu    data, -4(a1)                            // 2361  MOVE.L    -(A1),(d16,A1)
-        b       L_01488
+        b       move_l_ea_mem_21
         lwzu    data, -4(a2)                            // 2362  MOVE.L    -(A2),(d16,A1)
-        b       L_01488
+        b       move_l_ea_mem_21
         lwzu    data, -4(a3)                            // 2363  MOVE.L    -(A3),(d16,A1)
-        b       L_01488
+        b       move_l_ea_mem_21
         lwzu    data, -4(a4)                            // 2364  MOVE.L    -(A4),(d16,A1)
-        b       L_01488
+        b       move_l_ea_mem_21
         lwzu    data, -4(a5)                            // 2365  MOVE.L    -(A5),(d16,A1)
-        b       L_01488
+        b       move_l_ea_mem_21
         lwzu    data, -4(a6)                            // 2366  MOVE.L    -(A6),(d16,A1)
-        b       L_01488
+        b       move_l_ea_mem_21
         lwzu    data, -4(a7)                            // 2367  MOVE.L    -(A7),(d16,A1)
-        b       L_01488
+        b       move_l_ea_mem_21
         lwzx    data, a0, prefetch_data                 // 2368  MOVE.L    (d16,A0),(d16,A1)
-        b       L_01484
+        b       move_l_mem_mem_21
         lwzx    data, a1, prefetch_data                 // 2369  MOVE.L    (d16,A1),(d16,A1)
-        b       L_01484
+        b       move_l_mem_mem_21
         lwzx    data, a2, prefetch_data                 // 236A  MOVE.L    (d16,A2),(d16,A1)
-        b       L_01484
+        b       move_l_mem_mem_21
         lwzx    data, a3, prefetch_data                 // 236B  MOVE.L    (d16,A3),(d16,A1)
-        b       L_01484
+        b       move_l_mem_mem_21
         lwzx    data, a4, prefetch_data                 // 236C  MOVE.L    (d16,A4),(d16,A1)
-        b       L_01484
+        b       move_l_mem_mem_21
         lwzx    data, a5, prefetch_data                 // 236D  MOVE.L    (d16,A5),(d16,A1)
-        b       L_01484
+        b       move_l_mem_mem_21
         lwzx    data, a6, prefetch_data                 // 236E  MOVE.L    (d16,A6),(d16,A1)
-        b       L_01484
+        b       move_l_mem_mem_21
         lwzx    data, a7, prefetch_data                 // 236F  MOVE.L    (d16,A7),(d16,A1)
-        b       L_01484
-        ori     rtn_addr, code_ptr, L_01488 - cb        // 2370  MOVE.L    (d8,A0,Xn),(d16,A1)
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_01488 - cb        // 2371  MOVE.L    (d8,A1,Xn),(d16,A1)
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_01488 - cb        // 2372  MOVE.L    (d8,A2,Xn),(d16,A1)
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_01488 - cb        // 2373  MOVE.L    (d8,A3,Xn),(d16,A1)
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_01488 - cb        // 2374  MOVE.L    (d8,A4,Xn),(d16,A1)
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_01488 - cb        // 2375  MOVE.L    (d8,A5,Xn),(d16,A1)
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_01488 - cb        // 2376  MOVE.L    (d8,A6,Xn),(d16,A1)
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_01488 - cb        // 2377  MOVE.L    (d8,A7,Xn),(d16,A1)
-        b       L_05C68
+        b       move_l_mem_mem_21
+        ori     rtn_addr, code_ptr, move_l_ea_mem_21 - cb  // 2370  MOVE.L    (d8,A0,Xn),(d16,A1)
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, move_l_ea_mem_21 - cb  // 2371  MOVE.L    (d8,A1,Xn),(d16,A1)
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, move_l_ea_mem_21 - cb  // 2372  MOVE.L    (d8,A2,Xn),(d16,A1)
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, move_l_ea_mem_21 - cb  // 2373  MOVE.L    (d8,A3,Xn),(d16,A1)
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, move_l_ea_mem_21 - cb  // 2374  MOVE.L    (d8,A4,Xn),(d16,A1)
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, move_l_ea_mem_21 - cb  // 2375  MOVE.L    (d8,A5,Xn),(d16,A1)
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, move_l_ea_mem_21 - cb  // 2376  MOVE.L    (d8,A6,Xn),(d16,A1)
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, move_l_ea_mem_21 - cb  // 2377  MOVE.L    (d8,A7,Xn),(d16,A1)
+        b       move_add_etc_l_any_any_8
         lwz     data, 0(prefetch_data)                  // 2378  MOVE.L    (xxx).W,(d16,A1)
-        b       L_01484
-        ori     rtn_addr, code_ptr, L_01488 - cb        // 2379  MOVE.L    (xxx).L,(d16,A1)
-        b       L_05E8C
+        b       move_l_mem_mem_21
+        ori     rtn_addr, code_ptr, move_l_ea_mem_21 - cb  // 2379  MOVE.L    (xxx).L,(d16,A1)
+        b       fea_l_71_2
         lwzx    data, pc, prefetch_data                 // 237A  MOVE.L    (d16,PC),(d16,A1)
-        b       L_01484
-        ori     rtn_addr, code_ptr, L_01488 - cb        // 237B  MOVE.L    (d8,PC,Xn),(d16,A1)
-        b       L_05F08
-        ori     rtn_addr, code_ptr, L_01488 - cb        // 237C  MOVE.L    #<data>,(d16,A1)
-        b       L_05F30
+        b       move_l_mem_mem_21
+        ori     rtn_addr, code_ptr, move_l_ea_mem_21 - cb  // 237B  MOVE.L    (d8,PC,Xn),(d16,A1)
+        b       fea_l_73
+        ori     rtn_addr, code_ptr, move_l_ea_mem_21 - cb  // 237C  MOVE.L    #<data>,(d16,A1)
+        b       fea_l_74
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 237D  MOVE.L    <ea 7.5>,(d16,A1)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 237E  MOVE.L    <ea 7.6>,(d16,A1)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 237F  MOVE.L    <ea 7.7>,(d16,A1)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $2380-$23BF --------------------------------------------------------
         addco.  data, d0, zero                          // 2380  MOVE.L    D0,(d8,A1,Xn)
-        b       L_014B0
+        b       move_clr_l_reg_mem_4
         addco.  data, d1, zero                          // 2381  MOVE.L    D1,(d8,A1,Xn)
-        b       L_014B0
+        b       move_clr_l_reg_mem_4
         addco.  data, d2, zero                          // 2382  MOVE.L    D2,(d8,A1,Xn)
-        b       L_014B0
+        b       move_clr_l_reg_mem_4
         addco.  data, d3, zero                          // 2383  MOVE.L    D3,(d8,A1,Xn)
-        b       L_014B0
+        b       move_clr_l_reg_mem_4
         addco.  data, d4, zero                          // 2384  MOVE.L    D4,(d8,A1,Xn)
-        b       L_014B0
+        b       move_clr_l_reg_mem_4
         addco.  data, d5, zero                          // 2385  MOVE.L    D5,(d8,A1,Xn)
-        b       L_014B0
+        b       move_clr_l_reg_mem_4
         addco.  data, d6, zero                          // 2386  MOVE.L    D6,(d8,A1,Xn)
-        b       L_014B0
+        b       move_clr_l_reg_mem_4
         addco.  data, d7, zero                          // 2387  MOVE.L    D7,(d8,A1,Xn)
-        b       L_014B0
+        b       move_clr_l_reg_mem_4
         addco.  data, a0, zero                          // 2388  MOVE.L    A0,(d8,A1,Xn)
-        b       L_014B0
+        b       move_clr_l_reg_mem_4
         addco.  data, a1, zero                          // 2389  MOVE.L    A1,(d8,A1,Xn)
-        b       L_014B0
+        b       move_clr_l_reg_mem_4
         addco.  data, a2, zero                          // 238A  MOVE.L    A2,(d8,A1,Xn)
-        b       L_014B0
+        b       move_clr_l_reg_mem_4
         addco.  data, a3, zero                          // 238B  MOVE.L    A3,(d8,A1,Xn)
-        b       L_014B0
+        b       move_clr_l_reg_mem_4
         addco.  data, a4, zero                          // 238C  MOVE.L    A4,(d8,A1,Xn)
-        b       L_014B0
+        b       move_clr_l_reg_mem_4
         addco.  data, a5, zero                          // 238D  MOVE.L    A5,(d8,A1,Xn)
-        b       L_014B0
+        b       move_clr_l_reg_mem_4
         addco.  data, a6, zero                          // 238E  MOVE.L    A6,(d8,A1,Xn)
-        b       L_014B0
+        b       move_clr_l_reg_mem_4
         addco.  data, a7, zero                          // 238F  MOVE.L    A7,(d8,A1,Xn)
-        b       L_014B0
+        b       move_clr_l_reg_mem_4
         lwz     data, 0(a0)                             // 2390  MOVE.L    (A0),(d8,A1,Xn)
-        b       L_014AC
+        b       move_l_ea_mem_22
         lwz     data, 0(a1)                             // 2391  MOVE.L    (A1),(d8,A1,Xn)
-        b       L_014AC
+        b       move_l_ea_mem_22
         lwz     data, 0(a2)                             // 2392  MOVE.L    (A2),(d8,A1,Xn)
-        b       L_014AC
+        b       move_l_ea_mem_22
         lwz     data, 0(a3)                             // 2393  MOVE.L    (A3),(d8,A1,Xn)
-        b       L_014AC
+        b       move_l_ea_mem_22
         lwz     data, 0(a4)                             // 2394  MOVE.L    (A4),(d8,A1,Xn)
-        b       L_014AC
+        b       move_l_ea_mem_22
         lwz     data, 0(a5)                             // 2395  MOVE.L    (A5),(d8,A1,Xn)
-        b       L_014AC
+        b       move_l_ea_mem_22
         lwz     data, 0(a6)                             // 2396  MOVE.L    (A6),(d8,A1,Xn)
-        b       L_014AC
+        b       move_l_ea_mem_22
         lwz     data, 0(a7)                             // 2397  MOVE.L    (A7),(d8,A1,Xn)
-        b       L_014AC
-        ori     rtn_addr, code_ptr, L_014AC - cb        // 2398  MOVE.L    (A0)+,(d8,A1,Xn)
-        b       L_00850
-        ori     rtn_addr, code_ptr, L_014AC - cb        // 2399  MOVE.L    (A1)+,(d8,A1,Xn)
-        b       L_008D0
-        ori     rtn_addr, code_ptr, L_014AC - cb        // 239A  MOVE.L    (A2)+,(d8,A1,Xn)
-        b       L_00950
-        ori     rtn_addr, code_ptr, L_014AC - cb        // 239B  MOVE.L    (A3)+,(d8,A1,Xn)
-        b       L_009D0
-        ori     rtn_addr, code_ptr, L_014AC - cb        // 239C  MOVE.L    (A4)+,(d8,A1,Xn)
-        b       L_00A50
-        ori     rtn_addr, code_ptr, L_014AC - cb        // 239D  MOVE.L    (A5)+,(d8,A1,Xn)
-        b       L_00AD0
-        ori     rtn_addr, code_ptr, L_014AC - cb        // 239E  MOVE.L    (A6)+,(d8,A1,Xn)
-        b       L_00B50
-        ori     rtn_addr, code_ptr, L_014AC - cb        // 239F  MOVE.L    (A7)+,(d8,A1,Xn)
-        b       L_00BD0
+        b       move_l_ea_mem_22
+        ori     rtn_addr, code_ptr, move_l_ea_mem_22 - cb  // 2398  MOVE.L    (A0)+,(d8,A1,Xn)
+        b       fea_l_30
+        ori     rtn_addr, code_ptr, move_l_ea_mem_22 - cb  // 2399  MOVE.L    (A1)+,(d8,A1,Xn)
+        b       fea_l_31
+        ori     rtn_addr, code_ptr, move_l_ea_mem_22 - cb  // 239A  MOVE.L    (A2)+,(d8,A1,Xn)
+        b       fea_l_32
+        ori     rtn_addr, code_ptr, move_l_ea_mem_22 - cb  // 239B  MOVE.L    (A3)+,(d8,A1,Xn)
+        b       fea_l_33
+        ori     rtn_addr, code_ptr, move_l_ea_mem_22 - cb  // 239C  MOVE.L    (A4)+,(d8,A1,Xn)
+        b       fea_l_34
+        ori     rtn_addr, code_ptr, move_l_ea_mem_22 - cb  // 239D  MOVE.L    (A5)+,(d8,A1,Xn)
+        b       fea_l_35
+        ori     rtn_addr, code_ptr, move_l_ea_mem_22 - cb  // 239E  MOVE.L    (A6)+,(d8,A1,Xn)
+        b       fea_l_36
+        ori     rtn_addr, code_ptr, move_l_ea_mem_22 - cb  // 239F  MOVE.L    (A7)+,(d8,A1,Xn)
+        b       fea_l_37
         lwzu    data, -4(a0)                            // 23A0  MOVE.L    -(A0),(d8,A1,Xn)
-        b       L_014AC
+        b       move_l_ea_mem_22
         lwzu    data, -4(a1)                            // 23A1  MOVE.L    -(A1),(d8,A1,Xn)
-        b       L_014AC
+        b       move_l_ea_mem_22
         lwzu    data, -4(a2)                            // 23A2  MOVE.L    -(A2),(d8,A1,Xn)
-        b       L_014AC
+        b       move_l_ea_mem_22
         lwzu    data, -4(a3)                            // 23A3  MOVE.L    -(A3),(d8,A1,Xn)
-        b       L_014AC
+        b       move_l_ea_mem_22
         lwzu    data, -4(a4)                            // 23A4  MOVE.L    -(A4),(d8,A1,Xn)
-        b       L_014AC
+        b       move_l_ea_mem_22
         lwzu    data, -4(a5)                            // 23A5  MOVE.L    -(A5),(d8,A1,Xn)
-        b       L_014AC
+        b       move_l_ea_mem_22
         lwzu    data, -4(a6)                            // 23A6  MOVE.L    -(A6),(d8,A1,Xn)
-        b       L_014AC
+        b       move_l_ea_mem_22
         lwzu    data, -4(a7)                            // 23A7  MOVE.L    -(A7),(d8,A1,Xn)
-        b       L_014AC
+        b       move_l_ea_mem_22
         lwzx    data, a0, prefetch_data                 // 23A8  MOVE.L    (d16,A0),(d8,A1,Xn)
-        b       L_014A8
+        b       move_l_mem_mem_22
         lwzx    data, a1, prefetch_data                 // 23A9  MOVE.L    (d16,A1),(d8,A1,Xn)
-        b       L_014A8
+        b       move_l_mem_mem_22
         lwzx    data, a2, prefetch_data                 // 23AA  MOVE.L    (d16,A2),(d8,A1,Xn)
-        b       L_014A8
+        b       move_l_mem_mem_22
         lwzx    data, a3, prefetch_data                 // 23AB  MOVE.L    (d16,A3),(d8,A1,Xn)
-        b       L_014A8
+        b       move_l_mem_mem_22
         lwzx    data, a4, prefetch_data                 // 23AC  MOVE.L    (d16,A4),(d8,A1,Xn)
-        b       L_014A8
+        b       move_l_mem_mem_22
         lwzx    data, a5, prefetch_data                 // 23AD  MOVE.L    (d16,A5),(d8,A1,Xn)
-        b       L_014A8
+        b       move_l_mem_mem_22
         lwzx    data, a6, prefetch_data                 // 23AE  MOVE.L    (d16,A6),(d8,A1,Xn)
-        b       L_014A8
+        b       move_l_mem_mem_22
         lwzx    data, a7, prefetch_data                 // 23AF  MOVE.L    (d16,A7),(d8,A1,Xn)
-        b       L_014A8
-        ori     rtn_addr, code_ptr, L_014AC - cb        // 23B0  MOVE.L    (d8,A0,Xn),(d8,A1,Xn)
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_014AC - cb        // 23B1  MOVE.L    (d8,A1,Xn),(d8,A1,Xn)
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_014AC - cb        // 23B2  MOVE.L    (d8,A2,Xn),(d8,A1,Xn)
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_014AC - cb        // 23B3  MOVE.L    (d8,A3,Xn),(d8,A1,Xn)
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_014AC - cb        // 23B4  MOVE.L    (d8,A4,Xn),(d8,A1,Xn)
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_014AC - cb        // 23B5  MOVE.L    (d8,A5,Xn),(d8,A1,Xn)
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_014AC - cb        // 23B6  MOVE.L    (d8,A6,Xn),(d8,A1,Xn)
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_014AC - cb        // 23B7  MOVE.L    (d8,A7,Xn),(d8,A1,Xn)
-        b       L_05C68
+        b       move_l_mem_mem_22
+        ori     rtn_addr, code_ptr, move_l_ea_mem_22 - cb  // 23B0  MOVE.L    (d8,A0,Xn),(d8,A1,Xn)
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, move_l_ea_mem_22 - cb  // 23B1  MOVE.L    (d8,A1,Xn),(d8,A1,Xn)
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, move_l_ea_mem_22 - cb  // 23B2  MOVE.L    (d8,A2,Xn),(d8,A1,Xn)
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, move_l_ea_mem_22 - cb  // 23B3  MOVE.L    (d8,A3,Xn),(d8,A1,Xn)
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, move_l_ea_mem_22 - cb  // 23B4  MOVE.L    (d8,A4,Xn),(d8,A1,Xn)
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, move_l_ea_mem_22 - cb  // 23B5  MOVE.L    (d8,A5,Xn),(d8,A1,Xn)
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, move_l_ea_mem_22 - cb  // 23B6  MOVE.L    (d8,A6,Xn),(d8,A1,Xn)
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, move_l_ea_mem_22 - cb  // 23B7  MOVE.L    (d8,A7,Xn),(d8,A1,Xn)
+        b       move_add_etc_l_any_any_8
         lwz     data, 0(prefetch_data)                  // 23B8  MOVE.L    (xxx).W,(d8,A1,Xn)
-        b       L_014A8
-        ori     rtn_addr, code_ptr, L_014AC - cb        // 23B9  MOVE.L    (xxx).L,(d8,A1,Xn)
-        b       L_05E8C
+        b       move_l_mem_mem_22
+        ori     rtn_addr, code_ptr, move_l_ea_mem_22 - cb  // 23B9  MOVE.L    (xxx).L,(d8,A1,Xn)
+        b       fea_l_71_2
         lwzx    data, pc, prefetch_data                 // 23BA  MOVE.L    (d16,PC),(d8,A1,Xn)
-        b       L_014A8
-        ori     rtn_addr, code_ptr, L_014AC - cb        // 23BB  MOVE.L    (d8,PC,Xn),(d8,A1,Xn)
-        b       L_05F08
-        ori     rtn_addr, code_ptr, L_014AC - cb        // 23BC  MOVE.L    #<data>,(d8,A1,Xn)
-        b       L_05F30
+        b       move_l_mem_mem_22
+        ori     rtn_addr, code_ptr, move_l_ea_mem_22 - cb  // 23BB  MOVE.L    (d8,PC,Xn),(d8,A1,Xn)
+        b       fea_l_73
+        ori     rtn_addr, code_ptr, move_l_ea_mem_22 - cb  // 23BC  MOVE.L    #<data>,(d8,A1,Xn)
+        b       fea_l_74
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 23BD  MOVE.L    <ea 7.5>,(d8,A1,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 23BE  MOVE.L    <ea 7.6>,(d8,A1,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 23BF  MOVE.L    <ea 7.7>,(d8,A1,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $23C0-$23FF --------------------------------------------------------
         addco.  data, d0, zero                          // 23C0  MOVE.L    D0,(xxx).L
-        b       L_06314
+        b       move_clr_l_reg_mem_17
         addco.  data, d1, zero                          // 23C1  MOVE.L    D1,(xxx).L
-        b       L_06314
+        b       move_clr_l_reg_mem_17
         addco.  data, d2, zero                          // 23C2  MOVE.L    D2,(xxx).L
-        b       L_06314
+        b       move_clr_l_reg_mem_17
         addco.  data, d3, zero                          // 23C3  MOVE.L    D3,(xxx).L
-        b       L_06314
+        b       move_clr_l_reg_mem_17
         addco.  data, d4, zero                          // 23C4  MOVE.L    D4,(xxx).L
-        b       L_06314
+        b       move_clr_l_reg_mem_17
         addco.  data, d5, zero                          // 23C5  MOVE.L    D5,(xxx).L
-        b       L_06314
+        b       move_clr_l_reg_mem_17
         addco.  data, d6, zero                          // 23C6  MOVE.L    D6,(xxx).L
-        b       L_06314
+        b       move_clr_l_reg_mem_17
         addco.  data, d7, zero                          // 23C7  MOVE.L    D7,(xxx).L
-        b       L_06314
+        b       move_clr_l_reg_mem_17
         addco.  data, a0, zero                          // 23C8  MOVE.L    A0,(xxx).L
-        b       L_06314
+        b       move_clr_l_reg_mem_17
         addco.  data, a1, zero                          // 23C9  MOVE.L    A1,(xxx).L
-        b       L_06314
+        b       move_clr_l_reg_mem_17
         addco.  data, a2, zero                          // 23CA  MOVE.L    A2,(xxx).L
-        b       L_06314
+        b       move_clr_l_reg_mem_17
         addco.  data, a3, zero                          // 23CB  MOVE.L    A3,(xxx).L
-        b       L_06314
+        b       move_clr_l_reg_mem_17
         addco.  data, a4, zero                          // 23CC  MOVE.L    A4,(xxx).L
-        b       L_06314
+        b       move_clr_l_reg_mem_17
         addco.  data, a5, zero                          // 23CD  MOVE.L    A5,(xxx).L
-        b       L_06314
+        b       move_clr_l_reg_mem_17
         addco.  data, a6, zero                          // 23CE  MOVE.L    A6,(xxx).L
-        b       L_06314
+        b       move_clr_l_reg_mem_17
         addco.  data, a7, zero                          // 23CF  MOVE.L    A7,(xxx).L
-        b       L_06314
+        b       move_clr_l_reg_mem_17
         lwz     data, 0(a0)                             // 23D0  MOVE.L    (A0),(xxx).L
-        b       L_06310
+        b       move_l_ea_mem_42
         lwz     data, 0(a1)                             // 23D1  MOVE.L    (A1),(xxx).L
-        b       L_06310
+        b       move_l_ea_mem_42
         lwz     data, 0(a2)                             // 23D2  MOVE.L    (A2),(xxx).L
-        b       L_06310
+        b       move_l_ea_mem_42
         lwz     data, 0(a3)                             // 23D3  MOVE.L    (A3),(xxx).L
-        b       L_06310
+        b       move_l_ea_mem_42
         lwz     data, 0(a4)                             // 23D4  MOVE.L    (A4),(xxx).L
-        b       L_06310
+        b       move_l_ea_mem_42
         lwz     data, 0(a5)                             // 23D5  MOVE.L    (A5),(xxx).L
-        b       L_06310
+        b       move_l_ea_mem_42
         lwz     data, 0(a6)                             // 23D6  MOVE.L    (A6),(xxx).L
-        b       L_06310
+        b       move_l_ea_mem_42
         lwz     data, 0(a7)                             // 23D7  MOVE.L    (A7),(xxx).L
-        b       L_06310
-        ori     rtn_addr, code_ptr, L_06310 - cb        // 23D8  MOVE.L    (A0)+,(xxx).L
-        b       L_00850
-        ori     rtn_addr, code_ptr, L_06310 - cb        // 23D9  MOVE.L    (A1)+,(xxx).L
-        b       L_008D0
-        ori     rtn_addr, code_ptr, L_06310 - cb        // 23DA  MOVE.L    (A2)+,(xxx).L
-        b       L_00950
-        ori     rtn_addr, code_ptr, L_06310 - cb        // 23DB  MOVE.L    (A3)+,(xxx).L
-        b       L_009D0
-        ori     rtn_addr, code_ptr, L_06310 - cb        // 23DC  MOVE.L    (A4)+,(xxx).L
-        b       L_00A50
-        ori     rtn_addr, code_ptr, L_06310 - cb        // 23DD  MOVE.L    (A5)+,(xxx).L
-        b       L_00AD0
-        ori     rtn_addr, code_ptr, L_06310 - cb        // 23DE  MOVE.L    (A6)+,(xxx).L
-        b       L_00B50
-        ori     rtn_addr, code_ptr, L_06310 - cb        // 23DF  MOVE.L    (A7)+,(xxx).L
-        b       L_00BD0
+        b       move_l_ea_mem_42
+        ori     rtn_addr, code_ptr, move_l_ea_mem_42 - cb  // 23D8  MOVE.L    (A0)+,(xxx).L
+        b       fea_l_30
+        ori     rtn_addr, code_ptr, move_l_ea_mem_42 - cb  // 23D9  MOVE.L    (A1)+,(xxx).L
+        b       fea_l_31
+        ori     rtn_addr, code_ptr, move_l_ea_mem_42 - cb  // 23DA  MOVE.L    (A2)+,(xxx).L
+        b       fea_l_32
+        ori     rtn_addr, code_ptr, move_l_ea_mem_42 - cb  // 23DB  MOVE.L    (A3)+,(xxx).L
+        b       fea_l_33
+        ori     rtn_addr, code_ptr, move_l_ea_mem_42 - cb  // 23DC  MOVE.L    (A4)+,(xxx).L
+        b       fea_l_34
+        ori     rtn_addr, code_ptr, move_l_ea_mem_42 - cb  // 23DD  MOVE.L    (A5)+,(xxx).L
+        b       fea_l_35
+        ori     rtn_addr, code_ptr, move_l_ea_mem_42 - cb  // 23DE  MOVE.L    (A6)+,(xxx).L
+        b       fea_l_36
+        ori     rtn_addr, code_ptr, move_l_ea_mem_42 - cb  // 23DF  MOVE.L    (A7)+,(xxx).L
+        b       fea_l_37
         lwzu    data, -4(a0)                            // 23E0  MOVE.L    -(A0),(xxx).L
-        b       L_06310
+        b       move_l_ea_mem_42
         lwzu    data, -4(a1)                            // 23E1  MOVE.L    -(A1),(xxx).L
-        b       L_06310
+        b       move_l_ea_mem_42
         lwzu    data, -4(a2)                            // 23E2  MOVE.L    -(A2),(xxx).L
-        b       L_06310
+        b       move_l_ea_mem_42
         lwzu    data, -4(a3)                            // 23E3  MOVE.L    -(A3),(xxx).L
-        b       L_06310
+        b       move_l_ea_mem_42
         lwzu    data, -4(a4)                            // 23E4  MOVE.L    -(A4),(xxx).L
-        b       L_06310
+        b       move_l_ea_mem_42
         lwzu    data, -4(a5)                            // 23E5  MOVE.L    -(A5),(xxx).L
-        b       L_06310
+        b       move_l_ea_mem_42
         lwzu    data, -4(a6)                            // 23E6  MOVE.L    -(A6),(xxx).L
-        b       L_06310
+        b       move_l_ea_mem_42
         lwzu    data, -4(a7)                            // 23E7  MOVE.L    -(A7),(xxx).L
-        b       L_06310
+        b       move_l_ea_mem_42
         lwzx    data, a0, prefetch_data                 // 23E8  MOVE.L    (d16,A0),(xxx).L
-        b       L_0630C
+        b       move_l_mem_mem_42
         lwzx    data, a1, prefetch_data                 // 23E9  MOVE.L    (d16,A1),(xxx).L
-        b       L_0630C
+        b       move_l_mem_mem_42
         lwzx    data, a2, prefetch_data                 // 23EA  MOVE.L    (d16,A2),(xxx).L
-        b       L_0630C
+        b       move_l_mem_mem_42
         lwzx    data, a3, prefetch_data                 // 23EB  MOVE.L    (d16,A3),(xxx).L
-        b       L_0630C
+        b       move_l_mem_mem_42
         lwzx    data, a4, prefetch_data                 // 23EC  MOVE.L    (d16,A4),(xxx).L
-        b       L_0630C
+        b       move_l_mem_mem_42
         lwzx    data, a5, prefetch_data                 // 23ED  MOVE.L    (d16,A5),(xxx).L
-        b       L_0630C
+        b       move_l_mem_mem_42
         lwzx    data, a6, prefetch_data                 // 23EE  MOVE.L    (d16,A6),(xxx).L
-        b       L_0630C
+        b       move_l_mem_mem_42
         lwzx    data, a7, prefetch_data                 // 23EF  MOVE.L    (d16,A7),(xxx).L
-        b       L_0630C
-        ori     rtn_addr, code_ptr, L_06310 - cb        // 23F0  MOVE.L    (d8,A0,Xn),(xxx).L
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_06310 - cb        // 23F1  MOVE.L    (d8,A1,Xn),(xxx).L
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_06310 - cb        // 23F2  MOVE.L    (d8,A2,Xn),(xxx).L
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_06310 - cb        // 23F3  MOVE.L    (d8,A3,Xn),(xxx).L
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_06310 - cb        // 23F4  MOVE.L    (d8,A4,Xn),(xxx).L
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_06310 - cb        // 23F5  MOVE.L    (d8,A5,Xn),(xxx).L
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_06310 - cb        // 23F6  MOVE.L    (d8,A6,Xn),(xxx).L
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_06310 - cb        // 23F7  MOVE.L    (d8,A7,Xn),(xxx).L
-        b       L_05C68
+        b       move_l_mem_mem_42
+        ori     rtn_addr, code_ptr, move_l_ea_mem_42 - cb  // 23F0  MOVE.L    (d8,A0,Xn),(xxx).L
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, move_l_ea_mem_42 - cb  // 23F1  MOVE.L    (d8,A1,Xn),(xxx).L
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, move_l_ea_mem_42 - cb  // 23F2  MOVE.L    (d8,A2,Xn),(xxx).L
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, move_l_ea_mem_42 - cb  // 23F3  MOVE.L    (d8,A3,Xn),(xxx).L
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, move_l_ea_mem_42 - cb  // 23F4  MOVE.L    (d8,A4,Xn),(xxx).L
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, move_l_ea_mem_42 - cb  // 23F5  MOVE.L    (d8,A5,Xn),(xxx).L
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, move_l_ea_mem_42 - cb  // 23F6  MOVE.L    (d8,A6,Xn),(xxx).L
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, move_l_ea_mem_42 - cb  // 23F7  MOVE.L    (d8,A7,Xn),(xxx).L
+        b       move_add_etc_l_any_any_8
         lwz     data, 0(prefetch_data)                  // 23F8  MOVE.L    (xxx).W,(xxx).L
-        b       L_0630C
-        ori     rtn_addr, code_ptr, L_06310 - cb        // 23F9  MOVE.L    (xxx).L,(xxx).L
-        b       L_05E8C
+        b       move_l_mem_mem_42
+        ori     rtn_addr, code_ptr, move_l_ea_mem_42 - cb  // 23F9  MOVE.L    (xxx).L,(xxx).L
+        b       fea_l_71_2
         lwzx    data, pc, prefetch_data                 // 23FA  MOVE.L    (d16,PC),(xxx).L
-        b       L_0630C
-        ori     rtn_addr, code_ptr, L_06310 - cb        // 23FB  MOVE.L    (d8,PC,Xn),(xxx).L
-        b       L_05F08
-        ori     rtn_addr, code_ptr, L_06310 - cb        // 23FC  MOVE.L    #<data>,(xxx).L
-        b       L_05F30
+        b       move_l_mem_mem_42
+        ori     rtn_addr, code_ptr, move_l_ea_mem_42 - cb  // 23FB  MOVE.L    (d8,PC,Xn),(xxx).L
+        b       fea_l_73
+        ori     rtn_addr, code_ptr, move_l_ea_mem_42 - cb  // 23FC  MOVE.L    #<data>,(xxx).L
+        b       fea_l_74
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 23FD  MOVE.L    <ea 7.5>,(xxx).L   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 23FE  MOVE.L    <ea 7.6>,(xxx).L   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 23FF  MOVE.L    <ea 7.7>,(xxx).L   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $2400-$243F --------------------------------------------------------
         addco.  d2, d0, zero                            // 2400  MOVE.L    D0,D2
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d2, d1, zero                            // 2401  MOVE.L    D1,D2
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d2, d2, zero                            // 2402  MOVE.L    D2,D2
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d2, d3, zero                            // 2403  MOVE.L    D3,D2
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d2, d4, zero                            // 2404  MOVE.L    D4,D2
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d2, d5, zero                            // 2405  MOVE.L    D5,D2
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d2, d6, zero                            // 2406  MOVE.L    D6,D2
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d2, d7, zero                            // 2407  MOVE.L    D7,D2
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d2, a0, zero                            // 2408  MOVE.L    A0,D2
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d2, a1, zero                            // 2409  MOVE.L    A1,D2
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d2, a2, zero                            // 240A  MOVE.L    A2,D2
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d2, a3, zero                            // 240B  MOVE.L    A3,D2
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d2, a4, zero                            // 240C  MOVE.L    A4,D2
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d2, a5, zero                            // 240D  MOVE.L    A5,D2
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d2, a6, zero                            // 240E  MOVE.L    A6,D2
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d2, a7, zero                            // 240F  MOVE.L    A7,D2
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     data, 0(a0)                             // 2410  MOVE.L    (A0),D2
-        b       L_00D28
+        b       move_l_mem_d2
         lwz     data, 0(a1)                             // 2411  MOVE.L    (A1),D2
-        b       L_00D28
+        b       move_l_mem_d2
         lwz     data, 0(a2)                             // 2412  MOVE.L    (A2),D2
-        b       L_00D28
+        b       move_l_mem_d2
         lwz     data, 0(a3)                             // 2413  MOVE.L    (A3),D2
-        b       L_00D28
+        b       move_l_mem_d2
         lwz     data, 0(a4)                             // 2414  MOVE.L    (A4),D2
-        b       L_00D28
+        b       move_l_mem_d2
         lwz     data, 0(a5)                             // 2415  MOVE.L    (A5),D2
-        b       L_00D28
+        b       move_l_mem_d2
         lwz     data, 0(a6)                             // 2416  MOVE.L    (A6),D2
-        b       L_00D28
+        b       move_l_mem_d2
         lwz     data, 0(a7)                             // 2417  MOVE.L    (A7),D2
-        b       L_00D28
-        ori     rtn_addr, code_ptr, L_00D28 - cb        // 2418  MOVE.L    (A0)+,D2
-        b       L_00850
-        ori     rtn_addr, code_ptr, L_00D28 - cb        // 2419  MOVE.L    (A1)+,D2
-        b       L_008D0
-        ori     rtn_addr, code_ptr, L_00D28 - cb        // 241A  MOVE.L    (A2)+,D2
-        b       L_00950
-        ori     rtn_addr, code_ptr, L_00D28 - cb        // 241B  MOVE.L    (A3)+,D2
-        b       L_009D0
-        ori     rtn_addr, code_ptr, L_00D28 - cb        // 241C  MOVE.L    (A4)+,D2
-        b       L_00A50
-        ori     rtn_addr, code_ptr, L_00D28 - cb        // 241D  MOVE.L    (A5)+,D2
-        b       L_00AD0
-        ori     rtn_addr, code_ptr, L_00D28 - cb        // 241E  MOVE.L    (A6)+,D2
-        b       L_00B50
+        b       move_l_mem_d2
+        ori     rtn_addr, code_ptr, move_l_mem_d2 - cb  // 2418  MOVE.L    (A0)+,D2
+        b       fea_l_30
+        ori     rtn_addr, code_ptr, move_l_mem_d2 - cb  // 2419  MOVE.L    (A1)+,D2
+        b       fea_l_31
+        ori     rtn_addr, code_ptr, move_l_mem_d2 - cb  // 241A  MOVE.L    (A2)+,D2
+        b       fea_l_32
+        ori     rtn_addr, code_ptr, move_l_mem_d2 - cb  // 241B  MOVE.L    (A3)+,D2
+        b       fea_l_33
+        ori     rtn_addr, code_ptr, move_l_mem_d2 - cb  // 241C  MOVE.L    (A4)+,D2
+        b       fea_l_34
+        ori     rtn_addr, code_ptr, move_l_mem_d2 - cb  // 241D  MOVE.L    (A5)+,D2
+        b       fea_l_35
+        ori     rtn_addr, code_ptr, move_l_mem_d2 - cb  // 241E  MOVE.L    (A6)+,D2
+        b       fea_l_36
         lwz     d2, 0(a7)                               // 241F  MOVE.L    (A7)+,D2
-        b       L_08E80
+        b       move_l_mem_d2_3
         lwzu    data, -4(a0)                            // 2420  MOVE.L    -(A0),D2
-        b       L_00D28
+        b       move_l_mem_d2
         lwzu    data, -4(a1)                            // 2421  MOVE.L    -(A1),D2
-        b       L_00D28
+        b       move_l_mem_d2
         lwzu    data, -4(a2)                            // 2422  MOVE.L    -(A2),D2
-        b       L_00D28
+        b       move_l_mem_d2
         lwzu    data, -4(a3)                            // 2423  MOVE.L    -(A3),D2
-        b       L_00D28
+        b       move_l_mem_d2
         lwzu    data, -4(a4)                            // 2424  MOVE.L    -(A4),D2
-        b       L_00D28
+        b       move_l_mem_d2
         lwzu    data, -4(a5)                            // 2425  MOVE.L    -(A5),D2
-        b       L_00D28
+        b       move_l_mem_d2
         lwzu    data, -4(a6)                            // 2426  MOVE.L    -(A6),D2
-        b       L_00D28
+        b       move_l_mem_d2
         lwzu    data, -4(a7)                            // 2427  MOVE.L    -(A7),D2
-        b       L_00D28
+        b       move_l_mem_d2
         lwzx    data, a0, prefetch_data                 // 2428  MOVE.L    (d16,A0),D2
-        b       L_00D40
+        b       move_l_mem_d2_2
         lwzx    data, a1, prefetch_data                 // 2429  MOVE.L    (d16,A1),D2
-        b       L_00D40
+        b       move_l_mem_d2_2
         lwzx    data, a2, prefetch_data                 // 242A  MOVE.L    (d16,A2),D2
-        b       L_00D40
+        b       move_l_mem_d2_2
         lwzx    data, a3, prefetch_data                 // 242B  MOVE.L    (d16,A3),D2
-        b       L_00D40
+        b       move_l_mem_d2_2
         lwzx    data, a4, prefetch_data                 // 242C  MOVE.L    (d16,A4),D2
-        b       L_00D40
+        b       move_l_mem_d2_2
         lwzx    data, a5, prefetch_data                 // 242D  MOVE.L    (d16,A5),D2
-        b       L_00D40
+        b       move_l_mem_d2_2
         lwzx    data, a6, prefetch_data                 // 242E  MOVE.L    (d16,A6),D2
-        b       L_00D40
+        b       move_l_mem_d2_2
         lwzx    data, a7, prefetch_data                 // 242F  MOVE.L    (d16,A7),D2
-        b       L_00D40
-        ori     rtn_addr, code_ptr, L_00D28 - cb        // 2430  MOVE.L    (d8,A0,Xn),D2
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_00D28 - cb        // 2431  MOVE.L    (d8,A1,Xn),D2
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_00D28 - cb        // 2432  MOVE.L    (d8,A2,Xn),D2
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_00D28 - cb        // 2433  MOVE.L    (d8,A3,Xn),D2
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_00D28 - cb        // 2434  MOVE.L    (d8,A4,Xn),D2
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_00D28 - cb        // 2435  MOVE.L    (d8,A5,Xn),D2
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_00D28 - cb        // 2436  MOVE.L    (d8,A6,Xn),D2
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_00D28 - cb        // 2437  MOVE.L    (d8,A7,Xn),D2
-        b       L_05C68
+        b       move_l_mem_d2_2
+        ori     rtn_addr, code_ptr, move_l_mem_d2 - cb  // 2430  MOVE.L    (d8,A0,Xn),D2
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, move_l_mem_d2 - cb  // 2431  MOVE.L    (d8,A1,Xn),D2
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, move_l_mem_d2 - cb  // 2432  MOVE.L    (d8,A2,Xn),D2
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, move_l_mem_d2 - cb  // 2433  MOVE.L    (d8,A3,Xn),D2
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, move_l_mem_d2 - cb  // 2434  MOVE.L    (d8,A4,Xn),D2
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, move_l_mem_d2 - cb  // 2435  MOVE.L    (d8,A5,Xn),D2
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, move_l_mem_d2 - cb  // 2436  MOVE.L    (d8,A6,Xn),D2
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, move_l_mem_d2 - cb  // 2437  MOVE.L    (d8,A7,Xn),D2
+        b       move_add_etc_l_any_any_8
         lwz     data, 0(prefetch_data)                  // 2438  MOVE.L    (xxx).W,D2
-        b       L_00D40
-        ori     rtn_addr, code_ptr, L_00D28 - cb        // 2439  MOVE.L    (xxx).L,D2
-        b       L_05E8C
+        b       move_l_mem_d2_2
+        ori     rtn_addr, code_ptr, move_l_mem_d2 - cb  // 2439  MOVE.L    (xxx).L,D2
+        b       fea_l_71_2
         lwzx    data, pc, prefetch_data                 // 243A  MOVE.L    (d16,PC),D2
-        b       L_00D40
-        ori     rtn_addr, code_ptr, L_00D28 - cb        // 243B  MOVE.L    (d8,PC,Xn),D2
-        b       L_05F08
+        b       move_l_mem_d2_2
+        ori     rtn_addr, code_ptr, move_l_mem_d2 - cb  // 243B  MOVE.L    (d8,PC,Xn),D2
+        b       fea_l_73
         lhau    prefetch_data, 4(pc)                    // 243C  MOVE.L    #<data>,D2
-        b       L_00D24
+        b       move_l_imm_d2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 243D  MOVE.L    <ea 7.5>,D2   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 243E  MOVE.L    <ea 7.6>,D2   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 243F  MOVE.L    <ea 7.7>,D2   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $2440-$247F --------------------------------------------------------
         mr      a2, d0                                  // 2440  MOVEA.L   D0,A2
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a2, d1                                  // 2441  MOVEA.L   D1,A2
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a2, d2                                  // 2442  MOVEA.L   D2,A2
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a2, d3                                  // 2443  MOVEA.L   D3,A2
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a2, d4                                  // 2444  MOVEA.L   D4,A2
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a2, d5                                  // 2445  MOVEA.L   D5,A2
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a2, d6                                  // 2446  MOVEA.L   D6,A2
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a2, d7                                  // 2447  MOVEA.L   D7,A2
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a2, a0                                  // 2448  MOVEA.L   A0,A2
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a2, a1                                  // 2449  MOVEA.L   A1,A2
-        b       L_06084
+        b       move_add_etc_any_any
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // 244A  MOVEA.L   A2,A2
-        b       L_06088
+        b       exg_move_etc_any_reg
         mr      a2, a3                                  // 244B  MOVEA.L   A3,A2
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a2, a4                                  // 244C  MOVEA.L   A4,A2
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a2, a5                                  // 244D  MOVEA.L   A5,A2
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a2, a6                                  // 244E  MOVEA.L   A6,A2
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a2, a7                                  // 244F  MOVEA.L   A7,A2
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     a2, 0(a0)                               // 2450  MOVEA.L   (A0),A2
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     a2, 0(a1)                               // 2451  MOVEA.L   (A1),A2
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     a2, 0(a2)                               // 2452  MOVEA.L   (A2),A2
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     a2, 0(a3)                               // 2453  MOVEA.L   (A3),A2
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     a2, 0(a4)                               // 2454  MOVEA.L   (A4),A2
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     a2, 0(a5)                               // 2455  MOVEA.L   (A5),A2
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     a2, 0(a6)                               // 2456  MOVEA.L   (A6),A2
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     a2, 0(a7)                               // 2457  MOVEA.L   (A7),A2
-        b       L_06084
-        ori     rtn_addr, code_ptr, L_03280 - cb        // 2458  MOVEA.L   (A0)+,A2
-        b       L_00850
-        ori     rtn_addr, code_ptr, L_03280 - cb        // 2459  MOVEA.L   (A1)+,A2
-        b       L_008D0
+        b       move_add_etc_any_any
+        ori     rtn_addr, code_ptr, movea_mem_a2 - cb   // 2458  MOVEA.L   (A0)+,A2
+        b       fea_l_30
+        ori     rtn_addr, code_ptr, movea_mem_a2 - cb   // 2459  MOVEA.L   (A1)+,A2
+        b       fea_l_31
         lwz     a2, 0(a2)                               // 245A  MOVEA.L   (A2)+,A2
-        b       L_06084
-        ori     rtn_addr, code_ptr, L_03280 - cb        // 245B  MOVEA.L   (A3)+,A2
-        b       L_009D0
-        ori     rtn_addr, code_ptr, L_03280 - cb        // 245C  MOVEA.L   (A4)+,A2
-        b       L_00A50
-        ori     rtn_addr, code_ptr, L_03280 - cb        // 245D  MOVEA.L   (A5)+,A2
-        b       L_00AD0
-        ori     rtn_addr, code_ptr, L_03280 - cb        // 245E  MOVEA.L   (A6)+,A2
-        b       L_00B50
+        b       move_add_etc_any_any
+        ori     rtn_addr, code_ptr, movea_mem_a2 - cb   // 245B  MOVEA.L   (A3)+,A2
+        b       fea_l_33
+        ori     rtn_addr, code_ptr, movea_mem_a2 - cb   // 245C  MOVEA.L   (A4)+,A2
+        b       fea_l_34
+        ori     rtn_addr, code_ptr, movea_mem_a2 - cb   // 245D  MOVEA.L   (A5)+,A2
+        b       fea_l_35
+        ori     rtn_addr, code_ptr, movea_mem_a2 - cb   // 245E  MOVEA.L   (A6)+,A2
+        b       fea_l_36
         lwz     a2, 0(a7)                               // 245F  MOVEA.L   (A7)+,A2
-        b       L_08F40
+        b       movea_l_mem_an
         lwzu    a2, -4(a0)                              // 2460  MOVEA.L   -(A0),A2
-        b       L_06084
+        b       move_add_etc_any_any
         lwzu    a2, -4(a1)                              // 2461  MOVEA.L   -(A1),A2
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     a2, -4(a2)                              // 2462  MOVEA.L   -(A2),A2
-        b       L_06084
+        b       move_add_etc_any_any
         lwzu    a2, -4(a3)                              // 2463  MOVEA.L   -(A3),A2
-        b       L_06084
+        b       move_add_etc_any_any
         lwzu    a2, -4(a4)                              // 2464  MOVEA.L   -(A4),A2
-        b       L_06084
+        b       move_add_etc_any_any
         lwzu    a2, -4(a5)                              // 2465  MOVEA.L   -(A5),A2
-        b       L_06084
+        b       move_add_etc_any_any
         lwzu    a2, -4(a6)                              // 2466  MOVEA.L   -(A6),A2
-        b       L_06084
+        b       move_add_etc_any_any
         lwzu    a2, -4(a7)                              // 2467  MOVEA.L   -(A7),A2
-        b       L_06084
+        b       move_add_etc_any_any
         lwzx    a2, a0, prefetch_data                   // 2468  MOVEA.L   (d16,A0),A2
-        b       L_06080
+        b       move_lea_etc_ea_any
         lwzx    a2, a1, prefetch_data                   // 2469  MOVEA.L   (d16,A1),A2
-        b       L_06080
+        b       move_lea_etc_ea_any
         lwzx    a2, a2, prefetch_data                   // 246A  MOVEA.L   (d16,A2),A2
-        b       L_06080
+        b       move_lea_etc_ea_any
         lwzx    a2, a3, prefetch_data                   // 246B  MOVEA.L   (d16,A3),A2
-        b       L_06080
+        b       move_lea_etc_ea_any
         lwzx    a2, a4, prefetch_data                   // 246C  MOVEA.L   (d16,A4),A2
-        b       L_06080
+        b       move_lea_etc_ea_any
         lwzx    a2, a5, prefetch_data                   // 246D  MOVEA.L   (d16,A5),A2
-        b       L_06080
+        b       move_lea_etc_ea_any
         lwzx    a2, a6, prefetch_data                   // 246E  MOVEA.L   (d16,A6),A2
-        b       L_06080
+        b       move_lea_etc_ea_any
         lwzx    a2, a7, prefetch_data                   // 246F  MOVEA.L   (d16,A7),A2
-        b       L_06080
-        ori     rtn_addr, code_ptr, L_03280 - cb        // 2470  MOVEA.L   (d8,A0,Xn),A2
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_03280 - cb        // 2471  MOVEA.L   (d8,A1,Xn),A2
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_03280 - cb        // 2472  MOVEA.L   (d8,A2,Xn),A2
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_03280 - cb        // 2473  MOVEA.L   (d8,A3,Xn),A2
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_03280 - cb        // 2474  MOVEA.L   (d8,A4,Xn),A2
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_03280 - cb        // 2475  MOVEA.L   (d8,A5,Xn),A2
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_03280 - cb        // 2476  MOVEA.L   (d8,A6,Xn),A2
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_03280 - cb        // 2477  MOVEA.L   (d8,A7,Xn),A2
-        b       L_05C68
+        b       move_lea_etc_ea_any
+        ori     rtn_addr, code_ptr, movea_mem_a2 - cb   // 2470  MOVEA.L   (d8,A0,Xn),A2
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, movea_mem_a2 - cb   // 2471  MOVEA.L   (d8,A1,Xn),A2
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, movea_mem_a2 - cb   // 2472  MOVEA.L   (d8,A2,Xn),A2
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, movea_mem_a2 - cb   // 2473  MOVEA.L   (d8,A3,Xn),A2
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, movea_mem_a2 - cb   // 2474  MOVEA.L   (d8,A4,Xn),A2
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, movea_mem_a2 - cb   // 2475  MOVEA.L   (d8,A5,Xn),A2
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, movea_mem_a2 - cb   // 2476  MOVEA.L   (d8,A6,Xn),A2
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, movea_mem_a2 - cb   // 2477  MOVEA.L   (d8,A7,Xn),A2
+        b       move_add_etc_l_any_any_8
         lwz     a2, 0(prefetch_data)                    // 2478  MOVEA.L   (xxx).W,A2
-        b       L_06080
-        ori     rtn_addr, code_ptr, L_03280 - cb        // 2479  MOVEA.L   (xxx).L,A2
-        b       L_05E8C
+        b       move_lea_etc_ea_any
+        ori     rtn_addr, code_ptr, movea_mem_a2 - cb   // 2479  MOVEA.L   (xxx).L,A2
+        b       fea_l_71_2
         lwzx    a2, pc, prefetch_data                   // 247A  MOVEA.L   (d16,PC),A2
-        b       L_06080
-        ori     rtn_addr, code_ptr, L_03280 - cb        // 247B  MOVEA.L   (d8,PC,Xn),A2
-        b       L_05F08
+        b       move_lea_etc_ea_any
+        ori     rtn_addr, code_ptr, movea_mem_a2 - cb   // 247B  MOVEA.L   (d8,PC,Xn),A2
+        b       fea_l_73
         lwz     a2, 0(pc)                               // 247C  MOVEA.L   #<data>,A2
-        b       L_060A0
+        b       move_lea_ea_an
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 247D  MOVEA.L   <ea 7.5>,A2   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 247E  MOVEA.L   <ea 7.6>,A2   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 247F  MOVEA.L   <ea 7.7>,A2   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $2480-$24BF --------------------------------------------------------
         addco.  data, d0, zero                          // 2480  MOVE.L    D0,(A2)
-        b       L_010A8
+        b       move_l_reg_mem_3
         addco.  data, d1, zero                          // 2481  MOVE.L    D1,(A2)
-        b       L_010A8
+        b       move_l_reg_mem_3
         addco.  data, d2, zero                          // 2482  MOVE.L    D2,(A2)
-        b       L_010A8
+        b       move_l_reg_mem_3
         addco.  data, d3, zero                          // 2483  MOVE.L    D3,(A2)
-        b       L_010A8
+        b       move_l_reg_mem_3
         addco.  data, d4, zero                          // 2484  MOVE.L    D4,(A2)
-        b       L_010A8
+        b       move_l_reg_mem_3
         addco.  data, d5, zero                          // 2485  MOVE.L    D5,(A2)
-        b       L_010A8
+        b       move_l_reg_mem_3
         addco.  data, d6, zero                          // 2486  MOVE.L    D6,(A2)
-        b       L_010A8
+        b       move_l_reg_mem_3
         addco.  data, d7, zero                          // 2487  MOVE.L    D7,(A2)
-        b       L_010A8
+        b       move_l_reg_mem_3
         addco.  data, a0, zero                          // 2488  MOVE.L    A0,(A2)
-        b       L_010A8
+        b       move_l_reg_mem_3
         addco.  data, a1, zero                          // 2489  MOVE.L    A1,(A2)
-        b       L_010A8
+        b       move_l_reg_mem_3
         addco.  data, a2, zero                          // 248A  MOVE.L    A2,(A2)
-        b       L_010A8
+        b       move_l_reg_mem_3
         addco.  data, a3, zero                          // 248B  MOVE.L    A3,(A2)
-        b       L_010A8
+        b       move_l_reg_mem_3
         addco.  data, a4, zero                          // 248C  MOVE.L    A4,(A2)
-        b       L_010A8
+        b       move_l_reg_mem_3
         addco.  data, a5, zero                          // 248D  MOVE.L    A5,(A2)
-        b       L_010A8
+        b       move_l_reg_mem_3
         addco.  data, a6, zero                          // 248E  MOVE.L    A6,(A2)
-        b       L_010A8
+        b       move_l_reg_mem_3
         addco.  data, a7, zero                          // 248F  MOVE.L    A7,(A2)
-        b       L_010A8
+        b       move_l_reg_mem_3
         lwz     data, 0(a0)                             // 2490  MOVE.L    (A0),(A2)
-        b       L_010A4
+        b       move_l_ea_mem_3
         lwz     data, 0(a1)                             // 2491  MOVE.L    (A1),(A2)
-        b       L_010A4
+        b       move_l_ea_mem_3
         lwz     data, 0(a2)                             // 2492  MOVE.L    (A2),(A2)
-        b       L_06144
+        b       tst_ea
         lwz     data, 0(a3)                             // 2493  MOVE.L    (A3),(A2)
-        b       L_010A4
+        b       move_l_ea_mem_3
         lwz     data, 0(a4)                             // 2494  MOVE.L    (A4),(A2)
-        b       L_010A4
+        b       move_l_ea_mem_3
         lwz     data, 0(a5)                             // 2495  MOVE.L    (A5),(A2)
-        b       L_010A4
+        b       move_l_ea_mem_3
         lwz     data, 0(a6)                             // 2496  MOVE.L    (A6),(A2)
-        b       L_010A4
+        b       move_l_ea_mem_3
         lwz     data, 0(a7)                             // 2497  MOVE.L    (A7),(A2)
-        b       L_010A4
-        ori     rtn_addr, code_ptr, L_010A4 - cb        // 2498  MOVE.L    (A0)+,(A2)
-        b       L_00850
-        ori     rtn_addr, code_ptr, L_010A4 - cb        // 2499  MOVE.L    (A1)+,(A2)
-        b       L_008D0
-        ori     rtn_addr, code_ptr, L_010A4 - cb        // 249A  MOVE.L    (A2)+,(A2)
-        b       L_00950
-        ori     rtn_addr, code_ptr, L_010A4 - cb        // 249B  MOVE.L    (A3)+,(A2)
-        b       L_009D0
-        ori     rtn_addr, code_ptr, L_010A4 - cb        // 249C  MOVE.L    (A4)+,(A2)
-        b       L_00A50
-        ori     rtn_addr, code_ptr, L_010A4 - cb        // 249D  MOVE.L    (A5)+,(A2)
-        b       L_00AD0
-        ori     rtn_addr, code_ptr, L_010A4 - cb        // 249E  MOVE.L    (A6)+,(A2)
-        b       L_00B50
-        ori     rtn_addr, code_ptr, L_010A4 - cb        // 249F  MOVE.L    (A7)+,(A2)
-        b       L_00BD0
+        b       move_l_ea_mem_3
+        ori     rtn_addr, code_ptr, move_l_ea_mem_3 - cb  // 2498  MOVE.L    (A0)+,(A2)
+        b       fea_l_30
+        ori     rtn_addr, code_ptr, move_l_ea_mem_3 - cb  // 2499  MOVE.L    (A1)+,(A2)
+        b       fea_l_31
+        ori     rtn_addr, code_ptr, move_l_ea_mem_3 - cb  // 249A  MOVE.L    (A2)+,(A2)
+        b       fea_l_32
+        ori     rtn_addr, code_ptr, move_l_ea_mem_3 - cb  // 249B  MOVE.L    (A3)+,(A2)
+        b       fea_l_33
+        ori     rtn_addr, code_ptr, move_l_ea_mem_3 - cb  // 249C  MOVE.L    (A4)+,(A2)
+        b       fea_l_34
+        ori     rtn_addr, code_ptr, move_l_ea_mem_3 - cb  // 249D  MOVE.L    (A5)+,(A2)
+        b       fea_l_35
+        ori     rtn_addr, code_ptr, move_l_ea_mem_3 - cb  // 249E  MOVE.L    (A6)+,(A2)
+        b       fea_l_36
+        ori     rtn_addr, code_ptr, move_l_ea_mem_3 - cb  // 249F  MOVE.L    (A7)+,(A2)
+        b       fea_l_37
         lwzu    data, -4(a0)                            // 24A0  MOVE.L    -(A0),(A2)
-        b       L_010A4
+        b       move_l_ea_mem_3
         lwzu    data, -4(a1)                            // 24A1  MOVE.L    -(A1),(A2)
-        b       L_010A4
+        b       move_l_ea_mem_3
         lwzu    data, -4(a2)                            // 24A2  MOVE.L    -(A2),(A2)
-        b       L_06144
+        b       tst_ea
         lwzu    data, -4(a3)                            // 24A3  MOVE.L    -(A3),(A2)
-        b       L_010A4
+        b       move_l_ea_mem_3
         lwzu    data, -4(a4)                            // 24A4  MOVE.L    -(A4),(A2)
-        b       L_010A4
+        b       move_l_ea_mem_3
         lwzu    data, -4(a5)                            // 24A5  MOVE.L    -(A5),(A2)
-        b       L_010A4
+        b       move_l_ea_mem_3
         lwzu    data, -4(a6)                            // 24A6  MOVE.L    -(A6),(A2)
-        b       L_010A4
+        b       move_l_ea_mem_3
         lwzu    data, -4(a7)                            // 24A7  MOVE.L    -(A7),(A2)
-        b       L_010A4
+        b       move_l_ea_mem_3
         lwzx    data, a0, prefetch_data                 // 24A8  MOVE.L    (d16,A0),(A2)
-        b       L_010A0
+        b       move_l_mem_mem_3
         lwzx    data, a1, prefetch_data                 // 24A9  MOVE.L    (d16,A1),(A2)
-        b       L_010A0
+        b       move_l_mem_mem_3
         lwzx    data, a2, prefetch_data                 // 24AA  MOVE.L    (d16,A2),(A2)
-        b       L_010A0
+        b       move_l_mem_mem_3
         lwzx    data, a3, prefetch_data                 // 24AB  MOVE.L    (d16,A3),(A2)
-        b       L_010A0
+        b       move_l_mem_mem_3
         lwzx    data, a4, prefetch_data                 // 24AC  MOVE.L    (d16,A4),(A2)
-        b       L_010A0
+        b       move_l_mem_mem_3
         lwzx    data, a5, prefetch_data                 // 24AD  MOVE.L    (d16,A5),(A2)
-        b       L_010A0
+        b       move_l_mem_mem_3
         lwzx    data, a6, prefetch_data                 // 24AE  MOVE.L    (d16,A6),(A2)
-        b       L_010A0
+        b       move_l_mem_mem_3
         lwzx    data, a7, prefetch_data                 // 24AF  MOVE.L    (d16,A7),(A2)
-        b       L_010A0
-        ori     rtn_addr, code_ptr, L_010A4 - cb        // 24B0  MOVE.L    (d8,A0,Xn),(A2)
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_010A4 - cb        // 24B1  MOVE.L    (d8,A1,Xn),(A2)
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_010A4 - cb        // 24B2  MOVE.L    (d8,A2,Xn),(A2)
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_010A4 - cb        // 24B3  MOVE.L    (d8,A3,Xn),(A2)
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_010A4 - cb        // 24B4  MOVE.L    (d8,A4,Xn),(A2)
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_010A4 - cb        // 24B5  MOVE.L    (d8,A5,Xn),(A2)
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_010A4 - cb        // 24B6  MOVE.L    (d8,A6,Xn),(A2)
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_010A4 - cb        // 24B7  MOVE.L    (d8,A7,Xn),(A2)
-        b       L_05C68
+        b       move_l_mem_mem_3
+        ori     rtn_addr, code_ptr, move_l_ea_mem_3 - cb  // 24B0  MOVE.L    (d8,A0,Xn),(A2)
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, move_l_ea_mem_3 - cb  // 24B1  MOVE.L    (d8,A1,Xn),(A2)
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, move_l_ea_mem_3 - cb  // 24B2  MOVE.L    (d8,A2,Xn),(A2)
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, move_l_ea_mem_3 - cb  // 24B3  MOVE.L    (d8,A3,Xn),(A2)
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, move_l_ea_mem_3 - cb  // 24B4  MOVE.L    (d8,A4,Xn),(A2)
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, move_l_ea_mem_3 - cb  // 24B5  MOVE.L    (d8,A5,Xn),(A2)
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, move_l_ea_mem_3 - cb  // 24B6  MOVE.L    (d8,A6,Xn),(A2)
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, move_l_ea_mem_3 - cb  // 24B7  MOVE.L    (d8,A7,Xn),(A2)
+        b       move_add_etc_l_any_any_8
         lwz     data, 0(prefetch_data)                  // 24B8  MOVE.L    (xxx).W,(A2)
-        b       L_010A0
-        ori     rtn_addr, code_ptr, L_010A4 - cb        // 24B9  MOVE.L    (xxx).L,(A2)
-        b       L_05E8C
+        b       move_l_mem_mem_3
+        ori     rtn_addr, code_ptr, move_l_ea_mem_3 - cb  // 24B9  MOVE.L    (xxx).L,(A2)
+        b       fea_l_71_2
         lwzx    data, pc, prefetch_data                 // 24BA  MOVE.L    (d16,PC),(A2)
-        b       L_010A0
-        ori     rtn_addr, code_ptr, L_010A4 - cb        // 24BB  MOVE.L    (d8,PC,Xn),(A2)
-        b       L_05F08
-        ori     rtn_addr, code_ptr, L_010A4 - cb        // 24BC  MOVE.L    #<data>,(A2)
-        b       L_05F30
+        b       move_l_mem_mem_3
+        ori     rtn_addr, code_ptr, move_l_ea_mem_3 - cb  // 24BB  MOVE.L    (d8,PC,Xn),(A2)
+        b       fea_l_73
+        ori     rtn_addr, code_ptr, move_l_ea_mem_3 - cb  // 24BC  MOVE.L    #<data>,(A2)
+        b       fea_l_74
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 24BD  MOVE.L    <ea 7.5>,(A2)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 24BE  MOVE.L    <ea 7.6>,(A2)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 24BF  MOVE.L    <ea 7.7>,(A2)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $24C0-$24FF --------------------------------------------------------
         addco.  data, d0, zero                          // 24C0  MOVE.L    D0,(A2)+
-        b       L_014C8
+        b       move_clr_l_reg_mem_5
         addco.  data, d1, zero                          // 24C1  MOVE.L    D1,(A2)+
-        b       L_014C8
+        b       move_clr_l_reg_mem_5
         addco.  data, d2, zero                          // 24C2  MOVE.L    D2,(A2)+
-        b       L_014C8
+        b       move_clr_l_reg_mem_5
         addco.  data, d3, zero                          // 24C3  MOVE.L    D3,(A2)+
-        b       L_014C8
+        b       move_clr_l_reg_mem_5
         addco.  data, d4, zero                          // 24C4  MOVE.L    D4,(A2)+
-        b       L_014C8
+        b       move_clr_l_reg_mem_5
         addco.  data, d5, zero                          // 24C5  MOVE.L    D5,(A2)+
-        b       L_014C8
+        b       move_clr_l_reg_mem_5
         addco.  data, d6, zero                          // 24C6  MOVE.L    D6,(A2)+
-        b       L_014C8
+        b       move_clr_l_reg_mem_5
         addco.  data, d7, zero                          // 24C7  MOVE.L    D7,(A2)+
-        b       L_014C8
+        b       move_clr_l_reg_mem_5
         addco.  data, a0, zero                          // 24C8  MOVE.L    A0,(A2)+
-        b       L_014C8
+        b       move_clr_l_reg_mem_5
         addco.  data, a1, zero                          // 24C9  MOVE.L    A1,(A2)+
-        b       L_014C8
+        b       move_clr_l_reg_mem_5
         addco.  data, a2, zero                          // 24CA  MOVE.L    A2,(A2)+
-        b       L_014C8
+        b       move_clr_l_reg_mem_5
         addco.  data, a3, zero                          // 24CB  MOVE.L    A3,(A2)+
-        b       L_014C8
+        b       move_clr_l_reg_mem_5
         addco.  data, a4, zero                          // 24CC  MOVE.L    A4,(A2)+
-        b       L_014C8
+        b       move_clr_l_reg_mem_5
         addco.  data, a5, zero                          // 24CD  MOVE.L    A5,(A2)+
-        b       L_014C8
+        b       move_clr_l_reg_mem_5
         addco.  data, a6, zero                          // 24CE  MOVE.L    A6,(A2)+
-        b       L_014C8
+        b       move_clr_l_reg_mem_5
         addco.  data, a7, zero                          // 24CF  MOVE.L    A7,(A2)+
-        b       L_014C8
+        b       move_clr_l_reg_mem_5
         lwz     data, 0(a0)                             // 24D0  MOVE.L    (A0),(A2)+
-        b       L_014C4
+        b       move_l_ea_mem_23
         lwz     data, 0(a1)                             // 24D1  MOVE.L    (A1),(A2)+
-        b       L_014C4
+        b       move_l_ea_mem_23
         lwz     data, 0(a2)                             // 24D2  MOVE.L    (A2),(A2)+
-        b       L_014C4
+        b       move_l_ea_mem_23
         lwz     data, 0(a3)                             // 24D3  MOVE.L    (A3),(A2)+
-        b       L_014C4
+        b       move_l_ea_mem_23
         lwz     data, 0(a4)                             // 24D4  MOVE.L    (A4),(A2)+
-        b       L_014C4
+        b       move_l_ea_mem_23
         lwz     data, 0(a5)                             // 24D5  MOVE.L    (A5),(A2)+
-        b       L_014C4
+        b       move_l_ea_mem_23
         lwz     data, 0(a6)                             // 24D6  MOVE.L    (A6),(A2)+
-        b       L_014C4
+        b       move_l_ea_mem_23
         lwz     data, 0(a7)                             // 24D7  MOVE.L    (A7),(A2)+
-        b       L_014C4
+        b       move_l_ea_mem_23
         cmpwi   cr7, prefetch_data, 0x24D8              // 24D8  MOVE.L    (A0)+,(A2)+
-        b       L_090E0
-        ori     rtn_addr, code_ptr, L_014C4 - cb        // 24D9  MOVE.L    (A1)+,(A2)+
-        b       L_008D0
-        ori     rtn_addr, code_ptr, L_014C4 - cb        // 24DA  MOVE.L    (A2)+,(A2)+
-        b       L_00950
-        ori     rtn_addr, code_ptr, L_014C4 - cb        // 24DB  MOVE.L    (A3)+,(A2)+
-        b       L_009D0
-        ori     rtn_addr, code_ptr, L_014C4 - cb        // 24DC  MOVE.L    (A4)+,(A2)+
-        b       L_00A50
-        ori     rtn_addr, code_ptr, L_014C4 - cb        // 24DD  MOVE.L    (A5)+,(A2)+
-        b       L_00AD0
-        ori     rtn_addr, code_ptr, L_014C4 - cb        // 24DE  MOVE.L    (A6)+,(A2)+
-        b       L_00B50
-        ori     rtn_addr, code_ptr, L_014C4 - cb        // 24DF  MOVE.L    (A7)+,(A2)+
-        b       L_00BD0
+        b       move_l_mem_mem_44
+        ori     rtn_addr, code_ptr, move_l_ea_mem_23 - cb  // 24D9  MOVE.L    (A1)+,(A2)+
+        b       fea_l_31
+        ori     rtn_addr, code_ptr, move_l_ea_mem_23 - cb  // 24DA  MOVE.L    (A2)+,(A2)+
+        b       fea_l_32
+        ori     rtn_addr, code_ptr, move_l_ea_mem_23 - cb  // 24DB  MOVE.L    (A3)+,(A2)+
+        b       fea_l_33
+        ori     rtn_addr, code_ptr, move_l_ea_mem_23 - cb  // 24DC  MOVE.L    (A4)+,(A2)+
+        b       fea_l_34
+        ori     rtn_addr, code_ptr, move_l_ea_mem_23 - cb  // 24DD  MOVE.L    (A5)+,(A2)+
+        b       fea_l_35
+        ori     rtn_addr, code_ptr, move_l_ea_mem_23 - cb  // 24DE  MOVE.L    (A6)+,(A2)+
+        b       fea_l_36
+        ori     rtn_addr, code_ptr, move_l_ea_mem_23 - cb  // 24DF  MOVE.L    (A7)+,(A2)+
+        b       fea_l_37
         lwzu    data, -4(a0)                            // 24E0  MOVE.L    -(A0),(A2)+
-        b       L_014C4
+        b       move_l_ea_mem_23
         lwzu    data, -4(a1)                            // 24E1  MOVE.L    -(A1),(A2)+
-        b       L_014C4
+        b       move_l_ea_mem_23
         lwz     data, -4(a2)                            // 24E2  MOVE.L    -(A2),(A2)+
-        b       L_06144
+        b       tst_ea
         lwzu    data, -4(a3)                            // 24E3  MOVE.L    -(A3),(A2)+
-        b       L_014C4
+        b       move_l_ea_mem_23
         lwzu    data, -4(a4)                            // 24E4  MOVE.L    -(A4),(A2)+
-        b       L_014C4
+        b       move_l_ea_mem_23
         lwzu    data, -4(a5)                            // 24E5  MOVE.L    -(A5),(A2)+
-        b       L_014C4
+        b       move_l_ea_mem_23
         lwzu    data, -4(a6)                            // 24E6  MOVE.L    -(A6),(A2)+
-        b       L_014C4
+        b       move_l_ea_mem_23
         lwzu    data, -4(a7)                            // 24E7  MOVE.L    -(A7),(A2)+
-        b       L_014C4
+        b       move_l_ea_mem_23
         lwzx    data, a0, prefetch_data                 // 24E8  MOVE.L    (d16,A0),(A2)+
-        b       L_014C0
+        b       move_l_mem_mem_23
         lwzx    data, a1, prefetch_data                 // 24E9  MOVE.L    (d16,A1),(A2)+
-        b       L_014C0
+        b       move_l_mem_mem_23
         lwzx    data, a2, prefetch_data                 // 24EA  MOVE.L    (d16,A2),(A2)+
-        b       L_014C0
+        b       move_l_mem_mem_23
         lwzx    data, a3, prefetch_data                 // 24EB  MOVE.L    (d16,A3),(A2)+
-        b       L_014C0
+        b       move_l_mem_mem_23
         lwzx    data, a4, prefetch_data                 // 24EC  MOVE.L    (d16,A4),(A2)+
-        b       L_014C0
+        b       move_l_mem_mem_23
         lwzx    data, a5, prefetch_data                 // 24ED  MOVE.L    (d16,A5),(A2)+
-        b       L_014C0
+        b       move_l_mem_mem_23
         lwzx    data, a6, prefetch_data                 // 24EE  MOVE.L    (d16,A6),(A2)+
-        b       L_014C0
+        b       move_l_mem_mem_23
         lwzx    data, a7, prefetch_data                 // 24EF  MOVE.L    (d16,A7),(A2)+
-        b       L_014C0
-        ori     rtn_addr, code_ptr, L_014C4 - cb        // 24F0  MOVE.L    (d8,A0,Xn),(A2)+
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_014C4 - cb        // 24F1  MOVE.L    (d8,A1,Xn),(A2)+
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_014C4 - cb        // 24F2  MOVE.L    (d8,A2,Xn),(A2)+
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_014C4 - cb        // 24F3  MOVE.L    (d8,A3,Xn),(A2)+
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_014C4 - cb        // 24F4  MOVE.L    (d8,A4,Xn),(A2)+
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_014C4 - cb        // 24F5  MOVE.L    (d8,A5,Xn),(A2)+
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_014C4 - cb        // 24F6  MOVE.L    (d8,A6,Xn),(A2)+
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_014C4 - cb        // 24F7  MOVE.L    (d8,A7,Xn),(A2)+
-        b       L_05C68
+        b       move_l_mem_mem_23
+        ori     rtn_addr, code_ptr, move_l_ea_mem_23 - cb  // 24F0  MOVE.L    (d8,A0,Xn),(A2)+
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, move_l_ea_mem_23 - cb  // 24F1  MOVE.L    (d8,A1,Xn),(A2)+
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, move_l_ea_mem_23 - cb  // 24F2  MOVE.L    (d8,A2,Xn),(A2)+
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, move_l_ea_mem_23 - cb  // 24F3  MOVE.L    (d8,A3,Xn),(A2)+
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, move_l_ea_mem_23 - cb  // 24F4  MOVE.L    (d8,A4,Xn),(A2)+
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, move_l_ea_mem_23 - cb  // 24F5  MOVE.L    (d8,A5,Xn),(A2)+
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, move_l_ea_mem_23 - cb  // 24F6  MOVE.L    (d8,A6,Xn),(A2)+
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, move_l_ea_mem_23 - cb  // 24F7  MOVE.L    (d8,A7,Xn),(A2)+
+        b       move_add_etc_l_any_any_8
         lwz     data, 0(prefetch_data)                  // 24F8  MOVE.L    (xxx).W,(A2)+
-        b       L_014C0
-        ori     rtn_addr, code_ptr, L_014C4 - cb        // 24F9  MOVE.L    (xxx).L,(A2)+
-        b       L_05E8C
+        b       move_l_mem_mem_23
+        ori     rtn_addr, code_ptr, move_l_ea_mem_23 - cb  // 24F9  MOVE.L    (xxx).L,(A2)+
+        b       fea_l_71_2
         lwzx    data, pc, prefetch_data                 // 24FA  MOVE.L    (d16,PC),(A2)+
-        b       L_014C0
-        ori     rtn_addr, code_ptr, L_014C4 - cb        // 24FB  MOVE.L    (d8,PC,Xn),(A2)+
-        b       L_05F08
-        ori     rtn_addr, code_ptr, L_014C4 - cb        // 24FC  MOVE.L    #<data>,(A2)+
-        b       L_05F30
+        b       move_l_mem_mem_23
+        ori     rtn_addr, code_ptr, move_l_ea_mem_23 - cb  // 24FB  MOVE.L    (d8,PC,Xn),(A2)+
+        b       fea_l_73
+        ori     rtn_addr, code_ptr, move_l_ea_mem_23 - cb  // 24FC  MOVE.L    #<data>,(A2)+
+        b       fea_l_74
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 24FD  MOVE.L    <ea 7.5>,(A2)+   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 24FE  MOVE.L    <ea 7.6>,(A2)+   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 24FF  MOVE.L    <ea 7.7>,(A2)+   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $2500-$253F --------------------------------------------------------
         addco.  data, d0, zero                          // 2500  MOVE.L    D0,-(A2)
-        b       L_012A8
+        b       move_l_reg_mem_11
         addco.  data, d1, zero                          // 2501  MOVE.L    D1,-(A2)
-        b       L_012A8
+        b       move_l_reg_mem_11
         addco.  data, d2, zero                          // 2502  MOVE.L    D2,-(A2)
-        b       L_012A8
+        b       move_l_reg_mem_11
         addco.  data, d3, zero                          // 2503  MOVE.L    D3,-(A2)
-        b       L_012A8
+        b       move_l_reg_mem_11
         addco.  data, d4, zero                          // 2504  MOVE.L    D4,-(A2)
-        b       L_012A8
+        b       move_l_reg_mem_11
         addco.  data, d5, zero                          // 2505  MOVE.L    D5,-(A2)
-        b       L_012A8
+        b       move_l_reg_mem_11
         addco.  data, d6, zero                          // 2506  MOVE.L    D6,-(A2)
-        b       L_012A8
+        b       move_l_reg_mem_11
         addco.  data, d7, zero                          // 2507  MOVE.L    D7,-(A2)
-        b       L_012A8
+        b       move_l_reg_mem_11
         addco.  data, a0, zero                          // 2508  MOVE.L    A0,-(A2)
-        b       L_012A8
+        b       move_l_reg_mem_11
         addco.  data, a1, zero                          // 2509  MOVE.L    A1,-(A2)
-        b       L_012A8
+        b       move_l_reg_mem_11
         addco.  data, a2, zero                          // 250A  MOVE.L    A2,-(A2)
-        b       L_012A8
+        b       move_l_reg_mem_11
         addco.  data, a3, zero                          // 250B  MOVE.L    A3,-(A2)
-        b       L_012A8
+        b       move_l_reg_mem_11
         addco.  data, a4, zero                          // 250C  MOVE.L    A4,-(A2)
-        b       L_012A8
+        b       move_l_reg_mem_11
         addco.  data, a5, zero                          // 250D  MOVE.L    A5,-(A2)
-        b       L_012A8
+        b       move_l_reg_mem_11
         addco.  data, a6, zero                          // 250E  MOVE.L    A6,-(A2)
-        b       L_012A8
+        b       move_l_reg_mem_11
         addco.  data, a7, zero                          // 250F  MOVE.L    A7,-(A2)
-        b       L_012A8
+        b       move_l_reg_mem_11
         lwz     data, 0(a0)                             // 2510  MOVE.L    (A0),-(A2)
-        b       L_012A4
+        b       move_l_ea_mem_11
         lwz     data, 0(a1)                             // 2511  MOVE.L    (A1),-(A2)
-        b       L_012A4
+        b       move_l_ea_mem_11
         lwz     data, 0(a2)                             // 2512  MOVE.L    (A2),-(A2)
-        b       L_012A4
+        b       move_l_ea_mem_11
         lwz     data, 0(a3)                             // 2513  MOVE.L    (A3),-(A2)
-        b       L_012A4
+        b       move_l_ea_mem_11
         lwz     data, 0(a4)                             // 2514  MOVE.L    (A4),-(A2)
-        b       L_012A4
+        b       move_l_ea_mem_11
         lwz     data, 0(a5)                             // 2515  MOVE.L    (A5),-(A2)
-        b       L_012A4
+        b       move_l_ea_mem_11
         lwz     data, 0(a6)                             // 2516  MOVE.L    (A6),-(A2)
-        b       L_012A4
+        b       move_l_ea_mem_11
         lwz     data, 0(a7)                             // 2517  MOVE.L    (A7),-(A2)
-        b       L_012A4
-        ori     rtn_addr, code_ptr, L_012A4 - cb        // 2518  MOVE.L    (A0)+,-(A2)
-        b       L_00850
-        ori     rtn_addr, code_ptr, L_012A4 - cb        // 2519  MOVE.L    (A1)+,-(A2)
-        b       L_008D0
+        b       move_l_ea_mem_11
+        ori     rtn_addr, code_ptr, move_l_ea_mem_11 - cb  // 2518  MOVE.L    (A0)+,-(A2)
+        b       fea_l_30
+        ori     rtn_addr, code_ptr, move_l_ea_mem_11 - cb  // 2519  MOVE.L    (A1)+,-(A2)
+        b       fea_l_31
         lwz     data, 0(a2)                             // 251A  MOVE.L    (A2)+,-(A2)
-        b       L_06144
-        ori     rtn_addr, code_ptr, L_012A4 - cb        // 251B  MOVE.L    (A3)+,-(A2)
-        b       L_009D0
-        ori     rtn_addr, code_ptr, L_012A4 - cb        // 251C  MOVE.L    (A4)+,-(A2)
-        b       L_00A50
-        ori     rtn_addr, code_ptr, L_012A4 - cb        // 251D  MOVE.L    (A5)+,-(A2)
-        b       L_00AD0
-        ori     rtn_addr, code_ptr, L_012A4 - cb        // 251E  MOVE.L    (A6)+,-(A2)
-        b       L_00B50
-        ori     rtn_addr, code_ptr, L_012A4 - cb        // 251F  MOVE.L    (A7)+,-(A2)
-        b       L_00BD0
+        b       tst_ea
+        ori     rtn_addr, code_ptr, move_l_ea_mem_11 - cb  // 251B  MOVE.L    (A3)+,-(A2)
+        b       fea_l_33
+        ori     rtn_addr, code_ptr, move_l_ea_mem_11 - cb  // 251C  MOVE.L    (A4)+,-(A2)
+        b       fea_l_34
+        ori     rtn_addr, code_ptr, move_l_ea_mem_11 - cb  // 251D  MOVE.L    (A5)+,-(A2)
+        b       fea_l_35
+        ori     rtn_addr, code_ptr, move_l_ea_mem_11 - cb  // 251E  MOVE.L    (A6)+,-(A2)
+        b       fea_l_36
+        ori     rtn_addr, code_ptr, move_l_ea_mem_11 - cb  // 251F  MOVE.L    (A7)+,-(A2)
+        b       fea_l_37
         lwzu    data, -4(a0)                            // 2520  MOVE.L    -(A0),-(A2)
-        b       L_012A4
+        b       move_l_ea_mem_11
         lwzu    data, -4(a1)                            // 2521  MOVE.L    -(A1),-(A2)
-        b       L_012A4
+        b       move_l_ea_mem_11
         lwzu    data, -4(a2)                            // 2522  MOVE.L    -(A2),-(A2)
-        b       L_012A4
+        b       move_l_ea_mem_11
         lwzu    data, -4(a3)                            // 2523  MOVE.L    -(A3),-(A2)
-        b       L_012A4
+        b       move_l_ea_mem_11
         lwzu    data, -4(a4)                            // 2524  MOVE.L    -(A4),-(A2)
-        b       L_012A4
+        b       move_l_ea_mem_11
         lwzu    data, -4(a5)                            // 2525  MOVE.L    -(A5),-(A2)
-        b       L_012A4
+        b       move_l_ea_mem_11
         lwzu    data, -4(a6)                            // 2526  MOVE.L    -(A6),-(A2)
-        b       L_012A4
+        b       move_l_ea_mem_11
         lwzu    data, -4(a7)                            // 2527  MOVE.L    -(A7),-(A2)
-        b       L_012A4
+        b       move_l_ea_mem_11
         lwzx    data, a0, prefetch_data                 // 2528  MOVE.L    (d16,A0),-(A2)
-        b       L_012A0
+        b       move_l_mem_mem_11
         lwzx    data, a1, prefetch_data                 // 2529  MOVE.L    (d16,A1),-(A2)
-        b       L_012A0
+        b       move_l_mem_mem_11
         lwzx    data, a2, prefetch_data                 // 252A  MOVE.L    (d16,A2),-(A2)
-        b       L_012A0
+        b       move_l_mem_mem_11
         lwzx    data, a3, prefetch_data                 // 252B  MOVE.L    (d16,A3),-(A2)
-        b       L_012A0
+        b       move_l_mem_mem_11
         lwzx    data, a4, prefetch_data                 // 252C  MOVE.L    (d16,A4),-(A2)
-        b       L_012A0
+        b       move_l_mem_mem_11
         lwzx    data, a5, prefetch_data                 // 252D  MOVE.L    (d16,A5),-(A2)
-        b       L_012A0
+        b       move_l_mem_mem_11
         lwzx    data, a6, prefetch_data                 // 252E  MOVE.L    (d16,A6),-(A2)
-        b       L_012A0
+        b       move_l_mem_mem_11
         lwzx    data, a7, prefetch_data                 // 252F  MOVE.L    (d16,A7),-(A2)
-        b       L_012A0
-        ori     rtn_addr, code_ptr, L_012A4 - cb        // 2530  MOVE.L    (d8,A0,Xn),-(A2)
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_012A4 - cb        // 2531  MOVE.L    (d8,A1,Xn),-(A2)
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_012A4 - cb        // 2532  MOVE.L    (d8,A2,Xn),-(A2)
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_012A4 - cb        // 2533  MOVE.L    (d8,A3,Xn),-(A2)
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_012A4 - cb        // 2534  MOVE.L    (d8,A4,Xn),-(A2)
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_012A4 - cb        // 2535  MOVE.L    (d8,A5,Xn),-(A2)
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_012A4 - cb        // 2536  MOVE.L    (d8,A6,Xn),-(A2)
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_012A4 - cb        // 2537  MOVE.L    (d8,A7,Xn),-(A2)
-        b       L_05C68
+        b       move_l_mem_mem_11
+        ori     rtn_addr, code_ptr, move_l_ea_mem_11 - cb  // 2530  MOVE.L    (d8,A0,Xn),-(A2)
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, move_l_ea_mem_11 - cb  // 2531  MOVE.L    (d8,A1,Xn),-(A2)
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, move_l_ea_mem_11 - cb  // 2532  MOVE.L    (d8,A2,Xn),-(A2)
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, move_l_ea_mem_11 - cb  // 2533  MOVE.L    (d8,A3,Xn),-(A2)
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, move_l_ea_mem_11 - cb  // 2534  MOVE.L    (d8,A4,Xn),-(A2)
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, move_l_ea_mem_11 - cb  // 2535  MOVE.L    (d8,A5,Xn),-(A2)
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, move_l_ea_mem_11 - cb  // 2536  MOVE.L    (d8,A6,Xn),-(A2)
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, move_l_ea_mem_11 - cb  // 2537  MOVE.L    (d8,A7,Xn),-(A2)
+        b       move_add_etc_l_any_any_8
         lwz     data, 0(prefetch_data)                  // 2538  MOVE.L    (xxx).W,-(A2)
-        b       L_012A0
-        ori     rtn_addr, code_ptr, L_012A4 - cb        // 2539  MOVE.L    (xxx).L,-(A2)
-        b       L_05E8C
+        b       move_l_mem_mem_11
+        ori     rtn_addr, code_ptr, move_l_ea_mem_11 - cb  // 2539  MOVE.L    (xxx).L,-(A2)
+        b       fea_l_71_2
         lwzx    data, pc, prefetch_data                 // 253A  MOVE.L    (d16,PC),-(A2)
-        b       L_012A0
-        ori     rtn_addr, code_ptr, L_012A4 - cb        // 253B  MOVE.L    (d8,PC,Xn),-(A2)
-        b       L_05F08
-        ori     rtn_addr, code_ptr, L_012A4 - cb        // 253C  MOVE.L    #<data>,-(A2)
-        b       L_05F30
+        b       move_l_mem_mem_11
+        ori     rtn_addr, code_ptr, move_l_ea_mem_11 - cb  // 253B  MOVE.L    (d8,PC,Xn),-(A2)
+        b       fea_l_73
+        ori     rtn_addr, code_ptr, move_l_ea_mem_11 - cb  // 253C  MOVE.L    #<data>,-(A2)
+        b       fea_l_74
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 253D  MOVE.L    <ea 7.5>,-(A2)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 253E  MOVE.L    <ea 7.6>,-(A2)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 253F  MOVE.L    <ea 7.7>,-(A2)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $2540-$257F --------------------------------------------------------
         addco.  data, d0, zero                          // 2540  MOVE.L    D0,(d16,A2)
-        b       L_014EC
+        b       move_l_reg_mem_19
         addco.  data, d1, zero                          // 2541  MOVE.L    D1,(d16,A2)
-        b       L_014EC
+        b       move_l_reg_mem_19
         addco.  data, d2, zero                          // 2542  MOVE.L    D2,(d16,A2)
-        b       L_014EC
+        b       move_l_reg_mem_19
         addco.  data, d3, zero                          // 2543  MOVE.L    D3,(d16,A2)
-        b       L_014EC
+        b       move_l_reg_mem_19
         addco.  data, d4, zero                          // 2544  MOVE.L    D4,(d16,A2)
-        b       L_014EC
+        b       move_l_reg_mem_19
         addco.  data, d5, zero                          // 2545  MOVE.L    D5,(d16,A2)
-        b       L_014EC
+        b       move_l_reg_mem_19
         addco.  data, d6, zero                          // 2546  MOVE.L    D6,(d16,A2)
-        b       L_014EC
+        b       move_l_reg_mem_19
         addco.  data, d7, zero                          // 2547  MOVE.L    D7,(d16,A2)
-        b       L_014EC
+        b       move_l_reg_mem_19
         addco.  data, a0, zero                          // 2548  MOVE.L    A0,(d16,A2)
-        b       L_014EC
+        b       move_l_reg_mem_19
         addco.  data, a1, zero                          // 2549  MOVE.L    A1,(d16,A2)
-        b       L_014EC
+        b       move_l_reg_mem_19
         addco.  data, a2, zero                          // 254A  MOVE.L    A2,(d16,A2)
-        b       L_014EC
+        b       move_l_reg_mem_19
         addco.  data, a3, zero                          // 254B  MOVE.L    A3,(d16,A2)
-        b       L_014EC
+        b       move_l_reg_mem_19
         addco.  data, a4, zero                          // 254C  MOVE.L    A4,(d16,A2)
-        b       L_014EC
+        b       move_l_reg_mem_19
         addco.  data, a5, zero                          // 254D  MOVE.L    A5,(d16,A2)
-        b       L_014EC
+        b       move_l_reg_mem_19
         addco.  data, a6, zero                          // 254E  MOVE.L    A6,(d16,A2)
-        b       L_014EC
+        b       move_l_reg_mem_19
         addco.  data, a7, zero                          // 254F  MOVE.L    A7,(d16,A2)
-        b       L_014EC
+        b       move_l_reg_mem_19
         lwz     data, 0(a0)                             // 2550  MOVE.L    (A0),(d16,A2)
-        b       L_014E8
+        b       move_l_ea_mem_24
         lwz     data, 0(a1)                             // 2551  MOVE.L    (A1),(d16,A2)
-        b       L_014E8
+        b       move_l_ea_mem_24
         lwz     data, 0(a2)                             // 2552  MOVE.L    (A2),(d16,A2)
-        b       L_014E8
+        b       move_l_ea_mem_24
         lwz     data, 0(a3)                             // 2553  MOVE.L    (A3),(d16,A2)
-        b       L_014E8
+        b       move_l_ea_mem_24
         lwz     data, 0(a4)                             // 2554  MOVE.L    (A4),(d16,A2)
-        b       L_014E8
+        b       move_l_ea_mem_24
         lwz     data, 0(a5)                             // 2555  MOVE.L    (A5),(d16,A2)
-        b       L_014E8
+        b       move_l_ea_mem_24
         lwz     data, 0(a6)                             // 2556  MOVE.L    (A6),(d16,A2)
-        b       L_014E8
+        b       move_l_ea_mem_24
         lwz     data, 0(a7)                             // 2557  MOVE.L    (A7),(d16,A2)
-        b       L_014E8
-        ori     rtn_addr, code_ptr, L_014E8 - cb        // 2558  MOVE.L    (A0)+,(d16,A2)
-        b       L_00850
-        ori     rtn_addr, code_ptr, L_014E8 - cb        // 2559  MOVE.L    (A1)+,(d16,A2)
-        b       L_008D0
-        ori     rtn_addr, code_ptr, L_014E8 - cb        // 255A  MOVE.L    (A2)+,(d16,A2)
-        b       L_00950
-        ori     rtn_addr, code_ptr, L_014E8 - cb        // 255B  MOVE.L    (A3)+,(d16,A2)
-        b       L_009D0
-        ori     rtn_addr, code_ptr, L_014E8 - cb        // 255C  MOVE.L    (A4)+,(d16,A2)
-        b       L_00A50
-        ori     rtn_addr, code_ptr, L_014E8 - cb        // 255D  MOVE.L    (A5)+,(d16,A2)
-        b       L_00AD0
-        ori     rtn_addr, code_ptr, L_014E8 - cb        // 255E  MOVE.L    (A6)+,(d16,A2)
-        b       L_00B50
-        ori     rtn_addr, code_ptr, L_014E8 - cb        // 255F  MOVE.L    (A7)+,(d16,A2)
-        b       L_00BD0
+        b       move_l_ea_mem_24
+        ori     rtn_addr, code_ptr, move_l_ea_mem_24 - cb  // 2558  MOVE.L    (A0)+,(d16,A2)
+        b       fea_l_30
+        ori     rtn_addr, code_ptr, move_l_ea_mem_24 - cb  // 2559  MOVE.L    (A1)+,(d16,A2)
+        b       fea_l_31
+        ori     rtn_addr, code_ptr, move_l_ea_mem_24 - cb  // 255A  MOVE.L    (A2)+,(d16,A2)
+        b       fea_l_32
+        ori     rtn_addr, code_ptr, move_l_ea_mem_24 - cb  // 255B  MOVE.L    (A3)+,(d16,A2)
+        b       fea_l_33
+        ori     rtn_addr, code_ptr, move_l_ea_mem_24 - cb  // 255C  MOVE.L    (A4)+,(d16,A2)
+        b       fea_l_34
+        ori     rtn_addr, code_ptr, move_l_ea_mem_24 - cb  // 255D  MOVE.L    (A5)+,(d16,A2)
+        b       fea_l_35
+        ori     rtn_addr, code_ptr, move_l_ea_mem_24 - cb  // 255E  MOVE.L    (A6)+,(d16,A2)
+        b       fea_l_36
+        ori     rtn_addr, code_ptr, move_l_ea_mem_24 - cb  // 255F  MOVE.L    (A7)+,(d16,A2)
+        b       fea_l_37
         lwzu    data, -4(a0)                            // 2560  MOVE.L    -(A0),(d16,A2)
-        b       L_014E8
+        b       move_l_ea_mem_24
         lwzu    data, -4(a1)                            // 2561  MOVE.L    -(A1),(d16,A2)
-        b       L_014E8
+        b       move_l_ea_mem_24
         lwzu    data, -4(a2)                            // 2562  MOVE.L    -(A2),(d16,A2)
-        b       L_014E8
+        b       move_l_ea_mem_24
         lwzu    data, -4(a3)                            // 2563  MOVE.L    -(A3),(d16,A2)
-        b       L_014E8
+        b       move_l_ea_mem_24
         lwzu    data, -4(a4)                            // 2564  MOVE.L    -(A4),(d16,A2)
-        b       L_014E8
+        b       move_l_ea_mem_24
         lwzu    data, -4(a5)                            // 2565  MOVE.L    -(A5),(d16,A2)
-        b       L_014E8
+        b       move_l_ea_mem_24
         lwzu    data, -4(a6)                            // 2566  MOVE.L    -(A6),(d16,A2)
-        b       L_014E8
+        b       move_l_ea_mem_24
         lwzu    data, -4(a7)                            // 2567  MOVE.L    -(A7),(d16,A2)
-        b       L_014E8
+        b       move_l_ea_mem_24
         lwzx    data, a0, prefetch_data                 // 2568  MOVE.L    (d16,A0),(d16,A2)
-        b       L_014E4
+        b       move_l_mem_mem_24
         lwzx    data, a1, prefetch_data                 // 2569  MOVE.L    (d16,A1),(d16,A2)
-        b       L_014E4
+        b       move_l_mem_mem_24
         lwzx    data, a2, prefetch_data                 // 256A  MOVE.L    (d16,A2),(d16,A2)
-        b       L_014E4
+        b       move_l_mem_mem_24
         lwzx    data, a3, prefetch_data                 // 256B  MOVE.L    (d16,A3),(d16,A2)
-        b       L_014E4
+        b       move_l_mem_mem_24
         lwzx    data, a4, prefetch_data                 // 256C  MOVE.L    (d16,A4),(d16,A2)
-        b       L_014E4
+        b       move_l_mem_mem_24
         lwzx    data, a5, prefetch_data                 // 256D  MOVE.L    (d16,A5),(d16,A2)
-        b       L_014E4
+        b       move_l_mem_mem_24
         lwzx    data, a6, prefetch_data                 // 256E  MOVE.L    (d16,A6),(d16,A2)
-        b       L_014E4
+        b       move_l_mem_mem_24
         lwzx    data, a7, prefetch_data                 // 256F  MOVE.L    (d16,A7),(d16,A2)
-        b       L_014E4
-        ori     rtn_addr, code_ptr, L_014E8 - cb        // 2570  MOVE.L    (d8,A0,Xn),(d16,A2)
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_014E8 - cb        // 2571  MOVE.L    (d8,A1,Xn),(d16,A2)
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_014E8 - cb        // 2572  MOVE.L    (d8,A2,Xn),(d16,A2)
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_014E8 - cb        // 2573  MOVE.L    (d8,A3,Xn),(d16,A2)
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_014E8 - cb        // 2574  MOVE.L    (d8,A4,Xn),(d16,A2)
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_014E8 - cb        // 2575  MOVE.L    (d8,A5,Xn),(d16,A2)
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_014E8 - cb        // 2576  MOVE.L    (d8,A6,Xn),(d16,A2)
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_014E8 - cb        // 2577  MOVE.L    (d8,A7,Xn),(d16,A2)
-        b       L_05C68
+        b       move_l_mem_mem_24
+        ori     rtn_addr, code_ptr, move_l_ea_mem_24 - cb  // 2570  MOVE.L    (d8,A0,Xn),(d16,A2)
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, move_l_ea_mem_24 - cb  // 2571  MOVE.L    (d8,A1,Xn),(d16,A2)
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, move_l_ea_mem_24 - cb  // 2572  MOVE.L    (d8,A2,Xn),(d16,A2)
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, move_l_ea_mem_24 - cb  // 2573  MOVE.L    (d8,A3,Xn),(d16,A2)
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, move_l_ea_mem_24 - cb  // 2574  MOVE.L    (d8,A4,Xn),(d16,A2)
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, move_l_ea_mem_24 - cb  // 2575  MOVE.L    (d8,A5,Xn),(d16,A2)
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, move_l_ea_mem_24 - cb  // 2576  MOVE.L    (d8,A6,Xn),(d16,A2)
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, move_l_ea_mem_24 - cb  // 2577  MOVE.L    (d8,A7,Xn),(d16,A2)
+        b       move_add_etc_l_any_any_8
         lwz     data, 0(prefetch_data)                  // 2578  MOVE.L    (xxx).W,(d16,A2)
-        b       L_014E4
-        ori     rtn_addr, code_ptr, L_014E8 - cb        // 2579  MOVE.L    (xxx).L,(d16,A2)
-        b       L_05E8C
+        b       move_l_mem_mem_24
+        ori     rtn_addr, code_ptr, move_l_ea_mem_24 - cb  // 2579  MOVE.L    (xxx).L,(d16,A2)
+        b       fea_l_71_2
         lwzx    data, pc, prefetch_data                 // 257A  MOVE.L    (d16,PC),(d16,A2)
-        b       L_014E4
-        ori     rtn_addr, code_ptr, L_014E8 - cb        // 257B  MOVE.L    (d8,PC,Xn),(d16,A2)
-        b       L_05F08
-        ori     rtn_addr, code_ptr, L_014E8 - cb        // 257C  MOVE.L    #<data>,(d16,A2)
-        b       L_05F30
+        b       move_l_mem_mem_24
+        ori     rtn_addr, code_ptr, move_l_ea_mem_24 - cb  // 257B  MOVE.L    (d8,PC,Xn),(d16,A2)
+        b       fea_l_73
+        ori     rtn_addr, code_ptr, move_l_ea_mem_24 - cb  // 257C  MOVE.L    #<data>,(d16,A2)
+        b       fea_l_74
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 257D  MOVE.L    <ea 7.5>,(d16,A2)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 257E  MOVE.L    <ea 7.6>,(d16,A2)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 257F  MOVE.L    <ea 7.7>,(d16,A2)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $2580-$25BF --------------------------------------------------------
         addco.  data, d0, zero                          // 2580  MOVE.L    D0,(d8,A2,Xn)
-        b       L_01510
+        b       move_clr_l_reg_mem_6
         addco.  data, d1, zero                          // 2581  MOVE.L    D1,(d8,A2,Xn)
-        b       L_01510
+        b       move_clr_l_reg_mem_6
         addco.  data, d2, zero                          // 2582  MOVE.L    D2,(d8,A2,Xn)
-        b       L_01510
+        b       move_clr_l_reg_mem_6
         addco.  data, d3, zero                          // 2583  MOVE.L    D3,(d8,A2,Xn)
-        b       L_01510
+        b       move_clr_l_reg_mem_6
         addco.  data, d4, zero                          // 2584  MOVE.L    D4,(d8,A2,Xn)
-        b       L_01510
+        b       move_clr_l_reg_mem_6
         addco.  data, d5, zero                          // 2585  MOVE.L    D5,(d8,A2,Xn)
-        b       L_01510
+        b       move_clr_l_reg_mem_6
         addco.  data, d6, zero                          // 2586  MOVE.L    D6,(d8,A2,Xn)
-        b       L_01510
+        b       move_clr_l_reg_mem_6
         addco.  data, d7, zero                          // 2587  MOVE.L    D7,(d8,A2,Xn)
-        b       L_01510
+        b       move_clr_l_reg_mem_6
         addco.  data, a0, zero                          // 2588  MOVE.L    A0,(d8,A2,Xn)
-        b       L_01510
+        b       move_clr_l_reg_mem_6
         addco.  data, a1, zero                          // 2589  MOVE.L    A1,(d8,A2,Xn)
-        b       L_01510
+        b       move_clr_l_reg_mem_6
         addco.  data, a2, zero                          // 258A  MOVE.L    A2,(d8,A2,Xn)
-        b       L_01510
+        b       move_clr_l_reg_mem_6
         addco.  data, a3, zero                          // 258B  MOVE.L    A3,(d8,A2,Xn)
-        b       L_01510
+        b       move_clr_l_reg_mem_6
         addco.  data, a4, zero                          // 258C  MOVE.L    A4,(d8,A2,Xn)
-        b       L_01510
+        b       move_clr_l_reg_mem_6
         addco.  data, a5, zero                          // 258D  MOVE.L    A5,(d8,A2,Xn)
-        b       L_01510
+        b       move_clr_l_reg_mem_6
         addco.  data, a6, zero                          // 258E  MOVE.L    A6,(d8,A2,Xn)
-        b       L_01510
+        b       move_clr_l_reg_mem_6
         addco.  data, a7, zero                          // 258F  MOVE.L    A7,(d8,A2,Xn)
-        b       L_01510
+        b       move_clr_l_reg_mem_6
         lwz     data, 0(a0)                             // 2590  MOVE.L    (A0),(d8,A2,Xn)
-        b       L_0150C
+        b       move_l_ea_mem_25
         lwz     data, 0(a1)                             // 2591  MOVE.L    (A1),(d8,A2,Xn)
-        b       L_0150C
+        b       move_l_ea_mem_25
         lwz     data, 0(a2)                             // 2592  MOVE.L    (A2),(d8,A2,Xn)
-        b       L_0150C
+        b       move_l_ea_mem_25
         lwz     data, 0(a3)                             // 2593  MOVE.L    (A3),(d8,A2,Xn)
-        b       L_0150C
+        b       move_l_ea_mem_25
         lwz     data, 0(a4)                             // 2594  MOVE.L    (A4),(d8,A2,Xn)
-        b       L_0150C
+        b       move_l_ea_mem_25
         lwz     data, 0(a5)                             // 2595  MOVE.L    (A5),(d8,A2,Xn)
-        b       L_0150C
+        b       move_l_ea_mem_25
         lwz     data, 0(a6)                             // 2596  MOVE.L    (A6),(d8,A2,Xn)
-        b       L_0150C
+        b       move_l_ea_mem_25
         lwz     data, 0(a7)                             // 2597  MOVE.L    (A7),(d8,A2,Xn)
-        b       L_0150C
-        ori     rtn_addr, code_ptr, L_0150C - cb        // 2598  MOVE.L    (A0)+,(d8,A2,Xn)
-        b       L_00850
-        ori     rtn_addr, code_ptr, L_0150C - cb        // 2599  MOVE.L    (A1)+,(d8,A2,Xn)
-        b       L_008D0
-        ori     rtn_addr, code_ptr, L_0150C - cb        // 259A  MOVE.L    (A2)+,(d8,A2,Xn)
-        b       L_00950
-        ori     rtn_addr, code_ptr, L_0150C - cb        // 259B  MOVE.L    (A3)+,(d8,A2,Xn)
-        b       L_009D0
-        ori     rtn_addr, code_ptr, L_0150C - cb        // 259C  MOVE.L    (A4)+,(d8,A2,Xn)
-        b       L_00A50
-        ori     rtn_addr, code_ptr, L_0150C - cb        // 259D  MOVE.L    (A5)+,(d8,A2,Xn)
-        b       L_00AD0
-        ori     rtn_addr, code_ptr, L_0150C - cb        // 259E  MOVE.L    (A6)+,(d8,A2,Xn)
-        b       L_00B50
-        ori     rtn_addr, code_ptr, L_0150C - cb        // 259F  MOVE.L    (A7)+,(d8,A2,Xn)
-        b       L_00BD0
+        b       move_l_ea_mem_25
+        ori     rtn_addr, code_ptr, move_l_ea_mem_25 - cb  // 2598  MOVE.L    (A0)+,(d8,A2,Xn)
+        b       fea_l_30
+        ori     rtn_addr, code_ptr, move_l_ea_mem_25 - cb  // 2599  MOVE.L    (A1)+,(d8,A2,Xn)
+        b       fea_l_31
+        ori     rtn_addr, code_ptr, move_l_ea_mem_25 - cb  // 259A  MOVE.L    (A2)+,(d8,A2,Xn)
+        b       fea_l_32
+        ori     rtn_addr, code_ptr, move_l_ea_mem_25 - cb  // 259B  MOVE.L    (A3)+,(d8,A2,Xn)
+        b       fea_l_33
+        ori     rtn_addr, code_ptr, move_l_ea_mem_25 - cb  // 259C  MOVE.L    (A4)+,(d8,A2,Xn)
+        b       fea_l_34
+        ori     rtn_addr, code_ptr, move_l_ea_mem_25 - cb  // 259D  MOVE.L    (A5)+,(d8,A2,Xn)
+        b       fea_l_35
+        ori     rtn_addr, code_ptr, move_l_ea_mem_25 - cb  // 259E  MOVE.L    (A6)+,(d8,A2,Xn)
+        b       fea_l_36
+        ori     rtn_addr, code_ptr, move_l_ea_mem_25 - cb  // 259F  MOVE.L    (A7)+,(d8,A2,Xn)
+        b       fea_l_37
         lwzu    data, -4(a0)                            // 25A0  MOVE.L    -(A0),(d8,A2,Xn)
-        b       L_0150C
+        b       move_l_ea_mem_25
         lwzu    data, -4(a1)                            // 25A1  MOVE.L    -(A1),(d8,A2,Xn)
-        b       L_0150C
+        b       move_l_ea_mem_25
         lwzu    data, -4(a2)                            // 25A2  MOVE.L    -(A2),(d8,A2,Xn)
-        b       L_0150C
+        b       move_l_ea_mem_25
         lwzu    data, -4(a3)                            // 25A3  MOVE.L    -(A3),(d8,A2,Xn)
-        b       L_0150C
+        b       move_l_ea_mem_25
         lwzu    data, -4(a4)                            // 25A4  MOVE.L    -(A4),(d8,A2,Xn)
-        b       L_0150C
+        b       move_l_ea_mem_25
         lwzu    data, -4(a5)                            // 25A5  MOVE.L    -(A5),(d8,A2,Xn)
-        b       L_0150C
+        b       move_l_ea_mem_25
         lwzu    data, -4(a6)                            // 25A6  MOVE.L    -(A6),(d8,A2,Xn)
-        b       L_0150C
+        b       move_l_ea_mem_25
         lwzu    data, -4(a7)                            // 25A7  MOVE.L    -(A7),(d8,A2,Xn)
-        b       L_0150C
+        b       move_l_ea_mem_25
         lwzx    data, a0, prefetch_data                 // 25A8  MOVE.L    (d16,A0),(d8,A2,Xn)
-        b       L_01508
+        b       move_l_mem_mem_25
         lwzx    data, a1, prefetch_data                 // 25A9  MOVE.L    (d16,A1),(d8,A2,Xn)
-        b       L_01508
+        b       move_l_mem_mem_25
         lwzx    data, a2, prefetch_data                 // 25AA  MOVE.L    (d16,A2),(d8,A2,Xn)
-        b       L_01508
+        b       move_l_mem_mem_25
         lwzx    data, a3, prefetch_data                 // 25AB  MOVE.L    (d16,A3),(d8,A2,Xn)
-        b       L_01508
+        b       move_l_mem_mem_25
         lwzx    data, a4, prefetch_data                 // 25AC  MOVE.L    (d16,A4),(d8,A2,Xn)
-        b       L_01508
+        b       move_l_mem_mem_25
         lwzx    data, a5, prefetch_data                 // 25AD  MOVE.L    (d16,A5),(d8,A2,Xn)
-        b       L_01508
+        b       move_l_mem_mem_25
         lwzx    data, a6, prefetch_data                 // 25AE  MOVE.L    (d16,A6),(d8,A2,Xn)
-        b       L_01508
+        b       move_l_mem_mem_25
         lwzx    data, a7, prefetch_data                 // 25AF  MOVE.L    (d16,A7),(d8,A2,Xn)
-        b       L_01508
-        ori     rtn_addr, code_ptr, L_0150C - cb        // 25B0  MOVE.L    (d8,A0,Xn),(d8,A2,Xn)
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_0150C - cb        // 25B1  MOVE.L    (d8,A1,Xn),(d8,A2,Xn)
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_0150C - cb        // 25B2  MOVE.L    (d8,A2,Xn),(d8,A2,Xn)
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_0150C - cb        // 25B3  MOVE.L    (d8,A3,Xn),(d8,A2,Xn)
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_0150C - cb        // 25B4  MOVE.L    (d8,A4,Xn),(d8,A2,Xn)
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_0150C - cb        // 25B5  MOVE.L    (d8,A5,Xn),(d8,A2,Xn)
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_0150C - cb        // 25B6  MOVE.L    (d8,A6,Xn),(d8,A2,Xn)
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_0150C - cb        // 25B7  MOVE.L    (d8,A7,Xn),(d8,A2,Xn)
-        b       L_05C68
+        b       move_l_mem_mem_25
+        ori     rtn_addr, code_ptr, move_l_ea_mem_25 - cb  // 25B0  MOVE.L    (d8,A0,Xn),(d8,A2,Xn)
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, move_l_ea_mem_25 - cb  // 25B1  MOVE.L    (d8,A1,Xn),(d8,A2,Xn)
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, move_l_ea_mem_25 - cb  // 25B2  MOVE.L    (d8,A2,Xn),(d8,A2,Xn)
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, move_l_ea_mem_25 - cb  // 25B3  MOVE.L    (d8,A3,Xn),(d8,A2,Xn)
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, move_l_ea_mem_25 - cb  // 25B4  MOVE.L    (d8,A4,Xn),(d8,A2,Xn)
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, move_l_ea_mem_25 - cb  // 25B5  MOVE.L    (d8,A5,Xn),(d8,A2,Xn)
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, move_l_ea_mem_25 - cb  // 25B6  MOVE.L    (d8,A6,Xn),(d8,A2,Xn)
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, move_l_ea_mem_25 - cb  // 25B7  MOVE.L    (d8,A7,Xn),(d8,A2,Xn)
+        b       move_add_etc_l_any_any_8
         lwz     data, 0(prefetch_data)                  // 25B8  MOVE.L    (xxx).W,(d8,A2,Xn)
-        b       L_01508
-        ori     rtn_addr, code_ptr, L_0150C - cb        // 25B9  MOVE.L    (xxx).L,(d8,A2,Xn)
-        b       L_05E8C
+        b       move_l_mem_mem_25
+        ori     rtn_addr, code_ptr, move_l_ea_mem_25 - cb  // 25B9  MOVE.L    (xxx).L,(d8,A2,Xn)
+        b       fea_l_71_2
         lwzx    data, pc, prefetch_data                 // 25BA  MOVE.L    (d16,PC),(d8,A2,Xn)
-        b       L_01508
-        ori     rtn_addr, code_ptr, L_0150C - cb        // 25BB  MOVE.L    (d8,PC,Xn),(d8,A2,Xn)
-        b       L_05F08
-        ori     rtn_addr, code_ptr, L_0150C - cb        // 25BC  MOVE.L    #<data>,(d8,A2,Xn)
-        b       L_05F30
+        b       move_l_mem_mem_25
+        ori     rtn_addr, code_ptr, move_l_ea_mem_25 - cb  // 25BB  MOVE.L    (d8,PC,Xn),(d8,A2,Xn)
+        b       fea_l_73
+        ori     rtn_addr, code_ptr, move_l_ea_mem_25 - cb  // 25BC  MOVE.L    #<data>,(d8,A2,Xn)
+        b       fea_l_74
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 25BD  MOVE.L    <ea 7.5>,(d8,A2,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 25BE  MOVE.L    <ea 7.6>,(d8,A2,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 25BF  MOVE.L    <ea 7.7>,(d8,A2,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $25C0-$25FF --------------------------------------------------------
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 25C0  MOVE.L    D0,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 25C1  MOVE.L    D1,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 25C2  MOVE.L    D2,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 25C3  MOVE.L    D3,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 25C4  MOVE.L    D4,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 25C5  MOVE.L    D5,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 25C6  MOVE.L    D6,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 25C7  MOVE.L    D7,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 25C8  MOVE.L    A0,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 25C9  MOVE.L    A1,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 25CA  MOVE.L    A2,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 25CB  MOVE.L    A3,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 25CC  MOVE.L    A4,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 25CD  MOVE.L    A5,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 25CE  MOVE.L    A6,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 25CF  MOVE.L    A7,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 25D0  MOVE.L    (A0),(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 25D1  MOVE.L    (A1),(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 25D2  MOVE.L    (A2),(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 25D3  MOVE.L    (A3),(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 25D4  MOVE.L    (A4),(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 25D5  MOVE.L    (A5),(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 25D6  MOVE.L    (A6),(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 25D7  MOVE.L    (A7),(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 25D8  MOVE.L    (A0)+,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 25D9  MOVE.L    (A1)+,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 25DA  MOVE.L    (A2)+,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 25DB  MOVE.L    (A3)+,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 25DC  MOVE.L    (A4)+,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 25DD  MOVE.L    (A5)+,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 25DE  MOVE.L    (A6)+,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 25DF  MOVE.L    (A7)+,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 25E0  MOVE.L    -(A0),(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 25E1  MOVE.L    -(A1),(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 25E2  MOVE.L    -(A2),(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 25E3  MOVE.L    -(A3),(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 25E4  MOVE.L    -(A4),(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 25E5  MOVE.L    -(A5),(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 25E6  MOVE.L    -(A6),(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 25E7  MOVE.L    -(A7),(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 25E8  MOVE.L    (d16,A0),(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 25E9  MOVE.L    (d16,A1),(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 25EA  MOVE.L    (d16,A2),(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 25EB  MOVE.L    (d16,A3),(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 25EC  MOVE.L    (d16,A4),(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 25ED  MOVE.L    (d16,A5),(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 25EE  MOVE.L    (d16,A6),(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 25EF  MOVE.L    (d16,A7),(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 25F0  MOVE.L    (d8,A0,Xn),(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 25F1  MOVE.L    (d8,A1,Xn),(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 25F2  MOVE.L    (d8,A2,Xn),(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 25F3  MOVE.L    (d8,A3,Xn),(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 25F4  MOVE.L    (d8,A4,Xn),(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 25F5  MOVE.L    (d8,A5,Xn),(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 25F6  MOVE.L    (d8,A6,Xn),(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 25F7  MOVE.L    (d8,A7,Xn),(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 25F8  MOVE.L    (xxx).W,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 25F9  MOVE.L    (xxx).L,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 25FA  MOVE.L    (d16,PC),(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 25FB  MOVE.L    (d8,PC,Xn),(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 25FC  MOVE.L    #<data>,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 25FD  MOVE.L    <ea 7.5>,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 25FE  MOVE.L    <ea 7.6>,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 25FF  MOVE.L    <ea 7.7>,(d16,PC)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $2600-$263F --------------------------------------------------------
         addco.  d3, d0, zero                            // 2600  MOVE.L    D0,D3
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d3, d1, zero                            // 2601  MOVE.L    D1,D3
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d3, d2, zero                            // 2602  MOVE.L    D2,D3
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d3, d3, zero                            // 2603  MOVE.L    D3,D3
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d3, d4, zero                            // 2604  MOVE.L    D4,D3
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d3, d5, zero                            // 2605  MOVE.L    D5,D3
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d3, d6, zero                            // 2606  MOVE.L    D6,D3
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d3, d7, zero                            // 2607  MOVE.L    D7,D3
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d3, a0, zero                            // 2608  MOVE.L    A0,D3
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d3, a1, zero                            // 2609  MOVE.L    A1,D3
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d3, a2, zero                            // 260A  MOVE.L    A2,D3
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d3, a3, zero                            // 260B  MOVE.L    A3,D3
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d3, a4, zero                            // 260C  MOVE.L    A4,D3
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d3, a5, zero                            // 260D  MOVE.L    A5,D3
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d3, a6, zero                            // 260E  MOVE.L    A6,D3
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d3, a7, zero                            // 260F  MOVE.L    A7,D3
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     data, 0(a0)                             // 2610  MOVE.L    (A0),D3
-        b       L_00DA8
+        b       move_l_mem_d3
         lwz     data, 0(a1)                             // 2611  MOVE.L    (A1),D3
-        b       L_00DA8
+        b       move_l_mem_d3
         lwz     data, 0(a2)                             // 2612  MOVE.L    (A2),D3
-        b       L_00DA8
+        b       move_l_mem_d3
         lwz     data, 0(a3)                             // 2613  MOVE.L    (A3),D3
-        b       L_00DA8
+        b       move_l_mem_d3
         lwz     data, 0(a4)                             // 2614  MOVE.L    (A4),D3
-        b       L_00DA8
+        b       move_l_mem_d3
         lwz     data, 0(a5)                             // 2615  MOVE.L    (A5),D3
-        b       L_00DA8
+        b       move_l_mem_d3
         lwz     data, 0(a6)                             // 2616  MOVE.L    (A6),D3
-        b       L_00DA8
+        b       move_l_mem_d3
         lwz     data, 0(a7)                             // 2617  MOVE.L    (A7),D3
-        b       L_00DA8
-        ori     rtn_addr, code_ptr, L_00DA8 - cb        // 2618  MOVE.L    (A0)+,D3
-        b       L_00850
-        ori     rtn_addr, code_ptr, L_00DA8 - cb        // 2619  MOVE.L    (A1)+,D3
-        b       L_008D0
-        ori     rtn_addr, code_ptr, L_00DA8 - cb        // 261A  MOVE.L    (A2)+,D3
-        b       L_00950
-        ori     rtn_addr, code_ptr, L_00DA8 - cb        // 261B  MOVE.L    (A3)+,D3
-        b       L_009D0
-        ori     rtn_addr, code_ptr, L_00DA8 - cb        // 261C  MOVE.L    (A4)+,D3
-        b       L_00A50
-        ori     rtn_addr, code_ptr, L_00DA8 - cb        // 261D  MOVE.L    (A5)+,D3
-        b       L_00AD0
-        ori     rtn_addr, code_ptr, L_00DA8 - cb        // 261E  MOVE.L    (A6)+,D3
-        b       L_00B50
+        b       move_l_mem_d3
+        ori     rtn_addr, code_ptr, move_l_mem_d3 - cb  // 2618  MOVE.L    (A0)+,D3
+        b       fea_l_30
+        ori     rtn_addr, code_ptr, move_l_mem_d3 - cb  // 2619  MOVE.L    (A1)+,D3
+        b       fea_l_31
+        ori     rtn_addr, code_ptr, move_l_mem_d3 - cb  // 261A  MOVE.L    (A2)+,D3
+        b       fea_l_32
+        ori     rtn_addr, code_ptr, move_l_mem_d3 - cb  // 261B  MOVE.L    (A3)+,D3
+        b       fea_l_33
+        ori     rtn_addr, code_ptr, move_l_mem_d3 - cb  // 261C  MOVE.L    (A4)+,D3
+        b       fea_l_34
+        ori     rtn_addr, code_ptr, move_l_mem_d3 - cb  // 261D  MOVE.L    (A5)+,D3
+        b       fea_l_35
+        ori     rtn_addr, code_ptr, move_l_mem_d3 - cb  // 261E  MOVE.L    (A6)+,D3
+        b       fea_l_36
         lwz     d3, 0(a7)                               // 261F  MOVE.L    (A7)+,D3
-        b       L_08EA0
+        b       move_l_mem_d3_3
         lwzu    data, -4(a0)                            // 2620  MOVE.L    -(A0),D3
-        b       L_00DA8
+        b       move_l_mem_d3
         lwzu    data, -4(a1)                            // 2621  MOVE.L    -(A1),D3
-        b       L_00DA8
+        b       move_l_mem_d3
         lwzu    data, -4(a2)                            // 2622  MOVE.L    -(A2),D3
-        b       L_00DA8
+        b       move_l_mem_d3
         lwzu    data, -4(a3)                            // 2623  MOVE.L    -(A3),D3
-        b       L_00DA8
+        b       move_l_mem_d3
         lwzu    data, -4(a4)                            // 2624  MOVE.L    -(A4),D3
-        b       L_00DA8
+        b       move_l_mem_d3
         lwzu    data, -4(a5)                            // 2625  MOVE.L    -(A5),D3
-        b       L_00DA8
+        b       move_l_mem_d3
         lwzu    data, -4(a6)                            // 2626  MOVE.L    -(A6),D3
-        b       L_00DA8
+        b       move_l_mem_d3
         lwzu    data, -4(a7)                            // 2627  MOVE.L    -(A7),D3
-        b       L_00DA8
+        b       move_l_mem_d3
         lwzx    data, a0, prefetch_data                 // 2628  MOVE.L    (d16,A0),D3
-        b       L_00DC0
+        b       move_l_mem_d3_2
         lwzx    data, a1, prefetch_data                 // 2629  MOVE.L    (d16,A1),D3
-        b       L_00DC0
+        b       move_l_mem_d3_2
         lwzx    data, a2, prefetch_data                 // 262A  MOVE.L    (d16,A2),D3
-        b       L_00DC0
+        b       move_l_mem_d3_2
         lwzx    data, a3, prefetch_data                 // 262B  MOVE.L    (d16,A3),D3
-        b       L_00DC0
+        b       move_l_mem_d3_2
         lwzx    data, a4, prefetch_data                 // 262C  MOVE.L    (d16,A4),D3
-        b       L_00DC0
+        b       move_l_mem_d3_2
         lwzx    data, a5, prefetch_data                 // 262D  MOVE.L    (d16,A5),D3
-        b       L_00DC0
+        b       move_l_mem_d3_2
         lwzx    data, a6, prefetch_data                 // 262E  MOVE.L    (d16,A6),D3
-        b       L_00DC0
+        b       move_l_mem_d3_2
         lwzx    data, a7, prefetch_data                 // 262F  MOVE.L    (d16,A7),D3
-        b       L_00DC0
-        ori     rtn_addr, code_ptr, L_00DA8 - cb        // 2630  MOVE.L    (d8,A0,Xn),D3
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_00DA8 - cb        // 2631  MOVE.L    (d8,A1,Xn),D3
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_00DA8 - cb        // 2632  MOVE.L    (d8,A2,Xn),D3
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_00DA8 - cb        // 2633  MOVE.L    (d8,A3,Xn),D3
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_00DA8 - cb        // 2634  MOVE.L    (d8,A4,Xn),D3
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_00DA8 - cb        // 2635  MOVE.L    (d8,A5,Xn),D3
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_00DA8 - cb        // 2636  MOVE.L    (d8,A6,Xn),D3
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_00DA8 - cb        // 2637  MOVE.L    (d8,A7,Xn),D3
-        b       L_05C68
+        b       move_l_mem_d3_2
+        ori     rtn_addr, code_ptr, move_l_mem_d3 - cb  // 2630  MOVE.L    (d8,A0,Xn),D3
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, move_l_mem_d3 - cb  // 2631  MOVE.L    (d8,A1,Xn),D3
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, move_l_mem_d3 - cb  // 2632  MOVE.L    (d8,A2,Xn),D3
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, move_l_mem_d3 - cb  // 2633  MOVE.L    (d8,A3,Xn),D3
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, move_l_mem_d3 - cb  // 2634  MOVE.L    (d8,A4,Xn),D3
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, move_l_mem_d3 - cb  // 2635  MOVE.L    (d8,A5,Xn),D3
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, move_l_mem_d3 - cb  // 2636  MOVE.L    (d8,A6,Xn),D3
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, move_l_mem_d3 - cb  // 2637  MOVE.L    (d8,A7,Xn),D3
+        b       move_add_etc_l_any_any_8
         lwz     data, 0(prefetch_data)                  // 2638  MOVE.L    (xxx).W,D3
-        b       L_00DC0
-        ori     rtn_addr, code_ptr, L_00DA8 - cb        // 2639  MOVE.L    (xxx).L,D3
-        b       L_05E8C
+        b       move_l_mem_d3_2
+        ori     rtn_addr, code_ptr, move_l_mem_d3 - cb  // 2639  MOVE.L    (xxx).L,D3
+        b       fea_l_71_2
         lwzx    data, pc, prefetch_data                 // 263A  MOVE.L    (d16,PC),D3
-        b       L_00DC0
-        ori     rtn_addr, code_ptr, L_00DA8 - cb        // 263B  MOVE.L    (d8,PC,Xn),D3
-        b       L_05F08
+        b       move_l_mem_d3_2
+        ori     rtn_addr, code_ptr, move_l_mem_d3 - cb  // 263B  MOVE.L    (d8,PC,Xn),D3
+        b       fea_l_73
         lhau    prefetch_data, 4(pc)                    // 263C  MOVE.L    #<data>,D3
-        b       L_00DA4
+        b       move_l_imm_d3
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 263D  MOVE.L    <ea 7.5>,D3   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 263E  MOVE.L    <ea 7.6>,D3   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 263F  MOVE.L    <ea 7.7>,D3   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $2640-$267F --------------------------------------------------------
         mr      a3, d0                                  // 2640  MOVEA.L   D0,A3
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a3, d1                                  // 2641  MOVEA.L   D1,A3
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a3, d2                                  // 2642  MOVEA.L   D2,A3
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a3, d3                                  // 2643  MOVEA.L   D3,A3
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a3, d4                                  // 2644  MOVEA.L   D4,A3
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a3, d5                                  // 2645  MOVEA.L   D5,A3
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a3, d6                                  // 2646  MOVEA.L   D6,A3
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a3, d7                                  // 2647  MOVEA.L   D7,A3
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a3, a0                                  // 2648  MOVEA.L   A0,A3
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a3, a1                                  // 2649  MOVEA.L   A1,A3
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a3, a2                                  // 264A  MOVEA.L   A2,A3
-        b       L_06084
+        b       move_add_etc_any_any
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // 264B  MOVEA.L   A3,A3
-        b       L_06088
+        b       exg_move_etc_any_reg
         mr      a3, a4                                  // 264C  MOVEA.L   A4,A3
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a3, a5                                  // 264D  MOVEA.L   A5,A3
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a3, a6                                  // 264E  MOVEA.L   A6,A3
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a3, a7                                  // 264F  MOVEA.L   A7,A3
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     a3, 0(a0)                               // 2650  MOVEA.L   (A0),A3
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     a3, 0(a1)                               // 2651  MOVEA.L   (A1),A3
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     a3, 0(a2)                               // 2652  MOVEA.L   (A2),A3
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     a3, 0(a3)                               // 2653  MOVEA.L   (A3),A3
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     a3, 0(a4)                               // 2654  MOVEA.L   (A4),A3
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     a3, 0(a5)                               // 2655  MOVEA.L   (A5),A3
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     a3, 0(a6)                               // 2656  MOVEA.L   (A6),A3
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     a3, 0(a7)                               // 2657  MOVEA.L   (A7),A3
-        b       L_06084
-        ori     rtn_addr, code_ptr, L_032C0 - cb        // 2658  MOVEA.L   (A0)+,A3
-        b       L_00850
-        ori     rtn_addr, code_ptr, L_032C0 - cb        // 2659  MOVEA.L   (A1)+,A3
-        b       L_008D0
-        ori     rtn_addr, code_ptr, L_032C0 - cb        // 265A  MOVEA.L   (A2)+,A3
-        b       L_00950
+        b       move_add_etc_any_any
+        ori     rtn_addr, code_ptr, movea_mem_a3 - cb   // 2658  MOVEA.L   (A0)+,A3
+        b       fea_l_30
+        ori     rtn_addr, code_ptr, movea_mem_a3 - cb   // 2659  MOVEA.L   (A1)+,A3
+        b       fea_l_31
+        ori     rtn_addr, code_ptr, movea_mem_a3 - cb   // 265A  MOVEA.L   (A2)+,A3
+        b       fea_l_32
         lwz     a3, 0(a3)                               // 265B  MOVEA.L   (A3)+,A3
-        b       L_06084
-        ori     rtn_addr, code_ptr, L_032C0 - cb        // 265C  MOVEA.L   (A4)+,A3
-        b       L_00A50
-        ori     rtn_addr, code_ptr, L_032C0 - cb        // 265D  MOVEA.L   (A5)+,A3
-        b       L_00AD0
-        ori     rtn_addr, code_ptr, L_032C0 - cb        // 265E  MOVEA.L   (A6)+,A3
-        b       L_00B50
+        b       move_add_etc_any_any
+        ori     rtn_addr, code_ptr, movea_mem_a3 - cb   // 265C  MOVEA.L   (A4)+,A3
+        b       fea_l_34
+        ori     rtn_addr, code_ptr, movea_mem_a3 - cb   // 265D  MOVEA.L   (A5)+,A3
+        b       fea_l_35
+        ori     rtn_addr, code_ptr, movea_mem_a3 - cb   // 265E  MOVEA.L   (A6)+,A3
+        b       fea_l_36
         lwz     a3, 0(a7)                               // 265F  MOVEA.L   (A7)+,A3
-        b       L_08F40
+        b       movea_l_mem_an
         lwzu    a3, -4(a0)                              // 2660  MOVEA.L   -(A0),A3
-        b       L_06084
+        b       move_add_etc_any_any
         lwzu    a3, -4(a1)                              // 2661  MOVEA.L   -(A1),A3
-        b       L_06084
+        b       move_add_etc_any_any
         lwzu    a3, -4(a2)                              // 2662  MOVEA.L   -(A2),A3
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     a3, -4(a3)                              // 2663  MOVEA.L   -(A3),A3
-        b       L_06084
+        b       move_add_etc_any_any
         lwzu    a3, -4(a4)                              // 2664  MOVEA.L   -(A4),A3
-        b       L_06084
+        b       move_add_etc_any_any
         lwzu    a3, -4(a5)                              // 2665  MOVEA.L   -(A5),A3
-        b       L_06084
+        b       move_add_etc_any_any
         lwzu    a3, -4(a6)                              // 2666  MOVEA.L   -(A6),A3
-        b       L_06084
+        b       move_add_etc_any_any
         lwzu    a3, -4(a7)                              // 2667  MOVEA.L   -(A7),A3
-        b       L_06084
+        b       move_add_etc_any_any
         lwzx    a3, a0, prefetch_data                   // 2668  MOVEA.L   (d16,A0),A3
-        b       L_06080
+        b       move_lea_etc_ea_any
         lwzx    a3, a1, prefetch_data                   // 2669  MOVEA.L   (d16,A1),A3
-        b       L_06080
+        b       move_lea_etc_ea_any
         lwzx    a3, a2, prefetch_data                   // 266A  MOVEA.L   (d16,A2),A3
-        b       L_06080
+        b       move_lea_etc_ea_any
         lwzx    a3, a3, prefetch_data                   // 266B  MOVEA.L   (d16,A3),A3
-        b       L_06080
+        b       move_lea_etc_ea_any
         lwzx    a3, a4, prefetch_data                   // 266C  MOVEA.L   (d16,A4),A3
-        b       L_06080
+        b       move_lea_etc_ea_any
         lwzx    a3, a5, prefetch_data                   // 266D  MOVEA.L   (d16,A5),A3
-        b       L_06080
+        b       move_lea_etc_ea_any
         lwzx    a3, a6, prefetch_data                   // 266E  MOVEA.L   (d16,A6),A3
-        b       L_06080
+        b       move_lea_etc_ea_any
         lwzx    a3, a7, prefetch_data                   // 266F  MOVEA.L   (d16,A7),A3
-        b       L_06080
-        ori     rtn_addr, code_ptr, L_032C0 - cb        // 2670  MOVEA.L   (d8,A0,Xn),A3
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_032C0 - cb        // 2671  MOVEA.L   (d8,A1,Xn),A3
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_032C0 - cb        // 2672  MOVEA.L   (d8,A2,Xn),A3
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_032C0 - cb        // 2673  MOVEA.L   (d8,A3,Xn),A3
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_032C0 - cb        // 2674  MOVEA.L   (d8,A4,Xn),A3
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_032C0 - cb        // 2675  MOVEA.L   (d8,A5,Xn),A3
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_032C0 - cb        // 2676  MOVEA.L   (d8,A6,Xn),A3
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_032C0 - cb        // 2677  MOVEA.L   (d8,A7,Xn),A3
-        b       L_05C68
+        b       move_lea_etc_ea_any
+        ori     rtn_addr, code_ptr, movea_mem_a3 - cb   // 2670  MOVEA.L   (d8,A0,Xn),A3
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, movea_mem_a3 - cb   // 2671  MOVEA.L   (d8,A1,Xn),A3
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, movea_mem_a3 - cb   // 2672  MOVEA.L   (d8,A2,Xn),A3
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, movea_mem_a3 - cb   // 2673  MOVEA.L   (d8,A3,Xn),A3
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, movea_mem_a3 - cb   // 2674  MOVEA.L   (d8,A4,Xn),A3
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, movea_mem_a3 - cb   // 2675  MOVEA.L   (d8,A5,Xn),A3
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, movea_mem_a3 - cb   // 2676  MOVEA.L   (d8,A6,Xn),A3
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, movea_mem_a3 - cb   // 2677  MOVEA.L   (d8,A7,Xn),A3
+        b       move_add_etc_l_any_any_8
         lwz     a3, 0(prefetch_data)                    // 2678  MOVEA.L   (xxx).W,A3
-        b       L_06080
-        ori     rtn_addr, code_ptr, L_032C0 - cb        // 2679  MOVEA.L   (xxx).L,A3
-        b       L_05E8C
+        b       move_lea_etc_ea_any
+        ori     rtn_addr, code_ptr, movea_mem_a3 - cb   // 2679  MOVEA.L   (xxx).L,A3
+        b       fea_l_71_2
         lwzx    a3, pc, prefetch_data                   // 267A  MOVEA.L   (d16,PC),A3
-        b       L_06080
-        ori     rtn_addr, code_ptr, L_032C0 - cb        // 267B  MOVEA.L   (d8,PC,Xn),A3
-        b       L_05F08
+        b       move_lea_etc_ea_any
+        ori     rtn_addr, code_ptr, movea_mem_a3 - cb   // 267B  MOVEA.L   (d8,PC,Xn),A3
+        b       fea_l_73
         lwz     a3, 0(pc)                               // 267C  MOVEA.L   #<data>,A3
-        b       L_060A0
+        b       move_lea_ea_an
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 267D  MOVEA.L   <ea 7.5>,A3   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 267E  MOVEA.L   <ea 7.6>,A3   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 267F  MOVEA.L   <ea 7.7>,A3   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $2680-$26BF --------------------------------------------------------
         addco.  data, d0, zero                          // 2680  MOVE.L    D0,(A3)
-        b       L_010E8
+        b       move_l_reg_mem_4
         addco.  data, d1, zero                          // 2681  MOVE.L    D1,(A3)
-        b       L_010E8
+        b       move_l_reg_mem_4
         addco.  data, d2, zero                          // 2682  MOVE.L    D2,(A3)
-        b       L_010E8
+        b       move_l_reg_mem_4
         addco.  data, d3, zero                          // 2683  MOVE.L    D3,(A3)
-        b       L_010E8
+        b       move_l_reg_mem_4
         addco.  data, d4, zero                          // 2684  MOVE.L    D4,(A3)
-        b       L_010E8
+        b       move_l_reg_mem_4
         addco.  data, d5, zero                          // 2685  MOVE.L    D5,(A3)
-        b       L_010E8
+        b       move_l_reg_mem_4
         addco.  data, d6, zero                          // 2686  MOVE.L    D6,(A3)
-        b       L_010E8
+        b       move_l_reg_mem_4
         addco.  data, d7, zero                          // 2687  MOVE.L    D7,(A3)
-        b       L_010E8
+        b       move_l_reg_mem_4
         addco.  data, a0, zero                          // 2688  MOVE.L    A0,(A3)
-        b       L_010E8
+        b       move_l_reg_mem_4
         addco.  data, a1, zero                          // 2689  MOVE.L    A1,(A3)
-        b       L_010E8
+        b       move_l_reg_mem_4
         addco.  data, a2, zero                          // 268A  MOVE.L    A2,(A3)
-        b       L_010E8
+        b       move_l_reg_mem_4
         addco.  data, a3, zero                          // 268B  MOVE.L    A3,(A3)
-        b       L_010E8
+        b       move_l_reg_mem_4
         addco.  data, a4, zero                          // 268C  MOVE.L    A4,(A3)
-        b       L_010E8
+        b       move_l_reg_mem_4
         addco.  data, a5, zero                          // 268D  MOVE.L    A5,(A3)
-        b       L_010E8
+        b       move_l_reg_mem_4
         addco.  data, a6, zero                          // 268E  MOVE.L    A6,(A3)
-        b       L_010E8
+        b       move_l_reg_mem_4
         addco.  data, a7, zero                          // 268F  MOVE.L    A7,(A3)
-        b       L_010E8
+        b       move_l_reg_mem_4
         lwz     data, 0(a0)                             // 2690  MOVE.L    (A0),(A3)
-        b       L_010E4
+        b       move_l_ea_mem_4
         lwz     data, 0(a1)                             // 2691  MOVE.L    (A1),(A3)
-        b       L_010E4
+        b       move_l_ea_mem_4
         lwz     data, 0(a2)                             // 2692  MOVE.L    (A2),(A3)
-        b       L_010E4
+        b       move_l_ea_mem_4
         lwz     data, 0(a3)                             // 2693  MOVE.L    (A3),(A3)
-        b       L_06144
+        b       tst_ea
         lwz     data, 0(a4)                             // 2694  MOVE.L    (A4),(A3)
-        b       L_010E4
+        b       move_l_ea_mem_4
         lwz     data, 0(a5)                             // 2695  MOVE.L    (A5),(A3)
-        b       L_010E4
+        b       move_l_ea_mem_4
         lwz     data, 0(a6)                             // 2696  MOVE.L    (A6),(A3)
-        b       L_010E4
+        b       move_l_ea_mem_4
         lwz     data, 0(a7)                             // 2697  MOVE.L    (A7),(A3)
-        b       L_010E4
-        ori     rtn_addr, code_ptr, L_010E4 - cb        // 2698  MOVE.L    (A0)+,(A3)
-        b       L_00850
-        ori     rtn_addr, code_ptr, L_010E4 - cb        // 2699  MOVE.L    (A1)+,(A3)
-        b       L_008D0
-        ori     rtn_addr, code_ptr, L_010E4 - cb        // 269A  MOVE.L    (A2)+,(A3)
-        b       L_00950
-        ori     rtn_addr, code_ptr, L_010E4 - cb        // 269B  MOVE.L    (A3)+,(A3)
-        b       L_009D0
-        ori     rtn_addr, code_ptr, L_010E4 - cb        // 269C  MOVE.L    (A4)+,(A3)
-        b       L_00A50
-        ori     rtn_addr, code_ptr, L_010E4 - cb        // 269D  MOVE.L    (A5)+,(A3)
-        b       L_00AD0
-        ori     rtn_addr, code_ptr, L_010E4 - cb        // 269E  MOVE.L    (A6)+,(A3)
-        b       L_00B50
-        ori     rtn_addr, code_ptr, L_010E4 - cb        // 269F  MOVE.L    (A7)+,(A3)
-        b       L_00BD0
+        b       move_l_ea_mem_4
+        ori     rtn_addr, code_ptr, move_l_ea_mem_4 - cb  // 2698  MOVE.L    (A0)+,(A3)
+        b       fea_l_30
+        ori     rtn_addr, code_ptr, move_l_ea_mem_4 - cb  // 2699  MOVE.L    (A1)+,(A3)
+        b       fea_l_31
+        ori     rtn_addr, code_ptr, move_l_ea_mem_4 - cb  // 269A  MOVE.L    (A2)+,(A3)
+        b       fea_l_32
+        ori     rtn_addr, code_ptr, move_l_ea_mem_4 - cb  // 269B  MOVE.L    (A3)+,(A3)
+        b       fea_l_33
+        ori     rtn_addr, code_ptr, move_l_ea_mem_4 - cb  // 269C  MOVE.L    (A4)+,(A3)
+        b       fea_l_34
+        ori     rtn_addr, code_ptr, move_l_ea_mem_4 - cb  // 269D  MOVE.L    (A5)+,(A3)
+        b       fea_l_35
+        ori     rtn_addr, code_ptr, move_l_ea_mem_4 - cb  // 269E  MOVE.L    (A6)+,(A3)
+        b       fea_l_36
+        ori     rtn_addr, code_ptr, move_l_ea_mem_4 - cb  // 269F  MOVE.L    (A7)+,(A3)
+        b       fea_l_37
         lwzu    data, -4(a0)                            // 26A0  MOVE.L    -(A0),(A3)
-        b       L_010E4
+        b       move_l_ea_mem_4
         lwzu    data, -4(a1)                            // 26A1  MOVE.L    -(A1),(A3)
-        b       L_010E4
+        b       move_l_ea_mem_4
         lwzu    data, -4(a2)                            // 26A2  MOVE.L    -(A2),(A3)
-        b       L_010E4
+        b       move_l_ea_mem_4
         lwzu    data, -4(a3)                            // 26A3  MOVE.L    -(A3),(A3)
-        b       L_06144
+        b       tst_ea
         lwzu    data, -4(a4)                            // 26A4  MOVE.L    -(A4),(A3)
-        b       L_010E4
+        b       move_l_ea_mem_4
         lwzu    data, -4(a5)                            // 26A5  MOVE.L    -(A5),(A3)
-        b       L_010E4
+        b       move_l_ea_mem_4
         lwzu    data, -4(a6)                            // 26A6  MOVE.L    -(A6),(A3)
-        b       L_010E4
+        b       move_l_ea_mem_4
         lwzu    data, -4(a7)                            // 26A7  MOVE.L    -(A7),(A3)
-        b       L_010E4
+        b       move_l_ea_mem_4
         lwzx    data, a0, prefetch_data                 // 26A8  MOVE.L    (d16,A0),(A3)
-        b       L_010E0
+        b       move_l_mem_mem_4
         lwzx    data, a1, prefetch_data                 // 26A9  MOVE.L    (d16,A1),(A3)
-        b       L_010E0
+        b       move_l_mem_mem_4
         lwzx    data, a2, prefetch_data                 // 26AA  MOVE.L    (d16,A2),(A3)
-        b       L_010E0
+        b       move_l_mem_mem_4
         lwzx    data, a3, prefetch_data                 // 26AB  MOVE.L    (d16,A3),(A3)
-        b       L_010E0
+        b       move_l_mem_mem_4
         lwzx    data, a4, prefetch_data                 // 26AC  MOVE.L    (d16,A4),(A3)
-        b       L_010E0
+        b       move_l_mem_mem_4
         lwzx    data, a5, prefetch_data                 // 26AD  MOVE.L    (d16,A5),(A3)
-        b       L_010E0
+        b       move_l_mem_mem_4
         lwzx    data, a6, prefetch_data                 // 26AE  MOVE.L    (d16,A6),(A3)
-        b       L_010E0
+        b       move_l_mem_mem_4
         lwzx    data, a7, prefetch_data                 // 26AF  MOVE.L    (d16,A7),(A3)
-        b       L_010E0
-        ori     rtn_addr, code_ptr, L_010E4 - cb        // 26B0  MOVE.L    (d8,A0,Xn),(A3)
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_010E4 - cb        // 26B1  MOVE.L    (d8,A1,Xn),(A3)
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_010E4 - cb        // 26B2  MOVE.L    (d8,A2,Xn),(A3)
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_010E4 - cb        // 26B3  MOVE.L    (d8,A3,Xn),(A3)
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_010E4 - cb        // 26B4  MOVE.L    (d8,A4,Xn),(A3)
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_010E4 - cb        // 26B5  MOVE.L    (d8,A5,Xn),(A3)
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_010E4 - cb        // 26B6  MOVE.L    (d8,A6,Xn),(A3)
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_010E4 - cb        // 26B7  MOVE.L    (d8,A7,Xn),(A3)
-        b       L_05C68
+        b       move_l_mem_mem_4
+        ori     rtn_addr, code_ptr, move_l_ea_mem_4 - cb  // 26B0  MOVE.L    (d8,A0,Xn),(A3)
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, move_l_ea_mem_4 - cb  // 26B1  MOVE.L    (d8,A1,Xn),(A3)
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, move_l_ea_mem_4 - cb  // 26B2  MOVE.L    (d8,A2,Xn),(A3)
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, move_l_ea_mem_4 - cb  // 26B3  MOVE.L    (d8,A3,Xn),(A3)
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, move_l_ea_mem_4 - cb  // 26B4  MOVE.L    (d8,A4,Xn),(A3)
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, move_l_ea_mem_4 - cb  // 26B5  MOVE.L    (d8,A5,Xn),(A3)
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, move_l_ea_mem_4 - cb  // 26B6  MOVE.L    (d8,A6,Xn),(A3)
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, move_l_ea_mem_4 - cb  // 26B7  MOVE.L    (d8,A7,Xn),(A3)
+        b       move_add_etc_l_any_any_8
         lwz     data, 0(prefetch_data)                  // 26B8  MOVE.L    (xxx).W,(A3)
-        b       L_010E0
-        ori     rtn_addr, code_ptr, L_010E4 - cb        // 26B9  MOVE.L    (xxx).L,(A3)
-        b       L_05E8C
+        b       move_l_mem_mem_4
+        ori     rtn_addr, code_ptr, move_l_ea_mem_4 - cb  // 26B9  MOVE.L    (xxx).L,(A3)
+        b       fea_l_71_2
         lwzx    data, pc, prefetch_data                 // 26BA  MOVE.L    (d16,PC),(A3)
-        b       L_010E0
-        ori     rtn_addr, code_ptr, L_010E4 - cb        // 26BB  MOVE.L    (d8,PC,Xn),(A3)
-        b       L_05F08
-        ori     rtn_addr, code_ptr, L_010E4 - cb        // 26BC  MOVE.L    #<data>,(A3)
-        b       L_05F30
+        b       move_l_mem_mem_4
+        ori     rtn_addr, code_ptr, move_l_ea_mem_4 - cb  // 26BB  MOVE.L    (d8,PC,Xn),(A3)
+        b       fea_l_73
+        ori     rtn_addr, code_ptr, move_l_ea_mem_4 - cb  // 26BC  MOVE.L    #<data>,(A3)
+        b       fea_l_74
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 26BD  MOVE.L    <ea 7.5>,(A3)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 26BE  MOVE.L    <ea 7.6>,(A3)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 26BF  MOVE.L    <ea 7.7>,(A3)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $26C0-$26FF --------------------------------------------------------
         addco.  data, d0, zero                          // 26C0  MOVE.L    D0,(A3)+
-        b       L_01528
+        b       move_clr_l_reg_mem_7
         addco.  data, d1, zero                          // 26C1  MOVE.L    D1,(A3)+
-        b       L_01528
+        b       move_clr_l_reg_mem_7
         addco.  data, d2, zero                          // 26C2  MOVE.L    D2,(A3)+
-        b       L_01528
+        b       move_clr_l_reg_mem_7
         addco.  data, d3, zero                          // 26C3  MOVE.L    D3,(A3)+
-        b       L_01528
+        b       move_clr_l_reg_mem_7
         addco.  data, d4, zero                          // 26C4  MOVE.L    D4,(A3)+
-        b       L_01528
+        b       move_clr_l_reg_mem_7
         addco.  data, d5, zero                          // 26C5  MOVE.L    D5,(A3)+
-        b       L_01528
+        b       move_clr_l_reg_mem_7
         addco.  data, d6, zero                          // 26C6  MOVE.L    D6,(A3)+
-        b       L_01528
+        b       move_clr_l_reg_mem_7
         addco.  data, d7, zero                          // 26C7  MOVE.L    D7,(A3)+
-        b       L_01528
+        b       move_clr_l_reg_mem_7
         addco.  data, a0, zero                          // 26C8  MOVE.L    A0,(A3)+
-        b       L_01528
+        b       move_clr_l_reg_mem_7
         addco.  data, a1, zero                          // 26C9  MOVE.L    A1,(A3)+
-        b       L_01528
+        b       move_clr_l_reg_mem_7
         addco.  data, a2, zero                          // 26CA  MOVE.L    A2,(A3)+
-        b       L_01528
+        b       move_clr_l_reg_mem_7
         addco.  data, a3, zero                          // 26CB  MOVE.L    A3,(A3)+
-        b       L_01528
+        b       move_clr_l_reg_mem_7
         addco.  data, a4, zero                          // 26CC  MOVE.L    A4,(A3)+
-        b       L_01528
+        b       move_clr_l_reg_mem_7
         addco.  data, a5, zero                          // 26CD  MOVE.L    A5,(A3)+
-        b       L_01528
+        b       move_clr_l_reg_mem_7
         addco.  data, a6, zero                          // 26CE  MOVE.L    A6,(A3)+
-        b       L_01528
+        b       move_clr_l_reg_mem_7
         addco.  data, a7, zero                          // 26CF  MOVE.L    A7,(A3)+
-        b       L_01528
+        b       move_clr_l_reg_mem_7
         lwz     data, 0(a0)                             // 26D0  MOVE.L    (A0),(A3)+
-        b       L_01524
+        b       move_l_ea_mem_26
         lwz     data, 0(a1)                             // 26D1  MOVE.L    (A1),(A3)+
-        b       L_01524
+        b       move_l_ea_mem_26
         lwz     data, 0(a2)                             // 26D2  MOVE.L    (A2),(A3)+
-        b       L_01524
+        b       move_l_ea_mem_26
         lwz     data, 0(a3)                             // 26D3  MOVE.L    (A3),(A3)+
-        b       L_01524
+        b       move_l_ea_mem_26
         lwz     data, 0(a4)                             // 26D4  MOVE.L    (A4),(A3)+
-        b       L_01524
+        b       move_l_ea_mem_26
         lwz     data, 0(a5)                             // 26D5  MOVE.L    (A5),(A3)+
-        b       L_01524
+        b       move_l_ea_mem_26
         lwz     data, 0(a6)                             // 26D6  MOVE.L    (A6),(A3)+
-        b       L_01524
+        b       move_l_ea_mem_26
         lwz     data, 0(a7)                             // 26D7  MOVE.L    (A7),(A3)+
-        b       L_01524
-        ori     rtn_addr, code_ptr, L_01524 - cb        // 26D8  MOVE.L    (A0)+,(A3)+
-        b       L_00850
-        ori     rtn_addr, code_ptr, L_01524 - cb        // 26D9  MOVE.L    (A1)+,(A3)+
-        b       L_008D0
-        ori     rtn_addr, code_ptr, L_01524 - cb        // 26DA  MOVE.L    (A2)+,(A3)+
-        b       L_00950
-        ori     rtn_addr, code_ptr, L_01524 - cb        // 26DB  MOVE.L    (A3)+,(A3)+
-        b       L_009D0
-        ori     rtn_addr, code_ptr, L_01524 - cb        // 26DC  MOVE.L    (A4)+,(A3)+
-        b       L_00A50
-        ori     rtn_addr, code_ptr, L_01524 - cb        // 26DD  MOVE.L    (A5)+,(A3)+
-        b       L_00AD0
-        ori     rtn_addr, code_ptr, L_01524 - cb        // 26DE  MOVE.L    (A6)+,(A3)+
-        b       L_00B50
-        ori     rtn_addr, code_ptr, L_01524 - cb        // 26DF  MOVE.L    (A7)+,(A3)+
-        b       L_00BD0
+        b       move_l_ea_mem_26
+        ori     rtn_addr, code_ptr, move_l_ea_mem_26 - cb  // 26D8  MOVE.L    (A0)+,(A3)+
+        b       fea_l_30
+        ori     rtn_addr, code_ptr, move_l_ea_mem_26 - cb  // 26D9  MOVE.L    (A1)+,(A3)+
+        b       fea_l_31
+        ori     rtn_addr, code_ptr, move_l_ea_mem_26 - cb  // 26DA  MOVE.L    (A2)+,(A3)+
+        b       fea_l_32
+        ori     rtn_addr, code_ptr, move_l_ea_mem_26 - cb  // 26DB  MOVE.L    (A3)+,(A3)+
+        b       fea_l_33
+        ori     rtn_addr, code_ptr, move_l_ea_mem_26 - cb  // 26DC  MOVE.L    (A4)+,(A3)+
+        b       fea_l_34
+        ori     rtn_addr, code_ptr, move_l_ea_mem_26 - cb  // 26DD  MOVE.L    (A5)+,(A3)+
+        b       fea_l_35
+        ori     rtn_addr, code_ptr, move_l_ea_mem_26 - cb  // 26DE  MOVE.L    (A6)+,(A3)+
+        b       fea_l_36
+        ori     rtn_addr, code_ptr, move_l_ea_mem_26 - cb  // 26DF  MOVE.L    (A7)+,(A3)+
+        b       fea_l_37
         lwzu    data, -4(a0)                            // 26E0  MOVE.L    -(A0),(A3)+
-        b       L_01524
+        b       move_l_ea_mem_26
         lwzu    data, -4(a1)                            // 26E1  MOVE.L    -(A1),(A3)+
-        b       L_01524
+        b       move_l_ea_mem_26
         lwzu    data, -4(a2)                            // 26E2  MOVE.L    -(A2),(A3)+
-        b       L_01524
+        b       move_l_ea_mem_26
         lwz     data, -4(a3)                            // 26E3  MOVE.L    -(A3),(A3)+
-        b       L_06144
+        b       tst_ea
         lwzu    data, -4(a4)                            // 26E4  MOVE.L    -(A4),(A3)+
-        b       L_01524
+        b       move_l_ea_mem_26
         lwzu    data, -4(a5)                            // 26E5  MOVE.L    -(A5),(A3)+
-        b       L_01524
+        b       move_l_ea_mem_26
         lwzu    data, -4(a6)                            // 26E6  MOVE.L    -(A6),(A3)+
-        b       L_01524
+        b       move_l_ea_mem_26
         lwzu    data, -4(a7)                            // 26E7  MOVE.L    -(A7),(A3)+
-        b       L_01524
+        b       move_l_ea_mem_26
         lwzx    data, a0, prefetch_data                 // 26E8  MOVE.L    (d16,A0),(A3)+
-        b       L_01520
+        b       move_l_mem_mem_26
         lwzx    data, a1, prefetch_data                 // 26E9  MOVE.L    (d16,A1),(A3)+
-        b       L_01520
+        b       move_l_mem_mem_26
         lwzx    data, a2, prefetch_data                 // 26EA  MOVE.L    (d16,A2),(A3)+
-        b       L_01520
+        b       move_l_mem_mem_26
         lwzx    data, a3, prefetch_data                 // 26EB  MOVE.L    (d16,A3),(A3)+
-        b       L_01520
+        b       move_l_mem_mem_26
         lwzx    data, a4, prefetch_data                 // 26EC  MOVE.L    (d16,A4),(A3)+
-        b       L_01520
+        b       move_l_mem_mem_26
         lwzx    data, a5, prefetch_data                 // 26ED  MOVE.L    (d16,A5),(A3)+
-        b       L_01520
+        b       move_l_mem_mem_26
         lwzx    data, a6, prefetch_data                 // 26EE  MOVE.L    (d16,A6),(A3)+
-        b       L_01520
+        b       move_l_mem_mem_26
         lwzx    data, a7, prefetch_data                 // 26EF  MOVE.L    (d16,A7),(A3)+
-        b       L_01520
-        ori     rtn_addr, code_ptr, L_01524 - cb        // 26F0  MOVE.L    (d8,A0,Xn),(A3)+
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_01524 - cb        // 26F1  MOVE.L    (d8,A1,Xn),(A3)+
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_01524 - cb        // 26F2  MOVE.L    (d8,A2,Xn),(A3)+
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_01524 - cb        // 26F3  MOVE.L    (d8,A3,Xn),(A3)+
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_01524 - cb        // 26F4  MOVE.L    (d8,A4,Xn),(A3)+
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_01524 - cb        // 26F5  MOVE.L    (d8,A5,Xn),(A3)+
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_01524 - cb        // 26F6  MOVE.L    (d8,A6,Xn),(A3)+
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_01524 - cb        // 26F7  MOVE.L    (d8,A7,Xn),(A3)+
-        b       L_05C68
+        b       move_l_mem_mem_26
+        ori     rtn_addr, code_ptr, move_l_ea_mem_26 - cb  // 26F0  MOVE.L    (d8,A0,Xn),(A3)+
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, move_l_ea_mem_26 - cb  // 26F1  MOVE.L    (d8,A1,Xn),(A3)+
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, move_l_ea_mem_26 - cb  // 26F2  MOVE.L    (d8,A2,Xn),(A3)+
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, move_l_ea_mem_26 - cb  // 26F3  MOVE.L    (d8,A3,Xn),(A3)+
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, move_l_ea_mem_26 - cb  // 26F4  MOVE.L    (d8,A4,Xn),(A3)+
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, move_l_ea_mem_26 - cb  // 26F5  MOVE.L    (d8,A5,Xn),(A3)+
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, move_l_ea_mem_26 - cb  // 26F6  MOVE.L    (d8,A6,Xn),(A3)+
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, move_l_ea_mem_26 - cb  // 26F7  MOVE.L    (d8,A7,Xn),(A3)+
+        b       move_add_etc_l_any_any_8
         lwz     data, 0(prefetch_data)                  // 26F8  MOVE.L    (xxx).W,(A3)+
-        b       L_01520
-        ori     rtn_addr, code_ptr, L_01524 - cb        // 26F9  MOVE.L    (xxx).L,(A3)+
-        b       L_05E8C
+        b       move_l_mem_mem_26
+        ori     rtn_addr, code_ptr, move_l_ea_mem_26 - cb  // 26F9  MOVE.L    (xxx).L,(A3)+
+        b       fea_l_71_2
         lwzx    data, pc, prefetch_data                 // 26FA  MOVE.L    (d16,PC),(A3)+
-        b       L_01520
-        ori     rtn_addr, code_ptr, L_01524 - cb        // 26FB  MOVE.L    (d8,PC,Xn),(A3)+
-        b       L_05F08
-        ori     rtn_addr, code_ptr, L_01524 - cb        // 26FC  MOVE.L    #<data>,(A3)+
-        b       L_05F30
+        b       move_l_mem_mem_26
+        ori     rtn_addr, code_ptr, move_l_ea_mem_26 - cb  // 26FB  MOVE.L    (d8,PC,Xn),(A3)+
+        b       fea_l_73
+        ori     rtn_addr, code_ptr, move_l_ea_mem_26 - cb  // 26FC  MOVE.L    #<data>,(A3)+
+        b       fea_l_74
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 26FD  MOVE.L    <ea 7.5>,(A3)+   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 26FE  MOVE.L    <ea 7.6>,(A3)+   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 26FF  MOVE.L    <ea 7.7>,(A3)+   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $2700-$273F --------------------------------------------------------
         addco.  data, d0, zero                          // 2700  MOVE.L    D0,-(A3)
-        b       L_012E8
+        b       move_l_reg_mem_12
         addco.  data, d1, zero                          // 2701  MOVE.L    D1,-(A3)
-        b       L_012E8
+        b       move_l_reg_mem_12
         addco.  data, d2, zero                          // 2702  MOVE.L    D2,-(A3)
-        b       L_012E8
+        b       move_l_reg_mem_12
         addco.  data, d3, zero                          // 2703  MOVE.L    D3,-(A3)
-        b       L_012E8
+        b       move_l_reg_mem_12
         addco.  data, d4, zero                          // 2704  MOVE.L    D4,-(A3)
-        b       L_012E8
+        b       move_l_reg_mem_12
         addco.  data, d5, zero                          // 2705  MOVE.L    D5,-(A3)
-        b       L_012E8
+        b       move_l_reg_mem_12
         addco.  data, d6, zero                          // 2706  MOVE.L    D6,-(A3)
-        b       L_012E8
+        b       move_l_reg_mem_12
         addco.  data, d7, zero                          // 2707  MOVE.L    D7,-(A3)
-        b       L_012E8
+        b       move_l_reg_mem_12
         addco.  data, a0, zero                          // 2708  MOVE.L    A0,-(A3)
-        b       L_012E8
+        b       move_l_reg_mem_12
         addco.  data, a1, zero                          // 2709  MOVE.L    A1,-(A3)
-        b       L_012E8
+        b       move_l_reg_mem_12
         addco.  data, a2, zero                          // 270A  MOVE.L    A2,-(A3)
-        b       L_012E8
+        b       move_l_reg_mem_12
         addco.  data, a3, zero                          // 270B  MOVE.L    A3,-(A3)
-        b       L_012E8
+        b       move_l_reg_mem_12
         addco.  data, a4, zero                          // 270C  MOVE.L    A4,-(A3)
-        b       L_012E8
+        b       move_l_reg_mem_12
         addco.  data, a5, zero                          // 270D  MOVE.L    A5,-(A3)
-        b       L_012E8
+        b       move_l_reg_mem_12
         addco.  data, a6, zero                          // 270E  MOVE.L    A6,-(A3)
-        b       L_012E8
+        b       move_l_reg_mem_12
         addco.  data, a7, zero                          // 270F  MOVE.L    A7,-(A3)
-        b       L_012E8
+        b       move_l_reg_mem_12
         lwz     data, 0(a0)                             // 2710  MOVE.L    (A0),-(A3)
-        b       L_012E4
+        b       move_l_ea_mem_12
         lwz     data, 0(a1)                             // 2711  MOVE.L    (A1),-(A3)
-        b       L_012E4
+        b       move_l_ea_mem_12
         lwz     data, 0(a2)                             // 2712  MOVE.L    (A2),-(A3)
-        b       L_012E4
+        b       move_l_ea_mem_12
         lwz     data, 0(a3)                             // 2713  MOVE.L    (A3),-(A3)
-        b       L_012E4
+        b       move_l_ea_mem_12
         lwz     data, 0(a4)                             // 2714  MOVE.L    (A4),-(A3)
-        b       L_012E4
+        b       move_l_ea_mem_12
         lwz     data, 0(a5)                             // 2715  MOVE.L    (A5),-(A3)
-        b       L_012E4
+        b       move_l_ea_mem_12
         lwz     data, 0(a6)                             // 2716  MOVE.L    (A6),-(A3)
-        b       L_012E4
+        b       move_l_ea_mem_12
         lwz     data, 0(a7)                             // 2717  MOVE.L    (A7),-(A3)
-        b       L_012E4
-        ori     rtn_addr, code_ptr, L_012E4 - cb        // 2718  MOVE.L    (A0)+,-(A3)
-        b       L_00850
-        ori     rtn_addr, code_ptr, L_012E4 - cb        // 2719  MOVE.L    (A1)+,-(A3)
-        b       L_008D0
-        ori     rtn_addr, code_ptr, L_012E4 - cb        // 271A  MOVE.L    (A2)+,-(A3)
-        b       L_00950
+        b       move_l_ea_mem_12
+        ori     rtn_addr, code_ptr, move_l_ea_mem_12 - cb  // 2718  MOVE.L    (A0)+,-(A3)
+        b       fea_l_30
+        ori     rtn_addr, code_ptr, move_l_ea_mem_12 - cb  // 2719  MOVE.L    (A1)+,-(A3)
+        b       fea_l_31
+        ori     rtn_addr, code_ptr, move_l_ea_mem_12 - cb  // 271A  MOVE.L    (A2)+,-(A3)
+        b       fea_l_32
         lwz     data, 0(a3)                             // 271B  MOVE.L    (A3)+,-(A3)
-        b       L_06144
-        ori     rtn_addr, code_ptr, L_012E4 - cb        // 271C  MOVE.L    (A4)+,-(A3)
-        b       L_00A50
-        ori     rtn_addr, code_ptr, L_012E4 - cb        // 271D  MOVE.L    (A5)+,-(A3)
-        b       L_00AD0
-        ori     rtn_addr, code_ptr, L_012E4 - cb        // 271E  MOVE.L    (A6)+,-(A3)
-        b       L_00B50
-        ori     rtn_addr, code_ptr, L_012E4 - cb        // 271F  MOVE.L    (A7)+,-(A3)
-        b       L_00BD0
+        b       tst_ea
+        ori     rtn_addr, code_ptr, move_l_ea_mem_12 - cb  // 271C  MOVE.L    (A4)+,-(A3)
+        b       fea_l_34
+        ori     rtn_addr, code_ptr, move_l_ea_mem_12 - cb  // 271D  MOVE.L    (A5)+,-(A3)
+        b       fea_l_35
+        ori     rtn_addr, code_ptr, move_l_ea_mem_12 - cb  // 271E  MOVE.L    (A6)+,-(A3)
+        b       fea_l_36
+        ori     rtn_addr, code_ptr, move_l_ea_mem_12 - cb  // 271F  MOVE.L    (A7)+,-(A3)
+        b       fea_l_37
         lwzu    data, -4(a0)                            // 2720  MOVE.L    -(A0),-(A3)
-        b       L_012E4
+        b       move_l_ea_mem_12
         lwzu    data, -4(a1)                            // 2721  MOVE.L    -(A1),-(A3)
-        b       L_012E4
+        b       move_l_ea_mem_12
         lwzu    data, -4(a2)                            // 2722  MOVE.L    -(A2),-(A3)
-        b       L_012E4
+        b       move_l_ea_mem_12
         lwzu    data, -4(a3)                            // 2723  MOVE.L    -(A3),-(A3)
-        b       L_012E4
+        b       move_l_ea_mem_12
         lwzu    data, -4(a4)                            // 2724  MOVE.L    -(A4),-(A3)
-        b       L_012E4
+        b       move_l_ea_mem_12
         lwzu    data, -4(a5)                            // 2725  MOVE.L    -(A5),-(A3)
-        b       L_012E4
+        b       move_l_ea_mem_12
         lwzu    data, -4(a6)                            // 2726  MOVE.L    -(A6),-(A3)
-        b       L_012E4
+        b       move_l_ea_mem_12
         lwzu    data, -4(a7)                            // 2727  MOVE.L    -(A7),-(A3)
-        b       L_012E4
+        b       move_l_ea_mem_12
         lwzx    data, a0, prefetch_data                 // 2728  MOVE.L    (d16,A0),-(A3)
-        b       L_012E0
+        b       move_l_mem_mem_12
         lwzx    data, a1, prefetch_data                 // 2729  MOVE.L    (d16,A1),-(A3)
-        b       L_012E0
+        b       move_l_mem_mem_12
         lwzx    data, a2, prefetch_data                 // 272A  MOVE.L    (d16,A2),-(A3)
-        b       L_012E0
+        b       move_l_mem_mem_12
         lwzx    data, a3, prefetch_data                 // 272B  MOVE.L    (d16,A3),-(A3)
-        b       L_012E0
+        b       move_l_mem_mem_12
         lwzx    data, a4, prefetch_data                 // 272C  MOVE.L    (d16,A4),-(A3)
-        b       L_012E0
+        b       move_l_mem_mem_12
         lwzx    data, a5, prefetch_data                 // 272D  MOVE.L    (d16,A5),-(A3)
-        b       L_012E0
+        b       move_l_mem_mem_12
         lwzx    data, a6, prefetch_data                 // 272E  MOVE.L    (d16,A6),-(A3)
-        b       L_012E0
+        b       move_l_mem_mem_12
         lwzx    data, a7, prefetch_data                 // 272F  MOVE.L    (d16,A7),-(A3)
-        b       L_012E0
-        ori     rtn_addr, code_ptr, L_012E4 - cb        // 2730  MOVE.L    (d8,A0,Xn),-(A3)
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_012E4 - cb        // 2731  MOVE.L    (d8,A1,Xn),-(A3)
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_012E4 - cb        // 2732  MOVE.L    (d8,A2,Xn),-(A3)
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_012E4 - cb        // 2733  MOVE.L    (d8,A3,Xn),-(A3)
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_012E4 - cb        // 2734  MOVE.L    (d8,A4,Xn),-(A3)
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_012E4 - cb        // 2735  MOVE.L    (d8,A5,Xn),-(A3)
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_012E4 - cb        // 2736  MOVE.L    (d8,A6,Xn),-(A3)
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_012E4 - cb        // 2737  MOVE.L    (d8,A7,Xn),-(A3)
-        b       L_05C68
+        b       move_l_mem_mem_12
+        ori     rtn_addr, code_ptr, move_l_ea_mem_12 - cb  // 2730  MOVE.L    (d8,A0,Xn),-(A3)
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, move_l_ea_mem_12 - cb  // 2731  MOVE.L    (d8,A1,Xn),-(A3)
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, move_l_ea_mem_12 - cb  // 2732  MOVE.L    (d8,A2,Xn),-(A3)
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, move_l_ea_mem_12 - cb  // 2733  MOVE.L    (d8,A3,Xn),-(A3)
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, move_l_ea_mem_12 - cb  // 2734  MOVE.L    (d8,A4,Xn),-(A3)
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, move_l_ea_mem_12 - cb  // 2735  MOVE.L    (d8,A5,Xn),-(A3)
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, move_l_ea_mem_12 - cb  // 2736  MOVE.L    (d8,A6,Xn),-(A3)
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, move_l_ea_mem_12 - cb  // 2737  MOVE.L    (d8,A7,Xn),-(A3)
+        b       move_add_etc_l_any_any_8
         lwz     data, 0(prefetch_data)                  // 2738  MOVE.L    (xxx).W,-(A3)
-        b       L_012E0
-        ori     rtn_addr, code_ptr, L_012E4 - cb        // 2739  MOVE.L    (xxx).L,-(A3)
-        b       L_05E8C
+        b       move_l_mem_mem_12
+        ori     rtn_addr, code_ptr, move_l_ea_mem_12 - cb  // 2739  MOVE.L    (xxx).L,-(A3)
+        b       fea_l_71_2
         lwzx    data, pc, prefetch_data                 // 273A  MOVE.L    (d16,PC),-(A3)
-        b       L_012E0
-        ori     rtn_addr, code_ptr, L_012E4 - cb        // 273B  MOVE.L    (d8,PC,Xn),-(A3)
-        b       L_05F08
-        ori     rtn_addr, code_ptr, L_012E4 - cb        // 273C  MOVE.L    #<data>,-(A3)
-        b       L_05F30
+        b       move_l_mem_mem_12
+        ori     rtn_addr, code_ptr, move_l_ea_mem_12 - cb  // 273B  MOVE.L    (d8,PC,Xn),-(A3)
+        b       fea_l_73
+        ori     rtn_addr, code_ptr, move_l_ea_mem_12 - cb  // 273C  MOVE.L    #<data>,-(A3)
+        b       fea_l_74
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 273D  MOVE.L    <ea 7.5>,-(A3)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 273E  MOVE.L    <ea 7.6>,-(A3)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 273F  MOVE.L    <ea 7.7>,-(A3)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $2740-$277F --------------------------------------------------------
         addco.  data, d0, zero                          // 2740  MOVE.L    D0,(d16,A3)
-        b       L_0154C
+        b       move_l_reg_mem_20
         addco.  data, d1, zero                          // 2741  MOVE.L    D1,(d16,A3)
-        b       L_0154C
+        b       move_l_reg_mem_20
         addco.  data, d2, zero                          // 2742  MOVE.L    D2,(d16,A3)
-        b       L_0154C
+        b       move_l_reg_mem_20
         addco.  data, d3, zero                          // 2743  MOVE.L    D3,(d16,A3)
-        b       L_0154C
+        b       move_l_reg_mem_20
         addco.  data, d4, zero                          // 2744  MOVE.L    D4,(d16,A3)
-        b       L_0154C
+        b       move_l_reg_mem_20
         addco.  data, d5, zero                          // 2745  MOVE.L    D5,(d16,A3)
-        b       L_0154C
+        b       move_l_reg_mem_20
         addco.  data, d6, zero                          // 2746  MOVE.L    D6,(d16,A3)
-        b       L_0154C
+        b       move_l_reg_mem_20
         addco.  data, d7, zero                          // 2747  MOVE.L    D7,(d16,A3)
-        b       L_0154C
+        b       move_l_reg_mem_20
         addco.  data, a0, zero                          // 2748  MOVE.L    A0,(d16,A3)
-        b       L_0154C
+        b       move_l_reg_mem_20
         addco.  data, a1, zero                          // 2749  MOVE.L    A1,(d16,A3)
-        b       L_0154C
+        b       move_l_reg_mem_20
         addco.  data, a2, zero                          // 274A  MOVE.L    A2,(d16,A3)
-        b       L_0154C
+        b       move_l_reg_mem_20
         addco.  data, a3, zero                          // 274B  MOVE.L    A3,(d16,A3)
-        b       L_0154C
+        b       move_l_reg_mem_20
         addco.  data, a4, zero                          // 274C  MOVE.L    A4,(d16,A3)
-        b       L_0154C
+        b       move_l_reg_mem_20
         addco.  data, a5, zero                          // 274D  MOVE.L    A5,(d16,A3)
-        b       L_0154C
+        b       move_l_reg_mem_20
         addco.  data, a6, zero                          // 274E  MOVE.L    A6,(d16,A3)
-        b       L_0154C
+        b       move_l_reg_mem_20
         addco.  data, a7, zero                          // 274F  MOVE.L    A7,(d16,A3)
-        b       L_0154C
+        b       move_l_reg_mem_20
         lwz     data, 0(a0)                             // 2750  MOVE.L    (A0),(d16,A3)
-        b       L_01548
+        b       move_l_ea_mem_27
         lwz     data, 0(a1)                             // 2751  MOVE.L    (A1),(d16,A3)
-        b       L_01548
+        b       move_l_ea_mem_27
         lwz     data, 0(a2)                             // 2752  MOVE.L    (A2),(d16,A3)
-        b       L_01548
+        b       move_l_ea_mem_27
         lwz     data, 0(a3)                             // 2753  MOVE.L    (A3),(d16,A3)
-        b       L_01548
+        b       move_l_ea_mem_27
         lwz     data, 0(a4)                             // 2754  MOVE.L    (A4),(d16,A3)
-        b       L_01548
+        b       move_l_ea_mem_27
         lwz     data, 0(a5)                             // 2755  MOVE.L    (A5),(d16,A3)
-        b       L_01548
+        b       move_l_ea_mem_27
         lwz     data, 0(a6)                             // 2756  MOVE.L    (A6),(d16,A3)
-        b       L_01548
+        b       move_l_ea_mem_27
         lwz     data, 0(a7)                             // 2757  MOVE.L    (A7),(d16,A3)
-        b       L_01548
-        ori     rtn_addr, code_ptr, L_01548 - cb        // 2758  MOVE.L    (A0)+,(d16,A3)
-        b       L_00850
-        ori     rtn_addr, code_ptr, L_01548 - cb        // 2759  MOVE.L    (A1)+,(d16,A3)
-        b       L_008D0
-        ori     rtn_addr, code_ptr, L_01548 - cb        // 275A  MOVE.L    (A2)+,(d16,A3)
-        b       L_00950
-        ori     rtn_addr, code_ptr, L_01548 - cb        // 275B  MOVE.L    (A3)+,(d16,A3)
-        b       L_009D0
-        ori     rtn_addr, code_ptr, L_01548 - cb        // 275C  MOVE.L    (A4)+,(d16,A3)
-        b       L_00A50
-        ori     rtn_addr, code_ptr, L_01548 - cb        // 275D  MOVE.L    (A5)+,(d16,A3)
-        b       L_00AD0
-        ori     rtn_addr, code_ptr, L_01548 - cb        // 275E  MOVE.L    (A6)+,(d16,A3)
-        b       L_00B50
-        ori     rtn_addr, code_ptr, L_01548 - cb        // 275F  MOVE.L    (A7)+,(d16,A3)
-        b       L_00BD0
+        b       move_l_ea_mem_27
+        ori     rtn_addr, code_ptr, move_l_ea_mem_27 - cb  // 2758  MOVE.L    (A0)+,(d16,A3)
+        b       fea_l_30
+        ori     rtn_addr, code_ptr, move_l_ea_mem_27 - cb  // 2759  MOVE.L    (A1)+,(d16,A3)
+        b       fea_l_31
+        ori     rtn_addr, code_ptr, move_l_ea_mem_27 - cb  // 275A  MOVE.L    (A2)+,(d16,A3)
+        b       fea_l_32
+        ori     rtn_addr, code_ptr, move_l_ea_mem_27 - cb  // 275B  MOVE.L    (A3)+,(d16,A3)
+        b       fea_l_33
+        ori     rtn_addr, code_ptr, move_l_ea_mem_27 - cb  // 275C  MOVE.L    (A4)+,(d16,A3)
+        b       fea_l_34
+        ori     rtn_addr, code_ptr, move_l_ea_mem_27 - cb  // 275D  MOVE.L    (A5)+,(d16,A3)
+        b       fea_l_35
+        ori     rtn_addr, code_ptr, move_l_ea_mem_27 - cb  // 275E  MOVE.L    (A6)+,(d16,A3)
+        b       fea_l_36
+        ori     rtn_addr, code_ptr, move_l_ea_mem_27 - cb  // 275F  MOVE.L    (A7)+,(d16,A3)
+        b       fea_l_37
         lwzu    data, -4(a0)                            // 2760  MOVE.L    -(A0),(d16,A3)
-        b       L_01548
+        b       move_l_ea_mem_27
         lwzu    data, -4(a1)                            // 2761  MOVE.L    -(A1),(d16,A3)
-        b       L_01548
+        b       move_l_ea_mem_27
         lwzu    data, -4(a2)                            // 2762  MOVE.L    -(A2),(d16,A3)
-        b       L_01548
+        b       move_l_ea_mem_27
         lwzu    data, -4(a3)                            // 2763  MOVE.L    -(A3),(d16,A3)
-        b       L_01548
+        b       move_l_ea_mem_27
         lwzu    data, -4(a4)                            // 2764  MOVE.L    -(A4),(d16,A3)
-        b       L_01548
+        b       move_l_ea_mem_27
         lwzu    data, -4(a5)                            // 2765  MOVE.L    -(A5),(d16,A3)
-        b       L_01548
+        b       move_l_ea_mem_27
         lwzu    data, -4(a6)                            // 2766  MOVE.L    -(A6),(d16,A3)
-        b       L_01548
+        b       move_l_ea_mem_27
         lwzu    data, -4(a7)                            // 2767  MOVE.L    -(A7),(d16,A3)
-        b       L_01548
+        b       move_l_ea_mem_27
         lwzx    data, a0, prefetch_data                 // 2768  MOVE.L    (d16,A0),(d16,A3)
-        b       L_01544
+        b       move_l_mem_mem_27
         lwzx    data, a1, prefetch_data                 // 2769  MOVE.L    (d16,A1),(d16,A3)
-        b       L_01544
+        b       move_l_mem_mem_27
         lwzx    data, a2, prefetch_data                 // 276A  MOVE.L    (d16,A2),(d16,A3)
-        b       L_01544
+        b       move_l_mem_mem_27
         lwzx    data, a3, prefetch_data                 // 276B  MOVE.L    (d16,A3),(d16,A3)
-        b       L_01544
+        b       move_l_mem_mem_27
         lwzx    data, a4, prefetch_data                 // 276C  MOVE.L    (d16,A4),(d16,A3)
-        b       L_01544
+        b       move_l_mem_mem_27
         lwzx    data, a5, prefetch_data                 // 276D  MOVE.L    (d16,A5),(d16,A3)
-        b       L_01544
+        b       move_l_mem_mem_27
         lwzx    data, a6, prefetch_data                 // 276E  MOVE.L    (d16,A6),(d16,A3)
-        b       L_01544
+        b       move_l_mem_mem_27
         lwzx    data, a7, prefetch_data                 // 276F  MOVE.L    (d16,A7),(d16,A3)
-        b       L_01544
-        ori     rtn_addr, code_ptr, L_01548 - cb        // 2770  MOVE.L    (d8,A0,Xn),(d16,A3)
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_01548 - cb        // 2771  MOVE.L    (d8,A1,Xn),(d16,A3)
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_01548 - cb        // 2772  MOVE.L    (d8,A2,Xn),(d16,A3)
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_01548 - cb        // 2773  MOVE.L    (d8,A3,Xn),(d16,A3)
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_01548 - cb        // 2774  MOVE.L    (d8,A4,Xn),(d16,A3)
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_01548 - cb        // 2775  MOVE.L    (d8,A5,Xn),(d16,A3)
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_01548 - cb        // 2776  MOVE.L    (d8,A6,Xn),(d16,A3)
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_01548 - cb        // 2777  MOVE.L    (d8,A7,Xn),(d16,A3)
-        b       L_05C68
+        b       move_l_mem_mem_27
+        ori     rtn_addr, code_ptr, move_l_ea_mem_27 - cb  // 2770  MOVE.L    (d8,A0,Xn),(d16,A3)
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, move_l_ea_mem_27 - cb  // 2771  MOVE.L    (d8,A1,Xn),(d16,A3)
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, move_l_ea_mem_27 - cb  // 2772  MOVE.L    (d8,A2,Xn),(d16,A3)
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, move_l_ea_mem_27 - cb  // 2773  MOVE.L    (d8,A3,Xn),(d16,A3)
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, move_l_ea_mem_27 - cb  // 2774  MOVE.L    (d8,A4,Xn),(d16,A3)
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, move_l_ea_mem_27 - cb  // 2775  MOVE.L    (d8,A5,Xn),(d16,A3)
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, move_l_ea_mem_27 - cb  // 2776  MOVE.L    (d8,A6,Xn),(d16,A3)
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, move_l_ea_mem_27 - cb  // 2777  MOVE.L    (d8,A7,Xn),(d16,A3)
+        b       move_add_etc_l_any_any_8
         lwz     data, 0(prefetch_data)                  // 2778  MOVE.L    (xxx).W,(d16,A3)
-        b       L_01544
-        ori     rtn_addr, code_ptr, L_01548 - cb        // 2779  MOVE.L    (xxx).L,(d16,A3)
-        b       L_05E8C
+        b       move_l_mem_mem_27
+        ori     rtn_addr, code_ptr, move_l_ea_mem_27 - cb  // 2779  MOVE.L    (xxx).L,(d16,A3)
+        b       fea_l_71_2
         lwzx    data, pc, prefetch_data                 // 277A  MOVE.L    (d16,PC),(d16,A3)
-        b       L_01544
-        ori     rtn_addr, code_ptr, L_01548 - cb        // 277B  MOVE.L    (d8,PC,Xn),(d16,A3)
-        b       L_05F08
-        ori     rtn_addr, code_ptr, L_01548 - cb        // 277C  MOVE.L    #<data>,(d16,A3)
-        b       L_05F30
+        b       move_l_mem_mem_27
+        ori     rtn_addr, code_ptr, move_l_ea_mem_27 - cb  // 277B  MOVE.L    (d8,PC,Xn),(d16,A3)
+        b       fea_l_73
+        ori     rtn_addr, code_ptr, move_l_ea_mem_27 - cb  // 277C  MOVE.L    #<data>,(d16,A3)
+        b       fea_l_74
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 277D  MOVE.L    <ea 7.5>,(d16,A3)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 277E  MOVE.L    <ea 7.6>,(d16,A3)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 277F  MOVE.L    <ea 7.7>,(d16,A3)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $2780-$27BF --------------------------------------------------------
         addco.  data, d0, zero                          // 2780  MOVE.L    D0,(d8,A3,Xn)
-        b       L_01570
+        b       move_clr_l_reg_mem_8
         addco.  data, d1, zero                          // 2781  MOVE.L    D1,(d8,A3,Xn)
-        b       L_01570
+        b       move_clr_l_reg_mem_8
         addco.  data, d2, zero                          // 2782  MOVE.L    D2,(d8,A3,Xn)
-        b       L_01570
+        b       move_clr_l_reg_mem_8
         addco.  data, d3, zero                          // 2783  MOVE.L    D3,(d8,A3,Xn)
-        b       L_01570
+        b       move_clr_l_reg_mem_8
         addco.  data, d4, zero                          // 2784  MOVE.L    D4,(d8,A3,Xn)
-        b       L_01570
+        b       move_clr_l_reg_mem_8
         addco.  data, d5, zero                          // 2785  MOVE.L    D5,(d8,A3,Xn)
-        b       L_01570
+        b       move_clr_l_reg_mem_8
         addco.  data, d6, zero                          // 2786  MOVE.L    D6,(d8,A3,Xn)
-        b       L_01570
+        b       move_clr_l_reg_mem_8
         addco.  data, d7, zero                          // 2787  MOVE.L    D7,(d8,A3,Xn)
-        b       L_01570
+        b       move_clr_l_reg_mem_8
         addco.  data, a0, zero                          // 2788  MOVE.L    A0,(d8,A3,Xn)
-        b       L_01570
+        b       move_clr_l_reg_mem_8
         addco.  data, a1, zero                          // 2789  MOVE.L    A1,(d8,A3,Xn)
-        b       L_01570
+        b       move_clr_l_reg_mem_8
         addco.  data, a2, zero                          // 278A  MOVE.L    A2,(d8,A3,Xn)
-        b       L_01570
+        b       move_clr_l_reg_mem_8
         addco.  data, a3, zero                          // 278B  MOVE.L    A3,(d8,A3,Xn)
-        b       L_01570
+        b       move_clr_l_reg_mem_8
         addco.  data, a4, zero                          // 278C  MOVE.L    A4,(d8,A3,Xn)
-        b       L_01570
+        b       move_clr_l_reg_mem_8
         addco.  data, a5, zero                          // 278D  MOVE.L    A5,(d8,A3,Xn)
-        b       L_01570
+        b       move_clr_l_reg_mem_8
         addco.  data, a6, zero                          // 278E  MOVE.L    A6,(d8,A3,Xn)
-        b       L_01570
+        b       move_clr_l_reg_mem_8
         addco.  data, a7, zero                          // 278F  MOVE.L    A7,(d8,A3,Xn)
-        b       L_01570
+        b       move_clr_l_reg_mem_8
         lwz     data, 0(a0)                             // 2790  MOVE.L    (A0),(d8,A3,Xn)
-        b       L_0156C
+        b       move_l_ea_mem_28
         lwz     data, 0(a1)                             // 2791  MOVE.L    (A1),(d8,A3,Xn)
-        b       L_0156C
+        b       move_l_ea_mem_28
         lwz     data, 0(a2)                             // 2792  MOVE.L    (A2),(d8,A3,Xn)
-        b       L_0156C
+        b       move_l_ea_mem_28
         lwz     data, 0(a3)                             // 2793  MOVE.L    (A3),(d8,A3,Xn)
-        b       L_0156C
+        b       move_l_ea_mem_28
         lwz     data, 0(a4)                             // 2794  MOVE.L    (A4),(d8,A3,Xn)
-        b       L_0156C
+        b       move_l_ea_mem_28
         lwz     data, 0(a5)                             // 2795  MOVE.L    (A5),(d8,A3,Xn)
-        b       L_0156C
+        b       move_l_ea_mem_28
         lwz     data, 0(a6)                             // 2796  MOVE.L    (A6),(d8,A3,Xn)
-        b       L_0156C
+        b       move_l_ea_mem_28
         lwz     data, 0(a7)                             // 2797  MOVE.L    (A7),(d8,A3,Xn)
-        b       L_0156C
-        ori     rtn_addr, code_ptr, L_0156C - cb        // 2798  MOVE.L    (A0)+,(d8,A3,Xn)
-        b       L_00850
-        ori     rtn_addr, code_ptr, L_0156C - cb        // 2799  MOVE.L    (A1)+,(d8,A3,Xn)
-        b       L_008D0
-        ori     rtn_addr, code_ptr, L_0156C - cb        // 279A  MOVE.L    (A2)+,(d8,A3,Xn)
-        b       L_00950
-        ori     rtn_addr, code_ptr, L_0156C - cb        // 279B  MOVE.L    (A3)+,(d8,A3,Xn)
-        b       L_009D0
-        ori     rtn_addr, code_ptr, L_0156C - cb        // 279C  MOVE.L    (A4)+,(d8,A3,Xn)
-        b       L_00A50
-        ori     rtn_addr, code_ptr, L_0156C - cb        // 279D  MOVE.L    (A5)+,(d8,A3,Xn)
-        b       L_00AD0
-        ori     rtn_addr, code_ptr, L_0156C - cb        // 279E  MOVE.L    (A6)+,(d8,A3,Xn)
-        b       L_00B50
-        ori     rtn_addr, code_ptr, L_0156C - cb        // 279F  MOVE.L    (A7)+,(d8,A3,Xn)
-        b       L_00BD0
+        b       move_l_ea_mem_28
+        ori     rtn_addr, code_ptr, move_l_ea_mem_28 - cb  // 2798  MOVE.L    (A0)+,(d8,A3,Xn)
+        b       fea_l_30
+        ori     rtn_addr, code_ptr, move_l_ea_mem_28 - cb  // 2799  MOVE.L    (A1)+,(d8,A3,Xn)
+        b       fea_l_31
+        ori     rtn_addr, code_ptr, move_l_ea_mem_28 - cb  // 279A  MOVE.L    (A2)+,(d8,A3,Xn)
+        b       fea_l_32
+        ori     rtn_addr, code_ptr, move_l_ea_mem_28 - cb  // 279B  MOVE.L    (A3)+,(d8,A3,Xn)
+        b       fea_l_33
+        ori     rtn_addr, code_ptr, move_l_ea_mem_28 - cb  // 279C  MOVE.L    (A4)+,(d8,A3,Xn)
+        b       fea_l_34
+        ori     rtn_addr, code_ptr, move_l_ea_mem_28 - cb  // 279D  MOVE.L    (A5)+,(d8,A3,Xn)
+        b       fea_l_35
+        ori     rtn_addr, code_ptr, move_l_ea_mem_28 - cb  // 279E  MOVE.L    (A6)+,(d8,A3,Xn)
+        b       fea_l_36
+        ori     rtn_addr, code_ptr, move_l_ea_mem_28 - cb  // 279F  MOVE.L    (A7)+,(d8,A3,Xn)
+        b       fea_l_37
         lwzu    data, -4(a0)                            // 27A0  MOVE.L    -(A0),(d8,A3,Xn)
-        b       L_0156C
+        b       move_l_ea_mem_28
         lwzu    data, -4(a1)                            // 27A1  MOVE.L    -(A1),(d8,A3,Xn)
-        b       L_0156C
+        b       move_l_ea_mem_28
         lwzu    data, -4(a2)                            // 27A2  MOVE.L    -(A2),(d8,A3,Xn)
-        b       L_0156C
+        b       move_l_ea_mem_28
         lwzu    data, -4(a3)                            // 27A3  MOVE.L    -(A3),(d8,A3,Xn)
-        b       L_0156C
+        b       move_l_ea_mem_28
         lwzu    data, -4(a4)                            // 27A4  MOVE.L    -(A4),(d8,A3,Xn)
-        b       L_0156C
+        b       move_l_ea_mem_28
         lwzu    data, -4(a5)                            // 27A5  MOVE.L    -(A5),(d8,A3,Xn)
-        b       L_0156C
+        b       move_l_ea_mem_28
         lwzu    data, -4(a6)                            // 27A6  MOVE.L    -(A6),(d8,A3,Xn)
-        b       L_0156C
+        b       move_l_ea_mem_28
         lwzu    data, -4(a7)                            // 27A7  MOVE.L    -(A7),(d8,A3,Xn)
-        b       L_0156C
+        b       move_l_ea_mem_28
         lwzx    data, a0, prefetch_data                 // 27A8  MOVE.L    (d16,A0),(d8,A3,Xn)
-        b       L_01568
+        b       move_l_mem_mem_28
         lwzx    data, a1, prefetch_data                 // 27A9  MOVE.L    (d16,A1),(d8,A3,Xn)
-        b       L_01568
+        b       move_l_mem_mem_28
         lwzx    data, a2, prefetch_data                 // 27AA  MOVE.L    (d16,A2),(d8,A3,Xn)
-        b       L_01568
+        b       move_l_mem_mem_28
         lwzx    data, a3, prefetch_data                 // 27AB  MOVE.L    (d16,A3),(d8,A3,Xn)
-        b       L_01568
+        b       move_l_mem_mem_28
         lwzx    data, a4, prefetch_data                 // 27AC  MOVE.L    (d16,A4),(d8,A3,Xn)
-        b       L_01568
+        b       move_l_mem_mem_28
         lwzx    data, a5, prefetch_data                 // 27AD  MOVE.L    (d16,A5),(d8,A3,Xn)
-        b       L_01568
+        b       move_l_mem_mem_28
         lwzx    data, a6, prefetch_data                 // 27AE  MOVE.L    (d16,A6),(d8,A3,Xn)
-        b       L_01568
+        b       move_l_mem_mem_28
         lwzx    data, a7, prefetch_data                 // 27AF  MOVE.L    (d16,A7),(d8,A3,Xn)
-        b       L_01568
-        ori     rtn_addr, code_ptr, L_0156C - cb        // 27B0  MOVE.L    (d8,A0,Xn),(d8,A3,Xn)
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_0156C - cb        // 27B1  MOVE.L    (d8,A1,Xn),(d8,A3,Xn)
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_0156C - cb        // 27B2  MOVE.L    (d8,A2,Xn),(d8,A3,Xn)
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_0156C - cb        // 27B3  MOVE.L    (d8,A3,Xn),(d8,A3,Xn)
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_0156C - cb        // 27B4  MOVE.L    (d8,A4,Xn),(d8,A3,Xn)
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_0156C - cb        // 27B5  MOVE.L    (d8,A5,Xn),(d8,A3,Xn)
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_0156C - cb        // 27B6  MOVE.L    (d8,A6,Xn),(d8,A3,Xn)
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_0156C - cb        // 27B7  MOVE.L    (d8,A7,Xn),(d8,A3,Xn)
-        b       L_05C68
+        b       move_l_mem_mem_28
+        ori     rtn_addr, code_ptr, move_l_ea_mem_28 - cb  // 27B0  MOVE.L    (d8,A0,Xn),(d8,A3,Xn)
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, move_l_ea_mem_28 - cb  // 27B1  MOVE.L    (d8,A1,Xn),(d8,A3,Xn)
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, move_l_ea_mem_28 - cb  // 27B2  MOVE.L    (d8,A2,Xn),(d8,A3,Xn)
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, move_l_ea_mem_28 - cb  // 27B3  MOVE.L    (d8,A3,Xn),(d8,A3,Xn)
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, move_l_ea_mem_28 - cb  // 27B4  MOVE.L    (d8,A4,Xn),(d8,A3,Xn)
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, move_l_ea_mem_28 - cb  // 27B5  MOVE.L    (d8,A5,Xn),(d8,A3,Xn)
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, move_l_ea_mem_28 - cb  // 27B6  MOVE.L    (d8,A6,Xn),(d8,A3,Xn)
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, move_l_ea_mem_28 - cb  // 27B7  MOVE.L    (d8,A7,Xn),(d8,A3,Xn)
+        b       move_add_etc_l_any_any_8
         lwz     data, 0(prefetch_data)                  // 27B8  MOVE.L    (xxx).W,(d8,A3,Xn)
-        b       L_01568
-        ori     rtn_addr, code_ptr, L_0156C - cb        // 27B9  MOVE.L    (xxx).L,(d8,A3,Xn)
-        b       L_05E8C
+        b       move_l_mem_mem_28
+        ori     rtn_addr, code_ptr, move_l_ea_mem_28 - cb  // 27B9  MOVE.L    (xxx).L,(d8,A3,Xn)
+        b       fea_l_71_2
         lwzx    data, pc, prefetch_data                 // 27BA  MOVE.L    (d16,PC),(d8,A3,Xn)
-        b       L_01568
-        ori     rtn_addr, code_ptr, L_0156C - cb        // 27BB  MOVE.L    (d8,PC,Xn),(d8,A3,Xn)
-        b       L_05F08
-        ori     rtn_addr, code_ptr, L_0156C - cb        // 27BC  MOVE.L    #<data>,(d8,A3,Xn)
-        b       L_05F30
+        b       move_l_mem_mem_28
+        ori     rtn_addr, code_ptr, move_l_ea_mem_28 - cb  // 27BB  MOVE.L    (d8,PC,Xn),(d8,A3,Xn)
+        b       fea_l_73
+        ori     rtn_addr, code_ptr, move_l_ea_mem_28 - cb  // 27BC  MOVE.L    #<data>,(d8,A3,Xn)
+        b       fea_l_74
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 27BD  MOVE.L    <ea 7.5>,(d8,A3,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 27BE  MOVE.L    <ea 7.6>,(d8,A3,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 27BF  MOVE.L    <ea 7.7>,(d8,A3,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $27C0-$27FF --------------------------------------------------------
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 27C0  MOVE.L    D0,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 27C1  MOVE.L    D1,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 27C2  MOVE.L    D2,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 27C3  MOVE.L    D3,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 27C4  MOVE.L    D4,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 27C5  MOVE.L    D5,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 27C6  MOVE.L    D6,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 27C7  MOVE.L    D7,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 27C8  MOVE.L    A0,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 27C9  MOVE.L    A1,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 27CA  MOVE.L    A2,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 27CB  MOVE.L    A3,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 27CC  MOVE.L    A4,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 27CD  MOVE.L    A5,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 27CE  MOVE.L    A6,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 27CF  MOVE.L    A7,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 27D0  MOVE.L    (A0),(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 27D1  MOVE.L    (A1),(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 27D2  MOVE.L    (A2),(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 27D3  MOVE.L    (A3),(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 27D4  MOVE.L    (A4),(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 27D5  MOVE.L    (A5),(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 27D6  MOVE.L    (A6),(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 27D7  MOVE.L    (A7),(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 27D8  MOVE.L    (A0)+,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 27D9  MOVE.L    (A1)+,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 27DA  MOVE.L    (A2)+,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 27DB  MOVE.L    (A3)+,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 27DC  MOVE.L    (A4)+,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 27DD  MOVE.L    (A5)+,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 27DE  MOVE.L    (A6)+,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 27DF  MOVE.L    (A7)+,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 27E0  MOVE.L    -(A0),(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 27E1  MOVE.L    -(A1),(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 27E2  MOVE.L    -(A2),(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 27E3  MOVE.L    -(A3),(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 27E4  MOVE.L    -(A4),(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 27E5  MOVE.L    -(A5),(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 27E6  MOVE.L    -(A6),(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 27E7  MOVE.L    -(A7),(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 27E8  MOVE.L    (d16,A0),(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 27E9  MOVE.L    (d16,A1),(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 27EA  MOVE.L    (d16,A2),(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 27EB  MOVE.L    (d16,A3),(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 27EC  MOVE.L    (d16,A4),(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 27ED  MOVE.L    (d16,A5),(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 27EE  MOVE.L    (d16,A6),(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 27EF  MOVE.L    (d16,A7),(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 27F0  MOVE.L    (d8,A0,Xn),(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 27F1  MOVE.L    (d8,A1,Xn),(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 27F2  MOVE.L    (d8,A2,Xn),(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 27F3  MOVE.L    (d8,A3,Xn),(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 27F4  MOVE.L    (d8,A4,Xn),(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 27F5  MOVE.L    (d8,A5,Xn),(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 27F6  MOVE.L    (d8,A6,Xn),(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 27F7  MOVE.L    (d8,A7,Xn),(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 27F8  MOVE.L    (xxx).W,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 27F9  MOVE.L    (xxx).L,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 27FA  MOVE.L    (d16,PC),(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 27FB  MOVE.L    (d8,PC,Xn),(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 27FC  MOVE.L    #<data>,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 27FD  MOVE.L    <ea 7.5>,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 27FE  MOVE.L    <ea 7.6>,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 27FF  MOVE.L    <ea 7.7>,(d8,PC,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $2800-$283F --------------------------------------------------------
         addco.  d4, d0, zero                            // 2800  MOVE.L    D0,D4
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d4, d1, zero                            // 2801  MOVE.L    D1,D4
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d4, d2, zero                            // 2802  MOVE.L    D2,D4
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d4, d3, zero                            // 2803  MOVE.L    D3,D4
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d4, d4, zero                            // 2804  MOVE.L    D4,D4
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d4, d5, zero                            // 2805  MOVE.L    D5,D4
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d4, d6, zero                            // 2806  MOVE.L    D6,D4
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d4, d7, zero                            // 2807  MOVE.L    D7,D4
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d4, a0, zero                            // 2808  MOVE.L    A0,D4
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d4, a1, zero                            // 2809  MOVE.L    A1,D4
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d4, a2, zero                            // 280A  MOVE.L    A2,D4
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d4, a3, zero                            // 280B  MOVE.L    A3,D4
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d4, a4, zero                            // 280C  MOVE.L    A4,D4
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d4, a5, zero                            // 280D  MOVE.L    A5,D4
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d4, a6, zero                            // 280E  MOVE.L    A6,D4
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d4, a7, zero                            // 280F  MOVE.L    A7,D4
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     data, 0(a0)                             // 2810  MOVE.L    (A0),D4
-        b       L_00E28
+        b       move_l_mem_d4
         lwz     data, 0(a1)                             // 2811  MOVE.L    (A1),D4
-        b       L_00E28
+        b       move_l_mem_d4
         lwz     data, 0(a2)                             // 2812  MOVE.L    (A2),D4
-        b       L_00E28
+        b       move_l_mem_d4
         lwz     data, 0(a3)                             // 2813  MOVE.L    (A3),D4
-        b       L_00E28
+        b       move_l_mem_d4
         lwz     data, 0(a4)                             // 2814  MOVE.L    (A4),D4
-        b       L_00E28
+        b       move_l_mem_d4
         lwz     data, 0(a5)                             // 2815  MOVE.L    (A5),D4
-        b       L_00E28
+        b       move_l_mem_d4
         lwz     data, 0(a6)                             // 2816  MOVE.L    (A6),D4
-        b       L_00E28
+        b       move_l_mem_d4
         lwz     data, 0(a7)                             // 2817  MOVE.L    (A7),D4
-        b       L_00E28
-        ori     rtn_addr, code_ptr, L_00E28 - cb        // 2818  MOVE.L    (A0)+,D4
-        b       L_00850
-        ori     rtn_addr, code_ptr, L_00E28 - cb        // 2819  MOVE.L    (A1)+,D4
-        b       L_008D0
-        ori     rtn_addr, code_ptr, L_00E28 - cb        // 281A  MOVE.L    (A2)+,D4
-        b       L_00950
-        ori     rtn_addr, code_ptr, L_00E28 - cb        // 281B  MOVE.L    (A3)+,D4
-        b       L_009D0
-        ori     rtn_addr, code_ptr, L_00E28 - cb        // 281C  MOVE.L    (A4)+,D4
-        b       L_00A50
-        ori     rtn_addr, code_ptr, L_00E28 - cb        // 281D  MOVE.L    (A5)+,D4
-        b       L_00AD0
-        ori     rtn_addr, code_ptr, L_00E28 - cb        // 281E  MOVE.L    (A6)+,D4
-        b       L_00B50
+        b       move_l_mem_d4
+        ori     rtn_addr, code_ptr, move_l_mem_d4 - cb  // 2818  MOVE.L    (A0)+,D4
+        b       fea_l_30
+        ori     rtn_addr, code_ptr, move_l_mem_d4 - cb  // 2819  MOVE.L    (A1)+,D4
+        b       fea_l_31
+        ori     rtn_addr, code_ptr, move_l_mem_d4 - cb  // 281A  MOVE.L    (A2)+,D4
+        b       fea_l_32
+        ori     rtn_addr, code_ptr, move_l_mem_d4 - cb  // 281B  MOVE.L    (A3)+,D4
+        b       fea_l_33
+        ori     rtn_addr, code_ptr, move_l_mem_d4 - cb  // 281C  MOVE.L    (A4)+,D4
+        b       fea_l_34
+        ori     rtn_addr, code_ptr, move_l_mem_d4 - cb  // 281D  MOVE.L    (A5)+,D4
+        b       fea_l_35
+        ori     rtn_addr, code_ptr, move_l_mem_d4 - cb  // 281E  MOVE.L    (A6)+,D4
+        b       fea_l_36
         lwz     d4, 0(a7)                               // 281F  MOVE.L    (A7)+,D4
-        b       L_08EC0
+        b       move_l_mem_d4_3
         lwzu    data, -4(a0)                            // 2820  MOVE.L    -(A0),D4
-        b       L_00E28
+        b       move_l_mem_d4
         lwzu    data, -4(a1)                            // 2821  MOVE.L    -(A1),D4
-        b       L_00E28
+        b       move_l_mem_d4
         lwzu    data, -4(a2)                            // 2822  MOVE.L    -(A2),D4
-        b       L_00E28
+        b       move_l_mem_d4
         lwzu    data, -4(a3)                            // 2823  MOVE.L    -(A3),D4
-        b       L_00E28
+        b       move_l_mem_d4
         lwzu    data, -4(a4)                            // 2824  MOVE.L    -(A4),D4
-        b       L_00E28
+        b       move_l_mem_d4
         lwzu    data, -4(a5)                            // 2825  MOVE.L    -(A5),D4
-        b       L_00E28
+        b       move_l_mem_d4
         lwzu    data, -4(a6)                            // 2826  MOVE.L    -(A6),D4
-        b       L_00E28
+        b       move_l_mem_d4
         lwzu    data, -4(a7)                            // 2827  MOVE.L    -(A7),D4
-        b       L_00E28
+        b       move_l_mem_d4
         lwzx    data, a0, prefetch_data                 // 2828  MOVE.L    (d16,A0),D4
-        b       L_00E40
+        b       move_l_mem_d4_2
         lwzx    data, a1, prefetch_data                 // 2829  MOVE.L    (d16,A1),D4
-        b       L_00E40
+        b       move_l_mem_d4_2
         lwzx    data, a2, prefetch_data                 // 282A  MOVE.L    (d16,A2),D4
-        b       L_00E40
+        b       move_l_mem_d4_2
         lwzx    data, a3, prefetch_data                 // 282B  MOVE.L    (d16,A3),D4
-        b       L_00E40
+        b       move_l_mem_d4_2
         lwzx    data, a4, prefetch_data                 // 282C  MOVE.L    (d16,A4),D4
-        b       L_00E40
+        b       move_l_mem_d4_2
         lwzx    data, a5, prefetch_data                 // 282D  MOVE.L    (d16,A5),D4
-        b       L_00E40
+        b       move_l_mem_d4_2
         lwzx    data, a6, prefetch_data                 // 282E  MOVE.L    (d16,A6),D4
-        b       L_00E40
+        b       move_l_mem_d4_2
         lwzx    data, a7, prefetch_data                 // 282F  MOVE.L    (d16,A7),D4
-        b       L_00E40
-        ori     rtn_addr, code_ptr, L_00E28 - cb        // 2830  MOVE.L    (d8,A0,Xn),D4
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_00E28 - cb        // 2831  MOVE.L    (d8,A1,Xn),D4
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_00E28 - cb        // 2832  MOVE.L    (d8,A2,Xn),D4
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_00E28 - cb        // 2833  MOVE.L    (d8,A3,Xn),D4
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_00E28 - cb        // 2834  MOVE.L    (d8,A4,Xn),D4
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_00E28 - cb        // 2835  MOVE.L    (d8,A5,Xn),D4
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_00E28 - cb        // 2836  MOVE.L    (d8,A6,Xn),D4
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_00E28 - cb        // 2837  MOVE.L    (d8,A7,Xn),D4
-        b       L_05C68
+        b       move_l_mem_d4_2
+        ori     rtn_addr, code_ptr, move_l_mem_d4 - cb  // 2830  MOVE.L    (d8,A0,Xn),D4
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, move_l_mem_d4 - cb  // 2831  MOVE.L    (d8,A1,Xn),D4
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, move_l_mem_d4 - cb  // 2832  MOVE.L    (d8,A2,Xn),D4
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, move_l_mem_d4 - cb  // 2833  MOVE.L    (d8,A3,Xn),D4
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, move_l_mem_d4 - cb  // 2834  MOVE.L    (d8,A4,Xn),D4
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, move_l_mem_d4 - cb  // 2835  MOVE.L    (d8,A5,Xn),D4
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, move_l_mem_d4 - cb  // 2836  MOVE.L    (d8,A6,Xn),D4
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, move_l_mem_d4 - cb  // 2837  MOVE.L    (d8,A7,Xn),D4
+        b       move_add_etc_l_any_any_8
         lwz     data, 0(prefetch_data)                  // 2838  MOVE.L    (xxx).W,D4
-        b       L_00E40
-        ori     rtn_addr, code_ptr, L_00E28 - cb        // 2839  MOVE.L    (xxx).L,D4
-        b       L_05E8C
+        b       move_l_mem_d4_2
+        ori     rtn_addr, code_ptr, move_l_mem_d4 - cb  // 2839  MOVE.L    (xxx).L,D4
+        b       fea_l_71_2
         lwzx    data, pc, prefetch_data                 // 283A  MOVE.L    (d16,PC),D4
-        b       L_00E40
-        ori     rtn_addr, code_ptr, L_00E28 - cb        // 283B  MOVE.L    (d8,PC,Xn),D4
-        b       L_05F08
+        b       move_l_mem_d4_2
+        ori     rtn_addr, code_ptr, move_l_mem_d4 - cb  // 283B  MOVE.L    (d8,PC,Xn),D4
+        b       fea_l_73
         lhau    prefetch_data, 4(pc)                    // 283C  MOVE.L    #<data>,D4
-        b       L_00E24
+        b       move_l_imm_d4
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 283D  MOVE.L    <ea 7.5>,D4   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 283E  MOVE.L    <ea 7.6>,D4   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 283F  MOVE.L    <ea 7.7>,D4   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $2840-$287F --------------------------------------------------------
         mr      a4, d0                                  // 2840  MOVEA.L   D0,A4
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a4, d1                                  // 2841  MOVEA.L   D1,A4
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a4, d2                                  // 2842  MOVEA.L   D2,A4
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a4, d3                                  // 2843  MOVEA.L   D3,A4
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a4, d4                                  // 2844  MOVEA.L   D4,A4
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a4, d5                                  // 2845  MOVEA.L   D5,A4
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a4, d6                                  // 2846  MOVEA.L   D6,A4
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a4, d7                                  // 2847  MOVEA.L   D7,A4
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a4, a0                                  // 2848  MOVEA.L   A0,A4
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a4, a1                                  // 2849  MOVEA.L   A1,A4
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a4, a2                                  // 284A  MOVEA.L   A2,A4
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a4, a3                                  // 284B  MOVEA.L   A3,A4
-        b       L_06084
+        b       move_add_etc_any_any
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // 284C  MOVEA.L   A4,A4
-        b       L_06088
+        b       exg_move_etc_any_reg
         mr      a4, a5                                  // 284D  MOVEA.L   A5,A4
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a4, a6                                  // 284E  MOVEA.L   A6,A4
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a4, a7                                  // 284F  MOVEA.L   A7,A4
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     a4, 0(a0)                               // 2850  MOVEA.L   (A0),A4
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     a4, 0(a1)                               // 2851  MOVEA.L   (A1),A4
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     a4, 0(a2)                               // 2852  MOVEA.L   (A2),A4
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     a4, 0(a3)                               // 2853  MOVEA.L   (A3),A4
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     a4, 0(a4)                               // 2854  MOVEA.L   (A4),A4
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     a4, 0(a5)                               // 2855  MOVEA.L   (A5),A4
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     a4, 0(a6)                               // 2856  MOVEA.L   (A6),A4
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     a4, 0(a7)                               // 2857  MOVEA.L   (A7),A4
-        b       L_06084
-        ori     rtn_addr, code_ptr, L_03300 - cb        // 2858  MOVEA.L   (A0)+,A4
-        b       L_00850
-        ori     rtn_addr, code_ptr, L_03300 - cb        // 2859  MOVEA.L   (A1)+,A4
-        b       L_008D0
-        ori     rtn_addr, code_ptr, L_03300 - cb        // 285A  MOVEA.L   (A2)+,A4
-        b       L_00950
-        ori     rtn_addr, code_ptr, L_03300 - cb        // 285B  MOVEA.L   (A3)+,A4
-        b       L_009D0
+        b       move_add_etc_any_any
+        ori     rtn_addr, code_ptr, movea_mem_a4 - cb   // 2858  MOVEA.L   (A0)+,A4
+        b       fea_l_30
+        ori     rtn_addr, code_ptr, movea_mem_a4 - cb   // 2859  MOVEA.L   (A1)+,A4
+        b       fea_l_31
+        ori     rtn_addr, code_ptr, movea_mem_a4 - cb   // 285A  MOVEA.L   (A2)+,A4
+        b       fea_l_32
+        ori     rtn_addr, code_ptr, movea_mem_a4 - cb   // 285B  MOVEA.L   (A3)+,A4
+        b       fea_l_33
         lwz     a4, 0(a4)                               // 285C  MOVEA.L   (A4)+,A4
-        b       L_06084
-        ori     rtn_addr, code_ptr, L_03300 - cb        // 285D  MOVEA.L   (A5)+,A4
-        b       L_00AD0
-        ori     rtn_addr, code_ptr, L_03300 - cb        // 285E  MOVEA.L   (A6)+,A4
-        b       L_00B50
+        b       move_add_etc_any_any
+        ori     rtn_addr, code_ptr, movea_mem_a4 - cb   // 285D  MOVEA.L   (A5)+,A4
+        b       fea_l_35
+        ori     rtn_addr, code_ptr, movea_mem_a4 - cb   // 285E  MOVEA.L   (A6)+,A4
+        b       fea_l_36
         lwz     a4, 0(a7)                               // 285F  MOVEA.L   (A7)+,A4
-        b       L_08F40
+        b       movea_l_mem_an
         lwzu    a4, -4(a0)                              // 2860  MOVEA.L   -(A0),A4
-        b       L_06084
+        b       move_add_etc_any_any
         lwzu    a4, -4(a1)                              // 2861  MOVEA.L   -(A1),A4
-        b       L_06084
+        b       move_add_etc_any_any
         lwzu    a4, -4(a2)                              // 2862  MOVEA.L   -(A2),A4
-        b       L_06084
+        b       move_add_etc_any_any
         lwzu    a4, -4(a3)                              // 2863  MOVEA.L   -(A3),A4
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     a4, -4(a4)                              // 2864  MOVEA.L   -(A4),A4
-        b       L_06084
+        b       move_add_etc_any_any
         lwzu    a4, -4(a5)                              // 2865  MOVEA.L   -(A5),A4
-        b       L_06084
+        b       move_add_etc_any_any
         lwzu    a4, -4(a6)                              // 2866  MOVEA.L   -(A6),A4
-        b       L_06084
+        b       move_add_etc_any_any
         lwzu    a4, -4(a7)                              // 2867  MOVEA.L   -(A7),A4
-        b       L_06084
+        b       move_add_etc_any_any
         lwzx    a4, a0, prefetch_data                   // 2868  MOVEA.L   (d16,A0),A4
-        b       L_06080
+        b       move_lea_etc_ea_any
         lwzx    a4, a1, prefetch_data                   // 2869  MOVEA.L   (d16,A1),A4
-        b       L_06080
+        b       move_lea_etc_ea_any
         lwzx    a4, a2, prefetch_data                   // 286A  MOVEA.L   (d16,A2),A4
-        b       L_06080
+        b       move_lea_etc_ea_any
         lwzx    a4, a3, prefetch_data                   // 286B  MOVEA.L   (d16,A3),A4
-        b       L_06080
+        b       move_lea_etc_ea_any
         lwzx    a4, a4, prefetch_data                   // 286C  MOVEA.L   (d16,A4),A4
-        b       L_06080
+        b       move_lea_etc_ea_any
         lwzx    a4, a5, prefetch_data                   // 286D  MOVEA.L   (d16,A5),A4
-        b       L_06080
+        b       move_lea_etc_ea_any
         lwzx    a4, a6, prefetch_data                   // 286E  MOVEA.L   (d16,A6),A4
-        b       L_06080
+        b       move_lea_etc_ea_any
         lwzx    a4, a7, prefetch_data                   // 286F  MOVEA.L   (d16,A7),A4
-        b       L_06080
-        ori     rtn_addr, code_ptr, L_03300 - cb        // 2870  MOVEA.L   (d8,A0,Xn),A4
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_03300 - cb        // 2871  MOVEA.L   (d8,A1,Xn),A4
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_03300 - cb        // 2872  MOVEA.L   (d8,A2,Xn),A4
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_03300 - cb        // 2873  MOVEA.L   (d8,A3,Xn),A4
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_03300 - cb        // 2874  MOVEA.L   (d8,A4,Xn),A4
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_03300 - cb        // 2875  MOVEA.L   (d8,A5,Xn),A4
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_03300 - cb        // 2876  MOVEA.L   (d8,A6,Xn),A4
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_03300 - cb        // 2877  MOVEA.L   (d8,A7,Xn),A4
-        b       L_05C68
+        b       move_lea_etc_ea_any
+        ori     rtn_addr, code_ptr, movea_mem_a4 - cb   // 2870  MOVEA.L   (d8,A0,Xn),A4
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, movea_mem_a4 - cb   // 2871  MOVEA.L   (d8,A1,Xn),A4
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, movea_mem_a4 - cb   // 2872  MOVEA.L   (d8,A2,Xn),A4
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, movea_mem_a4 - cb   // 2873  MOVEA.L   (d8,A3,Xn),A4
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, movea_mem_a4 - cb   // 2874  MOVEA.L   (d8,A4,Xn),A4
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, movea_mem_a4 - cb   // 2875  MOVEA.L   (d8,A5,Xn),A4
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, movea_mem_a4 - cb   // 2876  MOVEA.L   (d8,A6,Xn),A4
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, movea_mem_a4 - cb   // 2877  MOVEA.L   (d8,A7,Xn),A4
+        b       move_add_etc_l_any_any_8
         lwz     a4, 0(prefetch_data)                    // 2878  MOVEA.L   (xxx).W,A4
-        b       L_06080
-        ori     rtn_addr, code_ptr, L_03300 - cb        // 2879  MOVEA.L   (xxx).L,A4
-        b       L_05E8C
+        b       move_lea_etc_ea_any
+        ori     rtn_addr, code_ptr, movea_mem_a4 - cb   // 2879  MOVEA.L   (xxx).L,A4
+        b       fea_l_71_2
         lwzx    a4, pc, prefetch_data                   // 287A  MOVEA.L   (d16,PC),A4
-        b       L_06080
-        ori     rtn_addr, code_ptr, L_03300 - cb        // 287B  MOVEA.L   (d8,PC,Xn),A4
-        b       L_05F08
+        b       move_lea_etc_ea_any
+        ori     rtn_addr, code_ptr, movea_mem_a4 - cb   // 287B  MOVEA.L   (d8,PC,Xn),A4
+        b       fea_l_73
         lwz     a4, 0(pc)                               // 287C  MOVEA.L   #<data>,A4
-        b       L_060A0
+        b       move_lea_ea_an
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 287D  MOVEA.L   <ea 7.5>,A4   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 287E  MOVEA.L   <ea 7.6>,A4   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 287F  MOVEA.L   <ea 7.7>,A4   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $2880-$28BF --------------------------------------------------------
         addco.  data, d0, zero                          // 2880  MOVE.L    D0,(A4)
-        b       L_01128
+        b       move_l_reg_mem_5
         addco.  data, d1, zero                          // 2881  MOVE.L    D1,(A4)
-        b       L_01128
+        b       move_l_reg_mem_5
         addco.  data, d2, zero                          // 2882  MOVE.L    D2,(A4)
-        b       L_01128
+        b       move_l_reg_mem_5
         addco.  data, d3, zero                          // 2883  MOVE.L    D3,(A4)
-        b       L_01128
+        b       move_l_reg_mem_5
         addco.  data, d4, zero                          // 2884  MOVE.L    D4,(A4)
-        b       L_01128
+        b       move_l_reg_mem_5
         addco.  data, d5, zero                          // 2885  MOVE.L    D5,(A4)
-        b       L_01128
+        b       move_l_reg_mem_5
         addco.  data, d6, zero                          // 2886  MOVE.L    D6,(A4)
-        b       L_01128
+        b       move_l_reg_mem_5
         addco.  data, d7, zero                          // 2887  MOVE.L    D7,(A4)
-        b       L_01128
+        b       move_l_reg_mem_5
         addco.  data, a0, zero                          // 2888  MOVE.L    A0,(A4)
-        b       L_01128
+        b       move_l_reg_mem_5
         addco.  data, a1, zero                          // 2889  MOVE.L    A1,(A4)
-        b       L_01128
+        b       move_l_reg_mem_5
         addco.  data, a2, zero                          // 288A  MOVE.L    A2,(A4)
-        b       L_01128
+        b       move_l_reg_mem_5
         addco.  data, a3, zero                          // 288B  MOVE.L    A3,(A4)
-        b       L_01128
+        b       move_l_reg_mem_5
         addco.  data, a4, zero                          // 288C  MOVE.L    A4,(A4)
-        b       L_01128
+        b       move_l_reg_mem_5
         addco.  data, a5, zero                          // 288D  MOVE.L    A5,(A4)
-        b       L_01128
+        b       move_l_reg_mem_5
         addco.  data, a6, zero                          // 288E  MOVE.L    A6,(A4)
-        b       L_01128
+        b       move_l_reg_mem_5
         addco.  data, a7, zero                          // 288F  MOVE.L    A7,(A4)
-        b       L_01128
+        b       move_l_reg_mem_5
         lwz     data, 0(a0)                             // 2890  MOVE.L    (A0),(A4)
-        b       L_01124
+        b       move_l_ea_mem_5
         lwz     data, 0(a1)                             // 2891  MOVE.L    (A1),(A4)
-        b       L_01124
+        b       move_l_ea_mem_5
         lwz     data, 0(a2)                             // 2892  MOVE.L    (A2),(A4)
-        b       L_01124
+        b       move_l_ea_mem_5
         lwz     data, 0(a3)                             // 2893  MOVE.L    (A3),(A4)
-        b       L_01124
+        b       move_l_ea_mem_5
         lwz     data, 0(a4)                             // 2894  MOVE.L    (A4),(A4)
-        b       L_06144
+        b       tst_ea
         lwz     data, 0(a5)                             // 2895  MOVE.L    (A5),(A4)
-        b       L_01124
+        b       move_l_ea_mem_5
         lwz     data, 0(a6)                             // 2896  MOVE.L    (A6),(A4)
-        b       L_01124
+        b       move_l_ea_mem_5
         lwz     data, 0(a7)                             // 2897  MOVE.L    (A7),(A4)
-        b       L_01124
-        ori     rtn_addr, code_ptr, L_01124 - cb        // 2898  MOVE.L    (A0)+,(A4)
-        b       L_00850
-        ori     rtn_addr, code_ptr, L_01124 - cb        // 2899  MOVE.L    (A1)+,(A4)
-        b       L_008D0
-        ori     rtn_addr, code_ptr, L_01124 - cb        // 289A  MOVE.L    (A2)+,(A4)
-        b       L_00950
-        ori     rtn_addr, code_ptr, L_01124 - cb        // 289B  MOVE.L    (A3)+,(A4)
-        b       L_009D0
-        ori     rtn_addr, code_ptr, L_01124 - cb        // 289C  MOVE.L    (A4)+,(A4)
-        b       L_00A50
-        ori     rtn_addr, code_ptr, L_01124 - cb        // 289D  MOVE.L    (A5)+,(A4)
-        b       L_00AD0
-        ori     rtn_addr, code_ptr, L_01124 - cb        // 289E  MOVE.L    (A6)+,(A4)
-        b       L_00B50
-        ori     rtn_addr, code_ptr, L_01124 - cb        // 289F  MOVE.L    (A7)+,(A4)
-        b       L_00BD0
+        b       move_l_ea_mem_5
+        ori     rtn_addr, code_ptr, move_l_ea_mem_5 - cb  // 2898  MOVE.L    (A0)+,(A4)
+        b       fea_l_30
+        ori     rtn_addr, code_ptr, move_l_ea_mem_5 - cb  // 2899  MOVE.L    (A1)+,(A4)
+        b       fea_l_31
+        ori     rtn_addr, code_ptr, move_l_ea_mem_5 - cb  // 289A  MOVE.L    (A2)+,(A4)
+        b       fea_l_32
+        ori     rtn_addr, code_ptr, move_l_ea_mem_5 - cb  // 289B  MOVE.L    (A3)+,(A4)
+        b       fea_l_33
+        ori     rtn_addr, code_ptr, move_l_ea_mem_5 - cb  // 289C  MOVE.L    (A4)+,(A4)
+        b       fea_l_34
+        ori     rtn_addr, code_ptr, move_l_ea_mem_5 - cb  // 289D  MOVE.L    (A5)+,(A4)
+        b       fea_l_35
+        ori     rtn_addr, code_ptr, move_l_ea_mem_5 - cb  // 289E  MOVE.L    (A6)+,(A4)
+        b       fea_l_36
+        ori     rtn_addr, code_ptr, move_l_ea_mem_5 - cb  // 289F  MOVE.L    (A7)+,(A4)
+        b       fea_l_37
         lwzu    data, -4(a0)                            // 28A0  MOVE.L    -(A0),(A4)
-        b       L_01124
+        b       move_l_ea_mem_5
         lwzu    data, -4(a1)                            // 28A1  MOVE.L    -(A1),(A4)
-        b       L_01124
+        b       move_l_ea_mem_5
         lwzu    data, -4(a2)                            // 28A2  MOVE.L    -(A2),(A4)
-        b       L_01124
+        b       move_l_ea_mem_5
         lwzu    data, -4(a3)                            // 28A3  MOVE.L    -(A3),(A4)
-        b       L_01124
+        b       move_l_ea_mem_5
         lwzu    data, -4(a4)                            // 28A4  MOVE.L    -(A4),(A4)
-        b       L_06144
+        b       tst_ea
         lwzu    data, -4(a5)                            // 28A5  MOVE.L    -(A5),(A4)
-        b       L_01124
+        b       move_l_ea_mem_5
         lwzu    data, -4(a6)                            // 28A6  MOVE.L    -(A6),(A4)
-        b       L_01124
+        b       move_l_ea_mem_5
         lwzu    data, -4(a7)                            // 28A7  MOVE.L    -(A7),(A4)
-        b       L_01124
+        b       move_l_ea_mem_5
         lwzx    data, a0, prefetch_data                 // 28A8  MOVE.L    (d16,A0),(A4)
-        b       L_01120
+        b       move_l_mem_mem_5
         lwzx    data, a1, prefetch_data                 // 28A9  MOVE.L    (d16,A1),(A4)
-        b       L_01120
+        b       move_l_mem_mem_5
         lwzx    data, a2, prefetch_data                 // 28AA  MOVE.L    (d16,A2),(A4)
-        b       L_01120
+        b       move_l_mem_mem_5
         lwzx    data, a3, prefetch_data                 // 28AB  MOVE.L    (d16,A3),(A4)
-        b       L_01120
+        b       move_l_mem_mem_5
         lwzx    data, a4, prefetch_data                 // 28AC  MOVE.L    (d16,A4),(A4)
-        b       L_01120
+        b       move_l_mem_mem_5
         lwzx    data, a5, prefetch_data                 // 28AD  MOVE.L    (d16,A5),(A4)
-        b       L_01120
+        b       move_l_mem_mem_5
         lwzx    data, a6, prefetch_data                 // 28AE  MOVE.L    (d16,A6),(A4)
-        b       L_01120
+        b       move_l_mem_mem_5
         lwzx    data, a7, prefetch_data                 // 28AF  MOVE.L    (d16,A7),(A4)
-        b       L_01120
-        ori     rtn_addr, code_ptr, L_01124 - cb        // 28B0  MOVE.L    (d8,A0,Xn),(A4)
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_01124 - cb        // 28B1  MOVE.L    (d8,A1,Xn),(A4)
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_01124 - cb        // 28B2  MOVE.L    (d8,A2,Xn),(A4)
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_01124 - cb        // 28B3  MOVE.L    (d8,A3,Xn),(A4)
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_01124 - cb        // 28B4  MOVE.L    (d8,A4,Xn),(A4)
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_01124 - cb        // 28B5  MOVE.L    (d8,A5,Xn),(A4)
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_01124 - cb        // 28B6  MOVE.L    (d8,A6,Xn),(A4)
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_01124 - cb        // 28B7  MOVE.L    (d8,A7,Xn),(A4)
-        b       L_05C68
+        b       move_l_mem_mem_5
+        ori     rtn_addr, code_ptr, move_l_ea_mem_5 - cb  // 28B0  MOVE.L    (d8,A0,Xn),(A4)
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, move_l_ea_mem_5 - cb  // 28B1  MOVE.L    (d8,A1,Xn),(A4)
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, move_l_ea_mem_5 - cb  // 28B2  MOVE.L    (d8,A2,Xn),(A4)
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, move_l_ea_mem_5 - cb  // 28B3  MOVE.L    (d8,A3,Xn),(A4)
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, move_l_ea_mem_5 - cb  // 28B4  MOVE.L    (d8,A4,Xn),(A4)
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, move_l_ea_mem_5 - cb  // 28B5  MOVE.L    (d8,A5,Xn),(A4)
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, move_l_ea_mem_5 - cb  // 28B6  MOVE.L    (d8,A6,Xn),(A4)
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, move_l_ea_mem_5 - cb  // 28B7  MOVE.L    (d8,A7,Xn),(A4)
+        b       move_add_etc_l_any_any_8
         lwz     data, 0(prefetch_data)                  // 28B8  MOVE.L    (xxx).W,(A4)
-        b       L_01120
-        ori     rtn_addr, code_ptr, L_01124 - cb        // 28B9  MOVE.L    (xxx).L,(A4)
-        b       L_05E8C
+        b       move_l_mem_mem_5
+        ori     rtn_addr, code_ptr, move_l_ea_mem_5 - cb  // 28B9  MOVE.L    (xxx).L,(A4)
+        b       fea_l_71_2
         lwzx    data, pc, prefetch_data                 // 28BA  MOVE.L    (d16,PC),(A4)
-        b       L_01120
-        ori     rtn_addr, code_ptr, L_01124 - cb        // 28BB  MOVE.L    (d8,PC,Xn),(A4)
-        b       L_05F08
-        ori     rtn_addr, code_ptr, L_01124 - cb        // 28BC  MOVE.L    #<data>,(A4)
-        b       L_05F30
+        b       move_l_mem_mem_5
+        ori     rtn_addr, code_ptr, move_l_ea_mem_5 - cb  // 28BB  MOVE.L    (d8,PC,Xn),(A4)
+        b       fea_l_73
+        ori     rtn_addr, code_ptr, move_l_ea_mem_5 - cb  // 28BC  MOVE.L    #<data>,(A4)
+        b       fea_l_74
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 28BD  MOVE.L    <ea 7.5>,(A4)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 28BE  MOVE.L    <ea 7.6>,(A4)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 28BF  MOVE.L    <ea 7.7>,(A4)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $28C0-$28FF --------------------------------------------------------
         addco.  data, d0, zero                          // 28C0  MOVE.L    D0,(A4)+
-        b       L_01588
+        b       move_clr_l_reg_mem_9
         addco.  data, d1, zero                          // 28C1  MOVE.L    D1,(A4)+
-        b       L_01588
+        b       move_clr_l_reg_mem_9
         addco.  data, d2, zero                          // 28C2  MOVE.L    D2,(A4)+
-        b       L_01588
+        b       move_clr_l_reg_mem_9
         addco.  data, d3, zero                          // 28C3  MOVE.L    D3,(A4)+
-        b       L_01588
+        b       move_clr_l_reg_mem_9
         addco.  data, d4, zero                          // 28C4  MOVE.L    D4,(A4)+
-        b       L_01588
+        b       move_clr_l_reg_mem_9
         addco.  data, d5, zero                          // 28C5  MOVE.L    D5,(A4)+
-        b       L_01588
+        b       move_clr_l_reg_mem_9
         addco.  data, d6, zero                          // 28C6  MOVE.L    D6,(A4)+
-        b       L_01588
+        b       move_clr_l_reg_mem_9
         addco.  data, d7, zero                          // 28C7  MOVE.L    D7,(A4)+
-        b       L_01588
+        b       move_clr_l_reg_mem_9
         addco.  data, a0, zero                          // 28C8  MOVE.L    A0,(A4)+
-        b       L_01588
+        b       move_clr_l_reg_mem_9
         addco.  data, a1, zero                          // 28C9  MOVE.L    A1,(A4)+
-        b       L_01588
+        b       move_clr_l_reg_mem_9
         addco.  data, a2, zero                          // 28CA  MOVE.L    A2,(A4)+
-        b       L_01588
+        b       move_clr_l_reg_mem_9
         addco.  data, a3, zero                          // 28CB  MOVE.L    A3,(A4)+
-        b       L_01588
+        b       move_clr_l_reg_mem_9
         addco.  data, a4, zero                          // 28CC  MOVE.L    A4,(A4)+
-        b       L_01588
+        b       move_clr_l_reg_mem_9
         addco.  data, a5, zero                          // 28CD  MOVE.L    A5,(A4)+
-        b       L_01588
+        b       move_clr_l_reg_mem_9
         addco.  data, a6, zero                          // 28CE  MOVE.L    A6,(A4)+
-        b       L_01588
+        b       move_clr_l_reg_mem_9
         addco.  data, a7, zero                          // 28CF  MOVE.L    A7,(A4)+
-        b       L_01588
+        b       move_clr_l_reg_mem_9
         lwz     data, 0(a0)                             // 28D0  MOVE.L    (A0),(A4)+
-        b       L_01584
+        b       move_l_ea_mem_29
         lwz     data, 0(a1)                             // 28D1  MOVE.L    (A1),(A4)+
-        b       L_01584
+        b       move_l_ea_mem_29
         lwz     data, 0(a2)                             // 28D2  MOVE.L    (A2),(A4)+
-        b       L_01584
+        b       move_l_ea_mem_29
         lwz     data, 0(a3)                             // 28D3  MOVE.L    (A3),(A4)+
-        b       L_01584
+        b       move_l_ea_mem_29
         lwz     data, 0(a4)                             // 28D4  MOVE.L    (A4),(A4)+
-        b       L_01584
+        b       move_l_ea_mem_29
         lwz     data, 0(a5)                             // 28D5  MOVE.L    (A5),(A4)+
-        b       L_01584
+        b       move_l_ea_mem_29
         lwz     data, 0(a6)                             // 28D6  MOVE.L    (A6),(A4)+
-        b       L_01584
+        b       move_l_ea_mem_29
         lwz     data, 0(a7)                             // 28D7  MOVE.L    (A7),(A4)+
-        b       L_01584
-        ori     rtn_addr, code_ptr, L_01584 - cb        // 28D8  MOVE.L    (A0)+,(A4)+
-        b       L_00850
-        ori     rtn_addr, code_ptr, L_01584 - cb        // 28D9  MOVE.L    (A1)+,(A4)+
-        b       L_008D0
-        ori     rtn_addr, code_ptr, L_01584 - cb        // 28DA  MOVE.L    (A2)+,(A4)+
-        b       L_00950
-        ori     rtn_addr, code_ptr, L_01584 - cb        // 28DB  MOVE.L    (A3)+,(A4)+
-        b       L_009D0
-        ori     rtn_addr, code_ptr, L_01584 - cb        // 28DC  MOVE.L    (A4)+,(A4)+
-        b       L_00A50
-        ori     rtn_addr, code_ptr, L_01584 - cb        // 28DD  MOVE.L    (A5)+,(A4)+
-        b       L_00AD0
-        ori     rtn_addr, code_ptr, L_01584 - cb        // 28DE  MOVE.L    (A6)+,(A4)+
-        b       L_00B50
-        ori     rtn_addr, code_ptr, L_01584 - cb        // 28DF  MOVE.L    (A7)+,(A4)+
-        b       L_00BD0
+        b       move_l_ea_mem_29
+        ori     rtn_addr, code_ptr, move_l_ea_mem_29 - cb  // 28D8  MOVE.L    (A0)+,(A4)+
+        b       fea_l_30
+        ori     rtn_addr, code_ptr, move_l_ea_mem_29 - cb  // 28D9  MOVE.L    (A1)+,(A4)+
+        b       fea_l_31
+        ori     rtn_addr, code_ptr, move_l_ea_mem_29 - cb  // 28DA  MOVE.L    (A2)+,(A4)+
+        b       fea_l_32
+        ori     rtn_addr, code_ptr, move_l_ea_mem_29 - cb  // 28DB  MOVE.L    (A3)+,(A4)+
+        b       fea_l_33
+        ori     rtn_addr, code_ptr, move_l_ea_mem_29 - cb  // 28DC  MOVE.L    (A4)+,(A4)+
+        b       fea_l_34
+        ori     rtn_addr, code_ptr, move_l_ea_mem_29 - cb  // 28DD  MOVE.L    (A5)+,(A4)+
+        b       fea_l_35
+        ori     rtn_addr, code_ptr, move_l_ea_mem_29 - cb  // 28DE  MOVE.L    (A6)+,(A4)+
+        b       fea_l_36
+        ori     rtn_addr, code_ptr, move_l_ea_mem_29 - cb  // 28DF  MOVE.L    (A7)+,(A4)+
+        b       fea_l_37
         lwzu    data, -4(a0)                            // 28E0  MOVE.L    -(A0),(A4)+
-        b       L_01584
+        b       move_l_ea_mem_29
         lwzu    data, -4(a1)                            // 28E1  MOVE.L    -(A1),(A4)+
-        b       L_01584
+        b       move_l_ea_mem_29
         lwzu    data, -4(a2)                            // 28E2  MOVE.L    -(A2),(A4)+
-        b       L_01584
+        b       move_l_ea_mem_29
         lwzu    data, -4(a3)                            // 28E3  MOVE.L    -(A3),(A4)+
-        b       L_01584
+        b       move_l_ea_mem_29
         lwz     data, -4(a4)                            // 28E4  MOVE.L    -(A4),(A4)+
-        b       L_06144
+        b       tst_ea
         lwzu    data, -4(a5)                            // 28E5  MOVE.L    -(A5),(A4)+
-        b       L_01584
+        b       move_l_ea_mem_29
         lwzu    data, -4(a6)                            // 28E6  MOVE.L    -(A6),(A4)+
-        b       L_01584
+        b       move_l_ea_mem_29
         lwzu    data, -4(a7)                            // 28E7  MOVE.L    -(A7),(A4)+
-        b       L_01584
+        b       move_l_ea_mem_29
         lwzx    data, a0, prefetch_data                 // 28E8  MOVE.L    (d16,A0),(A4)+
-        b       L_01580
+        b       move_l_mem_mem_29
         lwzx    data, a1, prefetch_data                 // 28E9  MOVE.L    (d16,A1),(A4)+
-        b       L_01580
+        b       move_l_mem_mem_29
         lwzx    data, a2, prefetch_data                 // 28EA  MOVE.L    (d16,A2),(A4)+
-        b       L_01580
+        b       move_l_mem_mem_29
         lwzx    data, a3, prefetch_data                 // 28EB  MOVE.L    (d16,A3),(A4)+
-        b       L_01580
+        b       move_l_mem_mem_29
         lwzx    data, a4, prefetch_data                 // 28EC  MOVE.L    (d16,A4),(A4)+
-        b       L_01580
+        b       move_l_mem_mem_29
         lwzx    data, a5, prefetch_data                 // 28ED  MOVE.L    (d16,A5),(A4)+
-        b       L_01580
+        b       move_l_mem_mem_29
         lwzx    data, a6, prefetch_data                 // 28EE  MOVE.L    (d16,A6),(A4)+
-        b       L_01580
+        b       move_l_mem_mem_29
         lwzx    data, a7, prefetch_data                 // 28EF  MOVE.L    (d16,A7),(A4)+
-        b       L_01580
-        ori     rtn_addr, code_ptr, L_01584 - cb        // 28F0  MOVE.L    (d8,A0,Xn),(A4)+
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_01584 - cb        // 28F1  MOVE.L    (d8,A1,Xn),(A4)+
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_01584 - cb        // 28F2  MOVE.L    (d8,A2,Xn),(A4)+
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_01584 - cb        // 28F3  MOVE.L    (d8,A3,Xn),(A4)+
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_01584 - cb        // 28F4  MOVE.L    (d8,A4,Xn),(A4)+
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_01584 - cb        // 28F5  MOVE.L    (d8,A5,Xn),(A4)+
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_01584 - cb        // 28F6  MOVE.L    (d8,A6,Xn),(A4)+
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_01584 - cb        // 28F7  MOVE.L    (d8,A7,Xn),(A4)+
-        b       L_05C68
+        b       move_l_mem_mem_29
+        ori     rtn_addr, code_ptr, move_l_ea_mem_29 - cb  // 28F0  MOVE.L    (d8,A0,Xn),(A4)+
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, move_l_ea_mem_29 - cb  // 28F1  MOVE.L    (d8,A1,Xn),(A4)+
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, move_l_ea_mem_29 - cb  // 28F2  MOVE.L    (d8,A2,Xn),(A4)+
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, move_l_ea_mem_29 - cb  // 28F3  MOVE.L    (d8,A3,Xn),(A4)+
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, move_l_ea_mem_29 - cb  // 28F4  MOVE.L    (d8,A4,Xn),(A4)+
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, move_l_ea_mem_29 - cb  // 28F5  MOVE.L    (d8,A5,Xn),(A4)+
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, move_l_ea_mem_29 - cb  // 28F6  MOVE.L    (d8,A6,Xn),(A4)+
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, move_l_ea_mem_29 - cb  // 28F7  MOVE.L    (d8,A7,Xn),(A4)+
+        b       move_add_etc_l_any_any_8
         lwz     data, 0(prefetch_data)                  // 28F8  MOVE.L    (xxx).W,(A4)+
-        b       L_01580
-        ori     rtn_addr, code_ptr, L_01584 - cb        // 28F9  MOVE.L    (xxx).L,(A4)+
-        b       L_05E8C
+        b       move_l_mem_mem_29
+        ori     rtn_addr, code_ptr, move_l_ea_mem_29 - cb  // 28F9  MOVE.L    (xxx).L,(A4)+
+        b       fea_l_71_2
         lwzx    data, pc, prefetch_data                 // 28FA  MOVE.L    (d16,PC),(A4)+
-        b       L_01580
-        ori     rtn_addr, code_ptr, L_01584 - cb        // 28FB  MOVE.L    (d8,PC,Xn),(A4)+
-        b       L_05F08
-        ori     rtn_addr, code_ptr, L_01584 - cb        // 28FC  MOVE.L    #<data>,(A4)+
-        b       L_05F30
+        b       move_l_mem_mem_29
+        ori     rtn_addr, code_ptr, move_l_ea_mem_29 - cb  // 28FB  MOVE.L    (d8,PC,Xn),(A4)+
+        b       fea_l_73
+        ori     rtn_addr, code_ptr, move_l_ea_mem_29 - cb  // 28FC  MOVE.L    #<data>,(A4)+
+        b       fea_l_74
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 28FD  MOVE.L    <ea 7.5>,(A4)+   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 28FE  MOVE.L    <ea 7.6>,(A4)+   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 28FF  MOVE.L    <ea 7.7>,(A4)+   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $2900-$293F --------------------------------------------------------
         addco.  data, d0, zero                          // 2900  MOVE.L    D0,-(A4)
-        b       L_01328
+        b       move_l_reg_mem_13
         addco.  data, d1, zero                          // 2901  MOVE.L    D1,-(A4)
-        b       L_01328
+        b       move_l_reg_mem_13
         addco.  data, d2, zero                          // 2902  MOVE.L    D2,-(A4)
-        b       L_01328
+        b       move_l_reg_mem_13
         addco.  data, d3, zero                          // 2903  MOVE.L    D3,-(A4)
-        b       L_01328
+        b       move_l_reg_mem_13
         addco.  data, d4, zero                          // 2904  MOVE.L    D4,-(A4)
-        b       L_01328
+        b       move_l_reg_mem_13
         addco.  data, d5, zero                          // 2905  MOVE.L    D5,-(A4)
-        b       L_01328
+        b       move_l_reg_mem_13
         addco.  data, d6, zero                          // 2906  MOVE.L    D6,-(A4)
-        b       L_01328
+        b       move_l_reg_mem_13
         addco.  data, d7, zero                          // 2907  MOVE.L    D7,-(A4)
-        b       L_01328
+        b       move_l_reg_mem_13
         addco.  data, a0, zero                          // 2908  MOVE.L    A0,-(A4)
-        b       L_01328
+        b       move_l_reg_mem_13
         addco.  data, a1, zero                          // 2909  MOVE.L    A1,-(A4)
-        b       L_01328
+        b       move_l_reg_mem_13
         addco.  data, a2, zero                          // 290A  MOVE.L    A2,-(A4)
-        b       L_01328
+        b       move_l_reg_mem_13
         addco.  data, a3, zero                          // 290B  MOVE.L    A3,-(A4)
-        b       L_01328
+        b       move_l_reg_mem_13
         addco.  data, a4, zero                          // 290C  MOVE.L    A4,-(A4)
-        b       L_01328
+        b       move_l_reg_mem_13
         addco.  data, a5, zero                          // 290D  MOVE.L    A5,-(A4)
-        b       L_01328
+        b       move_l_reg_mem_13
         addco.  data, a6, zero                          // 290E  MOVE.L    A6,-(A4)
-        b       L_01328
+        b       move_l_reg_mem_13
         addco.  data, a7, zero                          // 290F  MOVE.L    A7,-(A4)
-        b       L_01328
+        b       move_l_reg_mem_13
         lwz     data, 0(a0)                             // 2910  MOVE.L    (A0),-(A4)
-        b       L_01324
+        b       move_l_ea_mem_13
         lwz     data, 0(a1)                             // 2911  MOVE.L    (A1),-(A4)
-        b       L_01324
+        b       move_l_ea_mem_13
         lwz     data, 0(a2)                             // 2912  MOVE.L    (A2),-(A4)
-        b       L_01324
+        b       move_l_ea_mem_13
         lwz     data, 0(a3)                             // 2913  MOVE.L    (A3),-(A4)
-        b       L_01324
+        b       move_l_ea_mem_13
         lwz     data, 0(a4)                             // 2914  MOVE.L    (A4),-(A4)
-        b       L_01324
+        b       move_l_ea_mem_13
         lwz     data, 0(a5)                             // 2915  MOVE.L    (A5),-(A4)
-        b       L_01324
+        b       move_l_ea_mem_13
         lwz     data, 0(a6)                             // 2916  MOVE.L    (A6),-(A4)
-        b       L_01324
+        b       move_l_ea_mem_13
         lwz     data, 0(a7)                             // 2917  MOVE.L    (A7),-(A4)
-        b       L_01324
-        ori     rtn_addr, code_ptr, L_01324 - cb        // 2918  MOVE.L    (A0)+,-(A4)
-        b       L_00850
-        ori     rtn_addr, code_ptr, L_01324 - cb        // 2919  MOVE.L    (A1)+,-(A4)
-        b       L_008D0
-        ori     rtn_addr, code_ptr, L_01324 - cb        // 291A  MOVE.L    (A2)+,-(A4)
-        b       L_00950
-        ori     rtn_addr, code_ptr, L_01324 - cb        // 291B  MOVE.L    (A3)+,-(A4)
-        b       L_009D0
+        b       move_l_ea_mem_13
+        ori     rtn_addr, code_ptr, move_l_ea_mem_13 - cb  // 2918  MOVE.L    (A0)+,-(A4)
+        b       fea_l_30
+        ori     rtn_addr, code_ptr, move_l_ea_mem_13 - cb  // 2919  MOVE.L    (A1)+,-(A4)
+        b       fea_l_31
+        ori     rtn_addr, code_ptr, move_l_ea_mem_13 - cb  // 291A  MOVE.L    (A2)+,-(A4)
+        b       fea_l_32
+        ori     rtn_addr, code_ptr, move_l_ea_mem_13 - cb  // 291B  MOVE.L    (A3)+,-(A4)
+        b       fea_l_33
         lwz     data, 0(a4)                             // 291C  MOVE.L    (A4)+,-(A4)
-        b       L_06144
-        ori     rtn_addr, code_ptr, L_01324 - cb        // 291D  MOVE.L    (A5)+,-(A4)
-        b       L_00AD0
-        ori     rtn_addr, code_ptr, L_01324 - cb        // 291E  MOVE.L    (A6)+,-(A4)
-        b       L_00B50
-        ori     rtn_addr, code_ptr, L_01324 - cb        // 291F  MOVE.L    (A7)+,-(A4)
-        b       L_00BD0
+        b       tst_ea
+        ori     rtn_addr, code_ptr, move_l_ea_mem_13 - cb  // 291D  MOVE.L    (A5)+,-(A4)
+        b       fea_l_35
+        ori     rtn_addr, code_ptr, move_l_ea_mem_13 - cb  // 291E  MOVE.L    (A6)+,-(A4)
+        b       fea_l_36
+        ori     rtn_addr, code_ptr, move_l_ea_mem_13 - cb  // 291F  MOVE.L    (A7)+,-(A4)
+        b       fea_l_37
         lwzu    data, -4(a0)                            // 2920  MOVE.L    -(A0),-(A4)
-        b       L_01324
+        b       move_l_ea_mem_13
         lwzu    data, -4(a1)                            // 2921  MOVE.L    -(A1),-(A4)
-        b       L_01324
+        b       move_l_ea_mem_13
         lwzu    data, -4(a2)                            // 2922  MOVE.L    -(A2),-(A4)
-        b       L_01324
+        b       move_l_ea_mem_13
         lwzu    data, -4(a3)                            // 2923  MOVE.L    -(A3),-(A4)
-        b       L_01324
+        b       move_l_ea_mem_13
         lwzu    data, -4(a4)                            // 2924  MOVE.L    -(A4),-(A4)
-        b       L_01324
+        b       move_l_ea_mem_13
         lwzu    data, -4(a5)                            // 2925  MOVE.L    -(A5),-(A4)
-        b       L_01324
+        b       move_l_ea_mem_13
         lwzu    data, -4(a6)                            // 2926  MOVE.L    -(A6),-(A4)
-        b       L_01324
+        b       move_l_ea_mem_13
         lwzu    data, -4(a7)                            // 2927  MOVE.L    -(A7),-(A4)
-        b       L_01324
+        b       move_l_ea_mem_13
         lwzx    data, a0, prefetch_data                 // 2928  MOVE.L    (d16,A0),-(A4)
-        b       L_01320
+        b       move_l_mem_mem_13
         lwzx    data, a1, prefetch_data                 // 2929  MOVE.L    (d16,A1),-(A4)
-        b       L_01320
+        b       move_l_mem_mem_13
         lwzx    data, a2, prefetch_data                 // 292A  MOVE.L    (d16,A2),-(A4)
-        b       L_01320
+        b       move_l_mem_mem_13
         lwzx    data, a3, prefetch_data                 // 292B  MOVE.L    (d16,A3),-(A4)
-        b       L_01320
+        b       move_l_mem_mem_13
         lwzx    data, a4, prefetch_data                 // 292C  MOVE.L    (d16,A4),-(A4)
-        b       L_01320
+        b       move_l_mem_mem_13
         lwzx    data, a5, prefetch_data                 // 292D  MOVE.L    (d16,A5),-(A4)
-        b       L_01320
+        b       move_l_mem_mem_13
         lwzx    data, a6, prefetch_data                 // 292E  MOVE.L    (d16,A6),-(A4)
-        b       L_01320
+        b       move_l_mem_mem_13
         lwzx    data, a7, prefetch_data                 // 292F  MOVE.L    (d16,A7),-(A4)
-        b       L_01320
-        ori     rtn_addr, code_ptr, L_01324 - cb        // 2930  MOVE.L    (d8,A0,Xn),-(A4)
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_01324 - cb        // 2931  MOVE.L    (d8,A1,Xn),-(A4)
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_01324 - cb        // 2932  MOVE.L    (d8,A2,Xn),-(A4)
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_01324 - cb        // 2933  MOVE.L    (d8,A3,Xn),-(A4)
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_01324 - cb        // 2934  MOVE.L    (d8,A4,Xn),-(A4)
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_01324 - cb        // 2935  MOVE.L    (d8,A5,Xn),-(A4)
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_01324 - cb        // 2936  MOVE.L    (d8,A6,Xn),-(A4)
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_01324 - cb        // 2937  MOVE.L    (d8,A7,Xn),-(A4)
-        b       L_05C68
+        b       move_l_mem_mem_13
+        ori     rtn_addr, code_ptr, move_l_ea_mem_13 - cb  // 2930  MOVE.L    (d8,A0,Xn),-(A4)
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, move_l_ea_mem_13 - cb  // 2931  MOVE.L    (d8,A1,Xn),-(A4)
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, move_l_ea_mem_13 - cb  // 2932  MOVE.L    (d8,A2,Xn),-(A4)
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, move_l_ea_mem_13 - cb  // 2933  MOVE.L    (d8,A3,Xn),-(A4)
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, move_l_ea_mem_13 - cb  // 2934  MOVE.L    (d8,A4,Xn),-(A4)
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, move_l_ea_mem_13 - cb  // 2935  MOVE.L    (d8,A5,Xn),-(A4)
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, move_l_ea_mem_13 - cb  // 2936  MOVE.L    (d8,A6,Xn),-(A4)
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, move_l_ea_mem_13 - cb  // 2937  MOVE.L    (d8,A7,Xn),-(A4)
+        b       move_add_etc_l_any_any_8
         lwz     data, 0(prefetch_data)                  // 2938  MOVE.L    (xxx).W,-(A4)
-        b       L_01320
-        ori     rtn_addr, code_ptr, L_01324 - cb        // 2939  MOVE.L    (xxx).L,-(A4)
-        b       L_05E8C
+        b       move_l_mem_mem_13
+        ori     rtn_addr, code_ptr, move_l_ea_mem_13 - cb  // 2939  MOVE.L    (xxx).L,-(A4)
+        b       fea_l_71_2
         lwzx    data, pc, prefetch_data                 // 293A  MOVE.L    (d16,PC),-(A4)
-        b       L_01320
-        ori     rtn_addr, code_ptr, L_01324 - cb        // 293B  MOVE.L    (d8,PC,Xn),-(A4)
-        b       L_05F08
-        ori     rtn_addr, code_ptr, L_01324 - cb        // 293C  MOVE.L    #<data>,-(A4)
-        b       L_05F30
+        b       move_l_mem_mem_13
+        ori     rtn_addr, code_ptr, move_l_ea_mem_13 - cb  // 293B  MOVE.L    (d8,PC,Xn),-(A4)
+        b       fea_l_73
+        ori     rtn_addr, code_ptr, move_l_ea_mem_13 - cb  // 293C  MOVE.L    #<data>,-(A4)
+        b       fea_l_74
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 293D  MOVE.L    <ea 7.5>,-(A4)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 293E  MOVE.L    <ea 7.6>,-(A4)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 293F  MOVE.L    <ea 7.7>,-(A4)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $2940-$297F --------------------------------------------------------
         addco.  data, d0, zero                          // 2940  MOVE.L    D0,(d16,A4)
-        b       L_015AC
+        b       move_l_reg_mem_21
         addco.  data, d1, zero                          // 2941  MOVE.L    D1,(d16,A4)
-        b       L_015AC
+        b       move_l_reg_mem_21
         addco.  data, d2, zero                          // 2942  MOVE.L    D2,(d16,A4)
-        b       L_015AC
+        b       move_l_reg_mem_21
         addco.  data, d3, zero                          // 2943  MOVE.L    D3,(d16,A4)
-        b       L_015AC
+        b       move_l_reg_mem_21
         addco.  data, d4, zero                          // 2944  MOVE.L    D4,(d16,A4)
-        b       L_015AC
+        b       move_l_reg_mem_21
         addco.  data, d5, zero                          // 2945  MOVE.L    D5,(d16,A4)
-        b       L_015AC
+        b       move_l_reg_mem_21
         addco.  data, d6, zero                          // 2946  MOVE.L    D6,(d16,A4)
-        b       L_015AC
+        b       move_l_reg_mem_21
         addco.  data, d7, zero                          // 2947  MOVE.L    D7,(d16,A4)
-        b       L_015AC
+        b       move_l_reg_mem_21
         addco.  data, a0, zero                          // 2948  MOVE.L    A0,(d16,A4)
-        b       L_015AC
+        b       move_l_reg_mem_21
         addco.  data, a1, zero                          // 2949  MOVE.L    A1,(d16,A4)
-        b       L_015AC
+        b       move_l_reg_mem_21
         addco.  data, a2, zero                          // 294A  MOVE.L    A2,(d16,A4)
-        b       L_015AC
+        b       move_l_reg_mem_21
         addco.  data, a3, zero                          // 294B  MOVE.L    A3,(d16,A4)
-        b       L_015AC
+        b       move_l_reg_mem_21
         addco.  data, a4, zero                          // 294C  MOVE.L    A4,(d16,A4)
-        b       L_015AC
+        b       move_l_reg_mem_21
         addco.  data, a5, zero                          // 294D  MOVE.L    A5,(d16,A4)
-        b       L_015AC
+        b       move_l_reg_mem_21
         addco.  data, a6, zero                          // 294E  MOVE.L    A6,(d16,A4)
-        b       L_015AC
+        b       move_l_reg_mem_21
         addco.  data, a7, zero                          // 294F  MOVE.L    A7,(d16,A4)
-        b       L_015AC
+        b       move_l_reg_mem_21
         lwz     data, 0(a0)                             // 2950  MOVE.L    (A0),(d16,A4)
-        b       L_015A8
+        b       move_l_ea_mem_30
         lwz     data, 0(a1)                             // 2951  MOVE.L    (A1),(d16,A4)
-        b       L_015A8
+        b       move_l_ea_mem_30
         lwz     data, 0(a2)                             // 2952  MOVE.L    (A2),(d16,A4)
-        b       L_015A8
+        b       move_l_ea_mem_30
         lwz     data, 0(a3)                             // 2953  MOVE.L    (A3),(d16,A4)
-        b       L_015A8
+        b       move_l_ea_mem_30
         lwz     data, 0(a4)                             // 2954  MOVE.L    (A4),(d16,A4)
-        b       L_015A8
+        b       move_l_ea_mem_30
         lwz     data, 0(a5)                             // 2955  MOVE.L    (A5),(d16,A4)
-        b       L_015A8
+        b       move_l_ea_mem_30
         lwz     data, 0(a6)                             // 2956  MOVE.L    (A6),(d16,A4)
-        b       L_015A8
+        b       move_l_ea_mem_30
         lwz     data, 0(a7)                             // 2957  MOVE.L    (A7),(d16,A4)
-        b       L_015A8
-        ori     rtn_addr, code_ptr, L_015A8 - cb        // 2958  MOVE.L    (A0)+,(d16,A4)
-        b       L_00850
-        ori     rtn_addr, code_ptr, L_015A8 - cb        // 2959  MOVE.L    (A1)+,(d16,A4)
-        b       L_008D0
-        ori     rtn_addr, code_ptr, L_015A8 - cb        // 295A  MOVE.L    (A2)+,(d16,A4)
-        b       L_00950
-        ori     rtn_addr, code_ptr, L_015A8 - cb        // 295B  MOVE.L    (A3)+,(d16,A4)
-        b       L_009D0
-        ori     rtn_addr, code_ptr, L_015A8 - cb        // 295C  MOVE.L    (A4)+,(d16,A4)
-        b       L_00A50
-        ori     rtn_addr, code_ptr, L_015A8 - cb        // 295D  MOVE.L    (A5)+,(d16,A4)
-        b       L_00AD0
-        ori     rtn_addr, code_ptr, L_015A8 - cb        // 295E  MOVE.L    (A6)+,(d16,A4)
-        b       L_00B50
-        ori     rtn_addr, code_ptr, L_015A8 - cb        // 295F  MOVE.L    (A7)+,(d16,A4)
-        b       L_00BD0
+        b       move_l_ea_mem_30
+        ori     rtn_addr, code_ptr, move_l_ea_mem_30 - cb  // 2958  MOVE.L    (A0)+,(d16,A4)
+        b       fea_l_30
+        ori     rtn_addr, code_ptr, move_l_ea_mem_30 - cb  // 2959  MOVE.L    (A1)+,(d16,A4)
+        b       fea_l_31
+        ori     rtn_addr, code_ptr, move_l_ea_mem_30 - cb  // 295A  MOVE.L    (A2)+,(d16,A4)
+        b       fea_l_32
+        ori     rtn_addr, code_ptr, move_l_ea_mem_30 - cb  // 295B  MOVE.L    (A3)+,(d16,A4)
+        b       fea_l_33
+        ori     rtn_addr, code_ptr, move_l_ea_mem_30 - cb  // 295C  MOVE.L    (A4)+,(d16,A4)
+        b       fea_l_34
+        ori     rtn_addr, code_ptr, move_l_ea_mem_30 - cb  // 295D  MOVE.L    (A5)+,(d16,A4)
+        b       fea_l_35
+        ori     rtn_addr, code_ptr, move_l_ea_mem_30 - cb  // 295E  MOVE.L    (A6)+,(d16,A4)
+        b       fea_l_36
+        ori     rtn_addr, code_ptr, move_l_ea_mem_30 - cb  // 295F  MOVE.L    (A7)+,(d16,A4)
+        b       fea_l_37
         lwzu    data, -4(a0)                            // 2960  MOVE.L    -(A0),(d16,A4)
-        b       L_015A8
+        b       move_l_ea_mem_30
         lwzu    data, -4(a1)                            // 2961  MOVE.L    -(A1),(d16,A4)
-        b       L_015A8
+        b       move_l_ea_mem_30
         lwzu    data, -4(a2)                            // 2962  MOVE.L    -(A2),(d16,A4)
-        b       L_015A8
+        b       move_l_ea_mem_30
         lwzu    data, -4(a3)                            // 2963  MOVE.L    -(A3),(d16,A4)
-        b       L_015A8
+        b       move_l_ea_mem_30
         lwzu    data, -4(a4)                            // 2964  MOVE.L    -(A4),(d16,A4)
-        b       L_015A8
+        b       move_l_ea_mem_30
         lwzu    data, -4(a5)                            // 2965  MOVE.L    -(A5),(d16,A4)
-        b       L_015A8
+        b       move_l_ea_mem_30
         lwzu    data, -4(a6)                            // 2966  MOVE.L    -(A6),(d16,A4)
-        b       L_015A8
+        b       move_l_ea_mem_30
         lwzu    data, -4(a7)                            // 2967  MOVE.L    -(A7),(d16,A4)
-        b       L_015A8
+        b       move_l_ea_mem_30
         lwzx    data, a0, prefetch_data                 // 2968  MOVE.L    (d16,A0),(d16,A4)
-        b       L_015A4
+        b       move_l_mem_mem_30
         lwzx    data, a1, prefetch_data                 // 2969  MOVE.L    (d16,A1),(d16,A4)
-        b       L_015A4
+        b       move_l_mem_mem_30
         lwzx    data, a2, prefetch_data                 // 296A  MOVE.L    (d16,A2),(d16,A4)
-        b       L_015A4
+        b       move_l_mem_mem_30
         lwzx    data, a3, prefetch_data                 // 296B  MOVE.L    (d16,A3),(d16,A4)
-        b       L_015A4
+        b       move_l_mem_mem_30
         lwzx    data, a4, prefetch_data                 // 296C  MOVE.L    (d16,A4),(d16,A4)
-        b       L_015A4
+        b       move_l_mem_mem_30
         lwzx    data, a5, prefetch_data                 // 296D  MOVE.L    (d16,A5),(d16,A4)
-        b       L_015A4
+        b       move_l_mem_mem_30
         lwzx    data, a6, prefetch_data                 // 296E  MOVE.L    (d16,A6),(d16,A4)
-        b       L_015A4
+        b       move_l_mem_mem_30
         lwzx    data, a7, prefetch_data                 // 296F  MOVE.L    (d16,A7),(d16,A4)
-        b       L_015A4
-        ori     rtn_addr, code_ptr, L_015A8 - cb        // 2970  MOVE.L    (d8,A0,Xn),(d16,A4)
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_015A8 - cb        // 2971  MOVE.L    (d8,A1,Xn),(d16,A4)
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_015A8 - cb        // 2972  MOVE.L    (d8,A2,Xn),(d16,A4)
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_015A8 - cb        // 2973  MOVE.L    (d8,A3,Xn),(d16,A4)
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_015A8 - cb        // 2974  MOVE.L    (d8,A4,Xn),(d16,A4)
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_015A8 - cb        // 2975  MOVE.L    (d8,A5,Xn),(d16,A4)
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_015A8 - cb        // 2976  MOVE.L    (d8,A6,Xn),(d16,A4)
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_015A8 - cb        // 2977  MOVE.L    (d8,A7,Xn),(d16,A4)
-        b       L_05C68
+        b       move_l_mem_mem_30
+        ori     rtn_addr, code_ptr, move_l_ea_mem_30 - cb  // 2970  MOVE.L    (d8,A0,Xn),(d16,A4)
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, move_l_ea_mem_30 - cb  // 2971  MOVE.L    (d8,A1,Xn),(d16,A4)
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, move_l_ea_mem_30 - cb  // 2972  MOVE.L    (d8,A2,Xn),(d16,A4)
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, move_l_ea_mem_30 - cb  // 2973  MOVE.L    (d8,A3,Xn),(d16,A4)
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, move_l_ea_mem_30 - cb  // 2974  MOVE.L    (d8,A4,Xn),(d16,A4)
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, move_l_ea_mem_30 - cb  // 2975  MOVE.L    (d8,A5,Xn),(d16,A4)
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, move_l_ea_mem_30 - cb  // 2976  MOVE.L    (d8,A6,Xn),(d16,A4)
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, move_l_ea_mem_30 - cb  // 2977  MOVE.L    (d8,A7,Xn),(d16,A4)
+        b       move_add_etc_l_any_any_8
         lwz     data, 0(prefetch_data)                  // 2978  MOVE.L    (xxx).W,(d16,A4)
-        b       L_015A4
-        ori     rtn_addr, code_ptr, L_015A8 - cb        // 2979  MOVE.L    (xxx).L,(d16,A4)
-        b       L_05E8C
+        b       move_l_mem_mem_30
+        ori     rtn_addr, code_ptr, move_l_ea_mem_30 - cb  // 2979  MOVE.L    (xxx).L,(d16,A4)
+        b       fea_l_71_2
         lwzx    data, pc, prefetch_data                 // 297A  MOVE.L    (d16,PC),(d16,A4)
-        b       L_015A4
-        ori     rtn_addr, code_ptr, L_015A8 - cb        // 297B  MOVE.L    (d8,PC,Xn),(d16,A4)
-        b       L_05F08
-        ori     rtn_addr, code_ptr, L_015A8 - cb        // 297C  MOVE.L    #<data>,(d16,A4)
-        b       L_05F30
+        b       move_l_mem_mem_30
+        ori     rtn_addr, code_ptr, move_l_ea_mem_30 - cb  // 297B  MOVE.L    (d8,PC,Xn),(d16,A4)
+        b       fea_l_73
+        ori     rtn_addr, code_ptr, move_l_ea_mem_30 - cb  // 297C  MOVE.L    #<data>,(d16,A4)
+        b       fea_l_74
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 297D  MOVE.L    <ea 7.5>,(d16,A4)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 297E  MOVE.L    <ea 7.6>,(d16,A4)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 297F  MOVE.L    <ea 7.7>,(d16,A4)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $2980-$29BF --------------------------------------------------------
         addco.  data, d0, zero                          // 2980  MOVE.L    D0,(d8,A4,Xn)
-        b       L_015D0
+        b       move_clr_l_reg_mem_10
         addco.  data, d1, zero                          // 2981  MOVE.L    D1,(d8,A4,Xn)
-        b       L_015D0
+        b       move_clr_l_reg_mem_10
         addco.  data, d2, zero                          // 2982  MOVE.L    D2,(d8,A4,Xn)
-        b       L_015D0
+        b       move_clr_l_reg_mem_10
         addco.  data, d3, zero                          // 2983  MOVE.L    D3,(d8,A4,Xn)
-        b       L_015D0
+        b       move_clr_l_reg_mem_10
         addco.  data, d4, zero                          // 2984  MOVE.L    D4,(d8,A4,Xn)
-        b       L_015D0
+        b       move_clr_l_reg_mem_10
         addco.  data, d5, zero                          // 2985  MOVE.L    D5,(d8,A4,Xn)
-        b       L_015D0
+        b       move_clr_l_reg_mem_10
         addco.  data, d6, zero                          // 2986  MOVE.L    D6,(d8,A4,Xn)
-        b       L_015D0
+        b       move_clr_l_reg_mem_10
         addco.  data, d7, zero                          // 2987  MOVE.L    D7,(d8,A4,Xn)
-        b       L_015D0
+        b       move_clr_l_reg_mem_10
         addco.  data, a0, zero                          // 2988  MOVE.L    A0,(d8,A4,Xn)
-        b       L_015D0
+        b       move_clr_l_reg_mem_10
         addco.  data, a1, zero                          // 2989  MOVE.L    A1,(d8,A4,Xn)
-        b       L_015D0
+        b       move_clr_l_reg_mem_10
         addco.  data, a2, zero                          // 298A  MOVE.L    A2,(d8,A4,Xn)
-        b       L_015D0
+        b       move_clr_l_reg_mem_10
         addco.  data, a3, zero                          // 298B  MOVE.L    A3,(d8,A4,Xn)
-        b       L_015D0
+        b       move_clr_l_reg_mem_10
         addco.  data, a4, zero                          // 298C  MOVE.L    A4,(d8,A4,Xn)
-        b       L_015D0
+        b       move_clr_l_reg_mem_10
         addco.  data, a5, zero                          // 298D  MOVE.L    A5,(d8,A4,Xn)
-        b       L_015D0
+        b       move_clr_l_reg_mem_10
         addco.  data, a6, zero                          // 298E  MOVE.L    A6,(d8,A4,Xn)
-        b       L_015D0
+        b       move_clr_l_reg_mem_10
         addco.  data, a7, zero                          // 298F  MOVE.L    A7,(d8,A4,Xn)
-        b       L_015D0
+        b       move_clr_l_reg_mem_10
         lwz     data, 0(a0)                             // 2990  MOVE.L    (A0),(d8,A4,Xn)
-        b       L_015CC
+        b       move_l_ea_mem_31
         lwz     data, 0(a1)                             // 2991  MOVE.L    (A1),(d8,A4,Xn)
-        b       L_015CC
+        b       move_l_ea_mem_31
         lwz     data, 0(a2)                             // 2992  MOVE.L    (A2),(d8,A4,Xn)
-        b       L_015CC
+        b       move_l_ea_mem_31
         lwz     data, 0(a3)                             // 2993  MOVE.L    (A3),(d8,A4,Xn)
-        b       L_015CC
+        b       move_l_ea_mem_31
         lwz     data, 0(a4)                             // 2994  MOVE.L    (A4),(d8,A4,Xn)
-        b       L_015CC
+        b       move_l_ea_mem_31
         lwz     data, 0(a5)                             // 2995  MOVE.L    (A5),(d8,A4,Xn)
-        b       L_015CC
+        b       move_l_ea_mem_31
         lwz     data, 0(a6)                             // 2996  MOVE.L    (A6),(d8,A4,Xn)
-        b       L_015CC
+        b       move_l_ea_mem_31
         lwz     data, 0(a7)                             // 2997  MOVE.L    (A7),(d8,A4,Xn)
-        b       L_015CC
-        ori     rtn_addr, code_ptr, L_015CC - cb        // 2998  MOVE.L    (A0)+,(d8,A4,Xn)
-        b       L_00850
-        ori     rtn_addr, code_ptr, L_015CC - cb        // 2999  MOVE.L    (A1)+,(d8,A4,Xn)
-        b       L_008D0
-        ori     rtn_addr, code_ptr, L_015CC - cb        // 299A  MOVE.L    (A2)+,(d8,A4,Xn)
-        b       L_00950
-        ori     rtn_addr, code_ptr, L_015CC - cb        // 299B  MOVE.L    (A3)+,(d8,A4,Xn)
-        b       L_009D0
-        ori     rtn_addr, code_ptr, L_015CC - cb        // 299C  MOVE.L    (A4)+,(d8,A4,Xn)
-        b       L_00A50
-        ori     rtn_addr, code_ptr, L_015CC - cb        // 299D  MOVE.L    (A5)+,(d8,A4,Xn)
-        b       L_00AD0
-        ori     rtn_addr, code_ptr, L_015CC - cb        // 299E  MOVE.L    (A6)+,(d8,A4,Xn)
-        b       L_00B50
-        ori     rtn_addr, code_ptr, L_015CC - cb        // 299F  MOVE.L    (A7)+,(d8,A4,Xn)
-        b       L_00BD0
+        b       move_l_ea_mem_31
+        ori     rtn_addr, code_ptr, move_l_ea_mem_31 - cb  // 2998  MOVE.L    (A0)+,(d8,A4,Xn)
+        b       fea_l_30
+        ori     rtn_addr, code_ptr, move_l_ea_mem_31 - cb  // 2999  MOVE.L    (A1)+,(d8,A4,Xn)
+        b       fea_l_31
+        ori     rtn_addr, code_ptr, move_l_ea_mem_31 - cb  // 299A  MOVE.L    (A2)+,(d8,A4,Xn)
+        b       fea_l_32
+        ori     rtn_addr, code_ptr, move_l_ea_mem_31 - cb  // 299B  MOVE.L    (A3)+,(d8,A4,Xn)
+        b       fea_l_33
+        ori     rtn_addr, code_ptr, move_l_ea_mem_31 - cb  // 299C  MOVE.L    (A4)+,(d8,A4,Xn)
+        b       fea_l_34
+        ori     rtn_addr, code_ptr, move_l_ea_mem_31 - cb  // 299D  MOVE.L    (A5)+,(d8,A4,Xn)
+        b       fea_l_35
+        ori     rtn_addr, code_ptr, move_l_ea_mem_31 - cb  // 299E  MOVE.L    (A6)+,(d8,A4,Xn)
+        b       fea_l_36
+        ori     rtn_addr, code_ptr, move_l_ea_mem_31 - cb  // 299F  MOVE.L    (A7)+,(d8,A4,Xn)
+        b       fea_l_37
         lwzu    data, -4(a0)                            // 29A0  MOVE.L    -(A0),(d8,A4,Xn)
-        b       L_015CC
+        b       move_l_ea_mem_31
         lwzu    data, -4(a1)                            // 29A1  MOVE.L    -(A1),(d8,A4,Xn)
-        b       L_015CC
+        b       move_l_ea_mem_31
         lwzu    data, -4(a2)                            // 29A2  MOVE.L    -(A2),(d8,A4,Xn)
-        b       L_015CC
+        b       move_l_ea_mem_31
         lwzu    data, -4(a3)                            // 29A3  MOVE.L    -(A3),(d8,A4,Xn)
-        b       L_015CC
+        b       move_l_ea_mem_31
         lwzu    data, -4(a4)                            // 29A4  MOVE.L    -(A4),(d8,A4,Xn)
-        b       L_015CC
+        b       move_l_ea_mem_31
         lwzu    data, -4(a5)                            // 29A5  MOVE.L    -(A5),(d8,A4,Xn)
-        b       L_015CC
+        b       move_l_ea_mem_31
         lwzu    data, -4(a6)                            // 29A6  MOVE.L    -(A6),(d8,A4,Xn)
-        b       L_015CC
+        b       move_l_ea_mem_31
         lwzu    data, -4(a7)                            // 29A7  MOVE.L    -(A7),(d8,A4,Xn)
-        b       L_015CC
+        b       move_l_ea_mem_31
         lwzx    data, a0, prefetch_data                 // 29A8  MOVE.L    (d16,A0),(d8,A4,Xn)
-        b       L_015C8
+        b       move_l_mem_mem_31
         lwzx    data, a1, prefetch_data                 // 29A9  MOVE.L    (d16,A1),(d8,A4,Xn)
-        b       L_015C8
+        b       move_l_mem_mem_31
         lwzx    data, a2, prefetch_data                 // 29AA  MOVE.L    (d16,A2),(d8,A4,Xn)
-        b       L_015C8
+        b       move_l_mem_mem_31
         lwzx    data, a3, prefetch_data                 // 29AB  MOVE.L    (d16,A3),(d8,A4,Xn)
-        b       L_015C8
+        b       move_l_mem_mem_31
         lwzx    data, a4, prefetch_data                 // 29AC  MOVE.L    (d16,A4),(d8,A4,Xn)
-        b       L_015C8
+        b       move_l_mem_mem_31
         lwzx    data, a5, prefetch_data                 // 29AD  MOVE.L    (d16,A5),(d8,A4,Xn)
-        b       L_015C8
+        b       move_l_mem_mem_31
         lwzx    data, a6, prefetch_data                 // 29AE  MOVE.L    (d16,A6),(d8,A4,Xn)
-        b       L_015C8
+        b       move_l_mem_mem_31
         lwzx    data, a7, prefetch_data                 // 29AF  MOVE.L    (d16,A7),(d8,A4,Xn)
-        b       L_015C8
-        ori     rtn_addr, code_ptr, L_015CC - cb        // 29B0  MOVE.L    (d8,A0,Xn),(d8,A4,Xn)
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_015CC - cb        // 29B1  MOVE.L    (d8,A1,Xn),(d8,A4,Xn)
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_015CC - cb        // 29B2  MOVE.L    (d8,A2,Xn),(d8,A4,Xn)
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_015CC - cb        // 29B3  MOVE.L    (d8,A3,Xn),(d8,A4,Xn)
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_015CC - cb        // 29B4  MOVE.L    (d8,A4,Xn),(d8,A4,Xn)
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_015CC - cb        // 29B5  MOVE.L    (d8,A5,Xn),(d8,A4,Xn)
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_015CC - cb        // 29B6  MOVE.L    (d8,A6,Xn),(d8,A4,Xn)
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_015CC - cb        // 29B7  MOVE.L    (d8,A7,Xn),(d8,A4,Xn)
-        b       L_05C68
+        b       move_l_mem_mem_31
+        ori     rtn_addr, code_ptr, move_l_ea_mem_31 - cb  // 29B0  MOVE.L    (d8,A0,Xn),(d8,A4,Xn)
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, move_l_ea_mem_31 - cb  // 29B1  MOVE.L    (d8,A1,Xn),(d8,A4,Xn)
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, move_l_ea_mem_31 - cb  // 29B2  MOVE.L    (d8,A2,Xn),(d8,A4,Xn)
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, move_l_ea_mem_31 - cb  // 29B3  MOVE.L    (d8,A3,Xn),(d8,A4,Xn)
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, move_l_ea_mem_31 - cb  // 29B4  MOVE.L    (d8,A4,Xn),(d8,A4,Xn)
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, move_l_ea_mem_31 - cb  // 29B5  MOVE.L    (d8,A5,Xn),(d8,A4,Xn)
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, move_l_ea_mem_31 - cb  // 29B6  MOVE.L    (d8,A6,Xn),(d8,A4,Xn)
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, move_l_ea_mem_31 - cb  // 29B7  MOVE.L    (d8,A7,Xn),(d8,A4,Xn)
+        b       move_add_etc_l_any_any_8
         lwz     data, 0(prefetch_data)                  // 29B8  MOVE.L    (xxx).W,(d8,A4,Xn)
-        b       L_015C8
-        ori     rtn_addr, code_ptr, L_015CC - cb        // 29B9  MOVE.L    (xxx).L,(d8,A4,Xn)
-        b       L_05E8C
+        b       move_l_mem_mem_31
+        ori     rtn_addr, code_ptr, move_l_ea_mem_31 - cb  // 29B9  MOVE.L    (xxx).L,(d8,A4,Xn)
+        b       fea_l_71_2
         lwzx    data, pc, prefetch_data                 // 29BA  MOVE.L    (d16,PC),(d8,A4,Xn)
-        b       L_015C8
-        ori     rtn_addr, code_ptr, L_015CC - cb        // 29BB  MOVE.L    (d8,PC,Xn),(d8,A4,Xn)
-        b       L_05F08
-        ori     rtn_addr, code_ptr, L_015CC - cb        // 29BC  MOVE.L    #<data>,(d8,A4,Xn)
-        b       L_05F30
+        b       move_l_mem_mem_31
+        ori     rtn_addr, code_ptr, move_l_ea_mem_31 - cb  // 29BB  MOVE.L    (d8,PC,Xn),(d8,A4,Xn)
+        b       fea_l_73
+        ori     rtn_addr, code_ptr, move_l_ea_mem_31 - cb  // 29BC  MOVE.L    #<data>,(d8,A4,Xn)
+        b       fea_l_74
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 29BD  MOVE.L    <ea 7.5>,(d8,A4,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 29BE  MOVE.L    <ea 7.6>,(d8,A4,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 29BF  MOVE.L    <ea 7.7>,(d8,A4,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $29C0-$29FF --------------------------------------------------------
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 29C0  MOVE.L    D0,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 29C1  MOVE.L    D1,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 29C2  MOVE.L    D2,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 29C3  MOVE.L    D3,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 29C4  MOVE.L    D4,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 29C5  MOVE.L    D5,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 29C6  MOVE.L    D6,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 29C7  MOVE.L    D7,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 29C8  MOVE.L    A0,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 29C9  MOVE.L    A1,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 29CA  MOVE.L    A2,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 29CB  MOVE.L    A3,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 29CC  MOVE.L    A4,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 29CD  MOVE.L    A5,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 29CE  MOVE.L    A6,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 29CF  MOVE.L    A7,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 29D0  MOVE.L    (A0),#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 29D1  MOVE.L    (A1),#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 29D2  MOVE.L    (A2),#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 29D3  MOVE.L    (A3),#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 29D4  MOVE.L    (A4),#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 29D5  MOVE.L    (A5),#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 29D6  MOVE.L    (A6),#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 29D7  MOVE.L    (A7),#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 29D8  MOVE.L    (A0)+,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 29D9  MOVE.L    (A1)+,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 29DA  MOVE.L    (A2)+,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 29DB  MOVE.L    (A3)+,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 29DC  MOVE.L    (A4)+,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 29DD  MOVE.L    (A5)+,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 29DE  MOVE.L    (A6)+,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 29DF  MOVE.L    (A7)+,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 29E0  MOVE.L    -(A0),#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 29E1  MOVE.L    -(A1),#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 29E2  MOVE.L    -(A2),#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 29E3  MOVE.L    -(A3),#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 29E4  MOVE.L    -(A4),#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 29E5  MOVE.L    -(A5),#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 29E6  MOVE.L    -(A6),#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 29E7  MOVE.L    -(A7),#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 29E8  MOVE.L    (d16,A0),#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 29E9  MOVE.L    (d16,A1),#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 29EA  MOVE.L    (d16,A2),#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 29EB  MOVE.L    (d16,A3),#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 29EC  MOVE.L    (d16,A4),#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 29ED  MOVE.L    (d16,A5),#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 29EE  MOVE.L    (d16,A6),#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 29EF  MOVE.L    (d16,A7),#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 29F0  MOVE.L    (d8,A0,Xn),#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 29F1  MOVE.L    (d8,A1,Xn),#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 29F2  MOVE.L    (d8,A2,Xn),#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 29F3  MOVE.L    (d8,A3,Xn),#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 29F4  MOVE.L    (d8,A4,Xn),#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 29F5  MOVE.L    (d8,A5,Xn),#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 29F6  MOVE.L    (d8,A6,Xn),#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 29F7  MOVE.L    (d8,A7,Xn),#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 29F8  MOVE.L    (xxx).W,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 29F9  MOVE.L    (xxx).L,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 29FA  MOVE.L    (d16,PC),#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 29FB  MOVE.L    (d8,PC,Xn),#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 29FC  MOVE.L    #<data>,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 29FD  MOVE.L    <ea 7.5>,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 29FE  MOVE.L    <ea 7.6>,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 29FF  MOVE.L    <ea 7.7>,#<data>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $2A00-$2A3F --------------------------------------------------------
         addco.  d5, d0, zero                            // 2A00  MOVE.L    D0,D5
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d5, d1, zero                            // 2A01  MOVE.L    D1,D5
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d5, d2, zero                            // 2A02  MOVE.L    D2,D5
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d5, d3, zero                            // 2A03  MOVE.L    D3,D5
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d5, d4, zero                            // 2A04  MOVE.L    D4,D5
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d5, d5, zero                            // 2A05  MOVE.L    D5,D5
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d5, d6, zero                            // 2A06  MOVE.L    D6,D5
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d5, d7, zero                            // 2A07  MOVE.L    D7,D5
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d5, a0, zero                            // 2A08  MOVE.L    A0,D5
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d5, a1, zero                            // 2A09  MOVE.L    A1,D5
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d5, a2, zero                            // 2A0A  MOVE.L    A2,D5
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d5, a3, zero                            // 2A0B  MOVE.L    A3,D5
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d5, a4, zero                            // 2A0C  MOVE.L    A4,D5
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d5, a5, zero                            // 2A0D  MOVE.L    A5,D5
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d5, a6, zero                            // 2A0E  MOVE.L    A6,D5
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d5, a7, zero                            // 2A0F  MOVE.L    A7,D5
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     data, 0(a0)                             // 2A10  MOVE.L    (A0),D5
-        b       L_00EA8
+        b       move_l_mem_d5
         lwz     data, 0(a1)                             // 2A11  MOVE.L    (A1),D5
-        b       L_00EA8
+        b       move_l_mem_d5
         lwz     data, 0(a2)                             // 2A12  MOVE.L    (A2),D5
-        b       L_00EA8
+        b       move_l_mem_d5
         lwz     data, 0(a3)                             // 2A13  MOVE.L    (A3),D5
-        b       L_00EA8
+        b       move_l_mem_d5
         lwz     data, 0(a4)                             // 2A14  MOVE.L    (A4),D5
-        b       L_00EA8
+        b       move_l_mem_d5
         lwz     data, 0(a5)                             // 2A15  MOVE.L    (A5),D5
-        b       L_00EA8
+        b       move_l_mem_d5
         lwz     data, 0(a6)                             // 2A16  MOVE.L    (A6),D5
-        b       L_00EA8
+        b       move_l_mem_d5
         lwz     data, 0(a7)                             // 2A17  MOVE.L    (A7),D5
-        b       L_00EA8
-        ori     rtn_addr, code_ptr, L_00EA8 - cb        // 2A18  MOVE.L    (A0)+,D5
-        b       L_00850
-        ori     rtn_addr, code_ptr, L_00EA8 - cb        // 2A19  MOVE.L    (A1)+,D5
-        b       L_008D0
-        ori     rtn_addr, code_ptr, L_00EA8 - cb        // 2A1A  MOVE.L    (A2)+,D5
-        b       L_00950
-        ori     rtn_addr, code_ptr, L_00EA8 - cb        // 2A1B  MOVE.L    (A3)+,D5
-        b       L_009D0
-        ori     rtn_addr, code_ptr, L_00EA8 - cb        // 2A1C  MOVE.L    (A4)+,D5
-        b       L_00A50
-        ori     rtn_addr, code_ptr, L_00EA8 - cb        // 2A1D  MOVE.L    (A5)+,D5
-        b       L_00AD0
-        ori     rtn_addr, code_ptr, L_00EA8 - cb        // 2A1E  MOVE.L    (A6)+,D5
-        b       L_00B50
+        b       move_l_mem_d5
+        ori     rtn_addr, code_ptr, move_l_mem_d5 - cb  // 2A18  MOVE.L    (A0)+,D5
+        b       fea_l_30
+        ori     rtn_addr, code_ptr, move_l_mem_d5 - cb  // 2A19  MOVE.L    (A1)+,D5
+        b       fea_l_31
+        ori     rtn_addr, code_ptr, move_l_mem_d5 - cb  // 2A1A  MOVE.L    (A2)+,D5
+        b       fea_l_32
+        ori     rtn_addr, code_ptr, move_l_mem_d5 - cb  // 2A1B  MOVE.L    (A3)+,D5
+        b       fea_l_33
+        ori     rtn_addr, code_ptr, move_l_mem_d5 - cb  // 2A1C  MOVE.L    (A4)+,D5
+        b       fea_l_34
+        ori     rtn_addr, code_ptr, move_l_mem_d5 - cb  // 2A1D  MOVE.L    (A5)+,D5
+        b       fea_l_35
+        ori     rtn_addr, code_ptr, move_l_mem_d5 - cb  // 2A1E  MOVE.L    (A6)+,D5
+        b       fea_l_36
         lwz     d5, 0(a7)                               // 2A1F  MOVE.L    (A7)+,D5
-        b       L_08EE0
+        b       move_l_mem_d5_3
         lwzu    data, -4(a0)                            // 2A20  MOVE.L    -(A0),D5
-        b       L_00EA8
+        b       move_l_mem_d5
         lwzu    data, -4(a1)                            // 2A21  MOVE.L    -(A1),D5
-        b       L_00EA8
+        b       move_l_mem_d5
         lwzu    data, -4(a2)                            // 2A22  MOVE.L    -(A2),D5
-        b       L_00EA8
+        b       move_l_mem_d5
         lwzu    data, -4(a3)                            // 2A23  MOVE.L    -(A3),D5
-        b       L_00EA8
+        b       move_l_mem_d5
         lwzu    data, -4(a4)                            // 2A24  MOVE.L    -(A4),D5
-        b       L_00EA8
+        b       move_l_mem_d5
         lwzu    data, -4(a5)                            // 2A25  MOVE.L    -(A5),D5
-        b       L_00EA8
+        b       move_l_mem_d5
         lwzu    data, -4(a6)                            // 2A26  MOVE.L    -(A6),D5
-        b       L_00EA8
+        b       move_l_mem_d5
         lwzu    data, -4(a7)                            // 2A27  MOVE.L    -(A7),D5
-        b       L_00EA8
+        b       move_l_mem_d5
         lwzx    data, a0, prefetch_data                 // 2A28  MOVE.L    (d16,A0),D5
-        b       L_00EC0
+        b       move_l_mem_d5_2
         lwzx    data, a1, prefetch_data                 // 2A29  MOVE.L    (d16,A1),D5
-        b       L_00EC0
+        b       move_l_mem_d5_2
         lwzx    data, a2, prefetch_data                 // 2A2A  MOVE.L    (d16,A2),D5
-        b       L_00EC0
+        b       move_l_mem_d5_2
         lwzx    data, a3, prefetch_data                 // 2A2B  MOVE.L    (d16,A3),D5
-        b       L_00EC0
+        b       move_l_mem_d5_2
         lwzx    data, a4, prefetch_data                 // 2A2C  MOVE.L    (d16,A4),D5
-        b       L_00EC0
+        b       move_l_mem_d5_2
         lwzx    data, a5, prefetch_data                 // 2A2D  MOVE.L    (d16,A5),D5
-        b       L_00EC0
+        b       move_l_mem_d5_2
         lwzx    data, a6, prefetch_data                 // 2A2E  MOVE.L    (d16,A6),D5
-        b       L_00EC0
+        b       move_l_mem_d5_2
         lwzx    data, a7, prefetch_data                 // 2A2F  MOVE.L    (d16,A7),D5
-        b       L_00EC0
-        ori     rtn_addr, code_ptr, L_00EA8 - cb        // 2A30  MOVE.L    (d8,A0,Xn),D5
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_00EA8 - cb        // 2A31  MOVE.L    (d8,A1,Xn),D5
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_00EA8 - cb        // 2A32  MOVE.L    (d8,A2,Xn),D5
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_00EA8 - cb        // 2A33  MOVE.L    (d8,A3,Xn),D5
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_00EA8 - cb        // 2A34  MOVE.L    (d8,A4,Xn),D5
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_00EA8 - cb        // 2A35  MOVE.L    (d8,A5,Xn),D5
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_00EA8 - cb        // 2A36  MOVE.L    (d8,A6,Xn),D5
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_00EA8 - cb        // 2A37  MOVE.L    (d8,A7,Xn),D5
-        b       L_05C68
+        b       move_l_mem_d5_2
+        ori     rtn_addr, code_ptr, move_l_mem_d5 - cb  // 2A30  MOVE.L    (d8,A0,Xn),D5
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, move_l_mem_d5 - cb  // 2A31  MOVE.L    (d8,A1,Xn),D5
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, move_l_mem_d5 - cb  // 2A32  MOVE.L    (d8,A2,Xn),D5
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, move_l_mem_d5 - cb  // 2A33  MOVE.L    (d8,A3,Xn),D5
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, move_l_mem_d5 - cb  // 2A34  MOVE.L    (d8,A4,Xn),D5
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, move_l_mem_d5 - cb  // 2A35  MOVE.L    (d8,A5,Xn),D5
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, move_l_mem_d5 - cb  // 2A36  MOVE.L    (d8,A6,Xn),D5
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, move_l_mem_d5 - cb  // 2A37  MOVE.L    (d8,A7,Xn),D5
+        b       move_add_etc_l_any_any_8
         lwz     data, 0(prefetch_data)                  // 2A38  MOVE.L    (xxx).W,D5
-        b       L_00EC0
-        ori     rtn_addr, code_ptr, L_00EA8 - cb        // 2A39  MOVE.L    (xxx).L,D5
-        b       L_05E8C
+        b       move_l_mem_d5_2
+        ori     rtn_addr, code_ptr, move_l_mem_d5 - cb  // 2A39  MOVE.L    (xxx).L,D5
+        b       fea_l_71_2
         lwzx    data, pc, prefetch_data                 // 2A3A  MOVE.L    (d16,PC),D5
-        b       L_00EC0
-        ori     rtn_addr, code_ptr, L_00EA8 - cb        // 2A3B  MOVE.L    (d8,PC,Xn),D5
-        b       L_05F08
+        b       move_l_mem_d5_2
+        ori     rtn_addr, code_ptr, move_l_mem_d5 - cb  // 2A3B  MOVE.L    (d8,PC,Xn),D5
+        b       fea_l_73
         lhau    prefetch_data, 4(pc)                    // 2A3C  MOVE.L    #<data>,D5
-        b       L_00EA4
+        b       move_l_imm_d5
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2A3D  MOVE.L    <ea 7.5>,D5   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2A3E  MOVE.L    <ea 7.6>,D5   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2A3F  MOVE.L    <ea 7.7>,D5   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $2A40-$2A7F --------------------------------------------------------
         mr      a5, d0                                  // 2A40  MOVEA.L   D0,A5
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a5, d1                                  // 2A41  MOVEA.L   D1,A5
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a5, d2                                  // 2A42  MOVEA.L   D2,A5
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a5, d3                                  // 2A43  MOVEA.L   D3,A5
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a5, d4                                  // 2A44  MOVEA.L   D4,A5
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a5, d5                                  // 2A45  MOVEA.L   D5,A5
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a5, d6                                  // 2A46  MOVEA.L   D6,A5
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a5, d7                                  // 2A47  MOVEA.L   D7,A5
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a5, a0                                  // 2A48  MOVEA.L   A0,A5
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a5, a1                                  // 2A49  MOVEA.L   A1,A5
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a5, a2                                  // 2A4A  MOVEA.L   A2,A5
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a5, a3                                  // 2A4B  MOVEA.L   A3,A5
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a5, a4                                  // 2A4C  MOVEA.L   A4,A5
-        b       L_06084
+        b       move_add_etc_any_any
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // 2A4D  MOVEA.L   A5,A5
-        b       L_06088
+        b       exg_move_etc_any_reg
         mr      a5, a6                                  // 2A4E  MOVEA.L   A6,A5
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a5, a7                                  // 2A4F  MOVEA.L   A7,A5
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     a5, 0(a0)                               // 2A50  MOVEA.L   (A0),A5
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     a5, 0(a1)                               // 2A51  MOVEA.L   (A1),A5
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     a5, 0(a2)                               // 2A52  MOVEA.L   (A2),A5
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     a5, 0(a3)                               // 2A53  MOVEA.L   (A3),A5
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     a5, 0(a4)                               // 2A54  MOVEA.L   (A4),A5
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     a5, 0(a5)                               // 2A55  MOVEA.L   (A5),A5
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     a5, 0(a6)                               // 2A56  MOVEA.L   (A6),A5
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     a5, 0(a7)                               // 2A57  MOVEA.L   (A7),A5
-        b       L_06084
-        ori     rtn_addr, code_ptr, L_03340 - cb        // 2A58  MOVEA.L   (A0)+,A5
-        b       L_00850
-        ori     rtn_addr, code_ptr, L_03340 - cb        // 2A59  MOVEA.L   (A1)+,A5
-        b       L_008D0
-        ori     rtn_addr, code_ptr, L_03340 - cb        // 2A5A  MOVEA.L   (A2)+,A5
-        b       L_00950
-        ori     rtn_addr, code_ptr, L_03340 - cb        // 2A5B  MOVEA.L   (A3)+,A5
-        b       L_009D0
-        ori     rtn_addr, code_ptr, L_03340 - cb        // 2A5C  MOVEA.L   (A4)+,A5
-        b       L_00A50
+        b       move_add_etc_any_any
+        ori     rtn_addr, code_ptr, movea_mem_a5 - cb   // 2A58  MOVEA.L   (A0)+,A5
+        b       fea_l_30
+        ori     rtn_addr, code_ptr, movea_mem_a5 - cb   // 2A59  MOVEA.L   (A1)+,A5
+        b       fea_l_31
+        ori     rtn_addr, code_ptr, movea_mem_a5 - cb   // 2A5A  MOVEA.L   (A2)+,A5
+        b       fea_l_32
+        ori     rtn_addr, code_ptr, movea_mem_a5 - cb   // 2A5B  MOVEA.L   (A3)+,A5
+        b       fea_l_33
+        ori     rtn_addr, code_ptr, movea_mem_a5 - cb   // 2A5C  MOVEA.L   (A4)+,A5
+        b       fea_l_34
         lwz     a5, 0(a5)                               // 2A5D  MOVEA.L   (A5)+,A5
-        b       L_06084
-        ori     rtn_addr, code_ptr, L_03340 - cb        // 2A5E  MOVEA.L   (A6)+,A5
-        b       L_00B50
+        b       move_add_etc_any_any
+        ori     rtn_addr, code_ptr, movea_mem_a5 - cb   // 2A5E  MOVEA.L   (A6)+,A5
+        b       fea_l_36
         lwz     a5, 0(a7)                               // 2A5F  MOVEA.L   (A7)+,A5
-        b       L_08F40
+        b       movea_l_mem_an
         lwzu    a5, -4(a0)                              // 2A60  MOVEA.L   -(A0),A5
-        b       L_06084
+        b       move_add_etc_any_any
         lwzu    a5, -4(a1)                              // 2A61  MOVEA.L   -(A1),A5
-        b       L_06084
+        b       move_add_etc_any_any
         lwzu    a5, -4(a2)                              // 2A62  MOVEA.L   -(A2),A5
-        b       L_06084
+        b       move_add_etc_any_any
         lwzu    a5, -4(a3)                              // 2A63  MOVEA.L   -(A3),A5
-        b       L_06084
+        b       move_add_etc_any_any
         lwzu    a5, -4(a4)                              // 2A64  MOVEA.L   -(A4),A5
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     a5, -4(a5)                              // 2A65  MOVEA.L   -(A5),A5
-        b       L_06084
+        b       move_add_etc_any_any
         lwzu    a5, -4(a6)                              // 2A66  MOVEA.L   -(A6),A5
-        b       L_06084
+        b       move_add_etc_any_any
         lwzu    a5, -4(a7)                              // 2A67  MOVEA.L   -(A7),A5
-        b       L_06084
+        b       move_add_etc_any_any
         lwzx    a5, a0, prefetch_data                   // 2A68  MOVEA.L   (d16,A0),A5
-        b       L_06080
+        b       move_lea_etc_ea_any
         lwzx    a5, a1, prefetch_data                   // 2A69  MOVEA.L   (d16,A1),A5
-        b       L_06080
+        b       move_lea_etc_ea_any
         lwzx    a5, a2, prefetch_data                   // 2A6A  MOVEA.L   (d16,A2),A5
-        b       L_06080
+        b       move_lea_etc_ea_any
         lwzx    a5, a3, prefetch_data                   // 2A6B  MOVEA.L   (d16,A3),A5
-        b       L_06080
+        b       move_lea_etc_ea_any
         lwzx    a5, a4, prefetch_data                   // 2A6C  MOVEA.L   (d16,A4),A5
-        b       L_06080
+        b       move_lea_etc_ea_any
         lwzx    a5, a5, prefetch_data                   // 2A6D  MOVEA.L   (d16,A5),A5
-        b       L_06080
+        b       move_lea_etc_ea_any
         lwzx    a5, a6, prefetch_data                   // 2A6E  MOVEA.L   (d16,A6),A5
-        b       L_06080
+        b       move_lea_etc_ea_any
         lwzx    a5, a7, prefetch_data                   // 2A6F  MOVEA.L   (d16,A7),A5
-        b       L_06080
-        ori     rtn_addr, code_ptr, L_03340 - cb        // 2A70  MOVEA.L   (d8,A0,Xn),A5
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_03340 - cb        // 2A71  MOVEA.L   (d8,A1,Xn),A5
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_03340 - cb        // 2A72  MOVEA.L   (d8,A2,Xn),A5
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_03340 - cb        // 2A73  MOVEA.L   (d8,A3,Xn),A5
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_03340 - cb        // 2A74  MOVEA.L   (d8,A4,Xn),A5
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_03340 - cb        // 2A75  MOVEA.L   (d8,A5,Xn),A5
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_03340 - cb        // 2A76  MOVEA.L   (d8,A6,Xn),A5
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_03340 - cb        // 2A77  MOVEA.L   (d8,A7,Xn),A5
-        b       L_05C68
+        b       move_lea_etc_ea_any
+        ori     rtn_addr, code_ptr, movea_mem_a5 - cb   // 2A70  MOVEA.L   (d8,A0,Xn),A5
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, movea_mem_a5 - cb   // 2A71  MOVEA.L   (d8,A1,Xn),A5
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, movea_mem_a5 - cb   // 2A72  MOVEA.L   (d8,A2,Xn),A5
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, movea_mem_a5 - cb   // 2A73  MOVEA.L   (d8,A3,Xn),A5
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, movea_mem_a5 - cb   // 2A74  MOVEA.L   (d8,A4,Xn),A5
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, movea_mem_a5 - cb   // 2A75  MOVEA.L   (d8,A5,Xn),A5
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, movea_mem_a5 - cb   // 2A76  MOVEA.L   (d8,A6,Xn),A5
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, movea_mem_a5 - cb   // 2A77  MOVEA.L   (d8,A7,Xn),A5
+        b       move_add_etc_l_any_any_8
         lwz     a5, 0(prefetch_data)                    // 2A78  MOVEA.L   (xxx).W,A5
-        b       L_06080
-        ori     rtn_addr, code_ptr, L_03340 - cb        // 2A79  MOVEA.L   (xxx).L,A5
-        b       L_05E8C
+        b       move_lea_etc_ea_any
+        ori     rtn_addr, code_ptr, movea_mem_a5 - cb   // 2A79  MOVEA.L   (xxx).L,A5
+        b       fea_l_71_2
         lwzx    a5, pc, prefetch_data                   // 2A7A  MOVEA.L   (d16,PC),A5
-        b       L_06080
-        ori     rtn_addr, code_ptr, L_03340 - cb        // 2A7B  MOVEA.L   (d8,PC,Xn),A5
-        b       L_05F08
+        b       move_lea_etc_ea_any
+        ori     rtn_addr, code_ptr, movea_mem_a5 - cb   // 2A7B  MOVEA.L   (d8,PC,Xn),A5
+        b       fea_l_73
         lwz     a5, 0(pc)                               // 2A7C  MOVEA.L   #<data>,A5
-        b       L_060A0
+        b       move_lea_ea_an
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2A7D  MOVEA.L   <ea 7.5>,A5   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2A7E  MOVEA.L   <ea 7.6>,A5   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2A7F  MOVEA.L   <ea 7.7>,A5   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $2A80-$2ABF --------------------------------------------------------
         addco.  data, d0, zero                          // 2A80  MOVE.L    D0,(A5)
-        b       L_01168
+        b       move_l_reg_mem_6
         addco.  data, d1, zero                          // 2A81  MOVE.L    D1,(A5)
-        b       L_01168
+        b       move_l_reg_mem_6
         addco.  data, d2, zero                          // 2A82  MOVE.L    D2,(A5)
-        b       L_01168
+        b       move_l_reg_mem_6
         addco.  data, d3, zero                          // 2A83  MOVE.L    D3,(A5)
-        b       L_01168
+        b       move_l_reg_mem_6
         addco.  data, d4, zero                          // 2A84  MOVE.L    D4,(A5)
-        b       L_01168
+        b       move_l_reg_mem_6
         addco.  data, d5, zero                          // 2A85  MOVE.L    D5,(A5)
-        b       L_01168
+        b       move_l_reg_mem_6
         addco.  data, d6, zero                          // 2A86  MOVE.L    D6,(A5)
-        b       L_01168
+        b       move_l_reg_mem_6
         addco.  data, d7, zero                          // 2A87  MOVE.L    D7,(A5)
-        b       L_01168
+        b       move_l_reg_mem_6
         addco.  data, a0, zero                          // 2A88  MOVE.L    A0,(A5)
-        b       L_01168
+        b       move_l_reg_mem_6
         addco.  data, a1, zero                          // 2A89  MOVE.L    A1,(A5)
-        b       L_01168
+        b       move_l_reg_mem_6
         addco.  data, a2, zero                          // 2A8A  MOVE.L    A2,(A5)
-        b       L_01168
+        b       move_l_reg_mem_6
         addco.  data, a3, zero                          // 2A8B  MOVE.L    A3,(A5)
-        b       L_01168
+        b       move_l_reg_mem_6
         addco.  data, a4, zero                          // 2A8C  MOVE.L    A4,(A5)
-        b       L_01168
+        b       move_l_reg_mem_6
         addco.  data, a5, zero                          // 2A8D  MOVE.L    A5,(A5)
-        b       L_01168
+        b       move_l_reg_mem_6
         addco.  data, a6, zero                          // 2A8E  MOVE.L    A6,(A5)
-        b       L_01168
+        b       move_l_reg_mem_6
         addco.  data, a7, zero                          // 2A8F  MOVE.L    A7,(A5)
-        b       L_01168
+        b       move_l_reg_mem_6
         lwz     data, 0(a0)                             // 2A90  MOVE.L    (A0),(A5)
-        b       L_01164
+        b       move_l_ea_mem_6
         lwz     data, 0(a1)                             // 2A91  MOVE.L    (A1),(A5)
-        b       L_01164
+        b       move_l_ea_mem_6
         lwz     data, 0(a2)                             // 2A92  MOVE.L    (A2),(A5)
-        b       L_01164
+        b       move_l_ea_mem_6
         lwz     data, 0(a3)                             // 2A93  MOVE.L    (A3),(A5)
-        b       L_01164
+        b       move_l_ea_mem_6
         lwz     data, 0(a4)                             // 2A94  MOVE.L    (A4),(A5)
-        b       L_01164
+        b       move_l_ea_mem_6
         lwz     data, 0(a5)                             // 2A95  MOVE.L    (A5),(A5)
-        b       L_06144
+        b       tst_ea
         lwz     data, 0(a6)                             // 2A96  MOVE.L    (A6),(A5)
-        b       L_01164
+        b       move_l_ea_mem_6
         lwz     data, 0(a7)                             // 2A97  MOVE.L    (A7),(A5)
-        b       L_01164
-        ori     rtn_addr, code_ptr, L_01164 - cb        // 2A98  MOVE.L    (A0)+,(A5)
-        b       L_00850
-        ori     rtn_addr, code_ptr, L_01164 - cb        // 2A99  MOVE.L    (A1)+,(A5)
-        b       L_008D0
-        ori     rtn_addr, code_ptr, L_01164 - cb        // 2A9A  MOVE.L    (A2)+,(A5)
-        b       L_00950
-        ori     rtn_addr, code_ptr, L_01164 - cb        // 2A9B  MOVE.L    (A3)+,(A5)
-        b       L_009D0
-        ori     rtn_addr, code_ptr, L_01164 - cb        // 2A9C  MOVE.L    (A4)+,(A5)
-        b       L_00A50
-        ori     rtn_addr, code_ptr, L_01164 - cb        // 2A9D  MOVE.L    (A5)+,(A5)
-        b       L_00AD0
-        ori     rtn_addr, code_ptr, L_01164 - cb        // 2A9E  MOVE.L    (A6)+,(A5)
-        b       L_00B50
-        ori     rtn_addr, code_ptr, L_01164 - cb        // 2A9F  MOVE.L    (A7)+,(A5)
-        b       L_00BD0
+        b       move_l_ea_mem_6
+        ori     rtn_addr, code_ptr, move_l_ea_mem_6 - cb  // 2A98  MOVE.L    (A0)+,(A5)
+        b       fea_l_30
+        ori     rtn_addr, code_ptr, move_l_ea_mem_6 - cb  // 2A99  MOVE.L    (A1)+,(A5)
+        b       fea_l_31
+        ori     rtn_addr, code_ptr, move_l_ea_mem_6 - cb  // 2A9A  MOVE.L    (A2)+,(A5)
+        b       fea_l_32
+        ori     rtn_addr, code_ptr, move_l_ea_mem_6 - cb  // 2A9B  MOVE.L    (A3)+,(A5)
+        b       fea_l_33
+        ori     rtn_addr, code_ptr, move_l_ea_mem_6 - cb  // 2A9C  MOVE.L    (A4)+,(A5)
+        b       fea_l_34
+        ori     rtn_addr, code_ptr, move_l_ea_mem_6 - cb  // 2A9D  MOVE.L    (A5)+,(A5)
+        b       fea_l_35
+        ori     rtn_addr, code_ptr, move_l_ea_mem_6 - cb  // 2A9E  MOVE.L    (A6)+,(A5)
+        b       fea_l_36
+        ori     rtn_addr, code_ptr, move_l_ea_mem_6 - cb  // 2A9F  MOVE.L    (A7)+,(A5)
+        b       fea_l_37
         lwzu    data, -4(a0)                            // 2AA0  MOVE.L    -(A0),(A5)
-        b       L_01164
+        b       move_l_ea_mem_6
         lwzu    data, -4(a1)                            // 2AA1  MOVE.L    -(A1),(A5)
-        b       L_01164
+        b       move_l_ea_mem_6
         lwzu    data, -4(a2)                            // 2AA2  MOVE.L    -(A2),(A5)
-        b       L_01164
+        b       move_l_ea_mem_6
         lwzu    data, -4(a3)                            // 2AA3  MOVE.L    -(A3),(A5)
-        b       L_01164
+        b       move_l_ea_mem_6
         lwzu    data, -4(a4)                            // 2AA4  MOVE.L    -(A4),(A5)
-        b       L_01164
+        b       move_l_ea_mem_6
         lwzu    data, -4(a5)                            // 2AA5  MOVE.L    -(A5),(A5)
-        b       L_06144
+        b       tst_ea
         lwzu    data, -4(a6)                            // 2AA6  MOVE.L    -(A6),(A5)
-        b       L_01164
+        b       move_l_ea_mem_6
         lwzu    data, -4(a7)                            // 2AA7  MOVE.L    -(A7),(A5)
-        b       L_01164
+        b       move_l_ea_mem_6
         lwzx    data, a0, prefetch_data                 // 2AA8  MOVE.L    (d16,A0),(A5)
-        b       L_01160
+        b       move_l_mem_mem_6
         lwzx    data, a1, prefetch_data                 // 2AA9  MOVE.L    (d16,A1),(A5)
-        b       L_01160
+        b       move_l_mem_mem_6
         lwzx    data, a2, prefetch_data                 // 2AAA  MOVE.L    (d16,A2),(A5)
-        b       L_01160
+        b       move_l_mem_mem_6
         lwzx    data, a3, prefetch_data                 // 2AAB  MOVE.L    (d16,A3),(A5)
-        b       L_01160
+        b       move_l_mem_mem_6
         lwzx    data, a4, prefetch_data                 // 2AAC  MOVE.L    (d16,A4),(A5)
-        b       L_01160
+        b       move_l_mem_mem_6
         lwzx    data, a5, prefetch_data                 // 2AAD  MOVE.L    (d16,A5),(A5)
-        b       L_01160
+        b       move_l_mem_mem_6
         lwzx    data, a6, prefetch_data                 // 2AAE  MOVE.L    (d16,A6),(A5)
-        b       L_01160
+        b       move_l_mem_mem_6
         lwzx    data, a7, prefetch_data                 // 2AAF  MOVE.L    (d16,A7),(A5)
-        b       L_01160
-        ori     rtn_addr, code_ptr, L_01164 - cb        // 2AB0  MOVE.L    (d8,A0,Xn),(A5)
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_01164 - cb        // 2AB1  MOVE.L    (d8,A1,Xn),(A5)
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_01164 - cb        // 2AB2  MOVE.L    (d8,A2,Xn),(A5)
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_01164 - cb        // 2AB3  MOVE.L    (d8,A3,Xn),(A5)
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_01164 - cb        // 2AB4  MOVE.L    (d8,A4,Xn),(A5)
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_01164 - cb        // 2AB5  MOVE.L    (d8,A5,Xn),(A5)
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_01164 - cb        // 2AB6  MOVE.L    (d8,A6,Xn),(A5)
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_01164 - cb        // 2AB7  MOVE.L    (d8,A7,Xn),(A5)
-        b       L_05C68
+        b       move_l_mem_mem_6
+        ori     rtn_addr, code_ptr, move_l_ea_mem_6 - cb  // 2AB0  MOVE.L    (d8,A0,Xn),(A5)
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, move_l_ea_mem_6 - cb  // 2AB1  MOVE.L    (d8,A1,Xn),(A5)
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, move_l_ea_mem_6 - cb  // 2AB2  MOVE.L    (d8,A2,Xn),(A5)
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, move_l_ea_mem_6 - cb  // 2AB3  MOVE.L    (d8,A3,Xn),(A5)
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, move_l_ea_mem_6 - cb  // 2AB4  MOVE.L    (d8,A4,Xn),(A5)
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, move_l_ea_mem_6 - cb  // 2AB5  MOVE.L    (d8,A5,Xn),(A5)
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, move_l_ea_mem_6 - cb  // 2AB6  MOVE.L    (d8,A6,Xn),(A5)
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, move_l_ea_mem_6 - cb  // 2AB7  MOVE.L    (d8,A7,Xn),(A5)
+        b       move_add_etc_l_any_any_8
         lwz     data, 0(prefetch_data)                  // 2AB8  MOVE.L    (xxx).W,(A5)
-        b       L_01160
-        ori     rtn_addr, code_ptr, L_01164 - cb        // 2AB9  MOVE.L    (xxx).L,(A5)
-        b       L_05E8C
+        b       move_l_mem_mem_6
+        ori     rtn_addr, code_ptr, move_l_ea_mem_6 - cb  // 2AB9  MOVE.L    (xxx).L,(A5)
+        b       fea_l_71_2
         lwzx    data, pc, prefetch_data                 // 2ABA  MOVE.L    (d16,PC),(A5)
-        b       L_01160
-        ori     rtn_addr, code_ptr, L_01164 - cb        // 2ABB  MOVE.L    (d8,PC,Xn),(A5)
-        b       L_05F08
-        ori     rtn_addr, code_ptr, L_01164 - cb        // 2ABC  MOVE.L    #<data>,(A5)
-        b       L_05F30
+        b       move_l_mem_mem_6
+        ori     rtn_addr, code_ptr, move_l_ea_mem_6 - cb  // 2ABB  MOVE.L    (d8,PC,Xn),(A5)
+        b       fea_l_73
+        ori     rtn_addr, code_ptr, move_l_ea_mem_6 - cb  // 2ABC  MOVE.L    #<data>,(A5)
+        b       fea_l_74
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2ABD  MOVE.L    <ea 7.5>,(A5)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2ABE  MOVE.L    <ea 7.6>,(A5)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2ABF  MOVE.L    <ea 7.7>,(A5)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $2AC0-$2AFF --------------------------------------------------------
         addco.  data, d0, zero                          // 2AC0  MOVE.L    D0,(A5)+
-        b       L_015E8
+        b       move_clr_l_reg_mem_11
         addco.  data, d1, zero                          // 2AC1  MOVE.L    D1,(A5)+
-        b       L_015E8
+        b       move_clr_l_reg_mem_11
         addco.  data, d2, zero                          // 2AC2  MOVE.L    D2,(A5)+
-        b       L_015E8
+        b       move_clr_l_reg_mem_11
         addco.  data, d3, zero                          // 2AC3  MOVE.L    D3,(A5)+
-        b       L_015E8
+        b       move_clr_l_reg_mem_11
         addco.  data, d4, zero                          // 2AC4  MOVE.L    D4,(A5)+
-        b       L_015E8
+        b       move_clr_l_reg_mem_11
         addco.  data, d5, zero                          // 2AC5  MOVE.L    D5,(A5)+
-        b       L_015E8
+        b       move_clr_l_reg_mem_11
         cmpwi   cr7, prefetch_data, 0x2AC6              // 2AC6  MOVE.L    D6,(A5)+
-        b       L_08FC0
+        b       move_l_d6_mem_2
         addco.  data, d7, zero                          // 2AC7  MOVE.L    D7,(A5)+
-        b       L_015E8
+        b       move_clr_l_reg_mem_11
         addco.  data, a0, zero                          // 2AC8  MOVE.L    A0,(A5)+
-        b       L_015E8
+        b       move_clr_l_reg_mem_11
         addco.  data, a1, zero                          // 2AC9  MOVE.L    A1,(A5)+
-        b       L_015E8
+        b       move_clr_l_reg_mem_11
         addco.  data, a2, zero                          // 2ACA  MOVE.L    A2,(A5)+
-        b       L_015E8
+        b       move_clr_l_reg_mem_11
         addco.  data, a3, zero                          // 2ACB  MOVE.L    A3,(A5)+
-        b       L_015E8
+        b       move_clr_l_reg_mem_11
         addco.  data, a4, zero                          // 2ACC  MOVE.L    A4,(A5)+
-        b       L_015E8
+        b       move_clr_l_reg_mem_11
         addco.  data, a5, zero                          // 2ACD  MOVE.L    A5,(A5)+
-        b       L_015E8
+        b       move_clr_l_reg_mem_11
         addco.  data, a6, zero                          // 2ACE  MOVE.L    A6,(A5)+
-        b       L_015E8
+        b       move_clr_l_reg_mem_11
         addco.  data, a7, zero                          // 2ACF  MOVE.L    A7,(A5)+
-        b       L_015E8
+        b       move_clr_l_reg_mem_11
         lwz     data, 0(a0)                             // 2AD0  MOVE.L    (A0),(A5)+
-        b       L_015E4
+        b       move_l_ea_mem_32
         lwz     data, 0(a1)                             // 2AD1  MOVE.L    (A1),(A5)+
-        b       L_015E4
+        b       move_l_ea_mem_32
         lwz     data, 0(a2)                             // 2AD2  MOVE.L    (A2),(A5)+
-        b       L_015E4
+        b       move_l_ea_mem_32
         lwz     data, 0(a3)                             // 2AD3  MOVE.L    (A3),(A5)+
-        b       L_015E4
+        b       move_l_ea_mem_32
         lwz     data, 0(a4)                             // 2AD4  MOVE.L    (A4),(A5)+
-        b       L_015E4
+        b       move_l_ea_mem_32
         lwz     data, 0(a5)                             // 2AD5  MOVE.L    (A5),(A5)+
-        b       L_015E4
+        b       move_l_ea_mem_32
         lwz     data, 0(a6)                             // 2AD6  MOVE.L    (A6),(A5)+
-        b       L_015E4
+        b       move_l_ea_mem_32
         lwz     data, 0(a7)                             // 2AD7  MOVE.L    (A7),(A5)+
-        b       L_015E4
-        ori     rtn_addr, code_ptr, L_015E4 - cb        // 2AD8  MOVE.L    (A0)+,(A5)+
-        b       L_00850
-        ori     rtn_addr, code_ptr, L_015E4 - cb        // 2AD9  MOVE.L    (A1)+,(A5)+
-        b       L_008D0
-        ori     rtn_addr, code_ptr, L_015E4 - cb        // 2ADA  MOVE.L    (A2)+,(A5)+
-        b       L_00950
-        ori     rtn_addr, code_ptr, L_015E4 - cb        // 2ADB  MOVE.L    (A3)+,(A5)+
-        b       L_009D0
+        b       move_l_ea_mem_32
+        ori     rtn_addr, code_ptr, move_l_ea_mem_32 - cb  // 2AD8  MOVE.L    (A0)+,(A5)+
+        b       fea_l_30
+        ori     rtn_addr, code_ptr, move_l_ea_mem_32 - cb  // 2AD9  MOVE.L    (A1)+,(A5)+
+        b       fea_l_31
+        ori     rtn_addr, code_ptr, move_l_ea_mem_32 - cb  // 2ADA  MOVE.L    (A2)+,(A5)+
+        b       fea_l_32
+        ori     rtn_addr, code_ptr, move_l_ea_mem_32 - cb  // 2ADB  MOVE.L    (A3)+,(A5)+
+        b       fea_l_33
         cmpwi   cr7, prefetch_data, 0x2ADC              // 2ADC  MOVE.L    (A4)+,(A5)+
-        b       L_092C0
-        ori     rtn_addr, code_ptr, L_015E4 - cb        // 2ADD  MOVE.L    (A5)+,(A5)+
-        b       L_00AD0
-        ori     rtn_addr, code_ptr, L_015E4 - cb        // 2ADE  MOVE.L    (A6)+,(A5)+
-        b       L_00B50
-        ori     rtn_addr, code_ptr, L_015E4 - cb        // 2ADF  MOVE.L    (A7)+,(A5)+
-        b       L_00BD0
+        b       move_l_mem_mem_47
+        ori     rtn_addr, code_ptr, move_l_ea_mem_32 - cb  // 2ADD  MOVE.L    (A5)+,(A5)+
+        b       fea_l_35
+        ori     rtn_addr, code_ptr, move_l_ea_mem_32 - cb  // 2ADE  MOVE.L    (A6)+,(A5)+
+        b       fea_l_36
+        ori     rtn_addr, code_ptr, move_l_ea_mem_32 - cb  // 2ADF  MOVE.L    (A7)+,(A5)+
+        b       fea_l_37
         lwzu    data, -4(a0)                            // 2AE0  MOVE.L    -(A0),(A5)+
-        b       L_015E4
+        b       move_l_ea_mem_32
         lwzu    data, -4(a1)                            // 2AE1  MOVE.L    -(A1),(A5)+
-        b       L_015E4
+        b       move_l_ea_mem_32
         lwzu    data, -4(a2)                            // 2AE2  MOVE.L    -(A2),(A5)+
-        b       L_015E4
+        b       move_l_ea_mem_32
         lwzu    data, -4(a3)                            // 2AE3  MOVE.L    -(A3),(A5)+
-        b       L_015E4
+        b       move_l_ea_mem_32
         lwzu    data, -4(a4)                            // 2AE4  MOVE.L    -(A4),(A5)+
-        b       L_015E4
+        b       move_l_ea_mem_32
         lwz     data, -4(a5)                            // 2AE5  MOVE.L    -(A5),(A5)+
-        b       L_06144
+        b       tst_ea
         lwzu    data, -4(a6)                            // 2AE6  MOVE.L    -(A6),(A5)+
-        b       L_015E4
+        b       move_l_ea_mem_32
         lwzu    data, -4(a7)                            // 2AE7  MOVE.L    -(A7),(A5)+
-        b       L_015E4
+        b       move_l_ea_mem_32
         lwzx    data, a0, prefetch_data                 // 2AE8  MOVE.L    (d16,A0),(A5)+
-        b       L_015E0
+        b       move_l_mem_mem_32
         lwzx    data, a1, prefetch_data                 // 2AE9  MOVE.L    (d16,A1),(A5)+
-        b       L_015E0
+        b       move_l_mem_mem_32
         lwzx    data, a2, prefetch_data                 // 2AEA  MOVE.L    (d16,A2),(A5)+
-        b       L_015E0
+        b       move_l_mem_mem_32
         lwzx    data, a3, prefetch_data                 // 2AEB  MOVE.L    (d16,A3),(A5)+
-        b       L_015E0
+        b       move_l_mem_mem_32
         lwzx    data, a4, prefetch_data                 // 2AEC  MOVE.L    (d16,A4),(A5)+
-        b       L_015E0
+        b       move_l_mem_mem_32
         lwzx    data, a5, prefetch_data                 // 2AED  MOVE.L    (d16,A5),(A5)+
-        b       L_015E0
+        b       move_l_mem_mem_32
         lwzx    data, a6, prefetch_data                 // 2AEE  MOVE.L    (d16,A6),(A5)+
-        b       L_015E0
+        b       move_l_mem_mem_32
         lwzx    data, a7, prefetch_data                 // 2AEF  MOVE.L    (d16,A7),(A5)+
-        b       L_015E0
-        ori     rtn_addr, code_ptr, L_015E4 - cb        // 2AF0  MOVE.L    (d8,A0,Xn),(A5)+
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_015E4 - cb        // 2AF1  MOVE.L    (d8,A1,Xn),(A5)+
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_015E4 - cb        // 2AF2  MOVE.L    (d8,A2,Xn),(A5)+
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_015E4 - cb        // 2AF3  MOVE.L    (d8,A3,Xn),(A5)+
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_015E4 - cb        // 2AF4  MOVE.L    (d8,A4,Xn),(A5)+
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_015E4 - cb        // 2AF5  MOVE.L    (d8,A5,Xn),(A5)+
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_015E4 - cb        // 2AF6  MOVE.L    (d8,A6,Xn),(A5)+
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_015E4 - cb        // 2AF7  MOVE.L    (d8,A7,Xn),(A5)+
-        b       L_05C68
+        b       move_l_mem_mem_32
+        ori     rtn_addr, code_ptr, move_l_ea_mem_32 - cb  // 2AF0  MOVE.L    (d8,A0,Xn),(A5)+
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, move_l_ea_mem_32 - cb  // 2AF1  MOVE.L    (d8,A1,Xn),(A5)+
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, move_l_ea_mem_32 - cb  // 2AF2  MOVE.L    (d8,A2,Xn),(A5)+
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, move_l_ea_mem_32 - cb  // 2AF3  MOVE.L    (d8,A3,Xn),(A5)+
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, move_l_ea_mem_32 - cb  // 2AF4  MOVE.L    (d8,A4,Xn),(A5)+
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, move_l_ea_mem_32 - cb  // 2AF5  MOVE.L    (d8,A5,Xn),(A5)+
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, move_l_ea_mem_32 - cb  // 2AF6  MOVE.L    (d8,A6,Xn),(A5)+
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, move_l_ea_mem_32 - cb  // 2AF7  MOVE.L    (d8,A7,Xn),(A5)+
+        b       move_add_etc_l_any_any_8
         lwz     data, 0(prefetch_data)                  // 2AF8  MOVE.L    (xxx).W,(A5)+
-        b       L_015E0
-        ori     rtn_addr, code_ptr, L_015E4 - cb        // 2AF9  MOVE.L    (xxx).L,(A5)+
-        b       L_05E8C
+        b       move_l_mem_mem_32
+        ori     rtn_addr, code_ptr, move_l_ea_mem_32 - cb  // 2AF9  MOVE.L    (xxx).L,(A5)+
+        b       fea_l_71_2
         lwzx    data, pc, prefetch_data                 // 2AFA  MOVE.L    (d16,PC),(A5)+
-        b       L_015E0
-        ori     rtn_addr, code_ptr, L_015E4 - cb        // 2AFB  MOVE.L    (d8,PC,Xn),(A5)+
-        b       L_05F08
-        ori     rtn_addr, code_ptr, L_015E4 - cb        // 2AFC  MOVE.L    #<data>,(A5)+
-        b       L_05F30
+        b       move_l_mem_mem_32
+        ori     rtn_addr, code_ptr, move_l_ea_mem_32 - cb  // 2AFB  MOVE.L    (d8,PC,Xn),(A5)+
+        b       fea_l_73
+        ori     rtn_addr, code_ptr, move_l_ea_mem_32 - cb  // 2AFC  MOVE.L    #<data>,(A5)+
+        b       fea_l_74
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2AFD  MOVE.L    <ea 7.5>,(A5)+   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2AFE  MOVE.L    <ea 7.6>,(A5)+   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2AFF  MOVE.L    <ea 7.7>,(A5)+   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $2B00-$2B3F --------------------------------------------------------
         addco.  data, d0, zero                          // 2B00  MOVE.L    D0,-(A5)
-        b       L_01368
+        b       move_l_reg_mem_14
         addco.  data, d1, zero                          // 2B01  MOVE.L    D1,-(A5)
-        b       L_01368
+        b       move_l_reg_mem_14
         addco.  data, d2, zero                          // 2B02  MOVE.L    D2,-(A5)
-        b       L_01368
+        b       move_l_reg_mem_14
         addco.  data, d3, zero                          // 2B03  MOVE.L    D3,-(A5)
-        b       L_01368
+        b       move_l_reg_mem_14
         addco.  data, d4, zero                          // 2B04  MOVE.L    D4,-(A5)
-        b       L_01368
+        b       move_l_reg_mem_14
         addco.  data, d5, zero                          // 2B05  MOVE.L    D5,-(A5)
-        b       L_01368
+        b       move_l_reg_mem_14
         addco.  data, d6, zero                          // 2B06  MOVE.L    D6,-(A5)
-        b       L_01368
+        b       move_l_reg_mem_14
         addco.  data, d7, zero                          // 2B07  MOVE.L    D7,-(A5)
-        b       L_01368
+        b       move_l_reg_mem_14
         addco.  data, a0, zero                          // 2B08  MOVE.L    A0,-(A5)
-        b       L_01368
+        b       move_l_reg_mem_14
         addco.  data, a1, zero                          // 2B09  MOVE.L    A1,-(A5)
-        b       L_01368
+        b       move_l_reg_mem_14
         addco.  data, a2, zero                          // 2B0A  MOVE.L    A2,-(A5)
-        b       L_01368
+        b       move_l_reg_mem_14
         addco.  data, a3, zero                          // 2B0B  MOVE.L    A3,-(A5)
-        b       L_01368
+        b       move_l_reg_mem_14
         addco.  data, a4, zero                          // 2B0C  MOVE.L    A4,-(A5)
-        b       L_01368
+        b       move_l_reg_mem_14
         addco.  data, a5, zero                          // 2B0D  MOVE.L    A5,-(A5)
-        b       L_01368
+        b       move_l_reg_mem_14
         addco.  data, a6, zero                          // 2B0E  MOVE.L    A6,-(A5)
-        b       L_01368
+        b       move_l_reg_mem_14
         addco.  data, a7, zero                          // 2B0F  MOVE.L    A7,-(A5)
-        b       L_01368
+        b       move_l_reg_mem_14
         lwz     data, 0(a0)                             // 2B10  MOVE.L    (A0),-(A5)
-        b       L_01364
+        b       move_l_ea_mem_14
         lwz     data, 0(a1)                             // 2B11  MOVE.L    (A1),-(A5)
-        b       L_01364
+        b       move_l_ea_mem_14
         lwz     data, 0(a2)                             // 2B12  MOVE.L    (A2),-(A5)
-        b       L_01364
+        b       move_l_ea_mem_14
         lwz     data, 0(a3)                             // 2B13  MOVE.L    (A3),-(A5)
-        b       L_01364
+        b       move_l_ea_mem_14
         lwz     data, 0(a4)                             // 2B14  MOVE.L    (A4),-(A5)
-        b       L_01364
+        b       move_l_ea_mem_14
         lwz     data, 0(a5)                             // 2B15  MOVE.L    (A5),-(A5)
-        b       L_01364
+        b       move_l_ea_mem_14
         lwz     data, 0(a6)                             // 2B16  MOVE.L    (A6),-(A5)
-        b       L_01364
+        b       move_l_ea_mem_14
         lwz     data, 0(a7)                             // 2B17  MOVE.L    (A7),-(A5)
-        b       L_01364
-        ori     rtn_addr, code_ptr, L_01364 - cb        // 2B18  MOVE.L    (A0)+,-(A5)
-        b       L_00850
-        ori     rtn_addr, code_ptr, L_01364 - cb        // 2B19  MOVE.L    (A1)+,-(A5)
-        b       L_008D0
-        ori     rtn_addr, code_ptr, L_01364 - cb        // 2B1A  MOVE.L    (A2)+,-(A5)
-        b       L_00950
-        ori     rtn_addr, code_ptr, L_01364 - cb        // 2B1B  MOVE.L    (A3)+,-(A5)
-        b       L_009D0
-        ori     rtn_addr, code_ptr, L_01364 - cb        // 2B1C  MOVE.L    (A4)+,-(A5)
-        b       L_00A50
+        b       move_l_ea_mem_14
+        ori     rtn_addr, code_ptr, move_l_ea_mem_14 - cb  // 2B18  MOVE.L    (A0)+,-(A5)
+        b       fea_l_30
+        ori     rtn_addr, code_ptr, move_l_ea_mem_14 - cb  // 2B19  MOVE.L    (A1)+,-(A5)
+        b       fea_l_31
+        ori     rtn_addr, code_ptr, move_l_ea_mem_14 - cb  // 2B1A  MOVE.L    (A2)+,-(A5)
+        b       fea_l_32
+        ori     rtn_addr, code_ptr, move_l_ea_mem_14 - cb  // 2B1B  MOVE.L    (A3)+,-(A5)
+        b       fea_l_33
+        ori     rtn_addr, code_ptr, move_l_ea_mem_14 - cb  // 2B1C  MOVE.L    (A4)+,-(A5)
+        b       fea_l_34
         lwz     data, 0(a5)                             // 2B1D  MOVE.L    (A5)+,-(A5)
-        b       L_06144
-        ori     rtn_addr, code_ptr, L_01364 - cb        // 2B1E  MOVE.L    (A6)+,-(A5)
-        b       L_00B50
-        ori     rtn_addr, code_ptr, L_01364 - cb        // 2B1F  MOVE.L    (A7)+,-(A5)
-        b       L_00BD0
+        b       tst_ea
+        ori     rtn_addr, code_ptr, move_l_ea_mem_14 - cb  // 2B1E  MOVE.L    (A6)+,-(A5)
+        b       fea_l_36
+        ori     rtn_addr, code_ptr, move_l_ea_mem_14 - cb  // 2B1F  MOVE.L    (A7)+,-(A5)
+        b       fea_l_37
         lwzu    data, -4(a0)                            // 2B20  MOVE.L    -(A0),-(A5)
-        b       L_01364
+        b       move_l_ea_mem_14
         lwzu    data, -4(a1)                            // 2B21  MOVE.L    -(A1),-(A5)
-        b       L_01364
+        b       move_l_ea_mem_14
         lwzu    data, -4(a2)                            // 2B22  MOVE.L    -(A2),-(A5)
-        b       L_01364
+        b       move_l_ea_mem_14
         lwzu    data, -4(a3)                            // 2B23  MOVE.L    -(A3),-(A5)
-        b       L_01364
+        b       move_l_ea_mem_14
         lwzu    data, -4(a4)                            // 2B24  MOVE.L    -(A4),-(A5)
-        b       L_01364
+        b       move_l_ea_mem_14
         lwzu    data, -4(a5)                            // 2B25  MOVE.L    -(A5),-(A5)
-        b       L_01364
+        b       move_l_ea_mem_14
         lwzu    data, -4(a6)                            // 2B26  MOVE.L    -(A6),-(A5)
-        b       L_01364
+        b       move_l_ea_mem_14
         lwzu    data, -4(a7)                            // 2B27  MOVE.L    -(A7),-(A5)
-        b       L_01364
+        b       move_l_ea_mem_14
         lwzx    data, a0, prefetch_data                 // 2B28  MOVE.L    (d16,A0),-(A5)
-        b       L_01360
+        b       move_l_mem_mem_14
         lwzx    data, a1, prefetch_data                 // 2B29  MOVE.L    (d16,A1),-(A5)
-        b       L_01360
+        b       move_l_mem_mem_14
         lwzx    data, a2, prefetch_data                 // 2B2A  MOVE.L    (d16,A2),-(A5)
-        b       L_01360
+        b       move_l_mem_mem_14
         lwzx    data, a3, prefetch_data                 // 2B2B  MOVE.L    (d16,A3),-(A5)
-        b       L_01360
+        b       move_l_mem_mem_14
         lwzx    data, a4, prefetch_data                 // 2B2C  MOVE.L    (d16,A4),-(A5)
-        b       L_01360
+        b       move_l_mem_mem_14
         lwzx    data, a5, prefetch_data                 // 2B2D  MOVE.L    (d16,A5),-(A5)
-        b       L_01360
+        b       move_l_mem_mem_14
         lwzx    data, a6, prefetch_data                 // 2B2E  MOVE.L    (d16,A6),-(A5)
-        b       L_01360
+        b       move_l_mem_mem_14
         lwzx    data, a7, prefetch_data                 // 2B2F  MOVE.L    (d16,A7),-(A5)
-        b       L_01360
-        ori     rtn_addr, code_ptr, L_01364 - cb        // 2B30  MOVE.L    (d8,A0,Xn),-(A5)
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_01364 - cb        // 2B31  MOVE.L    (d8,A1,Xn),-(A5)
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_01364 - cb        // 2B32  MOVE.L    (d8,A2,Xn),-(A5)
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_01364 - cb        // 2B33  MOVE.L    (d8,A3,Xn),-(A5)
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_01364 - cb        // 2B34  MOVE.L    (d8,A4,Xn),-(A5)
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_01364 - cb        // 2B35  MOVE.L    (d8,A5,Xn),-(A5)
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_01364 - cb        // 2B36  MOVE.L    (d8,A6,Xn),-(A5)
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_01364 - cb        // 2B37  MOVE.L    (d8,A7,Xn),-(A5)
-        b       L_05C68
+        b       move_l_mem_mem_14
+        ori     rtn_addr, code_ptr, move_l_ea_mem_14 - cb  // 2B30  MOVE.L    (d8,A0,Xn),-(A5)
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, move_l_ea_mem_14 - cb  // 2B31  MOVE.L    (d8,A1,Xn),-(A5)
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, move_l_ea_mem_14 - cb  // 2B32  MOVE.L    (d8,A2,Xn),-(A5)
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, move_l_ea_mem_14 - cb  // 2B33  MOVE.L    (d8,A3,Xn),-(A5)
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, move_l_ea_mem_14 - cb  // 2B34  MOVE.L    (d8,A4,Xn),-(A5)
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, move_l_ea_mem_14 - cb  // 2B35  MOVE.L    (d8,A5,Xn),-(A5)
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, move_l_ea_mem_14 - cb  // 2B36  MOVE.L    (d8,A6,Xn),-(A5)
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, move_l_ea_mem_14 - cb  // 2B37  MOVE.L    (d8,A7,Xn),-(A5)
+        b       move_add_etc_l_any_any_8
         lwz     data, 0(prefetch_data)                  // 2B38  MOVE.L    (xxx).W,-(A5)
-        b       L_01360
-        ori     rtn_addr, code_ptr, L_01364 - cb        // 2B39  MOVE.L    (xxx).L,-(A5)
-        b       L_05E8C
+        b       move_l_mem_mem_14
+        ori     rtn_addr, code_ptr, move_l_ea_mem_14 - cb  // 2B39  MOVE.L    (xxx).L,-(A5)
+        b       fea_l_71_2
         lwzx    data, pc, prefetch_data                 // 2B3A  MOVE.L    (d16,PC),-(A5)
-        b       L_01360
-        ori     rtn_addr, code_ptr, L_01364 - cb        // 2B3B  MOVE.L    (d8,PC,Xn),-(A5)
-        b       L_05F08
-        ori     rtn_addr, code_ptr, L_01364 - cb        // 2B3C  MOVE.L    #<data>,-(A5)
-        b       L_05F30
+        b       move_l_mem_mem_14
+        ori     rtn_addr, code_ptr, move_l_ea_mem_14 - cb  // 2B3B  MOVE.L    (d8,PC,Xn),-(A5)
+        b       fea_l_73
+        ori     rtn_addr, code_ptr, move_l_ea_mem_14 - cb  // 2B3C  MOVE.L    #<data>,-(A5)
+        b       fea_l_74
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2B3D  MOVE.L    <ea 7.5>,-(A5)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2B3E  MOVE.L    <ea 7.6>,-(A5)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2B3F  MOVE.L    <ea 7.7>,-(A5)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $2B40-$2B7F --------------------------------------------------------
         addco.  data, d0, zero                          // 2B40  MOVE.L    D0,(d16,A5)
-        b       L_0160C
+        b       move_l_reg_mem_22
         addco.  data, d1, zero                          // 2B41  MOVE.L    D1,(d16,A5)
-        b       L_0160C
+        b       move_l_reg_mem_22
         addco.  data, d2, zero                          // 2B42  MOVE.L    D2,(d16,A5)
-        b       L_0160C
+        b       move_l_reg_mem_22
         addco.  data, d3, zero                          // 2B43  MOVE.L    D3,(d16,A5)
-        b       L_0160C
+        b       move_l_reg_mem_22
         addco.  data, d4, zero                          // 2B44  MOVE.L    D4,(d16,A5)
-        b       L_0160C
+        b       move_l_reg_mem_22
         addco.  data, d5, zero                          // 2B45  MOVE.L    D5,(d16,A5)
-        b       L_0160C
+        b       move_l_reg_mem_22
         addco.  data, d6, zero                          // 2B46  MOVE.L    D6,(d16,A5)
-        b       L_0160C
+        b       move_l_reg_mem_22
         addco.  data, d7, zero                          // 2B47  MOVE.L    D7,(d16,A5)
-        b       L_0160C
+        b       move_l_reg_mem_22
         addco.  data, a0, zero                          // 2B48  MOVE.L    A0,(d16,A5)
-        b       L_0160C
+        b       move_l_reg_mem_22
         addco.  data, a1, zero                          // 2B49  MOVE.L    A1,(d16,A5)
-        b       L_0160C
+        b       move_l_reg_mem_22
         addco.  data, a2, zero                          // 2B4A  MOVE.L    A2,(d16,A5)
-        b       L_0160C
+        b       move_l_reg_mem_22
         addco.  data, a3, zero                          // 2B4B  MOVE.L    A3,(d16,A5)
-        b       L_0160C
+        b       move_l_reg_mem_22
         addco.  data, a4, zero                          // 2B4C  MOVE.L    A4,(d16,A5)
-        b       L_0160C
+        b       move_l_reg_mem_22
         addco.  data, a5, zero                          // 2B4D  MOVE.L    A5,(d16,A5)
-        b       L_0160C
+        b       move_l_reg_mem_22
         addco.  data, a6, zero                          // 2B4E  MOVE.L    A6,(d16,A5)
-        b       L_0160C
+        b       move_l_reg_mem_22
         addco.  data, a7, zero                          // 2B4F  MOVE.L    A7,(d16,A5)
-        b       L_0160C
+        b       move_l_reg_mem_22
         lwz     data, 0(a0)                             // 2B50  MOVE.L    (A0),(d16,A5)
-        b       L_01608
+        b       move_l_ea_mem_33
         lwz     data, 0(a1)                             // 2B51  MOVE.L    (A1),(d16,A5)
-        b       L_01608
+        b       move_l_ea_mem_33
         lwz     data, 0(a2)                             // 2B52  MOVE.L    (A2),(d16,A5)
-        b       L_01608
+        b       move_l_ea_mem_33
         lwz     data, 0(a3)                             // 2B53  MOVE.L    (A3),(d16,A5)
-        b       L_01608
+        b       move_l_ea_mem_33
         lwz     data, 0(a4)                             // 2B54  MOVE.L    (A4),(d16,A5)
-        b       L_01608
+        b       move_l_ea_mem_33
         lwz     data, 0(a5)                             // 2B55  MOVE.L    (A5),(d16,A5)
-        b       L_01608
+        b       move_l_ea_mem_33
         lwz     data, 0(a6)                             // 2B56  MOVE.L    (A6),(d16,A5)
-        b       L_01608
+        b       move_l_ea_mem_33
         lwz     data, 0(a7)                             // 2B57  MOVE.L    (A7),(d16,A5)
-        b       L_01608
-        ori     rtn_addr, code_ptr, L_01608 - cb        // 2B58  MOVE.L    (A0)+,(d16,A5)
-        b       L_00850
-        ori     rtn_addr, code_ptr, L_01608 - cb        // 2B59  MOVE.L    (A1)+,(d16,A5)
-        b       L_008D0
-        ori     rtn_addr, code_ptr, L_01608 - cb        // 2B5A  MOVE.L    (A2)+,(d16,A5)
-        b       L_00950
-        ori     rtn_addr, code_ptr, L_01608 - cb        // 2B5B  MOVE.L    (A3)+,(d16,A5)
-        b       L_009D0
-        ori     rtn_addr, code_ptr, L_01608 - cb        // 2B5C  MOVE.L    (A4)+,(d16,A5)
-        b       L_00A50
-        ori     rtn_addr, code_ptr, L_01608 - cb        // 2B5D  MOVE.L    (A5)+,(d16,A5)
-        b       L_00AD0
-        ori     rtn_addr, code_ptr, L_01608 - cb        // 2B5E  MOVE.L    (A6)+,(d16,A5)
-        b       L_00B50
-        ori     rtn_addr, code_ptr, L_01608 - cb        // 2B5F  MOVE.L    (A7)+,(d16,A5)
-        b       L_00BD0
+        b       move_l_ea_mem_33
+        ori     rtn_addr, code_ptr, move_l_ea_mem_33 - cb  // 2B58  MOVE.L    (A0)+,(d16,A5)
+        b       fea_l_30
+        ori     rtn_addr, code_ptr, move_l_ea_mem_33 - cb  // 2B59  MOVE.L    (A1)+,(d16,A5)
+        b       fea_l_31
+        ori     rtn_addr, code_ptr, move_l_ea_mem_33 - cb  // 2B5A  MOVE.L    (A2)+,(d16,A5)
+        b       fea_l_32
+        ori     rtn_addr, code_ptr, move_l_ea_mem_33 - cb  // 2B5B  MOVE.L    (A3)+,(d16,A5)
+        b       fea_l_33
+        ori     rtn_addr, code_ptr, move_l_ea_mem_33 - cb  // 2B5C  MOVE.L    (A4)+,(d16,A5)
+        b       fea_l_34
+        ori     rtn_addr, code_ptr, move_l_ea_mem_33 - cb  // 2B5D  MOVE.L    (A5)+,(d16,A5)
+        b       fea_l_35
+        ori     rtn_addr, code_ptr, move_l_ea_mem_33 - cb  // 2B5E  MOVE.L    (A6)+,(d16,A5)
+        b       fea_l_36
+        ori     rtn_addr, code_ptr, move_l_ea_mem_33 - cb  // 2B5F  MOVE.L    (A7)+,(d16,A5)
+        b       fea_l_37
         lwzu    data, -4(a0)                            // 2B60  MOVE.L    -(A0),(d16,A5)
-        b       L_01608
+        b       move_l_ea_mem_33
         lwzu    data, -4(a1)                            // 2B61  MOVE.L    -(A1),(d16,A5)
-        b       L_01608
+        b       move_l_ea_mem_33
         lwzu    data, -4(a2)                            // 2B62  MOVE.L    -(A2),(d16,A5)
-        b       L_01608
+        b       move_l_ea_mem_33
         lwzu    data, -4(a3)                            // 2B63  MOVE.L    -(A3),(d16,A5)
-        b       L_01608
+        b       move_l_ea_mem_33
         lwzu    data, -4(a4)                            // 2B64  MOVE.L    -(A4),(d16,A5)
-        b       L_01608
+        b       move_l_ea_mem_33
         lwzu    data, -4(a5)                            // 2B65  MOVE.L    -(A5),(d16,A5)
-        b       L_01608
+        b       move_l_ea_mem_33
         lwzu    data, -4(a6)                            // 2B66  MOVE.L    -(A6),(d16,A5)
-        b       L_01608
+        b       move_l_ea_mem_33
         lwzu    data, -4(a7)                            // 2B67  MOVE.L    -(A7),(d16,A5)
-        b       L_01608
+        b       move_l_ea_mem_33
         lwzx    data, a0, prefetch_data                 // 2B68  MOVE.L    (d16,A0),(d16,A5)
-        b       L_01604
+        b       move_l_mem_mem_33
         lwzx    data, a1, prefetch_data                 // 2B69  MOVE.L    (d16,A1),(d16,A5)
-        b       L_01604
+        b       move_l_mem_mem_33
         lwzx    data, a2, prefetch_data                 // 2B6A  MOVE.L    (d16,A2),(d16,A5)
-        b       L_01604
+        b       move_l_mem_mem_33
         lwzx    data, a3, prefetch_data                 // 2B6B  MOVE.L    (d16,A3),(d16,A5)
-        b       L_01604
+        b       move_l_mem_mem_33
         lwzx    data, a4, prefetch_data                 // 2B6C  MOVE.L    (d16,A4),(d16,A5)
-        b       L_01604
+        b       move_l_mem_mem_33
         lwzx    data, a5, prefetch_data                 // 2B6D  MOVE.L    (d16,A5),(d16,A5)
-        b       L_01604
+        b       move_l_mem_mem_33
         lwzx    data, a6, prefetch_data                 // 2B6E  MOVE.L    (d16,A6),(d16,A5)
-        b       L_01604
+        b       move_l_mem_mem_33
         lwzx    data, a7, prefetch_data                 // 2B6F  MOVE.L    (d16,A7),(d16,A5)
-        b       L_01604
-        ori     rtn_addr, code_ptr, L_01608 - cb        // 2B70  MOVE.L    (d8,A0,Xn),(d16,A5)
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_01608 - cb        // 2B71  MOVE.L    (d8,A1,Xn),(d16,A5)
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_01608 - cb        // 2B72  MOVE.L    (d8,A2,Xn),(d16,A5)
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_01608 - cb        // 2B73  MOVE.L    (d8,A3,Xn),(d16,A5)
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_01608 - cb        // 2B74  MOVE.L    (d8,A4,Xn),(d16,A5)
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_01608 - cb        // 2B75  MOVE.L    (d8,A5,Xn),(d16,A5)
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_01608 - cb        // 2B76  MOVE.L    (d8,A6,Xn),(d16,A5)
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_01608 - cb        // 2B77  MOVE.L    (d8,A7,Xn),(d16,A5)
-        b       L_05C68
+        b       move_l_mem_mem_33
+        ori     rtn_addr, code_ptr, move_l_ea_mem_33 - cb  // 2B70  MOVE.L    (d8,A0,Xn),(d16,A5)
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, move_l_ea_mem_33 - cb  // 2B71  MOVE.L    (d8,A1,Xn),(d16,A5)
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, move_l_ea_mem_33 - cb  // 2B72  MOVE.L    (d8,A2,Xn),(d16,A5)
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, move_l_ea_mem_33 - cb  // 2B73  MOVE.L    (d8,A3,Xn),(d16,A5)
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, move_l_ea_mem_33 - cb  // 2B74  MOVE.L    (d8,A4,Xn),(d16,A5)
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, move_l_ea_mem_33 - cb  // 2B75  MOVE.L    (d8,A5,Xn),(d16,A5)
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, move_l_ea_mem_33 - cb  // 2B76  MOVE.L    (d8,A6,Xn),(d16,A5)
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, move_l_ea_mem_33 - cb  // 2B77  MOVE.L    (d8,A7,Xn),(d16,A5)
+        b       move_add_etc_l_any_any_8
         lwz     data, 0(prefetch_data)                  // 2B78  MOVE.L    (xxx).W,(d16,A5)
-        b       L_01604
-        ori     rtn_addr, code_ptr, L_01608 - cb        // 2B79  MOVE.L    (xxx).L,(d16,A5)
-        b       L_05E8C
+        b       move_l_mem_mem_33
+        ori     rtn_addr, code_ptr, move_l_ea_mem_33 - cb  // 2B79  MOVE.L    (xxx).L,(d16,A5)
+        b       fea_l_71_2
         lwzx    data, pc, prefetch_data                 // 2B7A  MOVE.L    (d16,PC),(d16,A5)
-        b       L_01604
-        ori     rtn_addr, code_ptr, L_01608 - cb        // 2B7B  MOVE.L    (d8,PC,Xn),(d16,A5)
-        b       L_05F08
-        ori     rtn_addr, code_ptr, L_01608 - cb        // 2B7C  MOVE.L    #<data>,(d16,A5)
-        b       L_05F30
+        b       move_l_mem_mem_33
+        ori     rtn_addr, code_ptr, move_l_ea_mem_33 - cb  // 2B7B  MOVE.L    (d8,PC,Xn),(d16,A5)
+        b       fea_l_73
+        ori     rtn_addr, code_ptr, move_l_ea_mem_33 - cb  // 2B7C  MOVE.L    #<data>,(d16,A5)
+        b       fea_l_74
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2B7D  MOVE.L    <ea 7.5>,(d16,A5)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2B7E  MOVE.L    <ea 7.6>,(d16,A5)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2B7F  MOVE.L    <ea 7.7>,(d16,A5)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $2B80-$2BBF --------------------------------------------------------
         addco.  data, d0, zero                          // 2B80  MOVE.L    D0,(d8,A5,Xn)
-        b       L_01630
+        b       move_clr_l_reg_mem_12
         addco.  data, d1, zero                          // 2B81  MOVE.L    D1,(d8,A5,Xn)
-        b       L_01630
+        b       move_clr_l_reg_mem_12
         addco.  data, d2, zero                          // 2B82  MOVE.L    D2,(d8,A5,Xn)
-        b       L_01630
+        b       move_clr_l_reg_mem_12
         addco.  data, d3, zero                          // 2B83  MOVE.L    D3,(d8,A5,Xn)
-        b       L_01630
+        b       move_clr_l_reg_mem_12
         addco.  data, d4, zero                          // 2B84  MOVE.L    D4,(d8,A5,Xn)
-        b       L_01630
+        b       move_clr_l_reg_mem_12
         addco.  data, d5, zero                          // 2B85  MOVE.L    D5,(d8,A5,Xn)
-        b       L_01630
+        b       move_clr_l_reg_mem_12
         addco.  data, d6, zero                          // 2B86  MOVE.L    D6,(d8,A5,Xn)
-        b       L_01630
+        b       move_clr_l_reg_mem_12
         addco.  data, d7, zero                          // 2B87  MOVE.L    D7,(d8,A5,Xn)
-        b       L_01630
+        b       move_clr_l_reg_mem_12
         addco.  data, a0, zero                          // 2B88  MOVE.L    A0,(d8,A5,Xn)
-        b       L_01630
+        b       move_clr_l_reg_mem_12
         addco.  data, a1, zero                          // 2B89  MOVE.L    A1,(d8,A5,Xn)
-        b       L_01630
+        b       move_clr_l_reg_mem_12
         addco.  data, a2, zero                          // 2B8A  MOVE.L    A2,(d8,A5,Xn)
-        b       L_01630
+        b       move_clr_l_reg_mem_12
         addco.  data, a3, zero                          // 2B8B  MOVE.L    A3,(d8,A5,Xn)
-        b       L_01630
+        b       move_clr_l_reg_mem_12
         addco.  data, a4, zero                          // 2B8C  MOVE.L    A4,(d8,A5,Xn)
-        b       L_01630
+        b       move_clr_l_reg_mem_12
         addco.  data, a5, zero                          // 2B8D  MOVE.L    A5,(d8,A5,Xn)
-        b       L_01630
+        b       move_clr_l_reg_mem_12
         addco.  data, a6, zero                          // 2B8E  MOVE.L    A6,(d8,A5,Xn)
-        b       L_01630
+        b       move_clr_l_reg_mem_12
         addco.  data, a7, zero                          // 2B8F  MOVE.L    A7,(d8,A5,Xn)
-        b       L_01630
+        b       move_clr_l_reg_mem_12
         lwz     data, 0(a0)                             // 2B90  MOVE.L    (A0),(d8,A5,Xn)
-        b       L_0162C
+        b       move_l_ea_mem_34
         lwz     data, 0(a1)                             // 2B91  MOVE.L    (A1),(d8,A5,Xn)
-        b       L_0162C
+        b       move_l_ea_mem_34
         lwz     data, 0(a2)                             // 2B92  MOVE.L    (A2),(d8,A5,Xn)
-        b       L_0162C
+        b       move_l_ea_mem_34
         lwz     data, 0(a3)                             // 2B93  MOVE.L    (A3),(d8,A5,Xn)
-        b       L_0162C
+        b       move_l_ea_mem_34
         lwz     data, 0(a4)                             // 2B94  MOVE.L    (A4),(d8,A5,Xn)
-        b       L_0162C
+        b       move_l_ea_mem_34
         lwz     data, 0(a5)                             // 2B95  MOVE.L    (A5),(d8,A5,Xn)
-        b       L_0162C
+        b       move_l_ea_mem_34
         lwz     data, 0(a6)                             // 2B96  MOVE.L    (A6),(d8,A5,Xn)
-        b       L_0162C
+        b       move_l_ea_mem_34
         lwz     data, 0(a7)                             // 2B97  MOVE.L    (A7),(d8,A5,Xn)
-        b       L_0162C
-        ori     rtn_addr, code_ptr, L_0162C - cb        // 2B98  MOVE.L    (A0)+,(d8,A5,Xn)
-        b       L_00850
-        ori     rtn_addr, code_ptr, L_0162C - cb        // 2B99  MOVE.L    (A1)+,(d8,A5,Xn)
-        b       L_008D0
-        ori     rtn_addr, code_ptr, L_0162C - cb        // 2B9A  MOVE.L    (A2)+,(d8,A5,Xn)
-        b       L_00950
-        ori     rtn_addr, code_ptr, L_0162C - cb        // 2B9B  MOVE.L    (A3)+,(d8,A5,Xn)
-        b       L_009D0
-        ori     rtn_addr, code_ptr, L_0162C - cb        // 2B9C  MOVE.L    (A4)+,(d8,A5,Xn)
-        b       L_00A50
-        ori     rtn_addr, code_ptr, L_0162C - cb        // 2B9D  MOVE.L    (A5)+,(d8,A5,Xn)
-        b       L_00AD0
-        ori     rtn_addr, code_ptr, L_0162C - cb        // 2B9E  MOVE.L    (A6)+,(d8,A5,Xn)
-        b       L_00B50
-        ori     rtn_addr, code_ptr, L_0162C - cb        // 2B9F  MOVE.L    (A7)+,(d8,A5,Xn)
-        b       L_00BD0
+        b       move_l_ea_mem_34
+        ori     rtn_addr, code_ptr, move_l_ea_mem_34 - cb  // 2B98  MOVE.L    (A0)+,(d8,A5,Xn)
+        b       fea_l_30
+        ori     rtn_addr, code_ptr, move_l_ea_mem_34 - cb  // 2B99  MOVE.L    (A1)+,(d8,A5,Xn)
+        b       fea_l_31
+        ori     rtn_addr, code_ptr, move_l_ea_mem_34 - cb  // 2B9A  MOVE.L    (A2)+,(d8,A5,Xn)
+        b       fea_l_32
+        ori     rtn_addr, code_ptr, move_l_ea_mem_34 - cb  // 2B9B  MOVE.L    (A3)+,(d8,A5,Xn)
+        b       fea_l_33
+        ori     rtn_addr, code_ptr, move_l_ea_mem_34 - cb  // 2B9C  MOVE.L    (A4)+,(d8,A5,Xn)
+        b       fea_l_34
+        ori     rtn_addr, code_ptr, move_l_ea_mem_34 - cb  // 2B9D  MOVE.L    (A5)+,(d8,A5,Xn)
+        b       fea_l_35
+        ori     rtn_addr, code_ptr, move_l_ea_mem_34 - cb  // 2B9E  MOVE.L    (A6)+,(d8,A5,Xn)
+        b       fea_l_36
+        ori     rtn_addr, code_ptr, move_l_ea_mem_34 - cb  // 2B9F  MOVE.L    (A7)+,(d8,A5,Xn)
+        b       fea_l_37
         lwzu    data, -4(a0)                            // 2BA0  MOVE.L    -(A0),(d8,A5,Xn)
-        b       L_0162C
+        b       move_l_ea_mem_34
         lwzu    data, -4(a1)                            // 2BA1  MOVE.L    -(A1),(d8,A5,Xn)
-        b       L_0162C
+        b       move_l_ea_mem_34
         lwzu    data, -4(a2)                            // 2BA2  MOVE.L    -(A2),(d8,A5,Xn)
-        b       L_0162C
+        b       move_l_ea_mem_34
         lwzu    data, -4(a3)                            // 2BA3  MOVE.L    -(A3),(d8,A5,Xn)
-        b       L_0162C
+        b       move_l_ea_mem_34
         lwzu    data, -4(a4)                            // 2BA4  MOVE.L    -(A4),(d8,A5,Xn)
-        b       L_0162C
+        b       move_l_ea_mem_34
         lwzu    data, -4(a5)                            // 2BA5  MOVE.L    -(A5),(d8,A5,Xn)
-        b       L_0162C
+        b       move_l_ea_mem_34
         lwzu    data, -4(a6)                            // 2BA6  MOVE.L    -(A6),(d8,A5,Xn)
-        b       L_0162C
+        b       move_l_ea_mem_34
         lwzu    data, -4(a7)                            // 2BA7  MOVE.L    -(A7),(d8,A5,Xn)
-        b       L_0162C
+        b       move_l_ea_mem_34
         lwzx    data, a0, prefetch_data                 // 2BA8  MOVE.L    (d16,A0),(d8,A5,Xn)
-        b       L_01628
+        b       move_l_mem_mem_34
         lwzx    data, a1, prefetch_data                 // 2BA9  MOVE.L    (d16,A1),(d8,A5,Xn)
-        b       L_01628
+        b       move_l_mem_mem_34
         lwzx    data, a2, prefetch_data                 // 2BAA  MOVE.L    (d16,A2),(d8,A5,Xn)
-        b       L_01628
+        b       move_l_mem_mem_34
         lwzx    data, a3, prefetch_data                 // 2BAB  MOVE.L    (d16,A3),(d8,A5,Xn)
-        b       L_01628
+        b       move_l_mem_mem_34
         lwzx    data, a4, prefetch_data                 // 2BAC  MOVE.L    (d16,A4),(d8,A5,Xn)
-        b       L_01628
+        b       move_l_mem_mem_34
         lwzx    data, a5, prefetch_data                 // 2BAD  MOVE.L    (d16,A5),(d8,A5,Xn)
-        b       L_01628
+        b       move_l_mem_mem_34
         lwzx    data, a6, prefetch_data                 // 2BAE  MOVE.L    (d16,A6),(d8,A5,Xn)
-        b       L_01628
+        b       move_l_mem_mem_34
         lwzx    data, a7, prefetch_data                 // 2BAF  MOVE.L    (d16,A7),(d8,A5,Xn)
-        b       L_01628
-        ori     rtn_addr, code_ptr, L_0162C - cb        // 2BB0  MOVE.L    (d8,A0,Xn),(d8,A5,Xn)
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_0162C - cb        // 2BB1  MOVE.L    (d8,A1,Xn),(d8,A5,Xn)
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_0162C - cb        // 2BB2  MOVE.L    (d8,A2,Xn),(d8,A5,Xn)
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_0162C - cb        // 2BB3  MOVE.L    (d8,A3,Xn),(d8,A5,Xn)
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_0162C - cb        // 2BB4  MOVE.L    (d8,A4,Xn),(d8,A5,Xn)
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_0162C - cb        // 2BB5  MOVE.L    (d8,A5,Xn),(d8,A5,Xn)
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_0162C - cb        // 2BB6  MOVE.L    (d8,A6,Xn),(d8,A5,Xn)
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_0162C - cb        // 2BB7  MOVE.L    (d8,A7,Xn),(d8,A5,Xn)
-        b       L_05C68
+        b       move_l_mem_mem_34
+        ori     rtn_addr, code_ptr, move_l_ea_mem_34 - cb  // 2BB0  MOVE.L    (d8,A0,Xn),(d8,A5,Xn)
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, move_l_ea_mem_34 - cb  // 2BB1  MOVE.L    (d8,A1,Xn),(d8,A5,Xn)
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, move_l_ea_mem_34 - cb  // 2BB2  MOVE.L    (d8,A2,Xn),(d8,A5,Xn)
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, move_l_ea_mem_34 - cb  // 2BB3  MOVE.L    (d8,A3,Xn),(d8,A5,Xn)
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, move_l_ea_mem_34 - cb  // 2BB4  MOVE.L    (d8,A4,Xn),(d8,A5,Xn)
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, move_l_ea_mem_34 - cb  // 2BB5  MOVE.L    (d8,A5,Xn),(d8,A5,Xn)
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, move_l_ea_mem_34 - cb  // 2BB6  MOVE.L    (d8,A6,Xn),(d8,A5,Xn)
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, move_l_ea_mem_34 - cb  // 2BB7  MOVE.L    (d8,A7,Xn),(d8,A5,Xn)
+        b       move_add_etc_l_any_any_8
         lwz     data, 0(prefetch_data)                  // 2BB8  MOVE.L    (xxx).W,(d8,A5,Xn)
-        b       L_01628
-        ori     rtn_addr, code_ptr, L_0162C - cb        // 2BB9  MOVE.L    (xxx).L,(d8,A5,Xn)
-        b       L_05E8C
+        b       move_l_mem_mem_34
+        ori     rtn_addr, code_ptr, move_l_ea_mem_34 - cb  // 2BB9  MOVE.L    (xxx).L,(d8,A5,Xn)
+        b       fea_l_71_2
         lwzx    data, pc, prefetch_data                 // 2BBA  MOVE.L    (d16,PC),(d8,A5,Xn)
-        b       L_01628
-        ori     rtn_addr, code_ptr, L_0162C - cb        // 2BBB  MOVE.L    (d8,PC,Xn),(d8,A5,Xn)
-        b       L_05F08
-        ori     rtn_addr, code_ptr, L_0162C - cb        // 2BBC  MOVE.L    #<data>,(d8,A5,Xn)
-        b       L_05F30
+        b       move_l_mem_mem_34
+        ori     rtn_addr, code_ptr, move_l_ea_mem_34 - cb  // 2BBB  MOVE.L    (d8,PC,Xn),(d8,A5,Xn)
+        b       fea_l_73
+        ori     rtn_addr, code_ptr, move_l_ea_mem_34 - cb  // 2BBC  MOVE.L    #<data>,(d8,A5,Xn)
+        b       fea_l_74
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2BBD  MOVE.L    <ea 7.5>,(d8,A5,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2BBE  MOVE.L    <ea 7.6>,(d8,A5,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2BBF  MOVE.L    <ea 7.7>,(d8,A5,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $2BC0-$2BFF --------------------------------------------------------
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2BC0  MOVE.L    D0,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2BC1  MOVE.L    D1,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2BC2  MOVE.L    D2,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2BC3  MOVE.L    D3,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2BC4  MOVE.L    D4,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2BC5  MOVE.L    D5,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2BC6  MOVE.L    D6,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2BC7  MOVE.L    D7,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2BC8  MOVE.L    A0,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2BC9  MOVE.L    A1,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2BCA  MOVE.L    A2,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2BCB  MOVE.L    A3,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2BCC  MOVE.L    A4,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2BCD  MOVE.L    A5,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2BCE  MOVE.L    A6,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2BCF  MOVE.L    A7,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2BD0  MOVE.L    (A0),<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2BD1  MOVE.L    (A1),<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2BD2  MOVE.L    (A2),<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2BD3  MOVE.L    (A3),<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2BD4  MOVE.L    (A4),<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2BD5  MOVE.L    (A5),<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2BD6  MOVE.L    (A6),<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2BD7  MOVE.L    (A7),<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2BD8  MOVE.L    (A0)+,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2BD9  MOVE.L    (A1)+,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2BDA  MOVE.L    (A2)+,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2BDB  MOVE.L    (A3)+,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2BDC  MOVE.L    (A4)+,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2BDD  MOVE.L    (A5)+,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2BDE  MOVE.L    (A6)+,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2BDF  MOVE.L    (A7)+,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2BE0  MOVE.L    -(A0),<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2BE1  MOVE.L    -(A1),<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2BE2  MOVE.L    -(A2),<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2BE3  MOVE.L    -(A3),<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2BE4  MOVE.L    -(A4),<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2BE5  MOVE.L    -(A5),<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2BE6  MOVE.L    -(A6),<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2BE7  MOVE.L    -(A7),<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2BE8  MOVE.L    (d16,A0),<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2BE9  MOVE.L    (d16,A1),<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2BEA  MOVE.L    (d16,A2),<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2BEB  MOVE.L    (d16,A3),<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2BEC  MOVE.L    (d16,A4),<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2BED  MOVE.L    (d16,A5),<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2BEE  MOVE.L    (d16,A6),<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2BEF  MOVE.L    (d16,A7),<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2BF0  MOVE.L    (d8,A0,Xn),<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2BF1  MOVE.L    (d8,A1,Xn),<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2BF2  MOVE.L    (d8,A2,Xn),<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2BF3  MOVE.L    (d8,A3,Xn),<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2BF4  MOVE.L    (d8,A4,Xn),<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2BF5  MOVE.L    (d8,A5,Xn),<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2BF6  MOVE.L    (d8,A6,Xn),<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2BF7  MOVE.L    (d8,A7,Xn),<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2BF8  MOVE.L    (xxx).W,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2BF9  MOVE.L    (xxx).L,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2BFA  MOVE.L    (d16,PC),<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2BFB  MOVE.L    (d8,PC,Xn),<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2BFC  MOVE.L    #<data>,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2BFD  MOVE.L    <ea 7.5>,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2BFE  MOVE.L    <ea 7.6>,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2BFF  MOVE.L    <ea 7.7>,<ea 7.5>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $2C00-$2C3F --------------------------------------------------------
         addco.  d6, d0, zero                            // 2C00  MOVE.L    D0,D6
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d6, d1, zero                            // 2C01  MOVE.L    D1,D6
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d6, d2, zero                            // 2C02  MOVE.L    D2,D6
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d6, d3, zero                            // 2C03  MOVE.L    D3,D6
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d6, d4, zero                            // 2C04  MOVE.L    D4,D6
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d6, d5, zero                            // 2C05  MOVE.L    D5,D6
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d6, d6, zero                            // 2C06  MOVE.L    D6,D6
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d6, d7, zero                            // 2C07  MOVE.L    D7,D6
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d6, a0, zero                            // 2C08  MOVE.L    A0,D6
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d6, a1, zero                            // 2C09  MOVE.L    A1,D6
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d6, a2, zero                            // 2C0A  MOVE.L    A2,D6
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d6, a3, zero                            // 2C0B  MOVE.L    A3,D6
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d6, a4, zero                            // 2C0C  MOVE.L    A4,D6
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d6, a5, zero                            // 2C0D  MOVE.L    A5,D6
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d6, a6, zero                            // 2C0E  MOVE.L    A6,D6
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d6, a7, zero                            // 2C0F  MOVE.L    A7,D6
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     data, 0(a0)                             // 2C10  MOVE.L    (A0),D6
-        b       L_00F28
+        b       move_l_mem_d6
         lwz     data, 0(a1)                             // 2C11  MOVE.L    (A1),D6
-        b       L_00F28
+        b       move_l_mem_d6
         lwz     data, 0(a2)                             // 2C12  MOVE.L    (A2),D6
-        b       L_00F28
+        b       move_l_mem_d6
         lwz     data, 0(a3)                             // 2C13  MOVE.L    (A3),D6
-        b       L_00F28
+        b       move_l_mem_d6
         lwz     data, 0(a4)                             // 2C14  MOVE.L    (A4),D6
-        b       L_00F28
+        b       move_l_mem_d6
         lwz     data, 0(a5)                             // 2C15  MOVE.L    (A5),D6
-        b       L_00F28
+        b       move_l_mem_d6
         lwz     data, 0(a6)                             // 2C16  MOVE.L    (A6),D6
-        b       L_00F28
+        b       move_l_mem_d6
         lwz     data, 0(a7)                             // 2C17  MOVE.L    (A7),D6
-        b       L_00F28
-        ori     rtn_addr, code_ptr, L_00F28 - cb        // 2C18  MOVE.L    (A0)+,D6
-        b       L_00850
-        ori     rtn_addr, code_ptr, L_00F28 - cb        // 2C19  MOVE.L    (A1)+,D6
-        b       L_008D0
-        ori     rtn_addr, code_ptr, L_00F28 - cb        // 2C1A  MOVE.L    (A2)+,D6
-        b       L_00950
-        ori     rtn_addr, code_ptr, L_00F28 - cb        // 2C1B  MOVE.L    (A3)+,D6
-        b       L_009D0
-        ori     rtn_addr, code_ptr, L_00F28 - cb        // 2C1C  MOVE.L    (A4)+,D6
-        b       L_00A50
-        ori     rtn_addr, code_ptr, L_00F28 - cb        // 2C1D  MOVE.L    (A5)+,D6
-        b       L_00AD0
-        ori     rtn_addr, code_ptr, L_00F28 - cb        // 2C1E  MOVE.L    (A6)+,D6
-        b       L_00B50
+        b       move_l_mem_d6
+        ori     rtn_addr, code_ptr, move_l_mem_d6 - cb  // 2C18  MOVE.L    (A0)+,D6
+        b       fea_l_30
+        ori     rtn_addr, code_ptr, move_l_mem_d6 - cb  // 2C19  MOVE.L    (A1)+,D6
+        b       fea_l_31
+        ori     rtn_addr, code_ptr, move_l_mem_d6 - cb  // 2C1A  MOVE.L    (A2)+,D6
+        b       fea_l_32
+        ori     rtn_addr, code_ptr, move_l_mem_d6 - cb  // 2C1B  MOVE.L    (A3)+,D6
+        b       fea_l_33
+        ori     rtn_addr, code_ptr, move_l_mem_d6 - cb  // 2C1C  MOVE.L    (A4)+,D6
+        b       fea_l_34
+        ori     rtn_addr, code_ptr, move_l_mem_d6 - cb  // 2C1D  MOVE.L    (A5)+,D6
+        b       fea_l_35
+        ori     rtn_addr, code_ptr, move_l_mem_d6 - cb  // 2C1E  MOVE.L    (A6)+,D6
+        b       fea_l_36
         lwz     d6, 0(a7)                               // 2C1F  MOVE.L    (A7)+,D6
-        b       L_08F00
+        b       move_l_mem_d6_3
         lwzu    data, -4(a0)                            // 2C20  MOVE.L    -(A0),D6
-        b       L_00F28
+        b       move_l_mem_d6
         lwzu    data, -4(a1)                            // 2C21  MOVE.L    -(A1),D6
-        b       L_00F28
+        b       move_l_mem_d6
         lwzu    data, -4(a2)                            // 2C22  MOVE.L    -(A2),D6
-        b       L_00F28
+        b       move_l_mem_d6
         lwzu    data, -4(a3)                            // 2C23  MOVE.L    -(A3),D6
-        b       L_00F28
+        b       move_l_mem_d6
         lwzu    data, -4(a4)                            // 2C24  MOVE.L    -(A4),D6
-        b       L_00F28
+        b       move_l_mem_d6
         lwzu    data, -4(a5)                            // 2C25  MOVE.L    -(A5),D6
-        b       L_00F28
+        b       move_l_mem_d6
         lwzu    data, -4(a6)                            // 2C26  MOVE.L    -(A6),D6
-        b       L_00F28
+        b       move_l_mem_d6
         lwzu    data, -4(a7)                            // 2C27  MOVE.L    -(A7),D6
-        b       L_00F28
+        b       move_l_mem_d6
         lwzx    data, a0, prefetch_data                 // 2C28  MOVE.L    (d16,A0),D6
-        b       L_00F40
+        b       move_l_mem_d6_2
         lwzx    data, a1, prefetch_data                 // 2C29  MOVE.L    (d16,A1),D6
-        b       L_00F40
+        b       move_l_mem_d6_2
         lwzx    data, a2, prefetch_data                 // 2C2A  MOVE.L    (d16,A2),D6
-        b       L_00F40
+        b       move_l_mem_d6_2
         lwzx    data, a3, prefetch_data                 // 2C2B  MOVE.L    (d16,A3),D6
-        b       L_00F40
+        b       move_l_mem_d6_2
         lwzx    data, a4, prefetch_data                 // 2C2C  MOVE.L    (d16,A4),D6
-        b       L_00F40
+        b       move_l_mem_d6_2
         lwzx    data, a5, prefetch_data                 // 2C2D  MOVE.L    (d16,A5),D6
-        b       L_00F40
+        b       move_l_mem_d6_2
         lwzx    data, a6, prefetch_data                 // 2C2E  MOVE.L    (d16,A6),D6
-        b       L_00F40
+        b       move_l_mem_d6_2
         lwzx    data, a7, prefetch_data                 // 2C2F  MOVE.L    (d16,A7),D6
-        b       L_00F40
-        ori     rtn_addr, code_ptr, L_00F28 - cb        // 2C30  MOVE.L    (d8,A0,Xn),D6
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_00F28 - cb        // 2C31  MOVE.L    (d8,A1,Xn),D6
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_00F28 - cb        // 2C32  MOVE.L    (d8,A2,Xn),D6
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_00F28 - cb        // 2C33  MOVE.L    (d8,A3,Xn),D6
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_00F28 - cb        // 2C34  MOVE.L    (d8,A4,Xn),D6
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_00F28 - cb        // 2C35  MOVE.L    (d8,A5,Xn),D6
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_00F28 - cb        // 2C36  MOVE.L    (d8,A6,Xn),D6
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_00F28 - cb        // 2C37  MOVE.L    (d8,A7,Xn),D6
-        b       L_05C68
+        b       move_l_mem_d6_2
+        ori     rtn_addr, code_ptr, move_l_mem_d6 - cb  // 2C30  MOVE.L    (d8,A0,Xn),D6
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, move_l_mem_d6 - cb  // 2C31  MOVE.L    (d8,A1,Xn),D6
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, move_l_mem_d6 - cb  // 2C32  MOVE.L    (d8,A2,Xn),D6
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, move_l_mem_d6 - cb  // 2C33  MOVE.L    (d8,A3,Xn),D6
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, move_l_mem_d6 - cb  // 2C34  MOVE.L    (d8,A4,Xn),D6
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, move_l_mem_d6 - cb  // 2C35  MOVE.L    (d8,A5,Xn),D6
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, move_l_mem_d6 - cb  // 2C36  MOVE.L    (d8,A6,Xn),D6
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, move_l_mem_d6 - cb  // 2C37  MOVE.L    (d8,A7,Xn),D6
+        b       move_add_etc_l_any_any_8
         lwz     data, 0(prefetch_data)                  // 2C38  MOVE.L    (xxx).W,D6
-        b       L_00F40
-        ori     rtn_addr, code_ptr, L_00F28 - cb        // 2C39  MOVE.L    (xxx).L,D6
-        b       L_05E8C
+        b       move_l_mem_d6_2
+        ori     rtn_addr, code_ptr, move_l_mem_d6 - cb  // 2C39  MOVE.L    (xxx).L,D6
+        b       fea_l_71_2
         lwzx    data, pc, prefetch_data                 // 2C3A  MOVE.L    (d16,PC),D6
-        b       L_00F40
-        ori     rtn_addr, code_ptr, L_00F28 - cb        // 2C3B  MOVE.L    (d8,PC,Xn),D6
-        b       L_05F08
+        b       move_l_mem_d6_2
+        ori     rtn_addr, code_ptr, move_l_mem_d6 - cb  // 2C3B  MOVE.L    (d8,PC,Xn),D6
+        b       fea_l_73
         lhau    prefetch_data, 4(pc)                    // 2C3C  MOVE.L    #<data>,D6
-        b       L_00F24
+        b       move_l_imm_d6
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2C3D  MOVE.L    <ea 7.5>,D6   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2C3E  MOVE.L    <ea 7.6>,D6   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2C3F  MOVE.L    <ea 7.7>,D6   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $2C40-$2C7F --------------------------------------------------------
         mr      a6, d0                                  // 2C40  MOVEA.L   D0,A6
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a6, d1                                  // 2C41  MOVEA.L   D1,A6
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a6, d2                                  // 2C42  MOVEA.L   D2,A6
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a6, d3                                  // 2C43  MOVEA.L   D3,A6
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a6, d4                                  // 2C44  MOVEA.L   D4,A6
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a6, d5                                  // 2C45  MOVEA.L   D5,A6
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a6, d6                                  // 2C46  MOVEA.L   D6,A6
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a6, d7                                  // 2C47  MOVEA.L   D7,A6
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a6, a0                                  // 2C48  MOVEA.L   A0,A6
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a6, a1                                  // 2C49  MOVEA.L   A1,A6
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a6, a2                                  // 2C4A  MOVEA.L   A2,A6
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a6, a3                                  // 2C4B  MOVEA.L   A3,A6
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a6, a4                                  // 2C4C  MOVEA.L   A4,A6
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a6, a5                                  // 2C4D  MOVEA.L   A5,A6
-        b       L_06084
+        b       move_add_etc_any_any
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // 2C4E  MOVEA.L   A6,A6
-        b       L_06088
+        b       exg_move_etc_any_reg
         mr      a6, a7                                  // 2C4F  MOVEA.L   A7,A6
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     a6, 0(a0)                               // 2C50  MOVEA.L   (A0),A6
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     a6, 0(a1)                               // 2C51  MOVEA.L   (A1),A6
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     a6, 0(a2)                               // 2C52  MOVEA.L   (A2),A6
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     a6, 0(a3)                               // 2C53  MOVEA.L   (A3),A6
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     a6, 0(a4)                               // 2C54  MOVEA.L   (A4),A6
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     a6, 0(a5)                               // 2C55  MOVEA.L   (A5),A6
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     a6, 0(a6)                               // 2C56  MOVEA.L   (A6),A6
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     a6, 0(a7)                               // 2C57  MOVEA.L   (A7),A6
-        b       L_06084
-        ori     rtn_addr, code_ptr, L_03380 - cb        // 2C58  MOVEA.L   (A0)+,A6
-        b       L_00850
-        ori     rtn_addr, code_ptr, L_03380 - cb        // 2C59  MOVEA.L   (A1)+,A6
-        b       L_008D0
-        ori     rtn_addr, code_ptr, L_03380 - cb        // 2C5A  MOVEA.L   (A2)+,A6
-        b       L_00950
-        ori     rtn_addr, code_ptr, L_03380 - cb        // 2C5B  MOVEA.L   (A3)+,A6
-        b       L_009D0
-        ori     rtn_addr, code_ptr, L_03380 - cb        // 2C5C  MOVEA.L   (A4)+,A6
-        b       L_00A50
-        ori     rtn_addr, code_ptr, L_03380 - cb        // 2C5D  MOVEA.L   (A5)+,A6
-        b       L_00AD0
+        b       move_add_etc_any_any
+        ori     rtn_addr, code_ptr, movea_mem_a6 - cb   // 2C58  MOVEA.L   (A0)+,A6
+        b       fea_l_30
+        ori     rtn_addr, code_ptr, movea_mem_a6 - cb   // 2C59  MOVEA.L   (A1)+,A6
+        b       fea_l_31
+        ori     rtn_addr, code_ptr, movea_mem_a6 - cb   // 2C5A  MOVEA.L   (A2)+,A6
+        b       fea_l_32
+        ori     rtn_addr, code_ptr, movea_mem_a6 - cb   // 2C5B  MOVEA.L   (A3)+,A6
+        b       fea_l_33
+        ori     rtn_addr, code_ptr, movea_mem_a6 - cb   // 2C5C  MOVEA.L   (A4)+,A6
+        b       fea_l_34
+        ori     rtn_addr, code_ptr, movea_mem_a6 - cb   // 2C5D  MOVEA.L   (A5)+,A6
+        b       fea_l_35
         lwz     a6, 0(a6)                               // 2C5E  MOVEA.L   (A6)+,A6
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     a6, 0(a7)                               // 2C5F  MOVEA.L   (A7)+,A6
-        b       L_08F40
+        b       movea_l_mem_an
         lwzu    a6, -4(a0)                              // 2C60  MOVEA.L   -(A0),A6
-        b       L_06084
+        b       move_add_etc_any_any
         lwzu    a6, -4(a1)                              // 2C61  MOVEA.L   -(A1),A6
-        b       L_06084
+        b       move_add_etc_any_any
         lwzu    a6, -4(a2)                              // 2C62  MOVEA.L   -(A2),A6
-        b       L_06084
+        b       move_add_etc_any_any
         lwzu    a6, -4(a3)                              // 2C63  MOVEA.L   -(A3),A6
-        b       L_06084
+        b       move_add_etc_any_any
         lwzu    a6, -4(a4)                              // 2C64  MOVEA.L   -(A4),A6
-        b       L_06084
+        b       move_add_etc_any_any
         lwzu    a6, -4(a5)                              // 2C65  MOVEA.L   -(A5),A6
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     a6, -4(a6)                              // 2C66  MOVEA.L   -(A6),A6
-        b       L_06084
+        b       move_add_etc_any_any
         lwzu    a6, -4(a7)                              // 2C67  MOVEA.L   -(A7),A6
-        b       L_06084
+        b       move_add_etc_any_any
         lwzx    a6, a0, prefetch_data                   // 2C68  MOVEA.L   (d16,A0),A6
-        b       L_06080
+        b       move_lea_etc_ea_any
         lwzx    a6, a1, prefetch_data                   // 2C69  MOVEA.L   (d16,A1),A6
-        b       L_06080
+        b       move_lea_etc_ea_any
         lwzx    a6, a2, prefetch_data                   // 2C6A  MOVEA.L   (d16,A2),A6
-        b       L_06080
+        b       move_lea_etc_ea_any
         lwzx    a6, a3, prefetch_data                   // 2C6B  MOVEA.L   (d16,A3),A6
-        b       L_06080
+        b       move_lea_etc_ea_any
         lwzx    a6, a4, prefetch_data                   // 2C6C  MOVEA.L   (d16,A4),A6
-        b       L_06080
+        b       move_lea_etc_ea_any
         lwzx    a6, a5, prefetch_data                   // 2C6D  MOVEA.L   (d16,A5),A6
-        b       L_06080
+        b       move_lea_etc_ea_any
         lwzx    a6, a6, prefetch_data                   // 2C6E  MOVEA.L   (d16,A6),A6
-        b       L_06080
+        b       move_lea_etc_ea_any
         lwzx    a6, a7, prefetch_data                   // 2C6F  MOVEA.L   (d16,A7),A6
-        b       L_06080
-        ori     rtn_addr, code_ptr, L_03380 - cb        // 2C70  MOVEA.L   (d8,A0,Xn),A6
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_03380 - cb        // 2C71  MOVEA.L   (d8,A1,Xn),A6
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_03380 - cb        // 2C72  MOVEA.L   (d8,A2,Xn),A6
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_03380 - cb        // 2C73  MOVEA.L   (d8,A3,Xn),A6
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_03380 - cb        // 2C74  MOVEA.L   (d8,A4,Xn),A6
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_03380 - cb        // 2C75  MOVEA.L   (d8,A5,Xn),A6
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_03380 - cb        // 2C76  MOVEA.L   (d8,A6,Xn),A6
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_03380 - cb        // 2C77  MOVEA.L   (d8,A7,Xn),A6
-        b       L_05C68
+        b       move_lea_etc_ea_any
+        ori     rtn_addr, code_ptr, movea_mem_a6 - cb   // 2C70  MOVEA.L   (d8,A0,Xn),A6
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, movea_mem_a6 - cb   // 2C71  MOVEA.L   (d8,A1,Xn),A6
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, movea_mem_a6 - cb   // 2C72  MOVEA.L   (d8,A2,Xn),A6
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, movea_mem_a6 - cb   // 2C73  MOVEA.L   (d8,A3,Xn),A6
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, movea_mem_a6 - cb   // 2C74  MOVEA.L   (d8,A4,Xn),A6
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, movea_mem_a6 - cb   // 2C75  MOVEA.L   (d8,A5,Xn),A6
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, movea_mem_a6 - cb   // 2C76  MOVEA.L   (d8,A6,Xn),A6
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, movea_mem_a6 - cb   // 2C77  MOVEA.L   (d8,A7,Xn),A6
+        b       move_add_etc_l_any_any_8
         lwz     a6, 0(prefetch_data)                    // 2C78  MOVEA.L   (xxx).W,A6
-        b       L_06080
-        ori     rtn_addr, code_ptr, L_03380 - cb        // 2C79  MOVEA.L   (xxx).L,A6
-        b       L_05E8C
+        b       move_lea_etc_ea_any
+        ori     rtn_addr, code_ptr, movea_mem_a6 - cb   // 2C79  MOVEA.L   (xxx).L,A6
+        b       fea_l_71_2
         lwzx    a6, pc, prefetch_data                   // 2C7A  MOVEA.L   (d16,PC),A6
-        b       L_06080
-        ori     rtn_addr, code_ptr, L_03380 - cb        // 2C7B  MOVEA.L   (d8,PC,Xn),A6
-        b       L_05F08
+        b       move_lea_etc_ea_any
+        ori     rtn_addr, code_ptr, movea_mem_a6 - cb   // 2C7B  MOVEA.L   (d8,PC,Xn),A6
+        b       fea_l_73
         lwz     a6, 0(pc)                               // 2C7C  MOVEA.L   #<data>,A6
-        b       L_060A0
+        b       move_lea_ea_an
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2C7D  MOVEA.L   <ea 7.5>,A6   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2C7E  MOVEA.L   <ea 7.6>,A6   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2C7F  MOVEA.L   <ea 7.7>,A6   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $2C80-$2CBF --------------------------------------------------------
         addco.  data, d0, zero                          // 2C80  MOVE.L    D0,(A6)
-        b       L_011A8
+        b       move_l_reg_mem_7
         addco.  data, d1, zero                          // 2C81  MOVE.L    D1,(A6)
-        b       L_011A8
+        b       move_l_reg_mem_7
         addco.  data, d2, zero                          // 2C82  MOVE.L    D2,(A6)
-        b       L_011A8
+        b       move_l_reg_mem_7
         addco.  data, d3, zero                          // 2C83  MOVE.L    D3,(A6)
-        b       L_011A8
+        b       move_l_reg_mem_7
         addco.  data, d4, zero                          // 2C84  MOVE.L    D4,(A6)
-        b       L_011A8
+        b       move_l_reg_mem_7
         addco.  data, d5, zero                          // 2C85  MOVE.L    D5,(A6)
-        b       L_011A8
+        b       move_l_reg_mem_7
         addco.  data, d6, zero                          // 2C86  MOVE.L    D6,(A6)
-        b       L_011A8
+        b       move_l_reg_mem_7
         addco.  data, d7, zero                          // 2C87  MOVE.L    D7,(A6)
-        b       L_011A8
+        b       move_l_reg_mem_7
         addco.  data, a0, zero                          // 2C88  MOVE.L    A0,(A6)
-        b       L_011A8
+        b       move_l_reg_mem_7
         addco.  data, a1, zero                          // 2C89  MOVE.L    A1,(A6)
-        b       L_011A8
+        b       move_l_reg_mem_7
         addco.  data, a2, zero                          // 2C8A  MOVE.L    A2,(A6)
-        b       L_011A8
+        b       move_l_reg_mem_7
         addco.  data, a3, zero                          // 2C8B  MOVE.L    A3,(A6)
-        b       L_011A8
+        b       move_l_reg_mem_7
         addco.  data, a4, zero                          // 2C8C  MOVE.L    A4,(A6)
-        b       L_011A8
+        b       move_l_reg_mem_7
         addco.  data, a5, zero                          // 2C8D  MOVE.L    A5,(A6)
-        b       L_011A8
+        b       move_l_reg_mem_7
         addco.  data, a6, zero                          // 2C8E  MOVE.L    A6,(A6)
-        b       L_011A8
+        b       move_l_reg_mem_7
         addco.  data, a7, zero                          // 2C8F  MOVE.L    A7,(A6)
-        b       L_011A8
+        b       move_l_reg_mem_7
         lwz     data, 0(a0)                             // 2C90  MOVE.L    (A0),(A6)
-        b       L_011A4
+        b       move_l_ea_mem_7
         lwz     data, 0(a1)                             // 2C91  MOVE.L    (A1),(A6)
-        b       L_011A4
+        b       move_l_ea_mem_7
         lwz     data, 0(a2)                             // 2C92  MOVE.L    (A2),(A6)
-        b       L_011A4
+        b       move_l_ea_mem_7
         lwz     data, 0(a3)                             // 2C93  MOVE.L    (A3),(A6)
-        b       L_011A4
+        b       move_l_ea_mem_7
         lwz     data, 0(a4)                             // 2C94  MOVE.L    (A4),(A6)
-        b       L_011A4
+        b       move_l_ea_mem_7
         lwz     data, 0(a5)                             // 2C95  MOVE.L    (A5),(A6)
-        b       L_011A4
+        b       move_l_ea_mem_7
         lwz     data, 0(a6)                             // 2C96  MOVE.L    (A6),(A6)
-        b       L_06144
+        b       tst_ea
         lwz     data, 0(a7)                             // 2C97  MOVE.L    (A7),(A6)
-        b       L_011A4
-        ori     rtn_addr, code_ptr, L_011A4 - cb        // 2C98  MOVE.L    (A0)+,(A6)
-        b       L_00850
-        ori     rtn_addr, code_ptr, L_011A4 - cb        // 2C99  MOVE.L    (A1)+,(A6)
-        b       L_008D0
-        ori     rtn_addr, code_ptr, L_011A4 - cb        // 2C9A  MOVE.L    (A2)+,(A6)
-        b       L_00950
-        ori     rtn_addr, code_ptr, L_011A4 - cb        // 2C9B  MOVE.L    (A3)+,(A6)
-        b       L_009D0
-        ori     rtn_addr, code_ptr, L_011A4 - cb        // 2C9C  MOVE.L    (A4)+,(A6)
-        b       L_00A50
-        ori     rtn_addr, code_ptr, L_011A4 - cb        // 2C9D  MOVE.L    (A5)+,(A6)
-        b       L_00AD0
-        ori     rtn_addr, code_ptr, L_011A4 - cb        // 2C9E  MOVE.L    (A6)+,(A6)
-        b       L_00B50
-        ori     rtn_addr, code_ptr, L_011A4 - cb        // 2C9F  MOVE.L    (A7)+,(A6)
-        b       L_00BD0
+        b       move_l_ea_mem_7
+        ori     rtn_addr, code_ptr, move_l_ea_mem_7 - cb  // 2C98  MOVE.L    (A0)+,(A6)
+        b       fea_l_30
+        ori     rtn_addr, code_ptr, move_l_ea_mem_7 - cb  // 2C99  MOVE.L    (A1)+,(A6)
+        b       fea_l_31
+        ori     rtn_addr, code_ptr, move_l_ea_mem_7 - cb  // 2C9A  MOVE.L    (A2)+,(A6)
+        b       fea_l_32
+        ori     rtn_addr, code_ptr, move_l_ea_mem_7 - cb  // 2C9B  MOVE.L    (A3)+,(A6)
+        b       fea_l_33
+        ori     rtn_addr, code_ptr, move_l_ea_mem_7 - cb  // 2C9C  MOVE.L    (A4)+,(A6)
+        b       fea_l_34
+        ori     rtn_addr, code_ptr, move_l_ea_mem_7 - cb  // 2C9D  MOVE.L    (A5)+,(A6)
+        b       fea_l_35
+        ori     rtn_addr, code_ptr, move_l_ea_mem_7 - cb  // 2C9E  MOVE.L    (A6)+,(A6)
+        b       fea_l_36
+        ori     rtn_addr, code_ptr, move_l_ea_mem_7 - cb  // 2C9F  MOVE.L    (A7)+,(A6)
+        b       fea_l_37
         lwzu    data, -4(a0)                            // 2CA0  MOVE.L    -(A0),(A6)
-        b       L_011A4
+        b       move_l_ea_mem_7
         lwzu    data, -4(a1)                            // 2CA1  MOVE.L    -(A1),(A6)
-        b       L_011A4
+        b       move_l_ea_mem_7
         lwzu    data, -4(a2)                            // 2CA2  MOVE.L    -(A2),(A6)
-        b       L_011A4
+        b       move_l_ea_mem_7
         lwzu    data, -4(a3)                            // 2CA3  MOVE.L    -(A3),(A6)
-        b       L_011A4
+        b       move_l_ea_mem_7
         lwzu    data, -4(a4)                            // 2CA4  MOVE.L    -(A4),(A6)
-        b       L_011A4
+        b       move_l_ea_mem_7
         lwzu    data, -4(a5)                            // 2CA5  MOVE.L    -(A5),(A6)
-        b       L_011A4
+        b       move_l_ea_mem_7
         lwzu    data, -4(a6)                            // 2CA6  MOVE.L    -(A6),(A6)
-        b       L_06144
+        b       tst_ea
         lwzu    data, -4(a7)                            // 2CA7  MOVE.L    -(A7),(A6)
-        b       L_011A4
+        b       move_l_ea_mem_7
         lwzx    data, a0, prefetch_data                 // 2CA8  MOVE.L    (d16,A0),(A6)
-        b       L_011A0
+        b       move_l_mem_mem_7
         lwzx    data, a1, prefetch_data                 // 2CA9  MOVE.L    (d16,A1),(A6)
-        b       L_011A0
+        b       move_l_mem_mem_7
         lwzx    data, a2, prefetch_data                 // 2CAA  MOVE.L    (d16,A2),(A6)
-        b       L_011A0
+        b       move_l_mem_mem_7
         lwzx    data, a3, prefetch_data                 // 2CAB  MOVE.L    (d16,A3),(A6)
-        b       L_011A0
+        b       move_l_mem_mem_7
         lwzx    data, a4, prefetch_data                 // 2CAC  MOVE.L    (d16,A4),(A6)
-        b       L_011A0
+        b       move_l_mem_mem_7
         lwzx    data, a5, prefetch_data                 // 2CAD  MOVE.L    (d16,A5),(A6)
-        b       L_011A0
+        b       move_l_mem_mem_7
         lwzx    data, a6, prefetch_data                 // 2CAE  MOVE.L    (d16,A6),(A6)
-        b       L_011A0
+        b       move_l_mem_mem_7
         lwzx    data, a7, prefetch_data                 // 2CAF  MOVE.L    (d16,A7),(A6)
-        b       L_011A0
-        ori     rtn_addr, code_ptr, L_011A4 - cb        // 2CB0  MOVE.L    (d8,A0,Xn),(A6)
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_011A4 - cb        // 2CB1  MOVE.L    (d8,A1,Xn),(A6)
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_011A4 - cb        // 2CB2  MOVE.L    (d8,A2,Xn),(A6)
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_011A4 - cb        // 2CB3  MOVE.L    (d8,A3,Xn),(A6)
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_011A4 - cb        // 2CB4  MOVE.L    (d8,A4,Xn),(A6)
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_011A4 - cb        // 2CB5  MOVE.L    (d8,A5,Xn),(A6)
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_011A4 - cb        // 2CB6  MOVE.L    (d8,A6,Xn),(A6)
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_011A4 - cb        // 2CB7  MOVE.L    (d8,A7,Xn),(A6)
-        b       L_05C68
+        b       move_l_mem_mem_7
+        ori     rtn_addr, code_ptr, move_l_ea_mem_7 - cb  // 2CB0  MOVE.L    (d8,A0,Xn),(A6)
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, move_l_ea_mem_7 - cb  // 2CB1  MOVE.L    (d8,A1,Xn),(A6)
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, move_l_ea_mem_7 - cb  // 2CB2  MOVE.L    (d8,A2,Xn),(A6)
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, move_l_ea_mem_7 - cb  // 2CB3  MOVE.L    (d8,A3,Xn),(A6)
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, move_l_ea_mem_7 - cb  // 2CB4  MOVE.L    (d8,A4,Xn),(A6)
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, move_l_ea_mem_7 - cb  // 2CB5  MOVE.L    (d8,A5,Xn),(A6)
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, move_l_ea_mem_7 - cb  // 2CB6  MOVE.L    (d8,A6,Xn),(A6)
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, move_l_ea_mem_7 - cb  // 2CB7  MOVE.L    (d8,A7,Xn),(A6)
+        b       move_add_etc_l_any_any_8
         lwz     data, 0(prefetch_data)                  // 2CB8  MOVE.L    (xxx).W,(A6)
-        b       L_011A0
-        ori     rtn_addr, code_ptr, L_011A4 - cb        // 2CB9  MOVE.L    (xxx).L,(A6)
-        b       L_05E8C
+        b       move_l_mem_mem_7
+        ori     rtn_addr, code_ptr, move_l_ea_mem_7 - cb  // 2CB9  MOVE.L    (xxx).L,(A6)
+        b       fea_l_71_2
         lwzx    data, pc, prefetch_data                 // 2CBA  MOVE.L    (d16,PC),(A6)
-        b       L_011A0
-        ori     rtn_addr, code_ptr, L_011A4 - cb        // 2CBB  MOVE.L    (d8,PC,Xn),(A6)
-        b       L_05F08
-        ori     rtn_addr, code_ptr, L_011A4 - cb        // 2CBC  MOVE.L    #<data>,(A6)
-        b       L_05F30
+        b       move_l_mem_mem_7
+        ori     rtn_addr, code_ptr, move_l_ea_mem_7 - cb  // 2CBB  MOVE.L    (d8,PC,Xn),(A6)
+        b       fea_l_73
+        ori     rtn_addr, code_ptr, move_l_ea_mem_7 - cb  // 2CBC  MOVE.L    #<data>,(A6)
+        b       fea_l_74
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2CBD  MOVE.L    <ea 7.5>,(A6)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2CBE  MOVE.L    <ea 7.6>,(A6)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2CBF  MOVE.L    <ea 7.7>,(A6)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $2CC0-$2CFF --------------------------------------------------------
         addco.  data, d0, zero                          // 2CC0  MOVE.L    D0,(A6)+
-        b       L_01648
+        b       move_clr_l_reg_mem_13
         addco.  data, d1, zero                          // 2CC1  MOVE.L    D1,(A6)+
-        b       L_01648
+        b       move_clr_l_reg_mem_13
         addco.  data, d2, zero                          // 2CC2  MOVE.L    D2,(A6)+
-        b       L_01648
+        b       move_clr_l_reg_mem_13
         addco.  data, d3, zero                          // 2CC3  MOVE.L    D3,(A6)+
-        b       L_01648
+        b       move_clr_l_reg_mem_13
         addco.  data, d4, zero                          // 2CC4  MOVE.L    D4,(A6)+
-        b       L_01648
+        b       move_clr_l_reg_mem_13
         addco.  data, d5, zero                          // 2CC5  MOVE.L    D5,(A6)+
-        b       L_01648
+        b       move_clr_l_reg_mem_13
         addco.  data, d6, zero                          // 2CC6  MOVE.L    D6,(A6)+
-        b       L_01648
+        b       move_clr_l_reg_mem_13
         addco.  data, d7, zero                          // 2CC7  MOVE.L    D7,(A6)+
-        b       L_01648
+        b       move_clr_l_reg_mem_13
         addco.  data, a0, zero                          // 2CC8  MOVE.L    A0,(A6)+
-        b       L_01648
+        b       move_clr_l_reg_mem_13
         addco.  data, a1, zero                          // 2CC9  MOVE.L    A1,(A6)+
-        b       L_01648
+        b       move_clr_l_reg_mem_13
         addco.  data, a2, zero                          // 2CCA  MOVE.L    A2,(A6)+
-        b       L_01648
+        b       move_clr_l_reg_mem_13
         addco.  data, a3, zero                          // 2CCB  MOVE.L    A3,(A6)+
-        b       L_01648
+        b       move_clr_l_reg_mem_13
         addco.  data, a4, zero                          // 2CCC  MOVE.L    A4,(A6)+
-        b       L_01648
+        b       move_clr_l_reg_mem_13
         addco.  data, a5, zero                          // 2CCD  MOVE.L    A5,(A6)+
-        b       L_01648
+        b       move_clr_l_reg_mem_13
         addco.  data, a6, zero                          // 2CCE  MOVE.L    A6,(A6)+
-        b       L_01648
+        b       move_clr_l_reg_mem_13
         addco.  data, a7, zero                          // 2CCF  MOVE.L    A7,(A6)+
-        b       L_01648
+        b       move_clr_l_reg_mem_13
         lwz     data, 0(a0)                             // 2CD0  MOVE.L    (A0),(A6)+
-        b       L_01644
+        b       move_l_ea_mem_35
         lwz     data, 0(a1)                             // 2CD1  MOVE.L    (A1),(A6)+
-        b       L_01644
+        b       move_l_ea_mem_35
         lwz     data, 0(a2)                             // 2CD2  MOVE.L    (A2),(A6)+
-        b       L_01644
+        b       move_l_ea_mem_35
         lwz     data, 0(a3)                             // 2CD3  MOVE.L    (A3),(A6)+
-        b       L_01644
+        b       move_l_ea_mem_35
         lwz     data, 0(a4)                             // 2CD4  MOVE.L    (A4),(A6)+
-        b       L_01644
+        b       move_l_ea_mem_35
         lwz     data, 0(a5)                             // 2CD5  MOVE.L    (A5),(A6)+
-        b       L_01644
+        b       move_l_ea_mem_35
         lwz     data, 0(a6)                             // 2CD6  MOVE.L    (A6),(A6)+
-        b       L_01644
+        b       move_l_ea_mem_35
         lwz     data, 0(a7)                             // 2CD7  MOVE.L    (A7),(A6)+
-        b       L_01644
-        ori     rtn_addr, code_ptr, L_01644 - cb        // 2CD8  MOVE.L    (A0)+,(A6)+
-        b       L_00850
-        ori     rtn_addr, code_ptr, L_01644 - cb        // 2CD9  MOVE.L    (A1)+,(A6)+
-        b       L_008D0
-        ori     rtn_addr, code_ptr, L_01644 - cb        // 2CDA  MOVE.L    (A2)+,(A6)+
-        b       L_00950
-        ori     rtn_addr, code_ptr, L_01644 - cb        // 2CDB  MOVE.L    (A3)+,(A6)+
-        b       L_009D0
-        ori     rtn_addr, code_ptr, L_01644 - cb        // 2CDC  MOVE.L    (A4)+,(A6)+
-        b       L_00A50
-        ori     rtn_addr, code_ptr, L_01644 - cb        // 2CDD  MOVE.L    (A5)+,(A6)+
-        b       L_00AD0
-        ori     rtn_addr, code_ptr, L_01644 - cb        // 2CDE  MOVE.L    (A6)+,(A6)+
-        b       L_00B50
-        ori     rtn_addr, code_ptr, L_01644 - cb        // 2CDF  MOVE.L    (A7)+,(A6)+
-        b       L_00BD0
+        b       move_l_ea_mem_35
+        ori     rtn_addr, code_ptr, move_l_ea_mem_35 - cb  // 2CD8  MOVE.L    (A0)+,(A6)+
+        b       fea_l_30
+        ori     rtn_addr, code_ptr, move_l_ea_mem_35 - cb  // 2CD9  MOVE.L    (A1)+,(A6)+
+        b       fea_l_31
+        ori     rtn_addr, code_ptr, move_l_ea_mem_35 - cb  // 2CDA  MOVE.L    (A2)+,(A6)+
+        b       fea_l_32
+        ori     rtn_addr, code_ptr, move_l_ea_mem_35 - cb  // 2CDB  MOVE.L    (A3)+,(A6)+
+        b       fea_l_33
+        ori     rtn_addr, code_ptr, move_l_ea_mem_35 - cb  // 2CDC  MOVE.L    (A4)+,(A6)+
+        b       fea_l_34
+        ori     rtn_addr, code_ptr, move_l_ea_mem_35 - cb  // 2CDD  MOVE.L    (A5)+,(A6)+
+        b       fea_l_35
+        ori     rtn_addr, code_ptr, move_l_ea_mem_35 - cb  // 2CDE  MOVE.L    (A6)+,(A6)+
+        b       fea_l_36
+        ori     rtn_addr, code_ptr, move_l_ea_mem_35 - cb  // 2CDF  MOVE.L    (A7)+,(A6)+
+        b       fea_l_37
         lwzu    data, -4(a0)                            // 2CE0  MOVE.L    -(A0),(A6)+
-        b       L_01644
+        b       move_l_ea_mem_35
         lwzu    data, -4(a1)                            // 2CE1  MOVE.L    -(A1),(A6)+
-        b       L_01644
+        b       move_l_ea_mem_35
         lwzu    data, -4(a2)                            // 2CE2  MOVE.L    -(A2),(A6)+
-        b       L_01644
+        b       move_l_ea_mem_35
         lwzu    data, -4(a3)                            // 2CE3  MOVE.L    -(A3),(A6)+
-        b       L_01644
+        b       move_l_ea_mem_35
         lwzu    data, -4(a4)                            // 2CE4  MOVE.L    -(A4),(A6)+
-        b       L_01644
+        b       move_l_ea_mem_35
         lwzu    data, -4(a5)                            // 2CE5  MOVE.L    -(A5),(A6)+
-        b       L_01644
+        b       move_l_ea_mem_35
         lwz     data, -4(a6)                            // 2CE6  MOVE.L    -(A6),(A6)+
-        b       L_06144
+        b       tst_ea
         lwzu    data, -4(a7)                            // 2CE7  MOVE.L    -(A7),(A6)+
-        b       L_01644
+        b       move_l_ea_mem_35
         lwzx    data, a0, prefetch_data                 // 2CE8  MOVE.L    (d16,A0),(A6)+
-        b       L_01640
+        b       move_l_mem_mem_35
         lwzx    data, a1, prefetch_data                 // 2CE9  MOVE.L    (d16,A1),(A6)+
-        b       L_01640
+        b       move_l_mem_mem_35
         lwzx    data, a2, prefetch_data                 // 2CEA  MOVE.L    (d16,A2),(A6)+
-        b       L_01640
+        b       move_l_mem_mem_35
         lwzx    data, a3, prefetch_data                 // 2CEB  MOVE.L    (d16,A3),(A6)+
-        b       L_01640
+        b       move_l_mem_mem_35
         lwzx    data, a4, prefetch_data                 // 2CEC  MOVE.L    (d16,A4),(A6)+
-        b       L_01640
+        b       move_l_mem_mem_35
         lwzx    data, a5, prefetch_data                 // 2CED  MOVE.L    (d16,A5),(A6)+
-        b       L_01640
+        b       move_l_mem_mem_35
         lwzx    data, a6, prefetch_data                 // 2CEE  MOVE.L    (d16,A6),(A6)+
-        b       L_01640
+        b       move_l_mem_mem_35
         lwzx    data, a7, prefetch_data                 // 2CEF  MOVE.L    (d16,A7),(A6)+
-        b       L_01640
-        ori     rtn_addr, code_ptr, L_01644 - cb        // 2CF0  MOVE.L    (d8,A0,Xn),(A6)+
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_01644 - cb        // 2CF1  MOVE.L    (d8,A1,Xn),(A6)+
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_01644 - cb        // 2CF2  MOVE.L    (d8,A2,Xn),(A6)+
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_01644 - cb        // 2CF3  MOVE.L    (d8,A3,Xn),(A6)+
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_01644 - cb        // 2CF4  MOVE.L    (d8,A4,Xn),(A6)+
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_01644 - cb        // 2CF5  MOVE.L    (d8,A5,Xn),(A6)+
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_01644 - cb        // 2CF6  MOVE.L    (d8,A6,Xn),(A6)+
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_01644 - cb        // 2CF7  MOVE.L    (d8,A7,Xn),(A6)+
-        b       L_05C68
+        b       move_l_mem_mem_35
+        ori     rtn_addr, code_ptr, move_l_ea_mem_35 - cb  // 2CF0  MOVE.L    (d8,A0,Xn),(A6)+
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, move_l_ea_mem_35 - cb  // 2CF1  MOVE.L    (d8,A1,Xn),(A6)+
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, move_l_ea_mem_35 - cb  // 2CF2  MOVE.L    (d8,A2,Xn),(A6)+
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, move_l_ea_mem_35 - cb  // 2CF3  MOVE.L    (d8,A3,Xn),(A6)+
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, move_l_ea_mem_35 - cb  // 2CF4  MOVE.L    (d8,A4,Xn),(A6)+
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, move_l_ea_mem_35 - cb  // 2CF5  MOVE.L    (d8,A5,Xn),(A6)+
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, move_l_ea_mem_35 - cb  // 2CF6  MOVE.L    (d8,A6,Xn),(A6)+
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, move_l_ea_mem_35 - cb  // 2CF7  MOVE.L    (d8,A7,Xn),(A6)+
+        b       move_add_etc_l_any_any_8
         lwz     data, 0(prefetch_data)                  // 2CF8  MOVE.L    (xxx).W,(A6)+
-        b       L_01640
-        ori     rtn_addr, code_ptr, L_01644 - cb        // 2CF9  MOVE.L    (xxx).L,(A6)+
-        b       L_05E8C
+        b       move_l_mem_mem_35
+        ori     rtn_addr, code_ptr, move_l_ea_mem_35 - cb  // 2CF9  MOVE.L    (xxx).L,(A6)+
+        b       fea_l_71_2
         lwzx    data, pc, prefetch_data                 // 2CFA  MOVE.L    (d16,PC),(A6)+
-        b       L_01640
-        ori     rtn_addr, code_ptr, L_01644 - cb        // 2CFB  MOVE.L    (d8,PC,Xn),(A6)+
-        b       L_05F08
-        ori     rtn_addr, code_ptr, L_01644 - cb        // 2CFC  MOVE.L    #<data>,(A6)+
-        b       L_05F30
+        b       move_l_mem_mem_35
+        ori     rtn_addr, code_ptr, move_l_ea_mem_35 - cb  // 2CFB  MOVE.L    (d8,PC,Xn),(A6)+
+        b       fea_l_73
+        ori     rtn_addr, code_ptr, move_l_ea_mem_35 - cb  // 2CFC  MOVE.L    #<data>,(A6)+
+        b       fea_l_74
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2CFD  MOVE.L    <ea 7.5>,(A6)+   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2CFE  MOVE.L    <ea 7.6>,(A6)+   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2CFF  MOVE.L    <ea 7.7>,(A6)+   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $2D00-$2D3F --------------------------------------------------------
         addco.  data, d0, zero                          // 2D00  MOVE.L    D0,-(A6)
-        b       L_013A8
+        b       move_l_reg_mem_15
         addco.  data, d1, zero                          // 2D01  MOVE.L    D1,-(A6)
-        b       L_013A8
+        b       move_l_reg_mem_15
         addco.  data, d2, zero                          // 2D02  MOVE.L    D2,-(A6)
-        b       L_013A8
+        b       move_l_reg_mem_15
         addco.  data, d3, zero                          // 2D03  MOVE.L    D3,-(A6)
-        b       L_013A8
+        b       move_l_reg_mem_15
         addco.  data, d4, zero                          // 2D04  MOVE.L    D4,-(A6)
-        b       L_013A8
+        b       move_l_reg_mem_15
         addco.  data, d5, zero                          // 2D05  MOVE.L    D5,-(A6)
-        b       L_013A8
+        b       move_l_reg_mem_15
         addco.  data, d6, zero                          // 2D06  MOVE.L    D6,-(A6)
-        b       L_013A8
+        b       move_l_reg_mem_15
         addco.  data, d7, zero                          // 2D07  MOVE.L    D7,-(A6)
-        b       L_013A8
+        b       move_l_reg_mem_15
         addco.  data, a0, zero                          // 2D08  MOVE.L    A0,-(A6)
-        b       L_013A8
+        b       move_l_reg_mem_15
         addco.  data, a1, zero                          // 2D09  MOVE.L    A1,-(A6)
-        b       L_013A8
+        b       move_l_reg_mem_15
         addco.  data, a2, zero                          // 2D0A  MOVE.L    A2,-(A6)
-        b       L_013A8
+        b       move_l_reg_mem_15
         addco.  data, a3, zero                          // 2D0B  MOVE.L    A3,-(A6)
-        b       L_013A8
+        b       move_l_reg_mem_15
         addco.  data, a4, zero                          // 2D0C  MOVE.L    A4,-(A6)
-        b       L_013A8
+        b       move_l_reg_mem_15
         addco.  data, a5, zero                          // 2D0D  MOVE.L    A5,-(A6)
-        b       L_013A8
+        b       move_l_reg_mem_15
         addco.  data, a6, zero                          // 2D0E  MOVE.L    A6,-(A6)
-        b       L_013A8
+        b       move_l_reg_mem_15
         addco.  data, a7, zero                          // 2D0F  MOVE.L    A7,-(A6)
-        b       L_013A8
+        b       move_l_reg_mem_15
         lwz     data, 0(a0)                             // 2D10  MOVE.L    (A0),-(A6)
-        b       L_013A4
+        b       move_l_ea_mem_15
         lwz     data, 0(a1)                             // 2D11  MOVE.L    (A1),-(A6)
-        b       L_013A4
+        b       move_l_ea_mem_15
         lwz     data, 0(a2)                             // 2D12  MOVE.L    (A2),-(A6)
-        b       L_013A4
+        b       move_l_ea_mem_15
         lwz     data, 0(a3)                             // 2D13  MOVE.L    (A3),-(A6)
-        b       L_013A4
+        b       move_l_ea_mem_15
         lwz     data, 0(a4)                             // 2D14  MOVE.L    (A4),-(A6)
-        b       L_013A4
+        b       move_l_ea_mem_15
         lwz     data, 0(a5)                             // 2D15  MOVE.L    (A5),-(A6)
-        b       L_013A4
+        b       move_l_ea_mem_15
         lwz     data, 0(a6)                             // 2D16  MOVE.L    (A6),-(A6)
-        b       L_013A4
+        b       move_l_ea_mem_15
         lwz     data, 0(a7)                             // 2D17  MOVE.L    (A7),-(A6)
-        b       L_013A4
-        ori     rtn_addr, code_ptr, L_013A4 - cb        // 2D18  MOVE.L    (A0)+,-(A6)
-        b       L_00850
-        ori     rtn_addr, code_ptr, L_013A4 - cb        // 2D19  MOVE.L    (A1)+,-(A6)
-        b       L_008D0
-        ori     rtn_addr, code_ptr, L_013A4 - cb        // 2D1A  MOVE.L    (A2)+,-(A6)
-        b       L_00950
-        ori     rtn_addr, code_ptr, L_013A4 - cb        // 2D1B  MOVE.L    (A3)+,-(A6)
-        b       L_009D0
-        ori     rtn_addr, code_ptr, L_013A4 - cb        // 2D1C  MOVE.L    (A4)+,-(A6)
-        b       L_00A50
-        ori     rtn_addr, code_ptr, L_013A4 - cb        // 2D1D  MOVE.L    (A5)+,-(A6)
-        b       L_00AD0
+        b       move_l_ea_mem_15
+        ori     rtn_addr, code_ptr, move_l_ea_mem_15 - cb  // 2D18  MOVE.L    (A0)+,-(A6)
+        b       fea_l_30
+        ori     rtn_addr, code_ptr, move_l_ea_mem_15 - cb  // 2D19  MOVE.L    (A1)+,-(A6)
+        b       fea_l_31
+        ori     rtn_addr, code_ptr, move_l_ea_mem_15 - cb  // 2D1A  MOVE.L    (A2)+,-(A6)
+        b       fea_l_32
+        ori     rtn_addr, code_ptr, move_l_ea_mem_15 - cb  // 2D1B  MOVE.L    (A3)+,-(A6)
+        b       fea_l_33
+        ori     rtn_addr, code_ptr, move_l_ea_mem_15 - cb  // 2D1C  MOVE.L    (A4)+,-(A6)
+        b       fea_l_34
+        ori     rtn_addr, code_ptr, move_l_ea_mem_15 - cb  // 2D1D  MOVE.L    (A5)+,-(A6)
+        b       fea_l_35
         lwz     data, 0(a6)                             // 2D1E  MOVE.L    (A6)+,-(A6)
-        b       L_06144
-        ori     rtn_addr, code_ptr, L_013A4 - cb        // 2D1F  MOVE.L    (A7)+,-(A6)
-        b       L_00BD0
+        b       tst_ea
+        ori     rtn_addr, code_ptr, move_l_ea_mem_15 - cb  // 2D1F  MOVE.L    (A7)+,-(A6)
+        b       fea_l_37
         lwzu    data, -4(a0)                            // 2D20  MOVE.L    -(A0),-(A6)
-        b       L_013A4
+        b       move_l_ea_mem_15
         lwzu    data, -4(a1)                            // 2D21  MOVE.L    -(A1),-(A6)
-        b       L_013A4
+        b       move_l_ea_mem_15
         lwzu    data, -4(a2)                            // 2D22  MOVE.L    -(A2),-(A6)
-        b       L_013A4
+        b       move_l_ea_mem_15
         lwzu    data, -4(a3)                            // 2D23  MOVE.L    -(A3),-(A6)
-        b       L_013A4
+        b       move_l_ea_mem_15
         lwzu    data, -4(a4)                            // 2D24  MOVE.L    -(A4),-(A6)
-        b       L_013A4
+        b       move_l_ea_mem_15
         lwzu    data, -4(a5)                            // 2D25  MOVE.L    -(A5),-(A6)
-        b       L_013A4
+        b       move_l_ea_mem_15
         lwzu    data, -4(a6)                            // 2D26  MOVE.L    -(A6),-(A6)
-        b       L_013A4
+        b       move_l_ea_mem_15
         lwzu    data, -4(a7)                            // 2D27  MOVE.L    -(A7),-(A6)
-        b       L_013A4
+        b       move_l_ea_mem_15
         lwzx    data, a0, prefetch_data                 // 2D28  MOVE.L    (d16,A0),-(A6)
-        b       L_013A0
+        b       move_l_mem_mem_15
         lwzx    data, a1, prefetch_data                 // 2D29  MOVE.L    (d16,A1),-(A6)
-        b       L_013A0
+        b       move_l_mem_mem_15
         lwzx    data, a2, prefetch_data                 // 2D2A  MOVE.L    (d16,A2),-(A6)
-        b       L_013A0
+        b       move_l_mem_mem_15
         lwzx    data, a3, prefetch_data                 // 2D2B  MOVE.L    (d16,A3),-(A6)
-        b       L_013A0
+        b       move_l_mem_mem_15
         lwzx    data, a4, prefetch_data                 // 2D2C  MOVE.L    (d16,A4),-(A6)
-        b       L_013A0
+        b       move_l_mem_mem_15
         lwzx    data, a5, prefetch_data                 // 2D2D  MOVE.L    (d16,A5),-(A6)
-        b       L_013A0
+        b       move_l_mem_mem_15
         lwzx    data, a6, prefetch_data                 // 2D2E  MOVE.L    (d16,A6),-(A6)
-        b       L_013A0
+        b       move_l_mem_mem_15
         lwzx    data, a7, prefetch_data                 // 2D2F  MOVE.L    (d16,A7),-(A6)
-        b       L_013A0
-        ori     rtn_addr, code_ptr, L_013A4 - cb        // 2D30  MOVE.L    (d8,A0,Xn),-(A6)
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_013A4 - cb        // 2D31  MOVE.L    (d8,A1,Xn),-(A6)
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_013A4 - cb        // 2D32  MOVE.L    (d8,A2,Xn),-(A6)
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_013A4 - cb        // 2D33  MOVE.L    (d8,A3,Xn),-(A6)
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_013A4 - cb        // 2D34  MOVE.L    (d8,A4,Xn),-(A6)
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_013A4 - cb        // 2D35  MOVE.L    (d8,A5,Xn),-(A6)
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_013A4 - cb        // 2D36  MOVE.L    (d8,A6,Xn),-(A6)
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_013A4 - cb        // 2D37  MOVE.L    (d8,A7,Xn),-(A6)
-        b       L_05C68
+        b       move_l_mem_mem_15
+        ori     rtn_addr, code_ptr, move_l_ea_mem_15 - cb  // 2D30  MOVE.L    (d8,A0,Xn),-(A6)
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, move_l_ea_mem_15 - cb  // 2D31  MOVE.L    (d8,A1,Xn),-(A6)
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, move_l_ea_mem_15 - cb  // 2D32  MOVE.L    (d8,A2,Xn),-(A6)
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, move_l_ea_mem_15 - cb  // 2D33  MOVE.L    (d8,A3,Xn),-(A6)
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, move_l_ea_mem_15 - cb  // 2D34  MOVE.L    (d8,A4,Xn),-(A6)
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, move_l_ea_mem_15 - cb  // 2D35  MOVE.L    (d8,A5,Xn),-(A6)
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, move_l_ea_mem_15 - cb  // 2D36  MOVE.L    (d8,A6,Xn),-(A6)
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, move_l_ea_mem_15 - cb  // 2D37  MOVE.L    (d8,A7,Xn),-(A6)
+        b       move_add_etc_l_any_any_8
         lwz     data, 0(prefetch_data)                  // 2D38  MOVE.L    (xxx).W,-(A6)
-        b       L_013A0
-        ori     rtn_addr, code_ptr, L_013A4 - cb        // 2D39  MOVE.L    (xxx).L,-(A6)
-        b       L_05E8C
+        b       move_l_mem_mem_15
+        ori     rtn_addr, code_ptr, move_l_ea_mem_15 - cb  // 2D39  MOVE.L    (xxx).L,-(A6)
+        b       fea_l_71_2
         lwzx    data, pc, prefetch_data                 // 2D3A  MOVE.L    (d16,PC),-(A6)
-        b       L_013A0
-        ori     rtn_addr, code_ptr, L_013A4 - cb        // 2D3B  MOVE.L    (d8,PC,Xn),-(A6)
-        b       L_05F08
-        ori     rtn_addr, code_ptr, L_013A4 - cb        // 2D3C  MOVE.L    #<data>,-(A6)
-        b       L_05F30
+        b       move_l_mem_mem_15
+        ori     rtn_addr, code_ptr, move_l_ea_mem_15 - cb  // 2D3B  MOVE.L    (d8,PC,Xn),-(A6)
+        b       fea_l_73
+        ori     rtn_addr, code_ptr, move_l_ea_mem_15 - cb  // 2D3C  MOVE.L    #<data>,-(A6)
+        b       fea_l_74
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2D3D  MOVE.L    <ea 7.5>,-(A6)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2D3E  MOVE.L    <ea 7.6>,-(A6)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2D3F  MOVE.L    <ea 7.7>,-(A6)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $2D40-$2D7F --------------------------------------------------------
         addco.  data, d0, zero                          // 2D40  MOVE.L    D0,(d16,A6)
-        b       L_0166C
+        b       move_l_reg_mem_23
         addco.  data, d1, zero                          // 2D41  MOVE.L    D1,(d16,A6)
-        b       L_0166C
+        b       move_l_reg_mem_23
         addco.  data, d2, zero                          // 2D42  MOVE.L    D2,(d16,A6)
-        b       L_0166C
+        b       move_l_reg_mem_23
         addco.  data, d3, zero                          // 2D43  MOVE.L    D3,(d16,A6)
-        b       L_0166C
+        b       move_l_reg_mem_23
         addco.  data, d4, zero                          // 2D44  MOVE.L    D4,(d16,A6)
-        b       L_0166C
+        b       move_l_reg_mem_23
         addco.  data, d5, zero                          // 2D45  MOVE.L    D5,(d16,A6)
-        b       L_0166C
+        b       move_l_reg_mem_23
         addco.  data, d6, zero                          // 2D46  MOVE.L    D6,(d16,A6)
-        b       L_0166C
+        b       move_l_reg_mem_23
         addco.  data, d7, zero                          // 2D47  MOVE.L    D7,(d16,A6)
-        b       L_0166C
+        b       move_l_reg_mem_23
         addco.  data, a0, zero                          // 2D48  MOVE.L    A0,(d16,A6)
-        b       L_0166C
+        b       move_l_reg_mem_23
         addco.  data, a1, zero                          // 2D49  MOVE.L    A1,(d16,A6)
-        b       L_0166C
+        b       move_l_reg_mem_23
         addco.  data, a2, zero                          // 2D4A  MOVE.L    A2,(d16,A6)
-        b       L_0166C
+        b       move_l_reg_mem_23
         addco.  data, a3, zero                          // 2D4B  MOVE.L    A3,(d16,A6)
-        b       L_0166C
+        b       move_l_reg_mem_23
         addco.  data, a4, zero                          // 2D4C  MOVE.L    A4,(d16,A6)
-        b       L_0166C
+        b       move_l_reg_mem_23
         addco.  data, a5, zero                          // 2D4D  MOVE.L    A5,(d16,A6)
-        b       L_0166C
+        b       move_l_reg_mem_23
         addco.  data, a6, zero                          // 2D4E  MOVE.L    A6,(d16,A6)
-        b       L_0166C
+        b       move_l_reg_mem_23
         addco.  data, a7, zero                          // 2D4F  MOVE.L    A7,(d16,A6)
-        b       L_0166C
+        b       move_l_reg_mem_23
         lwz     data, 0(a0)                             // 2D50  MOVE.L    (A0),(d16,A6)
-        b       L_01668
+        b       move_l_ea_mem_36
         lwz     data, 0(a1)                             // 2D51  MOVE.L    (A1),(d16,A6)
-        b       L_01668
+        b       move_l_ea_mem_36
         lwz     data, 0(a2)                             // 2D52  MOVE.L    (A2),(d16,A6)
-        b       L_01668
+        b       move_l_ea_mem_36
         lwz     data, 0(a3)                             // 2D53  MOVE.L    (A3),(d16,A6)
-        b       L_01668
+        b       move_l_ea_mem_36
         lwz     data, 0(a4)                             // 2D54  MOVE.L    (A4),(d16,A6)
-        b       L_01668
+        b       move_l_ea_mem_36
         lwz     data, 0(a5)                             // 2D55  MOVE.L    (A5),(d16,A6)
-        b       L_01668
+        b       move_l_ea_mem_36
         lwz     data, 0(a6)                             // 2D56  MOVE.L    (A6),(d16,A6)
-        b       L_01668
+        b       move_l_ea_mem_36
         lwz     data, 0(a7)                             // 2D57  MOVE.L    (A7),(d16,A6)
-        b       L_01668
-        ori     rtn_addr, code_ptr, L_01668 - cb        // 2D58  MOVE.L    (A0)+,(d16,A6)
-        b       L_00850
-        ori     rtn_addr, code_ptr, L_01668 - cb        // 2D59  MOVE.L    (A1)+,(d16,A6)
-        b       L_008D0
-        ori     rtn_addr, code_ptr, L_01668 - cb        // 2D5A  MOVE.L    (A2)+,(d16,A6)
-        b       L_00950
-        ori     rtn_addr, code_ptr, L_01668 - cb        // 2D5B  MOVE.L    (A3)+,(d16,A6)
-        b       L_009D0
-        ori     rtn_addr, code_ptr, L_01668 - cb        // 2D5C  MOVE.L    (A4)+,(d16,A6)
-        b       L_00A50
-        ori     rtn_addr, code_ptr, L_01668 - cb        // 2D5D  MOVE.L    (A5)+,(d16,A6)
-        b       L_00AD0
-        ori     rtn_addr, code_ptr, L_01668 - cb        // 2D5E  MOVE.L    (A6)+,(d16,A6)
-        b       L_00B50
-        ori     rtn_addr, code_ptr, L_01668 - cb        // 2D5F  MOVE.L    (A7)+,(d16,A6)
-        b       L_00BD0
+        b       move_l_ea_mem_36
+        ori     rtn_addr, code_ptr, move_l_ea_mem_36 - cb  // 2D58  MOVE.L    (A0)+,(d16,A6)
+        b       fea_l_30
+        ori     rtn_addr, code_ptr, move_l_ea_mem_36 - cb  // 2D59  MOVE.L    (A1)+,(d16,A6)
+        b       fea_l_31
+        ori     rtn_addr, code_ptr, move_l_ea_mem_36 - cb  // 2D5A  MOVE.L    (A2)+,(d16,A6)
+        b       fea_l_32
+        ori     rtn_addr, code_ptr, move_l_ea_mem_36 - cb  // 2D5B  MOVE.L    (A3)+,(d16,A6)
+        b       fea_l_33
+        ori     rtn_addr, code_ptr, move_l_ea_mem_36 - cb  // 2D5C  MOVE.L    (A4)+,(d16,A6)
+        b       fea_l_34
+        ori     rtn_addr, code_ptr, move_l_ea_mem_36 - cb  // 2D5D  MOVE.L    (A5)+,(d16,A6)
+        b       fea_l_35
+        ori     rtn_addr, code_ptr, move_l_ea_mem_36 - cb  // 2D5E  MOVE.L    (A6)+,(d16,A6)
+        b       fea_l_36
+        ori     rtn_addr, code_ptr, move_l_ea_mem_36 - cb  // 2D5F  MOVE.L    (A7)+,(d16,A6)
+        b       fea_l_37
         lwzu    data, -4(a0)                            // 2D60  MOVE.L    -(A0),(d16,A6)
-        b       L_01668
+        b       move_l_ea_mem_36
         lwzu    data, -4(a1)                            // 2D61  MOVE.L    -(A1),(d16,A6)
-        b       L_01668
+        b       move_l_ea_mem_36
         lwzu    data, -4(a2)                            // 2D62  MOVE.L    -(A2),(d16,A6)
-        b       L_01668
+        b       move_l_ea_mem_36
         lwzu    data, -4(a3)                            // 2D63  MOVE.L    -(A3),(d16,A6)
-        b       L_01668
+        b       move_l_ea_mem_36
         lwzu    data, -4(a4)                            // 2D64  MOVE.L    -(A4),(d16,A6)
-        b       L_01668
+        b       move_l_ea_mem_36
         lwzu    data, -4(a5)                            // 2D65  MOVE.L    -(A5),(d16,A6)
-        b       L_01668
+        b       move_l_ea_mem_36
         lwzu    data, -4(a6)                            // 2D66  MOVE.L    -(A6),(d16,A6)
-        b       L_01668
+        b       move_l_ea_mem_36
         lwzu    data, -4(a7)                            // 2D67  MOVE.L    -(A7),(d16,A6)
-        b       L_01668
+        b       move_l_ea_mem_36
         lwzx    data, a0, prefetch_data                 // 2D68  MOVE.L    (d16,A0),(d16,A6)
-        b       L_01664
+        b       move_l_mem_mem_36
         lwzx    data, a1, prefetch_data                 // 2D69  MOVE.L    (d16,A1),(d16,A6)
-        b       L_01664
+        b       move_l_mem_mem_36
         lwzx    data, a2, prefetch_data                 // 2D6A  MOVE.L    (d16,A2),(d16,A6)
-        b       L_01664
+        b       move_l_mem_mem_36
         lwzx    data, a3, prefetch_data                 // 2D6B  MOVE.L    (d16,A3),(d16,A6)
-        b       L_01664
+        b       move_l_mem_mem_36
         lwzx    data, a4, prefetch_data                 // 2D6C  MOVE.L    (d16,A4),(d16,A6)
-        b       L_01664
+        b       move_l_mem_mem_36
         lwzx    data, a5, prefetch_data                 // 2D6D  MOVE.L    (d16,A5),(d16,A6)
-        b       L_01664
+        b       move_l_mem_mem_36
         lwzx    data, a6, prefetch_data                 // 2D6E  MOVE.L    (d16,A6),(d16,A6)
-        b       L_01664
+        b       move_l_mem_mem_36
         lwzx    data, a7, prefetch_data                 // 2D6F  MOVE.L    (d16,A7),(d16,A6)
-        b       L_01664
-        ori     rtn_addr, code_ptr, L_01668 - cb        // 2D70  MOVE.L    (d8,A0,Xn),(d16,A6)
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_01668 - cb        // 2D71  MOVE.L    (d8,A1,Xn),(d16,A6)
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_01668 - cb        // 2D72  MOVE.L    (d8,A2,Xn),(d16,A6)
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_01668 - cb        // 2D73  MOVE.L    (d8,A3,Xn),(d16,A6)
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_01668 - cb        // 2D74  MOVE.L    (d8,A4,Xn),(d16,A6)
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_01668 - cb        // 2D75  MOVE.L    (d8,A5,Xn),(d16,A6)
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_01668 - cb        // 2D76  MOVE.L    (d8,A6,Xn),(d16,A6)
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_01668 - cb        // 2D77  MOVE.L    (d8,A7,Xn),(d16,A6)
-        b       L_05C68
+        b       move_l_mem_mem_36
+        ori     rtn_addr, code_ptr, move_l_ea_mem_36 - cb  // 2D70  MOVE.L    (d8,A0,Xn),(d16,A6)
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, move_l_ea_mem_36 - cb  // 2D71  MOVE.L    (d8,A1,Xn),(d16,A6)
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, move_l_ea_mem_36 - cb  // 2D72  MOVE.L    (d8,A2,Xn),(d16,A6)
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, move_l_ea_mem_36 - cb  // 2D73  MOVE.L    (d8,A3,Xn),(d16,A6)
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, move_l_ea_mem_36 - cb  // 2D74  MOVE.L    (d8,A4,Xn),(d16,A6)
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, move_l_ea_mem_36 - cb  // 2D75  MOVE.L    (d8,A5,Xn),(d16,A6)
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, move_l_ea_mem_36 - cb  // 2D76  MOVE.L    (d8,A6,Xn),(d16,A6)
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, move_l_ea_mem_36 - cb  // 2D77  MOVE.L    (d8,A7,Xn),(d16,A6)
+        b       move_add_etc_l_any_any_8
         lwz     data, 0(prefetch_data)                  // 2D78  MOVE.L    (xxx).W,(d16,A6)
-        b       L_01664
-        ori     rtn_addr, code_ptr, L_01668 - cb        // 2D79  MOVE.L    (xxx).L,(d16,A6)
-        b       L_05E8C
+        b       move_l_mem_mem_36
+        ori     rtn_addr, code_ptr, move_l_ea_mem_36 - cb  // 2D79  MOVE.L    (xxx).L,(d16,A6)
+        b       fea_l_71_2
         lwzx    data, pc, prefetch_data                 // 2D7A  MOVE.L    (d16,PC),(d16,A6)
-        b       L_01664
-        ori     rtn_addr, code_ptr, L_01668 - cb        // 2D7B  MOVE.L    (d8,PC,Xn),(d16,A6)
-        b       L_05F08
-        ori     rtn_addr, code_ptr, L_01668 - cb        // 2D7C  MOVE.L    #<data>,(d16,A6)
-        b       L_05F30
+        b       move_l_mem_mem_36
+        ori     rtn_addr, code_ptr, move_l_ea_mem_36 - cb  // 2D7B  MOVE.L    (d8,PC,Xn),(d16,A6)
+        b       fea_l_73
+        ori     rtn_addr, code_ptr, move_l_ea_mem_36 - cb  // 2D7C  MOVE.L    #<data>,(d16,A6)
+        b       fea_l_74
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2D7D  MOVE.L    <ea 7.5>,(d16,A6)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2D7E  MOVE.L    <ea 7.6>,(d16,A6)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2D7F  MOVE.L    <ea 7.7>,(d16,A6)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $2D80-$2DBF --------------------------------------------------------
         addco.  data, d0, zero                          // 2D80  MOVE.L    D0,(d8,A6,Xn)
-        b       L_01690
+        b       move_clr_l_reg_mem_14
         addco.  data, d1, zero                          // 2D81  MOVE.L    D1,(d8,A6,Xn)
-        b       L_01690
+        b       move_clr_l_reg_mem_14
         addco.  data, d2, zero                          // 2D82  MOVE.L    D2,(d8,A6,Xn)
-        b       L_01690
+        b       move_clr_l_reg_mem_14
         addco.  data, d3, zero                          // 2D83  MOVE.L    D3,(d8,A6,Xn)
-        b       L_01690
+        b       move_clr_l_reg_mem_14
         addco.  data, d4, zero                          // 2D84  MOVE.L    D4,(d8,A6,Xn)
-        b       L_01690
+        b       move_clr_l_reg_mem_14
         addco.  data, d5, zero                          // 2D85  MOVE.L    D5,(d8,A6,Xn)
-        b       L_01690
+        b       move_clr_l_reg_mem_14
         addco.  data, d6, zero                          // 2D86  MOVE.L    D6,(d8,A6,Xn)
-        b       L_01690
+        b       move_clr_l_reg_mem_14
         addco.  data, d7, zero                          // 2D87  MOVE.L    D7,(d8,A6,Xn)
-        b       L_01690
+        b       move_clr_l_reg_mem_14
         addco.  data, a0, zero                          // 2D88  MOVE.L    A0,(d8,A6,Xn)
-        b       L_01690
+        b       move_clr_l_reg_mem_14
         addco.  data, a1, zero                          // 2D89  MOVE.L    A1,(d8,A6,Xn)
-        b       L_01690
+        b       move_clr_l_reg_mem_14
         addco.  data, a2, zero                          // 2D8A  MOVE.L    A2,(d8,A6,Xn)
-        b       L_01690
+        b       move_clr_l_reg_mem_14
         addco.  data, a3, zero                          // 2D8B  MOVE.L    A3,(d8,A6,Xn)
-        b       L_01690
+        b       move_clr_l_reg_mem_14
         addco.  data, a4, zero                          // 2D8C  MOVE.L    A4,(d8,A6,Xn)
-        b       L_01690
+        b       move_clr_l_reg_mem_14
         addco.  data, a5, zero                          // 2D8D  MOVE.L    A5,(d8,A6,Xn)
-        b       L_01690
+        b       move_clr_l_reg_mem_14
         addco.  data, a6, zero                          // 2D8E  MOVE.L    A6,(d8,A6,Xn)
-        b       L_01690
+        b       move_clr_l_reg_mem_14
         addco.  data, a7, zero                          // 2D8F  MOVE.L    A7,(d8,A6,Xn)
-        b       L_01690
+        b       move_clr_l_reg_mem_14
         lwz     data, 0(a0)                             // 2D90  MOVE.L    (A0),(d8,A6,Xn)
-        b       L_0168C
+        b       move_l_ea_mem_37
         lwz     data, 0(a1)                             // 2D91  MOVE.L    (A1),(d8,A6,Xn)
-        b       L_0168C
+        b       move_l_ea_mem_37
         lwz     data, 0(a2)                             // 2D92  MOVE.L    (A2),(d8,A6,Xn)
-        b       L_0168C
+        b       move_l_ea_mem_37
         lwz     data, 0(a3)                             // 2D93  MOVE.L    (A3),(d8,A6,Xn)
-        b       L_0168C
+        b       move_l_ea_mem_37
         lwz     data, 0(a4)                             // 2D94  MOVE.L    (A4),(d8,A6,Xn)
-        b       L_0168C
+        b       move_l_ea_mem_37
         lwz     data, 0(a5)                             // 2D95  MOVE.L    (A5),(d8,A6,Xn)
-        b       L_0168C
+        b       move_l_ea_mem_37
         lwz     data, 0(a6)                             // 2D96  MOVE.L    (A6),(d8,A6,Xn)
-        b       L_0168C
+        b       move_l_ea_mem_37
         lwz     data, 0(a7)                             // 2D97  MOVE.L    (A7),(d8,A6,Xn)
-        b       L_0168C
-        ori     rtn_addr, code_ptr, L_0168C - cb        // 2D98  MOVE.L    (A0)+,(d8,A6,Xn)
-        b       L_00850
-        ori     rtn_addr, code_ptr, L_0168C - cb        // 2D99  MOVE.L    (A1)+,(d8,A6,Xn)
-        b       L_008D0
-        ori     rtn_addr, code_ptr, L_0168C - cb        // 2D9A  MOVE.L    (A2)+,(d8,A6,Xn)
-        b       L_00950
-        ori     rtn_addr, code_ptr, L_0168C - cb        // 2D9B  MOVE.L    (A3)+,(d8,A6,Xn)
-        b       L_009D0
-        ori     rtn_addr, code_ptr, L_0168C - cb        // 2D9C  MOVE.L    (A4)+,(d8,A6,Xn)
-        b       L_00A50
-        ori     rtn_addr, code_ptr, L_0168C - cb        // 2D9D  MOVE.L    (A5)+,(d8,A6,Xn)
-        b       L_00AD0
-        ori     rtn_addr, code_ptr, L_0168C - cb        // 2D9E  MOVE.L    (A6)+,(d8,A6,Xn)
-        b       L_00B50
-        ori     rtn_addr, code_ptr, L_0168C - cb        // 2D9F  MOVE.L    (A7)+,(d8,A6,Xn)
-        b       L_00BD0
+        b       move_l_ea_mem_37
+        ori     rtn_addr, code_ptr, move_l_ea_mem_37 - cb  // 2D98  MOVE.L    (A0)+,(d8,A6,Xn)
+        b       fea_l_30
+        ori     rtn_addr, code_ptr, move_l_ea_mem_37 - cb  // 2D99  MOVE.L    (A1)+,(d8,A6,Xn)
+        b       fea_l_31
+        ori     rtn_addr, code_ptr, move_l_ea_mem_37 - cb  // 2D9A  MOVE.L    (A2)+,(d8,A6,Xn)
+        b       fea_l_32
+        ori     rtn_addr, code_ptr, move_l_ea_mem_37 - cb  // 2D9B  MOVE.L    (A3)+,(d8,A6,Xn)
+        b       fea_l_33
+        ori     rtn_addr, code_ptr, move_l_ea_mem_37 - cb  // 2D9C  MOVE.L    (A4)+,(d8,A6,Xn)
+        b       fea_l_34
+        ori     rtn_addr, code_ptr, move_l_ea_mem_37 - cb  // 2D9D  MOVE.L    (A5)+,(d8,A6,Xn)
+        b       fea_l_35
+        ori     rtn_addr, code_ptr, move_l_ea_mem_37 - cb  // 2D9E  MOVE.L    (A6)+,(d8,A6,Xn)
+        b       fea_l_36
+        ori     rtn_addr, code_ptr, move_l_ea_mem_37 - cb  // 2D9F  MOVE.L    (A7)+,(d8,A6,Xn)
+        b       fea_l_37
         lwzu    data, -4(a0)                            // 2DA0  MOVE.L    -(A0),(d8,A6,Xn)
-        b       L_0168C
+        b       move_l_ea_mem_37
         lwzu    data, -4(a1)                            // 2DA1  MOVE.L    -(A1),(d8,A6,Xn)
-        b       L_0168C
+        b       move_l_ea_mem_37
         lwzu    data, -4(a2)                            // 2DA2  MOVE.L    -(A2),(d8,A6,Xn)
-        b       L_0168C
+        b       move_l_ea_mem_37
         lwzu    data, -4(a3)                            // 2DA3  MOVE.L    -(A3),(d8,A6,Xn)
-        b       L_0168C
+        b       move_l_ea_mem_37
         lwzu    data, -4(a4)                            // 2DA4  MOVE.L    -(A4),(d8,A6,Xn)
-        b       L_0168C
+        b       move_l_ea_mem_37
         lwzu    data, -4(a5)                            // 2DA5  MOVE.L    -(A5),(d8,A6,Xn)
-        b       L_0168C
+        b       move_l_ea_mem_37
         lwzu    data, -4(a6)                            // 2DA6  MOVE.L    -(A6),(d8,A6,Xn)
-        b       L_0168C
+        b       move_l_ea_mem_37
         lwzu    data, -4(a7)                            // 2DA7  MOVE.L    -(A7),(d8,A6,Xn)
-        b       L_0168C
+        b       move_l_ea_mem_37
         lwzx    data, a0, prefetch_data                 // 2DA8  MOVE.L    (d16,A0),(d8,A6,Xn)
-        b       L_01688
+        b       move_l_mem_mem_37
         lwzx    data, a1, prefetch_data                 // 2DA9  MOVE.L    (d16,A1),(d8,A6,Xn)
-        b       L_01688
+        b       move_l_mem_mem_37
         lwzx    data, a2, prefetch_data                 // 2DAA  MOVE.L    (d16,A2),(d8,A6,Xn)
-        b       L_01688
+        b       move_l_mem_mem_37
         lwzx    data, a3, prefetch_data                 // 2DAB  MOVE.L    (d16,A3),(d8,A6,Xn)
-        b       L_01688
+        b       move_l_mem_mem_37
         lwzx    data, a4, prefetch_data                 // 2DAC  MOVE.L    (d16,A4),(d8,A6,Xn)
-        b       L_01688
+        b       move_l_mem_mem_37
         lwzx    data, a5, prefetch_data                 // 2DAD  MOVE.L    (d16,A5),(d8,A6,Xn)
-        b       L_01688
+        b       move_l_mem_mem_37
         lwzx    data, a6, prefetch_data                 // 2DAE  MOVE.L    (d16,A6),(d8,A6,Xn)
-        b       L_01688
+        b       move_l_mem_mem_37
         lwzx    data, a7, prefetch_data                 // 2DAF  MOVE.L    (d16,A7),(d8,A6,Xn)
-        b       L_01688
-        ori     rtn_addr, code_ptr, L_0168C - cb        // 2DB0  MOVE.L    (d8,A0,Xn),(d8,A6,Xn)
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_0168C - cb        // 2DB1  MOVE.L    (d8,A1,Xn),(d8,A6,Xn)
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_0168C - cb        // 2DB2  MOVE.L    (d8,A2,Xn),(d8,A6,Xn)
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_0168C - cb        // 2DB3  MOVE.L    (d8,A3,Xn),(d8,A6,Xn)
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_0168C - cb        // 2DB4  MOVE.L    (d8,A4,Xn),(d8,A6,Xn)
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_0168C - cb        // 2DB5  MOVE.L    (d8,A5,Xn),(d8,A6,Xn)
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_0168C - cb        // 2DB6  MOVE.L    (d8,A6,Xn),(d8,A6,Xn)
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_0168C - cb        // 2DB7  MOVE.L    (d8,A7,Xn),(d8,A6,Xn)
-        b       L_05C68
+        b       move_l_mem_mem_37
+        ori     rtn_addr, code_ptr, move_l_ea_mem_37 - cb  // 2DB0  MOVE.L    (d8,A0,Xn),(d8,A6,Xn)
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, move_l_ea_mem_37 - cb  // 2DB1  MOVE.L    (d8,A1,Xn),(d8,A6,Xn)
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, move_l_ea_mem_37 - cb  // 2DB2  MOVE.L    (d8,A2,Xn),(d8,A6,Xn)
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, move_l_ea_mem_37 - cb  // 2DB3  MOVE.L    (d8,A3,Xn),(d8,A6,Xn)
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, move_l_ea_mem_37 - cb  // 2DB4  MOVE.L    (d8,A4,Xn),(d8,A6,Xn)
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, move_l_ea_mem_37 - cb  // 2DB5  MOVE.L    (d8,A5,Xn),(d8,A6,Xn)
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, move_l_ea_mem_37 - cb  // 2DB6  MOVE.L    (d8,A6,Xn),(d8,A6,Xn)
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, move_l_ea_mem_37 - cb  // 2DB7  MOVE.L    (d8,A7,Xn),(d8,A6,Xn)
+        b       move_add_etc_l_any_any_8
         lwz     data, 0(prefetch_data)                  // 2DB8  MOVE.L    (xxx).W,(d8,A6,Xn)
-        b       L_01688
-        ori     rtn_addr, code_ptr, L_0168C - cb        // 2DB9  MOVE.L    (xxx).L,(d8,A6,Xn)
-        b       L_05E8C
+        b       move_l_mem_mem_37
+        ori     rtn_addr, code_ptr, move_l_ea_mem_37 - cb  // 2DB9  MOVE.L    (xxx).L,(d8,A6,Xn)
+        b       fea_l_71_2
         lwzx    data, pc, prefetch_data                 // 2DBA  MOVE.L    (d16,PC),(d8,A6,Xn)
-        b       L_01688
-        ori     rtn_addr, code_ptr, L_0168C - cb        // 2DBB  MOVE.L    (d8,PC,Xn),(d8,A6,Xn)
-        b       L_05F08
-        ori     rtn_addr, code_ptr, L_0168C - cb        // 2DBC  MOVE.L    #<data>,(d8,A6,Xn)
-        b       L_05F30
+        b       move_l_mem_mem_37
+        ori     rtn_addr, code_ptr, move_l_ea_mem_37 - cb  // 2DBB  MOVE.L    (d8,PC,Xn),(d8,A6,Xn)
+        b       fea_l_73
+        ori     rtn_addr, code_ptr, move_l_ea_mem_37 - cb  // 2DBC  MOVE.L    #<data>,(d8,A6,Xn)
+        b       fea_l_74
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2DBD  MOVE.L    <ea 7.5>,(d8,A6,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2DBE  MOVE.L    <ea 7.6>,(d8,A6,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2DBF  MOVE.L    <ea 7.7>,(d8,A6,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $2DC0-$2DFF --------------------------------------------------------
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2DC0  MOVE.L    D0,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2DC1  MOVE.L    D1,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2DC2  MOVE.L    D2,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2DC3  MOVE.L    D3,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2DC4  MOVE.L    D4,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2DC5  MOVE.L    D5,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2DC6  MOVE.L    D6,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2DC7  MOVE.L    D7,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2DC8  MOVE.L    A0,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2DC9  MOVE.L    A1,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2DCA  MOVE.L    A2,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2DCB  MOVE.L    A3,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2DCC  MOVE.L    A4,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2DCD  MOVE.L    A5,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2DCE  MOVE.L    A6,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2DCF  MOVE.L    A7,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2DD0  MOVE.L    (A0),<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2DD1  MOVE.L    (A1),<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2DD2  MOVE.L    (A2),<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2DD3  MOVE.L    (A3),<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2DD4  MOVE.L    (A4),<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2DD5  MOVE.L    (A5),<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2DD6  MOVE.L    (A6),<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2DD7  MOVE.L    (A7),<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2DD8  MOVE.L    (A0)+,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2DD9  MOVE.L    (A1)+,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2DDA  MOVE.L    (A2)+,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2DDB  MOVE.L    (A3)+,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2DDC  MOVE.L    (A4)+,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2DDD  MOVE.L    (A5)+,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2DDE  MOVE.L    (A6)+,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2DDF  MOVE.L    (A7)+,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2DE0  MOVE.L    -(A0),<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2DE1  MOVE.L    -(A1),<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2DE2  MOVE.L    -(A2),<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2DE3  MOVE.L    -(A3),<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2DE4  MOVE.L    -(A4),<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2DE5  MOVE.L    -(A5),<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2DE6  MOVE.L    -(A6),<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2DE7  MOVE.L    -(A7),<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2DE8  MOVE.L    (d16,A0),<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2DE9  MOVE.L    (d16,A1),<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2DEA  MOVE.L    (d16,A2),<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2DEB  MOVE.L    (d16,A3),<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2DEC  MOVE.L    (d16,A4),<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2DED  MOVE.L    (d16,A5),<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2DEE  MOVE.L    (d16,A6),<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2DEF  MOVE.L    (d16,A7),<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2DF0  MOVE.L    (d8,A0,Xn),<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2DF1  MOVE.L    (d8,A1,Xn),<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2DF2  MOVE.L    (d8,A2,Xn),<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2DF3  MOVE.L    (d8,A3,Xn),<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2DF4  MOVE.L    (d8,A4,Xn),<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2DF5  MOVE.L    (d8,A5,Xn),<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2DF6  MOVE.L    (d8,A6,Xn),<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2DF7  MOVE.L    (d8,A7,Xn),<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2DF8  MOVE.L    (xxx).W,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2DF9  MOVE.L    (xxx).L,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2DFA  MOVE.L    (d16,PC),<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2DFB  MOVE.L    (d8,PC,Xn),<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2DFC  MOVE.L    #<data>,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2DFD  MOVE.L    <ea 7.5>,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2DFE  MOVE.L    <ea 7.6>,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2DFF  MOVE.L    <ea 7.7>,<ea 7.6>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $2E00-$2E3F --------------------------------------------------------
         addco.  d7, d0, zero                            // 2E00  MOVE.L    D0,D7
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d7, d1, zero                            // 2E01  MOVE.L    D1,D7
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d7, d2, zero                            // 2E02  MOVE.L    D2,D7
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d7, d3, zero                            // 2E03  MOVE.L    D3,D7
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d7, d4, zero                            // 2E04  MOVE.L    D4,D7
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d7, d5, zero                            // 2E05  MOVE.L    D5,D7
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d7, d6, zero                            // 2E06  MOVE.L    D6,D7
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d7, d7, zero                            // 2E07  MOVE.L    D7,D7
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d7, a0, zero                            // 2E08  MOVE.L    A0,D7
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d7, a1, zero                            // 2E09  MOVE.L    A1,D7
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d7, a2, zero                            // 2E0A  MOVE.L    A2,D7
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d7, a3, zero                            // 2E0B  MOVE.L    A3,D7
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d7, a4, zero                            // 2E0C  MOVE.L    A4,D7
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d7, a5, zero                            // 2E0D  MOVE.L    A5,D7
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d7, a6, zero                            // 2E0E  MOVE.L    A6,D7
-        b       L_06084
+        b       move_add_etc_any_any
         addco.  d7, a7, zero                            // 2E0F  MOVE.L    A7,D7
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     data, 0(a0)                             // 2E10  MOVE.L    (A0),D7
-        b       L_00FA8
+        b       move_l_mem_d7
         lwz     data, 0(a1)                             // 2E11  MOVE.L    (A1),D7
-        b       L_00FA8
+        b       move_l_mem_d7
         lwz     data, 0(a2)                             // 2E12  MOVE.L    (A2),D7
-        b       L_00FA8
+        b       move_l_mem_d7
         lwz     data, 0(a3)                             // 2E13  MOVE.L    (A3),D7
-        b       L_00FA8
+        b       move_l_mem_d7
         lwz     data, 0(a4)                             // 2E14  MOVE.L    (A4),D7
-        b       L_00FA8
+        b       move_l_mem_d7
         lwz     data, 0(a5)                             // 2E15  MOVE.L    (A5),D7
-        b       L_00FA8
+        b       move_l_mem_d7
         lwz     data, 0(a6)                             // 2E16  MOVE.L    (A6),D7
-        b       L_00FA8
+        b       move_l_mem_d7
         lwz     data, 0(a7)                             // 2E17  MOVE.L    (A7),D7
-        b       L_00FA8
-        ori     rtn_addr, code_ptr, L_00FA8 - cb        // 2E18  MOVE.L    (A0)+,D7
-        b       L_00850
-        ori     rtn_addr, code_ptr, L_00FA8 - cb        // 2E19  MOVE.L    (A1)+,D7
-        b       L_008D0
-        ori     rtn_addr, code_ptr, L_00FA8 - cb        // 2E1A  MOVE.L    (A2)+,D7
-        b       L_00950
-        ori     rtn_addr, code_ptr, L_00FA8 - cb        // 2E1B  MOVE.L    (A3)+,D7
-        b       L_009D0
-        ori     rtn_addr, code_ptr, L_00FA8 - cb        // 2E1C  MOVE.L    (A4)+,D7
-        b       L_00A50
-        ori     rtn_addr, code_ptr, L_00FA8 - cb        // 2E1D  MOVE.L    (A5)+,D7
-        b       L_00AD0
-        ori     rtn_addr, code_ptr, L_00FA8 - cb        // 2E1E  MOVE.L    (A6)+,D7
-        b       L_00B50
+        b       move_l_mem_d7
+        ori     rtn_addr, code_ptr, move_l_mem_d7 - cb  // 2E18  MOVE.L    (A0)+,D7
+        b       fea_l_30
+        ori     rtn_addr, code_ptr, move_l_mem_d7 - cb  // 2E19  MOVE.L    (A1)+,D7
+        b       fea_l_31
+        ori     rtn_addr, code_ptr, move_l_mem_d7 - cb  // 2E1A  MOVE.L    (A2)+,D7
+        b       fea_l_32
+        ori     rtn_addr, code_ptr, move_l_mem_d7 - cb  // 2E1B  MOVE.L    (A3)+,D7
+        b       fea_l_33
+        ori     rtn_addr, code_ptr, move_l_mem_d7 - cb  // 2E1C  MOVE.L    (A4)+,D7
+        b       fea_l_34
+        ori     rtn_addr, code_ptr, move_l_mem_d7 - cb  // 2E1D  MOVE.L    (A5)+,D7
+        b       fea_l_35
+        ori     rtn_addr, code_ptr, move_l_mem_d7 - cb  // 2E1E  MOVE.L    (A6)+,D7
+        b       fea_l_36
         lwz     d7, 0(a7)                               // 2E1F  MOVE.L    (A7)+,D7
-        b       L_08F20
+        b       move_l_mem_d7_3
         lwzu    data, -4(a0)                            // 2E20  MOVE.L    -(A0),D7
-        b       L_00FA8
+        b       move_l_mem_d7
         lwzu    data, -4(a1)                            // 2E21  MOVE.L    -(A1),D7
-        b       L_00FA8
+        b       move_l_mem_d7
         lwzu    data, -4(a2)                            // 2E22  MOVE.L    -(A2),D7
-        b       L_00FA8
+        b       move_l_mem_d7
         lwzu    data, -4(a3)                            // 2E23  MOVE.L    -(A3),D7
-        b       L_00FA8
+        b       move_l_mem_d7
         lwzu    data, -4(a4)                            // 2E24  MOVE.L    -(A4),D7
-        b       L_00FA8
+        b       move_l_mem_d7
         lwzu    data, -4(a5)                            // 2E25  MOVE.L    -(A5),D7
-        b       L_00FA8
+        b       move_l_mem_d7
         lwzu    data, -4(a6)                            // 2E26  MOVE.L    -(A6),D7
-        b       L_00FA8
+        b       move_l_mem_d7
         lwzu    data, -4(a7)                            // 2E27  MOVE.L    -(A7),D7
-        b       L_00FA8
+        b       move_l_mem_d7
         lwzx    data, a0, prefetch_data                 // 2E28  MOVE.L    (d16,A0),D7
-        b       L_00FC0
+        b       move_l_mem_d7_2
         lwzx    data, a1, prefetch_data                 // 2E29  MOVE.L    (d16,A1),D7
-        b       L_00FC0
+        b       move_l_mem_d7_2
         lwzx    data, a2, prefetch_data                 // 2E2A  MOVE.L    (d16,A2),D7
-        b       L_00FC0
+        b       move_l_mem_d7_2
         lwzx    data, a3, prefetch_data                 // 2E2B  MOVE.L    (d16,A3),D7
-        b       L_00FC0
+        b       move_l_mem_d7_2
         lwzx    data, a4, prefetch_data                 // 2E2C  MOVE.L    (d16,A4),D7
-        b       L_00FC0
+        b       move_l_mem_d7_2
         lwzx    data, a5, prefetch_data                 // 2E2D  MOVE.L    (d16,A5),D7
-        b       L_00FC0
+        b       move_l_mem_d7_2
         lwzx    data, a6, prefetch_data                 // 2E2E  MOVE.L    (d16,A6),D7
-        b       L_00FC0
+        b       move_l_mem_d7_2
         lwzx    data, a7, prefetch_data                 // 2E2F  MOVE.L    (d16,A7),D7
-        b       L_00FC0
-        ori     rtn_addr, code_ptr, L_00FA8 - cb        // 2E30  MOVE.L    (d8,A0,Xn),D7
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_00FA8 - cb        // 2E31  MOVE.L    (d8,A1,Xn),D7
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_00FA8 - cb        // 2E32  MOVE.L    (d8,A2,Xn),D7
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_00FA8 - cb        // 2E33  MOVE.L    (d8,A3,Xn),D7
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_00FA8 - cb        // 2E34  MOVE.L    (d8,A4,Xn),D7
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_00FA8 - cb        // 2E35  MOVE.L    (d8,A5,Xn),D7
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_00FA8 - cb        // 2E36  MOVE.L    (d8,A6,Xn),D7
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_00FA8 - cb        // 2E37  MOVE.L    (d8,A7,Xn),D7
-        b       L_05C68
+        b       move_l_mem_d7_2
+        ori     rtn_addr, code_ptr, move_l_mem_d7 - cb  // 2E30  MOVE.L    (d8,A0,Xn),D7
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, move_l_mem_d7 - cb  // 2E31  MOVE.L    (d8,A1,Xn),D7
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, move_l_mem_d7 - cb  // 2E32  MOVE.L    (d8,A2,Xn),D7
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, move_l_mem_d7 - cb  // 2E33  MOVE.L    (d8,A3,Xn),D7
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, move_l_mem_d7 - cb  // 2E34  MOVE.L    (d8,A4,Xn),D7
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, move_l_mem_d7 - cb  // 2E35  MOVE.L    (d8,A5,Xn),D7
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, move_l_mem_d7 - cb  // 2E36  MOVE.L    (d8,A6,Xn),D7
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, move_l_mem_d7 - cb  // 2E37  MOVE.L    (d8,A7,Xn),D7
+        b       move_add_etc_l_any_any_8
         lwz     data, 0(prefetch_data)                  // 2E38  MOVE.L    (xxx).W,D7
-        b       L_00FC0
-        ori     rtn_addr, code_ptr, L_00FA8 - cb        // 2E39  MOVE.L    (xxx).L,D7
-        b       L_05E8C
+        b       move_l_mem_d7_2
+        ori     rtn_addr, code_ptr, move_l_mem_d7 - cb  // 2E39  MOVE.L    (xxx).L,D7
+        b       fea_l_71_2
         lwzx    data, pc, prefetch_data                 // 2E3A  MOVE.L    (d16,PC),D7
-        b       L_00FC0
-        ori     rtn_addr, code_ptr, L_00FA8 - cb        // 2E3B  MOVE.L    (d8,PC,Xn),D7
-        b       L_05F08
+        b       move_l_mem_d7_2
+        ori     rtn_addr, code_ptr, move_l_mem_d7 - cb  // 2E3B  MOVE.L    (d8,PC,Xn),D7
+        b       fea_l_73
         lhau    prefetch_data, 4(pc)                    // 2E3C  MOVE.L    #<data>,D7
-        b       L_00FA4
+        b       move_l_imm_d7
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2E3D  MOVE.L    <ea 7.5>,D7   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2E3E  MOVE.L    <ea 7.6>,D7   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2E3F  MOVE.L    <ea 7.7>,D7   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $2E40-$2E7F --------------------------------------------------------
         mr      a7, d0                                  // 2E40  MOVEA.L   D0,A7
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a7, d1                                  // 2E41  MOVEA.L   D1,A7
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a7, d2                                  // 2E42  MOVEA.L   D2,A7
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a7, d3                                  // 2E43  MOVEA.L   D3,A7
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a7, d4                                  // 2E44  MOVEA.L   D4,A7
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a7, d5                                  // 2E45  MOVEA.L   D5,A7
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a7, d6                                  // 2E46  MOVEA.L   D6,A7
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a7, d7                                  // 2E47  MOVEA.L   D7,A7
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a7, a0                                  // 2E48  MOVEA.L   A0,A7
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a7, a1                                  // 2E49  MOVEA.L   A1,A7
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a7, a2                                  // 2E4A  MOVEA.L   A2,A7
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a7, a3                                  // 2E4B  MOVEA.L   A3,A7
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a7, a4                                  // 2E4C  MOVEA.L   A4,A7
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a7, a5                                  // 2E4D  MOVEA.L   A5,A7
-        b       L_06084
+        b       move_add_etc_any_any
         mr      a7, a6                                  // 2E4E  MOVEA.L   A6,A7
-        b       L_06084
+        b       move_add_etc_any_any
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // 2E4F  MOVEA.L   A7,A7
-        b       L_06088
+        b       exg_move_etc_any_reg
         lwz     a7, 0(a0)                               // 2E50  MOVEA.L   (A0),A7
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     a7, 0(a1)                               // 2E51  MOVEA.L   (A1),A7
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     a7, 0(a2)                               // 2E52  MOVEA.L   (A2),A7
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     a7, 0(a3)                               // 2E53  MOVEA.L   (A3),A7
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     a7, 0(a4)                               // 2E54  MOVEA.L   (A4),A7
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     a7, 0(a5)                               // 2E55  MOVEA.L   (A5),A7
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     a7, 0(a6)                               // 2E56  MOVEA.L   (A6),A7
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     a7, 0(a7)                               // 2E57  MOVEA.L   (A7),A7
-        b       L_06084
-        ori     rtn_addr, code_ptr, L_033C0 - cb        // 2E58  MOVEA.L   (A0)+,A7
-        b       L_00850
-        ori     rtn_addr, code_ptr, L_033C0 - cb        // 2E59  MOVEA.L   (A1)+,A7
-        b       L_008D0
-        ori     rtn_addr, code_ptr, L_033C0 - cb        // 2E5A  MOVEA.L   (A2)+,A7
-        b       L_00950
-        ori     rtn_addr, code_ptr, L_033C0 - cb        // 2E5B  MOVEA.L   (A3)+,A7
-        b       L_009D0
-        ori     rtn_addr, code_ptr, L_033C0 - cb        // 2E5C  MOVEA.L   (A4)+,A7
-        b       L_00A50
-        ori     rtn_addr, code_ptr, L_033C0 - cb        // 2E5D  MOVEA.L   (A5)+,A7
-        b       L_00AD0
-        ori     rtn_addr, code_ptr, L_033C0 - cb        // 2E5E  MOVEA.L   (A6)+,A7
-        b       L_00B50
+        b       move_add_etc_any_any
+        ori     rtn_addr, code_ptr, movea_mem_a7 - cb   // 2E58  MOVEA.L   (A0)+,A7
+        b       fea_l_30
+        ori     rtn_addr, code_ptr, movea_mem_a7 - cb   // 2E59  MOVEA.L   (A1)+,A7
+        b       fea_l_31
+        ori     rtn_addr, code_ptr, movea_mem_a7 - cb   // 2E5A  MOVEA.L   (A2)+,A7
+        b       fea_l_32
+        ori     rtn_addr, code_ptr, movea_mem_a7 - cb   // 2E5B  MOVEA.L   (A3)+,A7
+        b       fea_l_33
+        ori     rtn_addr, code_ptr, movea_mem_a7 - cb   // 2E5C  MOVEA.L   (A4)+,A7
+        b       fea_l_34
+        ori     rtn_addr, code_ptr, movea_mem_a7 - cb   // 2E5D  MOVEA.L   (A5)+,A7
+        b       fea_l_35
+        ori     rtn_addr, code_ptr, movea_mem_a7 - cb   // 2E5E  MOVEA.L   (A6)+,A7
+        b       fea_l_36
         lwz     a7, 0(a7)                               // 2E5F  MOVEA.L   (A7)+,A7
-        b       L_06084
+        b       move_add_etc_any_any
         lwzu    a7, -4(a0)                              // 2E60  MOVEA.L   -(A0),A7
-        b       L_06084
+        b       move_add_etc_any_any
         lwzu    a7, -4(a1)                              // 2E61  MOVEA.L   -(A1),A7
-        b       L_06084
+        b       move_add_etc_any_any
         lwzu    a7, -4(a2)                              // 2E62  MOVEA.L   -(A2),A7
-        b       L_06084
+        b       move_add_etc_any_any
         lwzu    a7, -4(a3)                              // 2E63  MOVEA.L   -(A3),A7
-        b       L_06084
+        b       move_add_etc_any_any
         lwzu    a7, -4(a4)                              // 2E64  MOVEA.L   -(A4),A7
-        b       L_06084
+        b       move_add_etc_any_any
         lwzu    a7, -4(a5)                              // 2E65  MOVEA.L   -(A5),A7
-        b       L_06084
+        b       move_add_etc_any_any
         lwzu    a7, -4(a6)                              // 2E66  MOVEA.L   -(A6),A7
-        b       L_06084
+        b       move_add_etc_any_any
         lwz     a7, -4(a7)                              // 2E67  MOVEA.L   -(A7),A7
-        b       L_06084
+        b       move_add_etc_any_any
         lwzx    a7, a0, prefetch_data                   // 2E68  MOVEA.L   (d16,A0),A7
-        b       L_06080
+        b       move_lea_etc_ea_any
         lwzx    a7, a1, prefetch_data                   // 2E69  MOVEA.L   (d16,A1),A7
-        b       L_06080
+        b       move_lea_etc_ea_any
         lwzx    a7, a2, prefetch_data                   // 2E6A  MOVEA.L   (d16,A2),A7
-        b       L_06080
+        b       move_lea_etc_ea_any
         lwzx    a7, a3, prefetch_data                   // 2E6B  MOVEA.L   (d16,A3),A7
-        b       L_06080
+        b       move_lea_etc_ea_any
         lwzx    a7, a4, prefetch_data                   // 2E6C  MOVEA.L   (d16,A4),A7
-        b       L_06080
+        b       move_lea_etc_ea_any
         lwzx    a7, a5, prefetch_data                   // 2E6D  MOVEA.L   (d16,A5),A7
-        b       L_06080
+        b       move_lea_etc_ea_any
         lwzx    a7, a6, prefetch_data                   // 2E6E  MOVEA.L   (d16,A6),A7
-        b       L_06080
+        b       move_lea_etc_ea_any
         lwzx    a7, a7, prefetch_data                   // 2E6F  MOVEA.L   (d16,A7),A7
-        b       L_06080
-        ori     rtn_addr, code_ptr, L_033C0 - cb        // 2E70  MOVEA.L   (d8,A0,Xn),A7
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_033C0 - cb        // 2E71  MOVEA.L   (d8,A1,Xn),A7
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_033C0 - cb        // 2E72  MOVEA.L   (d8,A2,Xn),A7
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_033C0 - cb        // 2E73  MOVEA.L   (d8,A3,Xn),A7
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_033C0 - cb        // 2E74  MOVEA.L   (d8,A4,Xn),A7
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_033C0 - cb        // 2E75  MOVEA.L   (d8,A5,Xn),A7
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_033C0 - cb        // 2E76  MOVEA.L   (d8,A6,Xn),A7
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_033C0 - cb        // 2E77  MOVEA.L   (d8,A7,Xn),A7
-        b       L_05C68
+        b       move_lea_etc_ea_any
+        ori     rtn_addr, code_ptr, movea_mem_a7 - cb   // 2E70  MOVEA.L   (d8,A0,Xn),A7
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, movea_mem_a7 - cb   // 2E71  MOVEA.L   (d8,A1,Xn),A7
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, movea_mem_a7 - cb   // 2E72  MOVEA.L   (d8,A2,Xn),A7
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, movea_mem_a7 - cb   // 2E73  MOVEA.L   (d8,A3,Xn),A7
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, movea_mem_a7 - cb   // 2E74  MOVEA.L   (d8,A4,Xn),A7
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, movea_mem_a7 - cb   // 2E75  MOVEA.L   (d8,A5,Xn),A7
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, movea_mem_a7 - cb   // 2E76  MOVEA.L   (d8,A6,Xn),A7
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, movea_mem_a7 - cb   // 2E77  MOVEA.L   (d8,A7,Xn),A7
+        b       move_add_etc_l_any_any_8
         lwz     a7, 0(prefetch_data)                    // 2E78  MOVEA.L   (xxx).W,A7
-        b       L_06080
-        ori     rtn_addr, code_ptr, L_033C0 - cb        // 2E79  MOVEA.L   (xxx).L,A7
-        b       L_05E8C
+        b       move_lea_etc_ea_any
+        ori     rtn_addr, code_ptr, movea_mem_a7 - cb   // 2E79  MOVEA.L   (xxx).L,A7
+        b       fea_l_71_2
         lwzx    a7, pc, prefetch_data                   // 2E7A  MOVEA.L   (d16,PC),A7
-        b       L_06080
-        ori     rtn_addr, code_ptr, L_033C0 - cb        // 2E7B  MOVEA.L   (d8,PC,Xn),A7
-        b       L_05F08
+        b       move_lea_etc_ea_any
+        ori     rtn_addr, code_ptr, movea_mem_a7 - cb   // 2E7B  MOVEA.L   (d8,PC,Xn),A7
+        b       fea_l_73
         lwz     a7, 0(pc)                               // 2E7C  MOVEA.L   #<data>,A7
-        b       L_060A0
+        b       move_lea_ea_an
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2E7D  MOVEA.L   <ea 7.5>,A7   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2E7E  MOVEA.L   <ea 7.6>,A7   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2E7F  MOVEA.L   <ea 7.7>,A7   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $2E80-$2EBF --------------------------------------------------------
         addco.  data, d0, zero                          // 2E80  MOVE.L    D0,(A7)
-        b       L_011E8
+        b       move_l_reg_mem_8
         addco.  data, d1, zero                          // 2E81  MOVE.L    D1,(A7)
-        b       L_011E8
+        b       move_l_reg_mem_8
         addco.  data, d2, zero                          // 2E82  MOVE.L    D2,(A7)
-        b       L_011E8
+        b       move_l_reg_mem_8
         addco.  data, d3, zero                          // 2E83  MOVE.L    D3,(A7)
-        b       L_011E8
+        b       move_l_reg_mem_8
         addco.  data, d4, zero                          // 2E84  MOVE.L    D4,(A7)
-        b       L_011E8
+        b       move_l_reg_mem_8
         addco.  data, d5, zero                          // 2E85  MOVE.L    D5,(A7)
-        b       L_011E8
+        b       move_l_reg_mem_8
         addco.  data, d6, zero                          // 2E86  MOVE.L    D6,(A7)
-        b       L_011E8
+        b       move_l_reg_mem_8
         addco.  data, d7, zero                          // 2E87  MOVE.L    D7,(A7)
-        b       L_011E8
+        b       move_l_reg_mem_8
         addco.  data, a0, zero                          // 2E88  MOVE.L    A0,(A7)
-        b       L_011E8
+        b       move_l_reg_mem_8
         addco.  data, a1, zero                          // 2E89  MOVE.L    A1,(A7)
-        b       L_011E8
+        b       move_l_reg_mem_8
         addco.  data, a2, zero                          // 2E8A  MOVE.L    A2,(A7)
-        b       L_011E8
+        b       move_l_reg_mem_8
         addco.  data, a3, zero                          // 2E8B  MOVE.L    A3,(A7)
-        b       L_011E8
+        b       move_l_reg_mem_8
         addco.  data, a4, zero                          // 2E8C  MOVE.L    A4,(A7)
-        b       L_011E8
+        b       move_l_reg_mem_8
         addco.  data, a5, zero                          // 2E8D  MOVE.L    A5,(A7)
-        b       L_011E8
+        b       move_l_reg_mem_8
         addco.  data, a6, zero                          // 2E8E  MOVE.L    A6,(A7)
-        b       L_011E8
+        b       move_l_reg_mem_8
         addco.  data, a7, zero                          // 2E8F  MOVE.L    A7,(A7)
-        b       L_011E8
+        b       move_l_reg_mem_8
         lwz     data, 0(a0)                             // 2E90  MOVE.L    (A0),(A7)
-        b       L_011E4
+        b       move_l_ea_mem_8
         lwz     data, 0(a1)                             // 2E91  MOVE.L    (A1),(A7)
-        b       L_011E4
+        b       move_l_ea_mem_8
         lwz     data, 0(a2)                             // 2E92  MOVE.L    (A2),(A7)
-        b       L_011E4
+        b       move_l_ea_mem_8
         lwz     data, 0(a3)                             // 2E93  MOVE.L    (A3),(A7)
-        b       L_011E4
+        b       move_l_ea_mem_8
         lwz     data, 0(a4)                             // 2E94  MOVE.L    (A4),(A7)
-        b       L_011E4
+        b       move_l_ea_mem_8
         lwz     data, 0(a5)                             // 2E95  MOVE.L    (A5),(A7)
-        b       L_011E4
+        b       move_l_ea_mem_8
         lwz     data, 0(a6)                             // 2E96  MOVE.L    (A6),(A7)
-        b       L_011E4
+        b       move_l_ea_mem_8
         lwz     data, 0(a7)                             // 2E97  MOVE.L    (A7),(A7)
-        b       L_06144
-        ori     rtn_addr, code_ptr, L_011E4 - cb        // 2E98  MOVE.L    (A0)+,(A7)
-        b       L_00850
-        ori     rtn_addr, code_ptr, L_011E4 - cb        // 2E99  MOVE.L    (A1)+,(A7)
-        b       L_008D0
-        ori     rtn_addr, code_ptr, L_011E4 - cb        // 2E9A  MOVE.L    (A2)+,(A7)
-        b       L_00950
-        ori     rtn_addr, code_ptr, L_011E4 - cb        // 2E9B  MOVE.L    (A3)+,(A7)
-        b       L_009D0
-        ori     rtn_addr, code_ptr, L_011E4 - cb        // 2E9C  MOVE.L    (A4)+,(A7)
-        b       L_00A50
-        ori     rtn_addr, code_ptr, L_011E4 - cb        // 2E9D  MOVE.L    (A5)+,(A7)
-        b       L_00AD0
-        ori     rtn_addr, code_ptr, L_011E4 - cb        // 2E9E  MOVE.L    (A6)+,(A7)
-        b       L_00B50
+        b       tst_ea
+        ori     rtn_addr, code_ptr, move_l_ea_mem_8 - cb  // 2E98  MOVE.L    (A0)+,(A7)
+        b       fea_l_30
+        ori     rtn_addr, code_ptr, move_l_ea_mem_8 - cb  // 2E99  MOVE.L    (A1)+,(A7)
+        b       fea_l_31
+        ori     rtn_addr, code_ptr, move_l_ea_mem_8 - cb  // 2E9A  MOVE.L    (A2)+,(A7)
+        b       fea_l_32
+        ori     rtn_addr, code_ptr, move_l_ea_mem_8 - cb  // 2E9B  MOVE.L    (A3)+,(A7)
+        b       fea_l_33
+        ori     rtn_addr, code_ptr, move_l_ea_mem_8 - cb  // 2E9C  MOVE.L    (A4)+,(A7)
+        b       fea_l_34
+        ori     rtn_addr, code_ptr, move_l_ea_mem_8 - cb  // 2E9D  MOVE.L    (A5)+,(A7)
+        b       fea_l_35
+        ori     rtn_addr, code_ptr, move_l_ea_mem_8 - cb  // 2E9E  MOVE.L    (A6)+,(A7)
+        b       fea_l_36
         cmpwi   cr7, prefetch_data, 0x4E75              // 2E9F  MOVE.L    (A7)+,(A7)
-        b       L_09460
+        b       move_l_mem_mem_48
         lwzu    data, -4(a0)                            // 2EA0  MOVE.L    -(A0),(A7)
-        b       L_011E4
+        b       move_l_ea_mem_8
         lwzu    data, -4(a1)                            // 2EA1  MOVE.L    -(A1),(A7)
-        b       L_011E4
+        b       move_l_ea_mem_8
         lwzu    data, -4(a2)                            // 2EA2  MOVE.L    -(A2),(A7)
-        b       L_011E4
+        b       move_l_ea_mem_8
         lwzu    data, -4(a3)                            // 2EA3  MOVE.L    -(A3),(A7)
-        b       L_011E4
+        b       move_l_ea_mem_8
         lwzu    data, -4(a4)                            // 2EA4  MOVE.L    -(A4),(A7)
-        b       L_011E4
+        b       move_l_ea_mem_8
         lwzu    data, -4(a5)                            // 2EA5  MOVE.L    -(A5),(A7)
-        b       L_011E4
+        b       move_l_ea_mem_8
         lwzu    data, -4(a6)                            // 2EA6  MOVE.L    -(A6),(A7)
-        b       L_011E4
+        b       move_l_ea_mem_8
         lwzu    data, -4(a7)                            // 2EA7  MOVE.L    -(A7),(A7)
-        b       L_06144
+        b       tst_ea
         lwzx    data, a0, prefetch_data                 // 2EA8  MOVE.L    (d16,A0),(A7)
-        b       L_011E0
+        b       move_l_mem_mem_8
         lwzx    data, a1, prefetch_data                 // 2EA9  MOVE.L    (d16,A1),(A7)
-        b       L_011E0
+        b       move_l_mem_mem_8
         lwzx    data, a2, prefetch_data                 // 2EAA  MOVE.L    (d16,A2),(A7)
-        b       L_011E0
+        b       move_l_mem_mem_8
         lwzx    data, a3, prefetch_data                 // 2EAB  MOVE.L    (d16,A3),(A7)
-        b       L_011E0
+        b       move_l_mem_mem_8
         lwzx    data, a4, prefetch_data                 // 2EAC  MOVE.L    (d16,A4),(A7)
-        b       L_011E0
+        b       move_l_mem_mem_8
         lwzx    data, a5, prefetch_data                 // 2EAD  MOVE.L    (d16,A5),(A7)
-        b       L_011E0
+        b       move_l_mem_mem_8
         lwzx    data, a6, prefetch_data                 // 2EAE  MOVE.L    (d16,A6),(A7)
-        b       L_011E0
+        b       move_l_mem_mem_8
         lwzx    data, a7, prefetch_data                 // 2EAF  MOVE.L    (d16,A7),(A7)
-        b       L_011E0
-        ori     rtn_addr, code_ptr, L_011E4 - cb        // 2EB0  MOVE.L    (d8,A0,Xn),(A7)
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_011E4 - cb        // 2EB1  MOVE.L    (d8,A1,Xn),(A7)
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_011E4 - cb        // 2EB2  MOVE.L    (d8,A2,Xn),(A7)
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_011E4 - cb        // 2EB3  MOVE.L    (d8,A3,Xn),(A7)
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_011E4 - cb        // 2EB4  MOVE.L    (d8,A4,Xn),(A7)
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_011E4 - cb        // 2EB5  MOVE.L    (d8,A5,Xn),(A7)
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_011E4 - cb        // 2EB6  MOVE.L    (d8,A6,Xn),(A7)
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_011E4 - cb        // 2EB7  MOVE.L    (d8,A7,Xn),(A7)
-        b       L_05C68
+        b       move_l_mem_mem_8
+        ori     rtn_addr, code_ptr, move_l_ea_mem_8 - cb  // 2EB0  MOVE.L    (d8,A0,Xn),(A7)
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, move_l_ea_mem_8 - cb  // 2EB1  MOVE.L    (d8,A1,Xn),(A7)
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, move_l_ea_mem_8 - cb  // 2EB2  MOVE.L    (d8,A2,Xn),(A7)
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, move_l_ea_mem_8 - cb  // 2EB3  MOVE.L    (d8,A3,Xn),(A7)
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, move_l_ea_mem_8 - cb  // 2EB4  MOVE.L    (d8,A4,Xn),(A7)
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, move_l_ea_mem_8 - cb  // 2EB5  MOVE.L    (d8,A5,Xn),(A7)
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, move_l_ea_mem_8 - cb  // 2EB6  MOVE.L    (d8,A6,Xn),(A7)
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, move_l_ea_mem_8 - cb  // 2EB7  MOVE.L    (d8,A7,Xn),(A7)
+        b       move_add_etc_l_any_any_8
         lwz     data, 0(prefetch_data)                  // 2EB8  MOVE.L    (xxx).W,(A7)
-        b       L_011E0
-        ori     rtn_addr, code_ptr, L_011E4 - cb        // 2EB9  MOVE.L    (xxx).L,(A7)
-        b       L_05E8C
+        b       move_l_mem_mem_8
+        ori     rtn_addr, code_ptr, move_l_ea_mem_8 - cb  // 2EB9  MOVE.L    (xxx).L,(A7)
+        b       fea_l_71_2
         lwzx    data, pc, prefetch_data                 // 2EBA  MOVE.L    (d16,PC),(A7)
-        b       L_011E0
-        ori     rtn_addr, code_ptr, L_011E4 - cb        // 2EBB  MOVE.L    (d8,PC,Xn),(A7)
-        b       L_05F08
-        ori     rtn_addr, code_ptr, L_011E4 - cb        // 2EBC  MOVE.L    #<data>,(A7)
-        b       L_05F30
+        b       move_l_mem_mem_8
+        ori     rtn_addr, code_ptr, move_l_ea_mem_8 - cb  // 2EBB  MOVE.L    (d8,PC,Xn),(A7)
+        b       fea_l_73
+        ori     rtn_addr, code_ptr, move_l_ea_mem_8 - cb  // 2EBC  MOVE.L    #<data>,(A7)
+        b       fea_l_74
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2EBD  MOVE.L    <ea 7.5>,(A7)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2EBE  MOVE.L    <ea 7.6>,(A7)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2EBF  MOVE.L    <ea 7.7>,(A7)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $2EC0-$2EFF --------------------------------------------------------
         addco.  data, d0, zero                          // 2EC0  MOVE.L    D0,(A7)+
-        b       L_016A8
+        b       move_clr_l_reg_mem_15
         addco.  data, d1, zero                          // 2EC1  MOVE.L    D1,(A7)+
-        b       L_016A8
+        b       move_clr_l_reg_mem_15
         addco.  data, d2, zero                          // 2EC2  MOVE.L    D2,(A7)+
-        b       L_016A8
+        b       move_clr_l_reg_mem_15
         addco.  data, d3, zero                          // 2EC3  MOVE.L    D3,(A7)+
-        b       L_016A8
+        b       move_clr_l_reg_mem_15
         addco.  data, d4, zero                          // 2EC4  MOVE.L    D4,(A7)+
-        b       L_016A8
+        b       move_clr_l_reg_mem_15
         addco.  data, d5, zero                          // 2EC5  MOVE.L    D5,(A7)+
-        b       L_016A8
+        b       move_clr_l_reg_mem_15
         addco.  data, d6, zero                          // 2EC6  MOVE.L    D6,(A7)+
-        b       L_016A8
+        b       move_clr_l_reg_mem_15
         addco.  data, d7, zero                          // 2EC7  MOVE.L    D7,(A7)+
-        b       L_016A8
+        b       move_clr_l_reg_mem_15
         addco.  data, a0, zero                          // 2EC8  MOVE.L    A0,(A7)+
-        b       L_016A8
+        b       move_clr_l_reg_mem_15
         addco.  data, a1, zero                          // 2EC9  MOVE.L    A1,(A7)+
-        b       L_016A8
+        b       move_clr_l_reg_mem_15
         addco.  data, a2, zero                          // 2ECA  MOVE.L    A2,(A7)+
-        b       L_016A8
+        b       move_clr_l_reg_mem_15
         addco.  data, a3, zero                          // 2ECB  MOVE.L    A3,(A7)+
-        b       L_016A8
+        b       move_clr_l_reg_mem_15
         addco.  data, a4, zero                          // 2ECC  MOVE.L    A4,(A7)+
-        b       L_016A8
+        b       move_clr_l_reg_mem_15
         addco.  data, a5, zero                          // 2ECD  MOVE.L    A5,(A7)+
-        b       L_016A8
+        b       move_clr_l_reg_mem_15
         addco.  data, a6, zero                          // 2ECE  MOVE.L    A6,(A7)+
-        b       L_016A8
+        b       move_clr_l_reg_mem_15
         addco.  data, a7, zero                          // 2ECF  MOVE.L    A7,(A7)+
-        b       L_016A8
+        b       move_clr_l_reg_mem_15
         lwz     data, 0(a0)                             // 2ED0  MOVE.L    (A0),(A7)+
-        b       L_016A4
+        b       move_l_ea_mem_38
         lwz     data, 0(a1)                             // 2ED1  MOVE.L    (A1),(A7)+
-        b       L_016A4
+        b       move_l_ea_mem_38
         lwz     data, 0(a2)                             // 2ED2  MOVE.L    (A2),(A7)+
-        b       L_016A4
+        b       move_l_ea_mem_38
         lwz     data, 0(a3)                             // 2ED3  MOVE.L    (A3),(A7)+
-        b       L_016A4
+        b       move_l_ea_mem_38
         lwz     data, 0(a4)                             // 2ED4  MOVE.L    (A4),(A7)+
-        b       L_016A4
+        b       move_l_ea_mem_38
         lwz     data, 0(a5)                             // 2ED5  MOVE.L    (A5),(A7)+
-        b       L_016A4
+        b       move_l_ea_mem_38
         lwz     data, 0(a6)                             // 2ED6  MOVE.L    (A6),(A7)+
-        b       L_016A4
+        b       move_l_ea_mem_38
         lwz     data, 0(a7)                             // 2ED7  MOVE.L    (A7),(A7)+
-        b       L_016A4
-        ori     rtn_addr, code_ptr, L_016A4 - cb        // 2ED8  MOVE.L    (A0)+,(A7)+
-        b       L_00850
-        ori     rtn_addr, code_ptr, L_016A4 - cb        // 2ED9  MOVE.L    (A1)+,(A7)+
-        b       L_008D0
-        ori     rtn_addr, code_ptr, L_016A4 - cb        // 2EDA  MOVE.L    (A2)+,(A7)+
-        b       L_00950
-        ori     rtn_addr, code_ptr, L_016A4 - cb        // 2EDB  MOVE.L    (A3)+,(A7)+
-        b       L_009D0
-        ori     rtn_addr, code_ptr, L_016A4 - cb        // 2EDC  MOVE.L    (A4)+,(A7)+
-        b       L_00A50
-        ori     rtn_addr, code_ptr, L_016A4 - cb        // 2EDD  MOVE.L    (A5)+,(A7)+
-        b       L_00AD0
-        ori     rtn_addr, code_ptr, L_016A4 - cb        // 2EDE  MOVE.L    (A6)+,(A7)+
-        b       L_00B50
-        ori     rtn_addr, code_ptr, L_016A4 - cb        // 2EDF  MOVE.L    (A7)+,(A7)+
-        b       L_00BD0
+        b       move_l_ea_mem_38
+        ori     rtn_addr, code_ptr, move_l_ea_mem_38 - cb  // 2ED8  MOVE.L    (A0)+,(A7)+
+        b       fea_l_30
+        ori     rtn_addr, code_ptr, move_l_ea_mem_38 - cb  // 2ED9  MOVE.L    (A1)+,(A7)+
+        b       fea_l_31
+        ori     rtn_addr, code_ptr, move_l_ea_mem_38 - cb  // 2EDA  MOVE.L    (A2)+,(A7)+
+        b       fea_l_32
+        ori     rtn_addr, code_ptr, move_l_ea_mem_38 - cb  // 2EDB  MOVE.L    (A3)+,(A7)+
+        b       fea_l_33
+        ori     rtn_addr, code_ptr, move_l_ea_mem_38 - cb  // 2EDC  MOVE.L    (A4)+,(A7)+
+        b       fea_l_34
+        ori     rtn_addr, code_ptr, move_l_ea_mem_38 - cb  // 2EDD  MOVE.L    (A5)+,(A7)+
+        b       fea_l_35
+        ori     rtn_addr, code_ptr, move_l_ea_mem_38 - cb  // 2EDE  MOVE.L    (A6)+,(A7)+
+        b       fea_l_36
+        ori     rtn_addr, code_ptr, move_l_ea_mem_38 - cb  // 2EDF  MOVE.L    (A7)+,(A7)+
+        b       fea_l_37
         lwzu    data, -4(a0)                            // 2EE0  MOVE.L    -(A0),(A7)+
-        b       L_016A4
+        b       move_l_ea_mem_38
         lwzu    data, -4(a1)                            // 2EE1  MOVE.L    -(A1),(A7)+
-        b       L_016A4
+        b       move_l_ea_mem_38
         lwzu    data, -4(a2)                            // 2EE2  MOVE.L    -(A2),(A7)+
-        b       L_016A4
+        b       move_l_ea_mem_38
         lwzu    data, -4(a3)                            // 2EE3  MOVE.L    -(A3),(A7)+
-        b       L_016A4
+        b       move_l_ea_mem_38
         lwzu    data, -4(a4)                            // 2EE4  MOVE.L    -(A4),(A7)+
-        b       L_016A4
+        b       move_l_ea_mem_38
         lwzu    data, -4(a5)                            // 2EE5  MOVE.L    -(A5),(A7)+
-        b       L_016A4
+        b       move_l_ea_mem_38
         lwzu    data, -4(a6)                            // 2EE6  MOVE.L    -(A6),(A7)+
-        b       L_016A4
+        b       move_l_ea_mem_38
         lwz     data, -4(a7)                            // 2EE7  MOVE.L    -(A7),(A7)+
-        b       L_06144
+        b       tst_ea
         lwzx    data, a0, prefetch_data                 // 2EE8  MOVE.L    (d16,A0),(A7)+
-        b       L_016A0
+        b       move_l_mem_mem_38
         lwzx    data, a1, prefetch_data                 // 2EE9  MOVE.L    (d16,A1),(A7)+
-        b       L_016A0
+        b       move_l_mem_mem_38
         lwzx    data, a2, prefetch_data                 // 2EEA  MOVE.L    (d16,A2),(A7)+
-        b       L_016A0
+        b       move_l_mem_mem_38
         lwzx    data, a3, prefetch_data                 // 2EEB  MOVE.L    (d16,A3),(A7)+
-        b       L_016A0
+        b       move_l_mem_mem_38
         lwzx    data, a4, prefetch_data                 // 2EEC  MOVE.L    (d16,A4),(A7)+
-        b       L_016A0
+        b       move_l_mem_mem_38
         lwzx    data, a5, prefetch_data                 // 2EED  MOVE.L    (d16,A5),(A7)+
-        b       L_016A0
+        b       move_l_mem_mem_38
         lwzx    data, a6, prefetch_data                 // 2EEE  MOVE.L    (d16,A6),(A7)+
-        b       L_016A0
+        b       move_l_mem_mem_38
         lwzx    data, a7, prefetch_data                 // 2EEF  MOVE.L    (d16,A7),(A7)+
-        b       L_016A0
-        ori     rtn_addr, code_ptr, L_016A4 - cb        // 2EF0  MOVE.L    (d8,A0,Xn),(A7)+
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_016A4 - cb        // 2EF1  MOVE.L    (d8,A1,Xn),(A7)+
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_016A4 - cb        // 2EF2  MOVE.L    (d8,A2,Xn),(A7)+
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_016A4 - cb        // 2EF3  MOVE.L    (d8,A3,Xn),(A7)+
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_016A4 - cb        // 2EF4  MOVE.L    (d8,A4,Xn),(A7)+
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_016A4 - cb        // 2EF5  MOVE.L    (d8,A5,Xn),(A7)+
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_016A4 - cb        // 2EF6  MOVE.L    (d8,A6,Xn),(A7)+
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_016A4 - cb        // 2EF7  MOVE.L    (d8,A7,Xn),(A7)+
-        b       L_05C68
+        b       move_l_mem_mem_38
+        ori     rtn_addr, code_ptr, move_l_ea_mem_38 - cb  // 2EF0  MOVE.L    (d8,A0,Xn),(A7)+
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, move_l_ea_mem_38 - cb  // 2EF1  MOVE.L    (d8,A1,Xn),(A7)+
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, move_l_ea_mem_38 - cb  // 2EF2  MOVE.L    (d8,A2,Xn),(A7)+
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, move_l_ea_mem_38 - cb  // 2EF3  MOVE.L    (d8,A3,Xn),(A7)+
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, move_l_ea_mem_38 - cb  // 2EF4  MOVE.L    (d8,A4,Xn),(A7)+
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, move_l_ea_mem_38 - cb  // 2EF5  MOVE.L    (d8,A5,Xn),(A7)+
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, move_l_ea_mem_38 - cb  // 2EF6  MOVE.L    (d8,A6,Xn),(A7)+
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, move_l_ea_mem_38 - cb  // 2EF7  MOVE.L    (d8,A7,Xn),(A7)+
+        b       move_add_etc_l_any_any_8
         lwz     data, 0(prefetch_data)                  // 2EF8  MOVE.L    (xxx).W,(A7)+
-        b       L_016A0
-        ori     rtn_addr, code_ptr, L_016A4 - cb        // 2EF9  MOVE.L    (xxx).L,(A7)+
-        b       L_05E8C
+        b       move_l_mem_mem_38
+        ori     rtn_addr, code_ptr, move_l_ea_mem_38 - cb  // 2EF9  MOVE.L    (xxx).L,(A7)+
+        b       fea_l_71_2
         lwzx    data, pc, prefetch_data                 // 2EFA  MOVE.L    (d16,PC),(A7)+
-        b       L_016A0
-        ori     rtn_addr, code_ptr, L_016A4 - cb        // 2EFB  MOVE.L    (d8,PC,Xn),(A7)+
-        b       L_05F08
-        ori     rtn_addr, code_ptr, L_016A4 - cb        // 2EFC  MOVE.L    #<data>,(A7)+
-        b       L_05F30
+        b       move_l_mem_mem_38
+        ori     rtn_addr, code_ptr, move_l_ea_mem_38 - cb  // 2EFB  MOVE.L    (d8,PC,Xn),(A7)+
+        b       fea_l_73
+        ori     rtn_addr, code_ptr, move_l_ea_mem_38 - cb  // 2EFC  MOVE.L    #<data>,(A7)+
+        b       fea_l_74
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2EFD  MOVE.L    <ea 7.5>,(A7)+   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2EFE  MOVE.L    <ea 7.6>,(A7)+   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2EFF  MOVE.L    <ea 7.7>,(A7)+   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $2F00-$2F3F --------------------------------------------------------
         addco.  data, d0, zero                          // 2F00  MOVE.L    D0,-(A7)
-        b       L_013E8
+        b       move_l_reg_mem_16
         addco.  data, d1, zero                          // 2F01  MOVE.L    D1,-(A7)
-        b       L_013E8
+        b       move_l_reg_mem_16
         addco.  data, d2, zero                          // 2F02  MOVE.L    D2,-(A7)
-        b       L_013E8
+        b       move_l_reg_mem_16
         addco.  data, d3, zero                          // 2F03  MOVE.L    D3,-(A7)
-        b       L_013E8
+        b       move_l_reg_mem_16
         addco.  data, d4, zero                          // 2F04  MOVE.L    D4,-(A7)
-        b       L_013E8
+        b       move_l_reg_mem_16
         addco.  data, d5, zero                          // 2F05  MOVE.L    D5,-(A7)
-        b       L_013E8
+        b       move_l_reg_mem_16
         addco.  data, d6, zero                          // 2F06  MOVE.L    D6,-(A7)
-        b       L_013E8
+        b       move_l_reg_mem_16
         addco.  data, d7, zero                          // 2F07  MOVE.L    D7,-(A7)
-        b       L_013E8
+        b       move_l_reg_mem_16
         addco.  data, a0, zero                          // 2F08  MOVE.L    A0,-(A7)
-        b       L_013E8
+        b       move_l_reg_mem_16
         addco.  data, a1, zero                          // 2F09  MOVE.L    A1,-(A7)
-        b       L_013E8
+        b       move_l_reg_mem_16
         addco.  data, a2, zero                          // 2F0A  MOVE.L    A2,-(A7)
-        b       L_013E8
+        b       move_l_reg_mem_16
         addco.  data, a3, zero                          // 2F0B  MOVE.L    A3,-(A7)
-        b       L_013E8
+        b       move_l_reg_mem_16
         addco.  data, a4, zero                          // 2F0C  MOVE.L    A4,-(A7)
-        b       L_013E8
+        b       move_l_reg_mem_16
         addco.  data, a5, zero                          // 2F0D  MOVE.L    A5,-(A7)
-        b       L_013E8
+        b       move_l_reg_mem_16
         addco.  data, a6, zero                          // 2F0E  MOVE.L    A6,-(A7)
-        b       L_013E8
+        b       move_l_reg_mem_16
         addco.  data, a7, zero                          // 2F0F  MOVE.L    A7,-(A7)
-        b       L_013E8
+        b       move_l_reg_mem_16
         lwz     data, 0(a0)                             // 2F10  MOVE.L    (A0),-(A7)
-        b       L_013E4
+        b       move_l_ea_mem_16
         lwz     data, 0(a1)                             // 2F11  MOVE.L    (A1),-(A7)
-        b       L_013E4
+        b       move_l_ea_mem_16
         lwz     data, 0(a2)                             // 2F12  MOVE.L    (A2),-(A7)
-        b       L_013E4
+        b       move_l_ea_mem_16
         lwz     data, 0(a3)                             // 2F13  MOVE.L    (A3),-(A7)
-        b       L_013E4
+        b       move_l_ea_mem_16
         lwz     data, 0(a4)                             // 2F14  MOVE.L    (A4),-(A7)
-        b       L_013E4
+        b       move_l_ea_mem_16
         lwz     data, 0(a5)                             // 2F15  MOVE.L    (A5),-(A7)
-        b       L_013E4
+        b       move_l_ea_mem_16
         lwz     data, 0(a6)                             // 2F16  MOVE.L    (A6),-(A7)
-        b       L_013E4
+        b       move_l_ea_mem_16
         lwz     data, 0(a7)                             // 2F17  MOVE.L    (A7),-(A7)
-        b       L_013E4
-        ori     rtn_addr, code_ptr, L_013E4 - cb        // 2F18  MOVE.L    (A0)+,-(A7)
-        b       L_00850
-        ori     rtn_addr, code_ptr, L_013E4 - cb        // 2F19  MOVE.L    (A1)+,-(A7)
-        b       L_008D0
-        ori     rtn_addr, code_ptr, L_013E4 - cb        // 2F1A  MOVE.L    (A2)+,-(A7)
-        b       L_00950
-        ori     rtn_addr, code_ptr, L_013E4 - cb        // 2F1B  MOVE.L    (A3)+,-(A7)
-        b       L_009D0
-        ori     rtn_addr, code_ptr, L_013E4 - cb        // 2F1C  MOVE.L    (A4)+,-(A7)
-        b       L_00A50
-        ori     rtn_addr, code_ptr, L_013E4 - cb        // 2F1D  MOVE.L    (A5)+,-(A7)
-        b       L_00AD0
-        ori     rtn_addr, code_ptr, L_013E4 - cb        // 2F1E  MOVE.L    (A6)+,-(A7)
-        b       L_00B50
+        b       move_l_ea_mem_16
+        ori     rtn_addr, code_ptr, move_l_ea_mem_16 - cb  // 2F18  MOVE.L    (A0)+,-(A7)
+        b       fea_l_30
+        ori     rtn_addr, code_ptr, move_l_ea_mem_16 - cb  // 2F19  MOVE.L    (A1)+,-(A7)
+        b       fea_l_31
+        ori     rtn_addr, code_ptr, move_l_ea_mem_16 - cb  // 2F1A  MOVE.L    (A2)+,-(A7)
+        b       fea_l_32
+        ori     rtn_addr, code_ptr, move_l_ea_mem_16 - cb  // 2F1B  MOVE.L    (A3)+,-(A7)
+        b       fea_l_33
+        ori     rtn_addr, code_ptr, move_l_ea_mem_16 - cb  // 2F1C  MOVE.L    (A4)+,-(A7)
+        b       fea_l_34
+        ori     rtn_addr, code_ptr, move_l_ea_mem_16 - cb  // 2F1D  MOVE.L    (A5)+,-(A7)
+        b       fea_l_35
+        ori     rtn_addr, code_ptr, move_l_ea_mem_16 - cb  // 2F1E  MOVE.L    (A6)+,-(A7)
+        b       fea_l_36
         lwz     data, 0(a7)                             // 2F1F  MOVE.L    (A7)+,-(A7)
-        b       L_06144
+        b       tst_ea
         lwzu    data, -4(a0)                            // 2F20  MOVE.L    -(A0),-(A7)
-        b       L_013E4
+        b       move_l_ea_mem_16
         lwzu    data, -4(a1)                            // 2F21  MOVE.L    -(A1),-(A7)
-        b       L_013E4
+        b       move_l_ea_mem_16
         lwzu    data, -4(a2)                            // 2F22  MOVE.L    -(A2),-(A7)
-        b       L_013E4
+        b       move_l_ea_mem_16
         lwzu    data, -4(a3)                            // 2F23  MOVE.L    -(A3),-(A7)
-        b       L_013E4
+        b       move_l_ea_mem_16
         lwzu    data, -4(a4)                            // 2F24  MOVE.L    -(A4),-(A7)
-        b       L_013E4
+        b       move_l_ea_mem_16
         lwzu    data, -4(a5)                            // 2F25  MOVE.L    -(A5),-(A7)
-        b       L_013E4
+        b       move_l_ea_mem_16
         lwzu    data, -4(a6)                            // 2F26  MOVE.L    -(A6),-(A7)
-        b       L_013E4
+        b       move_l_ea_mem_16
         lwzu    data, -4(a7)                            // 2F27  MOVE.L    -(A7),-(A7)
-        b       L_013E4
+        b       move_l_ea_mem_16
         lwzx    data, a0, prefetch_data                 // 2F28  MOVE.L    (d16,A0),-(A7)
-        b       L_013E0
+        b       move_l_mem_mem_16
         lwzx    data, a1, prefetch_data                 // 2F29  MOVE.L    (d16,A1),-(A7)
-        b       L_013E0
+        b       move_l_mem_mem_16
         lwzx    data, a2, prefetch_data                 // 2F2A  MOVE.L    (d16,A2),-(A7)
-        b       L_013E0
+        b       move_l_mem_mem_16
         lwzx    data, a3, prefetch_data                 // 2F2B  MOVE.L    (d16,A3),-(A7)
-        b       L_013E0
+        b       move_l_mem_mem_16
         lwzx    data, a4, prefetch_data                 // 2F2C  MOVE.L    (d16,A4),-(A7)
-        b       L_013E0
+        b       move_l_mem_mem_16
         lwzx    data, a5, prefetch_data                 // 2F2D  MOVE.L    (d16,A5),-(A7)
-        b       L_013E0
+        b       move_l_mem_mem_16
         lwzx    data, a6, prefetch_data                 // 2F2E  MOVE.L    (d16,A6),-(A7)
-        b       L_013E0
+        b       move_l_mem_mem_16
         lwzx    data, a7, prefetch_data                 // 2F2F  MOVE.L    (d16,A7),-(A7)
-        b       L_013E0
+        b       move_l_mem_mem_16
         cmpwi   cr7, prefetch_data, -0x7E1E             // 2F30  MOVE.L    (d8,A0,Xn),-(A7)
-        b       L_094E0
-        ori     rtn_addr, code_ptr, L_013E4 - cb        // 2F31  MOVE.L    (d8,A1,Xn),-(A7)
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_013E4 - cb        // 2F32  MOVE.L    (d8,A2,Xn),-(A7)
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_013E4 - cb        // 2F33  MOVE.L    (d8,A3,Xn),-(A7)
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_013E4 - cb        // 2F34  MOVE.L    (d8,A4,Xn),-(A7)
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_013E4 - cb        // 2F35  MOVE.L    (d8,A5,Xn),-(A7)
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_013E4 - cb        // 2F36  MOVE.L    (d8,A6,Xn),-(A7)
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_013E4 - cb        // 2F37  MOVE.L    (d8,A7,Xn),-(A7)
-        b       L_05C68
+        b       move_l_mem_mem_49
+        ori     rtn_addr, code_ptr, move_l_ea_mem_16 - cb  // 2F31  MOVE.L    (d8,A1,Xn),-(A7)
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, move_l_ea_mem_16 - cb  // 2F32  MOVE.L    (d8,A2,Xn),-(A7)
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, move_l_ea_mem_16 - cb  // 2F33  MOVE.L    (d8,A3,Xn),-(A7)
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, move_l_ea_mem_16 - cb  // 2F34  MOVE.L    (d8,A4,Xn),-(A7)
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, move_l_ea_mem_16 - cb  // 2F35  MOVE.L    (d8,A5,Xn),-(A7)
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, move_l_ea_mem_16 - cb  // 2F36  MOVE.L    (d8,A6,Xn),-(A7)
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, move_l_ea_mem_16 - cb  // 2F37  MOVE.L    (d8,A7,Xn),-(A7)
+        b       move_add_etc_l_any_any_8
         lhau    immed_data, 2(pc)                       // 2F38  MOVE.L    (xxx).W,-(A7)
-        b       L_09540
-        ori     rtn_addr, code_ptr, L_013E4 - cb        // 2F39  MOVE.L    (xxx).L,-(A7)
-        b       L_05E8C
+        b       move_l_mem_mem_50
+        ori     rtn_addr, code_ptr, move_l_ea_mem_16 - cb  // 2F39  MOVE.L    (xxx).L,-(A7)
+        b       fea_l_71_2
         lwzx    data, pc, prefetch_data                 // 2F3A  MOVE.L    (d16,PC),-(A7)
-        b       L_013E0
-        ori     rtn_addr, code_ptr, L_013E4 - cb        // 2F3B  MOVE.L    (d8,PC,Xn),-(A7)
-        b       L_05F08
-        ori     rtn_addr, code_ptr, L_013E4 - cb        // 2F3C  MOVE.L    #<data>,-(A7)
-        b       L_05F30
+        b       move_l_mem_mem_16
+        ori     rtn_addr, code_ptr, move_l_ea_mem_16 - cb  // 2F3B  MOVE.L    (d8,PC,Xn),-(A7)
+        b       fea_l_73
+        ori     rtn_addr, code_ptr, move_l_ea_mem_16 - cb  // 2F3C  MOVE.L    #<data>,-(A7)
+        b       fea_l_74
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2F3D  MOVE.L    <ea 7.5>,-(A7)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2F3E  MOVE.L    <ea 7.6>,-(A7)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2F3F  MOVE.L    <ea 7.7>,-(A7)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $2F40-$2F7F --------------------------------------------------------
         addco.  data, d0, zero                          // 2F40  MOVE.L    D0,(d16,A7)
-        b       L_016CC
+        b       move_l_reg_mem_24
         addco.  data, d1, zero                          // 2F41  MOVE.L    D1,(d16,A7)
-        b       L_016CC
+        b       move_l_reg_mem_24
         addco.  data, d2, zero                          // 2F42  MOVE.L    D2,(d16,A7)
-        b       L_016CC
+        b       move_l_reg_mem_24
         addco.  data, d3, zero                          // 2F43  MOVE.L    D3,(d16,A7)
-        b       L_016CC
+        b       move_l_reg_mem_24
         addco.  data, d4, zero                          // 2F44  MOVE.L    D4,(d16,A7)
-        b       L_016CC
+        b       move_l_reg_mem_24
         addco.  data, d5, zero                          // 2F45  MOVE.L    D5,(d16,A7)
-        b       L_016CC
+        b       move_l_reg_mem_24
         addco.  data, d6, zero                          // 2F46  MOVE.L    D6,(d16,A7)
-        b       L_016CC
+        b       move_l_reg_mem_24
         addco.  data, d7, zero                          // 2F47  MOVE.L    D7,(d16,A7)
-        b       L_016CC
+        b       move_l_reg_mem_24
         addco.  data, a0, zero                          // 2F48  MOVE.L    A0,(d16,A7)
-        b       L_016CC
+        b       move_l_reg_mem_24
         addco.  data, a1, zero                          // 2F49  MOVE.L    A1,(d16,A7)
-        b       L_016CC
+        b       move_l_reg_mem_24
         addco.  data, a2, zero                          // 2F4A  MOVE.L    A2,(d16,A7)
-        b       L_016CC
+        b       move_l_reg_mem_24
         addco.  data, a3, zero                          // 2F4B  MOVE.L    A3,(d16,A7)
-        b       L_016CC
+        b       move_l_reg_mem_24
         addco.  data, a4, zero                          // 2F4C  MOVE.L    A4,(d16,A7)
-        b       L_016CC
+        b       move_l_reg_mem_24
         addco.  data, a5, zero                          // 2F4D  MOVE.L    A5,(d16,A7)
-        b       L_016CC
+        b       move_l_reg_mem_24
         addco.  data, a6, zero                          // 2F4E  MOVE.L    A6,(d16,A7)
-        b       L_016CC
+        b       move_l_reg_mem_24
         addco.  data, a7, zero                          // 2F4F  MOVE.L    A7,(d16,A7)
-        b       L_016CC
+        b       move_l_reg_mem_24
         lwz     data, 0(a0)                             // 2F50  MOVE.L    (A0),(d16,A7)
-        b       L_016C8
+        b       move_l_ea_mem_39
         lwz     data, 0(a1)                             // 2F51  MOVE.L    (A1),(d16,A7)
-        b       L_016C8
+        b       move_l_ea_mem_39
         lwz     data, 0(a2)                             // 2F52  MOVE.L    (A2),(d16,A7)
-        b       L_016C8
+        b       move_l_ea_mem_39
         lwz     data, 0(a3)                             // 2F53  MOVE.L    (A3),(d16,A7)
-        b       L_016C8
+        b       move_l_ea_mem_39
         lwz     data, 0(a4)                             // 2F54  MOVE.L    (A4),(d16,A7)
-        b       L_016C8
+        b       move_l_ea_mem_39
         lwz     data, 0(a5)                             // 2F55  MOVE.L    (A5),(d16,A7)
-        b       L_016C8
+        b       move_l_ea_mem_39
         lwz     data, 0(a6)                             // 2F56  MOVE.L    (A6),(d16,A7)
-        b       L_016C8
+        b       move_l_ea_mem_39
         lwz     data, 0(a7)                             // 2F57  MOVE.L    (A7),(d16,A7)
-        b       L_016C8
-        ori     rtn_addr, code_ptr, L_016C8 - cb        // 2F58  MOVE.L    (A0)+,(d16,A7)
-        b       L_00850
-        ori     rtn_addr, code_ptr, L_016C8 - cb        // 2F59  MOVE.L    (A1)+,(d16,A7)
-        b       L_008D0
-        ori     rtn_addr, code_ptr, L_016C8 - cb        // 2F5A  MOVE.L    (A2)+,(d16,A7)
-        b       L_00950
-        ori     rtn_addr, code_ptr, L_016C8 - cb        // 2F5B  MOVE.L    (A3)+,(d16,A7)
-        b       L_009D0
-        ori     rtn_addr, code_ptr, L_016C8 - cb        // 2F5C  MOVE.L    (A4)+,(d16,A7)
-        b       L_00A50
-        ori     rtn_addr, code_ptr, L_016C8 - cb        // 2F5D  MOVE.L    (A5)+,(d16,A7)
-        b       L_00AD0
-        ori     rtn_addr, code_ptr, L_016C8 - cb        // 2F5E  MOVE.L    (A6)+,(d16,A7)
-        b       L_00B50
-        ori     rtn_addr, code_ptr, L_016C8 - cb        // 2F5F  MOVE.L    (A7)+,(d16,A7)
-        b       L_00BD0
+        b       move_l_ea_mem_39
+        ori     rtn_addr, code_ptr, move_l_ea_mem_39 - cb  // 2F58  MOVE.L    (A0)+,(d16,A7)
+        b       fea_l_30
+        ori     rtn_addr, code_ptr, move_l_ea_mem_39 - cb  // 2F59  MOVE.L    (A1)+,(d16,A7)
+        b       fea_l_31
+        ori     rtn_addr, code_ptr, move_l_ea_mem_39 - cb  // 2F5A  MOVE.L    (A2)+,(d16,A7)
+        b       fea_l_32
+        ori     rtn_addr, code_ptr, move_l_ea_mem_39 - cb  // 2F5B  MOVE.L    (A3)+,(d16,A7)
+        b       fea_l_33
+        ori     rtn_addr, code_ptr, move_l_ea_mem_39 - cb  // 2F5C  MOVE.L    (A4)+,(d16,A7)
+        b       fea_l_34
+        ori     rtn_addr, code_ptr, move_l_ea_mem_39 - cb  // 2F5D  MOVE.L    (A5)+,(d16,A7)
+        b       fea_l_35
+        ori     rtn_addr, code_ptr, move_l_ea_mem_39 - cb  // 2F5E  MOVE.L    (A6)+,(d16,A7)
+        b       fea_l_36
+        ori     rtn_addr, code_ptr, move_l_ea_mem_39 - cb  // 2F5F  MOVE.L    (A7)+,(d16,A7)
+        b       fea_l_37
         lwzu    data, -4(a0)                            // 2F60  MOVE.L    -(A0),(d16,A7)
-        b       L_016C8
+        b       move_l_ea_mem_39
         lwzu    data, -4(a1)                            // 2F61  MOVE.L    -(A1),(d16,A7)
-        b       L_016C8
+        b       move_l_ea_mem_39
         lwzu    data, -4(a2)                            // 2F62  MOVE.L    -(A2),(d16,A7)
-        b       L_016C8
+        b       move_l_ea_mem_39
         lwzu    data, -4(a3)                            // 2F63  MOVE.L    -(A3),(d16,A7)
-        b       L_016C8
+        b       move_l_ea_mem_39
         lwzu    data, -4(a4)                            // 2F64  MOVE.L    -(A4),(d16,A7)
-        b       L_016C8
+        b       move_l_ea_mem_39
         lwzu    data, -4(a5)                            // 2F65  MOVE.L    -(A5),(d16,A7)
-        b       L_016C8
+        b       move_l_ea_mem_39
         lwzu    data, -4(a6)                            // 2F66  MOVE.L    -(A6),(d16,A7)
-        b       L_016C8
+        b       move_l_ea_mem_39
         lwzu    data, -4(a7)                            // 2F67  MOVE.L    -(A7),(d16,A7)
-        b       L_016C8
+        b       move_l_ea_mem_39
         lwzx    data, a0, prefetch_data                 // 2F68  MOVE.L    (d16,A0),(d16,A7)
-        b       L_016C4
+        b       move_l_mem_mem_39
         lwzx    data, a1, prefetch_data                 // 2F69  MOVE.L    (d16,A1),(d16,A7)
-        b       L_016C4
+        b       move_l_mem_mem_39
         lwzx    data, a2, prefetch_data                 // 2F6A  MOVE.L    (d16,A2),(d16,A7)
-        b       L_016C4
+        b       move_l_mem_mem_39
         lwzx    data, a3, prefetch_data                 // 2F6B  MOVE.L    (d16,A3),(d16,A7)
-        b       L_016C4
+        b       move_l_mem_mem_39
         lwzx    data, a4, prefetch_data                 // 2F6C  MOVE.L    (d16,A4),(d16,A7)
-        b       L_016C4
+        b       move_l_mem_mem_39
         lwzx    data, a5, prefetch_data                 // 2F6D  MOVE.L    (d16,A5),(d16,A7)
-        b       L_016C4
+        b       move_l_mem_mem_39
         lwzx    data, a6, prefetch_data                 // 2F6E  MOVE.L    (d16,A6),(d16,A7)
-        b       L_016C4
+        b       move_l_mem_mem_39
         lwzx    data, a7, prefetch_data                 // 2F6F  MOVE.L    (d16,A7),(d16,A7)
-        b       L_016C4
-        ori     rtn_addr, code_ptr, L_016C8 - cb        // 2F70  MOVE.L    (d8,A0,Xn),(d16,A7)
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_016C8 - cb        // 2F71  MOVE.L    (d8,A1,Xn),(d16,A7)
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_016C8 - cb        // 2F72  MOVE.L    (d8,A2,Xn),(d16,A7)
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_016C8 - cb        // 2F73  MOVE.L    (d8,A3,Xn),(d16,A7)
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_016C8 - cb        // 2F74  MOVE.L    (d8,A4,Xn),(d16,A7)
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_016C8 - cb        // 2F75  MOVE.L    (d8,A5,Xn),(d16,A7)
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_016C8 - cb        // 2F76  MOVE.L    (d8,A6,Xn),(d16,A7)
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_016C8 - cb        // 2F77  MOVE.L    (d8,A7,Xn),(d16,A7)
-        b       L_05C68
+        b       move_l_mem_mem_39
+        ori     rtn_addr, code_ptr, move_l_ea_mem_39 - cb  // 2F70  MOVE.L    (d8,A0,Xn),(d16,A7)
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, move_l_ea_mem_39 - cb  // 2F71  MOVE.L    (d8,A1,Xn),(d16,A7)
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, move_l_ea_mem_39 - cb  // 2F72  MOVE.L    (d8,A2,Xn),(d16,A7)
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, move_l_ea_mem_39 - cb  // 2F73  MOVE.L    (d8,A3,Xn),(d16,A7)
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, move_l_ea_mem_39 - cb  // 2F74  MOVE.L    (d8,A4,Xn),(d16,A7)
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, move_l_ea_mem_39 - cb  // 2F75  MOVE.L    (d8,A5,Xn),(d16,A7)
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, move_l_ea_mem_39 - cb  // 2F76  MOVE.L    (d8,A6,Xn),(d16,A7)
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, move_l_ea_mem_39 - cb  // 2F77  MOVE.L    (d8,A7,Xn),(d16,A7)
+        b       move_add_etc_l_any_any_8
         lwz     data, 0(prefetch_data)                  // 2F78  MOVE.L    (xxx).W,(d16,A7)
-        b       L_016C4
-        ori     rtn_addr, code_ptr, L_016C8 - cb        // 2F79  MOVE.L    (xxx).L,(d16,A7)
-        b       L_05E8C
+        b       move_l_mem_mem_39
+        ori     rtn_addr, code_ptr, move_l_ea_mem_39 - cb  // 2F79  MOVE.L    (xxx).L,(d16,A7)
+        b       fea_l_71_2
         lwzx    data, pc, prefetch_data                 // 2F7A  MOVE.L    (d16,PC),(d16,A7)
-        b       L_016C4
-        ori     rtn_addr, code_ptr, L_016C8 - cb        // 2F7B  MOVE.L    (d8,PC,Xn),(d16,A7)
-        b       L_05F08
-        ori     rtn_addr, code_ptr, L_016C8 - cb        // 2F7C  MOVE.L    #<data>,(d16,A7)
-        b       L_05F30
+        b       move_l_mem_mem_39
+        ori     rtn_addr, code_ptr, move_l_ea_mem_39 - cb  // 2F7B  MOVE.L    (d8,PC,Xn),(d16,A7)
+        b       fea_l_73
+        ori     rtn_addr, code_ptr, move_l_ea_mem_39 - cb  // 2F7C  MOVE.L    #<data>,(d16,A7)
+        b       fea_l_74
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2F7D  MOVE.L    <ea 7.5>,(d16,A7)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2F7E  MOVE.L    <ea 7.6>,(d16,A7)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2F7F  MOVE.L    <ea 7.7>,(d16,A7)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $2F80-$2FBF --------------------------------------------------------
         addco.  data, d0, zero                          // 2F80  MOVE.L    D0,(d8,A7,Xn)
-        b       L_016F0
+        b       move_clr_l_reg_mem_16
         addco.  data, d1, zero                          // 2F81  MOVE.L    D1,(d8,A7,Xn)
-        b       L_016F0
+        b       move_clr_l_reg_mem_16
         addco.  data, d2, zero                          // 2F82  MOVE.L    D2,(d8,A7,Xn)
-        b       L_016F0
+        b       move_clr_l_reg_mem_16
         addco.  data, d3, zero                          // 2F83  MOVE.L    D3,(d8,A7,Xn)
-        b       L_016F0
+        b       move_clr_l_reg_mem_16
         addco.  data, d4, zero                          // 2F84  MOVE.L    D4,(d8,A7,Xn)
-        b       L_016F0
+        b       move_clr_l_reg_mem_16
         addco.  data, d5, zero                          // 2F85  MOVE.L    D5,(d8,A7,Xn)
-        b       L_016F0
+        b       move_clr_l_reg_mem_16
         addco.  data, d6, zero                          // 2F86  MOVE.L    D6,(d8,A7,Xn)
-        b       L_016F0
+        b       move_clr_l_reg_mem_16
         addco.  data, d7, zero                          // 2F87  MOVE.L    D7,(d8,A7,Xn)
-        b       L_016F0
+        b       move_clr_l_reg_mem_16
         addco.  data, a0, zero                          // 2F88  MOVE.L    A0,(d8,A7,Xn)
-        b       L_016F0
+        b       move_clr_l_reg_mem_16
         addco.  data, a1, zero                          // 2F89  MOVE.L    A1,(d8,A7,Xn)
-        b       L_016F0
+        b       move_clr_l_reg_mem_16
         addco.  data, a2, zero                          // 2F8A  MOVE.L    A2,(d8,A7,Xn)
-        b       L_016F0
+        b       move_clr_l_reg_mem_16
         addco.  data, a3, zero                          // 2F8B  MOVE.L    A3,(d8,A7,Xn)
-        b       L_016F0
+        b       move_clr_l_reg_mem_16
         addco.  data, a4, zero                          // 2F8C  MOVE.L    A4,(d8,A7,Xn)
-        b       L_016F0
+        b       move_clr_l_reg_mem_16
         addco.  data, a5, zero                          // 2F8D  MOVE.L    A5,(d8,A7,Xn)
-        b       L_016F0
+        b       move_clr_l_reg_mem_16
         addco.  data, a6, zero                          // 2F8E  MOVE.L    A6,(d8,A7,Xn)
-        b       L_016F0
+        b       move_clr_l_reg_mem_16
         addco.  data, a7, zero                          // 2F8F  MOVE.L    A7,(d8,A7,Xn)
-        b       L_016F0
+        b       move_clr_l_reg_mem_16
         lwz     data, 0(a0)                             // 2F90  MOVE.L    (A0),(d8,A7,Xn)
-        b       L_016EC
+        b       move_l_ea_mem_40
         lwz     data, 0(a1)                             // 2F91  MOVE.L    (A1),(d8,A7,Xn)
-        b       L_016EC
+        b       move_l_ea_mem_40
         lwz     data, 0(a2)                             // 2F92  MOVE.L    (A2),(d8,A7,Xn)
-        b       L_016EC
+        b       move_l_ea_mem_40
         lwz     data, 0(a3)                             // 2F93  MOVE.L    (A3),(d8,A7,Xn)
-        b       L_016EC
+        b       move_l_ea_mem_40
         lwz     data, 0(a4)                             // 2F94  MOVE.L    (A4),(d8,A7,Xn)
-        b       L_016EC
+        b       move_l_ea_mem_40
         lwz     data, 0(a5)                             // 2F95  MOVE.L    (A5),(d8,A7,Xn)
-        b       L_016EC
+        b       move_l_ea_mem_40
         lwz     data, 0(a6)                             // 2F96  MOVE.L    (A6),(d8,A7,Xn)
-        b       L_016EC
+        b       move_l_ea_mem_40
         lwz     data, 0(a7)                             // 2F97  MOVE.L    (A7),(d8,A7,Xn)
-        b       L_016EC
-        ori     rtn_addr, code_ptr, L_016EC - cb        // 2F98  MOVE.L    (A0)+,(d8,A7,Xn)
-        b       L_00850
-        ori     rtn_addr, code_ptr, L_016EC - cb        // 2F99  MOVE.L    (A1)+,(d8,A7,Xn)
-        b       L_008D0
-        ori     rtn_addr, code_ptr, L_016EC - cb        // 2F9A  MOVE.L    (A2)+,(d8,A7,Xn)
-        b       L_00950
-        ori     rtn_addr, code_ptr, L_016EC - cb        // 2F9B  MOVE.L    (A3)+,(d8,A7,Xn)
-        b       L_009D0
-        ori     rtn_addr, code_ptr, L_016EC - cb        // 2F9C  MOVE.L    (A4)+,(d8,A7,Xn)
-        b       L_00A50
-        ori     rtn_addr, code_ptr, L_016EC - cb        // 2F9D  MOVE.L    (A5)+,(d8,A7,Xn)
-        b       L_00AD0
-        ori     rtn_addr, code_ptr, L_016EC - cb        // 2F9E  MOVE.L    (A6)+,(d8,A7,Xn)
-        b       L_00B50
-        ori     rtn_addr, code_ptr, L_016EC - cb        // 2F9F  MOVE.L    (A7)+,(d8,A7,Xn)
-        b       L_00BD0
+        b       move_l_ea_mem_40
+        ori     rtn_addr, code_ptr, move_l_ea_mem_40 - cb  // 2F98  MOVE.L    (A0)+,(d8,A7,Xn)
+        b       fea_l_30
+        ori     rtn_addr, code_ptr, move_l_ea_mem_40 - cb  // 2F99  MOVE.L    (A1)+,(d8,A7,Xn)
+        b       fea_l_31
+        ori     rtn_addr, code_ptr, move_l_ea_mem_40 - cb  // 2F9A  MOVE.L    (A2)+,(d8,A7,Xn)
+        b       fea_l_32
+        ori     rtn_addr, code_ptr, move_l_ea_mem_40 - cb  // 2F9B  MOVE.L    (A3)+,(d8,A7,Xn)
+        b       fea_l_33
+        ori     rtn_addr, code_ptr, move_l_ea_mem_40 - cb  // 2F9C  MOVE.L    (A4)+,(d8,A7,Xn)
+        b       fea_l_34
+        ori     rtn_addr, code_ptr, move_l_ea_mem_40 - cb  // 2F9D  MOVE.L    (A5)+,(d8,A7,Xn)
+        b       fea_l_35
+        ori     rtn_addr, code_ptr, move_l_ea_mem_40 - cb  // 2F9E  MOVE.L    (A6)+,(d8,A7,Xn)
+        b       fea_l_36
+        ori     rtn_addr, code_ptr, move_l_ea_mem_40 - cb  // 2F9F  MOVE.L    (A7)+,(d8,A7,Xn)
+        b       fea_l_37
         lwzu    data, -4(a0)                            // 2FA0  MOVE.L    -(A0),(d8,A7,Xn)
-        b       L_016EC
+        b       move_l_ea_mem_40
         lwzu    data, -4(a1)                            // 2FA1  MOVE.L    -(A1),(d8,A7,Xn)
-        b       L_016EC
+        b       move_l_ea_mem_40
         lwzu    data, -4(a2)                            // 2FA2  MOVE.L    -(A2),(d8,A7,Xn)
-        b       L_016EC
+        b       move_l_ea_mem_40
         lwzu    data, -4(a3)                            // 2FA3  MOVE.L    -(A3),(d8,A7,Xn)
-        b       L_016EC
+        b       move_l_ea_mem_40
         lwzu    data, -4(a4)                            // 2FA4  MOVE.L    -(A4),(d8,A7,Xn)
-        b       L_016EC
+        b       move_l_ea_mem_40
         lwzu    data, -4(a5)                            // 2FA5  MOVE.L    -(A5),(d8,A7,Xn)
-        b       L_016EC
+        b       move_l_ea_mem_40
         lwzu    data, -4(a6)                            // 2FA6  MOVE.L    -(A6),(d8,A7,Xn)
-        b       L_016EC
+        b       move_l_ea_mem_40
         lwzu    data, -4(a7)                            // 2FA7  MOVE.L    -(A7),(d8,A7,Xn)
-        b       L_016EC
+        b       move_l_ea_mem_40
         lwzx    data, a0, prefetch_data                 // 2FA8  MOVE.L    (d16,A0),(d8,A7,Xn)
-        b       L_016E8
+        b       move_l_mem_mem_40
         lwzx    data, a1, prefetch_data                 // 2FA9  MOVE.L    (d16,A1),(d8,A7,Xn)
-        b       L_016E8
+        b       move_l_mem_mem_40
         lwzx    data, a2, prefetch_data                 // 2FAA  MOVE.L    (d16,A2),(d8,A7,Xn)
-        b       L_016E8
+        b       move_l_mem_mem_40
         lwzx    data, a3, prefetch_data                 // 2FAB  MOVE.L    (d16,A3),(d8,A7,Xn)
-        b       L_016E8
+        b       move_l_mem_mem_40
         lwzx    data, a4, prefetch_data                 // 2FAC  MOVE.L    (d16,A4),(d8,A7,Xn)
-        b       L_016E8
+        b       move_l_mem_mem_40
         lwzx    data, a5, prefetch_data                 // 2FAD  MOVE.L    (d16,A5),(d8,A7,Xn)
-        b       L_016E8
+        b       move_l_mem_mem_40
         lwzx    data, a6, prefetch_data                 // 2FAE  MOVE.L    (d16,A6),(d8,A7,Xn)
-        b       L_016E8
+        b       move_l_mem_mem_40
         lwzx    data, a7, prefetch_data                 // 2FAF  MOVE.L    (d16,A7),(d8,A7,Xn)
-        b       L_016E8
-        ori     rtn_addr, code_ptr, L_016EC - cb        // 2FB0  MOVE.L    (d8,A0,Xn),(d8,A7,Xn)
-        b       L_059C8
-        ori     rtn_addr, code_ptr, L_016EC - cb        // 2FB1  MOVE.L    (d8,A1,Xn),(d8,A7,Xn)
-        b       L_05A28
-        ori     rtn_addr, code_ptr, L_016EC - cb        // 2FB2  MOVE.L    (d8,A2,Xn),(d8,A7,Xn)
-        b       L_05A88
-        ori     rtn_addr, code_ptr, L_016EC - cb        // 2FB3  MOVE.L    (d8,A3,Xn),(d8,A7,Xn)
-        b       L_05AE8
-        ori     rtn_addr, code_ptr, L_016EC - cb        // 2FB4  MOVE.L    (d8,A4,Xn),(d8,A7,Xn)
-        b       L_05B48
-        ori     rtn_addr, code_ptr, L_016EC - cb        // 2FB5  MOVE.L    (d8,A5,Xn),(d8,A7,Xn)
-        b       L_05BA8
-        ori     rtn_addr, code_ptr, L_016EC - cb        // 2FB6  MOVE.L    (d8,A6,Xn),(d8,A7,Xn)
-        b       L_05C08
-        ori     rtn_addr, code_ptr, L_016EC - cb        // 2FB7  MOVE.L    (d8,A7,Xn),(d8,A7,Xn)
-        b       L_05C68
+        b       move_l_mem_mem_40
+        ori     rtn_addr, code_ptr, move_l_ea_mem_40 - cb  // 2FB0  MOVE.L    (d8,A0,Xn),(d8,A7,Xn)
+        b       move_add_etc_l_any_any
+        ori     rtn_addr, code_ptr, move_l_ea_mem_40 - cb  // 2FB1  MOVE.L    (d8,A1,Xn),(d8,A7,Xn)
+        b       move_add_etc_l_any_any_2
+        ori     rtn_addr, code_ptr, move_l_ea_mem_40 - cb  // 2FB2  MOVE.L    (d8,A2,Xn),(d8,A7,Xn)
+        b       move_add_etc_l_any_any_3
+        ori     rtn_addr, code_ptr, move_l_ea_mem_40 - cb  // 2FB3  MOVE.L    (d8,A3,Xn),(d8,A7,Xn)
+        b       move_add_etc_l_any_any_4
+        ori     rtn_addr, code_ptr, move_l_ea_mem_40 - cb  // 2FB4  MOVE.L    (d8,A4,Xn),(d8,A7,Xn)
+        b       move_add_etc_l_any_any_5
+        ori     rtn_addr, code_ptr, move_l_ea_mem_40 - cb  // 2FB5  MOVE.L    (d8,A5,Xn),(d8,A7,Xn)
+        b       move_add_etc_l_any_any_6
+        ori     rtn_addr, code_ptr, move_l_ea_mem_40 - cb  // 2FB6  MOVE.L    (d8,A6,Xn),(d8,A7,Xn)
+        b       move_add_etc_l_any_any_7
+        ori     rtn_addr, code_ptr, move_l_ea_mem_40 - cb  // 2FB7  MOVE.L    (d8,A7,Xn),(d8,A7,Xn)
+        b       move_add_etc_l_any_any_8
         lwz     data, 0(prefetch_data)                  // 2FB8  MOVE.L    (xxx).W,(d8,A7,Xn)
-        b       L_016E8
-        ori     rtn_addr, code_ptr, L_016EC - cb        // 2FB9  MOVE.L    (xxx).L,(d8,A7,Xn)
-        b       L_05E8C
+        b       move_l_mem_mem_40
+        ori     rtn_addr, code_ptr, move_l_ea_mem_40 - cb  // 2FB9  MOVE.L    (xxx).L,(d8,A7,Xn)
+        b       fea_l_71_2
         lwzx    data, pc, prefetch_data                 // 2FBA  MOVE.L    (d16,PC),(d8,A7,Xn)
-        b       L_016E8
-        ori     rtn_addr, code_ptr, L_016EC - cb        // 2FBB  MOVE.L    (d8,PC,Xn),(d8,A7,Xn)
-        b       L_05F08
-        ori     rtn_addr, code_ptr, L_016EC - cb        // 2FBC  MOVE.L    #<data>,(d8,A7,Xn)
-        b       L_05F30
+        b       move_l_mem_mem_40
+        ori     rtn_addr, code_ptr, move_l_ea_mem_40 - cb  // 2FBB  MOVE.L    (d8,PC,Xn),(d8,A7,Xn)
+        b       fea_l_73
+        ori     rtn_addr, code_ptr, move_l_ea_mem_40 - cb  // 2FBC  MOVE.L    #<data>,(d8,A7,Xn)
+        b       fea_l_74
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2FBD  MOVE.L    <ea 7.5>,(d8,A7,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2FBE  MOVE.L    <ea 7.6>,(d8,A7,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2FBF  MOVE.L    <ea 7.7>,(d8,A7,Xn)   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
 
 // ---- $2FC0-$2FFF --------------------------------------------------------
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2FC0  MOVE.L    D0,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2FC1  MOVE.L    D1,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2FC2  MOVE.L    D2,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2FC3  MOVE.L    D3,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2FC4  MOVE.L    D4,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2FC5  MOVE.L    D5,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2FC6  MOVE.L    D6,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2FC7  MOVE.L    D7,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2FC8  MOVE.L    A0,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2FC9  MOVE.L    A1,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2FCA  MOVE.L    A2,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2FCB  MOVE.L    A3,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2FCC  MOVE.L    A4,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2FCD  MOVE.L    A5,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2FCE  MOVE.L    A6,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2FCF  MOVE.L    A7,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2FD0  MOVE.L    (A0),<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2FD1  MOVE.L    (A1),<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2FD2  MOVE.L    (A2),<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2FD3  MOVE.L    (A3),<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2FD4  MOVE.L    (A4),<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2FD5  MOVE.L    (A5),<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2FD6  MOVE.L    (A6),<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2FD7  MOVE.L    (A7),<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2FD8  MOVE.L    (A0)+,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2FD9  MOVE.L    (A1)+,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2FDA  MOVE.L    (A2)+,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2FDB  MOVE.L    (A3)+,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2FDC  MOVE.L    (A4)+,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2FDD  MOVE.L    (A5)+,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2FDE  MOVE.L    (A6)+,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2FDF  MOVE.L    (A7)+,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2FE0  MOVE.L    -(A0),<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2FE1  MOVE.L    -(A1),<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2FE2  MOVE.L    -(A2),<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2FE3  MOVE.L    -(A3),<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2FE4  MOVE.L    -(A4),<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2FE5  MOVE.L    -(A5),<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2FE6  MOVE.L    -(A6),<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2FE7  MOVE.L    -(A7),<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2FE8  MOVE.L    (d16,A0),<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2FE9  MOVE.L    (d16,A1),<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2FEA  MOVE.L    (d16,A2),<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2FEB  MOVE.L    (d16,A3),<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2FEC  MOVE.L    (d16,A4),<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2FED  MOVE.L    (d16,A5),<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2FEE  MOVE.L    (d16,A6),<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2FEF  MOVE.L    (d16,A7),<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2FF0  MOVE.L    (d8,A0,Xn),<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2FF1  MOVE.L    (d8,A1,Xn),<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2FF2  MOVE.L    (d8,A2,Xn),<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2FF3  MOVE.L    (d8,A3,Xn),<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2FF4  MOVE.L    (d8,A4,Xn),<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2FF5  MOVE.L    (d8,A5,Xn),<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2FF6  MOVE.L    (d8,A6,Xn),<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2FF7  MOVE.L    (d8,A7,Xn),<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2FF8  MOVE.L    (xxx).W,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2FF9  MOVE.L    (xxx).L,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2FFA  MOVE.L    (d16,PC),<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2FFB  MOVE.L    (d8,PC,Xn),<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2FFC  MOVE.L    #<data>,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2FFD  MOVE.L    <ea 7.5>,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2FFE  MOVE.L    <ea 7.6>,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 2FFF  MOVE.L    <ea 7.7>,<ea 7.7>   (illegal)
-        b       L_0D750
+        b       bkpt_illegal_imm

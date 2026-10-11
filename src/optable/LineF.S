@@ -5,8320 +5,8320 @@
 
 // ---- $F000-$F03F --------------------------------------------------------
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F000  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F001  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F002  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F003  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F004  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F005  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F006  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F007  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F008  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F009  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F00A  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F00B  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F00C  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F00D  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F00E  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F00F  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F010  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F011  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F012  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F013  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F014  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F015  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F016  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F017  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F018  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F019  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F01A  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F01B  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F01C  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F01D  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F01E  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F01F  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F020  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F021  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F022  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F023  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F024  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F025  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F026  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F027  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F028  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F029  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F02A  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F02B  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F02C  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F02D  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F02E  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F02F  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F030  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F031  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F032  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F033  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F034  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F035  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F036  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F037  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F038  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F039  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F03A  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F03B  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F03C  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F03D  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F03E  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F03F  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // ---- $F040-$F07F --------------------------------------------------------
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F040  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F041  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F042  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F043  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F044  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F045  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F046  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F047  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F048  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F049  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F04A  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F04B  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F04C  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F04D  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F04E  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F04F  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F050  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F051  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F052  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F053  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F054  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F055  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F056  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F057  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F058  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F059  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F05A  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F05B  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F05C  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F05D  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F05E  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F05F  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F060  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F061  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F062  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F063  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F064  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F065  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F066  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F067  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F068  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F069  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F06A  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F06B  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F06C  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F06D  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F06E  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F06F  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F070  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F071  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F072  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F073  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F074  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F075  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F076  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F077  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F078  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F079  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F07A  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F07B  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F07C  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F07D  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F07E  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F07F  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // ---- $F080-$F0BF --------------------------------------------------------
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F080  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F081  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F082  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F083  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F084  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F085  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F086  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F087  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F088  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F089  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F08A  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F08B  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F08C  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F08D  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F08E  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F08F  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F090  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F091  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F092  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F093  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F094  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F095  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F096  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F097  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F098  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F099  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F09A  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F09B  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F09C  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F09D  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F09E  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F09F  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0A0  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0A1  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0A2  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0A3  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0A4  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0A5  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0A6  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0A7  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0A8  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0A9  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0AA  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0AB  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0AC  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0AD  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0AE  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0AF  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0B0  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0B1  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0B2  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0B3  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0B4  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0B5  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0B6  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0B7  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0B8  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0B9  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0BA  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0BB  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0BC  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0BD  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0BE  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0BF  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // ---- $F0C0-$F0FF --------------------------------------------------------
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0C0  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0C1  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0C2  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0C3  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0C4  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0C5  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0C6  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0C7  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0C8  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0C9  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0CA  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0CB  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0CC  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0CD  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0CE  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0CF  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0D0  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0D1  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0D2  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0D3  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0D4  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0D5  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0D6  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0D7  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0D8  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0D9  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0DA  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0DB  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0DC  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0DD  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0DE  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0DF  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0E0  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0E1  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0E2  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0E3  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0E4  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0E5  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0E6  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0E7  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0E8  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0E9  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0EA  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0EB  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0EC  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0ED  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0EE  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0EF  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0F0  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0F1  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0F2  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0F3  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0F4  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0F5  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0F6  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0F7  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0F8  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0F9  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0FA  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0FB  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0FC  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0FD  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0FE  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F0FF  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // ---- $F100-$F13F --------------------------------------------------------
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F100  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F101  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F102  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F103  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F104  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F105  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F106  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F107  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F108  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F109  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F10A  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F10B  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F10C  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F10D  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F10E  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F10F  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F110  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F111  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F112  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F113  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F114  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F115  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F116  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F117  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F118  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F119  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F11A  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F11B  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F11C  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F11D  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F11E  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F11F  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F120  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F121  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F122  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F123  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F124  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F125  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F126  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F127  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F128  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F129  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F12A  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F12B  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F12C  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F12D  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F12E  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F12F  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F130  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F131  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F132  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F133  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F134  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F135  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F136  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F137  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F138  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F139  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F13A  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F13B  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F13C  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F13D  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F13E  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F13F  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // ---- $F140-$F17F --------------------------------------------------------
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F140  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F141  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F142  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F143  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F144  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F145  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F146  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F147  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F148  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F149  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F14A  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F14B  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F14C  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F14D  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F14E  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F14F  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F150  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F151  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F152  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F153  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F154  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F155  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F156  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F157  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F158  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F159  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F15A  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F15B  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F15C  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F15D  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F15E  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F15F  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F160  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F161  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F162  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F163  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F164  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F165  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F166  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F167  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F168  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F169  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F16A  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F16B  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F16C  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F16D  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F16E  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F16F  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F170  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F171  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F172  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F173  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F174  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F175  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F176  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F177  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F178  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F179  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F17A  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F17B  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F17C  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F17D  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F17E  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F17F  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // ---- $F180-$F1BF --------------------------------------------------------
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F180  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F181  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F182  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F183  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F184  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F185  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F186  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F187  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F188  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F189  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F18A  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F18B  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F18C  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F18D  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F18E  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F18F  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F190  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F191  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F192  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F193  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F194  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F195  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F196  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F197  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F198  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F199  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F19A  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F19B  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F19C  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F19D  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F19E  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F19F  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1A0  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1A1  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1A2  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1A3  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1A4  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1A5  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1A6  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1A7  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1A8  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1A9  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1AA  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1AB  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1AC  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1AD  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1AE  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1AF  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1B0  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1B1  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1B2  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1B3  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1B4  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1B5  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1B6  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1B7  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1B8  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1B9  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1BA  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1BB  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1BC  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1BD  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1BE  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1BF  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // ---- $F1C0-$F1FF --------------------------------------------------------
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1C0  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1C1  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1C2  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1C3  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1C4  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1C5  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1C6  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1C7  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1C8  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1C9  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1CA  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1CB  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1CC  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1CD  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1CE  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1CF  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1D0  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1D1  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1D2  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1D3  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1D4  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1D5  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1D6  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1D7  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1D8  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1D9  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1DA  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1DB  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1DC  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1DD  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1DE  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1DF  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1E0  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1E1  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1E2  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1E3  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1E4  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1E5  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1E6  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1E7  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1E8  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1E9  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1EA  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1EB  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1EC  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1ED  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1EE  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1EF  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1F0  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1F1  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1F2  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1F3  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1F4  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1F5  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1F6  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1F7  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1F8  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1F9  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1FA  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1FB  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1FC  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1FD  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1FE  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F1FF  F-LINE    cpID 0
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // ---- $F200-$F23F --------------------------------------------------------
         ori     addr, code_ptr, L_05700 - cb            // F200  F-LINE    FPU general,D0
-        b       L_0E5BC
+        b       fline_dn
         ori     addr, code_ptr, L_05710 - cb            // F201  F-LINE    FPU general,D1
-        b       L_0E5BC
+        b       fline_dn
         ori     addr, code_ptr, L_05720 - cb            // F202  F-LINE    FPU general,D2
-        b       L_0E5BC
+        b       fline_dn
         ori     addr, code_ptr, L_05730 - cb            // F203  F-LINE    FPU general,D3
-        b       L_0E5BC
+        b       fline_dn
         ori     addr, code_ptr, L_05740 - cb            // F204  F-LINE    FPU general,D4
-        b       L_0E5BC
+        b       fline_dn
         ori     addr, code_ptr, L_05750 - cb            // F205  F-LINE    FPU general,D5
-        b       L_0E5BC
+        b       fline_dn
         ori     addr, code_ptr, L_05760 - cb            // F206  F-LINE    FPU general,D6
-        b       L_0E5BC
+        b       fline_dn
         ori     addr, code_ptr, L_05770 - cb            // F207  F-LINE    FPU general,D7
-        b       L_0E5BC
+        b       fline_dn
         ori     addr, code_ptr, L_05780 - cb            // F208  F-LINE    FPU general,A0
-        b       L_0E5C4
+        b       fline_an
         ori     addr, code_ptr, L_05790 - cb            // F209  F-LINE    FPU general,A1
-        b       L_0E5C4
+        b       fline_an
         ori     addr, code_ptr, L_057A0 - cb            // F20A  F-LINE    FPU general,A2
-        b       L_0E5C4
+        b       fline_an
         ori     addr, code_ptr, L_057B0 - cb            // F20B  F-LINE    FPU general,A3
-        b       L_0E5C4
+        b       fline_an
         ori     addr, code_ptr, L_057C0 - cb            // F20C  F-LINE    FPU general,A4
-        b       L_0E5C4
+        b       fline_an
         ori     addr, code_ptr, L_057D0 - cb            // F20D  F-LINE    FPU general,A5
-        b       L_0E5C4
+        b       fline_an
         ori     addr, code_ptr, L_057E0 - cb            // F20E  F-LINE    FPU general,A6
-        b       L_0E5C4
+        b       fline_an
         ori     addr, code_ptr, L_057F0 - cb            // F20F  F-LINE    FPU general,A7
-        b       L_0E5C4
+        b       fline_an
         mr      addr, a0                                // F210  F-LINE    FPU general,(A0)
-        b       L_0E5CC
+        b       fline_mem
         mr      addr, a1                                // F211  F-LINE    FPU general,(A1)
-        b       L_0E5CC
+        b       fline_mem
         mr      addr, a2                                // F212  F-LINE    FPU general,(A2)
-        b       L_0E5CC
+        b       fline_mem
         mr      addr, a3                                // F213  F-LINE    FPU general,(A3)
-        b       L_0E5CC
+        b       fline_mem
         mr      addr, a4                                // F214  F-LINE    FPU general,(A4)
-        b       L_0E5CC
+        b       fline_mem
         mr      addr, a5                                // F215  F-LINE    FPU general,(A5)
-        b       L_0E5CC
+        b       fline_mem
         mr      addr, a6                                // F216  F-LINE    FPU general,(A6)
-        b       L_0E5CC
+        b       fline_mem
         mr      addr, a7                                // F217  F-LINE    FPU general,(A7)
-        b       L_0E5CC
+        b       fline_mem
         ori     addr, code_ptr, L_00860 - cb            // F218  F-LINE    FPU general,(A0)+
-        b       L_0E5D4
+        b       fline_mem_2
         ori     addr, code_ptr, L_008E0 - cb            // F219  F-LINE    FPU general,(A1)+
-        b       L_0E5D4
+        b       fline_mem_2
         ori     addr, code_ptr, L_00960 - cb            // F21A  F-LINE    FPU general,(A2)+
-        b       L_0E5D4
+        b       fline_mem_2
         ori     addr, code_ptr, L_009E0 - cb            // F21B  F-LINE    FPU general,(A3)+
-        b       L_0E5D4
+        b       fline_mem_2
         ori     addr, code_ptr, L_00A60 - cb            // F21C  F-LINE    FPU general,(A4)+
-        b       L_0E5D4
+        b       fline_mem_2
         ori     addr, code_ptr, L_00AE0 - cb            // F21D  F-LINE    FPU general,(A5)+
-        b       L_0E5D4
+        b       fline_mem_2
         ori     addr, code_ptr, L_00B60 - cb            // F21E  F-LINE    FPU general,(A6)+
-        b       L_0E5D4
+        b       fline_mem_2
         ori     addr, code_ptr, L_00BE0 - cb            // F21F  F-LINE    FPU general,(A7)+
-        b       L_0E5D4
+        b       fline_mem_2
         ori     addr, code_ptr, L_00860 - cb            // F220  F-LINE    FPU general,-(A0)
-        b       L_0E5DC
+        b       fline_mem_3
         ori     addr, code_ptr, L_008E0 - cb            // F221  F-LINE    FPU general,-(A1)
-        b       L_0E5DC
+        b       fline_mem_3
         ori     addr, code_ptr, L_00960 - cb            // F222  F-LINE    FPU general,-(A2)
-        b       L_0E5DC
+        b       fline_mem_3
         ori     addr, code_ptr, L_009E0 - cb            // F223  F-LINE    FPU general,-(A3)
-        b       L_0E5DC
+        b       fline_mem_3
         ori     addr, code_ptr, L_00A60 - cb            // F224  F-LINE    FPU general,-(A4)
-        b       L_0E5DC
+        b       fline_mem_3
         ori     addr, code_ptr, L_00AE0 - cb            // F225  F-LINE    FPU general,-(A5)
-        b       L_0E5DC
+        b       fline_mem_3
         ori     addr, code_ptr, L_00B60 - cb            // F226  F-LINE    FPU general,-(A6)
-        b       L_0E5DC
+        b       fline_mem_3
         ori     addr, code_ptr, L_00BE0 - cb            // F227  F-LINE    FPU general,-(A7)
-        b       L_0E5DC
+        b       fline_mem_3
         mr      addr, a0                                // F228  F-LINE    FPU general,(d16,A0)
-        b       L_0E5E4
+        b       fline_mem_4
         mr      addr, a1                                // F229  F-LINE    FPU general,(d16,A1)
-        b       L_0E5E4
+        b       fline_mem_4
         mr      addr, a2                                // F22A  F-LINE    FPU general,(d16,A2)
-        b       L_0E5E4
+        b       fline_mem_4
         mr      addr, a3                                // F22B  F-LINE    FPU general,(d16,A3)
-        b       L_0E5E4
+        b       fline_mem_4
         mr      addr, a4                                // F22C  F-LINE    FPU general,(d16,A4)
-        b       L_0E5E4
+        b       fline_mem_4
         mr      addr, a5                                // F22D  F-LINE    FPU general,(d16,A5)
-        b       L_0E5E4
+        b       fline_mem_4
         mr      addr, a6                                // F22E  F-LINE    FPU general,(d16,A6)
-        b       L_0E5E4
+        b       fline_mem_4
         mr      addr, a7                                // F22F  F-LINE    FPU general,(d16,A7)
-        b       L_0E5E4
-        ori     addr, code_ptr, L_05980 - cb            // F230  F-LINE    FPU general,(d8,A0,Xn)
-        b       L_0E5EC
-        ori     addr, code_ptr, L_059E0 - cb            // F231  F-LINE    FPU general,(d8,A1,Xn)
-        b       L_0E5EC
-        ori     addr, code_ptr, L_05A40 - cb            // F232  F-LINE    FPU general,(d8,A2,Xn)
-        b       L_0E5EC
-        ori     addr, code_ptr, L_05AA0 - cb            // F233  F-LINE    FPU general,(d8,A3,Xn)
-        b       L_0E5EC
-        ori     addr, code_ptr, L_05B00 - cb            // F234  F-LINE    FPU general,(d8,A4,Xn)
-        b       L_0E5EC
-        ori     addr, code_ptr, L_05B60 - cb            // F235  F-LINE    FPU general,(d8,A5,Xn)
-        b       L_0E5EC
-        ori     addr, code_ptr, L_05BC0 - cb            // F236  F-LINE    FPU general,(d8,A6,Xn)
-        b       L_0E5EC
-        ori     addr, code_ptr, L_05C20 - cb            // F237  F-LINE    FPU general,(d8,A7,Xn)
-        b       L_0E5EC
+        b       fline_mem_4
+        ori     addr, code_ptr, movem_cas_etc_any_any - cb  // F230  F-LINE    FPU general,(d8,A0,Xn)
+        b       fline_mem_5
+        ori     addr, code_ptr, movem_cas_etc_any_any_2 - cb  // F231  F-LINE    FPU general,(d8,A1,Xn)
+        b       fline_mem_5
+        ori     addr, code_ptr, movem_cas_etc_any_any_3 - cb  // F232  F-LINE    FPU general,(d8,A2,Xn)
+        b       fline_mem_5
+        ori     addr, code_ptr, movem_cas_etc_any_any_4 - cb  // F233  F-LINE    FPU general,(d8,A3,Xn)
+        b       fline_mem_5
+        ori     addr, code_ptr, movem_cas_etc_any_any_5 - cb  // F234  F-LINE    FPU general,(d8,A4,Xn)
+        b       fline_mem_5
+        ori     addr, code_ptr, movem_cas_etc_any_any_6 - cb  // F235  F-LINE    FPU general,(d8,A5,Xn)
+        b       fline_mem_5
+        ori     addr, code_ptr, movem_cas_etc_any_any_7 - cb  // F236  F-LINE    FPU general,(d8,A6,Xn)
+        b       fline_mem_5
+        ori     addr, code_ptr, movem_cas_etc_any_any_8 - cb  // F237  F-LINE    FPU general,(d8,A7,Xn)
+        b       fline_mem_5
         li      addr, 0                                 // F238  F-LINE    FPU general,(xxx).W
-        b       L_0E5F4
-        ori     addr, code_ptr, L_05E00 - cb            // F239  F-LINE    FPU general,(xxx).L
-        b       L_0E5FC
+        b       fline_mem_6
+        ori     addr, code_ptr, cea_x_71 - cb           // F239  F-LINE    FPU general,(xxx).L
+        b       fline_mem_7
         addi    addr, pc, 2                             // F23A  F-LINE    FPU general,(d16,PC)
-        b       L_0E604
-        ori     addr, code_ptr, L_05E40 - cb            // F23B  F-LINE    FPU general,(d8,PC,Xn)
-        b       L_0E60C
+        b       fline_mem_8
+        ori     addr, code_ptr, chk2_cmp2_movem_etc_mem_any - cb  // F23B  F-LINE    FPU general,(d8,PC,Xn)
+        b       fline_mem_9
         lwz     rtn_addr, 0x8C8(EmulatorStatePtr)       // F23C  F-LINE    FPU general,#<data>
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F23D  F-LINE    FPU general,<ea 7.5>
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F23E  F-LINE    FPU general,<ea 7.6>
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F23F  F-LINE    FPU general,<ea 7.7>
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // ---- $F240-$F27F --------------------------------------------------------
         ori     addr, code_ptr, L_05700 - cb            // F240  F-LINE    FScc/FDBcc/FTRAPcc,D0
-        b       L_0E614
+        b       fline_dn_2
         ori     addr, code_ptr, L_05710 - cb            // F241  F-LINE    FScc/FDBcc/FTRAPcc,D1
-        b       L_0E614
+        b       fline_dn_2
         ori     addr, code_ptr, L_05720 - cb            // F242  F-LINE    FScc/FDBcc/FTRAPcc,D2
-        b       L_0E614
+        b       fline_dn_2
         ori     addr, code_ptr, L_05730 - cb            // F243  F-LINE    FScc/FDBcc/FTRAPcc,D3
-        b       L_0E614
+        b       fline_dn_2
         ori     addr, code_ptr, L_05740 - cb            // F244  F-LINE    FScc/FDBcc/FTRAPcc,D4
-        b       L_0E614
+        b       fline_dn_2
         ori     addr, code_ptr, L_05750 - cb            // F245  F-LINE    FScc/FDBcc/FTRAPcc,D5
-        b       L_0E614
+        b       fline_dn_2
         ori     addr, code_ptr, L_05760 - cb            // F246  F-LINE    FScc/FDBcc/FTRAPcc,D6
-        b       L_0E614
+        b       fline_dn_2
         ori     addr, code_ptr, L_05770 - cb            // F247  F-LINE    FScc/FDBcc/FTRAPcc,D7
-        b       L_0E614
+        b       fline_dn_2
         ori     addr, code_ptr, L_05700 - cb            // F248  F-LINE    FScc/FDBcc/FTRAPcc,A0
-        b       L_0E61C
+        b       fline_an_2
         ori     addr, code_ptr, L_05710 - cb            // F249  F-LINE    FScc/FDBcc/FTRAPcc,A1
-        b       L_0E61C
+        b       fline_an_2
         ori     addr, code_ptr, L_05720 - cb            // F24A  F-LINE    FScc/FDBcc/FTRAPcc,A2
-        b       L_0E61C
+        b       fline_an_2
         ori     addr, code_ptr, L_05730 - cb            // F24B  F-LINE    FScc/FDBcc/FTRAPcc,A3
-        b       L_0E61C
+        b       fline_an_2
         ori     addr, code_ptr, L_05740 - cb            // F24C  F-LINE    FScc/FDBcc/FTRAPcc,A4
-        b       L_0E61C
+        b       fline_an_2
         ori     addr, code_ptr, L_05750 - cb            // F24D  F-LINE    FScc/FDBcc/FTRAPcc,A5
-        b       L_0E61C
+        b       fline_an_2
         ori     addr, code_ptr, L_05760 - cb            // F24E  F-LINE    FScc/FDBcc/FTRAPcc,A6
-        b       L_0E61C
+        b       fline_an_2
         ori     addr, code_ptr, L_05770 - cb            // F24F  F-LINE    FScc/FDBcc/FTRAPcc,A7
-        b       L_0E61C
+        b       fline_an_2
         mr      addr, a0                                // F250  F-LINE    FScc/FDBcc/FTRAPcc,(A0)
-        b       L_0E624
+        b       fline_mem_10
         mr      addr, a1                                // F251  F-LINE    FScc/FDBcc/FTRAPcc,(A1)
-        b       L_0E624
+        b       fline_mem_10
         mr      addr, a2                                // F252  F-LINE    FScc/FDBcc/FTRAPcc,(A2)
-        b       L_0E624
+        b       fline_mem_10
         mr      addr, a3                                // F253  F-LINE    FScc/FDBcc/FTRAPcc,(A3)
-        b       L_0E624
+        b       fline_mem_10
         mr      addr, a4                                // F254  F-LINE    FScc/FDBcc/FTRAPcc,(A4)
-        b       L_0E624
+        b       fline_mem_10
         mr      addr, a5                                // F255  F-LINE    FScc/FDBcc/FTRAPcc,(A5)
-        b       L_0E624
+        b       fline_mem_10
         mr      addr, a6                                // F256  F-LINE    FScc/FDBcc/FTRAPcc,(A6)
-        b       L_0E624
+        b       fline_mem_10
         mr      addr, a7                                // F257  F-LINE    FScc/FDBcc/FTRAPcc,(A7)
-        b       L_0E624
+        b       fline_mem_10
         ori     addr, code_ptr, L_00860 - cb            // F258  F-LINE    FScc/FDBcc/FTRAPcc,(A0)+
-        b       L_0E62C
+        b       fline_mem_11
         ori     addr, code_ptr, L_008E0 - cb            // F259  F-LINE    FScc/FDBcc/FTRAPcc,(A1)+
-        b       L_0E62C
+        b       fline_mem_11
         ori     addr, code_ptr, L_00960 - cb            // F25A  F-LINE    FScc/FDBcc/FTRAPcc,(A2)+
-        b       L_0E62C
+        b       fline_mem_11
         ori     addr, code_ptr, L_009E0 - cb            // F25B  F-LINE    FScc/FDBcc/FTRAPcc,(A3)+
-        b       L_0E62C
+        b       fline_mem_11
         ori     addr, code_ptr, L_00A60 - cb            // F25C  F-LINE    FScc/FDBcc/FTRAPcc,(A4)+
-        b       L_0E62C
+        b       fline_mem_11
         ori     addr, code_ptr, L_00AE0 - cb            // F25D  F-LINE    FScc/FDBcc/FTRAPcc,(A5)+
-        b       L_0E62C
+        b       fline_mem_11
         ori     addr, code_ptr, L_00B60 - cb            // F25E  F-LINE    FScc/FDBcc/FTRAPcc,(A6)+
-        b       L_0E62C
+        b       fline_mem_11
         ori     addr, code_ptr, L_00BE0 - cb            // F25F  F-LINE    FScc/FDBcc/FTRAPcc,(A7)+
-        b       L_0E62C
+        b       fline_mem_11
         ori     addr, code_ptr, L_00860 - cb            // F260  F-LINE    FScc/FDBcc/FTRAPcc,-(A0)
-        b       L_0E634
+        b       fline_mem_12
         ori     addr, code_ptr, L_008E0 - cb            // F261  F-LINE    FScc/FDBcc/FTRAPcc,-(A1)
-        b       L_0E634
+        b       fline_mem_12
         ori     addr, code_ptr, L_00960 - cb            // F262  F-LINE    FScc/FDBcc/FTRAPcc,-(A2)
-        b       L_0E634
+        b       fline_mem_12
         ori     addr, code_ptr, L_009E0 - cb            // F263  F-LINE    FScc/FDBcc/FTRAPcc,-(A3)
-        b       L_0E634
+        b       fline_mem_12
         ori     addr, code_ptr, L_00A60 - cb            // F264  F-LINE    FScc/FDBcc/FTRAPcc,-(A4)
-        b       L_0E634
+        b       fline_mem_12
         ori     addr, code_ptr, L_00AE0 - cb            // F265  F-LINE    FScc/FDBcc/FTRAPcc,-(A5)
-        b       L_0E634
+        b       fline_mem_12
         ori     addr, code_ptr, L_00B60 - cb            // F266  F-LINE    FScc/FDBcc/FTRAPcc,-(A6)
-        b       L_0E634
+        b       fline_mem_12
         ori     addr, code_ptr, L_00BE0 - cb            // F267  F-LINE    FScc/FDBcc/FTRAPcc,-(A7)
-        b       L_0E634
+        b       fline_mem_12
         mr      addr, a0                                // F268  F-LINE    FScc/FDBcc/FTRAPcc,(d16,A0)
-        b       L_0E63C
+        b       fline_mem_13
         mr      addr, a1                                // F269  F-LINE    FScc/FDBcc/FTRAPcc,(d16,A1)
-        b       L_0E63C
+        b       fline_mem_13
         mr      addr, a2                                // F26A  F-LINE    FScc/FDBcc/FTRAPcc,(d16,A2)
-        b       L_0E63C
+        b       fline_mem_13
         mr      addr, a3                                // F26B  F-LINE    FScc/FDBcc/FTRAPcc,(d16,A3)
-        b       L_0E63C
+        b       fline_mem_13
         mr      addr, a4                                // F26C  F-LINE    FScc/FDBcc/FTRAPcc,(d16,A4)
-        b       L_0E63C
+        b       fline_mem_13
         mr      addr, a5                                // F26D  F-LINE    FScc/FDBcc/FTRAPcc,(d16,A5)
-        b       L_0E63C
+        b       fline_mem_13
         mr      addr, a6                                // F26E  F-LINE    FScc/FDBcc/FTRAPcc,(d16,A6)
-        b       L_0E63C
+        b       fline_mem_13
         mr      addr, a7                                // F26F  F-LINE    FScc/FDBcc/FTRAPcc,(d16,A7)
-        b       L_0E63C
-        ori     addr, code_ptr, L_05980 - cb            // F270  F-LINE    FScc/FDBcc/FTRAPcc,(d8,A0,Xn)
-        b       L_0E644
-        ori     addr, code_ptr, L_059E0 - cb            // F271  F-LINE    FScc/FDBcc/FTRAPcc,(d8,A1,Xn)
-        b       L_0E644
-        ori     addr, code_ptr, L_05A40 - cb            // F272  F-LINE    FScc/FDBcc/FTRAPcc,(d8,A2,Xn)
-        b       L_0E644
-        ori     addr, code_ptr, L_05AA0 - cb            // F273  F-LINE    FScc/FDBcc/FTRAPcc,(d8,A3,Xn)
-        b       L_0E644
-        ori     addr, code_ptr, L_05B00 - cb            // F274  F-LINE    FScc/FDBcc/FTRAPcc,(d8,A4,Xn)
-        b       L_0E644
-        ori     addr, code_ptr, L_05B60 - cb            // F275  F-LINE    FScc/FDBcc/FTRAPcc,(d8,A5,Xn)
-        b       L_0E644
-        ori     addr, code_ptr, L_05BC0 - cb            // F276  F-LINE    FScc/FDBcc/FTRAPcc,(d8,A6,Xn)
-        b       L_0E644
-        ori     addr, code_ptr, L_05C20 - cb            // F277  F-LINE    FScc/FDBcc/FTRAPcc,(d8,A7,Xn)
-        b       L_0E644
+        b       fline_mem_13
+        ori     addr, code_ptr, movem_cas_etc_any_any - cb  // F270  F-LINE    FScc/FDBcc/FTRAPcc,(d8,A0,Xn)
+        b       fline_mem_14
+        ori     addr, code_ptr, movem_cas_etc_any_any_2 - cb  // F271  F-LINE    FScc/FDBcc/FTRAPcc,(d8,A1,Xn)
+        b       fline_mem_14
+        ori     addr, code_ptr, movem_cas_etc_any_any_3 - cb  // F272  F-LINE    FScc/FDBcc/FTRAPcc,(d8,A2,Xn)
+        b       fline_mem_14
+        ori     addr, code_ptr, movem_cas_etc_any_any_4 - cb  // F273  F-LINE    FScc/FDBcc/FTRAPcc,(d8,A3,Xn)
+        b       fline_mem_14
+        ori     addr, code_ptr, movem_cas_etc_any_any_5 - cb  // F274  F-LINE    FScc/FDBcc/FTRAPcc,(d8,A4,Xn)
+        b       fline_mem_14
+        ori     addr, code_ptr, movem_cas_etc_any_any_6 - cb  // F275  F-LINE    FScc/FDBcc/FTRAPcc,(d8,A5,Xn)
+        b       fline_mem_14
+        ori     addr, code_ptr, movem_cas_etc_any_any_7 - cb  // F276  F-LINE    FScc/FDBcc/FTRAPcc,(d8,A6,Xn)
+        b       fline_mem_14
+        ori     addr, code_ptr, movem_cas_etc_any_any_8 - cb  // F277  F-LINE    FScc/FDBcc/FTRAPcc,(d8,A7,Xn)
+        b       fline_mem_14
         li      addr, 0                                 // F278  F-LINE    FScc/FDBcc/FTRAPcc,(xxx).W
-        b       L_0E64C
-        ori     addr, code_ptr, L_05E00 - cb            // F279  F-LINE    FScc/FDBcc/FTRAPcc,(xxx).L
-        b       L_0E654
+        b       fline_mem_15
+        ori     addr, code_ptr, cea_x_71 - cb           // F279  F-LINE    FScc/FDBcc/FTRAPcc,(xxx).L
+        b       fline_mem_16
         lwz     rtn_addr, 0x8F0(EmulatorStatePtr)       // F27A  F-LINE    FScc/FDBcc/FTRAPcc,(d16,PC)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x8F4(EmulatorStatePtr)       // F27B  F-LINE    FScc/FDBcc/FTRAPcc,(d8,PC,Xn)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x8F8(EmulatorStatePtr)       // F27C  F-LINE    FScc/FDBcc/FTRAPcc,#<data>
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F27D  F-LINE    FScc/FDBcc/FTRAPcc,<ea 7.5>
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F27E  F-LINE    FScc/FDBcc/FTRAPcc,<ea 7.6>
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F27F  F-LINE    FScc/FDBcc/FTRAPcc,<ea 7.7>
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // ---- $F280-$F2BF --------------------------------------------------------
         lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F280  F-LINE    FBcc.W
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F281  F-LINE    FBcc.W
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F282  F-LINE    FBcc.W
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F283  F-LINE    FBcc.W
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F284  F-LINE    FBcc.W
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F285  F-LINE    FBcc.W
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F286  F-LINE    FBcc.W
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F287  F-LINE    FBcc.W
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F288  F-LINE    FBcc.W
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F289  F-LINE    FBcc.W
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F28A  F-LINE    FBcc.W
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F28B  F-LINE    FBcc.W
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F28C  F-LINE    FBcc.W
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F28D  F-LINE    FBcc.W
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F28E  F-LINE    FBcc.W
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F28F  F-LINE    FBcc.W
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F290  F-LINE    FBcc.W
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F291  F-LINE    FBcc.W
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F292  F-LINE    FBcc.W
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F293  F-LINE    FBcc.W
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F294  F-LINE    FBcc.W
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F295  F-LINE    FBcc.W
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F296  F-LINE    FBcc.W
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F297  F-LINE    FBcc.W
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F298  F-LINE    FBcc.W
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F299  F-LINE    FBcc.W
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F29A  F-LINE    FBcc.W
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F29B  F-LINE    FBcc.W
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F29C  F-LINE    FBcc.W
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F29D  F-LINE    FBcc.W
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F29E  F-LINE    FBcc.W
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F29F  F-LINE    FBcc.W
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F2A0  F-LINE    FBcc.W
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F2A1  F-LINE    FBcc.W
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F2A2  F-LINE    FBcc.W
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F2A3  F-LINE    FBcc.W
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F2A4  F-LINE    FBcc.W
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F2A5  F-LINE    FBcc.W
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F2A6  F-LINE    FBcc.W
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F2A7  F-LINE    FBcc.W
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F2A8  F-LINE    FBcc.W
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F2A9  F-LINE    FBcc.W
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F2AA  F-LINE    FBcc.W
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F2AB  F-LINE    FBcc.W
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F2AC  F-LINE    FBcc.W
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F2AD  F-LINE    FBcc.W
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F2AE  F-LINE    FBcc.W
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F2AF  F-LINE    FBcc.W
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F2B0  F-LINE    FBcc.W
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F2B1  F-LINE    FBcc.W
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F2B2  F-LINE    FBcc.W
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F2B3  F-LINE    FBcc.W
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F2B4  F-LINE    FBcc.W
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F2B5  F-LINE    FBcc.W
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F2B6  F-LINE    FBcc.W
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F2B7  F-LINE    FBcc.W
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F2B8  F-LINE    FBcc.W
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F2B9  F-LINE    FBcc.W
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F2BA  F-LINE    FBcc.W
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F2BB  F-LINE    FBcc.W
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F2BC  F-LINE    FBcc.W
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F2BD  F-LINE    FBcc.W
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F2BE  F-LINE    FBcc.W
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F2BF  F-LINE    FBcc.W
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // ---- $F2C0-$F2FF --------------------------------------------------------
         lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2C0  F-LINE    FBcc.L
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2C1  F-LINE    FBcc.L
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2C2  F-LINE    FBcc.L
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2C3  F-LINE    FBcc.L
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2C4  F-LINE    FBcc.L
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2C5  F-LINE    FBcc.L
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2C6  F-LINE    FBcc.L
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2C7  F-LINE    FBcc.L
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2C8  F-LINE    FBcc.L
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2C9  F-LINE    FBcc.L
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2CA  F-LINE    FBcc.L
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2CB  F-LINE    FBcc.L
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2CC  F-LINE    FBcc.L
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2CD  F-LINE    FBcc.L
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2CE  F-LINE    FBcc.L
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2CF  F-LINE    FBcc.L
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2D0  F-LINE    FBcc.L
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2D1  F-LINE    FBcc.L
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2D2  F-LINE    FBcc.L
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2D3  F-LINE    FBcc.L
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2D4  F-LINE    FBcc.L
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2D5  F-LINE    FBcc.L
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2D6  F-LINE    FBcc.L
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2D7  F-LINE    FBcc.L
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2D8  F-LINE    FBcc.L
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2D9  F-LINE    FBcc.L
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2DA  F-LINE    FBcc.L
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2DB  F-LINE    FBcc.L
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2DC  F-LINE    FBcc.L
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2DD  F-LINE    FBcc.L
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2DE  F-LINE    FBcc.L
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2DF  F-LINE    FBcc.L
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2E0  F-LINE    FBcc.L
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2E1  F-LINE    FBcc.L
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2E2  F-LINE    FBcc.L
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2E3  F-LINE    FBcc.L
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2E4  F-LINE    FBcc.L
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2E5  F-LINE    FBcc.L
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2E6  F-LINE    FBcc.L
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2E7  F-LINE    FBcc.L
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2E8  F-LINE    FBcc.L
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2E9  F-LINE    FBcc.L
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2EA  F-LINE    FBcc.L
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2EB  F-LINE    FBcc.L
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2EC  F-LINE    FBcc.L
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2ED  F-LINE    FBcc.L
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2EE  F-LINE    FBcc.L
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2EF  F-LINE    FBcc.L
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2F0  F-LINE    FBcc.L
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2F1  F-LINE    FBcc.L
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2F2  F-LINE    FBcc.L
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2F3  F-LINE    FBcc.L
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2F4  F-LINE    FBcc.L
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2F5  F-LINE    FBcc.L
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2F6  F-LINE    FBcc.L
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2F7  F-LINE    FBcc.L
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2F8  F-LINE    FBcc.L
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2F9  F-LINE    FBcc.L
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2FA  F-LINE    FBcc.L
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2FB  F-LINE    FBcc.L
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2FC  F-LINE    FBcc.L
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2FD  F-LINE    FBcc.L
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2FE  F-LINE    FBcc.L
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2FF  F-LINE    FBcc.L
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // ---- $F300-$F33F --------------------------------------------------------
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F300  F-LINE    FSAVE,D0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F301  F-LINE    FSAVE,D1
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F302  F-LINE    FSAVE,D2
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F303  F-LINE    FSAVE,D3
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F304  F-LINE    FSAVE,D4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F305  F-LINE    FSAVE,D5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F306  F-LINE    FSAVE,D6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F307  F-LINE    FSAVE,D7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F308  F-LINE    FSAVE,A0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F309  F-LINE    FSAVE,A1
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F30A  F-LINE    FSAVE,A2
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F30B  F-LINE    FSAVE,A3
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F30C  F-LINE    FSAVE,A4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F30D  F-LINE    FSAVE,A5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F30E  F-LINE    FSAVE,A6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F30F  F-LINE    FSAVE,A7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         mr      addr, a0                                // F310  F-LINE    FSAVE,(A0)
-        b       L_0E65C
+        b       fline_mem_17
         mr      addr, a1                                // F311  F-LINE    FSAVE,(A1)
-        b       L_0E65C
+        b       fline_mem_17
         mr      addr, a2                                // F312  F-LINE    FSAVE,(A2)
-        b       L_0E65C
+        b       fline_mem_17
         mr      addr, a3                                // F313  F-LINE    FSAVE,(A3)
-        b       L_0E65C
+        b       fline_mem_17
         mr      addr, a4                                // F314  F-LINE    FSAVE,(A4)
-        b       L_0E65C
+        b       fline_mem_17
         mr      addr, a5                                // F315  F-LINE    FSAVE,(A5)
-        b       L_0E65C
+        b       fline_mem_17
         mr      addr, a6                                // F316  F-LINE    FSAVE,(A6)
-        b       L_0E65C
+        b       fline_mem_17
         mr      addr, a7                                // F317  F-LINE    FSAVE,(A7)
-        b       L_0E65C
+        b       fline_mem_17
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F318  F-LINE    FSAVE,(A0)+
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F319  F-LINE    FSAVE,(A1)+
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F31A  F-LINE    FSAVE,(A2)+
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F31B  F-LINE    FSAVE,(A3)+
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F31C  F-LINE    FSAVE,(A4)+
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F31D  F-LINE    FSAVE,(A5)+
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F31E  F-LINE    FSAVE,(A6)+
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F31F  F-LINE    FSAVE,(A7)+
-        b       L_0D760
+        b       fline_ptestr_mem_any
         ori     addr, code_ptr, L_00860 - cb            // F320  F-LINE    FSAVE,-(A0)
-        b       L_0E664
+        b       fline_mem_18
         ori     addr, code_ptr, L_008E0 - cb            // F321  F-LINE    FSAVE,-(A1)
-        b       L_0E664
+        b       fline_mem_18
         ori     addr, code_ptr, L_00960 - cb            // F322  F-LINE    FSAVE,-(A2)
-        b       L_0E664
+        b       fline_mem_18
         ori     addr, code_ptr, L_009E0 - cb            // F323  F-LINE    FSAVE,-(A3)
-        b       L_0E664
+        b       fline_mem_18
         ori     addr, code_ptr, L_00A60 - cb            // F324  F-LINE    FSAVE,-(A4)
-        b       L_0E664
+        b       fline_mem_18
         ori     addr, code_ptr, L_00AE0 - cb            // F325  F-LINE    FSAVE,-(A5)
-        b       L_0E664
+        b       fline_mem_18
         ori     addr, code_ptr, L_00B60 - cb            // F326  F-LINE    FSAVE,-(A6)
-        b       L_0E664
+        b       fline_mem_18
         ori     addr, code_ptr, L_00BE0 - cb            // F327  F-LINE    FSAVE,-(A7)
-        b       L_0E664
+        b       fline_mem_18
         add     addr, a0, prefetch_data                 // F328  F-LINE    FSAVE,(d16,A0)
-        b       L_0E66C
+        b       fline_mem_19
         add     addr, a1, prefetch_data                 // F329  F-LINE    FSAVE,(d16,A1)
-        b       L_0E66C
+        b       fline_mem_19
         add     addr, a2, prefetch_data                 // F32A  F-LINE    FSAVE,(d16,A2)
-        b       L_0E66C
+        b       fline_mem_19
         add     addr, a3, prefetch_data                 // F32B  F-LINE    FSAVE,(d16,A3)
-        b       L_0E66C
+        b       fline_mem_19
         add     addr, a4, prefetch_data                 // F32C  F-LINE    FSAVE,(d16,A4)
-        b       L_0E66C
+        b       fline_mem_19
         add     addr, a5, prefetch_data                 // F32D  F-LINE    FSAVE,(d16,A5)
-        b       L_0E66C
+        b       fline_mem_19
         add     addr, a6, prefetch_data                 // F32E  F-LINE    FSAVE,(d16,A6)
-        b       L_0E66C
+        b       fline_mem_19
         add     addr, a7, prefetch_data                 // F32F  F-LINE    FSAVE,(d16,A7)
-        b       L_0E66C
-        ori     addr, code_ptr, L_05988 - cb            // F330  F-LINE    FSAVE,(d8,A0,Xn)
-        b       L_0E674
-        ori     addr, code_ptr, L_059E8 - cb            // F331  F-LINE    FSAVE,(d8,A1,Xn)
-        b       L_0E674
-        ori     addr, code_ptr, L_05A48 - cb            // F332  F-LINE    FSAVE,(d8,A2,Xn)
-        b       L_0E674
-        ori     addr, code_ptr, L_05AA8 - cb            // F333  F-LINE    FSAVE,(d8,A3,Xn)
-        b       L_0E674
-        ori     addr, code_ptr, L_05B08 - cb            // F334  F-LINE    FSAVE,(d8,A4,Xn)
-        b       L_0E674
-        ori     addr, code_ptr, L_05B68 - cb            // F335  F-LINE    FSAVE,(d8,A5,Xn)
-        b       L_0E674
-        ori     addr, code_ptr, L_05BC8 - cb            // F336  F-LINE    FSAVE,(d8,A6,Xn)
-        b       L_0E674
-        ori     addr, code_ptr, L_05C28 - cb            // F337  F-LINE    FSAVE,(d8,A7,Xn)
-        b       L_0E674
+        b       fline_mem_19
+        ori     addr, code_ptr, or_sub_etc_any_any - cb  // F330  F-LINE    FSAVE,(d8,A0,Xn)
+        b       fline_mem_20
+        ori     addr, code_ptr, or_sub_etc_any_any_2 - cb  // F331  F-LINE    FSAVE,(d8,A1,Xn)
+        b       fline_mem_20
+        ori     addr, code_ptr, or_sub_etc_any_any_3 - cb  // F332  F-LINE    FSAVE,(d8,A2,Xn)
+        b       fline_mem_20
+        ori     addr, code_ptr, or_sub_etc_any_any_4 - cb  // F333  F-LINE    FSAVE,(d8,A3,Xn)
+        b       fline_mem_20
+        ori     addr, code_ptr, or_sub_etc_any_any_5 - cb  // F334  F-LINE    FSAVE,(d8,A4,Xn)
+        b       fline_mem_20
+        ori     addr, code_ptr, or_sub_etc_any_any_6 - cb  // F335  F-LINE    FSAVE,(d8,A5,Xn)
+        b       fline_mem_20
+        ori     addr, code_ptr, or_sub_etc_any_any_7 - cb  // F336  F-LINE    FSAVE,(d8,A6,Xn)
+        b       fline_mem_20
+        ori     addr, code_ptr, or_sub_etc_any_any_8 - cb  // F337  F-LINE    FSAVE,(d8,A7,Xn)
+        b       fline_mem_20
         li      addr, 0                                 // F338  F-LINE    FSAVE,(xxx).W
-        b       L_0E67C
-        ori     addr, code_ptr, L_05E14 - cb            // F339  F-LINE    FSAVE,(xxx).L
-        b       L_0E684
+        b       fline_mem_21
+        ori     addr, code_ptr, cea_x_71_2 - cb         // F339  F-LINE    FSAVE,(xxx).L
+        b       fline_mem_22
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F33A  F-LINE    FSAVE,(d16,PC)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F33B  F-LINE    FSAVE,(d8,PC,Xn)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F33C  F-LINE    FSAVE,#<data>
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F33D  F-LINE    FSAVE,<ea 7.5>
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F33E  F-LINE    FSAVE,<ea 7.6>
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F33F  F-LINE    FSAVE,<ea 7.7>
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // ---- $F340-$F37F --------------------------------------------------------
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F340  F-LINE    FRESTORE,D0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F341  F-LINE    FRESTORE,D1
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F342  F-LINE    FRESTORE,D2
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F343  F-LINE    FRESTORE,D3
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F344  F-LINE    FRESTORE,D4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F345  F-LINE    FRESTORE,D5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F346  F-LINE    FRESTORE,D6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F347  F-LINE    FRESTORE,D7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F348  F-LINE    FRESTORE,A0
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F349  F-LINE    FRESTORE,A1
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F34A  F-LINE    FRESTORE,A2
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F34B  F-LINE    FRESTORE,A3
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F34C  F-LINE    FRESTORE,A4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F34D  F-LINE    FRESTORE,A5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F34E  F-LINE    FRESTORE,A6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F34F  F-LINE    FRESTORE,A7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         mr      addr, a0                                // F350  F-LINE    FRESTORE,(A0)
-        b       L_0E68C
+        b       fline_mem_23
         mr      addr, a1                                // F351  F-LINE    FRESTORE,(A1)
-        b       L_0E68C
+        b       fline_mem_23
         mr      addr, a2                                // F352  F-LINE    FRESTORE,(A2)
-        b       L_0E68C
+        b       fline_mem_23
         mr      addr, a3                                // F353  F-LINE    FRESTORE,(A3)
-        b       L_0E68C
+        b       fline_mem_23
         mr      addr, a4                                // F354  F-LINE    FRESTORE,(A4)
-        b       L_0E68C
+        b       fline_mem_23
         mr      addr, a5                                // F355  F-LINE    FRESTORE,(A5)
-        b       L_0E68C
+        b       fline_mem_23
         mr      addr, a6                                // F356  F-LINE    FRESTORE,(A6)
-        b       L_0E68C
+        b       fline_mem_23
         mr      addr, a7                                // F357  F-LINE    FRESTORE,(A7)
-        b       L_0E68C
+        b       fline_mem_23
         ori     addr, code_ptr, L_00860 - cb            // F358  F-LINE    FRESTORE,(A0)+
-        b       L_0E694
+        b       fline_mem_24
         ori     addr, code_ptr, L_008E0 - cb            // F359  F-LINE    FRESTORE,(A1)+
-        b       L_0E694
+        b       fline_mem_24
         ori     addr, code_ptr, L_00960 - cb            // F35A  F-LINE    FRESTORE,(A2)+
-        b       L_0E694
+        b       fline_mem_24
         ori     addr, code_ptr, L_009E0 - cb            // F35B  F-LINE    FRESTORE,(A3)+
-        b       L_0E694
+        b       fline_mem_24
         ori     addr, code_ptr, L_00A60 - cb            // F35C  F-LINE    FRESTORE,(A4)+
-        b       L_0E694
+        b       fline_mem_24
         ori     addr, code_ptr, L_00AE0 - cb            // F35D  F-LINE    FRESTORE,(A5)+
-        b       L_0E694
+        b       fline_mem_24
         ori     addr, code_ptr, L_00B60 - cb            // F35E  F-LINE    FRESTORE,(A6)+
-        b       L_0E694
+        b       fline_mem_24
         ori     addr, code_ptr, L_00BE0 - cb            // F35F  F-LINE    FRESTORE,(A7)+
-        b       L_0E694
+        b       fline_mem_24
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F360  F-LINE    FRESTORE,-(A0)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F361  F-LINE    FRESTORE,-(A1)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F362  F-LINE    FRESTORE,-(A2)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F363  F-LINE    FRESTORE,-(A3)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F364  F-LINE    FRESTORE,-(A4)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F365  F-LINE    FRESTORE,-(A5)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F366  F-LINE    FRESTORE,-(A6)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F367  F-LINE    FRESTORE,-(A7)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         add     addr, a0, prefetch_data                 // F368  F-LINE    FRESTORE,(d16,A0)
-        b       L_0E69C
+        b       fline_mem_25
         add     addr, a1, prefetch_data                 // F369  F-LINE    FRESTORE,(d16,A1)
-        b       L_0E69C
+        b       fline_mem_25
         add     addr, a2, prefetch_data                 // F36A  F-LINE    FRESTORE,(d16,A2)
-        b       L_0E69C
+        b       fline_mem_25
         add     addr, a3, prefetch_data                 // F36B  F-LINE    FRESTORE,(d16,A3)
-        b       L_0E69C
+        b       fline_mem_25
         add     addr, a4, prefetch_data                 // F36C  F-LINE    FRESTORE,(d16,A4)
-        b       L_0E69C
+        b       fline_mem_25
         add     addr, a5, prefetch_data                 // F36D  F-LINE    FRESTORE,(d16,A5)
-        b       L_0E69C
+        b       fline_mem_25
         add     addr, a6, prefetch_data                 // F36E  F-LINE    FRESTORE,(d16,A6)
-        b       L_0E69C
+        b       fline_mem_25
         add     addr, a7, prefetch_data                 // F36F  F-LINE    FRESTORE,(d16,A7)
-        b       L_0E69C
-        ori     addr, code_ptr, L_05988 - cb            // F370  F-LINE    FRESTORE,(d8,A0,Xn)
-        b       L_0E6A4
-        ori     addr, code_ptr, L_059E8 - cb            // F371  F-LINE    FRESTORE,(d8,A1,Xn)
-        b       L_0E6A4
-        ori     addr, code_ptr, L_05A48 - cb            // F372  F-LINE    FRESTORE,(d8,A2,Xn)
-        b       L_0E6A4
-        ori     addr, code_ptr, L_05AA8 - cb            // F373  F-LINE    FRESTORE,(d8,A3,Xn)
-        b       L_0E6A4
-        ori     addr, code_ptr, L_05B08 - cb            // F374  F-LINE    FRESTORE,(d8,A4,Xn)
-        b       L_0E6A4
-        ori     addr, code_ptr, L_05B68 - cb            // F375  F-LINE    FRESTORE,(d8,A5,Xn)
-        b       L_0E6A4
-        ori     addr, code_ptr, L_05BC8 - cb            // F376  F-LINE    FRESTORE,(d8,A6,Xn)
-        b       L_0E6A4
-        ori     addr, code_ptr, L_05C28 - cb            // F377  F-LINE    FRESTORE,(d8,A7,Xn)
-        b       L_0E6A4
+        b       fline_mem_25
+        ori     addr, code_ptr, or_sub_etc_any_any - cb  // F370  F-LINE    FRESTORE,(d8,A0,Xn)
+        b       fline_mem_26
+        ori     addr, code_ptr, or_sub_etc_any_any_2 - cb  // F371  F-LINE    FRESTORE,(d8,A1,Xn)
+        b       fline_mem_26
+        ori     addr, code_ptr, or_sub_etc_any_any_3 - cb  // F372  F-LINE    FRESTORE,(d8,A2,Xn)
+        b       fline_mem_26
+        ori     addr, code_ptr, or_sub_etc_any_any_4 - cb  // F373  F-LINE    FRESTORE,(d8,A3,Xn)
+        b       fline_mem_26
+        ori     addr, code_ptr, or_sub_etc_any_any_5 - cb  // F374  F-LINE    FRESTORE,(d8,A4,Xn)
+        b       fline_mem_26
+        ori     addr, code_ptr, or_sub_etc_any_any_6 - cb  // F375  F-LINE    FRESTORE,(d8,A5,Xn)
+        b       fline_mem_26
+        ori     addr, code_ptr, or_sub_etc_any_any_7 - cb  // F376  F-LINE    FRESTORE,(d8,A6,Xn)
+        b       fline_mem_26
+        ori     addr, code_ptr, or_sub_etc_any_any_8 - cb  // F377  F-LINE    FRESTORE,(d8,A7,Xn)
+        b       fline_mem_26
         li      addr, 0                                 // F378  F-LINE    FRESTORE,(xxx).W
-        b       L_0E6AC
-        ori     addr, code_ptr, L_05E14 - cb            // F379  F-LINE    FRESTORE,(xxx).L
-        b       L_0E6B4
+        b       fline_mem_27
+        ori     addr, code_ptr, cea_x_71_2 - cb         // F379  F-LINE    FRESTORE,(xxx).L
+        b       fline_mem_28
         add     addr, pc, prefetch_data                 // F37A  F-LINE    FRESTORE,(d16,PC)
-        b       L_0E6BC
-        ori     addr, code_ptr, L_05E48 - cb            // F37B  F-LINE    FRESTORE,(d8,PC,Xn)
-        b       L_0E6C4
+        b       fline_mem_29
+        ori     addr, code_ptr, cea_x_73 - cb           // F37B  F-LINE    FRESTORE,(d8,PC,Xn)
+        b       fline_mem_30
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F37C  F-LINE    FRESTORE,#<data>
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F37D  F-LINE    FRESTORE,<ea 7.5>
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F37E  F-LINE    FRESTORE,<ea 7.6>
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F37F  F-LINE    FRESTORE,<ea 7.7>
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // ---- $F380-$F3BF --------------------------------------------------------
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F380  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F381  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F382  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F383  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F384  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F385  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F386  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F387  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F388  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F389  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F38A  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F38B  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F38C  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F38D  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F38E  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F38F  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F390  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F391  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F392  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F393  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F394  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F395  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F396  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F397  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F398  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F399  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F39A  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F39B  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F39C  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F39D  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F39E  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F39F  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3A0  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3A1  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3A2  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3A3  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3A4  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3A5  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3A6  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3A7  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3A8  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3A9  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3AA  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3AB  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3AC  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3AD  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3AE  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3AF  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3B0  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3B1  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3B2  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3B3  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3B4  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3B5  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3B6  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3B7  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3B8  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3B9  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3BA  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3BB  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3BC  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3BD  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3BE  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3BF  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // ---- $F3C0-$F3FF --------------------------------------------------------
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3C0  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3C1  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3C2  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3C3  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3C4  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3C5  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3C6  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3C7  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3C8  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3C9  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3CA  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3CB  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3CC  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3CD  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3CE  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3CF  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3D0  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3D1  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3D2  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3D3  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3D4  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3D5  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3D6  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3D7  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3D8  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3D9  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3DA  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3DB  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3DC  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3DD  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3DE  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3DF  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3E0  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3E1  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3E2  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3E3  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3E4  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3E5  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3E6  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3E7  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3E8  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3E9  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3EA  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3EB  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3EC  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3ED  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3EE  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3EF  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3F0  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3F1  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3F2  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3F3  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3F4  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3F5  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3F6  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3F7  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3F8  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3F9  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3FA  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3FB  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3FC  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3FD  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3FE  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F3FF  F-LINE    FPU (reserved)
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // ---- $F400-$F43F --------------------------------------------------------
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F400  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F401  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F402  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F403  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F404  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F405  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F406  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F407  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F408  CINVL     NC,(A0)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F409  CINVL     NC,(A1)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F40A  CINVL     NC,(A2)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F40B  CINVL     NC,(A3)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F40C  CINVL     NC,(A4)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F40D  CINVL     NC,(A5)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F40E  CINVL     NC,(A6)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F40F  CINVL     NC,(A7)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F410  CINVP     NC,(A0)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F411  CINVP     NC,(A1)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F412  CINVP     NC,(A2)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F413  CINVP     NC,(A3)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F414  CINVP     NC,(A4)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F415  CINVP     NC,(A5)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F416  CINVP     NC,(A6)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F417  CINVP     NC,(A7)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F418  CINVA     NC
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F419  CINVA     NC
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F41A  CINVA     NC
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F41B  CINVA     NC
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F41C  CINVA     NC
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F41D  CINVA     NC
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F41E  CINVA     NC
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F41F  CINVA     NC
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F420  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F421  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F422  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F423  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F424  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F425  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F426  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F427  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F428  CPUSHL    NC,(A0)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F429  CPUSHL    NC,(A1)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F42A  CPUSHL    NC,(A2)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F42B  CPUSHL    NC,(A3)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F42C  CPUSHL    NC,(A4)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F42D  CPUSHL    NC,(A5)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F42E  CPUSHL    NC,(A6)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F42F  CPUSHL    NC,(A7)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F430  CPUSHP    NC,(A0)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F431  CPUSHP    NC,(A1)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F432  CPUSHP    NC,(A2)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F433  CPUSHP    NC,(A3)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F434  CPUSHP    NC,(A4)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F435  CPUSHP    NC,(A5)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F436  CPUSHP    NC,(A6)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F437  CPUSHP    NC,(A7)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F438  CPUSHA    NC
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F439  CPUSHA    NC
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F43A  CPUSHA    NC
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F43B  CPUSHA    NC
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F43C  CPUSHA    NC
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F43D  CPUSHA    NC
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F43E  CPUSHA    NC
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F43F  CPUSHA    NC
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
 
 // ---- $F440-$F47F --------------------------------------------------------
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F440  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F441  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F442  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F443  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F444  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F445  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F446  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F447  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F448  CINVL     DC,(A0)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F449  CINVL     DC,(A1)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F44A  CINVL     DC,(A2)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F44B  CINVL     DC,(A3)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F44C  CINVL     DC,(A4)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F44D  CINVL     DC,(A5)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F44E  CINVL     DC,(A6)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F44F  CINVL     DC,(A7)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F450  CINVP     DC,(A0)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F451  CINVP     DC,(A1)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F452  CINVP     DC,(A2)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F453  CINVP     DC,(A3)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F454  CINVP     DC,(A4)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F455  CINVP     DC,(A5)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F456  CINVP     DC,(A6)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F457  CINVP     DC,(A7)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F458  CINVA     DC
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F459  CINVA     DC
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F45A  CINVA     DC
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F45B  CINVA     DC
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F45C  CINVA     DC
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F45D  CINVA     DC
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F45E  CINVA     DC
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F45F  CINVA     DC
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F460  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F461  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F462  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F463  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F464  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F465  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F466  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F467  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F468  CPUSHL    DC,(A0)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F469  CPUSHL    DC,(A1)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F46A  CPUSHL    DC,(A2)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F46B  CPUSHL    DC,(A3)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F46C  CPUSHL    DC,(A4)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F46D  CPUSHL    DC,(A5)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F46E  CPUSHL    DC,(A6)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F46F  CPUSHL    DC,(A7)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F470  CPUSHP    DC,(A0)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F471  CPUSHP    DC,(A1)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F472  CPUSHP    DC,(A2)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F473  CPUSHP    DC,(A3)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F474  CPUSHP    DC,(A4)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F475  CPUSHP    DC,(A5)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F476  CPUSHP    DC,(A6)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F477  CPUSHP    DC,(A7)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F478  CPUSHA    DC
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F479  CPUSHA    DC
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F47A  CPUSHA    DC
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F47B  CPUSHA    DC
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F47C  CPUSHA    DC
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F47D  CPUSHA    DC
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F47E  CPUSHA    DC
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F47F  CPUSHA    DC
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
 
 // ---- $F480-$F4BF --------------------------------------------------------
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F480  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F481  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F482  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F483  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F484  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F485  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F486  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F487  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F488  CINVL     IC,(A0)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F489  CINVL     IC,(A1)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F48A  CINVL     IC,(A2)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F48B  CINVL     IC,(A3)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F48C  CINVL     IC,(A4)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F48D  CINVL     IC,(A5)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F48E  CINVL     IC,(A6)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F48F  CINVL     IC,(A7)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F490  CINVP     IC,(A0)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F491  CINVP     IC,(A1)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F492  CINVP     IC,(A2)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F493  CINVP     IC,(A3)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F494  CINVP     IC,(A4)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F495  CINVP     IC,(A5)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F496  CINVP     IC,(A6)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F497  CINVP     IC,(A7)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F498  CINVA     IC
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F499  CINVA     IC
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F49A  CINVA     IC
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F49B  CINVA     IC
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F49C  CINVA     IC
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F49D  CINVA     IC
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F49E  CINVA     IC
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F49F  CINVA     IC
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F4A0  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F4A1  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F4A2  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F4A3  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F4A4  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F4A5  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F4A6  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F4A7  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4A8  CPUSHL    IC,(A0)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4A9  CPUSHL    IC,(A1)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4AA  CPUSHL    IC,(A2)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4AB  CPUSHL    IC,(A3)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4AC  CPUSHL    IC,(A4)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4AD  CPUSHL    IC,(A5)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4AE  CPUSHL    IC,(A6)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4AF  CPUSHL    IC,(A7)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4B0  CPUSHP    IC,(A0)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4B1  CPUSHP    IC,(A1)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4B2  CPUSHP    IC,(A2)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4B3  CPUSHP    IC,(A3)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4B4  CPUSHP    IC,(A4)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4B5  CPUSHP    IC,(A5)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4B6  CPUSHP    IC,(A6)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4B7  CPUSHP    IC,(A7)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4B8  CPUSHA    IC
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4B9  CPUSHA    IC
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4BA  CPUSHA    IC
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4BB  CPUSHA    IC
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4BC  CPUSHA    IC
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4BD  CPUSHA    IC
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4BE  CPUSHA    IC
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4BF  CPUSHA    IC
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
 
 // ---- $F4C0-$F4FF --------------------------------------------------------
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F4C0  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F4C1  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F4C2  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F4C3  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F4C4  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F4C5  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F4C6  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F4C7  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F4C8  CINVL     BC,(A0)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F4C9  CINVL     BC,(A1)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F4CA  CINVL     BC,(A2)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F4CB  CINVL     BC,(A3)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F4CC  CINVL     BC,(A4)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F4CD  CINVL     BC,(A5)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F4CE  CINVL     BC,(A6)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F4CF  CINVL     BC,(A7)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F4D0  CINVP     BC,(A0)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F4D1  CINVP     BC,(A1)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F4D2  CINVP     BC,(A2)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F4D3  CINVP     BC,(A3)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F4D4  CINVP     BC,(A4)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F4D5  CINVP     BC,(A5)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F4D6  CINVP     BC,(A6)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F4D7  CINVP     BC,(A7)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F4D8  CINVA     BC
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F4D9  CINVA     BC
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F4DA  CINVA     BC
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F4DB  CINVA     BC
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F4DC  CINVA     BC
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F4DD  CINVA     BC
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F4DE  CINVA     BC
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F4DF  CINVA     BC
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F4E0  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F4E1  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F4E2  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F4E3  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F4E4  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F4E5  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F4E6  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F4E7  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4E8  CPUSHL    BC,(A0)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4E9  CPUSHL    BC,(A1)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4EA  CPUSHL    BC,(A2)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4EB  CPUSHL    BC,(A3)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4EC  CPUSHL    BC,(A4)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4ED  CPUSHL    BC,(A5)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4EE  CPUSHL    BC,(A6)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4EF  CPUSHL    BC,(A7)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4F0  CPUSHP    BC,(A0)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4F1  CPUSHP    BC,(A1)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4F2  CPUSHP    BC,(A2)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4F3  CPUSHP    BC,(A3)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4F4  CPUSHP    BC,(A4)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4F5  CPUSHP    BC,(A5)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4F6  CPUSHP    BC,(A6)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4F7  CPUSHP    BC,(A7)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4F8  CPUSHA    BC
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4F9  CPUSHA    BC
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4FA  CPUSHA    BC
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4FB  CPUSHA    BC
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4FC  CPUSHA    BC
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4FD  CPUSHA    BC
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4FE  CPUSHA    BC
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4FF  CPUSHA    BC
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
 
 // ---- $F500-$F53F --------------------------------------------------------
         lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F500  PFLUSHN   (A0)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F501  PFLUSHN   (A1)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F502  PFLUSHN   (A2)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F503  PFLUSHN   (A3)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F504  PFLUSHN   (A4)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F505  PFLUSHN   (A5)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F506  PFLUSHN   (A6)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F507  PFLUSHN   (A7)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F508  PFLUSH    (A0)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F509  PFLUSH    (A1)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F50A  PFLUSH    (A2)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F50B  PFLUSH    (A3)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F50C  PFLUSH    (A4)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F50D  PFLUSH    (A5)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F50E  PFLUSH    (A6)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F50F  PFLUSH    (A7)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F510  PFLUSHAN
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F511  PFLUSHAN
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F512  PFLUSHAN
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F513  PFLUSHAN
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F514  PFLUSHAN
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F515  PFLUSHAN
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F516  PFLUSHAN
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F517  PFLUSHAN
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F518  PFLUSHA
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F519  PFLUSHA
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F51A  PFLUSHA
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F51B  PFLUSHA
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F51C  PFLUSHA
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F51D  PFLUSHA
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F51E  PFLUSHA
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F51F  PFLUSHA
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F520  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F521  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F522  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F523  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F524  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F525  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F526  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F527  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F528  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F529  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F52A  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F52B  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F52C  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F52D  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F52E  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F52F  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F530  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F531  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F532  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F533  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F534  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F535  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F536  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F537  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F538  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F539  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F53A  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F53B  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F53C  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F53D  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F53E  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F53F  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // ---- $F540-$F57F --------------------------------------------------------
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F540  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F541  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F542  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F543  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F544  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F545  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F546  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F547  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x948(EmulatorStatePtr)       // F548  PTESTW    (A0)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x948(EmulatorStatePtr)       // F549  PTESTW    (A1)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x948(EmulatorStatePtr)       // F54A  PTESTW    (A2)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x948(EmulatorStatePtr)       // F54B  PTESTW    (A3)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x948(EmulatorStatePtr)       // F54C  PTESTW    (A4)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x948(EmulatorStatePtr)       // F54D  PTESTW    (A5)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x948(EmulatorStatePtr)       // F54E  PTESTW    (A6)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x948(EmulatorStatePtr)       // F54F  PTESTW    (A7)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F550  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F551  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F552  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F553  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F554  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F555  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F556  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F557  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F558  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F559  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F55A  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F55B  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F55C  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F55D  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F55E  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F55F  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F560  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F561  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F562  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F563  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F564  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F565  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F566  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F567  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x948(EmulatorStatePtr)       // F568  ILLEGAL
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x948(EmulatorStatePtr)       // F569  ILLEGAL
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x948(EmulatorStatePtr)       // F56A  ILLEGAL
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x948(EmulatorStatePtr)       // F56B  ILLEGAL
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x948(EmulatorStatePtr)       // F56C  ILLEGAL
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x948(EmulatorStatePtr)       // F56D  ILLEGAL
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x948(EmulatorStatePtr)       // F56E  ILLEGAL
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x948(EmulatorStatePtr)       // F56F  ILLEGAL
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F570  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F571  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F572  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F573  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F574  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F575  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F576  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F577  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F578  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F579  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F57A  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F57B  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F57C  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F57D  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F57E  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F57F  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // ---- $F580-$F5BF --------------------------------------------------------
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F580  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F581  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F582  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F583  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F584  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F585  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F586  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F587  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F588  PTESTR    (A0)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F589  PTESTR    (A1)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F58A  PTESTR    (A2)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F58B  PTESTR    (A3)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F58C  PTESTR    (A4)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F58D  PTESTR    (A5)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F58E  PTESTR    (A6)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F58F  PTESTR    (A7)
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F590  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F591  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F592  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F593  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F594  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F595  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F596  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F597  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F598  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F599  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F59A  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F59B  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F59C  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F59D  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F59E  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F59F  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5A0  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5A1  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5A2  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5A3  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5A4  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5A5  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5A6  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5A7  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5A8  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5A9  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5AA  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5AB  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5AC  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5AD  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5AE  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5AF  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5B0  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5B1  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5B2  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5B3  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5B4  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5B5  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5B6  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5B7  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5B8  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5B9  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5BA  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5BB  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5BC  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5BD  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5BE  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5BF  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // ---- $F5C0-$F5FF --------------------------------------------------------
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5C0  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5C1  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5C2  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5C3  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5C4  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5C5  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5C6  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5C7  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5C8  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5C9  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5CA  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5CB  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5CC  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5CD  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5CE  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5CF  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5D0  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5D1  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5D2  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5D3  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5D4  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5D5  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5D6  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5D7  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5D8  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5D9  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5DA  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5DB  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5DC  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5DD  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5DE  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5DF  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5E0  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5E1  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5E2  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5E3  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5E4  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5E5  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5E6  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5E7  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5E8  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5E9  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5EA  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5EB  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5EC  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5ED  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5EE  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5EF  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5F0  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5F1  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5F2  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5F3  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5F4  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5F5  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5F6  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5F7  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5F8  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5F9  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5FA  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5FB  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5FC  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5FD  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5FE  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F5FF  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // ---- $F600-$F63F --------------------------------------------------------
         ori     addr, code_ptr, L_00860 - cb            // F600  MOVE16    (A0)+,(xxx).L
-        b       L_0E4C0
+        b       move16_mem_mem
         ori     addr, code_ptr, L_008E0 - cb            // F601  MOVE16    (A1)+,(xxx).L
-        b       L_0E4C0
+        b       move16_mem_mem
         ori     addr, code_ptr, L_00960 - cb            // F602  MOVE16    (A2)+,(xxx).L
-        b       L_0E4C0
+        b       move16_mem_mem
         ori     addr, code_ptr, L_009E0 - cb            // F603  MOVE16    (A3)+,(xxx).L
-        b       L_0E4C0
+        b       move16_mem_mem
         ori     addr, code_ptr, L_00A60 - cb            // F604  MOVE16    (A4)+,(xxx).L
-        b       L_0E4C0
+        b       move16_mem_mem
         ori     addr, code_ptr, L_00AE0 - cb            // F605  MOVE16    (A5)+,(xxx).L
-        b       L_0E4C0
+        b       move16_mem_mem
         ori     addr, code_ptr, L_00B60 - cb            // F606  MOVE16    (A6)+,(xxx).L
-        b       L_0E4C0
+        b       move16_mem_mem
         ori     addr, code_ptr, L_00BE0 - cb            // F607  MOVE16    (A7)+,(xxx).L
-        b       L_0E4C0
+        b       move16_mem_mem
         ori     addr, code_ptr, L_00860 - cb            // F608  MOVE16    (xxx).L,(A0)+
-        b       L_0E510
+        b       move16_mem_mem_3
         ori     addr, code_ptr, L_008E0 - cb            // F609  MOVE16    (xxx).L,(A1)+
-        b       L_0E510
+        b       move16_mem_mem_3
         ori     addr, code_ptr, L_00960 - cb            // F60A  MOVE16    (xxx).L,(A2)+
-        b       L_0E510
+        b       move16_mem_mem_3
         ori     addr, code_ptr, L_009E0 - cb            // F60B  MOVE16    (xxx).L,(A3)+
-        b       L_0E510
+        b       move16_mem_mem_3
         ori     addr, code_ptr, L_00A60 - cb            // F60C  MOVE16    (xxx).L,(A4)+
-        b       L_0E510
+        b       move16_mem_mem_3
         ori     addr, code_ptr, L_00AE0 - cb            // F60D  MOVE16    (xxx).L,(A5)+
-        b       L_0E510
+        b       move16_mem_mem_3
         ori     addr, code_ptr, L_00B60 - cb            // F60E  MOVE16    (xxx).L,(A6)+
-        b       L_0E510
+        b       move16_mem_mem_3
         ori     addr, code_ptr, L_00BE0 - cb            // F60F  MOVE16    (xxx).L,(A7)+
-        b       L_0E510
+        b       move16_mem_mem_3
         addi    addr, a0, 16                            // F610  MOVE16    (A0),(xxx).L
-        b       L_0E4D0
+        b       move16_mem_mem_2
         addi    addr, a1, 16                            // F611  MOVE16    (A1),(xxx).L
-        b       L_0E4D0
+        b       move16_mem_mem_2
         addi    addr, a2, 16                            // F612  MOVE16    (A2),(xxx).L
-        b       L_0E4D0
+        b       move16_mem_mem_2
         addi    addr, a3, 16                            // F613  MOVE16    (A3),(xxx).L
-        b       L_0E4D0
+        b       move16_mem_mem_2
         addi    addr, a4, 16                            // F614  MOVE16    (A4),(xxx).L
-        b       L_0E4D0
+        b       move16_mem_mem_2
         addi    addr, a5, 16                            // F615  MOVE16    (A5),(xxx).L
-        b       L_0E4D0
+        b       move16_mem_mem_2
         addi    addr, a6, 16                            // F616  MOVE16    (A6),(xxx).L
-        b       L_0E4D0
+        b       move16_mem_mem_2
         addi    addr, a7, 16                            // F617  MOVE16    (A7),(xxx).L
-        b       L_0E4D0
+        b       move16_mem_mem_2
         addi    addr, a0, 16                            // F618  MOVE16    (xxx).L,(A0)
-        b       L_0E520
+        b       move16_mem_mem_4
         addi    addr, a1, 16                            // F619  MOVE16    (xxx).L,(A1)
-        b       L_0E520
+        b       move16_mem_mem_4
         addi    addr, a2, 16                            // F61A  MOVE16    (xxx).L,(A2)
-        b       L_0E520
+        b       move16_mem_mem_4
         addi    addr, a3, 16                            // F61B  MOVE16    (xxx).L,(A3)
-        b       L_0E520
+        b       move16_mem_mem_4
         addi    addr, a4, 16                            // F61C  MOVE16    (xxx).L,(A4)
-        b       L_0E520
+        b       move16_mem_mem_4
         addi    addr, a5, 16                            // F61D  MOVE16    (xxx).L,(A5)
-        b       L_0E520
+        b       move16_mem_mem_4
         addi    addr, a6, 16                            // F61E  MOVE16    (xxx).L,(A6)
-        b       L_0E520
+        b       move16_mem_mem_4
         addi    addr, a7, 16                            // F61F  MOVE16    (xxx).L,(A7)
-        b       L_0E520
+        b       move16_mem_mem_4
         ori     addr, code_ptr, L_00860 - cb            // F620  MOVE16    (A0)+,(Ay)+
-        b       L_0E560
+        b       move16_mem
         ori     addr, code_ptr, L_008E0 - cb            // F621  MOVE16    (A1)+,(Ay)+
-        b       L_0E560
+        b       move16_mem
         ori     addr, code_ptr, L_00960 - cb            // F622  MOVE16    (A2)+,(Ay)+
-        b       L_0E560
+        b       move16_mem
         ori     addr, code_ptr, L_009E0 - cb            // F623  MOVE16    (A3)+,(Ay)+
-        b       L_0E560
+        b       move16_mem
         ori     addr, code_ptr, L_00A60 - cb            // F624  MOVE16    (A4)+,(Ay)+
-        b       L_0E560
+        b       move16_mem
         ori     addr, code_ptr, L_00AE0 - cb            // F625  MOVE16    (A5)+,(Ay)+
-        b       L_0E560
+        b       move16_mem
         ori     addr, code_ptr, L_00B60 - cb            // F626  MOVE16    (A6)+,(Ay)+
-        b       L_0E560
+        b       move16_mem
         ori     addr, code_ptr, L_00BE0 - cb            // F627  MOVE16    (A7)+,(Ay)+
-        b       L_0E560
+        b       move16_mem
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F628  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F629  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F62A  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F62B  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F62C  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F62D  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F62E  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F62F  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F630  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F631  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F632  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F633  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F634  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F635  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F636  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F637  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F638  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F639  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F63A  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F63B  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F63C  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F63D  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F63E  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F63F  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // ---- $F640-$F67F --------------------------------------------------------
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F640  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F641  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F642  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F643  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F644  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F645  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F646  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F647  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F648  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F649  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F64A  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F64B  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F64C  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F64D  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F64E  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F64F  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F650  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F651  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F652  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F653  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F654  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F655  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F656  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F657  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F658  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F659  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F65A  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F65B  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F65C  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F65D  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F65E  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F65F  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F660  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F661  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F662  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F663  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F664  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F665  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F666  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F667  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F668  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F669  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F66A  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F66B  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F66C  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F66D  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F66E  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F66F  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F670  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F671  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F672  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F673  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F674  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F675  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F676  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F677  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F678  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F679  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F67A  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F67B  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F67C  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F67D  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F67E  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F67F  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // ---- $F680-$F6BF --------------------------------------------------------
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F680  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F681  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F682  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F683  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F684  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F685  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F686  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F687  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F688  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F689  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F68A  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F68B  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F68C  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F68D  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F68E  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F68F  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F690  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F691  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F692  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F693  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F694  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F695  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F696  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F697  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F698  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F699  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F69A  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F69B  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F69C  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F69D  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F69E  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F69F  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6A0  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6A1  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6A2  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6A3  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6A4  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6A5  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6A6  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6A7  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6A8  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6A9  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6AA  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6AB  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6AC  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6AD  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6AE  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6AF  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6B0  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6B1  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6B2  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6B3  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6B4  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6B5  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6B6  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6B7  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6B8  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6B9  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6BA  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6BB  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6BC  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6BD  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6BE  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6BF  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // ---- $F6C0-$F6FF --------------------------------------------------------
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6C0  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6C1  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6C2  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6C3  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6C4  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6C5  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6C6  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6C7  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6C8  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6C9  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6CA  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6CB  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6CC  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6CD  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6CE  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6CF  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6D0  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6D1  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6D2  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6D3  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6D4  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6D5  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6D6  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6D7  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6D8  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6D9  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6DA  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6DB  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6DC  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6DD  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6DE  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6DF  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6E0  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6E1  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6E2  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6E3  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6E4  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6E5  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6E6  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6E7  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6E8  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6E9  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6EA  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6EB  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6EC  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6ED  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6EE  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6EF  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6F0  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6F1  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6F2  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6F3  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6F4  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6F5  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6F6  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6F7  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6F8  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6F9  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6FA  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6FB  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6FC  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6FD  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6FE  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F6FF  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // ---- $F700-$F73F --------------------------------------------------------
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F700  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F701  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F702  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F703  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F704  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F705  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F706  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F707  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F708  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F709  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F70A  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F70B  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F70C  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F70D  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F70E  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F70F  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F710  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F711  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F712  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F713  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F714  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F715  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F716  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F717  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F718  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F719  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F71A  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F71B  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F71C  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F71D  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F71E  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F71F  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F720  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F721  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F722  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F723  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F724  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F725  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F726  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F727  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F728  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F729  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F72A  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F72B  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F72C  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F72D  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F72E  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F72F  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F730  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F731  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F732  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F733  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F734  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F735  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F736  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F737  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F738  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F739  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F73A  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F73B  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F73C  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F73D  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F73E  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F73F  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // ---- $F740-$F77F --------------------------------------------------------
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F740  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F741  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F742  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F743  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F744  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F745  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F746  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F747  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F748  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F749  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F74A  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F74B  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F74C  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F74D  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F74E  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F74F  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F750  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F751  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F752  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F753  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F754  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F755  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F756  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F757  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F758  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F759  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F75A  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F75B  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F75C  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F75D  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F75E  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F75F  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F760  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F761  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F762  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F763  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F764  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F765  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F766  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F767  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F768  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F769  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F76A  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F76B  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F76C  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F76D  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F76E  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F76F  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F770  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F771  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F772  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F773  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F774  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F775  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F776  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F777  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F778  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F779  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F77A  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F77B  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F77C  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F77D  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F77E  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F77F  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // ---- $F780-$F7BF --------------------------------------------------------
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F780  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F781  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F782  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F783  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F784  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F785  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F786  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F787  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F788  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F789  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F78A  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F78B  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F78C  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F78D  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F78E  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F78F  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F790  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F791  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F792  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F793  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F794  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F795  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F796  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F797  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F798  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F799  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F79A  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F79B  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F79C  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F79D  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F79E  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F79F  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7A0  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7A1  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7A2  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7A3  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7A4  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7A5  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7A6  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7A7  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7A8  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7A9  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7AA  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7AB  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7AC  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7AD  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7AE  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7AF  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7B0  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7B1  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7B2  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7B3  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7B4  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7B5  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7B6  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7B7  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7B8  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7B9  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7BA  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7BB  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7BC  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7BD  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7BE  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7BF  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // ---- $F7C0-$F7FF --------------------------------------------------------
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7C0  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7C1  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7C2  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7C3  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7C4  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7C5  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7C6  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7C7  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7C8  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7C9  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7CA  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7CB  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7CC  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7CD  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7CE  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7CF  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7D0  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7D1  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7D2  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7D3  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7D4  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7D5  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7D6  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7D7  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7D8  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7D9  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7DA  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7DB  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7DC  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7DD  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7DE  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7DF  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7E0  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7E1  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7E2  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7E3  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7E4  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7E5  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7E6  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7E7  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7E8  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7E9  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7EA  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7EB  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7EC  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7ED  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7EE  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7EF  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7F0  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7F1  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7F2  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7F3  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7F4  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7F5  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7F6  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7F7  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7F8  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7F9  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7FA  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7FB  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7FC  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7FD  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7FE  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F7FF  ILLEGAL
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // ---- $F800-$F83F --------------------------------------------------------
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F800  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F801  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F802  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F803  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F804  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F805  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F806  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F807  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F808  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F809  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F80A  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F80B  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F80C  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F80D  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F80E  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F80F  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F810  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F811  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F812  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F813  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F814  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F815  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F816  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F817  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F818  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F819  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F81A  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F81B  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F81C  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F81D  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F81E  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F81F  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F820  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F821  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F822  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F823  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F824  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F825  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F826  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F827  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F828  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F829  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F82A  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F82B  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F82C  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F82D  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F82E  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F82F  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F830  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F831  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F832  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F833  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F834  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F835  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F836  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F837  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F838  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F839  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F83A  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F83B  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F83C  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F83D  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F83E  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F83F  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // ---- $F840-$F87F --------------------------------------------------------
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F840  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F841  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F842  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F843  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F844  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F845  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F846  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F847  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F848  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F849  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F84A  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F84B  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F84C  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F84D  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F84E  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F84F  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F850  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F851  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F852  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F853  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F854  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F855  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F856  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F857  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F858  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F859  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F85A  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F85B  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F85C  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F85D  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F85E  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F85F  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F860  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F861  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F862  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F863  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F864  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F865  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F866  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F867  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F868  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F869  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F86A  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F86B  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F86C  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F86D  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F86E  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F86F  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F870  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F871  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F872  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F873  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F874  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F875  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F876  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F877  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F878  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F879  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F87A  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F87B  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F87C  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F87D  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F87E  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F87F  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // ---- $F880-$F8BF --------------------------------------------------------
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F880  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F881  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F882  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F883  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F884  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F885  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F886  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F887  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F888  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F889  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F88A  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F88B  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F88C  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F88D  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F88E  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F88F  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F890  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F891  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F892  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F893  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F894  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F895  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F896  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F897  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F898  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F899  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F89A  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F89B  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F89C  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F89D  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F89E  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F89F  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8A0  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8A1  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8A2  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8A3  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8A4  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8A5  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8A6  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8A7  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8A8  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8A9  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8AA  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8AB  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8AC  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8AD  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8AE  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8AF  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8B0  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8B1  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8B2  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8B3  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8B4  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8B5  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8B6  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8B7  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8B8  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8B9  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8BA  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8BB  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8BC  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8BD  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8BE  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8BF  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // ---- $F8C0-$F8FF --------------------------------------------------------
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8C0  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8C1  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8C2  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8C3  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8C4  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8C5  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8C6  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8C7  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8C8  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8C9  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8CA  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8CB  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8CC  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8CD  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8CE  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8CF  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8D0  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8D1  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8D2  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8D3  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8D4  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8D5  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8D6  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8D7  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8D8  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8D9  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8DA  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8DB  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8DC  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8DD  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8DE  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8DF  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8E0  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8E1  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8E2  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8E3  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8E4  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8E5  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8E6  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8E7  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8E8  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8E9  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8EA  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8EB  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8EC  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8ED  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8EE  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8EF  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8F0  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8F1  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8F2  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8F3  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8F4  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8F5  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8F6  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8F7  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8F8  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8F9  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8FA  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8FB  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8FC  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8FD  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8FE  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F8FF  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // ---- $F900-$F93F --------------------------------------------------------
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F900  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F901  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F902  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F903  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F904  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F905  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F906  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F907  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F908  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F909  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F90A  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F90B  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F90C  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F90D  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F90E  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F90F  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F910  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F911  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F912  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F913  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F914  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F915  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F916  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F917  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F918  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F919  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F91A  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F91B  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F91C  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F91D  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F91E  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F91F  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F920  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F921  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F922  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F923  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F924  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F925  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F926  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F927  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F928  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F929  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F92A  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F92B  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F92C  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F92D  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F92E  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F92F  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F930  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F931  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F932  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F933  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F934  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F935  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F936  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F937  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F938  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F939  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F93A  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F93B  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F93C  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F93D  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F93E  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F93F  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // ---- $F940-$F97F --------------------------------------------------------
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F940  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F941  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F942  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F943  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F944  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F945  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F946  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F947  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F948  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F949  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F94A  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F94B  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F94C  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F94D  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F94E  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F94F  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F950  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F951  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F952  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F953  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F954  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F955  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F956  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F957  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F958  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F959  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F95A  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F95B  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F95C  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F95D  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F95E  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F95F  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F960  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F961  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F962  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F963  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F964  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F965  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F966  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F967  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F968  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F969  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F96A  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F96B  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F96C  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F96D  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F96E  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F96F  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F970  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F971  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F972  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F973  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F974  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F975  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F976  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F977  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F978  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F979  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F97A  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F97B  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F97C  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F97D  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F97E  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F97F  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // ---- $F980-$F9BF --------------------------------------------------------
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F980  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F981  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F982  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F983  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F984  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F985  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F986  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F987  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F988  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F989  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F98A  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F98B  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F98C  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F98D  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F98E  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F98F  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F990  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F991  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F992  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F993  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F994  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F995  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F996  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F997  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F998  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F999  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F99A  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F99B  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F99C  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F99D  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F99E  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F99F  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9A0  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9A1  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9A2  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9A3  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9A4  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9A5  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9A6  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9A7  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9A8  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9A9  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9AA  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9AB  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9AC  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9AD  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9AE  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9AF  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9B0  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9B1  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9B2  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9B3  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9B4  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9B5  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9B6  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9B7  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9B8  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9B9  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9BA  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9BB  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9BC  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9BD  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9BE  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9BF  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // ---- $F9C0-$F9FF --------------------------------------------------------
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9C0  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9C1  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9C2  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9C3  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9C4  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9C5  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9C6  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9C7  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9C8  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9C9  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9CA  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9CB  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9CC  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9CD  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9CE  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9CF  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9D0  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9D1  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9D2  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9D3  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9D4  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9D5  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9D6  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9D7  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9D8  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9D9  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9DA  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9DB  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9DC  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9DD  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9DE  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9DF  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9E0  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9E1  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9E2  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9E3  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9E4  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9E5  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9E6  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9E7  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9E8  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9E9  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9EA  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9EB  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9EC  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9ED  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9EE  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9EF  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9F0  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9F1  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9F2  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9F3  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9F4  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9F5  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9F6  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9F7  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9F8  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9F9  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9FA  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9FB  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9FC  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9FD  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9FE  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // F9FF  F-LINE    cpID 4
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // ---- $FA00-$FA3F --------------------------------------------------------
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA00  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA01  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA02  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA03  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA04  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA05  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA06  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA07  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA08  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA09  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA0A  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA0B  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA0C  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA0D  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA0E  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA0F  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA10  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA11  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA12  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA13  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA14  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA15  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA16  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA17  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA18  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA19  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA1A  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA1B  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA1C  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA1D  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA1E  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA1F  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA20  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA21  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA22  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA23  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA24  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA25  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA26  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA27  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA28  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA29  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA2A  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA2B  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA2C  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA2D  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA2E  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA2F  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA30  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA31  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA32  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA33  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA34  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA35  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA36  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA37  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA38  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA39  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA3A  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA3B  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA3C  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA3D  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA3E  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA3F  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // ---- $FA40-$FA7F --------------------------------------------------------
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA40  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA41  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA42  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA43  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA44  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA45  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA46  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA47  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA48  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA49  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA4A  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA4B  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA4C  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA4D  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA4E  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA4F  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA50  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA51  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA52  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA53  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA54  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA55  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA56  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA57  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA58  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA59  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA5A  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA5B  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA5C  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA5D  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA5E  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA5F  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA60  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA61  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA62  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA63  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA64  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA65  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA66  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA67  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA68  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA69  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA6A  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA6B  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA6C  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA6D  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA6E  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA6F  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA70  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA71  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA72  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA73  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA74  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA75  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA76  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA77  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA78  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA79  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA7A  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA7B  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA7C  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA7D  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA7E  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA7F  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // ---- $FA80-$FABF --------------------------------------------------------
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA80  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA81  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA82  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA83  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA84  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA85  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA86  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA87  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA88  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA89  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA8A  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA8B  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA8C  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA8D  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA8E  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA8F  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA90  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA91  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA92  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA93  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA94  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA95  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA96  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA97  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA98  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA99  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA9A  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA9B  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA9C  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA9D  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA9E  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FA9F  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAA0  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAA1  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAA2  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAA3  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAA4  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAA5  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAA6  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAA7  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAA8  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAA9  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAAA  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAAB  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAAC  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAAD  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAAE  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAAF  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAB0  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAB1  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAB2  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAB3  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAB4  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAB5  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAB6  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAB7  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAB8  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAB9  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FABA  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FABB  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FABC  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FABD  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FABE  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FABF  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // ---- $FAC0-$FAFF --------------------------------------------------------
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAC0  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAC1  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAC2  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAC3  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAC4  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAC5  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAC6  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAC7  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAC8  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAC9  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FACA  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FACB  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FACC  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FACD  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FACE  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FACF  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAD0  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAD1  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAD2  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAD3  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAD4  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAD5  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAD6  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAD7  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAD8  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAD9  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FADA  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FADB  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FADC  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FADD  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FADE  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FADF  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAE0  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAE1  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAE2  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAE3  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAE4  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAE5  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAE6  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAE7  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAE8  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAE9  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAEA  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAEB  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAEC  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAED  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAEE  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAEF  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAF0  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAF1  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAF2  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAF3  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAF4  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAF5  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAF6  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAF7  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAF8  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAF9  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAFA  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAFB  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAFC  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAFD  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAFE  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FAFF  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // ---- $FB00-$FB3F --------------------------------------------------------
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB00  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB01  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB02  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB03  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB04  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB05  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB06  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB07  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB08  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB09  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB0A  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB0B  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB0C  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB0D  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB0E  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB0F  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB10  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB11  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB12  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB13  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB14  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB15  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB16  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB17  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB18  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB19  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB1A  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB1B  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB1C  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB1D  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB1E  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB1F  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB20  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB21  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB22  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB23  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB24  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB25  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB26  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB27  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB28  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB29  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB2A  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB2B  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB2C  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB2D  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB2E  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB2F  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB30  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB31  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB32  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB33  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB34  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB35  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB36  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB37  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB38  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB39  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB3A  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB3B  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB3C  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB3D  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB3E  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB3F  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // ---- $FB40-$FB7F --------------------------------------------------------
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB40  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB41  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB42  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB43  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB44  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB45  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB46  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB47  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB48  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB49  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB4A  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB4B  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB4C  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB4D  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB4E  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB4F  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB50  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB51  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB52  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB53  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB54  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB55  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB56  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB57  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB58  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB59  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB5A  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB5B  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB5C  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB5D  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB5E  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB5F  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB60  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB61  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB62  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB63  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB64  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB65  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB66  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB67  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB68  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB69  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB6A  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB6B  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB6C  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB6D  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB6E  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB6F  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB70  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB71  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB72  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB73  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB74  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB75  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB76  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB77  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB78  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB79  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB7A  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB7B  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB7C  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB7D  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB7E  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB7F  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // ---- $FB80-$FBBF --------------------------------------------------------
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB80  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB81  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB82  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB83  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB84  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB85  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB86  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB87  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB88  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB89  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB8A  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB8B  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB8C  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB8D  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB8E  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB8F  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB90  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB91  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB92  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB93  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB94  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB95  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB96  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB97  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB98  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB99  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB9A  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB9B  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB9C  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB9D  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB9E  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FB9F  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBA0  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBA1  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBA2  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBA3  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBA4  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBA5  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBA6  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBA7  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBA8  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBA9  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBAA  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBAB  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBAC  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBAD  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBAE  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBAF  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBB0  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBB1  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBB2  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBB3  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBB4  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBB5  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBB6  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBB7  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBB8  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBB9  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBBA  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBBB  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBBC  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBBD  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBBE  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBBF  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // ---- $FBC0-$FBFF --------------------------------------------------------
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBC0  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBC1  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBC2  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBC3  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBC4  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBC5  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBC6  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBC7  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBC8  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBC9  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBCA  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBCB  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBCC  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBCD  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBCE  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBCF  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBD0  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBD1  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBD2  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBD3  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBD4  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBD5  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBD6  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBD7  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBD8  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBD9  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBDA  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBDB  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBDC  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBDD  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBDE  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBDF  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBE0  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBE1  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBE2  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBE3  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBE4  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBE5  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBE6  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBE7  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBE8  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBE9  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBEA  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBEB  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBEC  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBED  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBEE  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBEF  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBF0  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBF1  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBF2  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBF3  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBF4  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBF5  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBF6  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBF7  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBF8  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBF9  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBFA  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBFB  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBFC  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBFD  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBFE  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FBFF  F-LINE    cpID 5
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // ---- $FC00-$FC3F --------------------------------------------------------
         lwz     rtn_addr, 0x958(EmulatorStatePtr)       // FC00  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lhz     immed_data, 4(a7)                       // FC01  F-LINE    cpID 6
-        b       L_097C0
+        b       fline_2
         lwz     addr, 40(a7)                            // FC02  F-LINE    cpID 6
-        b       L_09860
+        b       fline_3
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // FC03  F-LINE    cpID 6
-        b       L_098C0
+        b       fline_4
         rlwinm. addr, d6, 5, 29, 31                     // FC04  F-LINE    cpID 6
-        b       L_09980
+        b       fline_5
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // FC05  F-LINE    cpID 6
-        b       L_09B88
+        b       fline_6
         rlwinm. data, d7, 22, 30, 31                    // FC06  F-LINE    cpID 6
-        b       L_09BAC
+        b       fline_7
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // FC07  F-LINE    cpID 6
-        b       L_09DE0
+        b       fline_8
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // FC08  F-LINE    cpID 6
-        b       L_09E60
+        b       fline_9
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // FC09  F-LINE    cpID 6
-        b       L_09EE0
+        b       fline_10
         rlwinm. data, d7, 24, 28, 31                    // FC0A  F-LINE    cpID 6
-        b       L_09F40
+        b       fline_11
         rlwinm. data, d7, 24, 28, 31                    // FC0B  F-LINE    cpID 6
-        b       L_09FC0
+        b       fline_12
         rlwinm. data, d7, 24, 28, 31                    // FC0C  F-LINE    cpID 6
-        b       L_0A280
+        b       fline_13
         rlwinm. data, d7, 24, 28, 31                    // FC0D  F-LINE    cpID 6
-        b       L_0A440
+        b       fline_14
         rlwinm. data, d7, 24, 28, 31                    // FC0E  F-LINE    cpID 6
-        b       L_0A620
+        b       fline_15
         andi.   data, d7, 0x0C80                        // FC0F  F-LINE    cpID 6
-        b       L_0A80C
+        b       fline_16
         lwz     a0, 0(a7)                               // FC10  F-LINE    cpID 6
         addi    a7, a7, 4
         lwz     pc, 20(a7)                              // FC11  F-LINE    cpID 6
-        b       L_096E0
+        b       fline
         cmplwi  cr7, d0, 0x0014                         // FC12  F-LINE    cpID 6
-        b       L_0A9B4
+        b       fline_18
         cmplwi  cr7, d0, 0x0014                         // FC13  F-LINE    cpID 6
-        b       L_0A9B4
+        b       fline_18
         cmplwi  cr7, d0, 0x0014                         // FC14  F-LINE    cpID 6
-        b       L_0A9AC
+        b       fline_17
         cmplwi  cr7, d0, 0x0014                         // FC15  F-LINE    cpID 6
-        b       L_0A9AC
+        b       fline_17
         nop                                             // FC16  F-LINE    cpID 6
-        b       L_0D9D0
+        b       fline_23
         lwz     rtn_addr, 0x978(EmulatorStatePtr)       // FC17  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x97C(EmulatorStatePtr)       // FC18  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x980(EmulatorStatePtr)       // FC19  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x984(EmulatorStatePtr)       // FC1A  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x988(EmulatorStatePtr)       // FC1B  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x98C(EmulatorStatePtr)       // FC1C  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x990(EmulatorStatePtr)       // FC1D  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x994(EmulatorStatePtr)       // FC1E  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x998(EmulatorStatePtr)       // FC1F  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC20  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC21  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC22  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC23  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC24  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC25  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC26  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC27  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC28  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC29  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC2A  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC2B  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC2C  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC2D  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC2E  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC2F  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC30  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC31  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC32  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC33  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC34  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC35  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC36  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC37  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC38  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC39  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC3A  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC3B  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC3C  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC3D  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC3E  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC3F  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // ---- $FC40-$FC7F --------------------------------------------------------
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC40  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC41  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC42  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC43  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC44  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC45  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC46  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC47  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC48  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC49  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC4A  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC4B  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC4C  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC4D  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC4E  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC4F  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC50  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC51  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC52  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC53  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC54  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC55  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC56  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC57  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC58  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC59  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC5A  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC5B  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC5C  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC5D  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC5E  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC5F  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC60  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC61  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC62  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC63  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC64  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC65  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC66  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC67  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC68  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC69  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC6A  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC6B  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC6C  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC6D  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC6E  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC6F  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC70  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC71  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC72  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC73  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC74  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC75  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC76  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC77  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC78  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC79  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC7A  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC7B  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC7C  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC7D  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC7E  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC7F  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // ---- $FC80-$FCBF --------------------------------------------------------
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC80  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC81  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC82  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC83  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC84  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC85  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC86  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC87  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC88  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC89  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC8A  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC8B  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC8C  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC8D  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC8E  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC8F  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC90  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC91  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC92  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC93  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC94  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC95  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC96  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC97  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC98  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC99  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC9A  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC9B  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC9C  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC9D  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC9E  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FC9F  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCA0  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCA1  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCA2  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCA3  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCA4  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCA5  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCA6  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCA7  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCA8  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCA9  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCAA  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCAB  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCAC  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCAD  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCAE  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCAF  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCB0  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCB1  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCB2  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCB3  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCB4  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCB5  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCB6  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCB7  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCB8  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCB9  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCBA  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCBB  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCBC  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCBD  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCBE  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCBF  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // ---- $FCC0-$FCFF --------------------------------------------------------
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCC0  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCC1  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCC2  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCC3  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCC4  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCC5  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCC6  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCC7  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCC8  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCC9  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCCA  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCCB  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCCC  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCCD  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCCE  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCCF  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCD0  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCD1  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCD2  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCD3  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCD4  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCD5  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCD6  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCD7  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCD8  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCD9  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCDA  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCDB  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCDC  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCDD  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCDE  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCDF  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCE0  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCE1  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCE2  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCE3  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCE4  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCE5  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCE6  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCE7  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCE8  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCE9  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCEA  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCEB  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCEC  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCED  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCEE  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCEF  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCF0  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCF1  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCF2  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCF3  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCF4  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCF5  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCF6  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCF7  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCF8  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCF9  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCFA  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCFB  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCFC  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCFD  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCFE  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FCFF  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // ---- $FD00-$FD3F --------------------------------------------------------
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD00  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD01  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD02  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD03  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD04  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD05  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD06  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD07  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD08  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD09  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD0A  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD0B  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD0C  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD0D  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD0E  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD0F  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD10  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD11  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD12  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD13  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD14  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD15  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD16  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD17  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD18  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD19  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD1A  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD1B  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD1C  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD1D  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD1E  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD1F  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD20  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD21  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD22  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD23  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD24  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD25  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD26  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD27  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD28  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD29  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD2A  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD2B  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD2C  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD2D  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD2E  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD2F  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD30  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD31  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD32  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD33  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD34  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD35  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD36  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD37  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD38  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD39  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD3A  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD3B  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD3C  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD3D  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD3E  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD3F  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // ---- $FD40-$FD7F --------------------------------------------------------
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD40  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD41  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD42  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD43  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD44  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD45  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD46  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD47  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD48  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD49  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD4A  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD4B  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD4C  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD4D  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD4E  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD4F  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD50  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD51  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD52  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD53  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD54  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD55  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD56  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD57  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD58  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD59  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD5A  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD5B  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD5C  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD5D  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD5E  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD5F  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD60  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD61  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD62  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD63  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD64  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD65  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD66  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD67  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD68  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD69  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD6A  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD6B  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD6C  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD6D  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD6E  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD6F  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD70  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD71  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD72  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD73  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD74  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD75  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD76  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD77  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD78  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD79  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD7A  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD7B  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD7C  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD7D  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD7E  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD7F  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // ---- $FD80-$FDBF --------------------------------------------------------
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD80  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD81  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD82  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD83  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD84  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD85  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD86  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD87  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD88  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD89  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD8A  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD8B  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD8C  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD8D  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD8E  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD8F  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD90  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD91  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD92  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD93  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD94  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD95  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD96  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD97  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD98  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD99  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD9A  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD9B  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD9C  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD9D  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD9E  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FD9F  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDA0  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDA1  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDA2  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDA3  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDA4  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDA5  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDA6  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDA7  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDA8  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDA9  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDAA  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDAB  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDAC  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDAD  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDAE  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDAF  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDB0  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDB1  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDB2  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDB3  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDB4  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDB5  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDB6  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDB7  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDB8  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDB9  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDBA  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDBB  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDBC  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDBD  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDBE  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDBF  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // ---- $FDC0-$FDFF --------------------------------------------------------
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDC0  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDC1  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDC2  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDC3  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDC4  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDC5  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDC6  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDC7  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDC8  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDC9  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDCA  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDCB  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDCC  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDCD  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDCE  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDCF  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDD0  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDD1  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDD2  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDD3  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDD4  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDD5  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDD6  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDD7  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDD8  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDD9  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDDA  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDDB  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDDC  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDDD  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDDE  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDDF  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDE0  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDE1  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDE2  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDE3  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDE4  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDE5  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDE6  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDE7  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDE8  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDE9  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDEA  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDEB  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDEC  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDED  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDEE  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDEF  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDF0  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDF1  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDF2  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDF3  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDF4  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDF5  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDF6  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDF7  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDF8  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDF9  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDFA  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDFB  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDFC  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDFD  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDFE  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FDFF  F-LINE    cpID 6
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // ---- $FE00-$FE3F --------------------------------------------------------
         lwz     rtn_addr, 0x95C(EmulatorStatePtr)       // FE00  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x9E0(EmulatorStatePtr)       // FE01  F-LINE    cpID 7
-        b       L_0DE10
+        b       fline_34
         lwz     data, 0x714(EmulatorStatePtr)           // FE02  F-LINE    cpID 7
-        b       L_0E120
+        b       fline_35
         lwz     addr, 0x964(EmulatorStatePtr)           // FE03  F-LINE    cpID 7
-        b       L_0D804
-        ori     rtn_addr, code_ptr, L_0D86C - cb        // FE04  F-LINE    cpID 7
-        b       L_0D824
-        ori     rtn_addr, code_ptr, L_0D884 - cb        // FE05  F-LINE    cpID 7
-        b       L_0D824
+        b       fline_19
+        ori     rtn_addr, code_ptr, fline_21 - cb       // FE04  F-LINE    cpID 7
+        b       fline_20
+        ori     rtn_addr, code_ptr, fline_22 - cb       // FE05  F-LINE    cpID 7
+        b       fline_20
         crset   4*cr7+so                                // FE06  F-LINE    cpID 7
-        b       L_0DA44
+        b       fline_26
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // FE07  F-LINE    cpID 7
-        b       L_0E380
+        b       fline_36
         mftb    d0                                      // FE08  F-LINE    cpID 7
-        b       L_06084
+        b       move_add_etc_any_any
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // FE09  F-LINE    cpID 7
-        b       L_0DA8C
+        b       fline_27
         crclr   4*cr7+so                                // FE0A  F-LINE    cpID 7
-        b       L_0DA44
-        ori     rtn_addr, code_ptr, L_0DAEC - cb        // FE0B  F-LINE    cpID 7
-        b       L_0DAA4
-        ori     rtn_addr, code_ptr, L_0DAFC - cb        // FE0C  F-LINE    cpID 7
-        b       L_0DAA4
-        ori     rtn_addr, code_ptr, L_0DB0C - cb        // FE0D  F-LINE    cpID 7
-        b       L_0DAA4
-        ori     rtn_addr, code_ptr, L_0DB1C - cb        // FE0E  F-LINE    cpID 7
-        b       L_0DAA4
+        b       fline_26
+        ori     rtn_addr, code_ptr, fline_29 - cb       // FE0B  F-LINE    cpID 7
+        b       fline_28
+        ori     rtn_addr, code_ptr, fline_30 - cb       // FE0C  F-LINE    cpID 7
+        b       fline_28
+        ori     rtn_addr, code_ptr, fline_31 - cb       // FE0D  F-LINE    cpID 7
+        b       fline_28
+        ori     rtn_addr, code_ptr, fline_32 - cb       // FE0E  F-LINE    cpID 7
+        b       fline_28
         mr      zero, zero                              // FE0F  F-LINE    cpID 7
-        b       L_0D9EC
+        b       fline_24
         lwz     rtn_addr, 0x9A0(EmulatorStatePtr)       // FE10  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         mr      zero, zero                              // FE11  F-LINE    cpID 7
-        b       L_0DA1C
+        b       fline_25
         lwz     rtn_addr, 0x9A8(EmulatorStatePtr)       // FE12  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x9AC(EmulatorStatePtr)       // FE13  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x9B0(EmulatorStatePtr)       // FE14  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x9B4(EmulatorStatePtr)       // FE15  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x9B8(EmulatorStatePtr)       // FE16  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x9BC(EmulatorStatePtr)       // FE17  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x9C0(EmulatorStatePtr)       // FE18  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x9C4(EmulatorStatePtr)       // FE19  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x9C8(EmulatorStatePtr)       // FE1A  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x9CC(EmulatorStatePtr)       // FE1B  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x9D0(EmulatorStatePtr)       // FE1C  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x9D4(EmulatorStatePtr)       // FE1D  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x9D8(EmulatorStatePtr)       // FE1E  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x9DC(EmulatorStatePtr)       // FE1F  F-LINE    cpID 7
-        b       L_0DB44
+        b       cea_x_37
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // FE20  F-LINE    cpID 7
-        b       L_0DB2C
+        b       fline_33
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE21  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE22  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE23  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE24  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE25  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE26  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE27  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE28  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE29  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE2A  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE2B  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE2C  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE2D  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE2E  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE2F  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE30  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE31  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE32  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE33  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE34  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE35  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE36  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE37  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE38  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE39  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE3A  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE3B  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE3C  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE3D  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE3E  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE3F  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // ---- $FE40-$FE7F --------------------------------------------------------
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE40  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE41  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE42  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE43  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE44  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE45  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE46  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE47  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE48  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE49  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE4A  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE4B  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE4C  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE4D  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE4E  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE4F  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE50  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE51  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE52  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE53  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE54  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE55  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE56  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE57  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE58  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE59  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE5A  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE5B  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE5C  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE5D  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE5E  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE5F  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE60  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE61  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE62  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE63  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE64  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE65  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE66  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE67  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE68  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE69  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE6A  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE6B  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE6C  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE6D  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE6E  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE6F  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE70  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE71  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE72  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE73  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE74  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE75  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE76  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE77  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE78  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE79  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE7A  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE7B  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE7C  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE7D  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE7E  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE7F  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // ---- $FE80-$FEBF --------------------------------------------------------
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE80  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE81  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE82  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE83  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE84  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE85  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE86  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE87  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE88  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE89  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE8A  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE8B  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE8C  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE8D  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE8E  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE8F  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE90  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE91  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE92  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE93  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE94  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE95  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE96  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE97  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE98  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE99  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE9A  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE9B  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE9C  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE9D  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE9E  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FE9F  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEA0  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEA1  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEA2  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEA3  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEA4  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEA5  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEA6  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEA7  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEA8  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEA9  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEAA  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEAB  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEAC  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEAD  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEAE  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEAF  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEB0  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEB1  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEB2  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEB3  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEB4  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEB5  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEB6  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEB7  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEB8  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEB9  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEBA  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEBB  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEBC  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEBD  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEBE  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEBF  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // ---- $FEC0-$FEFF --------------------------------------------------------
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEC0  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEC1  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEC2  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEC3  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEC4  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEC5  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEC6  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEC7  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEC8  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEC9  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FECA  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FECB  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FECC  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FECD  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FECE  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FECF  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FED0  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FED1  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FED2  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FED3  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FED4  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FED5  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FED6  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FED7  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FED8  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FED9  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEDA  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEDB  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEDC  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEDD  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEDE  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEDF  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEE0  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEE1  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEE2  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEE3  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEE4  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEE5  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEE6  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEE7  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEE8  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEE9  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEEA  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEEB  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEEC  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEED  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEEE  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEEF  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEF0  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEF1  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEF2  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEF3  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEF4  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEF5  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEF6  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEF7  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEF8  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEF9  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEFA  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEFB  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEFC  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEFD  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEFE  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FEFF  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // ---- $FF00-$FF3F --------------------------------------------------------
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF00  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF01  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF02  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF03  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF04  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF05  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF06  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF07  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF08  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF09  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF0A  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF0B  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF0C  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF0D  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF0E  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF0F  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF10  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF11  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF12  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF13  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF14  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF15  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF16  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF17  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF18  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF19  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF1A  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF1B  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF1C  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF1D  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF1E  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF1F  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF20  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF21  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF22  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF23  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF24  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF25  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF26  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF27  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF28  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF29  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF2A  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF2B  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF2C  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF2D  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF2E  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF2F  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF30  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF31  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF32  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF33  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF34  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF35  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF36  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF37  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF38  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF39  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF3A  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF3B  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF3C  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF3D  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF3E  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF3F  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // ---- $FF40-$FF7F --------------------------------------------------------
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF40  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF41  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF42  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF43  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF44  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF45  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF46  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF47  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF48  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF49  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF4A  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF4B  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF4C  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF4D  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF4E  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF4F  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF50  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF51  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF52  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF53  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF54  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF55  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF56  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF57  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF58  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF59  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF5A  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF5B  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF5C  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF5D  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF5E  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF5F  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF60  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF61  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF62  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF63  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF64  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF65  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF66  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF67  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF68  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF69  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF6A  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF6B  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF6C  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF6D  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF6E  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF6F  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF70  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF71  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF72  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF73  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF74  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF75  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF76  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF77  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF78  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF79  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF7A  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF7B  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF7C  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF7D  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF7E  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF7F  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // ---- $FF80-$FFBF --------------------------------------------------------
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF80  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF81  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF82  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF83  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF84  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF85  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF86  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF87  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF88  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF89  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF8A  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF8B  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF8C  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF8D  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF8E  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF8F  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF90  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF91  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF92  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF93  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF94  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF95  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF96  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF97  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF98  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF99  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF9A  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF9B  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF9C  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF9D  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF9E  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FF9F  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFA0  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFA1  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFA2  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFA3  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFA4  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFA5  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFA6  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFA7  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFA8  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFA9  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFAA  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFAB  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFAC  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFAD  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFAE  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFAF  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFB0  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFB1  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFB2  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFB3  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFB4  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFB5  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFB6  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFB7  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFB8  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFB9  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFBA  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFBB  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFBC  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFBD  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFBE  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFBF  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // ---- $FFC0-$FFFF --------------------------------------------------------
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFC0  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFC1  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFC2  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFC3  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFC4  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFC5  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFC6  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFC7  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFC8  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFC9  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFCA  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFCB  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFCC  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFCD  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFCE  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFCF  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFD0  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFD1  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFD2  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFD3  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFD4  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFD5  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFD6  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFD7  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFD8  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFD9  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFDA  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFDB  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFDC  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFDD  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFDE  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFDF  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFE0  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFE1  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFE2  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFE3  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFE4  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFE5  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFE6  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFE7  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFE8  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFE9  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFEA  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFEB  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFEC  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFED  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFEE  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFEF  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFF0  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFF1  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFF2  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFF3  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFF4  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFF5  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFF6  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFF7  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFF8  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFF9  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFFA  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFFB  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFFC  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFFD  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFFE  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any
         lwz     rtn_addr, 0x808(EmulatorStatePtr)       // FFFF  F-LINE    cpID 7
-        b       L_0D760
+        b       fline_ptestr_mem_any

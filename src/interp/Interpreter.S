@@ -526,7 +526,7 @@ cb:
 //     SUBQ.B #<q>,(An)+
 //     OR.B Dn,(An)+
 //     ... and 34 more forms
-L_00800:
+cea_b_30:
         mtlr    rtn_addr
         mr      addr, a0
         addi    a0, a0, 1
@@ -540,7 +540,7 @@ L_00800:
 //     MOVE.B (An)+,(d8,An,Xn)
 //     OR.B (An)+,Dn
 //     ... and 12 more forms
-L_00810:
+fea_b_30:
         mtlr    rtn_addr
         lbz     data, 0(a0)
         addi    a0, a0, 1
@@ -554,7 +554,7 @@ L_00810:
 //     EOR.W Dn,(An)+
 //     AND.W Dn,(An)+
 //     ... and 19 more forms
-L_00820:
+cea_w_30:
         mtlr    rtn_addr
         mr      addr, a0
         addi    a0, a0, 2
@@ -568,7 +568,7 @@ L_00820:
 //     CHK.W (An)+,Dn
 //     OR.W (An)+,Dn
 //     ... and 20 more forms
-L_00830:
+fea_w_30:
         mtlr    rtn_addr
         lha     data, 0(a0)
         addi    a0, a0, 2
@@ -582,7 +582,7 @@ L_00830:
 //     EOR.L Dn,(An)+
 //     AND.L Dn,(An)+
 //     ... and 10 more forms
-L_00840:
+cea_l_30:
         mtlr    rtn_addr
         mr      addr, a0
         addi    a0, a0, 4
@@ -596,7 +596,7 @@ L_00840:
 //     CHK.L (An)+,Dn
 //     OR.L (An)+,Dn
 //     ... and 17 more forms
-L_00850:
+fea_l_30:
         mtlr    rtn_addr
         lwz     data, 0(a0)
         addi    a0, a0, 4
@@ -616,7 +616,7 @@ L_00860:
 //     SUBQ.B #<q>,(An)+
 //     OR.B Dn,(An)+
 //     ... and 34 more forms
-L_00880:
+cea_b_31:
         mtlr    rtn_addr
         mr      addr, a1
         addi    a1, a1, 1
@@ -630,7 +630,7 @@ L_00880:
 //     MOVE.B (An)+,(d8,An,Xn)
 //     OR.B (An)+,Dn
 //     ... and 11 more forms
-L_00890:
+fea_b_31:
         mtlr    rtn_addr
         lbz     data, 0(a1)
         addi    a1, a1, 1
@@ -644,7 +644,7 @@ L_00890:
 //     EOR.W Dn,(An)+
 //     AND.W Dn,(An)+
 //     ... and 19 more forms
-L_008A0:
+cea_w_31:
         mtlr    rtn_addr
         mr      addr, a1
         addi    a1, a1, 2
@@ -658,7 +658,7 @@ L_008A0:
 //     CHK.W (An)+,Dn
 //     OR.W (An)+,Dn
 //     ... and 20 more forms
-L_008B0:
+fea_w_31:
         mtlr    rtn_addr
         lha     data, 0(a1)
         addi    a1, a1, 2
@@ -672,7 +672,7 @@ L_008B0:
 //     EOR.L Dn,(An)+
 //     AND.L Dn,(An)+
 //     ... and 10 more forms
-L_008C0:
+cea_l_31:
         mtlr    rtn_addr
         mr      addr, a1
         addi    a1, a1, 4
@@ -686,7 +686,7 @@ L_008C0:
 //     CHK.L (An)+,Dn
 //     OR.L (An)+,Dn
 //     ... and 17 more forms
-L_008D0:
+fea_l_31:
         mtlr    rtn_addr
         lwz     data, 0(a1)
         addi    a1, a1, 4
@@ -706,7 +706,7 @@ L_008E0:
 //     SUBQ.B #<q>,(An)+
 //     OR.B Dn,(An)+
 //     ... and 34 more forms
-L_00900:
+cea_b_32:
         mtlr    rtn_addr
         mr      addr, a2
         addi    a2, a2, 1
@@ -720,7 +720,7 @@ L_00900:
 //     MOVE.B (An)+,(d16,An)
 //     MOVE.B (An)+,(d8,An,Xn)
 //     ... and 12 more forms
-L_00910:
+fea_b_32:
         mtlr    rtn_addr
         lbz     data, 0(a2)
         addi    a2, a2, 1
@@ -734,7 +734,7 @@ L_00910:
 //     EOR.W Dn,(An)+
 //     AND.W Dn,(An)+
 //     ... and 19 more forms
-L_00920:
+cea_w_32:
         mtlr    rtn_addr
         mr      addr, a2
         addi    a2, a2, 2
@@ -748,7 +748,7 @@ L_00920:
 //     CHK.W (An)+,Dn
 //     OR.W (An)+,Dn
 //     ... and 20 more forms
-L_00930:
+fea_w_32:
         mtlr    rtn_addr
         lha     data, 0(a2)
         addi    a2, a2, 2
@@ -762,7 +762,7 @@ L_00930:
 //     EOR.L Dn,(An)+
 //     AND.L Dn,(An)+
 //     ... and 10 more forms
-L_00940:
+cea_l_32:
         mtlr    rtn_addr
         mr      addr, a2
         addi    a2, a2, 4
@@ -776,7 +776,7 @@ L_00940:
 //     CHK.L (An)+,Dn
 //     OR.L (An)+,Dn
 //     ... and 17 more forms
-L_00950:
+fea_l_32:
         mtlr    rtn_addr
         lwz     data, 0(a2)
         addi    a2, a2, 4
@@ -796,7 +796,7 @@ L_00960:
 //     SUBQ.B #<q>,(An)+
 //     OR.B Dn,(An)+
 //     ... and 34 more forms
-L_00980:
+cea_b_33:
         mtlr    rtn_addr
         mr      addr, a3
         addi    a3, a3, 1
@@ -810,7 +810,7 @@ L_00980:
 //     MOVE.B (An)+,(d16,An)
 //     MOVE.B (An)+,(d8,An,Xn)
 //     ... and 12 more forms
-L_00990:
+fea_b_33:
         mtlr    rtn_addr
         lbz     data, 0(a3)
         addi    a3, a3, 1
@@ -824,7 +824,7 @@ L_00990:
 //     EOR.W Dn,(An)+
 //     AND.W Dn,(An)+
 //     ... and 19 more forms
-L_009A0:
+cea_w_33:
         mtlr    rtn_addr
         mr      addr, a3
         addi    a3, a3, 2
@@ -838,7 +838,7 @@ L_009A0:
 //     MOVE.W (An)+,(d8,An,Xn)
 //     CHK.W (An)+,Dn
 //     ... and 20 more forms
-L_009B0:
+fea_w_33:
         mtlr    rtn_addr
         lha     data, 0(a3)
         addi    a3, a3, 2
@@ -852,7 +852,7 @@ L_009B0:
 //     EOR.L Dn,(An)+
 //     AND.L Dn,(An)+
 //     ... and 10 more forms
-L_009C0:
+cea_l_33:
         mtlr    rtn_addr
         mr      addr, a3
         addi    a3, a3, 4
@@ -866,7 +866,7 @@ L_009C0:
 //     MOVE.L (An)+,(d8,An,Xn)
 //     CHK.L (An)+,Dn
 //     ... and 17 more forms
-L_009D0:
+fea_l_33:
         mtlr    rtn_addr
         lwz     data, 0(a3)
         addi    a3, a3, 4
@@ -886,7 +886,7 @@ L_009E0:
 //     SUBQ.B #<q>,(An)+
 //     OR.B Dn,(An)+
 //     ... and 34 more forms
-L_00A00:
+cea_b_34:
         mtlr    rtn_addr
         mr      addr, a4
         addi    a4, a4, 1
@@ -900,7 +900,7 @@ L_00A00:
 //     MOVE.B (An)+,(d16,An)
 //     MOVE.B (An)+,(d8,An,Xn)
 //     ... and 12 more forms
-L_00A10:
+fea_b_34:
         mtlr    rtn_addr
         lbz     data, 0(a4)
         addi    a4, a4, 1
@@ -914,7 +914,7 @@ L_00A10:
 //     EOR.W Dn,(An)+
 //     AND.W Dn,(An)+
 //     ... and 19 more forms
-L_00A20:
+cea_w_34:
         mtlr    rtn_addr
         mr      addr, a4
         addi    a4, a4, 2
@@ -928,7 +928,7 @@ L_00A20:
 //     CHK.W (An)+,Dn
 //     OR.W (An)+,Dn
 //     ... and 20 more forms
-L_00A30:
+fea_w_34:
         mtlr    rtn_addr
         lha     data, 0(a4)
         addi    a4, a4, 2
@@ -942,7 +942,7 @@ L_00A30:
 //     EOR.L Dn,(An)+
 //     AND.L Dn,(An)+
 //     ... and 10 more forms
-L_00A40:
+cea_l_34:
         mtlr    rtn_addr
         mr      addr, a4
         addi    a4, a4, 4
@@ -956,7 +956,7 @@ L_00A40:
 //     CHK.L (An)+,Dn
 //     OR.L (An)+,Dn
 //     ... and 17 more forms
-L_00A50:
+fea_l_34:
         mtlr    rtn_addr
         lwz     data, 0(a4)
         addi    a4, a4, 4
@@ -976,7 +976,7 @@ L_00A60:
 //     SUBQ.B #<q>,(An)+
 //     OR.B Dn,(An)+
 //     ... and 34 more forms
-L_00A80:
+cea_b_35:
         mtlr    rtn_addr
         mr      addr, a5
         addi    a5, a5, 1
@@ -990,7 +990,7 @@ L_00A80:
 //     MOVE.B (An)+,(d8,An,Xn)
 //     OR.B (An)+,Dn
 //     ... and 12 more forms
-L_00A90:
+fea_b_35:
         mtlr    rtn_addr
         lbz     data, 0(a5)
         addi    a5, a5, 1
@@ -1004,7 +1004,7 @@ L_00A90:
 //     EOR.W Dn,(An)+
 //     AND.W Dn,(An)+
 //     ... and 19 more forms
-L_00AA0:
+cea_w_35:
         mtlr    rtn_addr
         mr      addr, a5
         addi    a5, a5, 2
@@ -1018,7 +1018,7 @@ L_00AA0:
 //     MOVE.W (An)+,(d8,An,Xn)
 //     CHK.W (An)+,Dn
 //     ... and 20 more forms
-L_00AB0:
+fea_w_35:
         mtlr    rtn_addr
         lha     data, 0(a5)
         addi    a5, a5, 2
@@ -1032,7 +1032,7 @@ L_00AB0:
 //     AND.L Dn,(An)+
 //     ADD.L Dn,(An)+
 //     ... and 10 more forms
-L_00AC0:
+cea_l_35:
         mtlr    rtn_addr
         mr      addr, a5
         addi    a5, a5, 4
@@ -1046,7 +1046,7 @@ L_00AC0:
 //     MOVE.L (An)+,(d8,An,Xn)
 //     CHK.L (An)+,Dn
 //     ... and 17 more forms
-L_00AD0:
+fea_l_35:
         mtlr    rtn_addr
         lwz     data, 0(a5)
         addi    a5, a5, 4
@@ -1066,7 +1066,7 @@ L_00AE0:
 //     SUBQ.B #<q>,(An)+
 //     OR.B Dn,(An)+
 //     ... and 34 more forms
-L_00B00:
+cea_b_36:
         mtlr    rtn_addr
         mr      addr, a6
         addi    a6, a6, 1
@@ -1080,7 +1080,7 @@ L_00B00:
 //     MOVE.B (An)+,(d16,An)
 //     MOVE.B (An)+,(d8,An,Xn)
 //     ... and 12 more forms
-L_00B10:
+fea_b_36:
         mtlr    rtn_addr
         lbz     data, 0(a6)
         addi    a6, a6, 1
@@ -1094,7 +1094,7 @@ L_00B10:
 //     EOR.W Dn,(An)+
 //     AND.W Dn,(An)+
 //     ... and 19 more forms
-L_00B20:
+cea_w_36:
         mtlr    rtn_addr
         mr      addr, a6
         addi    a6, a6, 2
@@ -1108,7 +1108,7 @@ L_00B20:
 //     MOVE.W (An)+,(d8,An,Xn)
 //     CHK.W (An)+,Dn
 //     ... and 20 more forms
-L_00B30:
+fea_w_36:
         mtlr    rtn_addr
         lha     data, 0(a6)
         addi    a6, a6, 2
@@ -1122,7 +1122,7 @@ L_00B30:
 //     EOR.L Dn,(An)+
 //     AND.L Dn,(An)+
 //     ... and 10 more forms
-L_00B40:
+cea_l_36:
         mtlr    rtn_addr
         mr      addr, a6
         addi    a6, a6, 4
@@ -1136,7 +1136,7 @@ L_00B40:
 //     MOVE.L (An)+,(d8,An,Xn)
 //     CHK.L (An)+,Dn
 //     ... and 17 more forms
-L_00B50:
+fea_l_36:
         mtlr    rtn_addr
         lwz     data, 0(a6)
         addi    a6, a6, 4
@@ -1156,7 +1156,7 @@ L_00B60:
 //     SUBQ.B #<q>,(An)+
 //     OR.B Dn,(An)+
 //     ... and 34 more forms
-L_00B80:
+cea_b_37:
         mtlr    rtn_addr
         mr      addr, a7
         addi    a7, a7, 2
@@ -1170,7 +1170,7 @@ L_00B80:
 //     MOVE.B (An)+,(d16,An)
 //     MOVE.B (An)+,(d8,An,Xn)
 //     ... and 12 more forms
-L_00B90:
+fea_b_37:
         mtlr    rtn_addr
         lbz     data, 0(a7)
         addi    a7, a7, 2
@@ -1184,7 +1184,7 @@ L_00B90:
 //     EOR.W Dn,(An)+
 //     AND.W Dn,(An)+
 //     ... and 19 more forms
-L_00BA0:
+cea_w_37:
         mtlr    rtn_addr
         mr      addr, a7
         addi    a7, a7, 2
@@ -1198,7 +1198,7 @@ L_00BA0:
 //     MOVE.W (An)+,(d8,An,Xn)
 //     CHK.W (An)+,Dn
 //     ... and 20 more forms
-L_00BB0:
+fea_w_37:
         mtlr    rtn_addr
         lha     data, 0(a7)
         addi    a7, a7, 2
@@ -1212,7 +1212,7 @@ L_00BB0:
 //     EOR.L Dn,(An)+
 //     AND.L Dn,(An)+
 //     ... and 10 more forms
-L_00BC0:
+cea_l_37:
         mtlr    rtn_addr
         mr      addr, a7
         addi    a7, a7, 4
@@ -1226,7 +1226,7 @@ L_00BC0:
 //     OR.L (An)+,Dn
 //     SUB.L (An)+,Dn
 //     ... and 15 more forms
-L_00BD0:
+fea_l_37:
         mtlr    rtn_addr
         lwz     data, 0(a7)
         addi    a7, a7, 4
@@ -1246,7 +1246,7 @@ L_00BE0:
 //     MOVE.B (xxx).W,Dn
 //     MOVE.B (d16,PC),Dn
 //     ... and 2 more forms
-L_00C00:
+move_or_etc_b_ea_d0:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 38 dispatch table entries:
@@ -1256,12 +1256,17 @@ L_00C00:
 //     EOR.B Dn,Dn
 //     AND.B Dn,Dn
 //     NOT.B Dn
-L_00C04:
+// Continuation (via rtn_addr) of 16 dispatch table entries:
+//     MOVE.B (d8,An,Xn),Dn
+//     MOVE.B (An)+,Dn
+//     MOVE.B (xxx).L,Dn
+//     MOVE.B (d8,PC,Xn),Dn
+move_b_mem_d0:
         slwi    data, data, 24
 
 // Reached from 7 dispatch table entries:
 //     MOVE.B Dn,Dn
-L_00C08:
+move_b_dn_d0:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -1272,13 +1277,18 @@ L_00C08:
 
 // Reached from 1 dispatch table entry:
 //     MOVE.L #<data>,Dn
-L_00C24:
+move_l_imm_d0:
         lwz     data, -4(pc)
 
 // Reached from 16 dispatch table entries:
 //     MOVE.L (An),Dn
 //     MOVE.L -(An),Dn
-L_00C28:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     MOVE.L (d8,An,Xn),Dn
+//     MOVE.L (An)+,Dn
+//     MOVE.L (xxx).L,Dn
+//     MOVE.L (d8,PC,Xn),Dn
+move_l_mem_d0:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -1290,7 +1300,7 @@ L_00C28:
 //     MOVE.L (d16,An),Dn
 //     MOVE.L (xxx).W,Dn
 //     MOVE.L (d16,PC),Dn
-L_00C40:
+move_l_mem_d0_2:
         lhau    prefetch_data, 2(pc)
         addco.  d0, data, zero
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
@@ -1304,15 +1314,23 @@ L_00C40:
 //     MOVE.W (d16,An),Dn
 //     MOVE.W (xxx).W,Dn
 //     MOVE.W (d16,PC),Dn
-L_00C60:
+move_w_mem_d0:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     MOVE.W (An),Dn
 //     MOVE.W -(An),Dn
-L_00C64:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.W (An)+,Dn
+//     MOVE.W (d8,An,Xn),Dn
+//     MOVE.W (xxx).L,Dn
+//     MOVE.W (d8,PC,Xn),Dn
+move_w_mem_d0_2:
         addco.  data, data, zero
-L_00C68:
+
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     MOVEP.W (d16,An),Dn
+movep_w_mem_d0:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -1328,7 +1346,7 @@ L_00C68:
 //     MOVE.B (xxx).W,Dn
 //     MOVE.B (d16,PC),Dn
 //     ... and 2 more forms
-L_00C80:
+move_or_etc_b_ea_d1:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 38 dispatch table entries:
@@ -1338,12 +1356,17 @@ L_00C80:
 //     EOR.B Dn,Dn
 //     AND.B Dn,Dn
 //     NOT.B Dn
-L_00C84:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     MOVE.B (d8,An,Xn),Dn
+//     MOVE.B (An)+,Dn
+//     MOVE.B (xxx).L,Dn
+//     MOVE.B (d8,PC,Xn),Dn
+move_b_mem_d1:
         slwi    data, data, 24
 
 // Reached from 7 dispatch table entries:
 //     MOVE.B Dn,Dn
-L_00C88:
+move_b_dn_d1:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -1354,13 +1377,18 @@ L_00C88:
 
 // Reached from 1 dispatch table entry:
 //     MOVE.L #<data>,Dn
-L_00CA4:
+move_l_imm_d1:
         lwz     data, -4(pc)
 
 // Reached from 16 dispatch table entries:
 //     MOVE.L (An),Dn
 //     MOVE.L -(An),Dn
-L_00CA8:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     MOVE.L (d8,An,Xn),Dn
+//     MOVE.L (An)+,Dn
+//     MOVE.L (xxx).L,Dn
+//     MOVE.L (d8,PC,Xn),Dn
+move_l_mem_d1:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -1372,7 +1400,7 @@ L_00CA8:
 //     MOVE.L (d16,An),Dn
 //     MOVE.L (xxx).W,Dn
 //     MOVE.L (d16,PC),Dn
-L_00CC0:
+move_l_mem_d1_2:
         lhau    prefetch_data, 2(pc)
         addco.  d1, data, zero
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
@@ -1386,15 +1414,23 @@ L_00CC0:
 //     MOVE.W (d16,An),Dn
 //     MOVE.W (xxx).W,Dn
 //     MOVE.W (d16,PC),Dn
-L_00CE0:
+move_w_mem_d1:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     MOVE.W (An),Dn
 //     MOVE.W -(An),Dn
-L_00CE4:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.W (An)+,Dn
+//     MOVE.W (d8,An,Xn),Dn
+//     MOVE.W (xxx).L,Dn
+//     MOVE.W (d8,PC,Xn),Dn
+move_w_mem_d1_2:
         addco.  data, data, zero
-L_00CE8:
+
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     MOVEP.W (d16,An),Dn
+movep_w_mem_d1:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -1410,7 +1446,7 @@ L_00CE8:
 //     MOVE.B (xxx).W,Dn
 //     MOVE.B (d16,PC),Dn
 //     ... and 2 more forms
-L_00D00:
+move_or_etc_b_ea_d2:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 38 dispatch table entries:
@@ -1420,12 +1456,17 @@ L_00D00:
 //     EOR.B Dn,Dn
 //     AND.B Dn,Dn
 //     NOT.B Dn
-L_00D04:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.B (An)+,Dn
+//     MOVE.B (d8,An,Xn),Dn
+//     MOVE.B (xxx).L,Dn
+//     MOVE.B (d8,PC,Xn),Dn
+move_b_mem_d2:
         slwi    data, data, 24
 
 // Reached from 7 dispatch table entries:
 //     MOVE.B Dn,Dn
-L_00D08:
+move_b_dn_d2:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -1436,13 +1477,18 @@ L_00D08:
 
 // Reached from 1 dispatch table entry:
 //     MOVE.L #<data>,Dn
-L_00D24:
+move_l_imm_d2:
         lwz     data, -4(pc)
 
 // Reached from 16 dispatch table entries:
 //     MOVE.L (An),Dn
 //     MOVE.L -(An),Dn
-L_00D28:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     MOVE.L (d8,An,Xn),Dn
+//     MOVE.L (An)+,Dn
+//     MOVE.L (xxx).L,Dn
+//     MOVE.L (d8,PC,Xn),Dn
+move_l_mem_d2:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -1454,7 +1500,7 @@ L_00D28:
 //     MOVE.L (d16,An),Dn
 //     MOVE.L (xxx).W,Dn
 //     MOVE.L (d16,PC),Dn
-L_00D40:
+move_l_mem_d2_2:
         lhau    prefetch_data, 2(pc)
         addco.  d2, data, zero
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
@@ -1468,15 +1514,23 @@ L_00D40:
 //     MOVE.W (d16,An),Dn
 //     MOVE.W (xxx).W,Dn
 //     MOVE.W (d16,PC),Dn
-L_00D60:
+move_w_mem_d2:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     MOVE.W (An),Dn
 //     MOVE.W -(An),Dn
-L_00D64:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.W (An)+,Dn
+//     MOVE.W (d8,An,Xn),Dn
+//     MOVE.W (xxx).L,Dn
+//     MOVE.W (d8,PC,Xn),Dn
+move_w_mem_d2_2:
         addco.  data, data, zero
-L_00D68:
+
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     MOVEP.W (d16,An),Dn
+movep_w_mem_d2:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -1492,7 +1546,7 @@ L_00D68:
 //     MOVE.B (xxx).W,Dn
 //     MOVE.B (d16,PC),Dn
 //     ... and 2 more forms
-L_00D80:
+move_or_etc_b_ea_d3:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 38 dispatch table entries:
@@ -1502,12 +1556,17 @@ L_00D80:
 //     EOR.B Dn,Dn
 //     AND.B Dn,Dn
 //     NOT.B Dn
-L_00D84:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.B (An)+,Dn
+//     MOVE.B (d8,An,Xn),Dn
+//     MOVE.B (xxx).L,Dn
+//     MOVE.B (d8,PC,Xn),Dn
+move_b_mem_d3:
         slwi    data, data, 24
 
 // Reached from 7 dispatch table entries:
 //     MOVE.B Dn,Dn
-L_00D88:
+move_b_dn_d3:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -1518,13 +1577,18 @@ L_00D88:
 
 // Reached from 1 dispatch table entry:
 //     MOVE.L #<data>,Dn
-L_00DA4:
+move_l_imm_d3:
         lwz     data, -4(pc)
 
 // Reached from 16 dispatch table entries:
 //     MOVE.L (An),Dn
 //     MOVE.L -(An),Dn
-L_00DA8:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     MOVE.L (d8,An,Xn),Dn
+//     MOVE.L (An)+,Dn
+//     MOVE.L (xxx).L,Dn
+//     MOVE.L (d8,PC,Xn),Dn
+move_l_mem_d3:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -1536,7 +1600,7 @@ L_00DA8:
 //     MOVE.L (d16,An),Dn
 //     MOVE.L (xxx).W,Dn
 //     MOVE.L (d16,PC),Dn
-L_00DC0:
+move_l_mem_d3_2:
         lhau    prefetch_data, 2(pc)
         addco.  d3, data, zero
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
@@ -1550,15 +1614,23 @@ L_00DC0:
 //     MOVE.W (d16,An),Dn
 //     MOVE.W (xxx).W,Dn
 //     MOVE.W (d16,PC),Dn
-L_00DE0:
+move_w_mem_d3:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     MOVE.W (An),Dn
 //     MOVE.W -(An),Dn
-L_00DE4:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.W (An)+,Dn
+//     MOVE.W (d8,An,Xn),Dn
+//     MOVE.W (xxx).L,Dn
+//     MOVE.W (d8,PC,Xn),Dn
+move_w_mem_d3_2:
         addco.  data, data, zero
-L_00DE8:
+
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     MOVEP.W (d16,An),Dn
+movep_w_mem_d3:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -1574,7 +1646,7 @@ L_00DE8:
 //     MOVE.B (xxx).W,Dn
 //     MOVE.B (d16,PC),Dn
 //     ... and 2 more forms
-L_00E00:
+move_or_etc_b_ea_d4:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 38 dispatch table entries:
@@ -1584,12 +1656,17 @@ L_00E00:
 //     EOR.B Dn,Dn
 //     AND.B Dn,Dn
 //     NOT.B Dn
-L_00E04:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.B (An)+,Dn
+//     MOVE.B (d8,An,Xn),Dn
+//     MOVE.B (xxx).L,Dn
+//     MOVE.B (d8,PC,Xn),Dn
+move_b_mem_d4:
         slwi    data, data, 24
 
 // Reached from 7 dispatch table entries:
 //     MOVE.B Dn,Dn
-L_00E08:
+move_b_dn_d4:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -1600,13 +1677,18 @@ L_00E08:
 
 // Reached from 1 dispatch table entry:
 //     MOVE.L #<data>,Dn
-L_00E24:
+move_l_imm_d4:
         lwz     data, -4(pc)
 
 // Reached from 16 dispatch table entries:
 //     MOVE.L (An),Dn
 //     MOVE.L -(An),Dn
-L_00E28:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     MOVE.L (d8,An,Xn),Dn
+//     MOVE.L (An)+,Dn
+//     MOVE.L (xxx).L,Dn
+//     MOVE.L (d8,PC,Xn),Dn
+move_l_mem_d4:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -1618,7 +1700,7 @@ L_00E28:
 //     MOVE.L (d16,An),Dn
 //     MOVE.L (xxx).W,Dn
 //     MOVE.L (d16,PC),Dn
-L_00E40:
+move_l_mem_d4_2:
         lhau    prefetch_data, 2(pc)
         addco.  d4, data, zero
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
@@ -1632,15 +1714,23 @@ L_00E40:
 //     MOVE.W (d16,An),Dn
 //     MOVE.W (xxx).W,Dn
 //     MOVE.W (d16,PC),Dn
-L_00E60:
+move_w_mem_d4:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     MOVE.W (An),Dn
 //     MOVE.W -(An),Dn
-L_00E64:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.W (An)+,Dn
+//     MOVE.W (d8,An,Xn),Dn
+//     MOVE.W (xxx).L,Dn
+//     MOVE.W (d8,PC,Xn),Dn
+move_w_mem_d4_2:
         addco.  data, data, zero
-L_00E68:
+
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     MOVEP.W (d16,An),Dn
+movep_w_mem_d4:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -1656,7 +1746,7 @@ L_00E68:
 //     MOVE.B (xxx).W,Dn
 //     MOVE.B (d16,PC),Dn
 //     ... and 2 more forms
-L_00E80:
+move_or_etc_b_ea_d5:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 38 dispatch table entries:
@@ -1666,12 +1756,17 @@ L_00E80:
 //     EOR.B Dn,Dn
 //     AND.B Dn,Dn
 //     NOT.B Dn
-L_00E84:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.B (An)+,Dn
+//     MOVE.B (d8,An,Xn),Dn
+//     MOVE.B (xxx).L,Dn
+//     MOVE.B (d8,PC,Xn),Dn
+move_b_mem_d5:
         slwi    data, data, 24
 
 // Reached from 7 dispatch table entries:
 //     MOVE.B Dn,Dn
-L_00E88:
+move_b_dn_d5:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -1682,13 +1777,18 @@ L_00E88:
 
 // Reached from 1 dispatch table entry:
 //     MOVE.L #<data>,Dn
-L_00EA4:
+move_l_imm_d5:
         lwz     data, -4(pc)
 
 // Reached from 16 dispatch table entries:
 //     MOVE.L (An),Dn
 //     MOVE.L -(An),Dn
-L_00EA8:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     MOVE.L (d8,An,Xn),Dn
+//     MOVE.L (An)+,Dn
+//     MOVE.L (xxx).L,Dn
+//     MOVE.L (d8,PC,Xn),Dn
+move_l_mem_d5:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -1700,7 +1800,7 @@ L_00EA8:
 //     MOVE.L (d16,An),Dn
 //     MOVE.L (xxx).W,Dn
 //     MOVE.L (d16,PC),Dn
-L_00EC0:
+move_l_mem_d5_2:
         lhau    prefetch_data, 2(pc)
         addco.  d5, data, zero
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
@@ -1714,15 +1814,23 @@ L_00EC0:
 //     MOVE.W (d16,An),Dn
 //     MOVE.W (xxx).W,Dn
 //     MOVE.W (d16,PC),Dn
-L_00EE0:
+move_w_mem_d5:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     MOVE.W (An),Dn
 //     MOVE.W -(An),Dn
-L_00EE4:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.W (An)+,Dn
+//     MOVE.W (d8,An,Xn),Dn
+//     MOVE.W (xxx).L,Dn
+//     MOVE.W (d8,PC,Xn),Dn
+move_w_mem_d5_2:
         addco.  data, data, zero
-L_00EE8:
+
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     MOVEP.W (d16,An),Dn
+movep_w_mem_d5:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -1738,7 +1846,7 @@ L_00EE8:
 //     MOVE.B (xxx).W,Dn
 //     MOVE.B (d16,PC),Dn
 //     ... and 2 more forms
-L_00F00:
+move_or_etc_b_ea_d6:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 38 dispatch table entries:
@@ -1748,12 +1856,17 @@ L_00F00:
 //     EOR.B Dn,Dn
 //     AND.B Dn,Dn
 //     NOT.B Dn
-L_00F04:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.B (An)+,Dn
+//     MOVE.B (d8,An,Xn),Dn
+//     MOVE.B (xxx).L,Dn
+//     MOVE.B (d8,PC,Xn),Dn
+move_b_mem_d6:
         slwi    data, data, 24
 
 // Reached from 7 dispatch table entries:
 //     MOVE.B Dn,Dn
-L_00F08:
+move_b_dn_d6:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -1764,13 +1877,18 @@ L_00F08:
 
 // Reached from 1 dispatch table entry:
 //     MOVE.L #<data>,Dn
-L_00F24:
+move_l_imm_d6:
         lwz     data, -4(pc)
 
 // Reached from 16 dispatch table entries:
 //     MOVE.L (An),Dn
 //     MOVE.L -(An),Dn
-L_00F28:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     MOVE.L (d8,An,Xn),Dn
+//     MOVE.L (An)+,Dn
+//     MOVE.L (xxx).L,Dn
+//     MOVE.L (d8,PC,Xn),Dn
+move_l_mem_d6:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -1782,7 +1900,7 @@ L_00F28:
 //     MOVE.L (d16,An),Dn
 //     MOVE.L (xxx).W,Dn
 //     MOVE.L (d16,PC),Dn
-L_00F40:
+move_l_mem_d6_2:
         lhau    prefetch_data, 2(pc)
         addco.  d6, data, zero
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
@@ -1796,15 +1914,23 @@ L_00F40:
 //     MOVE.W (d16,An),Dn
 //     MOVE.W (xxx).W,Dn
 //     MOVE.W (d16,PC),Dn
-L_00F60:
+move_w_mem_d6:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     MOVE.W (An),Dn
 //     MOVE.W -(An),Dn
-L_00F64:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.W (An)+,Dn
+//     MOVE.W (d8,An,Xn),Dn
+//     MOVE.W (xxx).L,Dn
+//     MOVE.W (d8,PC,Xn),Dn
+move_w_mem_d6_2:
         addco.  data, data, zero
-L_00F68:
+
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     MOVEP.W (d16,An),Dn
+movep_w_mem_d6:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -1820,7 +1946,7 @@ L_00F68:
 //     MOVE.B (xxx).W,Dn
 //     MOVE.B (d16,PC),Dn
 //     ... and 2 more forms
-L_00F80:
+move_or_etc_b_ea_d7:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 38 dispatch table entries:
@@ -1830,12 +1956,17 @@ L_00F80:
 //     EOR.B Dn,Dn
 //     AND.B Dn,Dn
 //     NOT.B Dn
-L_00F84:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.B (An)+,Dn
+//     MOVE.B (d8,An,Xn),Dn
+//     MOVE.B (xxx).L,Dn
+//     MOVE.B (d8,PC,Xn),Dn
+move_b_mem_d7:
         slwi    data, data, 24
 
 // Reached from 7 dispatch table entries:
 //     MOVE.B Dn,Dn
-L_00F88:
+move_b_dn_d7:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -1846,13 +1977,18 @@ L_00F88:
 
 // Reached from 1 dispatch table entry:
 //     MOVE.L #<data>,Dn
-L_00FA4:
+move_l_imm_d7:
         lwz     data, -4(pc)
 
 // Reached from 16 dispatch table entries:
 //     MOVE.L (An),Dn
 //     MOVE.L -(An),Dn
-L_00FA8:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     MOVE.L (d8,An,Xn),Dn
+//     MOVE.L (An)+,Dn
+//     MOVE.L (xxx).L,Dn
+//     MOVE.L (d8,PC,Xn),Dn
+move_l_mem_d7:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -1864,7 +2000,7 @@ L_00FA8:
 //     MOVE.L (d16,An),Dn
 //     MOVE.L (xxx).W,Dn
 //     MOVE.L (d16,PC),Dn
-L_00FC0:
+move_l_mem_d7_2:
         lhau    prefetch_data, 2(pc)
         addco.  d7, data, zero
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
@@ -1878,15 +2014,23 @@ L_00FC0:
 //     MOVE.W (d16,An),Dn
 //     MOVE.W (xxx).W,Dn
 //     MOVE.W (d16,PC),Dn
-L_00FE0:
+move_w_mem_d7:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     MOVE.W (An),Dn
 //     MOVE.W -(An),Dn
-L_00FE4:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.W (An)+,Dn
+//     MOVE.W (d8,An,Xn),Dn
+//     MOVE.W (xxx).L,Dn
+//     MOVE.W (d8,PC,Xn),Dn
+move_w_mem_d7_2:
         addco.  data, data, zero
-L_00FE8:
+
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     MOVEP.W (d16,An),Dn
+movep_w_mem_d7:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -1898,7 +2042,7 @@ L_00FE8:
 //     MOVE.W (d16,An),(An)
 //     MOVE.W (xxx).W,(An)
 //     MOVE.W (d16,PC),(An)
-L_01000:
+move_w_mem_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 30 dispatch table entries:
@@ -1906,7 +2050,12 @@ L_01000:
 //     MOVE.W An,(An)
 //     MOVE.W (An),(An)
 //     MOVE.W -(An),(An)
-L_01004:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.W (An)+,(An)
+//     MOVE.W (d8,An,Xn),(An)
+//     MOVE.W (xxx).L,(An)
+//     MOVE.W (d8,PC,Xn),(An)
+move_w_mem_mem_2:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -1919,19 +2068,25 @@ L_01004:
 //     MOVE.L (d16,An),(An)
 //     MOVE.L (xxx).W,(An)
 //     MOVE.L (d16,PC),(An)
-L_01020:
+move_l_mem_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 14 dispatch table entries:
 //     MOVE.L (An),(An)
 //     MOVE.L -(An),(An)
-L_01024:
+// Continuation (via rtn_addr) of 19 dispatch table entries:
+//     MOVE.L (An)+,(An)
+//     MOVE.L (d8,An,Xn),(An)
+//     MOVE.L (xxx).L,(An)
+//     MOVE.L (d8,PC,Xn),(An)
+//     MOVE.L #<data>,(An)
+move_l_ea_mem:
         addco.  data, data, zero
 
 // Reached from 16 dispatch table entries:
 //     MOVE.L Dn,(An)
 //     MOVE.L An,(An)
-L_01028:
+move_l_reg_mem:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -1943,7 +2098,7 @@ L_01028:
 //     MOVE.W (d16,An),(An)
 //     MOVE.W (xxx).W,(An)
 //     MOVE.W (d16,PC),(An)
-L_01040:
+move_w_mem_mem_3:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 30 dispatch table entries:
@@ -1951,7 +2106,12 @@ L_01040:
 //     MOVE.W An,(An)
 //     MOVE.W (An),(An)
 //     MOVE.W -(An),(An)
-L_01044:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.W (An)+,(An)
+//     MOVE.W (d8,An,Xn),(An)
+//     MOVE.W (xxx).L,(An)
+//     MOVE.W (d8,PC,Xn),(An)
+move_w_mem_mem_4:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -1964,19 +2124,25 @@ L_01044:
 //     MOVE.L (d16,An),(An)
 //     MOVE.L (xxx).W,(An)
 //     MOVE.L (d16,PC),(An)
-L_01060:
+move_l_mem_mem_2:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 14 dispatch table entries:
 //     MOVE.L (An),(An)
 //     MOVE.L -(An),(An)
-L_01064:
+// Continuation (via rtn_addr) of 19 dispatch table entries:
+//     MOVE.L (An)+,(An)
+//     MOVE.L (d8,An,Xn),(An)
+//     MOVE.L (xxx).L,(An)
+//     MOVE.L (d8,PC,Xn),(An)
+//     MOVE.L #<data>,(An)
+move_l_ea_mem_2:
         addco.  data, data, zero
 
 // Reached from 16 dispatch table entries:
 //     MOVE.L Dn,(An)
 //     MOVE.L An,(An)
-L_01068:
+move_l_reg_mem_2:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -1988,7 +2154,7 @@ L_01068:
 //     MOVE.W (d16,An),(An)
 //     MOVE.W (xxx).W,(An)
 //     MOVE.W (d16,PC),(An)
-L_01080:
+move_w_mem_mem_5:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 30 dispatch table entries:
@@ -1996,7 +2162,12 @@ L_01080:
 //     MOVE.W An,(An)
 //     MOVE.W (An),(An)
 //     MOVE.W -(An),(An)
-L_01084:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.W (An)+,(An)
+//     MOVE.W (d8,An,Xn),(An)
+//     MOVE.W (xxx).L,(An)
+//     MOVE.W (d8,PC,Xn),(An)
+move_w_mem_mem_6:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -2009,19 +2180,25 @@ L_01084:
 //     MOVE.L (d16,An),(An)
 //     MOVE.L (xxx).W,(An)
 //     MOVE.L (d16,PC),(An)
-L_010A0:
+move_l_mem_mem_3:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 14 dispatch table entries:
 //     MOVE.L (An),(An)
 //     MOVE.L -(An),(An)
-L_010A4:
+// Continuation (via rtn_addr) of 19 dispatch table entries:
+//     MOVE.L (An)+,(An)
+//     MOVE.L (d8,An,Xn),(An)
+//     MOVE.L (xxx).L,(An)
+//     MOVE.L (d8,PC,Xn),(An)
+//     MOVE.L #<data>,(An)
+move_l_ea_mem_3:
         addco.  data, data, zero
 
 // Reached from 16 dispatch table entries:
 //     MOVE.L Dn,(An)
 //     MOVE.L An,(An)
-L_010A8:
+move_l_reg_mem_3:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -2033,7 +2210,7 @@ L_010A8:
 //     MOVE.W (d16,An),(An)
 //     MOVE.W (xxx).W,(An)
 //     MOVE.W (d16,PC),(An)
-L_010C0:
+move_w_mem_mem_7:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 30 dispatch table entries:
@@ -2041,7 +2218,12 @@ L_010C0:
 //     MOVE.W An,(An)
 //     MOVE.W (An),(An)
 //     MOVE.W -(An),(An)
-L_010C4:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.W (An)+,(An)
+//     MOVE.W (d8,An,Xn),(An)
+//     MOVE.W (xxx).L,(An)
+//     MOVE.W (d8,PC,Xn),(An)
+move_w_mem_mem_8:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -2054,19 +2236,25 @@ L_010C4:
 //     MOVE.L (d16,An),(An)
 //     MOVE.L (xxx).W,(An)
 //     MOVE.L (d16,PC),(An)
-L_010E0:
+move_l_mem_mem_4:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 14 dispatch table entries:
 //     MOVE.L (An),(An)
 //     MOVE.L -(An),(An)
-L_010E4:
+// Continuation (via rtn_addr) of 19 dispatch table entries:
+//     MOVE.L (An)+,(An)
+//     MOVE.L (d8,An,Xn),(An)
+//     MOVE.L (xxx).L,(An)
+//     MOVE.L (d8,PC,Xn),(An)
+//     MOVE.L #<data>,(An)
+move_l_ea_mem_4:
         addco.  data, data, zero
 
 // Reached from 16 dispatch table entries:
 //     MOVE.L Dn,(An)
 //     MOVE.L An,(An)
-L_010E8:
+move_l_reg_mem_4:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -2078,7 +2266,7 @@ L_010E8:
 //     MOVE.W (d16,An),(An)
 //     MOVE.W (xxx).W,(An)
 //     MOVE.W (d16,PC),(An)
-L_01100:
+move_w_mem_mem_9:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 30 dispatch table entries:
@@ -2086,7 +2274,12 @@ L_01100:
 //     MOVE.W An,(An)
 //     MOVE.W (An),(An)
 //     MOVE.W -(An),(An)
-L_01104:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.W (An)+,(An)
+//     MOVE.W (d8,An,Xn),(An)
+//     MOVE.W (xxx).L,(An)
+//     MOVE.W (d8,PC,Xn),(An)
+move_w_mem_mem_10:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -2099,19 +2292,25 @@ L_01104:
 //     MOVE.L (d16,An),(An)
 //     MOVE.L (xxx).W,(An)
 //     MOVE.L (d16,PC),(An)
-L_01120:
+move_l_mem_mem_5:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 14 dispatch table entries:
 //     MOVE.L (An),(An)
 //     MOVE.L -(An),(An)
-L_01124:
+// Continuation (via rtn_addr) of 19 dispatch table entries:
+//     MOVE.L (An)+,(An)
+//     MOVE.L (d8,An,Xn),(An)
+//     MOVE.L (xxx).L,(An)
+//     MOVE.L (d8,PC,Xn),(An)
+//     MOVE.L #<data>,(An)
+move_l_ea_mem_5:
         addco.  data, data, zero
 
 // Reached from 16 dispatch table entries:
 //     MOVE.L Dn,(An)
 //     MOVE.L An,(An)
-L_01128:
+move_l_reg_mem_5:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -2123,7 +2322,7 @@ L_01128:
 //     MOVE.W (d16,An),(An)
 //     MOVE.W (xxx).W,(An)
 //     MOVE.W (d16,PC),(An)
-L_01140:
+move_w_mem_mem_11:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 30 dispatch table entries:
@@ -2131,7 +2330,12 @@ L_01140:
 //     MOVE.W An,(An)
 //     MOVE.W (An),(An)
 //     MOVE.W -(An),(An)
-L_01144:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.W (An)+,(An)
+//     MOVE.W (d8,An,Xn),(An)
+//     MOVE.W (xxx).L,(An)
+//     MOVE.W (d8,PC,Xn),(An)
+move_w_mem_mem_12:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -2144,19 +2348,25 @@ L_01144:
 //     MOVE.L (d16,An),(An)
 //     MOVE.L (xxx).W,(An)
 //     MOVE.L (d16,PC),(An)
-L_01160:
+move_l_mem_mem_6:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 14 dispatch table entries:
 //     MOVE.L (An),(An)
 //     MOVE.L -(An),(An)
-L_01164:
+// Continuation (via rtn_addr) of 19 dispatch table entries:
+//     MOVE.L (An)+,(An)
+//     MOVE.L (d8,An,Xn),(An)
+//     MOVE.L (xxx).L,(An)
+//     MOVE.L (d8,PC,Xn),(An)
+//     MOVE.L #<data>,(An)
+move_l_ea_mem_6:
         addco.  data, data, zero
 
 // Reached from 16 dispatch table entries:
 //     MOVE.L Dn,(An)
 //     MOVE.L An,(An)
-L_01168:
+move_l_reg_mem_6:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -2168,7 +2378,7 @@ L_01168:
 //     MOVE.W (d16,An),(An)
 //     MOVE.W (xxx).W,(An)
 //     MOVE.W (d16,PC),(An)
-L_01180:
+move_w_mem_mem_13:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 30 dispatch table entries:
@@ -2176,7 +2386,12 @@ L_01180:
 //     MOVE.W An,(An)
 //     MOVE.W (An),(An)
 //     MOVE.W -(An),(An)
-L_01184:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.W (An)+,(An)
+//     MOVE.W (d8,An,Xn),(An)
+//     MOVE.W (xxx).L,(An)
+//     MOVE.W (d8,PC,Xn),(An)
+move_w_mem_mem_14:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -2189,19 +2404,25 @@ L_01184:
 //     MOVE.L (d16,An),(An)
 //     MOVE.L (xxx).W,(An)
 //     MOVE.L (d16,PC),(An)
-L_011A0:
+move_l_mem_mem_7:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 14 dispatch table entries:
 //     MOVE.L (An),(An)
 //     MOVE.L -(An),(An)
-L_011A4:
+// Continuation (via rtn_addr) of 19 dispatch table entries:
+//     MOVE.L (An)+,(An)
+//     MOVE.L (d8,An,Xn),(An)
+//     MOVE.L (xxx).L,(An)
+//     MOVE.L (d8,PC,Xn),(An)
+//     MOVE.L #<data>,(An)
+move_l_ea_mem_7:
         addco.  data, data, zero
 
 // Reached from 16 dispatch table entries:
 //     MOVE.L Dn,(An)
 //     MOVE.L An,(An)
-L_011A8:
+move_l_reg_mem_7:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -2213,7 +2434,7 @@ L_011A8:
 //     MOVE.W (d16,An),(An)
 //     MOVE.W (xxx).W,(An)
 //     MOVE.W (d16,PC),(An)
-L_011C0:
+move_w_mem_mem_15:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 30 dispatch table entries:
@@ -2221,7 +2442,12 @@ L_011C0:
 //     MOVE.W An,(An)
 //     MOVE.W (An),(An)
 //     MOVE.W -(An),(An)
-L_011C4:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.W (An)+,(An)
+//     MOVE.W (d8,An,Xn),(An)
+//     MOVE.W (xxx).L,(An)
+//     MOVE.W (d8,PC,Xn),(An)
+move_w_mem_mem_16:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -2234,19 +2460,25 @@ L_011C4:
 //     MOVE.L (d16,An),(An)
 //     MOVE.L (xxx).W,(An)
 //     MOVE.L (d16,PC),(An)
-L_011E0:
+move_l_mem_mem_8:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 14 dispatch table entries:
 //     MOVE.L (An),(An)
 //     MOVE.L -(An),(An)
-L_011E4:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.L (d8,An,Xn),(An)
+//     MOVE.L (An)+,(An)
+//     MOVE.L (xxx).L,(An)
+//     MOVE.L (d8,PC,Xn),(An)
+//     MOVE.L #<data>,(An)
+move_l_ea_mem_8:
         addco.  data, data, zero
 
 // Reached from 16 dispatch table entries:
 //     MOVE.L Dn,(An)
 //     MOVE.L An,(An)
-L_011E8:
+move_l_reg_mem_8:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -2258,7 +2490,7 @@ L_011E8:
 //     MOVE.W (d16,An),-(An)
 //     MOVE.W (xxx).W,-(An)
 //     MOVE.W (d16,PC),-(An)
-L_01200:
+move_w_mem_mem_17:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 32 dispatch table entries:
@@ -2266,7 +2498,12 @@ L_01200:
 //     MOVE.W An,-(An)
 //     MOVE.W (An),-(An)
 //     MOVE.W -(An),-(An)
-L_01204:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     MOVE.W (d8,An,Xn),-(An)
+//     MOVE.W (An)+,-(An)
+//     MOVE.W (xxx).L,-(An)
+//     MOVE.W (d8,PC,Xn),-(An)
+move_w_mem_mem_18:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -2279,19 +2516,25 @@ L_01204:
 //     MOVE.L (d16,An),-(An)
 //     MOVE.L (xxx).W,-(An)
 //     MOVE.L (d16,PC),-(An)
-L_01220:
+move_l_mem_mem_9:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     MOVE.L (An),-(An)
 //     MOVE.L -(An),-(An)
-L_01224:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.L (d8,An,Xn),-(An)
+//     MOVE.L (An)+,-(An)
+//     MOVE.L (xxx).L,-(An)
+//     MOVE.L (d8,PC,Xn),-(An)
+//     MOVE.L #<data>,-(An)
+move_l_ea_mem_9:
         addco.  data, data, zero
 
 // Reached from 16 dispatch table entries:
 //     MOVE.L Dn,-(An)
 //     MOVE.L An,-(An)
-L_01228:
+move_l_reg_mem_9:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -2303,7 +2546,7 @@ L_01228:
 //     MOVE.W (d16,An),-(An)
 //     MOVE.W (xxx).W,-(An)
 //     MOVE.W (d16,PC),-(An)
-L_01240:
+move_w_mem_mem_19:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 32 dispatch table entries:
@@ -2311,7 +2554,12 @@ L_01240:
 //     MOVE.W An,-(An)
 //     MOVE.W (An),-(An)
 //     MOVE.W -(An),-(An)
-L_01244:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     MOVE.W (d8,An,Xn),-(An)
+//     MOVE.W (An)+,-(An)
+//     MOVE.W (xxx).L,-(An)
+//     MOVE.W (d8,PC,Xn),-(An)
+move_w_mem_mem_20:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -2324,19 +2572,25 @@ L_01244:
 //     MOVE.L (d16,An),-(An)
 //     MOVE.L (xxx).W,-(An)
 //     MOVE.L (d16,PC),-(An)
-L_01260:
+move_l_mem_mem_10:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     MOVE.L (An),-(An)
 //     MOVE.L -(An),-(An)
-L_01264:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.L (d8,An,Xn),-(An)
+//     MOVE.L (An)+,-(An)
+//     MOVE.L (xxx).L,-(An)
+//     MOVE.L (d8,PC,Xn),-(An)
+//     MOVE.L #<data>,-(An)
+move_l_ea_mem_10:
         addco.  data, data, zero
 
 // Reached from 16 dispatch table entries:
 //     MOVE.L Dn,-(An)
 //     MOVE.L An,-(An)
-L_01268:
+move_l_reg_mem_10:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -2348,7 +2602,7 @@ L_01268:
 //     MOVE.W (d16,An),-(An)
 //     MOVE.W (xxx).W,-(An)
 //     MOVE.W (d16,PC),-(An)
-L_01280:
+move_w_mem_mem_21:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 32 dispatch table entries:
@@ -2356,7 +2610,12 @@ L_01280:
 //     MOVE.W An,-(An)
 //     MOVE.W (An),-(An)
 //     MOVE.W -(An),-(An)
-L_01284:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     MOVE.W (d8,An,Xn),-(An)
+//     MOVE.W (An)+,-(An)
+//     MOVE.W (xxx).L,-(An)
+//     MOVE.W (d8,PC,Xn),-(An)
+move_w_mem_mem_22:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -2369,19 +2628,25 @@ L_01284:
 //     MOVE.L (d16,An),-(An)
 //     MOVE.L (xxx).W,-(An)
 //     MOVE.L (d16,PC),-(An)
-L_012A0:
+move_l_mem_mem_11:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     MOVE.L (An),-(An)
 //     MOVE.L -(An),-(An)
-L_012A4:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.L (d8,An,Xn),-(An)
+//     MOVE.L (An)+,-(An)
+//     MOVE.L (xxx).L,-(An)
+//     MOVE.L (d8,PC,Xn),-(An)
+//     MOVE.L #<data>,-(An)
+move_l_ea_mem_11:
         addco.  data, data, zero
 
 // Reached from 16 dispatch table entries:
 //     MOVE.L Dn,-(An)
 //     MOVE.L An,-(An)
-L_012A8:
+move_l_reg_mem_11:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -2393,7 +2658,7 @@ L_012A8:
 //     MOVE.W (d16,An),-(An)
 //     MOVE.W (xxx).W,-(An)
 //     MOVE.W (d16,PC),-(An)
-L_012C0:
+move_w_mem_mem_23:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 32 dispatch table entries:
@@ -2401,7 +2666,12 @@ L_012C0:
 //     MOVE.W An,-(An)
 //     MOVE.W (An),-(An)
 //     MOVE.W -(An),-(An)
-L_012C4:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     MOVE.W (d8,An,Xn),-(An)
+//     MOVE.W (An)+,-(An)
+//     MOVE.W (xxx).L,-(An)
+//     MOVE.W (d8,PC,Xn),-(An)
+move_w_mem_mem_24:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -2414,19 +2684,25 @@ L_012C4:
 //     MOVE.L (d16,An),-(An)
 //     MOVE.L (xxx).W,-(An)
 //     MOVE.L (d16,PC),-(An)
-L_012E0:
+move_l_mem_mem_12:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     MOVE.L (An),-(An)
 //     MOVE.L -(An),-(An)
-L_012E4:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.L (d8,An,Xn),-(An)
+//     MOVE.L (An)+,-(An)
+//     MOVE.L (xxx).L,-(An)
+//     MOVE.L (d8,PC,Xn),-(An)
+//     MOVE.L #<data>,-(An)
+move_l_ea_mem_12:
         addco.  data, data, zero
 
 // Reached from 16 dispatch table entries:
 //     MOVE.L Dn,-(An)
 //     MOVE.L An,-(An)
-L_012E8:
+move_l_reg_mem_12:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -2438,7 +2714,7 @@ L_012E8:
 //     MOVE.W (d16,An),-(An)
 //     MOVE.W (xxx).W,-(An)
 //     MOVE.W (d16,PC),-(An)
-L_01300:
+move_w_mem_mem_25:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 32 dispatch table entries:
@@ -2446,7 +2722,12 @@ L_01300:
 //     MOVE.W An,-(An)
 //     MOVE.W (An),-(An)
 //     MOVE.W -(An),-(An)
-L_01304:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     MOVE.W (d8,An,Xn),-(An)
+//     MOVE.W (An)+,-(An)
+//     MOVE.W (xxx).L,-(An)
+//     MOVE.W (d8,PC,Xn),-(An)
+move_w_mem_mem_26:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -2459,19 +2740,25 @@ L_01304:
 //     MOVE.L (d16,An),-(An)
 //     MOVE.L (xxx).W,-(An)
 //     MOVE.L (d16,PC),-(An)
-L_01320:
+move_l_mem_mem_13:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     MOVE.L (An),-(An)
 //     MOVE.L -(An),-(An)
-L_01324:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.L (d8,An,Xn),-(An)
+//     MOVE.L (An)+,-(An)
+//     MOVE.L (xxx).L,-(An)
+//     MOVE.L (d8,PC,Xn),-(An)
+//     MOVE.L #<data>,-(An)
+move_l_ea_mem_13:
         addco.  data, data, zero
 
 // Reached from 16 dispatch table entries:
 //     MOVE.L Dn,-(An)
 //     MOVE.L An,-(An)
-L_01328:
+move_l_reg_mem_13:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -2483,7 +2770,7 @@ L_01328:
 //     MOVE.W (d16,An),-(An)
 //     MOVE.W (xxx).W,-(An)
 //     MOVE.W (d16,PC),-(An)
-L_01340:
+move_w_mem_mem_27:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 32 dispatch table entries:
@@ -2491,7 +2778,12 @@ L_01340:
 //     MOVE.W An,-(An)
 //     MOVE.W (An),-(An)
 //     MOVE.W -(An),-(An)
-L_01344:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     MOVE.W (d8,An,Xn),-(An)
+//     MOVE.W (An)+,-(An)
+//     MOVE.W (xxx).L,-(An)
+//     MOVE.W (d8,PC,Xn),-(An)
+move_w_mem_mem_28:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -2504,19 +2796,25 @@ L_01344:
 //     MOVE.L (d16,An),-(An)
 //     MOVE.L (xxx).W,-(An)
 //     MOVE.L (d16,PC),-(An)
-L_01360:
+move_l_mem_mem_14:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     MOVE.L (An),-(An)
 //     MOVE.L -(An),-(An)
-L_01364:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.L (d8,An,Xn),-(An)
+//     MOVE.L (An)+,-(An)
+//     MOVE.L (xxx).L,-(An)
+//     MOVE.L (d8,PC,Xn),-(An)
+//     MOVE.L #<data>,-(An)
+move_l_ea_mem_14:
         addco.  data, data, zero
 
 // Reached from 16 dispatch table entries:
 //     MOVE.L Dn,-(An)
 //     MOVE.L An,-(An)
-L_01368:
+move_l_reg_mem_14:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -2528,7 +2826,7 @@ L_01368:
 //     MOVE.W (d16,An),-(An)
 //     MOVE.W (xxx).W,-(An)
 //     MOVE.W (d16,PC),-(An)
-L_01380:
+move_w_mem_mem_29:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 32 dispatch table entries:
@@ -2536,7 +2834,12 @@ L_01380:
 //     MOVE.W An,-(An)
 //     MOVE.W (An),-(An)
 //     MOVE.W -(An),-(An)
-L_01384:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     MOVE.W (d8,An,Xn),-(An)
+//     MOVE.W (An)+,-(An)
+//     MOVE.W (xxx).L,-(An)
+//     MOVE.W (d8,PC,Xn),-(An)
+move_w_mem_mem_30:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -2549,19 +2852,25 @@ L_01384:
 //     MOVE.L (d16,An),-(An)
 //     MOVE.L (xxx).W,-(An)
 //     MOVE.L (d16,PC),-(An)
-L_013A0:
+move_l_mem_mem_15:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     MOVE.L (An),-(An)
 //     MOVE.L -(An),-(An)
-L_013A4:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.L (d8,An,Xn),-(An)
+//     MOVE.L (An)+,-(An)
+//     MOVE.L (xxx).L,-(An)
+//     MOVE.L (d8,PC,Xn),-(An)
+//     MOVE.L #<data>,-(An)
+move_l_ea_mem_15:
         addco.  data, data, zero
 
 // Reached from 16 dispatch table entries:
 //     MOVE.L Dn,-(An)
 //     MOVE.L An,-(An)
-L_013A8:
+move_l_reg_mem_15:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -2573,7 +2882,7 @@ L_013A8:
 //     MOVE.W (d16,An),-(An)
 //     MOVE.W (xxx).W,-(An)
 //     MOVE.W (d16,PC),-(An)
-L_013C0:
+move_w_mem_mem_31:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 32 dispatch table entries:
@@ -2581,7 +2890,12 @@ L_013C0:
 //     MOVE.W An,-(An)
 //     MOVE.W (An),-(An)
 //     MOVE.W -(An),-(An)
-L_013C4:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     MOVE.W (d8,An,Xn),-(An)
+//     MOVE.W (An)+,-(An)
+//     MOVE.W (xxx).L,-(An)
+//     MOVE.W (d8,PC,Xn),-(An)
+move_w_mem_mem_32:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -2593,19 +2907,25 @@ L_013C4:
 // Reached from 9 dispatch table entries:
 //     MOVE.L (d16,An),-(An)
 //     MOVE.L (d16,PC),-(An)
-L_013E0:
+move_l_mem_mem_16:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     MOVE.L (An),-(An)
 //     MOVE.L -(An),-(An)
-L_013E4:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     MOVE.L (An)+,-(An)
+//     MOVE.L (d8,An,Xn),-(An)
+//     MOVE.L (xxx).L,-(An)
+//     MOVE.L (d8,PC,Xn),-(An)
+//     MOVE.L #<data>,-(An)
+move_l_ea_mem_16:
         addco.  data, data, zero
 
 // Reached from 16 dispatch table entries:
 //     MOVE.L Dn,-(An)
 //     MOVE.L An,-(An)
-L_013E8:
+move_l_reg_mem_16:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -2617,20 +2937,26 @@ L_013E8:
 //     MOVE.L (d16,An),(An)+
 //     MOVE.L (xxx).W,(An)+
 //     MOVE.L (d16,PC),(An)+
-L_01400:
+move_l_mem_mem_17:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 15 dispatch table entries:
 //     MOVE.L (An),(An)+
 //     MOVE.L -(An),(An)+
-L_01404:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.L (d8,An,Xn),(An)+
+//     MOVE.L (An)+,(An)+
+//     MOVE.L (xxx).L,(An)+
+//     MOVE.L (d8,PC,Xn),(An)+
+//     MOVE.L #<data>,(An)+
+move_l_ea_mem_17:
         addco.  data, data, zero
 
 // Reached from 17 dispatch table entries:
 //     MOVE.L Dn,(An)+
 //     MOVE.L An,(An)+
 //     CLR.L (An)+
-L_01408:
+move_clr_l_reg_mem:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -2643,19 +2969,25 @@ L_01408:
 //     MOVE.L (d16,An),(d16,An)
 //     MOVE.L (xxx).W,(d16,An)
 //     MOVE.L (d16,PC),(d16,An)
-L_01424:
+move_l_mem_mem_18:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     MOVE.L (An),(d16,An)
 //     MOVE.L -(An),(d16,An)
-L_01428:
+// Continuation (via rtn_addr) of 19 dispatch table entries:
+//     MOVE.L (An)+,(d16,An)
+//     MOVE.L (d8,An,Xn),(d16,An)
+//     MOVE.L (xxx).L,(d16,An)
+//     MOVE.L (d8,PC,Xn),(d16,An)
+//     MOVE.L #<data>,(d16,An)
+move_l_ea_mem_18:
         addco.  data, data, zero
 
 // Reached from 16 dispatch table entries:
 //     MOVE.L Dn,(d16,An)
 //     MOVE.L An,(d16,An)
-L_0142C:
+move_l_reg_mem_17:
         lhau    immed_data, 2(pc)
         stwx    data, a0, prefetch_data
         rlwimi  disp_table, immed_data, 3, 13, 28       // disp_table[18:3] = immed_data[15:0]
@@ -2668,20 +3000,26 @@ L_0142C:
 //     MOVE.L (d16,An),(d8,An,Xn)
 //     MOVE.L (xxx).W,(d8,An,Xn)
 //     MOVE.L (d16,PC),(d8,An,Xn)
-L_01448:
+move_l_mem_mem_19:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     MOVE.L (An),(d8,An,Xn)
 //     MOVE.L -(An),(d8,An,Xn)
-L_0144C:
+// Continuation (via rtn_addr) of 19 dispatch table entries:
+//     MOVE.L (An)+,(d8,An,Xn)
+//     MOVE.L (d8,An,Xn),(d8,An,Xn)
+//     MOVE.L (xxx).L,(d8,An,Xn)
+//     MOVE.L (d8,PC,Xn),(d8,An,Xn)
+//     MOVE.L #<data>,(d8,An,Xn)
+move_l_ea_mem_19:
         addco.  data, data, zero
 
 // Reached from 17 dispatch table entries:
 //     MOVE.L Dn,(d8,An,Xn)
 //     MOVE.L An,(d8,An,Xn)
 //     CLR.L (d8,An,Xn)
-L_01450:
+move_clr_l_reg_mem_2:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         ori     rtn_addr, code_ptr, L_06240 - cb
         add     addr, base_disp, a0
@@ -2691,20 +3029,26 @@ L_01450:
 //     MOVE.L (d16,An),(An)+
 //     MOVE.L (xxx).W,(An)+
 //     MOVE.L (d16,PC),(An)+
-L_01460:
+move_l_mem_mem_20:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 15 dispatch table entries:
 //     MOVE.L (An),(An)+
 //     MOVE.L -(An),(An)+
-L_01464:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     MOVE.L (d8,An,Xn),(An)+
+//     MOVE.L (An)+,(An)+
+//     MOVE.L (xxx).L,(An)+
+//     MOVE.L (d8,PC,Xn),(An)+
+//     MOVE.L #<data>,(An)+
+move_l_ea_mem_20:
         addco.  data, data, zero
 
 // Reached from 16 dispatch table entries:
 //     MOVE.L An,(An)+
 //     MOVE.L Dn,(An)+
 //     CLR.L (An)+
-L_01468:
+move_clr_l_reg_mem_3:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -2717,19 +3061,25 @@ L_01468:
 //     MOVE.L (d16,An),(d16,An)
 //     MOVE.L (xxx).W,(d16,An)
 //     MOVE.L (d16,PC),(d16,An)
-L_01484:
+move_l_mem_mem_21:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     MOVE.L (An),(d16,An)
 //     MOVE.L -(An),(d16,An)
-L_01488:
+// Continuation (via rtn_addr) of 19 dispatch table entries:
+//     MOVE.L (An)+,(d16,An)
+//     MOVE.L (d8,An,Xn),(d16,An)
+//     MOVE.L (xxx).L,(d16,An)
+//     MOVE.L (d8,PC,Xn),(d16,An)
+//     MOVE.L #<data>,(d16,An)
+move_l_ea_mem_21:
         addco.  data, data, zero
 
 // Reached from 16 dispatch table entries:
 //     MOVE.L Dn,(d16,An)
 //     MOVE.L An,(d16,An)
-L_0148C:
+move_l_reg_mem_18:
         lhau    immed_data, 2(pc)
         stwx    data, a1, prefetch_data
         rlwimi  disp_table, immed_data, 3, 13, 28       // disp_table[18:3] = immed_data[15:0]
@@ -2742,20 +3092,26 @@ L_0148C:
 //     MOVE.L (d16,An),(d8,An,Xn)
 //     MOVE.L (xxx).W,(d8,An,Xn)
 //     MOVE.L (d16,PC),(d8,An,Xn)
-L_014A8:
+move_l_mem_mem_22:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     MOVE.L (An),(d8,An,Xn)
 //     MOVE.L -(An),(d8,An,Xn)
-L_014AC:
+// Continuation (via rtn_addr) of 19 dispatch table entries:
+//     MOVE.L (An)+,(d8,An,Xn)
+//     MOVE.L (d8,An,Xn),(d8,An,Xn)
+//     MOVE.L (xxx).L,(d8,An,Xn)
+//     MOVE.L (d8,PC,Xn),(d8,An,Xn)
+//     MOVE.L #<data>,(d8,An,Xn)
+move_l_ea_mem_22:
         addco.  data, data, zero
 
 // Reached from 17 dispatch table entries:
 //     MOVE.L Dn,(d8,An,Xn)
 //     MOVE.L An,(d8,An,Xn)
 //     CLR.L (d8,An,Xn)
-L_014B0:
+move_clr_l_reg_mem_4:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         ori     rtn_addr, code_ptr, L_06240 - cb
         add     addr, base_disp, a1
@@ -2765,20 +3121,26 @@ L_014B0:
 //     MOVE.L (d16,An),(An)+
 //     MOVE.L (xxx).W,(An)+
 //     MOVE.L (d16,PC),(An)+
-L_014C0:
+move_l_mem_mem_23:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 15 dispatch table entries:
 //     MOVE.L (An),(An)+
 //     MOVE.L -(An),(An)+
-L_014C4:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.L (d8,An,Xn),(An)+
+//     MOVE.L (An)+,(An)+
+//     MOVE.L (xxx).L,(An)+
+//     MOVE.L (d8,PC,Xn),(An)+
+//     MOVE.L #<data>,(An)+
+move_l_ea_mem_23:
         addco.  data, data, zero
 
 // Reached from 17 dispatch table entries:
 //     MOVE.L Dn,(An)+
 //     MOVE.L An,(An)+
 //     CLR.L (An)+
-L_014C8:
+move_clr_l_reg_mem_5:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -2791,19 +3153,25 @@ L_014C8:
 //     MOVE.L (d16,An),(d16,An)
 //     MOVE.L (xxx).W,(d16,An)
 //     MOVE.L (d16,PC),(d16,An)
-L_014E4:
+move_l_mem_mem_24:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     MOVE.L (An),(d16,An)
 //     MOVE.L -(An),(d16,An)
-L_014E8:
+// Continuation (via rtn_addr) of 19 dispatch table entries:
+//     MOVE.L (An)+,(d16,An)
+//     MOVE.L (d8,An,Xn),(d16,An)
+//     MOVE.L (xxx).L,(d16,An)
+//     MOVE.L (d8,PC,Xn),(d16,An)
+//     MOVE.L #<data>,(d16,An)
+move_l_ea_mem_24:
         addco.  data, data, zero
 
 // Reached from 16 dispatch table entries:
 //     MOVE.L Dn,(d16,An)
 //     MOVE.L An,(d16,An)
-L_014EC:
+move_l_reg_mem_19:
         lhau    immed_data, 2(pc)
         stwx    data, a2, prefetch_data
         rlwimi  disp_table, immed_data, 3, 13, 28       // disp_table[18:3] = immed_data[15:0]
@@ -2816,20 +3184,26 @@ L_014EC:
 //     MOVE.L (d16,An),(d8,An,Xn)
 //     MOVE.L (xxx).W,(d8,An,Xn)
 //     MOVE.L (d16,PC),(d8,An,Xn)
-L_01508:
+move_l_mem_mem_25:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     MOVE.L (An),(d8,An,Xn)
 //     MOVE.L -(An),(d8,An,Xn)
-L_0150C:
+// Continuation (via rtn_addr) of 19 dispatch table entries:
+//     MOVE.L (An)+,(d8,An,Xn)
+//     MOVE.L (d8,An,Xn),(d8,An,Xn)
+//     MOVE.L (xxx).L,(d8,An,Xn)
+//     MOVE.L (d8,PC,Xn),(d8,An,Xn)
+//     MOVE.L #<data>,(d8,An,Xn)
+move_l_ea_mem_25:
         addco.  data, data, zero
 
 // Reached from 17 dispatch table entries:
 //     MOVE.L Dn,(d8,An,Xn)
 //     MOVE.L An,(d8,An,Xn)
 //     CLR.L (d8,An,Xn)
-L_01510:
+move_clr_l_reg_mem_6:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         ori     rtn_addr, code_ptr, L_06240 - cb
         add     addr, base_disp, a2
@@ -2839,20 +3213,26 @@ L_01510:
 //     MOVE.L (d16,An),(An)+
 //     MOVE.L (xxx).W,(An)+
 //     MOVE.L (d16,PC),(An)+
-L_01520:
+move_l_mem_mem_26:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 15 dispatch table entries:
 //     MOVE.L (An),(An)+
 //     MOVE.L -(An),(An)+
-L_01524:
+// Continuation (via rtn_addr) of 19 dispatch table entries:
+//     MOVE.L (An)+,(An)+
+//     MOVE.L (d8,An,Xn),(An)+
+//     MOVE.L (xxx).L,(An)+
+//     MOVE.L (d8,PC,Xn),(An)+
+//     MOVE.L #<data>,(An)+
+move_l_ea_mem_26:
         addco.  data, data, zero
 
 // Reached from 17 dispatch table entries:
 //     MOVE.L Dn,(An)+
 //     MOVE.L An,(An)+
 //     CLR.L (An)+
-L_01528:
+move_clr_l_reg_mem_7:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -2865,19 +3245,25 @@ L_01528:
 //     MOVE.L (d16,An),(d16,An)
 //     MOVE.L (xxx).W,(d16,An)
 //     MOVE.L (d16,PC),(d16,An)
-L_01544:
+move_l_mem_mem_27:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     MOVE.L (An),(d16,An)
 //     MOVE.L -(An),(d16,An)
-L_01548:
+// Continuation (via rtn_addr) of 19 dispatch table entries:
+//     MOVE.L (An)+,(d16,An)
+//     MOVE.L (d8,An,Xn),(d16,An)
+//     MOVE.L (xxx).L,(d16,An)
+//     MOVE.L (d8,PC,Xn),(d16,An)
+//     MOVE.L #<data>,(d16,An)
+move_l_ea_mem_27:
         addco.  data, data, zero
 
 // Reached from 16 dispatch table entries:
 //     MOVE.L Dn,(d16,An)
 //     MOVE.L An,(d16,An)
-L_0154C:
+move_l_reg_mem_20:
         lhau    immed_data, 2(pc)
         stwx    data, a3, prefetch_data
         rlwimi  disp_table, immed_data, 3, 13, 28       // disp_table[18:3] = immed_data[15:0]
@@ -2890,20 +3276,26 @@ L_0154C:
 //     MOVE.L (d16,An),(d8,An,Xn)
 //     MOVE.L (xxx).W,(d8,An,Xn)
 //     MOVE.L (d16,PC),(d8,An,Xn)
-L_01568:
+move_l_mem_mem_28:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     MOVE.L (An),(d8,An,Xn)
 //     MOVE.L -(An),(d8,An,Xn)
-L_0156C:
+// Continuation (via rtn_addr) of 19 dispatch table entries:
+//     MOVE.L (An)+,(d8,An,Xn)
+//     MOVE.L (d8,An,Xn),(d8,An,Xn)
+//     MOVE.L (xxx).L,(d8,An,Xn)
+//     MOVE.L (d8,PC,Xn),(d8,An,Xn)
+//     MOVE.L #<data>,(d8,An,Xn)
+move_l_ea_mem_28:
         addco.  data, data, zero
 
 // Reached from 17 dispatch table entries:
 //     MOVE.L Dn,(d8,An,Xn)
 //     MOVE.L An,(d8,An,Xn)
 //     CLR.L (d8,An,Xn)
-L_01570:
+move_clr_l_reg_mem_8:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         ori     rtn_addr, code_ptr, L_06240 - cb
         add     addr, base_disp, a3
@@ -2913,20 +3305,26 @@ L_01570:
 //     MOVE.L (d16,An),(An)+
 //     MOVE.L (xxx).W,(An)+
 //     MOVE.L (d16,PC),(An)+
-L_01580:
+move_l_mem_mem_29:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 15 dispatch table entries:
 //     MOVE.L (An),(An)+
 //     MOVE.L -(An),(An)+
-L_01584:
+// Continuation (via rtn_addr) of 19 dispatch table entries:
+//     MOVE.L (An)+,(An)+
+//     MOVE.L (d8,An,Xn),(An)+
+//     MOVE.L (xxx).L,(An)+
+//     MOVE.L (d8,PC,Xn),(An)+
+//     MOVE.L #<data>,(An)+
+move_l_ea_mem_29:
         addco.  data, data, zero
 
 // Reached from 17 dispatch table entries:
 //     MOVE.L Dn,(An)+
 //     MOVE.L An,(An)+
 //     CLR.L (An)+
-L_01588:
+move_clr_l_reg_mem_9:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -2939,19 +3337,25 @@ L_01588:
 //     MOVE.L (d16,An),(d16,An)
 //     MOVE.L (xxx).W,(d16,An)
 //     MOVE.L (d16,PC),(d16,An)
-L_015A4:
+move_l_mem_mem_30:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     MOVE.L (An),(d16,An)
 //     MOVE.L -(An),(d16,An)
-L_015A8:
+// Continuation (via rtn_addr) of 19 dispatch table entries:
+//     MOVE.L (An)+,(d16,An)
+//     MOVE.L (d8,An,Xn),(d16,An)
+//     MOVE.L (xxx).L,(d16,An)
+//     MOVE.L (d8,PC,Xn),(d16,An)
+//     MOVE.L #<data>,(d16,An)
+move_l_ea_mem_30:
         addco.  data, data, zero
 
 // Reached from 16 dispatch table entries:
 //     MOVE.L Dn,(d16,An)
 //     MOVE.L An,(d16,An)
-L_015AC:
+move_l_reg_mem_21:
         lhau    immed_data, 2(pc)
         stwx    data, a4, prefetch_data
         rlwimi  disp_table, immed_data, 3, 13, 28       // disp_table[18:3] = immed_data[15:0]
@@ -2964,20 +3368,26 @@ L_015AC:
 //     MOVE.L (d16,An),(d8,An,Xn)
 //     MOVE.L (xxx).W,(d8,An,Xn)
 //     MOVE.L (d16,PC),(d8,An,Xn)
-L_015C8:
+move_l_mem_mem_31:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     MOVE.L (An),(d8,An,Xn)
 //     MOVE.L -(An),(d8,An,Xn)
-L_015CC:
+// Continuation (via rtn_addr) of 19 dispatch table entries:
+//     MOVE.L (An)+,(d8,An,Xn)
+//     MOVE.L (d8,An,Xn),(d8,An,Xn)
+//     MOVE.L (xxx).L,(d8,An,Xn)
+//     MOVE.L (d8,PC,Xn),(d8,An,Xn)
+//     MOVE.L #<data>,(d8,An,Xn)
+move_l_ea_mem_31:
         addco.  data, data, zero
 
 // Reached from 17 dispatch table entries:
 //     MOVE.L Dn,(d8,An,Xn)
 //     MOVE.L An,(d8,An,Xn)
 //     CLR.L (d8,An,Xn)
-L_015D0:
+move_clr_l_reg_mem_10:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         ori     rtn_addr, code_ptr, L_06240 - cb
         add     addr, base_disp, a4
@@ -2987,20 +3397,26 @@ L_015D0:
 //     MOVE.L (d16,An),(An)+
 //     MOVE.L (xxx).W,(An)+
 //     MOVE.L (d16,PC),(An)+
-L_015E0:
+move_l_mem_mem_32:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 15 dispatch table entries:
 //     MOVE.L (An),(An)+
 //     MOVE.L -(An),(An)+
-L_015E4:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.L (d8,An,Xn),(An)+
+//     MOVE.L (An)+,(An)+
+//     MOVE.L (xxx).L,(An)+
+//     MOVE.L (d8,PC,Xn),(An)+
+//     MOVE.L #<data>,(An)+
+move_l_ea_mem_32:
         addco.  data, data, zero
 
 // Reached from 16 dispatch table entries:
 //     MOVE.L An,(An)+
 //     MOVE.L Dn,(An)+
 //     CLR.L (An)+
-L_015E8:
+move_clr_l_reg_mem_11:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -3013,19 +3429,25 @@ L_015E8:
 //     MOVE.L (d16,An),(d16,An)
 //     MOVE.L (xxx).W,(d16,An)
 //     MOVE.L (d16,PC),(d16,An)
-L_01604:
+move_l_mem_mem_33:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     MOVE.L (An),(d16,An)
 //     MOVE.L -(An),(d16,An)
-L_01608:
+// Continuation (via rtn_addr) of 19 dispatch table entries:
+//     MOVE.L (An)+,(d16,An)
+//     MOVE.L (d8,An,Xn),(d16,An)
+//     MOVE.L (xxx).L,(d16,An)
+//     MOVE.L (d8,PC,Xn),(d16,An)
+//     MOVE.L #<data>,(d16,An)
+move_l_ea_mem_33:
         addco.  data, data, zero
 
 // Reached from 16 dispatch table entries:
 //     MOVE.L Dn,(d16,An)
 //     MOVE.L An,(d16,An)
-L_0160C:
+move_l_reg_mem_22:
         lhau    immed_data, 2(pc)
         stwx    data, a5, prefetch_data
         rlwimi  disp_table, immed_data, 3, 13, 28       // disp_table[18:3] = immed_data[15:0]
@@ -3038,20 +3460,26 @@ L_0160C:
 //     MOVE.L (d16,An),(d8,An,Xn)
 //     MOVE.L (xxx).W,(d8,An,Xn)
 //     MOVE.L (d16,PC),(d8,An,Xn)
-L_01628:
+move_l_mem_mem_34:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     MOVE.L (An),(d8,An,Xn)
 //     MOVE.L -(An),(d8,An,Xn)
-L_0162C:
+// Continuation (via rtn_addr) of 19 dispatch table entries:
+//     MOVE.L (An)+,(d8,An,Xn)
+//     MOVE.L (d8,An,Xn),(d8,An,Xn)
+//     MOVE.L (xxx).L,(d8,An,Xn)
+//     MOVE.L (d8,PC,Xn),(d8,An,Xn)
+//     MOVE.L #<data>,(d8,An,Xn)
+move_l_ea_mem_34:
         addco.  data, data, zero
 
 // Reached from 17 dispatch table entries:
 //     MOVE.L Dn,(d8,An,Xn)
 //     MOVE.L An,(d8,An,Xn)
 //     CLR.L (d8,An,Xn)
-L_01630:
+move_clr_l_reg_mem_12:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         ori     rtn_addr, code_ptr, L_06240 - cb
         add     addr, base_disp, a5
@@ -3061,20 +3489,26 @@ L_01630:
 //     MOVE.L (d16,An),(An)+
 //     MOVE.L (xxx).W,(An)+
 //     MOVE.L (d16,PC),(An)+
-L_01640:
+move_l_mem_mem_35:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 15 dispatch table entries:
 //     MOVE.L (An),(An)+
 //     MOVE.L -(An),(An)+
-L_01644:
+// Continuation (via rtn_addr) of 19 dispatch table entries:
+//     MOVE.L (An)+,(An)+
+//     MOVE.L (d8,An,Xn),(An)+
+//     MOVE.L (xxx).L,(An)+
+//     MOVE.L (d8,PC,Xn),(An)+
+//     MOVE.L #<data>,(An)+
+move_l_ea_mem_35:
         addco.  data, data, zero
 
 // Reached from 17 dispatch table entries:
 //     MOVE.L Dn,(An)+
 //     MOVE.L An,(An)+
 //     CLR.L (An)+
-L_01648:
+move_clr_l_reg_mem_13:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -3087,19 +3521,25 @@ L_01648:
 //     MOVE.L (d16,An),(d16,An)
 //     MOVE.L (xxx).W,(d16,An)
 //     MOVE.L (d16,PC),(d16,An)
-L_01664:
+move_l_mem_mem_36:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     MOVE.L (An),(d16,An)
 //     MOVE.L -(An),(d16,An)
-L_01668:
+// Continuation (via rtn_addr) of 19 dispatch table entries:
+//     MOVE.L (An)+,(d16,An)
+//     MOVE.L (d8,An,Xn),(d16,An)
+//     MOVE.L (xxx).L,(d16,An)
+//     MOVE.L (d8,PC,Xn),(d16,An)
+//     MOVE.L #<data>,(d16,An)
+move_l_ea_mem_36:
         addco.  data, data, zero
 
 // Reached from 16 dispatch table entries:
 //     MOVE.L Dn,(d16,An)
 //     MOVE.L An,(d16,An)
-L_0166C:
+move_l_reg_mem_23:
         lhau    immed_data, 2(pc)
         stwx    data, a6, prefetch_data
         rlwimi  disp_table, immed_data, 3, 13, 28       // disp_table[18:3] = immed_data[15:0]
@@ -3112,20 +3552,26 @@ L_0166C:
 //     MOVE.L (d16,An),(d8,An,Xn)
 //     MOVE.L (xxx).W,(d8,An,Xn)
 //     MOVE.L (d16,PC),(d8,An,Xn)
-L_01688:
+move_l_mem_mem_37:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     MOVE.L (An),(d8,An,Xn)
 //     MOVE.L -(An),(d8,An,Xn)
-L_0168C:
+// Continuation (via rtn_addr) of 19 dispatch table entries:
+//     MOVE.L (An)+,(d8,An,Xn)
+//     MOVE.L (d8,An,Xn),(d8,An,Xn)
+//     MOVE.L (xxx).L,(d8,An,Xn)
+//     MOVE.L (d8,PC,Xn),(d8,An,Xn)
+//     MOVE.L #<data>,(d8,An,Xn)
+move_l_ea_mem_37:
         addco.  data, data, zero
 
 // Reached from 17 dispatch table entries:
 //     MOVE.L Dn,(d8,An,Xn)
 //     MOVE.L An,(d8,An,Xn)
 //     CLR.L (d8,An,Xn)
-L_01690:
+move_clr_l_reg_mem_14:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         ori     rtn_addr, code_ptr, L_06240 - cb
         add     addr, base_disp, a6
@@ -3135,20 +3581,26 @@ L_01690:
 //     MOVE.L (d16,An),(An)+
 //     MOVE.L (xxx).W,(An)+
 //     MOVE.L (d16,PC),(An)+
-L_016A0:
+move_l_mem_mem_38:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 15 dispatch table entries:
 //     MOVE.L (An),(An)+
 //     MOVE.L -(An),(An)+
-L_016A4:
+// Continuation (via rtn_addr) of 19 dispatch table entries:
+//     MOVE.L (An)+,(An)+
+//     MOVE.L (d8,An,Xn),(An)+
+//     MOVE.L (xxx).L,(An)+
+//     MOVE.L (d8,PC,Xn),(An)+
+//     MOVE.L #<data>,(An)+
+move_l_ea_mem_38:
         addco.  data, data, zero
 
 // Reached from 17 dispatch table entries:
 //     MOVE.L Dn,(An)+
 //     MOVE.L An,(An)+
 //     CLR.L (An)+
-L_016A8:
+move_clr_l_reg_mem_15:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -3161,19 +3613,25 @@ L_016A8:
 //     MOVE.L (d16,An),(d16,An)
 //     MOVE.L (xxx).W,(d16,An)
 //     MOVE.L (d16,PC),(d16,An)
-L_016C4:
+move_l_mem_mem_39:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     MOVE.L (An),(d16,An)
 //     MOVE.L -(An),(d16,An)
-L_016C8:
+// Continuation (via rtn_addr) of 19 dispatch table entries:
+//     MOVE.L (An)+,(d16,An)
+//     MOVE.L (d8,An,Xn),(d16,An)
+//     MOVE.L (xxx).L,(d16,An)
+//     MOVE.L (d8,PC,Xn),(d16,An)
+//     MOVE.L #<data>,(d16,An)
+move_l_ea_mem_39:
         addco.  data, data, zero
 
 // Reached from 16 dispatch table entries:
 //     MOVE.L Dn,(d16,An)
 //     MOVE.L An,(d16,An)
-L_016CC:
+move_l_reg_mem_24:
         lhau    immed_data, 2(pc)
         stwx    data, a7, prefetch_data
         rlwimi  disp_table, immed_data, 3, 13, 28       // disp_table[18:3] = immed_data[15:0]
@@ -3186,20 +3644,26 @@ L_016CC:
 //     MOVE.L (d16,An),(d8,An,Xn)
 //     MOVE.L (xxx).W,(d8,An,Xn)
 //     MOVE.L (d16,PC),(d8,An,Xn)
-L_016E8:
+move_l_mem_mem_40:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     MOVE.L (An),(d8,An,Xn)
 //     MOVE.L -(An),(d8,An,Xn)
-L_016EC:
+// Continuation (via rtn_addr) of 19 dispatch table entries:
+//     MOVE.L (An)+,(d8,An,Xn)
+//     MOVE.L (d8,An,Xn),(d8,An,Xn)
+//     MOVE.L (xxx).L,(d8,An,Xn)
+//     MOVE.L (d8,PC,Xn),(d8,An,Xn)
+//     MOVE.L #<data>,(d8,An,Xn)
+move_l_ea_mem_40:
         addco.  data, data, zero
 
 // Reached from 17 dispatch table entries:
 //     MOVE.L Dn,(d8,An,Xn)
 //     MOVE.L An,(d8,An,Xn)
 //     CLR.L (d8,An,Xn)
-L_016F0:
+move_clr_l_reg_mem_16:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         ori     rtn_addr, code_ptr, L_06240 - cb
         add     addr, base_disp, a7
@@ -3210,7 +3674,7 @@ L_016F0:
 //     MOVE.W (xxx).W,(An)+
 //     MOVE.W (d16,PC),(An)+
 //     MOVE.W #<data>,(An)+
-L_01700:
+move_w_ea_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 32 dispatch table entries:
@@ -3219,7 +3683,12 @@ L_01700:
 //     MOVE.W (An),(An)+
 //     MOVE.W -(An),(An)+
 //     CLR.W (An)+
-L_01704:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     MOVE.W (d8,An,Xn),(An)+
+//     MOVE.W (An)+,(An)+
+//     MOVE.W (xxx).L,(An)+
+//     MOVE.W (d8,PC,Xn),(An)+
+move_w_mem_mem_33:
         addi    a0, a0, 2
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -3234,7 +3703,7 @@ L_01704:
 //     MOVE.W (xxx).W,(d16,An)
 //     MOVE.W (d16,PC),(d16,An)
 //     MOVE.W #<data>,(d16,An)
-L_01724:
+move_w_ea_mem_2:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 31 dispatch table entries:
@@ -3242,7 +3711,12 @@ L_01724:
 //     MOVE.W (An),(d16,An)
 //     MOVE.W -(An),(d16,An)
 //     MOVE.W Dn,(d16,An)
-L_01728:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.W (An)+,(d16,An)
+//     MOVE.W (d8,An,Xn),(d16,An)
+//     MOVE.W (xxx).L,(d16,An)
+//     MOVE.W (d8,PC,Xn),(d16,An)
+move_w_mem_mem_34:
         lhau    immed_data, 2(pc)
         sthx    data, a0, prefetch_data
         rlwimi  disp_table, immed_data, 3, 13, 28       // disp_table[18:3] = immed_data[15:0]
@@ -3257,7 +3731,7 @@ L_01728:
 //     MOVE.W (xxx).W,(d8,An,Xn)
 //     MOVE.W (d16,PC),(d8,An,Xn)
 //     MOVE.W #<data>,(d8,An,Xn)
-L_01748:
+move_w_ea_mem_3:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 33 dispatch table entries:
@@ -3266,7 +3740,12 @@ L_01748:
 //     MOVE.W (An),(d8,An,Xn)
 //     MOVE.W -(An),(d8,An,Xn)
 //     CLR.W (d8,An,Xn)
-L_0174C:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.W (An)+,(d8,An,Xn)
+//     MOVE.W (d8,An,Xn),(d8,An,Xn)
+//     MOVE.W (xxx).L,(d8,An,Xn)
+//     MOVE.W (d8,PC,Xn),(d8,An,Xn)
+move_w_mem_mem_35:
         ori     rtn_addr, code_ptr, L_06260 - cb
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, a0
@@ -3278,7 +3757,7 @@ L_0174C:
 //     MOVE.W (xxx).W,(An)+
 //     MOVE.W (d16,PC),(An)+
 //     MOVE.W #<data>,(An)+
-L_01760:
+move_w_ea_mem_4:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 32 dispatch table entries:
@@ -3287,7 +3766,12 @@ L_01760:
 //     MOVE.W (An),(An)+
 //     MOVE.W -(An),(An)+
 //     CLR.W (An)+
-L_01764:
+// Continuation (via rtn_addr) of 16 dispatch table entries:
+//     MOVE.W (d8,An,Xn),(An)+
+//     MOVE.W (An)+,(An)+
+//     MOVE.W (xxx).L,(An)+
+//     MOVE.W (d8,PC,Xn),(An)+
+move_w_mem_mem_36:
         addi    a1, a1, 2
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -3302,7 +3786,7 @@ L_01764:
 //     MOVE.W (xxx).W,(d16,An)
 //     MOVE.W (d16,PC),(d16,An)
 //     MOVE.W #<data>,(d16,An)
-L_01784:
+move_w_ea_mem_5:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 31 dispatch table entries:
@@ -3310,7 +3794,12 @@ L_01784:
 //     MOVE.W (An),(d16,An)
 //     MOVE.W -(An),(d16,An)
 //     MOVE.W Dn,(d16,An)
-L_01788:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.W (An)+,(d16,An)
+//     MOVE.W (d8,An,Xn),(d16,An)
+//     MOVE.W (xxx).L,(d16,An)
+//     MOVE.W (d8,PC,Xn),(d16,An)
+move_w_mem_mem_37:
         lhau    immed_data, 2(pc)
         sthx    data, a1, prefetch_data
         rlwimi  disp_table, immed_data, 3, 13, 28       // disp_table[18:3] = immed_data[15:0]
@@ -3325,7 +3814,7 @@ L_01788:
 //     MOVE.W (xxx).W,(d8,An,Xn)
 //     MOVE.W (d16,PC),(d8,An,Xn)
 //     MOVE.W #<data>,(d8,An,Xn)
-L_017A8:
+move_w_ea_mem_6:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 33 dispatch table entries:
@@ -3334,7 +3823,12 @@ L_017A8:
 //     MOVE.W (An),(d8,An,Xn)
 //     MOVE.W -(An),(d8,An,Xn)
 //     CLR.W (d8,An,Xn)
-L_017AC:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.W (An)+,(d8,An,Xn)
+//     MOVE.W (d8,An,Xn),(d8,An,Xn)
+//     MOVE.W (xxx).L,(d8,An,Xn)
+//     MOVE.W (d8,PC,Xn),(d8,An,Xn)
+move_w_mem_mem_38:
         ori     rtn_addr, code_ptr, L_06260 - cb
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, a1
@@ -3346,7 +3840,7 @@ L_017AC:
 //     MOVE.W (xxx).W,(An)+
 //     MOVE.W (d16,PC),(An)+
 //     MOVE.W #<data>,(An)+
-L_017C0:
+move_w_ea_mem_7:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 32 dispatch table entries:
@@ -3355,7 +3849,12 @@ L_017C0:
 //     MOVE.W (An),(An)+
 //     MOVE.W -(An),(An)+
 //     CLR.W (An)+
-L_017C4:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     MOVE.W (d8,An,Xn),(An)+
+//     MOVE.W (An)+,(An)+
+//     MOVE.W (xxx).L,(An)+
+//     MOVE.W (d8,PC,Xn),(An)+
+move_w_mem_mem_39:
         addi    a2, a2, 2
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -3370,7 +3869,7 @@ L_017C4:
 //     MOVE.W (xxx).W,(d16,An)
 //     MOVE.W (d16,PC),(d16,An)
 //     MOVE.W #<data>,(d16,An)
-L_017E4:
+move_w_ea_mem_8:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 31 dispatch table entries:
@@ -3378,7 +3877,12 @@ L_017E4:
 //     MOVE.W (An),(d16,An)
 //     MOVE.W -(An),(d16,An)
 //     MOVE.W Dn,(d16,An)
-L_017E8:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.W (An)+,(d16,An)
+//     MOVE.W (d8,An,Xn),(d16,An)
+//     MOVE.W (xxx).L,(d16,An)
+//     MOVE.W (d8,PC,Xn),(d16,An)
+move_w_mem_mem_40:
         lhau    immed_data, 2(pc)
         sthx    data, a2, prefetch_data
         rlwimi  disp_table, immed_data, 3, 13, 28       // disp_table[18:3] = immed_data[15:0]
@@ -3393,7 +3897,7 @@ L_017E8:
 //     MOVE.W (xxx).W,(d8,An,Xn)
 //     MOVE.W (d16,PC),(d8,An,Xn)
 //     MOVE.W #<data>,(d8,An,Xn)
-L_01808:
+move_w_ea_mem_9:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 33 dispatch table entries:
@@ -3402,7 +3906,12 @@ L_01808:
 //     MOVE.W (An),(d8,An,Xn)
 //     MOVE.W -(An),(d8,An,Xn)
 //     CLR.W (d8,An,Xn)
-L_0180C:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.W (An)+,(d8,An,Xn)
+//     MOVE.W (d8,An,Xn),(d8,An,Xn)
+//     MOVE.W (xxx).L,(d8,An,Xn)
+//     MOVE.W (d8,PC,Xn),(d8,An,Xn)
+move_w_mem_mem_41:
         ori     rtn_addr, code_ptr, L_06260 - cb
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, a2
@@ -3414,7 +3923,7 @@ L_0180C:
 //     MOVE.W (xxx).W,(An)+
 //     MOVE.W (d16,PC),(An)+
 //     MOVE.W #<data>,(An)+
-L_01820:
+move_w_ea_mem_10:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 32 dispatch table entries:
@@ -3423,7 +3932,12 @@ L_01820:
 //     MOVE.W (An),(An)+
 //     MOVE.W -(An),(An)+
 //     CLR.W (An)+
-L_01824:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.W (An)+,(An)+
+//     MOVE.W (d8,An,Xn),(An)+
+//     MOVE.W (xxx).L,(An)+
+//     MOVE.W (d8,PC,Xn),(An)+
+move_w_mem_mem_42:
         addi    a3, a3, 2
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -3438,7 +3952,7 @@ L_01824:
 //     MOVE.W (xxx).W,(d16,An)
 //     MOVE.W (d16,PC),(d16,An)
 //     MOVE.W #<data>,(d16,An)
-L_01844:
+move_w_ea_mem_11:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 31 dispatch table entries:
@@ -3446,7 +3960,12 @@ L_01844:
 //     MOVE.W (An),(d16,An)
 //     MOVE.W -(An),(d16,An)
 //     MOVE.W Dn,(d16,An)
-L_01848:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.W (An)+,(d16,An)
+//     MOVE.W (d8,An,Xn),(d16,An)
+//     MOVE.W (xxx).L,(d16,An)
+//     MOVE.W (d8,PC,Xn),(d16,An)
+move_w_mem_mem_43:
         lhau    immed_data, 2(pc)
         sthx    data, a3, prefetch_data
         rlwimi  disp_table, immed_data, 3, 13, 28       // disp_table[18:3] = immed_data[15:0]
@@ -3461,7 +3980,7 @@ L_01848:
 //     MOVE.W (xxx).W,(d8,An,Xn)
 //     MOVE.W (d16,PC),(d8,An,Xn)
 //     MOVE.W #<data>,(d8,An,Xn)
-L_01868:
+move_w_ea_mem_12:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 33 dispatch table entries:
@@ -3470,7 +3989,12 @@ L_01868:
 //     MOVE.W (An),(d8,An,Xn)
 //     MOVE.W -(An),(d8,An,Xn)
 //     CLR.W (d8,An,Xn)
-L_0186C:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.W (An)+,(d8,An,Xn)
+//     MOVE.W (d8,An,Xn),(d8,An,Xn)
+//     MOVE.W (xxx).L,(d8,An,Xn)
+//     MOVE.W (d8,PC,Xn),(d8,An,Xn)
+move_w_mem_mem_44:
         ori     rtn_addr, code_ptr, L_06260 - cb
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, a3
@@ -3482,7 +4006,7 @@ L_0186C:
 //     MOVE.W (xxx).W,(An)+
 //     MOVE.W (d16,PC),(An)+
 //     MOVE.W #<data>,(An)+
-L_01880:
+move_w_ea_mem_13:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 32 dispatch table entries:
@@ -3491,7 +4015,12 @@ L_01880:
 //     MOVE.W (An),(An)+
 //     MOVE.W -(An),(An)+
 //     CLR.W (An)+
-L_01884:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.W (An)+,(An)+
+//     MOVE.W (d8,An,Xn),(An)+
+//     MOVE.W (xxx).L,(An)+
+//     MOVE.W (d8,PC,Xn),(An)+
+move_w_mem_mem_45:
         addi    a4, a4, 2
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -3506,7 +4035,7 @@ L_01884:
 //     MOVE.W (xxx).W,(d16,An)
 //     MOVE.W (d16,PC),(d16,An)
 //     MOVE.W #<data>,(d16,An)
-L_018A4:
+move_w_ea_mem_14:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 31 dispatch table entries:
@@ -3514,7 +4043,12 @@ L_018A4:
 //     MOVE.W (An),(d16,An)
 //     MOVE.W -(An),(d16,An)
 //     MOVE.W Dn,(d16,An)
-L_018A8:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.W (An)+,(d16,An)
+//     MOVE.W (d8,An,Xn),(d16,An)
+//     MOVE.W (xxx).L,(d16,An)
+//     MOVE.W (d8,PC,Xn),(d16,An)
+move_w_mem_mem_46:
         lhau    immed_data, 2(pc)
         sthx    data, a4, prefetch_data
         rlwimi  disp_table, immed_data, 3, 13, 28       // disp_table[18:3] = immed_data[15:0]
@@ -3529,7 +4063,7 @@ L_018A8:
 //     MOVE.W (xxx).W,(d8,An,Xn)
 //     MOVE.W (d16,PC),(d8,An,Xn)
 //     MOVE.W #<data>,(d8,An,Xn)
-L_018C8:
+move_w_ea_mem_15:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 33 dispatch table entries:
@@ -3538,7 +4072,12 @@ L_018C8:
 //     MOVE.W (An),(d8,An,Xn)
 //     MOVE.W -(An),(d8,An,Xn)
 //     CLR.W (d8,An,Xn)
-L_018CC:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.W (An)+,(d8,An,Xn)
+//     MOVE.W (d8,An,Xn),(d8,An,Xn)
+//     MOVE.W (xxx).L,(d8,An,Xn)
+//     MOVE.W (d8,PC,Xn),(d8,An,Xn)
+move_w_mem_mem_47:
         ori     rtn_addr, code_ptr, L_06260 - cb
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, a4
@@ -3550,7 +4089,7 @@ L_018CC:
 //     MOVE.W (xxx).W,(An)+
 //     MOVE.W (d16,PC),(An)+
 //     MOVE.W #<data>,(An)+
-L_018E0:
+move_w_ea_mem_16:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 32 dispatch table entries:
@@ -3559,7 +4098,12 @@ L_018E0:
 //     MOVE.W (An),(An)+
 //     MOVE.W -(An),(An)+
 //     CLR.W (An)+
-L_018E4:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     MOVE.W (d8,An,Xn),(An)+
+//     MOVE.W (An)+,(An)+
+//     MOVE.W (xxx).L,(An)+
+//     MOVE.W (d8,PC,Xn),(An)+
+move_w_mem_mem_48:
         addi    a5, a5, 2
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -3574,7 +4118,7 @@ L_018E4:
 //     MOVE.W (xxx).W,(d16,An)
 //     MOVE.W (d16,PC),(d16,An)
 //     MOVE.W #<data>,(d16,An)
-L_01904:
+move_w_ea_mem_17:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 31 dispatch table entries:
@@ -3582,7 +4126,12 @@ L_01904:
 //     MOVE.W (An),(d16,An)
 //     MOVE.W -(An),(d16,An)
 //     MOVE.W Dn,(d16,An)
-L_01908:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.W (An)+,(d16,An)
+//     MOVE.W (d8,An,Xn),(d16,An)
+//     MOVE.W (xxx).L,(d16,An)
+//     MOVE.W (d8,PC,Xn),(d16,An)
+move_w_mem_mem_49:
         lhau    immed_data, 2(pc)
         sthx    data, a5, prefetch_data
         rlwimi  disp_table, immed_data, 3, 13, 28       // disp_table[18:3] = immed_data[15:0]
@@ -3597,7 +4146,7 @@ L_01908:
 //     MOVE.W (xxx).W,(d8,An,Xn)
 //     MOVE.W (d16,PC),(d8,An,Xn)
 //     MOVE.W #<data>,(d8,An,Xn)
-L_01928:
+move_w_ea_mem_18:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 33 dispatch table entries:
@@ -3606,7 +4155,12 @@ L_01928:
 //     MOVE.W (An),(d8,An,Xn)
 //     MOVE.W -(An),(d8,An,Xn)
 //     CLR.W (d8,An,Xn)
-L_0192C:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.W (An)+,(d8,An,Xn)
+//     MOVE.W (d8,An,Xn),(d8,An,Xn)
+//     MOVE.W (xxx).L,(d8,An,Xn)
+//     MOVE.W (d8,PC,Xn),(d8,An,Xn)
+move_w_mem_mem_50:
         ori     rtn_addr, code_ptr, L_06260 - cb
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, a5
@@ -3618,7 +4172,7 @@ L_0192C:
 //     MOVE.W (xxx).W,(An)+
 //     MOVE.W (d16,PC),(An)+
 //     MOVE.W #<data>,(An)+
-L_01940:
+move_w_ea_mem_19:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 32 dispatch table entries:
@@ -3627,7 +4181,12 @@ L_01940:
 //     MOVE.W (An),(An)+
 //     MOVE.W -(An),(An)+
 //     CLR.W (An)+
-L_01944:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.W (An)+,(An)+
+//     MOVE.W (d8,An,Xn),(An)+
+//     MOVE.W (xxx).L,(An)+
+//     MOVE.W (d8,PC,Xn),(An)+
+move_w_mem_mem_51:
         addi    a6, a6, 2
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -3642,7 +4201,7 @@ L_01944:
 //     MOVE.W (xxx).W,(d16,An)
 //     MOVE.W (d16,PC),(d16,An)
 //     MOVE.W #<data>,(d16,An)
-L_01964:
+move_w_ea_mem_20:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 31 dispatch table entries:
@@ -3650,7 +4209,12 @@ L_01964:
 //     MOVE.W (An),(d16,An)
 //     MOVE.W -(An),(d16,An)
 //     MOVE.W Dn,(d16,An)
-L_01968:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.W (An)+,(d16,An)
+//     MOVE.W (d8,An,Xn),(d16,An)
+//     MOVE.W (xxx).L,(d16,An)
+//     MOVE.W (d8,PC,Xn),(d16,An)
+move_w_mem_mem_52:
         lhau    immed_data, 2(pc)
         sthx    data, a6, prefetch_data
         rlwimi  disp_table, immed_data, 3, 13, 28       // disp_table[18:3] = immed_data[15:0]
@@ -3665,7 +4229,7 @@ L_01968:
 //     MOVE.W (xxx).W,(d8,An,Xn)
 //     MOVE.W (d16,PC),(d8,An,Xn)
 //     MOVE.W #<data>,(d8,An,Xn)
-L_01988:
+move_w_ea_mem_21:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 33 dispatch table entries:
@@ -3674,7 +4238,12 @@ L_01988:
 //     MOVE.W (An),(d8,An,Xn)
 //     MOVE.W -(An),(d8,An,Xn)
 //     CLR.W (d8,An,Xn)
-L_0198C:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.W (An)+,(d8,An,Xn)
+//     MOVE.W (d8,An,Xn),(d8,An,Xn)
+//     MOVE.W (xxx).L,(d8,An,Xn)
+//     MOVE.W (d8,PC,Xn),(d8,An,Xn)
+move_w_mem_mem_53:
         ori     rtn_addr, code_ptr, L_06260 - cb
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, a6
@@ -3686,7 +4255,7 @@ L_0198C:
 //     MOVE.W (xxx).W,(An)+
 //     MOVE.W (d16,PC),(An)+
 //     MOVE.W #<data>,(An)+
-L_019A0:
+move_w_ea_mem_22:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 32 dispatch table entries:
@@ -3695,7 +4264,12 @@ L_019A0:
 //     MOVE.W (An),(An)+
 //     MOVE.W -(An),(An)+
 //     CLR.W (An)+
-L_019A4:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.W (An)+,(An)+
+//     MOVE.W (d8,An,Xn),(An)+
+//     MOVE.W (xxx).L,(An)+
+//     MOVE.W (d8,PC,Xn),(An)+
+move_w_mem_mem_54:
         addi    a7, a7, 2
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -3710,7 +4284,7 @@ L_019A4:
 //     MOVE.W (xxx).W,(d16,An)
 //     MOVE.W (d16,PC),(d16,An)
 //     MOVE.W #<data>,(d16,An)
-L_019C4:
+move_w_ea_mem_23:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 31 dispatch table entries:
@@ -3718,7 +4292,12 @@ L_019C4:
 //     MOVE.W (An),(d16,An)
 //     MOVE.W -(An),(d16,An)
 //     MOVE.W Dn,(d16,An)
-L_019C8:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.W (An)+,(d16,An)
+//     MOVE.W (d8,An,Xn),(d16,An)
+//     MOVE.W (xxx).L,(d16,An)
+//     MOVE.W (d8,PC,Xn),(d16,An)
+move_w_mem_mem_55:
         lhau    immed_data, 2(pc)
         sthx    data, a7, prefetch_data
         rlwimi  disp_table, immed_data, 3, 13, 28       // disp_table[18:3] = immed_data[15:0]
@@ -3733,7 +4312,7 @@ L_019C8:
 //     MOVE.W (xxx).W,(d8,An,Xn)
 //     MOVE.W (d16,PC),(d8,An,Xn)
 //     MOVE.W #<data>,(d8,An,Xn)
-L_019E8:
+move_w_ea_mem_24:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 33 dispatch table entries:
@@ -3742,7 +4321,12 @@ L_019E8:
 //     MOVE.W (An),(d8,An,Xn)
 //     MOVE.W -(An),(d8,An,Xn)
 //     CLR.W (d8,An,Xn)
-L_019EC:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.W (An)+,(d8,An,Xn)
+//     MOVE.W (d8,An,Xn),(d8,An,Xn)
+//     MOVE.W (xxx).L,(d8,An,Xn)
+//     MOVE.W (d8,PC,Xn),(d8,An,Xn)
+move_w_mem_mem_56:
         ori     rtn_addr, code_ptr, L_06260 - cb
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, a7
@@ -3753,18 +4337,23 @@ L_019EC:
 //     MOVE.B (d16,An),(An)
 //     MOVE.B (xxx).W,(An)
 //     MOVE.B (d16,PC),(An)
-L_01A00:
+move_b_mem_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 14 dispatch table entries:
 //     MOVE.B (An),(An)
 //     MOVE.B -(An),(An)
-L_01A04:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.B (An)+,(An)
+//     MOVE.B (d8,An,Xn),(An)
+//     MOVE.B (xxx).L,(An)
+//     MOVE.B (d8,PC,Xn),(An)
+move_b_mem_mem_2:
         rlwimi  data, data, 24, 0, 0                    // data[31] = data[7]
 
 // Reached from 8 dispatch table entries:
 //     MOVE.B Dn,(An)
-L_01A08:
+move_b_dn_mem:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -3777,18 +4366,23 @@ L_01A08:
 //     MOVE.B (d16,An),-(An)
 //     MOVE.B (xxx).W,-(An)
 //     MOVE.B (d16,PC),-(An)
-L_01A24:
+move_b_mem_mem_3:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     MOVE.B (An),-(An)
 //     MOVE.B -(An),-(An)
-L_01A28:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     MOVE.B (d8,An,Xn),-(An)
+//     MOVE.B (An)+,-(An)
+//     MOVE.B (xxx).L,-(An)
+//     MOVE.B (d8,PC,Xn),-(An)
+move_b_mem_mem_4:
         rlwimi  data, data, 24, 0, 0                    // data[31] = data[7]
 
 // Reached from 8 dispatch table entries:
 //     MOVE.B Dn,-(An)
-L_01A2C:
+move_b_dn_mem_2:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -3802,19 +4396,24 @@ L_01A2C:
 //     MOVE.B (xxx).W,(d8,An,Xn)
 //     MOVE.B (d16,PC),(d8,An,Xn)
 //     MOVE.B #<data>,(d8,An,Xn)
-L_01A48:
+move_b_ea_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     MOVE.B (An),(d8,An,Xn)
 //     MOVE.B -(An),(d8,An,Xn)
-L_01A4C:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.B (An)+,(d8,An,Xn)
+//     MOVE.B (d8,An,Xn),(d8,An,Xn)
+//     MOVE.B (xxx).L,(d8,An,Xn)
+//     MOVE.B (d8,PC,Xn),(d8,An,Xn)
+move_b_mem_mem_5:
         rlwimi  data, data, 24, 0, 0                    // data[31] = data[7]
 
 // Reached from 9 dispatch table entries:
 //     MOVE.B Dn,(d8,An,Xn)
 //     CLR.B (d8,An,Xn)
-L_01A50:
+move_clr_b_reg_mem:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         ori     rtn_addr, code_ptr, L_06280 - cb
         add     addr, base_disp, a0
@@ -3825,19 +4424,24 @@ L_01A50:
 //     MOVE.B (xxx).W,(An)+
 //     MOVE.B (d16,PC),(An)+
 //     MOVE.B #<data>,(An)+
-L_01A60:
+move_b_ea_mem_2:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 15 dispatch table entries:
 //     MOVE.B (An),(An)+
 //     MOVE.B -(An),(An)+
-L_01A64:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     MOVE.B (d8,An,Xn),(An)+
+//     MOVE.B (An)+,(An)+
+//     MOVE.B (xxx).L,(An)+
+//     MOVE.B (d8,PC,Xn),(An)+
+move_b_mem_mem_6:
         rlwimi  data, data, 24, 0, 0                    // data[31] = data[7]
 
 // Reached from 9 dispatch table entries:
 //     MOVE.B Dn,(An)+
 //     CLR.B (An)+
-L_01A68:
+move_clr_b_reg_mem_2:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -3852,18 +4456,23 @@ L_01A68:
 //     MOVE.B (xxx).W,(d16,An)
 //     MOVE.B (d16,PC),(d16,An)
 //     MOVE.B #<data>,(d16,An)
-L_01A88:
+move_b_ea_mem_3:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     MOVE.B (An),(d16,An)
 //     MOVE.B -(An),(d16,An)
-L_01A8C:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.B (An)+,(d16,An)
+//     MOVE.B (d8,An,Xn),(d16,An)
+//     MOVE.B (xxx).L,(d16,An)
+//     MOVE.B (d8,PC,Xn),(d16,An)
+move_b_mem_mem_7:
         rlwimi  data, data, 24, 0, 0                    // data[31] = data[7]
 
 // Reached from 8 dispatch table entries:
 //     MOVE.B Dn,(d16,An)
-L_01A90:
+move_b_dn_mem_3:
         lhau    immed_data, 2(pc)
         stbx    data, a0, prefetch_data
         rlwimi  disp_table, immed_data, 3, 13, 28       // disp_table[18:3] = immed_data[15:0]
@@ -3878,18 +4487,23 @@ L_01A90:
 //     MOVE.B (d16,An),(An)
 //     MOVE.B (xxx).W,(An)
 //     MOVE.B (d16,PC),(An)
-L_01AC0:
+move_b_mem_mem_8:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 14 dispatch table entries:
 //     MOVE.B (An),(An)
 //     MOVE.B -(An),(An)
-L_01AC4:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.B (An)+,(An)
+//     MOVE.B (d8,An,Xn),(An)
+//     MOVE.B (xxx).L,(An)
+//     MOVE.B (d8,PC,Xn),(An)
+move_b_mem_mem_9:
         rlwimi  data, data, 24, 0, 0                    // data[31] = data[7]
 
 // Reached from 8 dispatch table entries:
 //     MOVE.B Dn,(An)
-L_01AC8:
+move_b_dn_mem_4:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -3902,18 +4516,23 @@ L_01AC8:
 //     MOVE.B (d16,An),-(An)
 //     MOVE.B (xxx).W,-(An)
 //     MOVE.B (d16,PC),-(An)
-L_01AE4:
+move_b_mem_mem_10:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     MOVE.B (An),-(An)
 //     MOVE.B -(An),-(An)
-L_01AE8:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     MOVE.B (d8,An,Xn),-(An)
+//     MOVE.B (An)+,-(An)
+//     MOVE.B (xxx).L,-(An)
+//     MOVE.B (d8,PC,Xn),-(An)
+move_b_mem_mem_11:
         rlwimi  data, data, 24, 0, 0                    // data[31] = data[7]
 
 // Reached from 8 dispatch table entries:
 //     MOVE.B Dn,-(An)
-L_01AEC:
+move_b_dn_mem_5:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -3927,19 +4546,24 @@ L_01AEC:
 //     MOVE.B (xxx).W,(d8,An,Xn)
 //     MOVE.B (d16,PC),(d8,An,Xn)
 //     MOVE.B #<data>,(d8,An,Xn)
-L_01B08:
+move_b_ea_mem_4:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     MOVE.B (An),(d8,An,Xn)
 //     MOVE.B -(An),(d8,An,Xn)
-L_01B0C:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.B (An)+,(d8,An,Xn)
+//     MOVE.B (d8,An,Xn),(d8,An,Xn)
+//     MOVE.B (xxx).L,(d8,An,Xn)
+//     MOVE.B (d8,PC,Xn),(d8,An,Xn)
+move_b_mem_mem_12:
         rlwimi  data, data, 24, 0, 0                    // data[31] = data[7]
 
 // Reached from 9 dispatch table entries:
 //     MOVE.B Dn,(d8,An,Xn)
 //     CLR.B (d8,An,Xn)
-L_01B10:
+move_clr_b_reg_mem_3:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         ori     rtn_addr, code_ptr, L_06280 - cb
         add     addr, base_disp, a1
@@ -3950,19 +4574,24 @@ L_01B10:
 //     MOVE.B (xxx).W,(An)+
 //     MOVE.B (d16,PC),(An)+
 //     MOVE.B #<data>,(An)+
-L_01B20:
+move_b_ea_mem_5:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 15 dispatch table entries:
 //     MOVE.B (An),(An)+
 //     MOVE.B -(An),(An)+
-L_01B24:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.B (An)+,(An)+
+//     MOVE.B (d8,An,Xn),(An)+
+//     MOVE.B (xxx).L,(An)+
+//     MOVE.B (d8,PC,Xn),(An)+
+move_b_mem_mem_13:
         rlwimi  data, data, 24, 0, 0                    // data[31] = data[7]
 
 // Reached from 9 dispatch table entries:
 //     MOVE.B Dn,(An)+
 //     CLR.B (An)+
-L_01B28:
+move_clr_b_reg_mem_4:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -3977,18 +4606,23 @@ L_01B28:
 //     MOVE.B (xxx).W,(d16,An)
 //     MOVE.B (d16,PC),(d16,An)
 //     MOVE.B #<data>,(d16,An)
-L_01B48:
+move_b_ea_mem_6:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     MOVE.B (An),(d16,An)
 //     MOVE.B -(An),(d16,An)
-L_01B4C:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.B (An)+,(d16,An)
+//     MOVE.B (d8,An,Xn),(d16,An)
+//     MOVE.B (xxx).L,(d16,An)
+//     MOVE.B (d8,PC,Xn),(d16,An)
+move_b_mem_mem_14:
         rlwimi  data, data, 24, 0, 0                    // data[31] = data[7]
 
 // Reached from 8 dispatch table entries:
 //     MOVE.B Dn,(d16,An)
-L_01B50:
+move_b_dn_mem_6:
         lhau    immed_data, 2(pc)
         stbx    data, a1, prefetch_data
         rlwimi  disp_table, immed_data, 3, 13, 28       // disp_table[18:3] = immed_data[15:0]
@@ -4003,18 +4637,23 @@ L_01B50:
 //     MOVE.B (d16,An),(An)
 //     MOVE.B (xxx).W,(An)
 //     MOVE.B (d16,PC),(An)
-L_01B80:
+move_b_mem_mem_15:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 14 dispatch table entries:
 //     MOVE.B (An),(An)
 //     MOVE.B -(An),(An)
-L_01B84:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.B (An)+,(An)
+//     MOVE.B (d8,An,Xn),(An)
+//     MOVE.B (xxx).L,(An)
+//     MOVE.B (d8,PC,Xn),(An)
+move_b_mem_mem_16:
         rlwimi  data, data, 24, 0, 0                    // data[31] = data[7]
 
 // Reached from 8 dispatch table entries:
 //     MOVE.B Dn,(An)
-L_01B88:
+move_b_dn_mem_7:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -4027,18 +4666,23 @@ L_01B88:
 //     MOVE.B (d16,An),-(An)
 //     MOVE.B (xxx).W,-(An)
 //     MOVE.B (d16,PC),-(An)
-L_01BA4:
+move_b_mem_mem_17:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     MOVE.B (An),-(An)
 //     MOVE.B -(An),-(An)
-L_01BA8:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     MOVE.B (d8,An,Xn),-(An)
+//     MOVE.B (An)+,-(An)
+//     MOVE.B (xxx).L,-(An)
+//     MOVE.B (d8,PC,Xn),-(An)
+move_b_mem_mem_18:
         rlwimi  data, data, 24, 0, 0                    // data[31] = data[7]
 
 // Reached from 8 dispatch table entries:
 //     MOVE.B Dn,-(An)
-L_01BAC:
+move_b_dn_mem_8:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -4052,19 +4696,24 @@ L_01BAC:
 //     MOVE.B (xxx).W,(d8,An,Xn)
 //     MOVE.B (d16,PC),(d8,An,Xn)
 //     MOVE.B #<data>,(d8,An,Xn)
-L_01BC8:
+move_b_ea_mem_7:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     MOVE.B (An),(d8,An,Xn)
 //     MOVE.B -(An),(d8,An,Xn)
-L_01BCC:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.B (An)+,(d8,An,Xn)
+//     MOVE.B (d8,An,Xn),(d8,An,Xn)
+//     MOVE.B (xxx).L,(d8,An,Xn)
+//     MOVE.B (d8,PC,Xn),(d8,An,Xn)
+move_b_mem_mem_19:
         rlwimi  data, data, 24, 0, 0                    // data[31] = data[7]
 
 // Reached from 9 dispatch table entries:
 //     MOVE.B Dn,(d8,An,Xn)
 //     CLR.B (d8,An,Xn)
-L_01BD0:
+move_clr_b_reg_mem_5:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         ori     rtn_addr, code_ptr, L_06280 - cb
         add     addr, base_disp, a2
@@ -4075,19 +4724,24 @@ L_01BD0:
 //     MOVE.B (xxx).W,(An)+
 //     MOVE.B (d16,PC),(An)+
 //     MOVE.B #<data>,(An)+
-L_01BE0:
+move_b_ea_mem_8:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 15 dispatch table entries:
 //     MOVE.B (An),(An)+
 //     MOVE.B -(An),(An)+
-L_01BE4:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.B (An)+,(An)+
+//     MOVE.B (d8,An,Xn),(An)+
+//     MOVE.B (xxx).L,(An)+
+//     MOVE.B (d8,PC,Xn),(An)+
+move_b_mem_mem_20:
         rlwimi  data, data, 24, 0, 0                    // data[31] = data[7]
 
 // Reached from 9 dispatch table entries:
 //     MOVE.B Dn,(An)+
 //     CLR.B (An)+
-L_01BE8:
+move_clr_b_reg_mem_6:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -4102,18 +4756,23 @@ L_01BE8:
 //     MOVE.B (xxx).W,(d16,An)
 //     MOVE.B (d16,PC),(d16,An)
 //     MOVE.B #<data>,(d16,An)
-L_01C08:
+move_b_ea_mem_9:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     MOVE.B (An),(d16,An)
 //     MOVE.B -(An),(d16,An)
-L_01C0C:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.B (An)+,(d16,An)
+//     MOVE.B (d8,An,Xn),(d16,An)
+//     MOVE.B (xxx).L,(d16,An)
+//     MOVE.B (d8,PC,Xn),(d16,An)
+move_b_mem_mem_21:
         rlwimi  data, data, 24, 0, 0                    // data[31] = data[7]
 
 // Reached from 8 dispatch table entries:
 //     MOVE.B Dn,(d16,An)
-L_01C10:
+move_b_dn_mem_9:
         lhau    immed_data, 2(pc)
         stbx    data, a2, prefetch_data
         rlwimi  disp_table, immed_data, 3, 13, 28       // disp_table[18:3] = immed_data[15:0]
@@ -4128,18 +4787,23 @@ L_01C10:
 //     MOVE.B (d16,An),(An)
 //     MOVE.B (xxx).W,(An)
 //     MOVE.B (d16,PC),(An)
-L_01C40:
+move_b_mem_mem_22:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 14 dispatch table entries:
 //     MOVE.B (An),(An)
 //     MOVE.B -(An),(An)
-L_01C44:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.B (An)+,(An)
+//     MOVE.B (d8,An,Xn),(An)
+//     MOVE.B (xxx).L,(An)
+//     MOVE.B (d8,PC,Xn),(An)
+move_b_mem_mem_23:
         rlwimi  data, data, 24, 0, 0                    // data[31] = data[7]
 
 // Reached from 8 dispatch table entries:
 //     MOVE.B Dn,(An)
-L_01C48:
+move_b_dn_mem_10:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -4152,18 +4816,23 @@ L_01C48:
 //     MOVE.B (d16,An),-(An)
 //     MOVE.B (xxx).W,-(An)
 //     MOVE.B (d16,PC),-(An)
-L_01C64:
+move_b_mem_mem_24:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     MOVE.B (An),-(An)
 //     MOVE.B -(An),-(An)
-L_01C68:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     MOVE.B (d8,An,Xn),-(An)
+//     MOVE.B (An)+,-(An)
+//     MOVE.B (xxx).L,-(An)
+//     MOVE.B (d8,PC,Xn),-(An)
+move_b_mem_mem_25:
         rlwimi  data, data, 24, 0, 0                    // data[31] = data[7]
 
 // Reached from 8 dispatch table entries:
 //     MOVE.B Dn,-(An)
-L_01C6C:
+move_b_dn_mem_11:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -4177,19 +4846,24 @@ L_01C6C:
 //     MOVE.B (xxx).W,(d8,An,Xn)
 //     MOVE.B (d16,PC),(d8,An,Xn)
 //     MOVE.B #<data>,(d8,An,Xn)
-L_01C88:
+move_b_ea_mem_10:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     MOVE.B (An),(d8,An,Xn)
 //     MOVE.B -(An),(d8,An,Xn)
-L_01C8C:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.B (An)+,(d8,An,Xn)
+//     MOVE.B (d8,An,Xn),(d8,An,Xn)
+//     MOVE.B (xxx).L,(d8,An,Xn)
+//     MOVE.B (d8,PC,Xn),(d8,An,Xn)
+move_b_mem_mem_26:
         rlwimi  data, data, 24, 0, 0                    // data[31] = data[7]
 
 // Reached from 9 dispatch table entries:
 //     MOVE.B Dn,(d8,An,Xn)
 //     CLR.B (d8,An,Xn)
-L_01C90:
+move_clr_b_reg_mem_7:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         ori     rtn_addr, code_ptr, L_06280 - cb
         add     addr, base_disp, a3
@@ -4200,19 +4874,24 @@ L_01C90:
 //     MOVE.B (xxx).W,(An)+
 //     MOVE.B (d16,PC),(An)+
 //     MOVE.B #<data>,(An)+
-L_01CA0:
+move_b_ea_mem_11:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 15 dispatch table entries:
 //     MOVE.B (An),(An)+
 //     MOVE.B -(An),(An)+
-L_01CA4:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.B (An)+,(An)+
+//     MOVE.B (d8,An,Xn),(An)+
+//     MOVE.B (xxx).L,(An)+
+//     MOVE.B (d8,PC,Xn),(An)+
+move_b_mem_mem_27:
         rlwimi  data, data, 24, 0, 0                    // data[31] = data[7]
 
 // Reached from 9 dispatch table entries:
 //     MOVE.B Dn,(An)+
 //     CLR.B (An)+
-L_01CA8:
+move_clr_b_reg_mem_8:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -4227,18 +4906,23 @@ L_01CA8:
 //     MOVE.B (xxx).W,(d16,An)
 //     MOVE.B (d16,PC),(d16,An)
 //     MOVE.B #<data>,(d16,An)
-L_01CC8:
+move_b_ea_mem_12:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     MOVE.B (An),(d16,An)
 //     MOVE.B -(An),(d16,An)
-L_01CCC:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.B (An)+,(d16,An)
+//     MOVE.B (d8,An,Xn),(d16,An)
+//     MOVE.B (xxx).L,(d16,An)
+//     MOVE.B (d8,PC,Xn),(d16,An)
+move_b_mem_mem_28:
         rlwimi  data, data, 24, 0, 0                    // data[31] = data[7]
 
 // Reached from 8 dispatch table entries:
 //     MOVE.B Dn,(d16,An)
-L_01CD0:
+move_b_dn_mem_12:
         lhau    immed_data, 2(pc)
         stbx    data, a3, prefetch_data
         rlwimi  disp_table, immed_data, 3, 13, 28       // disp_table[18:3] = immed_data[15:0]
@@ -4253,18 +4937,23 @@ L_01CD0:
 //     MOVE.B (d16,An),(An)
 //     MOVE.B (xxx).W,(An)
 //     MOVE.B (d16,PC),(An)
-L_01D00:
+move_b_mem_mem_29:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 14 dispatch table entries:
 //     MOVE.B (An),(An)
 //     MOVE.B -(An),(An)
-L_01D04:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.B (An)+,(An)
+//     MOVE.B (d8,An,Xn),(An)
+//     MOVE.B (xxx).L,(An)
+//     MOVE.B (d8,PC,Xn),(An)
+move_b_mem_mem_30:
         rlwimi  data, data, 24, 0, 0                    // data[31] = data[7]
 
 // Reached from 8 dispatch table entries:
 //     MOVE.B Dn,(An)
-L_01D08:
+move_b_dn_mem_13:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -4277,18 +4966,23 @@ L_01D08:
 //     MOVE.B (d16,An),-(An)
 //     MOVE.B (xxx).W,-(An)
 //     MOVE.B (d16,PC),-(An)
-L_01D24:
+move_b_mem_mem_31:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     MOVE.B (An),-(An)
 //     MOVE.B -(An),-(An)
-L_01D28:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     MOVE.B (d8,An,Xn),-(An)
+//     MOVE.B (An)+,-(An)
+//     MOVE.B (xxx).L,-(An)
+//     MOVE.B (d8,PC,Xn),-(An)
+move_b_mem_mem_32:
         rlwimi  data, data, 24, 0, 0                    // data[31] = data[7]
 
 // Reached from 8 dispatch table entries:
 //     MOVE.B Dn,-(An)
-L_01D2C:
+move_b_dn_mem_14:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -4302,19 +4996,24 @@ L_01D2C:
 //     MOVE.B (xxx).W,(d8,An,Xn)
 //     MOVE.B (d16,PC),(d8,An,Xn)
 //     MOVE.B #<data>,(d8,An,Xn)
-L_01D48:
+move_b_ea_mem_13:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     MOVE.B (An),(d8,An,Xn)
 //     MOVE.B -(An),(d8,An,Xn)
-L_01D4C:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.B (An)+,(d8,An,Xn)
+//     MOVE.B (d8,An,Xn),(d8,An,Xn)
+//     MOVE.B (xxx).L,(d8,An,Xn)
+//     MOVE.B (d8,PC,Xn),(d8,An,Xn)
+move_b_mem_mem_33:
         rlwimi  data, data, 24, 0, 0                    // data[31] = data[7]
 
 // Reached from 9 dispatch table entries:
 //     MOVE.B Dn,(d8,An,Xn)
 //     CLR.B (d8,An,Xn)
-L_01D50:
+move_clr_b_reg_mem_9:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         ori     rtn_addr, code_ptr, L_06280 - cb
         add     addr, base_disp, a4
@@ -4325,19 +5024,24 @@ L_01D50:
 //     MOVE.B (xxx).W,(An)+
 //     MOVE.B (d16,PC),(An)+
 //     MOVE.B #<data>,(An)+
-L_01D60:
+move_b_ea_mem_14:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 15 dispatch table entries:
 //     MOVE.B (An),(An)+
 //     MOVE.B -(An),(An)+
-L_01D64:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.B (An)+,(An)+
+//     MOVE.B (d8,An,Xn),(An)+
+//     MOVE.B (xxx).L,(An)+
+//     MOVE.B (d8,PC,Xn),(An)+
+move_b_mem_mem_34:
         rlwimi  data, data, 24, 0, 0                    // data[31] = data[7]
 
 // Reached from 9 dispatch table entries:
 //     MOVE.B Dn,(An)+
 //     CLR.B (An)+
-L_01D68:
+move_clr_b_reg_mem_10:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -4352,18 +5056,23 @@ L_01D68:
 //     MOVE.B (xxx).W,(d16,An)
 //     MOVE.B (d16,PC),(d16,An)
 //     MOVE.B #<data>,(d16,An)
-L_01D88:
+move_b_ea_mem_15:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     MOVE.B (An),(d16,An)
 //     MOVE.B -(An),(d16,An)
-L_01D8C:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.B (An)+,(d16,An)
+//     MOVE.B (d8,An,Xn),(d16,An)
+//     MOVE.B (xxx).L,(d16,An)
+//     MOVE.B (d8,PC,Xn),(d16,An)
+move_b_mem_mem_35:
         rlwimi  data, data, 24, 0, 0                    // data[31] = data[7]
 
 // Reached from 8 dispatch table entries:
 //     MOVE.B Dn,(d16,An)
-L_01D90:
+move_b_dn_mem_15:
         lhau    immed_data, 2(pc)
         stbx    data, a4, prefetch_data
         rlwimi  disp_table, immed_data, 3, 13, 28       // disp_table[18:3] = immed_data[15:0]
@@ -4378,18 +5087,23 @@ L_01D90:
 //     MOVE.B (d16,An),(An)
 //     MOVE.B (xxx).W,(An)
 //     MOVE.B (d16,PC),(An)
-L_01DC0:
+move_b_mem_mem_36:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 14 dispatch table entries:
 //     MOVE.B (An),(An)
 //     MOVE.B -(An),(An)
-L_01DC4:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.B (An)+,(An)
+//     MOVE.B (d8,An,Xn),(An)
+//     MOVE.B (xxx).L,(An)
+//     MOVE.B (d8,PC,Xn),(An)
+move_b_mem_mem_37:
         rlwimi  data, data, 24, 0, 0                    // data[31] = data[7]
 
 // Reached from 8 dispatch table entries:
 //     MOVE.B Dn,(An)
-L_01DC8:
+move_b_dn_mem_16:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -4402,18 +5116,23 @@ L_01DC8:
 //     MOVE.B (d16,An),-(An)
 //     MOVE.B (xxx).W,-(An)
 //     MOVE.B (d16,PC),-(An)
-L_01DE4:
+move_b_mem_mem_38:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     MOVE.B (An),-(An)
 //     MOVE.B -(An),-(An)
-L_01DE8:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     MOVE.B (d8,An,Xn),-(An)
+//     MOVE.B (An)+,-(An)
+//     MOVE.B (xxx).L,-(An)
+//     MOVE.B (d8,PC,Xn),-(An)
+move_b_mem_mem_39:
         rlwimi  data, data, 24, 0, 0                    // data[31] = data[7]
 
 // Reached from 8 dispatch table entries:
 //     MOVE.B Dn,-(An)
-L_01DEC:
+move_b_dn_mem_17:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -4427,19 +5146,24 @@ L_01DEC:
 //     MOVE.B (xxx).W,(d8,An,Xn)
 //     MOVE.B (d16,PC),(d8,An,Xn)
 //     MOVE.B #<data>,(d8,An,Xn)
-L_01E08:
+move_b_ea_mem_16:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     MOVE.B (An),(d8,An,Xn)
 //     MOVE.B -(An),(d8,An,Xn)
-L_01E0C:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.B (An)+,(d8,An,Xn)
+//     MOVE.B (d8,An,Xn),(d8,An,Xn)
+//     MOVE.B (xxx).L,(d8,An,Xn)
+//     MOVE.B (d8,PC,Xn),(d8,An,Xn)
+move_b_mem_mem_40:
         rlwimi  data, data, 24, 0, 0                    // data[31] = data[7]
 
 // Reached from 9 dispatch table entries:
 //     MOVE.B Dn,(d8,An,Xn)
 //     CLR.B (d8,An,Xn)
-L_01E10:
+move_clr_b_reg_mem_11:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         ori     rtn_addr, code_ptr, L_06280 - cb
         add     addr, base_disp, a5
@@ -4450,19 +5174,24 @@ L_01E10:
 //     MOVE.B (xxx).W,(An)+
 //     MOVE.B (d16,PC),(An)+
 //     MOVE.B #<data>,(An)+
-L_01E20:
+move_b_ea_mem_17:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 15 dispatch table entries:
 //     MOVE.B (An),(An)+
 //     MOVE.B -(An),(An)+
-L_01E24:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.B (An)+,(An)+
+//     MOVE.B (d8,An,Xn),(An)+
+//     MOVE.B (xxx).L,(An)+
+//     MOVE.B (d8,PC,Xn),(An)+
+move_b_mem_mem_41:
         rlwimi  data, data, 24, 0, 0                    // data[31] = data[7]
 
 // Reached from 9 dispatch table entries:
 //     MOVE.B Dn,(An)+
 //     CLR.B (An)+
-L_01E28:
+move_clr_b_reg_mem_12:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -4477,18 +5206,23 @@ L_01E28:
 //     MOVE.B (xxx).W,(d16,An)
 //     MOVE.B (d16,PC),(d16,An)
 //     MOVE.B #<data>,(d16,An)
-L_01E48:
+move_b_ea_mem_18:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     MOVE.B (An),(d16,An)
 //     MOVE.B -(An),(d16,An)
-L_01E4C:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.B (An)+,(d16,An)
+//     MOVE.B (d8,An,Xn),(d16,An)
+//     MOVE.B (xxx).L,(d16,An)
+//     MOVE.B (d8,PC,Xn),(d16,An)
+move_b_mem_mem_42:
         rlwimi  data, data, 24, 0, 0                    // data[31] = data[7]
 
 // Reached from 8 dispatch table entries:
 //     MOVE.B Dn,(d16,An)
-L_01E50:
+move_b_dn_mem_18:
         lhau    immed_data, 2(pc)
         stbx    data, a5, prefetch_data
         rlwimi  disp_table, immed_data, 3, 13, 28       // disp_table[18:3] = immed_data[15:0]
@@ -4503,18 +5237,23 @@ L_01E50:
 //     MOVE.B (d16,An),(An)
 //     MOVE.B (xxx).W,(An)
 //     MOVE.B (d16,PC),(An)
-L_01E80:
+move_b_mem_mem_43:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 14 dispatch table entries:
 //     MOVE.B (An),(An)
 //     MOVE.B -(An),(An)
-L_01E84:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.B (An)+,(An)
+//     MOVE.B (d8,An,Xn),(An)
+//     MOVE.B (xxx).L,(An)
+//     MOVE.B (d8,PC,Xn),(An)
+move_b_mem_mem_44:
         rlwimi  data, data, 24, 0, 0                    // data[31] = data[7]
 
 // Reached from 8 dispatch table entries:
 //     MOVE.B Dn,(An)
-L_01E88:
+move_b_dn_mem_19:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -4527,18 +5266,23 @@ L_01E88:
 //     MOVE.B (d16,An),-(An)
 //     MOVE.B (xxx).W,-(An)
 //     MOVE.B (d16,PC),-(An)
-L_01EA4:
+move_b_mem_mem_45:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     MOVE.B (An),-(An)
 //     MOVE.B -(An),-(An)
-L_01EA8:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     MOVE.B (d8,An,Xn),-(An)
+//     MOVE.B (An)+,-(An)
+//     MOVE.B (xxx).L,-(An)
+//     MOVE.B (d8,PC,Xn),-(An)
+move_b_mem_mem_46:
         rlwimi  data, data, 24, 0, 0                    // data[31] = data[7]
 
 // Reached from 8 dispatch table entries:
 //     MOVE.B Dn,-(An)
-L_01EAC:
+move_b_dn_mem_20:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -4552,19 +5296,24 @@ L_01EAC:
 //     MOVE.B (xxx).W,(d8,An,Xn)
 //     MOVE.B (d16,PC),(d8,An,Xn)
 //     MOVE.B #<data>,(d8,An,Xn)
-L_01EC8:
+move_b_ea_mem_19:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     MOVE.B (An),(d8,An,Xn)
 //     MOVE.B -(An),(d8,An,Xn)
-L_01ECC:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.B (An)+,(d8,An,Xn)
+//     MOVE.B (d8,An,Xn),(d8,An,Xn)
+//     MOVE.B (xxx).L,(d8,An,Xn)
+//     MOVE.B (d8,PC,Xn),(d8,An,Xn)
+move_b_mem_mem_47:
         rlwimi  data, data, 24, 0, 0                    // data[31] = data[7]
 
 // Reached from 9 dispatch table entries:
 //     MOVE.B Dn,(d8,An,Xn)
 //     CLR.B (d8,An,Xn)
-L_01ED0:
+move_clr_b_reg_mem_13:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         ori     rtn_addr, code_ptr, L_06280 - cb
         add     addr, base_disp, a6
@@ -4575,19 +5324,24 @@ L_01ED0:
 //     MOVE.B (xxx).W,(An)+
 //     MOVE.B (d16,PC),(An)+
 //     MOVE.B #<data>,(An)+
-L_01EE0:
+move_b_ea_mem_20:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 15 dispatch table entries:
 //     MOVE.B (An),(An)+
 //     MOVE.B -(An),(An)+
-L_01EE4:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.B (An)+,(An)+
+//     MOVE.B (d8,An,Xn),(An)+
+//     MOVE.B (xxx).L,(An)+
+//     MOVE.B (d8,PC,Xn),(An)+
+move_b_mem_mem_48:
         rlwimi  data, data, 24, 0, 0                    // data[31] = data[7]
 
 // Reached from 9 dispatch table entries:
 //     MOVE.B Dn,(An)+
 //     CLR.B (An)+
-L_01EE8:
+move_clr_b_reg_mem_14:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -4602,18 +5356,23 @@ L_01EE8:
 //     MOVE.B (xxx).W,(d16,An)
 //     MOVE.B (d16,PC),(d16,An)
 //     MOVE.B #<data>,(d16,An)
-L_01F08:
+move_b_ea_mem_21:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     MOVE.B (An),(d16,An)
 //     MOVE.B -(An),(d16,An)
-L_01F0C:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.B (An)+,(d16,An)
+//     MOVE.B (d8,An,Xn),(d16,An)
+//     MOVE.B (xxx).L,(d16,An)
+//     MOVE.B (d8,PC,Xn),(d16,An)
+move_b_mem_mem_49:
         rlwimi  data, data, 24, 0, 0                    // data[31] = data[7]
 
 // Reached from 8 dispatch table entries:
 //     MOVE.B Dn,(d16,An)
-L_01F10:
+move_b_dn_mem_21:
         lhau    immed_data, 2(pc)
         stbx    data, a6, prefetch_data
         rlwimi  disp_table, immed_data, 3, 13, 28       // disp_table[18:3] = immed_data[15:0]
@@ -4628,18 +5387,23 @@ L_01F10:
 //     MOVE.B (d16,An),(An)
 //     MOVE.B (xxx).W,(An)
 //     MOVE.B (d16,PC),(An)
-L_01F40:
+move_b_mem_mem_50:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 14 dispatch table entries:
 //     MOVE.B (An),(An)
 //     MOVE.B -(An),(An)
-L_01F44:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.B (An)+,(An)
+//     MOVE.B (d8,An,Xn),(An)
+//     MOVE.B (xxx).L,(An)
+//     MOVE.B (d8,PC,Xn),(An)
+move_b_mem_mem_51:
         rlwimi  data, data, 24, 0, 0                    // data[31] = data[7]
 
 // Reached from 8 dispatch table entries:
 //     MOVE.B Dn,(An)
-L_01F48:
+move_b_dn_mem_22:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -4652,18 +5416,23 @@ L_01F48:
 //     MOVE.B (d16,An),-(An)
 //     MOVE.B (xxx).W,-(An)
 //     MOVE.B (d16,PC),-(An)
-L_01F64:
+move_b_mem_mem_52:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     MOVE.B (An),-(An)
 //     MOVE.B -(An),-(An)
-L_01F68:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     MOVE.B (d8,An,Xn),-(An)
+//     MOVE.B (An)+,-(An)
+//     MOVE.B (xxx).L,-(An)
+//     MOVE.B (d8,PC,Xn),-(An)
+move_b_mem_mem_53:
         rlwimi  data, data, 24, 0, 0                    // data[31] = data[7]
 
 // Reached from 8 dispatch table entries:
 //     MOVE.B Dn,-(An)
-L_01F6C:
+move_b_dn_mem_23:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -4677,19 +5446,24 @@ L_01F6C:
 //     MOVE.B (xxx).W,(d8,An,Xn)
 //     MOVE.B (d16,PC),(d8,An,Xn)
 //     MOVE.B #<data>,(d8,An,Xn)
-L_01F88:
+move_b_ea_mem_22:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     MOVE.B (An),(d8,An,Xn)
 //     MOVE.B -(An),(d8,An,Xn)
-L_01F8C:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.B (An)+,(d8,An,Xn)
+//     MOVE.B (d8,An,Xn),(d8,An,Xn)
+//     MOVE.B (xxx).L,(d8,An,Xn)
+//     MOVE.B (d8,PC,Xn),(d8,An,Xn)
+move_b_mem_mem_54:
         rlwimi  data, data, 24, 0, 0                    // data[31] = data[7]
 
 // Reached from 9 dispatch table entries:
 //     MOVE.B Dn,(d8,An,Xn)
 //     CLR.B (d8,An,Xn)
-L_01F90:
+move_clr_b_reg_mem_15:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         ori     rtn_addr, code_ptr, L_06280 - cb
         add     addr, base_disp, a7
@@ -4700,19 +5474,24 @@ L_01F90:
 //     MOVE.B (xxx).W,(An)+
 //     MOVE.B (d16,PC),(An)+
 //     MOVE.B #<data>,(An)+
-L_01FA0:
+move_b_ea_mem_23:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 15 dispatch table entries:
 //     MOVE.B (An),(An)+
 //     MOVE.B -(An),(An)+
-L_01FA4:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.B (An)+,(An)+
+//     MOVE.B (d8,An,Xn),(An)+
+//     MOVE.B (xxx).L,(An)+
+//     MOVE.B (d8,PC,Xn),(An)+
+move_b_mem_mem_55:
         rlwimi  data, data, 24, 0, 0                    // data[31] = data[7]
 
 // Reached from 9 dispatch table entries:
 //     MOVE.B Dn,(An)+
 //     CLR.B (An)+
-L_01FA8:
+move_clr_b_reg_mem_16:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -4727,18 +5506,23 @@ L_01FA8:
 //     MOVE.B (xxx).W,(d16,An)
 //     MOVE.B (d16,PC),(d16,An)
 //     MOVE.B #<data>,(d16,An)
-L_01FC8:
+move_b_ea_mem_24:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     MOVE.B (An),(d16,An)
 //     MOVE.B -(An),(d16,An)
-L_01FCC:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.B (An)+,(d16,An)
+//     MOVE.B (d8,An,Xn),(d16,An)
+//     MOVE.B (xxx).L,(d16,An)
+//     MOVE.B (d8,PC,Xn),(d16,An)
+move_b_mem_mem_56:
         rlwimi  data, data, 24, 0, 0                    // data[31] = data[7]
 
 // Reached from 8 dispatch table entries:
 //     MOVE.B Dn,(d16,An)
-L_01FD0:
+move_b_dn_mem_24:
         lhau    immed_data, 2(pc)
         stbx    data, a7, prefetch_data
         rlwimi  disp_table, immed_data, 3, 13, 28       // disp_table[18:3] = immed_data[15:0]
@@ -4751,12 +5535,12 @@ L_01FD0:
 
 // Reached from 1 dispatch table entry:
 //     BTST.L #<bit>,Dn
-L_02000:
+btst_l_imm_d0:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     BTST.L Dn,Dn
-L_02004:
+btst_l_dn_d0:
         srw     data, d0, addr
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -4771,13 +5555,18 @@ L_02004:
 //     BTST.B Dn,(xxx).W
 //     BTST.B Dn,(d16,PC)
 //     BTST.B Dn,#<data>
-L_02024:
+btst_b_d0_ea:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     BTST.B Dn,(An)
 //     BTST.B Dn,-(An)
-L_02028:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     BTST.B Dn,(An)+
+//     BTST.B Dn,(d8,An,Xn)
+//     BTST.B Dn,(xxx).L
+//     BTST.B Dn,(d8,PC,Xn)
+btst_b_d0_mem:
         clrlwi  immed_data, d0, 29                      // immed_data = d0 & 0x00000007
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         b       L_0760C
@@ -4785,12 +5574,12 @@ L_02028:
 
 // Reached from 1 dispatch table entry:
 //     BCHG.L #<bit>,Dn
-L_02040:
+bchg_l_imm_d0:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     BCHG.L Dn,Dn
-L_02044:
+bchg_l_dn_d0:
         rlwnm   data, d0, addr, 0, 31                   // data = rotl(d0, addr) & 0xFFFFFFFF
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtcrf   0x01, data                              // cr7 = data[3:0]
@@ -4807,24 +5596,28 @@ L_02054:
 // Reached from 9 dispatch table entries:
 //     BCHG.B Dn,(d16,An)
 //     BCHG.B Dn,(xxx).W
-L_02070:
+bchg_b_d0_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     BCHG.B Dn,(An)
-L_02074:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     BCHG.B Dn,(An)+
+//     BCHG.B Dn,(d8,An,Xn)
+//     BCHG.B Dn,(xxx).L
+bchg_b_d0_mem_2:
         clrlwi  immed_data, d0, 29                      // immed_data = d0 & 0x00000007
         lbz     data, 0(addr)
         b       L_0768C
 
 // Reached from 1 dispatch table entry:
 //     BCLR.L #<bit>,Dn
-L_02080:
+bclr_l_imm_d0:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     BCLR.L Dn,Dn
-L_02084:
+bclr_l_dn_d0:
         rlwnm   data, d0, addr, 0, 31                   // data = rotl(d0, addr) & 0xFFFFFFFF
         mtcrf   0x01, data                              // cr7 = data[3:0]
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
@@ -4838,12 +5631,16 @@ L_02084:
 // Reached from 9 dispatch table entries:
 //     BCLR.B Dn,(d16,An)
 //     BCLR.B Dn,(xxx).W
-L_020A8:
+bclr_b_d0_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     BCLR.B Dn,(An)
-L_020AC:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     BCLR.B Dn,(An)+
+//     BCLR.B Dn,(d8,An,Xn)
+//     BCLR.B Dn,(xxx).L
+bclr_b_d0_mem_2:
         clrlwi  immed_data, d0, 29                      // immed_data = d0 & 0x00000007
         lbz     data, 0(addr)
         b       L_076CC
@@ -4851,12 +5648,12 @@ L_020AC:
 
 // Reached from 1 dispatch table entry:
 //     BSET.L #<bit>,Dn
-L_020C0:
+bset_l_imm_d0:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     BSET.L Dn,Dn
-L_020C4:
+bset_l_dn_d0:
         rlwnm   data, d0, addr, 0, 31                   // data = rotl(d0, addr) & 0xFFFFFFFF
         mtcrf   0x01, data                              // cr7 = data[3:0]
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
@@ -4870,12 +5667,16 @@ L_020C4:
 // Reached from 9 dispatch table entries:
 //     BSET.B Dn,(d16,An)
 //     BSET.B Dn,(xxx).W
-L_020E8:
+bset_b_d0_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     BSET.B Dn,(An)
-L_020EC:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     BSET.B Dn,(An)+
+//     BSET.B Dn,(d8,An,Xn)
+//     BSET.B Dn,(xxx).L
+bset_b_d0_mem_2:
         clrlwi  immed_data, d0, 29                      // immed_data = d0 & 0x00000007
         lbz     data, 0(addr)
         b       L_0774C
@@ -4883,12 +5684,12 @@ L_020EC:
 
 // Reached from 1 dispatch table entry:
 //     BTST.L #<bit>,Dn
-L_02100:
+btst_l_imm_d1:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     BTST.L Dn,Dn
-L_02104:
+btst_l_dn_d1:
         srw     data, d1, addr
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -4903,13 +5704,18 @@ L_02104:
 //     BTST.B Dn,(xxx).W
 //     BTST.B Dn,(d16,PC)
 //     BTST.B Dn,#<data>
-L_02124:
+btst_b_d1_ea:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     BTST.B Dn,(An)
 //     BTST.B Dn,-(An)
-L_02128:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     BTST.B Dn,(An)+
+//     BTST.B Dn,(d8,An,Xn)
+//     BTST.B Dn,(xxx).L
+//     BTST.B Dn,(d8,PC,Xn)
+btst_b_d1_mem:
         clrlwi  immed_data, d1, 29                      // immed_data = d1 & 0x00000007
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         b       L_0760C
@@ -4917,12 +5723,12 @@ L_02128:
 
 // Reached from 1 dispatch table entry:
 //     BCHG.L #<bit>,Dn
-L_02140:
+bchg_l_imm_d1:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     BCHG.L Dn,Dn
-L_02144:
+bchg_l_dn_d1:
         rlwnm   data, d1, addr, 0, 31                   // data = rotl(d1, addr) & 0xFFFFFFFF
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtcrf   0x01, data                              // cr7 = data[3:0]
@@ -4939,24 +5745,28 @@ L_02154:
 // Reached from 9 dispatch table entries:
 //     BCHG.B Dn,(d16,An)
 //     BCHG.B Dn,(xxx).W
-L_02170:
+bchg_b_d1_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     BCHG.B Dn,(An)
-L_02174:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     BCHG.B Dn,(An)+
+//     BCHG.B Dn,(d8,An,Xn)
+//     BCHG.B Dn,(xxx).L
+bchg_b_d1_mem_2:
         clrlwi  immed_data, d1, 29                      // immed_data = d1 & 0x00000007
         lbz     data, 0(addr)
         b       L_0768C
 
 // Reached from 1 dispatch table entry:
 //     BCLR.L #<bit>,Dn
-L_02180:
+bclr_l_imm_d1:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     BCLR.L Dn,Dn
-L_02184:
+bclr_l_dn_d1:
         rlwnm   data, d1, addr, 0, 31                   // data = rotl(d1, addr) & 0xFFFFFFFF
         mtcrf   0x01, data                              // cr7 = data[3:0]
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
@@ -4970,12 +5780,16 @@ L_02184:
 // Reached from 9 dispatch table entries:
 //     BCLR.B Dn,(d16,An)
 //     BCLR.B Dn,(xxx).W
-L_021A8:
+bclr_b_d1_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     BCLR.B Dn,(An)
-L_021AC:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     BCLR.B Dn,(An)+
+//     BCLR.B Dn,(d8,An,Xn)
+//     BCLR.B Dn,(xxx).L
+bclr_b_d1_mem_2:
         clrlwi  immed_data, d1, 29                      // immed_data = d1 & 0x00000007
         lbz     data, 0(addr)
         b       L_076CC
@@ -4983,12 +5797,12 @@ L_021AC:
 
 // Reached from 1 dispatch table entry:
 //     BSET.L #<bit>,Dn
-L_021C0:
+bset_l_imm_d1:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     BSET.L Dn,Dn
-L_021C4:
+bset_l_dn_d1:
         rlwnm   data, d1, addr, 0, 31                   // data = rotl(d1, addr) & 0xFFFFFFFF
         mtcrf   0x01, data                              // cr7 = data[3:0]
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
@@ -5002,12 +5816,16 @@ L_021C4:
 // Reached from 9 dispatch table entries:
 //     BSET.B Dn,(d16,An)
 //     BSET.B Dn,(xxx).W
-L_021E8:
+bset_b_d1_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     BSET.B Dn,(An)
-L_021EC:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     BSET.B Dn,(An)+
+//     BSET.B Dn,(d8,An,Xn)
+//     BSET.B Dn,(xxx).L
+bset_b_d1_mem_2:
         clrlwi  immed_data, d1, 29                      // immed_data = d1 & 0x00000007
         lbz     data, 0(addr)
         b       L_0774C
@@ -5015,12 +5833,12 @@ L_021EC:
 
 // Reached from 1 dispatch table entry:
 //     BTST.L #<bit>,Dn
-L_02200:
+btst_l_imm_d2:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     BTST.L Dn,Dn
-L_02204:
+btst_l_dn_d2:
         srw     data, d2, addr
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -5035,13 +5853,18 @@ L_02204:
 //     BTST.B Dn,(xxx).W
 //     BTST.B Dn,(d16,PC)
 //     BTST.B Dn,#<data>
-L_02224:
+btst_b_d2_ea:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     BTST.B Dn,(An)
 //     BTST.B Dn,-(An)
-L_02228:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     BTST.B Dn,(An)+
+//     BTST.B Dn,(d8,An,Xn)
+//     BTST.B Dn,(xxx).L
+//     BTST.B Dn,(d8,PC,Xn)
+btst_b_d2_mem:
         clrlwi  immed_data, d2, 29                      // immed_data = d2 & 0x00000007
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         b       L_0760C
@@ -5049,12 +5872,12 @@ L_02228:
 
 // Reached from 1 dispatch table entry:
 //     BCHG.L #<bit>,Dn
-L_02240:
+bchg_l_imm_d2:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     BCHG.L Dn,Dn
-L_02244:
+bchg_l_dn_d2:
         rlwnm   data, d2, addr, 0, 31                   // data = rotl(d2, addr) & 0xFFFFFFFF
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtcrf   0x01, data                              // cr7 = data[3:0]
@@ -5071,24 +5894,28 @@ L_02254:
 // Reached from 9 dispatch table entries:
 //     BCHG.B Dn,(d16,An)
 //     BCHG.B Dn,(xxx).W
-L_02270:
+bchg_b_d2_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     BCHG.B Dn,(An)
-L_02274:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     BCHG.B Dn,(An)+
+//     BCHG.B Dn,(d8,An,Xn)
+//     BCHG.B Dn,(xxx).L
+bchg_b_d2_mem_2:
         clrlwi  immed_data, d2, 29                      // immed_data = d2 & 0x00000007
         lbz     data, 0(addr)
         b       L_0768C
 
 // Reached from 1 dispatch table entry:
 //     BCLR.L #<bit>,Dn
-L_02280:
+bclr_l_imm_d2:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     BCLR.L Dn,Dn
-L_02284:
+bclr_l_dn_d2:
         rlwnm   data, d2, addr, 0, 31                   // data = rotl(d2, addr) & 0xFFFFFFFF
         mtcrf   0x01, data                              // cr7 = data[3:0]
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
@@ -5102,12 +5929,16 @@ L_02284:
 // Reached from 9 dispatch table entries:
 //     BCLR.B Dn,(d16,An)
 //     BCLR.B Dn,(xxx).W
-L_022A8:
+bclr_b_d2_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     BCLR.B Dn,(An)
-L_022AC:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     BCLR.B Dn,(An)+
+//     BCLR.B Dn,(d8,An,Xn)
+//     BCLR.B Dn,(xxx).L
+bclr_b_d2_mem_2:
         clrlwi  immed_data, d2, 29                      // immed_data = d2 & 0x00000007
         lbz     data, 0(addr)
         b       L_076CC
@@ -5115,12 +5946,12 @@ L_022AC:
 
 // Reached from 1 dispatch table entry:
 //     BSET.L #<bit>,Dn
-L_022C0:
+bset_l_imm_d2:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     BSET.L Dn,Dn
-L_022C4:
+bset_l_dn_d2:
         rlwnm   data, d2, addr, 0, 31                   // data = rotl(d2, addr) & 0xFFFFFFFF
         mtcrf   0x01, data                              // cr7 = data[3:0]
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
@@ -5134,12 +5965,16 @@ L_022C4:
 // Reached from 9 dispatch table entries:
 //     BSET.B Dn,(d16,An)
 //     BSET.B Dn,(xxx).W
-L_022E8:
+bset_b_d2_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     BSET.B Dn,(An)
-L_022EC:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     BSET.B Dn,(An)+
+//     BSET.B Dn,(d8,An,Xn)
+//     BSET.B Dn,(xxx).L
+bset_b_d2_mem_2:
         clrlwi  immed_data, d2, 29                      // immed_data = d2 & 0x00000007
         lbz     data, 0(addr)
         b       L_0774C
@@ -5147,12 +5982,12 @@ L_022EC:
 
 // Reached from 1 dispatch table entry:
 //     BTST.L #<bit>,Dn
-L_02300:
+btst_l_imm_d3:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     BTST.L Dn,Dn
-L_02304:
+btst_l_dn_d3:
         srw     data, d3, addr
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -5167,13 +6002,18 @@ L_02304:
 //     BTST.B Dn,(xxx).W
 //     BTST.B Dn,(d16,PC)
 //     BTST.B Dn,#<data>
-L_02324:
+btst_b_d3_ea:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     BTST.B Dn,(An)
 //     BTST.B Dn,-(An)
-L_02328:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     BTST.B Dn,(An)+
+//     BTST.B Dn,(d8,An,Xn)
+//     BTST.B Dn,(xxx).L
+//     BTST.B Dn,(d8,PC,Xn)
+btst_b_d3_mem:
         clrlwi  immed_data, d3, 29                      // immed_data = d3 & 0x00000007
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         b       L_0760C
@@ -5181,12 +6021,12 @@ L_02328:
 
 // Reached from 1 dispatch table entry:
 //     BCHG.L #<bit>,Dn
-L_02340:
+bchg_l_imm_d3:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     BCHG.L Dn,Dn
-L_02344:
+bchg_l_dn_d3:
         rlwnm   data, d3, addr, 0, 31                   // data = rotl(d3, addr) & 0xFFFFFFFF
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtcrf   0x01, data                              // cr7 = data[3:0]
@@ -5203,24 +6043,28 @@ L_02354:
 // Reached from 9 dispatch table entries:
 //     BCHG.B Dn,(d16,An)
 //     BCHG.B Dn,(xxx).W
-L_02370:
+bchg_b_d3_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     BCHG.B Dn,(An)
-L_02374:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     BCHG.B Dn,(An)+
+//     BCHG.B Dn,(d8,An,Xn)
+//     BCHG.B Dn,(xxx).L
+bchg_b_d3_mem_2:
         clrlwi  immed_data, d3, 29                      // immed_data = d3 & 0x00000007
         lbz     data, 0(addr)
         b       L_0768C
 
 // Reached from 1 dispatch table entry:
 //     BCLR.L #<bit>,Dn
-L_02380:
+bclr_l_imm_d3:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     BCLR.L Dn,Dn
-L_02384:
+bclr_l_dn_d3:
         rlwnm   data, d3, addr, 0, 31                   // data = rotl(d3, addr) & 0xFFFFFFFF
         mtcrf   0x01, data                              // cr7 = data[3:0]
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
@@ -5234,12 +6078,16 @@ L_02384:
 // Reached from 9 dispatch table entries:
 //     BCLR.B Dn,(d16,An)
 //     BCLR.B Dn,(xxx).W
-L_023A8:
+bclr_b_d3_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     BCLR.B Dn,(An)
-L_023AC:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     BCLR.B Dn,(An)+
+//     BCLR.B Dn,(d8,An,Xn)
+//     BCLR.B Dn,(xxx).L
+bclr_b_d3_mem_2:
         clrlwi  immed_data, d3, 29                      // immed_data = d3 & 0x00000007
         lbz     data, 0(addr)
         b       L_076CC
@@ -5247,12 +6095,12 @@ L_023AC:
 
 // Reached from 1 dispatch table entry:
 //     BSET.L #<bit>,Dn
-L_023C0:
+bset_l_imm_d3:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     BSET.L Dn,Dn
-L_023C4:
+bset_l_dn_d3:
         rlwnm   data, d3, addr, 0, 31                   // data = rotl(d3, addr) & 0xFFFFFFFF
         mtcrf   0x01, data                              // cr7 = data[3:0]
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
@@ -5266,12 +6114,16 @@ L_023C4:
 // Reached from 9 dispatch table entries:
 //     BSET.B Dn,(d16,An)
 //     BSET.B Dn,(xxx).W
-L_023E8:
+bset_b_d3_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     BSET.B Dn,(An)
-L_023EC:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     BSET.B Dn,(An)+
+//     BSET.B Dn,(d8,An,Xn)
+//     BSET.B Dn,(xxx).L
+bset_b_d3_mem_2:
         clrlwi  immed_data, d3, 29                      // immed_data = d3 & 0x00000007
         lbz     data, 0(addr)
         b       L_0774C
@@ -5279,12 +6131,12 @@ L_023EC:
 
 // Reached from 1 dispatch table entry:
 //     BTST.L #<bit>,Dn
-L_02400:
+btst_l_imm_d4:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     BTST.L Dn,Dn
-L_02404:
+btst_l_dn_d4:
         srw     data, d4, addr
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -5299,13 +6151,18 @@ L_02404:
 //     BTST.B Dn,(xxx).W
 //     BTST.B Dn,(d16,PC)
 //     BTST.B Dn,#<data>
-L_02424:
+btst_b_d4_ea:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     BTST.B Dn,(An)
 //     BTST.B Dn,-(An)
-L_02428:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     BTST.B Dn,(An)+
+//     BTST.B Dn,(d8,An,Xn)
+//     BTST.B Dn,(xxx).L
+//     BTST.B Dn,(d8,PC,Xn)
+btst_b_d4_mem:
         clrlwi  immed_data, d4, 29                      // immed_data = d4 & 0x00000007
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         b       L_0760C
@@ -5313,12 +6170,12 @@ L_02428:
 
 // Reached from 1 dispatch table entry:
 //     BCHG.L #<bit>,Dn
-L_02440:
+bchg_l_imm_d4:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     BCHG.L Dn,Dn
-L_02444:
+bchg_l_dn_d4:
         rlwnm   data, d4, addr, 0, 31                   // data = rotl(d4, addr) & 0xFFFFFFFF
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtcrf   0x01, data                              // cr7 = data[3:0]
@@ -5335,24 +6192,28 @@ L_02454:
 // Reached from 9 dispatch table entries:
 //     BCHG.B Dn,(d16,An)
 //     BCHG.B Dn,(xxx).W
-L_02470:
+bchg_b_d4_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     BCHG.B Dn,(An)
-L_02474:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     BCHG.B Dn,(An)+
+//     BCHG.B Dn,(d8,An,Xn)
+//     BCHG.B Dn,(xxx).L
+bchg_b_d4_mem_2:
         clrlwi  immed_data, d4, 29                      // immed_data = d4 & 0x00000007
         lbz     data, 0(addr)
         b       L_0768C
 
 // Reached from 1 dispatch table entry:
 //     BCLR.L #<bit>,Dn
-L_02480:
+bclr_l_imm_d4:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     BCLR.L Dn,Dn
-L_02484:
+bclr_l_dn_d4:
         rlwnm   data, d4, addr, 0, 31                   // data = rotl(d4, addr) & 0xFFFFFFFF
         mtcrf   0x01, data                              // cr7 = data[3:0]
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
@@ -5366,12 +6227,16 @@ L_02484:
 // Reached from 9 dispatch table entries:
 //     BCLR.B Dn,(d16,An)
 //     BCLR.B Dn,(xxx).W
-L_024A8:
+bclr_b_d4_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     BCLR.B Dn,(An)
-L_024AC:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     BCLR.B Dn,(An)+
+//     BCLR.B Dn,(d8,An,Xn)
+//     BCLR.B Dn,(xxx).L
+bclr_b_d4_mem_2:
         clrlwi  immed_data, d4, 29                      // immed_data = d4 & 0x00000007
         lbz     data, 0(addr)
         b       L_076CC
@@ -5379,12 +6244,12 @@ L_024AC:
 
 // Reached from 1 dispatch table entry:
 //     BSET.L #<bit>,Dn
-L_024C0:
+bset_l_imm_d4:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     BSET.L Dn,Dn
-L_024C4:
+bset_l_dn_d4:
         rlwnm   data, d4, addr, 0, 31                   // data = rotl(d4, addr) & 0xFFFFFFFF
         mtcrf   0x01, data                              // cr7 = data[3:0]
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
@@ -5398,12 +6263,16 @@ L_024C4:
 // Reached from 9 dispatch table entries:
 //     BSET.B Dn,(d16,An)
 //     BSET.B Dn,(xxx).W
-L_024E8:
+bset_b_d4_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     BSET.B Dn,(An)
-L_024EC:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     BSET.B Dn,(An)+
+//     BSET.B Dn,(d8,An,Xn)
+//     BSET.B Dn,(xxx).L
+bset_b_d4_mem_2:
         clrlwi  immed_data, d4, 29                      // immed_data = d4 & 0x00000007
         lbz     data, 0(addr)
         b       L_0774C
@@ -5411,12 +6280,12 @@ L_024EC:
 
 // Reached from 1 dispatch table entry:
 //     BTST.L #<bit>,Dn
-L_02500:
+btst_l_imm_d5:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     BTST.L Dn,Dn
-L_02504:
+btst_l_dn_d5:
         srw     data, d5, addr
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -5431,13 +6300,18 @@ L_02504:
 //     BTST.B Dn,(xxx).W
 //     BTST.B Dn,(d16,PC)
 //     BTST.B Dn,#<data>
-L_02524:
+btst_b_d5_ea:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     BTST.B Dn,(An)
 //     BTST.B Dn,-(An)
-L_02528:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     BTST.B Dn,(An)+
+//     BTST.B Dn,(d8,An,Xn)
+//     BTST.B Dn,(xxx).L
+//     BTST.B Dn,(d8,PC,Xn)
+btst_b_d5_mem:
         clrlwi  immed_data, d5, 29                      // immed_data = d5 & 0x00000007
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         b       L_0760C
@@ -5445,12 +6319,12 @@ L_02528:
 
 // Reached from 1 dispatch table entry:
 //     BCHG.L #<bit>,Dn
-L_02540:
+bchg_l_imm_d5:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     BCHG.L Dn,Dn
-L_02544:
+bchg_l_dn_d5:
         rlwnm   data, d5, addr, 0, 31                   // data = rotl(d5, addr) & 0xFFFFFFFF
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtcrf   0x01, data                              // cr7 = data[3:0]
@@ -5467,24 +6341,28 @@ L_02554:
 // Reached from 9 dispatch table entries:
 //     BCHG.B Dn,(d16,An)
 //     BCHG.B Dn,(xxx).W
-L_02570:
+bchg_b_d5_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     BCHG.B Dn,(An)
-L_02574:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     BCHG.B Dn,(An)+
+//     BCHG.B Dn,(d8,An,Xn)
+//     BCHG.B Dn,(xxx).L
+bchg_b_d5_mem_2:
         clrlwi  immed_data, d5, 29                      // immed_data = d5 & 0x00000007
         lbz     data, 0(addr)
         b       L_0768C
 
 // Reached from 1 dispatch table entry:
 //     BCLR.L #<bit>,Dn
-L_02580:
+bclr_l_imm_d5:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     BCLR.L Dn,Dn
-L_02584:
+bclr_l_dn_d5:
         rlwnm   data, d5, addr, 0, 31                   // data = rotl(d5, addr) & 0xFFFFFFFF
         mtcrf   0x01, data                              // cr7 = data[3:0]
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
@@ -5498,12 +6376,16 @@ L_02584:
 // Reached from 9 dispatch table entries:
 //     BCLR.B Dn,(d16,An)
 //     BCLR.B Dn,(xxx).W
-L_025A8:
+bclr_b_d5_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     BCLR.B Dn,(An)
-L_025AC:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     BCLR.B Dn,(An)+
+//     BCLR.B Dn,(d8,An,Xn)
+//     BCLR.B Dn,(xxx).L
+bclr_b_d5_mem_2:
         clrlwi  immed_data, d5, 29                      // immed_data = d5 & 0x00000007
         lbz     data, 0(addr)
         b       L_076CC
@@ -5511,12 +6393,12 @@ L_025AC:
 
 // Reached from 1 dispatch table entry:
 //     BSET.L #<bit>,Dn
-L_025C0:
+bset_l_imm_d5:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     BSET.L Dn,Dn
-L_025C4:
+bset_l_dn_d5:
         rlwnm   data, d5, addr, 0, 31                   // data = rotl(d5, addr) & 0xFFFFFFFF
         mtcrf   0x01, data                              // cr7 = data[3:0]
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
@@ -5530,12 +6412,16 @@ L_025C4:
 // Reached from 9 dispatch table entries:
 //     BSET.B Dn,(d16,An)
 //     BSET.B Dn,(xxx).W
-L_025E8:
+bset_b_d5_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     BSET.B Dn,(An)
-L_025EC:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     BSET.B Dn,(An)+
+//     BSET.B Dn,(d8,An,Xn)
+//     BSET.B Dn,(xxx).L
+bset_b_d5_mem_2:
         clrlwi  immed_data, d5, 29                      // immed_data = d5 & 0x00000007
         lbz     data, 0(addr)
         b       L_0774C
@@ -5543,12 +6429,12 @@ L_025EC:
 
 // Reached from 1 dispatch table entry:
 //     BTST.L #<bit>,Dn
-L_02600:
+btst_l_imm_d6:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     BTST.L Dn,Dn
-L_02604:
+btst_l_dn_d6:
         srw     data, d6, addr
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -5563,13 +6449,18 @@ L_02604:
 //     BTST.B Dn,(xxx).W
 //     BTST.B Dn,(d16,PC)
 //     BTST.B Dn,#<data>
-L_02624:
+btst_b_d6_ea:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     BTST.B Dn,(An)
 //     BTST.B Dn,-(An)
-L_02628:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     BTST.B Dn,(An)+
+//     BTST.B Dn,(d8,An,Xn)
+//     BTST.B Dn,(xxx).L
+//     BTST.B Dn,(d8,PC,Xn)
+btst_b_d6_mem:
         clrlwi  immed_data, d6, 29                      // immed_data = d6 & 0x00000007
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         b       L_0760C
@@ -5577,12 +6468,12 @@ L_02628:
 
 // Reached from 1 dispatch table entry:
 //     BCHG.L #<bit>,Dn
-L_02640:
+bchg_l_imm_d6:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     BCHG.L Dn,Dn
-L_02644:
+bchg_l_dn_d6:
         rlwnm   data, d6, addr, 0, 31                   // data = rotl(d6, addr) & 0xFFFFFFFF
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtcrf   0x01, data                              // cr7 = data[3:0]
@@ -5599,24 +6490,28 @@ L_02654:
 // Reached from 9 dispatch table entries:
 //     BCHG.B Dn,(d16,An)
 //     BCHG.B Dn,(xxx).W
-L_02670:
+bchg_b_d6_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     BCHG.B Dn,(An)
-L_02674:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     BCHG.B Dn,(An)+
+//     BCHG.B Dn,(d8,An,Xn)
+//     BCHG.B Dn,(xxx).L
+bchg_b_d6_mem_2:
         clrlwi  immed_data, d6, 29                      // immed_data = d6 & 0x00000007
         lbz     data, 0(addr)
         b       L_0768C
 
 // Reached from 1 dispatch table entry:
 //     BCLR.L #<bit>,Dn
-L_02680:
+bclr_l_imm_d6:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     BCLR.L Dn,Dn
-L_02684:
+bclr_l_dn_d6:
         rlwnm   data, d6, addr, 0, 31                   // data = rotl(d6, addr) & 0xFFFFFFFF
         mtcrf   0x01, data                              // cr7 = data[3:0]
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
@@ -5630,12 +6525,16 @@ L_02684:
 // Reached from 9 dispatch table entries:
 //     BCLR.B Dn,(d16,An)
 //     BCLR.B Dn,(xxx).W
-L_026A8:
+bclr_b_d6_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     BCLR.B Dn,(An)
-L_026AC:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     BCLR.B Dn,(An)+
+//     BCLR.B Dn,(d8,An,Xn)
+//     BCLR.B Dn,(xxx).L
+bclr_b_d6_mem_2:
         clrlwi  immed_data, d6, 29                      // immed_data = d6 & 0x00000007
         lbz     data, 0(addr)
         b       L_076CC
@@ -5643,12 +6542,12 @@ L_026AC:
 
 // Reached from 1 dispatch table entry:
 //     BSET.L #<bit>,Dn
-L_026C0:
+bset_l_imm_d6:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     BSET.L Dn,Dn
-L_026C4:
+bset_l_dn_d6:
         rlwnm   data, d6, addr, 0, 31                   // data = rotl(d6, addr) & 0xFFFFFFFF
         mtcrf   0x01, data                              // cr7 = data[3:0]
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
@@ -5662,12 +6561,16 @@ L_026C4:
 // Reached from 9 dispatch table entries:
 //     BSET.B Dn,(d16,An)
 //     BSET.B Dn,(xxx).W
-L_026E8:
+bset_b_d6_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     BSET.B Dn,(An)
-L_026EC:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     BSET.B Dn,(An)+
+//     BSET.B Dn,(d8,An,Xn)
+//     BSET.B Dn,(xxx).L
+bset_b_d6_mem_2:
         clrlwi  immed_data, d6, 29                      // immed_data = d6 & 0x00000007
         lbz     data, 0(addr)
         b       L_0774C
@@ -5675,12 +6578,12 @@ L_026EC:
 
 // Reached from 1 dispatch table entry:
 //     BTST.L #<bit>,Dn
-L_02700:
+btst_l_imm_d7:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     BTST.L Dn,Dn
-L_02704:
+btst_l_dn_d7:
         srw     data, d7, addr
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -5695,13 +6598,18 @@ L_02704:
 //     BTST.B Dn,(xxx).W
 //     BTST.B Dn,(d16,PC)
 //     BTST.B Dn,#<data>
-L_02724:
+btst_b_d7_ea:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     BTST.B Dn,(An)
 //     BTST.B Dn,-(An)
-L_02728:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     BTST.B Dn,(An)+
+//     BTST.B Dn,(d8,An,Xn)
+//     BTST.B Dn,(xxx).L
+//     BTST.B Dn,(d8,PC,Xn)
+btst_b_d7_mem:
         clrlwi  immed_data, d7, 29                      // immed_data = d7 & 0x00000007
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         b       L_0760C
@@ -5709,12 +6617,12 @@ L_02728:
 
 // Reached from 1 dispatch table entry:
 //     BCHG.L #<bit>,Dn
-L_02740:
+bchg_l_imm_d7:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     BCHG.L Dn,Dn
-L_02744:
+bchg_l_dn_d7:
         rlwnm   data, d7, addr, 0, 31                   // data = rotl(d7, addr) & 0xFFFFFFFF
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtcrf   0x01, data                              // cr7 = data[3:0]
@@ -5731,24 +6639,28 @@ L_02754:
 // Reached from 9 dispatch table entries:
 //     BCHG.B Dn,(d16,An)
 //     BCHG.B Dn,(xxx).W
-L_02770:
+bchg_b_d7_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     BCHG.B Dn,(An)
-L_02774:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     BCHG.B Dn,(An)+
+//     BCHG.B Dn,(d8,An,Xn)
+//     BCHG.B Dn,(xxx).L
+bchg_b_d7_mem_2:
         clrlwi  immed_data, d7, 29                      // immed_data = d7 & 0x00000007
         lbz     data, 0(addr)
         b       L_0768C
 
 // Reached from 1 dispatch table entry:
 //     BCLR.L #<bit>,Dn
-L_02780:
+bclr_l_imm_d7:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     BCLR.L Dn,Dn
-L_02784:
+bclr_l_dn_d7:
         rlwnm   data, d7, addr, 0, 31                   // data = rotl(d7, addr) & 0xFFFFFFFF
         mtcrf   0x01, data                              // cr7 = data[3:0]
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
@@ -5762,12 +6674,16 @@ L_02784:
 // Reached from 9 dispatch table entries:
 //     BCLR.B Dn,(d16,An)
 //     BCLR.B Dn,(xxx).W
-L_027A8:
+bclr_b_d7_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     BCLR.B Dn,(An)
-L_027AC:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     BCLR.B Dn,(An)+
+//     BCLR.B Dn,(d8,An,Xn)
+//     BCLR.B Dn,(xxx).L
+bclr_b_d7_mem_2:
         clrlwi  immed_data, d7, 29                      // immed_data = d7 & 0x00000007
         lbz     data, 0(addr)
         b       L_076CC
@@ -5775,12 +6691,12 @@ L_027AC:
 
 // Reached from 1 dispatch table entry:
 //     BSET.L #<bit>,Dn
-L_027C0:
+bset_l_imm_d7:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     BSET.L Dn,Dn
-L_027C4:
+bset_l_dn_d7:
         rlwnm   data, d7, addr, 0, 31                   // data = rotl(d7, addr) & 0xFFFFFFFF
         mtcrf   0x01, data                              // cr7 = data[3:0]
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
@@ -5794,12 +6710,16 @@ L_027C4:
 // Reached from 9 dispatch table entries:
 //     BSET.B Dn,(d16,An)
 //     BSET.B Dn,(xxx).W
-L_027E8:
+bset_b_d7_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     BSET.B Dn,(An)
-L_027EC:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     BSET.B Dn,(An)+
+//     BSET.B Dn,(d8,An,Xn)
+//     BSET.B Dn,(xxx).L
+bset_b_d7_mem_2:
         clrlwi  immed_data, d7, 29                      // immed_data = d7 & 0x00000007
         lbz     data, 0(addr)
         b       L_0774C
@@ -5809,13 +6729,18 @@ L_027EC:
 //     OR.B (d16,An),Dn
 //     OR.B (xxx).W,Dn
 //     OR.B (d16,PC),Dn
-L_02800:
+or_b_mem_d0:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     OR.B (An),Dn
 //     OR.B -(An),Dn
-L_02804:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     OR.B (An)+,Dn
+//     OR.B (d8,An,Xn),Dn
+//     OR.B (xxx).L,Dn
+//     OR.B (d8,PC,Xn),Dn
+or_b_mem_d0_2:
         or      d0, d0, data
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
 L_0280C:
@@ -5830,13 +6755,18 @@ L_0280C:
 //     AND.B (d16,An),Dn
 //     AND.B (xxx).W,Dn
 //     AND.B (d16,PC),Dn
-L_02824:
+and_b_mem_d0:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     AND.B (An),Dn
 //     AND.B -(An),Dn
-L_02828:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     AND.B (An)+,Dn
+//     AND.B (d8,An,Xn),Dn
+//     AND.B (xxx).L,Dn
+//     AND.B (d8,PC,Xn),Dn
+and_b_mem_d0_2:
         and     data, d0, data
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         rlwimi  d0, data, 0, 24, 31                     // d0[7:0] = data[7:0]
@@ -5847,13 +6777,18 @@ L_02828:
 //     OR.B (d16,An),Dn
 //     OR.B (xxx).W,Dn
 //     OR.B (d16,PC),Dn
-L_02840:
+or_b_mem_d1:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     OR.B (An),Dn
 //     OR.B -(An),Dn
-L_02844:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     OR.B (An)+,Dn
+//     OR.B (d8,An,Xn),Dn
+//     OR.B (xxx).L,Dn
+//     OR.B (d8,PC,Xn),Dn
+or_b_mem_d1_2:
         or      d1, d1, data
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
 L_0284C:
@@ -5868,13 +6803,18 @@ L_0284C:
 //     AND.B (d16,An),Dn
 //     AND.B (xxx).W,Dn
 //     AND.B (d16,PC),Dn
-L_02864:
+and_b_mem_d1:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     AND.B (An),Dn
 //     AND.B -(An),Dn
-L_02868:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     AND.B (An)+,Dn
+//     AND.B (d8,An,Xn),Dn
+//     AND.B (xxx).L,Dn
+//     AND.B (d8,PC,Xn),Dn
+and_b_mem_d1_2:
         and     data, d1, data
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         rlwimi  d1, data, 0, 24, 31                     // d1[7:0] = data[7:0]
@@ -5885,13 +6825,18 @@ L_02868:
 //     OR.B (d16,An),Dn
 //     OR.B (xxx).W,Dn
 //     OR.B (d16,PC),Dn
-L_02880:
+or_b_mem_d2:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     OR.B (An),Dn
 //     OR.B -(An),Dn
-L_02884:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     OR.B (An)+,Dn
+//     OR.B (d8,An,Xn),Dn
+//     OR.B (xxx).L,Dn
+//     OR.B (d8,PC,Xn),Dn
+or_b_mem_d2_2:
         or      d2, d2, data
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
 L_0288C:
@@ -5906,13 +6851,18 @@ L_0288C:
 //     AND.B (d16,An),Dn
 //     AND.B (xxx).W,Dn
 //     AND.B (d16,PC),Dn
-L_028A4:
+and_b_mem_d2:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     AND.B (An),Dn
 //     AND.B -(An),Dn
-L_028A8:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     AND.B (An)+,Dn
+//     AND.B (d8,An,Xn),Dn
+//     AND.B (xxx).L,Dn
+//     AND.B (d8,PC,Xn),Dn
+and_b_mem_d2_2:
         and     data, d2, data
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         rlwimi  d2, data, 0, 24, 31                     // d2[7:0] = data[7:0]
@@ -5923,13 +6873,18 @@ L_028A8:
 //     OR.B (d16,An),Dn
 //     OR.B (xxx).W,Dn
 //     OR.B (d16,PC),Dn
-L_028C0:
+or_b_mem_d3:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     OR.B (An),Dn
 //     OR.B -(An),Dn
-L_028C4:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     OR.B (An)+,Dn
+//     OR.B (d8,An,Xn),Dn
+//     OR.B (xxx).L,Dn
+//     OR.B (d8,PC,Xn),Dn
+or_b_mem_d3_2:
         or      d3, d3, data
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
 L_028CC:
@@ -5944,13 +6899,18 @@ L_028CC:
 //     AND.B (d16,An),Dn
 //     AND.B (xxx).W,Dn
 //     AND.B (d16,PC),Dn
-L_028E4:
+and_b_mem_d3:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     AND.B (An),Dn
 //     AND.B -(An),Dn
-L_028E8:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     AND.B (An)+,Dn
+//     AND.B (d8,An,Xn),Dn
+//     AND.B (xxx).L,Dn
+//     AND.B (d8,PC,Xn),Dn
+and_b_mem_d3_2:
         and     data, d3, data
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         rlwimi  d3, data, 0, 24, 31                     // d3[7:0] = data[7:0]
@@ -5961,13 +6921,18 @@ L_028E8:
 //     OR.B (d16,An),Dn
 //     OR.B (xxx).W,Dn
 //     OR.B (d16,PC),Dn
-L_02900:
+or_b_mem_d4:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     OR.B (An),Dn
 //     OR.B -(An),Dn
-L_02904:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     OR.B (An)+,Dn
+//     OR.B (d8,An,Xn),Dn
+//     OR.B (xxx).L,Dn
+//     OR.B (d8,PC,Xn),Dn
+or_b_mem_d4_2:
         or      d4, d4, data
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
 L_0290C:
@@ -5982,13 +6947,18 @@ L_0290C:
 //     AND.B (d16,An),Dn
 //     AND.B (xxx).W,Dn
 //     AND.B (d16,PC),Dn
-L_02924:
+and_b_mem_d4:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     AND.B (An),Dn
 //     AND.B -(An),Dn
-L_02928:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     AND.B (An)+,Dn
+//     AND.B (d8,An,Xn),Dn
+//     AND.B (xxx).L,Dn
+//     AND.B (d8,PC,Xn),Dn
+and_b_mem_d4_2:
         and     data, d4, data
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         rlwimi  d4, data, 0, 24, 31                     // d4[7:0] = data[7:0]
@@ -5999,13 +6969,18 @@ L_02928:
 //     OR.B (d16,An),Dn
 //     OR.B (xxx).W,Dn
 //     OR.B (d16,PC),Dn
-L_02940:
+or_b_mem_d5:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     OR.B (An),Dn
 //     OR.B -(An),Dn
-L_02944:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     OR.B (An)+,Dn
+//     OR.B (d8,An,Xn),Dn
+//     OR.B (xxx).L,Dn
+//     OR.B (d8,PC,Xn),Dn
+or_b_mem_d5_2:
         or      d5, d5, data
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
 L_0294C:
@@ -6020,13 +6995,18 @@ L_0294C:
 //     AND.B (d16,An),Dn
 //     AND.B (xxx).W,Dn
 //     AND.B (d16,PC),Dn
-L_02964:
+and_b_mem_d5:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     AND.B (An),Dn
 //     AND.B -(An),Dn
-L_02968:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     AND.B (An)+,Dn
+//     AND.B (d8,An,Xn),Dn
+//     AND.B (xxx).L,Dn
+//     AND.B (d8,PC,Xn),Dn
+and_b_mem_d5_2:
         and     data, d5, data
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         rlwimi  d5, data, 0, 24, 31                     // d5[7:0] = data[7:0]
@@ -6037,13 +7017,18 @@ L_02968:
 //     OR.B (d16,An),Dn
 //     OR.B (xxx).W,Dn
 //     OR.B (d16,PC),Dn
-L_02980:
+or_b_mem_d6:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     OR.B (An),Dn
 //     OR.B -(An),Dn
-L_02984:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     OR.B (An)+,Dn
+//     OR.B (d8,An,Xn),Dn
+//     OR.B (xxx).L,Dn
+//     OR.B (d8,PC,Xn),Dn
+or_b_mem_d6_2:
         or      d6, d6, data
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
 L_0298C:
@@ -6058,13 +7043,18 @@ L_0298C:
 //     AND.B (d16,An),Dn
 //     AND.B (xxx).W,Dn
 //     AND.B (d16,PC),Dn
-L_029A4:
+and_b_mem_d6:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     AND.B (An),Dn
 //     AND.B -(An),Dn
-L_029A8:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     AND.B (An)+,Dn
+//     AND.B (d8,An,Xn),Dn
+//     AND.B (xxx).L,Dn
+//     AND.B (d8,PC,Xn),Dn
+and_b_mem_d6_2:
         and     data, d6, data
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         rlwimi  d6, data, 0, 24, 31                     // d6[7:0] = data[7:0]
@@ -6075,13 +7065,18 @@ L_029A8:
 //     OR.B (d16,An),Dn
 //     OR.B (xxx).W,Dn
 //     OR.B (d16,PC),Dn
-L_029C0:
+or_b_mem_d7:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     OR.B (An),Dn
 //     OR.B -(An),Dn
-L_029C4:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     OR.B (An)+,Dn
+//     OR.B (d8,An,Xn),Dn
+//     OR.B (xxx).L,Dn
+//     OR.B (d8,PC,Xn),Dn
+or_b_mem_d7_2:
         or      d7, d7, data
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
 L_029CC:
@@ -6096,13 +7091,18 @@ L_029CC:
 //     AND.B (d16,An),Dn
 //     AND.B (xxx).W,Dn
 //     AND.B (d16,PC),Dn
-L_029E4:
+and_b_mem_d7:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     AND.B (An),Dn
 //     AND.B -(An),Dn
-L_029E8:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     AND.B (An)+,Dn
+//     AND.B (d8,An,Xn),Dn
+//     AND.B (xxx).L,Dn
+//     AND.B (d8,PC,Xn),Dn
+and_b_mem_d7_2:
         and     data, d7, data
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         rlwimi  d7, data, 0, 24, 31                     // d7[7:0] = data[7:0]
@@ -6113,29 +7113,39 @@ L_029E8:
 //     AND.W (d16,An),Dn
 //     AND.W (xxx).W,Dn
 //     AND.W (d16,PC),Dn
-L_02A00:
+and_w_mem_d0:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     AND.W (An),Dn
 //     AND.W -(An),Dn
-L_02A04:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     AND.W (An)+,Dn
+//     AND.W (d8,An,Xn),Dn
+//     AND.W (xxx).L,Dn
+//     AND.W (d8,PC,Xn),Dn
+and_w_mem_d0_2:
         and     data, d0, data
         rlwimi  d0, data, 0, 16, 31                     // d0[15:0] = data[15:0]
-        b       L_02A24
+        b       move_w_reg_d0
 
 // Reached from 16 dispatch table entries:
 //     OR.W (An),Dn
 //     OR.W -(An),Dn
-L_02A10:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     OR.W (An)+,Dn
+//     OR.W (d8,An,Xn),Dn
+//     OR.W (xxx).L,Dn
+//     OR.W (d8,PC,Xn),Dn
+or_w_mem_d0:
         or      data, d0, data
-        b       L_02A20
+        b       or_eor_etc_w_reg_d0
 
 // Reached from 10 dispatch table entries:
 //     OR.W (d16,An),Dn
 //     OR.W (xxx).W,Dn
 //     OR.W (d16,PC),Dn
-L_02A18:
+or_w_mem_d0_2:
         or      data, d0, data
 
 // Reached from 5 dispatch table entries:
@@ -6144,7 +7154,7 @@ L_02A18:
 //     EORI.W #<data>,Dn
 //     OR.W #<data>,Dn
 //     AND.W #<data>,Dn
-L_02A1C:
+or_and_eor_w_imm_d0:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 23 dispatch table entries:
@@ -6153,13 +7163,13 @@ L_02A1C:
 //     AND.W Dn,Dn
 //     NOT.W Dn
 //     EXT.W Dn
-L_02A20:
+or_eor_etc_w_reg_d0:
         rlwimi  d0, data, 0, 16, 31                     // d0[15:0] = data[15:0]
 
 // Reached from 15 dispatch table entries:
 //     MOVE.W An,Dn
 //     MOVE.W Dn,Dn
-L_02A24:
+move_w_reg_d0:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         extsh   data, d0                                // data = sign-extended low word of d0
@@ -6172,29 +7182,39 @@ L_02A24:
 //     AND.W (d16,An),Dn
 //     AND.W (xxx).W,Dn
 //     AND.W (d16,PC),Dn
-L_02A40:
+and_w_mem_d1:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     AND.W (An),Dn
 //     AND.W -(An),Dn
-L_02A44:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     AND.W (An)+,Dn
+//     AND.W (d8,An,Xn),Dn
+//     AND.W (xxx).L,Dn
+//     AND.W (d8,PC,Xn),Dn
+and_w_mem_d1_2:
         and     data, d1, data
         rlwimi  d1, data, 0, 16, 31                     // d1[15:0] = data[15:0]
-        b       L_02A64
+        b       move_w_reg_d1
 
 // Reached from 16 dispatch table entries:
 //     OR.W (An),Dn
 //     OR.W -(An),Dn
-L_02A50:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     OR.W (An)+,Dn
+//     OR.W (d8,An,Xn),Dn
+//     OR.W (xxx).L,Dn
+//     OR.W (d8,PC,Xn),Dn
+or_w_mem_d1:
         or      data, d1, data
-        b       L_02A60
+        b       or_eor_etc_w_reg_d1
 
 // Reached from 10 dispatch table entries:
 //     OR.W (d16,An),Dn
 //     OR.W (xxx).W,Dn
 //     OR.W (d16,PC),Dn
-L_02A58:
+or_w_mem_d1_2:
         or      data, d1, data
 
 // Reached from 5 dispatch table entries:
@@ -6203,7 +7223,7 @@ L_02A58:
 //     EORI.W #<data>,Dn
 //     OR.W #<data>,Dn
 //     AND.W #<data>,Dn
-L_02A5C:
+or_and_eor_w_imm_d1:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 23 dispatch table entries:
@@ -6212,13 +7232,13 @@ L_02A5C:
 //     AND.W Dn,Dn
 //     NOT.W Dn
 //     EXT.W Dn
-L_02A60:
+or_eor_etc_w_reg_d1:
         rlwimi  d1, data, 0, 16, 31                     // d1[15:0] = data[15:0]
 
 // Reached from 15 dispatch table entries:
 //     MOVE.W An,Dn
 //     MOVE.W Dn,Dn
-L_02A64:
+move_w_reg_d1:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         extsh   data, d1                                // data = sign-extended low word of d1
@@ -6231,29 +7251,39 @@ L_02A64:
 //     AND.W (d16,An),Dn
 //     AND.W (xxx).W,Dn
 //     AND.W (d16,PC),Dn
-L_02A80:
+and_w_mem_d2:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     AND.W (An),Dn
 //     AND.W -(An),Dn
-L_02A84:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     AND.W (An)+,Dn
+//     AND.W (d8,An,Xn),Dn
+//     AND.W (xxx).L,Dn
+//     AND.W (d8,PC,Xn),Dn
+and_w_mem_d2_2:
         and     data, d2, data
         rlwimi  d2, data, 0, 16, 31                     // d2[15:0] = data[15:0]
-        b       L_02AA4
+        b       move_w_reg_d2
 
 // Reached from 16 dispatch table entries:
 //     OR.W (An),Dn
 //     OR.W -(An),Dn
-L_02A90:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     OR.W (An)+,Dn
+//     OR.W (d8,An,Xn),Dn
+//     OR.W (xxx).L,Dn
+//     OR.W (d8,PC,Xn),Dn
+or_w_mem_d2:
         or      data, d2, data
-        b       L_02AA0
+        b       or_eor_etc_w_reg_d2
 
 // Reached from 10 dispatch table entries:
 //     OR.W (d16,An),Dn
 //     OR.W (xxx).W,Dn
 //     OR.W (d16,PC),Dn
-L_02A98:
+or_w_mem_d2_2:
         or      data, d2, data
 
 // Reached from 5 dispatch table entries:
@@ -6262,7 +7292,7 @@ L_02A98:
 //     EORI.W #<data>,Dn
 //     OR.W #<data>,Dn
 //     AND.W #<data>,Dn
-L_02A9C:
+or_and_eor_w_imm_d2:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 23 dispatch table entries:
@@ -6271,13 +7301,13 @@ L_02A9C:
 //     AND.W Dn,Dn
 //     NOT.W Dn
 //     EXT.W Dn
-L_02AA0:
+or_eor_etc_w_reg_d2:
         rlwimi  d2, data, 0, 16, 31                     // d2[15:0] = data[15:0]
 
 // Reached from 15 dispatch table entries:
 //     MOVE.W An,Dn
 //     MOVE.W Dn,Dn
-L_02AA4:
+move_w_reg_d2:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         extsh   data, d2                                // data = sign-extended low word of d2
@@ -6290,29 +7320,39 @@ L_02AA4:
 //     AND.W (d16,An),Dn
 //     AND.W (xxx).W,Dn
 //     AND.W (d16,PC),Dn
-L_02AC0:
+and_w_mem_d3:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     AND.W (An),Dn
 //     AND.W -(An),Dn
-L_02AC4:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     AND.W (An)+,Dn
+//     AND.W (d8,An,Xn),Dn
+//     AND.W (xxx).L,Dn
+//     AND.W (d8,PC,Xn),Dn
+and_w_mem_d3_2:
         and     data, d3, data
         rlwimi  d3, data, 0, 16, 31                     // d3[15:0] = data[15:0]
-        b       L_02AE4
+        b       move_w_reg_d3
 
 // Reached from 16 dispatch table entries:
 //     OR.W (An),Dn
 //     OR.W -(An),Dn
-L_02AD0:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     OR.W (An)+,Dn
+//     OR.W (d8,An,Xn),Dn
+//     OR.W (xxx).L,Dn
+//     OR.W (d8,PC,Xn),Dn
+or_w_mem_d3:
         or      data, d3, data
-        b       L_02AE0
+        b       or_eor_etc_w_reg_d3
 
 // Reached from 10 dispatch table entries:
 //     OR.W (d16,An),Dn
 //     OR.W (xxx).W,Dn
 //     OR.W (d16,PC),Dn
-L_02AD8:
+or_w_mem_d3_2:
         or      data, d3, data
 
 // Reached from 5 dispatch table entries:
@@ -6321,7 +7361,7 @@ L_02AD8:
 //     EORI.W #<data>,Dn
 //     OR.W #<data>,Dn
 //     AND.W #<data>,Dn
-L_02ADC:
+or_and_eor_w_imm_d3:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 23 dispatch table entries:
@@ -6330,13 +7370,13 @@ L_02ADC:
 //     AND.W Dn,Dn
 //     NOT.W Dn
 //     EXT.W Dn
-L_02AE0:
+or_eor_etc_w_reg_d3:
         rlwimi  d3, data, 0, 16, 31                     // d3[15:0] = data[15:0]
 
 // Reached from 15 dispatch table entries:
 //     MOVE.W An,Dn
 //     MOVE.W Dn,Dn
-L_02AE4:
+move_w_reg_d3:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         extsh   data, d3                                // data = sign-extended low word of d3
@@ -6349,29 +7389,39 @@ L_02AE4:
 //     AND.W (d16,An),Dn
 //     AND.W (xxx).W,Dn
 //     AND.W (d16,PC),Dn
-L_02B00:
+and_w_mem_d4:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     AND.W (An),Dn
 //     AND.W -(An),Dn
-L_02B04:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     AND.W (An)+,Dn
+//     AND.W (d8,An,Xn),Dn
+//     AND.W (xxx).L,Dn
+//     AND.W (d8,PC,Xn),Dn
+and_w_mem_d4_2:
         and     data, d4, data
         rlwimi  d4, data, 0, 16, 31                     // d4[15:0] = data[15:0]
-        b       L_02B24
+        b       move_w_reg_d4
 
 // Reached from 16 dispatch table entries:
 //     OR.W (An),Dn
 //     OR.W -(An),Dn
-L_02B10:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     OR.W (An)+,Dn
+//     OR.W (d8,An,Xn),Dn
+//     OR.W (xxx).L,Dn
+//     OR.W (d8,PC,Xn),Dn
+or_w_mem_d4:
         or      data, d4, data
-        b       L_02B20
+        b       or_eor_etc_w_reg_d4
 
 // Reached from 10 dispatch table entries:
 //     OR.W (d16,An),Dn
 //     OR.W (xxx).W,Dn
 //     OR.W (d16,PC),Dn
-L_02B18:
+or_w_mem_d4_2:
         or      data, d4, data
 
 // Reached from 5 dispatch table entries:
@@ -6380,7 +7430,7 @@ L_02B18:
 //     EORI.W #<data>,Dn
 //     OR.W #<data>,Dn
 //     AND.W #<data>,Dn
-L_02B1C:
+or_and_eor_w_imm_d4:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 23 dispatch table entries:
@@ -6389,13 +7439,13 @@ L_02B1C:
 //     AND.W Dn,Dn
 //     NOT.W Dn
 //     EXT.W Dn
-L_02B20:
+or_eor_etc_w_reg_d4:
         rlwimi  d4, data, 0, 16, 31                     // d4[15:0] = data[15:0]
 
 // Reached from 15 dispatch table entries:
 //     MOVE.W An,Dn
 //     MOVE.W Dn,Dn
-L_02B24:
+move_w_reg_d4:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         extsh   data, d4                                // data = sign-extended low word of d4
@@ -6408,29 +7458,39 @@ L_02B24:
 //     AND.W (d16,An),Dn
 //     AND.W (xxx).W,Dn
 //     AND.W (d16,PC),Dn
-L_02B40:
+and_w_mem_d5:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     AND.W (An),Dn
 //     AND.W -(An),Dn
-L_02B44:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     AND.W (An)+,Dn
+//     AND.W (d8,An,Xn),Dn
+//     AND.W (xxx).L,Dn
+//     AND.W (d8,PC,Xn),Dn
+and_w_mem_d5_2:
         and     data, d5, data
         rlwimi  d5, data, 0, 16, 31                     // d5[15:0] = data[15:0]
-        b       L_02B64
+        b       move_w_reg_d5
 
 // Reached from 16 dispatch table entries:
 //     OR.W (An),Dn
 //     OR.W -(An),Dn
-L_02B50:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     OR.W (An)+,Dn
+//     OR.W (d8,An,Xn),Dn
+//     OR.W (xxx).L,Dn
+//     OR.W (d8,PC,Xn),Dn
+or_w_mem_d5:
         or      data, d5, data
-        b       L_02B60
+        b       or_eor_etc_w_reg_d5
 
 // Reached from 10 dispatch table entries:
 //     OR.W (d16,An),Dn
 //     OR.W (xxx).W,Dn
 //     OR.W (d16,PC),Dn
-L_02B58:
+or_w_mem_d5_2:
         or      data, d5, data
 
 // Reached from 5 dispatch table entries:
@@ -6439,7 +7499,7 @@ L_02B58:
 //     EORI.W #<data>,Dn
 //     OR.W #<data>,Dn
 //     AND.W #<data>,Dn
-L_02B5C:
+or_and_eor_w_imm_d5:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 23 dispatch table entries:
@@ -6448,13 +7508,13 @@ L_02B5C:
 //     AND.W Dn,Dn
 //     NOT.W Dn
 //     EXT.W Dn
-L_02B60:
+or_eor_etc_w_reg_d5:
         rlwimi  d5, data, 0, 16, 31                     // d5[15:0] = data[15:0]
 
 // Reached from 15 dispatch table entries:
 //     MOVE.W An,Dn
 //     MOVE.W Dn,Dn
-L_02B64:
+move_w_reg_d5:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         extsh   data, d5                                // data = sign-extended low word of d5
@@ -6467,29 +7527,39 @@ L_02B64:
 //     AND.W (d16,An),Dn
 //     AND.W (xxx).W,Dn
 //     AND.W (d16,PC),Dn
-L_02B80:
+and_w_mem_d6:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     AND.W (An),Dn
 //     AND.W -(An),Dn
-L_02B84:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     AND.W (An)+,Dn
+//     AND.W (d8,An,Xn),Dn
+//     AND.W (xxx).L,Dn
+//     AND.W (d8,PC,Xn),Dn
+and_w_mem_d6_2:
         and     data, d6, data
         rlwimi  d6, data, 0, 16, 31                     // d6[15:0] = data[15:0]
-        b       L_02BA4
+        b       move_w_reg_d6
 
 // Reached from 16 dispatch table entries:
 //     OR.W (An),Dn
 //     OR.W -(An),Dn
-L_02B90:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     OR.W (An)+,Dn
+//     OR.W (d8,An,Xn),Dn
+//     OR.W (xxx).L,Dn
+//     OR.W (d8,PC,Xn),Dn
+or_w_mem_d6:
         or      data, d6, data
-        b       L_02BA0
+        b       or_eor_etc_w_reg_d6
 
 // Reached from 10 dispatch table entries:
 //     OR.W (d16,An),Dn
 //     OR.W (xxx).W,Dn
 //     OR.W (d16,PC),Dn
-L_02B98:
+or_w_mem_d6_2:
         or      data, d6, data
 
 // Reached from 5 dispatch table entries:
@@ -6498,7 +7568,7 @@ L_02B98:
 //     EORI.W #<data>,Dn
 //     OR.W #<data>,Dn
 //     AND.W #<data>,Dn
-L_02B9C:
+or_and_eor_w_imm_d6:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 23 dispatch table entries:
@@ -6507,13 +7577,13 @@ L_02B9C:
 //     AND.W Dn,Dn
 //     NOT.W Dn
 //     EXT.W Dn
-L_02BA0:
+or_eor_etc_w_reg_d6:
         rlwimi  d6, data, 0, 16, 31                     // d6[15:0] = data[15:0]
 
 // Reached from 15 dispatch table entries:
 //     MOVE.W An,Dn
 //     MOVE.W Dn,Dn
-L_02BA4:
+move_w_reg_d6:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         extsh   data, d6                                // data = sign-extended low word of d6
@@ -6526,29 +7596,39 @@ L_02BA4:
 //     AND.W (d16,An),Dn
 //     AND.W (xxx).W,Dn
 //     AND.W (d16,PC),Dn
-L_02BC0:
+and_w_mem_d7:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     AND.W (An),Dn
 //     AND.W -(An),Dn
-L_02BC4:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     AND.W (An)+,Dn
+//     AND.W (d8,An,Xn),Dn
+//     AND.W (xxx).L,Dn
+//     AND.W (d8,PC,Xn),Dn
+and_w_mem_d7_2:
         and     data, d7, data
         rlwimi  d7, data, 0, 16, 31                     // d7[15:0] = data[15:0]
-        b       L_02BE4
+        b       move_w_reg_d7
 
 // Reached from 16 dispatch table entries:
 //     OR.W (An),Dn
 //     OR.W -(An),Dn
-L_02BD0:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     OR.W (An)+,Dn
+//     OR.W (d8,An,Xn),Dn
+//     OR.W (xxx).L,Dn
+//     OR.W (d8,PC,Xn),Dn
+or_w_mem_d7:
         or      data, d7, data
-        b       L_02BE0
+        b       or_eor_etc_w_reg_d7
 
 // Reached from 10 dispatch table entries:
 //     OR.W (d16,An),Dn
 //     OR.W (xxx).W,Dn
 //     OR.W (d16,PC),Dn
-L_02BD8:
+or_w_mem_d7_2:
         or      data, d7, data
 
 // Reached from 5 dispatch table entries:
@@ -6557,7 +7637,7 @@ L_02BD8:
 //     EORI.W #<data>,Dn
 //     OR.W #<data>,Dn
 //     AND.W #<data>,Dn
-L_02BDC:
+or_and_eor_w_imm_d7:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 23 dispatch table entries:
@@ -6566,13 +7646,13 @@ L_02BDC:
 //     AND.W Dn,Dn
 //     NOT.W Dn
 //     EXT.W Dn
-L_02BE0:
+or_eor_etc_w_reg_d7:
         rlwimi  d7, data, 0, 16, 31                     // d7[15:0] = data[15:0]
 
 // Reached from 15 dispatch table entries:
 //     MOVE.W An,Dn
 //     MOVE.W Dn,Dn
-L_02BE4:
+move_w_reg_d7:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         extsh   data, d7                                // data = sign-extended low word of d7
@@ -6583,7 +7663,7 @@ L_02BE4:
 
 // Reached from 1 dispatch table entry:
 //     EORI.L #<data>,Dn
-L_02C00:
+eori_l_imm_d0:
         lhau    prefetch_data, 4(pc)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         xor.    d0, d0, data
@@ -6592,20 +7672,25 @@ L_02C00:
 // Reached from 2 dispatch table entries:
 //     ANDI.L #<data>,Dn
 //     AND.L #<data>,Dn
-L_02C10:
+and_l_imm_d0:
         addi    pc, pc, 2
 
 // Reached from 10 dispatch table entries:
 //     AND.L (d16,An),Dn
 //     AND.L (xxx).W,Dn
 //     AND.L (d16,PC),Dn
-L_02C14:
+and_l_mem_d0:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     AND.L (An),Dn
 //     AND.L -(An),Dn
-L_02C18:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     AND.L (An)+,Dn
+//     AND.L (d8,An,Xn),Dn
+//     AND.L (xxx).L,Dn
+//     AND.L (d8,PC,Xn),Dn
+and_l_mem_d0_2:
         and.    d0, d0, data
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -6614,20 +7699,25 @@ L_02C18:
 // Reached from 2 dispatch table entries:
 //     ORI.L #<data>,Dn
 //     OR.L #<data>,Dn
-L_02C28:
+or_l_imm_d0:
         addi    pc, pc, 2
 
 // Reached from 10 dispatch table entries:
 //     OR.L (d16,An),Dn
 //     OR.L (xxx).W,Dn
 //     OR.L (d16,PC),Dn
-L_02C2C:
+or_l_mem_d0:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     OR.L (An),Dn
 //     OR.L -(An),Dn
-L_02C30:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     OR.L (An)+,Dn
+//     OR.L (d8,An,Xn),Dn
+//     OR.L (xxx).L,Dn
+//     OR.L (d8,PC,Xn),Dn
+or_l_mem_d0_2:
         or.     d0, d0, data
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -6635,7 +7725,7 @@ L_02C30:
 
 // Reached from 1 dispatch table entry:
 //     EORI.L #<data>,Dn
-L_02C40:
+eori_l_imm_d1:
         lhau    prefetch_data, 4(pc)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         xor.    d1, d1, data
@@ -6644,20 +7734,25 @@ L_02C40:
 // Reached from 2 dispatch table entries:
 //     ANDI.L #<data>,Dn
 //     AND.L #<data>,Dn
-L_02C50:
+and_l_imm_d1:
         addi    pc, pc, 2
 
 // Reached from 10 dispatch table entries:
 //     AND.L (d16,An),Dn
 //     AND.L (xxx).W,Dn
 //     AND.L (d16,PC),Dn
-L_02C54:
+and_l_mem_d1:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     AND.L (An),Dn
 //     AND.L -(An),Dn
-L_02C58:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     AND.L (An)+,Dn
+//     AND.L (d8,An,Xn),Dn
+//     AND.L (xxx).L,Dn
+//     AND.L (d8,PC,Xn),Dn
+and_l_mem_d1_2:
         and.    d1, d1, data
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -6666,20 +7761,25 @@ L_02C58:
 // Reached from 2 dispatch table entries:
 //     ORI.L #<data>,Dn
 //     OR.L #<data>,Dn
-L_02C68:
+or_l_imm_d1:
         addi    pc, pc, 2
 
 // Reached from 10 dispatch table entries:
 //     OR.L (d16,An),Dn
 //     OR.L (xxx).W,Dn
 //     OR.L (d16,PC),Dn
-L_02C6C:
+or_l_mem_d1:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     OR.L (An),Dn
 //     OR.L -(An),Dn
-L_02C70:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     OR.L (An)+,Dn
+//     OR.L (d8,An,Xn),Dn
+//     OR.L (xxx).L,Dn
+//     OR.L (d8,PC,Xn),Dn
+or_l_mem_d1_2:
         or.     d1, d1, data
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -6687,7 +7787,7 @@ L_02C70:
 
 // Reached from 1 dispatch table entry:
 //     EORI.L #<data>,Dn
-L_02C80:
+eori_l_imm_d2:
         lhau    prefetch_data, 4(pc)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         xor.    d2, d2, data
@@ -6696,20 +7796,25 @@ L_02C80:
 // Reached from 2 dispatch table entries:
 //     ANDI.L #<data>,Dn
 //     AND.L #<data>,Dn
-L_02C90:
+and_l_imm_d2:
         addi    pc, pc, 2
 
 // Reached from 10 dispatch table entries:
 //     AND.L (d16,An),Dn
 //     AND.L (xxx).W,Dn
 //     AND.L (d16,PC),Dn
-L_02C94:
+and_l_mem_d2:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     AND.L (An),Dn
 //     AND.L -(An),Dn
-L_02C98:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     AND.L (An)+,Dn
+//     AND.L (d8,An,Xn),Dn
+//     AND.L (xxx).L,Dn
+//     AND.L (d8,PC,Xn),Dn
+and_l_mem_d2_2:
         and.    d2, d2, data
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -6718,20 +7823,25 @@ L_02C98:
 // Reached from 2 dispatch table entries:
 //     ORI.L #<data>,Dn
 //     OR.L #<data>,Dn
-L_02CA8:
+or_l_imm_d2:
         addi    pc, pc, 2
 
 // Reached from 10 dispatch table entries:
 //     OR.L (d16,An),Dn
 //     OR.L (xxx).W,Dn
 //     OR.L (d16,PC),Dn
-L_02CAC:
+or_l_mem_d2:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     OR.L (An),Dn
 //     OR.L -(An),Dn
-L_02CB0:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     OR.L (An)+,Dn
+//     OR.L (d8,An,Xn),Dn
+//     OR.L (xxx).L,Dn
+//     OR.L (d8,PC,Xn),Dn
+or_l_mem_d2_2:
         or.     d2, d2, data
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -6739,7 +7849,7 @@ L_02CB0:
 
 // Reached from 1 dispatch table entry:
 //     EORI.L #<data>,Dn
-L_02CC0:
+eori_l_imm_d3:
         lhau    prefetch_data, 4(pc)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         xor.    d3, d3, data
@@ -6748,20 +7858,25 @@ L_02CC0:
 // Reached from 2 dispatch table entries:
 //     ANDI.L #<data>,Dn
 //     AND.L #<data>,Dn
-L_02CD0:
+and_l_imm_d3:
         addi    pc, pc, 2
 
 // Reached from 10 dispatch table entries:
 //     AND.L (d16,An),Dn
 //     AND.L (xxx).W,Dn
 //     AND.L (d16,PC),Dn
-L_02CD4:
+and_l_mem_d3:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     AND.L (An),Dn
 //     AND.L -(An),Dn
-L_02CD8:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     AND.L (An)+,Dn
+//     AND.L (d8,An,Xn),Dn
+//     AND.L (xxx).L,Dn
+//     AND.L (d8,PC,Xn),Dn
+and_l_mem_d3_2:
         and.    d3, d3, data
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -6770,20 +7885,25 @@ L_02CD8:
 // Reached from 2 dispatch table entries:
 //     ORI.L #<data>,Dn
 //     OR.L #<data>,Dn
-L_02CE8:
+or_l_imm_d3:
         addi    pc, pc, 2
 
 // Reached from 10 dispatch table entries:
 //     OR.L (d16,An),Dn
 //     OR.L (xxx).W,Dn
 //     OR.L (d16,PC),Dn
-L_02CEC:
+or_l_mem_d3:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     OR.L (An),Dn
 //     OR.L -(An),Dn
-L_02CF0:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     OR.L (An)+,Dn
+//     OR.L (d8,An,Xn),Dn
+//     OR.L (xxx).L,Dn
+//     OR.L (d8,PC,Xn),Dn
+or_l_mem_d3_2:
         or.     d3, d3, data
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -6791,7 +7911,7 @@ L_02CF0:
 
 // Reached from 1 dispatch table entry:
 //     EORI.L #<data>,Dn
-L_02D00:
+eori_l_imm_d4:
         lhau    prefetch_data, 4(pc)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         xor.    d4, d4, data
@@ -6800,20 +7920,25 @@ L_02D00:
 // Reached from 2 dispatch table entries:
 //     ANDI.L #<data>,Dn
 //     AND.L #<data>,Dn
-L_02D10:
+and_l_imm_d4:
         addi    pc, pc, 2
 
 // Reached from 10 dispatch table entries:
 //     AND.L (d16,An),Dn
 //     AND.L (xxx).W,Dn
 //     AND.L (d16,PC),Dn
-L_02D14:
+and_l_mem_d4:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     AND.L (An),Dn
 //     AND.L -(An),Dn
-L_02D18:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     AND.L (An)+,Dn
+//     AND.L (d8,An,Xn),Dn
+//     AND.L (xxx).L,Dn
+//     AND.L (d8,PC,Xn),Dn
+and_l_mem_d4_2:
         and.    d4, d4, data
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -6822,20 +7947,25 @@ L_02D18:
 // Reached from 2 dispatch table entries:
 //     ORI.L #<data>,Dn
 //     OR.L #<data>,Dn
-L_02D28:
+or_l_imm_d4:
         addi    pc, pc, 2
 
 // Reached from 10 dispatch table entries:
 //     OR.L (d16,An),Dn
 //     OR.L (xxx).W,Dn
 //     OR.L (d16,PC),Dn
-L_02D2C:
+or_l_mem_d4:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     OR.L (An),Dn
 //     OR.L -(An),Dn
-L_02D30:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     OR.L (An)+,Dn
+//     OR.L (d8,An,Xn),Dn
+//     OR.L (xxx).L,Dn
+//     OR.L (d8,PC,Xn),Dn
+or_l_mem_d4_2:
         or.     d4, d4, data
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -6843,7 +7973,7 @@ L_02D30:
 
 // Reached from 1 dispatch table entry:
 //     EORI.L #<data>,Dn
-L_02D40:
+eori_l_imm_d5:
         lhau    prefetch_data, 4(pc)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         xor.    d5, d5, data
@@ -6852,20 +7982,25 @@ L_02D40:
 // Reached from 2 dispatch table entries:
 //     ANDI.L #<data>,Dn
 //     AND.L #<data>,Dn
-L_02D50:
+and_l_imm_d5:
         addi    pc, pc, 2
 
 // Reached from 10 dispatch table entries:
 //     AND.L (d16,An),Dn
 //     AND.L (xxx).W,Dn
 //     AND.L (d16,PC),Dn
-L_02D54:
+and_l_mem_d5:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     AND.L (An),Dn
 //     AND.L -(An),Dn
-L_02D58:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     AND.L (An)+,Dn
+//     AND.L (d8,An,Xn),Dn
+//     AND.L (xxx).L,Dn
+//     AND.L (d8,PC,Xn),Dn
+and_l_mem_d5_2:
         and.    d5, d5, data
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -6874,20 +8009,25 @@ L_02D58:
 // Reached from 2 dispatch table entries:
 //     ORI.L #<data>,Dn
 //     OR.L #<data>,Dn
-L_02D68:
+or_l_imm_d5:
         addi    pc, pc, 2
 
 // Reached from 10 dispatch table entries:
 //     OR.L (d16,An),Dn
 //     OR.L (xxx).W,Dn
 //     OR.L (d16,PC),Dn
-L_02D6C:
+or_l_mem_d5:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     OR.L (An),Dn
 //     OR.L -(An),Dn
-L_02D70:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     OR.L (An)+,Dn
+//     OR.L (d8,An,Xn),Dn
+//     OR.L (xxx).L,Dn
+//     OR.L (d8,PC,Xn),Dn
+or_l_mem_d5_2:
         or.     d5, d5, data
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -6895,7 +8035,7 @@ L_02D70:
 
 // Reached from 1 dispatch table entry:
 //     EORI.L #<data>,Dn
-L_02D80:
+eori_l_imm_d6:
         lhau    prefetch_data, 4(pc)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         xor.    d6, d6, data
@@ -6904,20 +8044,25 @@ L_02D80:
 // Reached from 2 dispatch table entries:
 //     ANDI.L #<data>,Dn
 //     AND.L #<data>,Dn
-L_02D90:
+and_l_imm_d6:
         addi    pc, pc, 2
 
 // Reached from 10 dispatch table entries:
 //     AND.L (d16,An),Dn
 //     AND.L (xxx).W,Dn
 //     AND.L (d16,PC),Dn
-L_02D94:
+and_l_mem_d6:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     AND.L (An),Dn
 //     AND.L -(An),Dn
-L_02D98:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     AND.L (An)+,Dn
+//     AND.L (d8,An,Xn),Dn
+//     AND.L (xxx).L,Dn
+//     AND.L (d8,PC,Xn),Dn
+and_l_mem_d6_2:
         and.    d6, d6, data
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -6926,20 +8071,25 @@ L_02D98:
 // Reached from 2 dispatch table entries:
 //     ORI.L #<data>,Dn
 //     OR.L #<data>,Dn
-L_02DA8:
+or_l_imm_d6:
         addi    pc, pc, 2
 
 // Reached from 10 dispatch table entries:
 //     OR.L (d16,An),Dn
 //     OR.L (xxx).W,Dn
 //     OR.L (d16,PC),Dn
-L_02DAC:
+or_l_mem_d6:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     OR.L (An),Dn
 //     OR.L -(An),Dn
-L_02DB0:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     OR.L (An)+,Dn
+//     OR.L (d8,An,Xn),Dn
+//     OR.L (xxx).L,Dn
+//     OR.L (d8,PC,Xn),Dn
+or_l_mem_d6_2:
         or.     d6, d6, data
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -6947,7 +8097,7 @@ L_02DB0:
 
 // Reached from 1 dispatch table entry:
 //     EORI.L #<data>,Dn
-L_02DC0:
+eori_l_imm_d7:
         lhau    prefetch_data, 4(pc)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         xor.    d7, d7, data
@@ -6956,20 +8106,25 @@ L_02DC0:
 // Reached from 2 dispatch table entries:
 //     ANDI.L #<data>,Dn
 //     AND.L #<data>,Dn
-L_02DD0:
+and_l_imm_d7:
         addi    pc, pc, 2
 
 // Reached from 10 dispatch table entries:
 //     AND.L (d16,An),Dn
 //     AND.L (xxx).W,Dn
 //     AND.L (d16,PC),Dn
-L_02DD4:
+and_l_mem_d7:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     AND.L (An),Dn
 //     AND.L -(An),Dn
-L_02DD8:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     AND.L (An)+,Dn
+//     AND.L (d8,An,Xn),Dn
+//     AND.L (xxx).L,Dn
+//     AND.L (d8,PC,Xn),Dn
+and_l_mem_d7_2:
         and.    d7, d7, data
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -6978,20 +8133,25 @@ L_02DD8:
 // Reached from 2 dispatch table entries:
 //     ORI.L #<data>,Dn
 //     OR.L #<data>,Dn
-L_02DE8:
+or_l_imm_d7:
         addi    pc, pc, 2
 
 // Reached from 10 dispatch table entries:
 //     OR.L (d16,An),Dn
 //     OR.L (xxx).W,Dn
 //     OR.L (d16,PC),Dn
-L_02DEC:
+or_l_mem_d7:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     OR.L (An),Dn
 //     OR.L -(An),Dn
-L_02DF0:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     OR.L (An)+,Dn
+//     OR.L (d8,An,Xn),Dn
+//     OR.L (xxx).L,Dn
+//     OR.L (d8,PC,Xn),Dn
+or_l_mem_d7_2:
         or.     d7, d7, data
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -7000,12 +8160,16 @@ L_02DF0:
 // Reached from 9 dispatch table entries:
 //     AND.L Dn,(d16,An)
 //     AND.L Dn,(xxx).W
-L_02E00:
+and_l_d0_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     AND.L Dn,(An)
-L_02E04:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     AND.L Dn,(An)+
+//     AND.L Dn,(d8,An,Xn)
+//     AND.L Dn,(xxx).L
+and_l_d0_mem_2:
         lwz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         and.    data, data, d0
@@ -7014,12 +8178,16 @@ L_02E04:
 // Reached from 9 dispatch table entries:
 //     OR.L Dn,(d16,An)
 //     OR.L Dn,(xxx).W
-L_02E14:
+or_l_d0_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     OR.L Dn,(An)
-L_02E18:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     OR.L Dn,(An)+
+//     OR.L Dn,(d8,An,Xn)
+//     OR.L Dn,(xxx).L
+or_l_d0_mem_2:
         lwz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         or.     data, data, d0
@@ -7028,12 +8196,16 @@ L_02E18:
 // Reached from 9 dispatch table entries:
 //     EOR.L Dn,(d16,An)
 //     EOR.L Dn,(xxx).W
-L_02E28:
+eor_l_d0_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     EOR.L Dn,(An)
-L_02E2C:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     EOR.L Dn,(An)+
+//     EOR.L Dn,(d8,An,Xn)
+//     EOR.L Dn,(xxx).L
+eor_l_d0_mem_2:
         lwz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         xor.    data, data, d0
@@ -7043,12 +8215,16 @@ L_02E2C:
 // Reached from 9 dispatch table entries:
 //     AND.L Dn,(d16,An)
 //     AND.L Dn,(xxx).W
-L_02E40:
+and_l_d1_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     AND.L Dn,(An)
-L_02E44:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     AND.L Dn,(An)+
+//     AND.L Dn,(d8,An,Xn)
+//     AND.L Dn,(xxx).L
+and_l_d1_mem_2:
         lwz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         and.    data, data, d1
@@ -7057,12 +8233,16 @@ L_02E44:
 // Reached from 9 dispatch table entries:
 //     OR.L Dn,(d16,An)
 //     OR.L Dn,(xxx).W
-L_02E54:
+or_l_d1_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     OR.L Dn,(An)
-L_02E58:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     OR.L Dn,(An)+
+//     OR.L Dn,(d8,An,Xn)
+//     OR.L Dn,(xxx).L
+or_l_d1_mem_2:
         lwz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         or.     data, data, d1
@@ -7071,12 +8251,16 @@ L_02E58:
 // Reached from 9 dispatch table entries:
 //     EOR.L Dn,(d16,An)
 //     EOR.L Dn,(xxx).W
-L_02E68:
+eor_l_d1_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     EOR.L Dn,(An)
-L_02E6C:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     EOR.L Dn,(An)+
+//     EOR.L Dn,(d8,An,Xn)
+//     EOR.L Dn,(xxx).L
+eor_l_d1_mem_2:
         lwz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         xor.    data, data, d1
@@ -7086,12 +8270,16 @@ L_02E6C:
 // Reached from 9 dispatch table entries:
 //     AND.L Dn,(d16,An)
 //     AND.L Dn,(xxx).W
-L_02E80:
+and_l_d2_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     AND.L Dn,(An)
-L_02E84:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     AND.L Dn,(An)+
+//     AND.L Dn,(d8,An,Xn)
+//     AND.L Dn,(xxx).L
+and_l_d2_mem_2:
         lwz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         and.    data, data, d2
@@ -7100,12 +8288,16 @@ L_02E84:
 // Reached from 9 dispatch table entries:
 //     OR.L Dn,(d16,An)
 //     OR.L Dn,(xxx).W
-L_02E94:
+or_l_d2_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     OR.L Dn,(An)
-L_02E98:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     OR.L Dn,(An)+
+//     OR.L Dn,(d8,An,Xn)
+//     OR.L Dn,(xxx).L
+or_l_d2_mem_2:
         lwz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         or.     data, data, d2
@@ -7114,12 +8306,16 @@ L_02E98:
 // Reached from 9 dispatch table entries:
 //     EOR.L Dn,(d16,An)
 //     EOR.L Dn,(xxx).W
-L_02EA8:
+eor_l_d2_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     EOR.L Dn,(An)
-L_02EAC:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     EOR.L Dn,(An)+
+//     EOR.L Dn,(d8,An,Xn)
+//     EOR.L Dn,(xxx).L
+eor_l_d2_mem_2:
         lwz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         xor.    data, data, d2
@@ -7129,12 +8325,16 @@ L_02EAC:
 // Reached from 9 dispatch table entries:
 //     AND.L Dn,(d16,An)
 //     AND.L Dn,(xxx).W
-L_02EC0:
+and_l_d3_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     AND.L Dn,(An)
-L_02EC4:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     AND.L Dn,(An)+
+//     AND.L Dn,(d8,An,Xn)
+//     AND.L Dn,(xxx).L
+and_l_d3_mem_2:
         lwz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         and.    data, data, d3
@@ -7143,12 +8343,16 @@ L_02EC4:
 // Reached from 9 dispatch table entries:
 //     OR.L Dn,(d16,An)
 //     OR.L Dn,(xxx).W
-L_02ED4:
+or_l_d3_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     OR.L Dn,(An)
-L_02ED8:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     OR.L Dn,(An)+
+//     OR.L Dn,(d8,An,Xn)
+//     OR.L Dn,(xxx).L
+or_l_d3_mem_2:
         lwz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         or.     data, data, d3
@@ -7157,12 +8361,16 @@ L_02ED8:
 // Reached from 9 dispatch table entries:
 //     EOR.L Dn,(d16,An)
 //     EOR.L Dn,(xxx).W
-L_02EE8:
+eor_l_d3_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     EOR.L Dn,(An)
-L_02EEC:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     EOR.L Dn,(An)+
+//     EOR.L Dn,(d8,An,Xn)
+//     EOR.L Dn,(xxx).L
+eor_l_d3_mem_2:
         lwz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         xor.    data, data, d3
@@ -7172,12 +8380,16 @@ L_02EEC:
 // Reached from 9 dispatch table entries:
 //     AND.L Dn,(d16,An)
 //     AND.L Dn,(xxx).W
-L_02F00:
+and_l_d4_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     AND.L Dn,(An)
-L_02F04:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     AND.L Dn,(An)+
+//     AND.L Dn,(d8,An,Xn)
+//     AND.L Dn,(xxx).L
+and_l_d4_mem_2:
         lwz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         and.    data, data, d4
@@ -7186,12 +8398,16 @@ L_02F04:
 // Reached from 9 dispatch table entries:
 //     OR.L Dn,(d16,An)
 //     OR.L Dn,(xxx).W
-L_02F14:
+or_l_d4_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     OR.L Dn,(An)
-L_02F18:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     OR.L Dn,(An)+
+//     OR.L Dn,(d8,An,Xn)
+//     OR.L Dn,(xxx).L
+or_l_d4_mem_2:
         lwz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         or.     data, data, d4
@@ -7200,12 +8416,16 @@ L_02F18:
 // Reached from 9 dispatch table entries:
 //     EOR.L Dn,(d16,An)
 //     EOR.L Dn,(xxx).W
-L_02F28:
+eor_l_d4_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     EOR.L Dn,(An)
-L_02F2C:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     EOR.L Dn,(An)+
+//     EOR.L Dn,(d8,An,Xn)
+//     EOR.L Dn,(xxx).L
+eor_l_d4_mem_2:
         lwz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         xor.    data, data, d4
@@ -7215,12 +8435,16 @@ L_02F2C:
 // Reached from 9 dispatch table entries:
 //     AND.L Dn,(d16,An)
 //     AND.L Dn,(xxx).W
-L_02F40:
+and_l_d5_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     AND.L Dn,(An)
-L_02F44:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     AND.L Dn,(An)+
+//     AND.L Dn,(d8,An,Xn)
+//     AND.L Dn,(xxx).L
+and_l_d5_mem_2:
         lwz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         and.    data, data, d5
@@ -7229,12 +8453,16 @@ L_02F44:
 // Reached from 9 dispatch table entries:
 //     OR.L Dn,(d16,An)
 //     OR.L Dn,(xxx).W
-L_02F54:
+or_l_d5_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     OR.L Dn,(An)
-L_02F58:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     OR.L Dn,(An)+
+//     OR.L Dn,(d8,An,Xn)
+//     OR.L Dn,(xxx).L
+or_l_d5_mem_2:
         lwz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         or.     data, data, d5
@@ -7243,12 +8471,16 @@ L_02F58:
 // Reached from 9 dispatch table entries:
 //     EOR.L Dn,(d16,An)
 //     EOR.L Dn,(xxx).W
-L_02F68:
+eor_l_d5_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     EOR.L Dn,(An)
-L_02F6C:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     EOR.L Dn,(An)+
+//     EOR.L Dn,(d8,An,Xn)
+//     EOR.L Dn,(xxx).L
+eor_l_d5_mem_2:
         lwz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         xor.    data, data, d5
@@ -7258,12 +8490,16 @@ L_02F6C:
 // Reached from 9 dispatch table entries:
 //     AND.L Dn,(d16,An)
 //     AND.L Dn,(xxx).W
-L_02F80:
+and_l_d6_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     AND.L Dn,(An)
-L_02F84:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     AND.L Dn,(An)+
+//     AND.L Dn,(d8,An,Xn)
+//     AND.L Dn,(xxx).L
+and_l_d6_mem_2:
         lwz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         and.    data, data, d6
@@ -7272,12 +8508,16 @@ L_02F84:
 // Reached from 9 dispatch table entries:
 //     OR.L Dn,(d16,An)
 //     OR.L Dn,(xxx).W
-L_02F94:
+or_l_d6_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     OR.L Dn,(An)
-L_02F98:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     OR.L Dn,(An)+
+//     OR.L Dn,(d8,An,Xn)
+//     OR.L Dn,(xxx).L
+or_l_d6_mem_2:
         lwz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         or.     data, data, d6
@@ -7286,12 +8526,16 @@ L_02F98:
 // Reached from 9 dispatch table entries:
 //     EOR.L Dn,(d16,An)
 //     EOR.L Dn,(xxx).W
-L_02FA8:
+eor_l_d6_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     EOR.L Dn,(An)
-L_02FAC:
+// Continuation (via rtn_addr) of 16 dispatch table entries:
+//     EOR.L Dn,(d8,An,Xn)
+//     EOR.L Dn,(An)+
+//     EOR.L Dn,(xxx).L
+eor_l_d6_mem_2:
         lwz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         xor.    data, data, d6
@@ -7301,12 +8545,16 @@ L_02FAC:
 // Reached from 9 dispatch table entries:
 //     AND.L Dn,(d16,An)
 //     AND.L Dn,(xxx).W
-L_02FC0:
+and_l_d7_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     AND.L Dn,(An)
-L_02FC4:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     AND.L Dn,(An)+
+//     AND.L Dn,(d8,An,Xn)
+//     AND.L Dn,(xxx).L
+and_l_d7_mem_2:
         lwz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         and.    data, data, d7
@@ -7315,12 +8563,16 @@ L_02FC4:
 // Reached from 9 dispatch table entries:
 //     OR.L Dn,(d16,An)
 //     OR.L Dn,(xxx).W
-L_02FD4:
+or_l_d7_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     OR.L Dn,(An)
-L_02FD8:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     OR.L Dn,(An)+
+//     OR.L Dn,(d8,An,Xn)
+//     OR.L Dn,(xxx).L
+or_l_d7_mem_2:
         lwz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         or.     data, data, d7
@@ -7329,12 +8581,16 @@ L_02FD8:
 // Reached from 9 dispatch table entries:
 //     EOR.L Dn,(d16,An)
 //     EOR.L Dn,(xxx).W
-L_02FE8:
+eor_l_d7_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     EOR.L Dn,(An)
-L_02FEC:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     EOR.L Dn,(An)+
+//     EOR.L Dn,(d8,An,Xn)
+//     EOR.L Dn,(xxx).L
+eor_l_d7_mem_2:
         lwz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         xor.    data, data, d7
@@ -7346,12 +8602,20 @@ L_02FEC:
 //     DBEQ.W Dn,<label>
 //     DBPL.W Dn,<label>
 //     DBMI.W Dn,<label>
-L_03000:
+// Continuation (via rtn_addr) of 10 dispatch table entries:
+//     DBHI.W Dn,<label>
+//     DBLS.W Dn,<label>
+//     DBCC.W Dn,<label>
+//     DBCS.W Dn,<label>
+//     DBVC.W Dn,<label>
+//     DBVS.W Dn,<label>
+//     ... and 4 more forms
+dbcc_w_d0:
         lhaux   data, pc, prefetch_data
 
 // Reached from 1 dispatch table entry:
 //     DBF.W Dn,<label>
-L_03004:
+dbf_w_d0:
         clrlwi  immed_data, d0, 16                      // immed_data = d0 & 0x0000FFFF
         rlwimi  disp_table, data, 3, 13, 28             // disp_table[18:3] = data[15:0]
         mtlr    disp_table
@@ -7367,19 +8631,27 @@ L_03030:
         subf    pc, prefetch_data, pc                   // pc = pc - prefetch_data
         lhau    prefetch_data, 2(pc)
         ori     d0, d0, 0xFFFF
-        b       L_06084
+        b       move_add_etc_any_any
 
 // Reached from 4 dispatch table entries:
 //     DBNE.W Dn,<label>
 //     DBEQ.W Dn,<label>
 //     DBPL.W Dn,<label>
 //     DBMI.W Dn,<label>
-L_03040:
+// Continuation (via rtn_addr) of 10 dispatch table entries:
+//     DBHI.W Dn,<label>
+//     DBLS.W Dn,<label>
+//     DBCC.W Dn,<label>
+//     DBCS.W Dn,<label>
+//     DBVC.W Dn,<label>
+//     DBVS.W Dn,<label>
+//     ... and 4 more forms
+dbcc_w_d1:
         lhaux   data, pc, prefetch_data
 
 // Reached from 1 dispatch table entry:
 //     DBF.W Dn,<label>
-L_03044:
+dbf_w_d1:
         clrlwi  immed_data, d1, 16                      // immed_data = d1 & 0x0000FFFF
         rlwimi  disp_table, data, 3, 13, 28             // disp_table[18:3] = data[15:0]
         mtlr    disp_table
@@ -7395,19 +8667,27 @@ L_03070:
         subf    pc, prefetch_data, pc                   // pc = pc - prefetch_data
         lhau    prefetch_data, 2(pc)
         ori     d1, d1, 0xFFFF
-        b       L_06084
+        b       move_add_etc_any_any
 
 // Reached from 4 dispatch table entries:
 //     DBNE.W Dn,<label>
 //     DBEQ.W Dn,<label>
 //     DBPL.W Dn,<label>
 //     DBMI.W Dn,<label>
-L_03080:
+// Continuation (via rtn_addr) of 10 dispatch table entries:
+//     DBHI.W Dn,<label>
+//     DBLS.W Dn,<label>
+//     DBCC.W Dn,<label>
+//     DBCS.W Dn,<label>
+//     DBVC.W Dn,<label>
+//     DBVS.W Dn,<label>
+//     ... and 4 more forms
+dbcc_w_d2:
         lhaux   data, pc, prefetch_data
 
 // Reached from 1 dispatch table entry:
 //     DBF.W Dn,<label>
-L_03084:
+dbf_w_d2:
         clrlwi  immed_data, d2, 16                      // immed_data = d2 & 0x0000FFFF
         rlwimi  disp_table, data, 3, 13, 28             // disp_table[18:3] = data[15:0]
         mtlr    disp_table
@@ -7423,19 +8703,27 @@ L_030B0:
         subf    pc, prefetch_data, pc                   // pc = pc - prefetch_data
         lhau    prefetch_data, 2(pc)
         ori     d2, d2, 0xFFFF
-        b       L_06084
+        b       move_add_etc_any_any
 
 // Reached from 4 dispatch table entries:
 //     DBNE.W Dn,<label>
 //     DBEQ.W Dn,<label>
 //     DBPL.W Dn,<label>
 //     DBMI.W Dn,<label>
-L_030C0:
+// Continuation (via rtn_addr) of 10 dispatch table entries:
+//     DBHI.W Dn,<label>
+//     DBLS.W Dn,<label>
+//     DBCC.W Dn,<label>
+//     DBCS.W Dn,<label>
+//     DBVC.W Dn,<label>
+//     DBVS.W Dn,<label>
+//     ... and 4 more forms
+dbcc_w_d3:
         lhaux   data, pc, prefetch_data
 
 // Reached from 1 dispatch table entry:
 //     DBF.W Dn,<label>
-L_030C4:
+dbf_w_d3:
         clrlwi  immed_data, d3, 16                      // immed_data = d3 & 0x0000FFFF
         rlwimi  disp_table, data, 3, 13, 28             // disp_table[18:3] = data[15:0]
         mtlr    disp_table
@@ -7451,19 +8739,27 @@ L_030F0:
         subf    pc, prefetch_data, pc                   // pc = pc - prefetch_data
         lhau    prefetch_data, 2(pc)
         ori     d3, d3, 0xFFFF
-        b       L_06084
+        b       move_add_etc_any_any
 
 // Reached from 4 dispatch table entries:
 //     DBNE.W Dn,<label>
 //     DBEQ.W Dn,<label>
 //     DBPL.W Dn,<label>
 //     DBMI.W Dn,<label>
-L_03100:
+// Continuation (via rtn_addr) of 10 dispatch table entries:
+//     DBHI.W Dn,<label>
+//     DBLS.W Dn,<label>
+//     DBCC.W Dn,<label>
+//     DBCS.W Dn,<label>
+//     DBVC.W Dn,<label>
+//     DBVS.W Dn,<label>
+//     ... and 4 more forms
+dbcc_w_d4:
         lhaux   data, pc, prefetch_data
 
 // Reached from 1 dispatch table entry:
 //     DBF.W Dn,<label>
-L_03104:
+dbf_w_d4:
         clrlwi  immed_data, d4, 16                      // immed_data = d4 & 0x0000FFFF
         rlwimi  disp_table, data, 3, 13, 28             // disp_table[18:3] = data[15:0]
         mtlr    disp_table
@@ -7479,19 +8775,27 @@ L_03130:
         subf    pc, prefetch_data, pc                   // pc = pc - prefetch_data
         lhau    prefetch_data, 2(pc)
         ori     d4, d4, 0xFFFF
-        b       L_06084
+        b       move_add_etc_any_any
 
 // Reached from 4 dispatch table entries:
 //     DBNE.W Dn,<label>
 //     DBEQ.W Dn,<label>
 //     DBPL.W Dn,<label>
 //     DBMI.W Dn,<label>
-L_03140:
+// Continuation (via rtn_addr) of 10 dispatch table entries:
+//     DBHI.W Dn,<label>
+//     DBLS.W Dn,<label>
+//     DBCC.W Dn,<label>
+//     DBCS.W Dn,<label>
+//     DBVC.W Dn,<label>
+//     DBVS.W Dn,<label>
+//     ... and 4 more forms
+dbcc_w_d5:
         lhaux   data, pc, prefetch_data
 
 // Reached from 1 dispatch table entry:
 //     DBF.W Dn,<label>
-L_03144:
+dbf_w_d5:
         clrlwi  immed_data, d5, 16                      // immed_data = d5 & 0x0000FFFF
         rlwimi  disp_table, data, 3, 13, 28             // disp_table[18:3] = data[15:0]
         mtlr    disp_table
@@ -7507,19 +8811,27 @@ L_03170:
         subf    pc, prefetch_data, pc                   // pc = pc - prefetch_data
         lhau    prefetch_data, 2(pc)
         ori     d5, d5, 0xFFFF
-        b       L_06084
+        b       move_add_etc_any_any
 
 // Reached from 4 dispatch table entries:
 //     DBNE.W Dn,<label>
 //     DBEQ.W Dn,<label>
 //     DBPL.W Dn,<label>
 //     DBMI.W Dn,<label>
-L_03180:
+// Continuation (via rtn_addr) of 10 dispatch table entries:
+//     DBHI.W Dn,<label>
+//     DBLS.W Dn,<label>
+//     DBCC.W Dn,<label>
+//     DBCS.W Dn,<label>
+//     DBVC.W Dn,<label>
+//     DBVS.W Dn,<label>
+//     ... and 4 more forms
+dbcc_w_d6:
         lhaux   data, pc, prefetch_data
 
 // Reached from 1 dispatch table entry:
 //     DBF.W Dn,<label>
-L_03184:
+dbf_w_d6:
         clrlwi  immed_data, d6, 16                      // immed_data = d6 & 0x0000FFFF
         rlwimi  disp_table, data, 3, 13, 28             // disp_table[18:3] = data[15:0]
         mtlr    disp_table
@@ -7535,19 +8847,27 @@ L_031B0:
         subf    pc, prefetch_data, pc                   // pc = pc - prefetch_data
         lhau    prefetch_data, 2(pc)
         ori     d6, d6, 0xFFFF
-        b       L_06084
+        b       move_add_etc_any_any
 
 // Reached from 4 dispatch table entries:
 //     DBNE.W Dn,<label>
 //     DBEQ.W Dn,<label>
 //     DBPL.W Dn,<label>
 //     DBMI.W Dn,<label>
-L_031C0:
+// Continuation (via rtn_addr) of 10 dispatch table entries:
+//     DBHI.W Dn,<label>
+//     DBLS.W Dn,<label>
+//     DBCC.W Dn,<label>
+//     DBCS.W Dn,<label>
+//     DBVC.W Dn,<label>
+//     DBVS.W Dn,<label>
+//     ... and 4 more forms
+dbcc_w_d7:
         lhaux   data, pc, prefetch_data
 
 // Reached from 1 dispatch table entry:
 //     DBF.W Dn,<label>
-L_031C4:
+dbf_w_d7:
         clrlwi  immed_data, d7, 16                      // immed_data = d7 & 0x0000FFFF
         rlwimi  disp_table, data, 3, 13, 28             // disp_table[18:3] = data[15:0]
         mtlr    disp_table
@@ -7563,8 +8883,17 @@ L_031F0:
         subf    pc, prefetch_data, pc                   // pc = pc - prefetch_data
         lhau    prefetch_data, 2(pc)
         ori     d7, d7, 0xFFFF
-        b       L_06084
-L_03200:
+        b       move_add_etc_any_any
+
+// Continuation (via rtn_addr) of 33 dispatch table entries:
+//     MOVEA.L (d8,An,Xn),An
+//     MOVEA.W (d8,An,Xn),An
+//     MOVEA.W (An)+,An
+//     MOVEA.L (An)+,An
+//     MOVEA.L (xxx).L,An
+//     MOVEA.L (d8,PC,Xn),An
+//     ... and 2 more forms
+movea_mem_a0:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -7575,10 +8904,14 @@ L_03200:
 // Reached from 16 dispatch table entries:
 //     MOVEP.W (d16,An),Dn
 //     MOVEP.L (d16,An),Dn
-L_03218:
+movep_mem_dn:
         add     addr, a0, prefetch_data
         b       L_06344
-L_03220:
+
+// Continuation (via rtn_addr) of 9 dispatch table entries:
+//     LEA (d8,An,Xn),An
+//     LEA (d8,PC,Xn),An
+lea_mem_a0:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -7589,10 +8922,19 @@ L_03220:
 // Reached from 16 dispatch table entries:
 //     MOVEP.W Dn,(d16,An)
 //     MOVEP.L Dn,(d16,An)
-L_03238:
+movep_dn_mem:
         add     addr, a0, prefetch_data
         b       L_06374
-L_03240:
+
+// Continuation (via rtn_addr) of 33 dispatch table entries:
+//     MOVEA.L (d8,An,Xn),An
+//     MOVEA.W (d8,An,Xn),An
+//     MOVEA.W (An)+,An
+//     MOVEA.L (An)+,An
+//     MOVEA.L (xxx).L,An
+//     MOVEA.L (d8,PC,Xn),An
+//     ... and 2 more forms
+movea_mem_a1:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -7603,10 +8945,14 @@ L_03240:
 // Reached from 16 dispatch table entries:
 //     MOVEP.W (d16,An),Dn
 //     MOVEP.L (d16,An),Dn
-L_03258:
+movep_mem_dn_2:
         add     addr, a1, prefetch_data
         b       L_06344
-L_03260:
+
+// Continuation (via rtn_addr) of 9 dispatch table entries:
+//     LEA (d8,An,Xn),An
+//     LEA (d8,PC,Xn),An
+lea_mem_a1:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -7617,10 +8963,19 @@ L_03260:
 // Reached from 16 dispatch table entries:
 //     MOVEP.W Dn,(d16,An)
 //     MOVEP.L Dn,(d16,An)
-L_03278:
+movep_dn_mem_2:
         add     addr, a1, prefetch_data
         b       L_06374
-L_03280:
+
+// Continuation (via rtn_addr) of 33 dispatch table entries:
+//     MOVEA.L (d8,An,Xn),An
+//     MOVEA.W (d8,An,Xn),An
+//     MOVEA.W (An)+,An
+//     MOVEA.L (An)+,An
+//     MOVEA.L (xxx).L,An
+//     MOVEA.L (d8,PC,Xn),An
+//     ... and 2 more forms
+movea_mem_a2:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -7631,10 +8986,14 @@ L_03280:
 // Reached from 16 dispatch table entries:
 //     MOVEP.W (d16,An),Dn
 //     MOVEP.L (d16,An),Dn
-L_03298:
+movep_mem_dn_3:
         add     addr, a2, prefetch_data
         b       L_06344
-L_032A0:
+
+// Continuation (via rtn_addr) of 9 dispatch table entries:
+//     LEA (d8,An,Xn),An
+//     LEA (d8,PC,Xn),An
+lea_mem_a2:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -7645,10 +9004,19 @@ L_032A0:
 // Reached from 16 dispatch table entries:
 //     MOVEP.W Dn,(d16,An)
 //     MOVEP.L Dn,(d16,An)
-L_032B8:
+movep_dn_mem_3:
         add     addr, a2, prefetch_data
         b       L_06374
-L_032C0:
+
+// Continuation (via rtn_addr) of 33 dispatch table entries:
+//     MOVEA.L (d8,An,Xn),An
+//     MOVEA.W (d8,An,Xn),An
+//     MOVEA.W (An)+,An
+//     MOVEA.L (An)+,An
+//     MOVEA.L (xxx).L,An
+//     MOVEA.L (d8,PC,Xn),An
+//     ... and 2 more forms
+movea_mem_a3:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -7659,10 +9027,14 @@ L_032C0:
 // Reached from 16 dispatch table entries:
 //     MOVEP.W (d16,An),Dn
 //     MOVEP.L (d16,An),Dn
-L_032D8:
+movep_mem_dn_4:
         add     addr, a3, prefetch_data
         b       L_06344
-L_032E0:
+
+// Continuation (via rtn_addr) of 9 dispatch table entries:
+//     LEA (d8,An,Xn),An
+//     LEA (d8,PC,Xn),An
+lea_mem_a3:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -7673,10 +9045,19 @@ L_032E0:
 // Reached from 16 dispatch table entries:
 //     MOVEP.W Dn,(d16,An)
 //     MOVEP.L Dn,(d16,An)
-L_032F8:
+movep_dn_mem_4:
         add     addr, a3, prefetch_data
         b       L_06374
-L_03300:
+
+// Continuation (via rtn_addr) of 33 dispatch table entries:
+//     MOVEA.L (d8,An,Xn),An
+//     MOVEA.W (d8,An,Xn),An
+//     MOVEA.W (An)+,An
+//     MOVEA.L (An)+,An
+//     MOVEA.L (xxx).L,An
+//     MOVEA.L (d8,PC,Xn),An
+//     ... and 2 more forms
+movea_mem_a4:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -7687,10 +9068,14 @@ L_03300:
 // Reached from 16 dispatch table entries:
 //     MOVEP.W (d16,An),Dn
 //     MOVEP.L (d16,An),Dn
-L_03318:
+movep_mem_dn_5:
         add     addr, a4, prefetch_data
         b       L_06344
-L_03320:
+
+// Continuation (via rtn_addr) of 9 dispatch table entries:
+//     LEA (d8,An,Xn),An
+//     LEA (d8,PC,Xn),An
+lea_mem_a4:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -7701,10 +9086,19 @@ L_03320:
 // Reached from 16 dispatch table entries:
 //     MOVEP.W Dn,(d16,An)
 //     MOVEP.L Dn,(d16,An)
-L_03338:
+movep_dn_mem_5:
         add     addr, a4, prefetch_data
         b       L_06374
-L_03340:
+
+// Continuation (via rtn_addr) of 33 dispatch table entries:
+//     MOVEA.L (d8,An,Xn),An
+//     MOVEA.W (d8,An,Xn),An
+//     MOVEA.W (An)+,An
+//     MOVEA.L (An)+,An
+//     MOVEA.L (xxx).L,An
+//     MOVEA.L (d8,PC,Xn),An
+//     ... and 2 more forms
+movea_mem_a5:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -7715,10 +9109,14 @@ L_03340:
 // Reached from 16 dispatch table entries:
 //     MOVEP.W (d16,An),Dn
 //     MOVEP.L (d16,An),Dn
-L_03358:
+movep_mem_dn_6:
         add     addr, a5, prefetch_data
         b       L_06344
-L_03360:
+
+// Continuation (via rtn_addr) of 9 dispatch table entries:
+//     LEA (d8,An,Xn),An
+//     LEA (d8,PC,Xn),An
+lea_mem_a5:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -7729,10 +9127,19 @@ L_03360:
 // Reached from 16 dispatch table entries:
 //     MOVEP.W Dn,(d16,An)
 //     MOVEP.L Dn,(d16,An)
-L_03378:
+movep_dn_mem_6:
         add     addr, a5, prefetch_data
         b       L_06374
-L_03380:
+
+// Continuation (via rtn_addr) of 33 dispatch table entries:
+//     MOVEA.L (d8,An,Xn),An
+//     MOVEA.W (d8,An,Xn),An
+//     MOVEA.W (An)+,An
+//     MOVEA.L (An)+,An
+//     MOVEA.L (xxx).L,An
+//     MOVEA.L (d8,PC,Xn),An
+//     ... and 2 more forms
+movea_mem_a6:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -7743,10 +9150,14 @@ L_03380:
 // Reached from 16 dispatch table entries:
 //     MOVEP.W (d16,An),Dn
 //     MOVEP.L (d16,An),Dn
-L_03398:
+movep_mem_dn_7:
         add     addr, a6, prefetch_data
         b       L_06344
-L_033A0:
+
+// Continuation (via rtn_addr) of 9 dispatch table entries:
+//     LEA (d8,An,Xn),An
+//     LEA (d8,PC,Xn),An
+lea_mem_a6:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -7757,10 +9168,19 @@ L_033A0:
 // Reached from 16 dispatch table entries:
 //     MOVEP.W Dn,(d16,An)
 //     MOVEP.L Dn,(d16,An)
-L_033B8:
+movep_dn_mem_7:
         add     addr, a6, prefetch_data
         b       L_06374
-L_033C0:
+
+// Continuation (via rtn_addr) of 34 dispatch table entries:
+//     MOVEA.L (d8,An,Xn),An
+//     MOVEA.W (d8,An,Xn),An
+//     MOVEA.L (An)+,An
+//     MOVEA.W (An)+,An
+//     MOVEA.L (xxx).L,An
+//     MOVEA.L (d8,PC,Xn),An
+//     ... and 2 more forms
+movea_mem_a7:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -7771,10 +9191,14 @@ L_033C0:
 // Reached from 16 dispatch table entries:
 //     MOVEP.W (d16,An),Dn
 //     MOVEP.L (d16,An),Dn
-L_033D8:
+movep_mem_dn_8:
         add     addr, a7, prefetch_data
         b       L_06344
-L_033E0:
+
+// Continuation (via rtn_addr) of 9 dispatch table entries:
+//     LEA (d8,An,Xn),An
+//     LEA (d8,PC,Xn),An
+lea_mem_a7:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -7785,19 +9209,23 @@ L_033E0:
 // Reached from 16 dispatch table entries:
 //     MOVEP.W Dn,(d16,An)
 //     MOVEP.L Dn,(d16,An)
-L_033F8:
+movep_dn_mem_8:
         add     addr, a7, prefetch_data
         b       L_06374
 
 // Reached from 9 dispatch table entries:
 //     ADD.B Dn,(d16,An)
 //     ADD.B Dn,(xxx).W
-L_03400:
+add_b_d0_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     ADD.B Dn,(An)
-L_03404:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     ADD.B Dn,(An)+
+//     ADD.B Dn,(d8,An,Xn)
+//     ADD.B Dn,(xxx).L
+add_b_d0_mem_2:
         lbz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         slwi    immed_data, d0, 24
@@ -7806,12 +9234,16 @@ L_03404:
 // Reached from 9 dispatch table entries:
 //     SUB.B Dn,(d16,An)
 //     SUB.B Dn,(xxx).W
-L_03414:
+sub_b_d0_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     SUB.B Dn,(An)
-L_03418:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     SUB.B Dn,(An)+
+//     SUB.B Dn,(d8,An,Xn)
+//     SUB.B Dn,(xxx).L
+sub_b_d0_mem_2:
         lbz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         slwi    immed_data, d0, 24
@@ -7821,18 +9253,23 @@ L_03418:
 //     CMP.B (d16,An),Dn
 //     CMP.B (xxx).W,Dn
 //     CMP.B (d16,PC),Dn
-L_03428:
+cmp_b_mem_d0:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     CMP.B (An),Dn
 //     CMP.B -(An),Dn
-L_0342C:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     CMP.B (d8,An,Xn),Dn
+//     CMP.B (An)+,Dn
+//     CMP.B (xxx).L,Dn
+//     CMP.B (d8,PC,Xn),Dn
+cmp_b_mem_d0_2:
         slwi    data, data, 24
 
 // Reached from 7 dispatch table entries:
 //     CMP.B Dn,Dn
-L_03430:
+cmp_b_dn_d0:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         slwi    immed_data, d0, 24
         mtlr    disp_table
@@ -7841,12 +9278,16 @@ L_03430:
 // Reached from 9 dispatch table entries:
 //     ADD.B Dn,(d16,An)
 //     ADD.B Dn,(xxx).W
-L_03440:
+add_b_d1_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     ADD.B Dn,(An)
-L_03444:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     ADD.B Dn,(An)+
+//     ADD.B Dn,(d8,An,Xn)
+//     ADD.B Dn,(xxx).L
+add_b_d1_mem_2:
         lbz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         slwi    immed_data, d1, 24
@@ -7855,12 +9296,16 @@ L_03444:
 // Reached from 9 dispatch table entries:
 //     SUB.B Dn,(d16,An)
 //     SUB.B Dn,(xxx).W
-L_03454:
+sub_b_d1_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     SUB.B Dn,(An)
-L_03458:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     SUB.B Dn,(An)+
+//     SUB.B Dn,(d8,An,Xn)
+//     SUB.B Dn,(xxx).L
+sub_b_d1_mem_2:
         lbz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         slwi    immed_data, d1, 24
@@ -7870,18 +9315,23 @@ L_03458:
 //     CMP.B (d16,An),Dn
 //     CMP.B (xxx).W,Dn
 //     CMP.B (d16,PC),Dn
-L_03468:
+cmp_b_mem_d1:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     CMP.B (An),Dn
 //     CMP.B -(An),Dn
-L_0346C:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     CMP.B (d8,An,Xn),Dn
+//     CMP.B (An)+,Dn
+//     CMP.B (xxx).L,Dn
+//     CMP.B (d8,PC,Xn),Dn
+cmp_b_mem_d1_2:
         slwi    data, data, 24
 
 // Reached from 7 dispatch table entries:
 //     CMP.B Dn,Dn
-L_03470:
+cmp_b_dn_d1:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         slwi    immed_data, d1, 24
         mtlr    disp_table
@@ -7890,12 +9340,16 @@ L_03470:
 // Reached from 9 dispatch table entries:
 //     ADD.B Dn,(d16,An)
 //     ADD.B Dn,(xxx).W
-L_03480:
+add_b_d2_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     ADD.B Dn,(An)
-L_03484:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     ADD.B Dn,(An)+
+//     ADD.B Dn,(d8,An,Xn)
+//     ADD.B Dn,(xxx).L
+add_b_d2_mem_2:
         lbz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         slwi    immed_data, d2, 24
@@ -7904,12 +9358,16 @@ L_03484:
 // Reached from 9 dispatch table entries:
 //     SUB.B Dn,(d16,An)
 //     SUB.B Dn,(xxx).W
-L_03494:
+sub_b_d2_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     SUB.B Dn,(An)
-L_03498:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     SUB.B Dn,(An)+
+//     SUB.B Dn,(d8,An,Xn)
+//     SUB.B Dn,(xxx).L
+sub_b_d2_mem_2:
         lbz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         slwi    immed_data, d2, 24
@@ -7919,18 +9377,23 @@ L_03498:
 //     CMP.B (d16,An),Dn
 //     CMP.B (xxx).W,Dn
 //     CMP.B (d16,PC),Dn
-L_034A8:
+cmp_b_mem_d2:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     CMP.B (An),Dn
 //     CMP.B -(An),Dn
-L_034AC:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     CMP.B (d8,An,Xn),Dn
+//     CMP.B (An)+,Dn
+//     CMP.B (xxx).L,Dn
+//     CMP.B (d8,PC,Xn),Dn
+cmp_b_mem_d2_2:
         slwi    data, data, 24
 
 // Reached from 7 dispatch table entries:
 //     CMP.B Dn,Dn
-L_034B0:
+cmp_b_dn_d2:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         slwi    immed_data, d2, 24
         mtlr    disp_table
@@ -7939,12 +9402,16 @@ L_034B0:
 // Reached from 9 dispatch table entries:
 //     ADD.B Dn,(d16,An)
 //     ADD.B Dn,(xxx).W
-L_034C0:
+add_b_d3_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     ADD.B Dn,(An)
-L_034C4:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     ADD.B Dn,(An)+
+//     ADD.B Dn,(d8,An,Xn)
+//     ADD.B Dn,(xxx).L
+add_b_d3_mem_2:
         lbz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         slwi    immed_data, d3, 24
@@ -7953,12 +9420,16 @@ L_034C4:
 // Reached from 9 dispatch table entries:
 //     SUB.B Dn,(d16,An)
 //     SUB.B Dn,(xxx).W
-L_034D4:
+sub_b_d3_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     SUB.B Dn,(An)
-L_034D8:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     SUB.B Dn,(An)+
+//     SUB.B Dn,(d8,An,Xn)
+//     SUB.B Dn,(xxx).L
+sub_b_d3_mem_2:
         lbz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         slwi    immed_data, d3, 24
@@ -7968,18 +9439,23 @@ L_034D8:
 //     CMP.B (d16,An),Dn
 //     CMP.B (xxx).W,Dn
 //     CMP.B (d16,PC),Dn
-L_034E8:
+cmp_b_mem_d3:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     CMP.B (An),Dn
 //     CMP.B -(An),Dn
-L_034EC:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     CMP.B (d8,An,Xn),Dn
+//     CMP.B (An)+,Dn
+//     CMP.B (xxx).L,Dn
+//     CMP.B (d8,PC,Xn),Dn
+cmp_b_mem_d3_2:
         slwi    data, data, 24
 
 // Reached from 7 dispatch table entries:
 //     CMP.B Dn,Dn
-L_034F0:
+cmp_b_dn_d3:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         slwi    immed_data, d3, 24
         mtlr    disp_table
@@ -7988,12 +9464,16 @@ L_034F0:
 // Reached from 9 dispatch table entries:
 //     ADD.B Dn,(d16,An)
 //     ADD.B Dn,(xxx).W
-L_03500:
+add_b_d4_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     ADD.B Dn,(An)
-L_03504:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     ADD.B Dn,(An)+
+//     ADD.B Dn,(d8,An,Xn)
+//     ADD.B Dn,(xxx).L
+add_b_d4_mem_2:
         lbz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         slwi    immed_data, d4, 24
@@ -8002,12 +9482,16 @@ L_03504:
 // Reached from 9 dispatch table entries:
 //     SUB.B Dn,(d16,An)
 //     SUB.B Dn,(xxx).W
-L_03514:
+sub_b_d4_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     SUB.B Dn,(An)
-L_03518:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     SUB.B Dn,(An)+
+//     SUB.B Dn,(d8,An,Xn)
+//     SUB.B Dn,(xxx).L
+sub_b_d4_mem_2:
         lbz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         slwi    immed_data, d4, 24
@@ -8017,18 +9501,23 @@ L_03518:
 //     CMP.B (d16,An),Dn
 //     CMP.B (xxx).W,Dn
 //     CMP.B (d16,PC),Dn
-L_03528:
+cmp_b_mem_d4:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     CMP.B (An),Dn
 //     CMP.B -(An),Dn
-L_0352C:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     CMP.B (d8,An,Xn),Dn
+//     CMP.B (An)+,Dn
+//     CMP.B (xxx).L,Dn
+//     CMP.B (d8,PC,Xn),Dn
+cmp_b_mem_d4_2:
         slwi    data, data, 24
 
 // Reached from 7 dispatch table entries:
 //     CMP.B Dn,Dn
-L_03530:
+cmp_b_dn_d4:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         slwi    immed_data, d4, 24
         mtlr    disp_table
@@ -8037,12 +9526,16 @@ L_03530:
 // Reached from 9 dispatch table entries:
 //     ADD.B Dn,(d16,An)
 //     ADD.B Dn,(xxx).W
-L_03540:
+add_b_d5_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     ADD.B Dn,(An)
-L_03544:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     ADD.B Dn,(An)+
+//     ADD.B Dn,(d8,An,Xn)
+//     ADD.B Dn,(xxx).L
+add_b_d5_mem_2:
         lbz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         slwi    immed_data, d5, 24
@@ -8051,12 +9544,16 @@ L_03544:
 // Reached from 9 dispatch table entries:
 //     SUB.B Dn,(d16,An)
 //     SUB.B Dn,(xxx).W
-L_03554:
+sub_b_d5_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     SUB.B Dn,(An)
-L_03558:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     SUB.B Dn,(An)+
+//     SUB.B Dn,(d8,An,Xn)
+//     SUB.B Dn,(xxx).L
+sub_b_d5_mem_2:
         lbz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         slwi    immed_data, d5, 24
@@ -8066,18 +9563,23 @@ L_03558:
 //     CMP.B (d16,An),Dn
 //     CMP.B (xxx).W,Dn
 //     CMP.B (d16,PC),Dn
-L_03568:
+cmp_b_mem_d5:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     CMP.B (An),Dn
 //     CMP.B -(An),Dn
-L_0356C:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     CMP.B (d8,An,Xn),Dn
+//     CMP.B (An)+,Dn
+//     CMP.B (xxx).L,Dn
+//     CMP.B (d8,PC,Xn),Dn
+cmp_b_mem_d5_2:
         slwi    data, data, 24
 
 // Reached from 7 dispatch table entries:
 //     CMP.B Dn,Dn
-L_03570:
+cmp_b_dn_d5:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         slwi    immed_data, d5, 24
         mtlr    disp_table
@@ -8086,12 +9588,16 @@ L_03570:
 // Reached from 9 dispatch table entries:
 //     ADD.B Dn,(d16,An)
 //     ADD.B Dn,(xxx).W
-L_03580:
+add_b_d6_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     ADD.B Dn,(An)
-L_03584:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     ADD.B Dn,(An)+
+//     ADD.B Dn,(d8,An,Xn)
+//     ADD.B Dn,(xxx).L
+add_b_d6_mem_2:
         lbz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         slwi    immed_data, d6, 24
@@ -8100,12 +9606,16 @@ L_03584:
 // Reached from 9 dispatch table entries:
 //     SUB.B Dn,(d16,An)
 //     SUB.B Dn,(xxx).W
-L_03594:
+sub_b_d6_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     SUB.B Dn,(An)
-L_03598:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     SUB.B Dn,(An)+
+//     SUB.B Dn,(d8,An,Xn)
+//     SUB.B Dn,(xxx).L
+sub_b_d6_mem_2:
         lbz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         slwi    immed_data, d6, 24
@@ -8115,18 +9625,23 @@ L_03598:
 //     CMP.B (d16,An),Dn
 //     CMP.B (xxx).W,Dn
 //     CMP.B (d16,PC),Dn
-L_035A8:
+cmp_b_mem_d6:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     CMP.B (An),Dn
 //     CMP.B -(An),Dn
-L_035AC:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     CMP.B (d8,An,Xn),Dn
+//     CMP.B (An)+,Dn
+//     CMP.B (xxx).L,Dn
+//     CMP.B (d8,PC,Xn),Dn
+cmp_b_mem_d6_2:
         slwi    data, data, 24
 
 // Reached from 7 dispatch table entries:
 //     CMP.B Dn,Dn
-L_035B0:
+cmp_b_dn_d6:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         slwi    immed_data, d6, 24
         mtlr    disp_table
@@ -8135,12 +9650,16 @@ L_035B0:
 // Reached from 9 dispatch table entries:
 //     ADD.B Dn,(d16,An)
 //     ADD.B Dn,(xxx).W
-L_035C0:
+add_b_d7_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     ADD.B Dn,(An)
-L_035C4:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     ADD.B Dn,(An)+
+//     ADD.B Dn,(d8,An,Xn)
+//     ADD.B Dn,(xxx).L
+add_b_d7_mem_2:
         lbz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         slwi    immed_data, d7, 24
@@ -8149,12 +9668,16 @@ L_035C4:
 // Reached from 9 dispatch table entries:
 //     SUB.B Dn,(d16,An)
 //     SUB.B Dn,(xxx).W
-L_035D4:
+sub_b_d7_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     SUB.B Dn,(An)
-L_035D8:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     SUB.B Dn,(An)+
+//     SUB.B Dn,(d8,An,Xn)
+//     SUB.B Dn,(xxx).L
+sub_b_d7_mem_2:
         lbz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         slwi    immed_data, d7, 24
@@ -8164,18 +9687,23 @@ L_035D8:
 //     CMP.B (d16,An),Dn
 //     CMP.B (xxx).W,Dn
 //     CMP.B (d16,PC),Dn
-L_035E8:
+cmp_b_mem_d7:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     CMP.B (An),Dn
 //     CMP.B -(An),Dn
-L_035EC:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     CMP.B (d8,An,Xn),Dn
+//     CMP.B (An)+,Dn
+//     CMP.B (xxx).L,Dn
+//     CMP.B (d8,PC,Xn),Dn
+cmp_b_mem_d7_2:
         slwi    data, data, 24
 
 // Reached from 7 dispatch table entries:
 //     CMP.B Dn,Dn
-L_035F0:
+cmp_b_dn_d7:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         slwi    immed_data, d7, 24
         mtlr    disp_table
@@ -8187,42 +9715,56 @@ L_035F0:
 //     SUB.B (xxx).W,Dn
 //     SUB.B (d16,PC),Dn
 //     SUB.B #<data>,Dn
-L_03600:
+sub_b_ea_d0:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     SUB.B (An),Dn
 //     SUB.B -(An),Dn
-L_03604:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     SUB.B (An)+,Dn
+//     SUB.B (d8,An,Xn),Dn
+//     SUB.B (xxx).L,Dn
+//     SUB.B (d8,PC,Xn),Dn
+sub_b_mem_d0:
         slwi    data, data, 24
 
 // Reached from 15 dispatch table entries:
 //     SUBQ.B #<q>,Dn
 //     SUB.B Dn,Dn
-L_03608:
+sub_b_any_d0:
         slwi    immed_data, d0, 24
         subfco. data, data, immed_data                  // data = immed_data - data
         rlwimi  d0, data, 8, 24, 31                     // d0[7:0] = data[31:24]
-        b       L_064C0
+        b       sub_neg_l_reg_dn
 
 // Reached from 1 dispatch table entry:
 //     NEGX.B Dn
-L_03618:
+negx_b_d0:
         clrrwi  d0, d0, 8                               // d0 = d0 & 0xFFFFFF00
 
 // Reached from 8 dispatch table entries:
 //     SUBX.B Dn,Dn
-L_0361C:
+subx_b_dn_d0:
         slwi    immed_data, d0, 24
         bl      L_066C0
-L_03624:
+
+// Continuation (via rtn_addr) of 14 dispatch table entries:
+//     SHI.B Dn
+//     SLS.B Dn
+//     SCC.B Dn
+//     SCS.B Dn
+//     SNE.B Dn
+//     SEQ.B Dn
+//     ... and 8 more forms
+scc_b_d0:
         rlwimi  d0, data, 8, 24, 31                     // d0[7:0] = data[31:24]
         bfctr_likely 4*cr2+lt
         b       L_0D114
 
 // Reached from 1 dispatch table entry:
 //     NEG.B Dn
-L_03630:
+neg_b_d0:
         subfco. data, data, zero                        // data = zero - data
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         rlwimi  d0, data, 8, 24, 31                     // d0[7:0] = data[31:24]
@@ -8234,42 +9776,56 @@ L_03630:
 //     SUB.B (xxx).W,Dn
 //     SUB.B (d16,PC),Dn
 //     SUB.B #<data>,Dn
-L_03640:
+sub_b_ea_d1:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     SUB.B (An),Dn
 //     SUB.B -(An),Dn
-L_03644:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     SUB.B (An)+,Dn
+//     SUB.B (d8,An,Xn),Dn
+//     SUB.B (xxx).L,Dn
+//     SUB.B (d8,PC,Xn),Dn
+sub_b_mem_d1:
         slwi    data, data, 24
 
 // Reached from 15 dispatch table entries:
 //     SUBQ.B #<q>,Dn
 //     SUB.B Dn,Dn
-L_03648:
+sub_b_any_d1:
         slwi    immed_data, d1, 24
         subfco. data, data, immed_data                  // data = immed_data - data
         rlwimi  d1, data, 8, 24, 31                     // d1[7:0] = data[31:24]
-        b       L_064C0
+        b       sub_neg_l_reg_dn
 
 // Reached from 1 dispatch table entry:
 //     NEGX.B Dn
-L_03658:
+negx_b_d1:
         clrrwi  d1, d1, 8                               // d1 = d1 & 0xFFFFFF00
 
 // Reached from 8 dispatch table entries:
 //     SUBX.B Dn,Dn
-L_0365C:
+subx_b_dn_d1:
         slwi    immed_data, d1, 24
         bl      L_066C0
-L_03664:
+
+// Continuation (via rtn_addr) of 14 dispatch table entries:
+//     SHI.B Dn
+//     SLS.B Dn
+//     SCC.B Dn
+//     SCS.B Dn
+//     SNE.B Dn
+//     SEQ.B Dn
+//     ... and 8 more forms
+scc_b_d1:
         rlwimi  d1, data, 8, 24, 31                     // d1[7:0] = data[31:24]
         bfctr_likely 4*cr2+lt
         b       L_0D114
 
 // Reached from 1 dispatch table entry:
 //     NEG.B Dn
-L_03670:
+neg_b_d1:
         subfco. data, data, zero                        // data = zero - data
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         rlwimi  d1, data, 8, 24, 31                     // d1[7:0] = data[31:24]
@@ -8281,42 +9837,56 @@ L_03670:
 //     SUB.B (xxx).W,Dn
 //     SUB.B (d16,PC),Dn
 //     SUB.B #<data>,Dn
-L_03680:
+sub_b_ea_d2:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     SUB.B (An),Dn
 //     SUB.B -(An),Dn
-L_03684:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     SUB.B (An)+,Dn
+//     SUB.B (d8,An,Xn),Dn
+//     SUB.B (xxx).L,Dn
+//     SUB.B (d8,PC,Xn),Dn
+sub_b_mem_d2:
         slwi    data, data, 24
 
 // Reached from 15 dispatch table entries:
 //     SUBQ.B #<q>,Dn
 //     SUB.B Dn,Dn
-L_03688:
+sub_b_any_d2:
         slwi    immed_data, d2, 24
         subfco. data, data, immed_data                  // data = immed_data - data
         rlwimi  d2, data, 8, 24, 31                     // d2[7:0] = data[31:24]
-        b       L_064C0
+        b       sub_neg_l_reg_dn
 
 // Reached from 1 dispatch table entry:
 //     NEGX.B Dn
-L_03698:
+negx_b_d2:
         clrrwi  d2, d2, 8                               // d2 = d2 & 0xFFFFFF00
 
 // Reached from 8 dispatch table entries:
 //     SUBX.B Dn,Dn
-L_0369C:
+subx_b_dn_d2:
         slwi    immed_data, d2, 24
         bl      L_066C0
-L_036A4:
+
+// Continuation (via rtn_addr) of 14 dispatch table entries:
+//     SHI.B Dn
+//     SLS.B Dn
+//     SCC.B Dn
+//     SCS.B Dn
+//     SNE.B Dn
+//     SEQ.B Dn
+//     ... and 8 more forms
+scc_b_d2:
         rlwimi  d2, data, 8, 24, 31                     // d2[7:0] = data[31:24]
         bfctr_likely 4*cr2+lt
         b       L_0D114
 
 // Reached from 1 dispatch table entry:
 //     NEG.B Dn
-L_036B0:
+neg_b_d2:
         subfco. data, data, zero                        // data = zero - data
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         rlwimi  d2, data, 8, 24, 31                     // d2[7:0] = data[31:24]
@@ -8328,42 +9898,56 @@ L_036B0:
 //     SUB.B (xxx).W,Dn
 //     SUB.B (d16,PC),Dn
 //     SUB.B #<data>,Dn
-L_036C0:
+sub_b_ea_d3:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     SUB.B (An),Dn
 //     SUB.B -(An),Dn
-L_036C4:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     SUB.B (An)+,Dn
+//     SUB.B (d8,An,Xn),Dn
+//     SUB.B (xxx).L,Dn
+//     SUB.B (d8,PC,Xn),Dn
+sub_b_mem_d3:
         slwi    data, data, 24
 
 // Reached from 15 dispatch table entries:
 //     SUBQ.B #<q>,Dn
 //     SUB.B Dn,Dn
-L_036C8:
+sub_b_any_d3:
         slwi    immed_data, d3, 24
         subfco. data, data, immed_data                  // data = immed_data - data
         rlwimi  d3, data, 8, 24, 31                     // d3[7:0] = data[31:24]
-        b       L_064C0
+        b       sub_neg_l_reg_dn
 
 // Reached from 1 dispatch table entry:
 //     NEGX.B Dn
-L_036D8:
+negx_b_d3:
         clrrwi  d3, d3, 8                               // d3 = d3 & 0xFFFFFF00
 
 // Reached from 8 dispatch table entries:
 //     SUBX.B Dn,Dn
-L_036DC:
+subx_b_dn_d3:
         slwi    immed_data, d3, 24
         bl      L_066C0
-L_036E4:
+
+// Continuation (via rtn_addr) of 14 dispatch table entries:
+//     SHI.B Dn
+//     SLS.B Dn
+//     SCC.B Dn
+//     SCS.B Dn
+//     SNE.B Dn
+//     SEQ.B Dn
+//     ... and 8 more forms
+scc_b_d3:
         rlwimi  d3, data, 8, 24, 31                     // d3[7:0] = data[31:24]
         bfctr_likely 4*cr2+lt
         b       L_0D114
 
 // Reached from 1 dispatch table entry:
 //     NEG.B Dn
-L_036F0:
+neg_b_d3:
         subfco. data, data, zero                        // data = zero - data
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         rlwimi  d3, data, 8, 24, 31                     // d3[7:0] = data[31:24]
@@ -8375,42 +9959,56 @@ L_036F0:
 //     SUB.B (xxx).W,Dn
 //     SUB.B (d16,PC),Dn
 //     SUB.B #<data>,Dn
-L_03700:
+sub_b_ea_d4:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     SUB.B (An),Dn
 //     SUB.B -(An),Dn
-L_03704:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     SUB.B (An)+,Dn
+//     SUB.B (d8,An,Xn),Dn
+//     SUB.B (xxx).L,Dn
+//     SUB.B (d8,PC,Xn),Dn
+sub_b_mem_d4:
         slwi    data, data, 24
 
 // Reached from 15 dispatch table entries:
 //     SUBQ.B #<q>,Dn
 //     SUB.B Dn,Dn
-L_03708:
+sub_b_any_d4:
         slwi    immed_data, d4, 24
         subfco. data, data, immed_data                  // data = immed_data - data
         rlwimi  d4, data, 8, 24, 31                     // d4[7:0] = data[31:24]
-        b       L_064C0
+        b       sub_neg_l_reg_dn
 
 // Reached from 1 dispatch table entry:
 //     NEGX.B Dn
-L_03718:
+negx_b_d4:
         clrrwi  d4, d4, 8                               // d4 = d4 & 0xFFFFFF00
 
 // Reached from 8 dispatch table entries:
 //     SUBX.B Dn,Dn
-L_0371C:
+subx_b_dn_d4:
         slwi    immed_data, d4, 24
         bl      L_066C0
-L_03724:
+
+// Continuation (via rtn_addr) of 14 dispatch table entries:
+//     SHI.B Dn
+//     SLS.B Dn
+//     SCC.B Dn
+//     SCS.B Dn
+//     SNE.B Dn
+//     SEQ.B Dn
+//     ... and 8 more forms
+scc_b_d4:
         rlwimi  d4, data, 8, 24, 31                     // d4[7:0] = data[31:24]
         bfctr_likely 4*cr2+lt
         b       L_0D114
 
 // Reached from 1 dispatch table entry:
 //     NEG.B Dn
-L_03730:
+neg_b_d4:
         subfco. data, data, zero                        // data = zero - data
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         rlwimi  d4, data, 8, 24, 31                     // d4[7:0] = data[31:24]
@@ -8422,42 +10020,56 @@ L_03730:
 //     SUB.B (xxx).W,Dn
 //     SUB.B (d16,PC),Dn
 //     SUB.B #<data>,Dn
-L_03740:
+sub_b_ea_d5:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     SUB.B (An),Dn
 //     SUB.B -(An),Dn
-L_03744:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     SUB.B (An)+,Dn
+//     SUB.B (d8,An,Xn),Dn
+//     SUB.B (xxx).L,Dn
+//     SUB.B (d8,PC,Xn),Dn
+sub_b_mem_d5:
         slwi    data, data, 24
 
 // Reached from 15 dispatch table entries:
 //     SUBQ.B #<q>,Dn
 //     SUB.B Dn,Dn
-L_03748:
+sub_b_any_d5:
         slwi    immed_data, d5, 24
         subfco. data, data, immed_data                  // data = immed_data - data
         rlwimi  d5, data, 8, 24, 31                     // d5[7:0] = data[31:24]
-        b       L_064C0
+        b       sub_neg_l_reg_dn
 
 // Reached from 1 dispatch table entry:
 //     NEGX.B Dn
-L_03758:
+negx_b_d5:
         clrrwi  d5, d5, 8                               // d5 = d5 & 0xFFFFFF00
 
 // Reached from 8 dispatch table entries:
 //     SUBX.B Dn,Dn
-L_0375C:
+subx_b_dn_d5:
         slwi    immed_data, d5, 24
         bl      L_066C0
-L_03764:
+
+// Continuation (via rtn_addr) of 14 dispatch table entries:
+//     SHI.B Dn
+//     SLS.B Dn
+//     SCC.B Dn
+//     SCS.B Dn
+//     SNE.B Dn
+//     SEQ.B Dn
+//     ... and 8 more forms
+scc_b_d5:
         rlwimi  d5, data, 8, 24, 31                     // d5[7:0] = data[31:24]
         bfctr_likely 4*cr2+lt
         b       L_0D114
 
 // Reached from 1 dispatch table entry:
 //     NEG.B Dn
-L_03770:
+neg_b_d5:
         subfco. data, data, zero                        // data = zero - data
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         rlwimi  d5, data, 8, 24, 31                     // d5[7:0] = data[31:24]
@@ -8469,42 +10081,56 @@ L_03770:
 //     SUB.B (xxx).W,Dn
 //     SUB.B (d16,PC),Dn
 //     SUB.B #<data>,Dn
-L_03780:
+sub_b_ea_d6:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     SUB.B (An),Dn
 //     SUB.B -(An),Dn
-L_03784:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     SUB.B (An)+,Dn
+//     SUB.B (d8,An,Xn),Dn
+//     SUB.B (xxx).L,Dn
+//     SUB.B (d8,PC,Xn),Dn
+sub_b_mem_d6:
         slwi    data, data, 24
 
 // Reached from 15 dispatch table entries:
 //     SUBQ.B #<q>,Dn
 //     SUB.B Dn,Dn
-L_03788:
+sub_b_any_d6:
         slwi    immed_data, d6, 24
         subfco. data, data, immed_data                  // data = immed_data - data
         rlwimi  d6, data, 8, 24, 31                     // d6[7:0] = data[31:24]
-        b       L_064C0
+        b       sub_neg_l_reg_dn
 
 // Reached from 1 dispatch table entry:
 //     NEGX.B Dn
-L_03798:
+negx_b_d6:
         clrrwi  d6, d6, 8                               // d6 = d6 & 0xFFFFFF00
 
 // Reached from 8 dispatch table entries:
 //     SUBX.B Dn,Dn
-L_0379C:
+subx_b_dn_d6:
         slwi    immed_data, d6, 24
         bl      L_066C0
-L_037A4:
+
+// Continuation (via rtn_addr) of 14 dispatch table entries:
+//     SHI.B Dn
+//     SLS.B Dn
+//     SCC.B Dn
+//     SCS.B Dn
+//     SNE.B Dn
+//     SEQ.B Dn
+//     ... and 8 more forms
+scc_b_d6:
         rlwimi  d6, data, 8, 24, 31                     // d6[7:0] = data[31:24]
         bfctr_likely 4*cr2+lt
         b       L_0D114
 
 // Reached from 1 dispatch table entry:
 //     NEG.B Dn
-L_037B0:
+neg_b_d6:
         subfco. data, data, zero                        // data = zero - data
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         rlwimi  d6, data, 8, 24, 31                     // d6[7:0] = data[31:24]
@@ -8516,42 +10142,56 @@ L_037B0:
 //     SUB.B (xxx).W,Dn
 //     SUB.B (d16,PC),Dn
 //     SUB.B #<data>,Dn
-L_037C0:
+sub_b_ea_d7:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     SUB.B (An),Dn
 //     SUB.B -(An),Dn
-L_037C4:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     SUB.B (An)+,Dn
+//     SUB.B (d8,An,Xn),Dn
+//     SUB.B (xxx).L,Dn
+//     SUB.B (d8,PC,Xn),Dn
+sub_b_mem_d7:
         slwi    data, data, 24
 
 // Reached from 15 dispatch table entries:
 //     SUBQ.B #<q>,Dn
 //     SUB.B Dn,Dn
-L_037C8:
+sub_b_any_d7:
         slwi    immed_data, d7, 24
         subfco. data, data, immed_data                  // data = immed_data - data
         rlwimi  d7, data, 8, 24, 31                     // d7[7:0] = data[31:24]
-        b       L_064C0
+        b       sub_neg_l_reg_dn
 
 // Reached from 1 dispatch table entry:
 //     NEGX.B Dn
-L_037D8:
+negx_b_d7:
         clrrwi  d7, d7, 8                               // d7 = d7 & 0xFFFFFF00
 
 // Reached from 8 dispatch table entries:
 //     SUBX.B Dn,Dn
-L_037DC:
+subx_b_dn_d7:
         slwi    immed_data, d7, 24
         bl      L_066C0
-L_037E4:
+
+// Continuation (via rtn_addr) of 14 dispatch table entries:
+//     SHI.B Dn
+//     SLS.B Dn
+//     SCC.B Dn
+//     SCS.B Dn
+//     SNE.B Dn
+//     SEQ.B Dn
+//     ... and 8 more forms
+scc_b_d7:
         rlwimi  d7, data, 8, 24, 31                     // d7[7:0] = data[31:24]
         bfctr_likely 4*cr2+lt
         b       L_0D114
 
 // Reached from 1 dispatch table entry:
 //     NEG.B Dn
-L_037F0:
+neg_b_d7:
         subfco. data, data, zero                        // data = zero - data
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         rlwimi  d7, data, 8, 24, 31                     // d7[7:0] = data[31:24]
@@ -8563,13 +10203,18 @@ L_037F0:
 //     ADD.W (xxx).W,Dn
 //     ADD.W (d16,PC),Dn
 //     ADD.W #<data>,Dn
-L_03800:
+add_w_ea_d0:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     ADD.W (An),Dn
 //     ADD.W -(An),Dn
-L_03804:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     ADD.W (An)+,Dn
+//     ADD.W (d8,An,Xn),Dn
+//     ADD.W (xxx).L,Dn
+//     ADD.W (d8,PC,Xn),Dn
+add_w_mem_d0:
         slwi    data, data, 16
 
 // Reached from 25 dispatch table entries:
@@ -8577,7 +10222,7 @@ L_03804:
 //     ADD.W Dn,Dn
 //     ADD.W An,Dn
 //     ASL.W #<q>,Dn
-L_03808:
+add_asl_w_any_d0:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         slwi    immed_data, d0, 16
         mtlr    disp_table
@@ -8590,7 +10235,7 @@ L_03808:
 
 // Reached from 8 dispatch table entries:
 //     ADDX.W Dn,Dn
-L_0382C:
+addx_w_dn_d0:
         slwi    immed_data, d0, 16
         bl      L_06880
         rlwimi  d0, data, 16, 16, 31                    // d0[15:0] = data[31:16]
@@ -8603,13 +10248,18 @@ L_0382C:
 //     ADD.W (xxx).W,Dn
 //     ADD.W (d16,PC),Dn
 //     ADD.W #<data>,Dn
-L_03840:
+add_w_ea_d1:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     ADD.W (An),Dn
 //     ADD.W -(An),Dn
-L_03844:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     ADD.W (An)+,Dn
+//     ADD.W (d8,An,Xn),Dn
+//     ADD.W (xxx).L,Dn
+//     ADD.W (d8,PC,Xn),Dn
+add_w_mem_d1:
         slwi    data, data, 16
 
 // Reached from 25 dispatch table entries:
@@ -8617,7 +10267,7 @@ L_03844:
 //     ADD.W Dn,Dn
 //     ADD.W An,Dn
 //     ASL.W #<q>,Dn
-L_03848:
+add_asl_w_any_d1:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         slwi    immed_data, d1, 16
         mtlr    disp_table
@@ -8630,7 +10280,7 @@ L_03848:
 
 // Reached from 8 dispatch table entries:
 //     ADDX.W Dn,Dn
-L_0386C:
+addx_w_dn_d1:
         slwi    immed_data, d1, 16
         bl      L_06880
         rlwimi  d1, data, 16, 16, 31                    // d1[15:0] = data[31:16]
@@ -8643,13 +10293,18 @@ L_0386C:
 //     ADD.W (xxx).W,Dn
 //     ADD.W (d16,PC),Dn
 //     ADD.W #<data>,Dn
-L_03880:
+add_w_ea_d2:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     ADD.W (An),Dn
 //     ADD.W -(An),Dn
-L_03884:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     ADD.W (An)+,Dn
+//     ADD.W (d8,An,Xn),Dn
+//     ADD.W (xxx).L,Dn
+//     ADD.W (d8,PC,Xn),Dn
+add_w_mem_d2:
         slwi    data, data, 16
 
 // Reached from 25 dispatch table entries:
@@ -8657,7 +10312,7 @@ L_03884:
 //     ADD.W Dn,Dn
 //     ADD.W An,Dn
 //     ASL.W #<q>,Dn
-L_03888:
+add_asl_w_any_d2:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         slwi    immed_data, d2, 16
         mtlr    disp_table
@@ -8670,7 +10325,7 @@ L_03888:
 
 // Reached from 8 dispatch table entries:
 //     ADDX.W Dn,Dn
-L_038AC:
+addx_w_dn_d2:
         slwi    immed_data, d2, 16
         bl      L_06880
         rlwimi  d2, data, 16, 16, 31                    // d2[15:0] = data[31:16]
@@ -8683,13 +10338,18 @@ L_038AC:
 //     ADD.W (xxx).W,Dn
 //     ADD.W (d16,PC),Dn
 //     ADD.W #<data>,Dn
-L_038C0:
+add_w_ea_d3:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     ADD.W (An),Dn
 //     ADD.W -(An),Dn
-L_038C4:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     ADD.W (An)+,Dn
+//     ADD.W (d8,An,Xn),Dn
+//     ADD.W (xxx).L,Dn
+//     ADD.W (d8,PC,Xn),Dn
+add_w_mem_d3:
         slwi    data, data, 16
 
 // Reached from 25 dispatch table entries:
@@ -8697,7 +10357,7 @@ L_038C4:
 //     ADD.W Dn,Dn
 //     ADD.W An,Dn
 //     ASL.W #<q>,Dn
-L_038C8:
+add_asl_w_any_d3:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         slwi    immed_data, d3, 16
         mtlr    disp_table
@@ -8710,7 +10370,7 @@ L_038C8:
 
 // Reached from 8 dispatch table entries:
 //     ADDX.W Dn,Dn
-L_038EC:
+addx_w_dn_d3:
         slwi    immed_data, d3, 16
         bl      L_06880
         rlwimi  d3, data, 16, 16, 31                    // d3[15:0] = data[31:16]
@@ -8723,13 +10383,18 @@ L_038EC:
 //     ADD.W (xxx).W,Dn
 //     ADD.W (d16,PC),Dn
 //     ADD.W #<data>,Dn
-L_03900:
+add_w_ea_d4:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     ADD.W (An),Dn
 //     ADD.W -(An),Dn
-L_03904:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     ADD.W (An)+,Dn
+//     ADD.W (d8,An,Xn),Dn
+//     ADD.W (xxx).L,Dn
+//     ADD.W (d8,PC,Xn),Dn
+add_w_mem_d4:
         slwi    data, data, 16
 
 // Reached from 25 dispatch table entries:
@@ -8737,7 +10402,7 @@ L_03904:
 //     ADD.W Dn,Dn
 //     ADD.W An,Dn
 //     ASL.W #<q>,Dn
-L_03908:
+add_asl_w_any_d4:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         slwi    immed_data, d4, 16
         mtlr    disp_table
@@ -8750,7 +10415,7 @@ L_03908:
 
 // Reached from 8 dispatch table entries:
 //     ADDX.W Dn,Dn
-L_0392C:
+addx_w_dn_d4:
         slwi    immed_data, d4, 16
         bl      L_06880
         rlwimi  d4, data, 16, 16, 31                    // d4[15:0] = data[31:16]
@@ -8763,13 +10428,18 @@ L_0392C:
 //     ADD.W (xxx).W,Dn
 //     ADD.W (d16,PC),Dn
 //     ADD.W #<data>,Dn
-L_03940:
+add_w_ea_d5:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     ADD.W (An),Dn
 //     ADD.W -(An),Dn
-L_03944:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     ADD.W (An)+,Dn
+//     ADD.W (d8,An,Xn),Dn
+//     ADD.W (xxx).L,Dn
+//     ADD.W (d8,PC,Xn),Dn
+add_w_mem_d5:
         slwi    data, data, 16
 
 // Reached from 25 dispatch table entries:
@@ -8777,7 +10447,7 @@ L_03944:
 //     ADD.W Dn,Dn
 //     ADD.W An,Dn
 //     ASL.W #<q>,Dn
-L_03948:
+add_asl_w_any_d5:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         slwi    immed_data, d5, 16
         mtlr    disp_table
@@ -8790,7 +10460,7 @@ L_03948:
 
 // Reached from 8 dispatch table entries:
 //     ADDX.W Dn,Dn
-L_0396C:
+addx_w_dn_d5:
         slwi    immed_data, d5, 16
         bl      L_06880
         rlwimi  d5, data, 16, 16, 31                    // d5[15:0] = data[31:16]
@@ -8803,13 +10473,18 @@ L_0396C:
 //     ADD.W (xxx).W,Dn
 //     ADD.W (d16,PC),Dn
 //     ADD.W #<data>,Dn
-L_03980:
+add_w_ea_d6:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     ADD.W (An),Dn
 //     ADD.W -(An),Dn
-L_03984:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     ADD.W (An)+,Dn
+//     ADD.W (d8,An,Xn),Dn
+//     ADD.W (xxx).L,Dn
+//     ADD.W (d8,PC,Xn),Dn
+add_w_mem_d6:
         slwi    data, data, 16
 
 // Reached from 25 dispatch table entries:
@@ -8817,7 +10492,7 @@ L_03984:
 //     ADD.W Dn,Dn
 //     ADD.W An,Dn
 //     ASL.W #<q>,Dn
-L_03988:
+add_asl_w_any_d6:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         slwi    immed_data, d6, 16
         mtlr    disp_table
@@ -8830,7 +10505,7 @@ L_03988:
 
 // Reached from 8 dispatch table entries:
 //     ADDX.W Dn,Dn
-L_039AC:
+addx_w_dn_d6:
         slwi    immed_data, d6, 16
         bl      L_06880
         rlwimi  d6, data, 16, 16, 31                    // d6[15:0] = data[31:16]
@@ -8843,13 +10518,18 @@ L_039AC:
 //     ADD.W (xxx).W,Dn
 //     ADD.W (d16,PC),Dn
 //     ADD.W #<data>,Dn
-L_039C0:
+add_w_ea_d7:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     ADD.W (An),Dn
 //     ADD.W -(An),Dn
-L_039C4:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     ADD.W (An)+,Dn
+//     ADD.W (d8,An,Xn),Dn
+//     ADD.W (xxx).L,Dn
+//     ADD.W (d8,PC,Xn),Dn
+add_w_mem_d7:
         slwi    data, data, 16
 
 // Reached from 25 dispatch table entries:
@@ -8857,7 +10537,7 @@ L_039C4:
 //     ADD.W Dn,Dn
 //     ADD.W An,Dn
 //     ASL.W #<q>,Dn
-L_039C8:
+add_asl_w_any_d7:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         slwi    immed_data, d7, 16
         mtlr    disp_table
@@ -8870,7 +10550,7 @@ L_039C8:
 
 // Reached from 8 dispatch table entries:
 //     ADDX.W Dn,Dn
-L_039EC:
+addx_w_dn_d7:
         slwi    immed_data, d7, 16
         bl      L_06880
         rlwimi  d7, data, 16, 16, 31                    // d7[15:0] = data[31:16]
@@ -8880,12 +10560,16 @@ L_039EC:
 // Reached from 9 dispatch table entries:
 //     ADD.W Dn,(d16,An)
 //     ADD.W Dn,(xxx).W
-L_03A00:
+add_w_d0_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     ADD.W Dn,(An)
-L_03A04:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     ADD.W Dn,(An)+
+//     ADD.W Dn,(d8,An,Xn)
+//     ADD.W Dn,(xxx).L
+add_w_d0_mem_2:
         lha     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         slwi    immed_data, d0, 16
@@ -8894,12 +10578,16 @@ L_03A04:
 // Reached from 9 dispatch table entries:
 //     SUB.W Dn,(d16,An)
 //     SUB.W Dn,(xxx).W
-L_03A14:
+sub_w_d0_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     SUB.W Dn,(An)
-L_03A18:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     SUB.W Dn,(An)+
+//     SUB.W Dn,(d8,An,Xn)
+//     SUB.W Dn,(xxx).L
+sub_w_d0_mem_2:
         lha     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         slwi    immed_data, d0, 16
@@ -8909,19 +10597,24 @@ L_03A18:
 //     CMP.W (d16,An),Dn
 //     CMP.W (xxx).W,Dn
 //     CMP.W (d16,PC),Dn
-L_03A28:
+cmp_w_mem_d0:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     CMP.W (An),Dn
 //     CMP.W -(An),Dn
-L_03A2C:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     CMP.W (An)+,Dn
+//     CMP.W (d8,An,Xn),Dn
+//     CMP.W (xxx).L,Dn
+//     CMP.W (d8,PC,Xn),Dn
+cmp_w_mem_d0_2:
         slwi    data, data, 16
 
 // Reached from 15 dispatch table entries:
 //     CMP.W An,Dn
 //     CMP.W Dn,Dn
-L_03A30:
+cmp_w_reg_d0:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         slwi    immed_data, d0, 16
         mtlr    disp_table
@@ -8930,12 +10623,16 @@ L_03A30:
 // Reached from 9 dispatch table entries:
 //     ADD.W Dn,(d16,An)
 //     ADD.W Dn,(xxx).W
-L_03A40:
+add_w_d1_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     ADD.W Dn,(An)
-L_03A44:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     ADD.W Dn,(An)+
+//     ADD.W Dn,(d8,An,Xn)
+//     ADD.W Dn,(xxx).L
+add_w_d1_mem_2:
         lha     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         slwi    immed_data, d1, 16
@@ -8944,12 +10641,16 @@ L_03A44:
 // Reached from 9 dispatch table entries:
 //     SUB.W Dn,(d16,An)
 //     SUB.W Dn,(xxx).W
-L_03A54:
+sub_w_d1_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     SUB.W Dn,(An)
-L_03A58:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     SUB.W Dn,(An)+
+//     SUB.W Dn,(d8,An,Xn)
+//     SUB.W Dn,(xxx).L
+sub_w_d1_mem_2:
         lha     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         slwi    immed_data, d1, 16
@@ -8959,19 +10660,24 @@ L_03A58:
 //     CMP.W (d16,An),Dn
 //     CMP.W (xxx).W,Dn
 //     CMP.W (d16,PC),Dn
-L_03A68:
+cmp_w_mem_d1:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     CMP.W (An),Dn
 //     CMP.W -(An),Dn
-L_03A6C:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     CMP.W (An)+,Dn
+//     CMP.W (d8,An,Xn),Dn
+//     CMP.W (xxx).L,Dn
+//     CMP.W (d8,PC,Xn),Dn
+cmp_w_mem_d1_2:
         slwi    data, data, 16
 
 // Reached from 15 dispatch table entries:
 //     CMP.W An,Dn
 //     CMP.W Dn,Dn
-L_03A70:
+cmp_w_reg_d1:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         slwi    immed_data, d1, 16
         mtlr    disp_table
@@ -8980,12 +10686,16 @@ L_03A70:
 // Reached from 9 dispatch table entries:
 //     ADD.W Dn,(d16,An)
 //     ADD.W Dn,(xxx).W
-L_03A80:
+add_w_d2_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     ADD.W Dn,(An)
-L_03A84:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     ADD.W Dn,(An)+
+//     ADD.W Dn,(d8,An,Xn)
+//     ADD.W Dn,(xxx).L
+add_w_d2_mem_2:
         lha     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         slwi    immed_data, d2, 16
@@ -8994,12 +10704,16 @@ L_03A84:
 // Reached from 9 dispatch table entries:
 //     SUB.W Dn,(d16,An)
 //     SUB.W Dn,(xxx).W
-L_03A94:
+sub_w_d2_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     SUB.W Dn,(An)
-L_03A98:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     SUB.W Dn,(An)+
+//     SUB.W Dn,(d8,An,Xn)
+//     SUB.W Dn,(xxx).L
+sub_w_d2_mem_2:
         lha     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         slwi    immed_data, d2, 16
@@ -9009,19 +10723,24 @@ L_03A98:
 //     CMP.W (d16,An),Dn
 //     CMP.W (xxx).W,Dn
 //     CMP.W (d16,PC),Dn
-L_03AA8:
+cmp_w_mem_d2:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     CMP.W (An),Dn
 //     CMP.W -(An),Dn
-L_03AAC:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     CMP.W (An)+,Dn
+//     CMP.W (d8,An,Xn),Dn
+//     CMP.W (xxx).L,Dn
+//     CMP.W (d8,PC,Xn),Dn
+cmp_w_mem_d2_2:
         slwi    data, data, 16
 
 // Reached from 15 dispatch table entries:
 //     CMP.W An,Dn
 //     CMP.W Dn,Dn
-L_03AB0:
+cmp_w_reg_d2:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         slwi    immed_data, d2, 16
         mtlr    disp_table
@@ -9030,12 +10749,16 @@ L_03AB0:
 // Reached from 9 dispatch table entries:
 //     ADD.W Dn,(d16,An)
 //     ADD.W Dn,(xxx).W
-L_03AC0:
+add_w_d3_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     ADD.W Dn,(An)
-L_03AC4:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     ADD.W Dn,(An)+
+//     ADD.W Dn,(d8,An,Xn)
+//     ADD.W Dn,(xxx).L
+add_w_d3_mem_2:
         lha     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         slwi    immed_data, d3, 16
@@ -9044,12 +10767,16 @@ L_03AC4:
 // Reached from 9 dispatch table entries:
 //     SUB.W Dn,(d16,An)
 //     SUB.W Dn,(xxx).W
-L_03AD4:
+sub_w_d3_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     SUB.W Dn,(An)
-L_03AD8:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     SUB.W Dn,(An)+
+//     SUB.W Dn,(d8,An,Xn)
+//     SUB.W Dn,(xxx).L
+sub_w_d3_mem_2:
         lha     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         slwi    immed_data, d3, 16
@@ -9059,19 +10786,24 @@ L_03AD8:
 //     CMP.W (d16,An),Dn
 //     CMP.W (xxx).W,Dn
 //     CMP.W (d16,PC),Dn
-L_03AE8:
+cmp_w_mem_d3:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     CMP.W (An),Dn
 //     CMP.W -(An),Dn
-L_03AEC:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     CMP.W (An)+,Dn
+//     CMP.W (d8,An,Xn),Dn
+//     CMP.W (xxx).L,Dn
+//     CMP.W (d8,PC,Xn),Dn
+cmp_w_mem_d3_2:
         slwi    data, data, 16
 
 // Reached from 15 dispatch table entries:
 //     CMP.W An,Dn
 //     CMP.W Dn,Dn
-L_03AF0:
+cmp_w_reg_d3:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         slwi    immed_data, d3, 16
         mtlr    disp_table
@@ -9080,12 +10812,16 @@ L_03AF0:
 // Reached from 9 dispatch table entries:
 //     ADD.W Dn,(d16,An)
 //     ADD.W Dn,(xxx).W
-L_03B00:
+add_w_d4_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     ADD.W Dn,(An)
-L_03B04:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     ADD.W Dn,(An)+
+//     ADD.W Dn,(d8,An,Xn)
+//     ADD.W Dn,(xxx).L
+add_w_d4_mem_2:
         lha     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         slwi    immed_data, d4, 16
@@ -9094,12 +10830,16 @@ L_03B04:
 // Reached from 9 dispatch table entries:
 //     SUB.W Dn,(d16,An)
 //     SUB.W Dn,(xxx).W
-L_03B14:
+sub_w_d4_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     SUB.W Dn,(An)
-L_03B18:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     SUB.W Dn,(An)+
+//     SUB.W Dn,(d8,An,Xn)
+//     SUB.W Dn,(xxx).L
+sub_w_d4_mem_2:
         lha     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         slwi    immed_data, d4, 16
@@ -9109,19 +10849,24 @@ L_03B18:
 //     CMP.W (d16,An),Dn
 //     CMP.W (xxx).W,Dn
 //     CMP.W (d16,PC),Dn
-L_03B28:
+cmp_w_mem_d4:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     CMP.W (An),Dn
 //     CMP.W -(An),Dn
-L_03B2C:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     CMP.W (An)+,Dn
+//     CMP.W (d8,An,Xn),Dn
+//     CMP.W (xxx).L,Dn
+//     CMP.W (d8,PC,Xn),Dn
+cmp_w_mem_d4_2:
         slwi    data, data, 16
 
 // Reached from 15 dispatch table entries:
 //     CMP.W An,Dn
 //     CMP.W Dn,Dn
-L_03B30:
+cmp_w_reg_d4:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         slwi    immed_data, d4, 16
         mtlr    disp_table
@@ -9130,12 +10875,16 @@ L_03B30:
 // Reached from 9 dispatch table entries:
 //     ADD.W Dn,(d16,An)
 //     ADD.W Dn,(xxx).W
-L_03B40:
+add_w_d5_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     ADD.W Dn,(An)
-L_03B44:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     ADD.W Dn,(An)+
+//     ADD.W Dn,(d8,An,Xn)
+//     ADD.W Dn,(xxx).L
+add_w_d5_mem_2:
         lha     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         slwi    immed_data, d5, 16
@@ -9144,12 +10893,16 @@ L_03B44:
 // Reached from 9 dispatch table entries:
 //     SUB.W Dn,(d16,An)
 //     SUB.W Dn,(xxx).W
-L_03B54:
+sub_w_d5_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     SUB.W Dn,(An)
-L_03B58:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     SUB.W Dn,(An)+
+//     SUB.W Dn,(d8,An,Xn)
+//     SUB.W Dn,(xxx).L
+sub_w_d5_mem_2:
         lha     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         slwi    immed_data, d5, 16
@@ -9159,19 +10912,24 @@ L_03B58:
 //     CMP.W (d16,An),Dn
 //     CMP.W (xxx).W,Dn
 //     CMP.W (d16,PC),Dn
-L_03B68:
+cmp_w_mem_d5:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     CMP.W (An),Dn
 //     CMP.W -(An),Dn
-L_03B6C:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     CMP.W (An)+,Dn
+//     CMP.W (d8,An,Xn),Dn
+//     CMP.W (xxx).L,Dn
+//     CMP.W (d8,PC,Xn),Dn
+cmp_w_mem_d5_2:
         slwi    data, data, 16
 
 // Reached from 15 dispatch table entries:
 //     CMP.W An,Dn
 //     CMP.W Dn,Dn
-L_03B70:
+cmp_w_reg_d5:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         slwi    immed_data, d5, 16
         mtlr    disp_table
@@ -9180,12 +10938,16 @@ L_03B70:
 // Reached from 9 dispatch table entries:
 //     ADD.W Dn,(d16,An)
 //     ADD.W Dn,(xxx).W
-L_03B80:
+add_w_d6_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     ADD.W Dn,(An)
-L_03B84:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     ADD.W Dn,(An)+
+//     ADD.W Dn,(d8,An,Xn)
+//     ADD.W Dn,(xxx).L
+add_w_d6_mem_2:
         lha     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         slwi    immed_data, d6, 16
@@ -9194,12 +10956,16 @@ L_03B84:
 // Reached from 9 dispatch table entries:
 //     SUB.W Dn,(d16,An)
 //     SUB.W Dn,(xxx).W
-L_03B94:
+sub_w_d6_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     SUB.W Dn,(An)
-L_03B98:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     SUB.W Dn,(An)+
+//     SUB.W Dn,(d8,An,Xn)
+//     SUB.W Dn,(xxx).L
+sub_w_d6_mem_2:
         lha     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         slwi    immed_data, d6, 16
@@ -9209,19 +10975,24 @@ L_03B98:
 //     CMP.W (d16,An),Dn
 //     CMP.W (xxx).W,Dn
 //     CMP.W (d16,PC),Dn
-L_03BA8:
+cmp_w_mem_d6:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     CMP.W (An),Dn
 //     CMP.W -(An),Dn
-L_03BAC:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     CMP.W (An)+,Dn
+//     CMP.W (d8,An,Xn),Dn
+//     CMP.W (xxx).L,Dn
+//     CMP.W (d8,PC,Xn),Dn
+cmp_w_mem_d6_2:
         slwi    data, data, 16
 
 // Reached from 15 dispatch table entries:
 //     CMP.W An,Dn
 //     CMP.W Dn,Dn
-L_03BB0:
+cmp_w_reg_d6:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         slwi    immed_data, d6, 16
         mtlr    disp_table
@@ -9230,12 +11001,16 @@ L_03BB0:
 // Reached from 9 dispatch table entries:
 //     ADD.W Dn,(d16,An)
 //     ADD.W Dn,(xxx).W
-L_03BC0:
+add_w_d7_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     ADD.W Dn,(An)
-L_03BC4:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     ADD.W Dn,(An)+
+//     ADD.W Dn,(d8,An,Xn)
+//     ADD.W Dn,(xxx).L
+add_w_d7_mem_2:
         lha     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         slwi    immed_data, d7, 16
@@ -9244,12 +11019,16 @@ L_03BC4:
 // Reached from 9 dispatch table entries:
 //     SUB.W Dn,(d16,An)
 //     SUB.W Dn,(xxx).W
-L_03BD4:
+sub_w_d7_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     SUB.W Dn,(An)
-L_03BD8:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     SUB.W Dn,(An)+
+//     SUB.W Dn,(d8,An,Xn)
+//     SUB.W Dn,(xxx).L
+sub_w_d7_mem_2:
         lha     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         slwi    immed_data, d7, 16
@@ -9259,19 +11038,24 @@ L_03BD8:
 //     CMP.W (d16,An),Dn
 //     CMP.W (xxx).W,Dn
 //     CMP.W (d16,PC),Dn
-L_03BE8:
+cmp_w_mem_d7:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     CMP.W (An),Dn
 //     CMP.W -(An),Dn
-L_03BEC:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     CMP.W (An)+,Dn
+//     CMP.W (d8,An,Xn),Dn
+//     CMP.W (xxx).L,Dn
+//     CMP.W (d8,PC,Xn),Dn
+cmp_w_mem_d7_2:
         slwi    data, data, 16
 
 // Reached from 15 dispatch table entries:
 //     CMP.W An,Dn
 //     CMP.W Dn,Dn
-L_03BF0:
+cmp_w_reg_d7:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         slwi    immed_data, d7, 16
         mtlr    disp_table
@@ -9279,7 +11063,7 @@ L_03BF0:
 
 // Reached from 1 dispatch table entry:
 //     NEG.W Dn
-L_03C00:
+neg_w_d0:
         subfco. data, data, zero                        // data = zero - data
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         rlwimi  d0, data, 16, 16, 31                    // d0[15:0] = data[31:16]
@@ -9287,12 +11071,12 @@ L_03C00:
 
 // Reached from 1 dispatch table entry:
 //     NEGX.W Dn
-L_03C10:
+negx_w_d0:
         clrrwi  d0, d0, 16                              // d0 = d0 & 0xFFFF0000
 
 // Reached from 8 dispatch table entries:
 //     SUBX.W Dn,Dn
-L_03C14:
+subx_w_dn_d0:
         slwi    immed_data, d0, 16
         bl      L_068E0
         rlwimi  d0, data, 16, 16, 31                    // d0[15:0] = data[31:16]
@@ -9305,28 +11089,33 @@ L_03C14:
 //     SUB.W (xxx).W,Dn
 //     SUB.W (d16,PC),Dn
 //     SUB.W #<data>,Dn
-L_03C28:
+sub_w_ea_d0:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     SUB.W (An),Dn
 //     SUB.W -(An),Dn
-L_03C2C:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     SUB.W (An)+,Dn
+//     SUB.W (d8,An,Xn),Dn
+//     SUB.W (xxx).L,Dn
+//     SUB.W (d8,PC,Xn),Dn
+sub_w_mem_d0:
         slwi    data, data, 16
 
 // Reached from 23 dispatch table entries:
 //     SUBQ.W #<q>,Dn
 //     SUB.W An,Dn
 //     SUB.W Dn,Dn
-L_03C30:
+sub_w_any_d0:
         slwi    immed_data, d0, 16
         subfco. data, data, immed_data                  // data = immed_data - data
         rlwimi  d0, data, 16, 16, 31                    // d0[15:0] = data[31:16]
-        b       L_064C0
+        b       sub_neg_l_reg_dn
 
 // Reached from 1 dispatch table entry:
 //     NEG.W Dn
-L_03C40:
+neg_w_d1:
         subfco. data, data, zero                        // data = zero - data
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         rlwimi  d1, data, 16, 16, 31                    // d1[15:0] = data[31:16]
@@ -9334,12 +11123,12 @@ L_03C40:
 
 // Reached from 1 dispatch table entry:
 //     NEGX.W Dn
-L_03C50:
+negx_w_d1:
         clrrwi  d1, d1, 16                              // d1 = d1 & 0xFFFF0000
 
 // Reached from 8 dispatch table entries:
 //     SUBX.W Dn,Dn
-L_03C54:
+subx_w_dn_d1:
         slwi    immed_data, d1, 16
         bl      L_068E0
         rlwimi  d1, data, 16, 16, 31                    // d1[15:0] = data[31:16]
@@ -9352,28 +11141,33 @@ L_03C54:
 //     SUB.W (xxx).W,Dn
 //     SUB.W (d16,PC),Dn
 //     SUB.W #<data>,Dn
-L_03C68:
+sub_w_ea_d1:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     SUB.W (An),Dn
 //     SUB.W -(An),Dn
-L_03C6C:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     SUB.W (An)+,Dn
+//     SUB.W (d8,An,Xn),Dn
+//     SUB.W (xxx).L,Dn
+//     SUB.W (d8,PC,Xn),Dn
+sub_w_mem_d1:
         slwi    data, data, 16
 
 // Reached from 23 dispatch table entries:
 //     SUBQ.W #<q>,Dn
 //     SUB.W An,Dn
 //     SUB.W Dn,Dn
-L_03C70:
+sub_w_any_d1:
         slwi    immed_data, d1, 16
         subfco. data, data, immed_data                  // data = immed_data - data
         rlwimi  d1, data, 16, 16, 31                    // d1[15:0] = data[31:16]
-        b       L_064C0
+        b       sub_neg_l_reg_dn
 
 // Reached from 1 dispatch table entry:
 //     NEG.W Dn
-L_03C80:
+neg_w_d2:
         subfco. data, data, zero                        // data = zero - data
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         rlwimi  d2, data, 16, 16, 31                    // d2[15:0] = data[31:16]
@@ -9381,12 +11175,12 @@ L_03C80:
 
 // Reached from 1 dispatch table entry:
 //     NEGX.W Dn
-L_03C90:
+negx_w_d2:
         clrrwi  d2, d2, 16                              // d2 = d2 & 0xFFFF0000
 
 // Reached from 8 dispatch table entries:
 //     SUBX.W Dn,Dn
-L_03C94:
+subx_w_dn_d2:
         slwi    immed_data, d2, 16
         bl      L_068E0
         rlwimi  d2, data, 16, 16, 31                    // d2[15:0] = data[31:16]
@@ -9399,28 +11193,33 @@ L_03C94:
 //     SUB.W (xxx).W,Dn
 //     SUB.W (d16,PC),Dn
 //     SUB.W #<data>,Dn
-L_03CA8:
+sub_w_ea_d2:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     SUB.W (An),Dn
 //     SUB.W -(An),Dn
-L_03CAC:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     SUB.W (An)+,Dn
+//     SUB.W (d8,An,Xn),Dn
+//     SUB.W (xxx).L,Dn
+//     SUB.W (d8,PC,Xn),Dn
+sub_w_mem_d2:
         slwi    data, data, 16
 
 // Reached from 23 dispatch table entries:
 //     SUBQ.W #<q>,Dn
 //     SUB.W An,Dn
 //     SUB.W Dn,Dn
-L_03CB0:
+sub_w_any_d2:
         slwi    immed_data, d2, 16
         subfco. data, data, immed_data                  // data = immed_data - data
         rlwimi  d2, data, 16, 16, 31                    // d2[15:0] = data[31:16]
-        b       L_064C0
+        b       sub_neg_l_reg_dn
 
 // Reached from 1 dispatch table entry:
 //     NEG.W Dn
-L_03CC0:
+neg_w_d3:
         subfco. data, data, zero                        // data = zero - data
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         rlwimi  d3, data, 16, 16, 31                    // d3[15:0] = data[31:16]
@@ -9428,12 +11227,12 @@ L_03CC0:
 
 // Reached from 1 dispatch table entry:
 //     NEGX.W Dn
-L_03CD0:
+negx_w_d3:
         clrrwi  d3, d3, 16                              // d3 = d3 & 0xFFFF0000
 
 // Reached from 8 dispatch table entries:
 //     SUBX.W Dn,Dn
-L_03CD4:
+subx_w_dn_d3:
         slwi    immed_data, d3, 16
         bl      L_068E0
         rlwimi  d3, data, 16, 16, 31                    // d3[15:0] = data[31:16]
@@ -9446,28 +11245,33 @@ L_03CD4:
 //     SUB.W (xxx).W,Dn
 //     SUB.W (d16,PC),Dn
 //     SUB.W #<data>,Dn
-L_03CE8:
+sub_w_ea_d3:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     SUB.W (An),Dn
 //     SUB.W -(An),Dn
-L_03CEC:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     SUB.W (An)+,Dn
+//     SUB.W (d8,An,Xn),Dn
+//     SUB.W (xxx).L,Dn
+//     SUB.W (d8,PC,Xn),Dn
+sub_w_mem_d3:
         slwi    data, data, 16
 
 // Reached from 23 dispatch table entries:
 //     SUBQ.W #<q>,Dn
 //     SUB.W An,Dn
 //     SUB.W Dn,Dn
-L_03CF0:
+sub_w_any_d3:
         slwi    immed_data, d3, 16
         subfco. data, data, immed_data                  // data = immed_data - data
         rlwimi  d3, data, 16, 16, 31                    // d3[15:0] = data[31:16]
-        b       L_064C0
+        b       sub_neg_l_reg_dn
 
 // Reached from 1 dispatch table entry:
 //     NEG.W Dn
-L_03D00:
+neg_w_d4:
         subfco. data, data, zero                        // data = zero - data
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         rlwimi  d4, data, 16, 16, 31                    // d4[15:0] = data[31:16]
@@ -9475,12 +11279,12 @@ L_03D00:
 
 // Reached from 1 dispatch table entry:
 //     NEGX.W Dn
-L_03D10:
+negx_w_d4:
         clrrwi  d4, d4, 16                              // d4 = d4 & 0xFFFF0000
 
 // Reached from 8 dispatch table entries:
 //     SUBX.W Dn,Dn
-L_03D14:
+subx_w_dn_d4:
         slwi    immed_data, d4, 16
         bl      L_068E0
         rlwimi  d4, data, 16, 16, 31                    // d4[15:0] = data[31:16]
@@ -9493,28 +11297,33 @@ L_03D14:
 //     SUB.W (xxx).W,Dn
 //     SUB.W (d16,PC),Dn
 //     SUB.W #<data>,Dn
-L_03D28:
+sub_w_ea_d4:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     SUB.W (An),Dn
 //     SUB.W -(An),Dn
-L_03D2C:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     SUB.W (An)+,Dn
+//     SUB.W (d8,An,Xn),Dn
+//     SUB.W (xxx).L,Dn
+//     SUB.W (d8,PC,Xn),Dn
+sub_w_mem_d4:
         slwi    data, data, 16
 
 // Reached from 23 dispatch table entries:
 //     SUBQ.W #<q>,Dn
 //     SUB.W An,Dn
 //     SUB.W Dn,Dn
-L_03D30:
+sub_w_any_d4:
         slwi    immed_data, d4, 16
         subfco. data, data, immed_data                  // data = immed_data - data
         rlwimi  d4, data, 16, 16, 31                    // d4[15:0] = data[31:16]
-        b       L_064C0
+        b       sub_neg_l_reg_dn
 
 // Reached from 1 dispatch table entry:
 //     NEG.W Dn
-L_03D40:
+neg_w_d5:
         subfco. data, data, zero                        // data = zero - data
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         rlwimi  d5, data, 16, 16, 31                    // d5[15:0] = data[31:16]
@@ -9522,12 +11331,12 @@ L_03D40:
 
 // Reached from 1 dispatch table entry:
 //     NEGX.W Dn
-L_03D50:
+negx_w_d5:
         clrrwi  d5, d5, 16                              // d5 = d5 & 0xFFFF0000
 
 // Reached from 8 dispatch table entries:
 //     SUBX.W Dn,Dn
-L_03D54:
+subx_w_dn_d5:
         slwi    immed_data, d5, 16
         bl      L_068E0
         rlwimi  d5, data, 16, 16, 31                    // d5[15:0] = data[31:16]
@@ -9540,28 +11349,33 @@ L_03D54:
 //     SUB.W (xxx).W,Dn
 //     SUB.W (d16,PC),Dn
 //     SUB.W #<data>,Dn
-L_03D68:
+sub_w_ea_d5:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     SUB.W (An),Dn
 //     SUB.W -(An),Dn
-L_03D6C:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     SUB.W (An)+,Dn
+//     SUB.W (d8,An,Xn),Dn
+//     SUB.W (xxx).L,Dn
+//     SUB.W (d8,PC,Xn),Dn
+sub_w_mem_d5:
         slwi    data, data, 16
 
 // Reached from 23 dispatch table entries:
 //     SUBQ.W #<q>,Dn
 //     SUB.W An,Dn
 //     SUB.W Dn,Dn
-L_03D70:
+sub_w_any_d5:
         slwi    immed_data, d5, 16
         subfco. data, data, immed_data                  // data = immed_data - data
         rlwimi  d5, data, 16, 16, 31                    // d5[15:0] = data[31:16]
-        b       L_064C0
+        b       sub_neg_l_reg_dn
 
 // Reached from 1 dispatch table entry:
 //     NEG.W Dn
-L_03D80:
+neg_w_d6:
         subfco. data, data, zero                        // data = zero - data
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         rlwimi  d6, data, 16, 16, 31                    // d6[15:0] = data[31:16]
@@ -9569,12 +11383,12 @@ L_03D80:
 
 // Reached from 1 dispatch table entry:
 //     NEGX.W Dn
-L_03D90:
+negx_w_d6:
         clrrwi  d6, d6, 16                              // d6 = d6 & 0xFFFF0000
 
 // Reached from 8 dispatch table entries:
 //     SUBX.W Dn,Dn
-L_03D94:
+subx_w_dn_d6:
         slwi    immed_data, d6, 16
         bl      L_068E0
         rlwimi  d6, data, 16, 16, 31                    // d6[15:0] = data[31:16]
@@ -9587,28 +11401,33 @@ L_03D94:
 //     SUB.W (xxx).W,Dn
 //     SUB.W (d16,PC),Dn
 //     SUB.W #<data>,Dn
-L_03DA8:
+sub_w_ea_d6:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     SUB.W (An),Dn
 //     SUB.W -(An),Dn
-L_03DAC:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     SUB.W (An)+,Dn
+//     SUB.W (d8,An,Xn),Dn
+//     SUB.W (xxx).L,Dn
+//     SUB.W (d8,PC,Xn),Dn
+sub_w_mem_d6:
         slwi    data, data, 16
 
 // Reached from 23 dispatch table entries:
 //     SUBQ.W #<q>,Dn
 //     SUB.W An,Dn
 //     SUB.W Dn,Dn
-L_03DB0:
+sub_w_any_d6:
         slwi    immed_data, d6, 16
         subfco. data, data, immed_data                  // data = immed_data - data
         rlwimi  d6, data, 16, 16, 31                    // d6[15:0] = data[31:16]
-        b       L_064C0
+        b       sub_neg_l_reg_dn
 
 // Reached from 1 dispatch table entry:
 //     NEG.W Dn
-L_03DC0:
+neg_w_d7:
         subfco. data, data, zero                        // data = zero - data
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         rlwimi  d7, data, 16, 16, 31                    // d7[15:0] = data[31:16]
@@ -9616,12 +11435,12 @@ L_03DC0:
 
 // Reached from 1 dispatch table entry:
 //     NEGX.W Dn
-L_03DD0:
+negx_w_d7:
         clrrwi  d7, d7, 16                              // d7 = d7 & 0xFFFF0000
 
 // Reached from 8 dispatch table entries:
 //     SUBX.W Dn,Dn
-L_03DD4:
+subx_w_dn_d7:
         slwi    immed_data, d7, 16
         bl      L_068E0
         rlwimi  d7, data, 16, 16, 31                    // d7[15:0] = data[31:16]
@@ -9634,37 +11453,47 @@ L_03DD4:
 //     SUB.W (xxx).W,Dn
 //     SUB.W (d16,PC),Dn
 //     SUB.W #<data>,Dn
-L_03DE8:
+sub_w_ea_d7:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     SUB.W (An),Dn
 //     SUB.W -(An),Dn
-L_03DEC:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     SUB.W (An)+,Dn
+//     SUB.W (d8,An,Xn),Dn
+//     SUB.W (xxx).L,Dn
+//     SUB.W (d8,PC,Xn),Dn
+sub_w_mem_d7:
         slwi    data, data, 16
 
 // Reached from 23 dispatch table entries:
 //     SUBQ.W #<q>,Dn
 //     SUB.W An,Dn
 //     SUB.W Dn,Dn
-L_03DF0:
+sub_w_any_d7:
         slwi    immed_data, d7, 16
         subfco. data, data, immed_data                  // data = immed_data - data
         rlwimi  d7, data, 16, 16, 31                    // d7[15:0] = data[31:16]
-        b       L_064C0
+        b       sub_neg_l_reg_dn
 
 // Reached from 10 dispatch table entries:
 //     ADD.L (d16,An),Dn
 //     ADD.L (xxx).W,Dn
 //     ADD.L (d16,PC),Dn
-L_03E00:
+add_l_mem_d0:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 24 dispatch table entries:
 //     ADDQ.L #<q>,Dn
 //     ADD.L (An),Dn
 //     ADD.L -(An),Dn
-L_03E04:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     ADD.L (An)+,Dn
+//     ADD.L (d8,An,Xn),Dn
+//     ADD.L (xxx).L,Dn
+//     ADD.L (d8,PC,Xn),Dn
+add_l_mem_d0_2:
         addco.  d0, data, d0
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -9677,7 +11506,7 @@ L_03E04:
 //     CMP.L (d16,An),Dn
 //     CMP.L (xxx).W,Dn
 //     CMP.L (d16,PC),Dn
-L_03E20:
+cmp_l_mem_d0:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 31 dispatch table entries:
@@ -9685,7 +11514,12 @@ L_03E20:
 //     CMP.L (An),Dn
 //     CMP.L -(An),Dn
 //     CMP.L Dn,Dn
-L_03E24:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     CMP.L (An)+,Dn
+//     CMP.L (d8,An,Xn),Dn
+//     CMP.L (xxx).L,Dn
+//     CMP.L (d8,PC,Xn),Dn
+cmp_l_mem_d0_2:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         subfco. immed_data, data, d0                    // immed_data = d0 - data
@@ -9698,14 +11532,19 @@ L_03E24:
 //     ADD.L (d16,An),Dn
 //     ADD.L (xxx).W,Dn
 //     ADD.L (d16,PC),Dn
-L_03E40:
+add_l_mem_d1:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 24 dispatch table entries:
 //     ADDQ.L #<q>,Dn
 //     ADD.L (An),Dn
 //     ADD.L -(An),Dn
-L_03E44:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     ADD.L (An)+,Dn
+//     ADD.L (d8,An,Xn),Dn
+//     ADD.L (xxx).L,Dn
+//     ADD.L (d8,PC,Xn),Dn
+add_l_mem_d1_2:
         addco.  d1, data, d1
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -9718,7 +11557,7 @@ L_03E44:
 //     CMP.L (d16,An),Dn
 //     CMP.L (xxx).W,Dn
 //     CMP.L (d16,PC),Dn
-L_03E60:
+cmp_l_mem_d1:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 31 dispatch table entries:
@@ -9726,7 +11565,12 @@ L_03E60:
 //     CMP.L (An),Dn
 //     CMP.L -(An),Dn
 //     CMP.L Dn,Dn
-L_03E64:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     CMP.L (An)+,Dn
+//     CMP.L (d8,An,Xn),Dn
+//     CMP.L (xxx).L,Dn
+//     CMP.L (d8,PC,Xn),Dn
+cmp_l_mem_d1_2:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         subfco. immed_data, data, d1                    // immed_data = d1 - data
@@ -9739,14 +11583,19 @@ L_03E64:
 //     ADD.L (d16,An),Dn
 //     ADD.L (xxx).W,Dn
 //     ADD.L (d16,PC),Dn
-L_03E80:
+add_l_mem_d2:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 24 dispatch table entries:
 //     ADDQ.L #<q>,Dn
 //     ADD.L (An),Dn
 //     ADD.L -(An),Dn
-L_03E84:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     ADD.L (An)+,Dn
+//     ADD.L (d8,An,Xn),Dn
+//     ADD.L (xxx).L,Dn
+//     ADD.L (d8,PC,Xn),Dn
+add_l_mem_d2_2:
         addco.  d2, data, d2
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -9759,7 +11608,7 @@ L_03E84:
 //     CMP.L (d16,An),Dn
 //     CMP.L (xxx).W,Dn
 //     CMP.L (d16,PC),Dn
-L_03EA0:
+cmp_l_mem_d2:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 31 dispatch table entries:
@@ -9767,7 +11616,12 @@ L_03EA0:
 //     CMP.L (An),Dn
 //     CMP.L -(An),Dn
 //     CMP.L Dn,Dn
-L_03EA4:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     CMP.L (An)+,Dn
+//     CMP.L (d8,An,Xn),Dn
+//     CMP.L (xxx).L,Dn
+//     CMP.L (d8,PC,Xn),Dn
+cmp_l_mem_d2_2:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         subfco. immed_data, data, d2                    // immed_data = d2 - data
@@ -9780,14 +11634,19 @@ L_03EA4:
 //     ADD.L (d16,An),Dn
 //     ADD.L (xxx).W,Dn
 //     ADD.L (d16,PC),Dn
-L_03EC0:
+add_l_mem_d3:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 24 dispatch table entries:
 //     ADDQ.L #<q>,Dn
 //     ADD.L (An),Dn
 //     ADD.L -(An),Dn
-L_03EC4:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     ADD.L (An)+,Dn
+//     ADD.L (d8,An,Xn),Dn
+//     ADD.L (xxx).L,Dn
+//     ADD.L (d8,PC,Xn),Dn
+add_l_mem_d3_2:
         addco.  d3, data, d3
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -9800,7 +11659,7 @@ L_03EC4:
 //     CMP.L (d16,An),Dn
 //     CMP.L (xxx).W,Dn
 //     CMP.L (d16,PC),Dn
-L_03EE0:
+cmp_l_mem_d3:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 31 dispatch table entries:
@@ -9808,7 +11667,12 @@ L_03EE0:
 //     CMP.L (An),Dn
 //     CMP.L -(An),Dn
 //     CMP.L Dn,Dn
-L_03EE4:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     CMP.L (An)+,Dn
+//     CMP.L (d8,An,Xn),Dn
+//     CMP.L (xxx).L,Dn
+//     CMP.L (d8,PC,Xn),Dn
+cmp_l_mem_d3_2:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         subfco. immed_data, data, d3                    // immed_data = d3 - data
@@ -9821,14 +11685,19 @@ L_03EE4:
 //     ADD.L (d16,An),Dn
 //     ADD.L (xxx).W,Dn
 //     ADD.L (d16,PC),Dn
-L_03F00:
+add_l_mem_d4:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 24 dispatch table entries:
 //     ADDQ.L #<q>,Dn
 //     ADD.L (An),Dn
 //     ADD.L -(An),Dn
-L_03F04:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     ADD.L (An)+,Dn
+//     ADD.L (d8,An,Xn),Dn
+//     ADD.L (xxx).L,Dn
+//     ADD.L (d8,PC,Xn),Dn
+add_l_mem_d4_2:
         addco.  d4, data, d4
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -9841,7 +11710,7 @@ L_03F04:
 //     CMP.L (d16,An),Dn
 //     CMP.L (xxx).W,Dn
 //     CMP.L (d16,PC),Dn
-L_03F20:
+cmp_l_mem_d4:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 31 dispatch table entries:
@@ -9849,7 +11718,12 @@ L_03F20:
 //     CMP.L (An),Dn
 //     CMP.L -(An),Dn
 //     CMP.L Dn,Dn
-L_03F24:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     CMP.L (An)+,Dn
+//     CMP.L (d8,An,Xn),Dn
+//     CMP.L (xxx).L,Dn
+//     CMP.L (d8,PC,Xn),Dn
+cmp_l_mem_d4_2:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         subfco. immed_data, data, d4                    // immed_data = d4 - data
@@ -9862,14 +11736,19 @@ L_03F24:
 //     ADD.L (d16,An),Dn
 //     ADD.L (xxx).W,Dn
 //     ADD.L (d16,PC),Dn
-L_03F40:
+add_l_mem_d5:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 24 dispatch table entries:
 //     ADDQ.L #<q>,Dn
 //     ADD.L (An),Dn
 //     ADD.L -(An),Dn
-L_03F44:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     ADD.L (An)+,Dn
+//     ADD.L (d8,An,Xn),Dn
+//     ADD.L (xxx).L,Dn
+//     ADD.L (d8,PC,Xn),Dn
+add_l_mem_d5_2:
         addco.  d5, data, d5
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -9882,7 +11761,7 @@ L_03F44:
 //     CMP.L (d16,An),Dn
 //     CMP.L (xxx).W,Dn
 //     CMP.L (d16,PC),Dn
-L_03F60:
+cmp_l_mem_d5:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 31 dispatch table entries:
@@ -9890,7 +11769,12 @@ L_03F60:
 //     CMP.L (An),Dn
 //     CMP.L -(An),Dn
 //     CMP.L Dn,Dn
-L_03F64:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     CMP.L (An)+,Dn
+//     CMP.L (d8,An,Xn),Dn
+//     CMP.L (xxx).L,Dn
+//     CMP.L (d8,PC,Xn),Dn
+cmp_l_mem_d5_2:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         subfco. immed_data, data, d5                    // immed_data = d5 - data
@@ -9903,14 +11787,19 @@ L_03F64:
 //     ADD.L (d16,An),Dn
 //     ADD.L (xxx).W,Dn
 //     ADD.L (d16,PC),Dn
-L_03F80:
+add_l_mem_d6:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 24 dispatch table entries:
 //     ADDQ.L #<q>,Dn
 //     ADD.L (An),Dn
 //     ADD.L -(An),Dn
-L_03F84:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     ADD.L (An)+,Dn
+//     ADD.L (d8,An,Xn),Dn
+//     ADD.L (xxx).L,Dn
+//     ADD.L (d8,PC,Xn),Dn
+add_l_mem_d6_2:
         addco.  d6, data, d6
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -9923,7 +11812,7 @@ L_03F84:
 //     CMP.L (d16,An),Dn
 //     CMP.L (xxx).W,Dn
 //     CMP.L (d16,PC),Dn
-L_03FA0:
+cmp_l_mem_d6:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 31 dispatch table entries:
@@ -9931,7 +11820,12 @@ L_03FA0:
 //     CMP.L (An),Dn
 //     CMP.L -(An),Dn
 //     CMP.L Dn,Dn
-L_03FA4:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     CMP.L (An)+,Dn
+//     CMP.L (d8,An,Xn),Dn
+//     CMP.L (xxx).L,Dn
+//     CMP.L (d8,PC,Xn),Dn
+cmp_l_mem_d6_2:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         subfco. immed_data, data, d6                    // immed_data = d6 - data
@@ -9944,14 +11838,19 @@ L_03FA4:
 //     ADD.L (d16,An),Dn
 //     ADD.L (xxx).W,Dn
 //     ADD.L (d16,PC),Dn
-L_03FC0:
+add_l_mem_d7:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 24 dispatch table entries:
 //     ADDQ.L #<q>,Dn
 //     ADD.L (An),Dn
 //     ADD.L -(An),Dn
-L_03FC4:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     ADD.L (An)+,Dn
+//     ADD.L (d8,An,Xn),Dn
+//     ADD.L (xxx).L,Dn
+//     ADD.L (d8,PC,Xn),Dn
+add_l_mem_d7_2:
         addco.  d7, data, d7
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -9964,7 +11863,7 @@ L_03FC4:
 //     CMP.L (d16,An),Dn
 //     CMP.L (xxx).W,Dn
 //     CMP.L (d16,PC),Dn
-L_03FE0:
+cmp_l_mem_d7:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 31 dispatch table entries:
@@ -9972,7 +11871,12 @@ L_03FE0:
 //     CMP.L (An),Dn
 //     CMP.L -(An),Dn
 //     CMP.L Dn,Dn
-L_03FE4:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     CMP.L (An)+,Dn
+//     CMP.L (d8,An,Xn),Dn
+//     CMP.L (xxx).L,Dn
+//     CMP.L (d8,PC,Xn),Dn
+cmp_l_mem_d7_2:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         subfco. immed_data, data, d7                    // immed_data = d7 - data
@@ -9984,12 +11888,16 @@ L_03FE4:
 // Reached from 9 dispatch table entries:
 //     ADD.L Dn,(d16,An)
 //     ADD.L Dn,(xxx).W
-L_04000:
+add_l_d0_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     ADD.L Dn,(An)
-L_04004:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     ADD.L Dn,(An)+
+//     ADD.L Dn,(d8,An,Xn)
+//     ADD.L Dn,(xxx).L
+add_l_d0_mem_2:
         lwz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         addco.  data, d0, data
@@ -9998,20 +11906,24 @@ L_04004:
 // Reached from 2 dispatch table entries:
 //     ADDI.L #<data>,Dn
 //     ADD.L #<data>,Dn
-L_04014:
+add_l_imm_d0:
         lhau    prefetch_data, 4(pc)
         addco.  d0, data, d0
-        b       L_064E0
+        b       add_asl_l_any_dn
 
 // Reached from 9 dispatch table entries:
 //     SUB.L Dn,(d16,An)
 //     SUB.L Dn,(xxx).W
-L_04020:
+sub_l_d0_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     SUB.L Dn,(An)
-L_04024:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     SUB.L Dn,(An)+
+//     SUB.L Dn,(d8,An,Xn)
+//     SUB.L Dn,(xxx).L
+sub_l_d0_mem_2:
         lwz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         subfco. data, d0, data                          // data = data - d0
@@ -10020,20 +11932,24 @@ L_04024:
 // Reached from 2 dispatch table entries:
 //     SUBI.L #<data>,Dn
 //     SUB.L #<data>,Dn
-L_04034:
+sub_l_imm_d0:
         lhau    prefetch_data, 4(pc)
         subfco. d0, data, d0                            // d0 = d0 - data
-        b       L_064C0
+        b       sub_neg_l_reg_dn
 
 // Reached from 9 dispatch table entries:
 //     ADD.L Dn,(d16,An)
 //     ADD.L Dn,(xxx).W
-L_04040:
+add_l_d1_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     ADD.L Dn,(An)
-L_04044:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     ADD.L Dn,(An)+
+//     ADD.L Dn,(d8,An,Xn)
+//     ADD.L Dn,(xxx).L
+add_l_d1_mem_2:
         lwz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         addco.  data, d1, data
@@ -10042,20 +11958,24 @@ L_04044:
 // Reached from 2 dispatch table entries:
 //     ADDI.L #<data>,Dn
 //     ADD.L #<data>,Dn
-L_04054:
+add_l_imm_d1:
         lhau    prefetch_data, 4(pc)
         addco.  d1, data, d1
-        b       L_064E0
+        b       add_asl_l_any_dn
 
 // Reached from 9 dispatch table entries:
 //     SUB.L Dn,(d16,An)
 //     SUB.L Dn,(xxx).W
-L_04060:
+sub_l_d1_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     SUB.L Dn,(An)
-L_04064:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     SUB.L Dn,(An)+
+//     SUB.L Dn,(d8,An,Xn)
+//     SUB.L Dn,(xxx).L
+sub_l_d1_mem_2:
         lwz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         subfco. data, d1, data                          // data = data - d1
@@ -10064,20 +11984,24 @@ L_04064:
 // Reached from 2 dispatch table entries:
 //     SUBI.L #<data>,Dn
 //     SUB.L #<data>,Dn
-L_04074:
+sub_l_imm_d1:
         lhau    prefetch_data, 4(pc)
         subfco. d1, data, d1                            // d1 = d1 - data
-        b       L_064C0
+        b       sub_neg_l_reg_dn
 
 // Reached from 9 dispatch table entries:
 //     ADD.L Dn,(d16,An)
 //     ADD.L Dn,(xxx).W
-L_04080:
+add_l_d2_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     ADD.L Dn,(An)
-L_04084:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     ADD.L Dn,(An)+
+//     ADD.L Dn,(d8,An,Xn)
+//     ADD.L Dn,(xxx).L
+add_l_d2_mem_2:
         lwz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         addco.  data, d2, data
@@ -10086,20 +12010,24 @@ L_04084:
 // Reached from 2 dispatch table entries:
 //     ADDI.L #<data>,Dn
 //     ADD.L #<data>,Dn
-L_04094:
+add_l_imm_d2:
         lhau    prefetch_data, 4(pc)
         addco.  d2, data, d2
-        b       L_064E0
+        b       add_asl_l_any_dn
 
 // Reached from 9 dispatch table entries:
 //     SUB.L Dn,(d16,An)
 //     SUB.L Dn,(xxx).W
-L_040A0:
+sub_l_d2_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     SUB.L Dn,(An)
-L_040A4:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     SUB.L Dn,(An)+
+//     SUB.L Dn,(d8,An,Xn)
+//     SUB.L Dn,(xxx).L
+sub_l_d2_mem_2:
         lwz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         subfco. data, d2, data                          // data = data - d2
@@ -10108,20 +12036,24 @@ L_040A4:
 // Reached from 2 dispatch table entries:
 //     SUBI.L #<data>,Dn
 //     SUB.L #<data>,Dn
-L_040B4:
+sub_l_imm_d2:
         lhau    prefetch_data, 4(pc)
         subfco. d2, data, d2                            // d2 = d2 - data
-        b       L_064C0
+        b       sub_neg_l_reg_dn
 
 // Reached from 9 dispatch table entries:
 //     ADD.L Dn,(d16,An)
 //     ADD.L Dn,(xxx).W
-L_040C0:
+add_l_d3_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     ADD.L Dn,(An)
-L_040C4:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     ADD.L Dn,(An)+
+//     ADD.L Dn,(d8,An,Xn)
+//     ADD.L Dn,(xxx).L
+add_l_d3_mem_2:
         lwz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         addco.  data, d3, data
@@ -10130,20 +12062,24 @@ L_040C4:
 // Reached from 2 dispatch table entries:
 //     ADDI.L #<data>,Dn
 //     ADD.L #<data>,Dn
-L_040D4:
+add_l_imm_d3:
         lhau    prefetch_data, 4(pc)
         addco.  d3, data, d3
-        b       L_064E0
+        b       add_asl_l_any_dn
 
 // Reached from 9 dispatch table entries:
 //     SUB.L Dn,(d16,An)
 //     SUB.L Dn,(xxx).W
-L_040E0:
+sub_l_d3_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     SUB.L Dn,(An)
-L_040E4:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     SUB.L Dn,(An)+
+//     SUB.L Dn,(d8,An,Xn)
+//     SUB.L Dn,(xxx).L
+sub_l_d3_mem_2:
         lwz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         subfco. data, d3, data                          // data = data - d3
@@ -10152,20 +12088,24 @@ L_040E4:
 // Reached from 2 dispatch table entries:
 //     SUBI.L #<data>,Dn
 //     SUB.L #<data>,Dn
-L_040F4:
+sub_l_imm_d3:
         lhau    prefetch_data, 4(pc)
         subfco. d3, data, d3                            // d3 = d3 - data
-        b       L_064C0
+        b       sub_neg_l_reg_dn
 
 // Reached from 9 dispatch table entries:
 //     ADD.L Dn,(d16,An)
 //     ADD.L Dn,(xxx).W
-L_04100:
+add_l_d4_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     ADD.L Dn,(An)
-L_04104:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     ADD.L Dn,(An)+
+//     ADD.L Dn,(d8,An,Xn)
+//     ADD.L Dn,(xxx).L
+add_l_d4_mem_2:
         lwz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         addco.  data, d4, data
@@ -10174,20 +12114,24 @@ L_04104:
 // Reached from 2 dispatch table entries:
 //     ADDI.L #<data>,Dn
 //     ADD.L #<data>,Dn
-L_04114:
+add_l_imm_d4:
         lhau    prefetch_data, 4(pc)
         addco.  d4, data, d4
-        b       L_064E0
+        b       add_asl_l_any_dn
 
 // Reached from 9 dispatch table entries:
 //     SUB.L Dn,(d16,An)
 //     SUB.L Dn,(xxx).W
-L_04120:
+sub_l_d4_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     SUB.L Dn,(An)
-L_04124:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     SUB.L Dn,(An)+
+//     SUB.L Dn,(d8,An,Xn)
+//     SUB.L Dn,(xxx).L
+sub_l_d4_mem_2:
         lwz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         subfco. data, d4, data                          // data = data - d4
@@ -10196,20 +12140,24 @@ L_04124:
 // Reached from 2 dispatch table entries:
 //     SUBI.L #<data>,Dn
 //     SUB.L #<data>,Dn
-L_04134:
+sub_l_imm_d4:
         lhau    prefetch_data, 4(pc)
         subfco. d4, data, d4                            // d4 = d4 - data
-        b       L_064C0
+        b       sub_neg_l_reg_dn
 
 // Reached from 9 dispatch table entries:
 //     ADD.L Dn,(d16,An)
 //     ADD.L Dn,(xxx).W
-L_04140:
+add_l_d5_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     ADD.L Dn,(An)
-L_04144:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     ADD.L Dn,(An)+
+//     ADD.L Dn,(d8,An,Xn)
+//     ADD.L Dn,(xxx).L
+add_l_d5_mem_2:
         lwz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         addco.  data, d5, data
@@ -10218,20 +12166,24 @@ L_04144:
 // Reached from 2 dispatch table entries:
 //     ADDI.L #<data>,Dn
 //     ADD.L #<data>,Dn
-L_04154:
+add_l_imm_d5:
         lhau    prefetch_data, 4(pc)
         addco.  d5, data, d5
-        b       L_064E0
+        b       add_asl_l_any_dn
 
 // Reached from 9 dispatch table entries:
 //     SUB.L Dn,(d16,An)
 //     SUB.L Dn,(xxx).W
-L_04160:
+sub_l_d5_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     SUB.L Dn,(An)
-L_04164:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     SUB.L Dn,(An)+
+//     SUB.L Dn,(d8,An,Xn)
+//     SUB.L Dn,(xxx).L
+sub_l_d5_mem_2:
         lwz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         subfco. data, d5, data                          // data = data - d5
@@ -10240,20 +12192,24 @@ L_04164:
 // Reached from 2 dispatch table entries:
 //     SUBI.L #<data>,Dn
 //     SUB.L #<data>,Dn
-L_04174:
+sub_l_imm_d5:
         lhau    prefetch_data, 4(pc)
         subfco. d5, data, d5                            // d5 = d5 - data
-        b       L_064C0
+        b       sub_neg_l_reg_dn
 
 // Reached from 9 dispatch table entries:
 //     ADD.L Dn,(d16,An)
 //     ADD.L Dn,(xxx).W
-L_04180:
+add_l_d6_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     ADD.L Dn,(An)
-L_04184:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     ADD.L Dn,(An)+
+//     ADD.L Dn,(d8,An,Xn)
+//     ADD.L Dn,(xxx).L
+add_l_d6_mem_2:
         lwz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         addco.  data, d6, data
@@ -10262,20 +12218,24 @@ L_04184:
 // Reached from 2 dispatch table entries:
 //     ADDI.L #<data>,Dn
 //     ADD.L #<data>,Dn
-L_04194:
+add_l_imm_d6:
         lhau    prefetch_data, 4(pc)
         addco.  d6, data, d6
-        b       L_064E0
+        b       add_asl_l_any_dn
 
 // Reached from 9 dispatch table entries:
 //     SUB.L Dn,(d16,An)
 //     SUB.L Dn,(xxx).W
-L_041A0:
+sub_l_d6_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     SUB.L Dn,(An)
-L_041A4:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     SUB.L Dn,(An)+
+//     SUB.L Dn,(d8,An,Xn)
+//     SUB.L Dn,(xxx).L
+sub_l_d6_mem_2:
         lwz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         subfco. data, d6, data                          // data = data - d6
@@ -10284,20 +12244,24 @@ L_041A4:
 // Reached from 2 dispatch table entries:
 //     SUBI.L #<data>,Dn
 //     SUB.L #<data>,Dn
-L_041B4:
+sub_l_imm_d6:
         lhau    prefetch_data, 4(pc)
         subfco. d6, data, d6                            // d6 = d6 - data
-        b       L_064C0
+        b       sub_neg_l_reg_dn
 
 // Reached from 9 dispatch table entries:
 //     ADD.L Dn,(d16,An)
 //     ADD.L Dn,(xxx).W
-L_041C0:
+add_l_d7_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     ADD.L Dn,(An)
-L_041C4:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     ADD.L Dn,(An)+
+//     ADD.L Dn,(d8,An,Xn)
+//     ADD.L Dn,(xxx).L
+add_l_d7_mem_2:
         lwz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         addco.  data, d7, data
@@ -10306,20 +12270,24 @@ L_041C4:
 // Reached from 2 dispatch table entries:
 //     ADDI.L #<data>,Dn
 //     ADD.L #<data>,Dn
-L_041D4:
+add_l_imm_d7:
         lhau    prefetch_data, 4(pc)
         addco.  d7, data, d7
-        b       L_064E0
+        b       add_asl_l_any_dn
 
 // Reached from 9 dispatch table entries:
 //     SUB.L Dn,(d16,An)
 //     SUB.L Dn,(xxx).W
-L_041E0:
+sub_l_d7_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     SUB.L Dn,(An)
-L_041E4:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     SUB.L Dn,(An)+
+//     SUB.L Dn,(d8,An,Xn)
+//     SUB.L Dn,(xxx).L
+sub_l_d7_mem_2:
         lwz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         subfco. data, d7, data                          // data = data - d7
@@ -10328,23 +12296,28 @@ L_041E4:
 // Reached from 2 dispatch table entries:
 //     SUBI.L #<data>,Dn
 //     SUB.L #<data>,Dn
-L_041F4:
+sub_l_imm_d7:
         lhau    prefetch_data, 4(pc)
         subfco. d7, data, d7                            // d7 = d7 - data
-        b       L_064C0
+        b       sub_neg_l_reg_dn
 
 // Reached from 10 dispatch table entries:
 //     SUB.L (d16,An),Dn
 //     SUB.L (xxx).W,Dn
 //     SUB.L (d16,PC),Dn
-L_04200:
+sub_l_mem_d0:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 24 dispatch table entries:
 //     SUBQ.L #<q>,Dn
 //     SUB.L (An),Dn
 //     SUB.L -(An),Dn
-L_04204:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     SUB.L (An)+,Dn
+//     SUB.L (d8,An,Xn),Dn
+//     SUB.L (xxx).L,Dn
+//     SUB.L (d8,PC,Xn),Dn
+sub_l_mem_d0_2:
         subfco. d0, data, d0                            // d0 = d0 - data
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -10352,7 +12325,7 @@ L_04204:
 
 // Reached from 8 dispatch table entries:
 //     ADDX.L Dn,Dn
-L_04214:
+addx_l_dn_d0:
         mr      immed_data, d0
         bl      L_06B20
         mr      d0, data
@@ -10361,12 +12334,12 @@ L_04214:
 
 // Reached from 1 dispatch table entry:
 //     NEGX.L Dn
-L_04228:
+negx_l_d0:
         li      d0, 0
 
 // Reached from 8 dispatch table entries:
 //     SUBX.L Dn,Dn
-L_0422C:
+subx_l_dn_d0:
         mr      immed_data, d0
         bl      L_06B60
         mr      d0, data
@@ -10377,14 +12350,19 @@ L_0422C:
 //     SUB.L (d16,An),Dn
 //     SUB.L (xxx).W,Dn
 //     SUB.L (d16,PC),Dn
-L_04240:
+sub_l_mem_d1:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 24 dispatch table entries:
 //     SUBQ.L #<q>,Dn
 //     SUB.L (An),Dn
 //     SUB.L -(An),Dn
-L_04244:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     SUB.L (An)+,Dn
+//     SUB.L (d8,An,Xn),Dn
+//     SUB.L (xxx).L,Dn
+//     SUB.L (d8,PC,Xn),Dn
+sub_l_mem_d1_2:
         subfco. d1, data, d1                            // d1 = d1 - data
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -10392,7 +12370,7 @@ L_04244:
 
 // Reached from 8 dispatch table entries:
 //     ADDX.L Dn,Dn
-L_04254:
+addx_l_dn_d1:
         mr      immed_data, d1
         bl      L_06B20
         mr      d1, data
@@ -10401,12 +12379,12 @@ L_04254:
 
 // Reached from 1 dispatch table entry:
 //     NEGX.L Dn
-L_04268:
+negx_l_d1:
         li      d1, 0
 
 // Reached from 8 dispatch table entries:
 //     SUBX.L Dn,Dn
-L_0426C:
+subx_l_dn_d1:
         mr      immed_data, d1
         bl      L_06B60
         mr      d1, data
@@ -10417,14 +12395,19 @@ L_0426C:
 //     SUB.L (d16,An),Dn
 //     SUB.L (xxx).W,Dn
 //     SUB.L (d16,PC),Dn
-L_04280:
+sub_l_mem_d2:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 24 dispatch table entries:
 //     SUBQ.L #<q>,Dn
 //     SUB.L (An),Dn
 //     SUB.L -(An),Dn
-L_04284:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     SUB.L (An)+,Dn
+//     SUB.L (d8,An,Xn),Dn
+//     SUB.L (xxx).L,Dn
+//     SUB.L (d8,PC,Xn),Dn
+sub_l_mem_d2_2:
         subfco. d2, data, d2                            // d2 = d2 - data
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -10432,7 +12415,7 @@ L_04284:
 
 // Reached from 8 dispatch table entries:
 //     ADDX.L Dn,Dn
-L_04294:
+addx_l_dn_d2:
         mr      immed_data, d2
         bl      L_06B20
         mr      d2, data
@@ -10441,12 +12424,12 @@ L_04294:
 
 // Reached from 1 dispatch table entry:
 //     NEGX.L Dn
-L_042A8:
+negx_l_d2:
         li      d2, 0
 
 // Reached from 8 dispatch table entries:
 //     SUBX.L Dn,Dn
-L_042AC:
+subx_l_dn_d2:
         mr      immed_data, d2
         bl      L_06B60
         mr      d2, data
@@ -10457,14 +12440,19 @@ L_042AC:
 //     SUB.L (d16,An),Dn
 //     SUB.L (xxx).W,Dn
 //     SUB.L (d16,PC),Dn
-L_042C0:
+sub_l_mem_d3:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 24 dispatch table entries:
 //     SUBQ.L #<q>,Dn
 //     SUB.L (An),Dn
 //     SUB.L -(An),Dn
-L_042C4:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     SUB.L (An)+,Dn
+//     SUB.L (d8,An,Xn),Dn
+//     SUB.L (xxx).L,Dn
+//     SUB.L (d8,PC,Xn),Dn
+sub_l_mem_d3_2:
         subfco. d3, data, d3                            // d3 = d3 - data
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -10472,7 +12460,7 @@ L_042C4:
 
 // Reached from 8 dispatch table entries:
 //     ADDX.L Dn,Dn
-L_042D4:
+addx_l_dn_d3:
         mr      immed_data, d3
         bl      L_06B20
         mr      d3, data
@@ -10481,12 +12469,12 @@ L_042D4:
 
 // Reached from 1 dispatch table entry:
 //     NEGX.L Dn
-L_042E8:
+negx_l_d3:
         li      d3, 0
 
 // Reached from 8 dispatch table entries:
 //     SUBX.L Dn,Dn
-L_042EC:
+subx_l_dn_d3:
         mr      immed_data, d3
         bl      L_06B60
         mr      d3, data
@@ -10497,14 +12485,19 @@ L_042EC:
 //     SUB.L (d16,An),Dn
 //     SUB.L (xxx).W,Dn
 //     SUB.L (d16,PC),Dn
-L_04300:
+sub_l_mem_d4:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 24 dispatch table entries:
 //     SUBQ.L #<q>,Dn
 //     SUB.L (An),Dn
 //     SUB.L -(An),Dn
-L_04304:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     SUB.L (An)+,Dn
+//     SUB.L (d8,An,Xn),Dn
+//     SUB.L (xxx).L,Dn
+//     SUB.L (d8,PC,Xn),Dn
+sub_l_mem_d4_2:
         subfco. d4, data, d4                            // d4 = d4 - data
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -10512,7 +12505,7 @@ L_04304:
 
 // Reached from 8 dispatch table entries:
 //     ADDX.L Dn,Dn
-L_04314:
+addx_l_dn_d4:
         mr      immed_data, d4
         bl      L_06B20
         mr      d4, data
@@ -10521,12 +12514,12 @@ L_04314:
 
 // Reached from 1 dispatch table entry:
 //     NEGX.L Dn
-L_04328:
+negx_l_d4:
         li      d4, 0
 
 // Reached from 8 dispatch table entries:
 //     SUBX.L Dn,Dn
-L_0432C:
+subx_l_dn_d4:
         mr      immed_data, d4
         bl      L_06B60
         mr      d4, data
@@ -10537,14 +12530,19 @@ L_0432C:
 //     SUB.L (d16,An),Dn
 //     SUB.L (xxx).W,Dn
 //     SUB.L (d16,PC),Dn
-L_04340:
+sub_l_mem_d5:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 24 dispatch table entries:
 //     SUBQ.L #<q>,Dn
 //     SUB.L (An),Dn
 //     SUB.L -(An),Dn
-L_04344:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     SUB.L (An)+,Dn
+//     SUB.L (d8,An,Xn),Dn
+//     SUB.L (xxx).L,Dn
+//     SUB.L (d8,PC,Xn),Dn
+sub_l_mem_d5_2:
         subfco. d5, data, d5                            // d5 = d5 - data
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -10552,7 +12550,7 @@ L_04344:
 
 // Reached from 8 dispatch table entries:
 //     ADDX.L Dn,Dn
-L_04354:
+addx_l_dn_d5:
         mr      immed_data, d5
         bl      L_06B20
         mr      d5, data
@@ -10561,12 +12559,12 @@ L_04354:
 
 // Reached from 1 dispatch table entry:
 //     NEGX.L Dn
-L_04368:
+negx_l_d5:
         li      d5, 0
 
 // Reached from 8 dispatch table entries:
 //     SUBX.L Dn,Dn
-L_0436C:
+subx_l_dn_d5:
         mr      immed_data, d5
         bl      L_06B60
         mr      d5, data
@@ -10577,14 +12575,19 @@ L_0436C:
 //     SUB.L (d16,An),Dn
 //     SUB.L (xxx).W,Dn
 //     SUB.L (d16,PC),Dn
-L_04380:
+sub_l_mem_d6:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 24 dispatch table entries:
 //     SUBQ.L #<q>,Dn
 //     SUB.L (An),Dn
 //     SUB.L -(An),Dn
-L_04384:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     SUB.L (An)+,Dn
+//     SUB.L (d8,An,Xn),Dn
+//     SUB.L (xxx).L,Dn
+//     SUB.L (d8,PC,Xn),Dn
+sub_l_mem_d6_2:
         subfco. d6, data, d6                            // d6 = d6 - data
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -10592,7 +12595,7 @@ L_04384:
 
 // Reached from 8 dispatch table entries:
 //     ADDX.L Dn,Dn
-L_04394:
+addx_l_dn_d6:
         mr      immed_data, d6
         bl      L_06B20
         mr      d6, data
@@ -10601,12 +12604,12 @@ L_04394:
 
 // Reached from 1 dispatch table entry:
 //     NEGX.L Dn
-L_043A8:
+negx_l_d6:
         li      d6, 0
 
 // Reached from 8 dispatch table entries:
 //     SUBX.L Dn,Dn
-L_043AC:
+subx_l_dn_d6:
         mr      immed_data, d6
         bl      L_06B60
         mr      d6, data
@@ -10617,14 +12620,19 @@ L_043AC:
 //     SUB.L (d16,An),Dn
 //     SUB.L (xxx).W,Dn
 //     SUB.L (d16,PC),Dn
-L_043C0:
+sub_l_mem_d7:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 24 dispatch table entries:
 //     SUBQ.L #<q>,Dn
 //     SUB.L (An),Dn
 //     SUB.L -(An),Dn
-L_043C4:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     SUB.L (An)+,Dn
+//     SUB.L (d8,An,Xn),Dn
+//     SUB.L (xxx).L,Dn
+//     SUB.L (d8,PC,Xn),Dn
+sub_l_mem_d7_2:
         subfco. d7, data, d7                            // d7 = d7 - data
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -10632,7 +12640,7 @@ L_043C4:
 
 // Reached from 8 dispatch table entries:
 //     ADDX.L Dn,Dn
-L_043D4:
+addx_l_dn_d7:
         mr      immed_data, d7
         bl      L_06B20
         mr      d7, data
@@ -10641,12 +12649,12 @@ L_043D4:
 
 // Reached from 1 dispatch table entry:
 //     NEGX.L Dn
-L_043E8:
+negx_l_d7:
         li      d7, 0
 
 // Reached from 8 dispatch table entries:
 //     SUBX.L Dn,Dn
-L_043EC:
+subx_l_dn_d7:
         mr      immed_data, d7
         bl      L_06B60
         mr      d7, data
@@ -10658,14 +12666,19 @@ L_043EC:
 //     MULS.W (xxx).W,Dn
 //     MULS.W (d16,PC),Dn
 //     MULS.W #<data>,Dn
-L_04400:
+muls_w_ea_d0:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 24 dispatch table entries:
 //     MULS.W Dn,Dn
 //     MULS.W (An),Dn
 //     MULS.W -(An),Dn
-L_04404:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MULS.W (An)+,Dn
+//     MULS.W (d8,An,Xn),Dn
+//     MULS.W (xxx).L,Dn
+//     MULS.W (d8,PC,Xn),Dn
+muls_w_mem_d0:
         extsh   d0, d0                                  // d0 = sign-extended low word of d0
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -10681,16 +12694,22 @@ L_04410:
 //     MULU.W (xxx).W,Dn
 //     MULU.W (d16,PC),Dn
 //     MULU.W #<data>,Dn
-L_04424:
+mulu_w_ea_d0:
         lhau    prefetch_data, 2(pc)
-L_04428:
+
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MULU.W (An)+,Dn
+//     MULU.W (d8,An,Xn),Dn
+//     MULU.W (xxx).L,Dn
+//     MULU.W (d8,PC,Xn),Dn
+mulu_w_mem_d0:
         clrlwi  data, data, 16                          // data = data & 0x0000FFFF
 
 // Reached from 24 dispatch table entries:
 //     MULU.W Dn,Dn
 //     MULU.W (An),Dn
 //     MULU.W -(An),Dn
-L_0442C:
+mulu_w_any_d0:
         clrlwi  d0, d0, 16                              // d0 = d0 & 0x0000FFFF
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -10702,14 +12721,19 @@ L_0442C:
 //     MULS.W (xxx).W,Dn
 //     MULS.W (d16,PC),Dn
 //     MULS.W #<data>,Dn
-L_04440:
+muls_w_ea_d1:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 24 dispatch table entries:
 //     MULS.W Dn,Dn
 //     MULS.W (An),Dn
 //     MULS.W -(An),Dn
-L_04444:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MULS.W (An)+,Dn
+//     MULS.W (d8,An,Xn),Dn
+//     MULS.W (xxx).L,Dn
+//     MULS.W (d8,PC,Xn),Dn
+muls_w_mem_d1:
         extsh   d1, d1                                  // d1 = sign-extended low word of d1
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -10725,16 +12749,22 @@ L_04450:
 //     MULU.W (xxx).W,Dn
 //     MULU.W (d16,PC),Dn
 //     MULU.W #<data>,Dn
-L_04464:
+mulu_w_ea_d1:
         lhau    prefetch_data, 2(pc)
-L_04468:
+
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MULU.W (An)+,Dn
+//     MULU.W (d8,An,Xn),Dn
+//     MULU.W (xxx).L,Dn
+//     MULU.W (d8,PC,Xn),Dn
+mulu_w_mem_d1:
         clrlwi  data, data, 16                          // data = data & 0x0000FFFF
 
 // Reached from 24 dispatch table entries:
 //     MULU.W Dn,Dn
 //     MULU.W (An),Dn
 //     MULU.W -(An),Dn
-L_0446C:
+mulu_w_any_d1:
         clrlwi  d1, d1, 16                              // d1 = d1 & 0x0000FFFF
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -10746,14 +12776,19 @@ L_0446C:
 //     MULS.W (xxx).W,Dn
 //     MULS.W (d16,PC),Dn
 //     MULS.W #<data>,Dn
-L_04480:
+muls_w_ea_d2:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 24 dispatch table entries:
 //     MULS.W Dn,Dn
 //     MULS.W (An),Dn
 //     MULS.W -(An),Dn
-L_04484:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MULS.W (An)+,Dn
+//     MULS.W (d8,An,Xn),Dn
+//     MULS.W (xxx).L,Dn
+//     MULS.W (d8,PC,Xn),Dn
+muls_w_mem_d2:
         extsh   d2, d2                                  // d2 = sign-extended low word of d2
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -10769,16 +12804,22 @@ L_04490:
 //     MULU.W (xxx).W,Dn
 //     MULU.W (d16,PC),Dn
 //     MULU.W #<data>,Dn
-L_044A4:
+mulu_w_ea_d2:
         lhau    prefetch_data, 2(pc)
-L_044A8:
+
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MULU.W (An)+,Dn
+//     MULU.W (d8,An,Xn),Dn
+//     MULU.W (xxx).L,Dn
+//     MULU.W (d8,PC,Xn),Dn
+mulu_w_mem_d2:
         clrlwi  data, data, 16                          // data = data & 0x0000FFFF
 
 // Reached from 24 dispatch table entries:
 //     MULU.W Dn,Dn
 //     MULU.W (An),Dn
 //     MULU.W -(An),Dn
-L_044AC:
+mulu_w_any_d2:
         clrlwi  d2, d2, 16                              // d2 = d2 & 0x0000FFFF
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -10790,14 +12831,19 @@ L_044AC:
 //     MULS.W (xxx).W,Dn
 //     MULS.W (d16,PC),Dn
 //     MULS.W #<data>,Dn
-L_044C0:
+muls_w_ea_d3:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 24 dispatch table entries:
 //     MULS.W Dn,Dn
 //     MULS.W (An),Dn
 //     MULS.W -(An),Dn
-L_044C4:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MULS.W (An)+,Dn
+//     MULS.W (d8,An,Xn),Dn
+//     MULS.W (xxx).L,Dn
+//     MULS.W (d8,PC,Xn),Dn
+muls_w_mem_d3:
         extsh   d3, d3                                  // d3 = sign-extended low word of d3
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -10813,16 +12859,22 @@ L_044D0:
 //     MULU.W (xxx).W,Dn
 //     MULU.W (d16,PC),Dn
 //     MULU.W #<data>,Dn
-L_044E4:
+mulu_w_ea_d3:
         lhau    prefetch_data, 2(pc)
-L_044E8:
+
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MULU.W (An)+,Dn
+//     MULU.W (d8,An,Xn),Dn
+//     MULU.W (xxx).L,Dn
+//     MULU.W (d8,PC,Xn),Dn
+mulu_w_mem_d3:
         clrlwi  data, data, 16                          // data = data & 0x0000FFFF
 
 // Reached from 24 dispatch table entries:
 //     MULU.W Dn,Dn
 //     MULU.W (An),Dn
 //     MULU.W -(An),Dn
-L_044EC:
+mulu_w_any_d3:
         clrlwi  d3, d3, 16                              // d3 = d3 & 0x0000FFFF
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -10834,14 +12886,19 @@ L_044EC:
 //     MULS.W (xxx).W,Dn
 //     MULS.W (d16,PC),Dn
 //     MULS.W #<data>,Dn
-L_04500:
+muls_w_ea_d4:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 24 dispatch table entries:
 //     MULS.W Dn,Dn
 //     MULS.W (An),Dn
 //     MULS.W -(An),Dn
-L_04504:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MULS.W (An)+,Dn
+//     MULS.W (d8,An,Xn),Dn
+//     MULS.W (xxx).L,Dn
+//     MULS.W (d8,PC,Xn),Dn
+muls_w_mem_d4:
         extsh   d4, d4                                  // d4 = sign-extended low word of d4
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -10857,16 +12914,22 @@ L_04510:
 //     MULU.W (xxx).W,Dn
 //     MULU.W (d16,PC),Dn
 //     MULU.W #<data>,Dn
-L_04524:
+mulu_w_ea_d4:
         lhau    prefetch_data, 2(pc)
-L_04528:
+
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MULU.W (An)+,Dn
+//     MULU.W (d8,An,Xn),Dn
+//     MULU.W (xxx).L,Dn
+//     MULU.W (d8,PC,Xn),Dn
+mulu_w_mem_d4:
         clrlwi  data, data, 16                          // data = data & 0x0000FFFF
 
 // Reached from 24 dispatch table entries:
 //     MULU.W Dn,Dn
 //     MULU.W (An),Dn
 //     MULU.W -(An),Dn
-L_0452C:
+mulu_w_any_d4:
         clrlwi  d4, d4, 16                              // d4 = d4 & 0x0000FFFF
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -10878,14 +12941,19 @@ L_0452C:
 //     MULS.W (xxx).W,Dn
 //     MULS.W (d16,PC),Dn
 //     MULS.W #<data>,Dn
-L_04540:
+muls_w_ea_d5:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 24 dispatch table entries:
 //     MULS.W Dn,Dn
 //     MULS.W (An),Dn
 //     MULS.W -(An),Dn
-L_04544:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MULS.W (An)+,Dn
+//     MULS.W (d8,An,Xn),Dn
+//     MULS.W (xxx).L,Dn
+//     MULS.W (d8,PC,Xn),Dn
+muls_w_mem_d5:
         extsh   d5, d5                                  // d5 = sign-extended low word of d5
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -10901,16 +12969,22 @@ L_04550:
 //     MULU.W (xxx).W,Dn
 //     MULU.W (d16,PC),Dn
 //     MULU.W #<data>,Dn
-L_04564:
+mulu_w_ea_d5:
         lhau    prefetch_data, 2(pc)
-L_04568:
+
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MULU.W (An)+,Dn
+//     MULU.W (d8,An,Xn),Dn
+//     MULU.W (xxx).L,Dn
+//     MULU.W (d8,PC,Xn),Dn
+mulu_w_mem_d5:
         clrlwi  data, data, 16                          // data = data & 0x0000FFFF
 
 // Reached from 24 dispatch table entries:
 //     MULU.W Dn,Dn
 //     MULU.W (An),Dn
 //     MULU.W -(An),Dn
-L_0456C:
+mulu_w_any_d5:
         clrlwi  d5, d5, 16                              // d5 = d5 & 0x0000FFFF
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -10922,14 +12996,19 @@ L_0456C:
 //     MULS.W (xxx).W,Dn
 //     MULS.W (d16,PC),Dn
 //     MULS.W #<data>,Dn
-L_04580:
+muls_w_ea_d6:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 24 dispatch table entries:
 //     MULS.W Dn,Dn
 //     MULS.W (An),Dn
 //     MULS.W -(An),Dn
-L_04584:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MULS.W (An)+,Dn
+//     MULS.W (d8,An,Xn),Dn
+//     MULS.W (xxx).L,Dn
+//     MULS.W (d8,PC,Xn),Dn
+muls_w_mem_d6:
         extsh   d6, d6                                  // d6 = sign-extended low word of d6
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -10945,16 +13024,22 @@ L_04590:
 //     MULU.W (xxx).W,Dn
 //     MULU.W (d16,PC),Dn
 //     MULU.W #<data>,Dn
-L_045A4:
+mulu_w_ea_d6:
         lhau    prefetch_data, 2(pc)
-L_045A8:
+
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MULU.W (An)+,Dn
+//     MULU.W (d8,An,Xn),Dn
+//     MULU.W (xxx).L,Dn
+//     MULU.W (d8,PC,Xn),Dn
+mulu_w_mem_d6:
         clrlwi  data, data, 16                          // data = data & 0x0000FFFF
 
 // Reached from 24 dispatch table entries:
 //     MULU.W Dn,Dn
 //     MULU.W (An),Dn
 //     MULU.W -(An),Dn
-L_045AC:
+mulu_w_any_d6:
         clrlwi  d6, d6, 16                              // d6 = d6 & 0x0000FFFF
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -10966,14 +13051,19 @@ L_045AC:
 //     MULS.W (xxx).W,Dn
 //     MULS.W (d16,PC),Dn
 //     MULS.W #<data>,Dn
-L_045C0:
+muls_w_ea_d7:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 24 dispatch table entries:
 //     MULS.W Dn,Dn
 //     MULS.W (An),Dn
 //     MULS.W -(An),Dn
-L_045C4:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MULS.W (An)+,Dn
+//     MULS.W (d8,An,Xn),Dn
+//     MULS.W (xxx).L,Dn
+//     MULS.W (d8,PC,Xn),Dn
+muls_w_mem_d7:
         extsh   d7, d7                                  // d7 = sign-extended low word of d7
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -10989,16 +13079,22 @@ L_045D0:
 //     MULU.W (xxx).W,Dn
 //     MULU.W (d16,PC),Dn
 //     MULU.W #<data>,Dn
-L_045E4:
+mulu_w_ea_d7:
         lhau    prefetch_data, 2(pc)
-L_045E8:
+
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MULU.W (An)+,Dn
+//     MULU.W (d8,An,Xn),Dn
+//     MULU.W (xxx).L,Dn
+//     MULU.W (d8,PC,Xn),Dn
+mulu_w_mem_d7:
         clrlwi  data, data, 16                          // data = data & 0x0000FFFF
 
 // Reached from 24 dispatch table entries:
 //     MULU.W Dn,Dn
 //     MULU.W (An),Dn
 //     MULU.W -(An),Dn
-L_045EC:
+mulu_w_any_d7:
         clrlwi  d7, d7, 16                              // d7 = d7 & 0x0000FFFF
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -11010,14 +13106,19 @@ L_045EC:
 //     DIVS.W (xxx).W,Dn
 //     DIVS.W (d16,PC),Dn
 //     DIVS.W #<data>,Dn
-L_04600:
+divs_w_ea_d0:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 24 dispatch table entries:
 //     DIVS.W Dn,Dn
 //     DIVS.W (An),Dn
 //     DIVS.W -(An),Dn
-L_04604:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     DIVS.W (An)+,Dn
+//     DIVS.W (d8,An,Xn),Dn
+//     DIVS.W (xxx).L,Dn
+//     DIVS.W (d8,PC,Xn),Dn
+divs_w_mem_d0:
         mr      immed_data, d0
         bl      L_06940
         mr      d0, base_disp
@@ -11030,14 +13131,19 @@ L_04604:
 //     DIVS.W (xxx).W,Dn
 //     DIVS.W (d16,PC),Dn
 //     DIVS.W #<data>,Dn
-L_04620:
+divs_w_ea_d1:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 24 dispatch table entries:
 //     DIVS.W Dn,Dn
 //     DIVS.W (An),Dn
 //     DIVS.W -(An),Dn
-L_04624:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     DIVS.W (An)+,Dn
+//     DIVS.W (d8,An,Xn),Dn
+//     DIVS.W (xxx).L,Dn
+//     DIVS.W (d8,PC,Xn),Dn
+divs_w_mem_d1:
         mr      immed_data, d1
         bl      L_06940
         mr      d1, base_disp
@@ -11050,14 +13156,19 @@ L_04624:
 //     DIVS.W (xxx).W,Dn
 //     DIVS.W (d16,PC),Dn
 //     DIVS.W #<data>,Dn
-L_04640:
+divs_w_ea_d2:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 24 dispatch table entries:
 //     DIVS.W Dn,Dn
 //     DIVS.W (An),Dn
 //     DIVS.W -(An),Dn
-L_04644:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     DIVS.W (An)+,Dn
+//     DIVS.W (d8,An,Xn),Dn
+//     DIVS.W (xxx).L,Dn
+//     DIVS.W (d8,PC,Xn),Dn
+divs_w_mem_d2:
         mr      immed_data, d2
         bl      L_06940
         mr      d2, base_disp
@@ -11070,14 +13181,19 @@ L_04644:
 //     DIVS.W (xxx).W,Dn
 //     DIVS.W (d16,PC),Dn
 //     DIVS.W #<data>,Dn
-L_04660:
+divs_w_ea_d3:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 24 dispatch table entries:
 //     DIVS.W Dn,Dn
 //     DIVS.W (An),Dn
 //     DIVS.W -(An),Dn
-L_04664:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     DIVS.W (An)+,Dn
+//     DIVS.W (d8,An,Xn),Dn
+//     DIVS.W (xxx).L,Dn
+//     DIVS.W (d8,PC,Xn),Dn
+divs_w_mem_d3:
         mr      immed_data, d3
         bl      L_06940
         mr      d3, base_disp
@@ -11090,14 +13206,19 @@ L_04664:
 //     DIVS.W (xxx).W,Dn
 //     DIVS.W (d16,PC),Dn
 //     DIVS.W #<data>,Dn
-L_04680:
+divs_w_ea_d4:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 24 dispatch table entries:
 //     DIVS.W Dn,Dn
 //     DIVS.W (An),Dn
 //     DIVS.W -(An),Dn
-L_04684:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     DIVS.W (An)+,Dn
+//     DIVS.W (d8,An,Xn),Dn
+//     DIVS.W (xxx).L,Dn
+//     DIVS.W (d8,PC,Xn),Dn
+divs_w_mem_d4:
         mr      immed_data, d4
         bl      L_06940
         mr      d4, base_disp
@@ -11110,14 +13231,19 @@ L_04684:
 //     DIVS.W (xxx).W,Dn
 //     DIVS.W (d16,PC),Dn
 //     DIVS.W #<data>,Dn
-L_046A0:
+divs_w_ea_d5:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 24 dispatch table entries:
 //     DIVS.W Dn,Dn
 //     DIVS.W (An),Dn
 //     DIVS.W -(An),Dn
-L_046A4:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     DIVS.W (An)+,Dn
+//     DIVS.W (d8,An,Xn),Dn
+//     DIVS.W (xxx).L,Dn
+//     DIVS.W (d8,PC,Xn),Dn
+divs_w_mem_d5:
         mr      immed_data, d5
         bl      L_06940
         mr      d5, base_disp
@@ -11130,14 +13256,19 @@ L_046A4:
 //     DIVS.W (xxx).W,Dn
 //     DIVS.W (d16,PC),Dn
 //     DIVS.W #<data>,Dn
-L_046C0:
+divs_w_ea_d6:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 24 dispatch table entries:
 //     DIVS.W Dn,Dn
 //     DIVS.W (An),Dn
 //     DIVS.W -(An),Dn
-L_046C4:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     DIVS.W (An)+,Dn
+//     DIVS.W (d8,An,Xn),Dn
+//     DIVS.W (xxx).L,Dn
+//     DIVS.W (d8,PC,Xn),Dn
+divs_w_mem_d6:
         mr      immed_data, d6
         bl      L_06940
         mr      d6, base_disp
@@ -11150,14 +13281,19 @@ L_046C4:
 //     DIVS.W (xxx).W,Dn
 //     DIVS.W (d16,PC),Dn
 //     DIVS.W #<data>,Dn
-L_046E0:
+divs_w_ea_d7:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 24 dispatch table entries:
 //     DIVS.W Dn,Dn
 //     DIVS.W (An),Dn
 //     DIVS.W -(An),Dn
-L_046E4:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     DIVS.W (An)+,Dn
+//     DIVS.W (d8,An,Xn),Dn
+//     DIVS.W (xxx).L,Dn
+//     DIVS.W (d8,PC,Xn),Dn
+divs_w_mem_d7:
         mr      immed_data, d7
         bl      L_06940
         mr      d7, base_disp
@@ -11170,16 +13306,22 @@ L_046E4:
 //     DIVU.W (xxx).W,Dn
 //     DIVU.W (d16,PC),Dn
 //     DIVU.W #<data>,Dn
-L_04700:
+divu_w_ea_d0:
         lhau    prefetch_data, 2(pc)
-L_04704:
+
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     DIVU.W (An)+,Dn
+//     DIVU.W (d8,An,Xn),Dn
+//     DIVU.W (xxx).L,Dn
+//     DIVU.W (d8,PC,Xn),Dn
+divu_w_mem_d0:
         clrlwi  data, data, 16                          // data = data & 0x0000FFFF
 
 // Reached from 24 dispatch table entries:
 //     DIVU.W Dn,Dn
 //     DIVU.W (An),Dn
 //     DIVU.W -(An),Dn
-L_04708:
+divu_w_any_d0:
         mr      immed_data, d0
         bl      L_069A0
         mr      d0, base_disp
@@ -11187,7 +13329,7 @@ L_04708:
         b       L_0D114
         nop
         nop
-        b       L_04740
+        b       divu_w_ea_d1
         ALIGN(64)
 
 // Reached from 11 dispatch table entries:
@@ -11195,16 +13337,22 @@ L_04708:
 //     DIVU.W (xxx).W,Dn
 //     DIVU.W (d16,PC),Dn
 //     DIVU.W #<data>,Dn
-L_04740:
+divu_w_ea_d1:
         lhau    prefetch_data, 2(pc)
-L_04744:
+
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     DIVU.W (An)+,Dn
+//     DIVU.W (d8,An,Xn),Dn
+//     DIVU.W (xxx).L,Dn
+//     DIVU.W (d8,PC,Xn),Dn
+divu_w_mem_d1:
         clrlwi  data, data, 16                          // data = data & 0x0000FFFF
 
 // Reached from 24 dispatch table entries:
 //     DIVU.W Dn,Dn
 //     DIVU.W (An),Dn
 //     DIVU.W -(An),Dn
-L_04748:
+divu_w_any_d1:
         mr      immed_data, d1
         bl      L_069A0
         mr      d1, base_disp
@@ -11212,7 +13360,7 @@ L_04748:
         b       L_0D114
         nop
         nop
-        b       L_04780
+        b       divu_w_ea_d2
         ALIGN(64)
 
 // Reached from 11 dispatch table entries:
@@ -11220,16 +13368,22 @@ L_04748:
 //     DIVU.W (xxx).W,Dn
 //     DIVU.W (d16,PC),Dn
 //     DIVU.W #<data>,Dn
-L_04780:
+divu_w_ea_d2:
         lhau    prefetch_data, 2(pc)
-L_04784:
+
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     DIVU.W (An)+,Dn
+//     DIVU.W (d8,An,Xn),Dn
+//     DIVU.W (xxx).L,Dn
+//     DIVU.W (d8,PC,Xn),Dn
+divu_w_mem_d2:
         clrlwi  data, data, 16                          // data = data & 0x0000FFFF
 
 // Reached from 24 dispatch table entries:
 //     DIVU.W Dn,Dn
 //     DIVU.W (An),Dn
 //     DIVU.W -(An),Dn
-L_04788:
+divu_w_any_d2:
         mr      immed_data, d2
         bl      L_069A0
         mr      d2, base_disp
@@ -11237,7 +13391,7 @@ L_04788:
         b       L_0D114
         nop
         nop
-        b       L_047C0
+        b       divu_w_ea_d3
         ALIGN(64)
 
 // Reached from 11 dispatch table entries:
@@ -11245,16 +13399,22 @@ L_04788:
 //     DIVU.W (xxx).W,Dn
 //     DIVU.W (d16,PC),Dn
 //     DIVU.W #<data>,Dn
-L_047C0:
+divu_w_ea_d3:
         lhau    prefetch_data, 2(pc)
-L_047C4:
+
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     DIVU.W (An)+,Dn
+//     DIVU.W (d8,An,Xn),Dn
+//     DIVU.W (xxx).L,Dn
+//     DIVU.W (d8,PC,Xn),Dn
+divu_w_mem_d3:
         clrlwi  data, data, 16                          // data = data & 0x0000FFFF
 
 // Reached from 24 dispatch table entries:
 //     DIVU.W Dn,Dn
 //     DIVU.W (An),Dn
 //     DIVU.W -(An),Dn
-L_047C8:
+divu_w_any_d3:
         mr      immed_data, d3
         bl      L_069A0
         mr      d3, base_disp
@@ -11262,7 +13422,7 @@ L_047C8:
         b       L_0D114
         nop
         nop
-        b       L_04800
+        b       divu_w_ea_d4
         ALIGN(64)
 
 // Reached from 11 dispatch table entries:
@@ -11270,16 +13430,22 @@ L_047C8:
 //     DIVU.W (xxx).W,Dn
 //     DIVU.W (d16,PC),Dn
 //     DIVU.W #<data>,Dn
-L_04800:
+divu_w_ea_d4:
         lhau    prefetch_data, 2(pc)
-L_04804:
+
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     DIVU.W (An)+,Dn
+//     DIVU.W (d8,An,Xn),Dn
+//     DIVU.W (xxx).L,Dn
+//     DIVU.W (d8,PC,Xn),Dn
+divu_w_mem_d4:
         clrlwi  data, data, 16                          // data = data & 0x0000FFFF
 
 // Reached from 24 dispatch table entries:
 //     DIVU.W Dn,Dn
 //     DIVU.W (An),Dn
 //     DIVU.W -(An),Dn
-L_04808:
+divu_w_any_d4:
         mr      immed_data, d4
         bl      L_069A0
         mr      d4, base_disp
@@ -11287,7 +13453,7 @@ L_04808:
         b       L_0D114
         nop
         nop
-        b       L_04840
+        b       divu_w_ea_d5
         ALIGN(64)
 
 // Reached from 11 dispatch table entries:
@@ -11295,16 +13461,22 @@ L_04808:
 //     DIVU.W (xxx).W,Dn
 //     DIVU.W (d16,PC),Dn
 //     DIVU.W #<data>,Dn
-L_04840:
+divu_w_ea_d5:
         lhau    prefetch_data, 2(pc)
-L_04844:
+
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     DIVU.W (An)+,Dn
+//     DIVU.W (d8,An,Xn),Dn
+//     DIVU.W (xxx).L,Dn
+//     DIVU.W (d8,PC,Xn),Dn
+divu_w_mem_d5:
         clrlwi  data, data, 16                          // data = data & 0x0000FFFF
 
 // Reached from 24 dispatch table entries:
 //     DIVU.W Dn,Dn
 //     DIVU.W (An),Dn
 //     DIVU.W -(An),Dn
-L_04848:
+divu_w_any_d5:
         mr      immed_data, d5
         bl      L_069A0
         mr      d5, base_disp
@@ -11312,7 +13484,7 @@ L_04848:
         b       L_0D114
         nop
         nop
-        b       L_04880
+        b       divu_w_ea_d6
         ALIGN(64)
 
 // Reached from 11 dispatch table entries:
@@ -11320,16 +13492,22 @@ L_04848:
 //     DIVU.W (xxx).W,Dn
 //     DIVU.W (d16,PC),Dn
 //     DIVU.W #<data>,Dn
-L_04880:
+divu_w_ea_d6:
         lhau    prefetch_data, 2(pc)
-L_04884:
+
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     DIVU.W (An)+,Dn
+//     DIVU.W (d8,An,Xn),Dn
+//     DIVU.W (xxx).L,Dn
+//     DIVU.W (d8,PC,Xn),Dn
+divu_w_mem_d6:
         clrlwi  data, data, 16                          // data = data & 0x0000FFFF
 
 // Reached from 24 dispatch table entries:
 //     DIVU.W Dn,Dn
 //     DIVU.W (An),Dn
 //     DIVU.W -(An),Dn
-L_04888:
+divu_w_any_d6:
         mr      immed_data, d6
         bl      L_069A0
         mr      d6, base_disp
@@ -11337,7 +13515,7 @@ L_04888:
         b       L_0D114
         nop
         nop
-        b       L_048C0
+        b       divu_w_ea_d7
         ALIGN(64)
 
 // Reached from 11 dispatch table entries:
@@ -11345,16 +13523,22 @@ L_04888:
 //     DIVU.W (xxx).W,Dn
 //     DIVU.W (d16,PC),Dn
 //     DIVU.W #<data>,Dn
-L_048C0:
+divu_w_ea_d7:
         lhau    prefetch_data, 2(pc)
-L_048C4:
+
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     DIVU.W (An)+,Dn
+//     DIVU.W (d8,An,Xn),Dn
+//     DIVU.W (xxx).L,Dn
+//     DIVU.W (d8,PC,Xn),Dn
+divu_w_mem_d7:
         clrlwi  data, data, 16                          // data = data & 0x0000FFFF
 
 // Reached from 24 dispatch table entries:
 //     DIVU.W Dn,Dn
 //     DIVU.W (An),Dn
 //     DIVU.W -(An),Dn
-L_048C8:
+divu_w_any_d7:
         mr      immed_data, d7
         bl      L_069A0
         mr      d7, base_disp
@@ -11362,12 +13546,12 @@ L_048C8:
         b       L_0D114
         nop
         nop
-        b       L_04900
+        b       adda_l_imm_a0
         ALIGN(64)
 
 // Reached from 1 dispatch table entry:
 //     ADDA.L #<data>,An
-L_04900:
+adda_l_imm_a0:
         addi    pc, pc, 2
 
 // Reached from 20 dispatch table entries:
@@ -11377,7 +13561,7 @@ L_04900:
 //     ADDA.W (d16,PC),An
 //     ADDA.L (xxx).W,An
 //     ADDA.L (d16,PC),An
-L_04904:
+adda_mem_a0:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 48 dispatch table entries:
@@ -11387,7 +13571,15 @@ L_04904:
 //     ADDA.W -(An),An
 //     ADDA.L (An),An
 //     ADDA.L -(An),An
-L_04908:
+// Continuation (via rtn_addr) of 36 dispatch table entries:
+//     ADDA.W (An)+,An
+//     ADDA.W (d8,An,Xn),An
+//     ADDA.L (An)+,An
+//     ADDA.L (d8,An,Xn),An
+//     ADDA.W (xxx).L,An
+//     ADDA.W (d8,PC,Xn),An
+//     ... and 2 more forms
+adda_mem_a0_2:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -11397,7 +13589,7 @@ L_04908:
 
 // Reached from 1 dispatch table entry:
 //     ADDA.L #<data>,An
-L_04920:
+adda_l_imm_a1:
         addi    pc, pc, 2
 
 // Reached from 20 dispatch table entries:
@@ -11407,7 +13599,7 @@ L_04920:
 //     ADDA.W (d16,PC),An
 //     ADDA.L (xxx).W,An
 //     ADDA.L (d16,PC),An
-L_04924:
+adda_mem_a1:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 48 dispatch table entries:
@@ -11417,7 +13609,15 @@ L_04924:
 //     ADDA.W -(An),An
 //     ADDA.L (An),An
 //     ADDA.L -(An),An
-L_04928:
+// Continuation (via rtn_addr) of 36 dispatch table entries:
+//     ADDA.W (An)+,An
+//     ADDA.W (d8,An,Xn),An
+//     ADDA.L (An)+,An
+//     ADDA.L (d8,An,Xn),An
+//     ADDA.W (xxx).L,An
+//     ADDA.W (d8,PC,Xn),An
+//     ... and 2 more forms
+adda_mem_a1_2:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -11427,7 +13627,7 @@ L_04928:
 
 // Reached from 1 dispatch table entry:
 //     ADDA.L #<data>,An
-L_04940:
+adda_l_imm_a2:
         addi    pc, pc, 2
 
 // Reached from 20 dispatch table entries:
@@ -11437,7 +13637,7 @@ L_04940:
 //     ADDA.W (d16,PC),An
 //     ADDA.L (xxx).W,An
 //     ADDA.L (d16,PC),An
-L_04944:
+adda_mem_a2:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 48 dispatch table entries:
@@ -11447,7 +13647,15 @@ L_04944:
 //     ADDA.W -(An),An
 //     ADDA.L (An),An
 //     ADDA.L -(An),An
-L_04948:
+// Continuation (via rtn_addr) of 36 dispatch table entries:
+//     ADDA.W (An)+,An
+//     ADDA.W (d8,An,Xn),An
+//     ADDA.L (An)+,An
+//     ADDA.L (d8,An,Xn),An
+//     ADDA.W (xxx).L,An
+//     ADDA.W (d8,PC,Xn),An
+//     ... and 2 more forms
+adda_mem_a2_2:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -11457,7 +13665,7 @@ L_04948:
 
 // Reached from 1 dispatch table entry:
 //     ADDA.L #<data>,An
-L_04960:
+adda_l_imm_a3:
         addi    pc, pc, 2
 
 // Reached from 20 dispatch table entries:
@@ -11467,7 +13675,7 @@ L_04960:
 //     ADDA.W (d16,PC),An
 //     ADDA.L (xxx).W,An
 //     ADDA.L (d16,PC),An
-L_04964:
+adda_mem_a3:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 48 dispatch table entries:
@@ -11477,7 +13685,15 @@ L_04964:
 //     ADDA.W -(An),An
 //     ADDA.L (An),An
 //     ADDA.L -(An),An
-L_04968:
+// Continuation (via rtn_addr) of 36 dispatch table entries:
+//     ADDA.W (An)+,An
+//     ADDA.W (d8,An,Xn),An
+//     ADDA.L (An)+,An
+//     ADDA.L (d8,An,Xn),An
+//     ADDA.W (xxx).L,An
+//     ADDA.W (d8,PC,Xn),An
+//     ... and 2 more forms
+adda_mem_a3_2:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -11487,7 +13703,7 @@ L_04968:
 
 // Reached from 1 dispatch table entry:
 //     ADDA.L #<data>,An
-L_04980:
+adda_l_imm_a4:
         addi    pc, pc, 2
 
 // Reached from 20 dispatch table entries:
@@ -11497,7 +13713,7 @@ L_04980:
 //     ADDA.W (d16,PC),An
 //     ADDA.L (xxx).W,An
 //     ADDA.L (d16,PC),An
-L_04984:
+adda_mem_a4:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 48 dispatch table entries:
@@ -11507,7 +13723,15 @@ L_04984:
 //     ADDA.W -(An),An
 //     ADDA.L (An),An
 //     ADDA.L -(An),An
-L_04988:
+// Continuation (via rtn_addr) of 36 dispatch table entries:
+//     ADDA.W (An)+,An
+//     ADDA.W (d8,An,Xn),An
+//     ADDA.L (An)+,An
+//     ADDA.L (d8,An,Xn),An
+//     ADDA.W (xxx).L,An
+//     ADDA.W (d8,PC,Xn),An
+//     ... and 2 more forms
+adda_mem_a4_2:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -11517,7 +13741,7 @@ L_04988:
 
 // Reached from 1 dispatch table entry:
 //     ADDA.L #<data>,An
-L_049A0:
+adda_l_imm_a5:
         addi    pc, pc, 2
 
 // Reached from 20 dispatch table entries:
@@ -11527,7 +13751,7 @@ L_049A0:
 //     ADDA.W (d16,PC),An
 //     ADDA.L (xxx).W,An
 //     ADDA.L (d16,PC),An
-L_049A4:
+adda_mem_a5:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 48 dispatch table entries:
@@ -11537,7 +13761,15 @@ L_049A4:
 //     ADDA.W -(An),An
 //     ADDA.L (An),An
 //     ADDA.L -(An),An
-L_049A8:
+// Continuation (via rtn_addr) of 36 dispatch table entries:
+//     ADDA.W (An)+,An
+//     ADDA.W (d8,An,Xn),An
+//     ADDA.L (An)+,An
+//     ADDA.L (d8,An,Xn),An
+//     ADDA.W (xxx).L,An
+//     ADDA.W (d8,PC,Xn),An
+//     ... and 2 more forms
+adda_mem_a5_2:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -11547,7 +13779,7 @@ L_049A8:
 
 // Reached from 1 dispatch table entry:
 //     ADDA.L #<data>,An
-L_049C0:
+adda_l_imm_a6:
         addi    pc, pc, 2
 
 // Reached from 20 dispatch table entries:
@@ -11557,7 +13789,7 @@ L_049C0:
 //     ADDA.W (d16,PC),An
 //     ADDA.L (xxx).W,An
 //     ADDA.L (d16,PC),An
-L_049C4:
+adda_mem_a6:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 48 dispatch table entries:
@@ -11567,7 +13799,15 @@ L_049C4:
 //     ADDA.W -(An),An
 //     ADDA.L (An),An
 //     ADDA.L -(An),An
-L_049C8:
+// Continuation (via rtn_addr) of 36 dispatch table entries:
+//     ADDA.W (An)+,An
+//     ADDA.W (d8,An,Xn),An
+//     ADDA.L (An)+,An
+//     ADDA.L (d8,An,Xn),An
+//     ADDA.W (xxx).L,An
+//     ADDA.W (d8,PC,Xn),An
+//     ... and 2 more forms
+adda_mem_a6_2:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -11577,7 +13817,7 @@ L_049C8:
 
 // Reached from 1 dispatch table entry:
 //     ADDA.L #<data>,An
-L_049E0:
+adda_l_imm_a7:
         addi    pc, pc, 2
 
 // Reached from 20 dispatch table entries:
@@ -11587,7 +13827,7 @@ L_049E0:
 //     ADDA.W (d16,PC),An
 //     ADDA.L (xxx).W,An
 //     ADDA.L (d16,PC),An
-L_049E4:
+adda_mem_a7:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 48 dispatch table entries:
@@ -11597,7 +13837,15 @@ L_049E4:
 //     ADDA.W -(An),An
 //     ADDA.L (An),An
 //     ADDA.L -(An),An
-L_049E8:
+// Continuation (via rtn_addr) of 36 dispatch table entries:
+//     ADDA.W (An)+,An
+//     ADDA.W (d8,An,Xn),An
+//     ADDA.L (An)+,An
+//     ADDA.L (d8,An,Xn),An
+//     ADDA.W (xxx).L,An
+//     ADDA.W (d8,PC,Xn),An
+//     ... and 2 more forms
+adda_mem_a7_2:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -11607,7 +13855,7 @@ L_049E8:
 
 // Reached from 1 dispatch table entry:
 //     SUBA.L #<data>,An
-L_04A00:
+suba_l_imm_a0:
         addi    pc, pc, 2
 
 // Reached from 20 dispatch table entries:
@@ -11617,7 +13865,7 @@ L_04A00:
 //     SUBA.W (d16,PC),An
 //     SUBA.L (xxx).W,An
 //     SUBA.L (d16,PC),An
-L_04A04:
+suba_mem_a0:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 48 dispatch table entries:
@@ -11627,7 +13875,15 @@ L_04A04:
 //     SUBA.W -(An),An
 //     SUBA.L (An),An
 //     SUBA.L -(An),An
-L_04A08:
+// Continuation (via rtn_addr) of 36 dispatch table entries:
+//     SUBA.W (An)+,An
+//     SUBA.W (d8,An,Xn),An
+//     SUBA.L (An)+,An
+//     SUBA.L (d8,An,Xn),An
+//     SUBA.W (xxx).L,An
+//     SUBA.W (d8,PC,Xn),An
+//     ... and 2 more forms
+suba_mem_a0_2:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -11637,7 +13893,7 @@ L_04A08:
 
 // Reached from 1 dispatch table entry:
 //     SUBA.L #<data>,An
-L_04A20:
+suba_l_imm_a1:
         addi    pc, pc, 2
 
 // Reached from 20 dispatch table entries:
@@ -11647,7 +13903,7 @@ L_04A20:
 //     SUBA.W (d16,PC),An
 //     SUBA.L (xxx).W,An
 //     SUBA.L (d16,PC),An
-L_04A24:
+suba_mem_a1:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 48 dispatch table entries:
@@ -11657,7 +13913,15 @@ L_04A24:
 //     SUBA.W -(An),An
 //     SUBA.L (An),An
 //     SUBA.L -(An),An
-L_04A28:
+// Continuation (via rtn_addr) of 36 dispatch table entries:
+//     SUBA.W (An)+,An
+//     SUBA.W (d8,An,Xn),An
+//     SUBA.L (An)+,An
+//     SUBA.L (d8,An,Xn),An
+//     SUBA.W (xxx).L,An
+//     SUBA.W (d8,PC,Xn),An
+//     ... and 2 more forms
+suba_mem_a1_2:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -11667,7 +13931,7 @@ L_04A28:
 
 // Reached from 1 dispatch table entry:
 //     SUBA.L #<data>,An
-L_04A40:
+suba_l_imm_a2:
         addi    pc, pc, 2
 
 // Reached from 20 dispatch table entries:
@@ -11677,7 +13941,7 @@ L_04A40:
 //     SUBA.W (d16,PC),An
 //     SUBA.L (xxx).W,An
 //     SUBA.L (d16,PC),An
-L_04A44:
+suba_mem_a2:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 48 dispatch table entries:
@@ -11687,7 +13951,15 @@ L_04A44:
 //     SUBA.W -(An),An
 //     SUBA.L (An),An
 //     SUBA.L -(An),An
-L_04A48:
+// Continuation (via rtn_addr) of 36 dispatch table entries:
+//     SUBA.W (An)+,An
+//     SUBA.W (d8,An,Xn),An
+//     SUBA.L (An)+,An
+//     SUBA.L (d8,An,Xn),An
+//     SUBA.W (xxx).L,An
+//     SUBA.W (d8,PC,Xn),An
+//     ... and 2 more forms
+suba_mem_a2_2:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -11697,7 +13969,7 @@ L_04A48:
 
 // Reached from 1 dispatch table entry:
 //     SUBA.L #<data>,An
-L_04A60:
+suba_l_imm_a3:
         addi    pc, pc, 2
 
 // Reached from 20 dispatch table entries:
@@ -11707,7 +13979,7 @@ L_04A60:
 //     SUBA.W (d16,PC),An
 //     SUBA.L (xxx).W,An
 //     SUBA.L (d16,PC),An
-L_04A64:
+suba_mem_a3:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 48 dispatch table entries:
@@ -11717,7 +13989,15 @@ L_04A64:
 //     SUBA.W -(An),An
 //     SUBA.L (An),An
 //     SUBA.L -(An),An
-L_04A68:
+// Continuation (via rtn_addr) of 36 dispatch table entries:
+//     SUBA.W (An)+,An
+//     SUBA.W (d8,An,Xn),An
+//     SUBA.L (An)+,An
+//     SUBA.L (d8,An,Xn),An
+//     SUBA.W (xxx).L,An
+//     SUBA.W (d8,PC,Xn),An
+//     ... and 2 more forms
+suba_mem_a3_2:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -11727,7 +14007,7 @@ L_04A68:
 
 // Reached from 1 dispatch table entry:
 //     SUBA.L #<data>,An
-L_04A80:
+suba_l_imm_a4:
         addi    pc, pc, 2
 
 // Reached from 20 dispatch table entries:
@@ -11737,7 +14017,7 @@ L_04A80:
 //     SUBA.W (d16,PC),An
 //     SUBA.L (xxx).W,An
 //     SUBA.L (d16,PC),An
-L_04A84:
+suba_mem_a4:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 48 dispatch table entries:
@@ -11747,7 +14027,15 @@ L_04A84:
 //     SUBA.W -(An),An
 //     SUBA.L (An),An
 //     SUBA.L -(An),An
-L_04A88:
+// Continuation (via rtn_addr) of 36 dispatch table entries:
+//     SUBA.W (An)+,An
+//     SUBA.W (d8,An,Xn),An
+//     SUBA.L (An)+,An
+//     SUBA.L (d8,An,Xn),An
+//     SUBA.W (xxx).L,An
+//     SUBA.W (d8,PC,Xn),An
+//     ... and 2 more forms
+suba_mem_a4_2:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -11757,7 +14045,7 @@ L_04A88:
 
 // Reached from 1 dispatch table entry:
 //     SUBA.L #<data>,An
-L_04AA0:
+suba_l_imm_a5:
         addi    pc, pc, 2
 
 // Reached from 20 dispatch table entries:
@@ -11767,7 +14055,7 @@ L_04AA0:
 //     SUBA.W (d16,PC),An
 //     SUBA.L (xxx).W,An
 //     SUBA.L (d16,PC),An
-L_04AA4:
+suba_mem_a5:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 48 dispatch table entries:
@@ -11777,7 +14065,15 @@ L_04AA4:
 //     SUBA.W -(An),An
 //     SUBA.L (An),An
 //     SUBA.L -(An),An
-L_04AA8:
+// Continuation (via rtn_addr) of 36 dispatch table entries:
+//     SUBA.W (An)+,An
+//     SUBA.W (d8,An,Xn),An
+//     SUBA.L (An)+,An
+//     SUBA.L (d8,An,Xn),An
+//     SUBA.W (xxx).L,An
+//     SUBA.W (d8,PC,Xn),An
+//     ... and 2 more forms
+suba_mem_a5_2:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -11787,7 +14083,7 @@ L_04AA8:
 
 // Reached from 1 dispatch table entry:
 //     SUBA.L #<data>,An
-L_04AC0:
+suba_l_imm_a6:
         addi    pc, pc, 2
 
 // Reached from 20 dispatch table entries:
@@ -11797,7 +14093,7 @@ L_04AC0:
 //     SUBA.W (d16,PC),An
 //     SUBA.L (xxx).W,An
 //     SUBA.L (d16,PC),An
-L_04AC4:
+suba_mem_a6:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 48 dispatch table entries:
@@ -11807,7 +14103,15 @@ L_04AC4:
 //     SUBA.W -(An),An
 //     SUBA.L (An),An
 //     SUBA.L -(An),An
-L_04AC8:
+// Continuation (via rtn_addr) of 36 dispatch table entries:
+//     SUBA.W (An)+,An
+//     SUBA.W (d8,An,Xn),An
+//     SUBA.L (An)+,An
+//     SUBA.L (d8,An,Xn),An
+//     SUBA.W (xxx).L,An
+//     SUBA.W (d8,PC,Xn),An
+//     ... and 2 more forms
+suba_mem_a6_2:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -11817,7 +14121,7 @@ L_04AC8:
 
 // Reached from 1 dispatch table entry:
 //     SUBA.L #<data>,An
-L_04AE0:
+suba_l_imm_a7:
         addi    pc, pc, 2
 
 // Reached from 20 dispatch table entries:
@@ -11827,7 +14131,7 @@ L_04AE0:
 //     SUBA.W (d16,PC),An
 //     SUBA.L (xxx).W,An
 //     SUBA.L (d16,PC),An
-L_04AE4:
+suba_mem_a7:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 48 dispatch table entries:
@@ -11837,7 +14141,15 @@ L_04AE4:
 //     SUBA.W -(An),An
 //     SUBA.L (An),An
 //     SUBA.L -(An),An
-L_04AE8:
+// Continuation (via rtn_addr) of 36 dispatch table entries:
+//     SUBA.W (An)+,An
+//     SUBA.W (d8,An,Xn),An
+//     SUBA.L (An)+,An
+//     SUBA.L (d8,An,Xn),An
+//     SUBA.W (xxx).L,An
+//     SUBA.W (d8,PC,Xn),An
+//     ... and 2 more forms
+suba_mem_a7_2:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -11853,7 +14165,7 @@ L_04AE8:
 //     CMPA.W #<data>,An
 //     CMPA.L (xxx).W,An
 //     ... and 1 more forms
-L_04B00:
+cmpa_ea_a0:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 63 dispatch table entries:
@@ -11864,7 +14176,15 @@ L_04B00:
 //     CMPA.L Dn,An
 //     CMPA.L (An),An
 //     ... and 2 more forms
-L_04B04:
+// Continuation (via rtn_addr) of 36 dispatch table entries:
+//     CMPA.W (An)+,An
+//     CMPA.W (d8,An,Xn),An
+//     CMPA.L (An)+,An
+//     CMPA.L (d8,An,Xn),An
+//     CMPA.W (xxx).L,An
+//     CMPA.W (d8,PC,Xn),An
+//     ... and 2 more forms
+cmpa_mem_a0:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         subfco. immed_data, data, a0                    // immed_data = a0 - data
@@ -11881,7 +14201,7 @@ L_04B04:
 //     CMPA.W #<data>,An
 //     CMPA.L (xxx).W,An
 //     ... and 1 more forms
-L_04B20:
+cmpa_ea_a1:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 63 dispatch table entries:
@@ -11892,7 +14212,15 @@ L_04B20:
 //     CMPA.L Dn,An
 //     CMPA.L (An),An
 //     ... and 2 more forms
-L_04B24:
+// Continuation (via rtn_addr) of 36 dispatch table entries:
+//     CMPA.W (An)+,An
+//     CMPA.W (d8,An,Xn),An
+//     CMPA.L (An)+,An
+//     CMPA.L (d8,An,Xn),An
+//     CMPA.W (xxx).L,An
+//     CMPA.W (d8,PC,Xn),An
+//     ... and 2 more forms
+cmpa_mem_a1:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         subfco. immed_data, data, a1                    // immed_data = a1 - data
@@ -11909,7 +14237,7 @@ L_04B24:
 //     CMPA.W #<data>,An
 //     CMPA.L (xxx).W,An
 //     ... and 1 more forms
-L_04B40:
+cmpa_ea_a2:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 63 dispatch table entries:
@@ -11920,7 +14248,15 @@ L_04B40:
 //     CMPA.L Dn,An
 //     CMPA.L (An),An
 //     ... and 2 more forms
-L_04B44:
+// Continuation (via rtn_addr) of 36 dispatch table entries:
+//     CMPA.W (An)+,An
+//     CMPA.W (d8,An,Xn),An
+//     CMPA.L (An)+,An
+//     CMPA.L (d8,An,Xn),An
+//     CMPA.W (xxx).L,An
+//     CMPA.W (d8,PC,Xn),An
+//     ... and 2 more forms
+cmpa_mem_a2:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         subfco. immed_data, data, a2                    // immed_data = a2 - data
@@ -11937,7 +14273,7 @@ L_04B44:
 //     CMPA.W #<data>,An
 //     CMPA.L (xxx).W,An
 //     ... and 1 more forms
-L_04B60:
+cmpa_ea_a3:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 63 dispatch table entries:
@@ -11948,7 +14284,15 @@ L_04B60:
 //     CMPA.L Dn,An
 //     CMPA.L (An),An
 //     ... and 2 more forms
-L_04B64:
+// Continuation (via rtn_addr) of 36 dispatch table entries:
+//     CMPA.W (An)+,An
+//     CMPA.W (d8,An,Xn),An
+//     CMPA.L (An)+,An
+//     CMPA.L (d8,An,Xn),An
+//     CMPA.W (xxx).L,An
+//     CMPA.W (d8,PC,Xn),An
+//     ... and 2 more forms
+cmpa_mem_a3:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         subfco. immed_data, data, a3                    // immed_data = a3 - data
@@ -11965,7 +14309,7 @@ L_04B64:
 //     CMPA.W #<data>,An
 //     CMPA.L (xxx).W,An
 //     ... and 1 more forms
-L_04B80:
+cmpa_ea_a4:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 63 dispatch table entries:
@@ -11976,7 +14320,15 @@ L_04B80:
 //     CMPA.L Dn,An
 //     CMPA.L (An),An
 //     ... and 2 more forms
-L_04B84:
+// Continuation (via rtn_addr) of 36 dispatch table entries:
+//     CMPA.W (An)+,An
+//     CMPA.W (d8,An,Xn),An
+//     CMPA.L (An)+,An
+//     CMPA.L (d8,An,Xn),An
+//     CMPA.W (xxx).L,An
+//     CMPA.W (d8,PC,Xn),An
+//     ... and 2 more forms
+cmpa_mem_a4:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         subfco. immed_data, data, a4                    // immed_data = a4 - data
@@ -11993,7 +14345,7 @@ L_04B84:
 //     CMPA.W #<data>,An
 //     CMPA.L (xxx).W,An
 //     ... and 1 more forms
-L_04BA0:
+cmpa_ea_a5:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 63 dispatch table entries:
@@ -12004,7 +14356,15 @@ L_04BA0:
 //     CMPA.L Dn,An
 //     CMPA.L (An),An
 //     ... and 2 more forms
-L_04BA4:
+// Continuation (via rtn_addr) of 36 dispatch table entries:
+//     CMPA.W (An)+,An
+//     CMPA.W (d8,An,Xn),An
+//     CMPA.L (An)+,An
+//     CMPA.L (d8,An,Xn),An
+//     CMPA.W (xxx).L,An
+//     CMPA.W (d8,PC,Xn),An
+//     ... and 2 more forms
+cmpa_mem_a5:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         subfco. immed_data, data, a5                    // immed_data = a5 - data
@@ -12021,7 +14381,7 @@ L_04BA4:
 //     CMPA.W #<data>,An
 //     CMPA.L (xxx).W,An
 //     ... and 1 more forms
-L_04BC0:
+cmpa_ea_a6:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 63 dispatch table entries:
@@ -12032,7 +14392,15 @@ L_04BC0:
 //     CMPA.L Dn,An
 //     CMPA.L (An),An
 //     ... and 2 more forms
-L_04BC4:
+// Continuation (via rtn_addr) of 36 dispatch table entries:
+//     CMPA.W (An)+,An
+//     CMPA.W (d8,An,Xn),An
+//     CMPA.L (An)+,An
+//     CMPA.L (d8,An,Xn),An
+//     CMPA.W (xxx).L,An
+//     CMPA.W (d8,PC,Xn),An
+//     ... and 2 more forms
+cmpa_mem_a6:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         subfco. immed_data, data, a6                    // immed_data = a6 - data
@@ -12049,7 +14417,7 @@ L_04BC4:
 //     CMPA.W #<data>,An
 //     CMPA.L (xxx).W,An
 //     ... and 1 more forms
-L_04BE0:
+cmpa_ea_a7:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 63 dispatch table entries:
@@ -12060,7 +14428,15 @@ L_04BE0:
 //     CMPA.L Dn,An
 //     CMPA.L (An),An
 //     ... and 2 more forms
-L_04BE4:
+// Continuation (via rtn_addr) of 36 dispatch table entries:
+//     CMPA.W (An)+,An
+//     CMPA.W (d8,An,Xn),An
+//     CMPA.L (An)+,An
+//     CMPA.L (d8,An,Xn),An
+//     CMPA.W (xxx).L,An
+//     CMPA.W (d8,PC,Xn),An
+//     ... and 2 more forms
+cmpa_mem_a7:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         subfco. immed_data, data, a7                    // immed_data = a7 - data
@@ -12071,56 +14447,56 @@ L_04BE4:
 
 // Reached from 8 dispatch table entries:
 //     LSR.W Dn,Dn
-L_04C00:
+lsr_w_dn_d0:
         rlwinm  data, d0, 1, 15, 30                     // data = d0[15:0] << 1
         beq     L_07300
         srw     data, data, addr
 
 // Reached from 8 dispatch table entries:
 //     LSR.W #<q>,Dn
-L_04C0C:
+lsr_w_q_d0:
         rlwimi  d0, data, 31, 16, 31                    // d0[15:0] = data[16:1]
         b       L_07180
 
 // Reached from 8 dispatch table entries:
 //     LSL.W Dn,Dn
-L_04C14:
+lsl_w_dn_d0:
         rlwinm  data, d0, 15, 1, 16                     // data = d0[15:0] << 15
         beq     L_072C0
         slw     data, data, addr
 
 // Reached from 8 dispatch table entries:
 //     LSL.W #<q>,Dn
-L_04C20:
+lsl_w_q_d0:
         rlwimi  d0, data, 17, 16, 31                    // d0[15:0] = data[30:15]
         b       L_071A0
 
 // Reached from 8 dispatch table entries:
 //     ASR.W Dn,Dn
-L_04C28:
+asr_w_dn_d0:
         beq     L_04CB8
 
 // Reached from 7 dispatch table entries:
 //     ASR.W #<q>,Dn
-L_04C2C:
+asr_w_q_d0:
         slwi    data, d0, 16
         sraw    data, data, addr                        // data = data >> addr (arithmetic)
 
 // Reached from 1 dispatch table entry:
 //     ASR.W #<q>,Dn
-L_04C34:
+asr_w_q_d0_2:
         rlwimi  d0, data, 16, 17, 31                    // d0[14:0] = data[30:16]
         b       L_071E0
         ALIGN(64)
 
 // Reached from 8 dispatch table entries:
 //     ASL.W Dn,Dn
-L_04C40:
+asl_w_dn_d0:
         beq     L_04CB8
 
 // Reached from 7 dispatch table entries:
 //     ASL.W #<q>,Dn
-L_04C44:
+asl_w_q_d0:
         slwi    data, d0, 16
         slw.    immed_data, data, addr
         rlwimi  d0, immed_data, 16, 16, 31              // d0[15:0] = immed_data[31:16]
@@ -12129,29 +14505,29 @@ L_04C44:
 
 // Reached from 8 dispatch table entries:
 //     ROR.W Dn,Dn
-L_04C60:
+ror_w_dn_d0:
         neg     addr, addr
         beq     L_04CB8
         clrlwi  addr, addr, 28                          // addr = addr & 0x0000000F
 
 // Reached from 8 dispatch table entries:
 //     ROR.W #<q>,Dn
-L_04C6C:
+ror_w_q_d0:
         slwi    data, d0, 16
         rlwimi  data, d0, 0, 16, 31                     // data[15:0] = d0[15:0]
         rlwnm.  data, data, addr, 0, 31                 // data = rotl(data, addr) & 0xFFFFFFFF
         rlwimi  d0, data, 0, 16, 31                     // d0[15:0] = data[15:0]
-        b       L_07240
+        b       ror_b_q_dn
 
 // Reached from 8 dispatch table entries:
 //     ROL.W Dn,Dn
-L_04C80:
+rol_w_dn_d0:
         clrlwi  addr, addr, 28                          // addr = addr & 0x0000000F
         beq     L_04CB8
 
 // Reached from 8 dispatch table entries:
 //     ROL.W #<q>,Dn
-L_04C88:
+rol_w_q_d0:
         slwi    data, d0, 16
         rlwimi  data, d0, 0, 16, 31                     // data[15:0] = d0[15:0]
         rlwnm.  data, data, addr, 0, 31                 // data = rotl(data, addr) & 0xFFFFFFFF
@@ -12162,13 +14538,13 @@ L_04C88:
 // Reached from 16 dispatch table entries:
 //     ROXR.W Dn,Dn
 //     ROXL.W Dn,Dn
-L_04CA0:
+roxr_roxl_w_dn_d0:
         bnel    L_0731C
 
 // Reached from 16 dispatch table entries:
 //     ROXR.W #<q>,Dn
 //     ROXL.W #<q>,Dn
-L_04CA4:
+roxr_roxl_w_q_d0:
         clrlwi  data, d0, 16                            // data = d0 & 0x0000FFFF
         bl      L_07380
         rlwimi  d0, data, 0, 16, 31                     // d0[15:0] = data[15:0]
@@ -12176,60 +14552,60 @@ L_04CA4:
         b       L_0D114
 L_04CB8:
         extsh.  data, d0                                // data = sign-extended low word of d0
-        b       L_060C0
+        b       move_or_etc_any_reg
 
 // Reached from 8 dispatch table entries:
 //     LSR.W Dn,Dn
-L_04CC0:
+lsr_w_dn_d1:
         rlwinm  data, d1, 1, 15, 30                     // data = d1[15:0] << 1
         beq     L_07300
         srw     data, data, addr
 
 // Reached from 8 dispatch table entries:
 //     LSR.W #<q>,Dn
-L_04CCC:
+lsr_w_q_d1:
         rlwimi  d1, data, 31, 16, 31                    // d1[15:0] = data[16:1]
         b       L_07180
 
 // Reached from 8 dispatch table entries:
 //     LSL.W Dn,Dn
-L_04CD4:
+lsl_w_dn_d1:
         rlwinm  data, d1, 15, 1, 16                     // data = d1[15:0] << 15
         beq     L_072C0
         slw     data, data, addr
 
 // Reached from 8 dispatch table entries:
 //     LSL.W #<q>,Dn
-L_04CE0:
+lsl_w_q_d1:
         rlwimi  d1, data, 17, 16, 31                    // d1[15:0] = data[30:15]
         b       L_071A0
 
 // Reached from 8 dispatch table entries:
 //     ASR.W Dn,Dn
-L_04CE8:
+asr_w_dn_d1:
         beq     L_04D78
 
 // Reached from 7 dispatch table entries:
 //     ASR.W #<q>,Dn
-L_04CEC:
+asr_w_q_d1:
         slwi    data, d1, 16
         sraw    data, data, addr                        // data = data >> addr (arithmetic)
 
 // Reached from 1 dispatch table entry:
 //     ASR.W #<q>,Dn
-L_04CF4:
+asr_w_q_d1_2:
         rlwimi  d1, data, 16, 17, 31                    // d1[14:0] = data[30:16]
         b       L_071E0
         ALIGN(64)
 
 // Reached from 8 dispatch table entries:
 //     ASL.W Dn,Dn
-L_04D00:
+asl_w_dn_d1:
         beq     L_04D78
 
 // Reached from 7 dispatch table entries:
 //     ASL.W #<q>,Dn
-L_04D04:
+asl_w_q_d1:
         slwi    data, d1, 16
         slw.    immed_data, data, addr
         rlwimi  d1, immed_data, 16, 16, 31              // d1[15:0] = immed_data[31:16]
@@ -12238,29 +14614,29 @@ L_04D04:
 
 // Reached from 8 dispatch table entries:
 //     ROR.W Dn,Dn
-L_04D20:
+ror_w_dn_d1:
         neg     addr, addr
         beq     L_04D78
         clrlwi  addr, addr, 28                          // addr = addr & 0x0000000F
 
 // Reached from 8 dispatch table entries:
 //     ROR.W #<q>,Dn
-L_04D2C:
+ror_w_q_d1:
         slwi    data, d1, 16
         rlwimi  data, d1, 0, 16, 31                     // data[15:0] = d1[15:0]
         rlwnm.  data, data, addr, 0, 31                 // data = rotl(data, addr) & 0xFFFFFFFF
         rlwimi  d1, data, 0, 16, 31                     // d1[15:0] = data[15:0]
-        b       L_07240
+        b       ror_b_q_dn
 
 // Reached from 8 dispatch table entries:
 //     ROL.W Dn,Dn
-L_04D40:
+rol_w_dn_d1:
         clrlwi  addr, addr, 28                          // addr = addr & 0x0000000F
         beq     L_04D78
 
 // Reached from 8 dispatch table entries:
 //     ROL.W #<q>,Dn
-L_04D48:
+rol_w_q_d1:
         slwi    data, d1, 16
         rlwimi  data, d1, 0, 16, 31                     // data[15:0] = d1[15:0]
         rlwnm.  data, data, addr, 0, 31                 // data = rotl(data, addr) & 0xFFFFFFFF
@@ -12271,13 +14647,13 @@ L_04D48:
 // Reached from 16 dispatch table entries:
 //     ROXR.W Dn,Dn
 //     ROXL.W Dn,Dn
-L_04D60:
+roxr_roxl_w_dn_d1:
         bnel    L_0731C
 
 // Reached from 16 dispatch table entries:
 //     ROXR.W #<q>,Dn
 //     ROXL.W #<q>,Dn
-L_04D64:
+roxr_roxl_w_q_d1:
         clrlwi  data, d1, 16                            // data = d1 & 0x0000FFFF
         bl      L_07380
         rlwimi  d1, data, 0, 16, 31                     // d1[15:0] = data[15:0]
@@ -12285,60 +14661,60 @@ L_04D64:
         b       L_0D114
 L_04D78:
         extsh.  data, d1                                // data = sign-extended low word of d1
-        b       L_060C0
+        b       move_or_etc_any_reg
 
 // Reached from 8 dispatch table entries:
 //     LSR.W Dn,Dn
-L_04D80:
+lsr_w_dn_d2:
         rlwinm  data, d2, 1, 15, 30                     // data = d2[15:0] << 1
         beq     L_07300
         srw     data, data, addr
 
 // Reached from 8 dispatch table entries:
 //     LSR.W #<q>,Dn
-L_04D8C:
+lsr_w_q_d2:
         rlwimi  d2, data, 31, 16, 31                    // d2[15:0] = data[16:1]
         b       L_07180
 
 // Reached from 8 dispatch table entries:
 //     LSL.W Dn,Dn
-L_04D94:
+lsl_w_dn_d2:
         rlwinm  data, d2, 15, 1, 16                     // data = d2[15:0] << 15
         beq     L_072C0
         slw     data, data, addr
 
 // Reached from 8 dispatch table entries:
 //     LSL.W #<q>,Dn
-L_04DA0:
+lsl_w_q_d2:
         rlwimi  d2, data, 17, 16, 31                    // d2[15:0] = data[30:15]
         b       L_071A0
 
 // Reached from 8 dispatch table entries:
 //     ASR.W Dn,Dn
-L_04DA8:
+asr_w_dn_d2:
         beq     L_04E38
 
 // Reached from 7 dispatch table entries:
 //     ASR.W #<q>,Dn
-L_04DAC:
+asr_w_q_d2:
         slwi    data, d2, 16
         sraw    data, data, addr                        // data = data >> addr (arithmetic)
 
 // Reached from 1 dispatch table entry:
 //     ASR.W #<q>,Dn
-L_04DB4:
+asr_w_q_d2_2:
         rlwimi  d2, data, 16, 17, 31                    // d2[14:0] = data[30:16]
         b       L_071E0
         ALIGN(64)
 
 // Reached from 8 dispatch table entries:
 //     ASL.W Dn,Dn
-L_04DC0:
+asl_w_dn_d2:
         beq     L_04E38
 
 // Reached from 7 dispatch table entries:
 //     ASL.W #<q>,Dn
-L_04DC4:
+asl_w_q_d2:
         slwi    data, d2, 16
         slw.    immed_data, data, addr
         rlwimi  d2, immed_data, 16, 16, 31              // d2[15:0] = immed_data[31:16]
@@ -12347,29 +14723,29 @@ L_04DC4:
 
 // Reached from 8 dispatch table entries:
 //     ROR.W Dn,Dn
-L_04DE0:
+ror_w_dn_d2:
         neg     addr, addr
         beq     L_04E38
         clrlwi  addr, addr, 28                          // addr = addr & 0x0000000F
 
 // Reached from 8 dispatch table entries:
 //     ROR.W #<q>,Dn
-L_04DEC:
+ror_w_q_d2:
         slwi    data, d2, 16
         rlwimi  data, d2, 0, 16, 31                     // data[15:0] = d2[15:0]
         rlwnm.  data, data, addr, 0, 31                 // data = rotl(data, addr) & 0xFFFFFFFF
         rlwimi  d2, data, 0, 16, 31                     // d2[15:0] = data[15:0]
-        b       L_07240
+        b       ror_b_q_dn
 
 // Reached from 8 dispatch table entries:
 //     ROL.W Dn,Dn
-L_04E00:
+rol_w_dn_d2:
         clrlwi  addr, addr, 28                          // addr = addr & 0x0000000F
         beq     L_04E38
 
 // Reached from 8 dispatch table entries:
 //     ROL.W #<q>,Dn
-L_04E08:
+rol_w_q_d2:
         slwi    data, d2, 16
         rlwimi  data, d2, 0, 16, 31                     // data[15:0] = d2[15:0]
         rlwnm.  data, data, addr, 0, 31                 // data = rotl(data, addr) & 0xFFFFFFFF
@@ -12380,13 +14756,13 @@ L_04E08:
 // Reached from 16 dispatch table entries:
 //     ROXR.W Dn,Dn
 //     ROXL.W Dn,Dn
-L_04E20:
+roxr_roxl_w_dn_d2:
         bnel    L_0731C
 
 // Reached from 16 dispatch table entries:
 //     ROXR.W #<q>,Dn
 //     ROXL.W #<q>,Dn
-L_04E24:
+roxr_roxl_w_q_d2:
         clrlwi  data, d2, 16                            // data = d2 & 0x0000FFFF
         bl      L_07380
         rlwimi  d2, data, 0, 16, 31                     // d2[15:0] = data[15:0]
@@ -12394,60 +14770,60 @@ L_04E24:
         b       L_0D114
 L_04E38:
         extsh.  data, d2                                // data = sign-extended low word of d2
-        b       L_060C0
+        b       move_or_etc_any_reg
 
 // Reached from 8 dispatch table entries:
 //     LSR.W Dn,Dn
-L_04E40:
+lsr_w_dn_d3:
         rlwinm  data, d3, 1, 15, 30                     // data = d3[15:0] << 1
         beq     L_07300
         srw     data, data, addr
 
 // Reached from 8 dispatch table entries:
 //     LSR.W #<q>,Dn
-L_04E4C:
+lsr_w_q_d3:
         rlwimi  d3, data, 31, 16, 31                    // d3[15:0] = data[16:1]
         b       L_07180
 
 // Reached from 8 dispatch table entries:
 //     LSL.W Dn,Dn
-L_04E54:
+lsl_w_dn_d3:
         rlwinm  data, d3, 15, 1, 16                     // data = d3[15:0] << 15
         beq     L_072C0
         slw     data, data, addr
 
 // Reached from 8 dispatch table entries:
 //     LSL.W #<q>,Dn
-L_04E60:
+lsl_w_q_d3:
         rlwimi  d3, data, 17, 16, 31                    // d3[15:0] = data[30:15]
         b       L_071A0
 
 // Reached from 8 dispatch table entries:
 //     ASR.W Dn,Dn
-L_04E68:
+asr_w_dn_d3:
         beq     L_04EF8
 
 // Reached from 7 dispatch table entries:
 //     ASR.W #<q>,Dn
-L_04E6C:
+asr_w_q_d3:
         slwi    data, d3, 16
         sraw    data, data, addr                        // data = data >> addr (arithmetic)
 
 // Reached from 1 dispatch table entry:
 //     ASR.W #<q>,Dn
-L_04E74:
+asr_w_q_d3_2:
         rlwimi  d3, data, 16, 17, 31                    // d3[14:0] = data[30:16]
         b       L_071E0
         ALIGN(64)
 
 // Reached from 8 dispatch table entries:
 //     ASL.W Dn,Dn
-L_04E80:
+asl_w_dn_d3:
         beq     L_04EF8
 
 // Reached from 7 dispatch table entries:
 //     ASL.W #<q>,Dn
-L_04E84:
+asl_w_q_d3:
         slwi    data, d3, 16
         slw.    immed_data, data, addr
         rlwimi  d3, immed_data, 16, 16, 31              // d3[15:0] = immed_data[31:16]
@@ -12456,29 +14832,29 @@ L_04E84:
 
 // Reached from 8 dispatch table entries:
 //     ROR.W Dn,Dn
-L_04EA0:
+ror_w_dn_d3:
         neg     addr, addr
         beq     L_04EF8
         clrlwi  addr, addr, 28                          // addr = addr & 0x0000000F
 
 // Reached from 8 dispatch table entries:
 //     ROR.W #<q>,Dn
-L_04EAC:
+ror_w_q_d3:
         slwi    data, d3, 16
         rlwimi  data, d3, 0, 16, 31                     // data[15:0] = d3[15:0]
         rlwnm.  data, data, addr, 0, 31                 // data = rotl(data, addr) & 0xFFFFFFFF
         rlwimi  d3, data, 0, 16, 31                     // d3[15:0] = data[15:0]
-        b       L_07240
+        b       ror_b_q_dn
 
 // Reached from 8 dispatch table entries:
 //     ROL.W Dn,Dn
-L_04EC0:
+rol_w_dn_d3:
         clrlwi  addr, addr, 28                          // addr = addr & 0x0000000F
         beq     L_04EF8
 
 // Reached from 8 dispatch table entries:
 //     ROL.W #<q>,Dn
-L_04EC8:
+rol_w_q_d3:
         slwi    data, d3, 16
         rlwimi  data, d3, 0, 16, 31                     // data[15:0] = d3[15:0]
         rlwnm.  data, data, addr, 0, 31                 // data = rotl(data, addr) & 0xFFFFFFFF
@@ -12489,13 +14865,13 @@ L_04EC8:
 // Reached from 16 dispatch table entries:
 //     ROXR.W Dn,Dn
 //     ROXL.W Dn,Dn
-L_04EE0:
+roxr_roxl_w_dn_d3:
         bnel    L_0731C
 
 // Reached from 16 dispatch table entries:
 //     ROXR.W #<q>,Dn
 //     ROXL.W #<q>,Dn
-L_04EE4:
+roxr_roxl_w_q_d3:
         clrlwi  data, d3, 16                            // data = d3 & 0x0000FFFF
         bl      L_07380
         rlwimi  d3, data, 0, 16, 31                     // d3[15:0] = data[15:0]
@@ -12503,60 +14879,60 @@ L_04EE4:
         b       L_0D114
 L_04EF8:
         extsh.  data, d3                                // data = sign-extended low word of d3
-        b       L_060C0
+        b       move_or_etc_any_reg
 
 // Reached from 8 dispatch table entries:
 //     LSR.W Dn,Dn
-L_04F00:
+lsr_w_dn_d4:
         rlwinm  data, d4, 1, 15, 30                     // data = d4[15:0] << 1
         beq     L_07300
         srw     data, data, addr
 
 // Reached from 8 dispatch table entries:
 //     LSR.W #<q>,Dn
-L_04F0C:
+lsr_w_q_d4:
         rlwimi  d4, data, 31, 16, 31                    // d4[15:0] = data[16:1]
         b       L_07180
 
 // Reached from 8 dispatch table entries:
 //     LSL.W Dn,Dn
-L_04F14:
+lsl_w_dn_d4:
         rlwinm  data, d4, 15, 1, 16                     // data = d4[15:0] << 15
         beq     L_072C0
         slw     data, data, addr
 
 // Reached from 8 dispatch table entries:
 //     LSL.W #<q>,Dn
-L_04F20:
+lsl_w_q_d4:
         rlwimi  d4, data, 17, 16, 31                    // d4[15:0] = data[30:15]
         b       L_071A0
 
 // Reached from 8 dispatch table entries:
 //     ASR.W Dn,Dn
-L_04F28:
+asr_w_dn_d4:
         beq     L_04FB8
 
 // Reached from 7 dispatch table entries:
 //     ASR.W #<q>,Dn
-L_04F2C:
+asr_w_q_d4:
         slwi    data, d4, 16
         sraw    data, data, addr                        // data = data >> addr (arithmetic)
 
 // Reached from 1 dispatch table entry:
 //     ASR.W #<q>,Dn
-L_04F34:
+asr_w_q_d4_2:
         rlwimi  d4, data, 16, 17, 31                    // d4[14:0] = data[30:16]
         b       L_071E0
         ALIGN(64)
 
 // Reached from 8 dispatch table entries:
 //     ASL.W Dn,Dn
-L_04F40:
+asl_w_dn_d4:
         beq     L_04FB8
 
 // Reached from 7 dispatch table entries:
 //     ASL.W #<q>,Dn
-L_04F44:
+asl_w_q_d4:
         slwi    data, d4, 16
         slw.    immed_data, data, addr
         rlwimi  d4, immed_data, 16, 16, 31              // d4[15:0] = immed_data[31:16]
@@ -12565,29 +14941,29 @@ L_04F44:
 
 // Reached from 8 dispatch table entries:
 //     ROR.W Dn,Dn
-L_04F60:
+ror_w_dn_d4:
         neg     addr, addr
         beq     L_04FB8
         clrlwi  addr, addr, 28                          // addr = addr & 0x0000000F
 
 // Reached from 8 dispatch table entries:
 //     ROR.W #<q>,Dn
-L_04F6C:
+ror_w_q_d4:
         slwi    data, d4, 16
         rlwimi  data, d4, 0, 16, 31                     // data[15:0] = d4[15:0]
         rlwnm.  data, data, addr, 0, 31                 // data = rotl(data, addr) & 0xFFFFFFFF
         rlwimi  d4, data, 0, 16, 31                     // d4[15:0] = data[15:0]
-        b       L_07240
+        b       ror_b_q_dn
 
 // Reached from 8 dispatch table entries:
 //     ROL.W Dn,Dn
-L_04F80:
+rol_w_dn_d4:
         clrlwi  addr, addr, 28                          // addr = addr & 0x0000000F
         beq     L_04FB8
 
 // Reached from 8 dispatch table entries:
 //     ROL.W #<q>,Dn
-L_04F88:
+rol_w_q_d4:
         slwi    data, d4, 16
         rlwimi  data, d4, 0, 16, 31                     // data[15:0] = d4[15:0]
         rlwnm.  data, data, addr, 0, 31                 // data = rotl(data, addr) & 0xFFFFFFFF
@@ -12598,13 +14974,13 @@ L_04F88:
 // Reached from 16 dispatch table entries:
 //     ROXR.W Dn,Dn
 //     ROXL.W Dn,Dn
-L_04FA0:
+roxr_roxl_w_dn_d4:
         bnel    L_0731C
 
 // Reached from 16 dispatch table entries:
 //     ROXR.W #<q>,Dn
 //     ROXL.W #<q>,Dn
-L_04FA4:
+roxr_roxl_w_q_d4:
         clrlwi  data, d4, 16                            // data = d4 & 0x0000FFFF
         bl      L_07380
         rlwimi  d4, data, 0, 16, 31                     // d4[15:0] = data[15:0]
@@ -12612,60 +14988,60 @@ L_04FA4:
         b       L_0D114
 L_04FB8:
         extsh.  data, d4                                // data = sign-extended low word of d4
-        b       L_060C0
+        b       move_or_etc_any_reg
 
 // Reached from 8 dispatch table entries:
 //     LSR.W Dn,Dn
-L_04FC0:
+lsr_w_dn_d5:
         rlwinm  data, d5, 1, 15, 30                     // data = d5[15:0] << 1
         beq     L_07300
         srw     data, data, addr
 
 // Reached from 8 dispatch table entries:
 //     LSR.W #<q>,Dn
-L_04FCC:
+lsr_w_q_d5:
         rlwimi  d5, data, 31, 16, 31                    // d5[15:0] = data[16:1]
         b       L_07180
 
 // Reached from 8 dispatch table entries:
 //     LSL.W Dn,Dn
-L_04FD4:
+lsl_w_dn_d5:
         rlwinm  data, d5, 15, 1, 16                     // data = d5[15:0] << 15
         beq     L_072C0
         slw     data, data, addr
 
 // Reached from 8 dispatch table entries:
 //     LSL.W #<q>,Dn
-L_04FE0:
+lsl_w_q_d5:
         rlwimi  d5, data, 17, 16, 31                    // d5[15:0] = data[30:15]
         b       L_071A0
 
 // Reached from 8 dispatch table entries:
 //     ASR.W Dn,Dn
-L_04FE8:
+asr_w_dn_d5:
         beq     L_05078
 
 // Reached from 7 dispatch table entries:
 //     ASR.W #<q>,Dn
-L_04FEC:
+asr_w_q_d5:
         slwi    data, d5, 16
         sraw    data, data, addr                        // data = data >> addr (arithmetic)
 
 // Reached from 1 dispatch table entry:
 //     ASR.W #<q>,Dn
-L_04FF4:
+asr_w_q_d5_2:
         rlwimi  d5, data, 16, 17, 31                    // d5[14:0] = data[30:16]
         b       L_071E0
         ALIGN(64)
 
 // Reached from 8 dispatch table entries:
 //     ASL.W Dn,Dn
-L_05000:
+asl_w_dn_d5:
         beq     L_05078
 
 // Reached from 7 dispatch table entries:
 //     ASL.W #<q>,Dn
-L_05004:
+asl_w_q_d5:
         slwi    data, d5, 16
         slw.    immed_data, data, addr
         rlwimi  d5, immed_data, 16, 16, 31              // d5[15:0] = immed_data[31:16]
@@ -12674,29 +15050,29 @@ L_05004:
 
 // Reached from 8 dispatch table entries:
 //     ROR.W Dn,Dn
-L_05020:
+ror_w_dn_d5:
         neg     addr, addr
         beq     L_05078
         clrlwi  addr, addr, 28                          // addr = addr & 0x0000000F
 
 // Reached from 8 dispatch table entries:
 //     ROR.W #<q>,Dn
-L_0502C:
+ror_w_q_d5:
         slwi    data, d5, 16
         rlwimi  data, d5, 0, 16, 31                     // data[15:0] = d5[15:0]
         rlwnm.  data, data, addr, 0, 31                 // data = rotl(data, addr) & 0xFFFFFFFF
         rlwimi  d5, data, 0, 16, 31                     // d5[15:0] = data[15:0]
-        b       L_07240
+        b       ror_b_q_dn
 
 // Reached from 8 dispatch table entries:
 //     ROL.W Dn,Dn
-L_05040:
+rol_w_dn_d5:
         clrlwi  addr, addr, 28                          // addr = addr & 0x0000000F
         beq     L_05078
 
 // Reached from 8 dispatch table entries:
 //     ROL.W #<q>,Dn
-L_05048:
+rol_w_q_d5:
         slwi    data, d5, 16
         rlwimi  data, d5, 0, 16, 31                     // data[15:0] = d5[15:0]
         rlwnm.  data, data, addr, 0, 31                 // data = rotl(data, addr) & 0xFFFFFFFF
@@ -12707,13 +15083,13 @@ L_05048:
 // Reached from 16 dispatch table entries:
 //     ROXR.W Dn,Dn
 //     ROXL.W Dn,Dn
-L_05060:
+roxr_roxl_w_dn_d5:
         bnel    L_0731C
 
 // Reached from 16 dispatch table entries:
 //     ROXR.W #<q>,Dn
 //     ROXL.W #<q>,Dn
-L_05064:
+roxr_roxl_w_q_d5:
         clrlwi  data, d5, 16                            // data = d5 & 0x0000FFFF
         bl      L_07380
         rlwimi  d5, data, 0, 16, 31                     // d5[15:0] = data[15:0]
@@ -12721,60 +15097,60 @@ L_05064:
         b       L_0D114
 L_05078:
         extsh.  data, d5                                // data = sign-extended low word of d5
-        b       L_060C0
+        b       move_or_etc_any_reg
 
 // Reached from 8 dispatch table entries:
 //     LSR.W Dn,Dn
-L_05080:
+lsr_w_dn_d6:
         rlwinm  data, d6, 1, 15, 30                     // data = d6[15:0] << 1
         beq     L_07300
         srw     data, data, addr
 
 // Reached from 8 dispatch table entries:
 //     LSR.W #<q>,Dn
-L_0508C:
+lsr_w_q_d6:
         rlwimi  d6, data, 31, 16, 31                    // d6[15:0] = data[16:1]
         b       L_07180
 
 // Reached from 8 dispatch table entries:
 //     LSL.W Dn,Dn
-L_05094:
+lsl_w_dn_d6:
         rlwinm  data, d6, 15, 1, 16                     // data = d6[15:0] << 15
         beq     L_072C0
         slw     data, data, addr
 
 // Reached from 8 dispatch table entries:
 //     LSL.W #<q>,Dn
-L_050A0:
+lsl_w_q_d6:
         rlwimi  d6, data, 17, 16, 31                    // d6[15:0] = data[30:15]
         b       L_071A0
 
 // Reached from 8 dispatch table entries:
 //     ASR.W Dn,Dn
-L_050A8:
+asr_w_dn_d6:
         beq     L_05138
 
 // Reached from 7 dispatch table entries:
 //     ASR.W #<q>,Dn
-L_050AC:
+asr_w_q_d6:
         slwi    data, d6, 16
         sraw    data, data, addr                        // data = data >> addr (arithmetic)
 
 // Reached from 1 dispatch table entry:
 //     ASR.W #<q>,Dn
-L_050B4:
+asr_w_q_d6_2:
         rlwimi  d6, data, 16, 17, 31                    // d6[14:0] = data[30:16]
         b       L_071E0
         ALIGN(64)
 
 // Reached from 8 dispatch table entries:
 //     ASL.W Dn,Dn
-L_050C0:
+asl_w_dn_d6:
         beq     L_05138
 
 // Reached from 7 dispatch table entries:
 //     ASL.W #<q>,Dn
-L_050C4:
+asl_w_q_d6:
         slwi    data, d6, 16
         slw.    immed_data, data, addr
         rlwimi  d6, immed_data, 16, 16, 31              // d6[15:0] = immed_data[31:16]
@@ -12783,29 +15159,29 @@ L_050C4:
 
 // Reached from 8 dispatch table entries:
 //     ROR.W Dn,Dn
-L_050E0:
+ror_w_dn_d6:
         neg     addr, addr
         beq     L_05138
         clrlwi  addr, addr, 28                          // addr = addr & 0x0000000F
 
 // Reached from 8 dispatch table entries:
 //     ROR.W #<q>,Dn
-L_050EC:
+ror_w_q_d6:
         slwi    data, d6, 16
         rlwimi  data, d6, 0, 16, 31                     // data[15:0] = d6[15:0]
         rlwnm.  data, data, addr, 0, 31                 // data = rotl(data, addr) & 0xFFFFFFFF
         rlwimi  d6, data, 0, 16, 31                     // d6[15:0] = data[15:0]
-        b       L_07240
+        b       ror_b_q_dn
 
 // Reached from 8 dispatch table entries:
 //     ROL.W Dn,Dn
-L_05100:
+rol_w_dn_d6:
         clrlwi  addr, addr, 28                          // addr = addr & 0x0000000F
         beq     L_05138
 
 // Reached from 8 dispatch table entries:
 //     ROL.W #<q>,Dn
-L_05108:
+rol_w_q_d6:
         slwi    data, d6, 16
         rlwimi  data, d6, 0, 16, 31                     // data[15:0] = d6[15:0]
         rlwnm.  data, data, addr, 0, 31                 // data = rotl(data, addr) & 0xFFFFFFFF
@@ -12816,13 +15192,13 @@ L_05108:
 // Reached from 16 dispatch table entries:
 //     ROXR.W Dn,Dn
 //     ROXL.W Dn,Dn
-L_05120:
+roxr_roxl_w_dn_d6:
         bnel    L_0731C
 
 // Reached from 16 dispatch table entries:
 //     ROXR.W #<q>,Dn
 //     ROXL.W #<q>,Dn
-L_05124:
+roxr_roxl_w_q_d6:
         clrlwi  data, d6, 16                            // data = d6 & 0x0000FFFF
         bl      L_07380
         rlwimi  d6, data, 0, 16, 31                     // d6[15:0] = data[15:0]
@@ -12830,60 +15206,60 @@ L_05124:
         b       L_0D114
 L_05138:
         extsh.  data, d6                                // data = sign-extended low word of d6
-        b       L_060C0
+        b       move_or_etc_any_reg
 
 // Reached from 8 dispatch table entries:
 //     LSR.W Dn,Dn
-L_05140:
+lsr_w_dn_d7:
         rlwinm  data, d7, 1, 15, 30                     // data = d7[15:0] << 1
         beq     L_07300
         srw     data, data, addr
 
 // Reached from 8 dispatch table entries:
 //     LSR.W #<q>,Dn
-L_0514C:
+lsr_w_q_d7:
         rlwimi  d7, data, 31, 16, 31                    // d7[15:0] = data[16:1]
         b       L_07180
 
 // Reached from 8 dispatch table entries:
 //     LSL.W Dn,Dn
-L_05154:
+lsl_w_dn_d7:
         rlwinm  data, d7, 15, 1, 16                     // data = d7[15:0] << 15
         beq     L_072C0
         slw     data, data, addr
 
 // Reached from 8 dispatch table entries:
 //     LSL.W #<q>,Dn
-L_05160:
+lsl_w_q_d7:
         rlwimi  d7, data, 17, 16, 31                    // d7[15:0] = data[30:15]
         b       L_071A0
 
 // Reached from 8 dispatch table entries:
 //     ASR.W Dn,Dn
-L_05168:
+asr_w_dn_d7:
         beq     L_051F8
 
 // Reached from 7 dispatch table entries:
 //     ASR.W #<q>,Dn
-L_0516C:
+asr_w_q_d7:
         slwi    data, d7, 16
         sraw    data, data, addr                        // data = data >> addr (arithmetic)
 
 // Reached from 1 dispatch table entry:
 //     ASR.W #<q>,Dn
-L_05174:
+asr_w_q_d7_2:
         rlwimi  d7, data, 16, 17, 31                    // d7[14:0] = data[30:16]
         b       L_071E0
         ALIGN(64)
 
 // Reached from 8 dispatch table entries:
 //     ASL.W Dn,Dn
-L_05180:
+asl_w_dn_d7:
         beq     L_051F8
 
 // Reached from 7 dispatch table entries:
 //     ASL.W #<q>,Dn
-L_05184:
+asl_w_q_d7:
         slwi    data, d7, 16
         slw.    immed_data, data, addr
         rlwimi  d7, immed_data, 16, 16, 31              // d7[15:0] = immed_data[31:16]
@@ -12892,29 +15268,29 @@ L_05184:
 
 // Reached from 8 dispatch table entries:
 //     ROR.W Dn,Dn
-L_051A0:
+ror_w_dn_d7:
         neg     addr, addr
         beq     L_051F8
         clrlwi  addr, addr, 28                          // addr = addr & 0x0000000F
 
 // Reached from 8 dispatch table entries:
 //     ROR.W #<q>,Dn
-L_051AC:
+ror_w_q_d7:
         slwi    data, d7, 16
         rlwimi  data, d7, 0, 16, 31                     // data[15:0] = d7[15:0]
         rlwnm.  data, data, addr, 0, 31                 // data = rotl(data, addr) & 0xFFFFFFFF
         rlwimi  d7, data, 0, 16, 31                     // d7[15:0] = data[15:0]
-        b       L_07240
+        b       ror_b_q_dn
 
 // Reached from 8 dispatch table entries:
 //     ROL.W Dn,Dn
-L_051C0:
+rol_w_dn_d7:
         clrlwi  addr, addr, 28                          // addr = addr & 0x0000000F
         beq     L_051F8
 
 // Reached from 8 dispatch table entries:
 //     ROL.W #<q>,Dn
-L_051C8:
+rol_w_q_d7:
         slwi    data, d7, 16
         rlwimi  data, d7, 0, 16, 31                     // data[15:0] = d7[15:0]
         rlwnm.  data, data, addr, 0, 31                 // data = rotl(data, addr) & 0xFFFFFFFF
@@ -12925,13 +15301,13 @@ L_051C8:
 // Reached from 16 dispatch table entries:
 //     ROXR.W Dn,Dn
 //     ROXL.W Dn,Dn
-L_051E0:
+roxr_roxl_w_dn_d7:
         bnel    L_0731C
 
 // Reached from 16 dispatch table entries:
 //     ROXR.W #<q>,Dn
 //     ROXL.W #<q>,Dn
-L_051E4:
+roxr_roxl_w_q_d7:
         clrlwi  data, d7, 16                            // data = d7 & 0x0000FFFF
         bl      L_07380
         rlwimi  d7, data, 0, 16, 31                     // d7[15:0] = data[15:0]
@@ -12939,56 +15315,56 @@ L_051E4:
         b       L_0D114
 L_051F8:
         extsh.  data, d7                                // data = sign-extended low word of d7
-        b       L_060C0
+        b       move_or_etc_any_reg
 
 // Reached from 8 dispatch table entries:
 //     LSR.L Dn,Dn
-L_05200:
+lsr_l_dn_d0:
         addi    addr, addr, -1
         beq     L_05278
         srw     data, d0, addr
 
 // Reached from 8 dispatch table entries:
 //     LSR.L #<q>,Dn
-L_0520C:
+lsr_l_q_d0:
         srwi.   d0, data, 1
         b       L_07184
 
 // Reached from 8 dispatch table entries:
 //     LSL.L Dn,Dn
-L_05214:
+lsl_l_dn_d0:
         addi    addr, addr, -1
         beq     L_05278
         slw     data, d0, addr
 
 // Reached from 7 dispatch table entries:
 //     LSL.L #<q>,Dn
-L_05220:
+lsl_l_q_d0:
         addc.   d0, data, data
-        b       L_071A4
+        b       lsl_l_q_dn
 
 // Reached from 8 dispatch table entries:
 //     ASR.L Dn,Dn
-L_05228:
+asr_l_dn_d0:
         addi    addr, addr, -1
         beq     L_05278
         sraw    data, d0, addr                          // data = d0 >> addr (arithmetic)
 
 // Reached from 8 dispatch table entries:
 //     ASR.L #<q>,Dn
-L_05234:
+asr_l_q_d0:
         rlwimi. d0, data, 31, 1, 31                     // d0[30:0] = data[31:1]
         b       L_07184
         ALIGN(64)
 
 // Reached from 8 dispatch table entries:
 //     ASL.L Dn,Dn
-L_05240:
+asl_l_dn_d0:
         beq     L_05278
 
 // Reached from 7 dispatch table entries:
 //     ASL.L #<q>,Dn
-L_05244:
+asl_l_q_d0:
         mr      data, d0
         slw.    d0, d0, addr
         sraw    immed_data, d0, addr                    // immed_data = d0 >> addr (arithmetic)
@@ -12996,42 +15372,42 @@ L_05244:
 
 // Reached from 8 dispatch table entries:
 //     ROR.L Dn,Dn
-L_05254:
+ror_l_dn_d0:
         neg     addr, addr
         beq     L_05278
         rlwnm   data, d0, addr, 0, 31                   // data = rotl(d0, addr) & 0xFFFFFFFF
 
 // Reached from 8 dispatch table entries:
 //     ROR.L #<q>,Dn
-L_05260:
+ror_l_q_d0:
         addo.   d0, data, zero
         b       L_07284
 
 // Reached from 8 dispatch table entries:
 //     ROL.L Dn,Dn
-L_05268:
+rol_l_dn_d0:
         beq     L_05278
         rlwnm   data, d0, addr, 0, 31                   // data = rotl(d0, addr) & 0xFFFFFFFF
 
 // Reached from 8 dispatch table entries:
 //     ROL.L #<q>,Dn
-L_05270:
+rol_l_q_d0:
         addo.   d0, data, zero
         b       L_07280
 L_05278:
         addco.  data, d0, zero
-        b       L_06084
+        b       move_add_etc_any_any
 
 // Reached from 16 dispatch table entries:
 //     ROXR.L Dn,Dn
 //     ROXL.L Dn,Dn
-L_05280:
+roxr_roxl_l_dn_d0:
         bnel    L_0729C
 
 // Reached from 16 dispatch table entries:
 //     ROXR.L #<q>,Dn
 //     ROXL.L #<q>,Dn
-L_05284:
+roxr_roxl_l_q_d0:
         mr      data, d0
         bl      L_073C0
         xor.    d0, immed_data, base_disp
@@ -13041,52 +15417,52 @@ L_05284:
 
 // Reached from 8 dispatch table entries:
 //     LSR.L Dn,Dn
-L_052A0:
+lsr_l_dn_d1:
         addi    addr, addr, -1
         beq     L_05318
         srw     data, d1, addr
 
 // Reached from 8 dispatch table entries:
 //     LSR.L #<q>,Dn
-L_052AC:
+lsr_l_q_d1:
         srwi.   d1, data, 1
         b       L_07184
 
 // Reached from 8 dispatch table entries:
 //     LSL.L Dn,Dn
-L_052B4:
+lsl_l_dn_d1:
         addi    addr, addr, -1
         beq     L_05318
         slw     data, d1, addr
 
 // Reached from 7 dispatch table entries:
 //     LSL.L #<q>,Dn
-L_052C0:
+lsl_l_q_d1:
         addc.   d1, data, data
-        b       L_071A4
+        b       lsl_l_q_dn
 
 // Reached from 8 dispatch table entries:
 //     ASR.L Dn,Dn
-L_052C8:
+asr_l_dn_d1:
         addi    addr, addr, -1
         beq     L_05318
         sraw    data, d1, addr                          // data = d1 >> addr (arithmetic)
 
 // Reached from 8 dispatch table entries:
 //     ASR.L #<q>,Dn
-L_052D4:
+asr_l_q_d1:
         rlwimi. d1, data, 31, 1, 31                     // d1[30:0] = data[31:1]
         b       L_07184
         ALIGN(32)
 
 // Reached from 8 dispatch table entries:
 //     ASL.L Dn,Dn
-L_052E0:
+asl_l_dn_d1:
         beq     L_05318
 
 // Reached from 7 dispatch table entries:
 //     ASL.L #<q>,Dn
-L_052E4:
+asl_l_q_d1:
         mr      data, d1
         slw.    d1, d1, addr
         sraw    immed_data, d1, addr                    // immed_data = d1 >> addr (arithmetic)
@@ -13094,42 +15470,42 @@ L_052E4:
 
 // Reached from 8 dispatch table entries:
 //     ROR.L Dn,Dn
-L_052F4:
+ror_l_dn_d1:
         neg     addr, addr
         beq     L_05318
         rlwnm   data, d1, addr, 0, 31                   // data = rotl(d1, addr) & 0xFFFFFFFF
 
 // Reached from 8 dispatch table entries:
 //     ROR.L #<q>,Dn
-L_05300:
+ror_l_q_d1:
         addo.   d1, data, zero
         b       L_07284
 
 // Reached from 8 dispatch table entries:
 //     ROL.L Dn,Dn
-L_05308:
+rol_l_dn_d1:
         beq     L_05318
         rlwnm   data, d1, addr, 0, 31                   // data = rotl(d1, addr) & 0xFFFFFFFF
 
 // Reached from 8 dispatch table entries:
 //     ROL.L #<q>,Dn
-L_05310:
+rol_l_q_d1:
         addo.   d1, data, zero
         b       L_07280
 L_05318:
         addco.  data, d1, zero
-        b       L_06084
+        b       move_add_etc_any_any
 
 // Reached from 16 dispatch table entries:
 //     ROXR.L Dn,Dn
 //     ROXL.L Dn,Dn
-L_05320:
+roxr_roxl_l_dn_d1:
         bnel    L_0729C
 
 // Reached from 16 dispatch table entries:
 //     ROXR.L #<q>,Dn
 //     ROXL.L #<q>,Dn
-L_05324:
+roxr_roxl_l_q_d1:
         mr      data, d1
         bl      L_073C0
         xor.    d1, immed_data, base_disp
@@ -13139,52 +15515,52 @@ L_05324:
 
 // Reached from 8 dispatch table entries:
 //     LSR.L Dn,Dn
-L_05340:
+lsr_l_dn_d2:
         addi    addr, addr, -1
         beq     L_053B8
         srw     data, d2, addr
 
 // Reached from 8 dispatch table entries:
 //     LSR.L #<q>,Dn
-L_0534C:
+lsr_l_q_d2:
         srwi.   d2, data, 1
         b       L_07184
 
 // Reached from 8 dispatch table entries:
 //     LSL.L Dn,Dn
-L_05354:
+lsl_l_dn_d2:
         addi    addr, addr, -1
         beq     L_053B8
         slw     data, d2, addr
 
 // Reached from 7 dispatch table entries:
 //     LSL.L #<q>,Dn
-L_05360:
+lsl_l_q_d2:
         addc.   d2, data, data
-        b       L_071A4
+        b       lsl_l_q_dn
 
 // Reached from 8 dispatch table entries:
 //     ASR.L Dn,Dn
-L_05368:
+asr_l_dn_d2:
         addi    addr, addr, -1
         beq     L_053B8
         sraw    data, d2, addr                          // data = d2 >> addr (arithmetic)
 
 // Reached from 8 dispatch table entries:
 //     ASR.L #<q>,Dn
-L_05374:
+asr_l_q_d2:
         rlwimi. d2, data, 31, 1, 31                     // d2[30:0] = data[31:1]
         b       L_07184
         ALIGN(64)
 
 // Reached from 8 dispatch table entries:
 //     ASL.L Dn,Dn
-L_05380:
+asl_l_dn_d2:
         beq     L_053B8
 
 // Reached from 7 dispatch table entries:
 //     ASL.L #<q>,Dn
-L_05384:
+asl_l_q_d2:
         mr      data, d2
         slw.    d2, d2, addr
         sraw    immed_data, d2, addr                    // immed_data = d2 >> addr (arithmetic)
@@ -13192,42 +15568,42 @@ L_05384:
 
 // Reached from 8 dispatch table entries:
 //     ROR.L Dn,Dn
-L_05394:
+ror_l_dn_d2:
         neg     addr, addr
         beq     L_053B8
         rlwnm   data, d2, addr, 0, 31                   // data = rotl(d2, addr) & 0xFFFFFFFF
 
 // Reached from 8 dispatch table entries:
 //     ROR.L #<q>,Dn
-L_053A0:
+ror_l_q_d2:
         addo.   d2, data, zero
         b       L_07284
 
 // Reached from 8 dispatch table entries:
 //     ROL.L Dn,Dn
-L_053A8:
+rol_l_dn_d2:
         beq     L_053B8
         rlwnm   data, d2, addr, 0, 31                   // data = rotl(d2, addr) & 0xFFFFFFFF
 
 // Reached from 8 dispatch table entries:
 //     ROL.L #<q>,Dn
-L_053B0:
+rol_l_q_d2:
         addo.   d2, data, zero
         b       L_07280
 L_053B8:
         addco.  data, d2, zero
-        b       L_06084
+        b       move_add_etc_any_any
 
 // Reached from 16 dispatch table entries:
 //     ROXR.L Dn,Dn
 //     ROXL.L Dn,Dn
-L_053C0:
+roxr_roxl_l_dn_d2:
         bnel    L_0729C
 
 // Reached from 16 dispatch table entries:
 //     ROXR.L #<q>,Dn
 //     ROXL.L #<q>,Dn
-L_053C4:
+roxr_roxl_l_q_d2:
         mr      data, d2
         bl      L_073C0
         xor.    d2, immed_data, base_disp
@@ -13237,52 +15613,52 @@ L_053C4:
 
 // Reached from 8 dispatch table entries:
 //     LSR.L Dn,Dn
-L_053E0:
+lsr_l_dn_d3:
         addi    addr, addr, -1
         beq     L_05458
         srw     data, d3, addr
 
 // Reached from 8 dispatch table entries:
 //     LSR.L #<q>,Dn
-L_053EC:
+lsr_l_q_d3:
         srwi.   d3, data, 1
         b       L_07184
 
 // Reached from 8 dispatch table entries:
 //     LSL.L Dn,Dn
-L_053F4:
+lsl_l_dn_d3:
         addi    addr, addr, -1
         beq     L_05458
         slw     data, d3, addr
 
 // Reached from 7 dispatch table entries:
 //     LSL.L #<q>,Dn
-L_05400:
+lsl_l_q_d3:
         addc.   d3, data, data
-        b       L_071A4
+        b       lsl_l_q_dn
 
 // Reached from 8 dispatch table entries:
 //     ASR.L Dn,Dn
-L_05408:
+asr_l_dn_d3:
         addi    addr, addr, -1
         beq     L_05458
         sraw    data, d3, addr                          // data = d3 >> addr (arithmetic)
 
 // Reached from 8 dispatch table entries:
 //     ASR.L #<q>,Dn
-L_05414:
+asr_l_q_d3:
         rlwimi. d3, data, 31, 1, 31                     // d3[30:0] = data[31:1]
         b       L_07184
         ALIGN(32)
 
 // Reached from 8 dispatch table entries:
 //     ASL.L Dn,Dn
-L_05420:
+asl_l_dn_d3:
         beq     L_05458
 
 // Reached from 7 dispatch table entries:
 //     ASL.L #<q>,Dn
-L_05424:
+asl_l_q_d3:
         mr      data, d3
         slw.    d3, d3, addr
         sraw    immed_data, d3, addr                    // immed_data = d3 >> addr (arithmetic)
@@ -13290,42 +15666,42 @@ L_05424:
 
 // Reached from 8 dispatch table entries:
 //     ROR.L Dn,Dn
-L_05434:
+ror_l_dn_d3:
         neg     addr, addr
         beq     L_05458
         rlwnm   data, d3, addr, 0, 31                   // data = rotl(d3, addr) & 0xFFFFFFFF
 
 // Reached from 8 dispatch table entries:
 //     ROR.L #<q>,Dn
-L_05440:
+ror_l_q_d3:
         addo.   d3, data, zero
         b       L_07284
 
 // Reached from 8 dispatch table entries:
 //     ROL.L Dn,Dn
-L_05448:
+rol_l_dn_d3:
         beq     L_05458
         rlwnm   data, d3, addr, 0, 31                   // data = rotl(d3, addr) & 0xFFFFFFFF
 
 // Reached from 8 dispatch table entries:
 //     ROL.L #<q>,Dn
-L_05450:
+rol_l_q_d3:
         addo.   d3, data, zero
         b       L_07280
 L_05458:
         addco.  data, d3, zero
-        b       L_06084
+        b       move_add_etc_any_any
 
 // Reached from 16 dispatch table entries:
 //     ROXR.L Dn,Dn
 //     ROXL.L Dn,Dn
-L_05460:
+roxr_roxl_l_dn_d3:
         bnel    L_0729C
 
 // Reached from 16 dispatch table entries:
 //     ROXR.L #<q>,Dn
 //     ROXL.L #<q>,Dn
-L_05464:
+roxr_roxl_l_q_d3:
         mr      data, d3
         bl      L_073C0
         xor.    d3, immed_data, base_disp
@@ -13335,52 +15711,52 @@ L_05464:
 
 // Reached from 8 dispatch table entries:
 //     LSR.L Dn,Dn
-L_05480:
+lsr_l_dn_d4:
         addi    addr, addr, -1
         beq     L_054F8
         srw     data, d4, addr
 
 // Reached from 8 dispatch table entries:
 //     LSR.L #<q>,Dn
-L_0548C:
+lsr_l_q_d4:
         srwi.   d4, data, 1
         b       L_07184
 
 // Reached from 8 dispatch table entries:
 //     LSL.L Dn,Dn
-L_05494:
+lsl_l_dn_d4:
         addi    addr, addr, -1
         beq     L_054F8
         slw     data, d4, addr
 
 // Reached from 7 dispatch table entries:
 //     LSL.L #<q>,Dn
-L_054A0:
+lsl_l_q_d4:
         addc.   d4, data, data
-        b       L_071A4
+        b       lsl_l_q_dn
 
 // Reached from 8 dispatch table entries:
 //     ASR.L Dn,Dn
-L_054A8:
+asr_l_dn_d4:
         addi    addr, addr, -1
         beq     L_054F8
         sraw    data, d4, addr                          // data = d4 >> addr (arithmetic)
 
 // Reached from 8 dispatch table entries:
 //     ASR.L #<q>,Dn
-L_054B4:
+asr_l_q_d4:
         rlwimi. d4, data, 31, 1, 31                     // d4[30:0] = data[31:1]
         b       L_07184
         ALIGN(64)
 
 // Reached from 8 dispatch table entries:
 //     ASL.L Dn,Dn
-L_054C0:
+asl_l_dn_d4:
         beq     L_054F8
 
 // Reached from 7 dispatch table entries:
 //     ASL.L #<q>,Dn
-L_054C4:
+asl_l_q_d4:
         mr      data, d4
         slw.    d4, d4, addr
         sraw    immed_data, d4, addr                    // immed_data = d4 >> addr (arithmetic)
@@ -13388,42 +15764,42 @@ L_054C4:
 
 // Reached from 8 dispatch table entries:
 //     ROR.L Dn,Dn
-L_054D4:
+ror_l_dn_d4:
         neg     addr, addr
         beq     L_054F8
         rlwnm   data, d4, addr, 0, 31                   // data = rotl(d4, addr) & 0xFFFFFFFF
 
 // Reached from 8 dispatch table entries:
 //     ROR.L #<q>,Dn
-L_054E0:
+ror_l_q_d4:
         addo.   d4, data, zero
         b       L_07284
 
 // Reached from 8 dispatch table entries:
 //     ROL.L Dn,Dn
-L_054E8:
+rol_l_dn_d4:
         beq     L_054F8
         rlwnm   data, d4, addr, 0, 31                   // data = rotl(d4, addr) & 0xFFFFFFFF
 
 // Reached from 8 dispatch table entries:
 //     ROL.L #<q>,Dn
-L_054F0:
+rol_l_q_d4:
         addo.   d4, data, zero
         b       L_07280
 L_054F8:
         addco.  data, d4, zero
-        b       L_06084
+        b       move_add_etc_any_any
 
 // Reached from 16 dispatch table entries:
 //     ROXR.L Dn,Dn
 //     ROXL.L Dn,Dn
-L_05500:
+roxr_roxl_l_dn_d4:
         bnel    L_0729C
 
 // Reached from 16 dispatch table entries:
 //     ROXR.L #<q>,Dn
 //     ROXL.L #<q>,Dn
-L_05504:
+roxr_roxl_l_q_d4:
         mr      data, d4
         bl      L_073C0
         xor.    d4, immed_data, base_disp
@@ -13433,52 +15809,52 @@ L_05504:
 
 // Reached from 8 dispatch table entries:
 //     LSR.L Dn,Dn
-L_05520:
+lsr_l_dn_d5:
         addi    addr, addr, -1
         beq     L_05598
         srw     data, d5, addr
 
 // Reached from 8 dispatch table entries:
 //     LSR.L #<q>,Dn
-L_0552C:
+lsr_l_q_d5:
         srwi.   d5, data, 1
         b       L_07184
 
 // Reached from 8 dispatch table entries:
 //     LSL.L Dn,Dn
-L_05534:
+lsl_l_dn_d5:
         addi    addr, addr, -1
         beq     L_05598
         slw     data, d5, addr
 
 // Reached from 7 dispatch table entries:
 //     LSL.L #<q>,Dn
-L_05540:
+lsl_l_q_d5:
         addc.   d5, data, data
-        b       L_071A4
+        b       lsl_l_q_dn
 
 // Reached from 8 dispatch table entries:
 //     ASR.L Dn,Dn
-L_05548:
+asr_l_dn_d5:
         addi    addr, addr, -1
         beq     L_05598
         sraw    data, d5, addr                          // data = d5 >> addr (arithmetic)
 
 // Reached from 8 dispatch table entries:
 //     ASR.L #<q>,Dn
-L_05554:
+asr_l_q_d5:
         rlwimi. d5, data, 31, 1, 31                     // d5[30:0] = data[31:1]
         b       L_07184
         ALIGN(32)
 
 // Reached from 8 dispatch table entries:
 //     ASL.L Dn,Dn
-L_05560:
+asl_l_dn_d5:
         beq     L_05598
 
 // Reached from 7 dispatch table entries:
 //     ASL.L #<q>,Dn
-L_05564:
+asl_l_q_d5:
         mr      data, d5
         slw.    d5, d5, addr
         sraw    immed_data, d5, addr                    // immed_data = d5 >> addr (arithmetic)
@@ -13486,42 +15862,42 @@ L_05564:
 
 // Reached from 8 dispatch table entries:
 //     ROR.L Dn,Dn
-L_05574:
+ror_l_dn_d5:
         neg     addr, addr
         beq     L_05598
         rlwnm   data, d5, addr, 0, 31                   // data = rotl(d5, addr) & 0xFFFFFFFF
 
 // Reached from 8 dispatch table entries:
 //     ROR.L #<q>,Dn
-L_05580:
+ror_l_q_d5:
         addo.   d5, data, zero
         b       L_07284
 
 // Reached from 8 dispatch table entries:
 //     ROL.L Dn,Dn
-L_05588:
+rol_l_dn_d5:
         beq     L_05598
         rlwnm   data, d5, addr, 0, 31                   // data = rotl(d5, addr) & 0xFFFFFFFF
 
 // Reached from 8 dispatch table entries:
 //     ROL.L #<q>,Dn
-L_05590:
+rol_l_q_d5:
         addo.   d5, data, zero
         b       L_07280
 L_05598:
         addco.  data, d5, zero
-        b       L_06084
+        b       move_add_etc_any_any
 
 // Reached from 16 dispatch table entries:
 //     ROXR.L Dn,Dn
 //     ROXL.L Dn,Dn
-L_055A0:
+roxr_roxl_l_dn_d5:
         bnel    L_0729C
 
 // Reached from 16 dispatch table entries:
 //     ROXR.L #<q>,Dn
 //     ROXL.L #<q>,Dn
-L_055A4:
+roxr_roxl_l_q_d5:
         mr      data, d5
         bl      L_073C0
         xor.    d5, immed_data, base_disp
@@ -13531,52 +15907,52 @@ L_055A4:
 
 // Reached from 8 dispatch table entries:
 //     LSR.L Dn,Dn
-L_055C0:
+lsr_l_dn_d6:
         addi    addr, addr, -1
         beq     L_05638
         srw     data, d6, addr
 
 // Reached from 8 dispatch table entries:
 //     LSR.L #<q>,Dn
-L_055CC:
+lsr_l_q_d6:
         srwi.   d6, data, 1
         b       L_07184
 
 // Reached from 8 dispatch table entries:
 //     LSL.L Dn,Dn
-L_055D4:
+lsl_l_dn_d6:
         addi    addr, addr, -1
         beq     L_05638
         slw     data, d6, addr
 
 // Reached from 7 dispatch table entries:
 //     LSL.L #<q>,Dn
-L_055E0:
+lsl_l_q_d6:
         addc.   d6, data, data
-        b       L_071A4
+        b       lsl_l_q_dn
 
 // Reached from 8 dispatch table entries:
 //     ASR.L Dn,Dn
-L_055E8:
+asr_l_dn_d6:
         addi    addr, addr, -1
         beq     L_05638
         sraw    data, d6, addr                          // data = d6 >> addr (arithmetic)
 
 // Reached from 8 dispatch table entries:
 //     ASR.L #<q>,Dn
-L_055F4:
+asr_l_q_d6:
         rlwimi. d6, data, 31, 1, 31                     // d6[30:0] = data[31:1]
         b       L_07184
         ALIGN(64)
 
 // Reached from 8 dispatch table entries:
 //     ASL.L Dn,Dn
-L_05600:
+asl_l_dn_d6:
         beq     L_05638
 
 // Reached from 7 dispatch table entries:
 //     ASL.L #<q>,Dn
-L_05604:
+asl_l_q_d6:
         mr      data, d6
         slw.    d6, d6, addr
         sraw    immed_data, d6, addr                    // immed_data = d6 >> addr (arithmetic)
@@ -13584,42 +15960,42 @@ L_05604:
 
 // Reached from 8 dispatch table entries:
 //     ROR.L Dn,Dn
-L_05614:
+ror_l_dn_d6:
         neg     addr, addr
         beq     L_05638
         rlwnm   data, d6, addr, 0, 31                   // data = rotl(d6, addr) & 0xFFFFFFFF
 
 // Reached from 8 dispatch table entries:
 //     ROR.L #<q>,Dn
-L_05620:
+ror_l_q_d6:
         addo.   d6, data, zero
         b       L_07284
 
 // Reached from 8 dispatch table entries:
 //     ROL.L Dn,Dn
-L_05628:
+rol_l_dn_d6:
         beq     L_05638
         rlwnm   data, d6, addr, 0, 31                   // data = rotl(d6, addr) & 0xFFFFFFFF
 
 // Reached from 8 dispatch table entries:
 //     ROL.L #<q>,Dn
-L_05630:
+rol_l_q_d6:
         addo.   d6, data, zero
         b       L_07280
 L_05638:
         addco.  data, d6, zero
-        b       L_06084
+        b       move_add_etc_any_any
 
 // Reached from 16 dispatch table entries:
 //     ROXR.L Dn,Dn
 //     ROXL.L Dn,Dn
-L_05640:
+roxr_roxl_l_dn_d6:
         bnel    L_0729C
 
 // Reached from 16 dispatch table entries:
 //     ROXR.L #<q>,Dn
 //     ROXL.L #<q>,Dn
-L_05644:
+roxr_roxl_l_q_d6:
         mr      data, d6
         bl      L_073C0
         xor.    d6, immed_data, base_disp
@@ -13629,52 +16005,52 @@ L_05644:
 
 // Reached from 8 dispatch table entries:
 //     LSR.L Dn,Dn
-L_05660:
+lsr_l_dn_d7:
         addi    addr, addr, -1
         beq     L_056D8
         srw     data, d7, addr
 
 // Reached from 8 dispatch table entries:
 //     LSR.L #<q>,Dn
-L_0566C:
+lsr_l_q_d7:
         srwi.   d7, data, 1
         b       L_07184
 
 // Reached from 8 dispatch table entries:
 //     LSL.L Dn,Dn
-L_05674:
+lsl_l_dn_d7:
         addi    addr, addr, -1
         beq     L_056D8
         slw     data, d7, addr
 
 // Reached from 7 dispatch table entries:
 //     LSL.L #<q>,Dn
-L_05680:
+lsl_l_q_d7:
         addc.   d7, data, data
-        b       L_071A4
+        b       lsl_l_q_dn
 
 // Reached from 8 dispatch table entries:
 //     ASR.L Dn,Dn
-L_05688:
+asr_l_dn_d7:
         addi    addr, addr, -1
         beq     L_056D8
         sraw    data, d7, addr                          // data = d7 >> addr (arithmetic)
 
 // Reached from 8 dispatch table entries:
 //     ASR.L #<q>,Dn
-L_05694:
+asr_l_q_d7:
         rlwimi. d7, data, 31, 1, 31                     // d7[30:0] = data[31:1]
         b       L_07184
         ALIGN(32)
 
 // Reached from 8 dispatch table entries:
 //     ASL.L Dn,Dn
-L_056A0:
+asl_l_dn_d7:
         beq     L_056D8
 
 // Reached from 7 dispatch table entries:
 //     ASL.L #<q>,Dn
-L_056A4:
+asl_l_q_d7:
         mr      data, d7
         slw.    d7, d7, addr
         sraw    immed_data, d7, addr                    // immed_data = d7 >> addr (arithmetic)
@@ -13682,42 +16058,42 @@ L_056A4:
 
 // Reached from 8 dispatch table entries:
 //     ROR.L Dn,Dn
-L_056B4:
+ror_l_dn_d7:
         neg     addr, addr
         beq     L_056D8
         rlwnm   data, d7, addr, 0, 31                   // data = rotl(d7, addr) & 0xFFFFFFFF
 
 // Reached from 8 dispatch table entries:
 //     ROR.L #<q>,Dn
-L_056C0:
+ror_l_q_d7:
         addo.   d7, data, zero
         b       L_07284
 
 // Reached from 8 dispatch table entries:
 //     ROL.L Dn,Dn
-L_056C8:
+rol_l_dn_d7:
         beq     L_056D8
         rlwnm   data, d7, addr, 0, 31                   // data = rotl(d7, addr) & 0xFFFFFFFF
 
 // Reached from 8 dispatch table entries:
 //     ROL.L #<q>,Dn
-L_056D0:
+rol_l_q_d7:
         addo.   d7, data, zero
         b       L_07280
 L_056D8:
         addco.  data, d7, zero
-        b       L_06084
+        b       move_add_etc_any_any
 
 // Reached from 16 dispatch table entries:
 //     ROXR.L Dn,Dn
 //     ROXL.L Dn,Dn
-L_056E0:
+roxr_roxl_l_dn_d7:
         bnel    L_0729C
 
 // Reached from 16 dispatch table entries:
 //     ROXR.L #<q>,Dn
 //     ROXL.L #<q>,Dn
-L_056E4:
+roxr_roxl_l_q_d7:
         mr      data, d7
         bl      L_073C0
         xor.    d7, immed_data, base_disp
@@ -13729,83 +16105,83 @@ L_05700:
         blrl
 L_05708:
         mr      d0, base_disp
-        b       L_06084
+        b       move_add_etc_any_any
 L_05710:
         mr      base_disp, d1
         blrl
         mr      d1, base_disp
-        b       L_06084
+        b       move_add_etc_any_any
 L_05720:
         mr      base_disp, d2
         blrl
         mr      d2, base_disp
-        b       L_06084
+        b       move_add_etc_any_any
 L_05730:
         mr      base_disp, d3
         blrl
         mr      d3, base_disp
-        b       L_06084
+        b       move_add_etc_any_any
 L_05740:
         mr      base_disp, d4
         blrl
         mr      d4, base_disp
-        b       L_06084
+        b       move_add_etc_any_any
 L_05750:
         mr      base_disp, d5
         blrl
         mr      d5, base_disp
-        b       L_06084
+        b       move_add_etc_any_any
 L_05760:
         mr      base_disp, d6
         blrl
         mr      d6, base_disp
-        b       L_06084
+        b       move_add_etc_any_any
 L_05770:
         mr      base_disp, d7
         blrl
         mr      d7, base_disp
-        b       L_06084
+        b       move_add_etc_any_any
 L_05780:
         mr      base_disp, a0
         blrl
 L_05788:
         mr      a0, base_disp
-        b       L_06084
+        b       move_add_etc_any_any
 L_05790:
         mr      base_disp, a1
         blrl
         mr      a1, base_disp
-        b       L_06084
+        b       move_add_etc_any_any
 L_057A0:
         mr      base_disp, a2
         blrl
         mr      a2, base_disp
-        b       L_06084
+        b       move_add_etc_any_any
 L_057B0:
         mr      base_disp, a3
         blrl
         mr      a3, base_disp
-        b       L_06084
+        b       move_add_etc_any_any
 L_057C0:
         mr      base_disp, a4
         blrl
         mr      a4, base_disp
-        b       L_06084
+        b       move_add_etc_any_any
 L_057D0:
         mr      base_disp, a5
         blrl
         mr      a5, base_disp
-        b       L_06084
+        b       move_add_etc_any_any
 L_057E0:
         mr      base_disp, a6
         blrl
         mr      a6, base_disp
-        b       L_06084
+        b       move_add_etc_any_any
 L_057F0:
         mr      base_disp, a7
         blrl
         mr      a7, base_disp
-        b       L_06084
+        b       move_add_etc_any_any
 L_05800:
         mr      rtn_addr, d0
         bctr
@@ -13860,116 +16236,116 @@ L_05880:
 
 // Reached from 1 dispatch table entry:
 //     LINK.W An,#<disp>
-L_058C0:
+link_w_a0_imm:
         mr      a0, a7
-        b       L_061FC
+        b       link_w_a7_imm
 
 // Reached from 1 dispatch table entry:
 //     LINK.L An,#<disp>
-L_058C8:
+link_l_a0_imm:
         mr      a0, a7
-        b       L_0621C
+        b       link_l_a7_imm
 
 // Reached from 1 dispatch table entry:
 //     UNLK An
-L_058D0:
+unlk_a0:
         addi    a7, a0, 4
-        b       L_03220
+        b       lea_mem_a0
         ALIGN(32)
 
 // Reached from 1 dispatch table entry:
 //     LINK.W An,#<disp>
-L_058E0:
+link_w_a1_imm:
         mr      a1, a7
-        b       L_061FC
+        b       link_w_a7_imm
 
 // Reached from 1 dispatch table entry:
 //     LINK.L An,#<disp>
-L_058E8:
+link_l_a1_imm:
         mr      a1, a7
-        b       L_0621C
+        b       link_l_a7_imm
 
 // Reached from 1 dispatch table entry:
 //     UNLK An
-L_058F0:
+unlk_a1:
         addi    a7, a1, 4
-        b       L_03260
+        b       lea_mem_a1
         ALIGN(64)
 
 // Reached from 1 dispatch table entry:
 //     LINK.W An,#<disp>
-L_05900:
+link_w_a2_imm:
         mr      a2, a7
-        b       L_061FC
+        b       link_w_a7_imm
 
 // Reached from 1 dispatch table entry:
 //     LINK.L An,#<disp>
-L_05908:
+link_l_a2_imm:
         mr      a2, a7
-        b       L_0621C
+        b       link_l_a7_imm
 
 // Reached from 1 dispatch table entry:
 //     UNLK An
-L_05910:
+unlk_a2:
         addi    a7, a2, 4
-        b       L_032A0
+        b       lea_mem_a2
         ALIGN(32)
 
 // Reached from 1 dispatch table entry:
 //     LINK.W An,#<disp>
-L_05920:
+link_w_a3_imm:
         mr      a3, a7
-        b       L_061FC
+        b       link_w_a7_imm
 
 // Reached from 1 dispatch table entry:
 //     LINK.L An,#<disp>
-L_05928:
+link_l_a3_imm:
         mr      a3, a7
-        b       L_0621C
+        b       link_l_a7_imm
 
 // Reached from 1 dispatch table entry:
 //     UNLK An
-L_05930:
+unlk_a3:
         addi    a7, a3, 4
-        b       L_032E0
+        b       lea_mem_a3
         ALIGN(64)
 
 // Reached from 1 dispatch table entry:
 //     LINK.W An,#<disp>
-L_05940:
+link_w_a4_imm:
         mr      a4, a7
-        b       L_061FC
+        b       link_w_a7_imm
 
 // Reached from 1 dispatch table entry:
 //     LINK.L An,#<disp>
-L_05948:
+link_l_a4_imm:
         mr      a4, a7
-        b       L_0621C
+        b       link_l_a7_imm
 
 // Reached from 1 dispatch table entry:
 //     UNLK An
-L_05950:
+unlk_a4:
         addi    a7, a4, 4
-        b       L_03320
+        b       lea_mem_a4
         ALIGN(32)
 
 // Reached from 1 dispatch table entry:
 //     LINK.W An,#<disp>
-L_05960:
+link_w_a5_imm:
         mr      a5, a7
-        b       L_061FC
+        b       link_w_a7_imm
 
 // Reached from 1 dispatch table entry:
 //     LINK.L An,#<disp>
-L_05968:
+link_l_a5_imm:
         mr      a5, a7
-        b       L_0621C
+        b       link_l_a7_imm
 
 // Reached from 1 dispatch table entry:
 //     UNLK An
-L_05970:
+unlk_a5:
         addi    a7, a5, 4
-        b       L_03360
+        b       lea_mem_a5
         ALIGN(64)
 
 // Reached from 19 dispatch table entries:
@@ -13980,7 +16356,7 @@ L_05970:
 //     CAS.L Dc,Du,(d8,An,Xn)
 //     MOVEM.W <list>,(d8,An,Xn)
 //     ... and 13 more forms
-L_05980:
+movem_cas_etc_any_any:
         lhau    prefetch_data, 2(pc)
         lha     immed_data, -2(pc)
 
@@ -13992,7 +16368,7 @@ L_05980:
 //     OR.B Dn,(d8,An,Xn)
 //     OR.W Dn,(d8,An,Xn)
 //     ... and 43 more forms
-L_05988:
+or_sub_etc_any_any:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, a0
         b       L_05E50
@@ -14005,7 +16381,7 @@ L_05988:
 //     BTST.B #<bit>,(d8,An,Xn)
 //     BCHG.B #<bit>,(d8,An,Xn)
 //     ... and 4 more forms
-L_05994:
+or_and_etc_b_imm_mem:
         lhau    prefetch_data, 2(pc)
         lbz     immed_data, -1(pc)
 
@@ -14017,7 +16393,7 @@ L_05994:
 //     MOVE.B (d8,An,Xn),-(An)
 //     MOVE.B (d8,An,Xn),(d16,An)
 //     ... and 11 more forms
-L_0599C:
+move_add_etc_b_any_any:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, a0
         b       L_05EB0
@@ -14030,7 +16406,7 @@ L_0599C:
 //     ADDI.W #<data>,(d8,An,Xn)
 //     EORI.W #<data>,(d8,An,Xn)
 //     ... and 1 more forms
-L_059A8:
+or_chk2_cmp2_etc_ea_any:
         lhau    prefetch_data, 2(pc)
         lha     immed_data, -2(pc)
 
@@ -14042,7 +16418,7 @@ L_059A8:
 //     MOVE.W (d8,An,Xn),-(An)
 //     MOVE.W (d8,An,Xn),(d16,An)
 //     ... and 28 more forms
-L_059B0:
+move_add_etc_w_any_any:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, a0
         b       L_05EE0
@@ -14055,7 +16431,7 @@ L_059B0:
 //     ADDI.L #<data>,(d8,An,Xn)
 //     EORI.L #<data>,(d8,An,Xn)
 //     CMPI.L #<data>,(d8,An,Xn)
-L_059C0:
+or_and_etc_l_imm_mem:
         lhau    prefetch_data, 4(pc)
         lwz     immed_data, -4(pc)
 
@@ -14067,7 +16443,7 @@ L_059C0:
 //     MOVE.L (d8,An,Xn),(d16,An)
 //     MOVE.L (d8,An,Xn),(d8,An,Xn)
 //     ... and 15 more forms
-L_059C8:
+move_add_etc_l_any_any:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, a0
         b       L_05F10
@@ -14081,7 +16457,7 @@ L_059C8:
 //     CAS.L Dc,Du,(d8,An,Xn)
 //     MOVEM.W <list>,(d8,An,Xn)
 //     ... and 13 more forms
-L_059E0:
+movem_cas_etc_any_any_2:
         lhau    prefetch_data, 2(pc)
         lha     immed_data, -2(pc)
 
@@ -14093,7 +16469,7 @@ L_059E0:
 //     OR.B Dn,(d8,An,Xn)
 //     OR.W Dn,(d8,An,Xn)
 //     ... and 44 more forms
-L_059E8:
+or_sub_etc_any_any_2:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, a1
         b       L_05E50
@@ -14106,7 +16482,7 @@ L_059E8:
 //     BTST.B #<bit>,(d8,An,Xn)
 //     BCHG.B #<bit>,(d8,An,Xn)
 //     ... and 4 more forms
-L_059F4:
+or_and_etc_b_imm_mem_2:
         lhau    prefetch_data, 2(pc)
         lbz     immed_data, -1(pc)
 
@@ -14118,7 +16494,7 @@ L_059F4:
 //     MOVE.B (d8,An,Xn),-(An)
 //     MOVE.B (d8,An,Xn),(d16,An)
 //     ... and 11 more forms
-L_059FC:
+move_add_etc_b_any_any_2:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, a1
         b       L_05EB0
@@ -14131,7 +16507,7 @@ L_059FC:
 //     ADDI.W #<data>,(d8,An,Xn)
 //     EORI.W #<data>,(d8,An,Xn)
 //     ... and 1 more forms
-L_05A08:
+or_chk2_cmp2_etc_ea_any_2:
         lhau    prefetch_data, 2(pc)
         lha     immed_data, -2(pc)
 
@@ -14143,7 +16519,7 @@ L_05A08:
 //     MOVE.W (d8,An,Xn),-(An)
 //     MOVE.W (d8,An,Xn),(d16,An)
 //     ... and 28 more forms
-L_05A10:
+move_add_etc_w_any_any_2:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, a1
         b       L_05EE0
@@ -14156,7 +16532,7 @@ L_05A10:
 //     ADDI.L #<data>,(d8,An,Xn)
 //     EORI.L #<data>,(d8,An,Xn)
 //     CMPI.L #<data>,(d8,An,Xn)
-L_05A20:
+or_and_etc_l_imm_mem_2:
         lhau    prefetch_data, 4(pc)
         lwz     immed_data, -4(pc)
 
@@ -14168,7 +16544,7 @@ L_05A20:
 //     MOVE.L (d8,An,Xn),-(An)
 //     MOVE.L (d8,An,Xn),(d16,An)
 //     ... and 15 more forms
-L_05A28:
+move_add_etc_l_any_any_2:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, a1
         b       L_05F10
@@ -14182,7 +16558,7 @@ L_05A28:
 //     CAS.L Dc,Du,(d8,An,Xn)
 //     MOVEM.W <list>,(d8,An,Xn)
 //     ... and 13 more forms
-L_05A40:
+movem_cas_etc_any_any_3:
         lhau    prefetch_data, 2(pc)
         lha     immed_data, -2(pc)
 
@@ -14194,7 +16570,7 @@ L_05A40:
 //     OR.B Dn,(d8,An,Xn)
 //     OR.W Dn,(d8,An,Xn)
 //     ... and 44 more forms
-L_05A48:
+or_sub_etc_any_any_3:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, a2
         b       L_05E50
@@ -14207,7 +16583,7 @@ L_05A48:
 //     BTST.B #<bit>,(d8,An,Xn)
 //     BCHG.B #<bit>,(d8,An,Xn)
 //     ... and 4 more forms
-L_05A54:
+or_and_etc_b_imm_mem_3:
         lhau    prefetch_data, 2(pc)
         lbz     immed_data, -1(pc)
 
@@ -14219,7 +16595,7 @@ L_05A54:
 //     MOVE.B (d8,An,Xn),-(An)
 //     MOVE.B (d8,An,Xn),(d16,An)
 //     ... and 11 more forms
-L_05A5C:
+move_add_etc_b_any_any_3:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, a2
         b       L_05EB0
@@ -14232,7 +16608,7 @@ L_05A5C:
 //     ADDI.W #<data>,(d8,An,Xn)
 //     EORI.W #<data>,(d8,An,Xn)
 //     ... and 1 more forms
-L_05A68:
+or_chk2_cmp2_etc_ea_any_3:
         lhau    prefetch_data, 2(pc)
         lha     immed_data, -2(pc)
 
@@ -14244,7 +16620,7 @@ L_05A68:
 //     MOVE.W (d8,An,Xn),-(An)
 //     MOVE.W (d8,An,Xn),(d16,An)
 //     ... and 28 more forms
-L_05A70:
+move_add_etc_w_any_any_3:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, a2
         b       L_05EE0
@@ -14257,7 +16633,7 @@ L_05A70:
 //     ADDI.L #<data>,(d8,An,Xn)
 //     EORI.L #<data>,(d8,An,Xn)
 //     CMPI.L #<data>,(d8,An,Xn)
-L_05A80:
+or_and_etc_l_imm_mem_3:
         lhau    prefetch_data, 4(pc)
         lwz     immed_data, -4(pc)
 
@@ -14269,7 +16645,7 @@ L_05A80:
 //     MOVE.L (d8,An,Xn),-(An)
 //     MOVE.L (d8,An,Xn),(d16,An)
 //     ... and 15 more forms
-L_05A88:
+move_add_etc_l_any_any_3:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, a2
         b       L_05F10
@@ -14283,7 +16659,7 @@ L_05A88:
 //     CAS.L Dc,Du,(d8,An,Xn)
 //     MOVEM.W <list>,(d8,An,Xn)
 //     ... and 13 more forms
-L_05AA0:
+movem_cas_etc_any_any_4:
         lhau    prefetch_data, 2(pc)
         lha     immed_data, -2(pc)
 
@@ -14295,7 +16671,7 @@ L_05AA0:
 //     OR.B Dn,(d8,An,Xn)
 //     OR.W Dn,(d8,An,Xn)
 //     ... and 44 more forms
-L_05AA8:
+or_sub_etc_any_any_4:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, a3
         b       L_05E50
@@ -14308,7 +16684,7 @@ L_05AA8:
 //     BTST.B #<bit>,(d8,An,Xn)
 //     BCHG.B #<bit>,(d8,An,Xn)
 //     ... and 4 more forms
-L_05AB4:
+or_and_etc_b_imm_mem_4:
         lhau    prefetch_data, 2(pc)
         lbz     immed_data, -1(pc)
 
@@ -14320,7 +16696,7 @@ L_05AB4:
 //     MOVE.B (d8,An,Xn),-(An)
 //     MOVE.B (d8,An,Xn),(d16,An)
 //     ... and 11 more forms
-L_05ABC:
+move_add_etc_b_any_any_4:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, a3
         b       L_05EB0
@@ -14333,7 +16709,7 @@ L_05ABC:
 //     ADDI.W #<data>,(d8,An,Xn)
 //     EORI.W #<data>,(d8,An,Xn)
 //     ... and 1 more forms
-L_05AC8:
+or_chk2_cmp2_etc_ea_any_4:
         lhau    prefetch_data, 2(pc)
         lha     immed_data, -2(pc)
 
@@ -14345,7 +16721,7 @@ L_05AC8:
 //     MOVE.W (d8,An,Xn),-(An)
 //     MOVE.W (d8,An,Xn),(d16,An)
 //     ... and 28 more forms
-L_05AD0:
+move_add_etc_w_any_any_4:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, a3
         b       L_05EE0
@@ -14358,7 +16734,7 @@ L_05AD0:
 //     ADDI.L #<data>,(d8,An,Xn)
 //     EORI.L #<data>,(d8,An,Xn)
 //     CMPI.L #<data>,(d8,An,Xn)
-L_05AE0:
+or_and_etc_l_imm_mem_4:
         lhau    prefetch_data, 4(pc)
         lwz     immed_data, -4(pc)
 
@@ -14370,7 +16746,7 @@ L_05AE0:
 //     MOVE.L (d8,An,Xn),-(An)
 //     MOVE.L (d8,An,Xn),(d16,An)
 //     ... and 15 more forms
-L_05AE8:
+move_add_etc_l_any_any_4:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, a3
         b       L_05F10
@@ -14384,7 +16760,7 @@ L_05AE8:
 //     CAS.L Dc,Du,(d8,An,Xn)
 //     MOVEM.W <list>,(d8,An,Xn)
 //     ... and 13 more forms
-L_05B00:
+movem_cas_etc_any_any_5:
         lhau    prefetch_data, 2(pc)
         lha     immed_data, -2(pc)
 
@@ -14396,7 +16772,7 @@ L_05B00:
 //     OR.B Dn,(d8,An,Xn)
 //     OR.W Dn,(d8,An,Xn)
 //     ... and 43 more forms
-L_05B08:
+or_sub_etc_any_any_5:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, a4
         b       L_05E50
@@ -14409,7 +16785,7 @@ L_05B08:
 //     BTST.B #<bit>,(d8,An,Xn)
 //     BCHG.B #<bit>,(d8,An,Xn)
 //     ... and 4 more forms
-L_05B14:
+or_and_etc_b_imm_mem_5:
         lhau    prefetch_data, 2(pc)
         lbz     immed_data, -1(pc)
 
@@ -14421,7 +16797,7 @@ L_05B14:
 //     MOVE.B (d8,An,Xn),-(An)
 //     MOVE.B (d8,An,Xn),(d16,An)
 //     ... and 11 more forms
-L_05B1C:
+move_add_etc_b_any_any_5:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, a4
         b       L_05EB0
@@ -14434,7 +16810,7 @@ L_05B1C:
 //     ADDI.W #<data>,(d8,An,Xn)
 //     EORI.W #<data>,(d8,An,Xn)
 //     ... and 1 more forms
-L_05B28:
+or_chk2_cmp2_etc_ea_any_5:
         lhau    prefetch_data, 2(pc)
         lha     immed_data, -2(pc)
 
@@ -14446,7 +16822,7 @@ L_05B28:
 //     MOVE.W (d8,An,Xn),-(An)
 //     MOVE.W (d8,An,Xn),(d16,An)
 //     ... and 28 more forms
-L_05B30:
+move_add_etc_w_any_any_5:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, a4
         b       L_05EE0
@@ -14459,7 +16835,7 @@ L_05B30:
 //     ADDI.L #<data>,(d8,An,Xn)
 //     EORI.L #<data>,(d8,An,Xn)
 //     CMPI.L #<data>,(d8,An,Xn)
-L_05B40:
+or_and_etc_l_imm_mem_5:
         lhau    prefetch_data, 4(pc)
         lwz     immed_data, -4(pc)
 
@@ -14471,7 +16847,7 @@ L_05B40:
 //     MOVE.L (d8,An,Xn),-(An)
 //     MOVE.L (d8,An,Xn),(d16,An)
 //     ... and 15 more forms
-L_05B48:
+move_add_etc_l_any_any_5:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, a4
         b       L_05F10
@@ -14485,7 +16861,7 @@ L_05B48:
 //     CAS.L Dc,Du,(d8,An,Xn)
 //     MOVEM.W <list>,(d8,An,Xn)
 //     ... and 13 more forms
-L_05B60:
+movem_cas_etc_any_any_6:
         lhau    prefetch_data, 2(pc)
         lha     immed_data, -2(pc)
 
@@ -14497,7 +16873,7 @@ L_05B60:
 //     OR.B Dn,(d8,An,Xn)
 //     OR.W Dn,(d8,An,Xn)
 //     ... and 44 more forms
-L_05B68:
+or_sub_etc_any_any_6:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, a5
         b       L_05E50
@@ -14510,7 +16886,7 @@ L_05B68:
 //     BTST.B #<bit>,(d8,An,Xn)
 //     BCHG.B #<bit>,(d8,An,Xn)
 //     ... and 4 more forms
-L_05B74:
+or_and_etc_b_imm_mem_6:
         lhau    prefetch_data, 2(pc)
         lbz     immed_data, -1(pc)
 
@@ -14522,7 +16898,7 @@ L_05B74:
 //     MOVE.B (d8,An,Xn),-(An)
 //     MOVE.B (d8,An,Xn),(d16,An)
 //     ... and 11 more forms
-L_05B7C:
+move_add_etc_b_any_any_6:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, a5
         b       L_05EB0
@@ -14535,7 +16911,7 @@ L_05B7C:
 //     ADDI.W #<data>,(d8,An,Xn)
 //     EORI.W #<data>,(d8,An,Xn)
 //     ... and 1 more forms
-L_05B88:
+or_chk2_cmp2_etc_ea_any_6:
         lhau    prefetch_data, 2(pc)
         lha     immed_data, -2(pc)
 
@@ -14547,7 +16923,7 @@ L_05B88:
 //     MOVE.W (d8,An,Xn),-(An)
 //     MOVE.W (d8,An,Xn),(d16,An)
 //     ... and 28 more forms
-L_05B90:
+move_add_etc_w_any_any_6:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, a5
         b       L_05EE0
@@ -14560,7 +16936,7 @@ L_05B90:
 //     ADDI.L #<data>,(d8,An,Xn)
 //     EORI.L #<data>,(d8,An,Xn)
 //     CMPI.L #<data>,(d8,An,Xn)
-L_05BA0:
+or_and_etc_l_imm_mem_6:
         lhau    prefetch_data, 4(pc)
         lwz     immed_data, -4(pc)
 
@@ -14572,7 +16948,7 @@ L_05BA0:
 //     MOVE.L (d8,An,Xn),-(An)
 //     MOVE.L (d8,An,Xn),(d16,An)
 //     ... and 15 more forms
-L_05BA8:
+move_add_etc_l_any_any_6:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, a5
         b       L_05F10
@@ -14586,7 +16962,7 @@ L_05BA8:
 //     CAS.L Dc,Du,(d8,An,Xn)
 //     MOVEM.W <list>,(d8,An,Xn)
 //     ... and 13 more forms
-L_05BC0:
+movem_cas_etc_any_any_7:
         lhau    prefetch_data, 2(pc)
         lha     immed_data, -2(pc)
 
@@ -14598,7 +16974,7 @@ L_05BC0:
 //     OR.B Dn,(d8,An,Xn)
 //     OR.W Dn,(d8,An,Xn)
 //     ... and 44 more forms
-L_05BC8:
+or_sub_etc_any_any_7:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, a6
         b       L_05E50
@@ -14611,7 +16987,7 @@ L_05BC8:
 //     BTST.B #<bit>,(d8,An,Xn)
 //     BCHG.B #<bit>,(d8,An,Xn)
 //     ... and 4 more forms
-L_05BD4:
+or_and_etc_b_imm_mem_7:
         lhau    prefetch_data, 2(pc)
         lbz     immed_data, -1(pc)
 
@@ -14623,7 +16999,7 @@ L_05BD4:
 //     MOVE.B (d8,An,Xn),-(An)
 //     MOVE.B (d8,An,Xn),(d16,An)
 //     ... and 11 more forms
-L_05BDC:
+move_add_etc_b_any_any_7:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, a6
         b       L_05EB0
@@ -14636,7 +17012,7 @@ L_05BDC:
 //     ADDI.W #<data>,(d8,An,Xn)
 //     EORI.W #<data>,(d8,An,Xn)
 //     ... and 1 more forms
-L_05BE8:
+or_chk2_cmp2_etc_ea_any_7:
         lhau    prefetch_data, 2(pc)
         lha     immed_data, -2(pc)
 
@@ -14648,7 +17024,7 @@ L_05BE8:
 //     MOVE.W (d8,An,Xn),-(An)
 //     MOVE.W (d8,An,Xn),(d16,An)
 //     ... and 28 more forms
-L_05BF0:
+move_add_etc_w_any_any_7:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, a6
         b       L_05EE0
@@ -14661,7 +17037,7 @@ L_05BF0:
 //     ADDI.L #<data>,(d8,An,Xn)
 //     EORI.L #<data>,(d8,An,Xn)
 //     CMPI.L #<data>,(d8,An,Xn)
-L_05C00:
+or_and_etc_l_imm_mem_7:
         lhau    prefetch_data, 4(pc)
         lwz     immed_data, -4(pc)
 
@@ -14673,7 +17049,7 @@ L_05C00:
 //     MOVE.L (d8,An,Xn),-(An)
 //     MOVE.L (d8,An,Xn),(d16,An)
 //     ... and 15 more forms
-L_05C08:
+move_add_etc_l_any_any_7:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, a6
         b       L_05F10
@@ -14687,7 +17063,7 @@ L_05C08:
 //     CAS.L Dc,Du,(d8,An,Xn)
 //     MOVEM.W <list>,(d8,An,Xn)
 //     ... and 13 more forms
-L_05C20:
+movem_cas_etc_any_any_8:
         lhau    prefetch_data, 2(pc)
         lha     immed_data, -2(pc)
 
@@ -14699,7 +17075,7 @@ L_05C20:
 //     OR.B Dn,(d8,An,Xn)
 //     OR.W Dn,(d8,An,Xn)
 //     ... and 44 more forms
-L_05C28:
+or_sub_etc_any_any_8:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, a7
         b       L_05E50
@@ -14712,7 +17088,7 @@ L_05C28:
 //     BTST.B #<bit>,(d8,An,Xn)
 //     BCHG.B #<bit>,(d8,An,Xn)
 //     ... and 4 more forms
-L_05C34:
+or_and_etc_b_imm_mem_8:
         lhau    prefetch_data, 2(pc)
         lbz     immed_data, -1(pc)
 
@@ -14724,7 +17100,7 @@ L_05C34:
 //     MOVE.B (d8,An,Xn),-(An)
 //     MOVE.B (d8,An,Xn),(d16,An)
 //     ... and 11 more forms
-L_05C3C:
+move_add_etc_b_any_any_8:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, a7
         b       L_05EB0
@@ -14737,7 +17113,7 @@ L_05C3C:
 //     ADDI.W #<data>,(d8,An,Xn)
 //     EORI.W #<data>,(d8,An,Xn)
 //     ... and 1 more forms
-L_05C48:
+or_chk2_cmp2_etc_ea_any_8:
         lhau    prefetch_data, 2(pc)
         lha     immed_data, -2(pc)
 
@@ -14749,7 +17125,7 @@ L_05C48:
 //     MOVE.W (d8,An,Xn),-(An)
 //     MOVE.W (d8,An,Xn),(d16,An)
 //     ... and 28 more forms
-L_05C50:
+move_add_etc_w_any_any_8:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, a7
         b       L_05EE0
@@ -14762,7 +17138,7 @@ L_05C50:
 //     ADDI.L #<data>,(d8,An,Xn)
 //     EORI.L #<data>,(d8,An,Xn)
 //     CMPI.L #<data>,(d8,An,Xn)
-L_05C60:
+or_and_etc_l_imm_mem_8:
         lhau    prefetch_data, 4(pc)
         lwz     immed_data, -4(pc)
 
@@ -14774,184 +17150,232 @@ L_05C60:
 //     MOVE.L (d8,An,Xn),-(An)
 //     MOVE.L (d8,An,Xn),(d16,An)
 //     ... and 15 more forms
-L_05C68:
+move_add_etc_l_any_any_8:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, a7
         b       L_05F10
         ALIGN(64)
-L_05C80:
+
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     CMPM.W (An)+,(An)+
+cmpm_w_mem_mem:
         lhz     immed_data, 0(a0)
         addi    a0, a0, 2
         b       L_064B0
-L_05C8C:
+
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     CMPM.W (An)+,(An)+
+cmpm_w_mem_mem_2:
         lhz     immed_data, 0(a1)
         addi    a1, a1, 2
         b       L_064B0
-L_05C98:
+
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     CMPM.W (An)+,(An)+
+cmpm_w_mem_mem_3:
         lhz     immed_data, 0(a2)
         addi    a2, a2, 2
         b       L_064B0
-L_05CA4:
+
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     CMPM.W (An)+,(An)+
+cmpm_w_mem_mem_4:
         lhz     immed_data, 0(a3)
         addi    a3, a3, 2
         b       L_064B0
-L_05CB0:
+
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     CMPM.W (An)+,(An)+
+cmpm_w_mem_mem_5:
         lhz     immed_data, 0(a4)
         addi    a4, a4, 2
         b       L_064B0
-L_05CBC:
+
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     CMPM.W (An)+,(An)+
+cmpm_w_mem_mem_6:
         lhz     immed_data, 0(a5)
         addi    a5, a5, 2
         b       L_064B0
-L_05CC8:
+
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     CMPM.W (An)+,(An)+
+cmpm_w_mem_mem_7:
         lhz     immed_data, 0(a6)
         addi    a6, a6, 2
         b       L_064B0
-L_05CD4:
+
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     CMPM.W (An)+,(An)+
+cmpm_w_mem_mem_8:
         lhz     immed_data, 0(a7)
         addi    a7, a7, 2
         b       L_064B0
 
 // Reached from 8 dispatch table entries:
 //     ADDX.L -(An),-(An)
-L_05CE0:
+addx_l_mem_mem:
         lwzu    immed_data, -4(a0)
         mr      addr, a0
         b       L_06B44
 
 // Reached from 8 dispatch table entries:
 //     ADDX.L -(An),-(An)
-L_05CEC:
+addx_l_mem_mem_2:
         lwzu    immed_data, -4(a1)
         mr      addr, a1
         b       L_06B44
 
 // Reached from 8 dispatch table entries:
 //     ADDX.L -(An),-(An)
-L_05CF8:
+addx_l_mem_mem_3:
         lwzu    immed_data, -4(a2)
         mr      addr, a2
         b       L_06B44
 
 // Reached from 8 dispatch table entries:
 //     ADDX.L -(An),-(An)
-L_05D04:
+addx_l_mem_mem_4:
         lwzu    immed_data, -4(a3)
         mr      addr, a3
         b       L_06B44
 
 // Reached from 8 dispatch table entries:
 //     ADDX.L -(An),-(An)
-L_05D10:
+addx_l_mem_mem_5:
         lwzu    immed_data, -4(a4)
         mr      addr, a4
         b       L_06B44
 
 // Reached from 8 dispatch table entries:
 //     ADDX.L -(An),-(An)
-L_05D1C:
+addx_l_mem_mem_6:
         lwzu    immed_data, -4(a5)
         mr      addr, a5
         b       L_06B44
 
 // Reached from 8 dispatch table entries:
 //     ADDX.L -(An),-(An)
-L_05D28:
+addx_l_mem_mem_7:
         lwzu    immed_data, -4(a6)
         mr      addr, a6
         b       L_06B44
 
 // Reached from 8 dispatch table entries:
 //     ADDX.L -(An),-(An)
-L_05D34:
+addx_l_mem_mem_8:
         lwzu    immed_data, -4(a7)
         mr      addr, a7
         b       L_06B44
 
 // Reached from 8 dispatch table entries:
 //     SUBX.L -(An),-(An)
-L_05D40:
+subx_l_mem_mem:
         lwzu    immed_data, -4(a0)
         mr      addr, a0
         b       L_06B98
 
 // Reached from 8 dispatch table entries:
 //     SUBX.L -(An),-(An)
-L_05D4C:
+subx_l_mem_mem_2:
         lwzu    immed_data, -4(a1)
         mr      addr, a1
         b       L_06B98
 
 // Reached from 8 dispatch table entries:
 //     SUBX.L -(An),-(An)
-L_05D58:
+subx_l_mem_mem_3:
         lwzu    immed_data, -4(a2)
         mr      addr, a2
         b       L_06B98
 
 // Reached from 8 dispatch table entries:
 //     SUBX.L -(An),-(An)
-L_05D64:
+subx_l_mem_mem_4:
         lwzu    immed_data, -4(a3)
         mr      addr, a3
         b       L_06B98
 
 // Reached from 8 dispatch table entries:
 //     SUBX.L -(An),-(An)
-L_05D70:
+subx_l_mem_mem_5:
         lwzu    immed_data, -4(a4)
         mr      addr, a4
         b       L_06B98
 
 // Reached from 8 dispatch table entries:
 //     SUBX.L -(An),-(An)
-L_05D7C:
+subx_l_mem_mem_6:
         lwzu    immed_data, -4(a5)
         mr      addr, a5
         b       L_06B98
 
 // Reached from 8 dispatch table entries:
 //     SUBX.L -(An),-(An)
-L_05D88:
+subx_l_mem_mem_7:
         lwzu    immed_data, -4(a6)
         mr      addr, a6
         b       L_06B98
 
 // Reached from 8 dispatch table entries:
 //     SUBX.L -(An),-(An)
-L_05D94:
+subx_l_mem_mem_8:
         lwzu    immed_data, -4(a7)
         mr      addr, a7
         b       L_06B98
-L_05DA0:
+
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     CMPM.L (An)+,(An)+
+cmpm_l_mem_mem:
         lwz     immed_data, 0(a0)
         addi    a0, a0, 4
         b       L_06480
-L_05DAC:
+
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     CMPM.L (An)+,(An)+
+cmpm_l_mem_mem_2:
         lwz     immed_data, 0(a1)
         addi    a1, a1, 4
         b       L_06480
-L_05DB8:
+
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     CMPM.L (An)+,(An)+
+cmpm_l_mem_mem_3:
         lwz     immed_data, 0(a2)
         addi    a2, a2, 4
         b       L_06480
-L_05DC4:
+
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     CMPM.L (An)+,(An)+
+cmpm_l_mem_mem_4:
         lwz     immed_data, 0(a3)
         addi    a3, a3, 4
         b       L_06480
-L_05DD0:
+
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     CMPM.L (An)+,(An)+
+cmpm_l_mem_mem_5:
         lwz     immed_data, 0(a4)
         addi    a4, a4, 4
         b       L_06480
-L_05DDC:
+
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     CMPM.L (An)+,(An)+
+cmpm_l_mem_mem_6:
         lwz     immed_data, 0(a5)
         addi    a5, a5, 4
         b       L_06480
-L_05DE8:
+
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     CMPM.L (An)+,(An)+
+cmpm_l_mem_mem_7:
         lwz     immed_data, 0(a6)
         addi    a6, a6, 4
         b       L_06480
-L_05DF4:
+
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     CMPM.L (An)+,(An)+
+cmpm_l_mem_mem_8:
         lwz     immed_data, 0(a7)
         addi    a7, a7, 4
         b       L_06480
@@ -14964,7 +17388,7 @@ L_05DF4:
 //     CAS.L Dc,Du,(xxx).L
 //     MOVEM.W <list>,(xxx).L
 //     ... and 13 more forms
-L_05E00:
+cea_x_71:
         mtlr    rtn_addr
         lwz     addr, 2(pc)
         mr      immed_data, prefetch_data
@@ -14979,7 +17403,7 @@ L_05E00:
 //     OR.W Dn,(xxx).L
 //     OR.L Dn,(xxx).L
 //     ... and 41 more forms
-L_05E14:
+cea_x_71_2:
         mtlr    rtn_addr
         lwz     addr, 0(pc)
         lhau    prefetch_data, 4(pc)
@@ -14993,7 +17417,7 @@ L_05E14:
 //     BTST.B #<bit>,(xxx).L
 //     BCHG.B #<bit>,(xxx).L
 //     ... and 4 more forms
-L_05E24:
+fea_b_71:
         lhau    prefetch_data, 2(pc)
         lbz     immed_data, -1(pc)
 
@@ -15005,7 +17429,7 @@ L_05E24:
 //     MOVE.B (xxx).L,-(An)
 //     MOVE.B (xxx).L,(d16,An)
 //     ... and 11 more forms
-L_05E2C:
+fea_b_71_2:
         mtlr    rtn_addr
         lwz     addr, 0(pc)
         lhau    prefetch_data, 4(pc)
@@ -15020,7 +17444,7 @@ L_05E2C:
 //     MOVEM.W (d8,PC,Xn),<list>
 //     MOVEM.L (d8,PC,Xn),<list>
 //     ... and 4 more forms
-L_05E40:
+chk2_cmp2_movem_etc_mem_any:
         lhau    prefetch_data, 2(pc)
         lha     immed_data, -2(pc)
 
@@ -15029,7 +17453,7 @@ L_05E40:
 //     PEA (d8,PC,Xn)
 //     JSR (d8,PC,Xn)
 //     JMP (d8,PC,Xn)
-L_05E48:
+cea_x_73:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, pc
 L_05E50:
@@ -15048,7 +17472,7 @@ L_05E50:
 //     ADDI.W #<data>,(xxx).L
 //     EORI.W #<data>,(xxx).L
 //     ... and 1 more forms
-L_05E68:
+fea_x_71:
         lhau    prefetch_data, 2(pc)
         lha     immed_data, -2(pc)
 
@@ -15060,7 +17484,7 @@ L_05E68:
 //     MOVE.W (xxx).L,-(An)
 //     MOVE.W (xxx).L,(d16,An)
 //     ... and 28 more forms
-L_05E70:
+fea_w_71:
         mtlr    rtn_addr
         lwz     addr, 0(pc)
         lhau    prefetch_data, 4(pc)
@@ -15074,7 +17498,7 @@ L_05E70:
 //     ADDI.L #<data>,(xxx).L
 //     EORI.L #<data>,(xxx).L
 //     CMPI.L #<data>,(xxx).L
-L_05E84:
+fea_l_71:
         lwz     immed_data, 0(pc)
         addi    pc, pc, 4
 
@@ -15086,7 +17510,7 @@ L_05E84:
 //     MOVE.L (xxx).L,-(An)
 //     MOVE.L (xxx).L,(d16,An)
 //     ... and 15 more forms
-L_05E8C:
+fea_l_71_2:
         mtlr    rtn_addr
         lwz     addr, 0(pc)
         lhau    prefetch_data, 4(pc)
@@ -15096,7 +17520,7 @@ L_05E8C:
 // Reached from 2 dispatch table entries:
 //     BTST.B #<bit>,(d8,PC,Xn)
 //     CMPI.B #<data>,(d8,PC,Xn)
-L_05EA0:
+btst_cmp_b_imm_mem:
         lhau    prefetch_data, 2(pc)
         lbz     immed_data, -1(pc)
 
@@ -15108,7 +17532,7 @@ L_05EA0:
 //     MOVE.B (d8,PC,Xn),-(An)
 //     MOVE.B (d8,PC,Xn),(d16,An)
 //     ... and 9 more forms
-L_05EA8:
+fea_b_73:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, pc
 L_05EB0:
@@ -15124,7 +17548,7 @@ L_05EB0:
 // Reached from 2 dispatch table entries:
 //     CHK2/CMP2.B (d8,PC,Xn),Rn
 //     CMPI.W #<data>,(d8,PC,Xn)
-L_05ED0:
+chk2_cmp2_cmp_ea_any:
         lhau    prefetch_data, 2(pc)
         lha     immed_data, -2(pc)
 
@@ -15136,7 +17560,7 @@ L_05ED0:
 //     MOVE.W (d8,PC,Xn),-(An)
 //     MOVE.W (d8,PC,Xn),(d16,An)
 //     ... and 18 more forms
-L_05ED8:
+fea_w_73:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, pc
 L_05EE0:
@@ -15151,7 +17575,7 @@ L_05EE0:
 
 // Reached from 1 dispatch table entry:
 //     CMPI.L #<data>,(d8,PC,Xn)
-L_05F00:
+cmpi_l_imm_mem:
         lhau    prefetch_data, 4(pc)
         lwz     immed_data, -4(pc)
 
@@ -15163,7 +17587,7 @@ L_05F00:
 //     MOVE.L (d8,PC,Xn),-(An)
 //     MOVE.L (d8,PC,Xn),(d16,An)
 //     ... and 13 more forms
-L_05F08:
+fea_l_73:
         extsb   base_disp, prefetch_data                // base_disp = sign-extended low byte of prefetch_data
         add     addr, base_disp, pc
 L_05F10:
@@ -15184,7 +17608,7 @@ L_05F10:
 //     MOVE.L #<data>,(d8,An,Xn)
 //     CHK.L #<data>,Dn
 //     ... and 3 more forms
-L_05F30:
+fea_l_74:
         mtlr    rtn_addr
         lwz     data, 0(pc)
         lhau    prefetch_data, 4(pc)
@@ -15284,7 +17708,7 @@ L_06064:
         oris    addr, zero, 0xDEAD
         ori     addr, addr, 0xBEEF
         blr
-        b       L_06080
+        b       move_lea_etc_ea_any
         ALIGN(64)
 
 // Reached from 275 dispatch table entries:
@@ -15295,7 +17719,7 @@ L_06064:
 //     MOVEA.L (d16,PC),An
 //     MOVEA.W (xxx).W,An
 //     ... and 10 more forms
-L_06080:
+move_lea_etc_ea_any:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 1357 dispatch table entries:
@@ -15306,7 +17730,7 @@ L_06080:
 //     MOVEA.L -(An),An
 //     MOVEA.W Dn,An
 //     ... and 37 more forms
-L_06084:
+move_add_etc_any_any:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
 
 // Reached from 33 dispatch table entries:
@@ -15315,7 +17739,7 @@ L_06084:
 //     EXG.L Dn,Dn
 //     EXG.L An,An
 //     TRAPF
-L_06088:
+exg_move_etc_any_reg:
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
         bflr_likely 4*cr2+lt
@@ -15325,7 +17749,7 @@ L_06088:
 // Reached from 16 dispatch table entries:
 //     MOVEA.L #<data>,An
 //     LEA (xxx).L,An
-L_060A0:
+move_lea_ea_an:
         lhau    prefetch_data, 4(pc)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -15342,7 +17766,7 @@ L_060A0:
 //     EOR.L Dn,Dn
 //     AND.L Dn,Dn
 //     ... and 13 more forms
-L_060C0:
+move_or_etc_any_reg:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
 L_060C4:
         mtlr    disp_table
@@ -15357,7 +17781,7 @@ L_060C8:
 //     SUB.B Dn,Dn
 //     SUB.W Dn,Dn
 //     SUB.L Dn,Dn
-L_060E0:
+sub_dn_dn:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -15374,7 +17798,7 @@ L_060E0:
 //     CLR.W (An)
 //     CLR.W -(An)
 //     ... and 4 more forms
-L_06100:
+clr_eor_reg_any:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -15390,7 +17814,7 @@ L_06100:
 //     CLR.B (xxx).W
 //     CLR.W (xxx).W
 //     CLR.L (xxx).W
-L_06120:
+clr_mem:
         lhau    prefetch_data, 2(pc)
         addco.  zero, zero, zero
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
@@ -15407,7 +17831,12 @@ L_06120:
 //     MOVE.B (An)+,-(An)
 //     TST.B (An)
 //     TST.B -(An)
-L_06140:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     TST.B (An)+
+//     TST.B (d8,An,Xn)
+//     TST.B (xxx).L
+//     TST.B (d8,PC,Xn)
+tst_b_mem:
         slwi    data, data, 24
 
 // Reached from 96 dispatch table entries:
@@ -15418,7 +17847,15 @@ L_06140:
 //     MOVE.W (An),(An)
 //     MOVE.W -(An),(An)
 //     ... and 6 more forms
-L_06144:
+// Continuation (via rtn_addr) of 37 dispatch table entries:
+//     TST.W (An)+
+//     TST.W (d8,An,Xn)
+//     TST.L (An)+
+//     TST.L (d8,An,Xn)
+//     TST.W (xxx).L
+//     TST.W (d8,PC,Xn)
+//     ... and 3 more forms
+tst_ea:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -15431,7 +17868,7 @@ L_06144:
 //     TST.B (d16,An)
 //     TST.B (xxx).W
 //     TST.B (d16,PC)
-L_06160:
+tst_b_mem_2:
         slwi    data, data, 24
 
 // Reached from 21 dispatch table entries:
@@ -15442,7 +17879,7 @@ L_06160:
 //     TST.W (d16,PC)
 //     TST.L (xxx).W
 //     ... and 1 more forms
-L_06164:
+tst_ea_2:
         lhau    prefetch_data, 2(pc)
         addco.  data, data, zero
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
@@ -15455,14 +17892,14 @@ L_06164:
 //     MOVE.B #<data>,Dn
 //     MOVE.B #<data>,(An)
 //     MOVE.B #<data>,-(An)
-L_06180:
+move_b_imm_any:
         slwi    prefetch_data, prefetch_data, 24
 
 // Reached from 24 dispatch table entries:
 //     MOVE.W #<data>,Dn
 //     MOVE.W #<data>,(An)
 //     MOVE.W #<data>,-(An)
-L_06184:
+move_w_imm_any:
         lhau    immed_data, 2(pc)
         addco.  prefetch_data, prefetch_data, zero
         rlwimi  disp_table, immed_data, 3, 13, 28       // disp_table[18:3] = immed_data[15:0]
@@ -15474,9 +17911,14 @@ L_06184:
 // Reached from 9 dispatch table entries:
 //     PEA (d16,An)
 //     PEA (d16,PC)
-L_061A0:
+pea_mem:
         lhau    prefetch_data, 2(pc)
-L_061A4:
+
+// Continuation (via rtn_addr) of 10 dispatch table entries:
+//     PEA (d8,An,Xn)
+//     PEA (xxx).L
+//     PEA (d8,PC,Xn)
+pea_mem_2:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -15487,7 +17929,7 @@ L_061A4:
 
 // Reached from 1 dispatch table entry:
 //     LINK.W An,#<disp>
-L_061C0:
+link_w_a6_imm:
         stwu    a6, -4(a7)
         rlwimi  disp_table, data, 3, 13, 28             // disp_table[18:3] = data[15:0]
         mtlr    disp_table
@@ -15499,7 +17941,7 @@ L_061C0:
 
 // Reached from 1 dispatch table entry:
 //     UNLK An
-L_061E0:
+unlk_a6:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -15510,7 +17952,7 @@ L_061E0:
 
 // Reached from 1 dispatch table entry:
 //     LINK.W An,#<disp>
-L_061FC:
+link_w_a7_imm:
         lhau    data, 2(pc)
         add     a7, a7, prefetch_data
         rlwimi  disp_table, data, 3, 13, 28             // disp_table[18:3] = data[15:0]
@@ -15521,12 +17963,12 @@ L_061FC:
 
 // Reached from 1 dispatch table entry:
 //     LINK.L An,#<disp>
-L_06218:
+link_l_a6_imm:
         mr      a6, a7
 
 // Reached from 1 dispatch table entry:
 //     LINK.L An,#<disp>
-L_0621C:
+link_l_a7_imm:
         lhau    prefetch_data, 4(pc)
         lwz     data, -4(pc)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
@@ -15566,19 +18008,25 @@ L_06280:
 //     MOVE.L (d16,An),(xxx).W
 //     MOVE.L (xxx).W,(xxx).W
 //     MOVE.L (d16,PC),(xxx).W
-L_0629C:
+move_l_mem_mem_41:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     MOVE.L (An),(xxx).W
 //     MOVE.L -(An),(xxx).W
-L_062A0:
+// Continuation (via rtn_addr) of 19 dispatch table entries:
+//     MOVE.L (An)+,(xxx).W
+//     MOVE.L (d8,An,Xn),(xxx).W
+//     MOVE.L (xxx).L,(xxx).W
+//     MOVE.L (d8,PC,Xn),(xxx).W
+//     MOVE.L #<data>,(xxx).W
+move_l_ea_mem_41:
         addco.  data, data, zero
 
 // Reached from 16 dispatch table entries:
 //     MOVE.L Dn,(xxx).W
 //     MOVE.L An,(xxx).W
-L_062A4:
+move_l_reg_mem_25:
         lhau    immed_data, 2(pc)
         stw     data, 0(prefetch_data)
         rlwimi  disp_table, immed_data, 3, 13, 28       // disp_table[18:3] = immed_data[15:0]
@@ -15592,7 +18040,7 @@ L_062A4:
 //     MOVE.W (xxx).W,(xxx).W
 //     MOVE.W (d16,PC),(xxx).W
 //     MOVE.W #<data>,(xxx).W
-L_062C0:
+move_w_ea_mem_25:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 32 dispatch table entries:
@@ -15600,7 +18048,12 @@ L_062C0:
 //     MOVE.W An,(xxx).W
 //     MOVE.W (An),(xxx).W
 //     MOVE.W -(An),(xxx).W
-L_062C4:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.W (An)+,(xxx).W
+//     MOVE.W (d8,An,Xn),(xxx).W
+//     MOVE.W (xxx).L,(xxx).W
+//     MOVE.W (d8,PC,Xn),(xxx).W
+move_w_mem_mem_57:
         lhau    immed_data, 2(pc)
         sth     data, 0(prefetch_data)
         rlwimi  disp_table, immed_data, 3, 13, 28       // disp_table[18:3] = immed_data[15:0]
@@ -15615,18 +18068,23 @@ L_062C4:
 //     MOVE.B (xxx).W,(xxx).W
 //     MOVE.B (d16,PC),(xxx).W
 //     MOVE.B #<data>,(xxx).W
-L_062E4:
+move_b_ea_mem_25:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     MOVE.B (An),(xxx).W
 //     MOVE.B -(An),(xxx).W
-L_062E8:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.B (An)+,(xxx).W
+//     MOVE.B (d8,An,Xn),(xxx).W
+//     MOVE.B (xxx).L,(xxx).W
+//     MOVE.B (d8,PC,Xn),(xxx).W
+move_b_mem_mem_57:
         rlwimi  data, data, 24, 0, 0                    // data[31] = data[7]
 
 // Reached from 8 dispatch table entries:
 //     MOVE.B Dn,(xxx).W
-L_062EC:
+move_b_dn_mem_25:
         lhau    immed_data, 2(pc)
         stb     data, 0(prefetch_data)
         rlwimi  disp_table, immed_data, 3, 13, 28       // disp_table[18:3] = immed_data[15:0]
@@ -15640,20 +18098,26 @@ L_062EC:
 //     MOVE.L (d16,An),(xxx).L
 //     MOVE.L (xxx).W,(xxx).L
 //     MOVE.L (d16,PC),(xxx).L
-L_0630C:
+move_l_mem_mem_42:
         addi    pc, pc, 2
 
 // Reached from 16 dispatch table entries:
 //     MOVE.L (An),(xxx).L
 //     MOVE.L -(An),(xxx).L
-L_06310:
+// Continuation (via rtn_addr) of 19 dispatch table entries:
+//     MOVE.L (An)+,(xxx).L
+//     MOVE.L (d8,An,Xn),(xxx).L
+//     MOVE.L (xxx).L,(xxx).L
+//     MOVE.L (d8,PC,Xn),(xxx).L
+//     MOVE.L #<data>,(xxx).L
+move_l_ea_mem_42:
         addco.  data, data, zero
 
 // Reached from 17 dispatch table entries:
 //     MOVE.L Dn,(xxx).L
 //     MOVE.L An,(xxx).L
 //     CLR.L (xxx).L
-L_06314:
+move_clr_l_reg_mem_17:
         lhau    prefetch_data, 4(pc)
         lwz     addr, -4(pc)
         b       L_06240
@@ -15663,7 +18127,7 @@ L_06314:
 //     MOVE.W (xxx).W,(xxx).L
 //     MOVE.W (d16,PC),(xxx).L
 //     MOVE.W #<data>,(xxx).L
-L_06320:
+move_w_ea_mem_26:
         addi    pc, pc, 2
 
 // Reached from 33 dispatch table entries:
@@ -15672,7 +18136,12 @@ L_06320:
 //     MOVE.W (An),(xxx).L
 //     MOVE.W -(An),(xxx).L
 //     CLR.W (xxx).L
-L_06324:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.W (An)+,(xxx).L
+//     MOVE.W (d8,An,Xn),(xxx).L
+//     MOVE.W (xxx).L,(xxx).L
+//     MOVE.W (d8,PC,Xn),(xxx).L
+move_w_mem_mem_58:
         lhau    prefetch_data, 4(pc)
         lwz     addr, -4(pc)
         b       L_06260
@@ -15682,19 +18151,24 @@ L_06324:
 //     MOVE.B (xxx).W,(xxx).L
 //     MOVE.B (d16,PC),(xxx).L
 //     MOVE.B #<data>,(xxx).L
-L_06330:
+move_b_ea_mem_26:
         addi    pc, pc, 2
 
 // Reached from 16 dispatch table entries:
 //     MOVE.B (An),(xxx).L
 //     MOVE.B -(An),(xxx).L
-L_06334:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.B (An)+,(xxx).L
+//     MOVE.B (d8,An,Xn),(xxx).L
+//     MOVE.B (xxx).L,(xxx).L
+//     MOVE.B (d8,PC,Xn),(xxx).L
+move_b_mem_mem_58:
         rlwimi  data, data, 24, 0, 0                    // data[31] = data[7]
 
 // Reached from 9 dispatch table entries:
 //     MOVE.B Dn,(xxx).L
 //     CLR.B (xxx).L
-L_06338:
+move_clr_b_reg_mem_17:
         lhau    prefetch_data, 4(pc)
         lwz     addr, -4(pc)
         b       L_06280
@@ -15728,9 +18202,14 @@ L_063A4:
         lhau    prefetch_data, 2(pc)
         bflr_likely 4*cr2+lt
         b       L_0D114
-        b       L_063C0
+        b       cmpi_b_imm_mem
         ALIGN(64)
-L_063C0:
+
+// Continuation (via rtn_addr) of 10 dispatch table entries:
+//     CMPI.B #<data>,(d8,An,Xn)
+//     CMPI.B #<data>,(xxx).L
+//     CMPI.B #<data>,(d8,PC,Xn)
+cmpi_b_imm_mem:
         slwi    immed_data, immed_data, 24
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         slwi    data, data, 24
@@ -15740,7 +18219,7 @@ L_063C0:
 //     CMPI.B #<data>,(d16,An)
 //     CMPI.B #<data>,(xxx).W
 //     CMPI.B #<data>,(d16,PC)
-L_063D0:
+cmpi_b_imm_mem_2:
         lhau    base_disp, 2(pc)
         lhau    rtn_addr, 2(pc)
         slwi    immed_data, prefetch_data, 24
@@ -15752,18 +18231,25 @@ L_063D0:
 // Reached from 16 dispatch table entries:
 //     CMPI.B #<data>,(An)
 //     CMPI.B #<data>,-(An)
-L_063EC:
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     CMPI.B #<data>,(An)+
+cmpi_b_imm_mem_3:
         slwi    data, data, 24
 
 // Reached from 16 dispatch table entries:
 //     CMPI.B #<data>,Dn
 //     CMP.B #<data>,Dn
-L_063F0:
+cmp_b_imm_dn:
         lhau    rtn_addr, 2(pc)
         slwi    immed_data, prefetch_data, 24
         rlwimi  disp_table, rtn_addr, 3, 13, 28         // disp_table[18:3] = rtn_addr[15:0]
         b       L_0644C
-L_06400:
+
+// Continuation (via rtn_addr) of 10 dispatch table entries:
+//     CMPI.W #<data>,(d8,An,Xn)
+//     CMPI.W #<data>,(xxx).L
+//     CMPI.W #<data>,(d8,PC,Xn)
+cmpi_w_imm_mem:
         slwi    immed_data, immed_data, 16
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         slwi    data, data, 16
@@ -15773,7 +18259,7 @@ L_06400:
 //     CMPI.W #<data>,(d16,An)
 //     CMPI.W #<data>,(xxx).W
 //     CMPI.W #<data>,(d16,PC)
-L_06410:
+cmpi_w_imm_mem_2:
         lhau    base_disp, 2(pc)
         lhau    rtn_addr, 2(pc)
         slwi    immed_data, prefetch_data, 16
@@ -15785,13 +18271,15 @@ L_06410:
 // Reached from 16 dispatch table entries:
 //     CMPI.W #<data>,(An)
 //     CMPI.W #<data>,-(An)
-L_0642C:
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     CMPI.W #<data>,(An)+
+cmpi_w_imm_mem_3:
         slwi    data, data, 16
 
 // Reached from 16 dispatch table entries:
 //     CMPI.W #<data>,Dn
 //     CMP.W #<data>,Dn
-L_06430:
+cmp_w_imm_dn:
         lhau    rtn_addr, 2(pc)
         slwi    immed_data, prefetch_data, 16
         rlwimi  disp_table, rtn_addr, 3, 13, 28         // disp_table[18:3] = rtn_addr[15:0]
@@ -15803,10 +18291,17 @@ L_06430:
 //     CMPI.L #<data>,-(An)
 //     CMP.L #<data>,Dn
 //     CMPA.L #<data>,An
-L_06440:
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     CMPI.L #<data>,(An)+
+cmpi_l_imm_mem_2:
         lhau    prefetch_data, 4(pc)
         lwz     immed_data, -4(pc)
-L_06448:
+
+// Continuation (via rtn_addr) of 10 dispatch table entries:
+//     CMPI.L #<data>,(d8,An,Xn)
+//     CMPI.L #<data>,(xxx).L
+//     CMPI.L #<data>,(d8,PC,Xn)
+cmpi_l_imm_mem_3:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
 L_0644C:
         mtlr    disp_table
@@ -15820,12 +18315,12 @@ L_0644C:
 //     CMPI.L #<data>,(d16,An)
 //     CMPI.L #<data>,(xxx).W
 //     CMPI.L #<data>,(d16,PC)
-L_06464:
+cmpi_l_imm_mem_4:
         lha     base_disp, 4(pc)
         lhau    prefetch_data, 6(pc)
         lwz     immed_data, -6(pc)
         lwzx    data, addr, base_disp
-        b       L_06448
+        b       cmpi_l_imm_mem_3
         ALIGN(64)
 L_06480:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
@@ -15853,7 +18348,7 @@ L_064B0:
 //     SUB.L An,Dn
 //     SUB.L Dn,Dn
 //     NEG.L Dn
-L_064C0:
+sub_neg_l_reg_dn:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
 L_064C4:
         mtlr    disp_table
@@ -15869,7 +18364,7 @@ L_064C8:
 //     ADD.L Dn,Dn
 //     ADD.L An,Dn
 //     ASL.L #<q>,Dn
-L_064E0:
+add_asl_l_any_dn:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -15881,7 +18376,9 @@ L_064E0:
 // Reached from 9 dispatch table entries:
 //     ADDI.B #<data>,(An)
 //     ADDI.B #<data>,(xxx).W
-L_06500:
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     ADDI.B #<data>,(An)+
+addi_b_imm_mem:
         lbz     data, 0(addr)
         lhau    rtn_addr, 2(pc)
 L_06508:
@@ -15898,9 +18395,13 @@ L_06514:
         stb     data, 0(addr)
         bflr_likely 4*cr2+lt
         b       L_0D114
-        b       L_06540
+        b       addi_b_imm_mem_2
         ALIGN(64)
-L_06540:
+
+// Continuation (via rtn_addr) of 9 dispatch table entries:
+//     ADDI.B #<data>,(d8,An,Xn)
+//     ADDI.B #<data>,(xxx).L
+addi_b_imm_mem_2:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         slwi    immed_data, immed_data, 24
         mtlr    disp_table
@@ -15908,7 +18409,7 @@ L_06540:
 
 // Reached from 8 dispatch table entries:
 //     ADDI.B #<data>,(d16,An)
-L_06550:
+addi_b_imm_mem_3:
         lhau    base_disp, 2(pc)
         lhau    rtn_addr, 2(pc)
         lbzux   data, addr, base_disp
@@ -15917,14 +18418,20 @@ L_06550:
 // Reached from 63 dispatch table entries:
 //     ADDQ.B #<q>,(d16,An)
 //     ADDQ.B #<q>,(xxx).W
-L_06560:
+addq_b_q_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 56 dispatch table entries:
 //     ADDQ.B #<q>,(An)
-L_06564:
+// Continuation (via rtn_addr) of 56 dispatch table entries:
+//     ADDQ.B #<q>,(An)+
+addq_b_q_mem_2:
         lbz     data, 0(addr)
-L_06568:
+
+// Continuation (via rtn_addr) of 63 dispatch table entries:
+//     ADDQ.B #<q>,(d8,An,Xn)
+//     ADDQ.B #<q>,(xxx).L
+addq_b_q_mem_3:
         rlwinm  immed_data, disp_table, 12, 5, 7        // immed_data = disp_table[14:12] << 24
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -15934,14 +18441,20 @@ L_06568:
 // Reached from 9 dispatch table entries:
 //     ADDQ.B #<q>,(d16,An)
 //     ADDQ.B #<q>,(xxx).W
-L_06580:
+addq_b_q_mem_4:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     ADDQ.B #<q>,(An)
-L_06584:
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     ADDQ.B #<q>,(An)+
+addq_b_q_mem_5:
         lbz     data, 0(addr)
-L_06588:
+
+// Continuation (via rtn_addr) of 9 dispatch table entries:
+//     ADDQ.B #<q>,(d8,An,Xn)
+//     ADDQ.B #<q>,(xxx).L
+addq_b_q_mem_6:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         lis     immed_data, 0x0800
         mtlr    disp_table
@@ -15951,7 +18464,9 @@ L_06588:
 // Reached from 9 dispatch table entries:
 //     SUBI.B #<data>,(An)
 //     SUBI.B #<data>,(xxx).W
-L_065A0:
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     SUBI.B #<data>,(An)+
+subi_b_imm_mem:
         lbz     data, 0(addr)
         lhau    rtn_addr, 2(pc)
 L_065A8:
@@ -15971,7 +18486,11 @@ L_065C0:
         bflr_likely 4*cr2+lt
         b       L_0D114
         ALIGN(32)
-L_065E0:
+
+// Continuation (via rtn_addr) of 9 dispatch table entries:
+//     SUBI.B #<data>,(d8,An,Xn)
+//     SUBI.B #<data>,(xxx).L
+subi_b_imm_mem_2:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         slwi    immed_data, immed_data, 24
         mtlr    disp_table
@@ -15979,7 +18498,7 @@ L_065E0:
 
 // Reached from 8 dispatch table entries:
 //     SUBI.B #<data>,(d16,An)
-L_065F0:
+subi_b_imm_mem_3:
         lhau    base_disp, 2(pc)
         lhau    rtn_addr, 2(pc)
         lbzux   data, addr, base_disp
@@ -15988,14 +18507,20 @@ L_065F0:
 // Reached from 63 dispatch table entries:
 //     SUBQ.B #<q>,(d16,An)
 //     SUBQ.B #<q>,(xxx).W
-L_06600:
+subq_b_q_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 56 dispatch table entries:
 //     SUBQ.B #<q>,(An)
-L_06604:
+// Continuation (via rtn_addr) of 56 dispatch table entries:
+//     SUBQ.B #<q>,(An)+
+subq_b_q_mem_2:
         lbz     data, 0(addr)
-L_06608:
+
+// Continuation (via rtn_addr) of 63 dispatch table entries:
+//     SUBQ.B #<q>,(d8,An,Xn)
+//     SUBQ.B #<q>,(xxx).L
+subq_b_q_mem_3:
         rlwinm  immed_data, disp_table, 12, 5, 7        // immed_data = disp_table[14:12] << 24
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -16005,14 +18530,20 @@ L_06608:
 // Reached from 9 dispatch table entries:
 //     SUBQ.B #<q>,(d16,An)
 //     SUBQ.B #<q>,(xxx).W
-L_06620:
+subq_b_q_mem_4:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     SUBQ.B #<q>,(An)
-L_06624:
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     SUBQ.B #<q>,(An)+
+subq_b_q_mem_5:
         lbz     data, 0(addr)
-L_06628:
+
+// Continuation (via rtn_addr) of 9 dispatch table entries:
+//     SUBQ.B #<q>,(d8,An,Xn)
+//     SUBQ.B #<q>,(xxx).L
+subq_b_q_mem_6:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         lis     immed_data, 0x0800
         mtlr    disp_table
@@ -16022,12 +18553,16 @@ L_06628:
 // Reached from 9 dispatch table entries:
 //     NEG.B (d16,An)
 //     NEG.B (xxx).W
-L_06640:
+neg_b_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     NEG.B (An)
-L_06644:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     NEG.B (An)+
+//     NEG.B (d8,An,Xn)
+//     NEG.B (xxx).L
+neg_b_mem_2:
         lbz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -16072,12 +18607,16 @@ L_066C0:
 // Reached from 9 dispatch table entries:
 //     NEGX.B (d16,An)
 //     NEGX.B (xxx).W
-L_066EC:
+negx_b_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     NEGX.B (An)
-L_066F0:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     NEGX.B (An)+
+//     NEGX.B (d8,An,Xn)
+//     NEGX.B (xxx).L
+negx_b_mem_2:
         lbz     data, 0(addr)
         li      immed_data, 0
 L_066F8:
@@ -16088,13 +18627,15 @@ L_066F8:
         stb     data, 0(addr)
         bfctr_likely 4*cr2+lt
         b       L_0D114
-        b       L_06720
+        b       addi_w_imm_mem
         ALIGN(32)
 
 // Reached from 9 dispatch table entries:
 //     ADDI.W #<data>,(An)
 //     ADDI.W #<data>,(xxx).W
-L_06720:
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     ADDI.W #<data>,(An)+
+addi_w_imm_mem:
         lha     data, 0(addr)
         lhau    rtn_addr, 2(pc)
 L_06728:
@@ -16111,9 +18652,13 @@ L_06734:
         sth     data, 0(addr)
         bflr_likely 4*cr2+lt
         b       L_0D114
-        b       L_06760
+        b       addi_w_imm_mem_2
         ALIGN(32)
-L_06760:
+
+// Continuation (via rtn_addr) of 9 dispatch table entries:
+//     ADDI.W #<data>,(d8,An,Xn)
+//     ADDI.W #<data>,(xxx).L
+addi_w_imm_mem_2:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         slwi    immed_data, immed_data, 16
         mtlr    disp_table
@@ -16121,7 +18666,7 @@ L_06760:
 
 // Reached from 8 dispatch table entries:
 //     ADDI.W #<data>,(d16,An)
-L_06770:
+addi_w_imm_mem_3:
         lhau    base_disp, 2(pc)
         lhau    rtn_addr, 2(pc)
         lhaux   data, addr, base_disp
@@ -16130,14 +18675,20 @@ L_06770:
 // Reached from 63 dispatch table entries:
 //     ADDQ.W #<q>,(d16,An)
 //     ADDQ.W #<q>,(xxx).W
-L_06780:
+addq_w_q_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 56 dispatch table entries:
 //     ADDQ.W #<q>,(An)
-L_06784:
+// Continuation (via rtn_addr) of 56 dispatch table entries:
+//     ADDQ.W #<q>,(An)+
+addq_w_q_mem_2:
         lha     data, 0(addr)
-L_06788:
+
+// Continuation (via rtn_addr) of 63 dispatch table entries:
+//     ADDQ.W #<q>,(d8,An,Xn)
+//     ADDQ.W #<q>,(xxx).L
+addq_w_q_mem_3:
         rlwinm  immed_data, disp_table, 4, 13, 15       // immed_data = disp_table[14:12] << 16
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -16147,14 +18698,20 @@ L_06788:
 // Reached from 9 dispatch table entries:
 //     ADDQ.W #<q>,(d16,An)
 //     ADDQ.W #<q>,(xxx).W
-L_067A0:
+addq_w_q_mem_4:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     ADDQ.W #<q>,(An)
-L_067A4:
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     ADDQ.W #<q>,(An)+
+addq_w_q_mem_5:
         lha     data, 0(addr)
-L_067A8:
+
+// Continuation (via rtn_addr) of 9 dispatch table entries:
+//     ADDQ.W #<q>,(d8,An,Xn)
+//     ADDQ.W #<q>,(xxx).L
+addq_w_q_mem_6:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         lis     immed_data, 0x0008
         mtlr    disp_table
@@ -16164,7 +18721,9 @@ L_067A8:
 // Reached from 9 dispatch table entries:
 //     SUBI.W #<data>,(An)
 //     SUBI.W #<data>,(xxx).W
-L_067C0:
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     SUBI.W #<data>,(An)+
+subi_w_imm_mem:
         lha     data, 0(addr)
         lhau    rtn_addr, 2(pc)
 L_067C8:
@@ -16184,7 +18743,11 @@ L_067E0:
         bflr_likely 4*cr2+lt
         b       L_0D114
         ALIGN(64)
-L_06800:
+
+// Continuation (via rtn_addr) of 9 dispatch table entries:
+//     SUBI.W #<data>,(d8,An,Xn)
+//     SUBI.W #<data>,(xxx).L
+subi_w_imm_mem_2:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         slwi    immed_data, immed_data, 16
         mtlr    disp_table
@@ -16192,7 +18755,7 @@ L_06800:
 
 // Reached from 8 dispatch table entries:
 //     SUBI.W #<data>,(d16,An)
-L_06810:
+subi_w_imm_mem_3:
         lhau    base_disp, 2(pc)
         lhau    rtn_addr, 2(pc)
         lhaux   data, addr, base_disp
@@ -16201,14 +18764,20 @@ L_06810:
 // Reached from 63 dispatch table entries:
 //     SUBQ.W #<q>,(d16,An)
 //     SUBQ.W #<q>,(xxx).W
-L_06820:
+subq_w_q_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 56 dispatch table entries:
 //     SUBQ.W #<q>,(An)
-L_06824:
+// Continuation (via rtn_addr) of 56 dispatch table entries:
+//     SUBQ.W #<q>,(An)+
+subq_w_q_mem_2:
         lha     data, 0(addr)
-L_06828:
+
+// Continuation (via rtn_addr) of 63 dispatch table entries:
+//     SUBQ.W #<q>,(d8,An,Xn)
+//     SUBQ.W #<q>,(xxx).L
+subq_w_q_mem_3:
         rlwinm  immed_data, disp_table, 4, 13, 15       // immed_data = disp_table[14:12] << 16
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -16218,14 +18787,20 @@ L_06828:
 // Reached from 9 dispatch table entries:
 //     SUBQ.W #<q>,(d16,An)
 //     SUBQ.W #<q>,(xxx).W
-L_06840:
+subq_w_q_mem_4:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     SUBQ.W #<q>,(An)
-L_06844:
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     SUBQ.W #<q>,(An)+
+subq_w_q_mem_5:
         lha     data, 0(addr)
-L_06848:
+
+// Continuation (via rtn_addr) of 9 dispatch table entries:
+//     SUBQ.W #<q>,(d8,An,Xn)
+//     SUBQ.W #<q>,(xxx).L
+subq_w_q_mem_6:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         lis     immed_data, 0x0008
         mtlr    disp_table
@@ -16235,12 +18810,16 @@ L_06848:
 // Reached from 9 dispatch table entries:
 //     NEG.W (d16,An)
 //     NEG.W (xxx).W
-L_06860:
+neg_w_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     NEG.W (An)
-L_06864:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     NEG.W (An)+
+//     NEG.W (d8,An,Xn)
+//     NEG.W (xxx).L
+neg_w_mem_2:
         lha     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -16285,12 +18864,16 @@ L_068E0:
 // Reached from 9 dispatch table entries:
 //     NEGX.W (d16,An)
 //     NEGX.W (xxx).W
-L_0690C:
+negx_w_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     NEGX.W (An)
-L_06910:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     NEGX.W (An)+
+//     NEGX.W (d8,An,Xn)
+//     NEGX.W (xxx).L
+negx_w_mem_2:
         lha     data, 0(addr)
         li      immed_data, 0
 L_06918:
@@ -16349,11 +18932,17 @@ L_069A0:
 
 // Reached from 8 dispatch table entries:
 //     ADDI.L #<data>,(An)
-L_069E0:
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     ADDI.L #<data>,(An)+
+addi_l_imm_mem:
         lhau    prefetch_data, 4(pc)
         lwz     data, 0(addr)
         lwz     immed_data, -4(pc)
-L_069EC:
+
+// Continuation (via rtn_addr) of 9 dispatch table entries:
+//     ADDI.L #<data>,(d8,An,Xn)
+//     ADDI.L #<data>,(xxx).L
+addi_l_imm_mem_2:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         addco.  data, immed_data, data
 L_069F4:
@@ -16367,24 +18956,30 @@ L_069F4:
 // Reached from 9 dispatch table entries:
 //     ADDI.L #<data>,(d16,An)
 //     ADDI.L #<data>,(xxx).W
-L_06A0C:
+addi_l_imm_mem_3:
         lha     base_disp, 4(pc)
         lhau    prefetch_data, 6(pc)
         lwz     immed_data, -6(pc)
         lwzux   data, addr, base_disp
-        b       L_069EC
+        b       addi_l_imm_mem_2
 
 // Reached from 63 dispatch table entries:
 //     ADDQ.L #<q>,(d16,An)
 //     ADDQ.L #<q>,(xxx).W
-L_06A20:
+addq_l_q_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 56 dispatch table entries:
 //     ADDQ.L #<q>,(An)
-L_06A24:
+// Continuation (via rtn_addr) of 56 dispatch table entries:
+//     ADDQ.L #<q>,(An)+
+addq_l_q_mem_2:
         lwz     data, 0(addr)
-L_06A28:
+
+// Continuation (via rtn_addr) of 63 dispatch table entries:
+//     ADDQ.L #<q>,(d8,An,Xn)
+//     ADDQ.L #<q>,(xxx).L
+addq_l_q_mem_3:
         rlwinm  immed_data, disp_table, 20, 29, 31      // immed_data = disp_table[14:12]
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         addco.  data, immed_data, data
@@ -16394,14 +18989,20 @@ L_06A28:
 // Reached from 9 dispatch table entries:
 //     ADDQ.L #<q>,(d16,An)
 //     ADDQ.L #<q>,(xxx).W
-L_06A40:
+addq_l_q_mem_4:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     ADDQ.L #<q>,(An)
-L_06A44:
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     ADDQ.L #<q>,(An)+
+addq_l_q_mem_5:
         lwz     data, 0(addr)
-L_06A48:
+
+// Continuation (via rtn_addr) of 9 dispatch table entries:
+//     ADDQ.L #<q>,(d8,An,Xn)
+//     ADDQ.L #<q>,(xxx).L
+addq_l_q_mem_6:
         li      immed_data, 8
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         addco.  data, immed_data, data
@@ -16410,11 +19011,17 @@ L_06A48:
 
 // Reached from 8 dispatch table entries:
 //     SUBI.L #<data>,(An)
-L_06A60:
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     SUBI.L #<data>,(An)+
+subi_l_imm_mem:
         lhau    prefetch_data, 4(pc)
         lwz     data, 0(addr)
         lwz     immed_data, -4(pc)
-L_06A6C:
+
+// Continuation (via rtn_addr) of 9 dispatch table entries:
+//     SUBI.L #<data>,(d8,An,Xn)
+//     SUBI.L #<data>,(xxx).L
+subi_l_imm_mem_2:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         subfco. data, immed_data, data                  // data = data - immed_data
 L_06A74:
@@ -16425,32 +19032,38 @@ L_06A74:
         addc    ccr_x, immed_data, immed_data
         bflr_likely 4*cr2+lt
         b       L_0D114
-        b       L_06AA0
+        b       subi_l_imm_mem_3
         ALIGN(32)
 
 // Reached from 9 dispatch table entries:
 //     SUBI.L #<data>,(d16,An)
 //     SUBI.L #<data>,(xxx).W
-L_06AA0:
+subi_l_imm_mem_3:
         lha     base_disp, 4(pc)
         lhau    prefetch_data, 6(pc)
         lwz     immed_data, -6(pc)
         lwzux   data, addr, base_disp
-        b       L_06A6C
-        b       L_06AC0
+        b       subi_l_imm_mem_2
+        b       subq_l_q_mem
         ALIGN(64)
 
 // Reached from 63 dispatch table entries:
 //     SUBQ.L #<q>,(d16,An)
 //     SUBQ.L #<q>,(xxx).W
-L_06AC0:
+subq_l_q_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 56 dispatch table entries:
 //     SUBQ.L #<q>,(An)
-L_06AC4:
+// Continuation (via rtn_addr) of 56 dispatch table entries:
+//     SUBQ.L #<q>,(An)+
+subq_l_q_mem_2:
         lwz     data, 0(addr)
-L_06AC8:
+
+// Continuation (via rtn_addr) of 63 dispatch table entries:
+//     SUBQ.L #<q>,(d8,An,Xn)
+//     SUBQ.L #<q>,(xxx).L
+subq_l_q_mem_3:
         rlwinm  immed_data, disp_table, 20, 29, 31      // immed_data = disp_table[14:12]
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         subfco. data, immed_data, data                  // data = data - immed_data
@@ -16460,14 +19073,20 @@ L_06AC8:
 // Reached from 9 dispatch table entries:
 //     SUBQ.L #<q>,(d16,An)
 //     SUBQ.L #<q>,(xxx).W
-L_06AE0:
+subq_l_q_mem_4:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     SUBQ.L #<q>,(An)
-L_06AE4:
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     SUBQ.L #<q>,(An)+
+subq_l_q_mem_5:
         lwz     data, 0(addr)
-L_06AE8:
+
+// Continuation (via rtn_addr) of 9 dispatch table entries:
+//     SUBQ.L #<q>,(d8,An,Xn)
+//     SUBQ.L #<q>,(xxx).L
+subq_l_q_mem_6:
         li      immed_data, 8
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         subfco. data, immed_data, data                  // data = data - immed_data
@@ -16477,12 +19096,16 @@ L_06AE8:
 // Reached from 9 dispatch table entries:
 //     NEG.L (d16,An)
 //     NEG.L (xxx).W
-L_06B00:
+neg_l_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     NEG.L (An)
-L_06B04:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     NEG.L (An)+
+//     NEG.L (d8,An,Xn)
+//     NEG.L (xxx).L
+neg_l_mem_2:
         lwz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         subfco. data, data, zero                        // data = zero - data
@@ -16522,12 +19145,16 @@ L_06B60:
 // Reached from 9 dispatch table entries:
 //     NEGX.L (d16,An)
 //     NEGX.L (xxx).W
-L_06B8C:
+negx_l_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     NEGX.L (An)
-L_06B90:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     NEGX.L (An)+
+//     NEGX.L (d8,An,Xn)
+//     NEGX.L (xxx).L
+negx_l_mem_2:
         lwz     data, 0(addr)
         li      immed_data, 0
 L_06B98:
@@ -16535,27 +19162,32 @@ L_06B98:
         stw     data, 0(addr)
         bfctr_likely 4*cr2+lt
         b       L_0D114
-        b       L_06BC0
+        b       mulu_muls_l_mem
         ALIGN(64)
 
 // Reached from 10 dispatch table entries:
 //     MULU/MULS.L (d16,An),Dl|Dh:Dl
 //     MULU/MULS.L (xxx).W,Dl|Dh:Dl
 //     MULU/MULS.L (d16,PC),Dl|Dh:Dl
-L_06BC0:
+mulu_muls_l_mem:
         lhau    base_disp, 2(pc)
         addco   immed_data, prefetch_data, zero
         lhau    prefetch_data, 2(pc)
         lwzx    data, addr, base_disp
         b       L_06BF4
-L_06BD4:
+
+// Continuation (via rtn_addr) of 10 dispatch table entries:
+//     MULU/MULS.L (d8,An,Xn),Dl|Dh:Dl
+//     MULU/MULS.L (xxx).L,Dl|Dh:Dl
+//     MULU/MULS.L (d8,PC,Xn),Dl|Dh:Dl
+mulu_muls_l_mem_2:
         lwz     data, 0(addr)
         addco   zero, zero, zero
         b       L_06BF4
 
 // Reached from 1 dispatch table entry:
 //     MULU/MULS.L #<data>,Dl|Dh:Dl
-L_06BE0:
+mulu_muls_l_imm:
         addco   immed_data, prefetch_data, zero
         lhau    prefetch_data, 6(pc)
         b       L_06BF4
@@ -16564,7 +19196,9 @@ L_06BE0:
 //     MULU/MULS.L Dn,Dl|Dh:Dl
 //     MULU/MULS.L (An),Dl|Dh:Dl
 //     MULU/MULS.L -(An),Dl|Dh:Dl
-L_06BEC:
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     MULU/MULS.L (An)+,Dl|Dh:Dl
+mulu_muls_l_mem_3:
         addco   immed_data, prefetch_data, zero
         lhau    prefetch_data, 2(pc)
 L_06BF4:
@@ -16612,7 +19246,7 @@ L_06C64:
 //     DIVU/DIVS.L (d16,An),Dq|Dr:Dq
 //     DIVU/DIVS.L (xxx).W,Dq|Dr:Dq
 //     DIVU/DIVS.L (d16,PC),Dq|Dr:Dq
-L_06C80:
+divu_divs_l_mem:
         lhau    base_disp, 2(pc)
         mr      immed_data, prefetch_data
         lhau    prefetch_data, 2(pc)
@@ -16621,11 +19255,16 @@ L_06C80:
 
 // Reached from 1 dispatch table entry:
 //     DIVU/DIVS.L #<data>,Dq|Dr:Dq
-L_06C94:
+divu_divs_l_imm:
         mr      immed_data, prefetch_data
         lhau    prefetch_data, 6(pc)
         b       L_06CB0
-L_06CA0:
+
+// Continuation (via rtn_addr) of 10 dispatch table entries:
+//     DIVU/DIVS.L (d8,An,Xn),Dq|Dr:Dq
+//     DIVU/DIVS.L (xxx).L,Dq|Dr:Dq
+//     DIVU/DIVS.L (d8,PC,Xn),Dq|Dr:Dq
+divu_divs_l_mem_2:
         lwz     data, 0(addr)
         b       L_06CB0
 
@@ -16633,7 +19272,9 @@ L_06CA0:
 //     DIVU/DIVS.L Dn,Dq|Dr:Dq
 //     DIVU/DIVS.L (An),Dq|Dr:Dq
 //     DIVU/DIVS.L -(An),Dq|Dr:Dq
-L_06CA8:
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     DIVU/DIVS.L (An)+,Dq|Dr:Dq
+divu_divs_l_mem_3:
         mr      immed_data, prefetch_data
         lhau    prefetch_data, 2(pc)
 L_06CB0:
@@ -16762,18 +19403,24 @@ L_06E50:
 L_06E64:
         li      immed_data, 0x2014
         b       L_0CC90
-        b       L_06E80
+        b       andi_b_imm_mem
         ALIGN(64)
 
 // Reached from 9 dispatch table entries:
 //     ANDI.B #<data>,(An)
 //     ANDI.B #<data>,(xxx).W
-L_06E80:
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     ANDI.B #<data>,(An)+
+andi_b_imm_mem:
         lbz     data, 0(addr)
         lhau    rtn_addr, 2(pc)
         and     data, data, prefetch_data
         b       L_06F60
-L_06E90:
+
+// Continuation (via rtn_addr) of 9 dispatch table entries:
+//     ANDI.B #<data>,(d8,An,Xn)
+//     ANDI.B #<data>,(xxx).L
+andi_b_imm_mem_2:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         and     data, data, immed_data
         mtlr    disp_table
@@ -16781,7 +19428,7 @@ L_06E90:
 
 // Reached from 8 dispatch table entries:
 //     ANDI.B #<data>,(d16,An)
-L_06EA0:
+andi_b_imm_mem_3:
         lhau    base_disp, 2(pc)
         lhau    rtn_addr, 2(pc)
         lbzux   data, addr, base_disp
@@ -16793,12 +19440,18 @@ L_06EA0:
 // Reached from 9 dispatch table entries:
 //     ORI.B #<data>,(An)
 //     ORI.B #<data>,(xxx).W
-L_06EC0:
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     ORI.B #<data>,(An)+
+ori_b_imm_mem:
         lbz     data, 0(addr)
         lhau    rtn_addr, 2(pc)
         or      data, data, prefetch_data
         b       L_06F60
-L_06ED0:
+
+// Continuation (via rtn_addr) of 9 dispatch table entries:
+//     ORI.B #<data>,(d8,An,Xn)
+//     ORI.B #<data>,(xxx).L
+ori_b_imm_mem_2:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         or      data, data, immed_data
         mtlr    disp_table
@@ -16806,7 +19459,7 @@ L_06ED0:
 
 // Reached from 8 dispatch table entries:
 //     ORI.B #<data>,(d16,An)
-L_06EE0:
+ori_b_imm_mem_3:
         lhau    base_disp, 2(pc)
         lhau    rtn_addr, 2(pc)
         lbzux   data, addr, base_disp
@@ -16818,12 +19471,18 @@ L_06EE0:
 // Reached from 9 dispatch table entries:
 //     EORI.B #<data>,(An)
 //     EORI.B #<data>,(xxx).W
-L_06F00:
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     EORI.B #<data>,(An)+
+eori_b_imm_mem:
         lbz     data, 0(addr)
         lhau    rtn_addr, 2(pc)
         xor     data, data, prefetch_data
         b       L_06F60
-L_06F10:
+
+// Continuation (via rtn_addr) of 9 dispatch table entries:
+//     EORI.B #<data>,(d8,An,Xn)
+//     EORI.B #<data>,(xxx).L
+eori_b_imm_mem_2:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         xor     data, data, immed_data
         mtlr    disp_table
@@ -16831,7 +19490,7 @@ L_06F10:
 
 // Reached from 8 dispatch table entries:
 //     EORI.B #<data>,(d16,An)
-L_06F20:
+eori_b_imm_mem_3:
         lhau    base_disp, 2(pc)
         lhau    rtn_addr, 2(pc)
         lbzux   data, addr, base_disp
@@ -16843,12 +19502,16 @@ L_06F20:
 // Reached from 9 dispatch table entries:
 //     NOT.B (d16,An)
 //     NOT.B (xxx).W
-L_06F40:
+not_b_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     NOT.B (An)
-L_06F44:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     NOT.B (An)+
+//     NOT.B (d8,An,Xn)
+//     NOT.B (xxx).L
+not_b_mem_2:
         lbz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         not     data, data
@@ -16869,12 +19532,18 @@ L_06F68:
 // Reached from 9 dispatch table entries:
 //     ANDI.W #<data>,(An)
 //     ANDI.W #<data>,(xxx).W
-L_06F80:
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     ANDI.W #<data>,(An)+
+andi_w_imm_mem:
         lha     data, 0(addr)
         lhau    rtn_addr, 2(pc)
         and.    data, data, prefetch_data
         b       L_07060
-L_06F90:
+
+// Continuation (via rtn_addr) of 9 dispatch table entries:
+//     ANDI.W #<data>,(d8,An,Xn)
+//     ANDI.W #<data>,(xxx).L
+andi_w_imm_mem_2:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         and.    data, data, immed_data
         mtlr    disp_table
@@ -16882,7 +19551,7 @@ L_06F90:
 
 // Reached from 8 dispatch table entries:
 //     ANDI.W #<data>,(d16,An)
-L_06FA0:
+andi_w_imm_mem_3:
         lhau    base_disp, 2(pc)
         lhau    rtn_addr, 2(pc)
         lhaux   data, addr, base_disp
@@ -16894,12 +19563,18 @@ L_06FA0:
 // Reached from 9 dispatch table entries:
 //     ORI.W #<data>,(An)
 //     ORI.W #<data>,(xxx).W
-L_06FC0:
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     ORI.W #<data>,(An)+
+ori_w_imm_mem:
         lha     data, 0(addr)
         lhau    rtn_addr, 2(pc)
         or.     data, data, prefetch_data
         b       L_07060
-L_06FD0:
+
+// Continuation (via rtn_addr) of 9 dispatch table entries:
+//     ORI.W #<data>,(d8,An,Xn)
+//     ORI.W #<data>,(xxx).L
+ori_w_imm_mem_2:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         or.     data, data, immed_data
         mtlr    disp_table
@@ -16907,7 +19582,7 @@ L_06FD0:
 
 // Reached from 8 dispatch table entries:
 //     ORI.W #<data>,(d16,An)
-L_06FE0:
+ori_w_imm_mem_3:
         lhau    base_disp, 2(pc)
         lhau    rtn_addr, 2(pc)
         lhaux   data, addr, base_disp
@@ -16919,12 +19594,18 @@ L_06FE0:
 // Reached from 9 dispatch table entries:
 //     EORI.W #<data>,(An)
 //     EORI.W #<data>,(xxx).W
-L_07000:
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     EORI.W #<data>,(An)+
+eori_w_imm_mem:
         lha     data, 0(addr)
         lhau    rtn_addr, 2(pc)
         xor.    data, data, prefetch_data
         b       L_07060
-L_07010:
+
+// Continuation (via rtn_addr) of 9 dispatch table entries:
+//     EORI.W #<data>,(d8,An,Xn)
+//     EORI.W #<data>,(xxx).L
+eori_w_imm_mem_2:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         xor.    data, data, immed_data
         mtlr    disp_table
@@ -16932,7 +19613,7 @@ L_07010:
 
 // Reached from 8 dispatch table entries:
 //     EORI.W #<data>,(d16,An)
-L_07020:
+eori_w_imm_mem_3:
         lhau    base_disp, 2(pc)
         lhau    rtn_addr, 2(pc)
         lhaux   data, addr, base_disp
@@ -16944,12 +19625,16 @@ L_07020:
 // Reached from 9 dispatch table entries:
 //     NOT.W (d16,An)
 //     NOT.W (xxx).W
-L_07040:
+not_w_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     NOT.W (An)
-L_07044:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     NOT.W (An)+
+//     NOT.W (d8,An,Xn)
+//     NOT.W (xxx).L
+not_w_mem_2:
         lha     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         nor.    data, data, data                        // data = ~(data | data)
@@ -16979,12 +19664,16 @@ L_07080:
 // Reached from 9 dispatch table entries:
 //     NOT.L (d16,An)
 //     NOT.L (xxx).W
-L_070A0:
+not_l_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     NOT.L (An)
-L_070A4:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     NOT.L (An)+
+//     NOT.L (d8,An,Xn)
+//     NOT.L (xxx).L
+not_l_mem_2:
         lwz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         nor.    data, data, data                        // data = ~(data | data)
@@ -16994,20 +19683,26 @@ L_070A4:
 // Reached from 9 dispatch table entries:
 //     ANDI.L #<data>,(d16,An)
 //     ANDI.L #<data>,(xxx).W
-L_070C0:
+andi_l_imm_mem:
         lwz     immed_data, 0(pc)
         lha     base_disp, 4(pc)
         lhau    prefetch_data, 6(pc)
         lwzux   data, addr, base_disp
-        b       L_070E0
+        b       andi_l_imm_mem_3
 
 // Reached from 8 dispatch table entries:
 //     ANDI.L #<data>,(An)
-L_070D4:
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     ANDI.L #<data>,(An)+
+andi_l_imm_mem_2:
         lwz     immed_data, 0(pc)
         lhau    prefetch_data, 4(pc)
         lwz     data, 0(addr)
-L_070E0:
+
+// Continuation (via rtn_addr) of 9 dispatch table entries:
+//     ANDI.L #<data>,(d8,An,Xn)
+//     ANDI.L #<data>,(xxx).L
+andi_l_imm_mem_3:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         and.    data, data, immed_data
 L_070E8:
@@ -17021,20 +19716,26 @@ L_070E8:
 // Reached from 9 dispatch table entries:
 //     ORI.L #<data>,(d16,An)
 //     ORI.L #<data>,(xxx).W
-L_07100:
+ori_l_imm_mem:
         lwz     immed_data, 0(pc)
         lha     base_disp, 4(pc)
         lhau    prefetch_data, 6(pc)
         lwzux   data, addr, base_disp
-        b       L_07120
+        b       ori_l_imm_mem_3
 
 // Reached from 8 dispatch table entries:
 //     ORI.L #<data>,(An)
-L_07114:
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     ORI.L #<data>,(An)+
+ori_l_imm_mem_2:
         lwz     immed_data, 0(pc)
         lhau    prefetch_data, 4(pc)
         lwz     data, 0(addr)
-L_07120:
+
+// Continuation (via rtn_addr) of 9 dispatch table entries:
+//     ORI.L #<data>,(d8,An,Xn)
+//     ORI.L #<data>,(xxx).L
+ori_l_imm_mem_3:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         or.     data, data, immed_data
         mtlr    disp_table
@@ -17047,20 +19748,26 @@ L_07120:
 // Reached from 9 dispatch table entries:
 //     EORI.L #<data>,(d16,An)
 //     EORI.L #<data>,(xxx).W
-L_07140:
+eori_l_imm_mem:
         lwz     immed_data, 0(pc)
         lha     base_disp, 4(pc)
         lhau    prefetch_data, 6(pc)
         lwzux   data, addr, base_disp
-        b       L_07160
+        b       eori_l_imm_mem_3
 
 // Reached from 8 dispatch table entries:
 //     EORI.L #<data>,(An)
-L_07154:
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     EORI.L #<data>,(An)+
+eori_l_imm_mem_2:
         lwz     immed_data, 0(pc)
         lhau    prefetch_data, 4(pc)
         lwz     data, 0(addr)
-L_07160:
+
+// Continuation (via rtn_addr) of 9 dispatch table entries:
+//     EORI.L #<data>,(d8,An,Xn)
+//     EORI.L #<data>,(xxx).L
+eori_l_imm_mem_3:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         xor.    data, data, immed_data
         mtlr    disp_table
@@ -17084,7 +19791,7 @@ L_071A0:
 
 // Reached from 8 dispatch table entries:
 //     LSL.L #<q>,Dn
-L_071A4:
+lsl_l_q_dn:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -17126,12 +19833,12 @@ L_07228:
         mtxer   ccr_x
         bflr_likely 4*cr2+lt
         b       L_0D114
-        b       L_07240
+        b       ror_b_q_dn
         ALIGN(64)
 
 // Reached from 8 dispatch table entries:
 //     ROR.B #<q>,Dn
-L_07240:
+ror_b_q_dn:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         rlwinm  data, data, 30, 2, 2                    // data = data[31] << 29
@@ -17259,14 +19966,20 @@ L_073C0:
 // Reached from 9 dispatch table entries:
 //     LSR.W (d16,An)
 //     LSR.W (xxx).W
-L_07400:
+lsr_w_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     LSR.W (An)
-L_07404:
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     LSR.W (An)+
+lsr_w_mem_2:
         lha     data, 0(addr)
-L_07408:
+
+// Continuation (via rtn_addr) of 9 dispatch table entries:
+//     LSR.W (d8,An,Xn)
+//     LSR.W (xxx).L
+lsr_w_mem_3:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         rlwinm  ccr_x, data, 29, 2, 2                   // ccr_x = data[0] << 29
         mtlr    disp_table
@@ -17276,20 +19989,26 @@ L_07408:
         sth     data, 0(addr)
         bflr_likely 4*cr2+lt
         b       L_0D114
-        b       L_07440
+        b       lsl_w_mem
         ALIGN(64)
 
 // Reached from 9 dispatch table entries:
 //     LSL.W (d16,An)
 //     LSL.W (xxx).W
-L_07440:
+lsl_w_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     LSL.W (An)
-L_07444:
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     LSL.W (An)+
+lsl_w_mem_2:
         lha     data, 0(addr)
-L_07448:
+
+// Continuation (via rtn_addr) of 9 dispatch table entries:
+//     LSL.W (d8,An,Xn)
+//     LSL.W (xxx).L
+lsl_w_mem_3:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         slwi.   immed_data, data, 17
         mtlr    disp_table
@@ -17299,20 +20018,26 @@ L_07448:
         sth     data, 0(addr)
         bflr_likely 4*cr2+lt
         b       L_0D114
-        b       L_07480
+        b       asr_w_mem
         ALIGN(64)
 
 // Reached from 9 dispatch table entries:
 //     ASR.W (d16,An)
 //     ASR.W (xxx).W
-L_07480:
+asr_w_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     ASR.W (An)
-L_07484:
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     ASR.W (An)+
+asr_w_mem_2:
         lha     data, 0(addr)
-L_07488:
+
+// Continuation (via rtn_addr) of 9 dispatch table entries:
+//     ASR.W (d8,An,Xn)
+//     ASR.W (xxx).L
+asr_w_mem_3:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         rlwinm  ccr_x, data, 29, 2, 2                   // ccr_x = data[0] << 29
         mtlr    disp_table
@@ -17322,20 +20047,26 @@ L_07488:
         sth     data, 0(addr)
         bflr_likely 4*cr2+lt
         b       L_0D114
-        b       L_074C0
+        b       asl_w_mem
         ALIGN(64)
 
 // Reached from 9 dispatch table entries:
 //     ASL.W (d16,An)
 //     ASL.W (xxx).W
-L_074C0:
+asl_w_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     ASL.W (An)
-L_074C4:
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     ASL.W (An)+
+asl_w_mem_2:
         lha     data, 0(addr)
-L_074C8:
+
+// Continuation (via rtn_addr) of 9 dispatch table entries:
+//     ASL.W (d8,An,Xn)
+//     ASL.W (xxx).L
+asl_w_mem_3:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         slwi    data, data, 16
         mtlr    disp_table
@@ -17346,20 +20077,26 @@ L_074C8:
         sth     data, 0(addr)
         bflr_likely 4*cr2+lt
         b       L_0D114
-        b       L_07500
+        b       ror_w_mem
         ALIGN(64)
 
 // Reached from 9 dispatch table entries:
 //     ROR.W (d16,An)
 //     ROR.W (xxx).W
-L_07500:
+ror_w_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     ROR.W (An)
-L_07504:
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     ROR.W (An)+
+ror_w_mem_2:
         lha     data, 0(addr)
-L_07508:
+
+// Continuation (via rtn_addr) of 9 dispatch table entries:
+//     ROR.W (d8,An,Xn)
+//     ROR.W (xxx).L
+ror_w_mem_3:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         rlwimi  data, data, 16, 0, 15                   // data[31:16] = data[15:0]
         mtlr    disp_table
@@ -17370,20 +20107,26 @@ L_07508:
         mtxer   immed_data
         bflr_likely 4*cr2+lt
         b       L_0D114
-        b       L_07540
+        b       rol_w_mem
         ALIGN(64)
 
 // Reached from 9 dispatch table entries:
 //     ROL.W (d16,An)
 //     ROL.W (xxx).W
-L_07540:
+rol_w_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     ROL.W (An)
-L_07544:
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     ROL.W (An)+
+rol_w_mem_2:
         lha     data, 0(addr)
-L_07548:
+
+// Continuation (via rtn_addr) of 9 dispatch table entries:
+//     ROL.W (d8,An,Xn)
+//     ROL.W (xxx).L
+rol_w_mem_3:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         rlwimi  data, data, 16, 0, 15                   // data[31:16] = data[15:0]
         mtlr    disp_table
@@ -17394,20 +20137,26 @@ L_07548:
         mtxer   immed_data
         bflr_likely 4*cr2+lt
         b       L_0D114
-        b       L_07580
+        b       roxr_w_mem
         ALIGN(64)
 
 // Reached from 9 dispatch table entries:
 //     ROXR.W (d16,An)
 //     ROXR.W (xxx).W
-L_07580:
+roxr_w_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     ROXR.W (An)
-L_07584:
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     ROXR.W (An)+
+roxr_w_mem_2:
         lha     data, 0(addr)
-L_07588:
+
+// Continuation (via rtn_addr) of 9 dispatch table entries:
+//     ROXR.W (d8,An,Xn)
+//     ROXR.W (xxx).L
+roxr_w_mem_3:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         rlwimi  data, ccr_x, 19, 15, 15                 // data[16] = ccr_x[29]
         mtlr    disp_table
@@ -17419,20 +20168,26 @@ L_07588:
         extsh.  data, data                              // data = sign-extended low word of data
         bflr_likely 4*cr2+lt
         b       L_0D114
-        b       L_075C0
+        b       roxl_w_mem
         ALIGN(64)
 
 // Reached from 9 dispatch table entries:
 //     ROXL.W (d16,An)
 //     ROXL.W (xxx).W
-L_075C0:
+roxl_w_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     ROXL.W (An)
-L_075C4:
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     ROXL.W (An)+
+roxl_w_mem_2:
         lha     data, 0(addr)
-L_075C8:
+
+// Continuation (via rtn_addr) of 9 dispatch table entries:
+//     ROXL.W (d8,An,Xn)
+//     ROXL.W (xxx).L
+roxl_w_mem_3:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtxer   ccr_x
         mtlr    disp_table
@@ -17443,13 +20198,15 @@ L_075C8:
         extsh.  data, data                              // data = sign-extended low word of data
         bflr_likely 4*cr2+lt
         b       L_0D114
-        b       L_07600
+        b       btst_b_imm_mem
         ALIGN(64)
 
 // Reached from 16 dispatch table entries:
 //     BTST.B #<bit>,(An)
 //     BTST.B #<bit>,-(An)
-L_07600:
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     BTST.B #<bit>,(An)+
+btst_b_imm_mem:
         lhau    rtn_addr, 2(pc)
 L_07604:
         clrlwi  immed_data, prefetch_data, 29           // immed_data = prefetch_data & 0x00000007
@@ -17463,19 +20220,24 @@ L_07610:
         crnot   eq, 4*cr7+so
         bflr_likely 4*cr2+lt
         b       L_0D114
-        b       L_07640
+        b       btst_b_imm_mem_2
         ALIGN(64)
 
 // Reached from 10 dispatch table entries:
 //     BTST.B #<bit>,(d16,An)
 //     BTST.B #<bit>,(xxx).W
 //     BTST.B #<bit>,(d16,PC)
-L_07640:
+btst_b_imm_mem_2:
         lhau    base_disp, 2(pc)
         lhau    rtn_addr, 2(pc)
         lbzx    data, addr, base_disp
         b       L_07604
-L_07650:
+
+// Continuation (via rtn_addr) of 10 dispatch table entries:
+//     BTST.B #<bit>,(d8,An,Xn)
+//     BTST.B #<bit>,(xxx).L
+//     BTST.B #<bit>,(d8,PC,Xn)
+btst_b_imm_mem_3:
         clrlwi  immed_data, immed_data, 29              // immed_data = immed_data & 0x00000007
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         srw     data, data, immed_data
@@ -17483,12 +20245,16 @@ L_07650:
 
 // Reached from 8 dispatch table entries:
 //     BCHG.B #<bit>,(d16,An)
-L_07660:
+bchg_b_imm_mem:
         lhau    base_disp, 2(pc)
         clrlwi  immed_data, prefetch_data, 29           // immed_data = prefetch_data & 0x00000007
         lbzux   data, addr, base_disp
         b       L_07688
-L_07670:
+
+// Continuation (via rtn_addr) of 9 dispatch table entries:
+//     BCHG.B #<bit>,(d8,An,Xn)
+//     BCHG.B #<bit>,(xxx).L
+bchg_b_imm_mem_2:
         clrlwi  immed_data, immed_data, 29              // immed_data = immed_data & 0x00000007
         neg     rtn_addr, immed_data
         rlwnm   data, data, rtn_addr, 0, 31             // data = rotl(data, rtn_addr) & 0xFFFFFFFF
@@ -17497,7 +20263,9 @@ L_07670:
 // Reached from 9 dispatch table entries:
 //     BCHG.B #<bit>,(An)
 //     BCHG.B #<bit>,(xxx).W
-L_07680:
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     BCHG.B #<bit>,(An)+
+bchg_b_imm_mem_3:
         clrlwi  immed_data, prefetch_data, 29           // immed_data = prefetch_data & 0x00000007
         lbz     data, 0(addr)
 L_07688:
@@ -17522,7 +20290,9 @@ L_076A0:
 // Reached from 9 dispatch table entries:
 //     BCLR.B #<bit>,(An)
 //     BCLR.B #<bit>,(xxx).W
-L_076C0:
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     BCLR.B #<bit>,(An)+
+bclr_b_imm_mem:
         clrlwi  immed_data, prefetch_data, 29           // immed_data = prefetch_data & 0x00000007
         lbz     data, 0(addr)
 L_076C8:
@@ -17539,17 +20309,21 @@ L_076D4:
         crnot   eq, 4*cr7+so
         bflr_likely 4*cr2+lt
         b       L_0D114
-        b       L_07700
+        b       bclr_b_imm_mem_2
         ALIGN(64)
 
 // Reached from 8 dispatch table entries:
 //     BCLR.B #<bit>,(d16,An)
-L_07700:
+bclr_b_imm_mem_2:
         lhau    base_disp, 2(pc)
         clrlwi  immed_data, prefetch_data, 29           // immed_data = prefetch_data & 0x00000007
         lbzux   data, addr, base_disp
         b       L_076C8
-L_07710:
+
+// Continuation (via rtn_addr) of 9 dispatch table entries:
+//     BCLR.B #<bit>,(d8,An,Xn)
+//     BCLR.B #<bit>,(xxx).L
+bclr_b_imm_mem_3:
         clrlwi  immed_data, immed_data, 29              // immed_data = immed_data & 0x00000007
         neg     rtn_addr, immed_data
         rlwnm   data, data, rtn_addr, 0, 31             // data = rotl(data, rtn_addr) & 0xFFFFFFFF
@@ -17557,12 +20331,16 @@ L_07710:
 
 // Reached from 8 dispatch table entries:
 //     BSET.B #<bit>,(d16,An)
-L_07720:
+bset_b_imm_mem:
         lhau    base_disp, 2(pc)
         clrlwi  immed_data, prefetch_data, 29           // immed_data = prefetch_data & 0x00000007
         lbzux   data, addr, base_disp
         b       L_07748
-L_07730:
+
+// Continuation (via rtn_addr) of 9 dispatch table entries:
+//     BSET.B #<bit>,(d8,An,Xn)
+//     BSET.B #<bit>,(xxx).L
+bset_b_imm_mem_2:
         clrlwi  immed_data, immed_data, 29              // immed_data = immed_data & 0x00000007
         neg     rtn_addr, immed_data
         rlwnm   data, data, rtn_addr, 0, 31             // data = rotl(data, rtn_addr) & 0xFFFFFFFF
@@ -17571,7 +20349,9 @@ L_07730:
 // Reached from 9 dispatch table entries:
 //     BSET.B #<bit>,(An)
 //     BSET.B #<bit>,(xxx).W
-L_07740:
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     BSET.B #<bit>,(An)+
+bset_b_imm_mem_3:
         clrlwi  immed_data, prefetch_data, 29           // immed_data = prefetch_data & 0x00000007
         lbz     data, 0(addr)
 L_07748:
@@ -17588,12 +20368,12 @@ L_07754:
         crnot   eq, 4*cr7+so
         bflr_likely 4*cr2+lt
         b       L_0D114
-        b       L_07780
+        b       bftst
         ALIGN(64)
 
 // Reached from 8 dispatch table entries:
 //     BFTST Dn{ofs:wid}
-L_07780:
+bftst:
         mtcrf   0x0F, prefetch_data                     // cr4..cr7 = prefetch_data[15:0]
         rlwinm  base_disp, prefetch_data, 26, 27, 31    // base_disp = prefetch_data[10:6]
         neg     immed_data, prefetch_data
@@ -17614,10 +20394,15 @@ L_07780:
 // Reached from 9 dispatch table entries:
 //     BFTST (An){ofs:wid}
 //     BFTST (xxx).W{ofs:wid}
-L_077C0:
+bftst_mem:
         mr      immed_data, prefetch_data
         lhau    prefetch_data, 2(pc)
-L_077C8:
+
+// Continuation (via rtn_addr) of 10 dispatch table entries:
+//     BFTST (d8,An,Xn){ofs:wid}
+//     BFTST (xxx).L{ofs:wid}
+//     BFTST (d8,PC,Xn){ofs:wid}
+bftst_mem_2:
         mtcrf   0x0F, immed_data                        // cr4..cr7 = immed_data[15:0]
         rlwinm  base_disp, immed_data, 26, 27, 31       // base_disp = immed_data[10:6]
         bltl    cr5, L_07C40
@@ -17643,18 +20428,18 @@ L_077C8:
 // Reached from 9 dispatch table entries:
 //     BFTST (d16,An){ofs:wid}
 //     BFTST (d16,PC){ofs:wid}
-L_07820:
+bftst_mem_3:
         lhau    base_disp, 2(pc)
         mr      immed_data, prefetch_data
         lhau    prefetch_data, 2(pc)
         add     addr, addr, base_disp
-        b       L_077C8
-        b       L_07840
+        b       bftst_mem_2
+        b       bfextu
         ALIGN(64)
 
 // Reached from 8 dispatch table entries:
 //     BFEXTU Dn{ofs:wid},Dn
-L_07840:
+bfextu:
         mtcrf   0x0F, prefetch_data                     // cr4..cr7 = prefetch_data[15:0]
         rlwinm  base_disp, prefetch_data, 26, 27, 31    // base_disp = prefetch_data[10:6]
         neg     immed_data, prefetch_data
@@ -17674,7 +20459,7 @@ L_07840:
 
 // Reached from 8 dispatch table entries:
 //     BFFFO Dn{ofs:wid},Dn
-L_07880:
+bfffo:
         mtcrf   0x0F, prefetch_data                     // cr4..cr7 = prefetch_data[15:0]
         rlwinm  base_disp, prefetch_data, 26, 27, 31    // base_disp = prefetch_data[10:6]
         neg     immed_data, prefetch_data
@@ -17696,7 +20481,7 @@ L_07880:
 
 // Reached from 8 dispatch table entries:
 //     BFEXTS Dn{ofs:wid},Dn
-L_078C8:
+bfexts:
         mtcrf   0x0F, prefetch_data                     // cr4..cr7 = prefetch_data[15:0]
         rlwinm  base_disp, prefetch_data, 26, 27, 31    // base_disp = prefetch_data[10:6]
         neg     immed_data, prefetch_data
@@ -17719,12 +20504,12 @@ L_078C8:
 //     BFEXTU (d16,PC){ofs:wid},Dn
 //     BFEXTS (d16,PC){ofs:wid},Dn
 //     BFFFO (d16,PC){ofs:wid},Dn
-L_07900:
+bfextu_bfexts_bfffo_mem:
         lhau    base_disp, 2(pc)
         mr      immed_data, prefetch_data
         lhau    prefetch_data, 2(pc)
         add     addr, addr, base_disp
-        b       L_07920
+        b       bfextu_bfexts_bfffo_mem_3
         ALIGN(8)
 
 // Reached from 27 dispatch table entries:
@@ -17734,10 +20519,19 @@ L_07900:
 //     BFEXTU (xxx).W{ofs:wid},Dn
 //     BFEXTS (xxx).W{ofs:wid},Dn
 //     BFFFO (xxx).W{ofs:wid},Dn
-L_07918:
+bfextu_bfexts_bfffo_mem_2:
         mr      immed_data, prefetch_data
         lhau    prefetch_data, 2(pc)
-L_07920:
+
+// Continuation (via rtn_addr) of 30 dispatch table entries:
+//     BFEXTU (d8,An,Xn){ofs:wid},Dn
+//     BFEXTS (d8,An,Xn){ofs:wid},Dn
+//     BFFFO (d8,An,Xn){ofs:wid},Dn
+//     BFEXTU (xxx).L{ofs:wid},Dn
+//     BFEXTU (d8,PC,Xn){ofs:wid},Dn
+//     BFEXTS (xxx).L{ofs:wid},Dn
+//     ... and 3 more forms
+bfextu_bfexts_bfffo_mem_3:
         mtcrf   0x0F, immed_data                        // cr4..cr7 = immed_data[15:0]
         rlwinm  base_disp, immed_data, 26, 27, 31       // base_disp = immed_data[10:6]
         ori     data, code_ptr, L_05708 - cb
@@ -17777,14 +20571,14 @@ L_079A0:
         srw     addr, addr, rtn_addr
         addc    base_disp, base_disp, addr
         blr
-        b       L_079C0
+        b       bfchg_bfclr_bfset
         ALIGN(64)
 
 // Reached from 24 dispatch table entries:
 //     BFCHG Dn{ofs:wid}
 //     BFCLR Dn{ofs:wid}
 //     BFSET Dn{ofs:wid}
-L_079C0:
+bfchg_bfclr_bfset:
         mtcrf   0x0F, prefetch_data                     // cr4..cr7 = prefetch_data[15:0]
         rlwinm  base_disp, prefetch_data, 26, 27, 31    // base_disp = prefetch_data[10:6]
         neg     immed_data, prefetch_data
@@ -17815,12 +20609,12 @@ L_07A14:
 //     BFCHG (d16,An){ofs:wid}
 //     BFCLR (d16,An){ofs:wid}
 //     BFSET (d16,An){ofs:wid}
-L_07A20:
+bfchg_bfclr_bfset_mem:
         lhau    base_disp, 2(pc)
         mr      immed_data, prefetch_data
         lhau    prefetch_data, 2(pc)
         add     addr, addr, base_disp
-        b       L_07A3C
+        b       bfchg_bfclr_bfset_mem_3
 
 // Reached from 27 dispatch table entries:
 //     BFCHG (An){ofs:wid}
@@ -17829,10 +20623,18 @@ L_07A20:
 //     BFCHG (xxx).W{ofs:wid}
 //     BFCLR (xxx).W{ofs:wid}
 //     BFSET (xxx).W{ofs:wid}
-L_07A34:
+bfchg_bfclr_bfset_mem_2:
         mr      immed_data, prefetch_data
         lhau    prefetch_data, 2(pc)
-L_07A3C:
+
+// Continuation (via rtn_addr) of 27 dispatch table entries:
+//     BFCHG (d8,An,Xn){ofs:wid}
+//     BFCLR (d8,An,Xn){ofs:wid}
+//     BFSET (d8,An,Xn){ofs:wid}
+//     BFCHG (xxx).L{ofs:wid}
+//     BFCLR (xxx).L{ofs:wid}
+//     BFSET (xxx).L{ofs:wid}
+bfchg_bfclr_bfset_mem_3:
         mtcrf   0x0F, immed_data                        // cr4..cr7 = immed_data[15:0]
         rlwinm  base_disp, immed_data, 26, 27, 31       // base_disp = immed_data[10:6]
         bltl    cr5, L_07C40
@@ -17890,7 +20692,7 @@ L_07AEC:
 
 // Reached from 8 dispatch table entries:
 //     BFINS Dn,Dn{ofs:wid}
-L_07B00:
+bfins:
         mtcrf   0x0F, prefetch_data                     // cr4..cr7 = prefetch_data[15:0]
         ori     data, code_ptr, L_05700 - cb
         rlwimi  data, prefetch_data, 24, 25, 27         // data[6:4] = prefetch_data[14:12]
@@ -17918,10 +20720,14 @@ L_07B00:
 // Reached from 9 dispatch table entries:
 //     BFINS Dn,(An){ofs:wid}
 //     BFINS Dn,(xxx).W{ofs:wid}
-L_07B60:
+bfins_mem:
         mr      immed_data, prefetch_data
         lhau    prefetch_data, 2(pc)
-L_07B68:
+
+// Continuation (via rtn_addr) of 9 dispatch table entries:
+//     BFINS Dn,(d8,An,Xn){ofs:wid}
+//     BFINS Dn,(xxx).L{ofs:wid}
+bfins_mem_2:
         mtcrf   0x0F, immed_data                        // cr4..cr7 = immed_data[15:0]
         ori     data, code_ptr, L_05700 - cb
         rlwinm  base_disp, immed_data, 26, 27, 31       // base_disp = immed_data[10:6]
@@ -17978,12 +20784,12 @@ L_07C00:
 
 // Reached from 8 dispatch table entries:
 //     BFINS Dn,(d16,An){ofs:wid}
-L_07C2C:
+bfins_mem_3:
         lhau    base_disp, 2(pc)
         mr      immed_data, prefetch_data
         lhau    prefetch_data, 2(pc)
         add     addr, addr, base_disp
-        b       L_07B68
+        b       bfins_mem_2
 L_07C40:
         ori     rtn_addr, code_ptr, L_05700 - cb
         rlwimi  rtn_addr, base_disp, 4, 25, 27          // rtn_addr[6:4] = base_disp[2:0]
@@ -18000,7 +20806,7 @@ L_07C60:
 // Reached from 2 dispatch table entries:
 //     JMP (d16,PC)
 //     BRA.W <label>
-L_07C64:
+jmp_bra_mem:
         rlwimi  disp_table, pc, 20, 11, 11              // disp_table[20] = pc[0]
         mtctr   r23
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
@@ -18016,7 +20822,7 @@ L_07CA0:
 
 // Reached from 1 dispatch table entry:
 //     BRA.L <label>
-L_07CA4:
+bra_l:
         lhaux   prefetch_data, pc, data
         rlwimi  disp_table, pc, 20, 11, 11              // disp_table[20] = pc[0]
         mtctr   r23
@@ -18026,9 +20832,13 @@ L_07CA4:
         bgtctr  cr1
         bflr_likely 4*cr2+lt
         b       L_0D114
-        b       L_07CE0
+        b       jmp_mem
         ALIGN(32)
-L_07CE0:
+
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     JMP (d8,An,Xn)
+//     JMP (d8,PC,Xn)
+jmp_mem:
         mr      pc, addr
 
 // Reached from 18 dispatch table entries:
@@ -18036,7 +20846,7 @@ L_07CE0:
 //     JMP (d16,An)
 //     JMP (xxx).W
 //     JMP (xxx).L
-L_07CE4:
+jmp_mem_2:
         lha     prefetch_data, 0(pc)
         rlwimi  disp_table, pc, 20, 11, 11              // disp_table[20] = pc[0]
         mtctr   r23
@@ -18046,12 +20856,12 @@ L_07CE4:
         bgtctr  cr1
         bflr_likely 4*cr2+lt
         b       L_0D114
-        b       L_07D20
+        b       bsr_s
         ALIGN(32)
 
 // Reached from 127 dispatch table entries:
 //     BSR.S <label>
-L_07D20:
+bsr_s:
         lha     prefetch_data, 0(addr)
         stwu    pc, -4(a7)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
@@ -18062,13 +20872,13 @@ L_07D20:
         bgtctr  cr1
         bflr_likely 4*cr2+lt
         b       L_0D114
-        b       L_07D60
+        b       jsr_bsr_mem
         ALIGN(32)
 
 // Reached from 2 dispatch table entries:
 //     JSR (d16,PC)
 //     BSR.W <label>
-L_07D60:
+jsr_bsr_mem:
         rlwimi  disp_table, prefetch_data, 20, 11, 11   // disp_table[20] = prefetch_data[0]
         rlwimi  disp_table, data, 3, 13, 28             // disp_table[18:3] = data[15:0]
         mtlr    disp_table
@@ -18079,12 +20889,12 @@ L_07D60:
         bgtctr  cr1
         bflr_likely 4*cr2+lt
         b       L_0D114
-        b       L_07DA0
+        b       rts
         ALIGN(32)
 
 // Reached from 1 dispatch table entry:
 //     RTS
-L_07DA0:
+rts:
         lha     prefetch_data, 0(pc)
         rlwimi  disp_table, pc, 20, 11, 11              // disp_table[20] = pc[0]
         mtctr   r23
@@ -18095,12 +20905,12 @@ L_07DA0:
         bgtctr  cr1
         bflr_likely 4*cr2+lt
         b       L_0D114
-        b       L_07DE0
+        b       rtd_imm
         ALIGN(32)
 
 // Reached from 1 dispatch table entry:
 //     RTD #<disp>
-L_07DE0:
+rtd_imm:
         lha     immed_data, 0(pc)
         rlwimi  disp_table, pc, 20, 11, 11              // disp_table[20] = pc[0]
         mtctr   r23
@@ -18116,12 +20926,15 @@ L_07DE0:
 // Reached from 9 dispatch table entries:
 //     JSR (d16,An)
 //     JSR (xxx).W
-L_07E0C:
+jsr_mem:
         addi    pc, pc, 2
 
 // Reached from 8 dispatch table entries:
 //     JSR (An)
-L_07E10:
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     JSR (d8,An,Xn)
+//     JSR (d8,PC,Xn)
+jsr_mem_2:
         lha     prefetch_data, 0(addr)
         rlwimi  disp_table, addr, 20, 11, 11            // disp_table[20] = addr[0]
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
@@ -18136,7 +20949,7 @@ L_07E10:
 
 // Reached from 1 dispatch table entry:
 //     BSR.L <label>
-L_07E3C:
+bsr_l:
         lhaux   prefetch_data, data, pc
         rlwimi  disp_table, data, 20, 11, 11            // disp_table[20] = data[0]
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
@@ -18152,7 +20965,7 @@ L_07E3C:
 
 // Reached from 1 dispatch table entry:
 //     JSR (xxx).L
-L_07E6C:
+jsr_mem_3:
         lha     prefetch_data, 0(addr)
         rlwimi  disp_table, addr, 20, 11, 11            // disp_table[20] = addr[0]
         addi    pc, pc, 4
@@ -18169,7 +20982,7 @@ L_07E6C:
 
 // Reached from 1 dispatch table entry:
 //     RTR
-L_07EA0:
+rtr:
         lwzu    pc, 2(a7)
         rlwinm  immed_data, data, 27, 2, 2              // immed_data = data[2] << 29
         rlwinm  ccr_x, data, 25, 2, 2                   // ccr_x = data[4] << 29
@@ -18177,11 +20990,11 @@ L_07EA0:
         rlwinm  data, data, 29, 1, 2                    // data = data[1:0] << 29
         mtcrf   0x80, immed_data                        // cr0 = immed_data[31:28]
         mtxer   data
-        b       L_07DA0
+        b       rts
 
 // Reached from 127 dispatch table entries:
 //     BRA.S <label>
-L_07EC0:
+bra_s:
         mtctr   r23
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -18193,12 +21006,12 @@ L_07EC0:
 
 // Reached from 127 dispatch table entries:
 //     BHI.S <label>
-L_07EE0:
+bhi_s:
         beq     L_07EF0
 
 // Reached from 127 dispatch table entries:
 //     BCC.S <label>
-L_07EE4:
+bcc_s:
         subfe   data, data, data                        // data = data + ~data + CA
         cmpwi   cr6, data, 0
         bne     cr6, L_07F64
@@ -18211,12 +21024,12 @@ L_07EF0:
 
 // Reached from 127 dispatch table entries:
 //     BLS.S <label>
-L_07F04:
+bls_s:
         beq     L_07F64
 
 // Reached from 127 dispatch table entries:
 //     BCS.S <label>
-L_07F08:
+bcs_s:
         subfe   data, data, data                        // data = data + ~data + CA
         cmpwi   cr6, data, 0
         beq     cr6, L_07F64
@@ -18225,12 +21038,12 @@ L_07F08:
         lhau    prefetch_data, 2(pc)
         bflr_likely 4*cr2+lt
         b       L_0D114
-        b       L_07F40
+        b       bne_s
         ALIGN(64)
 
 // Reached from 127 dispatch table entries:
 //     BNE.S <label>
-L_07F40:
+bne_s:
         lha     data, 0(addr)
         beq     L_07EF0
         rlwimi  disp_table, data, 3, 13, 28             // disp_table[18:3] = data[15:0]
@@ -18242,7 +21055,7 @@ L_07F40:
 
 // Reached from 127 dispatch table entries:
 //     BEQ.S <label>
-L_07F60:
+beq_s:
         bne     L_07EF0
 L_07F64:
         lha     data, 0(addr)
@@ -18254,12 +21067,12 @@ L_07F64:
         bgtctr  cr1
         bflr_likely 4*cr2+lt
         b       L_0D114
-        b       L_07FC0
+        b       bpl_s
         ALIGN(64)
 
 // Reached from 63 dispatch table entries:
 //     BPL.S <label>
-L_07FC0:
+bpl_s:
         blt     L_07EF0
         lha     data, 0(addr)
         mtctr   r23
@@ -18270,12 +21083,12 @@ L_07FC0:
         bgtctr  cr1
         bflr_likely 4*cr2+lt
         b       L_0D114
-        b       L_08000
+        b       bpl_s_2
         ALIGN(64)
 
 // Reached from 64 dispatch table entries:
 //     BPL.S <label>
-L_08000:
+bpl_s_2:
         lha     data, 0(addr)
         blt     L_07EF0
         mtctr   r23
@@ -18286,12 +21099,12 @@ L_08000:
         bgtctr  cr1
         bflr_likely 4*cr2+lt
         b       L_0D114
-        b       L_08040
+        b       bmi_s
         ALIGN(64)
 
 // Reached from 63 dispatch table entries:
 //     BMI.S <label>
-L_08040:
+bmi_s:
         bge     L_07EF0
         lha     data, 0(addr)
         mtctr   r23
@@ -18302,12 +21115,12 @@ L_08040:
         bgtctr  cr1
         bflr_likely 4*cr2+lt
         b       L_0D114
-        b       L_08080
+        b       bmi_s_2
         ALIGN(64)
 
 // Reached from 64 dispatch table entries:
 //     BMI.S <label>
-L_08080:
+bmi_s_2:
         lha     data, 0(addr)
         bge     L_07EF0
         mtctr   r23
@@ -18318,17 +21131,17 @@ L_08080:
         bgtctr  cr1
         bflr_likely 4*cr2+lt
         b       L_0D114
-        b       L_080C0
+        b       bgt_s
         ALIGN(64)
 
 // Reached from 127 dispatch table entries:
 //     BGT.S <label>
-L_080C0:
+bgt_s:
         beq     L_07EF0
 
 // Reached from 127 dispatch table entries:
 //     BGE.S <label>
-L_080C4:
+bge_s:
         mfxer   data
         rlwinm  data, data, 8, 24, 27                   // data = data[31:28] << 4
         mtcrf   0x02, data                              // cr6 = data[7:4]
@@ -18342,12 +21155,12 @@ L_080C4:
 
 // Reached from 127 dispatch table entries:
 //     BLE.S <label>
-L_080EC:
+ble_s:
         beq     L_07F64
 
 // Reached from 127 dispatch table entries:
 //     BLT.S <label>
-L_080F0:
+blt_s:
         mfxer   data
         rlwinm  data, data, 8, 24, 27                   // data = data[31:28] << 4
         mtcrf   0x02, data                              // cr6 = data[7:4]
@@ -18362,7 +21175,7 @@ L_080F0:
 
 // Reached from 127 dispatch table entries:
 //     BVC.S <label>
-L_08120:
+bvc_s:
         lha     immed_data, 0(addr)
         mfxer   data
         rlwinm  data, data, 8, 24, 27                   // data = data[31:28] << 4
@@ -18379,7 +21192,7 @@ L_08120:
 
 // Reached from 127 dispatch table entries:
 //     BVS.S <label>
-L_08154:
+bvs_s:
         mfxer   data
         rlwinm  data, data, 8, 24, 27                   // data = data[31:28] << 4
         mtcrf   0x02, data                              // cr6 = data[7:4]
@@ -18393,12 +21206,12 @@ L_08154:
 
 // Reached from 1 dispatch table entry:
 //     BHI.W <label>
-L_08180:
+bhi_w:
         beq     L_08190
 
 // Reached from 1 dispatch table entry:
 //     BCC.W <label>
-L_08184:
+bcc_w:
         subfe   data, data, data                        // data = data + ~data + CA
         cmpwi   cr6, data, 0
         bne     cr6, L_07C60
@@ -18411,7 +21224,7 @@ L_08190:
 
 // Reached from 1 dispatch table entry:
 //     BNE.W <label>
-L_081A4:
+bne_w:
         bne     L_07C60
         rlwimi  disp_table, immed_data, 3, 13, 28       // disp_table[18:3] = immed_data[15:0]
         mtlr    disp_table
@@ -18422,12 +21235,12 @@ L_081A4:
 
 // Reached from 1 dispatch table entry:
 //     BLS.W <label>
-L_081C0:
+bls_w:
         beq     L_07C60
 
 // Reached from 1 dispatch table entry:
 //     BCS.W <label>
-L_081C4:
+bcs_w:
         subfe   data, data, data                        // data = data + ~data + CA
         cmpwi   cr6, data, 0
         beq     cr6, L_07C60
@@ -18439,7 +21252,7 @@ L_081C4:
 
 // Reached from 1 dispatch table entry:
 //     BEQ.W <label>
-L_081E4:
+beq_w:
         beq     L_07C60
         rlwimi  disp_table, immed_data, 3, 13, 28       // disp_table[18:3] = immed_data[15:0]
         mtlr    disp_table
@@ -18450,7 +21263,7 @@ L_081E4:
 
 // Reached from 1 dispatch table entry:
 //     BVC.W <label>
-L_08200:
+bvc_w:
         mfxer   data
         rlwinm  data, data, 8, 24, 27                   // data = data[31:28] << 4
         mtcrf   0x02, data                              // cr6 = data[7:4]
@@ -18463,7 +21276,7 @@ L_08200:
 
 // Reached from 1 dispatch table entry:
 //     BPL.W <label>
-L_08224:
+bpl_w:
         bge     L_07C60
         rlwimi  disp_table, immed_data, 3, 13, 28       // disp_table[18:3] = immed_data[15:0]
         mtlr    disp_table
@@ -18474,7 +21287,7 @@ L_08224:
 
 // Reached from 1 dispatch table entry:
 //     BVS.W <label>
-L_08240:
+bvs_w:
         mfxer   data
         rlwinm  data, data, 8, 24, 27                   // data = data[31:28] << 4
         mtcrf   0x02, data                              // cr6 = data[7:4]
@@ -18487,7 +21300,7 @@ L_08240:
 
 // Reached from 1 dispatch table entry:
 //     BMI.W <label>
-L_08264:
+bmi_w:
         blt     L_07C60
         rlwimi  disp_table, immed_data, 3, 13, 28       // disp_table[18:3] = immed_data[15:0]
         mtlr    disp_table
@@ -18498,12 +21311,12 @@ L_08264:
 
 // Reached from 1 dispatch table entry:
 //     BGT.W <label>
-L_08280:
+bgt_w:
         beq     L_08190
 
 // Reached from 1 dispatch table entry:
 //     BGE.W <label>
-L_08284:
+bge_w:
         mfxer   data
         rlwinm  data, data, 8, 24, 27                   // data = data[31:28] << 4
         mtcrf   0x02, data                              // cr6 = data[7:4]
@@ -18514,17 +21327,17 @@ L_08284:
         lhau    prefetch_data, 4(pc)
         bflr_likely 4*cr2+lt
         b       L_0D114
-        b       L_082C0
+        b       ble_w
         ALIGN(64)
 
 // Reached from 1 dispatch table entry:
 //     BLE.W <label>
-L_082C0:
+ble_w:
         beq     L_07C60
 
 // Reached from 1 dispatch table entry:
 //     BLT.W <label>
-L_082C4:
+blt_w:
         mfxer   data
         rlwinm  data, data, 8, 24, 27                   // data = data[31:28] << 4
         mtcrf   0x02, data                              // cr6 = data[7:4]
@@ -18535,17 +21348,17 @@ L_082C4:
         lhau    prefetch_data, 4(pc)
         bflr_likely 4*cr2+lt
         b       L_0D114
-        b       L_08300
+        b       bhi_l
         ALIGN(64)
 
 // Reached from 1 dispatch table entry:
 //     BHI.L <label>
-L_08300:
+bhi_l:
         beq     L_08310
 
 // Reached from 1 dispatch table entry:
 //     BCC.L <label>
-L_08304:
+bcc_l:
         subfe   data, data, data                        // data = data + ~data + CA
         cmpwi   cr6, data, 0
         bne     cr6, L_07CA0
@@ -18558,7 +21371,7 @@ L_08310:
 
 // Reached from 1 dispatch table entry:
 //     BNE.L <label>
-L_08324:
+bne_l:
         bne     L_07CA0
         rlwimi  disp_table, immed_data, 3, 13, 28       // disp_table[18:3] = immed_data[15:0]
         mtlr    disp_table
@@ -18569,12 +21382,12 @@ L_08324:
 
 // Reached from 1 dispatch table entry:
 //     BLS.L <label>
-L_08340:
+bls_l:
         beq     L_07CA0
 
 // Reached from 1 dispatch table entry:
 //     BCS.L <label>
-L_08344:
+bcs_l:
         subfe   data, data, data                        // data = data + ~data + CA
         cmpwi   cr6, data, 0
         beq     cr6, L_07CA0
@@ -18586,7 +21399,7 @@ L_08344:
 
 // Reached from 1 dispatch table entry:
 //     BEQ.L <label>
-L_08364:
+beq_l:
         beq     L_07CA0
         rlwimi  disp_table, immed_data, 3, 13, 28       // disp_table[18:3] = immed_data[15:0]
         mtlr    disp_table
@@ -18597,7 +21410,7 @@ L_08364:
 
 // Reached from 1 dispatch table entry:
 //     BVC.L <label>
-L_08380:
+bvc_l:
         mfxer   data
         rlwinm  data, data, 8, 24, 27                   // data = data[31:28] << 4
         mtcrf   0x02, data                              // cr6 = data[7:4]
@@ -18610,7 +21423,7 @@ L_08380:
 
 // Reached from 1 dispatch table entry:
 //     BPL.L <label>
-L_083A4:
+bpl_l:
         bge     L_07CA0
         rlwimi  disp_table, immed_data, 3, 13, 28       // disp_table[18:3] = immed_data[15:0]
         mtlr    disp_table
@@ -18621,7 +21434,7 @@ L_083A4:
 
 // Reached from 1 dispatch table entry:
 //     BVS.L <label>
-L_083C0:
+bvs_l:
         mfxer   data
         rlwinm  data, data, 8, 24, 27                   // data = data[31:28] << 4
         mtcrf   0x02, data                              // cr6 = data[7:4]
@@ -18634,7 +21447,7 @@ L_083C0:
 
 // Reached from 1 dispatch table entry:
 //     BMI.L <label>
-L_083E4:
+bmi_l:
         blt     L_07CA0
         rlwimi  disp_table, immed_data, 3, 13, 28       // disp_table[18:3] = immed_data[15:0]
         mtlr    disp_table
@@ -18645,12 +21458,12 @@ L_083E4:
 
 // Reached from 1 dispatch table entry:
 //     BGT.L <label>
-L_08400:
+bgt_l:
         beq     L_08310
 
 // Reached from 1 dispatch table entry:
 //     BGE.L <label>
-L_08404:
+bge_l:
         mfxer   data
         rlwinm  data, data, 8, 24, 27                   // data = data[31:28] << 4
         mtcrf   0x02, data                              // cr6 = data[7:4]
@@ -18661,17 +21474,17 @@ L_08404:
         lhau    prefetch_data, 6(pc)
         bflr_likely 4*cr2+lt
         b       L_0D114
-        b       L_08440
+        b       ble_l
         ALIGN(64)
 
 // Reached from 1 dispatch table entry:
 //     BLE.L <label>
-L_08440:
+ble_l:
         beq     L_07CA0
 
 // Reached from 1 dispatch table entry:
 //     BLT.L <label>
-L_08444:
+blt_l:
         mfxer   data
         rlwinm  data, data, 8, 24, 27                   // data = data[31:28] << 4
         mtcrf   0x02, data                              // cr6 = data[7:4]
@@ -18691,7 +21504,7 @@ L_08444:
 //     BNE.S <label>
 //     BEQ.S <label>
 //     ... and 8 more forms
-L_0846C:
+bcc_s_2:
         ori     base_disp, code_ptr, D_085C0 - cb
         mfxer   immed_data
         rlwinm  data, disp_table, 23, 26, 29            // data = disp_table[14:11] << 2
@@ -18701,7 +21514,7 @@ L_0846C:
         rlwimi  immed_data, rtn_addr, 5, 27, 29         // immed_data[4:2] = rtn_addr[31:29]
         rlwnm   data, data, immed_data, 31, 31          // data = rotl(data, immed_data) & 0x00000001
         mtcrf   0x01, data                              // cr7 = data[3:0]
-        bso     cr7, L_084AC
+        bso     cr7, bra_s_2
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -18710,12 +21523,12 @@ L_0846C:
 
 // Reached from 127 dispatch table entries:
 //     BSR.S <label>
-L_084A8:
+bsr_s_2:
         stwu    pc, -4(a7)
 
 // Reached from 127 dispatch table entries:
 //     BRA.S <label>
-L_084AC:
+bra_s_2:
         addi    data, pc, -2
         stw     data, 108(EmulatorStatePtr)
         lha     prefetch_data, 0(addr)
@@ -18724,7 +21537,7 @@ L_084AC:
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
         b       L_0D114
-        b       L_08500
+        b       dbcc_w_dn
         ALIGN(64)
 
 // Reached from 80 dispatch table entries:
@@ -18735,7 +21548,7 @@ L_084AC:
 //     DBVC.W Dn,<label>
 //     DBVS.W Dn,<label>
 //     ... and 4 more forms
-L_08500:
+dbcc_w_dn:
         mtlr    rtn_addr
         ori     base_disp, code_ptr, D_085C0 - cb
         mfxer   immed_data
@@ -18748,8 +21561,8 @@ L_08500:
         cmplwi  cr6, data, 0x0000
         beqlr   cr6
         lhau    prefetch_data, 2(pc)
-        b       L_06084
-        b       L_08540
+        b       move_add_etc_any_any
+        b       scc_b_dn
         ALIGN(64)
 
 // Reached from 112 dispatch table entries:
@@ -18760,7 +21573,7 @@ L_08500:
 //     SNE.B Dn
 //     SEQ.B Dn
 //     ... and 8 more forms
-L_08540:
+scc_b_dn:
         mtlr    rtn_addr
         ori     base_disp, code_ptr, D_085C0 - cb
         mfxer   immed_data
@@ -18785,7 +21598,7 @@ L_08540:
 //     SCS.B (d16,An)
 //     SNE.B (d16,An)
 //     ... and 24 more forms
-L_08580:
+scc_b_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 120 dispatch table entries:
@@ -18796,7 +21609,15 @@ L_08580:
 //     SCS.B (An)
 //     SNE.B (An)
 //     ... and 9 more forms
-L_08584:
+// Continuation (via rtn_addr) of 272 dispatch table entries:
+//     ST.B (An)+
+//     ST.B (d8,An,Xn)
+//     SF.B (An)+
+//     SF.B (d8,An,Xn)
+//     SHI.B (An)+
+//     SHI.B (d8,An,Xn)
+//     ... and 42 more forms
+scc_b_mem_2:
         ori     base_disp, code_ptr, D_085C0 - cb
         mfxer   immed_data
         rlwinm  data, disp_table, 23, 26, 29            // data = disp_table[14:11] << 2
@@ -18833,13 +21654,13 @@ D_085C0:
 // Reached from 2 dispatch table entries:
 //     MOVEM.W <list>,-(An)
 //     MOVEM.L <list>,-(An)
-L_08600:
+movem_list_mem:
         addi    addr, a0, 4
 
 // Reached from 2 dispatch table entries:
 //     MOVEM.W (An)+,<list>
 //     MOVEM.L (An)+,<list>
-L_08604:
+movem_mem_list:
         bl      L_08AF0
         add     a0, addr, base_disp
         bfctr_likely 4*cr2+lt
@@ -18848,13 +21669,13 @@ L_08604:
 // Reached from 2 dispatch table entries:
 //     MOVEM.W <list>,-(An)
 //     MOVEM.L <list>,-(An)
-L_08614:
+movem_list_mem_2:
         addi    addr, a1, 4
 
 // Reached from 2 dispatch table entries:
 //     MOVEM.W (An)+,<list>
 //     MOVEM.L (An)+,<list>
-L_08618:
+movem_mem_list_2:
         bl      L_08AF0
         add     a1, addr, base_disp
         bfctr_likely 4*cr2+lt
@@ -18863,13 +21684,13 @@ L_08618:
 // Reached from 2 dispatch table entries:
 //     MOVEM.W <list>,-(An)
 //     MOVEM.L <list>,-(An)
-L_08628:
+movem_list_mem_3:
         addi    addr, a2, 4
 
 // Reached from 2 dispatch table entries:
 //     MOVEM.W (An)+,<list>
 //     MOVEM.L (An)+,<list>
-L_0862C:
+movem_mem_list_3:
         bl      L_08AF0
         add     a2, addr, base_disp
         bfctr_likely 4*cr2+lt
@@ -18878,13 +21699,13 @@ L_0862C:
 // Reached from 2 dispatch table entries:
 //     MOVEM.W <list>,-(An)
 //     MOVEM.L <list>,-(An)
-L_0863C:
+movem_list_mem_4:
         addi    addr, a3, 4
 
 // Reached from 2 dispatch table entries:
 //     MOVEM.W (An)+,<list>
 //     MOVEM.L (An)+,<list>
-L_08640:
+movem_mem_list_4:
         bl      L_08AF0
         add     a3, addr, base_disp
         bfctr_likely 4*cr2+lt
@@ -18893,13 +21714,13 @@ L_08640:
 // Reached from 2 dispatch table entries:
 //     MOVEM.W <list>,-(An)
 //     MOVEM.L <list>,-(An)
-L_08650:
+movem_list_mem_5:
         addi    addr, a4, 4
 
 // Reached from 2 dispatch table entries:
 //     MOVEM.W (An)+,<list>
 //     MOVEM.L (An)+,<list>
-L_08654:
+movem_mem_list_5:
         bl      L_08AF0
         add     a4, addr, base_disp
         bfctr_likely 4*cr2+lt
@@ -18908,13 +21729,13 @@ L_08654:
 // Reached from 2 dispatch table entries:
 //     MOVEM.W <list>,-(An)
 //     MOVEM.L <list>,-(An)
-L_08664:
+movem_list_mem_6:
         addi    addr, a5, 4
 
 // Reached from 2 dispatch table entries:
 //     MOVEM.W (An)+,<list>
 //     MOVEM.L (An)+,<list>
-L_08668:
+movem_mem_list_6:
         bl      L_08AF0
         add     a5, addr, base_disp
         bfctr_likely 4*cr2+lt
@@ -18923,13 +21744,13 @@ L_08668:
 // Reached from 2 dispatch table entries:
 //     MOVEM.W <list>,-(An)
 //     MOVEM.L <list>,-(An)
-L_08678:
+movem_list_mem_7:
         addi    addr, a6, 4
 
 // Reached from 2 dispatch table entries:
 //     MOVEM.W (An)+,<list>
 //     MOVEM.L (An)+,<list>
-L_0867C:
+movem_mem_list_7:
         bl      L_08AF0
         add     a6, addr, base_disp
         bfctr_likely 4*cr2+lt
@@ -18937,12 +21758,12 @@ L_0867C:
 
 // Reached from 1 dispatch table entry:
 //     MOVEM.W <list>,-(An)
-L_0868C:
+movem_w_list_mem:
         addi    addr, a7, 4
 
 // Reached from 1 dispatch table entry:
 //     MOVEM.W (An)+,<list>
-L_08690:
+movem_w_mem_list:
         bl      L_08AF0
         add     a7, addr, base_disp
         bfctr_likely 4*cr2+lt
@@ -18950,7 +21771,7 @@ L_08690:
 
 // Reached from 1 dispatch table entry:
 //     MOVEM.L <list>,-(An)
-L_086A0:
+movem_l_list_mem:
         cmpwi   cr7, data, 0xF38
         mr      addr, a7
         bne     cr7, L_089A0
@@ -18997,12 +21818,12 @@ L_08718:
         stwu    d4, -4(a7)
         bfctr_likely 4*cr2+lt
         b       L_0D114
-        b       L_08740
+        b       movem_l_mem_list
         ALIGN(64)
 
 // Reached from 1 dispatch table entry:
 //     MOVEM.L (An)+,<list>
-L_08740:
+movem_l_mem_list:
         cmpwi   cr7, data, 0x1CF0
         addi    addr, a7, -4
         blt     cr2, L_08AD8
@@ -19051,14 +21872,14 @@ L_087C0:
         lwzu    a4, 4(addr)
         addi    a7, addr, 4
         bctr
-        b       L_08800
+        b       movem_l_mem_list_2
         ALIGN(64)
 
 // Reached from 10 dispatch table entries:
 //     MOVEM.L (d16,An),<list>
 //     MOVEM.L (xxx).W,<list>
 //     MOVEM.L (d16,PC),<list>
-L_08800:
+movem_l_mem_list_2:
         ori     data, prefetch_data, 0x1CF0
         cmpwi   cr7, data, 0x1CF0
         lhau    base_disp, 2(pc)
@@ -19134,11 +21955,15 @@ L_088BC:
 
 // Reached from 8 dispatch table entries:
 //     MOVEM.L <list>,(An)
-L_088E4:
+movem_l_list_mem_2:
         mtcrf   0x0F, prefetch_data                     // cr4..cr7 = prefetch_data[15:0]
         lhau    prefetch_data, 2(pc)
         b       L_0890C
-L_088F0:
+
+// Continuation (via rtn_addr) of 9 dispatch table entries:
+//     MOVEM.L <list>,(d8,An,Xn)
+//     MOVEM.L <list>,(xxx).L
+movem_l_list_mem_3:
         mtcrf   0x0F, immed_data                        // cr4..cr7 = immed_data[15:0]
         addi    addr, addr, -4
         b       L_0890C
@@ -19146,7 +21971,7 @@ L_088F0:
 // Reached from 9 dispatch table entries:
 //     MOVEM.L <list>,(d16,An)
 //     MOVEM.L <list>,(xxx).W
-L_088FC:
+movem_l_list_mem_4:
         lhau    base_disp, 2(pc)
         mtcrf   0x0F, prefetch_data                     // cr4..cr7 = prefetch_data[15:0]
         lhau    prefetch_data, 2(pc)
@@ -19303,13 +22128,18 @@ L_08A90:
 
 // Reached from 8 dispatch table entries:
 //     MOVEM.L (An),<list>
-L_08A98:
+movem_l_mem_list_3:
         mtcrf   0x0F, prefetch_data                     // cr4..cr7 = prefetch_data[15:0]
         lhau    prefetch_data, 2(pc)
         bl      L_08B08
         bfctr_likely 4*cr2+lt
         b       L_0D114
-L_08AAC:
+
+// Continuation (via rtn_addr) of 10 dispatch table entries:
+//     MOVEM.L (d8,An,Xn),<list>
+//     MOVEM.L (xxx).L,<list>
+//     MOVEM.L (d8,PC,Xn),<list>
+movem_l_mem_list_4:
         mtcrf   0x0F, immed_data                        // cr4..cr7 = immed_data[15:0]
         addi    addr, addr, -4
         bl      L_08B08
@@ -19422,11 +22252,15 @@ L_08BD0:
 
 // Reached from 8 dispatch table entries:
 //     MOVEM.W <list>,(An)
-L_08BD8:
+movem_w_list_mem_2:
         mtcrf   0x0F, prefetch_data                     // cr4..cr7 = prefetch_data[15:0]
         lhau    prefetch_data, 2(pc)
         b       L_08C00
-L_08BE4:
+
+// Continuation (via rtn_addr) of 9 dispatch table entries:
+//     MOVEM.W <list>,(d8,An,Xn)
+//     MOVEM.W <list>,(xxx).L
+movem_w_list_mem_3:
         mtcrf   0x0F, immed_data                        // cr4..cr7 = immed_data[15:0]
         addi    addr, addr, -2
         b       L_08C00
@@ -19434,7 +22268,7 @@ L_08BE4:
 // Reached from 9 dispatch table entries:
 //     MOVEM.W <list>,(d16,An)
 //     MOVEM.W <list>,(xxx).W
-L_08BF0:
+movem_w_list_mem_4:
         lhau    base_disp, 2(pc)
         mtcrf   0x0F, prefetch_data                     // cr4..cr7 = prefetch_data[15:0]
         lhau    prefetch_data, 2(pc)
@@ -19551,13 +22385,18 @@ L_08D18:
 
 // Reached from 8 dispatch table entries:
 //     MOVEM.W (An),<list>
-L_08D30:
+movem_w_mem_list_2:
         mtcrf   0x0F, prefetch_data                     // cr4..cr7 = prefetch_data[15:0]
         lhau    prefetch_data, 2(pc)
         bl      L_08D80
         bfctr_likely 4*cr2+lt
         b       L_0D114
-L_08D44:
+
+// Continuation (via rtn_addr) of 10 dispatch table entries:
+//     MOVEM.W (d8,An,Xn),<list>
+//     MOVEM.W (xxx).L,<list>
+//     MOVEM.W (d8,PC,Xn),<list>
+movem_w_mem_list_3:
         mtcrf   0x0F, immed_data                        // cr4..cr7 = immed_data[15:0]
         addi    addr, addr, -2
         bl      L_08D80
@@ -19568,7 +22407,7 @@ L_08D44:
 //     MOVEM.W (d16,An),<list>
 //     MOVEM.W (xxx).W,<list>
 //     MOVEM.W (d16,PC),<list>
-L_08D58:
+movem_w_mem_list_4:
         lhau    base_disp, 2(pc)
         mtcrf   0x0F, prefetch_data                     // cr4..cr7 = prefetch_data[15:0]
         lhau    prefetch_data, 2(pc)
@@ -19632,12 +22471,12 @@ L_08DF8:
         bgelr   cr4
         lhau    a7, 2(addr)
         blr
-        b       L_08E40
+        b       move_l_mem_d0_3
         ALIGN(64)
 
 // Reached from 1 dispatch table entry:
 //     MOVE.L (An)+,Dn
-L_08E40:
+move_l_mem_d0_3:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -19649,7 +22488,7 @@ L_08E40:
 
 // Reached from 1 dispatch table entry:
 //     MOVE.L (An)+,Dn
-L_08E60:
+move_l_mem_d1_3:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -19661,7 +22500,7 @@ L_08E60:
 
 // Reached from 1 dispatch table entry:
 //     MOVE.L (An)+,Dn
-L_08E80:
+move_l_mem_d2_3:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -19673,7 +22512,7 @@ L_08E80:
 
 // Reached from 1 dispatch table entry:
 //     MOVE.L (An)+,Dn
-L_08EA0:
+move_l_mem_d3_3:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -19685,7 +22524,7 @@ L_08EA0:
 
 // Reached from 1 dispatch table entry:
 //     MOVE.L (An)+,Dn
-L_08EC0:
+move_l_mem_d4_3:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -19697,7 +22536,7 @@ L_08EC0:
 
 // Reached from 1 dispatch table entry:
 //     MOVE.L (An)+,Dn
-L_08EE0:
+move_l_mem_d5_3:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -19709,7 +22548,7 @@ L_08EE0:
 
 // Reached from 1 dispatch table entry:
 //     MOVE.L (An)+,Dn
-L_08F00:
+move_l_mem_d6_3:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -19721,7 +22560,7 @@ L_08F00:
 
 // Reached from 1 dispatch table entry:
 //     MOVE.L (An)+,Dn
-L_08F20:
+move_l_mem_d7_3:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -19733,19 +22572,19 @@ L_08F20:
 
 // Reached from 7 dispatch table entries:
 //     MOVEA.L (An)+,An
-L_08F40:
+movea_l_mem_an:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
         addi    a7, a7, 4
         bflr_likely 4*cr2+lt
         b       L_0D114
-        b       L_08F80
+        b       move_l_d6_mem
         ALIGN(64)
 
 // Reached from 1 dispatch table entry:
 //     MOVE.L Dn,(An)+
-L_08F80:
+move_l_d6_mem:
         addi    a1, a1, -4
 L_08F84:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
@@ -19761,12 +22600,12 @@ L_08FA0:
         addi    a1, a1, 4
         bflr_likely 4*cr2+lt
         b       L_0D114
-        b       L_08FC0
+        b       move_l_d6_mem_2
         ALIGN(64)
 
 // Reached from 1 dispatch table entry:
 //     MOVE.L Dn,(An)+
-L_08FC0:
+move_l_d6_mem_2:
         addi    a5, a5, -4
 L_08FC4:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
@@ -19790,7 +22629,7 @@ L_09000:
 
 // Reached from 1 dispatch table entry:
 //     EOR.L Dn,(An)+
-L_09008:
+eor_l_d6_mem_3:
         addi    a5, a5, -4
 L_0900C:
         lwzu    data, 4(a5)
@@ -19810,7 +22649,7 @@ L_0902C:
 
 // Reached from 1 dispatch table entry:
 //     MOVE.L (An)+,(An)+
-L_09040:
+move_l_mem_mem_43:
         lwz     data, 0(a0)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         lhau    prefetch_data, 2(pc)
@@ -19837,7 +22676,7 @@ L_09080:
 
 // Reached from 1 dispatch table entry:
 //     MOVE.W (An)+,(An)+
-L_090A0:
+move_w_mem_mem_59:
         mtlr    disp_table
         lha     data, 0(a0)
         lhau    prefetch_data, 2(pc)
@@ -19847,12 +22686,12 @@ L_090A0:
         addi    a1, a1, 2
         bflr_likely 4*cr2+lt
         b       L_0D114
-        b       L_090E0
+        b       move_l_mem_mem_44
         ALIGN(32)
 
 // Reached from 1 dispatch table entry:
 //     MOVE.L (An)+,(An)+
-L_090E0:
+move_l_mem_mem_44:
         lwz     data, 0(a0)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         lhau    prefetch_data, 2(pc)
@@ -19879,7 +22718,7 @@ L_09120:
 
 // Reached from 1 dispatch table entry:
 //     MOVE.W (An)+,(An)+
-L_09140:
+move_w_mem_mem_60:
         mtlr    disp_table
         lha     data, 0(a0)
         lhau    prefetch_data, 2(pc)
@@ -19889,12 +22728,12 @@ L_09140:
         addi    a2, a2, 2
         bflr_likely 4*cr2+lt
         b       L_0D114
-        b       L_09180
+        b       move_l_mem_mem_45
         ALIGN(64)
 
 // Reached from 1 dispatch table entry:
 //     MOVE.L (An)+,(An)+
-L_09180:
+move_l_mem_mem_45:
         lwz     data, 0(a1)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         lhau    prefetch_data, 2(pc)
@@ -19921,7 +22760,7 @@ L_091C0:
 
 // Reached from 1 dispatch table entry:
 //     MOVE.W (An)+,(An)+
-L_091E0:
+move_w_mem_mem_61:
         mtlr    disp_table
         lha     data, 0(a1)
         lhau    prefetch_data, 2(pc)
@@ -19931,12 +22770,12 @@ L_091E0:
         addi    a0, a0, 2
         bflr_likely 4*cr2+lt
         b       L_0D114
-        b       L_09220
+        b       move_l_mem_mem_46
         ALIGN(32)
 
 // Reached from 1 dispatch table entry:
 //     MOVE.L (An)+,(An)+
-L_09220:
+move_l_mem_mem_46:
         lwz     data, 0(a2)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         lhau    prefetch_data, 2(pc)
@@ -19963,7 +22802,7 @@ L_09260:
 
 // Reached from 1 dispatch table entry:
 //     MOVE.W (An)+,(An)+
-L_09280:
+move_w_mem_mem_62:
         mtlr    disp_table
         lha     data, 0(a2)
         lhau    prefetch_data, 2(pc)
@@ -19973,12 +22812,12 @@ L_09280:
         addi    a1, a1, 2
         bflr_likely 4*cr2+lt
         b       L_0D114
-        b       L_092C0
+        b       move_l_mem_mem_47
         ALIGN(64)
 
 // Reached from 1 dispatch table entry:
 //     MOVE.L (An)+,(An)+
-L_092C0:
+move_l_mem_mem_47:
         lwz     data, 0(a4)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         lhau    prefetch_data, 2(pc)
@@ -20005,7 +22844,7 @@ L_09300:
 
 // Reached from 1 dispatch table entry:
 //     MOVE.W (An)+,(An)+
-L_09320:
+move_w_mem_mem_63:
         mtlr    disp_table
         lha     data, 0(a4)
         lhau    prefetch_data, 2(pc)
@@ -20015,12 +22854,12 @@ L_09320:
         addi    a5, a5, 2
         bflr_likely 4*cr2+lt
         b       L_0D114
-        b       L_09360
+        b       move_b_mem_mem_59
         ALIGN(32)
 
 // Reached from 1 dispatch table entry:
 //     MOVE.B (An)+,(An)+
-L_09360:
+move_b_mem_mem_59:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         lhau    prefetch_data, 2(pc)
         lbz     data, 0(a1)
@@ -20053,12 +22892,12 @@ L_093B4:
         addi    a0, a0, 1
         bflr_likely 4*cr2+lt
         b       L_0D114
-        b       L_093E0
+        b       move_b_mem_d0_2
         ALIGN(32)
 
 // Reached from 1 dispatch table entry:
 //     MOVE.B (An)+,Dn
-L_093E0:
+move_b_mem_d0_2:
         lbz     data, 0(a0)
         addi    a0, a0, 1
         rlwimi  d0, data, 0, 24, 31                     // d0[7:0] = data[7:0]
@@ -20075,7 +22914,7 @@ L_093F0:
 
 // Reached from 1 dispatch table entry:
 //     MOVE.B (An)+,Dn
-L_09410:
+move_b_mem_d1_2:
         lbz     data, 0(a0)
         addi    a0, a0, 1
         rlwimi  d1, data, 0, 24, 31                     // d1[7:0] = data[7:0]
@@ -20087,7 +22926,7 @@ L_09420:
 
 // Reached from 8 dispatch table entries:
 //     CMP.B (An)+,Dn
-L_0942C:
+cmp_b_mem_dn:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         lbz     data, 0(a1)
         mtlr    disp_table
@@ -20098,12 +22937,12 @@ L_0942C:
         addc    data, data, immed_data
         bflr_likely 4*cr2+lt
         b       L_0D114
-        b       L_09460
+        b       move_l_mem_mem_48
         ALIGN(32)
 
 // Reached from 1 dispatch table entry:
 //     MOVE.L (An)+,(An)
-L_09460:
+move_l_mem_mem_48:
         lwz     data, 0(a7)
         blt     cr2, L_0946C
         beq     cr7, L_09488
@@ -20125,25 +22964,25 @@ L_09488:
         addi    a7, a7, 8
         bflr_likely 4*cr2+lt
         b       L_0D114
-        b       L_094C0
+        b       jsr_mem_4
         ALIGN(64)
 
 // Reached from 1 dispatch table entry:
 //     JSR (d8,An,Xn)
-L_094C0:
+jsr_mem_4:
         bne     cr7, L_094D4
         lha     addr, 2(pc)
         addi    pc, pc, 4
         lwz     addr, 0(addr)
-        b       L_07E10
+        b       jsr_mem_2
 L_094D4:
-        ori     rtn_addr, code_ptr, L_07E10 - cb
-        b       L_05988
+        ori     rtn_addr, code_ptr, jsr_mem_2 - cb
+        b       or_sub_etc_any_any
         ALIGN(32)
 
 // Reached from 1 dispatch table entry:
 //     MOVE.L (d8,An,Xn),-(An)
-L_094E0:
+move_l_mem_mem_49:
         lha     immed_data, 6(pc)
         blt     cr2, L_09524
         bne     cr7, L_09524
@@ -20163,14 +23002,14 @@ L_09504:
         bflr_likely 4*cr2+lt
         b       L_0D114
 L_09524:
-        ori     rtn_addr, code_ptr, L_013E4 - cb
-        b       L_059C8
-        b       L_09540
+        ori     rtn_addr, code_ptr, move_l_ea_mem_16 - cb
+        b       move_add_etc_l_any_any
+        b       move_l_mem_mem_50
         ALIGN(64)
 
 // Reached from 1 dispatch table entry:
 //     MOVE.L (xxx).W,-(An)
-L_09540:
+move_l_mem_mem_50:
         lwz     data, 0(prefetch_data)
         cmpwi   cr7, immed_data, 0x4E75
         blt     cr2, L_09550
@@ -20183,12 +23022,12 @@ L_09550:
         stwu    data, -4(a7)
         bflr_likely 4*cr2+lt
         b       L_0D114
-        b       L_09580
+        b       move_b_mem_d0_3
         ALIGN(64)
 
 // Reached from 1 dispatch table entry:
 //     MOVE.B (An)+,Dn
-L_09580:
+move_b_mem_d0_3:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -20201,23 +23040,23 @@ L_09580:
 
 // Reached from 1 dispatch table entry:
 //     JMP (d8,An,Xn)
-L_095A4:
+jmp_mem_3:
         bne     cr7, L_095C0
         extsh   data, d0                                // data = sign-extended low word of d0
         lha     addr, 2(pc)
         slwi    data, data, 2
         add     addr, addr, a4
         lwzx    pc, addr, data
-        b       L_07CE4
+        b       jmp_mem_2
 L_095C0:
-        ori     rtn_addr, code_ptr, L_07CE0 - cb
-        b       L_05B08
-        b       L_095E0
+        ori     rtn_addr, code_ptr, jmp_mem - cb
+        b       or_sub_etc_any_any_5
+        b       aline
         ALIGN(32)
 
 // Reached from 1024 dispatch table entries:
 //     A-LINE $Axxx
-L_095E0:
+aline:
         lwz     rtn_addr, 40(vbr)
         rlwinm  base_disp, disp_table, 31, 22, 29       // base_disp = disp_table[10:3] << 2
         cmplw   cr7, addr, rtn_addr
@@ -20243,12 +23082,12 @@ L_095E0:
         bgtctr  cr1
         bflr_likely 4*cr2+lt
         b       L_0D114
-        b       L_09660
+        b       aline_2
         ALIGN(32)
 
 // Reached from 1024 dispatch table entries:
 //     A-LINE $Axxx
-L_09660:
+aline_2:
         lwz     rtn_addr, 40(vbr)
         rlwinm  base_disp, disp_table, 31, 22, 29       // base_disp = disp_table[10:3] << 2
         cmplw   cr7, addr, rtn_addr
@@ -20275,12 +23114,12 @@ L_09660:
         bgtctr  cr1
         bflr_likely 4*cr2+lt
         b       L_0D114
-        b       L_096E0
+        b       fline
         ALIGN(32)
 
 // Reached from 1 dispatch table entry:
 //     F-LINE cpID 6
-L_096E0:
+fline:
         lha     prefetch_data, 0(pc)
         slwi.   data, d0, 16
         rlwimi  disp_table, pc, 20, 11, 11              // disp_table[20] = pc[0]
@@ -20300,7 +23139,7 @@ L_096E0:
 
 // Reached from 1024 dispatch table entries:
 //     A-LINE $Axxx
-L_09720:
+aline_3:
         lwz     rtn_addr, 40(vbr)
         rlwinm  base_disp, disp_table, 31, 20, 29       // base_disp = disp_table[12:3] << 2
         cmplw   cr7, addr, rtn_addr
@@ -20319,12 +23158,12 @@ L_09720:
         bgtctr  cr1
         bflr_likely 4*cr2+lt
         b       L_0D114
-        b       L_09780
+        b       aline_4
         ALIGN(64)
 
 // Reached from 1024 dispatch table entries:
 //     A-LINE $Axxx
-L_09780:
+aline_4:
         lwz     rtn_addr, 40(vbr)
         rlwinm  base_disp, disp_table, 31, 20, 29       // base_disp = disp_table[12:3] << 2
         cmplw   cr7, addr, rtn_addr
@@ -20344,7 +23183,7 @@ L_09780:
 
 // Reached from 1 dispatch table entry:
 //     F-LINE cpID 6
-L_097C0:
+fline_2:
         and     base_disp, immed_data, prefetch_data
         addi    pc, pc, 2
         slwi    base_disp, base_disp, 2
@@ -20380,12 +23219,12 @@ L_0983C:
         ori     d7, zero, 0x000A
         bflr_likely 4*cr2+lt
         b       L_0D114
-        b       L_09860
+        b       fline_3
         ALIGN(32)
 
 // Reached from 1 dispatch table entry:
 //     F-LINE cpID 6
-L_09860:
+fline_3:
         rlwinm  immed_data, d6, 24, 3, 7                // immed_data = d6[4:0] << 24
         and     immed_data, immed_data, d7
         cmplwi  cr7, immed_data, 0x0000
@@ -20410,11 +23249,11 @@ L_09860:
         bflr_likely 4*cr2+lt
         b       L_0D114
 L_098BC:
-        b       L_06084
+        b       move_add_etc_any_any
 
 // Reached from 1 dispatch table entry:
 //     F-LINE cpID 6
-L_098C0:
+fline_4:
         lhz     data, 0(a0)
         rlwinm  addr, d6, 12, 30, 30                    // addr = d6[21] << 1
         clrlwi  d0, data, 17                            // d0 = data & 0x00007FFF
@@ -20471,7 +23310,7 @@ L_09964:
 
 // Reached from 1 dispatch table entry:
 //     F-LINE cpID 6
-L_09980:
+fline_5:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         lhau    prefetch_data, 2(pc)
         mtctr   disp_table
@@ -20622,7 +23461,7 @@ L_09B78:
 
 // Reached from 1 dispatch table entry:
 //     F-LINE cpID 6
-L_09B88:
+fline_6:
         mtctr   disp_table
         lhau    prefetch_data, 2(pc)
 L_09B90:
@@ -20636,7 +23475,7 @@ L_09B90:
 
 // Reached from 1 dispatch table entry:
 //     F-LINE cpID 6
-L_09BAC:
+fline_7:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         lhau    prefetch_data, 2(pc)
         mtctr   disp_table
@@ -20797,12 +23636,12 @@ L_09DAC:
         ori     d7, d7, 0x0400
         li      d0, 0
         b       L_09C1C
-        b       L_09DE0
+        b       fline_8
         ALIGN(32)
 
 // Reached from 1 dispatch table entry:
 //     F-LINE cpID 6
-L_09DE0:
+fline_8:
         mtctr   disp_table
         extsh.  data, d0                                // data = sign-extended low word of d0
         lhau    prefetch_data, 2(pc)
@@ -20840,7 +23679,7 @@ L_09E4C:
 
 // Reached from 1 dispatch table entry:
 //     F-LINE cpID 6
-L_09E60:
+fline_9:
         addic.  addr, d0, -0x3C00
         mtctr   disp_table
         slwi    data, addr, 20
@@ -20879,7 +23718,7 @@ L_09EB8:
 
 // Reached from 1 dispatch table entry:
 //     F-LINE cpID 6
-L_09EE0:
+fline_10:
         addic.  addr, d0, -0x3F80
         mtctr   disp_table
         slwi    data, addr, 23
@@ -20899,12 +23738,12 @@ L_09F10:
         rlwimi  addr, data, 6, 26, 26                   // addr[5] = data[31]
         srw     data, d1, addr
         b       L_09F00
-        b       L_09F40
+        b       fline_11
         ALIGN(64)
 
 // Reached from 1 dispatch table entry:
 //     F-LINE cpID 6
-L_09F40:
+fline_11:
         mtcrf   0x0F, d7                                // cr4..cr7 = d7[15:0]
         crxor   4*cr6+lt, 4*cr6+lt, 4*cr6+gt            // cr6.lt = cr6.lt ^ cr6.gt
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
@@ -20936,12 +23775,12 @@ L_09F94:
         srwi    d1, d1, 1
         oris    d1, d1, 0x8000
         b       L_09BBC
-        b       L_09FC0
+        b       fline_12
         ALIGN(64)
 
 // Reached from 1 dispatch table entry:
 //     F-LINE cpID 6
-L_09FC0:
+fline_12:
         mtcrf   0x0F, d7                                // cr4..cr7 = d7[15:0]
         crxor   4*cr6+lt, 4*cr6+lt, 4*cr6+gt            // cr6.lt = cr6.lt ^ cr6.gt
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
@@ -21138,12 +23977,12 @@ L_0A258:
         lis     d1, 0x4002
         oris    d7, d7, 0x0100
         b       L_09C34
-        b       L_0A280
+        b       fline_13
         ALIGN(64)
 
 // Reached from 1 dispatch table entry:
 //     F-LINE cpID 6
-L_0A280:
+fline_13:
         cmpwi   cr6, d2, 0
         cmpwi   cr7, d5, 0
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
@@ -21263,12 +24102,12 @@ L_0A3E0:
         lis     d1, 0x4008
         oris    d7, d7, 0x0100
         b       L_09C34
-        b       L_0A440
+        b       fline_14
         ALIGN(64)
 
 // Reached from 1 dispatch table entry:
 //     F-LINE cpID 6
-L_0A440:
+fline_14:
         subfc   data, d5, d2                            // data = d2 - d5
         rlwinm  addr, d7, 1, 24, 24                     // addr = d7[6] << 7
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
@@ -21406,7 +24245,7 @@ L_0A610:
 
 // Reached from 1 dispatch table entry:
 //     F-LINE cpID 6
-L_0A620:
+fline_15:
         bne     L_0A7C8
         oris    d4, d4, 0x8000
         subfc   data, d5, d2                            // data = d2 - d5
@@ -21545,7 +24384,7 @@ L_0A7C8:
 
 // Reached from 1 dispatch table entry:
 //     F-LINE cpID 6
-L_0A80C:
+fline_16:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         lhau    prefetch_data, 2(pc)
         mtctr   disp_table
@@ -21666,13 +24505,13 @@ L_0A988:
 
 // Reached from 2 dispatch table entries:
 //     F-LINE cpID 6
-L_0A9AC:
+fline_17:
         bgt     cr7, L_0A9F8
         b       L_0A9B8
 
 // Reached from 2 dispatch table entries:
 //     F-LINE cpID 6
-L_0A9B4:
+fline_18:
         bgt     cr7, L_0A9DC
 L_0A9B8:
         mtxer   d0
@@ -21894,12 +24733,16 @@ L_0ACA0:
 // Reached from 9 dispatch table entries:
 //     AND.B Dn,(d16,An)
 //     AND.B Dn,(xxx).W
-L_0ACC0:
+and_b_d0_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     AND.B Dn,(An)
-L_0ACC4:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     AND.B Dn,(An)+
+//     AND.B Dn,(d8,An,Xn)
+//     AND.B Dn,(xxx).L
+and_b_d0_mem_2:
         lbz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         and     data, data, d0
@@ -21908,12 +24751,16 @@ L_0ACC4:
 // Reached from 9 dispatch table entries:
 //     OR.B Dn,(d16,An)
 //     OR.B Dn,(xxx).W
-L_0ACD4:
+or_b_d0_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     OR.B Dn,(An)
-L_0ACD8:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     OR.B Dn,(An)+
+//     OR.B Dn,(d8,An,Xn)
+//     OR.B Dn,(xxx).L
+or_b_d0_mem_2:
         lbz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         or      data, data, d0
@@ -21922,12 +24769,16 @@ L_0ACD8:
 // Reached from 9 dispatch table entries:
 //     EOR.B Dn,(d16,An)
 //     EOR.B Dn,(xxx).W
-L_0ACE8:
+eor_b_d0_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     EOR.B Dn,(An)
-L_0ACEC:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     EOR.B Dn,(An)+
+//     EOR.B Dn,(d8,An,Xn)
+//     EOR.B Dn,(xxx).L
+eor_b_d0_mem_2:
         lbz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         xor     data, data, d0
@@ -21937,12 +24788,16 @@ L_0ACEC:
 // Reached from 9 dispatch table entries:
 //     AND.B Dn,(d16,An)
 //     AND.B Dn,(xxx).W
-L_0AD00:
+and_b_d1_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     AND.B Dn,(An)
-L_0AD04:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     AND.B Dn,(An)+
+//     AND.B Dn,(d8,An,Xn)
+//     AND.B Dn,(xxx).L
+and_b_d1_mem_2:
         lbz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         and     data, data, d1
@@ -21951,12 +24806,16 @@ L_0AD04:
 // Reached from 9 dispatch table entries:
 //     OR.B Dn,(d16,An)
 //     OR.B Dn,(xxx).W
-L_0AD14:
+or_b_d1_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     OR.B Dn,(An)
-L_0AD18:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     OR.B Dn,(An)+
+//     OR.B Dn,(d8,An,Xn)
+//     OR.B Dn,(xxx).L
+or_b_d1_mem_2:
         lbz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         or      data, data, d1
@@ -21965,12 +24824,16 @@ L_0AD18:
 // Reached from 9 dispatch table entries:
 //     EOR.B Dn,(d16,An)
 //     EOR.B Dn,(xxx).W
-L_0AD28:
+eor_b_d1_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     EOR.B Dn,(An)
-L_0AD2C:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     EOR.B Dn,(An)+
+//     EOR.B Dn,(d8,An,Xn)
+//     EOR.B Dn,(xxx).L
+eor_b_d1_mem_2:
         lbz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         xor     data, data, d1
@@ -21980,12 +24843,16 @@ L_0AD2C:
 // Reached from 9 dispatch table entries:
 //     AND.B Dn,(d16,An)
 //     AND.B Dn,(xxx).W
-L_0AD40:
+and_b_d2_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     AND.B Dn,(An)
-L_0AD44:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     AND.B Dn,(An)+
+//     AND.B Dn,(d8,An,Xn)
+//     AND.B Dn,(xxx).L
+and_b_d2_mem_2:
         lbz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         and     data, data, d2
@@ -21994,12 +24861,16 @@ L_0AD44:
 // Reached from 9 dispatch table entries:
 //     OR.B Dn,(d16,An)
 //     OR.B Dn,(xxx).W
-L_0AD54:
+or_b_d2_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     OR.B Dn,(An)
-L_0AD58:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     OR.B Dn,(An)+
+//     OR.B Dn,(d8,An,Xn)
+//     OR.B Dn,(xxx).L
+or_b_d2_mem_2:
         lbz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         or      data, data, d2
@@ -22008,12 +24879,16 @@ L_0AD58:
 // Reached from 9 dispatch table entries:
 //     EOR.B Dn,(d16,An)
 //     EOR.B Dn,(xxx).W
-L_0AD68:
+eor_b_d2_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     EOR.B Dn,(An)
-L_0AD6C:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     EOR.B Dn,(An)+
+//     EOR.B Dn,(d8,An,Xn)
+//     EOR.B Dn,(xxx).L
+eor_b_d2_mem_2:
         lbz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         xor     data, data, d2
@@ -22023,12 +24898,16 @@ L_0AD6C:
 // Reached from 9 dispatch table entries:
 //     AND.B Dn,(d16,An)
 //     AND.B Dn,(xxx).W
-L_0AD80:
+and_b_d3_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     AND.B Dn,(An)
-L_0AD84:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     AND.B Dn,(An)+
+//     AND.B Dn,(d8,An,Xn)
+//     AND.B Dn,(xxx).L
+and_b_d3_mem_2:
         lbz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         and     data, data, d3
@@ -22037,12 +24916,16 @@ L_0AD84:
 // Reached from 9 dispatch table entries:
 //     OR.B Dn,(d16,An)
 //     OR.B Dn,(xxx).W
-L_0AD94:
+or_b_d3_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     OR.B Dn,(An)
-L_0AD98:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     OR.B Dn,(An)+
+//     OR.B Dn,(d8,An,Xn)
+//     OR.B Dn,(xxx).L
+or_b_d3_mem_2:
         lbz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         or      data, data, d3
@@ -22051,12 +24934,16 @@ L_0AD98:
 // Reached from 9 dispatch table entries:
 //     EOR.B Dn,(d16,An)
 //     EOR.B Dn,(xxx).W
-L_0ADA8:
+eor_b_d3_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     EOR.B Dn,(An)
-L_0ADAC:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     EOR.B Dn,(An)+
+//     EOR.B Dn,(d8,An,Xn)
+//     EOR.B Dn,(xxx).L
+eor_b_d3_mem_2:
         lbz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         xor     data, data, d3
@@ -22066,12 +24953,16 @@ L_0ADAC:
 // Reached from 9 dispatch table entries:
 //     AND.B Dn,(d16,An)
 //     AND.B Dn,(xxx).W
-L_0ADC0:
+and_b_d4_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     AND.B Dn,(An)
-L_0ADC4:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     AND.B Dn,(An)+
+//     AND.B Dn,(d8,An,Xn)
+//     AND.B Dn,(xxx).L
+and_b_d4_mem_2:
         lbz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         and     data, data, d4
@@ -22080,12 +24971,16 @@ L_0ADC4:
 // Reached from 9 dispatch table entries:
 //     OR.B Dn,(d16,An)
 //     OR.B Dn,(xxx).W
-L_0ADD4:
+or_b_d4_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     OR.B Dn,(An)
-L_0ADD8:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     OR.B Dn,(An)+
+//     OR.B Dn,(d8,An,Xn)
+//     OR.B Dn,(xxx).L
+or_b_d4_mem_2:
         lbz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         or      data, data, d4
@@ -22094,12 +24989,16 @@ L_0ADD8:
 // Reached from 9 dispatch table entries:
 //     EOR.B Dn,(d16,An)
 //     EOR.B Dn,(xxx).W
-L_0ADE8:
+eor_b_d4_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     EOR.B Dn,(An)
-L_0ADEC:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     EOR.B Dn,(An)+
+//     EOR.B Dn,(d8,An,Xn)
+//     EOR.B Dn,(xxx).L
+eor_b_d4_mem_2:
         lbz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         xor     data, data, d4
@@ -22109,12 +25008,16 @@ L_0ADEC:
 // Reached from 9 dispatch table entries:
 //     AND.B Dn,(d16,An)
 //     AND.B Dn,(xxx).W
-L_0AE00:
+and_b_d5_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     AND.B Dn,(An)
-L_0AE04:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     AND.B Dn,(An)+
+//     AND.B Dn,(d8,An,Xn)
+//     AND.B Dn,(xxx).L
+and_b_d5_mem_2:
         lbz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         and     data, data, d5
@@ -22123,12 +25026,16 @@ L_0AE04:
 // Reached from 9 dispatch table entries:
 //     OR.B Dn,(d16,An)
 //     OR.B Dn,(xxx).W
-L_0AE14:
+or_b_d5_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     OR.B Dn,(An)
-L_0AE18:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     OR.B Dn,(An)+
+//     OR.B Dn,(d8,An,Xn)
+//     OR.B Dn,(xxx).L
+or_b_d5_mem_2:
         lbz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         or      data, data, d5
@@ -22137,12 +25044,16 @@ L_0AE18:
 // Reached from 9 dispatch table entries:
 //     EOR.B Dn,(d16,An)
 //     EOR.B Dn,(xxx).W
-L_0AE28:
+eor_b_d5_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     EOR.B Dn,(An)
-L_0AE2C:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     EOR.B Dn,(An)+
+//     EOR.B Dn,(d8,An,Xn)
+//     EOR.B Dn,(xxx).L
+eor_b_d5_mem_2:
         lbz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         xor     data, data, d5
@@ -22152,12 +25063,16 @@ L_0AE2C:
 // Reached from 9 dispatch table entries:
 //     AND.B Dn,(d16,An)
 //     AND.B Dn,(xxx).W
-L_0AE40:
+and_b_d6_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     AND.B Dn,(An)
-L_0AE44:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     AND.B Dn,(An)+
+//     AND.B Dn,(d8,An,Xn)
+//     AND.B Dn,(xxx).L
+and_b_d6_mem_2:
         lbz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         and     data, data, d6
@@ -22166,12 +25081,16 @@ L_0AE44:
 // Reached from 9 dispatch table entries:
 //     OR.B Dn,(d16,An)
 //     OR.B Dn,(xxx).W
-L_0AE54:
+or_b_d6_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     OR.B Dn,(An)
-L_0AE58:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     OR.B Dn,(An)+
+//     OR.B Dn,(d8,An,Xn)
+//     OR.B Dn,(xxx).L
+or_b_d6_mem_2:
         lbz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         or      data, data, d6
@@ -22180,12 +25099,16 @@ L_0AE58:
 // Reached from 9 dispatch table entries:
 //     EOR.B Dn,(d16,An)
 //     EOR.B Dn,(xxx).W
-L_0AE68:
+eor_b_d6_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     EOR.B Dn,(An)
-L_0AE6C:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     EOR.B Dn,(An)+
+//     EOR.B Dn,(d8,An,Xn)
+//     EOR.B Dn,(xxx).L
+eor_b_d6_mem_2:
         lbz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         xor     data, data, d6
@@ -22195,12 +25118,16 @@ L_0AE6C:
 // Reached from 9 dispatch table entries:
 //     AND.B Dn,(d16,An)
 //     AND.B Dn,(xxx).W
-L_0AE80:
+and_b_d7_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     AND.B Dn,(An)
-L_0AE84:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     AND.B Dn,(An)+
+//     AND.B Dn,(d8,An,Xn)
+//     AND.B Dn,(xxx).L
+and_b_d7_mem_2:
         lbz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         and     data, data, d7
@@ -22209,12 +25136,16 @@ L_0AE84:
 // Reached from 9 dispatch table entries:
 //     OR.B Dn,(d16,An)
 //     OR.B Dn,(xxx).W
-L_0AE94:
+or_b_d7_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     OR.B Dn,(An)
-L_0AE98:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     OR.B Dn,(An)+
+//     OR.B Dn,(d8,An,Xn)
+//     OR.B Dn,(xxx).L
+or_b_d7_mem_2:
         lbz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         or      data, data, d7
@@ -22223,12 +25154,16 @@ L_0AE98:
 // Reached from 9 dispatch table entries:
 //     EOR.B Dn,(d16,An)
 //     EOR.B Dn,(xxx).W
-L_0AEA8:
+eor_b_d7_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     EOR.B Dn,(An)
-L_0AEAC:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     EOR.B Dn,(An)+
+//     EOR.B Dn,(d8,An,Xn)
+//     EOR.B Dn,(xxx).L
+eor_b_d7_mem_2:
         lbz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         xor     data, data, d7
@@ -22238,12 +25173,16 @@ L_0AEAC:
 // Reached from 9 dispatch table entries:
 //     AND.W Dn,(d16,An)
 //     AND.W Dn,(xxx).W
-L_0AEC0:
+and_w_d0_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     AND.W Dn,(An)
-L_0AEC4:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     AND.W Dn,(An)+
+//     AND.W Dn,(d8,An,Xn)
+//     AND.W Dn,(xxx).L
+and_w_d0_mem_2:
         lhz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         and     data, data, d0
@@ -22252,12 +25191,16 @@ L_0AEC4:
 // Reached from 9 dispatch table entries:
 //     OR.W Dn,(d16,An)
 //     OR.W Dn,(xxx).W
-L_0AED4:
+or_w_d0_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     OR.W Dn,(An)
-L_0AED8:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     OR.W Dn,(An)+
+//     OR.W Dn,(d8,An,Xn)
+//     OR.W Dn,(xxx).L
+or_w_d0_mem_2:
         lhz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         or      data, data, d0
@@ -22266,12 +25209,16 @@ L_0AED8:
 // Reached from 9 dispatch table entries:
 //     EOR.W Dn,(d16,An)
 //     EOR.W Dn,(xxx).W
-L_0AEE8:
+eor_w_d0_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     EOR.W Dn,(An)
-L_0AEEC:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     EOR.W Dn,(An)+
+//     EOR.W Dn,(d8,An,Xn)
+//     EOR.W Dn,(xxx).L
+eor_w_d0_mem_2:
         lhz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         xor     data, data, d0
@@ -22281,12 +25228,16 @@ L_0AEEC:
 // Reached from 9 dispatch table entries:
 //     AND.W Dn,(d16,An)
 //     AND.W Dn,(xxx).W
-L_0AF00:
+and_w_d1_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     AND.W Dn,(An)
-L_0AF04:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     AND.W Dn,(An)+
+//     AND.W Dn,(d8,An,Xn)
+//     AND.W Dn,(xxx).L
+and_w_d1_mem_2:
         lhz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         and     data, data, d1
@@ -22295,12 +25246,16 @@ L_0AF04:
 // Reached from 9 dispatch table entries:
 //     OR.W Dn,(d16,An)
 //     OR.W Dn,(xxx).W
-L_0AF14:
+or_w_d1_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     OR.W Dn,(An)
-L_0AF18:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     OR.W Dn,(An)+
+//     OR.W Dn,(d8,An,Xn)
+//     OR.W Dn,(xxx).L
+or_w_d1_mem_2:
         lhz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         or      data, data, d1
@@ -22309,12 +25264,16 @@ L_0AF18:
 // Reached from 9 dispatch table entries:
 //     EOR.W Dn,(d16,An)
 //     EOR.W Dn,(xxx).W
-L_0AF28:
+eor_w_d1_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     EOR.W Dn,(An)
-L_0AF2C:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     EOR.W Dn,(An)+
+//     EOR.W Dn,(d8,An,Xn)
+//     EOR.W Dn,(xxx).L
+eor_w_d1_mem_2:
         lhz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         xor     data, data, d1
@@ -22324,12 +25283,16 @@ L_0AF2C:
 // Reached from 9 dispatch table entries:
 //     AND.W Dn,(d16,An)
 //     AND.W Dn,(xxx).W
-L_0AF40:
+and_w_d2_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     AND.W Dn,(An)
-L_0AF44:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     AND.W Dn,(An)+
+//     AND.W Dn,(d8,An,Xn)
+//     AND.W Dn,(xxx).L
+and_w_d2_mem_2:
         lhz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         and     data, data, d2
@@ -22338,12 +25301,16 @@ L_0AF44:
 // Reached from 9 dispatch table entries:
 //     OR.W Dn,(d16,An)
 //     OR.W Dn,(xxx).W
-L_0AF54:
+or_w_d2_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     OR.W Dn,(An)
-L_0AF58:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     OR.W Dn,(An)+
+//     OR.W Dn,(d8,An,Xn)
+//     OR.W Dn,(xxx).L
+or_w_d2_mem_2:
         lhz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         or      data, data, d2
@@ -22352,12 +25319,16 @@ L_0AF58:
 // Reached from 9 dispatch table entries:
 //     EOR.W Dn,(d16,An)
 //     EOR.W Dn,(xxx).W
-L_0AF68:
+eor_w_d2_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     EOR.W Dn,(An)
-L_0AF6C:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     EOR.W Dn,(An)+
+//     EOR.W Dn,(d8,An,Xn)
+//     EOR.W Dn,(xxx).L
+eor_w_d2_mem_2:
         lhz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         xor     data, data, d2
@@ -22367,12 +25338,16 @@ L_0AF6C:
 // Reached from 9 dispatch table entries:
 //     AND.W Dn,(d16,An)
 //     AND.W Dn,(xxx).W
-L_0AF80:
+and_w_d3_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     AND.W Dn,(An)
-L_0AF84:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     AND.W Dn,(An)+
+//     AND.W Dn,(d8,An,Xn)
+//     AND.W Dn,(xxx).L
+and_w_d3_mem_2:
         lhz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         and     data, data, d3
@@ -22381,12 +25356,16 @@ L_0AF84:
 // Reached from 9 dispatch table entries:
 //     OR.W Dn,(d16,An)
 //     OR.W Dn,(xxx).W
-L_0AF94:
+or_w_d3_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     OR.W Dn,(An)
-L_0AF98:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     OR.W Dn,(An)+
+//     OR.W Dn,(d8,An,Xn)
+//     OR.W Dn,(xxx).L
+or_w_d3_mem_2:
         lhz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         or      data, data, d3
@@ -22395,12 +25374,16 @@ L_0AF98:
 // Reached from 9 dispatch table entries:
 //     EOR.W Dn,(d16,An)
 //     EOR.W Dn,(xxx).W
-L_0AFA8:
+eor_w_d3_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     EOR.W Dn,(An)
-L_0AFAC:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     EOR.W Dn,(An)+
+//     EOR.W Dn,(d8,An,Xn)
+//     EOR.W Dn,(xxx).L
+eor_w_d3_mem_2:
         lhz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         xor     data, data, d3
@@ -22410,12 +25393,16 @@ L_0AFAC:
 // Reached from 9 dispatch table entries:
 //     AND.W Dn,(d16,An)
 //     AND.W Dn,(xxx).W
-L_0AFC0:
+and_w_d4_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     AND.W Dn,(An)
-L_0AFC4:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     AND.W Dn,(An)+
+//     AND.W Dn,(d8,An,Xn)
+//     AND.W Dn,(xxx).L
+and_w_d4_mem_2:
         lhz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         and     data, data, d4
@@ -22424,12 +25411,16 @@ L_0AFC4:
 // Reached from 9 dispatch table entries:
 //     OR.W Dn,(d16,An)
 //     OR.W Dn,(xxx).W
-L_0AFD4:
+or_w_d4_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     OR.W Dn,(An)
-L_0AFD8:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     OR.W Dn,(An)+
+//     OR.W Dn,(d8,An,Xn)
+//     OR.W Dn,(xxx).L
+or_w_d4_mem_2:
         lhz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         or      data, data, d4
@@ -22438,12 +25429,16 @@ L_0AFD8:
 // Reached from 9 dispatch table entries:
 //     EOR.W Dn,(d16,An)
 //     EOR.W Dn,(xxx).W
-L_0AFE8:
+eor_w_d4_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     EOR.W Dn,(An)
-L_0AFEC:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     EOR.W Dn,(An)+
+//     EOR.W Dn,(d8,An,Xn)
+//     EOR.W Dn,(xxx).L
+eor_w_d4_mem_2:
         lhz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         xor     data, data, d4
@@ -22453,12 +25448,16 @@ L_0AFEC:
 // Reached from 9 dispatch table entries:
 //     AND.W Dn,(d16,An)
 //     AND.W Dn,(xxx).W
-L_0B000:
+and_w_d5_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     AND.W Dn,(An)
-L_0B004:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     AND.W Dn,(An)+
+//     AND.W Dn,(d8,An,Xn)
+//     AND.W Dn,(xxx).L
+and_w_d5_mem_2:
         lhz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         and     data, data, d5
@@ -22467,12 +25466,16 @@ L_0B004:
 // Reached from 9 dispatch table entries:
 //     OR.W Dn,(d16,An)
 //     OR.W Dn,(xxx).W
-L_0B014:
+or_w_d5_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     OR.W Dn,(An)
-L_0B018:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     OR.W Dn,(An)+
+//     OR.W Dn,(d8,An,Xn)
+//     OR.W Dn,(xxx).L
+or_w_d5_mem_2:
         lhz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         or      data, data, d5
@@ -22481,12 +25484,16 @@ L_0B018:
 // Reached from 9 dispatch table entries:
 //     EOR.W Dn,(d16,An)
 //     EOR.W Dn,(xxx).W
-L_0B028:
+eor_w_d5_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     EOR.W Dn,(An)
-L_0B02C:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     EOR.W Dn,(An)+
+//     EOR.W Dn,(d8,An,Xn)
+//     EOR.W Dn,(xxx).L
+eor_w_d5_mem_2:
         lhz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         xor     data, data, d5
@@ -22496,12 +25503,16 @@ L_0B02C:
 // Reached from 9 dispatch table entries:
 //     AND.W Dn,(d16,An)
 //     AND.W Dn,(xxx).W
-L_0B040:
+and_w_d6_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     AND.W Dn,(An)
-L_0B044:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     AND.W Dn,(An)+
+//     AND.W Dn,(d8,An,Xn)
+//     AND.W Dn,(xxx).L
+and_w_d6_mem_2:
         lhz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         and     data, data, d6
@@ -22510,12 +25521,16 @@ L_0B044:
 // Reached from 9 dispatch table entries:
 //     OR.W Dn,(d16,An)
 //     OR.W Dn,(xxx).W
-L_0B054:
+or_w_d6_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     OR.W Dn,(An)
-L_0B058:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     OR.W Dn,(An)+
+//     OR.W Dn,(d8,An,Xn)
+//     OR.W Dn,(xxx).L
+or_w_d6_mem_2:
         lhz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         or      data, data, d6
@@ -22524,12 +25539,16 @@ L_0B058:
 // Reached from 9 dispatch table entries:
 //     EOR.W Dn,(d16,An)
 //     EOR.W Dn,(xxx).W
-L_0B068:
+eor_w_d6_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     EOR.W Dn,(An)
-L_0B06C:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     EOR.W Dn,(An)+
+//     EOR.W Dn,(d8,An,Xn)
+//     EOR.W Dn,(xxx).L
+eor_w_d6_mem_2:
         lhz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         xor     data, data, d6
@@ -22539,12 +25558,16 @@ L_0B06C:
 // Reached from 9 dispatch table entries:
 //     AND.W Dn,(d16,An)
 //     AND.W Dn,(xxx).W
-L_0B080:
+and_w_d7_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     AND.W Dn,(An)
-L_0B084:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     AND.W Dn,(An)+
+//     AND.W Dn,(d8,An,Xn)
+//     AND.W Dn,(xxx).L
+and_w_d7_mem_2:
         lhz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         and     data, data, d7
@@ -22553,12 +25576,16 @@ L_0B084:
 // Reached from 9 dispatch table entries:
 //     OR.W Dn,(d16,An)
 //     OR.W Dn,(xxx).W
-L_0B094:
+or_w_d7_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     OR.W Dn,(An)
-L_0B098:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     OR.W Dn,(An)+
+//     OR.W Dn,(d8,An,Xn)
+//     OR.W Dn,(xxx).L
+or_w_d7_mem_2:
         lhz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         or      data, data, d7
@@ -22567,12 +25594,16 @@ L_0B098:
 // Reached from 9 dispatch table entries:
 //     EOR.W Dn,(d16,An)
 //     EOR.W Dn,(xxx).W
-L_0B0A8:
+eor_w_d7_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     EOR.W Dn,(An)
-L_0B0AC:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     EOR.W Dn,(An)+
+//     EOR.W Dn,(d8,An,Xn)
+//     EOR.W Dn,(xxx).L
+eor_w_d7_mem_2:
         lhz     data, 0(addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         xor     data, data, d7
@@ -22585,20 +25616,25 @@ L_0B0AC:
 //     ADD.B (xxx).W,Dn
 //     ADD.B (d16,PC),Dn
 //     ADD.B #<data>,Dn
-L_0B0C0:
+add_b_ea_d0:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     ADD.B (An),Dn
 //     ADD.B -(An),Dn
-L_0B0C4:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     ADD.B (An)+,Dn
+//     ADD.B (d8,An,Xn),Dn
+//     ADD.B (xxx).L,Dn
+//     ADD.B (d8,PC,Xn),Dn
+add_b_mem_d0:
         slwi    data, data, 24
 
 // Reached from 17 dispatch table entries:
 //     ADDQ.B #<q>,Dn
 //     ADD.B Dn,Dn
 //     ASL.B #<q>,Dn
-L_0B0C8:
+add_asl_b_any_d0:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         slwi    immed_data, d0, 24
         mtlr    disp_table
@@ -22611,7 +25647,7 @@ L_0B0C8:
 
 // Reached from 8 dispatch table entries:
 //     ADDX.B Dn,Dn
-L_0B0EC:
+addx_b_dn_d0:
         slwi    immed_data, d0, 24
         bl      L_06660
         rlwimi  d0, data, 8, 24, 31                     // d0[7:0] = data[31:24]
@@ -22624,20 +25660,25 @@ L_0B0EC:
 //     ADD.B (xxx).W,Dn
 //     ADD.B (d16,PC),Dn
 //     ADD.B #<data>,Dn
-L_0B100:
+add_b_ea_d1:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     ADD.B (An),Dn
 //     ADD.B -(An),Dn
-L_0B104:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     ADD.B (An)+,Dn
+//     ADD.B (d8,An,Xn),Dn
+//     ADD.B (xxx).L,Dn
+//     ADD.B (d8,PC,Xn),Dn
+add_b_mem_d1:
         slwi    data, data, 24
 
 // Reached from 17 dispatch table entries:
 //     ADDQ.B #<q>,Dn
 //     ADD.B Dn,Dn
 //     ASL.B #<q>,Dn
-L_0B108:
+add_asl_b_any_d1:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         slwi    immed_data, d1, 24
         mtlr    disp_table
@@ -22650,7 +25691,7 @@ L_0B108:
 
 // Reached from 8 dispatch table entries:
 //     ADDX.B Dn,Dn
-L_0B12C:
+addx_b_dn_d1:
         slwi    immed_data, d1, 24
         bl      L_06660
         rlwimi  d1, data, 8, 24, 31                     // d1[7:0] = data[31:24]
@@ -22663,20 +25704,25 @@ L_0B12C:
 //     ADD.B (xxx).W,Dn
 //     ADD.B (d16,PC),Dn
 //     ADD.B #<data>,Dn
-L_0B140:
+add_b_ea_d2:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     ADD.B (An),Dn
 //     ADD.B -(An),Dn
-L_0B144:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     ADD.B (An)+,Dn
+//     ADD.B (d8,An,Xn),Dn
+//     ADD.B (xxx).L,Dn
+//     ADD.B (d8,PC,Xn),Dn
+add_b_mem_d2:
         slwi    data, data, 24
 
 // Reached from 17 dispatch table entries:
 //     ADDQ.B #<q>,Dn
 //     ADD.B Dn,Dn
 //     ASL.B #<q>,Dn
-L_0B148:
+add_asl_b_any_d2:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         slwi    immed_data, d2, 24
         mtlr    disp_table
@@ -22689,7 +25735,7 @@ L_0B148:
 
 // Reached from 8 dispatch table entries:
 //     ADDX.B Dn,Dn
-L_0B16C:
+addx_b_dn_d2:
         slwi    immed_data, d2, 24
         bl      L_06660
         rlwimi  d2, data, 8, 24, 31                     // d2[7:0] = data[31:24]
@@ -22702,20 +25748,25 @@ L_0B16C:
 //     ADD.B (xxx).W,Dn
 //     ADD.B (d16,PC),Dn
 //     ADD.B #<data>,Dn
-L_0B180:
+add_b_ea_d3:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     ADD.B (An),Dn
 //     ADD.B -(An),Dn
-L_0B184:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     ADD.B (An)+,Dn
+//     ADD.B (d8,An,Xn),Dn
+//     ADD.B (xxx).L,Dn
+//     ADD.B (d8,PC,Xn),Dn
+add_b_mem_d3:
         slwi    data, data, 24
 
 // Reached from 17 dispatch table entries:
 //     ADDQ.B #<q>,Dn
 //     ADD.B Dn,Dn
 //     ASL.B #<q>,Dn
-L_0B188:
+add_asl_b_any_d3:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         slwi    immed_data, d3, 24
         mtlr    disp_table
@@ -22728,7 +25779,7 @@ L_0B188:
 
 // Reached from 8 dispatch table entries:
 //     ADDX.B Dn,Dn
-L_0B1AC:
+addx_b_dn_d3:
         slwi    immed_data, d3, 24
         bl      L_06660
         rlwimi  d3, data, 8, 24, 31                     // d3[7:0] = data[31:24]
@@ -22741,20 +25792,25 @@ L_0B1AC:
 //     ADD.B (xxx).W,Dn
 //     ADD.B (d16,PC),Dn
 //     ADD.B #<data>,Dn
-L_0B1C0:
+add_b_ea_d4:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     ADD.B (An),Dn
 //     ADD.B -(An),Dn
-L_0B1C4:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     ADD.B (An)+,Dn
+//     ADD.B (d8,An,Xn),Dn
+//     ADD.B (xxx).L,Dn
+//     ADD.B (d8,PC,Xn),Dn
+add_b_mem_d4:
         slwi    data, data, 24
 
 // Reached from 17 dispatch table entries:
 //     ADDQ.B #<q>,Dn
 //     ADD.B Dn,Dn
 //     ASL.B #<q>,Dn
-L_0B1C8:
+add_asl_b_any_d4:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         slwi    immed_data, d4, 24
         mtlr    disp_table
@@ -22767,7 +25823,7 @@ L_0B1C8:
 
 // Reached from 8 dispatch table entries:
 //     ADDX.B Dn,Dn
-L_0B1EC:
+addx_b_dn_d4:
         slwi    immed_data, d4, 24
         bl      L_06660
         rlwimi  d4, data, 8, 24, 31                     // d4[7:0] = data[31:24]
@@ -22780,20 +25836,25 @@ L_0B1EC:
 //     ADD.B (xxx).W,Dn
 //     ADD.B (d16,PC),Dn
 //     ADD.B #<data>,Dn
-L_0B200:
+add_b_ea_d5:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     ADD.B (An),Dn
 //     ADD.B -(An),Dn
-L_0B204:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     ADD.B (An)+,Dn
+//     ADD.B (d8,An,Xn),Dn
+//     ADD.B (xxx).L,Dn
+//     ADD.B (d8,PC,Xn),Dn
+add_b_mem_d5:
         slwi    data, data, 24
 
 // Reached from 17 dispatch table entries:
 //     ADDQ.B #<q>,Dn
 //     ADD.B Dn,Dn
 //     ASL.B #<q>,Dn
-L_0B208:
+add_asl_b_any_d5:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         slwi    immed_data, d5, 24
         mtlr    disp_table
@@ -22806,7 +25867,7 @@ L_0B208:
 
 // Reached from 8 dispatch table entries:
 //     ADDX.B Dn,Dn
-L_0B22C:
+addx_b_dn_d5:
         slwi    immed_data, d5, 24
         bl      L_06660
         rlwimi  d5, data, 8, 24, 31                     // d5[7:0] = data[31:24]
@@ -22819,20 +25880,25 @@ L_0B22C:
 //     ADD.B (xxx).W,Dn
 //     ADD.B (d16,PC),Dn
 //     ADD.B #<data>,Dn
-L_0B240:
+add_b_ea_d6:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     ADD.B (An),Dn
 //     ADD.B -(An),Dn
-L_0B244:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     ADD.B (An)+,Dn
+//     ADD.B (d8,An,Xn),Dn
+//     ADD.B (xxx).L,Dn
+//     ADD.B (d8,PC,Xn),Dn
+add_b_mem_d6:
         slwi    data, data, 24
 
 // Reached from 17 dispatch table entries:
 //     ADDQ.B #<q>,Dn
 //     ADD.B Dn,Dn
 //     ASL.B #<q>,Dn
-L_0B248:
+add_asl_b_any_d6:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         slwi    immed_data, d6, 24
         mtlr    disp_table
@@ -22845,7 +25911,7 @@ L_0B248:
 
 // Reached from 8 dispatch table entries:
 //     ADDX.B Dn,Dn
-L_0B26C:
+addx_b_dn_d6:
         slwi    immed_data, d6, 24
         bl      L_06660
         rlwimi  d6, data, 8, 24, 31                     // d6[7:0] = data[31:24]
@@ -22858,20 +25924,25 @@ L_0B26C:
 //     ADD.B (xxx).W,Dn
 //     ADD.B (d16,PC),Dn
 //     ADD.B #<data>,Dn
-L_0B280:
+add_b_ea_d7:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 16 dispatch table entries:
 //     ADD.B (An),Dn
 //     ADD.B -(An),Dn
-L_0B284:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     ADD.B (An)+,Dn
+//     ADD.B (d8,An,Xn),Dn
+//     ADD.B (xxx).L,Dn
+//     ADD.B (d8,PC,Xn),Dn
+add_b_mem_d7:
         slwi    data, data, 24
 
 // Reached from 17 dispatch table entries:
 //     ADDQ.B #<q>,Dn
 //     ADD.B Dn,Dn
 //     ASL.B #<q>,Dn
-L_0B288:
+add_asl_b_any_d7:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         slwi    immed_data, d7, 24
         mtlr    disp_table
@@ -22884,7 +25955,7 @@ L_0B288:
 
 // Reached from 8 dispatch table entries:
 //     ADDX.B Dn,Dn
-L_0B2AC:
+addx_b_dn_d7:
         slwi    immed_data, d7, 24
         bl      L_06660
         rlwimi  d7, data, 8, 24, 31                     // d7[7:0] = data[31:24]
@@ -22893,56 +25964,56 @@ L_0B2AC:
 
 // Reached from 8 dispatch table entries:
 //     LSR.B Dn,Dn
-L_0B2C0:
+lsr_b_dn_d0:
         rlwinm  data, d0, 1, 23, 30                     // data = d0[7:0] << 1
         beq     L_0B378
         srw     data, data, addr
 
 // Reached from 8 dispatch table entries:
 //     LSR.B #<q>,Dn
-L_0B2CC:
+lsr_b_q_d0:
         rlwimi  d0, data, 31, 24, 31                    // d0[7:0] = data[8:1]
         b       L_07180
 
 // Reached from 8 dispatch table entries:
 //     LSL.B Dn,Dn
-L_0B2D4:
+lsl_b_dn_d0:
         rlwinm  data, d0, 23, 1, 8                      // data = d0[7:0] << 23
         beq     L_072C0
         slw     data, data, addr
 
 // Reached from 8 dispatch table entries:
 //     LSL.B #<q>,Dn
-L_0B2E0:
+lsl_b_q_d0:
         rlwimi  d0, data, 9, 24, 31                     // d0[7:0] = data[30:23]
         b       L_071A0
 
 // Reached from 8 dispatch table entries:
 //     ASR.B Dn,Dn
-L_0B2E8:
+asr_b_dn_d0:
         beq     L_0B378
 
 // Reached from 7 dispatch table entries:
 //     ASR.B #<q>,Dn
-L_0B2EC:
+asr_b_q_d0:
         slwi    data, d0, 24
         sraw    data, data, addr                        // data = data >> addr (arithmetic)
 
 // Reached from 1 dispatch table entry:
 //     ASR.B #<q>,Dn
-L_0B2F4:
+asr_b_q_d0_2:
         rlwimi  d0, data, 8, 25, 31                     // d0[6:0] = data[30:24]
         b       L_071C0
         ALIGN(64)
 
 // Reached from 8 dispatch table entries:
 //     ASL.B Dn,Dn
-L_0B300:
+asl_b_dn_d0:
         beq     L_0B378
 
 // Reached from 7 dispatch table entries:
 //     ASL.B #<q>,Dn
-L_0B304:
+asl_b_q_d0:
         slwi    data, d0, 24
         slw.    immed_data, data, addr
         rlwimi  d0, immed_data, 8, 24, 31               // d0[7:0] = immed_data[31:24]
@@ -22951,29 +26022,29 @@ L_0B304:
 
 // Reached from 8 dispatch table entries:
 //     ROR.B Dn,Dn
-L_0B320:
+ror_b_dn_d0:
         neg     addr, addr
         beq     L_0B378
         clrlwi  addr, addr, 29                          // addr = addr & 0x00000007
 
 // Reached from 7 dispatch table entries:
 //     ROR.B #<q>,Dn
-L_0B32C:
+ror_b_q_d0:
         slwi    data, d0, 24
         rlwimi  data, d0, 0, 24, 31                     // data[7:0] = d0[7:0]
         rlwnm.  data, data, addr, 0, 31                 // data = rotl(data, addr) & 0xFFFFFFFF
         rlwimi  d0, data, 0, 24, 31                     // d0[7:0] = data[7:0]
-        b       L_07240
+        b       ror_b_q_dn
 
 // Reached from 8 dispatch table entries:
 //     ROL.B Dn,Dn
-L_0B340:
+rol_b_dn_d0:
         clrlwi  addr, addr, 29                          // addr = addr & 0x00000007
         beq     L_0B378
 
 // Reached from 8 dispatch table entries:
 //     ROL.B #<q>,Dn
-L_0B348:
+rol_b_q_d0:
         slwi    data, d0, 24
         rlwimi  data, d0, 0, 24, 31                     // data[7:0] = d0[7:0]
         rlwnm.  data, data, addr, 0, 31                 // data = rotl(data, addr) & 0xFFFFFFFF
@@ -22984,13 +26055,13 @@ L_0B348:
 // Reached from 16 dispatch table entries:
 //     ROXR.B Dn,Dn
 //     ROXL.B Dn,Dn
-L_0B360:
+roxr_roxl_b_dn_d0:
         bnel    L_072DC
 
 // Reached from 16 dispatch table entries:
 //     ROXR.B #<q>,Dn
 //     ROXL.B #<q>,Dn
-L_0B364:
+roxr_roxl_b_q_d0:
         clrlwi  data, d0, 24                            // data = d0 & 0x000000FF
         bl      L_07340
         rlwimi  d0, data, 0, 24, 31                     // d0[7:0] = data[7:0]
@@ -22998,60 +26069,60 @@ L_0B364:
         b       L_0D114
 L_0B378:
         slwi.   data, d0, 24
-        b       L_060C0
+        b       move_or_etc_any_reg
 
 // Reached from 8 dispatch table entries:
 //     LSR.B Dn,Dn
-L_0B380:
+lsr_b_dn_d1:
         rlwinm  data, d1, 1, 23, 30                     // data = d1[7:0] << 1
         beq     L_0B438
         srw     data, data, addr
 
 // Reached from 8 dispatch table entries:
 //     LSR.B #<q>,Dn
-L_0B38C:
+lsr_b_q_d1:
         rlwimi  d1, data, 31, 24, 31                    // d1[7:0] = data[8:1]
         b       L_07180
 
 // Reached from 8 dispatch table entries:
 //     LSL.B Dn,Dn
-L_0B394:
+lsl_b_dn_d1:
         rlwinm  data, d1, 23, 1, 8                      // data = d1[7:0] << 23
         beq     L_072C0
         slw     data, data, addr
 
 // Reached from 8 dispatch table entries:
 //     LSL.B #<q>,Dn
-L_0B3A0:
+lsl_b_q_d1:
         rlwimi  d1, data, 9, 24, 31                     // d1[7:0] = data[30:23]
         b       L_071A0
 
 // Reached from 8 dispatch table entries:
 //     ASR.B Dn,Dn
-L_0B3A8:
+asr_b_dn_d1:
         beq     L_0B438
 
 // Reached from 7 dispatch table entries:
 //     ASR.B #<q>,Dn
-L_0B3AC:
+asr_b_q_d1:
         slwi    data, d1, 24
         sraw    data, data, addr                        // data = data >> addr (arithmetic)
 
 // Reached from 1 dispatch table entry:
 //     ASR.B #<q>,Dn
-L_0B3B4:
+asr_b_q_d1_2:
         rlwimi  d1, data, 8, 25, 31                     // d1[6:0] = data[30:24]
         b       L_071C0
         ALIGN(64)
 
 // Reached from 8 dispatch table entries:
 //     ASL.B Dn,Dn
-L_0B3C0:
+asl_b_dn_d1:
         beq     L_0B438
 
 // Reached from 7 dispatch table entries:
 //     ASL.B #<q>,Dn
-L_0B3C4:
+asl_b_q_d1:
         slwi    data, d1, 24
         slw.    immed_data, data, addr
         rlwimi  d1, immed_data, 8, 24, 31               // d1[7:0] = immed_data[31:24]
@@ -23060,29 +26131,29 @@ L_0B3C4:
 
 // Reached from 8 dispatch table entries:
 //     ROR.B Dn,Dn
-L_0B3E0:
+ror_b_dn_d1:
         neg     addr, addr
         beq     L_0B438
         clrlwi  addr, addr, 29                          // addr = addr & 0x00000007
 
 // Reached from 7 dispatch table entries:
 //     ROR.B #<q>,Dn
-L_0B3EC:
+ror_b_q_d1:
         slwi    data, d1, 24
         rlwimi  data, d1, 0, 24, 31                     // data[7:0] = d1[7:0]
         rlwnm.  data, data, addr, 0, 31                 // data = rotl(data, addr) & 0xFFFFFFFF
         rlwimi  d1, data, 0, 24, 31                     // d1[7:0] = data[7:0]
-        b       L_07240
+        b       ror_b_q_dn
 
 // Reached from 8 dispatch table entries:
 //     ROL.B Dn,Dn
-L_0B400:
+rol_b_dn_d1:
         clrlwi  addr, addr, 29                          // addr = addr & 0x00000007
         beq     L_0B438
 
 // Reached from 8 dispatch table entries:
 //     ROL.B #<q>,Dn
-L_0B408:
+rol_b_q_d1:
         slwi    data, d1, 24
         rlwimi  data, d1, 0, 24, 31                     // data[7:0] = d1[7:0]
         rlwnm.  data, data, addr, 0, 31                 // data = rotl(data, addr) & 0xFFFFFFFF
@@ -23093,13 +26164,13 @@ L_0B408:
 // Reached from 16 dispatch table entries:
 //     ROXR.B Dn,Dn
 //     ROXL.B Dn,Dn
-L_0B420:
+roxr_roxl_b_dn_d1:
         bnel    L_072DC
 
 // Reached from 16 dispatch table entries:
 //     ROXR.B #<q>,Dn
 //     ROXL.B #<q>,Dn
-L_0B424:
+roxr_roxl_b_q_d1:
         clrlwi  data, d1, 24                            // data = d1 & 0x000000FF
         bl      L_07340
         rlwimi  d1, data, 0, 24, 31                     // d1[7:0] = data[7:0]
@@ -23107,60 +26178,60 @@ L_0B424:
         b       L_0D114
 L_0B438:
         slwi.   data, d1, 24
-        b       L_060C0
+        b       move_or_etc_any_reg
 
 // Reached from 8 dispatch table entries:
 //     LSR.B Dn,Dn
-L_0B440:
+lsr_b_dn_d2:
         rlwinm  data, d2, 1, 23, 30                     // data = d2[7:0] << 1
         beq     L_0B4F8
         srw     data, data, addr
 
 // Reached from 8 dispatch table entries:
 //     LSR.B #<q>,Dn
-L_0B44C:
+lsr_b_q_d2:
         rlwimi  d2, data, 31, 24, 31                    // d2[7:0] = data[8:1]
         b       L_07180
 
 // Reached from 8 dispatch table entries:
 //     LSL.B Dn,Dn
-L_0B454:
+lsl_b_dn_d2:
         rlwinm  data, d2, 23, 1, 8                      // data = d2[7:0] << 23
         beq     L_072C0
         slw     data, data, addr
 
 // Reached from 8 dispatch table entries:
 //     LSL.B #<q>,Dn
-L_0B460:
+lsl_b_q_d2:
         rlwimi  d2, data, 9, 24, 31                     // d2[7:0] = data[30:23]
         b       L_071A0
 
 // Reached from 8 dispatch table entries:
 //     ASR.B Dn,Dn
-L_0B468:
+asr_b_dn_d2:
         beq     L_0B4F8
 
 // Reached from 7 dispatch table entries:
 //     ASR.B #<q>,Dn
-L_0B46C:
+asr_b_q_d2:
         slwi    data, d2, 24
         sraw    data, data, addr                        // data = data >> addr (arithmetic)
 
 // Reached from 1 dispatch table entry:
 //     ASR.B #<q>,Dn
-L_0B474:
+asr_b_q_d2_2:
         rlwimi  d2, data, 8, 25, 31                     // d2[6:0] = data[30:24]
         b       L_071C0
         ALIGN(64)
 
 // Reached from 8 dispatch table entries:
 //     ASL.B Dn,Dn
-L_0B480:
+asl_b_dn_d2:
         beq     L_0B4F8
 
 // Reached from 7 dispatch table entries:
 //     ASL.B #<q>,Dn
-L_0B484:
+asl_b_q_d2:
         slwi    data, d2, 24
         slw.    immed_data, data, addr
         rlwimi  d2, immed_data, 8, 24, 31               // d2[7:0] = immed_data[31:24]
@@ -23169,29 +26240,29 @@ L_0B484:
 
 // Reached from 8 dispatch table entries:
 //     ROR.B Dn,Dn
-L_0B4A0:
+ror_b_dn_d2:
         neg     addr, addr
         beq     L_0B4F8
         clrlwi  addr, addr, 29                          // addr = addr & 0x00000007
 
 // Reached from 7 dispatch table entries:
 //     ROR.B #<q>,Dn
-L_0B4AC:
+ror_b_q_d2:
         slwi    data, d2, 24
         rlwimi  data, d2, 0, 24, 31                     // data[7:0] = d2[7:0]
         rlwnm.  data, data, addr, 0, 31                 // data = rotl(data, addr) & 0xFFFFFFFF
         rlwimi  d2, data, 0, 24, 31                     // d2[7:0] = data[7:0]
-        b       L_07240
+        b       ror_b_q_dn
 
 // Reached from 8 dispatch table entries:
 //     ROL.B Dn,Dn
-L_0B4C0:
+rol_b_dn_d2:
         clrlwi  addr, addr, 29                          // addr = addr & 0x00000007
         beq     L_0B4F8
 
 // Reached from 8 dispatch table entries:
 //     ROL.B #<q>,Dn
-L_0B4C8:
+rol_b_q_d2:
         slwi    data, d2, 24
         rlwimi  data, d2, 0, 24, 31                     // data[7:0] = d2[7:0]
         rlwnm.  data, data, addr, 0, 31                 // data = rotl(data, addr) & 0xFFFFFFFF
@@ -23202,13 +26273,13 @@ L_0B4C8:
 // Reached from 16 dispatch table entries:
 //     ROXR.B Dn,Dn
 //     ROXL.B Dn,Dn
-L_0B4E0:
+roxr_roxl_b_dn_d2:
         bnel    L_072DC
 
 // Reached from 16 dispatch table entries:
 //     ROXR.B #<q>,Dn
 //     ROXL.B #<q>,Dn
-L_0B4E4:
+roxr_roxl_b_q_d2:
         clrlwi  data, d2, 24                            // data = d2 & 0x000000FF
         bl      L_07340
         rlwimi  d2, data, 0, 24, 31                     // d2[7:0] = data[7:0]
@@ -23216,60 +26287,60 @@ L_0B4E4:
         b       L_0D114
 L_0B4F8:
         slwi.   data, d2, 24
-        b       L_060C0
+        b       move_or_etc_any_reg
 
 // Reached from 8 dispatch table entries:
 //     LSR.B Dn,Dn
-L_0B500:
+lsr_b_dn_d3:
         rlwinm  data, d3, 1, 23, 30                     // data = d3[7:0] << 1
         beq     L_0B5B8
         srw     data, data, addr
 
 // Reached from 8 dispatch table entries:
 //     LSR.B #<q>,Dn
-L_0B50C:
+lsr_b_q_d3:
         rlwimi  d3, data, 31, 24, 31                    // d3[7:0] = data[8:1]
         b       L_07180
 
 // Reached from 8 dispatch table entries:
 //     LSL.B Dn,Dn
-L_0B514:
+lsl_b_dn_d3:
         rlwinm  data, d3, 23, 1, 8                      // data = d3[7:0] << 23
         beq     L_072C0
         slw     data, data, addr
 
 // Reached from 8 dispatch table entries:
 //     LSL.B #<q>,Dn
-L_0B520:
+lsl_b_q_d3:
         rlwimi  d3, data, 9, 24, 31                     // d3[7:0] = data[30:23]
         b       L_071A0
 
 // Reached from 8 dispatch table entries:
 //     ASR.B Dn,Dn
-L_0B528:
+asr_b_dn_d3:
         beq     L_0B5B8
 
 // Reached from 7 dispatch table entries:
 //     ASR.B #<q>,Dn
-L_0B52C:
+asr_b_q_d3:
         slwi    data, d3, 24
         sraw    data, data, addr                        // data = data >> addr (arithmetic)
 
 // Reached from 1 dispatch table entry:
 //     ASR.B #<q>,Dn
-L_0B534:
+asr_b_q_d3_2:
         rlwimi  d3, data, 8, 25, 31                     // d3[6:0] = data[30:24]
         b       L_071C0
         ALIGN(64)
 
 // Reached from 8 dispatch table entries:
 //     ASL.B Dn,Dn
-L_0B540:
+asl_b_dn_d3:
         beq     L_0B5B8
 
 // Reached from 7 dispatch table entries:
 //     ASL.B #<q>,Dn
-L_0B544:
+asl_b_q_d3:
         slwi    data, d3, 24
         slw.    immed_data, data, addr
         rlwimi  d3, immed_data, 8, 24, 31               // d3[7:0] = immed_data[31:24]
@@ -23278,29 +26349,29 @@ L_0B544:
 
 // Reached from 8 dispatch table entries:
 //     ROR.B Dn,Dn
-L_0B560:
+ror_b_dn_d3:
         neg     addr, addr
         beq     L_0B5B8
         clrlwi  addr, addr, 29                          // addr = addr & 0x00000007
 
 // Reached from 7 dispatch table entries:
 //     ROR.B #<q>,Dn
-L_0B56C:
+ror_b_q_d3:
         slwi    data, d3, 24
         rlwimi  data, d3, 0, 24, 31                     // data[7:0] = d3[7:0]
         rlwnm.  data, data, addr, 0, 31                 // data = rotl(data, addr) & 0xFFFFFFFF
         rlwimi  d3, data, 0, 24, 31                     // d3[7:0] = data[7:0]
-        b       L_07240
+        b       ror_b_q_dn
 
 // Reached from 8 dispatch table entries:
 //     ROL.B Dn,Dn
-L_0B580:
+rol_b_dn_d3:
         clrlwi  addr, addr, 29                          // addr = addr & 0x00000007
         beq     L_0B5B8
 
 // Reached from 8 dispatch table entries:
 //     ROL.B #<q>,Dn
-L_0B588:
+rol_b_q_d3:
         slwi    data, d3, 24
         rlwimi  data, d3, 0, 24, 31                     // data[7:0] = d3[7:0]
         rlwnm.  data, data, addr, 0, 31                 // data = rotl(data, addr) & 0xFFFFFFFF
@@ -23311,13 +26382,13 @@ L_0B588:
 // Reached from 16 dispatch table entries:
 //     ROXR.B Dn,Dn
 //     ROXL.B Dn,Dn
-L_0B5A0:
+roxr_roxl_b_dn_d3:
         bnel    L_072DC
 
 // Reached from 16 dispatch table entries:
 //     ROXR.B #<q>,Dn
 //     ROXL.B #<q>,Dn
-L_0B5A4:
+roxr_roxl_b_q_d3:
         clrlwi  data, d3, 24                            // data = d3 & 0x000000FF
         bl      L_07340
         rlwimi  d3, data, 0, 24, 31                     // d3[7:0] = data[7:0]
@@ -23325,60 +26396,60 @@ L_0B5A4:
         b       L_0D114
 L_0B5B8:
         slwi.   data, d3, 24
-        b       L_060C0
+        b       move_or_etc_any_reg
 
 // Reached from 8 dispatch table entries:
 //     LSR.B Dn,Dn
-L_0B5C0:
+lsr_b_dn_d4:
         rlwinm  data, d4, 1, 23, 30                     // data = d4[7:0] << 1
         beq     L_0B678
         srw     data, data, addr
 
 // Reached from 8 dispatch table entries:
 //     LSR.B #<q>,Dn
-L_0B5CC:
+lsr_b_q_d4:
         rlwimi  d4, data, 31, 24, 31                    // d4[7:0] = data[8:1]
         b       L_07180
 
 // Reached from 8 dispatch table entries:
 //     LSL.B Dn,Dn
-L_0B5D4:
+lsl_b_dn_d4:
         rlwinm  data, d4, 23, 1, 8                      // data = d4[7:0] << 23
         beq     L_072C0
         slw     data, data, addr
 
 // Reached from 8 dispatch table entries:
 //     LSL.B #<q>,Dn
-L_0B5E0:
+lsl_b_q_d4:
         rlwimi  d4, data, 9, 24, 31                     // d4[7:0] = data[30:23]
         b       L_071A0
 
 // Reached from 8 dispatch table entries:
 //     ASR.B Dn,Dn
-L_0B5E8:
+asr_b_dn_d4:
         beq     L_0B678
 
 // Reached from 7 dispatch table entries:
 //     ASR.B #<q>,Dn
-L_0B5EC:
+asr_b_q_d4:
         slwi    data, d4, 24
         sraw    data, data, addr                        // data = data >> addr (arithmetic)
 
 // Reached from 1 dispatch table entry:
 //     ASR.B #<q>,Dn
-L_0B5F4:
+asr_b_q_d4_2:
         rlwimi  d4, data, 8, 25, 31                     // d4[6:0] = data[30:24]
         b       L_071C0
         ALIGN(64)
 
 // Reached from 8 dispatch table entries:
 //     ASL.B Dn,Dn
-L_0B600:
+asl_b_dn_d4:
         beq     L_0B678
 
 // Reached from 7 dispatch table entries:
 //     ASL.B #<q>,Dn
-L_0B604:
+asl_b_q_d4:
         slwi    data, d4, 24
         slw.    immed_data, data, addr
         rlwimi  d4, immed_data, 8, 24, 31               // d4[7:0] = immed_data[31:24]
@@ -23387,29 +26458,29 @@ L_0B604:
 
 // Reached from 8 dispatch table entries:
 //     ROR.B Dn,Dn
-L_0B620:
+ror_b_dn_d4:
         neg     addr, addr
         beq     L_0B678
         clrlwi  addr, addr, 29                          // addr = addr & 0x00000007
 
 // Reached from 7 dispatch table entries:
 //     ROR.B #<q>,Dn
-L_0B62C:
+ror_b_q_d4:
         slwi    data, d4, 24
         rlwimi  data, d4, 0, 24, 31                     // data[7:0] = d4[7:0]
         rlwnm.  data, data, addr, 0, 31                 // data = rotl(data, addr) & 0xFFFFFFFF
         rlwimi  d4, data, 0, 24, 31                     // d4[7:0] = data[7:0]
-        b       L_07240
+        b       ror_b_q_dn
 
 // Reached from 8 dispatch table entries:
 //     ROL.B Dn,Dn
-L_0B640:
+rol_b_dn_d4:
         clrlwi  addr, addr, 29                          // addr = addr & 0x00000007
         beq     L_0B678
 
 // Reached from 8 dispatch table entries:
 //     ROL.B #<q>,Dn
-L_0B648:
+rol_b_q_d4:
         slwi    data, d4, 24
         rlwimi  data, d4, 0, 24, 31                     // data[7:0] = d4[7:0]
         rlwnm.  data, data, addr, 0, 31                 // data = rotl(data, addr) & 0xFFFFFFFF
@@ -23420,13 +26491,13 @@ L_0B648:
 // Reached from 16 dispatch table entries:
 //     ROXR.B Dn,Dn
 //     ROXL.B Dn,Dn
-L_0B660:
+roxr_roxl_b_dn_d4:
         bnel    L_072DC
 
 // Reached from 16 dispatch table entries:
 //     ROXR.B #<q>,Dn
 //     ROXL.B #<q>,Dn
-L_0B664:
+roxr_roxl_b_q_d4:
         clrlwi  data, d4, 24                            // data = d4 & 0x000000FF
         bl      L_07340
         rlwimi  d4, data, 0, 24, 31                     // d4[7:0] = data[7:0]
@@ -23434,60 +26505,60 @@ L_0B664:
         b       L_0D114
 L_0B678:
         slwi.   data, d4, 24
-        b       L_060C0
+        b       move_or_etc_any_reg
 
 // Reached from 8 dispatch table entries:
 //     LSR.B Dn,Dn
-L_0B680:
+lsr_b_dn_d5:
         rlwinm  data, d5, 1, 23, 30                     // data = d5[7:0] << 1
         beq     L_0B738
         srw     data, data, addr
 
 // Reached from 8 dispatch table entries:
 //     LSR.B #<q>,Dn
-L_0B68C:
+lsr_b_q_d5:
         rlwimi  d5, data, 31, 24, 31                    // d5[7:0] = data[8:1]
         b       L_07180
 
 // Reached from 8 dispatch table entries:
 //     LSL.B Dn,Dn
-L_0B694:
+lsl_b_dn_d5:
         rlwinm  data, d5, 23, 1, 8                      // data = d5[7:0] << 23
         beq     L_072C0
         slw     data, data, addr
 
 // Reached from 8 dispatch table entries:
 //     LSL.B #<q>,Dn
-L_0B6A0:
+lsl_b_q_d5:
         rlwimi  d5, data, 9, 24, 31                     // d5[7:0] = data[30:23]
         b       L_071A0
 
 // Reached from 8 dispatch table entries:
 //     ASR.B Dn,Dn
-L_0B6A8:
+asr_b_dn_d5:
         beq     L_0B738
 
 // Reached from 7 dispatch table entries:
 //     ASR.B #<q>,Dn
-L_0B6AC:
+asr_b_q_d5:
         slwi    data, d5, 24
         sraw    data, data, addr                        // data = data >> addr (arithmetic)
 
 // Reached from 1 dispatch table entry:
 //     ASR.B #<q>,Dn
-L_0B6B4:
+asr_b_q_d5_2:
         rlwimi  d5, data, 8, 25, 31                     // d5[6:0] = data[30:24]
         b       L_071C0
         ALIGN(64)
 
 // Reached from 8 dispatch table entries:
 //     ASL.B Dn,Dn
-L_0B6C0:
+asl_b_dn_d5:
         beq     L_0B738
 
 // Reached from 7 dispatch table entries:
 //     ASL.B #<q>,Dn
-L_0B6C4:
+asl_b_q_d5:
         slwi    data, d5, 24
         slw.    immed_data, data, addr
         rlwimi  d5, immed_data, 8, 24, 31               // d5[7:0] = immed_data[31:24]
@@ -23496,29 +26567,29 @@ L_0B6C4:
 
 // Reached from 8 dispatch table entries:
 //     ROR.B Dn,Dn
-L_0B6E0:
+ror_b_dn_d5:
         neg     addr, addr
         beq     L_0B738
         clrlwi  addr, addr, 29                          // addr = addr & 0x00000007
 
 // Reached from 7 dispatch table entries:
 //     ROR.B #<q>,Dn
-L_0B6EC:
+ror_b_q_d5:
         slwi    data, d5, 24
         rlwimi  data, d5, 0, 24, 31                     // data[7:0] = d5[7:0]
         rlwnm.  data, data, addr, 0, 31                 // data = rotl(data, addr) & 0xFFFFFFFF
         rlwimi  d5, data, 0, 24, 31                     // d5[7:0] = data[7:0]
-        b       L_07240
+        b       ror_b_q_dn
 
 // Reached from 8 dispatch table entries:
 //     ROL.B Dn,Dn
-L_0B700:
+rol_b_dn_d5:
         clrlwi  addr, addr, 29                          // addr = addr & 0x00000007
         beq     L_0B738
 
 // Reached from 8 dispatch table entries:
 //     ROL.B #<q>,Dn
-L_0B708:
+rol_b_q_d5:
         slwi    data, d5, 24
         rlwimi  data, d5, 0, 24, 31                     // data[7:0] = d5[7:0]
         rlwnm.  data, data, addr, 0, 31                 // data = rotl(data, addr) & 0xFFFFFFFF
@@ -23529,13 +26600,13 @@ L_0B708:
 // Reached from 16 dispatch table entries:
 //     ROXR.B Dn,Dn
 //     ROXL.B Dn,Dn
-L_0B720:
+roxr_roxl_b_dn_d5:
         bnel    L_072DC
 
 // Reached from 16 dispatch table entries:
 //     ROXR.B #<q>,Dn
 //     ROXL.B #<q>,Dn
-L_0B724:
+roxr_roxl_b_q_d5:
         clrlwi  data, d5, 24                            // data = d5 & 0x000000FF
         bl      L_07340
         rlwimi  d5, data, 0, 24, 31                     // d5[7:0] = data[7:0]
@@ -23543,60 +26614,60 @@ L_0B724:
         b       L_0D114
 L_0B738:
         slwi.   data, d5, 24
-        b       L_060C0
+        b       move_or_etc_any_reg
 
 // Reached from 8 dispatch table entries:
 //     LSR.B Dn,Dn
-L_0B740:
+lsr_b_dn_d6:
         rlwinm  data, d6, 1, 23, 30                     // data = d6[7:0] << 1
         beq     L_0B7F8
         srw     data, data, addr
 
 // Reached from 8 dispatch table entries:
 //     LSR.B #<q>,Dn
-L_0B74C:
+lsr_b_q_d6:
         rlwimi  d6, data, 31, 24, 31                    // d6[7:0] = data[8:1]
         b       L_07180
 
 // Reached from 8 dispatch table entries:
 //     LSL.B Dn,Dn
-L_0B754:
+lsl_b_dn_d6:
         rlwinm  data, d6, 23, 1, 8                      // data = d6[7:0] << 23
         beq     L_072C0
         slw     data, data, addr
 
 // Reached from 8 dispatch table entries:
 //     LSL.B #<q>,Dn
-L_0B760:
+lsl_b_q_d6:
         rlwimi  d6, data, 9, 24, 31                     // d6[7:0] = data[30:23]
         b       L_071A0
 
 // Reached from 8 dispatch table entries:
 //     ASR.B Dn,Dn
-L_0B768:
+asr_b_dn_d6:
         beq     L_0B7F8
 
 // Reached from 7 dispatch table entries:
 //     ASR.B #<q>,Dn
-L_0B76C:
+asr_b_q_d6:
         slwi    data, d6, 24
         sraw    data, data, addr                        // data = data >> addr (arithmetic)
 
 // Reached from 1 dispatch table entry:
 //     ASR.B #<q>,Dn
-L_0B774:
+asr_b_q_d6_2:
         rlwimi  d6, data, 8, 25, 31                     // d6[6:0] = data[30:24]
         b       L_071C0
         ALIGN(64)
 
 // Reached from 8 dispatch table entries:
 //     ASL.B Dn,Dn
-L_0B780:
+asl_b_dn_d6:
         beq     L_0B7F8
 
 // Reached from 7 dispatch table entries:
 //     ASL.B #<q>,Dn
-L_0B784:
+asl_b_q_d6:
         slwi    data, d6, 24
         slw.    immed_data, data, addr
         rlwimi  d6, immed_data, 8, 24, 31               // d6[7:0] = immed_data[31:24]
@@ -23605,29 +26676,29 @@ L_0B784:
 
 // Reached from 8 dispatch table entries:
 //     ROR.B Dn,Dn
-L_0B7A0:
+ror_b_dn_d6:
         neg     addr, addr
         beq     L_0B7F8
         clrlwi  addr, addr, 29                          // addr = addr & 0x00000007
 
 // Reached from 7 dispatch table entries:
 //     ROR.B #<q>,Dn
-L_0B7AC:
+ror_b_q_d6:
         slwi    data, d6, 24
         rlwimi  data, d6, 0, 24, 31                     // data[7:0] = d6[7:0]
         rlwnm.  data, data, addr, 0, 31                 // data = rotl(data, addr) & 0xFFFFFFFF
         rlwimi  d6, data, 0, 24, 31                     // d6[7:0] = data[7:0]
-        b       L_07240
+        b       ror_b_q_dn
 
 // Reached from 8 dispatch table entries:
 //     ROL.B Dn,Dn
-L_0B7C0:
+rol_b_dn_d6:
         clrlwi  addr, addr, 29                          // addr = addr & 0x00000007
         beq     L_0B7F8
 
 // Reached from 8 dispatch table entries:
 //     ROL.B #<q>,Dn
-L_0B7C8:
+rol_b_q_d6:
         slwi    data, d6, 24
         rlwimi  data, d6, 0, 24, 31                     // data[7:0] = d6[7:0]
         rlwnm.  data, data, addr, 0, 31                 // data = rotl(data, addr) & 0xFFFFFFFF
@@ -23638,13 +26709,13 @@ L_0B7C8:
 // Reached from 16 dispatch table entries:
 //     ROXR.B Dn,Dn
 //     ROXL.B Dn,Dn
-L_0B7E0:
+roxr_roxl_b_dn_d6:
         bnel    L_072DC
 
 // Reached from 16 dispatch table entries:
 //     ROXR.B #<q>,Dn
 //     ROXL.B #<q>,Dn
-L_0B7E4:
+roxr_roxl_b_q_d6:
         clrlwi  data, d6, 24                            // data = d6 & 0x000000FF
         bl      L_07340
         rlwimi  d6, data, 0, 24, 31                     // d6[7:0] = data[7:0]
@@ -23652,60 +26723,60 @@ L_0B7E4:
         b       L_0D114
 L_0B7F8:
         slwi.   data, d6, 24
-        b       L_060C0
+        b       move_or_etc_any_reg
 
 // Reached from 8 dispatch table entries:
 //     LSR.B Dn,Dn
-L_0B800:
+lsr_b_dn_d7:
         rlwinm  data, d7, 1, 23, 30                     // data = d7[7:0] << 1
         beq     L_0B8B8
         srw     data, data, addr
 
 // Reached from 8 dispatch table entries:
 //     LSR.B #<q>,Dn
-L_0B80C:
+lsr_b_q_d7:
         rlwimi  d7, data, 31, 24, 31                    // d7[7:0] = data[8:1]
         b       L_07180
 
 // Reached from 8 dispatch table entries:
 //     LSL.B Dn,Dn
-L_0B814:
+lsl_b_dn_d7:
         rlwinm  data, d7, 23, 1, 8                      // data = d7[7:0] << 23
         beq     L_072C0
         slw     data, data, addr
 
 // Reached from 8 dispatch table entries:
 //     LSL.B #<q>,Dn
-L_0B820:
+lsl_b_q_d7:
         rlwimi  d7, data, 9, 24, 31                     // d7[7:0] = data[30:23]
         b       L_071A0
 
 // Reached from 8 dispatch table entries:
 //     ASR.B Dn,Dn
-L_0B828:
+asr_b_dn_d7:
         beq     L_0B8B8
 
 // Reached from 7 dispatch table entries:
 //     ASR.B #<q>,Dn
-L_0B82C:
+asr_b_q_d7:
         slwi    data, d7, 24
         sraw    data, data, addr                        // data = data >> addr (arithmetic)
 
 // Reached from 1 dispatch table entry:
 //     ASR.B #<q>,Dn
-L_0B834:
+asr_b_q_d7_2:
         rlwimi  d7, data, 8, 25, 31                     // d7[6:0] = data[30:24]
         b       L_071C0
         ALIGN(64)
 
 // Reached from 8 dispatch table entries:
 //     ASL.B Dn,Dn
-L_0B840:
+asl_b_dn_d7:
         beq     L_0B8B8
 
 // Reached from 7 dispatch table entries:
 //     ASL.B #<q>,Dn
-L_0B844:
+asl_b_q_d7:
         slwi    data, d7, 24
         slw.    immed_data, data, addr
         rlwimi  d7, immed_data, 8, 24, 31               // d7[7:0] = immed_data[31:24]
@@ -23714,29 +26785,29 @@ L_0B844:
 
 // Reached from 8 dispatch table entries:
 //     ROR.B Dn,Dn
-L_0B860:
+ror_b_dn_d7:
         neg     addr, addr
         beq     L_0B8B8
         clrlwi  addr, addr, 29                          // addr = addr & 0x00000007
 
 // Reached from 7 dispatch table entries:
 //     ROR.B #<q>,Dn
-L_0B86C:
+ror_b_q_d7:
         slwi    data, d7, 24
         rlwimi  data, d7, 0, 24, 31                     // data[7:0] = d7[7:0]
         rlwnm.  data, data, addr, 0, 31                 // data = rotl(data, addr) & 0xFFFFFFFF
         rlwimi  d7, data, 0, 24, 31                     // d7[7:0] = data[7:0]
-        b       L_07240
+        b       ror_b_q_dn
 
 // Reached from 8 dispatch table entries:
 //     ROL.B Dn,Dn
-L_0B880:
+rol_b_dn_d7:
         clrlwi  addr, addr, 29                          // addr = addr & 0x00000007
         beq     L_0B8B8
 
 // Reached from 8 dispatch table entries:
 //     ROL.B #<q>,Dn
-L_0B888:
+rol_b_q_d7:
         slwi    data, d7, 24
         rlwimi  data, d7, 0, 24, 31                     // data[7:0] = d7[7:0]
         rlwnm.  data, data, addr, 0, 31                 // data = rotl(data, addr) & 0xFFFFFFFF
@@ -23747,13 +26818,13 @@ L_0B888:
 // Reached from 16 dispatch table entries:
 //     ROXR.B Dn,Dn
 //     ROXL.B Dn,Dn
-L_0B8A0:
+roxr_roxl_b_dn_d7:
         bnel    L_072DC
 
 // Reached from 16 dispatch table entries:
 //     ROXR.B #<q>,Dn
 //     ROXL.B #<q>,Dn
-L_0B8A4:
+roxr_roxl_b_q_d7:
         clrlwi  data, d7, 24                            // data = d7 & 0x000000FF
         bl      L_07340
         rlwimi  d7, data, 0, 24, 31                     // d7[7:0] = data[7:0]
@@ -23761,728 +26832,731 @@ L_0B8A4:
         b       L_0D114
 L_0B8B8:
         slwi.   data, d7, 24
-        b       L_060C0
+        b       move_or_etc_any_reg
 
 // Reached from 2 dispatch table entries:
 //     EXG.L Dn,Dn
-L_0B8C0:
+exg_l_dn_dn:
         mr      d0, d1
-        b       L_0BCA0
+        b       movep_l_mem_d1
 
 // Reached from 2 dispatch table entries:
 //     EXG.L Dn,Dn
-L_0B8C8:
+exg_l_dn_dn_2:
         mr      d0, d2
-        b       L_0BCC0
+        b       movep_l_mem_d2
 
 // Reached from 2 dispatch table entries:
 //     EXG.L Dn,Dn
-L_0B8D0:
+exg_l_dn_dn_3:
         mr      d0, d3
-        b       L_0BCE0
+        b       movep_l_mem_d3
 
 // Reached from 2 dispatch table entries:
 //     EXG.L Dn,Dn
-L_0B8D8:
+exg_l_dn_dn_4:
         mr      d0, d4
-        b       L_0BD00
+        b       movep_l_mem_d4
 
 // Reached from 2 dispatch table entries:
 //     EXG.L Dn,Dn
-L_0B8E0:
+exg_l_dn_dn_5:
         mr      d0, d5
-        b       L_0BD20
+        b       movep_l_mem_d5
 
 // Reached from 2 dispatch table entries:
 //     EXG.L Dn,Dn
-L_0B8E8:
+exg_l_dn_dn_6:
         mr      d0, d6
-        b       L_0BD40
+        b       movep_l_mem_d6
 
 // Reached from 2 dispatch table entries:
 //     EXG.L Dn,Dn
-L_0B8F0:
+exg_l_dn_dn_7:
         mr      d0, d7
-        b       L_0BD60
+        b       movep_l_mem_d7
 
 // Reached from 2 dispatch table entries:
 //     EXG.L Dn,Dn
-L_0B8F8:
+exg_l_dn_dn_8:
         mr      d1, d2
-        b       L_0BCC0
+        b       movep_l_mem_d2
 
 // Reached from 2 dispatch table entries:
 //     EXG.L Dn,Dn
-L_0B900:
+exg_l_dn_dn_9:
         mr      d1, d3
-        b       L_0BCE0
+        b       movep_l_mem_d3
 
 // Reached from 2 dispatch table entries:
 //     EXG.L Dn,Dn
-L_0B908:
+exg_l_dn_dn_10:
         mr      d1, d4
-        b       L_0BD00
+        b       movep_l_mem_d4
 
 // Reached from 2 dispatch table entries:
 //     EXG.L Dn,Dn
-L_0B910:
+exg_l_dn_dn_11:
         mr      d1, d5
-        b       L_0BD20
+        b       movep_l_mem_d5
 
 // Reached from 2 dispatch table entries:
 //     EXG.L Dn,Dn
-L_0B918:
+exg_l_dn_dn_12:
         mr      d1, d6
-        b       L_0BD40
+        b       movep_l_mem_d6
 
 // Reached from 2 dispatch table entries:
 //     EXG.L Dn,Dn
-L_0B920:
+exg_l_dn_dn_13:
         mr      d1, d7
-        b       L_0BD60
+        b       movep_l_mem_d7
 
 // Reached from 2 dispatch table entries:
 //     EXG.L Dn,Dn
-L_0B928:
+exg_l_dn_dn_14:
         mr      d2, d3
-        b       L_0BCE0
+        b       movep_l_mem_d3
 
 // Reached from 2 dispatch table entries:
 //     EXG.L Dn,Dn
-L_0B930:
+exg_l_dn_dn_15:
         mr      d2, d4
-        b       L_0BD00
+        b       movep_l_mem_d4
 
 // Reached from 2 dispatch table entries:
 //     EXG.L Dn,Dn
-L_0B938:
+exg_l_dn_dn_16:
         mr      d2, d5
-        b       L_0BD20
+        b       movep_l_mem_d5
 
 // Reached from 2 dispatch table entries:
 //     EXG.L Dn,Dn
-L_0B940:
+exg_l_dn_dn_17:
         mr      d2, d6
-        b       L_0BD40
+        b       movep_l_mem_d6
 
 // Reached from 2 dispatch table entries:
 //     EXG.L Dn,Dn
-L_0B948:
+exg_l_dn_dn_18:
         mr      d2, d7
-        b       L_0BD60
+        b       movep_l_mem_d7
 
 // Reached from 2 dispatch table entries:
 //     EXG.L Dn,Dn
-L_0B950:
+exg_l_dn_dn_19:
         mr      d3, d4
-        b       L_0BD00
+        b       movep_l_mem_d4
 
 // Reached from 2 dispatch table entries:
 //     EXG.L Dn,Dn
-L_0B958:
+exg_l_dn_dn_20:
         mr      d3, d5
-        b       L_0BD20
+        b       movep_l_mem_d5
 
 // Reached from 2 dispatch table entries:
 //     EXG.L Dn,Dn
-L_0B960:
+exg_l_dn_dn_21:
         mr      d3, d6
-        b       L_0BD40
+        b       movep_l_mem_d6
 
 // Reached from 2 dispatch table entries:
 //     EXG.L Dn,Dn
-L_0B968:
+exg_l_dn_dn_22:
         mr      d3, d7
-        b       L_0BD60
+        b       movep_l_mem_d7
 
 // Reached from 2 dispatch table entries:
 //     EXG.L Dn,Dn
-L_0B970:
+exg_l_dn_dn_23:
         mr      d4, d5
-        b       L_0BD20
+        b       movep_l_mem_d5
 
 // Reached from 2 dispatch table entries:
 //     EXG.L Dn,Dn
-L_0B978:
+exg_l_dn_dn_24:
         mr      d4, d6
-        b       L_0BD40
+        b       movep_l_mem_d6
 
 // Reached from 2 dispatch table entries:
 //     EXG.L Dn,Dn
-L_0B980:
+exg_l_dn_dn_25:
         mr      d4, d7
-        b       L_0BD60
+        b       movep_l_mem_d7
 
 // Reached from 2 dispatch table entries:
 //     EXG.L Dn,Dn
-L_0B988:
+exg_l_dn_dn_26:
         mr      d5, d6
-        b       L_0BD40
+        b       movep_l_mem_d6
 
 // Reached from 2 dispatch table entries:
 //     EXG.L Dn,Dn
-L_0B990:
+exg_l_dn_dn_27:
         mr      d5, d7
-        b       L_0BD60
+        b       movep_l_mem_d7
 
 // Reached from 2 dispatch table entries:
 //     EXG.L Dn,Dn
-L_0B998:
+exg_l_dn_dn_28:
         mr      d6, d7
-        b       L_0BD60
+        b       movep_l_mem_d7
 
 // Reached from 2 dispatch table entries:
 //     EXG.L An,An
-L_0B9A0:
+exg_l_an_an:
         mr      a0, a1
-        b       L_03240
+        b       movea_mem_a1
 
 // Reached from 2 dispatch table entries:
 //     EXG.L An,An
-L_0B9A8:
+exg_l_an_an_2:
         mr      a0, a2
-        b       L_03280
+        b       movea_mem_a2
 
 // Reached from 2 dispatch table entries:
 //     EXG.L An,An
-L_0B9B0:
+exg_l_an_an_3:
         mr      a0, a3
-        b       L_032C0
+        b       movea_mem_a3
 
 // Reached from 2 dispatch table entries:
 //     EXG.L An,An
-L_0B9B8:
+exg_l_an_an_4:
         mr      a0, a4
-        b       L_03300
+        b       movea_mem_a4
 
 // Reached from 2 dispatch table entries:
 //     EXG.L An,An
-L_0B9C0:
+exg_l_an_an_5:
         mr      a0, a5
-        b       L_03340
+        b       movea_mem_a5
 
 // Reached from 2 dispatch table entries:
 //     EXG.L An,An
-L_0B9C8:
+exg_l_an_an_6:
         mr      a0, a6
-        b       L_03380
+        b       movea_mem_a6
 
 // Reached from 2 dispatch table entries:
 //     EXG.L An,An
-L_0B9D0:
+exg_l_an_an_7:
         mr      a0, a7
-        b       L_033C0
+        b       movea_mem_a7
 
 // Reached from 2 dispatch table entries:
 //     EXG.L An,An
-L_0B9D8:
+exg_l_an_an_8:
         mr      a1, a2
-        b       L_03280
+        b       movea_mem_a2
 
 // Reached from 2 dispatch table entries:
 //     EXG.L An,An
-L_0B9E0:
+exg_l_an_an_9:
         mr      a1, a3
-        b       L_032C0
+        b       movea_mem_a3
 
 // Reached from 2 dispatch table entries:
 //     EXG.L An,An
-L_0B9E8:
+exg_l_an_an_10:
         mr      a1, a4
-        b       L_03300
+        b       movea_mem_a4
 
 // Reached from 2 dispatch table entries:
 //     EXG.L An,An
-L_0B9F0:
+exg_l_an_an_11:
         mr      a1, a5
-        b       L_03340
+        b       movea_mem_a5
 
 // Reached from 2 dispatch table entries:
 //     EXG.L An,An
-L_0B9F8:
+exg_l_an_an_12:
         mr      a1, a6
-        b       L_03380
+        b       movea_mem_a6
 
 // Reached from 2 dispatch table entries:
 //     EXG.L An,An
-L_0BA00:
+exg_l_an_an_13:
         mr      a1, a7
-        b       L_033C0
+        b       movea_mem_a7
 
 // Reached from 2 dispatch table entries:
 //     EXG.L An,An
-L_0BA08:
+exg_l_an_an_14:
         mr      a2, a3
-        b       L_032C0
+        b       movea_mem_a3
 
 // Reached from 2 dispatch table entries:
 //     EXG.L An,An
-L_0BA10:
+exg_l_an_an_15:
         mr      a2, a4
-        b       L_03300
+        b       movea_mem_a4
 
 // Reached from 2 dispatch table entries:
 //     EXG.L An,An
-L_0BA18:
+exg_l_an_an_16:
         mr      a2, a5
-        b       L_03340
+        b       movea_mem_a5
 
 // Reached from 2 dispatch table entries:
 //     EXG.L An,An
-L_0BA20:
+exg_l_an_an_17:
         mr      a2, a6
-        b       L_03380
+        b       movea_mem_a6
 
 // Reached from 2 dispatch table entries:
 //     EXG.L An,An
-L_0BA28:
+exg_l_an_an_18:
         mr      a2, a7
-        b       L_033C0
+        b       movea_mem_a7
 
 // Reached from 2 dispatch table entries:
 //     EXG.L An,An
-L_0BA30:
+exg_l_an_an_19:
         mr      a3, a4
-        b       L_03300
+        b       movea_mem_a4
 
 // Reached from 2 dispatch table entries:
 //     EXG.L An,An
-L_0BA38:
+exg_l_an_an_20:
         mr      a3, a5
-        b       L_03340
+        b       movea_mem_a5
 
 // Reached from 2 dispatch table entries:
 //     EXG.L An,An
-L_0BA40:
+exg_l_an_an_21:
         mr      a3, a6
-        b       L_03380
+        b       movea_mem_a6
 
 // Reached from 2 dispatch table entries:
 //     EXG.L An,An
-L_0BA48:
+exg_l_an_an_22:
         mr      a3, a7
-        b       L_033C0
+        b       movea_mem_a7
 
 // Reached from 2 dispatch table entries:
 //     EXG.L An,An
-L_0BA50:
+exg_l_an_an_23:
         mr      a4, a5
-        b       L_03340
+        b       movea_mem_a5
 
 // Reached from 2 dispatch table entries:
 //     EXG.L An,An
-L_0BA58:
+exg_l_an_an_24:
         mr      a4, a6
-        b       L_03380
+        b       movea_mem_a6
 
 // Reached from 2 dispatch table entries:
 //     EXG.L An,An
-L_0BA60:
+exg_l_an_an_25:
         mr      a4, a7
-        b       L_033C0
+        b       movea_mem_a7
 
 // Reached from 2 dispatch table entries:
 //     EXG.L An,An
-L_0BA68:
+exg_l_an_an_26:
         mr      a5, a6
-        b       L_03380
+        b       movea_mem_a6
 
 // Reached from 2 dispatch table entries:
 //     EXG.L An,An
-L_0BA70:
+exg_l_an_an_27:
         mr      a5, a7
-        b       L_033C0
+        b       movea_mem_a7
 
 // Reached from 2 dispatch table entries:
 //     EXG.L An,An
-L_0BA78:
+exg_l_an_an_28:
         mr      a6, a7
-        b       L_033C0
+        b       movea_mem_a7
 
 // Reached from 1 dispatch table entry:
 //     EXG.L Dn,An
-L_0BA80:
+exg_l_d0_a0:
         mr      d0, a0
-        b       L_03200
+        b       movea_mem_a0
 
 // Reached from 1 dispatch table entry:
 //     EXG.L Dn,An
-L_0BA88:
+exg_l_d0_a1:
         mr      d0, a1
-        b       L_03240
+        b       movea_mem_a1
 
 // Reached from 1 dispatch table entry:
 //     EXG.L Dn,An
-L_0BA90:
+exg_l_d0_a2:
         mr      d0, a2
-        b       L_03280
+        b       movea_mem_a2
 
 // Reached from 1 dispatch table entry:
 //     EXG.L Dn,An
-L_0BA98:
+exg_l_d0_a3:
         mr      d0, a3
-        b       L_032C0
+        b       movea_mem_a3
 
 // Reached from 1 dispatch table entry:
 //     EXG.L Dn,An
-L_0BAA0:
+exg_l_d0_a4:
         mr      d0, a4
-        b       L_03300
+        b       movea_mem_a4
 
 // Reached from 1 dispatch table entry:
 //     EXG.L Dn,An
-L_0BAA8:
+exg_l_d0_a5:
         mr      d0, a5
-        b       L_03340
+        b       movea_mem_a5
 
 // Reached from 1 dispatch table entry:
 //     EXG.L Dn,An
-L_0BAB0:
+exg_l_d0_a6:
         mr      d0, a6
-        b       L_03380
+        b       movea_mem_a6
 
 // Reached from 1 dispatch table entry:
 //     EXG.L Dn,An
-L_0BAB8:
+exg_l_d0_a7:
         mr      d0, a7
-        b       L_033C0
+        b       movea_mem_a7
 
 // Reached from 1 dispatch table entry:
 //     EXG.L Dn,An
-L_0BAC0:
+exg_l_d1_a0:
         mr      d1, a0
-        b       L_03200
+        b       movea_mem_a0
 
 // Reached from 1 dispatch table entry:
 //     EXG.L Dn,An
-L_0BAC8:
+exg_l_d1_a1:
         mr      d1, a1
-        b       L_03240
+        b       movea_mem_a1
 
 // Reached from 1 dispatch table entry:
 //     EXG.L Dn,An
-L_0BAD0:
+exg_l_d1_a2:
         mr      d1, a2
-        b       L_03280
+        b       movea_mem_a2
 
 // Reached from 1 dispatch table entry:
 //     EXG.L Dn,An
-L_0BAD8:
+exg_l_d1_a3:
         mr      d1, a3
-        b       L_032C0
+        b       movea_mem_a3
 
 // Reached from 1 dispatch table entry:
 //     EXG.L Dn,An
-L_0BAE0:
+exg_l_d1_a4:
         mr      d1, a4
-        b       L_03300
+        b       movea_mem_a4
 
 // Reached from 1 dispatch table entry:
 //     EXG.L Dn,An
-L_0BAE8:
+exg_l_d1_a5:
         mr      d1, a5
-        b       L_03340
+        b       movea_mem_a5
 
 // Reached from 1 dispatch table entry:
 //     EXG.L Dn,An
-L_0BAF0:
+exg_l_d1_a6:
         mr      d1, a6
-        b       L_03380
+        b       movea_mem_a6
 
 // Reached from 1 dispatch table entry:
 //     EXG.L Dn,An
-L_0BAF8:
+exg_l_d1_a7:
         mr      d1, a7
-        b       L_033C0
+        b       movea_mem_a7
 
 // Reached from 1 dispatch table entry:
 //     EXG.L Dn,An
-L_0BB00:
+exg_l_d2_a0:
         mr      d2, a0
-        b       L_03200
+        b       movea_mem_a0
 
 // Reached from 1 dispatch table entry:
 //     EXG.L Dn,An
-L_0BB08:
+exg_l_d2_a1:
         mr      d2, a1
-        b       L_03240
+        b       movea_mem_a1
 
 // Reached from 1 dispatch table entry:
 //     EXG.L Dn,An
-L_0BB10:
+exg_l_d2_a2:
         mr      d2, a2
-        b       L_03280
+        b       movea_mem_a2
 
 // Reached from 1 dispatch table entry:
 //     EXG.L Dn,An
-L_0BB18:
+exg_l_d2_a3:
         mr      d2, a3
-        b       L_032C0
+        b       movea_mem_a3
 
 // Reached from 1 dispatch table entry:
 //     EXG.L Dn,An
-L_0BB20:
+exg_l_d2_a4:
         mr      d2, a4
-        b       L_03300
+        b       movea_mem_a4
 
 // Reached from 1 dispatch table entry:
 //     EXG.L Dn,An
-L_0BB28:
+exg_l_d2_a5:
         mr      d2, a5
-        b       L_03340
+        b       movea_mem_a5
 
 // Reached from 1 dispatch table entry:
 //     EXG.L Dn,An
-L_0BB30:
+exg_l_d2_a6:
         mr      d2, a6
-        b       L_03380
+        b       movea_mem_a6
 
 // Reached from 1 dispatch table entry:
 //     EXG.L Dn,An
-L_0BB38:
+exg_l_d2_a7:
         mr      d2, a7
-        b       L_033C0
+        b       movea_mem_a7
 
 // Reached from 1 dispatch table entry:
 //     EXG.L Dn,An
-L_0BB40:
+exg_l_d3_a0:
         mr      d3, a0
-        b       L_03200
+        b       movea_mem_a0
 
 // Reached from 1 dispatch table entry:
 //     EXG.L Dn,An
-L_0BB48:
+exg_l_d3_a1:
         mr      d3, a1
-        b       L_03240
+        b       movea_mem_a1
 
 // Reached from 1 dispatch table entry:
 //     EXG.L Dn,An
-L_0BB50:
+exg_l_d3_a2:
         mr      d3, a2
-        b       L_03280
+        b       movea_mem_a2
 
 // Reached from 1 dispatch table entry:
 //     EXG.L Dn,An
-L_0BB58:
+exg_l_d3_a3:
         mr      d3, a3
-        b       L_032C0
+        b       movea_mem_a3
 
 // Reached from 1 dispatch table entry:
 //     EXG.L Dn,An
-L_0BB60:
+exg_l_d3_a4:
         mr      d3, a4
-        b       L_03300
+        b       movea_mem_a4
 
 // Reached from 1 dispatch table entry:
 //     EXG.L Dn,An
-L_0BB68:
+exg_l_d3_a5:
         mr      d3, a5
-        b       L_03340
+        b       movea_mem_a5
 
 // Reached from 1 dispatch table entry:
 //     EXG.L Dn,An
-L_0BB70:
+exg_l_d3_a6:
         mr      d3, a6
-        b       L_03380
+        b       movea_mem_a6
 
 // Reached from 1 dispatch table entry:
 //     EXG.L Dn,An
-L_0BB78:
+exg_l_d3_a7:
         mr      d3, a7
-        b       L_033C0
+        b       movea_mem_a7
 
 // Reached from 1 dispatch table entry:
 //     EXG.L Dn,An
-L_0BB80:
+exg_l_d4_a0:
         mr      d4, a0
-        b       L_03200
+        b       movea_mem_a0
 
 // Reached from 1 dispatch table entry:
 //     EXG.L Dn,An
-L_0BB88:
+exg_l_d4_a1:
         mr      d4, a1
-        b       L_03240
+        b       movea_mem_a1
 
 // Reached from 1 dispatch table entry:
 //     EXG.L Dn,An
-L_0BB90:
+exg_l_d4_a2:
         mr      d4, a2
-        b       L_03280
+        b       movea_mem_a2
 
 // Reached from 1 dispatch table entry:
 //     EXG.L Dn,An
-L_0BB98:
+exg_l_d4_a3:
         mr      d4, a3
-        b       L_032C0
+        b       movea_mem_a3
 
 // Reached from 1 dispatch table entry:
 //     EXG.L Dn,An
-L_0BBA0:
+exg_l_d4_a4:
         mr      d4, a4
-        b       L_03300
+        b       movea_mem_a4
 
 // Reached from 1 dispatch table entry:
 //     EXG.L Dn,An
-L_0BBA8:
+exg_l_d4_a5:
         mr      d4, a5
-        b       L_03340
+        b       movea_mem_a5
 
 // Reached from 1 dispatch table entry:
 //     EXG.L Dn,An
-L_0BBB0:
+exg_l_d4_a6:
         mr      d4, a6
-        b       L_03380
+        b       movea_mem_a6
 
 // Reached from 1 dispatch table entry:
 //     EXG.L Dn,An
-L_0BBB8:
+exg_l_d4_a7:
         mr      d4, a7
-        b       L_033C0
+        b       movea_mem_a7
 
 // Reached from 1 dispatch table entry:
 //     EXG.L Dn,An
-L_0BBC0:
+exg_l_d5_a0:
         mr      d5, a0
-        b       L_03200
+        b       movea_mem_a0
 
 // Reached from 1 dispatch table entry:
 //     EXG.L Dn,An
-L_0BBC8:
+exg_l_d5_a1:
         mr      d5, a1
-        b       L_03240
+        b       movea_mem_a1
 
 // Reached from 1 dispatch table entry:
 //     EXG.L Dn,An
-L_0BBD0:
+exg_l_d5_a2:
         mr      d5, a2
-        b       L_03280
+        b       movea_mem_a2
 
 // Reached from 1 dispatch table entry:
 //     EXG.L Dn,An
-L_0BBD8:
+exg_l_d5_a3:
         mr      d5, a3
-        b       L_032C0
+        b       movea_mem_a3
 
 // Reached from 1 dispatch table entry:
 //     EXG.L Dn,An
-L_0BBE0:
+exg_l_d5_a4:
         mr      d5, a4
-        b       L_03300
+        b       movea_mem_a4
 
 // Reached from 1 dispatch table entry:
 //     EXG.L Dn,An
-L_0BBE8:
+exg_l_d5_a5:
         mr      d5, a5
-        b       L_03340
+        b       movea_mem_a5
 
 // Reached from 1 dispatch table entry:
 //     EXG.L Dn,An
-L_0BBF0:
+exg_l_d5_a6:
         mr      d5, a6
-        b       L_03380
+        b       movea_mem_a6
 
 // Reached from 1 dispatch table entry:
 //     EXG.L Dn,An
-L_0BBF8:
+exg_l_d5_a7:
         mr      d5, a7
-        b       L_033C0
+        b       movea_mem_a7
 
 // Reached from 1 dispatch table entry:
 //     EXG.L Dn,An
-L_0BC00:
+exg_l_d6_a0:
         mr      d6, a0
-        b       L_03200
+        b       movea_mem_a0
 
 // Reached from 1 dispatch table entry:
 //     EXG.L Dn,An
-L_0BC08:
+exg_l_d6_a1:
         mr      d6, a1
-        b       L_03240
+        b       movea_mem_a1
 
 // Reached from 1 dispatch table entry:
 //     EXG.L Dn,An
-L_0BC10:
+exg_l_d6_a2:
         mr      d6, a2
-        b       L_03280
+        b       movea_mem_a2
 
 // Reached from 1 dispatch table entry:
 //     EXG.L Dn,An
-L_0BC18:
+exg_l_d6_a3:
         mr      d6, a3
-        b       L_032C0
+        b       movea_mem_a3
 
 // Reached from 1 dispatch table entry:
 //     EXG.L Dn,An
-L_0BC20:
+exg_l_d6_a4:
         mr      d6, a4
-        b       L_03300
+        b       movea_mem_a4
 
 // Reached from 1 dispatch table entry:
 //     EXG.L Dn,An
-L_0BC28:
+exg_l_d6_a5:
         mr      d6, a5
-        b       L_03340
+        b       movea_mem_a5
 
 // Reached from 1 dispatch table entry:
 //     EXG.L Dn,An
-L_0BC30:
+exg_l_d6_a6:
         mr      d6, a6
-        b       L_03380
+        b       movea_mem_a6
 
 // Reached from 1 dispatch table entry:
 //     EXG.L Dn,An
-L_0BC38:
+exg_l_d6_a7:
         mr      d6, a7
-        b       L_033C0
+        b       movea_mem_a7
 
 // Reached from 1 dispatch table entry:
 //     EXG.L Dn,An
-L_0BC40:
+exg_l_d7_a0:
         mr      d7, a0
-        b       L_03200
+        b       movea_mem_a0
 
 // Reached from 1 dispatch table entry:
 //     EXG.L Dn,An
-L_0BC48:
+exg_l_d7_a1:
         mr      d7, a1
-        b       L_03240
+        b       movea_mem_a1
 
 // Reached from 1 dispatch table entry:
 //     EXG.L Dn,An
-L_0BC50:
+exg_l_d7_a2:
         mr      d7, a2
-        b       L_03280
+        b       movea_mem_a2
 
 // Reached from 1 dispatch table entry:
 //     EXG.L Dn,An
-L_0BC58:
+exg_l_d7_a3:
         mr      d7, a3
-        b       L_032C0
+        b       movea_mem_a3
 
 // Reached from 1 dispatch table entry:
 //     EXG.L Dn,An
-L_0BC60:
+exg_l_d7_a4:
         mr      d7, a4
-        b       L_03300
+        b       movea_mem_a4
 
 // Reached from 1 dispatch table entry:
 //     EXG.L Dn,An
-L_0BC68:
+exg_l_d7_a5:
         mr      d7, a5
-        b       L_03340
+        b       movea_mem_a5
 
 // Reached from 1 dispatch table entry:
 //     EXG.L Dn,An
-L_0BC70:
+exg_l_d7_a6:
         mr      d7, a6
-        b       L_03380
+        b       movea_mem_a6
 
 // Reached from 1 dispatch table entry:
 //     EXG.L Dn,An
-L_0BC78:
+exg_l_d7_a7:
         mr      d7, a7
-        b       L_033C0
-L_0BC80:
+        b       movea_mem_a7
+
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     MOVEP.L (d16,An),Dn
+movep_l_mem_d0:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -24490,7 +27564,10 @@ L_0BC80:
         bflr_likely 4*cr2+lt
         b       L_0D114
         ALIGN(32)
-L_0BCA0:
+
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     MOVEP.L (d16,An),Dn
+movep_l_mem_d1:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -24498,7 +27575,10 @@ L_0BCA0:
         bflr_likely 4*cr2+lt
         b       L_0D114
         ALIGN(64)
-L_0BCC0:
+
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     MOVEP.L (d16,An),Dn
+movep_l_mem_d2:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -24506,7 +27586,10 @@ L_0BCC0:
         bflr_likely 4*cr2+lt
         b       L_0D114
         ALIGN(32)
-L_0BCE0:
+
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     MOVEP.L (d16,An),Dn
+movep_l_mem_d3:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -24514,7 +27597,10 @@ L_0BCE0:
         bflr_likely 4*cr2+lt
         b       L_0D114
         ALIGN(64)
-L_0BD00:
+
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     MOVEP.L (d16,An),Dn
+movep_l_mem_d4:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -24522,7 +27608,10 @@ L_0BD00:
         bflr_likely 4*cr2+lt
         b       L_0D114
         ALIGN(32)
-L_0BD20:
+
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     MOVEP.L (d16,An),Dn
+movep_l_mem_d5:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -24530,7 +27619,10 @@ L_0BD20:
         bflr_likely 4*cr2+lt
         b       L_0D114
         ALIGN(64)
-L_0BD40:
+
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     MOVEP.L (d16,An),Dn
+movep_l_mem_d6:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -24538,7 +27630,10 @@ L_0BD40:
         bflr_likely 4*cr2+lt
         b       L_0D114
         ALIGN(32)
-L_0BD60:
+
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     MOVEP.L (d16,An),Dn
+movep_l_mem_d7:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
         lhau    prefetch_data, 2(pc)
@@ -24549,263 +27644,287 @@ L_0BD60:
 
 // Reached from 8 dispatch table entries:
 //     ADDX.B -(An),-(An)
-L_0BD80:
+addx_b_mem_mem:
         lbzu    immed_data, -1(a0)
         mr      addr, a0
         b       L_06688
 
 // Reached from 8 dispatch table entries:
 //     ADDX.B -(An),-(An)
-L_0BD8C:
+addx_b_mem_mem_2:
         lbzu    immed_data, -1(a1)
         mr      addr, a1
         b       L_06688
 
 // Reached from 8 dispatch table entries:
 //     ADDX.B -(An),-(An)
-L_0BD98:
+addx_b_mem_mem_3:
         lbzu    immed_data, -1(a2)
         mr      addr, a2
         b       L_06688
 
 // Reached from 8 dispatch table entries:
 //     ADDX.B -(An),-(An)
-L_0BDA4:
+addx_b_mem_mem_4:
         lbzu    immed_data, -1(a3)
         mr      addr, a3
         b       L_06688
 
 // Reached from 8 dispatch table entries:
 //     ADDX.B -(An),-(An)
-L_0BDB0:
+addx_b_mem_mem_5:
         lbzu    immed_data, -1(a4)
         mr      addr, a4
         b       L_06688
 
 // Reached from 8 dispatch table entries:
 //     ADDX.B -(An),-(An)
-L_0BDBC:
+addx_b_mem_mem_6:
         lbzu    immed_data, -1(a5)
         mr      addr, a5
         b       L_06688
 
 // Reached from 8 dispatch table entries:
 //     ADDX.B -(An),-(An)
-L_0BDC8:
+addx_b_mem_mem_7:
         lbzu    immed_data, -1(a6)
         mr      addr, a6
         b       L_06688
 
 // Reached from 8 dispatch table entries:
 //     ADDX.B -(An),-(An)
-L_0BDD4:
+addx_b_mem_mem_8:
         lbzu    immed_data, -2(a7)
         mr      addr, a7
         b       L_06688
 
 // Reached from 8 dispatch table entries:
 //     SUBX.B -(An),-(An)
-L_0BDE0:
+subx_b_mem_mem:
         lbzu    immed_data, -1(a0)
         mr      addr, a0
         b       L_066F8
 
 // Reached from 8 dispatch table entries:
 //     SUBX.B -(An),-(An)
-L_0BDEC:
+subx_b_mem_mem_2:
         lbzu    immed_data, -1(a1)
         mr      addr, a1
         b       L_066F8
 
 // Reached from 8 dispatch table entries:
 //     SUBX.B -(An),-(An)
-L_0BDF8:
+subx_b_mem_mem_3:
         lbzu    immed_data, -1(a2)
         mr      addr, a2
         b       L_066F8
 
 // Reached from 8 dispatch table entries:
 //     SUBX.B -(An),-(An)
-L_0BE04:
+subx_b_mem_mem_4:
         lbzu    immed_data, -1(a3)
         mr      addr, a3
         b       L_066F8
 
 // Reached from 8 dispatch table entries:
 //     SUBX.B -(An),-(An)
-L_0BE10:
+subx_b_mem_mem_5:
         lbzu    immed_data, -1(a4)
         mr      addr, a4
         b       L_066F8
 
 // Reached from 8 dispatch table entries:
 //     SUBX.B -(An),-(An)
-L_0BE1C:
+subx_b_mem_mem_6:
         lbzu    immed_data, -1(a5)
         mr      addr, a5
         b       L_066F8
 
 // Reached from 8 dispatch table entries:
 //     SUBX.B -(An),-(An)
-L_0BE28:
+subx_b_mem_mem_7:
         lbzu    immed_data, -1(a6)
         mr      addr, a6
         b       L_066F8
 
 // Reached from 8 dispatch table entries:
 //     SUBX.B -(An),-(An)
-L_0BE34:
+subx_b_mem_mem_8:
         lbzu    immed_data, -2(a7)
         mr      addr, a7
         b       L_066F8
-L_0BE40:
+
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     CMPM.B (An)+,(An)+
+cmpm_b_mem_mem:
         lbz     immed_data, 0(a0)
         addi    a0, a0, 1
         b       L_064A0
-L_0BE4C:
+
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     CMPM.B (An)+,(An)+
+cmpm_b_mem_mem_2:
         lbz     immed_data, 0(a1)
         addi    a1, a1, 1
         b       L_064A0
-L_0BE58:
+
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     CMPM.B (An)+,(An)+
+cmpm_b_mem_mem_3:
         lbz     immed_data, 0(a2)
         addi    a2, a2, 1
         b       L_064A0
-L_0BE64:
+
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     CMPM.B (An)+,(An)+
+cmpm_b_mem_mem_4:
         lbz     immed_data, 0(a3)
         addi    a3, a3, 1
         b       L_064A0
-L_0BE70:
+
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     CMPM.B (An)+,(An)+
+cmpm_b_mem_mem_5:
         lbz     immed_data, 0(a4)
         addi    a4, a4, 1
         b       L_064A0
-L_0BE7C:
+
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     CMPM.B (An)+,(An)+
+cmpm_b_mem_mem_6:
         lbz     immed_data, 0(a5)
         addi    a5, a5, 1
         b       L_064A0
-L_0BE88:
+
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     CMPM.B (An)+,(An)+
+cmpm_b_mem_mem_7:
         lbz     immed_data, 0(a6)
         addi    a6, a6, 1
         b       L_064A0
-L_0BE94:
+
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     CMPM.B (An)+,(An)+
+cmpm_b_mem_mem_8:
         lbz     immed_data, 0(a7)
         addi    a7, a7, 2
         b       L_064A0
 
 // Reached from 8 dispatch table entries:
 //     ADDX.W -(An),-(An)
-L_0BEA0:
+addx_w_mem_mem:
         lhzu    immed_data, -2(a0)
         mr      addr, a0
         b       L_068A8
 
 // Reached from 8 dispatch table entries:
 //     ADDX.W -(An),-(An)
-L_0BEAC:
+addx_w_mem_mem_2:
         lhzu    immed_data, -2(a1)
         mr      addr, a1
         b       L_068A8
 
 // Reached from 8 dispatch table entries:
 //     ADDX.W -(An),-(An)
-L_0BEB8:
+addx_w_mem_mem_3:
         lhzu    immed_data, -2(a2)
         mr      addr, a2
         b       L_068A8
 
 // Reached from 8 dispatch table entries:
 //     ADDX.W -(An),-(An)
-L_0BEC4:
+addx_w_mem_mem_4:
         lhzu    immed_data, -2(a3)
         mr      addr, a3
         b       L_068A8
 
 // Reached from 8 dispatch table entries:
 //     ADDX.W -(An),-(An)
-L_0BED0:
+addx_w_mem_mem_5:
         lhzu    immed_data, -2(a4)
         mr      addr, a4
         b       L_068A8
 
 // Reached from 8 dispatch table entries:
 //     ADDX.W -(An),-(An)
-L_0BEDC:
+addx_w_mem_mem_6:
         lhzu    immed_data, -2(a5)
         mr      addr, a5
         b       L_068A8
 
 // Reached from 8 dispatch table entries:
 //     ADDX.W -(An),-(An)
-L_0BEE8:
+addx_w_mem_mem_7:
         lhzu    immed_data, -2(a6)
         mr      addr, a6
         b       L_068A8
 
 // Reached from 8 dispatch table entries:
 //     ADDX.W -(An),-(An)
-L_0BEF4:
+addx_w_mem_mem_8:
         lhzu    immed_data, -2(a7)
         mr      addr, a7
         b       L_068A8
 
 // Reached from 8 dispatch table entries:
 //     SUBX.W -(An),-(An)
-L_0BF00:
+subx_w_mem_mem:
         lhzu    immed_data, -2(a0)
         mr      addr, a0
         b       L_06918
 
 // Reached from 8 dispatch table entries:
 //     SUBX.W -(An),-(An)
-L_0BF0C:
+subx_w_mem_mem_2:
         lhzu    immed_data, -2(a1)
         mr      addr, a1
         b       L_06918
 
 // Reached from 8 dispatch table entries:
 //     SUBX.W -(An),-(An)
-L_0BF18:
+subx_w_mem_mem_3:
         lhzu    immed_data, -2(a2)
         mr      addr, a2
         b       L_06918
 
 // Reached from 8 dispatch table entries:
 //     SUBX.W -(An),-(An)
-L_0BF24:
+subx_w_mem_mem_4:
         lhzu    immed_data, -2(a3)
         mr      addr, a3
         b       L_06918
 
 // Reached from 8 dispatch table entries:
 //     SUBX.W -(An),-(An)
-L_0BF30:
+subx_w_mem_mem_5:
         lhzu    immed_data, -2(a4)
         mr      addr, a4
         b       L_06918
 
 // Reached from 8 dispatch table entries:
 //     SUBX.W -(An),-(An)
-L_0BF3C:
+subx_w_mem_mem_6:
         lhzu    immed_data, -2(a5)
         mr      addr, a5
         b       L_06918
 
 // Reached from 8 dispatch table entries:
 //     SUBX.W -(An),-(An)
-L_0BF48:
+subx_w_mem_mem_7:
         lhzu    immed_data, -2(a6)
         mr      addr, a6
         b       L_06918
 
 // Reached from 8 dispatch table entries:
 //     SUBX.W -(An),-(An)
-L_0BF54:
+subx_w_mem_mem_8:
         lhzu    immed_data, -2(a7)
         mr      addr, a7
         b       L_06918
 
 // Reached from 8 dispatch table entries:
 //     MOVE.W Dn,(d16,An)
-L_0BF60:
+move_w_d0_mem:
         lhau    prefetch_data, 2(pc)
         extsh   data, d0                                // data = sign-extended low word of d0
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
@@ -24817,7 +27936,7 @@ L_0BF60:
 
 // Reached from 1 dispatch table entry:
 //     NBCD.B Dn
-L_0BF80:
+nbcd_b_d0:
         clrrwi  d0, d0, 8                               // d0 = d0 & 0xFFFFFF00
 
 // Reached from 32 dispatch table entries:
@@ -24825,7 +27944,7 @@ L_0BF80:
 //     PACK Dn,Dn,#<adj>
 //     UNPK Dn,Dn,#<adj>
 //     ABCD.B Dn,Dn
-L_0BF84:
+sbcd_pack_etc_reg_reg:
         mr      addr, d0
         bl      L_0C040
         mr      d0, addr
@@ -24834,7 +27953,7 @@ L_0BF84:
 
 // Reached from 1 dispatch table entry:
 //     NBCD.B Dn
-L_0BF98:
+nbcd_b_d1:
         clrrwi  d1, d1, 8                               // d1 = d1 & 0xFFFFFF00
 
 // Reached from 32 dispatch table entries:
@@ -24842,7 +27961,7 @@ L_0BF98:
 //     PACK Dn,Dn,#<adj>
 //     UNPK Dn,Dn,#<adj>
 //     ABCD.B Dn,Dn
-L_0BF9C:
+sbcd_pack_etc_reg_reg_2:
         mr      addr, d1
         bl      L_0C040
         mr      d1, addr
@@ -24851,7 +27970,7 @@ L_0BF9C:
 
 // Reached from 1 dispatch table entry:
 //     NBCD.B Dn
-L_0BFB0:
+nbcd_b_d2:
         clrrwi  d2, d2, 8                               // d2 = d2 & 0xFFFFFF00
 
 // Reached from 32 dispatch table entries:
@@ -24859,7 +27978,7 @@ L_0BFB0:
 //     PACK Dn,Dn,#<adj>
 //     UNPK Dn,Dn,#<adj>
 //     ABCD.B Dn,Dn
-L_0BFB4:
+sbcd_pack_etc_reg_reg_3:
         mr      addr, d2
         bl      L_0C040
         mr      d2, addr
@@ -24868,7 +27987,7 @@ L_0BFB4:
 
 // Reached from 1 dispatch table entry:
 //     NBCD.B Dn
-L_0BFC8:
+nbcd_b_d3:
         clrrwi  d3, d3, 8                               // d3 = d3 & 0xFFFFFF00
 
 // Reached from 32 dispatch table entries:
@@ -24876,7 +27995,7 @@ L_0BFC8:
 //     PACK Dn,Dn,#<adj>
 //     UNPK Dn,Dn,#<adj>
 //     ABCD.B Dn,Dn
-L_0BFCC:
+sbcd_pack_etc_reg_reg_4:
         mr      addr, d3
         bl      L_0C040
         mr      d3, addr
@@ -24885,7 +28004,7 @@ L_0BFCC:
 
 // Reached from 1 dispatch table entry:
 //     NBCD.B Dn
-L_0BFE0:
+nbcd_b_d4:
         clrrwi  d4, d4, 8                               // d4 = d4 & 0xFFFFFF00
 
 // Reached from 32 dispatch table entries:
@@ -24893,7 +28012,7 @@ L_0BFE0:
 //     PACK Dn,Dn,#<adj>
 //     UNPK Dn,Dn,#<adj>
 //     ABCD.B Dn,Dn
-L_0BFE4:
+sbcd_pack_etc_reg_reg_5:
         mr      addr, d4
         bl      L_0C040
         mr      d4, addr
@@ -24902,7 +28021,7 @@ L_0BFE4:
 
 // Reached from 1 dispatch table entry:
 //     NBCD.B Dn
-L_0BFF8:
+nbcd_b_d5:
         clrrwi  d5, d5, 8                               // d5 = d5 & 0xFFFFFF00
 
 // Reached from 32 dispatch table entries:
@@ -24910,7 +28029,7 @@ L_0BFF8:
 //     PACK Dn,Dn,#<adj>
 //     UNPK Dn,Dn,#<adj>
 //     ABCD.B Dn,Dn
-L_0BFFC:
+sbcd_pack_etc_reg_reg_6:
         mr      addr, d5
         bl      L_0C040
         mr      d5, addr
@@ -24919,7 +28038,7 @@ L_0BFFC:
 
 // Reached from 1 dispatch table entry:
 //     NBCD.B Dn
-L_0C010:
+nbcd_b_d6:
         clrrwi  d6, d6, 8                               // d6 = d6 & 0xFFFFFF00
 
 // Reached from 32 dispatch table entries:
@@ -24927,7 +28046,7 @@ L_0C010:
 //     PACK Dn,Dn,#<adj>
 //     UNPK Dn,Dn,#<adj>
 //     ABCD.B Dn,Dn
-L_0C014:
+sbcd_pack_etc_reg_reg_7:
         mr      addr, d6
         bl      L_0C040
         mr      d6, addr
@@ -24936,7 +28055,7 @@ L_0C014:
 
 // Reached from 1 dispatch table entry:
 //     NBCD.B Dn
-L_0C028:
+nbcd_b_d7:
         clrrwi  d7, d7, 8                               // d7 = d7 & 0xFFFFFF00
 
 // Reached from 32 dispatch table entries:
@@ -24944,7 +28063,7 @@ L_0C028:
 //     PACK Dn,Dn,#<adj>
 //     UNPK Dn,Dn,#<adj>
 //     ABCD.B Dn,Dn
-L_0C02C:
+sbcd_pack_etc_reg_reg_8:
         mr      addr, d7
         bl      L_0C040
         mr      d7, addr
@@ -25019,7 +28138,7 @@ L_0C124:
         lhau    prefetch_data, 2(pc)
         rlwimi  addr, data, 0, 16, 31                   // addr[15:0] = data[15:0]
         blr
-        b       L_0C160
+        b       sbcd_pack_etc_mem_mem
         ALIGN(32)
 
 // Reached from 32 dispatch table entries:
@@ -25027,7 +28146,7 @@ L_0C124:
 //     PACK -(An),-(An),#<adj>
 //     UNPK -(An),-(An),#<adj>
 //     ABCD.B -(An),-(An)
-L_0C160:
+sbcd_pack_etc_mem_mem:
         addi    addr, a0, -1
         bl      L_0C200
         mr      a0, addr
@@ -25039,7 +28158,7 @@ L_0C160:
 //     PACK -(An),-(An),#<adj>
 //     UNPK -(An),-(An),#<adj>
 //     ABCD.B -(An),-(An)
-L_0C174:
+sbcd_pack_etc_mem_mem_2:
         addi    addr, a1, -1
         bl      L_0C200
         mr      a1, addr
@@ -25051,7 +28170,7 @@ L_0C174:
 //     PACK -(An),-(An),#<adj>
 //     UNPK -(An),-(An),#<adj>
 //     ABCD.B -(An),-(An)
-L_0C188:
+sbcd_pack_etc_mem_mem_3:
         addi    addr, a2, -1
         bl      L_0C200
         mr      a2, addr
@@ -25063,7 +28182,7 @@ L_0C188:
 //     PACK -(An),-(An),#<adj>
 //     UNPK -(An),-(An),#<adj>
 //     ABCD.B -(An),-(An)
-L_0C19C:
+sbcd_pack_etc_mem_mem_4:
         addi    addr, a3, -1
         bl      L_0C200
         mr      a3, addr
@@ -25075,7 +28194,7 @@ L_0C19C:
 //     PACK -(An),-(An),#<adj>
 //     UNPK -(An),-(An),#<adj>
 //     ABCD.B -(An),-(An)
-L_0C1B0:
+sbcd_pack_etc_mem_mem_5:
         addi    addr, a4, -1
         bl      L_0C200
         mr      a4, addr
@@ -25087,7 +28206,7 @@ L_0C1B0:
 //     PACK -(An),-(An),#<adj>
 //     UNPK -(An),-(An),#<adj>
 //     ABCD.B -(An),-(An)
-L_0C1C4:
+sbcd_pack_etc_mem_mem_6:
         addi    addr, a5, -1
         bl      L_0C200
         mr      a5, addr
@@ -25099,7 +28218,7 @@ L_0C1C4:
 //     PACK -(An),-(An),#<adj>
 //     UNPK -(An),-(An),#<adj>
 //     ABCD.B -(An),-(An)
-L_0C1D8:
+sbcd_pack_etc_mem_mem_7:
         addi    addr, a6, -1
         bl      L_0C200
         mr      a6, addr
@@ -25110,7 +28229,7 @@ L_0C1D8:
 //     SBCD.B -(An),-(An)
 //     PACK -(An),-(An),#<adj>
 //     ABCD.B -(An),-(An)
-L_0C1EC:
+sbcd_pack_abcd_mem_mem:
         addi    addr, a7, -2
         bl      L_0C200
         mr      a7, addr
@@ -25180,7 +28299,7 @@ L_0C2C4:
 
 // Reached from 8 dispatch table entries:
 //     UNPK -(An),-(An),#<adj>
-L_0C2E8:
+unpk:
         addi    addr, a7, -1
         bl      L_0C2FC
         mr      a7, addr
@@ -25199,12 +28318,16 @@ L_0C2FC:
 // Reached from 9 dispatch table entries:
 //     NBCD.B (d16,An)
 //     NBCD.B (xxx).W
-L_0C31C:
+nbcd_b_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     NBCD.B (An)
-L_0C320:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     NBCD.B (An)+
+//     NBCD.B (d8,An,Xn)
+//     NBCD.B (xxx).L
+nbcd_b_mem_2:
         lbz     data, 0(addr)
         rlwinm  rtn_addr, ccr_x, 3, 31, 31              // rtn_addr = ccr_x[29]
         crmove  4*cr7+so, eq
@@ -25228,7 +28351,7 @@ L_0C320:
 
 // Reached from 8 dispatch table entries:
 //     MOVE.W SR,Dn
-L_0C370:
+move_w_sr_dn:
         lwz     rtn_addr, 0x81C(EmulatorStatePtr)
         rlwinm  data, sr_and_flags, 8, 16, 23           // data = sr_and_flags[7:0] << 8
         mtlr    rtn_addr
@@ -25238,7 +28361,7 @@ L_0C370:
 
 // Reached from 8 dispatch table entries:
 //     MOVE.W SR,(An)
-L_0C388:
+move_w_sr_mem:
         bnsl    cr2, L_0CA68
 L_0C38C:
         lwz     rtn_addr, 0x820(EmulatorStatePtr)
@@ -25247,7 +28370,7 @@ L_0C38C:
 // Reached from 9 dispatch table entries:
 //     MOVE.W SR,(d16,An)
 //     MOVE.W SR,(xxx).W
-L_0C394:
+move_w_sr_mem_2:
         bnsl    cr2, L_0CA68
         lwz     rtn_addr, 0x820(EmulatorStatePtr)
         lhau    prefetch_data, 2(pc)
@@ -25257,7 +28380,7 @@ L_0C394:
 //     MOVE.W SR,(An)+
 //     MOVE.W SR,(d8,An,Xn)
 //     MOVE.W SR,(xxx).L
-L_0C3A4:
+move_w_sr_mem_3:
         mtctr   addr
         bnsl    cr2, L_0CA68
         lwz     rtn_addr, 0x820(EmulatorStatePtr)
@@ -25267,7 +28390,7 @@ L_0C3A4:
 
 // Reached from 7 dispatch table entries:
 //     MOVE.W SR,-(An)
-L_0C3BC:
+move_w_sr_mem_4:
         mtctr   addr
         li      data, -2
         bnsl    cr2, L_0CA68
@@ -25276,7 +28399,7 @@ L_0C3BC:
 
 // Reached from 1 dispatch table entry:
 //     MOVE.W SR,-(An)
-L_0C3D0:
+move_w_sr_mem_5:
         bnsl    cr2, L_0CA68
         lwz     rtn_addr, 0x820(EmulatorStatePtr)
         addi    a7, a7, -2
@@ -25371,7 +28494,7 @@ D_0C510:
 
 // Reached from 1 dispatch table entry:
 //     MOVE.W (An)+,SR
-L_0C514:
+move_w_mem_sr:
         bnsl    cr2, L_0CA68
         addi    a7, a7, 2
 L_0C51C:
@@ -25395,13 +28518,13 @@ L_0C520:
 
 // Reached from 8 dispatch table entries:
 //     MOVE.W Dn,SR
-L_0C55C:
+move_w_dn_sr:
         bnsl    cr2, L_0CA68
         b       L_0C520
 
 // Reached from 8 dispatch table entries:
 //     MOVE.W (An),SR
-L_0C564:
+move_w_mem_sr_2:
         bnsl    cr2, L_0CA68
         lhz     data, 0(addr)
         b       L_0C520
@@ -25411,7 +28534,7 @@ L_0C564:
 //     MOVE.W (xxx).W,SR
 //     MOVE.W (d16,PC),SR
 //     MOVE.W #<data>,SR
-L_0C570:
+move_w_ea_sr:
         bnsl    cr2, L_0CA68
         lhz     data, 0(addr)
         lhau    prefetch_data, 2(pc)
@@ -25419,7 +28542,7 @@ L_0C570:
 
 // Reached from 8 dispatch table entries:
 //     MOVE.W -(An),SR
-L_0C580:
+move_w_mem_sr_3:
         li      data, -2
 
 // Reached from 17 dispatch table entries:
@@ -25427,7 +28550,7 @@ L_0C580:
 //     MOVE.W (An)+,SR
 //     MOVE.W (xxx).L,SR
 //     MOVE.W (d8,PC,Xn),SR
-L_0C584:
+move_w_mem_sr_4:
         mtctr   addr
         bnsl    cr2, L_0CA68
         ori     rtn_addr, code_ptr, L_0C51C - cb
@@ -25435,7 +28558,7 @@ L_0C584:
 
 // Reached from 1 dispatch table entry:
 //     ANDI.W #<data>,SR
-L_0C594:
+andi_w_imm_sr:
         rlwinm  data, sr_and_flags, 8, 16, 23           // data = sr_and_flags[7:0] << 8
         mtctr   base_disp
         bnsl    cr2, L_0CA4C
@@ -25445,7 +28568,7 @@ L_0C594:
 
 // Reached from 1 dispatch table entry:
 //     ANDI.B #<data>,CCR
-L_0C5AC:
+andi_b_imm_ccr:
         mtcrf   0x01, prefetch_data                     // cr7 = prefetch_data[3:0]
         mfxer   data
         rlwinm  immed_data, prefetch_data, 29, 1, 2     // immed_data = prefetch_data[1:0] << 29
@@ -25463,7 +28586,7 @@ L_0C5AC:
 
 // Reached from 1 dispatch table entry:
 //     EORI.W #<data>,SR
-L_0C5E4:
+eori_w_imm_sr:
         rlwinm  data, sr_and_flags, 8, 16, 23           // data = sr_and_flags[7:0] << 8
         mtctr   base_disp
         bnsl    cr2, L_0CA54
@@ -25473,7 +28596,7 @@ L_0C5E4:
 
 // Reached from 1 dispatch table entry:
 //     EORI.B #<data>,CCR
-L_0C5FC:
+eori_b_imm_ccr:
         mtcrf   0x01, prefetch_data                     // cr7 = prefetch_data[3:0]
         mfxer   data
         rlwinm  immed_data, prefetch_data, 29, 1, 2     // immed_data = prefetch_data[1:0] << 29
@@ -25491,7 +28614,7 @@ L_0C5FC:
 
 // Reached from 1 dispatch table entry:
 //     ORI.W #<data>,SR
-L_0C634:
+ori_w_imm_sr:
         rlwinm  data, sr_and_flags, 8, 16, 23           // data = sr_and_flags[7:0] << 8
         mtctr   base_disp
         bnsl    cr2, L_0CA54
@@ -25501,7 +28624,7 @@ L_0C634:
 
 // Reached from 1 dispatch table entry:
 //     ORI.B #<data>,CCR
-L_0C64C:
+ori_b_imm_ccr:
         mtcrf   0x01, prefetch_data                     // cr7 = prefetch_data[3:0]
         mfxer   data
         rlwinm  immed_data, prefetch_data, 29, 1, 2     // immed_data = prefetch_data[1:0] << 29
@@ -25547,9 +28670,9 @@ L_0C6D8:
 
 // Reached from 8 dispatch table entries:
 //     MOVE.L An,USP
-L_0C6E0:
+move_l_an_usp:
         lwz     rtn_addr, 0x874(EmulatorStatePtr)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
 L_0C6E8:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -25560,9 +28683,9 @@ L_0C6E8:
 
 // Reached from 8 dispatch table entries:
 //     MOVE.L USP,An
-L_0C700:
+move_l_usp_an:
         lwz     rtn_addr, 0x870(EmulatorStatePtr)
-        b       L_0CA88
+        b       cinvl_cinvp_etc_any_any
 L_0C708:
         mtctr   data
         lwz     data, 72(EmulatorStatePtr)
@@ -25605,7 +28728,7 @@ L_0C758:
 L_0C798:
         lwz     rtn_addr, 0x800(EmulatorStatePtr)
         addi    pc, pc, -2
-        b       L_0D750
+        b       bkpt_illegal_imm
         .long   0x4800000C
         ALIGN(16)
 D_0C7B0:
@@ -25646,14 +28769,14 @@ L_0C814:
 
 // Reached from 7 dispatch table entries:
 //     MOVES.B Rn,-(An)
-L_0C84C:
+moves_b_rn_mem:
         li      data, -1
 
 // Reached from 17 dispatch table entries:
 //     MOVES.B Rn,(An)+
 //     MOVES.B Rn,(d8,An,Xn)
 //     MOVES.B Rn,(xxx).L
-L_0C850:
+moves_b_rn_mem_2:
         bnsl    cr2, L_0CA78
         mtctr   addr
         mr      immed_data, prefetch_data
@@ -25664,20 +28787,20 @@ L_0C850:
 // Reached from 9 dispatch table entries:
 //     MOVES.B Rn,(d16,An)
 //     MOVES.B Rn,(xxx).W
-L_0C868:
+moves_b_rn_mem_3:
         bnsl    cr2, L_0CA78
         ori     rtn_addr, code_ptr, L_0C888 - cb
         b       L_0C96C
 
 // Reached from 1 dispatch table entry:
 //     MOVES.B Rn,-(An)
-L_0C874:
+moves_b_rn_mem_4:
         bnsl    cr2, L_0CA78
         addi    a7, a7, -2
 
 // Reached from 8 dispatch table entries:
 //     MOVES.B Rn,(An)
-L_0C87C:
+moves_b_rn_mem_5:
         bnsl    cr2, L_0CA78
         mr      immed_data, prefetch_data
         lhau    prefetch_data, 2(pc)
@@ -25696,14 +28819,14 @@ L_0C888:
 
 // Reached from 8 dispatch table entries:
 //     MOVES.W Rn,-(An)
-L_0C8B4:
+moves_w_rn_mem:
         li      data, -2
 
 // Reached from 17 dispatch table entries:
 //     MOVES.W Rn,(An)+
 //     MOVES.W Rn,(d8,An,Xn)
 //     MOVES.W Rn,(xxx).L
-L_0C8B8:
+moves_w_rn_mem_2:
         bnsl    cr2, L_0CA78
         mtctr   addr
         mr      immed_data, prefetch_data
@@ -25714,14 +28837,14 @@ L_0C8B8:
 // Reached from 9 dispatch table entries:
 //     MOVES.W Rn,(d16,An)
 //     MOVES.W Rn,(xxx).W
-L_0C8D0:
+moves_w_rn_mem_3:
         bnsl    cr2, L_0CA78
         ori     rtn_addr, code_ptr, L_0C8E8 - cb
         b       L_0C96C
 
 // Reached from 8 dispatch table entries:
 //     MOVES.W Rn,(An)
-L_0C8DC:
+moves_w_rn_mem_4:
         bnsl    cr2, L_0CA78
         mr      immed_data, prefetch_data
         lhau    prefetch_data, 2(pc)
@@ -25739,14 +28862,14 @@ L_0C8E8:
 
 // Reached from 8 dispatch table entries:
 //     MOVES.L Rn,-(An)
-L_0C910:
+moves_l_rn_mem:
         li      data, -4
 
 // Reached from 17 dispatch table entries:
 //     MOVES.L Rn,(An)+
 //     MOVES.L Rn,(d8,An,Xn)
 //     MOVES.L Rn,(xxx).L
-L_0C914:
+moves_l_rn_mem_2:
         bnsl    cr2, L_0CA78
         mtctr   addr
         mr      immed_data, prefetch_data
@@ -25757,14 +28880,14 @@ L_0C914:
 // Reached from 9 dispatch table entries:
 //     MOVES.L Rn,(d16,An)
 //     MOVES.L Rn,(xxx).W
-L_0C92C:
+moves_l_rn_mem_3:
         bnsl    cr2, L_0CA78
         ori     rtn_addr, code_ptr, L_0C944 - cb
         b       L_0C96C
 
 // Reached from 8 dispatch table entries:
 //     MOVES.L Rn,(An)
-L_0C938:
+moves_l_rn_mem_4:
         bnsl    cr2, L_0CA78
         mr      immed_data, prefetch_data
         lhau    prefetch_data, 2(pc)
@@ -25812,7 +28935,7 @@ L_0C9C8:
         lwz     data, 92(EmulatorStatePtr)
         bctr
 L_0C9D4:
-        b       L_06084
+        b       move_add_etc_any_any
 L_0C9D8:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         eieio
@@ -25828,7 +28951,7 @@ L_0C9D8:
 
 // Reached from 1 dispatch table entry:
 //     STOP #<data>
-L_0CA04:
+stop_imm:
         bnsl    cr2, L_0CA78
         addi    pc, pc, 4
         bl      L_0C3EC
@@ -25879,7 +29002,7 @@ L_0CA78:
 //     CPUSHP NC,(An)
 //     CPUSHA NC
 //     ... and 28 more forms
-L_0CA88:
+cinvl_cinvp_etc_any_any:
         mtlr    rtn_addr
         bsolr   cr2
         b       L_0CA78
@@ -25889,14 +29012,19 @@ L_0CA88:
 //     CHK.W (xxx).W,Dn
 //     CHK.W (d16,PC),Dn
 //     CHK.W #<data>,Dn
-L_0CA94:
+chk_w_ea_d0:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 24 dispatch table entries:
 //     CHK.W Dn,Dn
 //     CHK.W (An),Dn
 //     CHK.W -(An),Dn
-L_0CA98:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     CHK.W (An)+,Dn
+//     CHK.W (d8,An,Xn),Dn
+//     CHK.W (xxx).L,Dn
+//     CHK.W (d8,PC,Xn),Dn
+chk_w_mem_d0:
         clrlwi. immed_data, d0, 16                      // immed_data = d0 & 0x0000FFFF
         b       L_0CAF4
 
@@ -25905,14 +29033,19 @@ L_0CA98:
 //     CHK.W (xxx).W,Dn
 //     CHK.W (d16,PC),Dn
 //     CHK.W #<data>,Dn
-L_0CAA0:
+chk_w_ea_d1:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 24 dispatch table entries:
 //     CHK.W Dn,Dn
 //     CHK.W (An),Dn
 //     CHK.W -(An),Dn
-L_0CAA4:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     CHK.W (An)+,Dn
+//     CHK.W (d8,An,Xn),Dn
+//     CHK.W (xxx).L,Dn
+//     CHK.W (d8,PC,Xn),Dn
+chk_w_mem_d1:
         clrlwi. immed_data, d1, 16                      // immed_data = d1 & 0x0000FFFF
         b       L_0CAF4
 
@@ -25921,14 +29054,19 @@ L_0CAA4:
 //     CHK.W (xxx).W,Dn
 //     CHK.W (d16,PC),Dn
 //     CHK.W #<data>,Dn
-L_0CAAC:
+chk_w_ea_d2:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 24 dispatch table entries:
 //     CHK.W Dn,Dn
 //     CHK.W (An),Dn
 //     CHK.W -(An),Dn
-L_0CAB0:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     CHK.W (An)+,Dn
+//     CHK.W (d8,An,Xn),Dn
+//     CHK.W (xxx).L,Dn
+//     CHK.W (d8,PC,Xn),Dn
+chk_w_mem_d2:
         clrlwi. immed_data, d2, 16                      // immed_data = d2 & 0x0000FFFF
         b       L_0CAF4
 
@@ -25937,14 +29075,19 @@ L_0CAB0:
 //     CHK.W (xxx).W,Dn
 //     CHK.W (d16,PC),Dn
 //     CHK.W #<data>,Dn
-L_0CAB8:
+chk_w_ea_d3:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 24 dispatch table entries:
 //     CHK.W Dn,Dn
 //     CHK.W (An),Dn
 //     CHK.W -(An),Dn
-L_0CABC:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     CHK.W (An)+,Dn
+//     CHK.W (d8,An,Xn),Dn
+//     CHK.W (xxx).L,Dn
+//     CHK.W (d8,PC,Xn),Dn
+chk_w_mem_d3:
         clrlwi. immed_data, d3, 16                      // immed_data = d3 & 0x0000FFFF
         b       L_0CAF4
 
@@ -25953,14 +29096,19 @@ L_0CABC:
 //     CHK.W (xxx).W,Dn
 //     CHK.W (d16,PC),Dn
 //     CHK.W #<data>,Dn
-L_0CAC4:
+chk_w_ea_d4:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 24 dispatch table entries:
 //     CHK.W Dn,Dn
 //     CHK.W (An),Dn
 //     CHK.W -(An),Dn
-L_0CAC8:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     CHK.W (An)+,Dn
+//     CHK.W (d8,An,Xn),Dn
+//     CHK.W (xxx).L,Dn
+//     CHK.W (d8,PC,Xn),Dn
+chk_w_mem_d4:
         clrlwi. immed_data, d4, 16                      // immed_data = d4 & 0x0000FFFF
         b       L_0CAF4
 
@@ -25969,14 +29117,19 @@ L_0CAC8:
 //     CHK.W (xxx).W,Dn
 //     CHK.W (d16,PC),Dn
 //     CHK.W #<data>,Dn
-L_0CAD0:
+chk_w_ea_d5:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 24 dispatch table entries:
 //     CHK.W Dn,Dn
 //     CHK.W (An),Dn
 //     CHK.W -(An),Dn
-L_0CAD4:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     CHK.W (An)+,Dn
+//     CHK.W (d8,An,Xn),Dn
+//     CHK.W (xxx).L,Dn
+//     CHK.W (d8,PC,Xn),Dn
+chk_w_mem_d5:
         clrlwi. immed_data, d5, 16                      // immed_data = d5 & 0x0000FFFF
         b       L_0CAF4
 
@@ -25985,14 +29138,19 @@ L_0CAD4:
 //     CHK.W (xxx).W,Dn
 //     CHK.W (d16,PC),Dn
 //     CHK.W #<data>,Dn
-L_0CADC:
+chk_w_ea_d6:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 24 dispatch table entries:
 //     CHK.W Dn,Dn
 //     CHK.W (An),Dn
 //     CHK.W -(An),Dn
-L_0CAE0:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     CHK.W (An)+,Dn
+//     CHK.W (d8,An,Xn),Dn
+//     CHK.W (xxx).L,Dn
+//     CHK.W (d8,PC,Xn),Dn
+chk_w_mem_d6:
         clrlwi. immed_data, d6, 16                      // immed_data = d6 & 0x0000FFFF
         b       L_0CAF4
 
@@ -26001,14 +29159,19 @@ L_0CAE0:
 //     CHK.W (xxx).W,Dn
 //     CHK.W (d16,PC),Dn
 //     CHK.W #<data>,Dn
-L_0CAE8:
+chk_w_ea_d7:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 24 dispatch table entries:
 //     CHK.W Dn,Dn
 //     CHK.W (An),Dn
 //     CHK.W -(An),Dn
-L_0CAEC:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     CHK.W (An)+,Dn
+//     CHK.W (d8,An,Xn),Dn
+//     CHK.W (xxx).L,Dn
+//     CHK.W (d8,PC,Xn),Dn
+chk_w_mem_d7:
         clrlwi. immed_data, d7, 16                      // immed_data = d7 & 0x0000FFFF
         b       L_0CAF4
 L_0CAF4:
@@ -26024,14 +29187,20 @@ L_0CAF4:
 //     CHK.L (d16,An),Dn
 //     CHK.L (xxx).W,Dn
 //     CHK.L (d16,PC),Dn
-L_0CB10:
+chk_l_mem_d0:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 24 dispatch table entries:
 //     CHK.L Dn,Dn
 //     CHK.L (An),Dn
 //     CHK.L -(An),Dn
-L_0CB14:
+// Continuation (via rtn_addr) of 19 dispatch table entries:
+//     CHK.L (An)+,Dn
+//     CHK.L (d8,An,Xn),Dn
+//     CHK.L (xxx).L,Dn
+//     CHK.L (d8,PC,Xn),Dn
+//     CHK.L #<data>,Dn
+chk_l_ea_d0:
         or.     immed_data, d0, d0
         b       L_0CB70
 
@@ -26039,14 +29208,20 @@ L_0CB14:
 //     CHK.L (d16,An),Dn
 //     CHK.L (xxx).W,Dn
 //     CHK.L (d16,PC),Dn
-L_0CB1C:
+chk_l_mem_d1:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 24 dispatch table entries:
 //     CHK.L Dn,Dn
 //     CHK.L (An),Dn
 //     CHK.L -(An),Dn
-L_0CB20:
+// Continuation (via rtn_addr) of 19 dispatch table entries:
+//     CHK.L (An)+,Dn
+//     CHK.L (d8,An,Xn),Dn
+//     CHK.L (xxx).L,Dn
+//     CHK.L (d8,PC,Xn),Dn
+//     CHK.L #<data>,Dn
+chk_l_ea_d1:
         or.     immed_data, d1, d1
         b       L_0CB70
 
@@ -26054,14 +29229,20 @@ L_0CB20:
 //     CHK.L (d16,An),Dn
 //     CHK.L (xxx).W,Dn
 //     CHK.L (d16,PC),Dn
-L_0CB28:
+chk_l_mem_d2:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 24 dispatch table entries:
 //     CHK.L Dn,Dn
 //     CHK.L (An),Dn
 //     CHK.L -(An),Dn
-L_0CB2C:
+// Continuation (via rtn_addr) of 19 dispatch table entries:
+//     CHK.L (An)+,Dn
+//     CHK.L (d8,An,Xn),Dn
+//     CHK.L (xxx).L,Dn
+//     CHK.L (d8,PC,Xn),Dn
+//     CHK.L #<data>,Dn
+chk_l_ea_d2:
         or.     immed_data, d2, d2
         b       L_0CB70
 
@@ -26069,14 +29250,20 @@ L_0CB2C:
 //     CHK.L (d16,An),Dn
 //     CHK.L (xxx).W,Dn
 //     CHK.L (d16,PC),Dn
-L_0CB34:
+chk_l_mem_d3:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 24 dispatch table entries:
 //     CHK.L Dn,Dn
 //     CHK.L (An),Dn
 //     CHK.L -(An),Dn
-L_0CB38:
+// Continuation (via rtn_addr) of 19 dispatch table entries:
+//     CHK.L (An)+,Dn
+//     CHK.L (d8,An,Xn),Dn
+//     CHK.L (xxx).L,Dn
+//     CHK.L (d8,PC,Xn),Dn
+//     CHK.L #<data>,Dn
+chk_l_ea_d3:
         or.     immed_data, d3, d3
         b       L_0CB70
 
@@ -26084,14 +29271,20 @@ L_0CB38:
 //     CHK.L (d16,An),Dn
 //     CHK.L (xxx).W,Dn
 //     CHK.L (d16,PC),Dn
-L_0CB40:
+chk_l_mem_d4:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 24 dispatch table entries:
 //     CHK.L Dn,Dn
 //     CHK.L (An),Dn
 //     CHK.L -(An),Dn
-L_0CB44:
+// Continuation (via rtn_addr) of 19 dispatch table entries:
+//     CHK.L (An)+,Dn
+//     CHK.L (d8,An,Xn),Dn
+//     CHK.L (xxx).L,Dn
+//     CHK.L (d8,PC,Xn),Dn
+//     CHK.L #<data>,Dn
+chk_l_ea_d4:
         or.     immed_data, d4, d4
         b       L_0CB70
 
@@ -26099,14 +29292,20 @@ L_0CB44:
 //     CHK.L (d16,An),Dn
 //     CHK.L (xxx).W,Dn
 //     CHK.L (d16,PC),Dn
-L_0CB4C:
+chk_l_mem_d5:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 24 dispatch table entries:
 //     CHK.L Dn,Dn
 //     CHK.L (An),Dn
 //     CHK.L -(An),Dn
-L_0CB50:
+// Continuation (via rtn_addr) of 19 dispatch table entries:
+//     CHK.L (An)+,Dn
+//     CHK.L (d8,An,Xn),Dn
+//     CHK.L (xxx).L,Dn
+//     CHK.L (d8,PC,Xn),Dn
+//     CHK.L #<data>,Dn
+chk_l_ea_d5:
         or.     immed_data, d5, d5
         b       L_0CB70
 
@@ -26114,14 +29313,20 @@ L_0CB50:
 //     CHK.L (d16,An),Dn
 //     CHK.L (xxx).W,Dn
 //     CHK.L (d16,PC),Dn
-L_0CB58:
+chk_l_mem_d6:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 24 dispatch table entries:
 //     CHK.L Dn,Dn
 //     CHK.L (An),Dn
 //     CHK.L -(An),Dn
-L_0CB5C:
+// Continuation (via rtn_addr) of 19 dispatch table entries:
+//     CHK.L (An)+,Dn
+//     CHK.L (d8,An,Xn),Dn
+//     CHK.L (xxx).L,Dn
+//     CHK.L (d8,PC,Xn),Dn
+//     CHK.L #<data>,Dn
+chk_l_ea_d6:
         or.     immed_data, d6, d6
         b       L_0CB70
 
@@ -26129,14 +29334,20 @@ L_0CB5C:
 //     CHK.L (d16,An),Dn
 //     CHK.L (xxx).W,Dn
 //     CHK.L (d16,PC),Dn
-L_0CB64:
+chk_l_mem_d7:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 24 dispatch table entries:
 //     CHK.L Dn,Dn
 //     CHK.L (An),Dn
 //     CHK.L -(An),Dn
-L_0CB68:
+// Continuation (via rtn_addr) of 19 dispatch table entries:
+//     CHK.L (An)+,Dn
+//     CHK.L (d8,An,Xn),Dn
+//     CHK.L (xxx).L,Dn
+//     CHK.L (d8,PC,Xn),Dn
+//     CHK.L #<data>,Dn
+chk_l_ea_d7:
         or.     immed_data, d7, d7
         b       L_0CB70
 L_0CB70:
@@ -26157,19 +29368,24 @@ L_0CB94:
 //     CHK2/CMP2.B (d16,An),Rn
 //     CHK2/CMP2.B (xxx).W,Rn
 //     CHK2/CMP2.B (d16,PC),Rn
-L_0CB98:
+chk2_cmp2_b_mem_rn:
         lhau    base_disp, 2(pc)
         mr      immed_data, prefetch_data
         lhau    prefetch_data, 2(pc)
         lhax    data, addr, base_disp
-        b       L_0CBB4
+        b       chk2_cmp2_b_mem_rn_3
 
 // Reached from 8 dispatch table entries:
 //     CHK2/CMP2.B (An),Rn
-L_0CBAC:
+chk2_cmp2_b_mem_rn_2:
         mr      immed_data, prefetch_data
         lhau    prefetch_data, 2(pc)
-L_0CBB4:
+
+// Continuation (via rtn_addr) of 10 dispatch table entries:
+//     CHK2/CMP2.B (d8,An,Xn),Rn
+//     CHK2/CMP2.B (xxx).L,Rn
+//     CHK2/CMP2.B (d8,PC,Xn),Rn
+chk2_cmp2_b_mem_rn_3:
         addic.  addr, zero, 24
         extsb   rtn_addr, data                          // rtn_addr = sign-extended low byte of data
         srawi   data, data, 8                           // data = data >> 8 (arithmetic)
@@ -26178,7 +29394,7 @@ L_0CBB4:
 // Reached from 9 dispatch table entries:
 //     CHK2/CMP2.W (d16,An),Rn
 //     CHK2/CMP2.W (d16,PC),Rn
-L_0CBC4:
+chk2_cmp2_w_mem_rn:
         lhau    base_disp, 2(pc)
         mr      immed_data, prefetch_data
         lhau    prefetch_data, 2(pc)
@@ -26188,10 +29404,15 @@ L_0CBC4:
 // Reached from 9 dispatch table entries:
 //     CHK2/CMP2.W (An),Rn
 //     CHK2/CMP2.W (xxx).W,Rn
-L_0CBD8:
+chk2_cmp2_w_mem_rn_2:
         mr      immed_data, prefetch_data
         lhau    prefetch_data, 2(pc)
-L_0CBE0:
+
+// Continuation (via rtn_addr) of 10 dispatch table entries:
+//     CHK2/CMP2.W (d8,An,Xn),Rn
+//     CHK2/CMP2.W (xxx).L,Rn
+//     CHK2/CMP2.W (d8,PC,Xn),Rn
+chk2_cmp2_w_mem_rn_3:
         lha     data, 0(addr)
 L_0CBE4:
         lha     rtn_addr, 2(addr)
@@ -26201,7 +29422,7 @@ L_0CBE4:
 // Reached from 9 dispatch table entries:
 //     CHK2/CMP2.L (d16,An),Rn
 //     CHK2/CMP2.L (d16,PC),Rn
-L_0CBF0:
+chk2_cmp2_l_mem_rn:
         lhau    base_disp, 2(pc)
         mr      immed_data, prefetch_data
         lhau    prefetch_data, 2(pc)
@@ -26211,10 +29432,15 @@ L_0CBF0:
 // Reached from 9 dispatch table entries:
 //     CHK2/CMP2.L (An),Rn
 //     CHK2/CMP2.L (xxx).W,Rn
-L_0CC04:
+chk2_cmp2_l_mem_rn_2:
         mr      immed_data, prefetch_data
         lhau    prefetch_data, 2(pc)
-L_0CC0C:
+
+// Continuation (via rtn_addr) of 10 dispatch table entries:
+//     CHK2/CMP2.L (d8,An,Xn),Rn
+//     CHK2/CMP2.L (xxx).L,Rn
+//     CHK2/CMP2.L (d8,PC,Xn),Rn
+chk2_cmp2_l_mem_rn_3:
         lwz     data, 0(addr)
 L_0CC10:
         lwz     rtn_addr, 4(addr)
@@ -26273,7 +29499,7 @@ L_0CCAC:
 
 // Reached from 16 dispatch table entries:
 //     TRAP #<q>
-L_0CCBC:
+trap_q:
         lwz     rtn_addr, 0x810(EmulatorStatePtr)
         crclr   4*cr7+so
         mtlr    rtn_addr
@@ -26295,7 +29521,7 @@ L_0CCCC:
 //     TRAPCC #<data>.W
 //     TRAPCC #<data>.L
 //     ... and 14 more forms
-L_0CCE8:
+trapcc:
         ori     base_disp, code_ptr, D_085C0 - cb
 
 // Reached from 9 dispatch table entries:
@@ -26306,7 +29532,7 @@ L_0CCE8:
 //     TRAPVC
 //     TRAPGE
 //     ... and 3 more forms
-L_0CCEC:
+trapcc_2:
         mfxer   immed_data
         rlwinm  data, disp_table, 23, 26, 29            // data = disp_table[14:11] << 2
         mfcr    rtn_addr
@@ -26328,7 +29554,7 @@ L_0CCEC:
 //     TRAPEQ #<data>.L
 //     TRAPPL #<data>.L
 //     TRAPMI #<data>.L
-L_0CD24:
+trapcc_3:
         addi    pc, pc, 2
 
 // Reached from 5 dispatch table entries:
@@ -26337,7 +29563,7 @@ L_0CD24:
 //     TRAPEQ #<data>.W
 //     TRAPPL #<data>.W
 //     TRAPMI #<data>.W
-L_0CD28:
+trapcc_4:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 5 dispatch table entries:
@@ -26346,7 +29572,7 @@ L_0CD28:
 //     TRAPEQ
 //     TRAPPL
 //     TRAPMI
-L_0CD2C:
+trapcc_5:
         bso     cr7, L_0CD68
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -26357,7 +29583,7 @@ L_0CD2C:
 // Reached from 2 dispatch table entries:
 //     TRAPV
 //     TRAPVS
-L_0CD44:
+trapv_trapvs:
         rlwinm  data, data, 8, 24, 27                   // data = data[31:28] << 4
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         mtlr    disp_table
@@ -26378,7 +29604,7 @@ L_0CD68:
 
 // Reached from 8 dispatch table entries:
 //     MOVE.W CCR,Dn
-L_0CD80:
+move_w_ccr_dn:
         rlwinm  data, ccr_x, 7, 27, 27                  // data = ccr_x[29] << 4
 L_0CD84:
         mfcr    immed_data
@@ -26392,12 +29618,16 @@ L_0CD84:
 // Reached from 9 dispatch table entries:
 //     MOVE.W CCR,(d16,An)
 //     MOVE.W CCR,(xxx).W
-L_0CDA0:
+move_w_ccr_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     MOVE.W CCR,(An)
-L_0CDA4:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     MOVE.W CCR,(An)+
+//     MOVE.W CCR,(d8,An,Xn)
+//     MOVE.W CCR,(xxx).L
+move_w_ccr_mem_2:
         rlwinm  data, ccr_x, 7, 27, 27                  // data = ccr_x[29] << 4
 L_0CDA8:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
@@ -26417,14 +29647,19 @@ L_0CDA8:
 //     MOVE.W (xxx).W,CCR
 //     MOVE.W (d16,PC),CCR
 //     MOVE.W #<data>,CCR
-L_0CDD4:
+move_w_ea_ccr:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 24 dispatch table entries:
 //     MOVE.W Dn,CCR
 //     MOVE.W (An),CCR
 //     MOVE.W -(An),CCR
-L_0CDD8:
+// Continuation (via rtn_addr) of 18 dispatch table entries:
+//     MOVE.W (An)+,CCR
+//     MOVE.W (d8,An,Xn),CCR
+//     MOVE.W (xxx).L,CCR
+//     MOVE.W (d8,PC,Xn),CCR
+move_w_mem_ccr:
         rlwinm  immed_data, data, 27, 2, 2              // immed_data = data[2] << 29
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
         rlwinm  ccr_x, data, 25, 2, 2                   // ccr_x = data[4] << 29
@@ -26439,7 +29674,7 @@ L_0CDD8:
 
 // Reached from 8 dispatch table entries:
 //     CAS.B Dc,Du,(d16,An)
-L_0CE04:
+cas_b_mem:
         lhau    base_disp, 2(pc)
         mr      immed_data, prefetch_data
         lhau    prefetch_data, 2(pc)
@@ -26449,10 +29684,16 @@ L_0CE04:
 // Reached from 9 dispatch table entries:
 //     CAS.B Dc,Du,(An)
 //     CAS.B Dc,Du,(xxx).W
-L_0CE18:
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     CAS.B Dc,Du,(An)+
+cas_b_mem_2:
         mr      immed_data, prefetch_data
         lhau    prefetch_data, 2(pc)
-L_0CE20:
+
+// Continuation (via rtn_addr) of 9 dispatch table entries:
+//     CAS.B Dc,Du,(d8,An,Xn)
+//     CAS.B Dc,Du,(xxx).L
+cas_b_mem_3:
         lbz     data, 0(addr)
 L_0CE24:
         lwz     base_disp, 0x884(EmulatorStatePtr)
@@ -26481,7 +29722,7 @@ L_0CE38:
 
 // Reached from 8 dispatch table entries:
 //     CAS.W Dc,Du,(d16,An)
-L_0CE7C:
+cas_w_mem:
         lhau    base_disp, 2(pc)
         mr      immed_data, prefetch_data
         lhau    prefetch_data, 2(pc)
@@ -26491,10 +29732,16 @@ L_0CE7C:
 // Reached from 9 dispatch table entries:
 //     CAS.W Dc,Du,(An)
 //     CAS.W Dc,Du,(xxx).W
-L_0CE90:
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     CAS.W Dc,Du,(An)+
+cas_w_mem_2:
         mr      immed_data, prefetch_data
         lhau    prefetch_data, 2(pc)
-L_0CE98:
+
+// Continuation (via rtn_addr) of 9 dispatch table entries:
+//     CAS.W Dc,Du,(d8,An,Xn)
+//     CAS.W Dc,Du,(xxx).L
+cas_w_mem_3:
         lhz     data, 0(addr)
 L_0CE9C:
         lwz     base_disp, 0x888(EmulatorStatePtr)
@@ -26523,7 +29770,7 @@ L_0CEB0:
 
 // Reached from 8 dispatch table entries:
 //     CAS.L Dc,Du,(d16,An)
-L_0CEF4:
+cas_l_mem:
         lhau    base_disp, 2(pc)
         mr      immed_data, prefetch_data
         lhau    prefetch_data, 2(pc)
@@ -26533,10 +29780,16 @@ L_0CEF4:
 // Reached from 9 dispatch table entries:
 //     CAS.L Dc,Du,(An)
 //     CAS.L Dc,Du,(xxx).W
-L_0CF08:
+// Continuation (via rtn_addr) of 8 dispatch table entries:
+//     CAS.L Dc,Du,(An)+
+cas_l_mem_2:
         mr      immed_data, prefetch_data
         lhau    prefetch_data, 2(pc)
-L_0CF10:
+
+// Continuation (via rtn_addr) of 9 dispatch table entries:
+//     CAS.L Dc,Du,(d8,An,Xn)
+//     CAS.L Dc,Du,(xxx).L
+cas_l_mem_3:
         lwz     data, 0(addr)
 L_0CF14:
         lwz     base_disp, 0x88C(EmulatorStatePtr)
@@ -26573,12 +29826,12 @@ L_0CF80:
         subfco. data, base_disp, data                   // data = data - base_disp
         addc    base_disp, base_disp, data
         bnelr
-        b       L_06084
+        b       move_add_etc_any_any
 
 // Reached from 2 dispatch table entries:
 //     CAS2.W Dc1:Dc2,Du1:Du2,(Rn1):(Rn2)
 //     CAS2.L Dc1:Dc2,Du1:Du2,(Rn1):(Rn2)
-L_0CF90:
+cea_x_74:
         mtlr    rtn_addr
         mtcrf   0x0F, disp_table                        // cr4..cr7 = disp_table[15:0]
         lwz     prefetch_data, 0(pc)
@@ -26627,7 +29880,7 @@ L_0CFA8:
         stw     rtn_addr, 0(immed_data)
 L_0D044:
         lhau    prefetch_data, 4(pc)
-        b       L_06084
+        b       move_add_etc_any_any
 L_0D04C:
         lhz     base_disp, 0(addr)
         lhz     rtn_addr, 0(immed_data)
@@ -26664,7 +29917,7 @@ L_0D0A0:
 
 // Reached from 8 dispatch table entries:
 //     TAS.B Dn
-L_0D0C4:
+tas_b_dn:
         mtctr   addr
         addco   zero, zero, zero
         bctrl
@@ -26675,12 +29928,16 @@ L_0D0C4:
 // Reached from 9 dispatch table entries:
 //     TAS.B (d16,An)
 //     TAS.B (xxx).W
-L_0D0DC:
+tas_b_mem:
         lhau    prefetch_data, 2(pc)
 
 // Reached from 8 dispatch table entries:
 //     TAS.B (An)
-L_0D0E0:
+// Continuation (via rtn_addr) of 17 dispatch table entries:
+//     TAS.B (An)+
+//     TAS.B (d8,An,Xn)
+//     TAS.B (xxx).L
+tas_b_mem_2:
         lwz     rtn_addr, 0x880(EmulatorStatePtr)
         mtlr    rtn_addr
         blrl
@@ -27130,7 +30387,7 @@ L_0D640:
 //     MOVEA.B (An),An (illegal)
 //     MOVEA.B (An)+,An (illegal)
 //     ... and 1203 more forms
-L_0D750:
+bkpt_illegal_imm:
         mtlr    rtn_addr
         li      immed_data, 16
         blrl
@@ -27144,7 +30401,7 @@ L_0D750:
 //     F-LINE cpID 7
 //     F-LINE cpID 6
 //     ... and 30 more forms
-L_0D760:
+fline_ptestr_mem_any:
         mtlr    rtn_addr
         li      immed_data, 44
         blrl
@@ -27195,7 +30452,7 @@ L_0D7C8:
 
 // Reached from 1 dispatch table entry:
 //     F-LINE cpID 7
-L_0D804:
+fline_19:
         lwz     data, 0(a7)
         mtlr    addr
         clrrwi  addr, data, 6                           // addr = data & 0xFFFFFFC0
@@ -27203,11 +30460,11 @@ L_0D804:
         lis     data, 0x0020
         bnelrl  cr2
         lbz     data, 0(addr)
-        b       L_06140
+        b       tst_b_mem
 
 // Reached from 2 dispatch table entries:
 //     F-LINE cpID 7
-L_0D824:
+fline_20:
         lwz     data, 0x960(EmulatorStatePtr)
         cmplwi  d0, 0x0019
         mtlr    data
@@ -27220,20 +30477,26 @@ L_0D838:
         add     addr, EmulatorStatePtr, data
         blr
 L_0D84C:
-        b       L_060C0
+        b       move_or_etc_any_reg
 D_0D850:
         .byte   0x18, 0x00, 0x04, 0x08, 0x0C, 0x10, 0x20, 0x24
         .byte   0x28, 0x30, 0x34, 0x38, 0x3C, 0x14, 0x2C, 0xA4
         .byte   0xB0, 0xB4, 0xB8, 0xA0, 0xBC, 0xC0, 0xC4, 0xA8
         .byte   0xC8, 0xCC, 0x00, 0x00
-L_0D86C:
+
+// Continuation (via rtn_addr) of 1 dispatch table entry:
+//     F-LINE cpID 7
+fline_21:
         cmplwi  cr7, d0, 0x0014
         beq     cr7, L_0D8B4
         cmplwi  cr7, d0, 0x0012
         beq     cr7, L_0D8E4
         lwz     a0, 0x700(addr)
-        b       L_06100
-L_0D884:
+        b       clr_eor_reg_any
+
+// Continuation (via rtn_addr) of 1 dispatch table entry:
+//     F-LINE cpID 7
+fline_22:
         cmplwi  cr7, d0, 0x0014
         beq     cr7, L_0D8CC
         cmplwi  cr7, d0, 0x0012
@@ -27245,21 +30508,21 @@ L_0D884:
         beq     cr7, L_0D84C
         stw     a0, 0x700(addr)
         beq     cr6, L_0D964
-        b       L_06100
+        b       clr_eor_reg_any
 L_0D8B4:
         lwz     data, 0x7A0(EmulatorStatePtr)
         rlwinm  data, data, 0, 29, 29                   // data = data[2] << 2
         cmpwi   cr7, data, 0
         beq     cr7, L_0D84C
         lwz     a0, 0x700(addr)
-        b       L_06100
+        b       clr_eor_reg_any
 L_0D8CC:
         lwz     data, 0x7A0(EmulatorStatePtr)
         rlwinm  data, data, 0, 29, 29                   // data = data[2] << 2
         cmpwi   cr7, data, 0
         beq     cr7, L_0D84C
         stw     a0, 0x700(addr)
-        b       L_06100
+        b       clr_eor_reg_any
 L_0D8E4:
         lwz     data, 0x7A0(EmulatorStatePtr)
         clrlwi  data, data, 30                          // data = data & 0x00000003
@@ -27267,7 +30530,7 @@ L_0D8E4:
         bne     cr7, L_0D84C
         mfcr    data
         rlwinm  a0, data, 8, 29, 31                     // a0 = data[26:24]
-        b       L_06100
+        b       clr_eor_reg_any
 L_0D900:
         lwz     data, 0x7A0(EmulatorStatePtr)
         clrlwi  data, data, 30                          // data = data & 0x00000003
@@ -27281,7 +30544,7 @@ L_0D900:
         mtcrf   0x40, data                              // cr1 = data[27:24]
         crand   4*cr1+gt, 4*cr1+so, 4*cr6+eq            // cr1.gt = cr1.so & cr6.eq
         cror    4*cr1+eq, 4*cr1+eq, 4*cr1+so            // cr1.eq = cr1.eq | cr1.so
-        bns     cr1, L_06100
+        bns     cr1, clr_eor_reg_any
         crandc  4*cr7+so, 4*cr1+so, 4*cr7+so            // cr7.so = cr1.so & ~cr7.so
         lwz     data, 0xA14(EmulatorStatePtr)
         bns     cr7, L_0D948
@@ -27290,18 +30553,18 @@ L_0D900:
 L_0D948:
         crandc  4*cr7+eq, 4*cr1+eq, 4*cr7+eq            // cr7.eq = cr1.eq & ~cr7.eq
         lwz     data, 0xA04(EmulatorStatePtr)
-        bne     cr7, L_06100
+        bne     cr7, clr_eor_reg_any
         mtctr   data
         bctrl
         lwz     r23, 0xA00(EmulatorStatePtr)
-        b       L_06100
+        b       clr_eor_reg_any
 L_0D964:
         andi.   data, a0, 0xFFFF
         rlwimi  sr_and_flags, a0, 16, 0, 15             // sr_and_flags[31:16] = a0[15:0]
         neg.    data, data
         rlwimi  sr_and_flags, data, 11, 21, 21          // sr_and_flags[10] = data[31]
         cror    4*cr2+lt, 4*cr2+lt, lt                  // cr2.lt = cr2.lt | cr0.lt
-        b       L_06100
+        b       clr_eor_reg_any
 L_0D97C:
         lwz     data, 0x7A8(EmulatorStatePtr)
         lwz     immed_data, 0x7AC(EmulatorStatePtr)
@@ -27319,7 +30582,7 @@ L_0D97C:
         or      rtn_addr, rtn_addr, immed_data
         stw     base_disp, 0(addr)
         stw     rtn_addr, 64(addr)
-        b       L_06100
+        b       clr_eor_reg_any
 L_0D9C0:
         mtcrf   0x40, zero                              // cr1 = zero[27:24]
         bflr_likely 4*cr2+lt
@@ -27329,18 +30592,18 @@ L_0D9CC:
 
 // Reached from 1 dispatch table entry:
 //     F-LINE cpID 6
-L_0D9D0:
-        bne     cr1, L_06084
+fline_23:
+        bne     cr1, move_add_etc_any_any
         lwz     data, 0xA08(EmulatorStatePtr)
         mr      addr, a0
         mtctr   data
         mr      data, d0
         bctrl
-        b       L_06084
+        b       move_add_etc_any_any
 
 // Reached from 1 dispatch table entry:
 //     F-LINE cpID 7
-L_0D9EC:
+fline_24:
         lwz     immed_data, 0x99C(EmulatorStatePtr)
         mr      addr, d0
         mr      rtn_addr, d1
@@ -27356,7 +30619,7 @@ L_0D9EC:
 
 // Reached from 1 dispatch table entry:
 //     F-LINE cpID 7
-L_0DA1C:
+fline_25:
         lwz     immed_data, 0x9A4(EmulatorStatePtr)
         mr      addr, d0
         mtlr    immed_data
@@ -27370,7 +30633,7 @@ L_0DA1C:
 
 // Reached from 2 dispatch table entries:
 //     F-LINE cpID 7
-L_0DA44:
+fline_26:
         lwz     immed_data, 0x968(EmulatorStatePtr)
         mr      addr, d0
         mtlr    immed_data
@@ -27394,23 +30657,23 @@ L_0DA80:
 
 // Reached from 1 dispatch table entry:
 //     F-LINE cpID 7
-L_0DA8C:
+fline_27:
         mftbu   a0
         mftb    d0
         mftbu   data
         cmplw   cr7, data, a0
-        bne     cr7, L_0DA8C
-        b       L_06088
+        bne     cr7, fline_27
+        b       exg_move_etc_any_reg
 
 // Reached from 4 dispatch table entries:
 //     F-LINE cpID 7
-L_0DAA4:
+fline_28:
         add     addr, a0, d0
         cmpwi   d0, 0
         mtlr    rtn_addr
         addi    addr, addr, -1
         clrrwi  addr, addr, 5                           // addr = addr & 0xFFFFFFE0
-        ble     L_06084
+        ble     move_add_etc_any_any
         clrrwi  a0, a0, 5                               // a0 = a0 & 0xFFFFFFE0
         subf    data, a0, addr                          // data = addr - a0
         srwi    data, data, 5
@@ -27419,34 +30682,46 @@ L_0DAA4:
         blrl
         mfctr   data
         slwi.   d0, data, 5
-        beq     L_06084
+        beq     move_add_etc_any_any
         mtlr    disp_table
         rlwinm  sr_and_flags, sr_and_flags, 0, 24, 22   // sr_and_flags = sr_and_flags & 0xFFFFFEFF
         b       L_0D114
-L_0DAEC:
+
+// Continuation (via rtn_addr) of 1 dispatch table entry:
+//     F-LINE cpID 7
+fline_29:
         icbi    0, a0
         addi    a0, a0, 32
-        bdnzf   4*cr2+eq, L_0DAEC
+        bdnzf   4*cr2+eq, fline_29
         blr
-L_0DAFC:
+
+// Continuation (via rtn_addr) of 1 dispatch table entry:
+//     F-LINE cpID 7
+fline_30:
         dcbf    0, a0
         addi    a0, a0, 32
-        bdnzf   4*cr2+eq, L_0DAFC
+        bdnzf   4*cr2+eq, fline_30
         blr
-L_0DB0C:
+
+// Continuation (via rtn_addr) of 1 dispatch table entry:
+//     F-LINE cpID 7
+fline_31:
         dcbst   0, a0
         addi    a0, a0, 32
-        bdnzf   4*cr2+eq, L_0DB0C
+        bdnzf   4*cr2+eq, fline_31
         blr
-L_0DB1C:
+
+// Continuation (via rtn_addr) of 1 dispatch table entry:
+//     F-LINE cpID 7
+fline_32:
         dcbz    0, a0
         addi    a0, a0, 32
-        bdnzf   4*cr2+eq, L_0DB1C
+        bdnzf   4*cr2+eq, fline_32
         blr
 
 // Reached from 1 dispatch table entry:
 //     F-LINE cpID 7
-L_0DB2C:
+fline_33:
         mr      addr, a0
         mtlr    disp_table
         twi     31, EmulatorStatePtr, 6                 // unconditional trap
@@ -27456,7 +30731,7 @@ L_0DB2C:
 
 // Reached from 1 dispatch table entry:
 //     F-LINE cpID 7
-L_0DB44:
+cea_x_37:
         mtlr    rtn_addr
         mr      zero, d0
         mr      addr, a0
@@ -27610,8 +30885,8 @@ D_0DC44:
         .short  L_0E4DC - cb
         .short  L_0E52C - cb
         .short  L_0E57C - cb
-        .short  L_06084 - cb
-        .short  L_06084 - cb
+        .short  move_add_etc_any_any - cb
+        .short  move_add_etc_any_any - cb
         .short  L_0D838 - cb
         .short  L_0E8C4 - cb
         .short  L_0E8CC - cb
@@ -27722,7 +30997,7 @@ L_0DE08:
 
 // Reached from 1 dispatch table entry:
 //     F-LINE cpID 7
-L_0DE10:
+fline_34:
         mtlr    rtn_addr
         lwz     base_disp, 0(a7)
         blr
@@ -27822,7 +31097,7 @@ L_0DF48:
 L_0DF4C:
         lha     prefetch_data, 0(pc)
         stwu    base_disp, -4(a7)
-        b       L_0CDD8
+        b       move_w_mem_ccr
 L_0DF58:
         rlwinm  immed_data, data, 0, 28, 30             // immed_data = data[3:1] << 1
         cmpwi   cr4, immed_data, 8
@@ -27949,11 +31224,11 @@ L_0E110:
         rlwinm  sr_and_flags, sr_and_flags, 0, 24, 22   // sr_and_flags = sr_and_flags & 0xFFFFFEFF
         lhau    prefetch_data, -2(pc)
         stwu    base_disp, -4(a7)
-        b       L_06084
+        b       move_add_etc_any_any
 
 // Reached from 1 dispatch table entry:
 //     F-LINE cpID 7
-L_0E120:
+fline_35:
         lwz     addr, 0x710(EmulatorStatePtr)
         ori     sr_and_flags, sr_and_flags, 0x0800
 L_0E128:
@@ -28013,7 +31288,7 @@ L_0E154:
         rlwinm  sr_and_flags, sr_and_flags, 0, 21, 19   // sr_and_flags = sr_and_flags & 0xFFFFF7FF
         cror    4*cr2+eq, 4*cr2+eq, 4*cr2+lt            // cr2.eq = cr2.eq | cr2.lt
         lha     prefetch_data, 0(pc)
-        b       L_0CDD8
+        b       move_w_mem_ccr
 L_0E208:
         addi    base_disp, immed_data, -240
         addi    pc, pc, -2
@@ -28116,7 +31391,7 @@ L_0E35C:
 
 // Reached from 1 dispatch table entry:
 //     F-LINE cpID 7
-L_0E380:
+fline_36:
         lhz     immed_data, 6(a7)
         lhz     base_disp, 20(a7)
         srwi    immed_data, immed_data, 12
@@ -28205,13 +31480,13 @@ L_0E4A8:
         mtctr   data
         bctrl
 L_0E4B8:
-        b       L_06084
+        b       move_add_etc_any_any
 L_0E4BC:
-        b       L_06084
+        b       move_add_etc_any_any
 
 // Reached from 8 dispatch table entries:
 //     MOVE16 (An)+,(xxx).L
-L_0E4C0:
+move16_mem_mem:
         mtlr    addr
         lwz     rtn_addr, 0x94C(EmulatorStatePtr)
         li      data, 16
@@ -28219,7 +31494,7 @@ L_0E4C0:
 
 // Reached from 8 dispatch table entries:
 //     MOVE16 (An),(xxx).L
-L_0E4D0:
+move16_mem_mem_2:
         lwz     rtn_addr, 0x94C(EmulatorStatePtr)
         mtlr    rtn_addr
         blrl
@@ -28236,11 +31511,11 @@ L_0E4DC:
         stw     immed_data, 4(addr)
         stw     rtn_addr, 8(addr)
         stw     base_disp, 12(addr)
-        b       L_06084
+        b       move_add_etc_any_any
 
 // Reached from 8 dispatch table entries:
 //     MOVE16 (xxx).L,(An)+
-L_0E510:
+move16_mem_mem_3:
         mtlr    addr
         lwz     rtn_addr, 0x950(EmulatorStatePtr)
         li      data, 16
@@ -28248,7 +31523,7 @@ L_0E510:
 
 // Reached from 8 dispatch table entries:
 //     MOVE16 (xxx).L,(An)
-L_0E520:
+move16_mem_mem_4:
         lwz     rtn_addr, 0x950(EmulatorStatePtr)
         mtlr    rtn_addr
         blrl
@@ -28265,11 +31540,11 @@ L_0E52C:
         stw     immed_data, -12(addr)
         stw     rtn_addr, -8(addr)
         stw     base_disp, -4(addr)
-        b       L_06084
+        b       move_add_etc_any_any
 
 // Reached from 8 dispatch table entries:
 //     MOVE16 (An)+,(Ay)+
-L_0E560:
+move16_mem:
         ori     rtn_addr, code_ptr, L_05780 - cb
         rlwimi  rtn_addr, prefetch_data, 24, 25, 27     // rtn_addr[6:4] = prefetch_data[14:12]
         mtctr   rtn_addr
@@ -28297,207 +31572,207 @@ L_0E57C:
 
 // Reached from 8 dispatch table entries:
 //     F-LINE FPU general,Dn
-L_0E5BC:
+fline_dn:
         lwz     rtn_addr, 0x89C(EmulatorStatePtr)
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // Reached from 8 dispatch table entries:
 //     F-LINE FPU general,An
-L_0E5C4:
+fline_an:
         lwz     rtn_addr, 0x8A0(EmulatorStatePtr)
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // Reached from 8 dispatch table entries:
 //     F-LINE FPU general,(An)
-L_0E5CC:
+fline_mem:
         lwz     rtn_addr, 0x8A4(EmulatorStatePtr)
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // Reached from 8 dispatch table entries:
 //     F-LINE FPU general,(An)+
-L_0E5D4:
+fline_mem_2:
         lwz     rtn_addr, 0x8A8(EmulatorStatePtr)
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // Reached from 8 dispatch table entries:
 //     F-LINE FPU general,-(An)
-L_0E5DC:
+fline_mem_3:
         lwz     rtn_addr, 0x8AC(EmulatorStatePtr)
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // Reached from 8 dispatch table entries:
 //     F-LINE FPU general,(d16,An)
-L_0E5E4:
+fline_mem_4:
         lwz     rtn_addr, 0x8B0(EmulatorStatePtr)
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // Reached from 8 dispatch table entries:
 //     F-LINE FPU general,(d8,An,Xn)
-L_0E5EC:
+fline_mem_5:
         lwz     rtn_addr, 0x8B4(EmulatorStatePtr)
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // Reached from 1 dispatch table entry:
 //     F-LINE FPU general,(xxx).W
-L_0E5F4:
+fline_mem_6:
         lwz     rtn_addr, 0x8B8(EmulatorStatePtr)
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // Reached from 1 dispatch table entry:
 //     F-LINE FPU general,(xxx).L
-L_0E5FC:
+fline_mem_7:
         lwz     rtn_addr, 0x8BC(EmulatorStatePtr)
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // Reached from 1 dispatch table entry:
 //     F-LINE FPU general,(d16,PC)
-L_0E604:
+fline_mem_8:
         lwz     rtn_addr, 0x8C0(EmulatorStatePtr)
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // Reached from 1 dispatch table entry:
 //     F-LINE FPU general,(d8,PC,Xn)
-L_0E60C:
+fline_mem_9:
         lwz     rtn_addr, 0x8C4(EmulatorStatePtr)
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // Reached from 8 dispatch table entries:
 //     F-LINE FScc/FDBcc/FTRAPcc,Dn
-L_0E614:
+fline_dn_2:
         lwz     rtn_addr, 0x8CC(EmulatorStatePtr)
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // Reached from 8 dispatch table entries:
 //     F-LINE FScc/FDBcc/FTRAPcc,An
-L_0E61C:
+fline_an_2:
         lwz     rtn_addr, 0x8D0(EmulatorStatePtr)
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // Reached from 8 dispatch table entries:
 //     F-LINE FScc/FDBcc/FTRAPcc,(An)
-L_0E624:
+fline_mem_10:
         lwz     rtn_addr, 0x8D4(EmulatorStatePtr)
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // Reached from 8 dispatch table entries:
 //     F-LINE FScc/FDBcc/FTRAPcc,(An)+
-L_0E62C:
+fline_mem_11:
         lwz     rtn_addr, 0x8D8(EmulatorStatePtr)
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // Reached from 8 dispatch table entries:
 //     F-LINE FScc/FDBcc/FTRAPcc,-(An)
-L_0E634:
+fline_mem_12:
         lwz     rtn_addr, 0x8DC(EmulatorStatePtr)
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // Reached from 8 dispatch table entries:
 //     F-LINE FScc/FDBcc/FTRAPcc,(d16,An)
-L_0E63C:
+fline_mem_13:
         lwz     rtn_addr, 0x8E0(EmulatorStatePtr)
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // Reached from 8 dispatch table entries:
 //     F-LINE FScc/FDBcc/FTRAPcc,(d8,An,Xn)
-L_0E644:
+fline_mem_14:
         lwz     rtn_addr, 0x8E4(EmulatorStatePtr)
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // Reached from 1 dispatch table entry:
 //     F-LINE FScc/FDBcc/FTRAPcc,(xxx).W
-L_0E64C:
+fline_mem_15:
         lwz     rtn_addr, 0x8E8(EmulatorStatePtr)
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // Reached from 1 dispatch table entry:
 //     F-LINE FScc/FDBcc/FTRAPcc,(xxx).L
-L_0E654:
+fline_mem_16:
         lwz     rtn_addr, 0x8EC(EmulatorStatePtr)
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // Reached from 8 dispatch table entries:
 //     F-LINE FSAVE,(An)
-L_0E65C:
+fline_mem_17:
         lwz     rtn_addr, 0x904(EmulatorStatePtr)
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // Reached from 8 dispatch table entries:
 //     F-LINE FSAVE,-(An)
-L_0E664:
+fline_mem_18:
         lwz     rtn_addr, 0x908(EmulatorStatePtr)
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // Reached from 8 dispatch table entries:
 //     F-LINE FSAVE,(d16,An)
-L_0E66C:
+fline_mem_19:
         lwz     rtn_addr, 0x90C(EmulatorStatePtr)
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // Reached from 8 dispatch table entries:
 //     F-LINE FSAVE,(d8,An,Xn)
-L_0E674:
+fline_mem_20:
         lwz     rtn_addr, 0x910(EmulatorStatePtr)
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // Reached from 1 dispatch table entry:
 //     F-LINE FSAVE,(xxx).W
-L_0E67C:
+fline_mem_21:
         lwz     rtn_addr, 0x914(EmulatorStatePtr)
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // Reached from 1 dispatch table entry:
 //     F-LINE FSAVE,(xxx).L
-L_0E684:
+fline_mem_22:
         lwz     rtn_addr, 0x918(EmulatorStatePtr)
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // Reached from 8 dispatch table entries:
 //     F-LINE FRESTORE,(An)
-L_0E68C:
+fline_mem_23:
         lwz     rtn_addr, 0x91C(EmulatorStatePtr)
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // Reached from 8 dispatch table entries:
 //     F-LINE FRESTORE,(An)+
-L_0E694:
+fline_mem_24:
         lwz     rtn_addr, 0x920(EmulatorStatePtr)
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // Reached from 8 dispatch table entries:
 //     F-LINE FRESTORE,(d16,An)
-L_0E69C:
+fline_mem_25:
         lwz     rtn_addr, 0x924(EmulatorStatePtr)
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // Reached from 8 dispatch table entries:
 //     F-LINE FRESTORE,(d8,An,Xn)
-L_0E6A4:
+fline_mem_26:
         lwz     rtn_addr, 0x928(EmulatorStatePtr)
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // Reached from 1 dispatch table entry:
 //     F-LINE FRESTORE,(xxx).W
-L_0E6AC:
+fline_mem_27:
         lwz     rtn_addr, 0x92C(EmulatorStatePtr)
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // Reached from 1 dispatch table entry:
 //     F-LINE FRESTORE,(xxx).L
-L_0E6B4:
+fline_mem_28:
         lwz     rtn_addr, 0x930(EmulatorStatePtr)
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // Reached from 1 dispatch table entry:
 //     F-LINE FRESTORE,(d16,PC)
-L_0E6BC:
+fline_mem_29:
         lwz     rtn_addr, 0x934(EmulatorStatePtr)
-        b       L_0D760
+        b       fline_ptestr_mem_any
 
 // Reached from 1 dispatch table entry:
 //     F-LINE FRESTORE,(d8,PC,Xn)
-L_0E6C4:
+fline_mem_30:
         lwz     rtn_addr, 0x938(EmulatorStatePtr)
-        b       L_0D760
+        b       fline_ptestr_mem_any
 L_0E6CC:
         addi    a7, a7, 8
         b       L_0C6B0
@@ -28585,7 +31860,7 @@ L_0E7CC:
         or      data, data, code_ptr
         stwu    data, 4(addr)
         bdnz    L_0E7CC                                 // CTR -= 1; branch while CTR != 0
-        b       L_06084
+        b       move_add_etc_any_any
 D_0E7E0:
         .short  L_0E6D4 - cb
         .short  L_0D780 - cb
