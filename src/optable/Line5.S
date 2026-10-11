@@ -21,21 +21,21 @@
         lis     data, 0x0800                            // 5007  ADDQ.B    #8,D7
         b       add_asl_b_any_d7
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5008  ADDQ.B    #8,A0   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5009  ADDQ.B    #8,A1   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 500A  ADDQ.B    #8,A2   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 500B  ADDQ.B    #8,A3   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 500C  ADDQ.B    #8,A4   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 500D  ADDQ.B    #8,A5   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 500E  ADDQ.B    #8,A6   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 500F  ADDQ.B    #8,A7   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 op_5010:
         mr      addr, a0                                // 5010  ADDQ.B    #8,(A0)
         b       addq_b_q_mem_5
@@ -129,17 +129,17 @@ op_5017:
         ori     rtn_addr, code_ptr, addq_b_q_mem_6 - cb  // 5039  ADDQ.B    #8,(xxx).L
         b       fea_b_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 503A  ADDQ.B    #8,(d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 503B  ADDQ.B    #8,(d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 503C  ADDQ.B    #8,#<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 503D  ADDQ.B    #8,<ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 503E  ADDQ.B    #8,<ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 503F  ADDQ.B    #8,<ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $5040-$507F --------------------------------------------------------
         lis     data, 0x0008                            // 5040  ADDQ.W    #8,D0
@@ -159,21 +159,21 @@ op_5017:
         lis     data, 0x0008                            // 5047  ADDQ.W    #8,D7
         b       add_asl_w_any_d7
         addi    a0, a0, 8                               // 5048  ADDQ.W    #8,A0
-        b       move_add_etc_any_any
+        b       fetch
         addi    a1, a1, 8                               // 5049  ADDQ.W    #8,A1
-        b       move_add_etc_any_any
+        b       fetch
         addi    a2, a2, 8                               // 504A  ADDQ.W    #8,A2
-        b       move_add_etc_any_any
+        b       fetch
         addi    a3, a3, 8                               // 504B  ADDQ.W    #8,A3
-        b       move_add_etc_any_any
+        b       fetch
         addi    a4, a4, 8                               // 504C  ADDQ.W    #8,A4
-        b       move_add_etc_any_any
+        b       fetch
         addi    a5, a5, 8                               // 504D  ADDQ.W    #8,A5
-        b       move_add_etc_any_any
+        b       fetch
         addi    a6, a6, 8                               // 504E  ADDQ.W    #8,A6
-        b       move_add_etc_any_any
+        b       fetch
         addi    a7, a7, 8                               // 504F  ADDQ.W    #8,A7
-        b       move_add_etc_any_any
+        b       fetch
 op_5050:
         mr      addr, a0                                // 5050  ADDQ.W    #8,(A0)
         b       addq_w_q_mem_5
@@ -267,17 +267,17 @@ op_5057:
         ori     rtn_addr, code_ptr, addq_w_q_mem_6 - cb  // 5079  ADDQ.W    #8,(xxx).L
         b       fea_w_71
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 507A  ADDQ.W    #8,(d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 507B  ADDQ.W    #8,(d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 507C  ADDQ.W    #8,#<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 507D  ADDQ.W    #8,<ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 507E  ADDQ.W    #8,<ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 507F  ADDQ.W    #8,<ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $5080-$50BF --------------------------------------------------------
         li      data, 8                                 // 5080  ADDQ.L    #8,D0
@@ -297,21 +297,21 @@ op_5057:
         li      data, 8                                 // 5087  ADDQ.L    #8,D7
         b       add_l_mem_d7_2
         addi    a0, a0, 8                               // 5088  ADDQ.L    #8,A0
-        b       move_add_etc_any_any
+        b       fetch
         addi    a1, a1, 8                               // 5089  ADDQ.L    #8,A1
-        b       move_add_etc_any_any
+        b       fetch
         addi    a2, a2, 8                               // 508A  ADDQ.L    #8,A2
-        b       move_add_etc_any_any
+        b       fetch
         addi    a3, a3, 8                               // 508B  ADDQ.L    #8,A3
-        b       move_add_etc_any_any
+        b       fetch
         addi    a4, a4, 8                               // 508C  ADDQ.L    #8,A4
-        b       move_add_etc_any_any
+        b       fetch
         addi    a5, a5, 8                               // 508D  ADDQ.L    #8,A5
-        b       move_add_etc_any_any
+        b       fetch
         addi    a6, a6, 8                               // 508E  ADDQ.L    #8,A6
-        b       move_add_etc_any_any
+        b       fetch
         addi    a7, a7, 8                               // 508F  ADDQ.L    #8,A7
-        b       move_add_etc_any_any
+        b       fetch
 op_5090:
         mr      addr, a0                                // 5090  ADDQ.L    #8,(A0)
         b       addq_l_q_mem_5
@@ -405,59 +405,59 @@ op_5097:
         ori     rtn_addr, code_ptr, addq_l_q_mem_6 - cb  // 50B9  ADDQ.L    #8,(xxx).L
         b       fea_l_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 50BA  ADDQ.L    #8,(d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 50BB  ADDQ.L    #8,(d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 50BC  ADDQ.L    #8,#<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 50BD  ADDQ.L    #8,<ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 50BE  ADDQ.L    #8,<ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 50BF  ADDQ.L    #8,<ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $50C0-$50FF --------------------------------------------------------
         ori     d0, d0, 0x00FF                          // 50C0  ST.B      D0
-        b       move_add_etc_any_any
+        b       fetch
         ori     d1, d1, 0x00FF                          // 50C1  ST.B      D1
-        b       move_add_etc_any_any
+        b       fetch
         ori     d2, d2, 0x00FF                          // 50C2  ST.B      D2
-        b       move_add_etc_any_any
+        b       fetch
         ori     d3, d3, 0x00FF                          // 50C3  ST.B      D3
-        b       move_add_etc_any_any
+        b       fetch
         ori     d4, d4, 0x00FF                          // 50C4  ST.B      D4
-        b       move_add_etc_any_any
+        b       fetch
         ori     d5, d5, 0x00FF                          // 50C5  ST.B      D5
-        b       move_add_etc_any_any
+        b       fetch
         ori     d6, d6, 0x00FF                          // 50C6  ST.B      D6
-        b       move_add_etc_any_any
+        b       fetch
         ori     d7, d7, 0x00FF                          // 50C7  ST.B      D7
-        b       move_add_etc_any_any
+        b       fetch
 op_50C8:
         lhau    prefetch_data, 2(pc)                    // 50C8  DBT.W     D0,<label>
-        b       move_add_etc_any_any
+        b       fetch
 op_50C9:
         lhau    prefetch_data, 2(pc)                    // 50C9  DBT.W     D1,<label>
-        b       move_add_etc_any_any
+        b       fetch
 op_50CA:
         lhau    prefetch_data, 2(pc)                    // 50CA  DBT.W     D2,<label>
-        b       move_add_etc_any_any
+        b       fetch
 op_50CB:
         lhau    prefetch_data, 2(pc)                    // 50CB  DBT.W     D3,<label>
-        b       move_add_etc_any_any
+        b       fetch
 op_50CC:
         lhau    prefetch_data, 2(pc)                    // 50CC  DBT.W     D4,<label>
-        b       move_add_etc_any_any
+        b       fetch
 op_50CD:
         lhau    prefetch_data, 2(pc)                    // 50CD  DBT.W     D5,<label>
-        b       move_add_etc_any_any
+        b       fetch
 op_50CE:
         lhau    prefetch_data, 2(pc)                    // 50CE  DBT.W     D6,<label>
-        b       move_add_etc_any_any
+        b       fetch
 op_50CF:
         lhau    prefetch_data, 2(pc)                    // 50CF  DBT.W     D7,<label>
-        b       move_add_etc_any_any
+        b       fetch
 op_50D0:
         mr      addr, a0                                // 50D0  ST.B      (A0)
         b       scc_b_mem_2
@@ -557,11 +557,11 @@ op_50D7:
         crset   4*cr7+so                                // 50FC  TRAPT
         b       trapcc_5
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 50FD  ST.B      <ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 50FE  ST.B      <ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 50FF  ST.B      <ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $5100-$513F --------------------------------------------------------
         lis     data, 0x0800                            // 5100  SUBQ.B    #8,D0
@@ -581,21 +581,21 @@ op_50D7:
         lis     data, 0x0800                            // 5107  SUBQ.B    #8,D7
         b       sub_b_any_d7
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5108  SUBQ.B    #8,A0   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5109  SUBQ.B    #8,A1   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 510A  SUBQ.B    #8,A2   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 510B  SUBQ.B    #8,A3   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 510C  SUBQ.B    #8,A4   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 510D  SUBQ.B    #8,A5   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 510E  SUBQ.B    #8,A6   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 510F  SUBQ.B    #8,A7   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 op_5110:
         mr      addr, a0                                // 5110  SUBQ.B    #8,(A0)
         b       subq_b_q_mem_5
@@ -689,17 +689,17 @@ op_5117:
         ori     rtn_addr, code_ptr, subq_b_q_mem_6 - cb  // 5139  SUBQ.B    #8,(xxx).L
         b       fea_b_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 513A  SUBQ.B    #8,(d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 513B  SUBQ.B    #8,(d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 513C  SUBQ.B    #8,#<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 513D  SUBQ.B    #8,<ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 513E  SUBQ.B    #8,<ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 513F  SUBQ.B    #8,<ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $5140-$517F --------------------------------------------------------
         lis     data, 0x0008                            // 5140  SUBQ.W    #8,D0
@@ -719,21 +719,21 @@ op_5117:
         lis     data, 0x0008                            // 5147  SUBQ.W    #8,D7
         b       sub_w_any_d7
         addi    a0, a0, -8                              // 5148  SUBQ.W    #8,A0
-        b       move_add_etc_any_any
+        b       fetch
         addi    a1, a1, -8                              // 5149  SUBQ.W    #8,A1
-        b       move_add_etc_any_any
+        b       fetch
         addi    a2, a2, -8                              // 514A  SUBQ.W    #8,A2
-        b       move_add_etc_any_any
+        b       fetch
         addi    a3, a3, -8                              // 514B  SUBQ.W    #8,A3
-        b       move_add_etc_any_any
+        b       fetch
         addi    a4, a4, -8                              // 514C  SUBQ.W    #8,A4
-        b       move_add_etc_any_any
+        b       fetch
         addi    a5, a5, -8                              // 514D  SUBQ.W    #8,A5
-        b       move_add_etc_any_any
+        b       fetch
         addi    a6, a6, -8                              // 514E  SUBQ.W    #8,A6
-        b       move_add_etc_any_any
+        b       fetch
         addi    a7, a7, -8                              // 514F  SUBQ.W    #8,A7
-        b       move_add_etc_any_any
+        b       fetch
 op_5150:
         mr      addr, a0                                // 5150  SUBQ.W    #8,(A0)
         b       subq_w_q_mem_5
@@ -827,17 +827,17 @@ op_5157:
         ori     rtn_addr, code_ptr, subq_w_q_mem_6 - cb  // 5179  SUBQ.W    #8,(xxx).L
         b       fea_w_71
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 517A  SUBQ.W    #8,(d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 517B  SUBQ.W    #8,(d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 517C  SUBQ.W    #8,#<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 517D  SUBQ.W    #8,<ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 517E  SUBQ.W    #8,<ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 517F  SUBQ.W    #8,<ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $5180-$51BF --------------------------------------------------------
         li      data, 8                                 // 5180  SUBQ.L    #8,D0
@@ -857,21 +857,21 @@ op_5157:
         li      data, 8                                 // 5187  SUBQ.L    #8,D7
         b       sub_l_mem_d7_2
         addi    a0, a0, -8                              // 5188  SUBQ.L    #8,A0
-        b       move_add_etc_any_any
+        b       fetch
         addi    a1, a1, -8                              // 5189  SUBQ.L    #8,A1
-        b       move_add_etc_any_any
+        b       fetch
         addi    a2, a2, -8                              // 518A  SUBQ.L    #8,A2
-        b       move_add_etc_any_any
+        b       fetch
         addi    a3, a3, -8                              // 518B  SUBQ.L    #8,A3
-        b       move_add_etc_any_any
+        b       fetch
         addi    a4, a4, -8                              // 518C  SUBQ.L    #8,A4
-        b       move_add_etc_any_any
+        b       fetch
         addi    a5, a5, -8                              // 518D  SUBQ.L    #8,A5
-        b       move_add_etc_any_any
+        b       fetch
         addi    a6, a6, -8                              // 518E  SUBQ.L    #8,A6
-        b       move_add_etc_any_any
+        b       fetch
         addi    a7, a7, -8                              // 518F  SUBQ.L    #8,A7
-        b       move_add_etc_any_any
+        b       fetch
 op_5190:
         mr      addr, a0                                // 5190  SUBQ.L    #8,(A0)
         b       subq_l_q_mem_5
@@ -965,35 +965,35 @@ op_5197:
         ori     rtn_addr, code_ptr, subq_l_q_mem_6 - cb  // 51B9  SUBQ.L    #8,(xxx).L
         b       fea_l_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 51BA  SUBQ.L    #8,(d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 51BB  SUBQ.L    #8,(d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 51BC  SUBQ.L    #8,#<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 51BD  SUBQ.L    #8,<ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 51BE  SUBQ.L    #8,<ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 51BF  SUBQ.L    #8,<ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $51C0-$51FF --------------------------------------------------------
         clrrwi  d0, d0, 8                               // 51C0  SF.B      D0
-        b       move_add_etc_any_any
+        b       fetch
         clrrwi  d1, d1, 8                               // 51C1  SF.B      D1
-        b       move_add_etc_any_any
+        b       fetch
         clrrwi  d2, d2, 8                               // 51C2  SF.B      D2
-        b       move_add_etc_any_any
+        b       fetch
         clrrwi  d3, d3, 8                               // 51C3  SF.B      D3
-        b       move_add_etc_any_any
+        b       fetch
         clrrwi  d4, d4, 8                               // 51C4  SF.B      D4
-        b       move_add_etc_any_any
+        b       fetch
         clrrwi  d5, d5, 8                               // 51C5  SF.B      D5
-        b       move_add_etc_any_any
+        b       fetch
         clrrwi  d6, d6, 8                               // 51C6  SF.B      D6
-        b       move_add_etc_any_any
+        b       fetch
         clrrwi  d7, d7, 8                               // 51C7  SF.B      D7
-        b       move_add_etc_any_any
+        b       fetch
         lhaux   data, pc, prefetch_data                 // 51C8  DBF.W     D0,<label>
         b       dbf_w_d0
         lhaux   data, pc, prefetch_data                 // 51C9  DBF.W     D1,<label>
@@ -1011,21 +1011,21 @@ op_5197:
         lhaux   data, pc, prefetch_data                 // 51CF  DBF.W     D7,<label>
         b       dbf_w_d7
         stb     zero, 0(a0)                             // 51D0  SF.B      (A0)
-        b       move_add_etc_any_any
+        b       fetch
         stb     zero, 0(a1)                             // 51D1  SF.B      (A1)
-        b       move_add_etc_any_any
+        b       fetch
         stb     zero, 0(a2)                             // 51D2  SF.B      (A2)
-        b       move_add_etc_any_any
+        b       fetch
         stb     zero, 0(a3)                             // 51D3  SF.B      (A3)
-        b       move_add_etc_any_any
+        b       fetch
         stb     zero, 0(a4)                             // 51D4  SF.B      (A4)
-        b       move_add_etc_any_any
+        b       fetch
         stb     zero, 0(a5)                             // 51D5  SF.B      (A5)
-        b       move_add_etc_any_any
+        b       fetch
         stb     zero, 0(a6)                             // 51D6  SF.B      (A6)
-        b       move_add_etc_any_any
+        b       fetch
         stb     zero, 0(a7)                             // 51D7  SF.B      (A7)
-        b       move_add_etc_any_any
+        b       fetch
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 51D8  SF.B      (A0)+
         b       cea_b_30
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 51D9  SF.B      (A1)+
@@ -1043,37 +1043,37 @@ op_5197:
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 51DF  SF.B      (A7)+
         b       cea_b_37
         stbu    zero, -1(a0)                            // 51E0  SF.B      -(A0)
-        b       move_add_etc_any_any
+        b       fetch
         stbu    zero, -1(a1)                            // 51E1  SF.B      -(A1)
-        b       move_add_etc_any_any
+        b       fetch
         stbu    zero, -1(a2)                            // 51E2  SF.B      -(A2)
-        b       move_add_etc_any_any
+        b       fetch
         stbu    zero, -1(a3)                            // 51E3  SF.B      -(A3)
-        b       move_add_etc_any_any
+        b       fetch
         stbu    zero, -1(a4)                            // 51E4  SF.B      -(A4)
-        b       move_add_etc_any_any
+        b       fetch
         stbu    zero, -1(a5)                            // 51E5  SF.B      -(A5)
-        b       move_add_etc_any_any
+        b       fetch
         stbu    zero, -1(a6)                            // 51E6  SF.B      -(A6)
-        b       move_add_etc_any_any
+        b       fetch
         stbu    zero, -2(a7)                            // 51E7  SF.B      -(A7)
-        b       move_add_etc_any_any
+        b       fetch
         stbx    zero, a0, prefetch_data                 // 51E8  SF.B      (d16,A0)
-        b       move_lea_etc_ea_any
+        b       fetch_skip_word
         stbx    zero, a1, prefetch_data                 // 51E9  SF.B      (d16,A1)
-        b       move_lea_etc_ea_any
+        b       fetch_skip_word
         stbx    zero, a2, prefetch_data                 // 51EA  SF.B      (d16,A2)
-        b       move_lea_etc_ea_any
+        b       fetch_skip_word
         stbx    zero, a3, prefetch_data                 // 51EB  SF.B      (d16,A3)
-        b       move_lea_etc_ea_any
+        b       fetch_skip_word
         stbx    zero, a4, prefetch_data                 // 51EC  SF.B      (d16,A4)
-        b       move_lea_etc_ea_any
+        b       fetch_skip_word
         stbx    zero, a5, prefetch_data                 // 51ED  SF.B      (d16,A5)
-        b       move_lea_etc_ea_any
+        b       fetch_skip_word
         stbx    zero, a6, prefetch_data                 // 51EE  SF.B      (d16,A6)
-        b       move_lea_etc_ea_any
+        b       fetch_skip_word
         stbx    zero, a7, prefetch_data                 // 51EF  SF.B      (d16,A7)
-        b       move_lea_etc_ea_any
+        b       fetch_skip_word
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 51F0  SF.B      (d8,A0,Xn)
         b       or_sub_etc_any_any
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 51F1  SF.B      (d8,A1,Xn)
@@ -1091,21 +1091,21 @@ op_5197:
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 51F7  SF.B      (d8,A7,Xn)
         b       or_sub_etc_any_any_8
         stb     zero, 0(prefetch_data)                  // 51F8  SF.B      (xxx).W
-        b       move_lea_etc_ea_any
+        b       fetch_skip_word
         ori     rtn_addr, code_ptr, scc_b_mem_2 - cb    // 51F9  SF.B      (xxx).L
         b       cea_x_71_2
         lhau    prefetch_data, 2(pc)                    // 51FA  TRAPF     #<data>.W
-        b       move_add_etc_any_any
+        b       fetch
         lhau    prefetch_data, 4(pc)                    // 51FB  TRAPF     #<data>.L
-        b       move_add_etc_any_any
+        b       fetch
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // 51FC  TRAPF
-        b       exg_move_etc_any_reg
+        b       fetch_decoded
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 51FD  SF.B      <ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 51FE  SF.B      <ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 51FF  SF.B      <ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $5200-$523F --------------------------------------------------------
         lis     data, 0x0100                            // 5200  ADDQ.B    #1,D0
@@ -1125,21 +1125,21 @@ op_5197:
         lis     data, 0x0100                            // 5207  ADDQ.B    #1,D7
         b       add_asl_b_any_d7
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5208  ADDQ.B    #1,A0   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5209  ADDQ.B    #1,A1   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 520A  ADDQ.B    #1,A2   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 520B  ADDQ.B    #1,A3   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 520C  ADDQ.B    #1,A4   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 520D  ADDQ.B    #1,A5   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 520E  ADDQ.B    #1,A6   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 520F  ADDQ.B    #1,A7   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 op_5210:
         mr      addr, a0                                // 5210  ADDQ.B    #1,(A0)
         b       addq_b_q_mem_2
@@ -1233,17 +1233,17 @@ op_5217:
         ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5239  ADDQ.B    #1,(xxx).L
         b       fea_b_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 523A  ADDQ.B    #1,(d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 523B  ADDQ.B    #1,(d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 523C  ADDQ.B    #1,#<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 523D  ADDQ.B    #1,<ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 523E  ADDQ.B    #1,<ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 523F  ADDQ.B    #1,<ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $5240-$527F --------------------------------------------------------
         lis     data, 0x0001                            // 5240  ADDQ.W    #1,D0
@@ -1263,21 +1263,21 @@ op_5217:
         lis     data, 0x0001                            // 5247  ADDQ.W    #1,D7
         b       add_asl_w_any_d7
         addi    a0, a0, 1                               // 5248  ADDQ.W    #1,A0
-        b       move_add_etc_any_any
+        b       fetch
         addi    a1, a1, 1                               // 5249  ADDQ.W    #1,A1
-        b       move_add_etc_any_any
+        b       fetch
         addi    a2, a2, 1                               // 524A  ADDQ.W    #1,A2
-        b       move_add_etc_any_any
+        b       fetch
         addi    a3, a3, 1                               // 524B  ADDQ.W    #1,A3
-        b       move_add_etc_any_any
+        b       fetch
         addi    a4, a4, 1                               // 524C  ADDQ.W    #1,A4
-        b       move_add_etc_any_any
+        b       fetch
         addi    a5, a5, 1                               // 524D  ADDQ.W    #1,A5
-        b       move_add_etc_any_any
+        b       fetch
         addi    a6, a6, 1                               // 524E  ADDQ.W    #1,A6
-        b       move_add_etc_any_any
+        b       fetch
         addi    a7, a7, 1                               // 524F  ADDQ.W    #1,A7
-        b       move_add_etc_any_any
+        b       fetch
 op_5250:
         mr      addr, a0                                // 5250  ADDQ.W    #1,(A0)
         b       addq_w_q_mem_2
@@ -1371,17 +1371,17 @@ op_5257:
         ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5279  ADDQ.W    #1,(xxx).L
         b       fea_w_71
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 527A  ADDQ.W    #1,(d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 527B  ADDQ.W    #1,(d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 527C  ADDQ.W    #1,#<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 527D  ADDQ.W    #1,<ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 527E  ADDQ.W    #1,<ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 527F  ADDQ.W    #1,<ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $5280-$52BF --------------------------------------------------------
         li      data, 1                                 // 5280  ADDQ.L    #1,D0
@@ -1401,21 +1401,21 @@ op_5257:
         li      data, 1                                 // 5287  ADDQ.L    #1,D7
         b       add_l_mem_d7_2
         addi    a0, a0, 1                               // 5288  ADDQ.L    #1,A0
-        b       move_add_etc_any_any
+        b       fetch
         addi    a1, a1, 1                               // 5289  ADDQ.L    #1,A1
-        b       move_add_etc_any_any
+        b       fetch
         addi    a2, a2, 1                               // 528A  ADDQ.L    #1,A2
-        b       move_add_etc_any_any
+        b       fetch
         addi    a3, a3, 1                               // 528B  ADDQ.L    #1,A3
-        b       move_add_etc_any_any
+        b       fetch
         addi    a4, a4, 1                               // 528C  ADDQ.L    #1,A4
-        b       move_add_etc_any_any
+        b       fetch
         addi    a5, a5, 1                               // 528D  ADDQ.L    #1,A5
-        b       move_add_etc_any_any
+        b       fetch
         addi    a6, a6, 1                               // 528E  ADDQ.L    #1,A6
-        b       move_add_etc_any_any
+        b       fetch
         addi    a7, a7, 1                               // 528F  ADDQ.L    #1,A7
-        b       move_add_etc_any_any
+        b       fetch
 op_5290:
         mr      addr, a0                                // 5290  ADDQ.L    #1,(A0)
         b       addq_l_q_mem_2
@@ -1509,17 +1509,17 @@ op_5297:
         ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 52B9  ADDQ.L    #1,(xxx).L
         b       fea_l_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 52BA  ADDQ.L    #1,(d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 52BB  ADDQ.L    #1,(d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 52BC  ADDQ.L    #1,#<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 52BD  ADDQ.L    #1,<ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 52BE  ADDQ.L    #1,<ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 52BF  ADDQ.L    #1,<ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $52C0-$52FF --------------------------------------------------------
         ori     rtn_addr, code_ptr, scc_b_d0 - cb       // 52C0  SHI.B     D0
@@ -1653,11 +1653,11 @@ op_52D7:
         ori     base_disp, code_ptr, D_085C0 - cb       // 52FC  TRAPHI
         b       trapcc_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 52FD  SHI.B     <ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 52FE  SHI.B     <ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 52FF  SHI.B     <ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $5300-$533F --------------------------------------------------------
         lis     data, 0x0100                            // 5300  SUBQ.B    #1,D0
@@ -1677,21 +1677,21 @@ op_52D7:
         lis     data, 0x0100                            // 5307  SUBQ.B    #1,D7
         b       sub_b_any_d7
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5308  SUBQ.B    #1,A0   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5309  SUBQ.B    #1,A1   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 530A  SUBQ.B    #1,A2   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 530B  SUBQ.B    #1,A3   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 530C  SUBQ.B    #1,A4   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 530D  SUBQ.B    #1,A5   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 530E  SUBQ.B    #1,A6   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 530F  SUBQ.B    #1,A7   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 op_5310:
         mr      addr, a0                                // 5310  SUBQ.B    #1,(A0)
         b       subq_b_q_mem_2
@@ -1785,17 +1785,17 @@ op_5317:
         ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5339  SUBQ.B    #1,(xxx).L
         b       fea_b_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 533A  SUBQ.B    #1,(d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 533B  SUBQ.B    #1,(d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 533C  SUBQ.B    #1,#<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 533D  SUBQ.B    #1,<ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 533E  SUBQ.B    #1,<ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 533F  SUBQ.B    #1,<ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $5340-$537F --------------------------------------------------------
         lis     data, 0x0001                            // 5340  SUBQ.W    #1,D0
@@ -1815,21 +1815,21 @@ op_5317:
         lis     data, 0x0001                            // 5347  SUBQ.W    #1,D7
         b       sub_w_any_d7
         addi    a0, a0, -1                              // 5348  SUBQ.W    #1,A0
-        b       move_add_etc_any_any
+        b       fetch
         addi    a1, a1, -1                              // 5349  SUBQ.W    #1,A1
-        b       move_add_etc_any_any
+        b       fetch
         addi    a2, a2, -1                              // 534A  SUBQ.W    #1,A2
-        b       move_add_etc_any_any
+        b       fetch
         addi    a3, a3, -1                              // 534B  SUBQ.W    #1,A3
-        b       move_add_etc_any_any
+        b       fetch
         addi    a4, a4, -1                              // 534C  SUBQ.W    #1,A4
-        b       move_add_etc_any_any
+        b       fetch
         addi    a5, a5, -1                              // 534D  SUBQ.W    #1,A5
-        b       move_add_etc_any_any
+        b       fetch
         addi    a6, a6, -1                              // 534E  SUBQ.W    #1,A6
-        b       move_add_etc_any_any
+        b       fetch
         addi    a7, a7, -1                              // 534F  SUBQ.W    #1,A7
-        b       move_add_etc_any_any
+        b       fetch
 op_5350:
         mr      addr, a0                                // 5350  SUBQ.W    #1,(A0)
         b       subq_w_q_mem_2
@@ -1923,17 +1923,17 @@ op_5357:
         ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5379  SUBQ.W    #1,(xxx).L
         b       fea_w_71
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 537A  SUBQ.W    #1,(d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 537B  SUBQ.W    #1,(d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 537C  SUBQ.W    #1,#<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 537D  SUBQ.W    #1,<ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 537E  SUBQ.W    #1,<ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 537F  SUBQ.W    #1,<ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $5380-$53BF --------------------------------------------------------
         li      data, 1                                 // 5380  SUBQ.L    #1,D0
@@ -1953,21 +1953,21 @@ op_5357:
         li      data, 1                                 // 5387  SUBQ.L    #1,D7
         b       sub_l_mem_d7_2
         addi    a0, a0, -1                              // 5388  SUBQ.L    #1,A0
-        b       move_add_etc_any_any
+        b       fetch
         addi    a1, a1, -1                              // 5389  SUBQ.L    #1,A1
-        b       move_add_etc_any_any
+        b       fetch
         addi    a2, a2, -1                              // 538A  SUBQ.L    #1,A2
-        b       move_add_etc_any_any
+        b       fetch
         addi    a3, a3, -1                              // 538B  SUBQ.L    #1,A3
-        b       move_add_etc_any_any
+        b       fetch
         addi    a4, a4, -1                              // 538C  SUBQ.L    #1,A4
-        b       move_add_etc_any_any
+        b       fetch
         addi    a5, a5, -1                              // 538D  SUBQ.L    #1,A5
-        b       move_add_etc_any_any
+        b       fetch
         addi    a6, a6, -1                              // 538E  SUBQ.L    #1,A6
-        b       move_add_etc_any_any
+        b       fetch
         addi    a7, a7, -1                              // 538F  SUBQ.L    #1,A7
-        b       move_add_etc_any_any
+        b       fetch
 op_5390:
         mr      addr, a0                                // 5390  SUBQ.L    #1,(A0)
         b       subq_l_q_mem_2
@@ -2061,17 +2061,17 @@ op_5397:
         ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 53B9  SUBQ.L    #1,(xxx).L
         b       fea_l_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 53BA  SUBQ.L    #1,(d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 53BB  SUBQ.L    #1,(d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 53BC  SUBQ.L    #1,#<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 53BD  SUBQ.L    #1,<ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 53BE  SUBQ.L    #1,<ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 53BF  SUBQ.L    #1,<ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $53C0-$53FF --------------------------------------------------------
         ori     rtn_addr, code_ptr, scc_b_d0 - cb       // 53C0  SLS.B     D0
@@ -2205,11 +2205,11 @@ op_53D7:
         ori     base_disp, code_ptr, D_085C0 - cb       // 53FC  TRAPLS
         b       trapcc_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 53FD  SLS.B     <ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 53FE  SLS.B     <ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 53FF  SLS.B     <ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $5400-$543F --------------------------------------------------------
         lis     data, 0x0200                            // 5400  ADDQ.B    #2,D0
@@ -2229,21 +2229,21 @@ op_53D7:
         lis     data, 0x0200                            // 5407  ADDQ.B    #2,D7
         b       add_asl_b_any_d7
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5408  ADDQ.B    #2,A0   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5409  ADDQ.B    #2,A1   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 540A  ADDQ.B    #2,A2   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 540B  ADDQ.B    #2,A3   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 540C  ADDQ.B    #2,A4   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 540D  ADDQ.B    #2,A5   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 540E  ADDQ.B    #2,A6   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 540F  ADDQ.B    #2,A7   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 op_5410:
         mr      addr, a0                                // 5410  ADDQ.B    #2,(A0)
         b       addq_b_q_mem_2
@@ -2337,17 +2337,17 @@ op_5417:
         ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5439  ADDQ.B    #2,(xxx).L
         b       fea_b_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 543A  ADDQ.B    #2,(d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 543B  ADDQ.B    #2,(d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 543C  ADDQ.B    #2,#<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 543D  ADDQ.B    #2,<ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 543E  ADDQ.B    #2,<ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 543F  ADDQ.B    #2,<ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $5440-$547F --------------------------------------------------------
         lis     data, 0x0002                            // 5440  ADDQ.W    #2,D0
@@ -2367,21 +2367,21 @@ op_5417:
         lis     data, 0x0002                            // 5447  ADDQ.W    #2,D7
         b       add_asl_w_any_d7
         addi    a0, a0, 2                               // 5448  ADDQ.W    #2,A0
-        b       move_add_etc_any_any
+        b       fetch
         addi    a1, a1, 2                               // 5449  ADDQ.W    #2,A1
-        b       move_add_etc_any_any
+        b       fetch
         addi    a2, a2, 2                               // 544A  ADDQ.W    #2,A2
-        b       move_add_etc_any_any
+        b       fetch
         addi    a3, a3, 2                               // 544B  ADDQ.W    #2,A3
-        b       move_add_etc_any_any
+        b       fetch
         addi    a4, a4, 2                               // 544C  ADDQ.W    #2,A4
-        b       move_add_etc_any_any
+        b       fetch
         addi    a5, a5, 2                               // 544D  ADDQ.W    #2,A5
-        b       move_add_etc_any_any
+        b       fetch
         addi    a6, a6, 2                               // 544E  ADDQ.W    #2,A6
-        b       move_add_etc_any_any
+        b       fetch
         addi    a7, a7, 2                               // 544F  ADDQ.W    #2,A7
-        b       move_add_etc_any_any
+        b       fetch
 op_5450:
         mr      addr, a0                                // 5450  ADDQ.W    #2,(A0)
         b       addq_w_q_mem_2
@@ -2475,17 +2475,17 @@ op_5457:
         ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5479  ADDQ.W    #2,(xxx).L
         b       fea_w_71
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 547A  ADDQ.W    #2,(d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 547B  ADDQ.W    #2,(d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 547C  ADDQ.W    #2,#<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 547D  ADDQ.W    #2,<ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 547E  ADDQ.W    #2,<ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 547F  ADDQ.W    #2,<ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $5480-$54BF --------------------------------------------------------
         li      data, 2                                 // 5480  ADDQ.L    #2,D0
@@ -2505,21 +2505,21 @@ op_5457:
         li      data, 2                                 // 5487  ADDQ.L    #2,D7
         b       add_l_mem_d7_2
         addi    a0, a0, 2                               // 5488  ADDQ.L    #2,A0
-        b       move_add_etc_any_any
+        b       fetch
         addi    a1, a1, 2                               // 5489  ADDQ.L    #2,A1
-        b       move_add_etc_any_any
+        b       fetch
         addi    a2, a2, 2                               // 548A  ADDQ.L    #2,A2
-        b       move_add_etc_any_any
+        b       fetch
         addi    a3, a3, 2                               // 548B  ADDQ.L    #2,A3
-        b       move_add_etc_any_any
+        b       fetch
         addi    a4, a4, 2                               // 548C  ADDQ.L    #2,A4
-        b       move_add_etc_any_any
+        b       fetch
         addi    a5, a5, 2                               // 548D  ADDQ.L    #2,A5
-        b       move_add_etc_any_any
+        b       fetch
         addi    a6, a6, 2                               // 548E  ADDQ.L    #2,A6
-        b       move_add_etc_any_any
+        b       fetch
         addi    a7, a7, 2                               // 548F  ADDQ.L    #2,A7
-        b       move_add_etc_any_any
+        b       fetch
 op_5490:
         mr      addr, a0                                // 5490  ADDQ.L    #2,(A0)
         b       addq_l_q_mem_2
@@ -2613,17 +2613,17 @@ op_5497:
         ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 54B9  ADDQ.L    #2,(xxx).L
         b       fea_l_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 54BA  ADDQ.L    #2,(d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 54BB  ADDQ.L    #2,(d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 54BC  ADDQ.L    #2,#<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 54BD  ADDQ.L    #2,<ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 54BE  ADDQ.L    #2,<ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 54BF  ADDQ.L    #2,<ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $54C0-$54FF --------------------------------------------------------
         ori     rtn_addr, code_ptr, scc_b_d0 - cb       // 54C0  SCC.B     D0
@@ -2757,11 +2757,11 @@ op_54D7:
         ori     base_disp, code_ptr, D_085C0 - cb       // 54FC  TRAPCC
         b       trapcc_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 54FD  SCC.B     <ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 54FE  SCC.B     <ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 54FF  SCC.B     <ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $5500-$553F --------------------------------------------------------
         lis     data, 0x0200                            // 5500  SUBQ.B    #2,D0
@@ -2781,21 +2781,21 @@ op_54D7:
         lis     data, 0x0200                            // 5507  SUBQ.B    #2,D7
         b       sub_b_any_d7
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5508  SUBQ.B    #2,A0   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5509  SUBQ.B    #2,A1   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 550A  SUBQ.B    #2,A2   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 550B  SUBQ.B    #2,A3   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 550C  SUBQ.B    #2,A4   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 550D  SUBQ.B    #2,A5   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 550E  SUBQ.B    #2,A6   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 550F  SUBQ.B    #2,A7   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 op_5510:
         mr      addr, a0                                // 5510  SUBQ.B    #2,(A0)
         b       subq_b_q_mem_2
@@ -2889,17 +2889,17 @@ op_5517:
         ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5539  SUBQ.B    #2,(xxx).L
         b       fea_b_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 553A  SUBQ.B    #2,(d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 553B  SUBQ.B    #2,(d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 553C  SUBQ.B    #2,#<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 553D  SUBQ.B    #2,<ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 553E  SUBQ.B    #2,<ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 553F  SUBQ.B    #2,<ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $5540-$557F --------------------------------------------------------
         lis     data, 0x0002                            // 5540  SUBQ.W    #2,D0
@@ -2919,21 +2919,21 @@ op_5517:
         lis     data, 0x0002                            // 5547  SUBQ.W    #2,D7
         b       sub_w_any_d7
         addi    a0, a0, -2                              // 5548  SUBQ.W    #2,A0
-        b       move_add_etc_any_any
+        b       fetch
         addi    a1, a1, -2                              // 5549  SUBQ.W    #2,A1
-        b       move_add_etc_any_any
+        b       fetch
         addi    a2, a2, -2                              // 554A  SUBQ.W    #2,A2
-        b       move_add_etc_any_any
+        b       fetch
         addi    a3, a3, -2                              // 554B  SUBQ.W    #2,A3
-        b       move_add_etc_any_any
+        b       fetch
         addi    a4, a4, -2                              // 554C  SUBQ.W    #2,A4
-        b       move_add_etc_any_any
+        b       fetch
         addi    a5, a5, -2                              // 554D  SUBQ.W    #2,A5
-        b       move_add_etc_any_any
+        b       fetch
         addi    a6, a6, -2                              // 554E  SUBQ.W    #2,A6
-        b       move_add_etc_any_any
+        b       fetch
         addi    a7, a7, -2                              // 554F  SUBQ.W    #2,A7
-        b       move_add_etc_any_any
+        b       fetch
 op_5550:
         mr      addr, a0                                // 5550  SUBQ.W    #2,(A0)
         b       subq_w_q_mem_2
@@ -3027,17 +3027,17 @@ op_5557:
         ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5579  SUBQ.W    #2,(xxx).L
         b       fea_w_71
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 557A  SUBQ.W    #2,(d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 557B  SUBQ.W    #2,(d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 557C  SUBQ.W    #2,#<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 557D  SUBQ.W    #2,<ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 557E  SUBQ.W    #2,<ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 557F  SUBQ.W    #2,<ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $5580-$55BF --------------------------------------------------------
         li      data, 2                                 // 5580  SUBQ.L    #2,D0
@@ -3057,21 +3057,21 @@ op_5557:
         li      data, 2                                 // 5587  SUBQ.L    #2,D7
         b       sub_l_mem_d7_2
         addi    a0, a0, -2                              // 5588  SUBQ.L    #2,A0
-        b       move_add_etc_any_any
+        b       fetch
         addi    a1, a1, -2                              // 5589  SUBQ.L    #2,A1
-        b       move_add_etc_any_any
+        b       fetch
         addi    a2, a2, -2                              // 558A  SUBQ.L    #2,A2
-        b       move_add_etc_any_any
+        b       fetch
         addi    a3, a3, -2                              // 558B  SUBQ.L    #2,A3
-        b       move_add_etc_any_any
+        b       fetch
         addi    a4, a4, -2                              // 558C  SUBQ.L    #2,A4
-        b       move_add_etc_any_any
+        b       fetch
         addi    a5, a5, -2                              // 558D  SUBQ.L    #2,A5
-        b       move_add_etc_any_any
+        b       fetch
         addi    a6, a6, -2                              // 558E  SUBQ.L    #2,A6
-        b       move_add_etc_any_any
+        b       fetch
         addi    a7, a7, -2                              // 558F  SUBQ.L    #2,A7
-        b       move_add_etc_any_any
+        b       fetch
 op_5590:
         mr      addr, a0                                // 5590  SUBQ.L    #2,(A0)
         b       subq_l_q_mem_2
@@ -3165,17 +3165,17 @@ op_5597:
         ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 55B9  SUBQ.L    #2,(xxx).L
         b       fea_l_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 55BA  SUBQ.L    #2,(d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 55BB  SUBQ.L    #2,(d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 55BC  SUBQ.L    #2,#<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 55BD  SUBQ.L    #2,<ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 55BE  SUBQ.L    #2,<ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 55BF  SUBQ.L    #2,<ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $55C0-$55FF --------------------------------------------------------
         ori     rtn_addr, code_ptr, scc_b_d0 - cb       // 55C0  SCS.B     D0
@@ -3309,11 +3309,11 @@ op_55D7:
         ori     base_disp, code_ptr, D_085C0 - cb       // 55FC  TRAPCS
         b       trapcc_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 55FD  SCS.B     <ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 55FE  SCS.B     <ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 55FF  SCS.B     <ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $5600-$563F --------------------------------------------------------
         lis     data, 0x0300                            // 5600  ADDQ.B    #3,D0
@@ -3333,21 +3333,21 @@ op_55D7:
         lis     data, 0x0300                            // 5607  ADDQ.B    #3,D7
         b       add_asl_b_any_d7
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5608  ADDQ.B    #3,A0   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5609  ADDQ.B    #3,A1   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 560A  ADDQ.B    #3,A2   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 560B  ADDQ.B    #3,A3   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 560C  ADDQ.B    #3,A4   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 560D  ADDQ.B    #3,A5   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 560E  ADDQ.B    #3,A6   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 560F  ADDQ.B    #3,A7   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 op_5610:
         mr      addr, a0                                // 5610  ADDQ.B    #3,(A0)
         b       addq_b_q_mem_2
@@ -3441,17 +3441,17 @@ op_5617:
         ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5639  ADDQ.B    #3,(xxx).L
         b       fea_b_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 563A  ADDQ.B    #3,(d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 563B  ADDQ.B    #3,(d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 563C  ADDQ.B    #3,#<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 563D  ADDQ.B    #3,<ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 563E  ADDQ.B    #3,<ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 563F  ADDQ.B    #3,<ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $5640-$567F --------------------------------------------------------
         lis     data, 0x0003                            // 5640  ADDQ.W    #3,D0
@@ -3471,21 +3471,21 @@ op_5617:
         lis     data, 0x0003                            // 5647  ADDQ.W    #3,D7
         b       add_asl_w_any_d7
         addi    a0, a0, 3                               // 5648  ADDQ.W    #3,A0
-        b       move_add_etc_any_any
+        b       fetch
         addi    a1, a1, 3                               // 5649  ADDQ.W    #3,A1
-        b       move_add_etc_any_any
+        b       fetch
         addi    a2, a2, 3                               // 564A  ADDQ.W    #3,A2
-        b       move_add_etc_any_any
+        b       fetch
         addi    a3, a3, 3                               // 564B  ADDQ.W    #3,A3
-        b       move_add_etc_any_any
+        b       fetch
         addi    a4, a4, 3                               // 564C  ADDQ.W    #3,A4
-        b       move_add_etc_any_any
+        b       fetch
         addi    a5, a5, 3                               // 564D  ADDQ.W    #3,A5
-        b       move_add_etc_any_any
+        b       fetch
         addi    a6, a6, 3                               // 564E  ADDQ.W    #3,A6
-        b       move_add_etc_any_any
+        b       fetch
         addi    a7, a7, 3                               // 564F  ADDQ.W    #3,A7
-        b       move_add_etc_any_any
+        b       fetch
 op_5650:
         mr      addr, a0                                // 5650  ADDQ.W    #3,(A0)
         b       addq_w_q_mem_2
@@ -3579,17 +3579,17 @@ op_5657:
         ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5679  ADDQ.W    #3,(xxx).L
         b       fea_w_71
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 567A  ADDQ.W    #3,(d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 567B  ADDQ.W    #3,(d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 567C  ADDQ.W    #3,#<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 567D  ADDQ.W    #3,<ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 567E  ADDQ.W    #3,<ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 567F  ADDQ.W    #3,<ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $5680-$56BF --------------------------------------------------------
         li      data, 3                                 // 5680  ADDQ.L    #3,D0
@@ -3609,21 +3609,21 @@ op_5657:
         li      data, 3                                 // 5687  ADDQ.L    #3,D7
         b       add_l_mem_d7_2
         addi    a0, a0, 3                               // 5688  ADDQ.L    #3,A0
-        b       move_add_etc_any_any
+        b       fetch
         addi    a1, a1, 3                               // 5689  ADDQ.L    #3,A1
-        b       move_add_etc_any_any
+        b       fetch
         addi    a2, a2, 3                               // 568A  ADDQ.L    #3,A2
-        b       move_add_etc_any_any
+        b       fetch
         addi    a3, a3, 3                               // 568B  ADDQ.L    #3,A3
-        b       move_add_etc_any_any
+        b       fetch
         addi    a4, a4, 3                               // 568C  ADDQ.L    #3,A4
-        b       move_add_etc_any_any
+        b       fetch
         addi    a5, a5, 3                               // 568D  ADDQ.L    #3,A5
-        b       move_add_etc_any_any
+        b       fetch
         addi    a6, a6, 3                               // 568E  ADDQ.L    #3,A6
-        b       move_add_etc_any_any
+        b       fetch
         addi    a7, a7, 3                               // 568F  ADDQ.L    #3,A7
-        b       move_add_etc_any_any
+        b       fetch
 op_5690:
         mr      addr, a0                                // 5690  ADDQ.L    #3,(A0)
         b       addq_l_q_mem_2
@@ -3717,17 +3717,17 @@ op_5697:
         ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 56B9  ADDQ.L    #3,(xxx).L
         b       fea_l_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 56BA  ADDQ.L    #3,(d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 56BB  ADDQ.L    #3,(d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 56BC  ADDQ.L    #3,#<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 56BD  ADDQ.L    #3,<ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 56BE  ADDQ.L    #3,<ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 56BF  ADDQ.L    #3,<ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $56C0-$56FF --------------------------------------------------------
         ori     rtn_addr, code_ptr, scc_b_d0 - cb       // 56C0  SNE.B     D0
@@ -3861,11 +3861,11 @@ op_56D7:
         crnot   4*cr7+so, eq                            // 56FC  TRAPNE
         b       trapcc_5
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 56FD  SNE.B     <ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 56FE  SNE.B     <ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 56FF  SNE.B     <ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $5700-$573F --------------------------------------------------------
         lis     data, 0x0300                            // 5700  SUBQ.B    #3,D0
@@ -3885,21 +3885,21 @@ op_56D7:
         lis     data, 0x0300                            // 5707  SUBQ.B    #3,D7
         b       sub_b_any_d7
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5708  SUBQ.B    #3,A0   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5709  SUBQ.B    #3,A1   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 570A  SUBQ.B    #3,A2   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 570B  SUBQ.B    #3,A3   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 570C  SUBQ.B    #3,A4   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 570D  SUBQ.B    #3,A5   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 570E  SUBQ.B    #3,A6   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 570F  SUBQ.B    #3,A7   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 op_5710:
         mr      addr, a0                                // 5710  SUBQ.B    #3,(A0)
         b       subq_b_q_mem_2
@@ -3993,17 +3993,17 @@ op_5717:
         ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5739  SUBQ.B    #3,(xxx).L
         b       fea_b_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 573A  SUBQ.B    #3,(d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 573B  SUBQ.B    #3,(d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 573C  SUBQ.B    #3,#<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 573D  SUBQ.B    #3,<ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 573E  SUBQ.B    #3,<ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 573F  SUBQ.B    #3,<ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $5740-$577F --------------------------------------------------------
         lis     data, 0x0003                            // 5740  SUBQ.W    #3,D0
@@ -4023,21 +4023,21 @@ op_5717:
         lis     data, 0x0003                            // 5747  SUBQ.W    #3,D7
         b       sub_w_any_d7
         addi    a0, a0, -3                              // 5748  SUBQ.W    #3,A0
-        b       move_add_etc_any_any
+        b       fetch
         addi    a1, a1, -3                              // 5749  SUBQ.W    #3,A1
-        b       move_add_etc_any_any
+        b       fetch
         addi    a2, a2, -3                              // 574A  SUBQ.W    #3,A2
-        b       move_add_etc_any_any
+        b       fetch
         addi    a3, a3, -3                              // 574B  SUBQ.W    #3,A3
-        b       move_add_etc_any_any
+        b       fetch
         addi    a4, a4, -3                              // 574C  SUBQ.W    #3,A4
-        b       move_add_etc_any_any
+        b       fetch
         addi    a5, a5, -3                              // 574D  SUBQ.W    #3,A5
-        b       move_add_etc_any_any
+        b       fetch
         addi    a6, a6, -3                              // 574E  SUBQ.W    #3,A6
-        b       move_add_etc_any_any
+        b       fetch
         addi    a7, a7, -3                              // 574F  SUBQ.W    #3,A7
-        b       move_add_etc_any_any
+        b       fetch
 op_5750:
         mr      addr, a0                                // 5750  SUBQ.W    #3,(A0)
         b       subq_w_q_mem_2
@@ -4131,17 +4131,17 @@ op_5757:
         ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5779  SUBQ.W    #3,(xxx).L
         b       fea_w_71
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 577A  SUBQ.W    #3,(d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 577B  SUBQ.W    #3,(d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 577C  SUBQ.W    #3,#<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 577D  SUBQ.W    #3,<ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 577E  SUBQ.W    #3,<ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 577F  SUBQ.W    #3,<ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $5780-$57BF --------------------------------------------------------
         li      data, 3                                 // 5780  SUBQ.L    #3,D0
@@ -4161,21 +4161,21 @@ op_5757:
         li      data, 3                                 // 5787  SUBQ.L    #3,D7
         b       sub_l_mem_d7_2
         addi    a0, a0, -3                              // 5788  SUBQ.L    #3,A0
-        b       move_add_etc_any_any
+        b       fetch
         addi    a1, a1, -3                              // 5789  SUBQ.L    #3,A1
-        b       move_add_etc_any_any
+        b       fetch
         addi    a2, a2, -3                              // 578A  SUBQ.L    #3,A2
-        b       move_add_etc_any_any
+        b       fetch
         addi    a3, a3, -3                              // 578B  SUBQ.L    #3,A3
-        b       move_add_etc_any_any
+        b       fetch
         addi    a4, a4, -3                              // 578C  SUBQ.L    #3,A4
-        b       move_add_etc_any_any
+        b       fetch
         addi    a5, a5, -3                              // 578D  SUBQ.L    #3,A5
-        b       move_add_etc_any_any
+        b       fetch
         addi    a6, a6, -3                              // 578E  SUBQ.L    #3,A6
-        b       move_add_etc_any_any
+        b       fetch
         addi    a7, a7, -3                              // 578F  SUBQ.L    #3,A7
-        b       move_add_etc_any_any
+        b       fetch
 op_5790:
         mr      addr, a0                                // 5790  SUBQ.L    #3,(A0)
         b       subq_l_q_mem_2
@@ -4269,17 +4269,17 @@ op_5797:
         ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 57B9  SUBQ.L    #3,(xxx).L
         b       fea_l_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 57BA  SUBQ.L    #3,(d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 57BB  SUBQ.L    #3,(d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 57BC  SUBQ.L    #3,#<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 57BD  SUBQ.L    #3,<ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 57BE  SUBQ.L    #3,<ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 57BF  SUBQ.L    #3,<ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $57C0-$57FF --------------------------------------------------------
         ori     rtn_addr, code_ptr, scc_b_d0 - cb       // 57C0  SEQ.B     D0
@@ -4413,11 +4413,11 @@ op_57D7:
         crmove  4*cr7+so, eq                            // 57FC  TRAPEQ
         b       trapcc_5
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 57FD  SEQ.B     <ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 57FE  SEQ.B     <ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 57FF  SEQ.B     <ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $5800-$583F --------------------------------------------------------
         lis     data, 0x0400                            // 5800  ADDQ.B    #4,D0
@@ -4437,21 +4437,21 @@ op_57D7:
         lis     data, 0x0400                            // 5807  ADDQ.B    #4,D7
         b       add_asl_b_any_d7
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5808  ADDQ.B    #4,A0   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5809  ADDQ.B    #4,A1   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 580A  ADDQ.B    #4,A2   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 580B  ADDQ.B    #4,A3   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 580C  ADDQ.B    #4,A4   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 580D  ADDQ.B    #4,A5   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 580E  ADDQ.B    #4,A6   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 580F  ADDQ.B    #4,A7   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 op_5810:
         mr      addr, a0                                // 5810  ADDQ.B    #4,(A0)
         b       addq_b_q_mem_2
@@ -4545,17 +4545,17 @@ op_5817:
         ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5839  ADDQ.B    #4,(xxx).L
         b       fea_b_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 583A  ADDQ.B    #4,(d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 583B  ADDQ.B    #4,(d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 583C  ADDQ.B    #4,#<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 583D  ADDQ.B    #4,<ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 583E  ADDQ.B    #4,<ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 583F  ADDQ.B    #4,<ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $5840-$587F --------------------------------------------------------
         lis     data, 0x0004                            // 5840  ADDQ.W    #4,D0
@@ -4575,21 +4575,21 @@ op_5817:
         lis     data, 0x0004                            // 5847  ADDQ.W    #4,D7
         b       add_asl_w_any_d7
         addi    a0, a0, 4                               // 5848  ADDQ.W    #4,A0
-        b       move_add_etc_any_any
+        b       fetch
         addi    a1, a1, 4                               // 5849  ADDQ.W    #4,A1
-        b       move_add_etc_any_any
+        b       fetch
         addi    a2, a2, 4                               // 584A  ADDQ.W    #4,A2
-        b       move_add_etc_any_any
+        b       fetch
         addi    a3, a3, 4                               // 584B  ADDQ.W    #4,A3
-        b       move_add_etc_any_any
+        b       fetch
         addi    a4, a4, 4                               // 584C  ADDQ.W    #4,A4
-        b       move_add_etc_any_any
+        b       fetch
         addi    a5, a5, 4                               // 584D  ADDQ.W    #4,A5
-        b       move_add_etc_any_any
+        b       fetch
         addi    a6, a6, 4                               // 584E  ADDQ.W    #4,A6
-        b       move_add_etc_any_any
+        b       fetch
         addi    a7, a7, 4                               // 584F  ADDQ.W    #4,A7
-        b       move_add_etc_any_any
+        b       fetch
 op_5850:
         mr      addr, a0                                // 5850  ADDQ.W    #4,(A0)
         b       addq_w_q_mem_2
@@ -4683,17 +4683,17 @@ op_5857:
         ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5879  ADDQ.W    #4,(xxx).L
         b       fea_w_71
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 587A  ADDQ.W    #4,(d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 587B  ADDQ.W    #4,(d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 587C  ADDQ.W    #4,#<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 587D  ADDQ.W    #4,<ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 587E  ADDQ.W    #4,<ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 587F  ADDQ.W    #4,<ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $5880-$58BF --------------------------------------------------------
         li      data, 4                                 // 5880  ADDQ.L    #4,D0
@@ -4713,21 +4713,21 @@ op_5857:
         li      data, 4                                 // 5887  ADDQ.L    #4,D7
         b       add_l_mem_d7_2
         addi    a0, a0, 4                               // 5888  ADDQ.L    #4,A0
-        b       move_add_etc_any_any
+        b       fetch
         addi    a1, a1, 4                               // 5889  ADDQ.L    #4,A1
-        b       move_add_etc_any_any
+        b       fetch
         addi    a2, a2, 4                               // 588A  ADDQ.L    #4,A2
-        b       move_add_etc_any_any
+        b       fetch
         addi    a3, a3, 4                               // 588B  ADDQ.L    #4,A3
-        b       move_add_etc_any_any
+        b       fetch
         addi    a4, a4, 4                               // 588C  ADDQ.L    #4,A4
-        b       move_add_etc_any_any
+        b       fetch
         addi    a5, a5, 4                               // 588D  ADDQ.L    #4,A5
-        b       move_add_etc_any_any
+        b       fetch
         addi    a6, a6, 4                               // 588E  ADDQ.L    #4,A6
-        b       move_add_etc_any_any
+        b       fetch
         addi    a7, a7, 4                               // 588F  ADDQ.L    #4,A7
-        b       move_add_etc_any_any
+        b       fetch
 op_5890:
         mr      addr, a0                                // 5890  ADDQ.L    #4,(A0)
         b       addq_l_q_mem_2
@@ -4821,17 +4821,17 @@ op_5897:
         ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 58B9  ADDQ.L    #4,(xxx).L
         b       fea_l_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 58BA  ADDQ.L    #4,(d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 58BB  ADDQ.L    #4,(d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 58BC  ADDQ.L    #4,#<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 58BD  ADDQ.L    #4,<ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 58BE  ADDQ.L    #4,<ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 58BF  ADDQ.L    #4,<ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $58C0-$58FF --------------------------------------------------------
         ori     rtn_addr, code_ptr, scc_b_d0 - cb       // 58C0  SVC.B     D0
@@ -4965,11 +4965,11 @@ op_58D7:
         ori     base_disp, code_ptr, D_085C0 - cb       // 58FC  TRAPVC
         b       trapcc_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 58FD  SVC.B     <ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 58FE  SVC.B     <ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 58FF  SVC.B     <ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $5900-$593F --------------------------------------------------------
         lis     data, 0x0400                            // 5900  SUBQ.B    #4,D0
@@ -4989,21 +4989,21 @@ op_58D7:
         lis     data, 0x0400                            // 5907  SUBQ.B    #4,D7
         b       sub_b_any_d7
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5908  SUBQ.B    #4,A0   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5909  SUBQ.B    #4,A1   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 590A  SUBQ.B    #4,A2   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 590B  SUBQ.B    #4,A3   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 590C  SUBQ.B    #4,A4   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 590D  SUBQ.B    #4,A5   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 590E  SUBQ.B    #4,A6   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 590F  SUBQ.B    #4,A7   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 op_5910:
         mr      addr, a0                                // 5910  SUBQ.B    #4,(A0)
         b       subq_b_q_mem_2
@@ -5097,17 +5097,17 @@ op_5917:
         ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5939  SUBQ.B    #4,(xxx).L
         b       fea_b_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 593A  SUBQ.B    #4,(d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 593B  SUBQ.B    #4,(d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 593C  SUBQ.B    #4,#<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 593D  SUBQ.B    #4,<ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 593E  SUBQ.B    #4,<ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 593F  SUBQ.B    #4,<ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $5940-$597F --------------------------------------------------------
         lis     data, 0x0004                            // 5940  SUBQ.W    #4,D0
@@ -5127,21 +5127,21 @@ op_5917:
         lis     data, 0x0004                            // 5947  SUBQ.W    #4,D7
         b       sub_w_any_d7
         addi    a0, a0, -4                              // 5948  SUBQ.W    #4,A0
-        b       move_add_etc_any_any
+        b       fetch
         addi    a1, a1, -4                              // 5949  SUBQ.W    #4,A1
-        b       move_add_etc_any_any
+        b       fetch
         addi    a2, a2, -4                              // 594A  SUBQ.W    #4,A2
-        b       move_add_etc_any_any
+        b       fetch
         addi    a3, a3, -4                              // 594B  SUBQ.W    #4,A3
-        b       move_add_etc_any_any
+        b       fetch
         addi    a4, a4, -4                              // 594C  SUBQ.W    #4,A4
-        b       move_add_etc_any_any
+        b       fetch
         addi    a5, a5, -4                              // 594D  SUBQ.W    #4,A5
-        b       move_add_etc_any_any
+        b       fetch
         addi    a6, a6, -4                              // 594E  SUBQ.W    #4,A6
-        b       move_add_etc_any_any
+        b       fetch
         addi    a7, a7, -4                              // 594F  SUBQ.W    #4,A7
-        b       move_add_etc_any_any
+        b       fetch
 op_5950:
         mr      addr, a0                                // 5950  SUBQ.W    #4,(A0)
         b       subq_w_q_mem_2
@@ -5235,17 +5235,17 @@ op_5957:
         ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5979  SUBQ.W    #4,(xxx).L
         b       fea_w_71
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 597A  SUBQ.W    #4,(d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 597B  SUBQ.W    #4,(d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 597C  SUBQ.W    #4,#<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 597D  SUBQ.W    #4,<ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 597E  SUBQ.W    #4,<ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 597F  SUBQ.W    #4,<ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $5980-$59BF --------------------------------------------------------
         li      data, 4                                 // 5980  SUBQ.L    #4,D0
@@ -5265,21 +5265,21 @@ op_5957:
         li      data, 4                                 // 5987  SUBQ.L    #4,D7
         b       sub_l_mem_d7_2
         addi    a0, a0, -4                              // 5988  SUBQ.L    #4,A0
-        b       move_add_etc_any_any
+        b       fetch
         addi    a1, a1, -4                              // 5989  SUBQ.L    #4,A1
-        b       move_add_etc_any_any
+        b       fetch
         addi    a2, a2, -4                              // 598A  SUBQ.L    #4,A2
-        b       move_add_etc_any_any
+        b       fetch
         addi    a3, a3, -4                              // 598B  SUBQ.L    #4,A3
-        b       move_add_etc_any_any
+        b       fetch
         addi    a4, a4, -4                              // 598C  SUBQ.L    #4,A4
-        b       move_add_etc_any_any
+        b       fetch
         addi    a5, a5, -4                              // 598D  SUBQ.L    #4,A5
-        b       move_add_etc_any_any
+        b       fetch
         addi    a6, a6, -4                              // 598E  SUBQ.L    #4,A6
-        b       move_add_etc_any_any
+        b       fetch
         addi    a7, a7, -4                              // 598F  SUBQ.L    #4,A7
-        b       move_add_etc_any_any
+        b       fetch
 op_5990:
         mr      addr, a0                                // 5990  SUBQ.L    #4,(A0)
         b       subq_l_q_mem_2
@@ -5373,17 +5373,17 @@ op_5997:
         ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 59B9  SUBQ.L    #4,(xxx).L
         b       fea_l_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 59BA  SUBQ.L    #4,(d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 59BB  SUBQ.L    #4,(d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 59BC  SUBQ.L    #4,#<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 59BD  SUBQ.L    #4,<ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 59BE  SUBQ.L    #4,<ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 59BF  SUBQ.L    #4,<ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $59C0-$59FF --------------------------------------------------------
         ori     rtn_addr, code_ptr, scc_b_d0 - cb       // 59C0  SVS.B     D0
@@ -5517,11 +5517,11 @@ op_59D7:
         mfxer   data                                    // 59FC  TRAPVS
         b       trapv_trapvs
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 59FD  SVS.B     <ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 59FE  SVS.B     <ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 59FF  SVS.B     <ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $5A00-$5A3F --------------------------------------------------------
         lis     data, 0x0500                            // 5A00  ADDQ.B    #5,D0
@@ -5541,21 +5541,21 @@ op_59D7:
         lis     data, 0x0500                            // 5A07  ADDQ.B    #5,D7
         b       add_asl_b_any_d7
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5A08  ADDQ.B    #5,A0   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5A09  ADDQ.B    #5,A1   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5A0A  ADDQ.B    #5,A2   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5A0B  ADDQ.B    #5,A3   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5A0C  ADDQ.B    #5,A4   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5A0D  ADDQ.B    #5,A5   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5A0E  ADDQ.B    #5,A6   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5A0F  ADDQ.B    #5,A7   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 op_5A10:
         mr      addr, a0                                // 5A10  ADDQ.B    #5,(A0)
         b       addq_b_q_mem_2
@@ -5649,17 +5649,17 @@ op_5A17:
         ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5A39  ADDQ.B    #5,(xxx).L
         b       fea_b_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5A3A  ADDQ.B    #5,(d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5A3B  ADDQ.B    #5,(d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5A3C  ADDQ.B    #5,#<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5A3D  ADDQ.B    #5,<ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5A3E  ADDQ.B    #5,<ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5A3F  ADDQ.B    #5,<ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $5A40-$5A7F --------------------------------------------------------
         lis     data, 0x0005                            // 5A40  ADDQ.W    #5,D0
@@ -5679,21 +5679,21 @@ op_5A17:
         lis     data, 0x0005                            // 5A47  ADDQ.W    #5,D7
         b       add_asl_w_any_d7
         addi    a0, a0, 5                               // 5A48  ADDQ.W    #5,A0
-        b       move_add_etc_any_any
+        b       fetch
         addi    a1, a1, 5                               // 5A49  ADDQ.W    #5,A1
-        b       move_add_etc_any_any
+        b       fetch
         addi    a2, a2, 5                               // 5A4A  ADDQ.W    #5,A2
-        b       move_add_etc_any_any
+        b       fetch
         addi    a3, a3, 5                               // 5A4B  ADDQ.W    #5,A3
-        b       move_add_etc_any_any
+        b       fetch
         addi    a4, a4, 5                               // 5A4C  ADDQ.W    #5,A4
-        b       move_add_etc_any_any
+        b       fetch
         addi    a5, a5, 5                               // 5A4D  ADDQ.W    #5,A5
-        b       move_add_etc_any_any
+        b       fetch
         addi    a6, a6, 5                               // 5A4E  ADDQ.W    #5,A6
-        b       move_add_etc_any_any
+        b       fetch
         addi    a7, a7, 5                               // 5A4F  ADDQ.W    #5,A7
-        b       move_add_etc_any_any
+        b       fetch
 op_5A50:
         mr      addr, a0                                // 5A50  ADDQ.W    #5,(A0)
         b       addq_w_q_mem_2
@@ -5787,17 +5787,17 @@ op_5A57:
         ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5A79  ADDQ.W    #5,(xxx).L
         b       fea_w_71
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5A7A  ADDQ.W    #5,(d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5A7B  ADDQ.W    #5,(d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5A7C  ADDQ.W    #5,#<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5A7D  ADDQ.W    #5,<ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5A7E  ADDQ.W    #5,<ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5A7F  ADDQ.W    #5,<ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $5A80-$5ABF --------------------------------------------------------
         li      data, 5                                 // 5A80  ADDQ.L    #5,D0
@@ -5817,21 +5817,21 @@ op_5A57:
         li      data, 5                                 // 5A87  ADDQ.L    #5,D7
         b       add_l_mem_d7_2
         addi    a0, a0, 5                               // 5A88  ADDQ.L    #5,A0
-        b       move_add_etc_any_any
+        b       fetch
         addi    a1, a1, 5                               // 5A89  ADDQ.L    #5,A1
-        b       move_add_etc_any_any
+        b       fetch
         addi    a2, a2, 5                               // 5A8A  ADDQ.L    #5,A2
-        b       move_add_etc_any_any
+        b       fetch
         addi    a3, a3, 5                               // 5A8B  ADDQ.L    #5,A3
-        b       move_add_etc_any_any
+        b       fetch
         addi    a4, a4, 5                               // 5A8C  ADDQ.L    #5,A4
-        b       move_add_etc_any_any
+        b       fetch
         addi    a5, a5, 5                               // 5A8D  ADDQ.L    #5,A5
-        b       move_add_etc_any_any
+        b       fetch
         addi    a6, a6, 5                               // 5A8E  ADDQ.L    #5,A6
-        b       move_add_etc_any_any
+        b       fetch
         addi    a7, a7, 5                               // 5A8F  ADDQ.L    #5,A7
-        b       move_add_etc_any_any
+        b       fetch
 op_5A90:
         mr      addr, a0                                // 5A90  ADDQ.L    #5,(A0)
         b       addq_l_q_mem_2
@@ -5925,17 +5925,17 @@ op_5A97:
         ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 5AB9  ADDQ.L    #5,(xxx).L
         b       fea_l_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5ABA  ADDQ.L    #5,(d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5ABB  ADDQ.L    #5,(d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5ABC  ADDQ.L    #5,#<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5ABD  ADDQ.L    #5,<ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5ABE  ADDQ.L    #5,<ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5ABF  ADDQ.L    #5,<ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $5AC0-$5AFF --------------------------------------------------------
         ori     rtn_addr, code_ptr, scc_b_d0 - cb       // 5AC0  SPL.B     D0
@@ -6069,11 +6069,11 @@ op_5AD7:
         crnot   4*cr7+so, lt                            // 5AFC  TRAPPL
         b       trapcc_5
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5AFD  SPL.B     <ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5AFE  SPL.B     <ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5AFF  SPL.B     <ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $5B00-$5B3F --------------------------------------------------------
         lis     data, 0x0500                            // 5B00  SUBQ.B    #5,D0
@@ -6093,21 +6093,21 @@ op_5AD7:
         lis     data, 0x0500                            // 5B07  SUBQ.B    #5,D7
         b       sub_b_any_d7
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5B08  SUBQ.B    #5,A0   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5B09  SUBQ.B    #5,A1   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5B0A  SUBQ.B    #5,A2   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5B0B  SUBQ.B    #5,A3   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5B0C  SUBQ.B    #5,A4   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5B0D  SUBQ.B    #5,A5   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5B0E  SUBQ.B    #5,A6   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5B0F  SUBQ.B    #5,A7   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 op_5B10:
         mr      addr, a0                                // 5B10  SUBQ.B    #5,(A0)
         b       subq_b_q_mem_2
@@ -6201,17 +6201,17 @@ op_5B17:
         ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5B39  SUBQ.B    #5,(xxx).L
         b       fea_b_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5B3A  SUBQ.B    #5,(d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5B3B  SUBQ.B    #5,(d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5B3C  SUBQ.B    #5,#<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5B3D  SUBQ.B    #5,<ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5B3E  SUBQ.B    #5,<ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5B3F  SUBQ.B    #5,<ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $5B40-$5B7F --------------------------------------------------------
         lis     data, 0x0005                            // 5B40  SUBQ.W    #5,D0
@@ -6231,21 +6231,21 @@ op_5B17:
         lis     data, 0x0005                            // 5B47  SUBQ.W    #5,D7
         b       sub_w_any_d7
         addi    a0, a0, -5                              // 5B48  SUBQ.W    #5,A0
-        b       move_add_etc_any_any
+        b       fetch
         addi    a1, a1, -5                              // 5B49  SUBQ.W    #5,A1
-        b       move_add_etc_any_any
+        b       fetch
         addi    a2, a2, -5                              // 5B4A  SUBQ.W    #5,A2
-        b       move_add_etc_any_any
+        b       fetch
         addi    a3, a3, -5                              // 5B4B  SUBQ.W    #5,A3
-        b       move_add_etc_any_any
+        b       fetch
         addi    a4, a4, -5                              // 5B4C  SUBQ.W    #5,A4
-        b       move_add_etc_any_any
+        b       fetch
         addi    a5, a5, -5                              // 5B4D  SUBQ.W    #5,A5
-        b       move_add_etc_any_any
+        b       fetch
         addi    a6, a6, -5                              // 5B4E  SUBQ.W    #5,A6
-        b       move_add_etc_any_any
+        b       fetch
         addi    a7, a7, -5                              // 5B4F  SUBQ.W    #5,A7
-        b       move_add_etc_any_any
+        b       fetch
 op_5B50:
         mr      addr, a0                                // 5B50  SUBQ.W    #5,(A0)
         b       subq_w_q_mem_2
@@ -6339,17 +6339,17 @@ op_5B57:
         ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5B79  SUBQ.W    #5,(xxx).L
         b       fea_w_71
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5B7A  SUBQ.W    #5,(d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5B7B  SUBQ.W    #5,(d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5B7C  SUBQ.W    #5,#<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5B7D  SUBQ.W    #5,<ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5B7E  SUBQ.W    #5,<ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5B7F  SUBQ.W    #5,<ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $5B80-$5BBF --------------------------------------------------------
         li      data, 5                                 // 5B80  SUBQ.L    #5,D0
@@ -6369,21 +6369,21 @@ op_5B57:
         li      data, 5                                 // 5B87  SUBQ.L    #5,D7
         b       sub_l_mem_d7_2
         addi    a0, a0, -5                              // 5B88  SUBQ.L    #5,A0
-        b       move_add_etc_any_any
+        b       fetch
         addi    a1, a1, -5                              // 5B89  SUBQ.L    #5,A1
-        b       move_add_etc_any_any
+        b       fetch
         addi    a2, a2, -5                              // 5B8A  SUBQ.L    #5,A2
-        b       move_add_etc_any_any
+        b       fetch
         addi    a3, a3, -5                              // 5B8B  SUBQ.L    #5,A3
-        b       move_add_etc_any_any
+        b       fetch
         addi    a4, a4, -5                              // 5B8C  SUBQ.L    #5,A4
-        b       move_add_etc_any_any
+        b       fetch
         addi    a5, a5, -5                              // 5B8D  SUBQ.L    #5,A5
-        b       move_add_etc_any_any
+        b       fetch
         addi    a6, a6, -5                              // 5B8E  SUBQ.L    #5,A6
-        b       move_add_etc_any_any
+        b       fetch
         addi    a7, a7, -5                              // 5B8F  SUBQ.L    #5,A7
-        b       move_add_etc_any_any
+        b       fetch
 op_5B90:
         mr      addr, a0                                // 5B90  SUBQ.L    #5,(A0)
         b       subq_l_q_mem_2
@@ -6477,17 +6477,17 @@ op_5B97:
         ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 5BB9  SUBQ.L    #5,(xxx).L
         b       fea_l_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5BBA  SUBQ.L    #5,(d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5BBB  SUBQ.L    #5,(d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5BBC  SUBQ.L    #5,#<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5BBD  SUBQ.L    #5,<ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5BBE  SUBQ.L    #5,<ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5BBF  SUBQ.L    #5,<ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $5BC0-$5BFF --------------------------------------------------------
         ori     rtn_addr, code_ptr, scc_b_d0 - cb       // 5BC0  SMI.B     D0
@@ -6621,11 +6621,11 @@ op_5BD7:
         crmove  4*cr7+so, lt                            // 5BFC  TRAPMI
         b       trapcc_5
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5BFD  SMI.B     <ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5BFE  SMI.B     <ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5BFF  SMI.B     <ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $5C00-$5C3F --------------------------------------------------------
         lis     data, 0x0600                            // 5C00  ADDQ.B    #6,D0
@@ -6645,21 +6645,21 @@ op_5BD7:
         lis     data, 0x0600                            // 5C07  ADDQ.B    #6,D7
         b       add_asl_b_any_d7
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5C08  ADDQ.B    #6,A0   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5C09  ADDQ.B    #6,A1   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5C0A  ADDQ.B    #6,A2   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5C0B  ADDQ.B    #6,A3   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5C0C  ADDQ.B    #6,A4   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5C0D  ADDQ.B    #6,A5   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5C0E  ADDQ.B    #6,A6   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5C0F  ADDQ.B    #6,A7   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 op_5C10:
         mr      addr, a0                                // 5C10  ADDQ.B    #6,(A0)
         b       addq_b_q_mem_2
@@ -6753,17 +6753,17 @@ op_5C17:
         ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5C39  ADDQ.B    #6,(xxx).L
         b       fea_b_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5C3A  ADDQ.B    #6,(d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5C3B  ADDQ.B    #6,(d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5C3C  ADDQ.B    #6,#<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5C3D  ADDQ.B    #6,<ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5C3E  ADDQ.B    #6,<ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5C3F  ADDQ.B    #6,<ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $5C40-$5C7F --------------------------------------------------------
         lis     data, 0x0006                            // 5C40  ADDQ.W    #6,D0
@@ -6783,21 +6783,21 @@ op_5C17:
         lis     data, 0x0006                            // 5C47  ADDQ.W    #6,D7
         b       add_asl_w_any_d7
         addi    a0, a0, 6                               // 5C48  ADDQ.W    #6,A0
-        b       move_add_etc_any_any
+        b       fetch
         addi    a1, a1, 6                               // 5C49  ADDQ.W    #6,A1
-        b       move_add_etc_any_any
+        b       fetch
         addi    a2, a2, 6                               // 5C4A  ADDQ.W    #6,A2
-        b       move_add_etc_any_any
+        b       fetch
         addi    a3, a3, 6                               // 5C4B  ADDQ.W    #6,A3
-        b       move_add_etc_any_any
+        b       fetch
         addi    a4, a4, 6                               // 5C4C  ADDQ.W    #6,A4
-        b       move_add_etc_any_any
+        b       fetch
         addi    a5, a5, 6                               // 5C4D  ADDQ.W    #6,A5
-        b       move_add_etc_any_any
+        b       fetch
         addi    a6, a6, 6                               // 5C4E  ADDQ.W    #6,A6
-        b       move_add_etc_any_any
+        b       fetch
         addi    a7, a7, 6                               // 5C4F  ADDQ.W    #6,A7
-        b       move_add_etc_any_any
+        b       fetch
 op_5C50:
         mr      addr, a0                                // 5C50  ADDQ.W    #6,(A0)
         b       addq_w_q_mem_2
@@ -6891,17 +6891,17 @@ op_5C57:
         ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5C79  ADDQ.W    #6,(xxx).L
         b       fea_w_71
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5C7A  ADDQ.W    #6,(d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5C7B  ADDQ.W    #6,(d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5C7C  ADDQ.W    #6,#<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5C7D  ADDQ.W    #6,<ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5C7E  ADDQ.W    #6,<ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5C7F  ADDQ.W    #6,<ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $5C80-$5CBF --------------------------------------------------------
         li      data, 6                                 // 5C80  ADDQ.L    #6,D0
@@ -6921,21 +6921,21 @@ op_5C57:
         li      data, 6                                 // 5C87  ADDQ.L    #6,D7
         b       add_l_mem_d7_2
         addi    a0, a0, 6                               // 5C88  ADDQ.L    #6,A0
-        b       move_add_etc_any_any
+        b       fetch
         addi    a1, a1, 6                               // 5C89  ADDQ.L    #6,A1
-        b       move_add_etc_any_any
+        b       fetch
         addi    a2, a2, 6                               // 5C8A  ADDQ.L    #6,A2
-        b       move_add_etc_any_any
+        b       fetch
         addi    a3, a3, 6                               // 5C8B  ADDQ.L    #6,A3
-        b       move_add_etc_any_any
+        b       fetch
         addi    a4, a4, 6                               // 5C8C  ADDQ.L    #6,A4
-        b       move_add_etc_any_any
+        b       fetch
         addi    a5, a5, 6                               // 5C8D  ADDQ.L    #6,A5
-        b       move_add_etc_any_any
+        b       fetch
         addi    a6, a6, 6                               // 5C8E  ADDQ.L    #6,A6
-        b       move_add_etc_any_any
+        b       fetch
         addi    a7, a7, 6                               // 5C8F  ADDQ.L    #6,A7
-        b       move_add_etc_any_any
+        b       fetch
 op_5C90:
         mr      addr, a0                                // 5C90  ADDQ.L    #6,(A0)
         b       addq_l_q_mem_2
@@ -7029,17 +7029,17 @@ op_5C97:
         ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 5CB9  ADDQ.L    #6,(xxx).L
         b       fea_l_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5CBA  ADDQ.L    #6,(d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5CBB  ADDQ.L    #6,(d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5CBC  ADDQ.L    #6,#<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5CBD  ADDQ.L    #6,<ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5CBE  ADDQ.L    #6,<ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5CBF  ADDQ.L    #6,<ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $5CC0-$5CFF --------------------------------------------------------
         ori     rtn_addr, code_ptr, scc_b_d0 - cb       // 5CC0  SGE.B     D0
@@ -7173,11 +7173,11 @@ op_5CD7:
         ori     base_disp, code_ptr, D_085C0 - cb       // 5CFC  TRAPGE
         b       trapcc_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5CFD  SGE.B     <ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5CFE  SGE.B     <ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5CFF  SGE.B     <ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $5D00-$5D3F --------------------------------------------------------
         lis     data, 0x0600                            // 5D00  SUBQ.B    #6,D0
@@ -7197,21 +7197,21 @@ op_5CD7:
         lis     data, 0x0600                            // 5D07  SUBQ.B    #6,D7
         b       sub_b_any_d7
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5D08  SUBQ.B    #6,A0   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5D09  SUBQ.B    #6,A1   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5D0A  SUBQ.B    #6,A2   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5D0B  SUBQ.B    #6,A3   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5D0C  SUBQ.B    #6,A4   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5D0D  SUBQ.B    #6,A5   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5D0E  SUBQ.B    #6,A6   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5D0F  SUBQ.B    #6,A7   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 op_5D10:
         mr      addr, a0                                // 5D10  SUBQ.B    #6,(A0)
         b       subq_b_q_mem_2
@@ -7305,17 +7305,17 @@ op_5D17:
         ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5D39  SUBQ.B    #6,(xxx).L
         b       fea_b_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5D3A  SUBQ.B    #6,(d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5D3B  SUBQ.B    #6,(d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5D3C  SUBQ.B    #6,#<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5D3D  SUBQ.B    #6,<ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5D3E  SUBQ.B    #6,<ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5D3F  SUBQ.B    #6,<ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $5D40-$5D7F --------------------------------------------------------
         lis     data, 0x0006                            // 5D40  SUBQ.W    #6,D0
@@ -7335,21 +7335,21 @@ op_5D17:
         lis     data, 0x0006                            // 5D47  SUBQ.W    #6,D7
         b       sub_w_any_d7
         addi    a0, a0, -6                              // 5D48  SUBQ.W    #6,A0
-        b       move_add_etc_any_any
+        b       fetch
         addi    a1, a1, -6                              // 5D49  SUBQ.W    #6,A1
-        b       move_add_etc_any_any
+        b       fetch
         addi    a2, a2, -6                              // 5D4A  SUBQ.W    #6,A2
-        b       move_add_etc_any_any
+        b       fetch
         addi    a3, a3, -6                              // 5D4B  SUBQ.W    #6,A3
-        b       move_add_etc_any_any
+        b       fetch
         addi    a4, a4, -6                              // 5D4C  SUBQ.W    #6,A4
-        b       move_add_etc_any_any
+        b       fetch
         addi    a5, a5, -6                              // 5D4D  SUBQ.W    #6,A5
-        b       move_add_etc_any_any
+        b       fetch
         addi    a6, a6, -6                              // 5D4E  SUBQ.W    #6,A6
-        b       move_add_etc_any_any
+        b       fetch
         addi    a7, a7, -6                              // 5D4F  SUBQ.W    #6,A7
-        b       move_add_etc_any_any
+        b       fetch
 op_5D50:
         mr      addr, a0                                // 5D50  SUBQ.W    #6,(A0)
         b       subq_w_q_mem_2
@@ -7443,17 +7443,17 @@ op_5D57:
         ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5D79  SUBQ.W    #6,(xxx).L
         b       fea_w_71
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5D7A  SUBQ.W    #6,(d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5D7B  SUBQ.W    #6,(d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5D7C  SUBQ.W    #6,#<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5D7D  SUBQ.W    #6,<ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5D7E  SUBQ.W    #6,<ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5D7F  SUBQ.W    #6,<ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $5D80-$5DBF --------------------------------------------------------
         li      data, 6                                 // 5D80  SUBQ.L    #6,D0
@@ -7473,21 +7473,21 @@ op_5D57:
         li      data, 6                                 // 5D87  SUBQ.L    #6,D7
         b       sub_l_mem_d7_2
         addi    a0, a0, -6                              // 5D88  SUBQ.L    #6,A0
-        b       move_add_etc_any_any
+        b       fetch
         addi    a1, a1, -6                              // 5D89  SUBQ.L    #6,A1
-        b       move_add_etc_any_any
+        b       fetch
         addi    a2, a2, -6                              // 5D8A  SUBQ.L    #6,A2
-        b       move_add_etc_any_any
+        b       fetch
         addi    a3, a3, -6                              // 5D8B  SUBQ.L    #6,A3
-        b       move_add_etc_any_any
+        b       fetch
         addi    a4, a4, -6                              // 5D8C  SUBQ.L    #6,A4
-        b       move_add_etc_any_any
+        b       fetch
         addi    a5, a5, -6                              // 5D8D  SUBQ.L    #6,A5
-        b       move_add_etc_any_any
+        b       fetch
         addi    a6, a6, -6                              // 5D8E  SUBQ.L    #6,A6
-        b       move_add_etc_any_any
+        b       fetch
         addi    a7, a7, -6                              // 5D8F  SUBQ.L    #6,A7
-        b       move_add_etc_any_any
+        b       fetch
 op_5D90:
         mr      addr, a0                                // 5D90  SUBQ.L    #6,(A0)
         b       subq_l_q_mem_2
@@ -7581,17 +7581,17 @@ op_5D97:
         ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 5DB9  SUBQ.L    #6,(xxx).L
         b       fea_l_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5DBA  SUBQ.L    #6,(d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5DBB  SUBQ.L    #6,(d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5DBC  SUBQ.L    #6,#<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5DBD  SUBQ.L    #6,<ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5DBE  SUBQ.L    #6,<ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5DBF  SUBQ.L    #6,<ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $5DC0-$5DFF --------------------------------------------------------
         ori     rtn_addr, code_ptr, scc_b_d0 - cb       // 5DC0  SLT.B     D0
@@ -7725,11 +7725,11 @@ op_5DD7:
         ori     base_disp, code_ptr, D_085C0 - cb       // 5DFC  TRAPLT
         b       trapcc_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5DFD  SLT.B     <ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5DFE  SLT.B     <ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5DFF  SLT.B     <ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $5E00-$5E3F --------------------------------------------------------
         lis     data, 0x0700                            // 5E00  ADDQ.B    #7,D0
@@ -7749,21 +7749,21 @@ op_5DD7:
         lis     data, 0x0700                            // 5E07  ADDQ.B    #7,D7
         b       add_asl_b_any_d7
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5E08  ADDQ.B    #7,A0   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5E09  ADDQ.B    #7,A1   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5E0A  ADDQ.B    #7,A2   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5E0B  ADDQ.B    #7,A3   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5E0C  ADDQ.B    #7,A4   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5E0D  ADDQ.B    #7,A5   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5E0E  ADDQ.B    #7,A6   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5E0F  ADDQ.B    #7,A7   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 op_5E10:
         mr      addr, a0                                // 5E10  ADDQ.B    #7,(A0)
         b       addq_b_q_mem_2
@@ -7857,17 +7857,17 @@ op_5E17:
         ori     rtn_addr, code_ptr, addq_b_q_mem_3 - cb  // 5E39  ADDQ.B    #7,(xxx).L
         b       fea_b_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5E3A  ADDQ.B    #7,(d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5E3B  ADDQ.B    #7,(d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5E3C  ADDQ.B    #7,#<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5E3D  ADDQ.B    #7,<ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5E3E  ADDQ.B    #7,<ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5E3F  ADDQ.B    #7,<ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $5E40-$5E7F --------------------------------------------------------
         lis     data, 0x0007                            // 5E40  ADDQ.W    #7,D0
@@ -7887,21 +7887,21 @@ op_5E17:
         lis     data, 0x0007                            // 5E47  ADDQ.W    #7,D7
         b       add_asl_w_any_d7
         addi    a0, a0, 7                               // 5E48  ADDQ.W    #7,A0
-        b       move_add_etc_any_any
+        b       fetch
         addi    a1, a1, 7                               // 5E49  ADDQ.W    #7,A1
-        b       move_add_etc_any_any
+        b       fetch
         addi    a2, a2, 7                               // 5E4A  ADDQ.W    #7,A2
-        b       move_add_etc_any_any
+        b       fetch
         addi    a3, a3, 7                               // 5E4B  ADDQ.W    #7,A3
-        b       move_add_etc_any_any
+        b       fetch
         addi    a4, a4, 7                               // 5E4C  ADDQ.W    #7,A4
-        b       move_add_etc_any_any
+        b       fetch
         addi    a5, a5, 7                               // 5E4D  ADDQ.W    #7,A5
-        b       move_add_etc_any_any
+        b       fetch
         addi    a6, a6, 7                               // 5E4E  ADDQ.W    #7,A6
-        b       move_add_etc_any_any
+        b       fetch
         addi    a7, a7, 7                               // 5E4F  ADDQ.W    #7,A7
-        b       move_add_etc_any_any
+        b       fetch
 op_5E50:
         mr      addr, a0                                // 5E50  ADDQ.W    #7,(A0)
         b       addq_w_q_mem_2
@@ -7995,17 +7995,17 @@ op_5E57:
         ori     rtn_addr, code_ptr, addq_w_q_mem_3 - cb  // 5E79  ADDQ.W    #7,(xxx).L
         b       fea_w_71
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5E7A  ADDQ.W    #7,(d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5E7B  ADDQ.W    #7,(d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5E7C  ADDQ.W    #7,#<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5E7D  ADDQ.W    #7,<ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5E7E  ADDQ.W    #7,<ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5E7F  ADDQ.W    #7,<ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $5E80-$5EBF --------------------------------------------------------
         li      data, 7                                 // 5E80  ADDQ.L    #7,D0
@@ -8025,21 +8025,21 @@ op_5E57:
         li      data, 7                                 // 5E87  ADDQ.L    #7,D7
         b       add_l_mem_d7_2
         addi    a0, a0, 7                               // 5E88  ADDQ.L    #7,A0
-        b       move_add_etc_any_any
+        b       fetch
         addi    a1, a1, 7                               // 5E89  ADDQ.L    #7,A1
-        b       move_add_etc_any_any
+        b       fetch
         addi    a2, a2, 7                               // 5E8A  ADDQ.L    #7,A2
-        b       move_add_etc_any_any
+        b       fetch
         addi    a3, a3, 7                               // 5E8B  ADDQ.L    #7,A3
-        b       move_add_etc_any_any
+        b       fetch
         addi    a4, a4, 7                               // 5E8C  ADDQ.L    #7,A4
-        b       move_add_etc_any_any
+        b       fetch
         addi    a5, a5, 7                               // 5E8D  ADDQ.L    #7,A5
-        b       move_add_etc_any_any
+        b       fetch
         addi    a6, a6, 7                               // 5E8E  ADDQ.L    #7,A6
-        b       move_add_etc_any_any
+        b       fetch
         addi    a7, a7, 7                               // 5E8F  ADDQ.L    #7,A7
-        b       move_add_etc_any_any
+        b       fetch
 op_5E90:
         mr      addr, a0                                // 5E90  ADDQ.L    #7,(A0)
         b       addq_l_q_mem_2
@@ -8133,17 +8133,17 @@ op_5E97:
         ori     rtn_addr, code_ptr, addq_l_q_mem_3 - cb  // 5EB9  ADDQ.L    #7,(xxx).L
         b       fea_l_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5EBA  ADDQ.L    #7,(d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5EBB  ADDQ.L    #7,(d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5EBC  ADDQ.L    #7,#<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5EBD  ADDQ.L    #7,<ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5EBE  ADDQ.L    #7,<ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5EBF  ADDQ.L    #7,<ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $5EC0-$5EFF --------------------------------------------------------
         ori     rtn_addr, code_ptr, scc_b_d0 - cb       // 5EC0  SGT.B     D0
@@ -8277,11 +8277,11 @@ op_5ED7:
         ori     base_disp, code_ptr, D_085C0 - cb       // 5EFC  TRAPGT
         b       trapcc_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5EFD  SGT.B     <ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5EFE  SGT.B     <ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5EFF  SGT.B     <ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $5F00-$5F3F --------------------------------------------------------
         lis     data, 0x0700                            // 5F00  SUBQ.B    #7,D0
@@ -8301,21 +8301,21 @@ op_5ED7:
         lis     data, 0x0700                            // 5F07  SUBQ.B    #7,D7
         b       sub_b_any_d7
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5F08  SUBQ.B    #7,A0   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5F09  SUBQ.B    #7,A1   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5F0A  SUBQ.B    #7,A2   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5F0B  SUBQ.B    #7,A3   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5F0C  SUBQ.B    #7,A4   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5F0D  SUBQ.B    #7,A5   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5F0E  SUBQ.B    #7,A6   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5F0F  SUBQ.B    #7,A7   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 op_5F10:
         mr      addr, a0                                // 5F10  SUBQ.B    #7,(A0)
         b       subq_b_q_mem_2
@@ -8409,17 +8409,17 @@ op_5F17:
         ori     rtn_addr, code_ptr, subq_b_q_mem_3 - cb  // 5F39  SUBQ.B    #7,(xxx).L
         b       fea_b_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5F3A  SUBQ.B    #7,(d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5F3B  SUBQ.B    #7,(d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5F3C  SUBQ.B    #7,#<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5F3D  SUBQ.B    #7,<ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5F3E  SUBQ.B    #7,<ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5F3F  SUBQ.B    #7,<ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $5F40-$5F7F --------------------------------------------------------
         lis     data, 0x0007                            // 5F40  SUBQ.W    #7,D0
@@ -8439,21 +8439,21 @@ op_5F17:
         lis     data, 0x0007                            // 5F47  SUBQ.W    #7,D7
         b       sub_w_any_d7
         addi    a0, a0, -7                              // 5F48  SUBQ.W    #7,A0
-        b       move_add_etc_any_any
+        b       fetch
         addi    a1, a1, -7                              // 5F49  SUBQ.W    #7,A1
-        b       move_add_etc_any_any
+        b       fetch
         addi    a2, a2, -7                              // 5F4A  SUBQ.W    #7,A2
-        b       move_add_etc_any_any
+        b       fetch
         addi    a3, a3, -7                              // 5F4B  SUBQ.W    #7,A3
-        b       move_add_etc_any_any
+        b       fetch
         addi    a4, a4, -7                              // 5F4C  SUBQ.W    #7,A4
-        b       move_add_etc_any_any
+        b       fetch
         addi    a5, a5, -7                              // 5F4D  SUBQ.W    #7,A5
-        b       move_add_etc_any_any
+        b       fetch
         addi    a6, a6, -7                              // 5F4E  SUBQ.W    #7,A6
-        b       move_add_etc_any_any
+        b       fetch
         addi    a7, a7, -7                              // 5F4F  SUBQ.W    #7,A7
-        b       move_add_etc_any_any
+        b       fetch
 op_5F50:
         mr      addr, a0                                // 5F50  SUBQ.W    #7,(A0)
         b       subq_w_q_mem_2
@@ -8547,17 +8547,17 @@ op_5F57:
         ori     rtn_addr, code_ptr, subq_w_q_mem_3 - cb  // 5F79  SUBQ.W    #7,(xxx).L
         b       fea_w_71
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5F7A  SUBQ.W    #7,(d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5F7B  SUBQ.W    #7,(d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5F7C  SUBQ.W    #7,#<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5F7D  SUBQ.W    #7,<ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5F7E  SUBQ.W    #7,<ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5F7F  SUBQ.W    #7,<ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $5F80-$5FBF --------------------------------------------------------
         li      data, 7                                 // 5F80  SUBQ.L    #7,D0
@@ -8577,21 +8577,21 @@ op_5F57:
         li      data, 7                                 // 5F87  SUBQ.L    #7,D7
         b       sub_l_mem_d7_2
         addi    a0, a0, -7                              // 5F88  SUBQ.L    #7,A0
-        b       move_add_etc_any_any
+        b       fetch
         addi    a1, a1, -7                              // 5F89  SUBQ.L    #7,A1
-        b       move_add_etc_any_any
+        b       fetch
         addi    a2, a2, -7                              // 5F8A  SUBQ.L    #7,A2
-        b       move_add_etc_any_any
+        b       fetch
         addi    a3, a3, -7                              // 5F8B  SUBQ.L    #7,A3
-        b       move_add_etc_any_any
+        b       fetch
         addi    a4, a4, -7                              // 5F8C  SUBQ.L    #7,A4
-        b       move_add_etc_any_any
+        b       fetch
         addi    a5, a5, -7                              // 5F8D  SUBQ.L    #7,A5
-        b       move_add_etc_any_any
+        b       fetch
         addi    a6, a6, -7                              // 5F8E  SUBQ.L    #7,A6
-        b       move_add_etc_any_any
+        b       fetch
         addi    a7, a7, -7                              // 5F8F  SUBQ.L    #7,A7
-        b       move_add_etc_any_any
+        b       fetch
 op_5F90:
         mr      addr, a0                                // 5F90  SUBQ.L    #7,(A0)
         b       subq_l_q_mem_2
@@ -8685,17 +8685,17 @@ op_5F97:
         ori     rtn_addr, code_ptr, subq_l_q_mem_3 - cb  // 5FB9  SUBQ.L    #7,(xxx).L
         b       fea_l_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5FBA  SUBQ.L    #7,(d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5FBB  SUBQ.L    #7,(d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5FBC  SUBQ.L    #7,#<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5FBD  SUBQ.L    #7,<ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5FBE  SUBQ.L    #7,<ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5FBF  SUBQ.L    #7,<ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $5FC0-$5FFF --------------------------------------------------------
         ori     rtn_addr, code_ptr, scc_b_d0 - cb       // 5FC0  SLE.B     D0
@@ -8829,8 +8829,8 @@ op_5FD7:
         ori     base_disp, code_ptr, D_085C0 - cb       // 5FFC  TRAPLE
         b       trapcc_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5FFD  SLE.B     <ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5FFE  SLE.B     <ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 5FFF  SLE.B     <ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction

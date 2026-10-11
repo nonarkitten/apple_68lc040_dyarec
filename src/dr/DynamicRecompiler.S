@@ -20,7 +20,7 @@ L_10000:
 L_10034:
         add     r23, r23, rtn_addr
 L_10038:
-        bltl    cr2, L_10234
+        btl     cr_special_event_pending, L_10234
         lwz     addr, 0xB68(EmulatorStatePtr)
         sth     code_ptr, 4(disp_table)
         cmpwi   cr6, addr, 0
@@ -75,7 +75,7 @@ L_100C8:
         addi    disp_table, disp_table, 12
         sth     r23, 2(disp_table)
 L_100FC:
-        bltl    cr2, L_10234
+        btl     cr_special_event_pending, L_10234
         lhz     addr, 0xB2A(EmulatorStatePtr)
         cmpwi   cr7, addr, 0
         lwz     immed_data, 0xB14(EmulatorStatePtr)
@@ -109,13 +109,13 @@ L_10150:
         addi    disp_table, disp_table, -12
         cmplw   cr7, disp_table, immed_data
 L_10178:
-        bltl    cr2, L_10234
+        btl     cr_special_event_pending, L_10234
         bge     cr7, L_10150
         lwz     code_ptr, 0xB2C(EmulatorStatePtr)
         addi    base_disp, base_disp, 0x10B8
         addi    code_ptr, code_ptr, -4
 L_1018C:
-        bltl    cr2, L_10234
+        btl     cr_special_event_pending, L_10234
         addi    disp_table, disp_table, 12
         lha     addr, 4(disp_table)
         lwz     data, 0xB20(EmulatorStatePtr)
@@ -136,7 +136,7 @@ L_1018C:
         mtlr    addr
         blr
 L_101DC:
-        bltl    cr2, L_10234
+        btl     cr_special_event_pending, L_10234
         lwz     disp_table, 0xB14(EmulatorStatePtr)
         addi    disp_table, disp_table, -12
 L_101E8:
@@ -147,7 +147,7 @@ L_101E8:
         bsol    cr4, L_17748
         b       L_101E8
 L_10200:
-        bltl    cr2, L_10234
+        btl     cr_special_event_pending, L_10234
         addi    code_ptr, code_ptr, 4
         lwz     addr, 0xB20(EmulatorStatePtr)
 L_1020C:
@@ -2695,12 +2695,12 @@ L_12738:
         add     a7, d0, zero
         add     a0, a7, zero
         add     a0, addr, zero
-        addco.  d0, d0, zero
-        addco.  d0, a7, zero
-        addco.  addr, zero, zero
+        addco.  d0, d0, zero                            // test d0: N,Z from result; V=0, C=0
+        addco.  d0, a7, zero                            // d0 = a7; N,Z from result; V=0, C=0
+        addco.  addr, zero, zero                        // addr = zero; N,Z from result; V=0, C=0
         lwz     addr, 0(0)
         lwz     addr, 0(addr)
-        addco.  addr, addr, zero
+        addco.  addr, addr, zero                        // test addr: N,Z from result; V=0, C=0
         stwu    addr, -4(a7)
         b       L_127C0
         ALIGN(64)
@@ -2809,7 +2809,7 @@ L_12910:
         rlwimi  d0, a7, 0, 16, 31                       // d0[15:0] = a7[15:0]
         rlwimi  d0, addr, 0, 16, 31                     // d0[15:0] = addr[15:0]
         extsh   addr, zero                              // addr = sign-extended low word of zero
-        addco.  addr, addr, zero
+        addco.  addr, addr, zero                        // test addr: N,Z from result; V=0, C=0
         b       L_12940
         ALIGN(64)
 L_12940:
@@ -2880,7 +2880,7 @@ L_129BC:
         rlwimi  d0, d0, 0, 24, 31                       // d0[7:0] = d0[7:0]
         rlwimi  d0, addr, 0, 24, 31                     // d0[7:0] = addr[7:0]
         extsb   addr, zero                              // addr = sign-extended low byte of zero
-        addco.  addr, addr, zero
+        addco.  addr, addr, zero                        // test addr: N,Z from result; V=0, C=0
         lbz     addr, 0(a1)
         addi    a1, a1, 1
         cmpwi   cr7, addr, 0
@@ -2888,7 +2888,7 @@ L_129BC:
 L_12A50:
         addi    a0, a0, 1
         bne     cr7, L_12A50
-        addco.  zero, zero, zero
+        addco.  zero, zero, zero                        // N=0, Z=1, V=0, C=0
         lhz     rtn_addr, 0(disp_table)
         lwz     addr, 0x1774(base_disp)
         extsb   data, prefetch_data                     // data = sign-extended low byte of prefetch_data
@@ -2911,8 +2911,8 @@ L_12A9C:
         stwu    addr, 4(code_ptr)
         b       L_1018C
         li      d0, 0
-        addco.  d0, zero, zero
-        addco.  d0, d0, zero
+        addco.  d0, zero, zero                          // d0 = zero; N,Z from result; V=0, C=0
+        addco.  d0, d0, zero                            // test d0: N,Z from result; V=0, C=0
         rlwinm  data, prefetch_data, 23, 29, 31         // data = prefetch_data[11:9]
         cmpwi   cr7, data, 7
         lwz     addr, 0x1818(base_disp)
@@ -3014,10 +3014,10 @@ L_12C14:
         add     addr, addr, data
         stwu    addr, 4(code_ptr)
         b       L_12B94
-        addco.  d0, zero, zero
+        addco.  d0, zero, zero                          // d0 = zero; N,Z from result; V=0, C=0
         rlwimi  d0, zero, 0, 16, 31                     // d0[15:0] = zero[15:0]
         rlwimi  d0, zero, 0, 24, 31                     // d0[7:0] = zero[7:0]
-        addco.  zero, zero, zero
+        addco.  zero, zero, zero                        // N=0, Z=1, V=0, C=0
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr6, rtn_addr, 0x0000
         lwz     addr, 0x19BC(base_disp)
@@ -3646,7 +3646,7 @@ L_134AC:
         addco.  addr, d0, addr
         add     a0, a0, addr
         add     a7, a7, addr
-        mfxer   ccr_x
+        mfxer   ccr_x                                   // X = C (ccr_x keeps a copy of XER)
         addco.  addr, addr, rtn_addr
         addi    d0, d0, 0
         addi    a7, a7, 0
@@ -3657,7 +3657,7 @@ L_134AC:
         crmove  4*cr7+so, eq
         addeo.  d0, d0, d0                              // d0 = d0 + d0 + CA
         crand   eq, eq, 4*cr7+so                        // cr0.eq = cr0.eq & cr7.so
-        mfxer   ccr_x
+        mfxer   ccr_x                                   // X = C (ccr_x keeps a copy of XER)
         lwzu    rtn_addr, -4(a0)
         lwzu    rtn_addr, -4(a7)
         lwzu    addr, -4(a0)
@@ -3668,7 +3668,7 @@ L_134AC:
         addeo.  addr, addr, rtn_addr                    // addr = addr + rtn_addr + CA
         stw     addr, 0(a0)
         crand   eq, eq, 4*cr7+so                        // cr0.eq = cr0.eq & cr7.so
-        mfxer   ccr_x
+        mfxer   ccr_x                                   // X = C (ccr_x keeps a copy of XER)
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr7, rtn_addr, 0x0001
         lis     immed_data, 0x0060
@@ -4025,7 +4025,7 @@ L_139B8:
         crmove  4*cr7+so, eq
         addco.  addr, addr, rtn_addr
         crand   eq, eq, 4*cr7+so                        // cr0.eq = cr0.eq & cr7.so
-        mfxer   ccr_x
+        mfxer   ccr_x                                   // X = C (ccr_x keeps a copy of XER)
         rlwimi  d0, addr, 16, 16, 31                    // d0[15:0] = addr[31:16]
         lhzu    rtn_addr, -2(a0)
         lhzu    rtn_addr, -2(a7)
@@ -4041,7 +4041,7 @@ L_139B8:
         srwi    addr, addr, 16
         sth     addr, 0(a0)
         crand   eq, eq, 4*cr7+so                        // cr0.eq = cr0.eq & cr7.so
-        mfxer   ccr_x
+        mfxer   ccr_x                                   // X = C (ccr_x keeps a copy of XER)
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr7, rtn_addr, 0x0001
         lis     immed_data, 0x0060
@@ -4305,7 +4305,7 @@ L_13DEC:
         crmove  4*cr7+so, eq
         addco.  addr, addr, rtn_addr
         crand   eq, eq, 4*cr7+so                        // cr0.eq = cr0.eq & cr7.so
-        mfxer   ccr_x
+        mfxer   ccr_x                                   // X = C (ccr_x keeps a copy of XER)
         rlwimi  d0, addr, 8, 24, 31                     // d0[7:0] = addr[31:24]
         lbzu    rtn_addr, -1(a0)
         lbzu    rtn_addr, -2(a7)
@@ -4321,7 +4321,7 @@ L_13DEC:
         srwi    addr, addr, 24
         stb     addr, 0(a0)
         crand   eq, eq, 4*cr7+so                        // cr0.eq = cr0.eq & cr7.so
-        mfxer   ccr_x
+        mfxer   ccr_x                                   // X = C (ccr_x keeps a copy of XER)
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr6, rtn_addr, 0x0001
         lis     immed_data, 0x0060
@@ -5048,7 +5048,7 @@ L_1487C:
         clrlwi  addr, d0, 16                            // addr = d0 & 0x0000FFFF
         clrlwi  addr, addr, 16                          // addr = addr & 0x0000FFFF
         clrlwi  rtn_addr, d0, 16                        // rtn_addr = d0 & 0x0000FFFF
-        addco   zero, zero, zero
+        addco   zero, zero, zero                        // V=0, C=0
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr7, rtn_addr, 0x0001
         ble     cr7, L_14968
@@ -5134,7 +5134,7 @@ L_149E0:
         extsh.  addr, rtn_addr                          // addr = sign-extended low word of rtn_addr
         subf    immed_data, immed_data, data            // immed_data = data - immed_data
         cmplw   cr7, addr, rtn_addr
-        addco   zero, zero, zero
+        addco   zero, zero, zero                        // V=0, C=0
         rlwimi  rtn_addr, immed_data, 16, 0, 15         // rtn_addr[31:16] = immed_data[15:0]
         btlr_likely 4*cr7+eq
         b       L_14A14
@@ -5161,7 +5161,7 @@ L_14A40:
         mullw   immed_data, rtn_addr, addr
         extsh.  addr, rtn_addr                          // addr = sign-extended low word of rtn_addr
         subf    immed_data, immed_data, data            // immed_data = data - immed_data
-        addco   zero, zero, zero
+        addco   zero, zero, zero                        // V=0, C=0
         rlwimi  rtn_addr, immed_data, 16, 0, 15         // rtn_addr[31:16] = immed_data[15:0]
         blr
         b       L_14A80
@@ -5173,7 +5173,7 @@ L_14A80:
         extsh.  addr, rtn_addr                          // addr = sign-extended low word of rtn_addr
         subf    immed_data, immed_data, data            // immed_data = data - immed_data
         cmplw   cr7, addr, rtn_addr
-        addco   zero, zero, zero
+        addco   zero, zero, zero                        // V=0, C=0
         rlwimi  rtn_addr, immed_data, 16, 0, 15         // rtn_addr[31:16] = immed_data[15:0]
         btlr_likely 4*cr7+eq
         b       L_14A14
@@ -5303,9 +5303,9 @@ L_14C48:
         addc    addr, addr, rtn_addr
         subfco. rtn_addr, addr, a7                      // rtn_addr = a7 - addr
         subfco. rtn_addr, addr, rtn_addr                // rtn_addr = rtn_addr - addr
-        addco.  addr, d0, zero
-        addco.  addr, a7, zero
-        addco.  addr, addr, zero
+        addco.  addr, d0, zero                          // addr = d0; N,Z from result; V=0, C=0
+        addco.  addr, a7, zero                          // addr = a7; N,Z from result; V=0, C=0
+        addco.  addr, addr, zero                        // test addr: N,Z from result; V=0, C=0
         lhz     addr, 12(disp_table)
         bl      L_15248
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
@@ -5951,7 +5951,7 @@ L_15574:
         or.     d0, d0, d0
         or.     d0, d0, addr
         or.     addr, addr, d0
-        addco   zero, zero, zero
+        addco   zero, zero, zero                        // V=0, C=0
         or.     addr, addr, rtn_addr
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr7, rtn_addr, 0x0001
@@ -6029,7 +6029,7 @@ L_15680:
         mr      addr, d0
         rlwimi  d0, addr, 0, 16, 31                     // d0[15:0] = addr[15:0]
         extsh   addr, zero                              // addr = sign-extended low word of zero
-        addco.  addr, addr, zero
+        addco.  addr, addr, zero                        // test addr: N,Z from result; V=0, C=0
         ori     addr, rtn_addr, 0x0000
         ori     d0, d0, 0x0000
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
@@ -6107,7 +6107,7 @@ L_157A8:
         mr      addr, d0
         rlwimi  d0, addr, 0, 24, 31                     // d0[7:0] = addr[7:0]
         extsb   addr, zero                              // addr = sign-extended low byte of zero
-        addco.  addr, addr, zero
+        addco.  addr, addr, zero                        // test addr: N,Z from result; V=0, C=0
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr6, rtn_addr, 0x0001
         lis     immed_data, 0x0060
@@ -6586,7 +6586,7 @@ L_15E70:
         not     addr, d0
         rlwimi  d0, addr, 0, 16, 31                     // d0[15:0] = addr[15:0]
         rlwimi  d0, addr, 0, 24, 31                     // d0[7:0] = addr[7:0]
-        addco   zero, zero, zero
+        addco   zero, zero, zero                        // V=0, C=0
         extsh.  addr, addr                              // addr = sign-extended low word of addr
         extsb.  addr, addr                              // addr = sign-extended low byte of addr
         b       L_162D4
@@ -7139,7 +7139,7 @@ L_1667C:
         stwu    addr, 4(code_ptr)
         b       L_1018C
         addo    zero, zero, zero
-        mfxer   ccr_x
+        mfxer   ccr_x                                   // X = C (ccr_x keeps a copy of XER)
         mtxer   ccr_x
         rlwinm  d0, d0, 0, 0, 31                        // d0 = d0[31:0]
         addc.   d0, d0, d0
@@ -7460,7 +7460,7 @@ L_16B2C:
         b       L_1018C
         eieio
         rotlwi. d0, d0, 16                              // d0 = d0 with halves swapped
-        addco   zero, zero, zero
+        addco   zero, zero, zero                        // V=0, C=0
         lwz     addr, 0x58A4(base_disp)
         rlwinm  data, prefetch_data, 21, 8, 10          // data = prefetch_data[2:0] << 21
         add     addr, addr, data
@@ -7488,7 +7488,7 @@ L_16B9C:
         rlwimi  d0, addr, 0, 16, 31                     // d0[15:0] = addr[15:0]
         extsh.  d0, d0                                  // d0 = sign-extended low word of d0
         extsb.  d0, d0                                  // d0 = sign-extended low byte of d0
-        addco   zero, zero, zero
+        addco   zero, zero, zero                        // V=0, C=0
         rlwinm  addr, prefetch_data, 23, 29, 31         // addr = prefetch_data[11:9]
         cmpwi   cr7, addr, 7
         rlwinm  immed_data, prefetch_data, 12, 8, 10    // immed_data = prefetch_data[11:9] << 21
@@ -7709,7 +7709,7 @@ L_16EB0:
         mtctr   data
         stw     a2, 16(a7)
         stw     addr, 24(a7)
-        blt     cr2, L_1782C
+        bt      cr_special_event_pending, L_1782C
         beqctr  cr6
         b       L_17C94
         b       L_16F20
@@ -7734,7 +7734,7 @@ L_16F20:
         stw     a2, 20(a7)
         mtctr   data
         stw     addr, 28(a7)
-        blt     cr2, L_1782C
+        bt      cr_special_event_pending, L_1782C
         beqctr  cr6
         b       L_17C94
         ALIGN(64)
@@ -7751,7 +7751,7 @@ L_16F80:
         cmpw    cr6, rtn_addr, pc
         mtctr   immed_data
         stwu    data, -4(a7)
-        blt     cr2, L_1782C
+        bt      cr_special_event_pending, L_1782C
         beqctr  cr6
         b       L_17C94
         ALIGN(64)
@@ -7766,7 +7766,7 @@ L_16FC0:
         lwz     immed_data, 4(base_disp)
         cmpw    cr6, rtn_addr, pc
         mtctr   immed_data
-        blt     cr2, L_1782C
+        bt      cr_special_event_pending, L_1782C
         beqctr  cr6
         b       L_17C94
 L_16FF4:
@@ -8217,7 +8217,7 @@ L_175D0:
         lwz     data, 24(a7)
         slwi.   addr, d0, 16
         lwz     a1, 4(a7)
-        addco   zero, zero, zero
+        addco   zero, zero, zero                        // V=0, C=0
         lwz     d1, 8(a7)
         lwz     d2, 12(a7)
         lwz     a2, 16(a7)
@@ -8226,7 +8226,7 @@ L_175D0:
         lwz     data, 20(a7)
         slwi.   addr, d0, 16
         lwz     a1, 0(a7)
-        addco   zero, zero, zero
+        addco   zero, zero, zero                        // V=0, C=0
         lwz     d1, 4(a7)
         lwz     d2, 8(a7)
         lwz     a2, 12(a7)
@@ -8254,8 +8254,8 @@ L_17650:
         addis   pc, pc, 0
 L_17684:
         bl      L_17684
-        bt_unlikely 4*cr2+lt, L_17684
-        bf_likely 4*cr2+lt, L_17690
+        bt_unlikely cr_special_event_pending, L_17684
+        bf_likely cr_special_event_pending, L_17690
 L_17690:
         b       L_17690
 L_17694:
@@ -8378,17 +8378,17 @@ L_1781C:
         b       L_177C4
 L_1782C:
         lha     prefetch_data, -2(pc)
-        rlwimi  disp_table, prefetch_data, 3, 13, 28    // disp_table[18:3] = prefetch_data[15:0]
-        mtlr    disp_table
+        rlwimi  disp_table, prefetch_data, 3, 13, 28    // DECODE1: disp_table[18:3] = opcode in prefetch_data
+        mtlr    disp_table                              // DECODE2: LR = address of the next dispatch entry
         lwz     r23, 0xA00(EmulatorStatePtr)
         lha     prefetch_data, 0(pc)
-        bflr_likely 4*cr2+lt
+        bflr_likely cr_special_event_pending            // DISPATCH unless a special event is pending
         lwz     rtn_addr, 0x814(EmulatorStatePtr)
         rlwimi  sr_and_flags, pc, 9, 22, 22             // sr_and_flags[9] = pc[0]
         mtlr    rtn_addr
         mtcrf   0x0F, sr_and_flags                      // cr4..cr7 = sr_and_flags[15:0]
-        crmove  4*cr2+lt, 4*cr5+gt
-        mtctr   disp_table
+        crmove  cr_special_event_pending, 4*cr5+gt
+        mtctr   disp_table                              // DECODE2: CTR = address of the next dispatch entry
         blrl
         lwz     r23, 0xB04(EmulatorStatePtr)
         rlwimi  r23, pc, 4, 16, 26                      // r23[15:5] = pc[11:1]
@@ -8431,7 +8431,7 @@ L_178A0:
         cmpwi   cr7, rtn_addr, -0x5502
         cmpwi   cr6, rtn_addr, -0x1FE
         lwz     addr, 0(base_disp)
-        bt_unlikely 4*cr2+lt, L_1782C
+        bt_unlikely cr_special_event_pending, L_1782C
         lwz     data, 4(base_disp)
         bt_unlikely 4*cr7+eq, L_1782C
         cmpw    cr5, addr, pc
@@ -8458,7 +8458,7 @@ L_17940:
         lwz     data, 0xB80(EmulatorStatePtr)
         cmpwi   cr6, rtn_addr, -0x5502
         cmpwi   cr7, rtn_addr, -0x1FE
-        bt_unlikely 4*cr2+lt, L_1782C
+        bt_unlikely cr_special_event_pending, L_1782C
         beqlr   cr6
         beqlr   cr7
         cmplwi  cr6, addr, 0x0000
@@ -8498,7 +8498,7 @@ L_179EC:
         add     data, data, rtn_addr
 L_17A08:
         beq     cr6, L_17A30
-        blt     cr2, L_17AAC
+        bt      cr_special_event_pending, L_17AAC
         li      rtn_addr, 64
         mtctr   rtn_addr
         addi    addr, addr, -1
@@ -8520,7 +8520,7 @@ L_17A30:
         li      immed_data, 64
 L_17A54:
         beq     cr6, L_17A84
-        blt     cr2, L_17AA4
+        bt      cr_special_event_pending, L_17AA4
         bge     cr7, L_17A64
         mr      immed_data, addr
 L_17A64:
@@ -8569,7 +8569,7 @@ L_17AC0:
         blt     cr6, L_17AFC
         li      immed_data, 64
 L_17AFC:
-        blt     cr2, L_17AB0
+        bt      cr_special_event_pending, L_17AB0
         mtctr   immed_data
         stw     immed_data, 0xB8C(EmulatorStatePtr)
 L_17B08:
@@ -8675,7 +8675,7 @@ L_17C80:
         stw     pc, 0(base_disp)
         stw     rtn_addr, 4(base_disp)
         bctr
-        blt     cr2, L_1782C
+        bt      cr_special_event_pending, L_1782C
         lwz     base_disp, 0xB14(EmulatorStatePtr)
 L_17C94:
         lwz     r23, 0xB04(EmulatorStatePtr)

@@ -1,0 +1,150 @@
+# Special events, exceptions and interrupts.
+
+@0D114 process_special_event
+    ===========================================================================
+    Special event processing
+    ===========================================================================
+    Every emulation routine ends with DISPATCH, which falls through to here
+    instead of entering the next instruction when cr_special_event_pending is
+    set.  At this point pc and prefetch_data already describe the next
+    instruction and disp_table addresses its dispatch table entry.
+
+    The events, in the order they are tested:
+        odd pc              -> address error exception
+        trace pending       -> trace exception
+        interrupt pending   -> interrupt exception, if its level beats the mask
+        test-mode flags     -> debugging / profiling hooks
+        SR T1/T0 set        -> arrange a trace exception after the next instruction
+
+    The first thing done is an indirect call through a hook in the emulator
+    state, which normally points straight back to special_event_continue.
+0D114 hook; normally special_event_continue
+0D118 flag_odd_pc = low bit of pc
+0D120 cr4..cr7 = flag byte and SR byte of sr_and_flags
+0D124 pending = "other event" flag (re-evaluated below)
+0D128 CTR = dispatch entry of the next instruction
+
+@0D130 special_event_continue
+0D130 odd pc
+0D134 trace pending from the previous instruction
+0D138 trace needed if T1 or T0
+0D13C look for a pending interrupt
+0D148 nothing left to do: run the instruction
+
+@0D14C arm_trace
+    The next instruction is to be traced.  Remember where it starts and keep
+    the special event pending so that control comes back here once it has
+    run.  With T1 (trace all) that is unconditional; with T0 (trace on change
+    of flow) the opcode is examined and trace_pending is only left set for
+    instructions that change the flow of control.
+0D150 pc is 2 past the instruction
+0D158 flag_trace_pending
+0D15C T1: trace every instruction
+0D160 data = the opcode about to run
+
+@0D228 take_trace_exception
+0D238 format 2, vector offset 0x24 (trace)
+0D240 format 2 carries the address of the traced instruction
+
+@0D248 take_interrupt
+    Take the pending interrupt if its level is above the SR mask (level 7 is
+    not maskable).  Uses the autovector for the level, counts the interrupt,
+    and if the master stack is active builds the 68020 "throwaway" frame on
+    the interrupt stack as well.
+0D268 0xC0 + 4*level: per-level interrupt counter in the state block
+0D274 0x60 + 4*level: autovector offset
+0D288 SR interrupt mask = level
+0D290 push SR
+0D294 push PC
+0D298 push format/vector word
+0D2A0 clear SR M bit
+0D2A8 format 1 (throwaway) for the second frame
+
+@0D2B4 test_mode_events
+    The upper half of sr_and_flags holds debugging switches.  Each one that
+    is set calls a small routine before the instruction runs.
+0D2BC bit 0x2000_0000: consistency checks
+0D2C0 bit 0x0001_0000: count instructions
+0D2C4 bit 0x0002_0000: count instructions per opcode
+0D2D0 bit 0x0004_0000: call a hook
+
+@0D2F8 check_prefetch_consistency
+    Debugging aid: trap if prefetch_data, CTR or disp_table do not agree with
+    the instruction stream at pc.
+@0D31C count_instruction
+@0D32C count_opcode
+
+@0D344 check_double_fault
+    Trap to the kernel if a group 1 exception (bus or address error) happens
+    while another is still being processed.
+@0D34C take_address_error
+    Build a 68020 format $B (long bus fault) frame for an address error.
+0D34C clear the odd-pc marker in disp_table
+0D350 flag_group_1_active
+0D358 format $B, vector offset 0x00C (address error)
+0D36C the frame is 92 bytes in all
+
+@0D3E4 check_interrupt
+    Called from special event processing.  Returns unless an interrupt above
+    the current mask is requested; otherwise marks it pending.
+
+@0D440 native_exception_handler
+    Entered by the kernel when the processor takes an exception while the
+    emulator context is running (the address is registered at EmEntry).
+    Converts the kernel's description of the fault into the information a
+    68K bus error frame needs.
+
+@0D4C8 take_bus_error
+    Build a 68020 format $B (long bus fault) frame for a bus error.
+0D4E0 format $B, vector offset 0x008 (bus error)
+
+@0D750 take_illegal_instruction
+    Dispatch table entries for unimplemented opcodes load a handler address
+    from the state block into rtn_addr and branch here (vector 4), to
+    take_fline (vector 11) or take_aline (vector 10).  The handler is
+    normally take_exception, but can be replaced.
+0D754 vector offset 0x10: illegal instruction
+@0D760 take_fline
+0D764 vector offset 0x2C: line 1111 emulator
+@0D770 take_aline
+0D778 vector offset 0x28: line 1010 emulator
+
+@0D780 take_exception
+    ===========================================================================
+    Exception entry
+    ===========================================================================
+    Build a 68K exception stack frame and continue at the handler named by
+    the vector.
+
+    On entry: immed_data = format/vector word for the frame (format in bits
+    15:12, vector offset in bits 11:0).  Entry at take_exception_sr_built is
+    used by callers that have already put the SR high byte in data and set
+    or cleared cr7.so themselves; cr7.so set means the caller wants control
+    back (through LR) after the stack has been switched, so that it can push
+    the extra words of a longer frame before the common SR/PC/format words.
+0D780 plain frame: no extra words
+0D784 data = SR high byte, in place
+@0D788 take_exception_sr_built
+0D788 pc = address of the instruction
+0D78C clear T1, T0 and trace_pending
+@0D790 take_exception_pc_set
+0D790 CCR bit 4 (X) from ccr_x
+0D798 CCR bit 3 (N) from cr0.lt
+0D79C CCR bit 2 (Z) from cr0.eq
+0D7A4 CCR bits 1:0 (V, C) from XER[OV], XER[CA]
+@0D7A8 enter_supervisor
+0D7A8 already in supervisor state
+0D7B0 save the user stack pointer
+0D7B4 assume the interrupt stack
+0D7B8 set SR S bit
+0D7C4 M bit set: the master stack instead
+@0D7C8 push_exception_frame
+0D7C8 let the caller push its extra frame words first
+0D7CC push SR
+0D7D0 push PC
+0D7D4 vector offset
+0D7D8 pc = handler address from the vector table
+0D7DC push format/vector word
+0D7E4 cr7.so = low bit of the new pc
+0D7F4 odd handler address: address error
+0D7F8 clear flag_group_1_active

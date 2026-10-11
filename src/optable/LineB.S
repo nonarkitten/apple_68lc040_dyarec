@@ -5,7 +5,7 @@
 
 // ---- $B000-$B03F --------------------------------------------------------
         addco.  zero, zero, zero                        // B000  CMP.B     D0,D0
-        b       move_add_etc_any_any
+        b       fetch
         slwi    data, d1, 24                            // B001  CMP.B     D1,D0
         b       cmp_b_dn_d0
         slwi    data, d2, 24                            // B002  CMP.B     D2,D0
@@ -21,21 +21,21 @@
         slwi    data, d7, 24                            // B007  CMP.B     D7,D0
         b       cmp_b_dn_d0
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B008  CMP.B     A0,D0   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B009  CMP.B     A1,D0   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B00A  CMP.B     A2,D0   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B00B  CMP.B     A3,D0   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B00C  CMP.B     A4,D0   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B00D  CMP.B     A5,D0   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B00E  CMP.B     A6,D0   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B00F  CMP.B     A7,D0   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lbz     data, 0(a0)                             // B010  CMP.B     (A0),D0
         b       cmp_b_mem_d0_2
         lbz     data, 0(a1)                             // B011  CMP.B     (A1),D0
@@ -127,15 +127,15 @@
         slwi    data, d0, 24                            // B03C  CMP.B     #<data>,D0
         b       cmp_b_imm_dn
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B03D  CMP.B     <ea 7.5>,D0   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B03E  CMP.B     <ea 7.6>,D0   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B03F  CMP.B     <ea 7.7>,D0   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $B040-$B07F --------------------------------------------------------
         addco.  zero, zero, zero                        // B040  CMP.W     D0,D0
-        b       move_add_etc_any_any
+        b       fetch
         slwi    data, d1, 16                            // B041  CMP.W     D1,D0
         b       cmp_w_reg_d0
         slwi    data, d2, 16                            // B042  CMP.W     D2,D0
@@ -257,15 +257,15 @@
         slwi    data, d0, 16                            // B07C  CMP.W     #<data>,D0
         b       cmp_w_imm_dn
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B07D  CMP.W     <ea 7.5>,D0   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B07E  CMP.W     <ea 7.6>,D0   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B07F  CMP.W     <ea 7.7>,D0   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $B080-$B0BF --------------------------------------------------------
         addco.  zero, zero, zero                        // B080  CMP.L     D0,D0
-        b       move_add_etc_any_any
+        b       fetch
         mr      data, d1                                // B081  CMP.L     D1,D0
         b       cmp_l_mem_d0_2
         mr      data, d2                                // B082  CMP.L     D2,D0
@@ -387,11 +387,11 @@
         mr      data, d0                                // B0BC  CMP.L     #<data>,D0
         b       cmpi_l_imm_mem_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B0BD  CMP.L     <ea 7.5>,D0   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B0BE  CMP.L     <ea 7.6>,D0   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B0BF  CMP.L     <ea 7.7>,D0   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $B0C0-$B0FF --------------------------------------------------------
         extsh   data, d0                                // B0C0  CMPA.W    D0,A0
@@ -517,15 +517,15 @@
         mr      data, prefetch_data                     // B0FC  CMPA.W    #<data>,A0
         b       cmpa_ea_a0
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B0FD  CMPA.W    <ea 7.5>,A0   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B0FE  CMPA.W    <ea 7.6>,A0   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B0FF  CMPA.W    <ea 7.7>,A0   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $B100-$B13F --------------------------------------------------------
         clrrwi  d0, d0, 8                               // B100  EOR.B     D0,D0
-        b       clr_eor_reg_any
+        b       update_nzvc_zero
         xor     data, d1, d0                            // B101  EOR.B     D0,D1
         b       move_b_mem_d1
         xor     data, d2, d0                            // B102  EOR.B     D0,D2
@@ -649,21 +649,21 @@ op_B117:
         ori     rtn_addr, code_ptr, eor_b_d0_mem_2 - cb  // B139  EOR.B     D0,(xxx).L
         b       cea_x_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B13A  EOR.B     D0,(d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B13B  EOR.B     D0,(d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B13C  EOR.B     D0,#<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B13D  EOR.B     D0,<ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B13E  EOR.B     D0,<ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B13F  EOR.B     D0,<ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $B140-$B17F --------------------------------------------------------
         clrrwi  d0, d0, 16                              // B140  EOR.W     D0,D0
-        b       clr_eor_reg_any
+        b       update_nzvc_zero
         xor     data, d1, d0                            // B141  EOR.W     D0,D1
         b       or_eor_etc_w_reg_d1
         xor     data, d2, d0                            // B142  EOR.W     D0,D2
@@ -787,35 +787,35 @@ op_B157:
         ori     rtn_addr, code_ptr, eor_w_d0_mem_2 - cb  // B179  EOR.W     D0,(xxx).L
         b       cea_x_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B17A  EOR.W     D0,(d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B17B  EOR.W     D0,(d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B17C  EOR.W     D0,#<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B17D  EOR.W     D0,<ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B17E  EOR.W     D0,<ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B17F  EOR.W     D0,<ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $B180-$B1BF --------------------------------------------------------
         addco.  d0, zero, zero                          // B180  EOR.L     D0,D0
-        b       move_add_etc_any_any
+        b       fetch
         xor.    d1, d1, d0                              // B181  EOR.L     D0,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         xor.    d2, d2, d0                              // B182  EOR.L     D0,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         xor.    d3, d3, d0                              // B183  EOR.L     D0,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         xor.    d4, d4, d0                              // B184  EOR.L     D0,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         xor.    d5, d5, d0                              // B185  EOR.L     D0,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         xor.    d6, d6, d0                              // B186  EOR.L     D0,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         xor.    d7, d7, d0                              // B187  EOR.L     D0,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         ori     rtn_addr, code_ptr, cmpm_l_mem_mem - cb  // B188  CMPM.L    (A0)+,(A0)+
         b       fea_l_30
         ori     rtn_addr, code_ptr, cmpm_l_mem_mem - cb  // B189  CMPM.L    (A1)+,(A0)+
@@ -925,17 +925,17 @@ op_B197:
         ori     rtn_addr, code_ptr, eor_l_d0_mem_2 - cb  // B1B9  EOR.L     D0,(xxx).L
         b       cea_x_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B1BA  EOR.L     D0,(d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B1BB  EOR.L     D0,(d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B1BC  EOR.L     D0,#<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B1BD  EOR.L     D0,<ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B1BE  EOR.L     D0,<ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B1BF  EOR.L     D0,<ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $B1C0-$B1FF --------------------------------------------------------
         mr      data, d0                                // B1C0  CMPA.L    D0,A0
@@ -955,7 +955,7 @@ op_B197:
         mr      data, d7                                // B1C7  CMPA.L    D7,A0
         b       cmpa_mem_a0
         addco.  zero, zero, zero                        // B1C8  CMPA.L    A0,A0
-        b       move_add_etc_any_any
+        b       fetch
         mr      data, a1                                // B1C9  CMPA.L    A1,A0
         b       cmpa_mem_a0
         mr      data, a2                                // B1CA  CMPA.L    A2,A0
@@ -1061,17 +1061,17 @@ op_B197:
         mr      data, a0                                // B1FC  CMPA.L    #<data>,A0
         b       cmpi_l_imm_mem_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B1FD  CMPA.L    <ea 7.5>,A0   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B1FE  CMPA.L    <ea 7.6>,A0   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B1FF  CMPA.L    <ea 7.7>,A0   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $B200-$B23F --------------------------------------------------------
         slwi    data, d0, 24                            // B200  CMP.B     D0,D1
         b       cmp_b_dn_d1
         addco.  zero, zero, zero                        // B201  CMP.B     D1,D1
-        b       move_add_etc_any_any
+        b       fetch
         slwi    data, d2, 24                            // B202  CMP.B     D2,D1
         b       cmp_b_dn_d1
         slwi    data, d3, 24                            // B203  CMP.B     D3,D1
@@ -1085,21 +1085,21 @@ op_B197:
         slwi    data, d7, 24                            // B207  CMP.B     D7,D1
         b       cmp_b_dn_d1
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B208  CMP.B     A0,D1   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B209  CMP.B     A1,D1   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B20A  CMP.B     A2,D1   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B20B  CMP.B     A3,D1   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B20C  CMP.B     A4,D1   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B20D  CMP.B     A5,D1   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B20E  CMP.B     A6,D1   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B20F  CMP.B     A7,D1   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lbz     data, 0(a0)                             // B210  CMP.B     (A0),D1
         b       cmp_b_mem_d1_2
         lbz     data, 0(a1)                             // B211  CMP.B     (A1),D1
@@ -1191,17 +1191,17 @@ op_B197:
         slwi    data, d1, 24                            // B23C  CMP.B     #<data>,D1
         b       cmp_b_imm_dn
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B23D  CMP.B     <ea 7.5>,D1   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B23E  CMP.B     <ea 7.6>,D1   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B23F  CMP.B     <ea 7.7>,D1   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $B240-$B27F --------------------------------------------------------
         slwi    data, d0, 16                            // B240  CMP.W     D0,D1
         b       cmp_w_reg_d1
         addco.  zero, zero, zero                        // B241  CMP.W     D1,D1
-        b       move_add_etc_any_any
+        b       fetch
         slwi    data, d2, 16                            // B242  CMP.W     D2,D1
         b       cmp_w_reg_d1
         slwi    data, d3, 16                            // B243  CMP.W     D3,D1
@@ -1321,17 +1321,17 @@ op_B197:
         slwi    data, d1, 16                            // B27C  CMP.W     #<data>,D1
         b       cmp_w_imm_dn
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B27D  CMP.W     <ea 7.5>,D1   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B27E  CMP.W     <ea 7.6>,D1   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B27F  CMP.W     <ea 7.7>,D1   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $B280-$B2BF --------------------------------------------------------
         mr      data, d0                                // B280  CMP.L     D0,D1
         b       cmp_l_mem_d1_2
         addco.  zero, zero, zero                        // B281  CMP.L     D1,D1
-        b       move_add_etc_any_any
+        b       fetch
         mr      data, d2                                // B282  CMP.L     D2,D1
         b       cmp_l_mem_d1_2
         mr      data, d3                                // B283  CMP.L     D3,D1
@@ -1451,11 +1451,11 @@ op_B197:
         mr      data, d1                                // B2BC  CMP.L     #<data>,D1
         b       cmpi_l_imm_mem_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B2BD  CMP.L     <ea 7.5>,D1   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B2BE  CMP.L     <ea 7.6>,D1   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B2BF  CMP.L     <ea 7.7>,D1   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $B2C0-$B2FF --------------------------------------------------------
         extsh   data, d0                                // B2C0  CMPA.W    D0,A1
@@ -1581,17 +1581,17 @@ op_B197:
         mr      data, prefetch_data                     // B2FC  CMPA.W    #<data>,A1
         b       cmpa_ea_a1
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B2FD  CMPA.W    <ea 7.5>,A1   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B2FE  CMPA.W    <ea 7.6>,A1   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B2FF  CMPA.W    <ea 7.7>,A1   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $B300-$B33F --------------------------------------------------------
         xor     data, d0, d1                            // B300  EOR.B     D1,D0
         b       move_b_mem_d0
         clrrwi  d1, d1, 8                               // B301  EOR.B     D1,D1
-        b       clr_eor_reg_any
+        b       update_nzvc_zero
         xor     data, d2, d1                            // B302  EOR.B     D1,D2
         b       move_b_mem_d2
         xor     data, d3, d1                            // B303  EOR.B     D1,D3
@@ -1713,23 +1713,23 @@ op_B317:
         ori     rtn_addr, code_ptr, eor_b_d1_mem_2 - cb  // B339  EOR.B     D1,(xxx).L
         b       cea_x_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B33A  EOR.B     D1,(d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B33B  EOR.B     D1,(d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B33C  EOR.B     D1,#<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B33D  EOR.B     D1,<ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B33E  EOR.B     D1,<ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B33F  EOR.B     D1,<ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $B340-$B37F --------------------------------------------------------
         xor     data, d0, d1                            // B340  EOR.W     D1,D0
         b       or_eor_etc_w_reg_d0
         clrrwi  d1, d1, 16                              // B341  EOR.W     D1,D1
-        b       clr_eor_reg_any
+        b       update_nzvc_zero
         xor     data, d2, d1                            // B342  EOR.W     D1,D2
         b       or_eor_etc_w_reg_d2
         xor     data, d3, d1                            // B343  EOR.W     D1,D3
@@ -1851,35 +1851,35 @@ op_B357:
         ori     rtn_addr, code_ptr, eor_w_d1_mem_2 - cb  // B379  EOR.W     D1,(xxx).L
         b       cea_x_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B37A  EOR.W     D1,(d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B37B  EOR.W     D1,(d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B37C  EOR.W     D1,#<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B37D  EOR.W     D1,<ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B37E  EOR.W     D1,<ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B37F  EOR.W     D1,<ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $B380-$B3BF --------------------------------------------------------
         xor.    d0, d0, d1                              // B380  EOR.L     D1,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addco.  d1, zero, zero                          // B381  EOR.L     D1,D1
-        b       move_add_etc_any_any
+        b       fetch
         xor.    d2, d2, d1                              // B382  EOR.L     D1,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         xor.    d3, d3, d1                              // B383  EOR.L     D1,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         xor.    d4, d4, d1                              // B384  EOR.L     D1,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         xor.    d5, d5, d1                              // B385  EOR.L     D1,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         xor.    d6, d6, d1                              // B386  EOR.L     D1,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         xor.    d7, d7, d1                              // B387  EOR.L     D1,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         ori     rtn_addr, code_ptr, cmpm_l_mem_mem_2 - cb  // B388  CMPM.L    (A0)+,(A1)+
         b       fea_l_30
         ori     rtn_addr, code_ptr, cmpm_l_mem_mem_2 - cb  // B389  CMPM.L    (A1)+,(A1)+
@@ -1989,17 +1989,17 @@ op_B397:
         ori     rtn_addr, code_ptr, eor_l_d1_mem_2 - cb  // B3B9  EOR.L     D1,(xxx).L
         b       cea_x_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B3BA  EOR.L     D1,(d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B3BB  EOR.L     D1,(d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B3BC  EOR.L     D1,#<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B3BD  EOR.L     D1,<ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B3BE  EOR.L     D1,<ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B3BF  EOR.L     D1,<ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $B3C0-$B3FF --------------------------------------------------------
         mr      data, d0                                // B3C0  CMPA.L    D0,A1
@@ -2021,7 +2021,7 @@ op_B397:
         mr      data, a0                                // B3C8  CMPA.L    A0,A1
         b       cmpa_mem_a1
         addco.  zero, zero, zero                        // B3C9  CMPA.L    A1,A1
-        b       move_add_etc_any_any
+        b       fetch
         mr      data, a2                                // B3CA  CMPA.L    A2,A1
         b       cmpa_mem_a1
         mr      data, a3                                // B3CB  CMPA.L    A3,A1
@@ -2125,11 +2125,11 @@ op_B397:
         mr      data, a1                                // B3FC  CMPA.L    #<data>,A1
         b       cmpi_l_imm_mem_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B3FD  CMPA.L    <ea 7.5>,A1   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B3FE  CMPA.L    <ea 7.6>,A1   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B3FF  CMPA.L    <ea 7.7>,A1   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $B400-$B43F --------------------------------------------------------
         slwi    data, d0, 24                            // B400  CMP.B     D0,D2
@@ -2137,7 +2137,7 @@ op_B397:
         slwi    data, d1, 24                            // B401  CMP.B     D1,D2
         b       cmp_b_dn_d2
         addco.  zero, zero, zero                        // B402  CMP.B     D2,D2
-        b       move_add_etc_any_any
+        b       fetch
         slwi    data, d3, 24                            // B403  CMP.B     D3,D2
         b       cmp_b_dn_d2
         slwi    data, d4, 24                            // B404  CMP.B     D4,D2
@@ -2149,21 +2149,21 @@ op_B397:
         slwi    data, d7, 24                            // B407  CMP.B     D7,D2
         b       cmp_b_dn_d2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B408  CMP.B     A0,D2   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B409  CMP.B     A1,D2   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B40A  CMP.B     A2,D2   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B40B  CMP.B     A3,D2   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B40C  CMP.B     A4,D2   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B40D  CMP.B     A5,D2   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B40E  CMP.B     A6,D2   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B40F  CMP.B     A7,D2   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lbz     data, 0(a0)                             // B410  CMP.B     (A0),D2
         b       cmp_b_mem_d2_2
         lbz     data, 0(a1)                             // B411  CMP.B     (A1),D2
@@ -2255,11 +2255,11 @@ op_B397:
         slwi    data, d2, 24                            // B43C  CMP.B     #<data>,D2
         b       cmp_b_imm_dn
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B43D  CMP.B     <ea 7.5>,D2   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B43E  CMP.B     <ea 7.6>,D2   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B43F  CMP.B     <ea 7.7>,D2   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $B440-$B47F --------------------------------------------------------
         slwi    data, d0, 16                            // B440  CMP.W     D0,D2
@@ -2267,7 +2267,7 @@ op_B397:
         slwi    data, d1, 16                            // B441  CMP.W     D1,D2
         b       cmp_w_reg_d2
         addco.  zero, zero, zero                        // B442  CMP.W     D2,D2
-        b       move_add_etc_any_any
+        b       fetch
         slwi    data, d3, 16                            // B443  CMP.W     D3,D2
         b       cmp_w_reg_d2
         slwi    data, d4, 16                            // B444  CMP.W     D4,D2
@@ -2385,11 +2385,11 @@ op_B397:
         slwi    data, d2, 16                            // B47C  CMP.W     #<data>,D2
         b       cmp_w_imm_dn
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B47D  CMP.W     <ea 7.5>,D2   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B47E  CMP.W     <ea 7.6>,D2   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B47F  CMP.W     <ea 7.7>,D2   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $B480-$B4BF --------------------------------------------------------
         mr      data, d0                                // B480  CMP.L     D0,D2
@@ -2397,7 +2397,7 @@ op_B397:
         mr      data, d1                                // B481  CMP.L     D1,D2
         b       cmp_l_mem_d2_2
         addco.  zero, zero, zero                        // B482  CMP.L     D2,D2
-        b       move_add_etc_any_any
+        b       fetch
         mr      data, d3                                // B483  CMP.L     D3,D2
         b       cmp_l_mem_d2_2
         mr      data, d4                                // B484  CMP.L     D4,D2
@@ -2515,11 +2515,11 @@ op_B397:
         mr      data, d2                                // B4BC  CMP.L     #<data>,D2
         b       cmpi_l_imm_mem_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B4BD  CMP.L     <ea 7.5>,D2   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B4BE  CMP.L     <ea 7.6>,D2   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B4BF  CMP.L     <ea 7.7>,D2   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $B4C0-$B4FF --------------------------------------------------------
         extsh   data, d0                                // B4C0  CMPA.W    D0,A2
@@ -2645,11 +2645,11 @@ op_B397:
         mr      data, prefetch_data                     // B4FC  CMPA.W    #<data>,A2
         b       cmpa_ea_a2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B4FD  CMPA.W    <ea 7.5>,A2   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B4FE  CMPA.W    <ea 7.6>,A2   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B4FF  CMPA.W    <ea 7.7>,A2   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $B500-$B53F --------------------------------------------------------
         xor     data, d0, d2                            // B500  EOR.B     D2,D0
@@ -2657,7 +2657,7 @@ op_B397:
         xor     data, d1, d2                            // B501  EOR.B     D2,D1
         b       move_b_mem_d1
         clrrwi  d2, d2, 8                               // B502  EOR.B     D2,D2
-        b       clr_eor_reg_any
+        b       update_nzvc_zero
         xor     data, d3, d2                            // B503  EOR.B     D2,D3
         b       move_b_mem_d3
         xor     data, d4, d2                            // B504  EOR.B     D2,D4
@@ -2777,17 +2777,17 @@ op_B517:
         ori     rtn_addr, code_ptr, eor_b_d2_mem_2 - cb  // B539  EOR.B     D2,(xxx).L
         b       cea_x_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B53A  EOR.B     D2,(d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B53B  EOR.B     D2,(d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B53C  EOR.B     D2,#<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B53D  EOR.B     D2,<ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B53E  EOR.B     D2,<ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B53F  EOR.B     D2,<ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $B540-$B57F --------------------------------------------------------
         xor     data, d0, d2                            // B540  EOR.W     D2,D0
@@ -2795,7 +2795,7 @@ op_B517:
         xor     data, d1, d2                            // B541  EOR.W     D2,D1
         b       or_eor_etc_w_reg_d1
         clrrwi  d2, d2, 16                              // B542  EOR.W     D2,D2
-        b       clr_eor_reg_any
+        b       update_nzvc_zero
         xor     data, d3, d2                            // B543  EOR.W     D2,D3
         b       or_eor_etc_w_reg_d3
         xor     data, d4, d2                            // B544  EOR.W     D2,D4
@@ -2915,35 +2915,35 @@ op_B557:
         ori     rtn_addr, code_ptr, eor_w_d2_mem_2 - cb  // B579  EOR.W     D2,(xxx).L
         b       cea_x_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B57A  EOR.W     D2,(d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B57B  EOR.W     D2,(d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B57C  EOR.W     D2,#<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B57D  EOR.W     D2,<ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B57E  EOR.W     D2,<ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B57F  EOR.W     D2,<ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $B580-$B5BF --------------------------------------------------------
         xor.    d0, d0, d2                              // B580  EOR.L     D2,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         xor.    d1, d1, d2                              // B581  EOR.L     D2,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addco.  d2, zero, zero                          // B582  EOR.L     D2,D2
-        b       move_add_etc_any_any
+        b       fetch
         xor.    d3, d3, d2                              // B583  EOR.L     D2,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         xor.    d4, d4, d2                              // B584  EOR.L     D2,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         xor.    d5, d5, d2                              // B585  EOR.L     D2,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         xor.    d6, d6, d2                              // B586  EOR.L     D2,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         xor.    d7, d7, d2                              // B587  EOR.L     D2,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         ori     rtn_addr, code_ptr, cmpm_l_mem_mem_3 - cb  // B588  CMPM.L    (A0)+,(A2)+
         b       fea_l_30
         ori     rtn_addr, code_ptr, cmpm_l_mem_mem_3 - cb  // B589  CMPM.L    (A1)+,(A2)+
@@ -3053,17 +3053,17 @@ op_B597:
         ori     rtn_addr, code_ptr, eor_l_d2_mem_2 - cb  // B5B9  EOR.L     D2,(xxx).L
         b       cea_x_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B5BA  EOR.L     D2,(d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B5BB  EOR.L     D2,(d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B5BC  EOR.L     D2,#<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B5BD  EOR.L     D2,<ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B5BE  EOR.L     D2,<ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B5BF  EOR.L     D2,<ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $B5C0-$B5FF --------------------------------------------------------
         mr      data, d0                                // B5C0  CMPA.L    D0,A2
@@ -3087,7 +3087,7 @@ op_B597:
         mr      data, a1                                // B5C9  CMPA.L    A1,A2
         b       cmpa_mem_a2
         addco.  zero, zero, zero                        // B5CA  CMPA.L    A2,A2
-        b       move_add_etc_any_any
+        b       fetch
         mr      data, a3                                // B5CB  CMPA.L    A3,A2
         b       cmpa_mem_a2
         mr      data, a4                                // B5CC  CMPA.L    A4,A2
@@ -3189,11 +3189,11 @@ op_B597:
         mr      data, a2                                // B5FC  CMPA.L    #<data>,A2
         b       cmpi_l_imm_mem_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B5FD  CMPA.L    <ea 7.5>,A2   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B5FE  CMPA.L    <ea 7.6>,A2   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B5FF  CMPA.L    <ea 7.7>,A2   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $B600-$B63F --------------------------------------------------------
         slwi    data, d0, 24                            // B600  CMP.B     D0,D3
@@ -3203,7 +3203,7 @@ op_B597:
         slwi    data, d2, 24                            // B602  CMP.B     D2,D3
         b       cmp_b_dn_d3
         addco.  zero, zero, zero                        // B603  CMP.B     D3,D3
-        b       move_add_etc_any_any
+        b       fetch
         slwi    data, d4, 24                            // B604  CMP.B     D4,D3
         b       cmp_b_dn_d3
         slwi    data, d5, 24                            // B605  CMP.B     D5,D3
@@ -3213,21 +3213,21 @@ op_B597:
         slwi    data, d7, 24                            // B607  CMP.B     D7,D3
         b       cmp_b_dn_d3
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B608  CMP.B     A0,D3   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B609  CMP.B     A1,D3   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B60A  CMP.B     A2,D3   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B60B  CMP.B     A3,D3   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B60C  CMP.B     A4,D3   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B60D  CMP.B     A5,D3   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B60E  CMP.B     A6,D3   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B60F  CMP.B     A7,D3   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lbz     data, 0(a0)                             // B610  CMP.B     (A0),D3
         b       cmp_b_mem_d3_2
         lbz     data, 0(a1)                             // B611  CMP.B     (A1),D3
@@ -3319,11 +3319,11 @@ op_B597:
         slwi    data, d3, 24                            // B63C  CMP.B     #<data>,D3
         b       cmp_b_imm_dn
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B63D  CMP.B     <ea 7.5>,D3   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B63E  CMP.B     <ea 7.6>,D3   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B63F  CMP.B     <ea 7.7>,D3   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $B640-$B67F --------------------------------------------------------
         slwi    data, d0, 16                            // B640  CMP.W     D0,D3
@@ -3333,7 +3333,7 @@ op_B597:
         slwi    data, d2, 16                            // B642  CMP.W     D2,D3
         b       cmp_w_reg_d3
         addco.  zero, zero, zero                        // B643  CMP.W     D3,D3
-        b       move_add_etc_any_any
+        b       fetch
         slwi    data, d4, 16                            // B644  CMP.W     D4,D3
         b       cmp_w_reg_d3
         slwi    data, d5, 16                            // B645  CMP.W     D5,D3
@@ -3449,11 +3449,11 @@ op_B597:
         slwi    data, d3, 16                            // B67C  CMP.W     #<data>,D3
         b       cmp_w_imm_dn
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B67D  CMP.W     <ea 7.5>,D3   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B67E  CMP.W     <ea 7.6>,D3   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B67F  CMP.W     <ea 7.7>,D3   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $B680-$B6BF --------------------------------------------------------
         mr      data, d0                                // B680  CMP.L     D0,D3
@@ -3463,7 +3463,7 @@ op_B597:
         mr      data, d2                                // B682  CMP.L     D2,D3
         b       cmp_l_mem_d3_2
         addco.  zero, zero, zero                        // B683  CMP.L     D3,D3
-        b       move_add_etc_any_any
+        b       fetch
         mr      data, d4                                // B684  CMP.L     D4,D3
         b       cmp_l_mem_d3_2
         mr      data, d5                                // B685  CMP.L     D5,D3
@@ -3579,11 +3579,11 @@ op_B597:
         mr      data, d3                                // B6BC  CMP.L     #<data>,D3
         b       cmpi_l_imm_mem_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B6BD  CMP.L     <ea 7.5>,D3   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B6BE  CMP.L     <ea 7.6>,D3   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B6BF  CMP.L     <ea 7.7>,D3   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $B6C0-$B6FF --------------------------------------------------------
         extsh   data, d0                                // B6C0  CMPA.W    D0,A3
@@ -3709,11 +3709,11 @@ op_B597:
         mr      data, prefetch_data                     // B6FC  CMPA.W    #<data>,A3
         b       cmpa_ea_a3
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B6FD  CMPA.W    <ea 7.5>,A3   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B6FE  CMPA.W    <ea 7.6>,A3   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B6FF  CMPA.W    <ea 7.7>,A3   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $B700-$B73F --------------------------------------------------------
         xor     data, d0, d3                            // B700  EOR.B     D3,D0
@@ -3723,7 +3723,7 @@ op_B597:
         xor     data, d2, d3                            // B702  EOR.B     D3,D2
         b       move_b_mem_d2
         clrrwi  d3, d3, 8                               // B703  EOR.B     D3,D3
-        b       clr_eor_reg_any
+        b       update_nzvc_zero
         xor     data, d4, d3                            // B704  EOR.B     D3,D4
         b       move_b_mem_d4
         xor     data, d5, d3                            // B705  EOR.B     D3,D5
@@ -3841,17 +3841,17 @@ op_B717:
         ori     rtn_addr, code_ptr, eor_b_d3_mem_2 - cb  // B739  EOR.B     D3,(xxx).L
         b       cea_x_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B73A  EOR.B     D3,(d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B73B  EOR.B     D3,(d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B73C  EOR.B     D3,#<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B73D  EOR.B     D3,<ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B73E  EOR.B     D3,<ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B73F  EOR.B     D3,<ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $B740-$B77F --------------------------------------------------------
         xor     data, d0, d3                            // B740  EOR.W     D3,D0
@@ -3861,7 +3861,7 @@ op_B717:
         xor     data, d2, d3                            // B742  EOR.W     D3,D2
         b       or_eor_etc_w_reg_d2
         clrrwi  d3, d3, 16                              // B743  EOR.W     D3,D3
-        b       clr_eor_reg_any
+        b       update_nzvc_zero
         xor     data, d4, d3                            // B744  EOR.W     D3,D4
         b       or_eor_etc_w_reg_d4
         xor     data, d5, d3                            // B745  EOR.W     D3,D5
@@ -3979,35 +3979,35 @@ op_B757:
         ori     rtn_addr, code_ptr, eor_w_d3_mem_2 - cb  // B779  EOR.W     D3,(xxx).L
         b       cea_x_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B77A  EOR.W     D3,(d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B77B  EOR.W     D3,(d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B77C  EOR.W     D3,#<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B77D  EOR.W     D3,<ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B77E  EOR.W     D3,<ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B77F  EOR.W     D3,<ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $B780-$B7BF --------------------------------------------------------
         xor.    d0, d0, d3                              // B780  EOR.L     D3,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         xor.    d1, d1, d3                              // B781  EOR.L     D3,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         xor.    d2, d2, d3                              // B782  EOR.L     D3,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addco.  d3, zero, zero                          // B783  EOR.L     D3,D3
-        b       move_add_etc_any_any
+        b       fetch
         xor.    d4, d4, d3                              // B784  EOR.L     D3,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         xor.    d5, d5, d3                              // B785  EOR.L     D3,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         xor.    d6, d6, d3                              // B786  EOR.L     D3,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         xor.    d7, d7, d3                              // B787  EOR.L     D3,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         ori     rtn_addr, code_ptr, cmpm_l_mem_mem_4 - cb  // B788  CMPM.L    (A0)+,(A3)+
         b       fea_l_30
         ori     rtn_addr, code_ptr, cmpm_l_mem_mem_4 - cb  // B789  CMPM.L    (A1)+,(A3)+
@@ -4117,17 +4117,17 @@ op_B797:
         ori     rtn_addr, code_ptr, eor_l_d3_mem_2 - cb  // B7B9  EOR.L     D3,(xxx).L
         b       cea_x_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B7BA  EOR.L     D3,(d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B7BB  EOR.L     D3,(d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B7BC  EOR.L     D3,#<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B7BD  EOR.L     D3,<ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B7BE  EOR.L     D3,<ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B7BF  EOR.L     D3,<ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $B7C0-$B7FF --------------------------------------------------------
         mr      data, d0                                // B7C0  CMPA.L    D0,A3
@@ -4153,7 +4153,7 @@ op_B797:
         mr      data, a2                                // B7CA  CMPA.L    A2,A3
         b       cmpa_mem_a3
         addco.  zero, zero, zero                        // B7CB  CMPA.L    A3,A3
-        b       move_add_etc_any_any
+        b       fetch
         mr      data, a4                                // B7CC  CMPA.L    A4,A3
         b       cmpa_mem_a3
         mr      data, a5                                // B7CD  CMPA.L    A5,A3
@@ -4253,11 +4253,11 @@ op_B797:
         mr      data, a3                                // B7FC  CMPA.L    #<data>,A3
         b       cmpi_l_imm_mem_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B7FD  CMPA.L    <ea 7.5>,A3   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B7FE  CMPA.L    <ea 7.6>,A3   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B7FF  CMPA.L    <ea 7.7>,A3   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $B800-$B83F --------------------------------------------------------
         slwi    data, d0, 24                            // B800  CMP.B     D0,D4
@@ -4269,7 +4269,7 @@ op_B797:
         slwi    data, d3, 24                            // B803  CMP.B     D3,D4
         b       cmp_b_dn_d4
         addco.  zero, zero, zero                        // B804  CMP.B     D4,D4
-        b       move_add_etc_any_any
+        b       fetch
         slwi    data, d5, 24                            // B805  CMP.B     D5,D4
         b       cmp_b_dn_d4
         slwi    data, d6, 24                            // B806  CMP.B     D6,D4
@@ -4277,21 +4277,21 @@ op_B797:
         slwi    data, d7, 24                            // B807  CMP.B     D7,D4
         b       cmp_b_dn_d4
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B808  CMP.B     A0,D4   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B809  CMP.B     A1,D4   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B80A  CMP.B     A2,D4   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B80B  CMP.B     A3,D4   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B80C  CMP.B     A4,D4   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B80D  CMP.B     A5,D4   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B80E  CMP.B     A6,D4   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B80F  CMP.B     A7,D4   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lbz     data, 0(a0)                             // B810  CMP.B     (A0),D4
         b       cmp_b_mem_d4_2
         lbz     data, 0(a1)                             // B811  CMP.B     (A1),D4
@@ -4383,11 +4383,11 @@ op_B797:
         slwi    data, d4, 24                            // B83C  CMP.B     #<data>,D4
         b       cmp_b_imm_dn
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B83D  CMP.B     <ea 7.5>,D4   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B83E  CMP.B     <ea 7.6>,D4   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B83F  CMP.B     <ea 7.7>,D4   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $B840-$B87F --------------------------------------------------------
         slwi    data, d0, 16                            // B840  CMP.W     D0,D4
@@ -4399,7 +4399,7 @@ op_B797:
         slwi    data, d3, 16                            // B843  CMP.W     D3,D4
         b       cmp_w_reg_d4
         addco.  zero, zero, zero                        // B844  CMP.W     D4,D4
-        b       move_add_etc_any_any
+        b       fetch
         slwi    data, d5, 16                            // B845  CMP.W     D5,D4
         b       cmp_w_reg_d4
         slwi    data, d6, 16                            // B846  CMP.W     D6,D4
@@ -4513,11 +4513,11 @@ op_B797:
         slwi    data, d4, 16                            // B87C  CMP.W     #<data>,D4
         b       cmp_w_imm_dn
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B87D  CMP.W     <ea 7.5>,D4   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B87E  CMP.W     <ea 7.6>,D4   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B87F  CMP.W     <ea 7.7>,D4   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $B880-$B8BF --------------------------------------------------------
         mr      data, d0                                // B880  CMP.L     D0,D4
@@ -4529,7 +4529,7 @@ op_B797:
         mr      data, d3                                // B883  CMP.L     D3,D4
         b       cmp_l_mem_d4_2
         addco.  zero, zero, zero                        // B884  CMP.L     D4,D4
-        b       move_add_etc_any_any
+        b       fetch
         mr      data, d5                                // B885  CMP.L     D5,D4
         b       cmp_l_mem_d4_2
         mr      data, d6                                // B886  CMP.L     D6,D4
@@ -4643,11 +4643,11 @@ op_B797:
         mr      data, d4                                // B8BC  CMP.L     #<data>,D4
         b       cmpi_l_imm_mem_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B8BD  CMP.L     <ea 7.5>,D4   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B8BE  CMP.L     <ea 7.6>,D4   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B8BF  CMP.L     <ea 7.7>,D4   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $B8C0-$B8FF --------------------------------------------------------
         extsh   data, d0                                // B8C0  CMPA.W    D0,A4
@@ -4773,11 +4773,11 @@ op_B797:
         mr      data, prefetch_data                     // B8FC  CMPA.W    #<data>,A4
         b       cmpa_ea_a4
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B8FD  CMPA.W    <ea 7.5>,A4   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B8FE  CMPA.W    <ea 7.6>,A4   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B8FF  CMPA.W    <ea 7.7>,A4   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $B900-$B93F --------------------------------------------------------
         xor     data, d0, d4                            // B900  EOR.B     D4,D0
@@ -4789,7 +4789,7 @@ op_B797:
         xor     data, d3, d4                            // B903  EOR.B     D4,D3
         b       move_b_mem_d3
         clrrwi  d4, d4, 8                               // B904  EOR.B     D4,D4
-        b       clr_eor_reg_any
+        b       update_nzvc_zero
         xor     data, d5, d4                            // B905  EOR.B     D4,D5
         b       move_b_mem_d5
         xor     data, d6, d4                            // B906  EOR.B     D4,D6
@@ -4905,17 +4905,17 @@ op_B917:
         ori     rtn_addr, code_ptr, eor_b_d4_mem_2 - cb  // B939  EOR.B     D4,(xxx).L
         b       cea_x_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B93A  EOR.B     D4,(d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B93B  EOR.B     D4,(d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B93C  EOR.B     D4,#<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B93D  EOR.B     D4,<ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B93E  EOR.B     D4,<ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B93F  EOR.B     D4,<ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $B940-$B97F --------------------------------------------------------
         xor     data, d0, d4                            // B940  EOR.W     D4,D0
@@ -4927,7 +4927,7 @@ op_B917:
         xor     data, d3, d4                            // B943  EOR.W     D4,D3
         b       or_eor_etc_w_reg_d3
         clrrwi  d4, d4, 16                              // B944  EOR.W     D4,D4
-        b       clr_eor_reg_any
+        b       update_nzvc_zero
         xor     data, d5, d4                            // B945  EOR.W     D4,D5
         b       or_eor_etc_w_reg_d5
         xor     data, d6, d4                            // B946  EOR.W     D4,D6
@@ -5043,35 +5043,35 @@ op_B957:
         ori     rtn_addr, code_ptr, eor_w_d4_mem_2 - cb  // B979  EOR.W     D4,(xxx).L
         b       cea_x_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B97A  EOR.W     D4,(d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B97B  EOR.W     D4,(d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B97C  EOR.W     D4,#<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B97D  EOR.W     D4,<ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B97E  EOR.W     D4,<ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B97F  EOR.W     D4,<ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $B980-$B9BF --------------------------------------------------------
         xor.    d0, d0, d4                              // B980  EOR.L     D4,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         xor.    d1, d1, d4                              // B981  EOR.L     D4,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         xor.    d2, d2, d4                              // B982  EOR.L     D4,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         xor.    d3, d3, d4                              // B983  EOR.L     D4,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addco.  d4, zero, zero                          // B984  EOR.L     D4,D4
-        b       move_add_etc_any_any
+        b       fetch
         xor.    d5, d5, d4                              // B985  EOR.L     D4,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         xor.    d6, d6, d4                              // B986  EOR.L     D4,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         xor.    d7, d7, d4                              // B987  EOR.L     D4,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         ori     rtn_addr, code_ptr, cmpm_l_mem_mem_5 - cb  // B988  CMPM.L    (A0)+,(A4)+
         b       fea_l_30
         ori     rtn_addr, code_ptr, cmpm_l_mem_mem_5 - cb  // B989  CMPM.L    (A1)+,(A4)+
@@ -5181,17 +5181,17 @@ op_B997:
         ori     rtn_addr, code_ptr, eor_l_d4_mem_2 - cb  // B9B9  EOR.L     D4,(xxx).L
         b       cea_x_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B9BA  EOR.L     D4,(d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B9BB  EOR.L     D4,(d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B9BC  EOR.L     D4,#<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B9BD  EOR.L     D4,<ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B9BE  EOR.L     D4,<ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B9BF  EOR.L     D4,<ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $B9C0-$B9FF --------------------------------------------------------
         mr      data, d0                                // B9C0  CMPA.L    D0,A4
@@ -5219,7 +5219,7 @@ op_B997:
         mr      data, a3                                // B9CB  CMPA.L    A3,A4
         b       cmpa_mem_a4
         addco.  zero, zero, zero                        // B9CC  CMPA.L    A4,A4
-        b       move_add_etc_any_any
+        b       fetch
         mr      data, a5                                // B9CD  CMPA.L    A5,A4
         b       cmpa_mem_a4
         mr      data, a6                                // B9CE  CMPA.L    A6,A4
@@ -5317,11 +5317,11 @@ op_B997:
         mr      data, a4                                // B9FC  CMPA.L    #<data>,A4
         b       cmpi_l_imm_mem_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B9FD  CMPA.L    <ea 7.5>,A4   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B9FE  CMPA.L    <ea 7.6>,A4   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // B9FF  CMPA.L    <ea 7.7>,A4   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $BA00-$BA3F --------------------------------------------------------
         slwi    data, d0, 24                            // BA00  CMP.B     D0,D5
@@ -5335,27 +5335,27 @@ op_B997:
         slwi    data, d4, 24                            // BA04  CMP.B     D4,D5
         b       cmp_b_dn_d5
         addco.  zero, zero, zero                        // BA05  CMP.B     D5,D5
-        b       move_add_etc_any_any
+        b       fetch
         slwi    data, d6, 24                            // BA06  CMP.B     D6,D5
         b       cmp_b_dn_d5
         slwi    data, d7, 24                            // BA07  CMP.B     D7,D5
         b       cmp_b_dn_d5
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BA08  CMP.B     A0,D5   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BA09  CMP.B     A1,D5   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BA0A  CMP.B     A2,D5   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BA0B  CMP.B     A3,D5   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BA0C  CMP.B     A4,D5   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BA0D  CMP.B     A5,D5   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BA0E  CMP.B     A6,D5   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BA0F  CMP.B     A7,D5   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lbz     data, 0(a0)                             // BA10  CMP.B     (A0),D5
         b       cmp_b_mem_d5_2
         lbz     data, 0(a1)                             // BA11  CMP.B     (A1),D5
@@ -5447,11 +5447,11 @@ op_B997:
         slwi    data, d5, 24                            // BA3C  CMP.B     #<data>,D5
         b       cmp_b_imm_dn
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BA3D  CMP.B     <ea 7.5>,D5   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BA3E  CMP.B     <ea 7.6>,D5   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BA3F  CMP.B     <ea 7.7>,D5   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $BA40-$BA7F --------------------------------------------------------
         slwi    data, d0, 16                            // BA40  CMP.W     D0,D5
@@ -5465,7 +5465,7 @@ op_B997:
         slwi    data, d4, 16                            // BA44  CMP.W     D4,D5
         b       cmp_w_reg_d5
         addco.  zero, zero, zero                        // BA45  CMP.W     D5,D5
-        b       move_add_etc_any_any
+        b       fetch
         slwi    data, d6, 16                            // BA46  CMP.W     D6,D5
         b       cmp_w_reg_d5
         slwi    data, d7, 16                            // BA47  CMP.W     D7,D5
@@ -5577,11 +5577,11 @@ op_B997:
         slwi    data, d5, 16                            // BA7C  CMP.W     #<data>,D5
         b       cmp_w_imm_dn
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BA7D  CMP.W     <ea 7.5>,D5   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BA7E  CMP.W     <ea 7.6>,D5   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BA7F  CMP.W     <ea 7.7>,D5   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $BA80-$BABF --------------------------------------------------------
         mr      data, d0                                // BA80  CMP.L     D0,D5
@@ -5595,7 +5595,7 @@ op_B997:
         mr      data, d4                                // BA84  CMP.L     D4,D5
         b       cmp_l_mem_d5_2
         addco.  zero, zero, zero                        // BA85  CMP.L     D5,D5
-        b       move_add_etc_any_any
+        b       fetch
         mr      data, d6                                // BA86  CMP.L     D6,D5
         b       cmp_l_mem_d5_2
         mr      data, d7                                // BA87  CMP.L     D7,D5
@@ -5707,11 +5707,11 @@ op_B997:
         mr      data, d5                                // BABC  CMP.L     #<data>,D5
         b       cmpi_l_imm_mem_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BABD  CMP.L     <ea 7.5>,D5   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BABE  CMP.L     <ea 7.6>,D5   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BABF  CMP.L     <ea 7.7>,D5   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $BAC0-$BAFF --------------------------------------------------------
         extsh   data, d0                                // BAC0  CMPA.W    D0,A5
@@ -5837,11 +5837,11 @@ op_B997:
         mr      data, prefetch_data                     // BAFC  CMPA.W    #<data>,A5
         b       cmpa_ea_a5
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BAFD  CMPA.W    <ea 7.5>,A5   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BAFE  CMPA.W    <ea 7.6>,A5   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BAFF  CMPA.W    <ea 7.7>,A5   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $BB00-$BB3F --------------------------------------------------------
         xor     data, d0, d5                            // BB00  EOR.B     D5,D0
@@ -5855,7 +5855,7 @@ op_B997:
         xor     data, d4, d5                            // BB04  EOR.B     D5,D4
         b       move_b_mem_d4
         clrrwi  d5, d5, 8                               // BB05  EOR.B     D5,D5
-        b       clr_eor_reg_any
+        b       update_nzvc_zero
         xor     data, d6, d5                            // BB06  EOR.B     D5,D6
         b       move_b_mem_d6
         xor     data, d7, d5                            // BB07  EOR.B     D5,D7
@@ -5969,17 +5969,17 @@ op_BB17:
         ori     rtn_addr, code_ptr, eor_b_d5_mem_2 - cb  // BB39  EOR.B     D5,(xxx).L
         b       cea_x_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BB3A  EOR.B     D5,(d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BB3B  EOR.B     D5,(d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BB3C  EOR.B     D5,#<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BB3D  EOR.B     D5,<ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BB3E  EOR.B     D5,<ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BB3F  EOR.B     D5,<ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $BB40-$BB7F --------------------------------------------------------
         xor     data, d0, d5                            // BB40  EOR.W     D5,D0
@@ -5993,7 +5993,7 @@ op_BB17:
         xor     data, d4, d5                            // BB44  EOR.W     D5,D4
         b       or_eor_etc_w_reg_d4
         clrrwi  d5, d5, 16                              // BB45  EOR.W     D5,D5
-        b       clr_eor_reg_any
+        b       update_nzvc_zero
         xor     data, d6, d5                            // BB46  EOR.W     D5,D6
         b       or_eor_etc_w_reg_d6
         xor     data, d7, d5                            // BB47  EOR.W     D5,D7
@@ -6107,35 +6107,35 @@ op_BB57:
         ori     rtn_addr, code_ptr, eor_w_d5_mem_2 - cb  // BB79  EOR.W     D5,(xxx).L
         b       cea_x_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BB7A  EOR.W     D5,(d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BB7B  EOR.W     D5,(d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BB7C  EOR.W     D5,#<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BB7D  EOR.W     D5,<ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BB7E  EOR.W     D5,<ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BB7F  EOR.W     D5,<ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $BB80-$BBBF --------------------------------------------------------
         xor.    d0, d0, d5                              // BB80  EOR.L     D5,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         xor.    d1, d1, d5                              // BB81  EOR.L     D5,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         xor.    d2, d2, d5                              // BB82  EOR.L     D5,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         xor.    d3, d3, d5                              // BB83  EOR.L     D5,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         xor.    d4, d4, d5                              // BB84  EOR.L     D5,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addco.  d5, zero, zero                          // BB85  EOR.L     D5,D5
-        b       move_add_etc_any_any
+        b       fetch
         xor.    d6, d6, d5                              // BB86  EOR.L     D5,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         xor.    d7, d7, d5                              // BB87  EOR.L     D5,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         ori     rtn_addr, code_ptr, cmpm_l_mem_mem_6 - cb  // BB88  CMPM.L    (A0)+,(A5)+
         b       fea_l_30
         ori     rtn_addr, code_ptr, cmpm_l_mem_mem_6 - cb  // BB89  CMPM.L    (A1)+,(A5)+
@@ -6245,17 +6245,17 @@ op_BB97:
         ori     rtn_addr, code_ptr, eor_l_d5_mem_2 - cb  // BBB9  EOR.L     D5,(xxx).L
         b       cea_x_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BBBA  EOR.L     D5,(d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BBBB  EOR.L     D5,(d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BBBC  EOR.L     D5,#<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BBBD  EOR.L     D5,<ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BBBE  EOR.L     D5,<ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BBBF  EOR.L     D5,<ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $BBC0-$BBFF --------------------------------------------------------
         mr      data, d0                                // BBC0  CMPA.L    D0,A5
@@ -6285,7 +6285,7 @@ op_BB97:
         mr      data, a4                                // BBCC  CMPA.L    A4,A5
         b       cmpa_mem_a5
         addco.  zero, zero, zero                        // BBCD  CMPA.L    A5,A5
-        b       move_add_etc_any_any
+        b       fetch
         mr      data, a6                                // BBCE  CMPA.L    A6,A5
         b       cmpa_mem_a5
         mr      data, a7                                // BBCF  CMPA.L    A7,A5
@@ -6381,11 +6381,11 @@ op_BB97:
         mr      data, a5                                // BBFC  CMPA.L    #<data>,A5
         b       cmpi_l_imm_mem_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BBFD  CMPA.L    <ea 7.5>,A5   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BBFE  CMPA.L    <ea 7.6>,A5   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BBFF  CMPA.L    <ea 7.7>,A5   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $BC00-$BC3F --------------------------------------------------------
         slwi    data, d0, 24                            // BC00  CMP.B     D0,D6
@@ -6401,25 +6401,25 @@ op_BB97:
         slwi    data, d5, 24                            // BC05  CMP.B     D5,D6
         b       cmp_b_dn_d6
         addco.  zero, zero, zero                        // BC06  CMP.B     D6,D6
-        b       move_add_etc_any_any
+        b       fetch
         slwi    data, d7, 24                            // BC07  CMP.B     D7,D6
         b       cmp_b_dn_d6
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BC08  CMP.B     A0,D6   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BC09  CMP.B     A1,D6   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BC0A  CMP.B     A2,D6   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BC0B  CMP.B     A3,D6   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BC0C  CMP.B     A4,D6   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BC0D  CMP.B     A5,D6   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BC0E  CMP.B     A6,D6   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BC0F  CMP.B     A7,D6   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lbz     data, 0(a0)                             // BC10  CMP.B     (A0),D6
         b       cmp_b_mem_d6_2
         lbz     data, 0(a1)                             // BC11  CMP.B     (A1),D6
@@ -6511,11 +6511,11 @@ op_BB97:
         slwi    data, d6, 24                            // BC3C  CMP.B     #<data>,D6
         b       cmp_b_imm_dn
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BC3D  CMP.B     <ea 7.5>,D6   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BC3E  CMP.B     <ea 7.6>,D6   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BC3F  CMP.B     <ea 7.7>,D6   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $BC40-$BC7F --------------------------------------------------------
         slwi    data, d0, 16                            // BC40  CMP.W     D0,D6
@@ -6531,7 +6531,7 @@ op_BB97:
         slwi    data, d5, 16                            // BC45  CMP.W     D5,D6
         b       cmp_w_reg_d6
         addco.  zero, zero, zero                        // BC46  CMP.W     D6,D6
-        b       move_add_etc_any_any
+        b       fetch
         slwi    data, d7, 16                            // BC47  CMP.W     D7,D6
         b       cmp_w_reg_d6
         slwi    data, a0, 16                            // BC48  CMP.W     A0,D6
@@ -6641,11 +6641,11 @@ op_BB97:
         slwi    data, d6, 16                            // BC7C  CMP.W     #<data>,D6
         b       cmp_w_imm_dn
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BC7D  CMP.W     <ea 7.5>,D6   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BC7E  CMP.W     <ea 7.6>,D6   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BC7F  CMP.W     <ea 7.7>,D6   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $BC80-$BCBF --------------------------------------------------------
         mr      data, d0                                // BC80  CMP.L     D0,D6
@@ -6661,7 +6661,7 @@ op_BB97:
         mr      data, d5                                // BC85  CMP.L     D5,D6
         b       cmp_l_mem_d6_2
         addco.  zero, zero, zero                        // BC86  CMP.L     D6,D6
-        b       move_add_etc_any_any
+        b       fetch
         mr      data, d7                                // BC87  CMP.L     D7,D6
         b       cmp_l_mem_d6_2
         mr      data, a0                                // BC88  CMP.L     A0,D6
@@ -6771,11 +6771,11 @@ op_BB97:
         mr      data, d6                                // BCBC  CMP.L     #<data>,D6
         b       cmpi_l_imm_mem_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BCBD  CMP.L     <ea 7.5>,D6   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BCBE  CMP.L     <ea 7.6>,D6   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BCBF  CMP.L     <ea 7.7>,D6   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $BCC0-$BCFF --------------------------------------------------------
         extsh   data, d0                                // BCC0  CMPA.W    D0,A6
@@ -6901,11 +6901,11 @@ op_BB97:
         mr      data, prefetch_data                     // BCFC  CMPA.W    #<data>,A6
         b       cmpa_ea_a6
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BCFD  CMPA.W    <ea 7.5>,A6   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BCFE  CMPA.W    <ea 7.6>,A6   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BCFF  CMPA.W    <ea 7.7>,A6   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $BD00-$BD3F --------------------------------------------------------
         xor     data, d0, d6                            // BD00  EOR.B     D6,D0
@@ -6921,7 +6921,7 @@ op_BB97:
         xor     data, d5, d6                            // BD05  EOR.B     D6,D5
         b       move_b_mem_d5
         clrrwi  d6, d6, 8                               // BD06  EOR.B     D6,D6
-        b       clr_eor_reg_any
+        b       update_nzvc_zero
         xor     data, d7, d6                            // BD07  EOR.B     D6,D7
         b       move_b_mem_d7
         ori     rtn_addr, code_ptr, cmpm_b_mem_mem_7 - cb  // BD08  CMPM.B    (A0)+,(A6)+
@@ -7033,17 +7033,17 @@ op_BD17:
         ori     rtn_addr, code_ptr, eor_b_d6_mem_2 - cb  // BD39  EOR.B     D6,(xxx).L
         b       cea_x_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BD3A  EOR.B     D6,(d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BD3B  EOR.B     D6,(d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BD3C  EOR.B     D6,#<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BD3D  EOR.B     D6,<ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BD3E  EOR.B     D6,<ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BD3F  EOR.B     D6,<ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $BD40-$BD7F --------------------------------------------------------
         xor     data, d0, d6                            // BD40  EOR.W     D6,D0
@@ -7059,7 +7059,7 @@ op_BD17:
         xor     data, d5, d6                            // BD45  EOR.W     D6,D5
         b       or_eor_etc_w_reg_d5
         clrrwi  d6, d6, 16                              // BD46  EOR.W     D6,D6
-        b       clr_eor_reg_any
+        b       update_nzvc_zero
         xor     data, d7, d6                            // BD47  EOR.W     D6,D7
         b       or_eor_etc_w_reg_d7
         ori     rtn_addr, code_ptr, cmpm_w_mem_mem_7 - cb  // BD48  CMPM.W    (A0)+,(A6)+
@@ -7171,35 +7171,35 @@ op_BD57:
         ori     rtn_addr, code_ptr, eor_w_d6_mem_2 - cb  // BD79  EOR.W     D6,(xxx).L
         b       cea_x_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BD7A  EOR.W     D6,(d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BD7B  EOR.W     D6,(d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BD7C  EOR.W     D6,#<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BD7D  EOR.W     D6,<ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BD7E  EOR.W     D6,<ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BD7F  EOR.W     D6,<ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $BD80-$BDBF --------------------------------------------------------
         xor.    d0, d0, d6                              // BD80  EOR.L     D6,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         xor.    d1, d1, d6                              // BD81  EOR.L     D6,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         xor.    d2, d2, d6                              // BD82  EOR.L     D6,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         xor.    d3, d3, d6                              // BD83  EOR.L     D6,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         xor.    d4, d4, d6                              // BD84  EOR.L     D6,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         xor.    d5, d5, d6                              // BD85  EOR.L     D6,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addco.  d6, zero, zero                          // BD86  EOR.L     D6,D6
-        b       move_add_etc_any_any
+        b       fetch
         xor.    d7, d7, d6                              // BD87  EOR.L     D6,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         ori     rtn_addr, code_ptr, cmpm_l_mem_mem_7 - cb  // BD88  CMPM.L    (A0)+,(A6)+
         b       fea_l_30
         ori     rtn_addr, code_ptr, cmpm_l_mem_mem_7 - cb  // BD89  CMPM.L    (A1)+,(A6)+
@@ -7309,17 +7309,17 @@ op_BD97:
         ori     rtn_addr, code_ptr, eor_l_d6_mem_2 - cb  // BDB9  EOR.L     D6,(xxx).L
         b       cea_x_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BDBA  EOR.L     D6,(d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BDBB  EOR.L     D6,(d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BDBC  EOR.L     D6,#<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BDBD  EOR.L     D6,<ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BDBE  EOR.L     D6,<ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BDBF  EOR.L     D6,<ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $BDC0-$BDFF --------------------------------------------------------
         mr      data, d0                                // BDC0  CMPA.L    D0,A6
@@ -7351,7 +7351,7 @@ op_BD97:
         mr      data, a5                                // BDCD  CMPA.L    A5,A6
         b       cmpa_mem_a6
         addco.  zero, zero, zero                        // BDCE  CMPA.L    A6,A6
-        b       move_add_etc_any_any
+        b       fetch
         mr      data, a7                                // BDCF  CMPA.L    A7,A6
         b       cmpa_mem_a6
         lwz     data, 0(a0)                             // BDD0  CMPA.L    (A0),A6
@@ -7445,11 +7445,11 @@ op_BD97:
         mr      data, a6                                // BDFC  CMPA.L    #<data>,A6
         b       cmpi_l_imm_mem_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BDFD  CMPA.L    <ea 7.5>,A6   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BDFE  CMPA.L    <ea 7.6>,A6   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BDFF  CMPA.L    <ea 7.7>,A6   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $BE00-$BE3F --------------------------------------------------------
         slwi    data, d0, 24                            // BE00  CMP.B     D0,D7
@@ -7467,23 +7467,23 @@ op_BD97:
         slwi    data, d6, 24                            // BE06  CMP.B     D6,D7
         b       cmp_b_dn_d7
         addco.  zero, zero, zero                        // BE07  CMP.B     D7,D7
-        b       move_add_etc_any_any
+        b       fetch
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BE08  CMP.B     A0,D7   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BE09  CMP.B     A1,D7   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BE0A  CMP.B     A2,D7   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BE0B  CMP.B     A3,D7   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BE0C  CMP.B     A4,D7   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BE0D  CMP.B     A5,D7   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BE0E  CMP.B     A6,D7   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BE0F  CMP.B     A7,D7   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lbz     data, 0(a0)                             // BE10  CMP.B     (A0),D7
         b       cmp_b_mem_d7_2
         lbz     data, 0(a1)                             // BE11  CMP.B     (A1),D7
@@ -7575,11 +7575,11 @@ op_BD97:
         slwi    data, d7, 24                            // BE3C  CMP.B     #<data>,D7
         b       cmp_b_imm_dn
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BE3D  CMP.B     <ea 7.5>,D7   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BE3E  CMP.B     <ea 7.6>,D7   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BE3F  CMP.B     <ea 7.7>,D7   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $BE40-$BE7F --------------------------------------------------------
         slwi    data, d0, 16                            // BE40  CMP.W     D0,D7
@@ -7597,7 +7597,7 @@ op_BD97:
         slwi    data, d6, 16                            // BE46  CMP.W     D6,D7
         b       cmp_w_reg_d7
         addco.  zero, zero, zero                        // BE47  CMP.W     D7,D7
-        b       move_add_etc_any_any
+        b       fetch
         slwi    data, a0, 16                            // BE48  CMP.W     A0,D7
         b       cmp_w_reg_d7
         slwi    data, a1, 16                            // BE49  CMP.W     A1,D7
@@ -7705,11 +7705,11 @@ op_BD97:
         slwi    data, d7, 16                            // BE7C  CMP.W     #<data>,D7
         b       cmp_w_imm_dn
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BE7D  CMP.W     <ea 7.5>,D7   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BE7E  CMP.W     <ea 7.6>,D7   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BE7F  CMP.W     <ea 7.7>,D7   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $BE80-$BEBF --------------------------------------------------------
         mr      data, d0                                // BE80  CMP.L     D0,D7
@@ -7727,7 +7727,7 @@ op_BD97:
         mr      data, d6                                // BE86  CMP.L     D6,D7
         b       cmp_l_mem_d7_2
         addco.  zero, zero, zero                        // BE87  CMP.L     D7,D7
-        b       move_add_etc_any_any
+        b       fetch
         mr      data, a0                                // BE88  CMP.L     A0,D7
         b       cmp_l_mem_d7_2
         mr      data, a1                                // BE89  CMP.L     A1,D7
@@ -7835,11 +7835,11 @@ op_BD97:
         mr      data, d7                                // BEBC  CMP.L     #<data>,D7
         b       cmpi_l_imm_mem_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BEBD  CMP.L     <ea 7.5>,D7   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BEBE  CMP.L     <ea 7.6>,D7   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BEBF  CMP.L     <ea 7.7>,D7   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $BEC0-$BEFF --------------------------------------------------------
         extsh   data, d0                                // BEC0  CMPA.W    D0,A7
@@ -7965,11 +7965,11 @@ op_BD97:
         mr      data, prefetch_data                     // BEFC  CMPA.W    #<data>,A7
         b       cmpa_ea_a7
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BEFD  CMPA.W    <ea 7.5>,A7   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BEFE  CMPA.W    <ea 7.6>,A7   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BEFF  CMPA.W    <ea 7.7>,A7   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $BF00-$BF3F --------------------------------------------------------
         xor     data, d0, d7                            // BF00  EOR.B     D7,D0
@@ -7987,7 +7987,7 @@ op_BD97:
         xor     data, d6, d7                            // BF06  EOR.B     D7,D6
         b       move_b_mem_d6
         clrrwi  d7, d7, 8                               // BF07  EOR.B     D7,D7
-        b       clr_eor_reg_any
+        b       update_nzvc_zero
         ori     rtn_addr, code_ptr, cmpm_b_mem_mem_8 - cb  // BF08  CMPM.B    (A0)+,(A7)+
         b       fea_b_30
         ori     rtn_addr, code_ptr, cmpm_b_mem_mem_8 - cb  // BF09  CMPM.B    (A1)+,(A7)+
@@ -8097,17 +8097,17 @@ op_BF17:
         ori     rtn_addr, code_ptr, eor_b_d7_mem_2 - cb  // BF39  EOR.B     D7,(xxx).L
         b       cea_x_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BF3A  EOR.B     D7,(d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BF3B  EOR.B     D7,(d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BF3C  EOR.B     D7,#<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BF3D  EOR.B     D7,<ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BF3E  EOR.B     D7,<ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BF3F  EOR.B     D7,<ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $BF40-$BF7F --------------------------------------------------------
         xor     data, d0, d7                            // BF40  EOR.W     D7,D0
@@ -8125,7 +8125,7 @@ op_BF17:
         xor     data, d6, d7                            // BF46  EOR.W     D7,D6
         b       or_eor_etc_w_reg_d6
         clrrwi  d7, d7, 16                              // BF47  EOR.W     D7,D7
-        b       clr_eor_reg_any
+        b       update_nzvc_zero
         ori     rtn_addr, code_ptr, cmpm_w_mem_mem_8 - cb  // BF48  CMPM.W    (A0)+,(A7)+
         b       fea_w_30
         ori     rtn_addr, code_ptr, cmpm_w_mem_mem_8 - cb  // BF49  CMPM.W    (A1)+,(A7)+
@@ -8235,35 +8235,35 @@ op_BF57:
         ori     rtn_addr, code_ptr, eor_w_d7_mem_2 - cb  // BF79  EOR.W     D7,(xxx).L
         b       cea_x_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BF7A  EOR.W     D7,(d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BF7B  EOR.W     D7,(d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BF7C  EOR.W     D7,#<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BF7D  EOR.W     D7,<ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BF7E  EOR.W     D7,<ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BF7F  EOR.W     D7,<ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $BF80-$BFBF --------------------------------------------------------
         xor.    d0, d0, d7                              // BF80  EOR.L     D7,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         xor.    d1, d1, d7                              // BF81  EOR.L     D7,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         xor.    d2, d2, d7                              // BF82  EOR.L     D7,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         xor.    d3, d3, d7                              // BF83  EOR.L     D7,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         xor.    d4, d4, d7                              // BF84  EOR.L     D7,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         xor.    d5, d5, d7                              // BF85  EOR.L     D7,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         xor.    d6, d6, d7                              // BF86  EOR.L     D7,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addco.  d7, zero, zero                          // BF87  EOR.L     D7,D7
-        b       move_add_etc_any_any
+        b       fetch
         ori     rtn_addr, code_ptr, cmpm_l_mem_mem_8 - cb  // BF88  CMPM.L    (A0)+,(A7)+
         b       fea_l_30
         ori     rtn_addr, code_ptr, cmpm_l_mem_mem_8 - cb  // BF89  CMPM.L    (A1)+,(A7)+
@@ -8373,17 +8373,17 @@ op_BF97:
         ori     rtn_addr, code_ptr, eor_l_d7_mem_2 - cb  // BFB9  EOR.L     D7,(xxx).L
         b       cea_x_71_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BFBA  EOR.L     D7,(d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BFBB  EOR.L     D7,(d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BFBC  EOR.L     D7,#<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BFBD  EOR.L     D7,<ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BFBE  EOR.L     D7,<ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BFBF  EOR.L     D7,<ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $BFC0-$BFFF --------------------------------------------------------
         mr      data, d0                                // BFC0  CMPA.L    D0,A7
@@ -8417,7 +8417,7 @@ op_BF97:
         mr      data, a6                                // BFCE  CMPA.L    A6,A7
         b       cmpa_mem_a7
         addco.  zero, zero, zero                        // BFCF  CMPA.L    A7,A7
-        b       move_add_etc_any_any
+        b       fetch
         lwz     data, 0(a0)                             // BFD0  CMPA.L    (A0),A7
         b       cmpa_mem_a7
         lwz     data, 0(a1)                             // BFD1  CMPA.L    (A1),A7
@@ -8509,8 +8509,8 @@ op_BF97:
         mr      data, a7                                // BFFC  CMPA.L    #<data>,A7
         b       cmpi_l_imm_mem_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BFFD  CMPA.L    <ea 7.5>,A7   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BFFE  CMPA.L    <ea 7.6>,A7   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // BFFF  CMPA.L    <ea 7.7>,A7   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction

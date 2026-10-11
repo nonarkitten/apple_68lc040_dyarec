@@ -395,37 +395,37 @@
 
 // ---- $E0C0-$E0FF --------------------------------------------------------
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E0C0  ASR.W     D0   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E0C1  ASR.W     D1   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E0C2  ASR.W     D2   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E0C3  ASR.W     D3   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E0C4  ASR.W     D4   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E0C5  ASR.W     D5   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E0C6  ASR.W     D6   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E0C7  ASR.W     D7   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E0C8  ASR.W     A0   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E0C9  ASR.W     A1   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E0CA  ASR.W     A2   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E0CB  ASR.W     A3   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E0CC  ASR.W     A4   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E0CD  ASR.W     A5   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E0CE  ASR.W     A6   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E0CF  ASR.W     A7   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 op_E0D0:
         mr      addr, a0                                // E0D0  ASR.W     (A0)
         b       asr_w_mem_2
@@ -519,17 +519,17 @@ op_E0D7:
         ori     rtn_addr, code_ptr, asr_w_mem_3 - cb    // E0F9  ASR.W     (xxx).L
         b       fea_w_71
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E0FA  ASR.W     (d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E0FB  ASR.W     (d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E0FC  ASR.W     #<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E0FD  ASR.W     <ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E0FE  ASR.W     <ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E0FF  ASR.W     <ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $E100-$E13F --------------------------------------------------------
         li      addr, 8                                 // E100  ASL.B     #8,D0
@@ -923,37 +923,37 @@ op_E0D7:
 
 // ---- $E1C0-$E1FF --------------------------------------------------------
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E1C0  ASL.W     D0   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E1C1  ASL.W     D1   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E1C2  ASL.W     D2   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E1C3  ASL.W     D3   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E1C4  ASL.W     D4   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E1C5  ASL.W     D5   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E1C6  ASL.W     D6   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E1C7  ASL.W     D7   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E1C8  ASL.W     A0   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E1C9  ASL.W     A1   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E1CA  ASL.W     A2   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E1CB  ASL.W     A3   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E1CC  ASL.W     A4   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E1CD  ASL.W     A5   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E1CE  ASL.W     A6   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E1CF  ASL.W     A7   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 op_E1D0:
         mr      addr, a0                                // E1D0  ASL.W     (A0)
         b       asl_w_mem_2
@@ -1047,17 +1047,17 @@ op_E1D7:
         ori     rtn_addr, code_ptr, asl_w_mem_3 - cb    // E1F9  ASL.W     (xxx).L
         b       fea_w_71
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E1FA  ASL.W     (d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E1FB  ASL.W     (d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E1FC  ASL.W     #<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E1FD  ASL.W     <ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E1FE  ASL.W     <ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E1FF  ASL.W     <ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $E200-$E23F --------------------------------------------------------
         rlwinm  data, d0, 23, 1, 8                      // E200  ASR.B     #1,D0
@@ -1451,37 +1451,37 @@ op_E1D7:
 
 // ---- $E2C0-$E2FF --------------------------------------------------------
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E2C0  LSR.W     D0   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E2C1  LSR.W     D1   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E2C2  LSR.W     D2   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E2C3  LSR.W     D3   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E2C4  LSR.W     D4   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E2C5  LSR.W     D5   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E2C6  LSR.W     D6   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E2C7  LSR.W     D7   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E2C8  LSR.W     A0   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E2C9  LSR.W     A1   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E2CA  LSR.W     A2   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E2CB  LSR.W     A3   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E2CC  LSR.W     A4   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E2CD  LSR.W     A5   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E2CE  LSR.W     A6   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E2CF  LSR.W     A7   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 op_E2D0:
         mr      addr, a0                                // E2D0  LSR.W     (A0)
         b       lsr_w_mem_2
@@ -1575,17 +1575,17 @@ op_E2D7:
         ori     rtn_addr, code_ptr, lsr_w_mem_3 - cb    // E2F9  LSR.W     (xxx).L
         b       fea_w_71
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E2FA  LSR.W     (d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E2FB  LSR.W     (d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E2FC  LSR.W     #<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E2FD  LSR.W     <ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E2FE  LSR.W     <ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E2FF  LSR.W     <ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $E300-$E33F --------------------------------------------------------
         slwi    data, d0, 24                            // E300  ASL.B     #1,D0
@@ -1979,37 +1979,37 @@ op_E2D7:
 
 // ---- $E3C0-$E3FF --------------------------------------------------------
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E3C0  LSL.W     D0   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E3C1  LSL.W     D1   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E3C2  LSL.W     D2   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E3C3  LSL.W     D3   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E3C4  LSL.W     D4   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E3C5  LSL.W     D5   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E3C6  LSL.W     D6   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E3C7  LSL.W     D7   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E3C8  LSL.W     A0   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E3C9  LSL.W     A1   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E3CA  LSL.W     A2   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E3CB  LSL.W     A3   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E3CC  LSL.W     A4   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E3CD  LSL.W     A5   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E3CE  LSL.W     A6   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E3CF  LSL.W     A7   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 op_E3D0:
         mr      addr, a0                                // E3D0  LSL.W     (A0)
         b       lsl_w_mem_2
@@ -2103,17 +2103,17 @@ op_E3D7:
         ori     rtn_addr, code_ptr, lsl_w_mem_3 - cb    // E3F9  LSL.W     (xxx).L
         b       fea_w_71
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E3FA  LSL.W     (d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E3FB  LSL.W     (d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E3FC  LSL.W     #<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E3FD  LSL.W     <ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E3FE  LSL.W     <ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E3FF  LSL.W     <ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $E400-$E43F --------------------------------------------------------
         li      addr, 2                                 // E400  ASR.B     #2,D0
@@ -2507,37 +2507,37 @@ op_E3D7:
 
 // ---- $E4C0-$E4FF --------------------------------------------------------
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E4C0  ROXR.W    D0   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E4C1  ROXR.W    D1   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E4C2  ROXR.W    D2   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E4C3  ROXR.W    D3   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E4C4  ROXR.W    D4   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E4C5  ROXR.W    D5   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E4C6  ROXR.W    D6   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E4C7  ROXR.W    D7   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E4C8  ROXR.W    A0   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E4C9  ROXR.W    A1   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E4CA  ROXR.W    A2   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E4CB  ROXR.W    A3   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E4CC  ROXR.W    A4   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E4CD  ROXR.W    A5   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E4CE  ROXR.W    A6   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E4CF  ROXR.W    A7   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 op_E4D0:
         mr      addr, a0                                // E4D0  ROXR.W    (A0)
         b       roxr_w_mem_2
@@ -2631,17 +2631,17 @@ op_E4D7:
         ori     rtn_addr, code_ptr, roxr_w_mem_3 - cb   // E4F9  ROXR.W    (xxx).L
         b       fea_w_71
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E4FA  ROXR.W    (d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E4FB  ROXR.W    (d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E4FC  ROXR.W    #<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E4FD  ROXR.W    <ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E4FE  ROXR.W    <ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E4FF  ROXR.W    <ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $E500-$E53F --------------------------------------------------------
         li      addr, 2                                 // E500  ASL.B     #2,D0
@@ -3035,37 +3035,37 @@ op_E4D7:
 
 // ---- $E5C0-$E5FF --------------------------------------------------------
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E5C0  ROXL.W    D0   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E5C1  ROXL.W    D1   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E5C2  ROXL.W    D2   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E5C3  ROXL.W    D3   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E5C4  ROXL.W    D4   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E5C5  ROXL.W    D5   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E5C6  ROXL.W    D6   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E5C7  ROXL.W    D7   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E5C8  ROXL.W    A0   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E5C9  ROXL.W    A1   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E5CA  ROXL.W    A2   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E5CB  ROXL.W    A3   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E5CC  ROXL.W    A4   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E5CD  ROXL.W    A5   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E5CE  ROXL.W    A6   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E5CF  ROXL.W    A7   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 op_E5D0:
         mr      addr, a0                                // E5D0  ROXL.W    (A0)
         b       roxl_w_mem_2
@@ -3159,17 +3159,17 @@ op_E5D7:
         ori     rtn_addr, code_ptr, roxl_w_mem_3 - cb   // E5F9  ROXL.W    (xxx).L
         b       fea_w_71
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E5FA  ROXL.W    (d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E5FB  ROXL.W    (d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E5FC  ROXL.W    #<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E5FD  ROXL.W    <ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E5FE  ROXL.W    <ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E5FF  ROXL.W    <ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $E600-$E63F --------------------------------------------------------
         li      addr, 3                                 // E600  ASR.B     #3,D0
@@ -3563,37 +3563,37 @@ op_E5D7:
 
 // ---- $E6C0-$E6FF --------------------------------------------------------
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E6C0  ROR.W     D0   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E6C1  ROR.W     D1   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E6C2  ROR.W     D2   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E6C3  ROR.W     D3   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E6C4  ROR.W     D4   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E6C5  ROR.W     D5   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E6C6  ROR.W     D6   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E6C7  ROR.W     D7   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E6C8  ROR.W     A0   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E6C9  ROR.W     A1   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E6CA  ROR.W     A2   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E6CB  ROR.W     A3   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E6CC  ROR.W     A4   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E6CD  ROR.W     A5   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E6CE  ROR.W     A6   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E6CF  ROR.W     A7   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 op_E6D0:
         mr      addr, a0                                // E6D0  ROR.W     (A0)
         b       ror_w_mem_2
@@ -3687,17 +3687,17 @@ op_E6D7:
         ori     rtn_addr, code_ptr, ror_w_mem_3 - cb    // E6F9  ROR.W     (xxx).L
         b       fea_w_71
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E6FA  ROR.W     (d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E6FB  ROR.W     (d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E6FC  ROR.W     #<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E6FD  ROR.W     <ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E6FE  ROR.W     <ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E6FF  ROR.W     <ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $E700-$E73F --------------------------------------------------------
         li      addr, 3                                 // E700  ASL.B     #3,D0
@@ -4091,37 +4091,37 @@ op_E6D7:
 
 // ---- $E7C0-$E7FF --------------------------------------------------------
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E7C0  ROL.W     D0   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E7C1  ROL.W     D1   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E7C2  ROL.W     D2   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E7C3  ROL.W     D3   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E7C4  ROL.W     D4   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E7C5  ROL.W     D5   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E7C6  ROL.W     D6   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E7C7  ROL.W     D7   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E7C8  ROL.W     A0   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E7C9  ROL.W     A1   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E7CA  ROL.W     A2   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E7CB  ROL.W     A3   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E7CC  ROL.W     A4   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E7CD  ROL.W     A5   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E7CE  ROL.W     A6   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E7CF  ROL.W     A7   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 op_E7D0:
         mr      addr, a0                                // E7D0  ROL.W     (A0)
         b       rol_w_mem_2
@@ -4215,17 +4215,17 @@ op_E7D7:
         ori     rtn_addr, code_ptr, rol_w_mem_3 - cb    // E7F9  ROL.W     (xxx).L
         b       fea_w_71
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E7FA  ROL.W     (d16,PC)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E7FB  ROL.W     (d8,PC,Xn)   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E7FC  ROL.W     #<data>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E7FD  ROL.W     <ea 7.5>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E7FE  ROL.W     <ea 7.6>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E7FF  ROL.W     <ea 7.7>   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $E800-$E83F --------------------------------------------------------
         li      addr, 4                                 // E800  ASR.B     #4,D0
@@ -4635,21 +4635,21 @@ op_E7D7:
         mr      data, d7                                // E8C7  BFTST     D7{ofs:wid}
         b       bftst
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E8C8  BFTST     A0{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E8C9  BFTST     A1{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E8CA  BFTST     A2{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E8CB  BFTST     A3{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E8CC  BFTST     A4{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E8CD  BFTST     A5{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E8CE  BFTST     A6{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E8CF  BFTST     A7{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         mr      addr, a0                                // E8D0  BFTST     (A0){ofs:wid}
         b       bftst_mem
         mr      addr, a1                                // E8D1  BFTST     (A1){ofs:wid}
@@ -4667,37 +4667,37 @@ op_E7D7:
         mr      addr, a7                                // E8D7  BFTST     (A7){ofs:wid}
         b       bftst_mem
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E8D8  BFTST     (A0)+{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E8D9  BFTST     (A1)+{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E8DA  BFTST     (A2)+{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E8DB  BFTST     (A3)+{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E8DC  BFTST     (A4)+{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E8DD  BFTST     (A5)+{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E8DE  BFTST     (A6)+{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E8DF  BFTST     (A7)+{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E8E0  BFTST     -(A0){ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E8E1  BFTST     -(A1){ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E8E2  BFTST     -(A2){ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E8E3  BFTST     -(A3){ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E8E4  BFTST     -(A4){ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E8E5  BFTST     -(A5){ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E8E6  BFTST     -(A6){ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E8E7  BFTST     -(A7){ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         mr      addr, a0                                // E8E8  BFTST     (d16,A0){ofs:wid}
         b       bftst_mem_3
         mr      addr, a1                                // E8E9  BFTST     (d16,A1){ofs:wid}
@@ -4739,13 +4739,13 @@ op_E7D7:
         ori     rtn_addr, code_ptr, bftst_mem_2 - cb    // E8FB  BFTST     (d8,PC,Xn){ofs:wid}
         b       chk2_cmp2_movem_etc_mem_any
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E8FC  BFTST     #<data>{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E8FD  BFTST     <ea 7.5>{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E8FE  BFTST     <ea 7.6>{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E8FF  BFTST     <ea 7.7>{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $E900-$E93F --------------------------------------------------------
         li      addr, 4                                 // E900  ASL.B     #4,D0
@@ -5155,21 +5155,21 @@ op_E7D7:
         mr      data, d7                                // E9C7  BFEXTU    D7{ofs:wid},Dn
         b       bfextu
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E9C8  BFEXTU    A0{ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E9C9  BFEXTU    A1{ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E9CA  BFEXTU    A2{ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E9CB  BFEXTU    A3{ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E9CC  BFEXTU    A4{ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E9CD  BFEXTU    A5{ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E9CE  BFEXTU    A6{ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E9CF  BFEXTU    A7{ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         mr      addr, a0                                // E9D0  BFEXTU    (A0){ofs:wid},Dn
         b       bfextu_bfexts_bfffo_mem_2
         mr      addr, a1                                // E9D1  BFEXTU    (A1){ofs:wid},Dn
@@ -5187,37 +5187,37 @@ op_E7D7:
         mr      addr, a7                                // E9D7  BFEXTU    (A7){ofs:wid},Dn
         b       bfextu_bfexts_bfffo_mem_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E9D8  BFEXTU    (A0)+{ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E9D9  BFEXTU    (A1)+{ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E9DA  BFEXTU    (A2)+{ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E9DB  BFEXTU    (A3)+{ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E9DC  BFEXTU    (A4)+{ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E9DD  BFEXTU    (A5)+{ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E9DE  BFEXTU    (A6)+{ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E9DF  BFEXTU    (A7)+{ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E9E0  BFEXTU    -(A0){ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E9E1  BFEXTU    -(A1){ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E9E2  BFEXTU    -(A2){ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E9E3  BFEXTU    -(A3){ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E9E4  BFEXTU    -(A4){ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E9E5  BFEXTU    -(A5){ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E9E6  BFEXTU    -(A6){ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E9E7  BFEXTU    -(A7){ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         mr      addr, a0                                // E9E8  BFEXTU    (d16,A0){ofs:wid},Dn
         b       bfextu_bfexts_bfffo_mem
         mr      addr, a1                                // E9E9  BFEXTU    (d16,A1){ofs:wid},Dn
@@ -5259,13 +5259,13 @@ op_E7D7:
         ori     rtn_addr, code_ptr, bfextu_bfexts_bfffo_mem_3 - cb  // E9FB  BFEXTU    (d8,PC,Xn){ofs:wid},Dn
         b       chk2_cmp2_movem_etc_mem_any
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E9FC  BFEXTU    #<data>{ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E9FD  BFEXTU    <ea 7.5>{ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E9FE  BFEXTU    <ea 7.6>{ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // E9FF  BFEXTU    <ea 7.7>{ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $EA00-$EA3F --------------------------------------------------------
         li      addr, 5                                 // EA00  ASR.B     #5,D0
@@ -5675,21 +5675,21 @@ op_E7D7:
         ori     addr, code_ptr, L_05770 - cb            // EAC7  BFCHG     D7{ofs:wid}
         b       bfchg_bfclr_bfset
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EAC8  BFCHG     A0{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EAC9  BFCHG     A1{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EACA  BFCHG     A2{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EACB  BFCHG     A3{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EACC  BFCHG     A4{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EACD  BFCHG     A5{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EACE  BFCHG     A6{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EACF  BFCHG     A7{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         mr      addr, a0                                // EAD0  BFCHG     (A0){ofs:wid}
         b       bfchg_bfclr_bfset_mem_2
         mr      addr, a1                                // EAD1  BFCHG     (A1){ofs:wid}
@@ -5707,37 +5707,37 @@ op_E7D7:
         mr      addr, a7                                // EAD7  BFCHG     (A7){ofs:wid}
         b       bfchg_bfclr_bfset_mem_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EAD8  BFCHG     (A0)+{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EAD9  BFCHG     (A1)+{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EADA  BFCHG     (A2)+{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EADB  BFCHG     (A3)+{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EADC  BFCHG     (A4)+{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EADD  BFCHG     (A5)+{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EADE  BFCHG     (A6)+{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EADF  BFCHG     (A7)+{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EAE0  BFCHG     -(A0){ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EAE1  BFCHG     -(A1){ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EAE2  BFCHG     -(A2){ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EAE3  BFCHG     -(A3){ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EAE4  BFCHG     -(A4){ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EAE5  BFCHG     -(A5){ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EAE6  BFCHG     -(A6){ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EAE7  BFCHG     -(A7){ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         mr      addr, a0                                // EAE8  BFCHG     (d16,A0){ofs:wid}
         b       bfchg_bfclr_bfset_mem
         mr      addr, a1                                // EAE9  BFCHG     (d16,A1){ofs:wid}
@@ -5775,17 +5775,17 @@ op_E7D7:
         ori     rtn_addr, code_ptr, bfchg_bfclr_bfset_mem_3 - cb  // EAF9  BFCHG     (xxx).L{ofs:wid}
         b       cea_x_71
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EAFA  BFCHG     (d16,PC){ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EAFB  BFCHG     (d8,PC,Xn){ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EAFC  BFCHG     #<data>{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EAFD  BFCHG     <ea 7.5>{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EAFE  BFCHG     <ea 7.6>{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EAFF  BFCHG     <ea 7.7>{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $EB00-$EB3F --------------------------------------------------------
         li      addr, 5                                 // EB00  ASL.B     #5,D0
@@ -6195,21 +6195,21 @@ op_E7D7:
         mr      data, d7                                // EBC7  BFEXTS    D7{ofs:wid},Dn
         b       bfexts
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EBC8  BFEXTS    A0{ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EBC9  BFEXTS    A1{ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EBCA  BFEXTS    A2{ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EBCB  BFEXTS    A3{ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EBCC  BFEXTS    A4{ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EBCD  BFEXTS    A5{ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EBCE  BFEXTS    A6{ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EBCF  BFEXTS    A7{ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         mr      addr, a0                                // EBD0  BFEXTS    (A0){ofs:wid},Dn
         b       bfextu_bfexts_bfffo_mem_2
         mr      addr, a1                                // EBD1  BFEXTS    (A1){ofs:wid},Dn
@@ -6227,37 +6227,37 @@ op_E7D7:
         mr      addr, a7                                // EBD7  BFEXTS    (A7){ofs:wid},Dn
         b       bfextu_bfexts_bfffo_mem_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EBD8  BFEXTS    (A0)+{ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EBD9  BFEXTS    (A1)+{ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EBDA  BFEXTS    (A2)+{ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EBDB  BFEXTS    (A3)+{ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EBDC  BFEXTS    (A4)+{ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EBDD  BFEXTS    (A5)+{ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EBDE  BFEXTS    (A6)+{ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EBDF  BFEXTS    (A7)+{ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EBE0  BFEXTS    -(A0){ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EBE1  BFEXTS    -(A1){ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EBE2  BFEXTS    -(A2){ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EBE3  BFEXTS    -(A3){ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EBE4  BFEXTS    -(A4){ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EBE5  BFEXTS    -(A5){ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EBE6  BFEXTS    -(A6){ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EBE7  BFEXTS    -(A7){ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         mr      addr, a0                                // EBE8  BFEXTS    (d16,A0){ofs:wid},Dn
         b       bfextu_bfexts_bfffo_mem
         mr      addr, a1                                // EBE9  BFEXTS    (d16,A1){ofs:wid},Dn
@@ -6299,13 +6299,13 @@ op_E7D7:
         ori     rtn_addr, code_ptr, bfextu_bfexts_bfffo_mem_3 - cb  // EBFB  BFEXTS    (d8,PC,Xn){ofs:wid},Dn
         b       chk2_cmp2_movem_etc_mem_any
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EBFC  BFEXTS    #<data>{ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EBFD  BFEXTS    <ea 7.5>{ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EBFE  BFEXTS    <ea 7.6>{ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EBFF  BFEXTS    <ea 7.7>{ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $EC00-$EC3F --------------------------------------------------------
         li      addr, 6                                 // EC00  ASR.B     #6,D0
@@ -6715,21 +6715,21 @@ op_E7D7:
         ori     addr, code_ptr, L_05770 - cb            // ECC7  BFCLR     D7{ofs:wid}
         b       bfchg_bfclr_bfset
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // ECC8  BFCLR     A0{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // ECC9  BFCLR     A1{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // ECCA  BFCLR     A2{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // ECCB  BFCLR     A3{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // ECCC  BFCLR     A4{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // ECCD  BFCLR     A5{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // ECCE  BFCLR     A6{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // ECCF  BFCLR     A7{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         mr      addr, a0                                // ECD0  BFCLR     (A0){ofs:wid}
         b       bfchg_bfclr_bfset_mem_2
         mr      addr, a1                                // ECD1  BFCLR     (A1){ofs:wid}
@@ -6747,37 +6747,37 @@ op_E7D7:
         mr      addr, a7                                // ECD7  BFCLR     (A7){ofs:wid}
         b       bfchg_bfclr_bfset_mem_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // ECD8  BFCLR     (A0)+{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // ECD9  BFCLR     (A1)+{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // ECDA  BFCLR     (A2)+{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // ECDB  BFCLR     (A3)+{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // ECDC  BFCLR     (A4)+{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // ECDD  BFCLR     (A5)+{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // ECDE  BFCLR     (A6)+{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // ECDF  BFCLR     (A7)+{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // ECE0  BFCLR     -(A0){ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // ECE1  BFCLR     -(A1){ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // ECE2  BFCLR     -(A2){ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // ECE3  BFCLR     -(A3){ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // ECE4  BFCLR     -(A4){ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // ECE5  BFCLR     -(A5){ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // ECE6  BFCLR     -(A6){ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // ECE7  BFCLR     -(A7){ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         mr      addr, a0                                // ECE8  BFCLR     (d16,A0){ofs:wid}
         b       bfchg_bfclr_bfset_mem
         mr      addr, a1                                // ECE9  BFCLR     (d16,A1){ofs:wid}
@@ -6815,17 +6815,17 @@ op_E7D7:
         ori     rtn_addr, code_ptr, bfchg_bfclr_bfset_mem_3 - cb  // ECF9  BFCLR     (xxx).L{ofs:wid}
         b       cea_x_71
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // ECFA  BFCLR     (d16,PC){ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // ECFB  BFCLR     (d8,PC,Xn){ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // ECFC  BFCLR     #<data>{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // ECFD  BFCLR     <ea 7.5>{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // ECFE  BFCLR     <ea 7.6>{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // ECFF  BFCLR     <ea 7.7>{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $ED00-$ED3F --------------------------------------------------------
         li      addr, 6                                 // ED00  ASL.B     #6,D0
@@ -7235,21 +7235,21 @@ op_E7D7:
         mr      data, d7                                // EDC7  BFFFO     D7{ofs:wid},Dn
         b       bfffo
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EDC8  BFFFO     A0{ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EDC9  BFFFO     A1{ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EDCA  BFFFO     A2{ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EDCB  BFFFO     A3{ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EDCC  BFFFO     A4{ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EDCD  BFFFO     A5{ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EDCE  BFFFO     A6{ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EDCF  BFFFO     A7{ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         mr      addr, a0                                // EDD0  BFFFO     (A0){ofs:wid},Dn
         b       bfextu_bfexts_bfffo_mem_2
         mr      addr, a1                                // EDD1  BFFFO     (A1){ofs:wid},Dn
@@ -7267,37 +7267,37 @@ op_E7D7:
         mr      addr, a7                                // EDD7  BFFFO     (A7){ofs:wid},Dn
         b       bfextu_bfexts_bfffo_mem_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EDD8  BFFFO     (A0)+{ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EDD9  BFFFO     (A1)+{ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EDDA  BFFFO     (A2)+{ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EDDB  BFFFO     (A3)+{ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EDDC  BFFFO     (A4)+{ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EDDD  BFFFO     (A5)+{ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EDDE  BFFFO     (A6)+{ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EDDF  BFFFO     (A7)+{ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EDE0  BFFFO     -(A0){ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EDE1  BFFFO     -(A1){ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EDE2  BFFFO     -(A2){ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EDE3  BFFFO     -(A3){ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EDE4  BFFFO     -(A4){ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EDE5  BFFFO     -(A5){ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EDE6  BFFFO     -(A6){ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EDE7  BFFFO     -(A7){ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         mr      addr, a0                                // EDE8  BFFFO     (d16,A0){ofs:wid},Dn
         b       bfextu_bfexts_bfffo_mem
         mr      addr, a1                                // EDE9  BFFFO     (d16,A1){ofs:wid},Dn
@@ -7339,13 +7339,13 @@ op_E7D7:
         ori     rtn_addr, code_ptr, bfextu_bfexts_bfffo_mem_3 - cb  // EDFB  BFFFO     (d8,PC,Xn){ofs:wid},Dn
         b       chk2_cmp2_movem_etc_mem_any
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EDFC  BFFFO     #<data>{ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EDFD  BFFFO     <ea 7.5>{ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EDFE  BFFFO     <ea 7.6>{ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EDFF  BFFFO     <ea 7.7>{ofs:wid},Dn   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $EE00-$EE3F --------------------------------------------------------
         li      addr, 7                                 // EE00  ASR.B     #7,D0
@@ -7755,21 +7755,21 @@ op_E7D7:
         ori     addr, code_ptr, L_05770 - cb            // EEC7  BFSET     D7{ofs:wid}
         b       bfchg_bfclr_bfset
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EEC8  BFSET     A0{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EEC9  BFSET     A1{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EECA  BFSET     A2{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EECB  BFSET     A3{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EECC  BFSET     A4{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EECD  BFSET     A5{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EECE  BFSET     A6{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EECF  BFSET     A7{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         mr      addr, a0                                // EED0  BFSET     (A0){ofs:wid}
         b       bfchg_bfclr_bfset_mem_2
         mr      addr, a1                                // EED1  BFSET     (A1){ofs:wid}
@@ -7787,37 +7787,37 @@ op_E7D7:
         mr      addr, a7                                // EED7  BFSET     (A7){ofs:wid}
         b       bfchg_bfclr_bfset_mem_2
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EED8  BFSET     (A0)+{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EED9  BFSET     (A1)+{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EEDA  BFSET     (A2)+{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EEDB  BFSET     (A3)+{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EEDC  BFSET     (A4)+{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EEDD  BFSET     (A5)+{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EEDE  BFSET     (A6)+{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EEDF  BFSET     (A7)+{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EEE0  BFSET     -(A0){ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EEE1  BFSET     -(A1){ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EEE2  BFSET     -(A2){ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EEE3  BFSET     -(A3){ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EEE4  BFSET     -(A4){ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EEE5  BFSET     -(A5){ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EEE6  BFSET     -(A6){ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EEE7  BFSET     -(A7){ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         mr      addr, a0                                // EEE8  BFSET     (d16,A0){ofs:wid}
         b       bfchg_bfclr_bfset_mem
         mr      addr, a1                                // EEE9  BFSET     (d16,A1){ofs:wid}
@@ -7855,17 +7855,17 @@ op_E7D7:
         ori     rtn_addr, code_ptr, bfchg_bfclr_bfset_mem_3 - cb  // EEF9  BFSET     (xxx).L{ofs:wid}
         b       cea_x_71
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EEFA  BFSET     (d16,PC){ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EEFB  BFSET     (d8,PC,Xn){ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EEFC  BFSET     #<data>{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EEFD  BFSET     <ea 7.5>{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EEFE  BFSET     <ea 7.6>{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EEFF  BFSET     <ea 7.7>{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $EF00-$EF3F --------------------------------------------------------
         li      addr, 7                                 // EF00  ASL.B     #7,D0
@@ -8275,21 +8275,21 @@ op_E7D7:
         ori     addr, code_ptr, L_05770 - cb            // EFC7  BFINS     Dn,D7{ofs:wid}
         b       bfins
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EFC8  BFINS     Dn,A0{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EFC9  BFINS     Dn,A1{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EFCA  BFINS     Dn,A2{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EFCB  BFINS     Dn,A3{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EFCC  BFINS     Dn,A4{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EFCD  BFINS     Dn,A5{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EFCE  BFINS     Dn,A6{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EFCF  BFINS     Dn,A7{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         mr      addr, a0                                // EFD0  BFINS     Dn,(A0){ofs:wid}
         b       bfins_mem
         mr      addr, a1                                // EFD1  BFINS     Dn,(A1){ofs:wid}
@@ -8307,37 +8307,37 @@ op_E7D7:
         mr      addr, a7                                // EFD7  BFINS     Dn,(A7){ofs:wid}
         b       bfins_mem
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EFD8  BFINS     Dn,(A0)+{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EFD9  BFINS     Dn,(A1)+{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EFDA  BFINS     Dn,(A2)+{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EFDB  BFINS     Dn,(A3)+{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EFDC  BFINS     Dn,(A4)+{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EFDD  BFINS     Dn,(A5)+{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EFDE  BFINS     Dn,(A6)+{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EFDF  BFINS     Dn,(A7)+{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EFE0  BFINS     Dn,-(A0){ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EFE1  BFINS     Dn,-(A1){ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EFE2  BFINS     Dn,-(A2){ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EFE3  BFINS     Dn,-(A3){ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EFE4  BFINS     Dn,-(A4){ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EFE5  BFINS     Dn,-(A5){ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EFE6  BFINS     Dn,-(A6){ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EFE7  BFINS     Dn,-(A7){ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         mr      addr, a0                                // EFE8  BFINS     Dn,(d16,A0){ofs:wid}
         b       bfins_mem_3
         mr      addr, a1                                // EFE9  BFINS     Dn,(d16,A1){ofs:wid}
@@ -8375,14 +8375,14 @@ op_E7D7:
         ori     rtn_addr, code_ptr, bfins_mem_2 - cb    // EFF9  BFINS     Dn,(xxx).L{ofs:wid}
         b       cea_x_71
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EFFA  BFINS     Dn,(d16,PC){ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EFFB  BFINS     Dn,(d8,PC,Xn){ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EFFC  BFINS     Dn,#<data>{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EFFD  BFINS     Dn,<ea 7.5>{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EFFE  BFINS     Dn,<ea 7.6>{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // EFFF  BFINS     Dn,<ea 7.7>{ofs:wid}   (illegal)
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction

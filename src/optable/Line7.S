@@ -5,8320 +5,8320 @@
 
 // ---- $7000-$703F --------------------------------------------------------
         addco.  d0, zero, zero                          // 7000  MOVEQ.L   #$00,D0
-        b       move_add_etc_any_any
+        b       fetch
         addic.  d0, zero, 1                             // 7001  MOVEQ.L   #$01,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 2                             // 7002  MOVEQ.L   #$02,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 3                             // 7003  MOVEQ.L   #$03,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 4                             // 7004  MOVEQ.L   #$04,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 5                             // 7005  MOVEQ.L   #$05,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 6                             // 7006  MOVEQ.L   #$06,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 7                             // 7007  MOVEQ.L   #$07,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 8                             // 7008  MOVEQ.L   #$08,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 9                             // 7009  MOVEQ.L   #$09,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 10                            // 700A  MOVEQ.L   #$0A,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 11                            // 700B  MOVEQ.L   #$0B,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 12                            // 700C  MOVEQ.L   #$0C,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 13                            // 700D  MOVEQ.L   #$0D,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 14                            // 700E  MOVEQ.L   #$0E,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 15                            // 700F  MOVEQ.L   #$0F,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 16                            // 7010  MOVEQ.L   #$10,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 17                            // 7011  MOVEQ.L   #$11,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 18                            // 7012  MOVEQ.L   #$12,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 19                            // 7013  MOVEQ.L   #$13,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 20                            // 7014  MOVEQ.L   #$14,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 21                            // 7015  MOVEQ.L   #$15,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 22                            // 7016  MOVEQ.L   #$16,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 23                            // 7017  MOVEQ.L   #$17,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 24                            // 7018  MOVEQ.L   #$18,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 25                            // 7019  MOVEQ.L   #$19,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 26                            // 701A  MOVEQ.L   #$1A,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 27                            // 701B  MOVEQ.L   #$1B,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 28                            // 701C  MOVEQ.L   #$1C,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 29                            // 701D  MOVEQ.L   #$1D,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 30                            // 701E  MOVEQ.L   #$1E,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 31                            // 701F  MOVEQ.L   #$1F,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 32                            // 7020  MOVEQ.L   #$20,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 33                            // 7021  MOVEQ.L   #$21,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 34                            // 7022  MOVEQ.L   #$22,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 35                            // 7023  MOVEQ.L   #$23,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 36                            // 7024  MOVEQ.L   #$24,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 37                            // 7025  MOVEQ.L   #$25,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 38                            // 7026  MOVEQ.L   #$26,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 39                            // 7027  MOVEQ.L   #$27,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 40                            // 7028  MOVEQ.L   #$28,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 41                            // 7029  MOVEQ.L   #$29,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 42                            // 702A  MOVEQ.L   #$2A,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 43                            // 702B  MOVEQ.L   #$2B,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 44                            // 702C  MOVEQ.L   #$2C,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 45                            // 702D  MOVEQ.L   #$2D,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 46                            // 702E  MOVEQ.L   #$2E,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 47                            // 702F  MOVEQ.L   #$2F,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 48                            // 7030  MOVEQ.L   #$30,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 49                            // 7031  MOVEQ.L   #$31,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 50                            // 7032  MOVEQ.L   #$32,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 51                            // 7033  MOVEQ.L   #$33,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 52                            // 7034  MOVEQ.L   #$34,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 53                            // 7035  MOVEQ.L   #$35,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 54                            // 7036  MOVEQ.L   #$36,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 55                            // 7037  MOVEQ.L   #$37,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 56                            // 7038  MOVEQ.L   #$38,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 57                            // 7039  MOVEQ.L   #$39,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 58                            // 703A  MOVEQ.L   #$3A,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 59                            // 703B  MOVEQ.L   #$3B,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 60                            // 703C  MOVEQ.L   #$3C,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 61                            // 703D  MOVEQ.L   #$3D,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 62                            // 703E  MOVEQ.L   #$3E,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 63                            // 703F  MOVEQ.L   #$3F,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
 
 // ---- $7040-$707F --------------------------------------------------------
         addic.  d0, zero, 64                            // 7040  MOVEQ.L   #$40,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 65                            // 7041  MOVEQ.L   #$41,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 66                            // 7042  MOVEQ.L   #$42,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 67                            // 7043  MOVEQ.L   #$43,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 68                            // 7044  MOVEQ.L   #$44,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 69                            // 7045  MOVEQ.L   #$45,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 70                            // 7046  MOVEQ.L   #$46,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 71                            // 7047  MOVEQ.L   #$47,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 72                            // 7048  MOVEQ.L   #$48,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 73                            // 7049  MOVEQ.L   #$49,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 74                            // 704A  MOVEQ.L   #$4A,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 75                            // 704B  MOVEQ.L   #$4B,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 76                            // 704C  MOVEQ.L   #$4C,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 77                            // 704D  MOVEQ.L   #$4D,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 78                            // 704E  MOVEQ.L   #$4E,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 79                            // 704F  MOVEQ.L   #$4F,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 80                            // 7050  MOVEQ.L   #$50,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 81                            // 7051  MOVEQ.L   #$51,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 82                            // 7052  MOVEQ.L   #$52,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 83                            // 7053  MOVEQ.L   #$53,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 84                            // 7054  MOVEQ.L   #$54,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 85                            // 7055  MOVEQ.L   #$55,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 86                            // 7056  MOVEQ.L   #$56,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 87                            // 7057  MOVEQ.L   #$57,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 88                            // 7058  MOVEQ.L   #$58,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 89                            // 7059  MOVEQ.L   #$59,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 90                            // 705A  MOVEQ.L   #$5A,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 91                            // 705B  MOVEQ.L   #$5B,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 92                            // 705C  MOVEQ.L   #$5C,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 93                            // 705D  MOVEQ.L   #$5D,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 94                            // 705E  MOVEQ.L   #$5E,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 95                            // 705F  MOVEQ.L   #$5F,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 96                            // 7060  MOVEQ.L   #$60,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 97                            // 7061  MOVEQ.L   #$61,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 98                            // 7062  MOVEQ.L   #$62,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 99                            // 7063  MOVEQ.L   #$63,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 100                           // 7064  MOVEQ.L   #$64,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 101                           // 7065  MOVEQ.L   #$65,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 102                           // 7066  MOVEQ.L   #$66,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 103                           // 7067  MOVEQ.L   #$67,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 104                           // 7068  MOVEQ.L   #$68,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 105                           // 7069  MOVEQ.L   #$69,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 106                           // 706A  MOVEQ.L   #$6A,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 107                           // 706B  MOVEQ.L   #$6B,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 108                           // 706C  MOVEQ.L   #$6C,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 109                           // 706D  MOVEQ.L   #$6D,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 110                           // 706E  MOVEQ.L   #$6E,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 111                           // 706F  MOVEQ.L   #$6F,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 112                           // 7070  MOVEQ.L   #$70,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 113                           // 7071  MOVEQ.L   #$71,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 114                           // 7072  MOVEQ.L   #$72,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 115                           // 7073  MOVEQ.L   #$73,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 116                           // 7074  MOVEQ.L   #$74,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 117                           // 7075  MOVEQ.L   #$75,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 118                           // 7076  MOVEQ.L   #$76,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 119                           // 7077  MOVEQ.L   #$77,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 120                           // 7078  MOVEQ.L   #$78,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 121                           // 7079  MOVEQ.L   #$79,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 122                           // 707A  MOVEQ.L   #$7A,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 123                           // 707B  MOVEQ.L   #$7B,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 124                           // 707C  MOVEQ.L   #$7C,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 125                           // 707D  MOVEQ.L   #$7D,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 126                           // 707E  MOVEQ.L   #$7E,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, 127                           // 707F  MOVEQ.L   #$7F,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
 
 // ---- $7080-$70BF --------------------------------------------------------
         addic.  d0, zero, -128                          // 7080  MOVEQ.L   #$80,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -127                          // 7081  MOVEQ.L   #$81,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -126                          // 7082  MOVEQ.L   #$82,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -125                          // 7083  MOVEQ.L   #$83,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -124                          // 7084  MOVEQ.L   #$84,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -123                          // 7085  MOVEQ.L   #$85,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -122                          // 7086  MOVEQ.L   #$86,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -121                          // 7087  MOVEQ.L   #$87,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -120                          // 7088  MOVEQ.L   #$88,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -119                          // 7089  MOVEQ.L   #$89,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -118                          // 708A  MOVEQ.L   #$8A,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -117                          // 708B  MOVEQ.L   #$8B,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -116                          // 708C  MOVEQ.L   #$8C,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -115                          // 708D  MOVEQ.L   #$8D,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -114                          // 708E  MOVEQ.L   #$8E,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -113                          // 708F  MOVEQ.L   #$8F,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -112                          // 7090  MOVEQ.L   #$90,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -111                          // 7091  MOVEQ.L   #$91,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -110                          // 7092  MOVEQ.L   #$92,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -109                          // 7093  MOVEQ.L   #$93,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -108                          // 7094  MOVEQ.L   #$94,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -107                          // 7095  MOVEQ.L   #$95,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -106                          // 7096  MOVEQ.L   #$96,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -105                          // 7097  MOVEQ.L   #$97,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -104                          // 7098  MOVEQ.L   #$98,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -103                          // 7099  MOVEQ.L   #$99,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -102                          // 709A  MOVEQ.L   #$9A,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -101                          // 709B  MOVEQ.L   #$9B,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -100                          // 709C  MOVEQ.L   #$9C,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -99                           // 709D  MOVEQ.L   #$9D,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -98                           // 709E  MOVEQ.L   #$9E,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -97                           // 709F  MOVEQ.L   #$9F,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -96                           // 70A0  MOVEQ.L   #$A0,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -95                           // 70A1  MOVEQ.L   #$A1,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -94                           // 70A2  MOVEQ.L   #$A2,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -93                           // 70A3  MOVEQ.L   #$A3,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -92                           // 70A4  MOVEQ.L   #$A4,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -91                           // 70A5  MOVEQ.L   #$A5,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -90                           // 70A6  MOVEQ.L   #$A6,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -89                           // 70A7  MOVEQ.L   #$A7,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -88                           // 70A8  MOVEQ.L   #$A8,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -87                           // 70A9  MOVEQ.L   #$A9,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -86                           // 70AA  MOVEQ.L   #$AA,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -85                           // 70AB  MOVEQ.L   #$AB,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -84                           // 70AC  MOVEQ.L   #$AC,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -83                           // 70AD  MOVEQ.L   #$AD,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -82                           // 70AE  MOVEQ.L   #$AE,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -81                           // 70AF  MOVEQ.L   #$AF,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -80                           // 70B0  MOVEQ.L   #$B0,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -79                           // 70B1  MOVEQ.L   #$B1,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -78                           // 70B2  MOVEQ.L   #$B2,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -77                           // 70B3  MOVEQ.L   #$B3,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -76                           // 70B4  MOVEQ.L   #$B4,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -75                           // 70B5  MOVEQ.L   #$B5,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -74                           // 70B6  MOVEQ.L   #$B6,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -73                           // 70B7  MOVEQ.L   #$B7,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -72                           // 70B8  MOVEQ.L   #$B8,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -71                           // 70B9  MOVEQ.L   #$B9,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -70                           // 70BA  MOVEQ.L   #$BA,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -69                           // 70BB  MOVEQ.L   #$BB,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -68                           // 70BC  MOVEQ.L   #$BC,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -67                           // 70BD  MOVEQ.L   #$BD,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -66                           // 70BE  MOVEQ.L   #$BE,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -65                           // 70BF  MOVEQ.L   #$BF,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
 
 // ---- $70C0-$70FF --------------------------------------------------------
         addic.  d0, zero, -64                           // 70C0  MOVEQ.L   #$C0,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -63                           // 70C1  MOVEQ.L   #$C1,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -62                           // 70C2  MOVEQ.L   #$C2,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -61                           // 70C3  MOVEQ.L   #$C3,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -60                           // 70C4  MOVEQ.L   #$C4,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -59                           // 70C5  MOVEQ.L   #$C5,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -58                           // 70C6  MOVEQ.L   #$C6,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -57                           // 70C7  MOVEQ.L   #$C7,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -56                           // 70C8  MOVEQ.L   #$C8,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -55                           // 70C9  MOVEQ.L   #$C9,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -54                           // 70CA  MOVEQ.L   #$CA,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -53                           // 70CB  MOVEQ.L   #$CB,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -52                           // 70CC  MOVEQ.L   #$CC,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -51                           // 70CD  MOVEQ.L   #$CD,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -50                           // 70CE  MOVEQ.L   #$CE,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -49                           // 70CF  MOVEQ.L   #$CF,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -48                           // 70D0  MOVEQ.L   #$D0,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -47                           // 70D1  MOVEQ.L   #$D1,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -46                           // 70D2  MOVEQ.L   #$D2,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -45                           // 70D3  MOVEQ.L   #$D3,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -44                           // 70D4  MOVEQ.L   #$D4,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -43                           // 70D5  MOVEQ.L   #$D5,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -42                           // 70D6  MOVEQ.L   #$D6,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -41                           // 70D7  MOVEQ.L   #$D7,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -40                           // 70D8  MOVEQ.L   #$D8,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -39                           // 70D9  MOVEQ.L   #$D9,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -38                           // 70DA  MOVEQ.L   #$DA,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -37                           // 70DB  MOVEQ.L   #$DB,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -36                           // 70DC  MOVEQ.L   #$DC,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -35                           // 70DD  MOVEQ.L   #$DD,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -34                           // 70DE  MOVEQ.L   #$DE,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -33                           // 70DF  MOVEQ.L   #$DF,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -32                           // 70E0  MOVEQ.L   #$E0,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -31                           // 70E1  MOVEQ.L   #$E1,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -30                           // 70E2  MOVEQ.L   #$E2,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -29                           // 70E3  MOVEQ.L   #$E3,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -28                           // 70E4  MOVEQ.L   #$E4,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -27                           // 70E5  MOVEQ.L   #$E5,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -26                           // 70E6  MOVEQ.L   #$E6,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -25                           // 70E7  MOVEQ.L   #$E7,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -24                           // 70E8  MOVEQ.L   #$E8,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -23                           // 70E9  MOVEQ.L   #$E9,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -22                           // 70EA  MOVEQ.L   #$EA,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -21                           // 70EB  MOVEQ.L   #$EB,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -20                           // 70EC  MOVEQ.L   #$EC,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -19                           // 70ED  MOVEQ.L   #$ED,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -18                           // 70EE  MOVEQ.L   #$EE,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -17                           // 70EF  MOVEQ.L   #$EF,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -16                           // 70F0  MOVEQ.L   #$F0,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -15                           // 70F1  MOVEQ.L   #$F1,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -14                           // 70F2  MOVEQ.L   #$F2,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -13                           // 70F3  MOVEQ.L   #$F3,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -12                           // 70F4  MOVEQ.L   #$F4,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -11                           // 70F5  MOVEQ.L   #$F5,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -10                           // 70F6  MOVEQ.L   #$F6,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -9                            // 70F7  MOVEQ.L   #$F7,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -8                            // 70F8  MOVEQ.L   #$F8,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -7                            // 70F9  MOVEQ.L   #$F9,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -6                            // 70FA  MOVEQ.L   #$FA,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -5                            // 70FB  MOVEQ.L   #$FB,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -4                            // 70FC  MOVEQ.L   #$FC,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -3                            // 70FD  MOVEQ.L   #$FD,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -2                            // 70FE  MOVEQ.L   #$FE,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d0, zero, -1                            // 70FF  MOVEQ.L   #$FF,D0
-        b       move_or_etc_any_reg
+        b       update_vc_zero
 
 // ---- $7100-$713F --------------------------------------------------------
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7100  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7101  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7102  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7103  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7104  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7105  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7106  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7107  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7108  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7109  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 710A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 710B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 710C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 710D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 710E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 710F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7110  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7111  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7112  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7113  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7114  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7115  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7116  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7117  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7118  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7119  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 711A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 711B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 711C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 711D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 711E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 711F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7120  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7121  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7122  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7123  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7124  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7125  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7126  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7127  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7128  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7129  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 712A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 712B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 712C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 712D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 712E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 712F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7130  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7131  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7132  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7133  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7134  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7135  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7136  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7137  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7138  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7139  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 713A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 713B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 713C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 713D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 713E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 713F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $7140-$717F --------------------------------------------------------
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7140  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7141  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7142  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7143  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7144  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7145  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7146  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7147  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7148  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7149  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 714A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 714B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 714C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 714D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 714E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 714F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7150  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7151  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7152  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7153  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7154  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7155  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7156  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7157  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7158  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7159  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 715A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 715B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 715C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 715D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 715E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 715F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7160  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7161  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7162  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7163  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7164  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7165  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7166  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7167  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7168  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7169  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 716A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 716B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 716C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 716D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 716E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 716F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7170  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7171  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7172  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7173  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7174  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7175  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7176  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7177  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7178  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7179  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 717A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 717B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 717C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 717D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 717E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 717F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $7180-$71BF --------------------------------------------------------
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7180  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7181  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7182  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7183  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7184  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7185  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7186  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7187  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7188  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7189  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 718A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 718B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 718C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 718D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 718E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 718F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7190  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7191  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7192  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7193  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7194  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7195  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7196  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7197  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7198  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7199  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 719A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 719B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 719C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 719D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 719E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 719F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71A0  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71A1  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71A2  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71A3  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71A4  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71A5  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71A6  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71A7  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71A8  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71A9  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71AA  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71AB  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71AC  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71AD  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71AE  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71AF  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71B0  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71B1  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71B2  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71B3  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71B4  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71B5  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71B6  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71B7  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71B8  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71B9  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71BA  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71BB  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71BC  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71BD  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71BE  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71BF  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $71C0-$71FF --------------------------------------------------------
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71C0  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71C1  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71C2  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71C3  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71C4  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71C5  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71C6  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71C7  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71C8  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71C9  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71CA  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71CB  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71CC  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71CD  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71CE  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71CF  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71D0  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71D1  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71D2  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71D3  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71D4  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71D5  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71D6  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71D7  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71D8  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71D9  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71DA  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71DB  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71DC  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71DD  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71DE  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71DF  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71E0  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71E1  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71E2  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71E3  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71E4  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71E5  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71E6  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71E7  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71E8  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71E9  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71EA  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71EB  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71EC  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71ED  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71EE  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71EF  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71F0  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71F1  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71F2  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71F3  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71F4  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71F5  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71F6  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71F7  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71F8  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71F9  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71FA  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71FB  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71FC  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71FD  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71FE  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 71FF  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $7200-$723F --------------------------------------------------------
         addco.  d1, zero, zero                          // 7200  MOVEQ.L   #$00,D1
-        b       move_add_etc_any_any
+        b       fetch
         addic.  d1, zero, 1                             // 7201  MOVEQ.L   #$01,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 2                             // 7202  MOVEQ.L   #$02,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 3                             // 7203  MOVEQ.L   #$03,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 4                             // 7204  MOVEQ.L   #$04,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 5                             // 7205  MOVEQ.L   #$05,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 6                             // 7206  MOVEQ.L   #$06,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 7                             // 7207  MOVEQ.L   #$07,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 8                             // 7208  MOVEQ.L   #$08,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 9                             // 7209  MOVEQ.L   #$09,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 10                            // 720A  MOVEQ.L   #$0A,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 11                            // 720B  MOVEQ.L   #$0B,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 12                            // 720C  MOVEQ.L   #$0C,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 13                            // 720D  MOVEQ.L   #$0D,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 14                            // 720E  MOVEQ.L   #$0E,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 15                            // 720F  MOVEQ.L   #$0F,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 16                            // 7210  MOVEQ.L   #$10,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 17                            // 7211  MOVEQ.L   #$11,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 18                            // 7212  MOVEQ.L   #$12,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 19                            // 7213  MOVEQ.L   #$13,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 20                            // 7214  MOVEQ.L   #$14,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 21                            // 7215  MOVEQ.L   #$15,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 22                            // 7216  MOVEQ.L   #$16,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 23                            // 7217  MOVEQ.L   #$17,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 24                            // 7218  MOVEQ.L   #$18,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 25                            // 7219  MOVEQ.L   #$19,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 26                            // 721A  MOVEQ.L   #$1A,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 27                            // 721B  MOVEQ.L   #$1B,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 28                            // 721C  MOVEQ.L   #$1C,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 29                            // 721D  MOVEQ.L   #$1D,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 30                            // 721E  MOVEQ.L   #$1E,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 31                            // 721F  MOVEQ.L   #$1F,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 32                            // 7220  MOVEQ.L   #$20,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 33                            // 7221  MOVEQ.L   #$21,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 34                            // 7222  MOVEQ.L   #$22,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 35                            // 7223  MOVEQ.L   #$23,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 36                            // 7224  MOVEQ.L   #$24,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 37                            // 7225  MOVEQ.L   #$25,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 38                            // 7226  MOVEQ.L   #$26,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 39                            // 7227  MOVEQ.L   #$27,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 40                            // 7228  MOVEQ.L   #$28,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 41                            // 7229  MOVEQ.L   #$29,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 42                            // 722A  MOVEQ.L   #$2A,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 43                            // 722B  MOVEQ.L   #$2B,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 44                            // 722C  MOVEQ.L   #$2C,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 45                            // 722D  MOVEQ.L   #$2D,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 46                            // 722E  MOVEQ.L   #$2E,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 47                            // 722F  MOVEQ.L   #$2F,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 48                            // 7230  MOVEQ.L   #$30,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 49                            // 7231  MOVEQ.L   #$31,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 50                            // 7232  MOVEQ.L   #$32,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 51                            // 7233  MOVEQ.L   #$33,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 52                            // 7234  MOVEQ.L   #$34,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 53                            // 7235  MOVEQ.L   #$35,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 54                            // 7236  MOVEQ.L   #$36,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 55                            // 7237  MOVEQ.L   #$37,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 56                            // 7238  MOVEQ.L   #$38,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 57                            // 7239  MOVEQ.L   #$39,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 58                            // 723A  MOVEQ.L   #$3A,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 59                            // 723B  MOVEQ.L   #$3B,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 60                            // 723C  MOVEQ.L   #$3C,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 61                            // 723D  MOVEQ.L   #$3D,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 62                            // 723E  MOVEQ.L   #$3E,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 63                            // 723F  MOVEQ.L   #$3F,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
 
 // ---- $7240-$727F --------------------------------------------------------
         addic.  d1, zero, 64                            // 7240  MOVEQ.L   #$40,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 65                            // 7241  MOVEQ.L   #$41,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 66                            // 7242  MOVEQ.L   #$42,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 67                            // 7243  MOVEQ.L   #$43,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 68                            // 7244  MOVEQ.L   #$44,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 69                            // 7245  MOVEQ.L   #$45,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 70                            // 7246  MOVEQ.L   #$46,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 71                            // 7247  MOVEQ.L   #$47,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 72                            // 7248  MOVEQ.L   #$48,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 73                            // 7249  MOVEQ.L   #$49,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 74                            // 724A  MOVEQ.L   #$4A,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 75                            // 724B  MOVEQ.L   #$4B,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 76                            // 724C  MOVEQ.L   #$4C,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 77                            // 724D  MOVEQ.L   #$4D,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 78                            // 724E  MOVEQ.L   #$4E,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 79                            // 724F  MOVEQ.L   #$4F,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 80                            // 7250  MOVEQ.L   #$50,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 81                            // 7251  MOVEQ.L   #$51,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 82                            // 7252  MOVEQ.L   #$52,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 83                            // 7253  MOVEQ.L   #$53,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 84                            // 7254  MOVEQ.L   #$54,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 85                            // 7255  MOVEQ.L   #$55,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 86                            // 7256  MOVEQ.L   #$56,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 87                            // 7257  MOVEQ.L   #$57,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 88                            // 7258  MOVEQ.L   #$58,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 89                            // 7259  MOVEQ.L   #$59,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 90                            // 725A  MOVEQ.L   #$5A,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 91                            // 725B  MOVEQ.L   #$5B,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 92                            // 725C  MOVEQ.L   #$5C,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 93                            // 725D  MOVEQ.L   #$5D,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 94                            // 725E  MOVEQ.L   #$5E,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 95                            // 725F  MOVEQ.L   #$5F,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 96                            // 7260  MOVEQ.L   #$60,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 97                            // 7261  MOVEQ.L   #$61,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 98                            // 7262  MOVEQ.L   #$62,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 99                            // 7263  MOVEQ.L   #$63,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 100                           // 7264  MOVEQ.L   #$64,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 101                           // 7265  MOVEQ.L   #$65,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 102                           // 7266  MOVEQ.L   #$66,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 103                           // 7267  MOVEQ.L   #$67,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 104                           // 7268  MOVEQ.L   #$68,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 105                           // 7269  MOVEQ.L   #$69,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 106                           // 726A  MOVEQ.L   #$6A,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 107                           // 726B  MOVEQ.L   #$6B,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 108                           // 726C  MOVEQ.L   #$6C,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 109                           // 726D  MOVEQ.L   #$6D,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 110                           // 726E  MOVEQ.L   #$6E,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 111                           // 726F  MOVEQ.L   #$6F,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 112                           // 7270  MOVEQ.L   #$70,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 113                           // 7271  MOVEQ.L   #$71,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 114                           // 7272  MOVEQ.L   #$72,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 115                           // 7273  MOVEQ.L   #$73,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 116                           // 7274  MOVEQ.L   #$74,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 117                           // 7275  MOVEQ.L   #$75,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 118                           // 7276  MOVEQ.L   #$76,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 119                           // 7277  MOVEQ.L   #$77,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 120                           // 7278  MOVEQ.L   #$78,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 121                           // 7279  MOVEQ.L   #$79,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 122                           // 727A  MOVEQ.L   #$7A,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 123                           // 727B  MOVEQ.L   #$7B,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 124                           // 727C  MOVEQ.L   #$7C,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 125                           // 727D  MOVEQ.L   #$7D,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 126                           // 727E  MOVEQ.L   #$7E,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, 127                           // 727F  MOVEQ.L   #$7F,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
 
 // ---- $7280-$72BF --------------------------------------------------------
         addic.  d1, zero, -128                          // 7280  MOVEQ.L   #$80,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -127                          // 7281  MOVEQ.L   #$81,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -126                          // 7282  MOVEQ.L   #$82,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -125                          // 7283  MOVEQ.L   #$83,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -124                          // 7284  MOVEQ.L   #$84,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -123                          // 7285  MOVEQ.L   #$85,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -122                          // 7286  MOVEQ.L   #$86,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -121                          // 7287  MOVEQ.L   #$87,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -120                          // 7288  MOVEQ.L   #$88,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -119                          // 7289  MOVEQ.L   #$89,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -118                          // 728A  MOVEQ.L   #$8A,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -117                          // 728B  MOVEQ.L   #$8B,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -116                          // 728C  MOVEQ.L   #$8C,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -115                          // 728D  MOVEQ.L   #$8D,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -114                          // 728E  MOVEQ.L   #$8E,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -113                          // 728F  MOVEQ.L   #$8F,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -112                          // 7290  MOVEQ.L   #$90,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -111                          // 7291  MOVEQ.L   #$91,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -110                          // 7292  MOVEQ.L   #$92,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -109                          // 7293  MOVEQ.L   #$93,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -108                          // 7294  MOVEQ.L   #$94,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -107                          // 7295  MOVEQ.L   #$95,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -106                          // 7296  MOVEQ.L   #$96,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -105                          // 7297  MOVEQ.L   #$97,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -104                          // 7298  MOVEQ.L   #$98,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -103                          // 7299  MOVEQ.L   #$99,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -102                          // 729A  MOVEQ.L   #$9A,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -101                          // 729B  MOVEQ.L   #$9B,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -100                          // 729C  MOVEQ.L   #$9C,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -99                           // 729D  MOVEQ.L   #$9D,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -98                           // 729E  MOVEQ.L   #$9E,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -97                           // 729F  MOVEQ.L   #$9F,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -96                           // 72A0  MOVEQ.L   #$A0,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -95                           // 72A1  MOVEQ.L   #$A1,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -94                           // 72A2  MOVEQ.L   #$A2,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -93                           // 72A3  MOVEQ.L   #$A3,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -92                           // 72A4  MOVEQ.L   #$A4,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -91                           // 72A5  MOVEQ.L   #$A5,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -90                           // 72A6  MOVEQ.L   #$A6,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -89                           // 72A7  MOVEQ.L   #$A7,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -88                           // 72A8  MOVEQ.L   #$A8,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -87                           // 72A9  MOVEQ.L   #$A9,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -86                           // 72AA  MOVEQ.L   #$AA,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -85                           // 72AB  MOVEQ.L   #$AB,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -84                           // 72AC  MOVEQ.L   #$AC,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -83                           // 72AD  MOVEQ.L   #$AD,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -82                           // 72AE  MOVEQ.L   #$AE,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -81                           // 72AF  MOVEQ.L   #$AF,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -80                           // 72B0  MOVEQ.L   #$B0,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -79                           // 72B1  MOVEQ.L   #$B1,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -78                           // 72B2  MOVEQ.L   #$B2,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -77                           // 72B3  MOVEQ.L   #$B3,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -76                           // 72B4  MOVEQ.L   #$B4,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -75                           // 72B5  MOVEQ.L   #$B5,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -74                           // 72B6  MOVEQ.L   #$B6,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -73                           // 72B7  MOVEQ.L   #$B7,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -72                           // 72B8  MOVEQ.L   #$B8,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -71                           // 72B9  MOVEQ.L   #$B9,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -70                           // 72BA  MOVEQ.L   #$BA,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -69                           // 72BB  MOVEQ.L   #$BB,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -68                           // 72BC  MOVEQ.L   #$BC,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -67                           // 72BD  MOVEQ.L   #$BD,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -66                           // 72BE  MOVEQ.L   #$BE,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -65                           // 72BF  MOVEQ.L   #$BF,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
 
 // ---- $72C0-$72FF --------------------------------------------------------
         addic.  d1, zero, -64                           // 72C0  MOVEQ.L   #$C0,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -63                           // 72C1  MOVEQ.L   #$C1,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -62                           // 72C2  MOVEQ.L   #$C2,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -61                           // 72C3  MOVEQ.L   #$C3,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -60                           // 72C4  MOVEQ.L   #$C4,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -59                           // 72C5  MOVEQ.L   #$C5,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -58                           // 72C6  MOVEQ.L   #$C6,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -57                           // 72C7  MOVEQ.L   #$C7,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -56                           // 72C8  MOVEQ.L   #$C8,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -55                           // 72C9  MOVEQ.L   #$C9,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -54                           // 72CA  MOVEQ.L   #$CA,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -53                           // 72CB  MOVEQ.L   #$CB,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -52                           // 72CC  MOVEQ.L   #$CC,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -51                           // 72CD  MOVEQ.L   #$CD,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -50                           // 72CE  MOVEQ.L   #$CE,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -49                           // 72CF  MOVEQ.L   #$CF,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -48                           // 72D0  MOVEQ.L   #$D0,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -47                           // 72D1  MOVEQ.L   #$D1,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -46                           // 72D2  MOVEQ.L   #$D2,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -45                           // 72D3  MOVEQ.L   #$D3,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -44                           // 72D4  MOVEQ.L   #$D4,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -43                           // 72D5  MOVEQ.L   #$D5,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -42                           // 72D6  MOVEQ.L   #$D6,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -41                           // 72D7  MOVEQ.L   #$D7,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -40                           // 72D8  MOVEQ.L   #$D8,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -39                           // 72D9  MOVEQ.L   #$D9,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -38                           // 72DA  MOVEQ.L   #$DA,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -37                           // 72DB  MOVEQ.L   #$DB,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -36                           // 72DC  MOVEQ.L   #$DC,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -35                           // 72DD  MOVEQ.L   #$DD,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -34                           // 72DE  MOVEQ.L   #$DE,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -33                           // 72DF  MOVEQ.L   #$DF,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -32                           // 72E0  MOVEQ.L   #$E0,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -31                           // 72E1  MOVEQ.L   #$E1,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -30                           // 72E2  MOVEQ.L   #$E2,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -29                           // 72E3  MOVEQ.L   #$E3,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -28                           // 72E4  MOVEQ.L   #$E4,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -27                           // 72E5  MOVEQ.L   #$E5,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -26                           // 72E6  MOVEQ.L   #$E6,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -25                           // 72E7  MOVEQ.L   #$E7,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -24                           // 72E8  MOVEQ.L   #$E8,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -23                           // 72E9  MOVEQ.L   #$E9,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -22                           // 72EA  MOVEQ.L   #$EA,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -21                           // 72EB  MOVEQ.L   #$EB,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -20                           // 72EC  MOVEQ.L   #$EC,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -19                           // 72ED  MOVEQ.L   #$ED,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -18                           // 72EE  MOVEQ.L   #$EE,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -17                           // 72EF  MOVEQ.L   #$EF,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -16                           // 72F0  MOVEQ.L   #$F0,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -15                           // 72F1  MOVEQ.L   #$F1,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -14                           // 72F2  MOVEQ.L   #$F2,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -13                           // 72F3  MOVEQ.L   #$F3,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -12                           // 72F4  MOVEQ.L   #$F4,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -11                           // 72F5  MOVEQ.L   #$F5,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -10                           // 72F6  MOVEQ.L   #$F6,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -9                            // 72F7  MOVEQ.L   #$F7,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -8                            // 72F8  MOVEQ.L   #$F8,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -7                            // 72F9  MOVEQ.L   #$F9,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -6                            // 72FA  MOVEQ.L   #$FA,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -5                            // 72FB  MOVEQ.L   #$FB,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -4                            // 72FC  MOVEQ.L   #$FC,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -3                            // 72FD  MOVEQ.L   #$FD,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -2                            // 72FE  MOVEQ.L   #$FE,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d1, zero, -1                            // 72FF  MOVEQ.L   #$FF,D1
-        b       move_or_etc_any_reg
+        b       update_vc_zero
 
 // ---- $7300-$733F --------------------------------------------------------
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7300  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7301  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7302  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7303  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7304  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7305  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7306  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7307  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7308  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7309  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 730A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 730B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 730C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 730D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 730E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 730F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7310  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7311  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7312  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7313  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7314  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7315  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7316  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7317  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7318  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7319  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 731A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 731B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 731C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 731D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 731E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 731F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7320  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7321  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7322  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7323  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7324  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7325  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7326  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7327  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7328  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7329  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 732A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 732B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 732C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 732D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 732E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 732F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7330  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7331  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7332  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7333  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7334  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7335  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7336  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7337  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7338  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7339  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 733A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 733B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 733C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 733D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 733E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 733F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $7340-$737F --------------------------------------------------------
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7340  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7341  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7342  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7343  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7344  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7345  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7346  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7347  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7348  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7349  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 734A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 734B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 734C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 734D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 734E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 734F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7350  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7351  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7352  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7353  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7354  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7355  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7356  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7357  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7358  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7359  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 735A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 735B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 735C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 735D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 735E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 735F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7360  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7361  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7362  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7363  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7364  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7365  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7366  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7367  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7368  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7369  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 736A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 736B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 736C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 736D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 736E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 736F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7370  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7371  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7372  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7373  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7374  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7375  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7376  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7377  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7378  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7379  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 737A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 737B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 737C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 737D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 737E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 737F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $7380-$73BF --------------------------------------------------------
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7380  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7381  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7382  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7383  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7384  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7385  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7386  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7387  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7388  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7389  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 738A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 738B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 738C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 738D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 738E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 738F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7390  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7391  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7392  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7393  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7394  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7395  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7396  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7397  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7398  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7399  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 739A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 739B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 739C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 739D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 739E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 739F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73A0  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73A1  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73A2  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73A3  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73A4  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73A5  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73A6  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73A7  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73A8  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73A9  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73AA  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73AB  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73AC  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73AD  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73AE  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73AF  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73B0  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73B1  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73B2  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73B3  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73B4  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73B5  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73B6  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73B7  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73B8  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73B9  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73BA  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73BB  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73BC  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73BD  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73BE  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73BF  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $73C0-$73FF --------------------------------------------------------
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73C0  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73C1  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73C2  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73C3  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73C4  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73C5  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73C6  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73C7  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73C8  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73C9  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73CA  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73CB  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73CC  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73CD  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73CE  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73CF  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73D0  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73D1  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73D2  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73D3  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73D4  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73D5  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73D6  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73D7  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73D8  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73D9  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73DA  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73DB  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73DC  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73DD  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73DE  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73DF  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73E0  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73E1  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73E2  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73E3  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73E4  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73E5  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73E6  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73E7  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73E8  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73E9  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73EA  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73EB  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73EC  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73ED  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73EE  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73EF  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73F0  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73F1  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73F2  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73F3  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73F4  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73F5  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73F6  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73F7  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73F8  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73F9  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73FA  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73FB  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73FC  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73FD  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73FE  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 73FF  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $7400-$743F --------------------------------------------------------
         addco.  d2, zero, zero                          // 7400  MOVEQ.L   #$00,D2
-        b       move_add_etc_any_any
+        b       fetch
         addic.  d2, zero, 1                             // 7401  MOVEQ.L   #$01,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 2                             // 7402  MOVEQ.L   #$02,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 3                             // 7403  MOVEQ.L   #$03,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 4                             // 7404  MOVEQ.L   #$04,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 5                             // 7405  MOVEQ.L   #$05,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 6                             // 7406  MOVEQ.L   #$06,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 7                             // 7407  MOVEQ.L   #$07,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 8                             // 7408  MOVEQ.L   #$08,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 9                             // 7409  MOVEQ.L   #$09,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 10                            // 740A  MOVEQ.L   #$0A,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 11                            // 740B  MOVEQ.L   #$0B,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 12                            // 740C  MOVEQ.L   #$0C,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 13                            // 740D  MOVEQ.L   #$0D,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 14                            // 740E  MOVEQ.L   #$0E,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 15                            // 740F  MOVEQ.L   #$0F,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 16                            // 7410  MOVEQ.L   #$10,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 17                            // 7411  MOVEQ.L   #$11,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 18                            // 7412  MOVEQ.L   #$12,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 19                            // 7413  MOVEQ.L   #$13,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 20                            // 7414  MOVEQ.L   #$14,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 21                            // 7415  MOVEQ.L   #$15,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 22                            // 7416  MOVEQ.L   #$16,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 23                            // 7417  MOVEQ.L   #$17,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 24                            // 7418  MOVEQ.L   #$18,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 25                            // 7419  MOVEQ.L   #$19,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 26                            // 741A  MOVEQ.L   #$1A,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 27                            // 741B  MOVEQ.L   #$1B,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 28                            // 741C  MOVEQ.L   #$1C,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 29                            // 741D  MOVEQ.L   #$1D,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 30                            // 741E  MOVEQ.L   #$1E,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 31                            // 741F  MOVEQ.L   #$1F,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 32                            // 7420  MOVEQ.L   #$20,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 33                            // 7421  MOVEQ.L   #$21,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 34                            // 7422  MOVEQ.L   #$22,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 35                            // 7423  MOVEQ.L   #$23,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 36                            // 7424  MOVEQ.L   #$24,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 37                            // 7425  MOVEQ.L   #$25,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 38                            // 7426  MOVEQ.L   #$26,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 39                            // 7427  MOVEQ.L   #$27,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 40                            // 7428  MOVEQ.L   #$28,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 41                            // 7429  MOVEQ.L   #$29,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 42                            // 742A  MOVEQ.L   #$2A,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 43                            // 742B  MOVEQ.L   #$2B,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 44                            // 742C  MOVEQ.L   #$2C,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 45                            // 742D  MOVEQ.L   #$2D,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 46                            // 742E  MOVEQ.L   #$2E,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 47                            // 742F  MOVEQ.L   #$2F,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 48                            // 7430  MOVEQ.L   #$30,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 49                            // 7431  MOVEQ.L   #$31,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 50                            // 7432  MOVEQ.L   #$32,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 51                            // 7433  MOVEQ.L   #$33,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 52                            // 7434  MOVEQ.L   #$34,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 53                            // 7435  MOVEQ.L   #$35,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 54                            // 7436  MOVEQ.L   #$36,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 55                            // 7437  MOVEQ.L   #$37,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 56                            // 7438  MOVEQ.L   #$38,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 57                            // 7439  MOVEQ.L   #$39,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 58                            // 743A  MOVEQ.L   #$3A,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 59                            // 743B  MOVEQ.L   #$3B,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 60                            // 743C  MOVEQ.L   #$3C,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 61                            // 743D  MOVEQ.L   #$3D,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 62                            // 743E  MOVEQ.L   #$3E,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 63                            // 743F  MOVEQ.L   #$3F,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
 
 // ---- $7440-$747F --------------------------------------------------------
         addic.  d2, zero, 64                            // 7440  MOVEQ.L   #$40,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 65                            // 7441  MOVEQ.L   #$41,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 66                            // 7442  MOVEQ.L   #$42,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 67                            // 7443  MOVEQ.L   #$43,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 68                            // 7444  MOVEQ.L   #$44,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 69                            // 7445  MOVEQ.L   #$45,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 70                            // 7446  MOVEQ.L   #$46,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 71                            // 7447  MOVEQ.L   #$47,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 72                            // 7448  MOVEQ.L   #$48,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 73                            // 7449  MOVEQ.L   #$49,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 74                            // 744A  MOVEQ.L   #$4A,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 75                            // 744B  MOVEQ.L   #$4B,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 76                            // 744C  MOVEQ.L   #$4C,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 77                            // 744D  MOVEQ.L   #$4D,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 78                            // 744E  MOVEQ.L   #$4E,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 79                            // 744F  MOVEQ.L   #$4F,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 80                            // 7450  MOVEQ.L   #$50,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 81                            // 7451  MOVEQ.L   #$51,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 82                            // 7452  MOVEQ.L   #$52,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 83                            // 7453  MOVEQ.L   #$53,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 84                            // 7454  MOVEQ.L   #$54,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 85                            // 7455  MOVEQ.L   #$55,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 86                            // 7456  MOVEQ.L   #$56,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 87                            // 7457  MOVEQ.L   #$57,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 88                            // 7458  MOVEQ.L   #$58,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 89                            // 7459  MOVEQ.L   #$59,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 90                            // 745A  MOVEQ.L   #$5A,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 91                            // 745B  MOVEQ.L   #$5B,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 92                            // 745C  MOVEQ.L   #$5C,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 93                            // 745D  MOVEQ.L   #$5D,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 94                            // 745E  MOVEQ.L   #$5E,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 95                            // 745F  MOVEQ.L   #$5F,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 96                            // 7460  MOVEQ.L   #$60,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 97                            // 7461  MOVEQ.L   #$61,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 98                            // 7462  MOVEQ.L   #$62,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 99                            // 7463  MOVEQ.L   #$63,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 100                           // 7464  MOVEQ.L   #$64,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 101                           // 7465  MOVEQ.L   #$65,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 102                           // 7466  MOVEQ.L   #$66,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 103                           // 7467  MOVEQ.L   #$67,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 104                           // 7468  MOVEQ.L   #$68,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 105                           // 7469  MOVEQ.L   #$69,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 106                           // 746A  MOVEQ.L   #$6A,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 107                           // 746B  MOVEQ.L   #$6B,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 108                           // 746C  MOVEQ.L   #$6C,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 109                           // 746D  MOVEQ.L   #$6D,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 110                           // 746E  MOVEQ.L   #$6E,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 111                           // 746F  MOVEQ.L   #$6F,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 112                           // 7470  MOVEQ.L   #$70,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 113                           // 7471  MOVEQ.L   #$71,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 114                           // 7472  MOVEQ.L   #$72,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 115                           // 7473  MOVEQ.L   #$73,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 116                           // 7474  MOVEQ.L   #$74,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 117                           // 7475  MOVEQ.L   #$75,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 118                           // 7476  MOVEQ.L   #$76,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 119                           // 7477  MOVEQ.L   #$77,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 120                           // 7478  MOVEQ.L   #$78,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 121                           // 7479  MOVEQ.L   #$79,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 122                           // 747A  MOVEQ.L   #$7A,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 123                           // 747B  MOVEQ.L   #$7B,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 124                           // 747C  MOVEQ.L   #$7C,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 125                           // 747D  MOVEQ.L   #$7D,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 126                           // 747E  MOVEQ.L   #$7E,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, 127                           // 747F  MOVEQ.L   #$7F,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
 
 // ---- $7480-$74BF --------------------------------------------------------
         addic.  d2, zero, -128                          // 7480  MOVEQ.L   #$80,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -127                          // 7481  MOVEQ.L   #$81,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -126                          // 7482  MOVEQ.L   #$82,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -125                          // 7483  MOVEQ.L   #$83,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -124                          // 7484  MOVEQ.L   #$84,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -123                          // 7485  MOVEQ.L   #$85,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -122                          // 7486  MOVEQ.L   #$86,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -121                          // 7487  MOVEQ.L   #$87,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -120                          // 7488  MOVEQ.L   #$88,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -119                          // 7489  MOVEQ.L   #$89,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -118                          // 748A  MOVEQ.L   #$8A,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -117                          // 748B  MOVEQ.L   #$8B,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -116                          // 748C  MOVEQ.L   #$8C,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -115                          // 748D  MOVEQ.L   #$8D,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -114                          // 748E  MOVEQ.L   #$8E,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -113                          // 748F  MOVEQ.L   #$8F,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -112                          // 7490  MOVEQ.L   #$90,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -111                          // 7491  MOVEQ.L   #$91,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -110                          // 7492  MOVEQ.L   #$92,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -109                          // 7493  MOVEQ.L   #$93,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -108                          // 7494  MOVEQ.L   #$94,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -107                          // 7495  MOVEQ.L   #$95,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -106                          // 7496  MOVEQ.L   #$96,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -105                          // 7497  MOVEQ.L   #$97,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -104                          // 7498  MOVEQ.L   #$98,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -103                          // 7499  MOVEQ.L   #$99,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -102                          // 749A  MOVEQ.L   #$9A,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -101                          // 749B  MOVEQ.L   #$9B,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -100                          // 749C  MOVEQ.L   #$9C,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -99                           // 749D  MOVEQ.L   #$9D,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -98                           // 749E  MOVEQ.L   #$9E,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -97                           // 749F  MOVEQ.L   #$9F,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -96                           // 74A0  MOVEQ.L   #$A0,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -95                           // 74A1  MOVEQ.L   #$A1,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -94                           // 74A2  MOVEQ.L   #$A2,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -93                           // 74A3  MOVEQ.L   #$A3,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -92                           // 74A4  MOVEQ.L   #$A4,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -91                           // 74A5  MOVEQ.L   #$A5,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -90                           // 74A6  MOVEQ.L   #$A6,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -89                           // 74A7  MOVEQ.L   #$A7,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -88                           // 74A8  MOVEQ.L   #$A8,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -87                           // 74A9  MOVEQ.L   #$A9,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -86                           // 74AA  MOVEQ.L   #$AA,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -85                           // 74AB  MOVEQ.L   #$AB,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -84                           // 74AC  MOVEQ.L   #$AC,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -83                           // 74AD  MOVEQ.L   #$AD,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -82                           // 74AE  MOVEQ.L   #$AE,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -81                           // 74AF  MOVEQ.L   #$AF,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -80                           // 74B0  MOVEQ.L   #$B0,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -79                           // 74B1  MOVEQ.L   #$B1,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -78                           // 74B2  MOVEQ.L   #$B2,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -77                           // 74B3  MOVEQ.L   #$B3,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -76                           // 74B4  MOVEQ.L   #$B4,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -75                           // 74B5  MOVEQ.L   #$B5,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -74                           // 74B6  MOVEQ.L   #$B6,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -73                           // 74B7  MOVEQ.L   #$B7,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -72                           // 74B8  MOVEQ.L   #$B8,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -71                           // 74B9  MOVEQ.L   #$B9,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -70                           // 74BA  MOVEQ.L   #$BA,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -69                           // 74BB  MOVEQ.L   #$BB,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -68                           // 74BC  MOVEQ.L   #$BC,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -67                           // 74BD  MOVEQ.L   #$BD,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -66                           // 74BE  MOVEQ.L   #$BE,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -65                           // 74BF  MOVEQ.L   #$BF,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
 
 // ---- $74C0-$74FF --------------------------------------------------------
         addic.  d2, zero, -64                           // 74C0  MOVEQ.L   #$C0,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -63                           // 74C1  MOVEQ.L   #$C1,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -62                           // 74C2  MOVEQ.L   #$C2,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -61                           // 74C3  MOVEQ.L   #$C3,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -60                           // 74C4  MOVEQ.L   #$C4,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -59                           // 74C5  MOVEQ.L   #$C5,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -58                           // 74C6  MOVEQ.L   #$C6,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -57                           // 74C7  MOVEQ.L   #$C7,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -56                           // 74C8  MOVEQ.L   #$C8,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -55                           // 74C9  MOVEQ.L   #$C9,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -54                           // 74CA  MOVEQ.L   #$CA,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -53                           // 74CB  MOVEQ.L   #$CB,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -52                           // 74CC  MOVEQ.L   #$CC,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -51                           // 74CD  MOVEQ.L   #$CD,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -50                           // 74CE  MOVEQ.L   #$CE,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -49                           // 74CF  MOVEQ.L   #$CF,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -48                           // 74D0  MOVEQ.L   #$D0,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -47                           // 74D1  MOVEQ.L   #$D1,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -46                           // 74D2  MOVEQ.L   #$D2,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -45                           // 74D3  MOVEQ.L   #$D3,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -44                           // 74D4  MOVEQ.L   #$D4,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -43                           // 74D5  MOVEQ.L   #$D5,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -42                           // 74D6  MOVEQ.L   #$D6,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -41                           // 74D7  MOVEQ.L   #$D7,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -40                           // 74D8  MOVEQ.L   #$D8,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -39                           // 74D9  MOVEQ.L   #$D9,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -38                           // 74DA  MOVEQ.L   #$DA,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -37                           // 74DB  MOVEQ.L   #$DB,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -36                           // 74DC  MOVEQ.L   #$DC,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -35                           // 74DD  MOVEQ.L   #$DD,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -34                           // 74DE  MOVEQ.L   #$DE,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -33                           // 74DF  MOVEQ.L   #$DF,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -32                           // 74E0  MOVEQ.L   #$E0,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -31                           // 74E1  MOVEQ.L   #$E1,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -30                           // 74E2  MOVEQ.L   #$E2,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -29                           // 74E3  MOVEQ.L   #$E3,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -28                           // 74E4  MOVEQ.L   #$E4,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -27                           // 74E5  MOVEQ.L   #$E5,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -26                           // 74E6  MOVEQ.L   #$E6,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -25                           // 74E7  MOVEQ.L   #$E7,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -24                           // 74E8  MOVEQ.L   #$E8,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -23                           // 74E9  MOVEQ.L   #$E9,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -22                           // 74EA  MOVEQ.L   #$EA,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -21                           // 74EB  MOVEQ.L   #$EB,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -20                           // 74EC  MOVEQ.L   #$EC,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -19                           // 74ED  MOVEQ.L   #$ED,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -18                           // 74EE  MOVEQ.L   #$EE,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -17                           // 74EF  MOVEQ.L   #$EF,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -16                           // 74F0  MOVEQ.L   #$F0,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -15                           // 74F1  MOVEQ.L   #$F1,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -14                           // 74F2  MOVEQ.L   #$F2,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -13                           // 74F3  MOVEQ.L   #$F3,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -12                           // 74F4  MOVEQ.L   #$F4,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -11                           // 74F5  MOVEQ.L   #$F5,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -10                           // 74F6  MOVEQ.L   #$F6,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -9                            // 74F7  MOVEQ.L   #$F7,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -8                            // 74F8  MOVEQ.L   #$F8,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -7                            // 74F9  MOVEQ.L   #$F9,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -6                            // 74FA  MOVEQ.L   #$FA,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -5                            // 74FB  MOVEQ.L   #$FB,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -4                            // 74FC  MOVEQ.L   #$FC,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -3                            // 74FD  MOVEQ.L   #$FD,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -2                            // 74FE  MOVEQ.L   #$FE,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d2, zero, -1                            // 74FF  MOVEQ.L   #$FF,D2
-        b       move_or_etc_any_reg
+        b       update_vc_zero
 
 // ---- $7500-$753F --------------------------------------------------------
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7500  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7501  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7502  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7503  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7504  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7505  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7506  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7507  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7508  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7509  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 750A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 750B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 750C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 750D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 750E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 750F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7510  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7511  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7512  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7513  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7514  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7515  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7516  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7517  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7518  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7519  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 751A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 751B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 751C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 751D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 751E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 751F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7520  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7521  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7522  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7523  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7524  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7525  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7526  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7527  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7528  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7529  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 752A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 752B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 752C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 752D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 752E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 752F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7530  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7531  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7532  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7533  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7534  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7535  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7536  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7537  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7538  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7539  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 753A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 753B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 753C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 753D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 753E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 753F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $7540-$757F --------------------------------------------------------
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7540  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7541  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7542  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7543  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7544  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7545  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7546  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7547  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7548  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7549  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 754A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 754B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 754C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 754D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 754E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 754F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7550  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7551  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7552  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7553  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7554  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7555  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7556  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7557  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7558  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7559  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 755A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 755B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 755C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 755D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 755E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 755F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7560  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7561  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7562  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7563  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7564  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7565  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7566  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7567  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7568  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7569  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 756A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 756B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 756C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 756D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 756E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 756F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7570  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7571  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7572  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7573  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7574  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7575  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7576  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7577  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7578  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7579  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 757A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 757B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 757C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 757D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 757E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 757F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $7580-$75BF --------------------------------------------------------
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7580  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7581  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7582  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7583  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7584  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7585  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7586  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7587  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7588  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7589  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 758A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 758B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 758C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 758D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 758E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 758F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7590  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7591  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7592  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7593  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7594  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7595  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7596  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7597  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7598  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7599  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 759A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 759B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 759C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 759D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 759E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 759F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75A0  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75A1  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75A2  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75A3  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75A4  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75A5  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75A6  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75A7  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75A8  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75A9  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75AA  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75AB  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75AC  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75AD  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75AE  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75AF  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75B0  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75B1  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75B2  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75B3  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75B4  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75B5  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75B6  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75B7  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75B8  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75B9  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75BA  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75BB  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75BC  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75BD  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75BE  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75BF  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $75C0-$75FF --------------------------------------------------------
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75C0  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75C1  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75C2  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75C3  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75C4  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75C5  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75C6  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75C7  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75C8  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75C9  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75CA  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75CB  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75CC  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75CD  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75CE  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75CF  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75D0  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75D1  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75D2  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75D3  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75D4  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75D5  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75D6  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75D7  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75D8  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75D9  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75DA  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75DB  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75DC  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75DD  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75DE  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75DF  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75E0  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75E1  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75E2  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75E3  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75E4  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75E5  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75E6  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75E7  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75E8  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75E9  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75EA  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75EB  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75EC  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75ED  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75EE  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75EF  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75F0  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75F1  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75F2  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75F3  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75F4  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75F5  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75F6  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75F7  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75F8  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75F9  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75FA  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75FB  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75FC  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75FD  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75FE  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 75FF  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $7600-$763F --------------------------------------------------------
         addco.  d3, zero, zero                          // 7600  MOVEQ.L   #$00,D3
-        b       move_add_etc_any_any
+        b       fetch
         addic.  d3, zero, 1                             // 7601  MOVEQ.L   #$01,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 2                             // 7602  MOVEQ.L   #$02,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 3                             // 7603  MOVEQ.L   #$03,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 4                             // 7604  MOVEQ.L   #$04,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 5                             // 7605  MOVEQ.L   #$05,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 6                             // 7606  MOVEQ.L   #$06,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 7                             // 7607  MOVEQ.L   #$07,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 8                             // 7608  MOVEQ.L   #$08,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 9                             // 7609  MOVEQ.L   #$09,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 10                            // 760A  MOVEQ.L   #$0A,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 11                            // 760B  MOVEQ.L   #$0B,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 12                            // 760C  MOVEQ.L   #$0C,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 13                            // 760D  MOVEQ.L   #$0D,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 14                            // 760E  MOVEQ.L   #$0E,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 15                            // 760F  MOVEQ.L   #$0F,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 16                            // 7610  MOVEQ.L   #$10,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 17                            // 7611  MOVEQ.L   #$11,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 18                            // 7612  MOVEQ.L   #$12,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 19                            // 7613  MOVEQ.L   #$13,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 20                            // 7614  MOVEQ.L   #$14,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 21                            // 7615  MOVEQ.L   #$15,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 22                            // 7616  MOVEQ.L   #$16,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 23                            // 7617  MOVEQ.L   #$17,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 24                            // 7618  MOVEQ.L   #$18,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 25                            // 7619  MOVEQ.L   #$19,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 26                            // 761A  MOVEQ.L   #$1A,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 27                            // 761B  MOVEQ.L   #$1B,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 28                            // 761C  MOVEQ.L   #$1C,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 29                            // 761D  MOVEQ.L   #$1D,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 30                            // 761E  MOVEQ.L   #$1E,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 31                            // 761F  MOVEQ.L   #$1F,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 32                            // 7620  MOVEQ.L   #$20,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 33                            // 7621  MOVEQ.L   #$21,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 34                            // 7622  MOVEQ.L   #$22,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 35                            // 7623  MOVEQ.L   #$23,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 36                            // 7624  MOVEQ.L   #$24,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 37                            // 7625  MOVEQ.L   #$25,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 38                            // 7626  MOVEQ.L   #$26,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 39                            // 7627  MOVEQ.L   #$27,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 40                            // 7628  MOVEQ.L   #$28,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 41                            // 7629  MOVEQ.L   #$29,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 42                            // 762A  MOVEQ.L   #$2A,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 43                            // 762B  MOVEQ.L   #$2B,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 44                            // 762C  MOVEQ.L   #$2C,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 45                            // 762D  MOVEQ.L   #$2D,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 46                            // 762E  MOVEQ.L   #$2E,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 47                            // 762F  MOVEQ.L   #$2F,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 48                            // 7630  MOVEQ.L   #$30,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 49                            // 7631  MOVEQ.L   #$31,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 50                            // 7632  MOVEQ.L   #$32,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 51                            // 7633  MOVEQ.L   #$33,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 52                            // 7634  MOVEQ.L   #$34,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 53                            // 7635  MOVEQ.L   #$35,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 54                            // 7636  MOVEQ.L   #$36,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 55                            // 7637  MOVEQ.L   #$37,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 56                            // 7638  MOVEQ.L   #$38,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 57                            // 7639  MOVEQ.L   #$39,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 58                            // 763A  MOVEQ.L   #$3A,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 59                            // 763B  MOVEQ.L   #$3B,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 60                            // 763C  MOVEQ.L   #$3C,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 61                            // 763D  MOVEQ.L   #$3D,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 62                            // 763E  MOVEQ.L   #$3E,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 63                            // 763F  MOVEQ.L   #$3F,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
 
 // ---- $7640-$767F --------------------------------------------------------
         addic.  d3, zero, 64                            // 7640  MOVEQ.L   #$40,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 65                            // 7641  MOVEQ.L   #$41,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 66                            // 7642  MOVEQ.L   #$42,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 67                            // 7643  MOVEQ.L   #$43,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 68                            // 7644  MOVEQ.L   #$44,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 69                            // 7645  MOVEQ.L   #$45,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 70                            // 7646  MOVEQ.L   #$46,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 71                            // 7647  MOVEQ.L   #$47,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 72                            // 7648  MOVEQ.L   #$48,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 73                            // 7649  MOVEQ.L   #$49,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 74                            // 764A  MOVEQ.L   #$4A,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 75                            // 764B  MOVEQ.L   #$4B,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 76                            // 764C  MOVEQ.L   #$4C,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 77                            // 764D  MOVEQ.L   #$4D,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 78                            // 764E  MOVEQ.L   #$4E,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 79                            // 764F  MOVEQ.L   #$4F,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 80                            // 7650  MOVEQ.L   #$50,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 81                            // 7651  MOVEQ.L   #$51,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 82                            // 7652  MOVEQ.L   #$52,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 83                            // 7653  MOVEQ.L   #$53,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 84                            // 7654  MOVEQ.L   #$54,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 85                            // 7655  MOVEQ.L   #$55,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 86                            // 7656  MOVEQ.L   #$56,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 87                            // 7657  MOVEQ.L   #$57,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 88                            // 7658  MOVEQ.L   #$58,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 89                            // 7659  MOVEQ.L   #$59,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 90                            // 765A  MOVEQ.L   #$5A,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 91                            // 765B  MOVEQ.L   #$5B,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 92                            // 765C  MOVEQ.L   #$5C,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 93                            // 765D  MOVEQ.L   #$5D,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 94                            // 765E  MOVEQ.L   #$5E,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 95                            // 765F  MOVEQ.L   #$5F,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 96                            // 7660  MOVEQ.L   #$60,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 97                            // 7661  MOVEQ.L   #$61,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 98                            // 7662  MOVEQ.L   #$62,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 99                            // 7663  MOVEQ.L   #$63,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 100                           // 7664  MOVEQ.L   #$64,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 101                           // 7665  MOVEQ.L   #$65,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 102                           // 7666  MOVEQ.L   #$66,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 103                           // 7667  MOVEQ.L   #$67,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 104                           // 7668  MOVEQ.L   #$68,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 105                           // 7669  MOVEQ.L   #$69,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 106                           // 766A  MOVEQ.L   #$6A,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 107                           // 766B  MOVEQ.L   #$6B,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 108                           // 766C  MOVEQ.L   #$6C,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 109                           // 766D  MOVEQ.L   #$6D,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 110                           // 766E  MOVEQ.L   #$6E,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 111                           // 766F  MOVEQ.L   #$6F,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 112                           // 7670  MOVEQ.L   #$70,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 113                           // 7671  MOVEQ.L   #$71,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 114                           // 7672  MOVEQ.L   #$72,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 115                           // 7673  MOVEQ.L   #$73,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 116                           // 7674  MOVEQ.L   #$74,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 117                           // 7675  MOVEQ.L   #$75,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 118                           // 7676  MOVEQ.L   #$76,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 119                           // 7677  MOVEQ.L   #$77,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 120                           // 7678  MOVEQ.L   #$78,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 121                           // 7679  MOVEQ.L   #$79,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 122                           // 767A  MOVEQ.L   #$7A,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 123                           // 767B  MOVEQ.L   #$7B,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 124                           // 767C  MOVEQ.L   #$7C,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 125                           // 767D  MOVEQ.L   #$7D,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 126                           // 767E  MOVEQ.L   #$7E,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, 127                           // 767F  MOVEQ.L   #$7F,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
 
 // ---- $7680-$76BF --------------------------------------------------------
         addic.  d3, zero, -128                          // 7680  MOVEQ.L   #$80,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -127                          // 7681  MOVEQ.L   #$81,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -126                          // 7682  MOVEQ.L   #$82,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -125                          // 7683  MOVEQ.L   #$83,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -124                          // 7684  MOVEQ.L   #$84,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -123                          // 7685  MOVEQ.L   #$85,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -122                          // 7686  MOVEQ.L   #$86,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -121                          // 7687  MOVEQ.L   #$87,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -120                          // 7688  MOVEQ.L   #$88,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -119                          // 7689  MOVEQ.L   #$89,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -118                          // 768A  MOVEQ.L   #$8A,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -117                          // 768B  MOVEQ.L   #$8B,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -116                          // 768C  MOVEQ.L   #$8C,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -115                          // 768D  MOVEQ.L   #$8D,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -114                          // 768E  MOVEQ.L   #$8E,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -113                          // 768F  MOVEQ.L   #$8F,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -112                          // 7690  MOVEQ.L   #$90,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -111                          // 7691  MOVEQ.L   #$91,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -110                          // 7692  MOVEQ.L   #$92,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -109                          // 7693  MOVEQ.L   #$93,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -108                          // 7694  MOVEQ.L   #$94,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -107                          // 7695  MOVEQ.L   #$95,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -106                          // 7696  MOVEQ.L   #$96,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -105                          // 7697  MOVEQ.L   #$97,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -104                          // 7698  MOVEQ.L   #$98,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -103                          // 7699  MOVEQ.L   #$99,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -102                          // 769A  MOVEQ.L   #$9A,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -101                          // 769B  MOVEQ.L   #$9B,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -100                          // 769C  MOVEQ.L   #$9C,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -99                           // 769D  MOVEQ.L   #$9D,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -98                           // 769E  MOVEQ.L   #$9E,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -97                           // 769F  MOVEQ.L   #$9F,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -96                           // 76A0  MOVEQ.L   #$A0,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -95                           // 76A1  MOVEQ.L   #$A1,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -94                           // 76A2  MOVEQ.L   #$A2,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -93                           // 76A3  MOVEQ.L   #$A3,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -92                           // 76A4  MOVEQ.L   #$A4,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -91                           // 76A5  MOVEQ.L   #$A5,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -90                           // 76A6  MOVEQ.L   #$A6,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -89                           // 76A7  MOVEQ.L   #$A7,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -88                           // 76A8  MOVEQ.L   #$A8,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -87                           // 76A9  MOVEQ.L   #$A9,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -86                           // 76AA  MOVEQ.L   #$AA,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -85                           // 76AB  MOVEQ.L   #$AB,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -84                           // 76AC  MOVEQ.L   #$AC,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -83                           // 76AD  MOVEQ.L   #$AD,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -82                           // 76AE  MOVEQ.L   #$AE,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -81                           // 76AF  MOVEQ.L   #$AF,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -80                           // 76B0  MOVEQ.L   #$B0,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -79                           // 76B1  MOVEQ.L   #$B1,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -78                           // 76B2  MOVEQ.L   #$B2,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -77                           // 76B3  MOVEQ.L   #$B3,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -76                           // 76B4  MOVEQ.L   #$B4,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -75                           // 76B5  MOVEQ.L   #$B5,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -74                           // 76B6  MOVEQ.L   #$B6,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -73                           // 76B7  MOVEQ.L   #$B7,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -72                           // 76B8  MOVEQ.L   #$B8,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -71                           // 76B9  MOVEQ.L   #$B9,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -70                           // 76BA  MOVEQ.L   #$BA,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -69                           // 76BB  MOVEQ.L   #$BB,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -68                           // 76BC  MOVEQ.L   #$BC,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -67                           // 76BD  MOVEQ.L   #$BD,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -66                           // 76BE  MOVEQ.L   #$BE,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -65                           // 76BF  MOVEQ.L   #$BF,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
 
 // ---- $76C0-$76FF --------------------------------------------------------
         addic.  d3, zero, -64                           // 76C0  MOVEQ.L   #$C0,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -63                           // 76C1  MOVEQ.L   #$C1,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -62                           // 76C2  MOVEQ.L   #$C2,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -61                           // 76C3  MOVEQ.L   #$C3,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -60                           // 76C4  MOVEQ.L   #$C4,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -59                           // 76C5  MOVEQ.L   #$C5,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -58                           // 76C6  MOVEQ.L   #$C6,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -57                           // 76C7  MOVEQ.L   #$C7,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -56                           // 76C8  MOVEQ.L   #$C8,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -55                           // 76C9  MOVEQ.L   #$C9,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -54                           // 76CA  MOVEQ.L   #$CA,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -53                           // 76CB  MOVEQ.L   #$CB,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -52                           // 76CC  MOVEQ.L   #$CC,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -51                           // 76CD  MOVEQ.L   #$CD,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -50                           // 76CE  MOVEQ.L   #$CE,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -49                           // 76CF  MOVEQ.L   #$CF,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -48                           // 76D0  MOVEQ.L   #$D0,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -47                           // 76D1  MOVEQ.L   #$D1,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -46                           // 76D2  MOVEQ.L   #$D2,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -45                           // 76D3  MOVEQ.L   #$D3,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -44                           // 76D4  MOVEQ.L   #$D4,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -43                           // 76D5  MOVEQ.L   #$D5,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -42                           // 76D6  MOVEQ.L   #$D6,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -41                           // 76D7  MOVEQ.L   #$D7,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -40                           // 76D8  MOVEQ.L   #$D8,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -39                           // 76D9  MOVEQ.L   #$D9,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -38                           // 76DA  MOVEQ.L   #$DA,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -37                           // 76DB  MOVEQ.L   #$DB,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -36                           // 76DC  MOVEQ.L   #$DC,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -35                           // 76DD  MOVEQ.L   #$DD,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -34                           // 76DE  MOVEQ.L   #$DE,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -33                           // 76DF  MOVEQ.L   #$DF,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -32                           // 76E0  MOVEQ.L   #$E0,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -31                           // 76E1  MOVEQ.L   #$E1,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -30                           // 76E2  MOVEQ.L   #$E2,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -29                           // 76E3  MOVEQ.L   #$E3,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -28                           // 76E4  MOVEQ.L   #$E4,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -27                           // 76E5  MOVEQ.L   #$E5,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -26                           // 76E6  MOVEQ.L   #$E6,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -25                           // 76E7  MOVEQ.L   #$E7,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -24                           // 76E8  MOVEQ.L   #$E8,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -23                           // 76E9  MOVEQ.L   #$E9,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -22                           // 76EA  MOVEQ.L   #$EA,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -21                           // 76EB  MOVEQ.L   #$EB,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -20                           // 76EC  MOVEQ.L   #$EC,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -19                           // 76ED  MOVEQ.L   #$ED,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -18                           // 76EE  MOVEQ.L   #$EE,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -17                           // 76EF  MOVEQ.L   #$EF,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -16                           // 76F0  MOVEQ.L   #$F0,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -15                           // 76F1  MOVEQ.L   #$F1,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -14                           // 76F2  MOVEQ.L   #$F2,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -13                           // 76F3  MOVEQ.L   #$F3,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -12                           // 76F4  MOVEQ.L   #$F4,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -11                           // 76F5  MOVEQ.L   #$F5,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -10                           // 76F6  MOVEQ.L   #$F6,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -9                            // 76F7  MOVEQ.L   #$F7,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -8                            // 76F8  MOVEQ.L   #$F8,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -7                            // 76F9  MOVEQ.L   #$F9,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -6                            // 76FA  MOVEQ.L   #$FA,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -5                            // 76FB  MOVEQ.L   #$FB,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -4                            // 76FC  MOVEQ.L   #$FC,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -3                            // 76FD  MOVEQ.L   #$FD,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -2                            // 76FE  MOVEQ.L   #$FE,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d3, zero, -1                            // 76FF  MOVEQ.L   #$FF,D3
-        b       move_or_etc_any_reg
+        b       update_vc_zero
 
 // ---- $7700-$773F --------------------------------------------------------
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7700  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7701  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7702  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7703  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7704  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7705  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7706  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7707  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7708  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7709  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 770A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 770B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 770C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 770D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 770E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 770F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7710  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7711  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7712  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7713  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7714  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7715  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7716  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7717  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7718  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7719  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 771A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 771B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 771C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 771D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 771E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 771F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7720  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7721  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7722  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7723  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7724  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7725  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7726  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7727  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7728  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7729  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 772A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 772B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 772C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 772D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 772E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 772F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7730  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7731  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7732  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7733  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7734  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7735  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7736  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7737  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7738  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7739  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 773A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 773B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 773C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 773D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 773E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 773F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $7740-$777F --------------------------------------------------------
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7740  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7741  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7742  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7743  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7744  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7745  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7746  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7747  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7748  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7749  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 774A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 774B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 774C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 774D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 774E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 774F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7750  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7751  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7752  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7753  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7754  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7755  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7756  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7757  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7758  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7759  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 775A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 775B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 775C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 775D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 775E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 775F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7760  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7761  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7762  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7763  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7764  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7765  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7766  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7767  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7768  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7769  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 776A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 776B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 776C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 776D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 776E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 776F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7770  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7771  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7772  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7773  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7774  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7775  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7776  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7777  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7778  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7779  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 777A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 777B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 777C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 777D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 777E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 777F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $7780-$77BF --------------------------------------------------------
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7780  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7781  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7782  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7783  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7784  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7785  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7786  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7787  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7788  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7789  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 778A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 778B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 778C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 778D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 778E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 778F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7790  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7791  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7792  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7793  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7794  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7795  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7796  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7797  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7798  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7799  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 779A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 779B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 779C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 779D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 779E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 779F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77A0  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77A1  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77A2  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77A3  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77A4  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77A5  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77A6  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77A7  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77A8  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77A9  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77AA  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77AB  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77AC  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77AD  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77AE  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77AF  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77B0  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77B1  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77B2  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77B3  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77B4  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77B5  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77B6  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77B7  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77B8  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77B9  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77BA  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77BB  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77BC  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77BD  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77BE  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77BF  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $77C0-$77FF --------------------------------------------------------
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77C0  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77C1  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77C2  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77C3  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77C4  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77C5  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77C6  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77C7  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77C8  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77C9  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77CA  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77CB  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77CC  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77CD  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77CE  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77CF  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77D0  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77D1  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77D2  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77D3  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77D4  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77D5  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77D6  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77D7  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77D8  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77D9  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77DA  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77DB  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77DC  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77DD  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77DE  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77DF  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77E0  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77E1  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77E2  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77E3  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77E4  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77E5  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77E6  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77E7  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77E8  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77E9  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77EA  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77EB  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77EC  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77ED  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77EE  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77EF  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77F0  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77F1  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77F2  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77F3  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77F4  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77F5  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77F6  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77F7  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77F8  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77F9  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77FA  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77FB  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77FC  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77FD  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77FE  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 77FF  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $7800-$783F --------------------------------------------------------
         addco.  d4, zero, zero                          // 7800  MOVEQ.L   #$00,D4
-        b       move_add_etc_any_any
+        b       fetch
         addic.  d4, zero, 1                             // 7801  MOVEQ.L   #$01,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 2                             // 7802  MOVEQ.L   #$02,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 3                             // 7803  MOVEQ.L   #$03,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 4                             // 7804  MOVEQ.L   #$04,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 5                             // 7805  MOVEQ.L   #$05,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 6                             // 7806  MOVEQ.L   #$06,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 7                             // 7807  MOVEQ.L   #$07,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 8                             // 7808  MOVEQ.L   #$08,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 9                             // 7809  MOVEQ.L   #$09,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 10                            // 780A  MOVEQ.L   #$0A,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 11                            // 780B  MOVEQ.L   #$0B,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 12                            // 780C  MOVEQ.L   #$0C,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 13                            // 780D  MOVEQ.L   #$0D,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 14                            // 780E  MOVEQ.L   #$0E,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 15                            // 780F  MOVEQ.L   #$0F,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 16                            // 7810  MOVEQ.L   #$10,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 17                            // 7811  MOVEQ.L   #$11,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 18                            // 7812  MOVEQ.L   #$12,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 19                            // 7813  MOVEQ.L   #$13,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 20                            // 7814  MOVEQ.L   #$14,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 21                            // 7815  MOVEQ.L   #$15,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 22                            // 7816  MOVEQ.L   #$16,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 23                            // 7817  MOVEQ.L   #$17,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 24                            // 7818  MOVEQ.L   #$18,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 25                            // 7819  MOVEQ.L   #$19,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 26                            // 781A  MOVEQ.L   #$1A,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 27                            // 781B  MOVEQ.L   #$1B,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 28                            // 781C  MOVEQ.L   #$1C,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 29                            // 781D  MOVEQ.L   #$1D,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 30                            // 781E  MOVEQ.L   #$1E,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 31                            // 781F  MOVEQ.L   #$1F,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 32                            // 7820  MOVEQ.L   #$20,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 33                            // 7821  MOVEQ.L   #$21,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 34                            // 7822  MOVEQ.L   #$22,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 35                            // 7823  MOVEQ.L   #$23,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 36                            // 7824  MOVEQ.L   #$24,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 37                            // 7825  MOVEQ.L   #$25,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 38                            // 7826  MOVEQ.L   #$26,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 39                            // 7827  MOVEQ.L   #$27,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 40                            // 7828  MOVEQ.L   #$28,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 41                            // 7829  MOVEQ.L   #$29,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 42                            // 782A  MOVEQ.L   #$2A,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 43                            // 782B  MOVEQ.L   #$2B,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 44                            // 782C  MOVEQ.L   #$2C,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 45                            // 782D  MOVEQ.L   #$2D,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 46                            // 782E  MOVEQ.L   #$2E,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 47                            // 782F  MOVEQ.L   #$2F,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 48                            // 7830  MOVEQ.L   #$30,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 49                            // 7831  MOVEQ.L   #$31,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 50                            // 7832  MOVEQ.L   #$32,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 51                            // 7833  MOVEQ.L   #$33,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 52                            // 7834  MOVEQ.L   #$34,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 53                            // 7835  MOVEQ.L   #$35,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 54                            // 7836  MOVEQ.L   #$36,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 55                            // 7837  MOVEQ.L   #$37,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 56                            // 7838  MOVEQ.L   #$38,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 57                            // 7839  MOVEQ.L   #$39,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 58                            // 783A  MOVEQ.L   #$3A,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 59                            // 783B  MOVEQ.L   #$3B,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 60                            // 783C  MOVEQ.L   #$3C,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 61                            // 783D  MOVEQ.L   #$3D,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 62                            // 783E  MOVEQ.L   #$3E,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 63                            // 783F  MOVEQ.L   #$3F,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
 
 // ---- $7840-$787F --------------------------------------------------------
         addic.  d4, zero, 64                            // 7840  MOVEQ.L   #$40,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 65                            // 7841  MOVEQ.L   #$41,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 66                            // 7842  MOVEQ.L   #$42,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 67                            // 7843  MOVEQ.L   #$43,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 68                            // 7844  MOVEQ.L   #$44,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 69                            // 7845  MOVEQ.L   #$45,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 70                            // 7846  MOVEQ.L   #$46,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 71                            // 7847  MOVEQ.L   #$47,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 72                            // 7848  MOVEQ.L   #$48,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 73                            // 7849  MOVEQ.L   #$49,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 74                            // 784A  MOVEQ.L   #$4A,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 75                            // 784B  MOVEQ.L   #$4B,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 76                            // 784C  MOVEQ.L   #$4C,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 77                            // 784D  MOVEQ.L   #$4D,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 78                            // 784E  MOVEQ.L   #$4E,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 79                            // 784F  MOVEQ.L   #$4F,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 80                            // 7850  MOVEQ.L   #$50,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 81                            // 7851  MOVEQ.L   #$51,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 82                            // 7852  MOVEQ.L   #$52,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 83                            // 7853  MOVEQ.L   #$53,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 84                            // 7854  MOVEQ.L   #$54,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 85                            // 7855  MOVEQ.L   #$55,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 86                            // 7856  MOVEQ.L   #$56,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 87                            // 7857  MOVEQ.L   #$57,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 88                            // 7858  MOVEQ.L   #$58,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 89                            // 7859  MOVEQ.L   #$59,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 90                            // 785A  MOVEQ.L   #$5A,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 91                            // 785B  MOVEQ.L   #$5B,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 92                            // 785C  MOVEQ.L   #$5C,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 93                            // 785D  MOVEQ.L   #$5D,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 94                            // 785E  MOVEQ.L   #$5E,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 95                            // 785F  MOVEQ.L   #$5F,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 96                            // 7860  MOVEQ.L   #$60,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 97                            // 7861  MOVEQ.L   #$61,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 98                            // 7862  MOVEQ.L   #$62,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 99                            // 7863  MOVEQ.L   #$63,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 100                           // 7864  MOVEQ.L   #$64,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 101                           // 7865  MOVEQ.L   #$65,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 102                           // 7866  MOVEQ.L   #$66,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 103                           // 7867  MOVEQ.L   #$67,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 104                           // 7868  MOVEQ.L   #$68,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 105                           // 7869  MOVEQ.L   #$69,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 106                           // 786A  MOVEQ.L   #$6A,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 107                           // 786B  MOVEQ.L   #$6B,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 108                           // 786C  MOVEQ.L   #$6C,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 109                           // 786D  MOVEQ.L   #$6D,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 110                           // 786E  MOVEQ.L   #$6E,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 111                           // 786F  MOVEQ.L   #$6F,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 112                           // 7870  MOVEQ.L   #$70,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 113                           // 7871  MOVEQ.L   #$71,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 114                           // 7872  MOVEQ.L   #$72,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 115                           // 7873  MOVEQ.L   #$73,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 116                           // 7874  MOVEQ.L   #$74,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 117                           // 7875  MOVEQ.L   #$75,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 118                           // 7876  MOVEQ.L   #$76,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 119                           // 7877  MOVEQ.L   #$77,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 120                           // 7878  MOVEQ.L   #$78,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 121                           // 7879  MOVEQ.L   #$79,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 122                           // 787A  MOVEQ.L   #$7A,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 123                           // 787B  MOVEQ.L   #$7B,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 124                           // 787C  MOVEQ.L   #$7C,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 125                           // 787D  MOVEQ.L   #$7D,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 126                           // 787E  MOVEQ.L   #$7E,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, 127                           // 787F  MOVEQ.L   #$7F,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
 
 // ---- $7880-$78BF --------------------------------------------------------
         addic.  d4, zero, -128                          // 7880  MOVEQ.L   #$80,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -127                          // 7881  MOVEQ.L   #$81,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -126                          // 7882  MOVEQ.L   #$82,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -125                          // 7883  MOVEQ.L   #$83,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -124                          // 7884  MOVEQ.L   #$84,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -123                          // 7885  MOVEQ.L   #$85,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -122                          // 7886  MOVEQ.L   #$86,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -121                          // 7887  MOVEQ.L   #$87,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -120                          // 7888  MOVEQ.L   #$88,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -119                          // 7889  MOVEQ.L   #$89,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -118                          // 788A  MOVEQ.L   #$8A,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -117                          // 788B  MOVEQ.L   #$8B,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -116                          // 788C  MOVEQ.L   #$8C,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -115                          // 788D  MOVEQ.L   #$8D,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -114                          // 788E  MOVEQ.L   #$8E,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -113                          // 788F  MOVEQ.L   #$8F,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -112                          // 7890  MOVEQ.L   #$90,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -111                          // 7891  MOVEQ.L   #$91,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -110                          // 7892  MOVEQ.L   #$92,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -109                          // 7893  MOVEQ.L   #$93,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -108                          // 7894  MOVEQ.L   #$94,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -107                          // 7895  MOVEQ.L   #$95,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -106                          // 7896  MOVEQ.L   #$96,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -105                          // 7897  MOVEQ.L   #$97,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -104                          // 7898  MOVEQ.L   #$98,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -103                          // 7899  MOVEQ.L   #$99,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -102                          // 789A  MOVEQ.L   #$9A,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -101                          // 789B  MOVEQ.L   #$9B,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -100                          // 789C  MOVEQ.L   #$9C,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -99                           // 789D  MOVEQ.L   #$9D,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -98                           // 789E  MOVEQ.L   #$9E,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -97                           // 789F  MOVEQ.L   #$9F,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -96                           // 78A0  MOVEQ.L   #$A0,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -95                           // 78A1  MOVEQ.L   #$A1,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -94                           // 78A2  MOVEQ.L   #$A2,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -93                           // 78A3  MOVEQ.L   #$A3,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -92                           // 78A4  MOVEQ.L   #$A4,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -91                           // 78A5  MOVEQ.L   #$A5,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -90                           // 78A6  MOVEQ.L   #$A6,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -89                           // 78A7  MOVEQ.L   #$A7,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -88                           // 78A8  MOVEQ.L   #$A8,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -87                           // 78A9  MOVEQ.L   #$A9,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -86                           // 78AA  MOVEQ.L   #$AA,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -85                           // 78AB  MOVEQ.L   #$AB,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -84                           // 78AC  MOVEQ.L   #$AC,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -83                           // 78AD  MOVEQ.L   #$AD,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -82                           // 78AE  MOVEQ.L   #$AE,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -81                           // 78AF  MOVEQ.L   #$AF,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -80                           // 78B0  MOVEQ.L   #$B0,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -79                           // 78B1  MOVEQ.L   #$B1,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -78                           // 78B2  MOVEQ.L   #$B2,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -77                           // 78B3  MOVEQ.L   #$B3,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -76                           // 78B4  MOVEQ.L   #$B4,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -75                           // 78B5  MOVEQ.L   #$B5,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -74                           // 78B6  MOVEQ.L   #$B6,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -73                           // 78B7  MOVEQ.L   #$B7,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -72                           // 78B8  MOVEQ.L   #$B8,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -71                           // 78B9  MOVEQ.L   #$B9,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -70                           // 78BA  MOVEQ.L   #$BA,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -69                           // 78BB  MOVEQ.L   #$BB,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -68                           // 78BC  MOVEQ.L   #$BC,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -67                           // 78BD  MOVEQ.L   #$BD,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -66                           // 78BE  MOVEQ.L   #$BE,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -65                           // 78BF  MOVEQ.L   #$BF,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
 
 // ---- $78C0-$78FF --------------------------------------------------------
         addic.  d4, zero, -64                           // 78C0  MOVEQ.L   #$C0,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -63                           // 78C1  MOVEQ.L   #$C1,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -62                           // 78C2  MOVEQ.L   #$C2,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -61                           // 78C3  MOVEQ.L   #$C3,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -60                           // 78C4  MOVEQ.L   #$C4,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -59                           // 78C5  MOVEQ.L   #$C5,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -58                           // 78C6  MOVEQ.L   #$C6,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -57                           // 78C7  MOVEQ.L   #$C7,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -56                           // 78C8  MOVEQ.L   #$C8,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -55                           // 78C9  MOVEQ.L   #$C9,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -54                           // 78CA  MOVEQ.L   #$CA,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -53                           // 78CB  MOVEQ.L   #$CB,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -52                           // 78CC  MOVEQ.L   #$CC,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -51                           // 78CD  MOVEQ.L   #$CD,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -50                           // 78CE  MOVEQ.L   #$CE,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -49                           // 78CF  MOVEQ.L   #$CF,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -48                           // 78D0  MOVEQ.L   #$D0,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -47                           // 78D1  MOVEQ.L   #$D1,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -46                           // 78D2  MOVEQ.L   #$D2,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -45                           // 78D3  MOVEQ.L   #$D3,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -44                           // 78D4  MOVEQ.L   #$D4,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -43                           // 78D5  MOVEQ.L   #$D5,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -42                           // 78D6  MOVEQ.L   #$D6,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -41                           // 78D7  MOVEQ.L   #$D7,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -40                           // 78D8  MOVEQ.L   #$D8,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -39                           // 78D9  MOVEQ.L   #$D9,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -38                           // 78DA  MOVEQ.L   #$DA,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -37                           // 78DB  MOVEQ.L   #$DB,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -36                           // 78DC  MOVEQ.L   #$DC,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -35                           // 78DD  MOVEQ.L   #$DD,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -34                           // 78DE  MOVEQ.L   #$DE,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -33                           // 78DF  MOVEQ.L   #$DF,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -32                           // 78E0  MOVEQ.L   #$E0,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -31                           // 78E1  MOVEQ.L   #$E1,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -30                           // 78E2  MOVEQ.L   #$E2,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -29                           // 78E3  MOVEQ.L   #$E3,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -28                           // 78E4  MOVEQ.L   #$E4,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -27                           // 78E5  MOVEQ.L   #$E5,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -26                           // 78E6  MOVEQ.L   #$E6,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -25                           // 78E7  MOVEQ.L   #$E7,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -24                           // 78E8  MOVEQ.L   #$E8,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -23                           // 78E9  MOVEQ.L   #$E9,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -22                           // 78EA  MOVEQ.L   #$EA,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -21                           // 78EB  MOVEQ.L   #$EB,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -20                           // 78EC  MOVEQ.L   #$EC,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -19                           // 78ED  MOVEQ.L   #$ED,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -18                           // 78EE  MOVEQ.L   #$EE,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -17                           // 78EF  MOVEQ.L   #$EF,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -16                           // 78F0  MOVEQ.L   #$F0,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -15                           // 78F1  MOVEQ.L   #$F1,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -14                           // 78F2  MOVEQ.L   #$F2,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -13                           // 78F3  MOVEQ.L   #$F3,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -12                           // 78F4  MOVEQ.L   #$F4,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -11                           // 78F5  MOVEQ.L   #$F5,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -10                           // 78F6  MOVEQ.L   #$F6,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -9                            // 78F7  MOVEQ.L   #$F7,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -8                            // 78F8  MOVEQ.L   #$F8,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -7                            // 78F9  MOVEQ.L   #$F9,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -6                            // 78FA  MOVEQ.L   #$FA,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -5                            // 78FB  MOVEQ.L   #$FB,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -4                            // 78FC  MOVEQ.L   #$FC,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -3                            // 78FD  MOVEQ.L   #$FD,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -2                            // 78FE  MOVEQ.L   #$FE,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d4, zero, -1                            // 78FF  MOVEQ.L   #$FF,D4
-        b       move_or_etc_any_reg
+        b       update_vc_zero
 
 // ---- $7900-$793F --------------------------------------------------------
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7900  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7901  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7902  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7903  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7904  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7905  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7906  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7907  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7908  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7909  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 790A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 790B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 790C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 790D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 790E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 790F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7910  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7911  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7912  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7913  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7914  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7915  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7916  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7917  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7918  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7919  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 791A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 791B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 791C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 791D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 791E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 791F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7920  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7921  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7922  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7923  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7924  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7925  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7926  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7927  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7928  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7929  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 792A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 792B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 792C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 792D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 792E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 792F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7930  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7931  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7932  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7933  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7934  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7935  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7936  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7937  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7938  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7939  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 793A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 793B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 793C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 793D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 793E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 793F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $7940-$797F --------------------------------------------------------
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7940  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7941  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7942  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7943  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7944  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7945  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7946  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7947  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7948  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7949  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 794A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 794B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 794C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 794D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 794E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 794F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7950  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7951  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7952  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7953  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7954  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7955  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7956  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7957  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7958  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7959  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 795A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 795B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 795C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 795D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 795E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 795F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7960  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7961  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7962  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7963  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7964  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7965  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7966  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7967  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7968  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7969  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 796A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 796B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 796C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 796D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 796E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 796F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7970  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7971  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7972  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7973  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7974  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7975  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7976  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7977  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7978  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7979  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 797A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 797B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 797C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 797D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 797E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 797F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $7980-$79BF --------------------------------------------------------
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7980  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7981  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7982  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7983  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7984  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7985  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7986  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7987  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7988  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7989  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 798A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 798B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 798C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 798D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 798E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 798F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7990  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7991  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7992  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7993  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7994  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7995  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7996  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7997  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7998  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7999  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 799A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 799B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 799C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 799D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 799E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 799F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79A0  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79A1  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79A2  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79A3  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79A4  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79A5  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79A6  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79A7  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79A8  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79A9  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79AA  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79AB  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79AC  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79AD  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79AE  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79AF  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79B0  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79B1  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79B2  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79B3  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79B4  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79B5  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79B6  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79B7  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79B8  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79B9  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79BA  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79BB  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79BC  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79BD  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79BE  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79BF  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $79C0-$79FF --------------------------------------------------------
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79C0  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79C1  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79C2  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79C3  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79C4  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79C5  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79C6  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79C7  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79C8  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79C9  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79CA  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79CB  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79CC  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79CD  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79CE  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79CF  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79D0  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79D1  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79D2  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79D3  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79D4  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79D5  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79D6  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79D7  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79D8  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79D9  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79DA  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79DB  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79DC  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79DD  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79DE  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79DF  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79E0  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79E1  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79E2  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79E3  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79E4  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79E5  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79E6  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79E7  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79E8  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79E9  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79EA  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79EB  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79EC  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79ED  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79EE  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79EF  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79F0  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79F1  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79F2  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79F3  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79F4  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79F5  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79F6  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79F7  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79F8  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79F9  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79FA  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79FB  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79FC  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79FD  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79FE  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 79FF  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $7A00-$7A3F --------------------------------------------------------
         addco.  d5, zero, zero                          // 7A00  MOVEQ.L   #$00,D5
-        b       move_add_etc_any_any
+        b       fetch
         addic.  d5, zero, 1                             // 7A01  MOVEQ.L   #$01,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 2                             // 7A02  MOVEQ.L   #$02,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 3                             // 7A03  MOVEQ.L   #$03,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 4                             // 7A04  MOVEQ.L   #$04,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 5                             // 7A05  MOVEQ.L   #$05,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 6                             // 7A06  MOVEQ.L   #$06,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 7                             // 7A07  MOVEQ.L   #$07,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 8                             // 7A08  MOVEQ.L   #$08,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 9                             // 7A09  MOVEQ.L   #$09,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 10                            // 7A0A  MOVEQ.L   #$0A,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 11                            // 7A0B  MOVEQ.L   #$0B,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 12                            // 7A0C  MOVEQ.L   #$0C,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 13                            // 7A0D  MOVEQ.L   #$0D,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 14                            // 7A0E  MOVEQ.L   #$0E,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 15                            // 7A0F  MOVEQ.L   #$0F,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 16                            // 7A10  MOVEQ.L   #$10,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 17                            // 7A11  MOVEQ.L   #$11,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 18                            // 7A12  MOVEQ.L   #$12,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 19                            // 7A13  MOVEQ.L   #$13,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 20                            // 7A14  MOVEQ.L   #$14,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 21                            // 7A15  MOVEQ.L   #$15,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 22                            // 7A16  MOVEQ.L   #$16,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 23                            // 7A17  MOVEQ.L   #$17,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 24                            // 7A18  MOVEQ.L   #$18,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 25                            // 7A19  MOVEQ.L   #$19,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 26                            // 7A1A  MOVEQ.L   #$1A,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 27                            // 7A1B  MOVEQ.L   #$1B,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 28                            // 7A1C  MOVEQ.L   #$1C,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 29                            // 7A1D  MOVEQ.L   #$1D,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 30                            // 7A1E  MOVEQ.L   #$1E,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 31                            // 7A1F  MOVEQ.L   #$1F,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 32                            // 7A20  MOVEQ.L   #$20,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 33                            // 7A21  MOVEQ.L   #$21,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 34                            // 7A22  MOVEQ.L   #$22,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 35                            // 7A23  MOVEQ.L   #$23,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 36                            // 7A24  MOVEQ.L   #$24,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 37                            // 7A25  MOVEQ.L   #$25,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 38                            // 7A26  MOVEQ.L   #$26,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 39                            // 7A27  MOVEQ.L   #$27,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 40                            // 7A28  MOVEQ.L   #$28,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 41                            // 7A29  MOVEQ.L   #$29,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 42                            // 7A2A  MOVEQ.L   #$2A,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 43                            // 7A2B  MOVEQ.L   #$2B,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 44                            // 7A2C  MOVEQ.L   #$2C,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 45                            // 7A2D  MOVEQ.L   #$2D,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 46                            // 7A2E  MOVEQ.L   #$2E,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 47                            // 7A2F  MOVEQ.L   #$2F,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 48                            // 7A30  MOVEQ.L   #$30,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 49                            // 7A31  MOVEQ.L   #$31,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 50                            // 7A32  MOVEQ.L   #$32,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 51                            // 7A33  MOVEQ.L   #$33,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 52                            // 7A34  MOVEQ.L   #$34,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 53                            // 7A35  MOVEQ.L   #$35,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 54                            // 7A36  MOVEQ.L   #$36,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 55                            // 7A37  MOVEQ.L   #$37,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 56                            // 7A38  MOVEQ.L   #$38,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 57                            // 7A39  MOVEQ.L   #$39,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 58                            // 7A3A  MOVEQ.L   #$3A,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 59                            // 7A3B  MOVEQ.L   #$3B,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 60                            // 7A3C  MOVEQ.L   #$3C,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 61                            // 7A3D  MOVEQ.L   #$3D,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 62                            // 7A3E  MOVEQ.L   #$3E,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 63                            // 7A3F  MOVEQ.L   #$3F,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
 
 // ---- $7A40-$7A7F --------------------------------------------------------
         addic.  d5, zero, 64                            // 7A40  MOVEQ.L   #$40,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 65                            // 7A41  MOVEQ.L   #$41,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 66                            // 7A42  MOVEQ.L   #$42,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 67                            // 7A43  MOVEQ.L   #$43,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 68                            // 7A44  MOVEQ.L   #$44,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 69                            // 7A45  MOVEQ.L   #$45,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 70                            // 7A46  MOVEQ.L   #$46,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 71                            // 7A47  MOVEQ.L   #$47,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 72                            // 7A48  MOVEQ.L   #$48,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 73                            // 7A49  MOVEQ.L   #$49,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 74                            // 7A4A  MOVEQ.L   #$4A,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 75                            // 7A4B  MOVEQ.L   #$4B,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 76                            // 7A4C  MOVEQ.L   #$4C,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 77                            // 7A4D  MOVEQ.L   #$4D,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 78                            // 7A4E  MOVEQ.L   #$4E,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 79                            // 7A4F  MOVEQ.L   #$4F,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 80                            // 7A50  MOVEQ.L   #$50,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 81                            // 7A51  MOVEQ.L   #$51,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 82                            // 7A52  MOVEQ.L   #$52,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 83                            // 7A53  MOVEQ.L   #$53,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 84                            // 7A54  MOVEQ.L   #$54,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 85                            // 7A55  MOVEQ.L   #$55,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 86                            // 7A56  MOVEQ.L   #$56,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 87                            // 7A57  MOVEQ.L   #$57,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 88                            // 7A58  MOVEQ.L   #$58,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 89                            // 7A59  MOVEQ.L   #$59,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 90                            // 7A5A  MOVEQ.L   #$5A,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 91                            // 7A5B  MOVEQ.L   #$5B,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 92                            // 7A5C  MOVEQ.L   #$5C,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 93                            // 7A5D  MOVEQ.L   #$5D,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 94                            // 7A5E  MOVEQ.L   #$5E,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 95                            // 7A5F  MOVEQ.L   #$5F,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 96                            // 7A60  MOVEQ.L   #$60,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 97                            // 7A61  MOVEQ.L   #$61,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 98                            // 7A62  MOVEQ.L   #$62,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 99                            // 7A63  MOVEQ.L   #$63,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 100                           // 7A64  MOVEQ.L   #$64,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 101                           // 7A65  MOVEQ.L   #$65,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 102                           // 7A66  MOVEQ.L   #$66,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 103                           // 7A67  MOVEQ.L   #$67,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 104                           // 7A68  MOVEQ.L   #$68,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 105                           // 7A69  MOVEQ.L   #$69,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 106                           // 7A6A  MOVEQ.L   #$6A,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 107                           // 7A6B  MOVEQ.L   #$6B,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 108                           // 7A6C  MOVEQ.L   #$6C,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 109                           // 7A6D  MOVEQ.L   #$6D,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 110                           // 7A6E  MOVEQ.L   #$6E,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 111                           // 7A6F  MOVEQ.L   #$6F,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 112                           // 7A70  MOVEQ.L   #$70,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 113                           // 7A71  MOVEQ.L   #$71,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 114                           // 7A72  MOVEQ.L   #$72,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 115                           // 7A73  MOVEQ.L   #$73,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 116                           // 7A74  MOVEQ.L   #$74,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 117                           // 7A75  MOVEQ.L   #$75,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 118                           // 7A76  MOVEQ.L   #$76,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 119                           // 7A77  MOVEQ.L   #$77,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 120                           // 7A78  MOVEQ.L   #$78,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 121                           // 7A79  MOVEQ.L   #$79,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 122                           // 7A7A  MOVEQ.L   #$7A,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 123                           // 7A7B  MOVEQ.L   #$7B,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 124                           // 7A7C  MOVEQ.L   #$7C,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 125                           // 7A7D  MOVEQ.L   #$7D,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 126                           // 7A7E  MOVEQ.L   #$7E,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, 127                           // 7A7F  MOVEQ.L   #$7F,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
 
 // ---- $7A80-$7ABF --------------------------------------------------------
         addic.  d5, zero, -128                          // 7A80  MOVEQ.L   #$80,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -127                          // 7A81  MOVEQ.L   #$81,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -126                          // 7A82  MOVEQ.L   #$82,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -125                          // 7A83  MOVEQ.L   #$83,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -124                          // 7A84  MOVEQ.L   #$84,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -123                          // 7A85  MOVEQ.L   #$85,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -122                          // 7A86  MOVEQ.L   #$86,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -121                          // 7A87  MOVEQ.L   #$87,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -120                          // 7A88  MOVEQ.L   #$88,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -119                          // 7A89  MOVEQ.L   #$89,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -118                          // 7A8A  MOVEQ.L   #$8A,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -117                          // 7A8B  MOVEQ.L   #$8B,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -116                          // 7A8C  MOVEQ.L   #$8C,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -115                          // 7A8D  MOVEQ.L   #$8D,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -114                          // 7A8E  MOVEQ.L   #$8E,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -113                          // 7A8F  MOVEQ.L   #$8F,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -112                          // 7A90  MOVEQ.L   #$90,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -111                          // 7A91  MOVEQ.L   #$91,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -110                          // 7A92  MOVEQ.L   #$92,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -109                          // 7A93  MOVEQ.L   #$93,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -108                          // 7A94  MOVEQ.L   #$94,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -107                          // 7A95  MOVEQ.L   #$95,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -106                          // 7A96  MOVEQ.L   #$96,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -105                          // 7A97  MOVEQ.L   #$97,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -104                          // 7A98  MOVEQ.L   #$98,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -103                          // 7A99  MOVEQ.L   #$99,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -102                          // 7A9A  MOVEQ.L   #$9A,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -101                          // 7A9B  MOVEQ.L   #$9B,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -100                          // 7A9C  MOVEQ.L   #$9C,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -99                           // 7A9D  MOVEQ.L   #$9D,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -98                           // 7A9E  MOVEQ.L   #$9E,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -97                           // 7A9F  MOVEQ.L   #$9F,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -96                           // 7AA0  MOVEQ.L   #$A0,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -95                           // 7AA1  MOVEQ.L   #$A1,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -94                           // 7AA2  MOVEQ.L   #$A2,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -93                           // 7AA3  MOVEQ.L   #$A3,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -92                           // 7AA4  MOVEQ.L   #$A4,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -91                           // 7AA5  MOVEQ.L   #$A5,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -90                           // 7AA6  MOVEQ.L   #$A6,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -89                           // 7AA7  MOVEQ.L   #$A7,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -88                           // 7AA8  MOVEQ.L   #$A8,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -87                           // 7AA9  MOVEQ.L   #$A9,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -86                           // 7AAA  MOVEQ.L   #$AA,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -85                           // 7AAB  MOVEQ.L   #$AB,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -84                           // 7AAC  MOVEQ.L   #$AC,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -83                           // 7AAD  MOVEQ.L   #$AD,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -82                           // 7AAE  MOVEQ.L   #$AE,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -81                           // 7AAF  MOVEQ.L   #$AF,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -80                           // 7AB0  MOVEQ.L   #$B0,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -79                           // 7AB1  MOVEQ.L   #$B1,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -78                           // 7AB2  MOVEQ.L   #$B2,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -77                           // 7AB3  MOVEQ.L   #$B3,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -76                           // 7AB4  MOVEQ.L   #$B4,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -75                           // 7AB5  MOVEQ.L   #$B5,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -74                           // 7AB6  MOVEQ.L   #$B6,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -73                           // 7AB7  MOVEQ.L   #$B7,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -72                           // 7AB8  MOVEQ.L   #$B8,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -71                           // 7AB9  MOVEQ.L   #$B9,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -70                           // 7ABA  MOVEQ.L   #$BA,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -69                           // 7ABB  MOVEQ.L   #$BB,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -68                           // 7ABC  MOVEQ.L   #$BC,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -67                           // 7ABD  MOVEQ.L   #$BD,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -66                           // 7ABE  MOVEQ.L   #$BE,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -65                           // 7ABF  MOVEQ.L   #$BF,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
 
 // ---- $7AC0-$7AFF --------------------------------------------------------
         addic.  d5, zero, -64                           // 7AC0  MOVEQ.L   #$C0,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -63                           // 7AC1  MOVEQ.L   #$C1,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -62                           // 7AC2  MOVEQ.L   #$C2,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -61                           // 7AC3  MOVEQ.L   #$C3,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -60                           // 7AC4  MOVEQ.L   #$C4,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -59                           // 7AC5  MOVEQ.L   #$C5,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -58                           // 7AC6  MOVEQ.L   #$C6,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -57                           // 7AC7  MOVEQ.L   #$C7,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -56                           // 7AC8  MOVEQ.L   #$C8,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -55                           // 7AC9  MOVEQ.L   #$C9,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -54                           // 7ACA  MOVEQ.L   #$CA,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -53                           // 7ACB  MOVEQ.L   #$CB,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -52                           // 7ACC  MOVEQ.L   #$CC,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -51                           // 7ACD  MOVEQ.L   #$CD,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -50                           // 7ACE  MOVEQ.L   #$CE,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -49                           // 7ACF  MOVEQ.L   #$CF,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -48                           // 7AD0  MOVEQ.L   #$D0,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -47                           // 7AD1  MOVEQ.L   #$D1,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -46                           // 7AD2  MOVEQ.L   #$D2,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -45                           // 7AD3  MOVEQ.L   #$D3,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -44                           // 7AD4  MOVEQ.L   #$D4,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -43                           // 7AD5  MOVEQ.L   #$D5,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -42                           // 7AD6  MOVEQ.L   #$D6,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -41                           // 7AD7  MOVEQ.L   #$D7,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -40                           // 7AD8  MOVEQ.L   #$D8,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -39                           // 7AD9  MOVEQ.L   #$D9,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -38                           // 7ADA  MOVEQ.L   #$DA,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -37                           // 7ADB  MOVEQ.L   #$DB,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -36                           // 7ADC  MOVEQ.L   #$DC,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -35                           // 7ADD  MOVEQ.L   #$DD,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -34                           // 7ADE  MOVEQ.L   #$DE,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -33                           // 7ADF  MOVEQ.L   #$DF,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -32                           // 7AE0  MOVEQ.L   #$E0,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -31                           // 7AE1  MOVEQ.L   #$E1,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -30                           // 7AE2  MOVEQ.L   #$E2,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -29                           // 7AE3  MOVEQ.L   #$E3,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -28                           // 7AE4  MOVEQ.L   #$E4,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -27                           // 7AE5  MOVEQ.L   #$E5,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -26                           // 7AE6  MOVEQ.L   #$E6,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -25                           // 7AE7  MOVEQ.L   #$E7,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -24                           // 7AE8  MOVEQ.L   #$E8,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -23                           // 7AE9  MOVEQ.L   #$E9,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -22                           // 7AEA  MOVEQ.L   #$EA,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -21                           // 7AEB  MOVEQ.L   #$EB,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -20                           // 7AEC  MOVEQ.L   #$EC,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -19                           // 7AED  MOVEQ.L   #$ED,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -18                           // 7AEE  MOVEQ.L   #$EE,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -17                           // 7AEF  MOVEQ.L   #$EF,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -16                           // 7AF0  MOVEQ.L   #$F0,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -15                           // 7AF1  MOVEQ.L   #$F1,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -14                           // 7AF2  MOVEQ.L   #$F2,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -13                           // 7AF3  MOVEQ.L   #$F3,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -12                           // 7AF4  MOVEQ.L   #$F4,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -11                           // 7AF5  MOVEQ.L   #$F5,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -10                           // 7AF6  MOVEQ.L   #$F6,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -9                            // 7AF7  MOVEQ.L   #$F7,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -8                            // 7AF8  MOVEQ.L   #$F8,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -7                            // 7AF9  MOVEQ.L   #$F9,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -6                            // 7AFA  MOVEQ.L   #$FA,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -5                            // 7AFB  MOVEQ.L   #$FB,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -4                            // 7AFC  MOVEQ.L   #$FC,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -3                            // 7AFD  MOVEQ.L   #$FD,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -2                            // 7AFE  MOVEQ.L   #$FE,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d5, zero, -1                            // 7AFF  MOVEQ.L   #$FF,D5
-        b       move_or_etc_any_reg
+        b       update_vc_zero
 
 // ---- $7B00-$7B3F --------------------------------------------------------
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B00  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B01  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B02  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B03  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B04  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B05  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B06  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B07  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B08  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B09  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B0A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B0B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B0C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B0D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B0E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B0F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B10  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B11  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B12  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B13  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B14  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B15  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B16  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B17  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B18  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B19  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B1A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B1B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B1C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B1D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B1E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B1F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B20  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B21  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B22  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B23  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B24  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B25  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B26  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B27  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B28  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B29  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B2A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B2B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B2C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B2D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B2E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B2F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B30  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B31  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B32  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B33  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B34  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B35  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B36  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B37  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B38  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B39  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B3A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B3B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B3C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B3D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B3E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B3F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $7B40-$7B7F --------------------------------------------------------
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B40  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B41  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B42  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B43  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B44  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B45  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B46  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B47  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B48  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B49  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B4A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B4B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B4C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B4D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B4E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B4F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B50  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B51  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B52  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B53  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B54  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B55  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B56  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B57  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B58  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B59  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B5A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B5B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B5C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B5D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B5E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B5F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B60  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B61  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B62  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B63  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B64  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B65  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B66  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B67  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B68  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B69  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B6A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B6B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B6C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B6D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B6E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B6F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B70  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B71  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B72  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B73  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B74  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B75  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B76  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B77  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B78  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B79  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B7A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B7B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B7C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B7D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B7E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B7F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $7B80-$7BBF --------------------------------------------------------
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B80  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B81  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B82  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B83  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B84  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B85  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B86  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B87  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B88  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B89  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B8A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B8B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B8C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B8D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B8E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B8F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B90  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B91  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B92  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B93  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B94  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B95  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B96  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B97  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B98  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B99  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B9A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B9B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B9C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B9D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B9E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7B9F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BA0  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BA1  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BA2  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BA3  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BA4  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BA5  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BA6  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BA7  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BA8  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BA9  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BAA  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BAB  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BAC  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BAD  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BAE  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BAF  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BB0  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BB1  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BB2  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BB3  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BB4  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BB5  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BB6  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BB7  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BB8  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BB9  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BBA  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BBB  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BBC  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BBD  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BBE  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BBF  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $7BC0-$7BFF --------------------------------------------------------
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BC0  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BC1  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BC2  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BC3  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BC4  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BC5  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BC6  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BC7  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BC8  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BC9  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BCA  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BCB  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BCC  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BCD  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BCE  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BCF  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BD0  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BD1  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BD2  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BD3  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BD4  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BD5  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BD6  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BD7  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BD8  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BD9  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BDA  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BDB  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BDC  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BDD  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BDE  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BDF  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BE0  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BE1  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BE2  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BE3  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BE4  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BE5  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BE6  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BE7  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BE8  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BE9  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BEA  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BEB  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BEC  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BED  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BEE  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BEF  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BF0  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BF1  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BF2  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BF3  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BF4  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BF5  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BF6  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BF7  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BF8  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BF9  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BFA  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BFB  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BFC  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BFD  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BFE  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7BFF  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $7C00-$7C3F --------------------------------------------------------
         addco.  d6, zero, zero                          // 7C00  MOVEQ.L   #$00,D6
-        b       move_add_etc_any_any
+        b       fetch
         addic.  d6, zero, 1                             // 7C01  MOVEQ.L   #$01,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 2                             // 7C02  MOVEQ.L   #$02,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 3                             // 7C03  MOVEQ.L   #$03,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 4                             // 7C04  MOVEQ.L   #$04,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 5                             // 7C05  MOVEQ.L   #$05,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 6                             // 7C06  MOVEQ.L   #$06,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 7                             // 7C07  MOVEQ.L   #$07,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 8                             // 7C08  MOVEQ.L   #$08,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 9                             // 7C09  MOVEQ.L   #$09,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 10                            // 7C0A  MOVEQ.L   #$0A,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 11                            // 7C0B  MOVEQ.L   #$0B,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 12                            // 7C0C  MOVEQ.L   #$0C,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 13                            // 7C0D  MOVEQ.L   #$0D,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 14                            // 7C0E  MOVEQ.L   #$0E,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 15                            // 7C0F  MOVEQ.L   #$0F,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 16                            // 7C10  MOVEQ.L   #$10,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 17                            // 7C11  MOVEQ.L   #$11,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 18                            // 7C12  MOVEQ.L   #$12,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 19                            // 7C13  MOVEQ.L   #$13,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 20                            // 7C14  MOVEQ.L   #$14,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 21                            // 7C15  MOVEQ.L   #$15,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 22                            // 7C16  MOVEQ.L   #$16,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 23                            // 7C17  MOVEQ.L   #$17,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 24                            // 7C18  MOVEQ.L   #$18,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 25                            // 7C19  MOVEQ.L   #$19,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 26                            // 7C1A  MOVEQ.L   #$1A,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 27                            // 7C1B  MOVEQ.L   #$1B,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 28                            // 7C1C  MOVEQ.L   #$1C,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 29                            // 7C1D  MOVEQ.L   #$1D,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 30                            // 7C1E  MOVEQ.L   #$1E,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 31                            // 7C1F  MOVEQ.L   #$1F,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 32                            // 7C20  MOVEQ.L   #$20,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 33                            // 7C21  MOVEQ.L   #$21,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 34                            // 7C22  MOVEQ.L   #$22,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 35                            // 7C23  MOVEQ.L   #$23,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 36                            // 7C24  MOVEQ.L   #$24,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 37                            // 7C25  MOVEQ.L   #$25,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 38                            // 7C26  MOVEQ.L   #$26,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 39                            // 7C27  MOVEQ.L   #$27,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 40                            // 7C28  MOVEQ.L   #$28,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 41                            // 7C29  MOVEQ.L   #$29,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 42                            // 7C2A  MOVEQ.L   #$2A,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 43                            // 7C2B  MOVEQ.L   #$2B,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 44                            // 7C2C  MOVEQ.L   #$2C,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 45                            // 7C2D  MOVEQ.L   #$2D,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 46                            // 7C2E  MOVEQ.L   #$2E,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 47                            // 7C2F  MOVEQ.L   #$2F,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 48                            // 7C30  MOVEQ.L   #$30,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 49                            // 7C31  MOVEQ.L   #$31,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 50                            // 7C32  MOVEQ.L   #$32,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 51                            // 7C33  MOVEQ.L   #$33,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 52                            // 7C34  MOVEQ.L   #$34,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 53                            // 7C35  MOVEQ.L   #$35,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 54                            // 7C36  MOVEQ.L   #$36,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 55                            // 7C37  MOVEQ.L   #$37,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 56                            // 7C38  MOVEQ.L   #$38,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 57                            // 7C39  MOVEQ.L   #$39,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 58                            // 7C3A  MOVEQ.L   #$3A,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 59                            // 7C3B  MOVEQ.L   #$3B,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 60                            // 7C3C  MOVEQ.L   #$3C,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 61                            // 7C3D  MOVEQ.L   #$3D,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 62                            // 7C3E  MOVEQ.L   #$3E,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 63                            // 7C3F  MOVEQ.L   #$3F,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
 
 // ---- $7C40-$7C7F --------------------------------------------------------
         addic.  d6, zero, 64                            // 7C40  MOVEQ.L   #$40,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 65                            // 7C41  MOVEQ.L   #$41,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 66                            // 7C42  MOVEQ.L   #$42,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 67                            // 7C43  MOVEQ.L   #$43,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 68                            // 7C44  MOVEQ.L   #$44,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 69                            // 7C45  MOVEQ.L   #$45,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 70                            // 7C46  MOVEQ.L   #$46,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 71                            // 7C47  MOVEQ.L   #$47,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 72                            // 7C48  MOVEQ.L   #$48,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 73                            // 7C49  MOVEQ.L   #$49,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 74                            // 7C4A  MOVEQ.L   #$4A,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 75                            // 7C4B  MOVEQ.L   #$4B,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 76                            // 7C4C  MOVEQ.L   #$4C,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 77                            // 7C4D  MOVEQ.L   #$4D,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 78                            // 7C4E  MOVEQ.L   #$4E,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 79                            // 7C4F  MOVEQ.L   #$4F,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 80                            // 7C50  MOVEQ.L   #$50,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 81                            // 7C51  MOVEQ.L   #$51,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 82                            // 7C52  MOVEQ.L   #$52,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 83                            // 7C53  MOVEQ.L   #$53,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 84                            // 7C54  MOVEQ.L   #$54,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 85                            // 7C55  MOVEQ.L   #$55,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 86                            // 7C56  MOVEQ.L   #$56,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 87                            // 7C57  MOVEQ.L   #$57,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 88                            // 7C58  MOVEQ.L   #$58,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 89                            // 7C59  MOVEQ.L   #$59,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 90                            // 7C5A  MOVEQ.L   #$5A,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 91                            // 7C5B  MOVEQ.L   #$5B,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 92                            // 7C5C  MOVEQ.L   #$5C,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 93                            // 7C5D  MOVEQ.L   #$5D,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 94                            // 7C5E  MOVEQ.L   #$5E,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 95                            // 7C5F  MOVEQ.L   #$5F,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 96                            // 7C60  MOVEQ.L   #$60,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 97                            // 7C61  MOVEQ.L   #$61,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 98                            // 7C62  MOVEQ.L   #$62,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 99                            // 7C63  MOVEQ.L   #$63,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 100                           // 7C64  MOVEQ.L   #$64,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 101                           // 7C65  MOVEQ.L   #$65,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 102                           // 7C66  MOVEQ.L   #$66,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 103                           // 7C67  MOVEQ.L   #$67,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 104                           // 7C68  MOVEQ.L   #$68,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 105                           // 7C69  MOVEQ.L   #$69,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 106                           // 7C6A  MOVEQ.L   #$6A,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 107                           // 7C6B  MOVEQ.L   #$6B,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 108                           // 7C6C  MOVEQ.L   #$6C,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 109                           // 7C6D  MOVEQ.L   #$6D,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 110                           // 7C6E  MOVEQ.L   #$6E,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 111                           // 7C6F  MOVEQ.L   #$6F,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 112                           // 7C70  MOVEQ.L   #$70,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 113                           // 7C71  MOVEQ.L   #$71,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 114                           // 7C72  MOVEQ.L   #$72,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 115                           // 7C73  MOVEQ.L   #$73,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 116                           // 7C74  MOVEQ.L   #$74,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 117                           // 7C75  MOVEQ.L   #$75,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 118                           // 7C76  MOVEQ.L   #$76,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 119                           // 7C77  MOVEQ.L   #$77,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 120                           // 7C78  MOVEQ.L   #$78,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 121                           // 7C79  MOVEQ.L   #$79,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 122                           // 7C7A  MOVEQ.L   #$7A,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 123                           // 7C7B  MOVEQ.L   #$7B,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 124                           // 7C7C  MOVEQ.L   #$7C,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 125                           // 7C7D  MOVEQ.L   #$7D,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 126                           // 7C7E  MOVEQ.L   #$7E,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, 127                           // 7C7F  MOVEQ.L   #$7F,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
 
 // ---- $7C80-$7CBF --------------------------------------------------------
         addic.  d6, zero, -128                          // 7C80  MOVEQ.L   #$80,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -127                          // 7C81  MOVEQ.L   #$81,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -126                          // 7C82  MOVEQ.L   #$82,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -125                          // 7C83  MOVEQ.L   #$83,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -124                          // 7C84  MOVEQ.L   #$84,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -123                          // 7C85  MOVEQ.L   #$85,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -122                          // 7C86  MOVEQ.L   #$86,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -121                          // 7C87  MOVEQ.L   #$87,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -120                          // 7C88  MOVEQ.L   #$88,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -119                          // 7C89  MOVEQ.L   #$89,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -118                          // 7C8A  MOVEQ.L   #$8A,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -117                          // 7C8B  MOVEQ.L   #$8B,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -116                          // 7C8C  MOVEQ.L   #$8C,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -115                          // 7C8D  MOVEQ.L   #$8D,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -114                          // 7C8E  MOVEQ.L   #$8E,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -113                          // 7C8F  MOVEQ.L   #$8F,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -112                          // 7C90  MOVEQ.L   #$90,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -111                          // 7C91  MOVEQ.L   #$91,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -110                          // 7C92  MOVEQ.L   #$92,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -109                          // 7C93  MOVEQ.L   #$93,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -108                          // 7C94  MOVEQ.L   #$94,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -107                          // 7C95  MOVEQ.L   #$95,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -106                          // 7C96  MOVEQ.L   #$96,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -105                          // 7C97  MOVEQ.L   #$97,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -104                          // 7C98  MOVEQ.L   #$98,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -103                          // 7C99  MOVEQ.L   #$99,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -102                          // 7C9A  MOVEQ.L   #$9A,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -101                          // 7C9B  MOVEQ.L   #$9B,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -100                          // 7C9C  MOVEQ.L   #$9C,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -99                           // 7C9D  MOVEQ.L   #$9D,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -98                           // 7C9E  MOVEQ.L   #$9E,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -97                           // 7C9F  MOVEQ.L   #$9F,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -96                           // 7CA0  MOVEQ.L   #$A0,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -95                           // 7CA1  MOVEQ.L   #$A1,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -94                           // 7CA2  MOVEQ.L   #$A2,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -93                           // 7CA3  MOVEQ.L   #$A3,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -92                           // 7CA4  MOVEQ.L   #$A4,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -91                           // 7CA5  MOVEQ.L   #$A5,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -90                           // 7CA6  MOVEQ.L   #$A6,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -89                           // 7CA7  MOVEQ.L   #$A7,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -88                           // 7CA8  MOVEQ.L   #$A8,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -87                           // 7CA9  MOVEQ.L   #$A9,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -86                           // 7CAA  MOVEQ.L   #$AA,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -85                           // 7CAB  MOVEQ.L   #$AB,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -84                           // 7CAC  MOVEQ.L   #$AC,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -83                           // 7CAD  MOVEQ.L   #$AD,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -82                           // 7CAE  MOVEQ.L   #$AE,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -81                           // 7CAF  MOVEQ.L   #$AF,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -80                           // 7CB0  MOVEQ.L   #$B0,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -79                           // 7CB1  MOVEQ.L   #$B1,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -78                           // 7CB2  MOVEQ.L   #$B2,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -77                           // 7CB3  MOVEQ.L   #$B3,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -76                           // 7CB4  MOVEQ.L   #$B4,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -75                           // 7CB5  MOVEQ.L   #$B5,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -74                           // 7CB6  MOVEQ.L   #$B6,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -73                           // 7CB7  MOVEQ.L   #$B7,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -72                           // 7CB8  MOVEQ.L   #$B8,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -71                           // 7CB9  MOVEQ.L   #$B9,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -70                           // 7CBA  MOVEQ.L   #$BA,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -69                           // 7CBB  MOVEQ.L   #$BB,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -68                           // 7CBC  MOVEQ.L   #$BC,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -67                           // 7CBD  MOVEQ.L   #$BD,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -66                           // 7CBE  MOVEQ.L   #$BE,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -65                           // 7CBF  MOVEQ.L   #$BF,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
 
 // ---- $7CC0-$7CFF --------------------------------------------------------
         addic.  d6, zero, -64                           // 7CC0  MOVEQ.L   #$C0,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -63                           // 7CC1  MOVEQ.L   #$C1,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -62                           // 7CC2  MOVEQ.L   #$C2,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -61                           // 7CC3  MOVEQ.L   #$C3,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -60                           // 7CC4  MOVEQ.L   #$C4,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -59                           // 7CC5  MOVEQ.L   #$C5,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -58                           // 7CC6  MOVEQ.L   #$C6,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -57                           // 7CC7  MOVEQ.L   #$C7,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -56                           // 7CC8  MOVEQ.L   #$C8,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -55                           // 7CC9  MOVEQ.L   #$C9,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -54                           // 7CCA  MOVEQ.L   #$CA,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -53                           // 7CCB  MOVEQ.L   #$CB,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -52                           // 7CCC  MOVEQ.L   #$CC,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -51                           // 7CCD  MOVEQ.L   #$CD,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -50                           // 7CCE  MOVEQ.L   #$CE,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -49                           // 7CCF  MOVEQ.L   #$CF,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -48                           // 7CD0  MOVEQ.L   #$D0,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -47                           // 7CD1  MOVEQ.L   #$D1,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -46                           // 7CD2  MOVEQ.L   #$D2,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -45                           // 7CD3  MOVEQ.L   #$D3,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -44                           // 7CD4  MOVEQ.L   #$D4,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -43                           // 7CD5  MOVEQ.L   #$D5,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -42                           // 7CD6  MOVEQ.L   #$D6,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -41                           // 7CD7  MOVEQ.L   #$D7,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -40                           // 7CD8  MOVEQ.L   #$D8,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -39                           // 7CD9  MOVEQ.L   #$D9,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -38                           // 7CDA  MOVEQ.L   #$DA,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -37                           // 7CDB  MOVEQ.L   #$DB,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -36                           // 7CDC  MOVEQ.L   #$DC,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -35                           // 7CDD  MOVEQ.L   #$DD,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -34                           // 7CDE  MOVEQ.L   #$DE,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -33                           // 7CDF  MOVEQ.L   #$DF,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -32                           // 7CE0  MOVEQ.L   #$E0,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -31                           // 7CE1  MOVEQ.L   #$E1,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -30                           // 7CE2  MOVEQ.L   #$E2,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -29                           // 7CE3  MOVEQ.L   #$E3,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -28                           // 7CE4  MOVEQ.L   #$E4,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -27                           // 7CE5  MOVEQ.L   #$E5,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -26                           // 7CE6  MOVEQ.L   #$E6,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -25                           // 7CE7  MOVEQ.L   #$E7,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -24                           // 7CE8  MOVEQ.L   #$E8,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -23                           // 7CE9  MOVEQ.L   #$E9,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -22                           // 7CEA  MOVEQ.L   #$EA,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -21                           // 7CEB  MOVEQ.L   #$EB,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -20                           // 7CEC  MOVEQ.L   #$EC,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -19                           // 7CED  MOVEQ.L   #$ED,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -18                           // 7CEE  MOVEQ.L   #$EE,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -17                           // 7CEF  MOVEQ.L   #$EF,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -16                           // 7CF0  MOVEQ.L   #$F0,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -15                           // 7CF1  MOVEQ.L   #$F1,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -14                           // 7CF2  MOVEQ.L   #$F2,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -13                           // 7CF3  MOVEQ.L   #$F3,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -12                           // 7CF4  MOVEQ.L   #$F4,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -11                           // 7CF5  MOVEQ.L   #$F5,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -10                           // 7CF6  MOVEQ.L   #$F6,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -9                            // 7CF7  MOVEQ.L   #$F7,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -8                            // 7CF8  MOVEQ.L   #$F8,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -7                            // 7CF9  MOVEQ.L   #$F9,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -6                            // 7CFA  MOVEQ.L   #$FA,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -5                            // 7CFB  MOVEQ.L   #$FB,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -4                            // 7CFC  MOVEQ.L   #$FC,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -3                            // 7CFD  MOVEQ.L   #$FD,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -2                            // 7CFE  MOVEQ.L   #$FE,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d6, zero, -1                            // 7CFF  MOVEQ.L   #$FF,D6
-        b       move_or_etc_any_reg
+        b       update_vc_zero
 
 // ---- $7D00-$7D3F --------------------------------------------------------
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D00  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D01  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D02  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D03  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D04  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D05  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D06  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D07  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D08  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D09  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D0A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D0B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D0C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D0D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D0E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D0F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D10  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D11  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D12  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D13  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D14  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D15  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D16  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D17  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D18  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D19  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D1A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D1B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D1C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D1D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D1E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D1F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D20  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D21  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D22  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D23  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D24  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D25  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D26  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D27  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D28  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D29  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D2A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D2B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D2C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D2D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D2E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D2F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D30  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D31  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D32  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D33  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D34  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D35  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D36  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D37  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D38  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D39  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D3A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D3B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D3C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D3D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D3E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D3F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $7D40-$7D7F --------------------------------------------------------
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D40  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D41  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D42  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D43  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D44  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D45  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D46  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D47  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D48  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D49  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D4A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D4B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D4C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D4D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D4E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D4F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D50  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D51  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D52  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D53  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D54  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D55  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D56  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D57  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D58  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D59  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D5A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D5B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D5C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D5D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D5E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D5F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D60  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D61  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D62  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D63  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D64  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D65  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D66  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D67  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D68  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D69  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D6A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D6B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D6C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D6D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D6E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D6F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D70  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D71  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D72  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D73  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D74  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D75  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D76  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D77  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D78  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D79  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D7A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D7B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D7C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D7D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D7E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D7F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $7D80-$7DBF --------------------------------------------------------
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D80  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D81  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D82  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D83  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D84  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D85  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D86  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D87  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D88  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D89  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D8A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D8B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D8C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D8D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D8E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D8F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D90  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D91  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D92  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D93  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D94  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D95  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D96  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D97  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D98  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D99  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D9A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D9B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D9C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D9D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D9E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7D9F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DA0  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DA1  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DA2  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DA3  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DA4  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DA5  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DA6  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DA7  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DA8  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DA9  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DAA  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DAB  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DAC  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DAD  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DAE  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DAF  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DB0  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DB1  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DB2  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DB3  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DB4  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DB5  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DB6  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DB7  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DB8  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DB9  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DBA  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DBB  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DBC  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DBD  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DBE  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DBF  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $7DC0-$7DFF --------------------------------------------------------
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DC0  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DC1  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DC2  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DC3  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DC4  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DC5  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DC6  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DC7  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DC8  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DC9  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DCA  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DCB  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DCC  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DCD  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DCE  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DCF  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DD0  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DD1  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DD2  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DD3  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DD4  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DD5  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DD6  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DD7  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DD8  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DD9  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DDA  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DDB  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DDC  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DDD  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DDE  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DDF  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DE0  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DE1  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DE2  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DE3  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DE4  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DE5  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DE6  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DE7  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DE8  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DE9  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DEA  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DEB  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DEC  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DED  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DEE  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DEF  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DF0  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DF1  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DF2  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DF3  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DF4  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DF5  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DF6  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DF7  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DF8  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DF9  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DFA  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DFB  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DFC  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DFD  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DFE  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7DFF  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $7E00-$7E3F --------------------------------------------------------
         addco.  d7, zero, zero                          // 7E00  MOVEQ.L   #$00,D7
-        b       move_add_etc_any_any
+        b       fetch
         addic.  d7, zero, 1                             // 7E01  MOVEQ.L   #$01,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 2                             // 7E02  MOVEQ.L   #$02,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 3                             // 7E03  MOVEQ.L   #$03,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 4                             // 7E04  MOVEQ.L   #$04,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 5                             // 7E05  MOVEQ.L   #$05,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 6                             // 7E06  MOVEQ.L   #$06,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 7                             // 7E07  MOVEQ.L   #$07,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 8                             // 7E08  MOVEQ.L   #$08,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 9                             // 7E09  MOVEQ.L   #$09,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 10                            // 7E0A  MOVEQ.L   #$0A,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 11                            // 7E0B  MOVEQ.L   #$0B,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 12                            // 7E0C  MOVEQ.L   #$0C,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 13                            // 7E0D  MOVEQ.L   #$0D,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 14                            // 7E0E  MOVEQ.L   #$0E,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 15                            // 7E0F  MOVEQ.L   #$0F,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 16                            // 7E10  MOVEQ.L   #$10,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 17                            // 7E11  MOVEQ.L   #$11,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 18                            // 7E12  MOVEQ.L   #$12,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 19                            // 7E13  MOVEQ.L   #$13,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 20                            // 7E14  MOVEQ.L   #$14,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 21                            // 7E15  MOVEQ.L   #$15,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 22                            // 7E16  MOVEQ.L   #$16,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 23                            // 7E17  MOVEQ.L   #$17,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 24                            // 7E18  MOVEQ.L   #$18,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 25                            // 7E19  MOVEQ.L   #$19,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 26                            // 7E1A  MOVEQ.L   #$1A,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 27                            // 7E1B  MOVEQ.L   #$1B,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 28                            // 7E1C  MOVEQ.L   #$1C,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 29                            // 7E1D  MOVEQ.L   #$1D,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 30                            // 7E1E  MOVEQ.L   #$1E,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 31                            // 7E1F  MOVEQ.L   #$1F,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 32                            // 7E20  MOVEQ.L   #$20,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 33                            // 7E21  MOVEQ.L   #$21,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 34                            // 7E22  MOVEQ.L   #$22,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 35                            // 7E23  MOVEQ.L   #$23,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 36                            // 7E24  MOVEQ.L   #$24,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 37                            // 7E25  MOVEQ.L   #$25,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 38                            // 7E26  MOVEQ.L   #$26,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 39                            // 7E27  MOVEQ.L   #$27,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 40                            // 7E28  MOVEQ.L   #$28,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 41                            // 7E29  MOVEQ.L   #$29,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 42                            // 7E2A  MOVEQ.L   #$2A,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 43                            // 7E2B  MOVEQ.L   #$2B,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 44                            // 7E2C  MOVEQ.L   #$2C,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 45                            // 7E2D  MOVEQ.L   #$2D,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 46                            // 7E2E  MOVEQ.L   #$2E,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 47                            // 7E2F  MOVEQ.L   #$2F,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 48                            // 7E30  MOVEQ.L   #$30,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 49                            // 7E31  MOVEQ.L   #$31,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 50                            // 7E32  MOVEQ.L   #$32,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 51                            // 7E33  MOVEQ.L   #$33,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 52                            // 7E34  MOVEQ.L   #$34,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 53                            // 7E35  MOVEQ.L   #$35,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 54                            // 7E36  MOVEQ.L   #$36,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 55                            // 7E37  MOVEQ.L   #$37,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 56                            // 7E38  MOVEQ.L   #$38,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 57                            // 7E39  MOVEQ.L   #$39,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 58                            // 7E3A  MOVEQ.L   #$3A,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 59                            // 7E3B  MOVEQ.L   #$3B,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 60                            // 7E3C  MOVEQ.L   #$3C,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 61                            // 7E3D  MOVEQ.L   #$3D,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 62                            // 7E3E  MOVEQ.L   #$3E,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 63                            // 7E3F  MOVEQ.L   #$3F,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
 
 // ---- $7E40-$7E7F --------------------------------------------------------
         addic.  d7, zero, 64                            // 7E40  MOVEQ.L   #$40,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 65                            // 7E41  MOVEQ.L   #$41,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 66                            // 7E42  MOVEQ.L   #$42,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 67                            // 7E43  MOVEQ.L   #$43,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 68                            // 7E44  MOVEQ.L   #$44,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 69                            // 7E45  MOVEQ.L   #$45,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 70                            // 7E46  MOVEQ.L   #$46,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 71                            // 7E47  MOVEQ.L   #$47,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 72                            // 7E48  MOVEQ.L   #$48,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 73                            // 7E49  MOVEQ.L   #$49,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 74                            // 7E4A  MOVEQ.L   #$4A,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 75                            // 7E4B  MOVEQ.L   #$4B,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 76                            // 7E4C  MOVEQ.L   #$4C,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 77                            // 7E4D  MOVEQ.L   #$4D,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 78                            // 7E4E  MOVEQ.L   #$4E,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 79                            // 7E4F  MOVEQ.L   #$4F,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 80                            // 7E50  MOVEQ.L   #$50,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 81                            // 7E51  MOVEQ.L   #$51,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 82                            // 7E52  MOVEQ.L   #$52,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 83                            // 7E53  MOVEQ.L   #$53,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 84                            // 7E54  MOVEQ.L   #$54,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 85                            // 7E55  MOVEQ.L   #$55,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 86                            // 7E56  MOVEQ.L   #$56,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 87                            // 7E57  MOVEQ.L   #$57,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 88                            // 7E58  MOVEQ.L   #$58,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 89                            // 7E59  MOVEQ.L   #$59,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 90                            // 7E5A  MOVEQ.L   #$5A,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 91                            // 7E5B  MOVEQ.L   #$5B,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 92                            // 7E5C  MOVEQ.L   #$5C,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 93                            // 7E5D  MOVEQ.L   #$5D,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 94                            // 7E5E  MOVEQ.L   #$5E,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 95                            // 7E5F  MOVEQ.L   #$5F,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 96                            // 7E60  MOVEQ.L   #$60,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 97                            // 7E61  MOVEQ.L   #$61,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 98                            // 7E62  MOVEQ.L   #$62,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 99                            // 7E63  MOVEQ.L   #$63,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 100                           // 7E64  MOVEQ.L   #$64,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 101                           // 7E65  MOVEQ.L   #$65,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 102                           // 7E66  MOVEQ.L   #$66,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 103                           // 7E67  MOVEQ.L   #$67,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 104                           // 7E68  MOVEQ.L   #$68,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 105                           // 7E69  MOVEQ.L   #$69,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 106                           // 7E6A  MOVEQ.L   #$6A,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 107                           // 7E6B  MOVEQ.L   #$6B,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 108                           // 7E6C  MOVEQ.L   #$6C,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 109                           // 7E6D  MOVEQ.L   #$6D,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 110                           // 7E6E  MOVEQ.L   #$6E,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 111                           // 7E6F  MOVEQ.L   #$6F,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 112                           // 7E70  MOVEQ.L   #$70,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 113                           // 7E71  MOVEQ.L   #$71,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 114                           // 7E72  MOVEQ.L   #$72,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 115                           // 7E73  MOVEQ.L   #$73,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 116                           // 7E74  MOVEQ.L   #$74,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 117                           // 7E75  MOVEQ.L   #$75,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 118                           // 7E76  MOVEQ.L   #$76,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 119                           // 7E77  MOVEQ.L   #$77,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 120                           // 7E78  MOVEQ.L   #$78,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 121                           // 7E79  MOVEQ.L   #$79,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 122                           // 7E7A  MOVEQ.L   #$7A,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 123                           // 7E7B  MOVEQ.L   #$7B,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 124                           // 7E7C  MOVEQ.L   #$7C,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 125                           // 7E7D  MOVEQ.L   #$7D,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 126                           // 7E7E  MOVEQ.L   #$7E,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, 127                           // 7E7F  MOVEQ.L   #$7F,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
 
 // ---- $7E80-$7EBF --------------------------------------------------------
         addic.  d7, zero, -128                          // 7E80  MOVEQ.L   #$80,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -127                          // 7E81  MOVEQ.L   #$81,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -126                          // 7E82  MOVEQ.L   #$82,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -125                          // 7E83  MOVEQ.L   #$83,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -124                          // 7E84  MOVEQ.L   #$84,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -123                          // 7E85  MOVEQ.L   #$85,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -122                          // 7E86  MOVEQ.L   #$86,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -121                          // 7E87  MOVEQ.L   #$87,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -120                          // 7E88  MOVEQ.L   #$88,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -119                          // 7E89  MOVEQ.L   #$89,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -118                          // 7E8A  MOVEQ.L   #$8A,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -117                          // 7E8B  MOVEQ.L   #$8B,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -116                          // 7E8C  MOVEQ.L   #$8C,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -115                          // 7E8D  MOVEQ.L   #$8D,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -114                          // 7E8E  MOVEQ.L   #$8E,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -113                          // 7E8F  MOVEQ.L   #$8F,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -112                          // 7E90  MOVEQ.L   #$90,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -111                          // 7E91  MOVEQ.L   #$91,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -110                          // 7E92  MOVEQ.L   #$92,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -109                          // 7E93  MOVEQ.L   #$93,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -108                          // 7E94  MOVEQ.L   #$94,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -107                          // 7E95  MOVEQ.L   #$95,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -106                          // 7E96  MOVEQ.L   #$96,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -105                          // 7E97  MOVEQ.L   #$97,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -104                          // 7E98  MOVEQ.L   #$98,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -103                          // 7E99  MOVEQ.L   #$99,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -102                          // 7E9A  MOVEQ.L   #$9A,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -101                          // 7E9B  MOVEQ.L   #$9B,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -100                          // 7E9C  MOVEQ.L   #$9C,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -99                           // 7E9D  MOVEQ.L   #$9D,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -98                           // 7E9E  MOVEQ.L   #$9E,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -97                           // 7E9F  MOVEQ.L   #$9F,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -96                           // 7EA0  MOVEQ.L   #$A0,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -95                           // 7EA1  MOVEQ.L   #$A1,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -94                           // 7EA2  MOVEQ.L   #$A2,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -93                           // 7EA3  MOVEQ.L   #$A3,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -92                           // 7EA4  MOVEQ.L   #$A4,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -91                           // 7EA5  MOVEQ.L   #$A5,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -90                           // 7EA6  MOVEQ.L   #$A6,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -89                           // 7EA7  MOVEQ.L   #$A7,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -88                           // 7EA8  MOVEQ.L   #$A8,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -87                           // 7EA9  MOVEQ.L   #$A9,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -86                           // 7EAA  MOVEQ.L   #$AA,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -85                           // 7EAB  MOVEQ.L   #$AB,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -84                           // 7EAC  MOVEQ.L   #$AC,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -83                           // 7EAD  MOVEQ.L   #$AD,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -82                           // 7EAE  MOVEQ.L   #$AE,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -81                           // 7EAF  MOVEQ.L   #$AF,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -80                           // 7EB0  MOVEQ.L   #$B0,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -79                           // 7EB1  MOVEQ.L   #$B1,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -78                           // 7EB2  MOVEQ.L   #$B2,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -77                           // 7EB3  MOVEQ.L   #$B3,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -76                           // 7EB4  MOVEQ.L   #$B4,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -75                           // 7EB5  MOVEQ.L   #$B5,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -74                           // 7EB6  MOVEQ.L   #$B6,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -73                           // 7EB7  MOVEQ.L   #$B7,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -72                           // 7EB8  MOVEQ.L   #$B8,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -71                           // 7EB9  MOVEQ.L   #$B9,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -70                           // 7EBA  MOVEQ.L   #$BA,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -69                           // 7EBB  MOVEQ.L   #$BB,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -68                           // 7EBC  MOVEQ.L   #$BC,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -67                           // 7EBD  MOVEQ.L   #$BD,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -66                           // 7EBE  MOVEQ.L   #$BE,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -65                           // 7EBF  MOVEQ.L   #$BF,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
 
 // ---- $7EC0-$7EFF --------------------------------------------------------
         addic.  d7, zero, -64                           // 7EC0  MOVEQ.L   #$C0,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -63                           // 7EC1  MOVEQ.L   #$C1,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -62                           // 7EC2  MOVEQ.L   #$C2,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -61                           // 7EC3  MOVEQ.L   #$C3,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -60                           // 7EC4  MOVEQ.L   #$C4,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -59                           // 7EC5  MOVEQ.L   #$C5,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -58                           // 7EC6  MOVEQ.L   #$C6,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -57                           // 7EC7  MOVEQ.L   #$C7,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -56                           // 7EC8  MOVEQ.L   #$C8,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -55                           // 7EC9  MOVEQ.L   #$C9,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -54                           // 7ECA  MOVEQ.L   #$CA,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -53                           // 7ECB  MOVEQ.L   #$CB,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -52                           // 7ECC  MOVEQ.L   #$CC,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -51                           // 7ECD  MOVEQ.L   #$CD,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -50                           // 7ECE  MOVEQ.L   #$CE,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -49                           // 7ECF  MOVEQ.L   #$CF,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -48                           // 7ED0  MOVEQ.L   #$D0,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -47                           // 7ED1  MOVEQ.L   #$D1,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -46                           // 7ED2  MOVEQ.L   #$D2,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -45                           // 7ED3  MOVEQ.L   #$D3,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -44                           // 7ED4  MOVEQ.L   #$D4,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -43                           // 7ED5  MOVEQ.L   #$D5,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -42                           // 7ED6  MOVEQ.L   #$D6,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -41                           // 7ED7  MOVEQ.L   #$D7,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -40                           // 7ED8  MOVEQ.L   #$D8,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -39                           // 7ED9  MOVEQ.L   #$D9,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -38                           // 7EDA  MOVEQ.L   #$DA,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -37                           // 7EDB  MOVEQ.L   #$DB,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -36                           // 7EDC  MOVEQ.L   #$DC,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -35                           // 7EDD  MOVEQ.L   #$DD,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -34                           // 7EDE  MOVEQ.L   #$DE,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -33                           // 7EDF  MOVEQ.L   #$DF,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -32                           // 7EE0  MOVEQ.L   #$E0,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -31                           // 7EE1  MOVEQ.L   #$E1,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -30                           // 7EE2  MOVEQ.L   #$E2,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -29                           // 7EE3  MOVEQ.L   #$E3,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -28                           // 7EE4  MOVEQ.L   #$E4,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -27                           // 7EE5  MOVEQ.L   #$E5,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -26                           // 7EE6  MOVEQ.L   #$E6,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -25                           // 7EE7  MOVEQ.L   #$E7,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -24                           // 7EE8  MOVEQ.L   #$E8,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -23                           // 7EE9  MOVEQ.L   #$E9,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -22                           // 7EEA  MOVEQ.L   #$EA,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -21                           // 7EEB  MOVEQ.L   #$EB,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -20                           // 7EEC  MOVEQ.L   #$EC,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -19                           // 7EED  MOVEQ.L   #$ED,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -18                           // 7EEE  MOVEQ.L   #$EE,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -17                           // 7EEF  MOVEQ.L   #$EF,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -16                           // 7EF0  MOVEQ.L   #$F0,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -15                           // 7EF1  MOVEQ.L   #$F1,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -14                           // 7EF2  MOVEQ.L   #$F2,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -13                           // 7EF3  MOVEQ.L   #$F3,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -12                           // 7EF4  MOVEQ.L   #$F4,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -11                           // 7EF5  MOVEQ.L   #$F5,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -10                           // 7EF6  MOVEQ.L   #$F6,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -9                            // 7EF7  MOVEQ.L   #$F7,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -8                            // 7EF8  MOVEQ.L   #$F8,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -7                            // 7EF9  MOVEQ.L   #$F9,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -6                            // 7EFA  MOVEQ.L   #$FA,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -5                            // 7EFB  MOVEQ.L   #$FB,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -4                            // 7EFC  MOVEQ.L   #$FC,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -3                            // 7EFD  MOVEQ.L   #$FD,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -2                            // 7EFE  MOVEQ.L   #$FE,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
         addic.  d7, zero, -1                            // 7EFF  MOVEQ.L   #$FF,D7
-        b       move_or_etc_any_reg
+        b       update_vc_zero
 
 // ---- $7F00-$7F3F --------------------------------------------------------
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F00  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F01  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F02  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F03  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F04  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F05  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F06  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F07  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F08  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F09  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F0A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F0B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F0C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F0D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F0E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F0F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F10  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F11  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F12  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F13  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F14  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F15  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F16  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F17  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F18  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F19  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F1A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F1B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F1C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F1D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F1E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F1F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F20  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F21  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F22  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F23  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F24  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F25  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F26  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F27  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F28  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F29  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F2A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F2B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F2C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F2D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F2E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F2F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F30  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F31  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F32  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F33  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F34  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F35  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F36  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F37  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F38  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F39  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F3A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F3B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F3C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F3D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F3E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F3F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $7F40-$7F7F --------------------------------------------------------
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F40  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F41  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F42  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F43  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F44  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F45  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F46  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F47  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F48  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F49  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F4A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F4B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F4C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F4D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F4E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F4F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F50  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F51  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F52  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F53  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F54  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F55  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F56  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F57  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F58  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F59  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F5A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F5B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F5C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F5D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F5E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F5F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F60  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F61  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F62  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F63  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F64  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F65  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F66  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F67  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F68  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F69  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F6A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F6B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F6C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F6D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F6E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F6F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F70  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F71  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F72  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F73  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F74  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F75  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F76  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F77  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F78  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F79  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F7A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F7B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F7C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F7D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F7E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F7F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $7F80-$7FBF --------------------------------------------------------
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F80  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F81  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F82  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F83  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F84  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F85  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F86  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F87  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F88  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F89  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F8A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F8B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F8C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F8D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F8E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F8F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F90  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F91  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F92  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F93  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F94  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F95  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F96  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F97  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F98  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F99  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F9A  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F9B  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F9C  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F9D  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F9E  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7F9F  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FA0  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FA1  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FA2  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FA3  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FA4  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FA5  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FA6  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FA7  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FA8  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FA9  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FAA  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FAB  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FAC  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FAD  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FAE  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FAF  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FB0  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FB1  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FB2  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FB3  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FB4  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FB5  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FB6  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FB7  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FB8  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FB9  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FBA  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FBB  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FBC  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FBD  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FBE  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FBF  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
 
 // ---- $7FC0-$7FFF --------------------------------------------------------
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FC0  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FC1  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FC2  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FC3  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FC4  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FC5  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FC6  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FC7  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FC8  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FC9  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FCA  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FCB  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FCC  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FCD  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FCE  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FCF  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FD0  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FD1  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FD2  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FD3  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FD4  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FD5  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FD6  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FD7  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FD8  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FD9  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FDA  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FDB  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FDC  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FDD  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FDE  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FDF  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FE0  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FE1  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FE2  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FE3  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FE4  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FE5  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FE6  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FE7  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FE8  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FE9  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FEA  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FEB  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FEC  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FED  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FEE  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FEF  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FF0  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FF1  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FF2  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FF3  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FF4  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FF5  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FF6  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FF7  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FF8  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FF9  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FFA  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FFB  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FFC  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FFD  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FFE  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
         lwz     rtn_addr, 0x800(EmulatorStatePtr)       // 7FFF  ILLEGAL
-        b       bkpt_illegal_imm
+        b       take_illegal_instruction
