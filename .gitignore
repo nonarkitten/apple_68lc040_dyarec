@@ -1,0 +1,14 @@
+# Build output
+build/
+
+# Python
+__pycache__/
+*.pyc
+
+# macOS
+.DS_Store
+
+# Legacy working files from the original ppcd-based disassembly attempt.
+# Superseded by tools/ and src/; kept locally but not tracked.
+/ppcd/
+/Emulator.asm
