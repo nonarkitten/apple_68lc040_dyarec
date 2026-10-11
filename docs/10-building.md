@@ -144,4 +144,4 @@ The source avoids constructs specific to LLVM, and the three macros
 above cover the encodings on which assemblers differ, so GNU binutils
 (`powerpc-eabi-as` or similar, with the `-many` or `-mppc` option) is
 expected to work with `PPC_AS` overridden on the `make` command line.
-This has not been tried.
+Only the LLVM build has been verified.

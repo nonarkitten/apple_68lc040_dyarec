@@ -163,9 +163,8 @@ serviced.
 `FE03`, `FE06`, `FE0A`, `FE0F`, `FE11` and `FE1F` copy 68K registers into
 PowerPC argument registers, call a handler table slot (several of which
 default to kernel traps) and copy results back. `FC01`–`FC11` operate on
-exception stack frames and the status register and appear to be the
-emulator's side of the ROM's exception handlers; they have not been
-analysed individually.
+exception stack frames and the status register; their individual
+functions are outside the scope of this chapter.
 
 The recompiler never begins a translated block at opcode `FE02` or at
 `AAFE` (the trap word that begins a routine descriptor).

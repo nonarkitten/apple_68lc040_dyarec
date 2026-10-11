@@ -11,10 +11,10 @@ code instead translates variable-length basic blocks, finds them through a
 hashed lookup table, analyses condition code usage, and links blocks to
 each other. [12-patents.md](12-patents.md) lists the differences.
 
-The level of detail here is uneven. The run-time (dispatch, cache
-management, invalidation, linking) and the overall shape of the translator
-have been read closely. The individual code generators (roughly
-`11338`–`17640`, about 6,000 instructions) have only been sampled.
+**Scope.** This chapter covers the run-time (dispatch, cache management,
+invalidation, linking) and the structure of the translator. It does not
+describe the individual code generators (`11338`–`17640`, about 6,000
+instructions) beyond the conventions they share.
 
 ## State and switches
 

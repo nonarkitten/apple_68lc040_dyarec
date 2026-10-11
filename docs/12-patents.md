@@ -32,7 +32,7 @@ and most of it applies to this image unchanged.
 | 256-entry table of instruction pairs at the start of the code block for indexed addressing | Identical (`cb`, offsets `00000`–`007FF`). |
 | Odd address detection: two methods, the first "no longer used", the second inserting the low bit of `pc` into bit 11 (IBM) of `disp_table` | The second method is the one used. |
 | Dispatch table at `$68000000`, code at `$68080000`, 64 KB of code | The image is position independent. The code now precedes the table and is 128 KB (two 64 KB blocks). |
-| MOVEM register list optimisations | Not examined. |
+| MOVEM register list optimisations | Outside the scope of this documentation. |
 | Subtraction carry corrected with `sfo.` then `a.` | Used for comparisons. Subtractions that set X use a `subfe`/`addc` pair instead; see [05-condition-codes.md](05-condition-codes.md). |
 | Three stack pointers, with the inactive two in memory; `trace_pc` | Identical, with the same field names. |
 
@@ -41,8 +41,9 @@ emulation routines that recognise a *sequence* of guest instructions and
 emulate the sequence as a unit, bypassing the dispatch between them (its
 figures 9 and 10 give the example of a repeated instruction). In this
 image a related idea is visible in `DBcc`, whose table entry takes the
-loop branch and loads the next opcode itself. Whether any routine tests `prefetch_data` for a specific following opcode
-in the way the patent's figures show has not been checked.
+loop branch and loads the next opcode itself. The patent's own example —
+a routine that tests `prefetch_data` for a specific following opcode — is
+not documented here.
 
 ## US 5,790,825 — the dynamic recompiler
 

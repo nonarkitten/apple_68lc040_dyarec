@@ -147,6 +147,3 @@ Each stage is useful on its own.
   after initialisation, and with what.
 - The purpose of the individual private opcodes that only forward to
   kernel traps.
-- Whether every path through the image is reachable; about 1,500 labels
-  in the code still have address-style names, and the recompiler's code
-  generators have not been read individually.
