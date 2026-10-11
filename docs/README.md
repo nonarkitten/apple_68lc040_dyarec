@@ -1,7 +1,7 @@
 # Apple 68LC040 Emulator for PowerPC — Technical Reference
 
 This directory documents the emulator contained in `Emulator.x`: the
-PowerPC program that runs Motorola 680x0 code on PCI-era Power Macintosh
+PowerPC program that runs Motorola 680x0 code on Power Macintosh
 computers. It consists of an interpreter, a dynamic recompiler ("DR") and a
 512 KB dispatch table.
 

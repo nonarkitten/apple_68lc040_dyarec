@@ -18,118 +18,117 @@ Legend: `[x]` done, `[~]` partly done, `[ ]` not started.
 - [x] `make` builds `build/Emulator.x`; `make verify` compares it with the reference
 
 ### 2. Legible source
-- [~] Role names for every register (patent names: `d0`, `a0`, `pc`, `prefetch_data`, ...)
-- [ ] Symbolic condition-register flag bits
-- [ ] Symbolic `EmulatorState` field offsets
+- [x] Role names for every register (patent names: `d0`, `a0`, `pc`, `prefetch_data`, ...)
+- [~] Symbolic condition-register flag bits (CR1 and CR2 done; one CR2 bit, cr2.gt, still unnamed)
+- [~] Symbolic `EmulatorState` field offsets (about 45 named; many still numeric)
 - [x] Alignment padding expressed as directives rather than runs of `nop`
-- [ ] Embedded data tables emitted as data (with symbolic code offsets where they hold pointers)
+- [x] Embedded data tables emitted as data (with symbolic code offsets where they hold pointers)
 - [x] Automatic end-of-line comments for cryptic PowerPC instructions (rotate/mask, CR logic, ...)
 - [x] Dispatch table: every entry commented with its 68K instruction
+- [x] Every routine reached from the dispatch table named and headed by the instructions that use it
+- [ ] Replace the 1,564 remaining address-style labels (`L_xxxxx`) with meaningful ones
+- [ ] Review the automatic handler names; hand-name the awkward ones (`*_etc_any_any`, numeric suffixes)
+- [ ] Symbolic offsets in the recompiler's descriptor tables (`16E48`, `17228`, `17470`) and template loads
 
 ### 3. Understanding the interpreter (0x00000-0x0EA44)
-- [ ] Dispatch / prefetch / decode sequence
-- [ ] Effective address routines (incl. the 256-entry indexed-mode decode table)
-- [ ] Condition code model (N/Z in CR0, V/C in XER, X in `ccr_x`)
-- [ ] Per-instruction handler families named from the dispatch table
-- [ ] Exceptions, interrupts and special events
-- [ ] Privileged instructions, SR changes, MOVEC, RTE, STOP, RESET
-- [ ] Emulator entry, initialisation and the kernel trap table
-- [ ] Mixed-mode / native-code interface
+- [x] Dispatch / prefetch / decode sequence
+- [x] Effective address routines (incl. the 256-entry indexed-mode decode table)
+- [x] Condition code model (N/Z in CR0, V/C in XER, X in `ccr_x`)
+- [~] Per-instruction handler families (named automatically; only a sample read in full)
+- [x] Exceptions, interrupts and special events
+- [~] Privileged instructions, SR changes, MOVEC, RTE, STOP, RESET (gates and tables understood; `0C3D0`-`0D0EC` not annotated line by line)
+- [x] Emulator entry, initialisation and the kernel trap table
+- [~] Mixed-mode / native-code interface (flow understood; context block layouts not)
+- [ ] Bit field, BCD, MOVEM, MOVEP, MOVE16, CAS/CAS2, CHK2/CMP2, 64-bit multiply/divide routines
+- [ ] Private opcodes `FC01`-`FC11` and the ones that forward to kernel traps
 
 ### 4. Understanding the dynamic recompiler (0x10000-0x182FC)
-- [ ] Entry from the interpreter and return paths
-- [ ] Translation cache layout, tag store, line allocation
-- [ ] Translator (per-opcode code generation, the embedded tables)
-- [ ] DR-specific semantic routines
-- [ ] Cache flush / invalidation
+- [x] Entry from the interpreter and return paths
+- [x] Lookup table, cache layout, block allocation
+- [~] Translator (three passes and record format understood; per-line decoders `10280`-`10FFF` only sampled)
+- [ ] Code emitters `11338`-`17640` (about 6,000 instructions, sampled only)
+- [x] Block chaining and inline caches
+- [x] Cache flush / range invalidation / page bitmap
+- [~] Fault recovery in translated code (purpose clear, details not annotated)
 
 ### 5. Documentation (`docs/`)
-- [ ] Overview and image layout
-- [ ] Register conventions
-- [ ] Dispatch mechanism
-- [ ] Effective address calculation
-- [ ] Condition codes
-- [ ] Exceptions and special events
-- [ ] EmulatorState layout
-- [ ] Kernel / native interface
-- [ ] Dynamic recompiler
-- [ ] Building and verifying
-- [ ] Known gaps and what would be needed to run and test the code
-- [ ] Cross-reference to the three patents
+- [x] Overview and image layout
+- [x] Register conventions
+- [x] Dispatch mechanism
+- [x] Effective address calculation
+- [x] Condition codes
+- [x] Exceptions and special events
+- [x] EmulatorState layout
+- [x] Kernel / native interface
+- [x] Dynamic recompiler
+- [x] Building and verifying
+- [x] Known gaps and what would be needed to run and test the code
+- [x] Cross-reference to the three patents
+- [ ] Per-instruction-family notes (shifts, multiply/divide, bit fields, BCD) once those routines are read
+- [ ] Extend the recompiler chapter once the emitters are read
 
 ### 6. Wrap-up
-- [ ] README rewritten for the new repository layout
+- [x] README rewritten for the new repository layout
+- [ ] Merge branch `emulator-disassembly` into `master` (left for Renee)
 - [ ] Decide whether to freeze `src/` as hand-maintained source (see "Open decisions")
 - [ ] Re-point or remove the `origin` remote (still `ogamespec/ppcd`)
 - [ ] Try the build with GNU binutils (`powerpc-*-as`) as a second assembler
+- [ ] Decide what to do with the untracked legacy files (`ppcd/`, `Emulator.asm`; currently git-ignored)
 
-## Plan
+## How to continue
 
-### Goal
-A reassemblable, readable, documented source rendering of the Apple 68LC040
-emulator, proven faithful by rebuilding `Emulator.x` byte for byte.
+1. `make check` — should print `OK`.
+2. Pick an unchecked item above. For naming and commentary work:
+   `python3 tools/show.py START END` prints the code with offsets; add
+   labels and comments to a file in `annotations/`; `make check`; commit.
+3. When a finding changes what the docs say, change the docs in the same
+   commit.
 
-### Approach
-1. **Never hand-type instructions.** The source is produced by a generator
-   (`tools/gen.py`) from the reference binary plus human-written annotation
-   files (`annotations/`): labels, comments, data ranges, register naming.
-   Every regeneration is checked by reassembling and comparing, so a wrong
-   annotation can make the text misleading but can never make the code wrong.
-2. **Work outside-in.** Get the whole image round-tripping first with
-   automatic labels, then replace automatic names and comments with real ones
-   region by region.
-3. **Use the dispatch table as the Rosetta stone.** Each of the 65536 table
-   entries is the start of a known 68K instruction, which names the handler
-   it branches to.
-4. **Use the original vocabulary.** Register, macro and label names that
-   appear in the patents (`prefetch_data`, `disp_table`, `cb`, `cea_*`,
-   `process_special_event`, DECODE1/DECODE2/PREFETCH/DISPATCH) are preferred
-   over invented ones.
-5. **Docs are written last**, from what the annotated source actually shows,
-   and cross-checked against the patents.
-
-### Toolchain decisions
-- GNU `as` syntax, preprocessed with the C preprocessor (`.S` files).
-  Register and field names are `#define`s because LLVM's PowerPC assembler
-  rejects symbols as the base register of a memory operand.
-- Assembler: LLVM (`llvm-mc`, triple `powerpc-unknown-elf`). The source is
-  kept neutral enough that GNU binutils should also work (untested).
-- Comments use `//` (removed by the preprocessor).
-- Three things LLVM would encode differently from the 1995 binary are wrapped
-  in macros: old-style "y-bit" branch hints, `mcrxr`, and `lswx`/`stswx`.
-- A single translation unit: no linker, no relocations.
-- The XCOFF wrapper (header + symbol table) is rebuilt by a small tool from
-  the assembled object's symbols.
-
-### Milestones (each ends with a commit)
-- M0  Repository restructure, plan, decoders.
-- M1  Generator + build + verify: whole image round-trips from `src/`.
-- M2  Interpreter core named and commented.
-- M3  Interpreter handlers named; exceptions and system code commented.
-- M4  Dynamic recompiler named and commented.
-- M5  Documentation set.
-- M6  Wrap-up, README, final checklist state.
+Suggested order: private opcodes and privileged instructions
+(`0C3D0`-`0D0EC`), then the arithmetic families, then the recompiler's
+decoders and emitters.
 
 ## Open decisions (for Renee)
-- **Freezing the source.** While analysis is ongoing `src/` is generated and
-  must not be edited by hand. Once the annotations are considered complete
-  the generator could be retired and `src/` edited directly. Not decided.
-- **Load address.** The image is position independent. Offsets from `EmTop`
-  are used throughout. The original `Emulator.asm` assumed the dispatch table
-  at `0x68000000` (as in patent US5574873); PCI Power Macs are believed to
-  place it at `0x68080000`. Needs confirming against a ROM before the docs
-  state it as fact.
-- **Licence / legal note** for the repository (the code is Apple's).
+
+- **Freezing the source.** While analysis is ongoing `src/` is generated
+  and must not be edited by hand. Once the annotations are considered
+  complete the generator could be retired and `src/` edited directly.
+- **Load address.** The image is position independent and the docs use
+  offsets from `EmTop` only. The original `Emulator.asm` assumed the
+  dispatch table at `0x68000000` (as in US5574873). My recollection is
+  that PCI Power Macs map the code at `0x68060000` and the table at
+  `0x68080000`, but that is not something this image can confirm, so it
+  is deliberately not stated in `docs/`. Worth checking against a ROM's
+  configuration data.
+- **Licence / legal note.** The code is Apple's. The README describes
+  provenance but the repository has no licence file (the old one covered
+  ppcd and was removed with it).
+- **Names of kernel-side things.** The docs describe the kernel interface
+  only from the emulator's side and avoid names from other reverse
+  engineering efforts (NanoKernel, ContextBlock, KernelData, ...). If you
+  want those names used, they can be added once checked against a source.
 
 ## Notes and findings (working log)
-- `Emulator.x` timestamp is Mac-epoch 2018-02-08, i.e. the XCOFF wrapper was
-  produced by a ROM-rebuild project, not by Apple's original build.
-- Image regions: `0x00000` interpreter (Gary Davidian), `0x0EA44` nop pad,
-  `0x10000` DR (Eric Traut, Bob Abeles, "Murph"), `0x182FC` zero pad,
-  `0x20000` dispatch table (512 KB).
-- The patent's 128 KB "DR offset table" is not present in the image.
-- The dispatch table branches into itself about 2000 times (e.g. `-(An)`
-  entries adjust the register then reuse the `(An)` entry) and uses unused
-  F-line opcode slots as spare code space.
-- Unsupported by `llvm-mc`: `mcrxr`, `lswx`, `stswx`; `+`/`-` hints are
-  encoded with "at" bits instead of the old y bit.
+
+- `Emulator.x` timestamp is Mac-epoch 2018-02-08, i.e. the XCOFF wrapper
+  was produced by a ROM-rebuild project, not by Apple's original build.
+- The patent's 128 KB "DR offset table" is not present; the recompiler in
+  the image is a different, later design (see `docs/12-patents.md`).
+- `llvm-mc` does not accept `mcrxr`, `lswx`, `stswx`; encodes `+`/`-`
+  hints with "at" bits; rejects symbols as memory-operand base registers
+  (hence the C preprocessor for names); emits a relocation for a branch
+  to a `.globl` symbol (hence the exported symbols are left local).
+- `0C960` is a lone zero word in the middle of code; cause unknown.
+- `0x21F8` appears as the last word of the recompiler (`182F8`) and is
+  stored at `+0x718` in the state block by both `init_state` and
+  `dr_setup`; meaning unknown (possibly a version or size).
+- `EmEntry` is followed by `twi 31, r0, -0x2153` and an infinite loop,
+  never reached. `-0x2153` is `0xDEAD` as a signed 16-bit value: a
+  "should not get here" marker.
+- The `sc` at `0C480` (r0 = 13, r3 = 1) is the only system call
+  instruction; all other kernel services use `twi 31, r31, n`.
+- cr2.gt (CR bit 9) is consulted by `check_interrupt` and set from the
+  native-context status path (`0E28C`); its exact meaning is not yet
+  pinned down.
+- Ideas not yet pursued: a static checker that uses the dispatch table as
+  a specification (see `docs/11-testing-gaps.md`, stage 1).

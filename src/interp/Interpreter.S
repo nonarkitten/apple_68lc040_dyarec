@@ -32164,7 +32164,7 @@ exit_emulator:
 EmEntry:
         addi    r1, r3, 0x1000                          // r1 = top of the 4 KB page that starts at the state block
         bl      em_entry_save
-        twi     31, r0, -0x2153                         // not reached
+        twi     31, r0, -0x2153                         // not reached (the operand is 0xDEAD)
 L_0E8BC:
         b       L_0E8BC
 

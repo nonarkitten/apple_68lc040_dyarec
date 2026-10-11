@@ -103,7 +103,7 @@
     kernel trap 0.  Nothing in this image branches to emulator_reset: the
     kernel is expected to resume the context there.
 0E8B0 r1 = top of the 4 KB page that starts at the state block
-0E8B8 not reached
+0E8B8 not reached (the operand is 0xDEAD)
 
 @0E8C0 EmKernelTrapTable
     Kernel service calls.  Each is an unconditional trap instruction whose

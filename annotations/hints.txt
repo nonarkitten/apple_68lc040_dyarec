@@ -30,7 +30,7 @@ reg   17748 182FC r23 r23
 
 # Lookup tables used by the translator's first pass and by the emitters.
 data  11038 11338 byte
-data  11E7C 1237C byte
+data  11E7C 1237C short
 data  182A8 182F8 ascii
 data  182F8 182FC long
 

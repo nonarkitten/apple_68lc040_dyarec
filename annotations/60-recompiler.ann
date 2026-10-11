@@ -102,6 +102,11 @@
     Pass-3 code generators.  Emitter values stored in the records are
     offsets from this label.
 
+@11E7C dr_operand_emitters
+    Five tables of 16-bit offsets from dr_emitters, 256 bytes each, indexed
+    by a 6-bit effective address field: the code generator for each
+    addressing mode, for each kind of operand access.
+
 @1767C dr_templates
     Instruction templates.  These words are never executed here: emitters
     load them as data, fill in a displacement or immediate, and store them
@@ -153,10 +158,11 @@
     translate it first.  Returning through LR instead simply interprets the
     instruction.
 
-    The lookup table maps 68K addresses to translated code.  It is indexed
-    by the low eleven bits of pc; each index selects sixteen bytes (two
-    {68K address, code address} pairs) and a search continues into the
-    following sixteen, so an address can be found in any of four slots.
+    The lookup table maps 68K addresses to translated code.  Bits 11:1 of
+    pc select one of 2048 sets; a set is 32 bytes, four {68K address, code
+    address} pairs, searched in order.  The table is 64 KB and 64 KB
+    aligned, so the set address is formed by inserting pc bits into the
+    table's base address.
 17964 opcode of the instruction about to run
 17970 0xAAFE: never translated
 17974 0xFE02: never translated
@@ -164,16 +170,16 @@
 17988 address ranges are waiting to be invalidated
 @17994 dr_lookup
 17994 lookup table base (64 KB aligned)
-17998 insert (pc & 0x7FF) << 4
+17998 select the set: pc[11:1]
 179A8 odd address: let the interpreter raise the error
 179B8 hit in the first slot
 179E0 miss: remember where the search ended
 
 @179EC dr_flush_step
-    Discard every translation.  The lookup table is cleared 2 KB at a time
-    and the page bitmap 2 KB at a time, checking for special events between
-    chunks; progress is kept in the state block so the work resumes on the
-    next dispatch.
+    Discard every translation.  The lookup table and then the page bitmap
+    are cleared 2 KB at a time with dcbz, checking for special events
+    between chunks; progress is kept in the state block so the work resumes
+    on the next dispatch.
 @17A84 dr_flush_done
 
 @17AC0 dr_invalidate_step

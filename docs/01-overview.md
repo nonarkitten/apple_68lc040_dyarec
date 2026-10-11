@@ -4,8 +4,10 @@
 
 `Emulator.x` is an XCOFF object file holding one 640 KB `.text` section and
 six symbols. The section is a position-independent PowerPC program that
-emulates a Motorola 68LC040 (a 68040 without floating point; the memory
-management instructions are also absent).
+emulates a Motorola 68LC040: the 68040 instruction set without floating
+point. Floating-point opcodes take the line-F exception. The 68040's
+memory management instructions are accepted in supervisor state and do
+nothing, and its MMU control registers are not implemented.
 
 The program has three parts:
 
