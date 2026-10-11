@@ -52,3 +52,21 @@ opnd  180E8 dr_resume_after_fault - dr_cb
 opnd  181A0 dr_resume_in_translator - dr_cb
 opnd  17BF4 dr_stale_block - dr_cb
 opnd  17D18 dr_stale_block - dr_cb
+
+opnd  0DC0C handler_defaults - cb - 2
+opnd  0E7BC exception_stub_defaults - cb - 2
+
+# In EmEntry and the context save/restore code the registers still have
+# their native meanings.
+reg   0E8B0 0E8C0 r1 r1
+reg   0E8B0 0E8C0 r3 r3
+reg   0E8B0 0E8C0 r0 r0
+reg   0E904 0E964 r0 r0
+reg   0E904 0E964 r1 r1
+reg   0E904 0E91C r3 r3
+reg   0E904 0E91C r4 r4
+reg   0E904 0E91C r11 r11
+reg   0E904 0E91C r12 r12
+reg   0E898 0E8B0 r1 r1
+reg   0E898 0E8B0 r11 r11
+reg   0E898 0E8B0 r12 r12

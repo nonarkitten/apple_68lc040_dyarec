@@ -7607,13 +7607,13 @@ op_4AD7:
         ori     data, code_ptr, movea_mem_a7 - cb       // 4E6F  MOVE.L    USP,A7
         b       move_l_usp_an
         lwz     rtn_addr, 0x828(EmulatorStatePtr)       // 4E70  RESET
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         eieio                                           // 4E71  NOP
         b       fetch
         clrlwi  data, prefetch_data, 16                 // 4E72  STOP      #<data>
         b       stop_imm
         lwz     rtn_addr, 0x82C(EmulatorStatePtr)       // 4E73  RTE
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     pc, 0(a7)                               // 4E74  RTD       #<disp>
         b       rtd_imm
         lwz     pc, 0(a7)                               // 4E75  RTS
@@ -7627,9 +7627,9 @@ op_4AD7:
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 4E79  ILLEGAL
         b       take_illegal_instruction
         lwz     rtn_addr, 0x878(EmulatorStatePtr)       // 4E7A  MOVEC.L   Rc,Rn
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x87C(EmulatorStatePtr)       // 4E7B  MOVEC.L   Rn,Rc
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 4E7C  ILLEGAL
         b       take_illegal_instruction
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 4E7D  ILLEGAL

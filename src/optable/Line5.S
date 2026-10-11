@@ -1650,7 +1650,7 @@ op_52D7:
         b       trapcc
         lhau    prefetch_data, 4(pc)                    // 52FB  TRAPHI    #<data>.L
         b       trapcc
-        ori     base_disp, code_ptr, D_085C0 - cb       // 52FC  TRAPHI
+        ori     base_disp, code_ptr, condition_truth_table - cb  // 52FC  TRAPHI
         b       trapcc_2
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 52FD  SHI.B     <ea 7.5>   (illegal)
         b       take_illegal_instruction
@@ -2202,7 +2202,7 @@ op_53D7:
         b       trapcc
         lhau    prefetch_data, 4(pc)                    // 53FB  TRAPLS    #<data>.L
         b       trapcc
-        ori     base_disp, code_ptr, D_085C0 - cb       // 53FC  TRAPLS
+        ori     base_disp, code_ptr, condition_truth_table - cb  // 53FC  TRAPLS
         b       trapcc_2
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 53FD  SLS.B     <ea 7.5>   (illegal)
         b       take_illegal_instruction
@@ -2754,7 +2754,7 @@ op_54D7:
         b       trapcc
         lhau    prefetch_data, 4(pc)                    // 54FB  TRAPCC    #<data>.L
         b       trapcc
-        ori     base_disp, code_ptr, D_085C0 - cb       // 54FC  TRAPCC
+        ori     base_disp, code_ptr, condition_truth_table - cb  // 54FC  TRAPCC
         b       trapcc_2
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 54FD  SCC.B     <ea 7.5>   (illegal)
         b       take_illegal_instruction
@@ -3306,7 +3306,7 @@ op_55D7:
         b       trapcc
         lhau    prefetch_data, 4(pc)                    // 55FB  TRAPCS    #<data>.L
         b       trapcc
-        ori     base_disp, code_ptr, D_085C0 - cb       // 55FC  TRAPCS
+        ori     base_disp, code_ptr, condition_truth_table - cb  // 55FC  TRAPCS
         b       trapcc_2
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 55FD  SCS.B     <ea 7.5>   (illegal)
         b       take_illegal_instruction
@@ -4962,7 +4962,7 @@ op_58D7:
         b       trapcc
         lhau    prefetch_data, 4(pc)                    // 58FB  TRAPVC    #<data>.L
         b       trapcc
-        ori     base_disp, code_ptr, D_085C0 - cb       // 58FC  TRAPVC
+        ori     base_disp, code_ptr, condition_truth_table - cb  // 58FC  TRAPVC
         b       trapcc_2
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 58FD  SVC.B     <ea 7.5>   (illegal)
         b       take_illegal_instruction
@@ -7170,7 +7170,7 @@ op_5CD7:
         b       trapcc
         lhau    prefetch_data, 4(pc)                    // 5CFB  TRAPGE    #<data>.L
         b       trapcc
-        ori     base_disp, code_ptr, D_085C0 - cb       // 5CFC  TRAPGE
+        ori     base_disp, code_ptr, condition_truth_table - cb  // 5CFC  TRAPGE
         b       trapcc_2
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 5CFD  SGE.B     <ea 7.5>   (illegal)
         b       take_illegal_instruction
@@ -7722,7 +7722,7 @@ op_5DD7:
         b       trapcc
         lhau    prefetch_data, 4(pc)                    // 5DFB  TRAPLT    #<data>.L
         b       trapcc
-        ori     base_disp, code_ptr, D_085C0 - cb       // 5DFC  TRAPLT
+        ori     base_disp, code_ptr, condition_truth_table - cb  // 5DFC  TRAPLT
         b       trapcc_2
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 5DFD  SLT.B     <ea 7.5>   (illegal)
         b       take_illegal_instruction
@@ -8274,7 +8274,7 @@ op_5ED7:
         b       trapcc
         lhau    prefetch_data, 4(pc)                    // 5EFB  TRAPGT    #<data>.L
         b       trapcc
-        ori     base_disp, code_ptr, D_085C0 - cb       // 5EFC  TRAPGT
+        ori     base_disp, code_ptr, condition_truth_table - cb  // 5EFC  TRAPGT
         b       trapcc_2
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 5EFD  SGT.B     <ea 7.5>   (illegal)
         b       take_illegal_instruction
@@ -8826,7 +8826,7 @@ op_5FD7:
         b       trapcc
         lhau    prefetch_data, 4(pc)                    // 5FFB  TRAPLE    #<data>.L
         b       trapcc
-        ori     base_disp, code_ptr, D_085C0 - cb       // 5FFC  TRAPLE
+        ori     base_disp, code_ptr, condition_truth_table - cb  // 5FFC  TRAPLE
         b       trapcc_2
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 5FFD  SLE.B     <ea 7.5>   (illegal)
         b       take_illegal_instruction

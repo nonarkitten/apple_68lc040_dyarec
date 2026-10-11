@@ -2101,53 +2101,53 @@
         lwz     rtn_addr, fline_handler(EmulatorStatePtr)  // F407  ILLEGAL
         b       take_fline
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F408  CINVL     NC,(A0)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F409  CINVL     NC,(A1)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F40A  CINVL     NC,(A2)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F40B  CINVL     NC,(A3)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F40C  CINVL     NC,(A4)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F40D  CINVL     NC,(A5)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F40E  CINVL     NC,(A6)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F40F  CINVL     NC,(A7)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F410  CINVP     NC,(A0)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F411  CINVP     NC,(A1)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F412  CINVP     NC,(A2)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F413  CINVP     NC,(A3)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F414  CINVP     NC,(A4)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F415  CINVP     NC,(A5)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F416  CINVP     NC,(A6)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F417  CINVP     NC,(A7)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F418  CINVA     NC
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F419  CINVA     NC
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F41A  CINVA     NC
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F41B  CINVA     NC
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F41C  CINVA     NC
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F41D  CINVA     NC
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F41E  CINVA     NC
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F41F  CINVA     NC
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, fline_handler(EmulatorStatePtr)  // F420  ILLEGAL
         b       take_fline
         lwz     rtn_addr, fline_handler(EmulatorStatePtr)  // F421  ILLEGAL
@@ -2165,53 +2165,53 @@
         lwz     rtn_addr, fline_handler(EmulatorStatePtr)  // F427  ILLEGAL
         b       take_fline
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F428  CPUSHL    NC,(A0)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F429  CPUSHL    NC,(A1)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F42A  CPUSHL    NC,(A2)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F42B  CPUSHL    NC,(A3)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F42C  CPUSHL    NC,(A4)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F42D  CPUSHL    NC,(A5)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F42E  CPUSHL    NC,(A6)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F42F  CPUSHL    NC,(A7)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F430  CPUSHP    NC,(A0)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F431  CPUSHP    NC,(A1)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F432  CPUSHP    NC,(A2)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F433  CPUSHP    NC,(A3)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F434  CPUSHP    NC,(A4)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F435  CPUSHP    NC,(A5)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F436  CPUSHP    NC,(A6)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F437  CPUSHP    NC,(A7)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F438  CPUSHA    NC
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F439  CPUSHA    NC
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F43A  CPUSHA    NC
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F43B  CPUSHA    NC
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F43C  CPUSHA    NC
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F43D  CPUSHA    NC
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F43E  CPUSHA    NC
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F43F  CPUSHA    NC
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
 
 // ---- $F440-$F47F --------------------------------------------------------
         lwz     rtn_addr, fline_handler(EmulatorStatePtr)  // F440  ILLEGAL
@@ -2231,53 +2231,53 @@
         lwz     rtn_addr, fline_handler(EmulatorStatePtr)  // F447  ILLEGAL
         b       take_fline
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F448  CINVL     DC,(A0)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F449  CINVL     DC,(A1)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F44A  CINVL     DC,(A2)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F44B  CINVL     DC,(A3)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F44C  CINVL     DC,(A4)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F44D  CINVL     DC,(A5)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F44E  CINVL     DC,(A6)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F44F  CINVL     DC,(A7)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F450  CINVP     DC,(A0)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F451  CINVP     DC,(A1)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F452  CINVP     DC,(A2)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F453  CINVP     DC,(A3)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F454  CINVP     DC,(A4)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F455  CINVP     DC,(A5)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F456  CINVP     DC,(A6)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F457  CINVP     DC,(A7)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F458  CINVA     DC
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F459  CINVA     DC
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F45A  CINVA     DC
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F45B  CINVA     DC
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F45C  CINVA     DC
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F45D  CINVA     DC
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F45E  CINVA     DC
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F45F  CINVA     DC
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, fline_handler(EmulatorStatePtr)  // F460  ILLEGAL
         b       take_fline
         lwz     rtn_addr, fline_handler(EmulatorStatePtr)  // F461  ILLEGAL
@@ -2295,53 +2295,53 @@
         lwz     rtn_addr, fline_handler(EmulatorStatePtr)  // F467  ILLEGAL
         b       take_fline
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F468  CPUSHL    DC,(A0)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F469  CPUSHL    DC,(A1)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F46A  CPUSHL    DC,(A2)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F46B  CPUSHL    DC,(A3)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F46C  CPUSHL    DC,(A4)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F46D  CPUSHL    DC,(A5)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F46E  CPUSHL    DC,(A6)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F46F  CPUSHL    DC,(A7)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F470  CPUSHP    DC,(A0)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F471  CPUSHP    DC,(A1)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F472  CPUSHP    DC,(A2)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F473  CPUSHP    DC,(A3)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F474  CPUSHP    DC,(A4)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F475  CPUSHP    DC,(A5)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F476  CPUSHP    DC,(A6)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F477  CPUSHP    DC,(A7)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F478  CPUSHA    DC
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F479  CPUSHA    DC
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F47A  CPUSHA    DC
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F47B  CPUSHA    DC
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F47C  CPUSHA    DC
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F47D  CPUSHA    DC
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F47E  CPUSHA    DC
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F47F  CPUSHA    DC
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
 
 // ---- $F480-$F4BF --------------------------------------------------------
         lwz     rtn_addr, fline_handler(EmulatorStatePtr)  // F480  ILLEGAL
@@ -2361,53 +2361,53 @@
         lwz     rtn_addr, fline_handler(EmulatorStatePtr)  // F487  ILLEGAL
         b       take_fline
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F488  CINVL     IC,(A0)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F489  CINVL     IC,(A1)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F48A  CINVL     IC,(A2)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F48B  CINVL     IC,(A3)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F48C  CINVL     IC,(A4)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F48D  CINVL     IC,(A5)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F48E  CINVL     IC,(A6)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F48F  CINVL     IC,(A7)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F490  CINVP     IC,(A0)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F491  CINVP     IC,(A1)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F492  CINVP     IC,(A2)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F493  CINVP     IC,(A3)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F494  CINVP     IC,(A4)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F495  CINVP     IC,(A5)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F496  CINVP     IC,(A6)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F497  CINVP     IC,(A7)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F498  CINVA     IC
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F499  CINVA     IC
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F49A  CINVA     IC
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F49B  CINVA     IC
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F49C  CINVA     IC
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F49D  CINVA     IC
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F49E  CINVA     IC
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F49F  CINVA     IC
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, fline_handler(EmulatorStatePtr)  // F4A0  ILLEGAL
         b       take_fline
         lwz     rtn_addr, fline_handler(EmulatorStatePtr)  // F4A1  ILLEGAL
@@ -2425,53 +2425,53 @@
         lwz     rtn_addr, fline_handler(EmulatorStatePtr)  // F4A7  ILLEGAL
         b       take_fline
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4A8  CPUSHL    IC,(A0)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4A9  CPUSHL    IC,(A1)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4AA  CPUSHL    IC,(A2)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4AB  CPUSHL    IC,(A3)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4AC  CPUSHL    IC,(A4)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4AD  CPUSHL    IC,(A5)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4AE  CPUSHL    IC,(A6)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4AF  CPUSHL    IC,(A7)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4B0  CPUSHP    IC,(A0)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4B1  CPUSHP    IC,(A1)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4B2  CPUSHP    IC,(A2)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4B3  CPUSHP    IC,(A3)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4B4  CPUSHP    IC,(A4)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4B5  CPUSHP    IC,(A5)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4B6  CPUSHP    IC,(A6)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4B7  CPUSHP    IC,(A7)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4B8  CPUSHA    IC
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4B9  CPUSHA    IC
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4BA  CPUSHA    IC
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4BB  CPUSHA    IC
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4BC  CPUSHA    IC
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4BD  CPUSHA    IC
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4BE  CPUSHA    IC
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4BF  CPUSHA    IC
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
 
 // ---- $F4C0-$F4FF --------------------------------------------------------
         lwz     rtn_addr, fline_handler(EmulatorStatePtr)  // F4C0  ILLEGAL
@@ -2491,53 +2491,53 @@
         lwz     rtn_addr, fline_handler(EmulatorStatePtr)  // F4C7  ILLEGAL
         b       take_fline
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F4C8  CINVL     BC,(A0)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F4C9  CINVL     BC,(A1)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F4CA  CINVL     BC,(A2)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F4CB  CINVL     BC,(A3)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F4CC  CINVL     BC,(A4)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F4CD  CINVL     BC,(A5)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F4CE  CINVL     BC,(A6)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F4CF  CINVL     BC,(A7)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F4D0  CINVP     BC,(A0)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F4D1  CINVP     BC,(A1)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F4D2  CINVP     BC,(A2)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F4D3  CINVP     BC,(A3)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F4D4  CINVP     BC,(A4)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F4D5  CINVP     BC,(A5)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F4D6  CINVP     BC,(A6)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F4D7  CINVP     BC,(A7)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F4D8  CINVA     BC
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F4D9  CINVA     BC
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F4DA  CINVA     BC
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F4DB  CINVA     BC
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F4DC  CINVA     BC
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F4DD  CINVA     BC
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F4DE  CINVA     BC
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F4DF  CINVA     BC
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, fline_handler(EmulatorStatePtr)  // F4E0  ILLEGAL
         b       take_fline
         lwz     rtn_addr, fline_handler(EmulatorStatePtr)  // F4E1  ILLEGAL
@@ -2555,119 +2555,119 @@
         lwz     rtn_addr, fline_handler(EmulatorStatePtr)  // F4E7  ILLEGAL
         b       take_fline
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4E8  CPUSHL    BC,(A0)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4E9  CPUSHL    BC,(A1)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4EA  CPUSHL    BC,(A2)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4EB  CPUSHL    BC,(A3)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4EC  CPUSHL    BC,(A4)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4ED  CPUSHL    BC,(A5)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4EE  CPUSHL    BC,(A6)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4EF  CPUSHL    BC,(A7)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4F0  CPUSHP    BC,(A0)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4F1  CPUSHP    BC,(A1)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4F2  CPUSHP    BC,(A2)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4F3  CPUSHP    BC,(A3)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4F4  CPUSHP    BC,(A4)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4F5  CPUSHP    BC,(A5)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4F6  CPUSHP    BC,(A6)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4F7  CPUSHP    BC,(A7)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4F8  CPUSHA    BC
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4F9  CPUSHA    BC
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4FA  CPUSHA    BC
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4FB  CPUSHA    BC
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4FC  CPUSHA    BC
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4FD  CPUSHA    BC
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4FE  CPUSHA    BC
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4FF  CPUSHA    BC
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
 
 // ---- $F500-$F53F --------------------------------------------------------
         lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F500  PFLUSHN   (A0)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F501  PFLUSHN   (A1)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F502  PFLUSHN   (A2)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F503  PFLUSHN   (A3)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F504  PFLUSHN   (A4)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F505  PFLUSHN   (A5)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F506  PFLUSHN   (A6)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F507  PFLUSHN   (A7)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F508  PFLUSH    (A0)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F509  PFLUSH    (A1)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F50A  PFLUSH    (A2)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F50B  PFLUSH    (A3)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F50C  PFLUSH    (A4)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F50D  PFLUSH    (A5)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F50E  PFLUSH    (A6)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F50F  PFLUSH    (A7)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F510  PFLUSHAN
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F511  PFLUSHAN
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F512  PFLUSHAN
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F513  PFLUSHAN
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F514  PFLUSHAN
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F515  PFLUSHAN
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F516  PFLUSHAN
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F517  PFLUSHAN
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F518  PFLUSHA
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F519  PFLUSHA
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F51A  PFLUSHA
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F51B  PFLUSHA
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F51C  PFLUSHA
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F51D  PFLUSHA
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F51E  PFLUSHA
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F51F  PFLUSHA
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, fline_handler(EmulatorStatePtr)  // F520  ILLEGAL
         b       take_fline
         lwz     rtn_addr, fline_handler(EmulatorStatePtr)  // F521  ILLEGAL
@@ -2751,21 +2751,21 @@
         lwz     rtn_addr, fline_handler(EmulatorStatePtr)  // F547  ILLEGAL
         b       take_fline
         lwz     rtn_addr, 0x948(EmulatorStatePtr)       // F548  PTESTW    (A0)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x948(EmulatorStatePtr)       // F549  PTESTW    (A1)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x948(EmulatorStatePtr)       // F54A  PTESTW    (A2)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x948(EmulatorStatePtr)       // F54B  PTESTW    (A3)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x948(EmulatorStatePtr)       // F54C  PTESTW    (A4)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x948(EmulatorStatePtr)       // F54D  PTESTW    (A5)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x948(EmulatorStatePtr)       // F54E  PTESTW    (A6)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x948(EmulatorStatePtr)       // F54F  PTESTW    (A7)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, fline_handler(EmulatorStatePtr)  // F550  ILLEGAL
         b       take_fline
         lwz     rtn_addr, fline_handler(EmulatorStatePtr)  // F551  ILLEGAL
@@ -2815,21 +2815,21 @@
         lwz     rtn_addr, fline_handler(EmulatorStatePtr)  // F567  ILLEGAL
         b       take_fline
         lwz     rtn_addr, 0x948(EmulatorStatePtr)       // F568  ILLEGAL
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x948(EmulatorStatePtr)       // F569  ILLEGAL
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x948(EmulatorStatePtr)       // F56A  ILLEGAL
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x948(EmulatorStatePtr)       // F56B  ILLEGAL
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x948(EmulatorStatePtr)       // F56C  ILLEGAL
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x948(EmulatorStatePtr)       // F56D  ILLEGAL
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x948(EmulatorStatePtr)       // F56E  ILLEGAL
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, 0x948(EmulatorStatePtr)       // F56F  ILLEGAL
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
         lwz     rtn_addr, fline_handler(EmulatorStatePtr)  // F570  ILLEGAL
         b       take_fline
         lwz     rtn_addr, fline_handler(EmulatorStatePtr)  // F571  ILLEGAL

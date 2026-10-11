@@ -21565,7 +21565,7 @@ blt_l:
 //     BEQ.S <label>
 //     ... and 8 more forms
 bcc_s_2:
-        ori     base_disp, code_ptr, D_085C0 - cb
+        ori     base_disp, code_ptr, condition_truth_table - cb
         mfxer   immed_data
         rlwinm  data, disp_table, 23, 26, 29            // data = disp_table[14:11] << 2
         mfcr    rtn_addr
@@ -21610,7 +21610,7 @@ bra_s_2:
 //     ... and 4 more forms
 dbcc_w_dn:
         mtlr    rtn_addr
-        ori     base_disp, code_ptr, D_085C0 - cb
+        ori     base_disp, code_ptr, condition_truth_table - cb
         mfxer   immed_data
         rlwinm  data, disp_table, 23, 26, 29            // data = disp_table[14:11] << 2
         mfcr    rtn_addr
@@ -21635,7 +21635,7 @@ dbcc_w_dn:
 //     ... and 8 more forms
 scc_b_dn:
         mtlr    rtn_addr
-        ori     base_disp, code_ptr, D_085C0 - cb
+        ori     base_disp, code_ptr, condition_truth_table - cb
         mfxer   immed_data
         rlwinm  data, disp_table, 23, 26, 29            // data = disp_table[14:11] << 2
         mfcr    rtn_addr
@@ -21678,7 +21678,7 @@ scc_b_mem:
 //     SHI.B (d8,An,Xn)
 //     ... and 42 more forms
 scc_b_mem_2:
-        ori     base_disp, code_ptr, D_085C0 - cb
+        ori     base_disp, code_ptr, condition_truth_table - cb
         mfxer   immed_data
         rlwinm  data, disp_table, 23, 26, 29            // data = disp_table[14:11] << 2
         mfcr    rtn_addr
@@ -21693,7 +21693,14 @@ scc_b_mem_2:
         stb     data, 0(addr)
         bflr_likely cr_special_event_pending            // DISPATCH unless a special event is pending
         b       process_special_event
-D_085C0:
+
+// One 32-bit truth table per 68K condition code (T, F, HI, LS, CC, CS,
+// NE, EQ, VC, VS, PL, MI, GE, LT, GT, LE).  The current N, Z, V and C
+// flags are gathered into a 5-bit rotate count; rotating the table word
+// by it leaves the condition's value in the low bit.  Used where a
+// condition has to be evaluated without a branch (Scc, TRAPcc, and the
+// trace logic's look at DBcc and Bcc).
+condition_truth_table:
         .long   0xFFFFFFFF
         .long   0x00000000
         .long   0x41414141
@@ -28422,7 +28429,7 @@ move_w_sr_dn:
 // Reached from 8 dispatch table entries:
 //     MOVE.W SR,(An)
 move_w_sr_mem:
-        bfl     cr_supervisor, L_0CA68
+        bfl     cr_supervisor, privilege_check_failed
 L_0C38C:
         lwz     rtn_addr, 0x820(EmulatorStatePtr)
         b       L_0C3DC
@@ -28431,7 +28438,7 @@ L_0C38C:
 //     MOVE.W SR,(d16,An)
 //     MOVE.W SR,(xxx).W
 move_w_sr_mem_2:
-        bfl     cr_supervisor, L_0CA68
+        bfl     cr_supervisor, privilege_check_failed
         lwz     rtn_addr, 0x820(EmulatorStatePtr)
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         b       L_0C3DC
@@ -28442,7 +28449,7 @@ move_w_sr_mem_2:
 //     MOVE.W SR,(xxx).L
 move_w_sr_mem_3:
         mtctr   addr
-        bfl     cr_supervisor, L_0CA68
+        bfl     cr_supervisor, privilege_check_failed
         lwz     rtn_addr, 0x820(EmulatorStatePtr)
         rlwinm  data, sr_and_flags, 8, 16, 23           // data = sr_and_flags[7:0] << 8
         rlwimi  data, ccr_x, 7, 27, 27                  // data[4] = ccr_x[29]
@@ -28453,14 +28460,14 @@ move_w_sr_mem_3:
 move_w_sr_mem_4:
         mtctr   addr
         li      data, -2
-        bfl     cr_supervisor, L_0CA68
+        bfl     cr_supervisor, privilege_check_failed
         ori     rtn_addr, code_ptr, L_0C38C - cb
         bctr
 
 // Reached from 1 dispatch table entry:
 //     MOVE.W SR,-(An)
 move_w_sr_mem_5:
-        bfl     cr_supervisor, L_0CA68
+        bfl     cr_supervisor, privilege_check_failed
         lwz     rtn_addr, 0x820(EmulatorStatePtr)
         addi    a7, a7, -2
 L_0C3DC:
@@ -28468,7 +28475,11 @@ L_0C3DC:
         rlwinm  data, sr_and_flags, 8, 16, 23           // data = sr_and_flags[7:0] << 8
         rlwimi  data, ccr_x, 7, 27, 27                  // data[4] = ccr_x[29]
         blr
-L_0C3EC:
+
+// Load the 68K condition codes from the low five bits of data: N and Z
+// into CR0, V and C into XER, X into ccr_x.  Continues through a
+// replaceable handler.
+set_ccr:
         lwz     base_disp, 0x818(EmulatorStatePtr)
         rlwinm  immed_data, data, 27, 2, 2              // immed_data = data[2] << 29
         mtctr   base_disp
@@ -28516,7 +28527,7 @@ L_0C458:
 L_0C490:
         beqlr   cr7
 L_0C494:
-        ori     base_disp, code_ptr, D_0C510 - cb
+        ori     base_disp, code_ptr, stack_pointer_slots - cb
         rlwimi  base_disp, sr_and_flags, 28, 30, 31     // base_disp[1:0] = sr_and_flags[5:4]
         rlwimi  sr_and_flags, data, 24, 24, 27          // sr_and_flags[7:4] = data[15:12]
         lbz     immed_data, 0(base_disp)
@@ -28549,13 +28560,16 @@ L_0C4EC:
         cror    cr_special_event_pending, cr_special_event_pending, 4*cr6+gt  // cr_special_event_pending = cr_special_event_pending | cr6.gt
         beqlr   cr7
         b       L_0C494
-D_0C510:
+
+// Offsets in the state block of the saved stack pointer for each value of
+// the SR S and M bits: USP, USP, ISP, MSP.
+stack_pointer_slots:
         .byte   0x48, 0x48, 0x4C, 0x50
 
 // Reached from 1 dispatch table entry:
 //     MOVE.W (An)+,SR
 move_w_mem_sr:
-        bfl     cr_supervisor, L_0CA68
+        bfl     cr_supervisor, privilege_check_failed
         addi    a7, a7, 2
 L_0C51C:
         lhz     data, 0(addr)
@@ -28579,13 +28593,13 @@ L_0C520:
 // Reached from 8 dispatch table entries:
 //     MOVE.W Dn,SR
 move_w_dn_sr:
-        bfl     cr_supervisor, L_0CA68
+        bfl     cr_supervisor, privilege_check_failed
         b       L_0C520
 
 // Reached from 8 dispatch table entries:
 //     MOVE.W (An),SR
 move_w_mem_sr_2:
-        bfl     cr_supervisor, L_0CA68
+        bfl     cr_supervisor, privilege_check_failed
         lhz     data, 0(addr)
         b       L_0C520
 
@@ -28595,7 +28609,7 @@ move_w_mem_sr_2:
 //     MOVE.W (d16,PC),SR
 //     MOVE.W #<data>,SR
 move_w_ea_sr:
-        bfl     cr_supervisor, L_0CA68
+        bfl     cr_supervisor, privilege_check_failed
         lhz     data, 0(addr)
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         b       L_0C520
@@ -28612,7 +28626,7 @@ move_w_mem_sr_3:
 //     MOVE.W (d8,PC,Xn),SR
 move_w_mem_sr_4:
         mtctr   addr
-        bfl     cr_supervisor, L_0CA68
+        bfl     cr_supervisor, privilege_check_failed
         ori     rtn_addr, code_ptr, L_0C51C - cb
         bctr
 
@@ -28701,7 +28715,7 @@ ori_b_imm_ccr:
         b       process_special_event
 L_0C684:
         addi    a7, a7, 8
-        bl      L_0C3EC
+        bl      set_ccr
 L_0C68C:
         lhz     data, 6(a7)
         mr      rtn_addr, EmulatorStatePtr
@@ -28715,7 +28729,7 @@ L_0C6AC:
         addi    a7, a7, 4
 L_0C6B0:
         addi    a7, a7, 8
-        bl      L_0C3EC
+        bl      set_ccr
         lha     prefetch_data, 0(addr)
         mr      pc, addr
         rlwimi  disp_table, pc, 20, 11, 11              // disp_table[20] = pc[0]
@@ -28732,7 +28746,7 @@ L_0C6D8:
 //     MOVE.L An,USP
 move_l_an_usp:
         lwz     rtn_addr, 0x874(EmulatorStatePtr)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
 L_0C6E8:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // DECODE1: disp_table[18:3] = opcode in prefetch_data
         mtlr    disp_table                              // DECODE2: LR = address of the next dispatch entry
@@ -28745,14 +28759,14 @@ L_0C6E8:
 //     MOVE.L USP,An
 move_l_usp_an:
         lwz     rtn_addr, 0x870(EmulatorStatePtr)
-        b       cinvl_cinvp_etc_any_any
+        b       require_supervisor
 L_0C708:
         mtctr   data
         lwz     data, saved_usp(EmulatorStatePtr)
         bctr
 L_0C714:
         rlwinm  data, prefetch_data, 0, 21, 28          // data = prefetch_data[10:3] << 3
-        ori     rtn_addr, code_ptr, D_0C7B0 - cb
+        ori     rtn_addr, code_ptr, movec_tables - cb
         ori     base_disp, code_ptr, L_05700 - cb
         rlwimi  rtn_addr, prefetch_data, 0, 29, 31      // rtn_addr[2:0] = prefetch_data[2:0]
         rlwimi  base_disp, prefetch_data, 24, 24, 27    // base_disp[7:4] = prefetch_data[15:12]
@@ -28770,7 +28784,7 @@ L_0C714:
         b       L_0C798
 L_0C758:
         rlwinm  data, prefetch_data, 0, 21, 28          // data = prefetch_data[10:3] << 3
-        ori     rtn_addr, code_ptr, D_0C7B0 - cb
+        ori     rtn_addr, code_ptr, movec_tables - cb
         ori     base_disp, code_ptr, L_05708 - cb
         rlwimi  rtn_addr, prefetch_data, 0, 29, 31      // rtn_addr[2:0] = prefetch_data[2:0]
         rlwimi  base_disp, prefetch_data, 24, 24, 27    // base_disp[7:4] = prefetch_data[15:12]
@@ -28791,7 +28805,11 @@ L_0C798:
         b       take_illegal_instruction
         .long   0x4800000C
         ALIGN(16)
-D_0C7B0:
+
+// Byte tables for MOVEC: for each control register number, the offset of
+// its copy in the state block (0 = not implemented), followed by offsets
+// of the code that reads or writes it.
+movec_tables:
         .byte   0x58, 0x5C, 0x60, 0x00, 0x00, 0x00, 0x00, 0x00
         .byte   0x48, 0x54, 0x64, 0x50, 0x4C, 0x00, 0x00, 0x00
         .byte   0x60, 0x5F, 0x4E, 0xE5, 0xE4, 0xE3, 0xE2, 0xE1
@@ -28837,7 +28855,7 @@ moves_b_rn_mem:
 //     MOVES.B Rn,(d8,An,Xn)
 //     MOVES.B Rn,(xxx).L
 moves_b_rn_mem_2:
-        bfl     cr_supervisor, L_0CA78
+        bfl     cr_supervisor, take_privilege_violation
         mtctr   addr
         mr      immed_data, prefetch_data
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
@@ -28848,20 +28866,20 @@ moves_b_rn_mem_2:
 //     MOVES.B Rn,(d16,An)
 //     MOVES.B Rn,(xxx).W
 moves_b_rn_mem_3:
-        bfl     cr_supervisor, L_0CA78
+        bfl     cr_supervisor, take_privilege_violation
         ori     rtn_addr, code_ptr, L_0C888 - cb
         b       L_0C96C
 
 // Reached from 1 dispatch table entry:
 //     MOVES.B Rn,-(An)
 moves_b_rn_mem_4:
-        bfl     cr_supervisor, L_0CA78
+        bfl     cr_supervisor, take_privilege_violation
         addi    a7, a7, -2
 
 // Reached from 8 dispatch table entries:
 //     MOVES.B Rn,(An)
 moves_b_rn_mem_5:
-        bfl     cr_supervisor, L_0CA78
+        bfl     cr_supervisor, take_privilege_violation
         mr      immed_data, prefetch_data
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
 L_0C888:
@@ -28887,7 +28905,7 @@ moves_w_rn_mem:
 //     MOVES.W Rn,(d8,An,Xn)
 //     MOVES.W Rn,(xxx).L
 moves_w_rn_mem_2:
-        bfl     cr_supervisor, L_0CA78
+        bfl     cr_supervisor, take_privilege_violation
         mtctr   addr
         mr      immed_data, prefetch_data
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
@@ -28898,14 +28916,14 @@ moves_w_rn_mem_2:
 //     MOVES.W Rn,(d16,An)
 //     MOVES.W Rn,(xxx).W
 moves_w_rn_mem_3:
-        bfl     cr_supervisor, L_0CA78
+        bfl     cr_supervisor, take_privilege_violation
         ori     rtn_addr, code_ptr, L_0C8E8 - cb
         b       L_0C96C
 
 // Reached from 8 dispatch table entries:
 //     MOVES.W Rn,(An)
 moves_w_rn_mem_4:
-        bfl     cr_supervisor, L_0CA78
+        bfl     cr_supervisor, take_privilege_violation
         mr      immed_data, prefetch_data
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
 L_0C8E8:
@@ -28930,7 +28948,7 @@ moves_l_rn_mem:
 //     MOVES.L Rn,(d8,An,Xn)
 //     MOVES.L Rn,(xxx).L
 moves_l_rn_mem_2:
-        bfl     cr_supervisor, L_0CA78
+        bfl     cr_supervisor, take_privilege_violation
         mtctr   addr
         mr      immed_data, prefetch_data
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
@@ -28941,14 +28959,14 @@ moves_l_rn_mem_2:
 //     MOVES.L Rn,(d16,An)
 //     MOVES.L Rn,(xxx).W
 moves_l_rn_mem_3:
-        bfl     cr_supervisor, L_0CA78
+        bfl     cr_supervisor, take_privilege_violation
         ori     rtn_addr, code_ptr, L_0C944 - cb
         b       L_0C96C
 
 // Reached from 8 dispatch table entries:
 //     MOVES.L Rn,(An)
 moves_l_rn_mem_4:
-        bfl     cr_supervisor, L_0CA78
+        bfl     cr_supervisor, take_privilege_violation
         mr      immed_data, prefetch_data
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
 L_0C944:
@@ -28999,7 +29017,7 @@ L_0C9D4:
 L_0C9D8:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // DECODE1: disp_table[18:3] = opcode in prefetch_data
         eieio
-        bl      L_0DB94
+        bl      init_state
         bl      L_0E8C8
         lwz     data, 0xA18(EmulatorStatePtr)
         mtctr   data
@@ -29012,9 +29030,9 @@ L_0C9D8:
 // Reached from 1 dispatch table entry:
 //     STOP #<data>
 stop_imm:
-        bfl     cr_supervisor, L_0CA78
+        bfl     cr_supervisor, take_privilege_violation
         addi    pc, pc, 4
-        bl      L_0C3EC
+        bl      set_ccr
         mtcrf   0x0F, sr_and_flags                      // cr4..cr7 = sr_and_flags[15:0]
         clrlwi  data, sr_and_flags, 29                  // data = sr_and_flags & 0x00000007
         cmpwi   cr7, data, 7
@@ -29035,25 +29053,35 @@ L_0CA44:
         bctr
 L_0CA4C:
         ori     prefetch_data, prefetch_data, 0x3000
-        b       L_0CA68
+        b       privilege_check_failed
 L_0CA54:
         rlwinm  prefetch_data, prefetch_data, 0, 20, 17  // prefetch_data = prefetch_data & 0xFFFFCFFF
-        b       L_0CA68
+        b       privilege_check_failed
 L_0CA5C:
         rlwinm  immed_data, disp_table, 29, 16, 31      // immed_data = disp_table[18:3]
         cmplwi  cr7, immed_data, 0x40C7
-        beq     cr7, L_0CA78
-L_0CA68:
+        beq     cr7, take_privilege_violation
+
+// A privileged instruction was met in user state.  If the privilege
+// violation vector still holds the handler address recorded in the state
+// block, return and let the instruction proceed (the standard handler
+// would only have emulated it); otherwise take the exception.
+privilege_check_failed:
         lwz     immed_data, 0x72C(EmulatorStatePtr)
         lwz     rtn_addr, 32(vbr)
         cmplw   cr7, immed_data, rtn_addr
         beqlr   cr7
-L_0CA78:
+
+take_privilege_violation:
         lwz     rtn_addr, 0x80C(EmulatorStatePtr)
-        li      immed_data, 32
+        li      immed_data, 32                          // vector offset 0x20: privilege violation
         mtctr   rtn_addr
         bctrl
 
+// Gate for privileged instructions: the dispatch table entry has loaded
+// the instruction's handler from the state block into rtn_addr.  Continue
+// there if in supervisor state.
+//
 // Reached from 244 dispatch table entries:
 //     CINVL NC,(An)
 //     CINVP NC,(An)
@@ -29062,10 +29090,10 @@ L_0CA78:
 //     CPUSHP NC,(An)
 //     CPUSHA NC
 //     ... and 28 more forms
-cinvl_cinvp_etc_any_any:
+require_supervisor:
         mtlr    rtn_addr
         btlr    cr_supervisor
-        b       L_0CA78
+        b       take_privilege_violation
 
 // Reached from 11 dispatch table entries:
 //     CHK.W (d16,An),Dn
@@ -29582,7 +29610,7 @@ L_0CCCC:
 //     TRAPCC #<data>.L
 //     ... and 14 more forms
 trapcc:
-        ori     base_disp, code_ptr, D_085C0 - cb
+        ori     base_disp, code_ptr, condition_truth_table - cb
 
 // Reached from 9 dispatch table entries:
 //     TRAPHI
@@ -30100,7 +30128,7 @@ L_0D1F8:
         cmpwi   cr7, data, 0x61FF
         blectr  cr7
 L_0D200:
-        ori     base_disp, code_ptr, D_085C0 - cb
+        ori     base_disp, code_ptr, condition_truth_table - cb
         mfxer   immed_data
         rlwinm  data, data, 26, 26, 29                  // data = data[11:8] << 2
         mfcr    rtn_addr
@@ -30163,7 +30191,7 @@ test_mode_events:
         beql    cr4, check_prefetch_consistency         // bit 0x2000_0000: consistency checks
         bsol    cr7, count_instruction                  // bit 0x0001_0000: count instructions
         beql    cr7, count_opcode                       // bit 0x0002_0000: count instructions per opcode
-        blt     cr4, L_0E830
+        blt     cr4, exit_emulator
         ble     cr7, L_0D2E4
         lwz     addr, 0x7C8(EmulatorStatePtr)           // bit 0x0004_0000: call a hook
         lwz     data, 0x7CC(EmulatorStatePtr)
@@ -30459,7 +30487,7 @@ L_0D640:
         stw     immed_data, 168(EmulatorStatePtr)
         lhz     data, 0(a7)
         addi    a7, a7, 92
-        bl      L_0C3EC
+        bl      set_ccr
         crnand  gt, lt, eq                              // cr0.gt = ~(cr0.lt & cr0.eq)
         lwz     data, 152(EmulatorStatePtr)
         lwz     immed_data, 156(EmulatorStatePtr)
@@ -30886,7 +30914,11 @@ cea_x_37:
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         bflr_likely cr_special_event_pending            // DISPATCH unless a special event is pending
         b       process_special_event
-L_0DB94:
+
+// Fill in the emulator state block: constants, the table of replaceable
+// handler addresses (copied from handler_defaults with code_ptr added),
+// and the recompiler's entry points, which start out as stubs.
+init_state:
         crclr   cr_dr_enabled
         crclr   cr_dr_ready
         crclr   cr_dr_active
@@ -30908,7 +30940,7 @@ L_0DB94:
         ori     data, data, 0x0029
         ori     data, data, 0x0010
         stw     data, 0x7A0(EmulatorStatePtr)
-        addis   data, code_ptr, 1
+        addis   data, code_ptr, 1                       // dr_code_base = cb + 0x10000
         stw     data, dr_code_base(EmulatorStatePtr)
         mtcrf   0x40, zero                              // cr1 = zero[27:24]
         rlwimi  sr_and_flags, zero, 0, 0, 15            // sr_and_flags[31:16] = zero[31:16]
@@ -30917,13 +30949,13 @@ L_0DB94:
         stw     zero, 0x734(EmulatorStatePtr)
         stw     zero, 0x738(EmulatorStatePtr)
         stw     zero, 0x73C(EmulatorStatePtr)
-        ori     rtn_addr, code_ptr, 0xDC42
+        ori     rtn_addr, code_ptr, handler_defaults - cb - 2  // handler_defaults - 2, for the pre-incrementing loop below
         addi    addr, EmulatorStatePtr, 0x7FC
-        li      data, 151
+        li      data, 151                               // 151 entries
         mtctr   data
 L_0DC1C:
         lhzu    data, 2(rtn_addr)
-        or      data, data, code_ptr
+        or      data, data, code_ptr                    // offsets become addresses
         stwu    data, 4(addr)
         bdnz    L_0DC1C                                 // CTR -= 1; branch while CTR != 0
         lwz     data, dr_code_base(EmulatorStatePtr)
@@ -30932,7 +30964,10 @@ L_0DC1C:
         ori     addr, data, dr_null_hook - dr_cb
         stw     addr, 0xA18(EmulatorStatePtr)
         b       L_0DD74
-D_0DC44:
+
+// Initial contents of the handler table at +0x800 in the state block, as
+// offsets from cb (0 = no handler).
+handler_defaults:
         .short  take_exception - cb
         .short  take_exception - cb
         .short  take_exception - cb
@@ -30971,7 +31006,7 @@ D_0DC44:
         .short  L_0CF28 - cb
         .short  L_0CFA8 - cb
         .short  L_0CFA8 - cb
-        .short  L_0E7B4 - cb
+        .short  install_exception_stubs - cb
         .short  take_exception - cb
         .short  take_exception - cb
         .short  take_exception - cb
@@ -31053,7 +31088,7 @@ D_0DC44:
         .short  take_exception - cb
         .short  take_exception - cb
         .short  L_0E8E0 - cb
-        .short  L_0DE1C - cb
+        .short  mixed_mode_dispatch - cb
         .short  0
         .short  0
         .short  0
@@ -31088,7 +31123,7 @@ D_0DC44:
 L_0DD74:
         addi    addr, EmulatorStatePtr, 0x740
         stw     addr, 0x708(EmulatorStatePtr)
-        ori     addr, code_ptr, L_0DE08 - cb
+        ori     addr, code_ptr, native_call_unavailable - cb
         stw     addr, 0x70C(EmulatorStatePtr)
         stw     addr, 0x700(EmulatorStatePtr)
         stw     addr, 0x714(EmulatorStatePtr)
@@ -31125,7 +31160,8 @@ L_0DDFC:
         li      base_disp, 0xAE0
         stw     base_disp, 0x1C8(EmulatorStatePtr)
         blr
-L_0DE08:
+
+native_call_unavailable:
         li      addr, 255
         b       EmKernelTrapTable
 
@@ -31135,7 +31171,18 @@ fline_34:
         mtlr    rtn_addr
         lwz     base_disp, 0(a7)
         blr
-L_0DE1C:
+
+// ===========================================================================
+// Mixed mode switch
+// ===========================================================================
+// Entered when 68K code reaches a routine descriptor.  base_disp points
+// into the descriptor (taken from the 68K stack).  Walks the descriptor's
+// routine records (20 bytes each: procedure information, ISA, flags,
+// procedure pointer, selector), choosing one by selector where the
+// descriptor uses selectors, then either continues in 68K code at the
+// procedure pointer (ISA 0) or switches to native PowerPC code (ISA 1).
+// Anything else is reported to the 68K caller as an error number.
+mixed_mode_dispatch:
         lhz     addr, 8(base_disp)
         lbz     data, 15(base_disp)
         cmplwi  cr4, addr, 0x0000
@@ -31144,16 +31191,17 @@ L_0DE1C:
         addi    a7, a7, 4
         bne     cr4, L_0DE5C
 L_0DE38:
-        blt     cr5, L_0DED8
+        blt     cr5, mixed_mode_call_68k
         bne     cr5, L_0DF28
-L_0DE40:
+
+mixed_mode_call_native:
         lwz     addr, 0x710(EmulatorStatePtr)
         lwz     data, 0x700(EmulatorStatePtr)
         addi    base_disp, base_disp, -2
         ori     sr_and_flags, sr_and_flags, 0x0800
         stw     base_disp, 0x1F4(addr)
         stw     rtn_addr, 0x1EC(addr)
-        b       L_0E128
+        b       switch_to_native
 L_0DE5C:
         lbz     data, 7(base_disp)
         lhz     immed_data, 6(rtn_addr)
@@ -31164,15 +31212,15 @@ L_0DE5C:
         mtlr    rtn_addr
         bgt     cr7, L_0DEB8
 L_0DE7C:
-        blt     cr5, L_0DED8
+        blt     cr5, mixed_mode_call_68k
 L_0DE80:
         lbz     data, 25(rtn_addr)
         bt      cr_interrupt_pending, L_0E110
         addi    rtn_addr, rtn_addr, 20
         cmplwi  cr5, data, 0x0001
         bdnzf   4*cr5+lt, L_0DE80
-        blt     cr5, L_0DED8
-        beq     cr5, L_0DE40
+        blt     cr5, mixed_mode_call_68k
+        beq     cr5, mixed_mode_call_native
 L_0DE9C:
         beq     cr4, L_0DF28
         cmpw    cr4, zero, zero
@@ -31182,18 +31230,19 @@ L_0DE9C:
         cmplwi  cr5, data, 0x0001
         bgt     cr7, L_0DE7C
 L_0DEB8:
-        beq     cr5, L_0DE40
+        beq     cr5, mixed_mode_call_native
 L_0DEBC:
         lbz     data, 25(rtn_addr)
         bt      cr_interrupt_pending, L_0E110
         addi    rtn_addr, rtn_addr, 20
         cmplwi  cr5, data, 0x0001
         bdnzf   4*cr5+eq, L_0DEBC
-        beq     cr5, L_0DE40
+        beq     cr5, mixed_mode_call_native
         bgt     cr5, L_0DE9C
-L_0DED8:
+
+mixed_mode_call_68k:
         lhz     immed_data, 6(rtn_addr)
-        lwz     pc, 8(rtn_addr)
+        lwz     pc, 8(rtn_addr)                         // pc = procedure pointer
         mtcrf   0x01, immed_data                        // cr7 = immed_data[3:0]
         bso     cr7, L_0DF1C
         lha     prefetch_data, 0(pc)
@@ -31365,7 +31414,14 @@ L_0E110:
 fline_35:
         lwz     addr, 0x710(EmulatorStatePtr)
         ori     sr_and_flags, sr_and_flags, 0x0800
-L_0E128:
+
+// Save the 68K registers where native code can find them and ask the
+// kernel (trap 1) to run the native context.  Control returns here when
+// native code wants the emulator again; a status byte in the native
+// context block says why: 255 = resume 68K code, 240..247 = an interrupt
+// arrived while native code was running, other values = an exception to
+// be delivered to the 68K handler.
+switch_to_native:
         mfcr    immed_data
         lwz     rtn_addr, 0x708(EmulatorStatePtr)
         rlwinm  immed_data, immed_data, 8, 28, 31       // immed_data = immed_data[27:24]
@@ -31599,7 +31655,7 @@ L_0E478:
         lwz     addr, 16(a7)
         addi    a7, a7, 0x318
         mtlr    rtn_addr
-        b       L_0C3EC
+        b       set_ccr
 L_0E48C:
         addi    EmulatorStatePtr, EmulatorStatePtr, -0x740
         lwz     rtn_addr, 0x7B8(EmulatorStatePtr)
@@ -31955,17 +32011,17 @@ L_0E750:
         bctrl
         mr      addr, base_disp
 L_0E760:
-        bfl     cr_supervisor, L_0CA78
+        bfl     cr_supervisor, take_privilege_violation
         addi    rtn_addr, pc, -2
         b       L_0E794
 L_0E76C:
-        bfl     cr_supervisor, L_0CA78
+        bfl     cr_supervisor, take_privilege_violation
 L_0E770:
         addi    rtn_addr, pc, -2
         addi    pc, pc, 2
         b       L_0E794
 L_0E77C:
-        bfl     cr_supervisor, L_0CA78
+        bfl     cr_supervisor, take_privilege_violation
 L_0E780:
         mtctr   addr
         addi    data, pc, -2
@@ -31982,10 +32038,13 @@ L_0E794:
         stwu    addr, -8(a7)
         stw     rtn_addr, 4(a7)
         blr
-L_0E7B4:
+
+// Copy the second handler table (exception_stub_defaults) into the state
+// block at +0x89C.
+install_exception_stubs:
         ori     data, code_ptr, L_0E6CC - cb
         stw     data, 0x840(EmulatorStatePtr)
-        ori     rtn_addr, code_ptr, 0xE7DE
+        ori     rtn_addr, code_ptr, exception_stub_defaults - cb - 2
         addi    addr, EmulatorStatePtr, 0x898
         li      data, 40
         mtctr   data
@@ -31995,7 +32054,8 @@ L_0E7CC:
         stwu    data, 4(addr)
         bdnz    L_0E7CC                                 // CTR -= 1; branch while CTR != 0
         b       fetch
-D_0E7E0:
+
+exception_stub_defaults:
         .short  L_0E6D4 - cb
         .short  take_exception - cb
         .short  L_0E770 - cb
@@ -32036,7 +32096,10 @@ D_0E7E0:
         .short  L_0E77C - cb
         .short  L_0E76C - cb
         .short  L_0E77C - cb
-L_0E830:
+
+// Store the complete 68K register state in the state block and return to
+// the native code that called EmEntry.
+exit_emulator:
         stw     d0, saved_d0(EmulatorStatePtr)
         stw     d1, 4(EmulatorStatePtr)
         stw     d2, 8(EmulatorStatePtr)
@@ -32053,30 +32116,46 @@ L_0E830:
         stw     a5, 52(EmulatorStatePtr)
         stw     a6, 56(EmulatorStatePtr)
         stw     a7, saved_a7(EmulatorStatePtr)
-        addi    pc, pc, -2
+        addi    pc, pc, -2                              // pc of the next instruction
         stw     pc, saved_pc(EmulatorStatePtr)
-        rlwinm  data, sr_and_flags, 8, 16, 23           // data = sr_and_flags[7:0] << 8
-        rlwimi  data, ccr_x, 7, 27, 27                  // data[4] = ccr_x[29]
+        rlwinm  data, sr_and_flags, 8, 16, 23           // rebuild the full SR: system byte ...
+        rlwimi  data, ccr_x, 7, 27, 27                  // ... X
         mfcr    ccr_x
-        rlwimi  data, ccr_x, 4, 28, 28                  // data[3] = ccr_x[31]
-        rlwimi  data, ccr_x, 5, 29, 29                  // data[2] = ccr_x[29]
+        rlwimi  data, ccr_x, 4, 28, 28                  // ... N
+        rlwimi  data, ccr_x, 5, 29, 29                  // ... Z
         mfxer   ccr_x                                   // X = C (ccr_x keeps a copy of XER)
-        rlwimi  data, ccr_x, 3, 30, 31                  // data[1:0] = ccr_x[30:29]
+        rlwimi  data, ccr_x, 3, 30, 31                  // ... V and C
         sth     data, saved_sr(EmulatorStatePtr)
-        lwz     a7, native_sp(EmulatorStatePtr)
-        lmw     d3, 0(a7)                               // load r11..r31
-        mtcr    d3                                      // CR = d3
-        mtlr    d4
-        addic   a7, a7, 84
+        lwz     r1, native_sp(EmulatorStatePtr)         // back onto the caller's stack
+        lmw     r11, 0(r1)                              // restore r11..r31
+        mtcr    r11                                     // CR = r11
+        mtlr    r12
+        addic   r1, r1, 84
         blr
 
+// ===========================================================================
+// Emulator entry point
+// ===========================================================================
+// Called once by native code with r3 = address of the emulator state
+// block and r4 = address of the dispatch table (OpcodeTblTop).
+// Saves the caller's non-volatile registers in a frame at the top of the
+// state block's page, records where the code and the table are, describes
+// the emulator context to the kernel (flags, the handlers for native
+// exceptions, and emulator_reset as the place to start), and issues
+// kernel trap 0.  Nothing in this image branches to emulator_reset: the
+// kernel is expected to resume the context there.
 EmEntry:
-        addi    a7, addr, 0x1000
-        bl      L_0E904
-        twi     31, zero, -0x2153                       // unconditional trap
+        addi    r1, r3, 0x1000                          // r1 = top of the 4 KB page that starts at the state block
+        bl      em_entry_save
+        twi     31, r0, -0x2153                         // not reached
 L_0E8BC:
         b       L_0E8BC
 
+// Kernel service calls.  Each is an unconditional trap instruction whose
+// immediate operand selects the service; the kernel returns to the
+// instruction after the trap, so callers reach these with a branch-and-
+// link, or with a plain branch when LR already holds the return address.
+// There is no entry 14: slot 14 repeats 13.
 EmKernelTrapTable:
         twi     31, EmulatorStatePtr, 0                 // unconditional trap
 L_0E8C4:
@@ -32103,36 +32182,42 @@ L_0E8E0:
 L_0E8FC:
         twi     31, EmulatorStatePtr, 15                // unconditional trap
         twi     31, EmulatorStatePtr, 16                // unconditional trap
-L_0E904:
-        mfcr    d3
-        stwu    d3, -84(a7)
-        mflr    d4
-        stmw    d4, 4(a7)                               // store r12..r31
-        mr      EmulatorStatePtr, addr
-        mr      disp_table, data
+
+em_entry_save:
+        mfcr    r11                                     // save CR ...
+        stwu    r11, -84(r1)
+        mflr    r12                                     // ... LR ...
+        stmw    r12, 4(r1)                              // ... and r12..r31 below the top of the page
+        mr      EmulatorStatePtr, r3                    // r3: the state block
+        mr      disp_table, r4                          // r4: the dispatch table
         stw     disp_table, saved_disp_table(EmulatorStatePtr)
-        mflr    code_ptr
+        mflr    code_ptr                                // code_ptr = this code's own address, rounded down to 64 KB
         clrrwi  code_ptr, code_ptr, 16                  // code_ptr = code_ptr & 0xFFFF0000
         stw     code_ptr, saved_code_ptr(EmulatorStatePtr)
         stw     addr, 0x194(EmulatorStatePtr)
         stw     data, 0x19C(EmulatorStatePtr)
-        ori     zero, code_ptr, L_0E964 - cb
-        stw     zero, 0x184(EmulatorStatePtr)
-        li      zero, 7
-        stw     zero, 0x140(EmulatorStatePtr)
-        li      zero, -1
-        stw     zero, 0x144(EmulatorStatePtr)
-        ori     zero, code_ptr, native_exception_handler - cb
-        stw     zero, 0x14C(EmulatorStatePtr)
-        ori     zero, code_ptr, take_bus_error - cb
-        stw     zero, 0x154(EmulatorStatePtr)
+        ori     r0, code_ptr, emulator_reset - cb       // where the kernel is to start the emulator context
+        stw     r0, 0x184(EmulatorStatePtr)
+        li      r0, 7
+        stw     r0, 0x140(EmulatorStatePtr)
+        li      r0, -1
+        stw     r0, 0x144(EmulatorStatePtr)
+        ori     r0, code_ptr, native_exception_handler - cb  // handler for native exceptions taken while emulating
+        stw     r0, 0x14C(EmulatorStatePtr)
+        ori     r0, code_ptr, take_bus_error - cb
+        stw     r0, 0x154(EmulatorStatePtr)
         li      addr, 0
-        b       EmKernelTrapTable
-L_0E964:
+        b       EmKernelTrapTable                       // kernel trap 0
+
+// The emulator context starts here: clear the 68K registers, initialise
+// the state block, then do what a 68K does on reset - load the stack
+// pointer from address 0 and the pc from address 4, enter supervisor
+// state with interrupts masked - and dispatch the first instruction.
+emulator_reset:
         li      zero, 0
         li      dr_entry, 0
         mtcrf   0x7F, zero                              // cr1..cr7 = zero[27:0]
-        bl      L_0DB94
+        bl      init_state
         li      d0, 0
         li      d1, 0
         li      d2, 0
@@ -32149,15 +32234,15 @@ L_0E964:
         li      a5, 0
         li      a6, 0
         li      pc, 0
-        lwz     a7, 0(pc)
-        lwz     pc, 4(pc)
+        lwz     a7, 0(pc)                               // initial SSP from the reset vector
+        lwz     pc, 4(pc)                               // initial PC
         li      vbr, 0
         stw     vbr, saved_vbr(EmulatorStatePtr)
-        li      sr_and_flags, 39
+        li      sr_and_flags, 39                        // SR = $27xx: supervisor, interrupt mask 7
         crset   cr_supervisor
         li      ccr_x, 0
-        mtcrf   0x80, zero                              // cr0 = zero[31:28]
-        mtxer   zero
+        mtcrf   0x80, zero                              // N = Z = 0
+        mtxer   zero                                    // V = C = 0
         lha     prefetch_data, 0(pc)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // DECODE1: disp_table[18:3] = opcode in prefetch_data
         mtctr   disp_table                              // DECODE2: CTR = address of the next dispatch entry
@@ -32165,7 +32250,8 @@ L_0E964:
         bctr
         .long   0x48000014
         ALIGN(64)
-D_0EA00:
+
+interpreter_credits:
         .ascii  "680x0 Emulation written by Gary Davidian"
         .space  4
 

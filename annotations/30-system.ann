@@ -1,0 +1,137 @@
+# Entry, initialisation, privileged operations and the native-code interface.
+
+@085C0 condition_truth_table
+    One 32-bit truth table per 68K condition code (T, F, HI, LS, CC, CS,
+    NE, EQ, VC, VS, PL, MI, GE, LT, GT, LE).  The current N, Z, V and C
+    flags are gathered into a 5-bit rotate count; rotating the table word
+    by it leaves the condition's value in the low bit.  Used where a
+    condition has to be evaluated without a branch (Scc, TRAPcc, and the
+    trace logic's look at DBcc and Bcc).
+
+@0C3EC set_ccr
+    Load the 68K condition codes from the low five bits of data: N and Z
+    into CR0, V and C into XER, X into ccr_x.  Continues through a
+    replaceable handler.
+
+@0C510 stack_pointer_slots
+    Offsets in the state block of the saved stack pointer for each value of
+    the SR S and M bits: USP, USP, ISP, MSP.
+
+@0C7B0 movec_tables
+    Byte tables for MOVEC: for each control register number, the offset of
+    its copy in the state block (0 = not implemented), followed by offsets
+    of the code that reads or writes it.
+
+@0CA68 privilege_check_failed
+    A privileged instruction was met in user state.  If the privilege
+    violation vector still holds the handler address recorded in the state
+    block, return and let the instruction proceed (the standard handler
+    would only have emulated it); otherwise take the exception.
+@0CA78 take_privilege_violation
+0CA7C vector offset 0x20: privilege violation
+@0CA88 require_supervisor
+    Gate for privileged instructions: the dispatch table entry has loaded
+    the instruction's handler from the state block into rtn_addr.  Continue
+    there if in supervisor state.
+
+@0DB94 init_state
+    Fill in the emulator state block: constants, the table of replaceable
+    handler addresses (copied from handler_defaults with code_ptr added),
+    and the recompiler's entry points, which start out as stubs.
+0DBE8 dr_code_base = cb + 0x10000
+0DC0C handler_defaults - 2, for the pre-incrementing loop below
+0DC14 151 entries
+0DC20 offsets become addresses
+
+@0DC44 handler_defaults
+    Initial contents of the handler table at +0x800 in the state block, as
+    offsets from cb (0 = no handler).
+
+@0DE08 native_call_unavailable
+
+@0DE1C mixed_mode_dispatch
+    ===========================================================================
+    Mixed mode switch
+    ===========================================================================
+    Entered when 68K code reaches a routine descriptor.  base_disp points
+    into the descriptor (taken from the 68K stack).  Walks the descriptor's
+    routine records (20 bytes each: procedure information, ISA, flags,
+    procedure pointer, selector), choosing one by selector where the
+    descriptor uses selectors, then either continues in 68K code at the
+    procedure pointer (ISA 0) or switches to native PowerPC code (ISA 1).
+    Anything else is reported to the 68K caller as an error number.
+@0DE40 mixed_mode_call_native
+@0DED8 mixed_mode_call_68k
+0DEDC pc = procedure pointer
+
+@0E128 switch_to_native
+    Save the 68K registers where native code can find them and ask the
+    kernel (trap 1) to run the native context.  Control returns here when
+    native code wants the emulator again; a status byte in the native
+    context block says why: 255 = resume 68K code, 240..247 = an interrupt
+    arrived while native code was running, other values = an exception to
+    be delivered to the 68K handler.
+
+@0E7B4 install_exception_stubs
+    Copy the second handler table (exception_stub_defaults) into the state
+    block at +0x89C.
+@0E7E0 exception_stub_defaults
+
+@0E830 exit_emulator
+    Store the complete 68K register state in the state block and return to
+    the native code that called EmEntry.
+0E870 pc of the next instruction
+0E878 rebuild the full SR: system byte ...
+0E87C ... X
+0E884 ... N
+0E888 ... Z
+0E890 ... V and C
+0E898 back onto the caller's stack
+0E89C restore r11..r31
+
+@0E8B0 EmEntry
+    ===========================================================================
+    Emulator entry point
+    ===========================================================================
+    Called once by native code with r3 = address of the emulator state
+    block and r4 = address of the dispatch table (OpcodeTblTop).
+
+    Saves the caller's non-volatile registers in a frame at the top of the
+    state block's page, records where the code and the table are, describes
+    the emulator context to the kernel (flags, the handlers for native
+    exceptions, and emulator_reset as the place to start), and issues
+    kernel trap 0.  Nothing in this image branches to emulator_reset: the
+    kernel is expected to resume the context there.
+0E8B0 r1 = top of the 4 KB page that starts at the state block
+0E8B8 not reached
+
+@0E8C0 EmKernelTrapTable
+    Kernel service calls.  Each is an unconditional trap instruction whose
+    immediate operand selects the service; the kernel returns to the
+    instruction after the trap, so callers reach these with a branch-and-
+    link, or with a plain branch when LR already holds the return address.
+    There is no entry 14: slot 14 repeats 13.
+
+@0E904 em_entry_save
+0E904 save CR ...
+0E90C ... LR ...
+0E910 ... and r12..r31 below the top of the page
+0E914 r3: the state block
+0E918 r4: the dispatch table
+0E920 code_ptr = this code's own address, rounded down to 64 KB
+0E934 where the kernel is to start the emulator context
+0E94C handler for native exceptions taken while emulating
+0E960 kernel trap 0
+
+@0E964 emulator_reset
+    The emulator context starts here: clear the 68K registers, initialise
+    the state block, then do what a 68K does on reset - load the stack
+    pointer from address 0 and the pc from address 4, enter supervisor
+    state with interrupts masked - and dispatch the first instruction.
+0E9B4 initial SSP from the reset vector
+0E9B8 initial PC
+0E9C4 SR = $27xx: supervisor, interrupt mask 7
+0E9D0 N = Z = 0
+0E9D4 V = C = 0
+
+@0EA00 interpreter_credits
