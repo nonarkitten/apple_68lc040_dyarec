@@ -116,12 +116,34 @@ callers that have done some of the steps themselves.
 | Trace | `0x024` | Format 2 |
 | Line 1010 | `0x028` | Format 0 |
 | Line 1111 | `0x02C` | Format 0 |
+| Floating point instruction, once `install_exception_stubs` has run | `0x02C` | Format 4: with the operand's effective address and the instruction's address |
 | Interrupt, level *n* | `0x060 + 4n` | Format 0, plus a format 1 "throwaway" frame on the interrupt stack when the master stack was in use |
 
 The bus and address error frames are the 68020/68030 long format, not the
 68040's format 7. Software that inspects the frame format will therefore
 see a 68020-style fault frame from a processor that otherwise implements
 the 68040 instruction set.
+
+### Floating point instructions
+
+A 68LC040 has no floating point unit. For an FPU opcode it takes the
+line-F exception with a frame of format 4, which carries two more long
+words than format 0: the effective address of the instruction's operand
+and the address of the instruction. A software FPU can then emulate the
+instruction without decoding its addressing mode.
+
+The emulator reproduces this. FPU opcodes have table entries of their
+own, which reach one of forty handler slots (`+0x89C`–`+0x938`) chosen
+by the kind of opcode — general operation, `FScc`, `FDBcc`, `FTRAPcc`,
+`FBcc`, `FSAVE`, `FRESTORE` — and its addressing mode. The slots'
+initial contents are `take_exception`, giving a plain format 0 frame.
+`install_exception_stubs` (`0E7B4`, itself the default of handler slot
+`+0x898`) replaces them with the routines at `fpu_stubs` (`0E6D4`), each
+of which computes the effective address for its addressing mode, steps
+`pc` over the instruction's extension words and takes the exception
+through `fpu_format_4_exception` (`0E794`). The same call installs
+`rte_format_4` as the `RTE` handler for format 4. `FSAVE` and `FRESTORE`
+check for supervisor state first.
 
 ### Replaceable handlers
 
@@ -197,7 +219,9 @@ registers, from which the 68K handler's `RTE` can resume the instruction.
 
 `RTE` reads the format field of the frame at `a7` and calls one of sixteen
 replaceable handlers in the state block (`+0x830 + 4 × format`). Formats
-0, 1 and 2 are the ordinary cases. Format `$B` (`0D5DC`) restores the
+0, 1 and 2 are the ordinary cases. Format 4, once installed (see
+"Floating point instructions"), is format 0 with two more long words to
+discard. Format `$B` (`0D5DC`) restores the
 internal state saved by a bus or address error. Format `$E` — not a
 Motorola format — is a frame the emulator itself builds to hold a saved
 native context when an interrupt has to be delivered to 68K code while

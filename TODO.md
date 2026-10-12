@@ -42,7 +42,9 @@ Legend: `[x]` done, `[~]` partly done, `[ ]` not started.
       insert and modify routines
 - [~] Private opcodes: all named (Apple's names from SuperMario) and described; the SANE
       arithmetic (`FC04`, `FC06`, `FC08`-`FC0F`, 4 KB) is not read line by line
-- [ ] The routines behind the forty FPU handler slots (`0E6D4`-`0E78F`)
+- [x] The routines behind the forty FPU handler slots: they build the 68LC040's format 4
+      frame (`docs/06`). What calls `install_exception_stubs` (handler slot `+0x898`) has not
+      been traced
 - [ ] Mixed mode: the layout of the native context block and the format `$E` frame
 
 ### Recompiler still to read

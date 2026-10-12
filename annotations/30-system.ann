@@ -74,7 +74,9 @@
 
 @0E7B4 install_exception_stubs
     Copy the second handler table (exception_stub_defaults) into the state
-    block at +0x89C.
+    block at +0x89C, and make rte_format_4 the RTE handler for format 4:
+    from now on FPU opcodes produce format 4 frames (see fpu_stubs).  This
+    routine is itself the default of handler slot +0x898.
 @0E7E0 exception_stub_defaults
 
 @0E830 exit_emulator

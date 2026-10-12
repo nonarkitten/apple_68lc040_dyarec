@@ -32171,6 +32171,21 @@ move16_mem_L1:
         addi    base_disp, base_disp, 16
         blr
 
+// ===========================================================================
+// Floating point instructions
+// ===========================================================================
+// A 68LC040 has no floating point unit.  It takes a line-F exception for an
+// FPU opcode, but with a frame of format 4, which adds the effective
+// address of the instruction's operand and the address of the instruction
+// itself so that a software FPU need not decode the addressing mode.  The
+// emulator does the same.
+//
+// Each kind of FPU opcode and addressing mode has a routine here that
+// loads one of forty handler slots (+0x89C to +0x938) and goes to
+// take_fline.  The slots start out as take_exception, which makes an
+// ordinary format 0 frame; install_exception_stubs fills them with the
+// routines at fpu_stubs, which make the format 4 frame.
+//
 // Reached from 8 dispatch table entries:
 //     F-LINE FPU general,Dn
 fline_dn:
@@ -32374,86 +32389,101 @@ fline_mem_29:
 fline_mem_30:
         lwz     rtn_addr, 0x938(EmulatorStatePtr)
         b       take_fline
-fline_mem_30_L1:
+
+// RTE from a format 4 frame (installed in the RTE handler table by
+// install_exception_stubs): discard the two extra long words and carry
+// on as for format 0.
+rte_format_4:
         addi    a7, a7, 8
         b       rte_format_0
-fline_mem_30_L2:
+
+// The handlers for the forty slots.  Each works out the operand's
+// effective address in addr (0 when there is none) and the instruction's
+// address in rtn_addr, and moves pc past the instruction's extension
+// words, according to the kind of opcode and addressing mode its slot
+// stands for; the last four groups are the privileged FSAVE and FRESTORE.
+fpu_stubs:
         li      addr, 0
         addi    rtn_addr, pc, -2
         addi    pc, pc, 2
-        b       fline_mem_30_L17
-fline_mem_30_L3:
+        b       fpu_format_4_exception
+fpu_stubs_L1:
         mtctr   addr
-        ori     rtn_addr, code_ptr, fline_mem_30_L13 - cb
+        ori     rtn_addr, code_ptr, fpu_stubs_L11 - cb
         li      data, 0
         bctr
-fline_mem_30_L4:
+fpu_stubs_L2:
         addi    addr, pc, 2
-fline_mem_30_L5:
+fpu_stubs_L3:
         lha     prefetch_data, 2(pc)
         addi    rtn_addr, pc, -2
         add     addr, addr, prefetch_data
         addi    pc, pc, 4
-        b       fline_mem_30_L17
-fline_mem_30_L6:
+        b       fpu_format_4_exception
+fpu_stubs_L4:
         li      addr, 0
         addi    rtn_addr, pc, -2
         addi    pc, pc, 6
-        b       fline_mem_30_L17
-fline_mem_30_L7:
+        b       fpu_format_4_exception
+fpu_stubs_L5:
         li      addr, 0
         addi    rtn_addr, pc, -2
         addi    pc, pc, 4
-        b       fline_mem_30_L17
-fline_mem_30_L8:
+        b       fpu_format_4_exception
+fpu_stubs_L6:
         add     addr, pc, prefetch_data
         addi    rtn_addr, pc, -2
         addi    pc, pc, 2
-        b       fline_mem_30_L17
-fline_mem_30_L9:
+        b       fpu_format_4_exception
+fpu_stubs_L7:
         lwz     addr, 0(pc)
         addi    rtn_addr, pc, -2
         add     addr, pc, addr
         addi    pc, pc, 4
-        b       fline_mem_30_L17
-fline_mem_30_L10:
+        b       fpu_format_4_exception
+fpu_stubs_L8:
         mtctr   addr
         li      data, 0
         bctrl
         mr      addr, base_disp
-fline_mem_30_L11:
+fpu_stubs_L9:
         bfl     cr_supervisor, take_privilege_violation
         addi    rtn_addr, pc, -2
-        b       fline_mem_30_L17
-fline_mem_30_L12:
+        b       fpu_format_4_exception
+fpu_stubs_L10:
         bfl     cr_supervisor, take_privilege_violation
-fline_mem_30_L13:
+fpu_stubs_L11:
         addi    rtn_addr, pc, -2
         addi    pc, pc, 2
-        b       fline_mem_30_L17
-fline_mem_30_L14:
+        b       fpu_format_4_exception
+fpu_stubs_L12:
         bfl     cr_supervisor, take_privilege_violation
-fline_mem_30_L15:
+fpu_stubs_L13:
         mtctr   addr
         addi    data, pc, -2
-        ori     rtn_addr, code_ptr, fline_mem_30_L16 - cb
+        ori     rtn_addr, code_ptr, fpu_stubs_L14 - cb
         bctr
-fline_mem_30_L16:
+fpu_stubs_L14:
         mr      rtn_addr, data
-fline_mem_30_L17:
+
+// Take the line-F exception with a format 4 frame.  take_exception_pc_set
+// comes back here for the two extra long words before it pushes the rest.
+fpu_format_4_exception:
         crset   4*cr7+so
         rlwinm  data, sr_and_flags, 8, 16, 23           // data = sr_and_flags[7:0] << 8
-        li      immed_data, 0x402C
+        li      immed_data, 0x402C                      // format 4, vector offset 0x2C
         rlwinm  sr_and_flags, sr_and_flags, 0, 26, 22   // sr_and_flags = sr_and_flags & 0xFFFFFE3F
         bl      take_exception_pc_set
-        stwu    addr, -8(a7)
-        stw     rtn_addr, 4(a7)
+        stwu    addr, -8(a7)                            // the effective address ...
+        stw     rtn_addr, 4(a7)                         // ... and the address of the instruction
         blr
 
 // Copy the second handler table (exception_stub_defaults) into the state
-// block at +0x89C.
+// block at +0x89C, and make rte_format_4 the RTE handler for format 4:
+// from now on FPU opcodes produce format 4 frames (see fpu_stubs).  This
+// routine is itself the default of handler slot +0x898.
 install_exception_stubs:
-        ori     data, code_ptr, fline_mem_30_L1 - cb
+        ori     data, code_ptr, rte_format_4 - cb
         stw     data, 0x840(EmulatorStatePtr)
         ori     rtn_addr, code_ptr, exception_stub_defaults - cb - 2
         addi    addr, EmulatorStatePtr, 0x898
@@ -32467,46 +32497,46 @@ install_exception_stubs_L1:
         b       fetch
 
 exception_stub_defaults:
-        .short  fline_mem_30_L2 - cb
+        .short  fpu_stubs - cb
         .short  take_exception - cb
-        .short  fline_mem_30_L13 - cb
-        .short  fline_mem_30_L3 - cb
-        .short  fline_mem_30_L3 - cb
-        .short  fline_mem_30_L5 - cb
-        .short  fline_mem_30_L15 - cb
-        .short  fline_mem_30_L5 - cb
-        .short  fline_mem_30_L15 - cb
-        .short  fline_mem_30_L5 - cb
-        .short  fline_mem_30_L15 - cb
+        .short  fpu_stubs_L11 - cb
+        .short  fpu_stubs_L1 - cb
+        .short  fpu_stubs_L1 - cb
+        .short  fpu_stubs_L3 - cb
+        .short  fpu_stubs_L13 - cb
+        .short  fpu_stubs_L3 - cb
+        .short  fpu_stubs_L13 - cb
+        .short  fpu_stubs_L3 - cb
+        .short  fpu_stubs_L13 - cb
         .short  take_exception - cb
-        .short  fline_mem_30_L2 - cb
-        .short  fline_mem_30_L4 - cb
-        .short  fline_mem_30_L13 - cb
-        .short  fline_mem_30_L3 - cb
-        .short  fline_mem_30_L3 - cb
-        .short  fline_mem_30_L5 - cb
-        .short  fline_mem_30_L15 - cb
-        .short  fline_mem_30_L5 - cb
-        .short  fline_mem_30_L15 - cb
-        .short  fline_mem_30_L7 - cb
-        .short  fline_mem_30_L6 - cb
-        .short  fline_mem_30_L2 - cb
-        .short  fline_mem_30_L8 - cb
-        .short  fline_mem_30_L9 - cb
-        .short  fline_mem_30_L11 - cb
-        .short  fline_mem_30_L10 - cb
-        .short  fline_mem_30_L12 - cb
-        .short  fline_mem_30_L14 - cb
-        .short  fline_mem_30_L12 - cb
-        .short  fline_mem_30_L14 - cb
-        .short  fline_mem_30_L11 - cb
-        .short  fline_mem_30_L10 - cb
-        .short  fline_mem_30_L12 - cb
-        .short  fline_mem_30_L14 - cb
-        .short  fline_mem_30_L12 - cb
-        .short  fline_mem_30_L14 - cb
-        .short  fline_mem_30_L12 - cb
-        .short  fline_mem_30_L14 - cb
+        .short  fpu_stubs - cb
+        .short  fpu_stubs_L2 - cb
+        .short  fpu_stubs_L11 - cb
+        .short  fpu_stubs_L1 - cb
+        .short  fpu_stubs_L1 - cb
+        .short  fpu_stubs_L3 - cb
+        .short  fpu_stubs_L13 - cb
+        .short  fpu_stubs_L3 - cb
+        .short  fpu_stubs_L13 - cb
+        .short  fpu_stubs_L5 - cb
+        .short  fpu_stubs_L4 - cb
+        .short  fpu_stubs - cb
+        .short  fpu_stubs_L6 - cb
+        .short  fpu_stubs_L7 - cb
+        .short  fpu_stubs_L9 - cb
+        .short  fpu_stubs_L8 - cb
+        .short  fpu_stubs_L10 - cb
+        .short  fpu_stubs_L12 - cb
+        .short  fpu_stubs_L10 - cb
+        .short  fpu_stubs_L12 - cb
+        .short  fpu_stubs_L9 - cb
+        .short  fpu_stubs_L8 - cb
+        .short  fpu_stubs_L10 - cb
+        .short  fpu_stubs_L12 - cb
+        .short  fpu_stubs_L10 - cb
+        .short  fpu_stubs_L12 - cb
+        .short  fpu_stubs_L10 - cb
+        .short  fpu_stubs_L12 - cb
 
 // Store the complete 68K register state in the state block and return to
 // the native code that called EmEntry.

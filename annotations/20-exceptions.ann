@@ -156,3 +156,39 @@
 0D7E4 cr7.so = low bit of the new pc
 0D7F4 odd handler address: address error
 0D7F8 clear flag_group_1_active
+
+@0E5BC
+    ===========================================================================
+    Floating point instructions
+    ===========================================================================
+    A 68LC040 has no floating point unit.  It takes a line-F exception for an
+    FPU opcode, but with a frame of format 4, which adds the effective
+    address of the instruction's operand and the address of the instruction
+    itself so that a software FPU need not decode the addressing mode.  The
+    emulator does the same.
+    .
+    Each kind of FPU opcode and addressing mode has a routine here that
+    loads one of forty handler slots (+0x89C to +0x938) and goes to
+    take_fline.  The slots start out as take_exception, which makes an
+    ordinary format 0 frame; install_exception_stubs fills them with the
+    routines at fpu_stubs, which make the format 4 frame.
+
+@0E6CC rte_format_4
+    RTE from a format 4 frame (installed in the RTE handler table by
+    install_exception_stubs): discard the two extra long words and carry
+    on as for format 0.
+
+@0E6D4 fpu_stubs
+    The handlers for the forty slots.  Each works out the operand's
+    effective address in addr (0 when there is none) and the instruction's
+    address in rtn_addr, and moves pc past the instruction's extension
+    words, according to the kind of opcode and addressing mode its slot
+    stands for; the last four groups are the privileged FSAVE and FRESTORE.
+
+@0E794 fpu_format_4_exception
+    Take the line-F exception with a format 4 frame.  take_exception_pc_set
+    comes back here for the two extra long words before it pushes the rest.
+0E79C format 4, vector offset 0x2C
+0E7A8 the effective address ...
+0E7AC ... and the address of the instruction
+
