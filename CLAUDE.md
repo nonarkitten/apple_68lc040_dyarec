@@ -110,5 +110,8 @@ A new register or state-field name must be added to `src/include/*.inc`
   unless an annotation names them. `cea_`/`fea_` = effective address routines.
   Private opcode routines are named in `annotations/45-private-opcodes.ann`
   (`fc0a_float_add`); one without a name there would be `private_fc0a`.
+- In the recompiler, `dr_emit_*` (code generators) and `dr_decode_*` (first-pass
+  helpers) are named by running the recompiler in the simulator; `T_xxxxx` is an
+  instruction template; `dr_operand_<access>_<size>_<mode><reg>` is an operand emitter.
 - Labels without a meaningful name yet look like `L_0C458` (their offset);
   `op_XXXX` is the dispatch table entry for opcode XXXX.

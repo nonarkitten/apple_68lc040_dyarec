@@ -23943,7 +23943,7 @@ fc0a_float_add:
         mtcrf   0x0F, d7                                // cr4..cr7 = d7[15:0]
         crxor   4*cr6+lt, 4*cr6+lt, 4*cr6+gt            // cr6.lt = cr6.lt ^ cr6.gt
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // DECODE1: disp_table[18:3] = opcode in prefetch_data
-        bne     L_0A21C
+        bne     fc0a_fc0b_special_operands
         subfc.  rtn_addr, d3, d0                        // rtn_addr = d0 - d3
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         mtctr   disp_table                              // DECODE2: CTR = address of the next dispatch entry
@@ -23982,7 +23982,7 @@ fc0b_float_sub:
         mtcrf   0x0F, d7                                // cr4..cr7 = d7[15:0]
         crxor   4*cr6+lt, 4*cr6+lt, 4*cr6+gt            // cr6.lt = cr6.lt ^ cr6.gt
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // DECODE1: disp_table[18:3] = opcode in prefetch_data
-        bne     L_0A214
+        bne     fc0b_float_sub_L20
         subfc.  rtn_addr, d3, d0                        // rtn_addr = d0 - d3
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         mtctr   disp_table                              // DECODE2: CTR = address of the next dispatch entry
@@ -24121,14 +24121,14 @@ fc0b_float_sub_L16:
         bne     fc0b_float_sub_L11
 fc0b_float_sub_L17:
         subfic  addr, rtn_addr, 32                      // addr = 32 - rtn_addr
-        bge     cr6, L_0A1C8
+        bge     cr6, fc0b_float_sub_L18
         slw     d2, d1, addr
         srw     d1, d1, rtn_addr
         li      data, 0
         blr
-L_0A1C8:
+fc0b_float_sub_L18:
         rlwnm   immed_data, d1, addr, 0, 31             // immed_data = rotl(d1, addr) & 0xFFFFFFFF
-        bge     cr5, L_0A1F0
+        bge     cr5, fc0b_float_sub_L19
         addi    rtn_addr, rtn_addr, -32
         srw     d2, d1, rtn_addr
         xor     immed_data, immed_data, d2
@@ -24137,7 +24137,7 @@ L_0A1C8:
         subfc   immed_data, immed_data, data            // immed_data = data - immed_data
         rlwimi  data, immed_data, 30, 2, 2              // data[29] = immed_data[31]
         blr
-L_0A1F0:
+fc0b_float_sub_L19:
         clrlwi  immed_data, d1, 1                       // immed_data = d1 & 0x7FFFFFFF
         li      d1, 0
         li      d2, 0
@@ -24147,28 +24147,30 @@ L_0A1F0:
         lis     data, 0x4000
         rlwimi  data, immed_data, 30, 2, 2              // data[29] = immed_data[31]
         blr
-L_0A214:
+fc0b_float_sub_L20:
         xori    d7, d7, 0x0040
         crnot   4*cr6+lt, 4*cr6+lt
-L_0A21C:
+
+// Add or subtract when an argument is zero, infinite or a NaN.
+fc0a_fc0b_special_operands:
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         mtctr   disp_table                              // DECODE2: CTR = address of the next dispatch entry
         bso     cr7, fc06_check_result_arg1_L6
-        blt     cr5, L_0A258
-        bgt     cr5, L_0A24C
+        blt     cr5, fc0a_fc0b_special_operands_L3
+        bgt     cr5, fc0a_fc0b_special_operands_L2
         bso     cr5, fc06_check_result_arg1_L1
-L_0A234:
+fc0a_fc0b_special_operands_L1:
         mr      d0, d3
         rlwimi  d7, d7, 2, 20, 21                       // d7[11:10] = d7[9:8]
         mr      d1, d4
         rlwimi  d7, d7, 1, 24, 24                       // d7[7] = d7[6]
         mr      d2, d5
         b       fc06_check_result_arg1_L2
-L_0A24C:
-        bns     cr5, L_0A234
+fc0a_fc0b_special_operands_L2:
+        bns     cr5, fc0a_fc0b_special_operands_L1
         bge     cr6, fc06_check_result_arg1_L4
         b       fc0b_float_sub_L2
-L_0A258:
+fc0a_fc0b_special_operands_L3:
         bne     cr5, fc06_check_result_arg1_L4
         bge     cr6, fc06_check_result_arg1_L4
         xori    d7, d7, 0x0481
@@ -24840,7 +24842,7 @@ fc12_fc13_move_bytes_L12:
         lswx    addr, 0, a0
         stswx   addr, 0, a1
         li      addr, 32
-        bl      L_0AC1C
+        bl      fc12_fc13_move_bytes_L18
 fc12_fc13_move_bytes_L13:
         cmplwi  cr7, d0, 0x0014
         add     a0, a0, addr
@@ -24860,7 +24862,7 @@ fc12_fc13_move_bytes_L14:
         subfc   d0, base_disp, d0                       // d0 = d0 - base_disp
         stswx   addr, 0, a1
         li      addr, 8
-        bl      L_0AC84
+        bl      fc12_fc13_move_bytes_L21
         b       fc12_fc13_move_bytes_L13
 fc12_fc13_move_bytes_L15:
         subfic  immed_data, immed_data, 31              // immed_data = 31 - immed_data
@@ -24868,29 +24870,29 @@ fc12_fc13_move_bytes_L15:
         blt     cr7, fc12_fc13_move_bytes_L2
         add     a1, a1, d0
         add     a0, a0, d0
-        ble     cr6, L_0ABF0
+        ble     cr6, fc12_fc13_move_bytes_L17
         clrlwi  base_disp, a1, 27                       // base_disp = a1 & 0x0000001F
         cmpwi   cr6, base_disp, 16
         subfc   d0, base_disp, d0                       // d0 = d0 - base_disp
         srwi    data, d0, 5
         mtctr   data
-        ble     cr6, L_0ABCC
+        ble     cr6, fc12_fc13_move_bytes_L16
         addi    a0, a0, -16
         addi    a1, a1, -16
         lswi    addr, a0, 16
         addi    base_disp, base_disp, -16
         stswi   addr, a1, 16
-L_0ABCC:
+fc12_fc13_move_bytes_L16:
         mtxer   base_disp
         neg     base_disp, base_disp
         lswx    addr, base_disp, a0
         stswx   addr, base_disp, a1
         addi    base_disp, base_disp, -32
         li      addr, -32
-        bl      L_0AC1C
+        bl      fc12_fc13_move_bytes_L18
         neg     addr, d0
         b       fc12_fc13_move_bytes_L13
-L_0ABF0:
+fc12_fc13_move_bytes_L17:
         clrlwi  base_disp, a1, 29                       // base_disp = a1 & 0x00000007
         mtxer   base_disp
         neg     base_disp, base_disp
@@ -24899,21 +24901,21 @@ L_0ABF0:
         stswx   addr, base_disp, a1
         addi    base_disp, base_disp, -8
         li      addr, -8
-        bl      L_0AC84
+        bl      fc12_fc13_move_bytes_L21
         neg     addr, d0
         b       fc12_fc13_move_bytes_L13
-L_0AC1C:
+fc12_fc13_move_bytes_L18:
         lwzux   immed_data, a0, base_disp
         dcbz    a1, base_disp
         lwz     data, 4(a0)
         stwux   immed_data, a1, base_disp
-        b       L_0AC40
-L_0AC30:
+        b       fc12_fc13_move_bytes_L20
+fc12_fc13_move_bytes_L19:
         lwzux   immed_data, a0, addr
         dcbz    a1, addr
         lwz     data, 4(a0)
         stwux   immed_data, a1, addr
-L_0AC40:
+fc12_fc13_move_bytes_L20:
         stw     data, 4(a1)
         lwz     immed_data, 8(a0)
         lwz     data, 12(a0)
@@ -24927,24 +24929,24 @@ L_0AC40:
         lwz     data, 28(a0)
         stw     immed_data, 24(a1)
         stw     data, 28(a1)
-        bdnzf   cr_interrupt_pending, L_0AC30
+        bdnzf   cr_interrupt_pending, fc12_fc13_move_bytes_L19
         mfctr   data
         rlwimi  d0, data, 5, 0, 26                      // d0[31:5] = data[26:0]
         blr
-L_0AC84:
+fc12_fc13_move_bytes_L21:
         srwi    data, d0, 3
         mtctr   data
         lwzux   immed_data, a0, base_disp
         lwz     data, 4(a0)
         stwux   immed_data, a1, base_disp
         stw     data, 4(a1)
-        bdz     L_0ACA0                                 // CTR -= 1; branch when CTR == 0
-L_0ACA0:
+        bdz     fc12_fc13_move_bytes_L22                // CTR -= 1; branch when CTR == 0
+fc12_fc13_move_bytes_L22:
         lwzux   immed_data, a0, addr
         lwz     data, 4(a0)
         stwux   immed_data, a1, addr
         stw     data, 4(a1)
-        bdnzf   cr_interrupt_pending, L_0ACA0
+        bdnzf   cr_interrupt_pending, fc12_fc13_move_bytes_L22
         mfctr   data
         rlwimi  d0, data, 3, 0, 28                      // d0[31:3] = data[28:0]
         blr
@@ -30897,7 +30899,7 @@ fe04_fe05_move_ecr:
         lwz     data, 0x960(EmulatorStatePtr)
         cmplwi  d0, 0x0019
         mtlr    data
-        ori     addr, code_ptr, D_0D850 - cb
+        ori     addr, code_ptr, ecr_offsets - cb
         blrl
 fe04_fe05_move_ecr_L1:
         mtlr    rtn_addr
@@ -30907,7 +30909,10 @@ fe04_fe05_move_ecr_L1:
         blr
 fe04_fe05_move_ecr_L2:
         b       update_vc_zero
-D_0D850:
+
+// For each emulator control register number, the offset of its word from
+// +0x700 in the state block.
+ecr_offsets:
         .byte   0x18, 0x00, 0x04, 0x08, 0x0C, 0x10, 0x20, 0x24
         .byte   0x28, 0x30, 0x34, 0x38, 0x3C, 0x14, 0x2C, 0xA4
         .byte   0xB0, 0xB4, 0xB8, 0xA0, 0xBC, 0xC0, 0xC4, 0xA8
@@ -31660,7 +31665,7 @@ mixed_mode_call_68k_L15:
         lwzu    data, 20(rtn_addr)
         cmpw    cr4, data, immed_data
         bdnzt   4*cr4+lt, mixed_mode_call_68k_L15
-        bne     cr4, L_0E0E8
+        bne     cr4, mixed_mode_call_68k_L20
 mixed_mode_call_68k_L16:
         mfctr   addr
         cmpwi   cr4, addr, 0
@@ -31692,7 +31697,7 @@ mixed_mode_call_68k_L19:
         bns     cr6, mixed_mode_call_68k_L18
         addi    addr, addr, -1
         bne     mixed_mode_call_68k_L18
-L_0E0E8:
+mixed_mode_call_68k_L20:
         lhz     addr, 8(base_disp)
         mulli   addr, addr, 20
         add     addr, base_disp, addr
@@ -31848,7 +31853,7 @@ switch_to_native_L5:
         stw     immed_data, -4(rtn_addr)
         stwu    base_disp, -8(rtn_addr)
         bdnz    switch_to_native_L5                     // CTR -= 1; branch while CTR != 0
-        bt_likely 4*cr7+eq, L_0E35C
+        bt_likely 4*cr7+eq, switch_to_native_L6
         lwz     base_disp, 236(EmulatorStatePtr)
         lwz     immed_data, 232(EmulatorStatePtr)
         andc    immed_data, immed_data, base_disp       // immed_data = immed_data & ~base_disp
@@ -31871,7 +31876,7 @@ switch_to_native_L5:
         lwz     addr, native_context(EmulatorStatePtr)
         stw     rtn_addr, 232(a7)
         stw     base_disp, 216(addr)
-L_0E35C:
+switch_to_native_L6:
         lwz     base_disp, 0x7A8(EmulatorStatePtr)
         ori     immed_data, zero, 0xE05C
         stw     base_disp, 0(addr)

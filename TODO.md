@@ -26,12 +26,13 @@ Legend: `[x]` done, `[~]` partly done, `[ ]` not started.
       `docs/15-build-history.md`
 
 ### Source legibility
-- [~] Labels: 160 address-style labels (`L_xxxxx`) remain, nearly all in the recompiler's
-      decoder helpers (`10680`-`11037`); 1,355 others are `<routine>_L<n>` and could be
-      given real names where it helps
+- [x] Labels: three address-style labels remain; about 1,400 are `<routine>_L<n>`, which
+      is where things stay unless a name helps
 - [~] `EmulatorState` fields: about 75 named, the rest still numeric
-- [ ] Symbolic offsets in the recompiler's descriptor tables (`16E48`, `17228`, `17470`)
-      and in its template loads (`lwz addr, 0x1774(base_disp)` and the like)
+- [x] Symbolic template loads and operand emitter tables in the recompiler; every
+      emitter's header shows a translation
+- [ ] The words of the condition sequence tables (`dr_bcc_sequences` and the like) are
+      still plain numbers
 
 ### Interpreter still to read
 - [ ] Bit fields, BCD, MOVEM, MOVEP, MOVE16, CAS/CAS2, CHK2/CMP2, long multiply/divide
@@ -41,9 +42,9 @@ Legend: `[x]` done, `[~]` partly done, `[ ]` not started.
 - [ ] Mixed mode: the layout of the native context block and the format `$E` frame
 
 ### Recompiler still to read
-- [ ] Pass-1 decoders and their helpers (`10280`-`11037`), only sampled
-- [ ] Code emitters (`11338`-`17640`): named and observable through their output, but not
-      read line by line
+- [x] Pass-1 decoders and their helpers: named from traces, shared helpers read
+- [~] Code emitters (`11338`-`17640`): legible now (templates, examples, operand emitters)
+      but commented by hand only where something was being looked for
 - [ ] Fault recovery in translated code, line by line
 
 ### Testing
@@ -166,10 +167,10 @@ Open questions for the check:
   (`docs/09`). The code it emits for `OR.B D0,(d8,PC,Xn)` reads at one
   displacement and writes at another, which looks like a further slip in an
   emitter nobody could have tested.
-- Conditional branch record flags: `0x0020` and `0x0012` are classes of condition
-  (`dr_bcc_flags`), and the signed class makes a preceding compare emit `cmpw cr7`.
-  What the `0x0020` class is used for, and bit `0x0008` (which selects between two
-  tables in `dr_emit_bcc_l`, `1708C`), have not been read.
+- Compare-and-branch: the compare emitters put `cmplw cr7` (class `0x0020`) or `cmpw cr7`
+  (class `0x0012`) in front of a conditional branch and mark its record `0x0008`. When
+  exactly they do so depends on a word at `+0xBB0` that has not been traced; the unsigned
+  form did not appear in any sequence tried (`CMP` + `BHI`).
 - Some code generators differ between the first build and `Emulator.x` without any
   difference showing in `buildcmp.py --emitters` or in the sequences tried by hand
   (around `ADDQ.B`, `TST`, `Scc`, `JMP`, `JSR`, `LINK`). Reading them, or sampling

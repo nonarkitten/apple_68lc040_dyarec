@@ -29,6 +29,7 @@ import drmap    # noqa: E402
 import m68k     # noqa: E402
 import naming   # noqa: E402
 import ppc      # noqa: E402
+import ppcsim   # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -47,7 +48,8 @@ COMMENT_COL = 56                # preferred column for end-of-line comments
 EXTRA_LABELS = {0x00000: ['EmTop'], 0x10000: ['dr_cb'],
                 TABLE_START: ['EmBtm', 'OpcodeTblTop']}
 
-AUTO_LABEL = re.compile(r'[LD]_[0-9A-F]{5}|.*_L[0-9]+')
+AUTO_LABEL = re.compile(r'[LDT]_[0-9A-F]{5}|.*_L[0-9]+')
+PASS3_END = 0x1782C              # end of the recompiler's emitters and their helpers
 LOCAL_LABEL_REACH = 0x200        # bytes; see Generator.name_local_labels
 
 GENERATED_BANNER = (
@@ -252,8 +254,12 @@ class Generator:
         self.continuation_users = collections.defaultdict(list)
         self.emitter_users = collections.defaultdict(list)  # emitter -> [opcode]
         self.decoder_users = {}                             # pass-1 decoder helper -> [opcode]
+        self.emitter_examples = {}                          # emitter -> comment lines
         self.emitter_refs = {}  # addr of "li out_ptr, n" -> emitter address
         self.code_refs = {}     # addr of an "ori x, code_ptr, imm" -> referenced offset
+        self.template_refs = {} # addr of an "lwz/addi x, n(base_disp)" in an emitter -> dr_emitters + n
+        self.templates = set()  # addresses of words that emitters load as instruction templates
+        self.branch_refs = collections.defaultdict(list)    # target -> addresses of branches to it
 
     # -- analysis ----------------------------------------------------------
 
@@ -292,6 +298,7 @@ class Generator:
             for operand in value.ops:
                 if operand[0] == 'tgt':
                     wanted.add(operand[1])
+                    self.branch_refs[operand[1]].append(addr)
             if (value.mnem == 'ori' and value.ops[1] == ('r', 30)
                     and value.ops[0] != ('r', 30)):
                 ref = value.ops[2][1]
@@ -301,11 +308,12 @@ class Generator:
 
         # 16-bit code offset tables refer to labels too.
         for start, end, kind in self.ann.data:
-            if kind == 'offs16':
+            if kind in ('offs16', 'offs16e'):
+                base = drmap.DR_EMITTERS if kind == 'offs16e' else 0
                 for addr in range(start, end, 2):
                     value = struct.unpack('>H', self.image[addr:addr + 2])[0]
                     if value:
-                        wanted.add(value)
+                        wanted.add(base + value)
             wanted.add(start)
 
         # Which 68K opcodes reach each routine, and how.
@@ -357,6 +365,41 @@ class Generator:
                     and value.ops[1][1] in offsets):
                 self.emitter_refs[addr] = offsets[value.ops[1][1]]
 
+        # While the emitters run (pass 3), base_disp holds dr_emitters.
+        # "lwz x, n(base_disp)" loads a template - an instruction word to be
+        # copied into the translation - and "addi x, base_disp, n" forms the
+        # address of a table.
+        for addr in range(drmap.DR_EMITTERS, PASS3_END, 4):
+            kind, value = self.kind[addr]
+            if kind != 'insn':
+                continue
+            offset = None
+            if value.mnem == 'lwz' and value.ops[1][0] == 'mem' and value.ops[1][2][1] == 7:
+                offset = value.ops[1][1]
+            elif value.mnem == 'addi' and value.ops[1] == ('r', 7) and value.ops[0] != ('r', 7):
+                offset = value.ops[2][1]
+            if offset is None or offset & 3:
+                continue
+            target = drmap.DR_EMITTERS + offset
+            if drmap.DR_EMITTERS <= target < PASS3_END:
+                self.template_refs[addr] = target
+                wanted.add(target)
+                if value.mnem == 'lwz' and self.kind[target][0] != 'data':
+                    self.templates.add(target)
+
+        # The recompiler's operand emitters are reached through tables of
+        # offsets from dr_emitters, indexed by a 6-bit effective address
+        # field.  A table labelled x_table names its routines x_<mode><reg>.
+        for start, end, kind in self.ann.data:
+            table = self.labels.get(start, '')
+            if kind == 'offs16e' and table.endswith('_table'):
+                for addr in range(start, end, 2):
+                    value = struct.unpack('>H', self.image[addr:addr + 2])[0]
+                    field = (addr - start) // 2
+                    if value:
+                        automatic.setdefault(drmap.DR_EMITTERS + value, '%s_%d%d' % (
+                            table[:-len('_table')], field >> 3, field & 7))
+
         taken = set(self.labels.values())
         for addr, name in automatic.items():
             if addr not in self.labels:
@@ -375,22 +418,85 @@ class Generator:
                 fail('label %s used for both %05X and %05X' % (name, seen[name], addr))
             seen[name] = addr
         self.label_addrs = seen
+        self.make_emitter_examples(decisions)
+
+    def make_emitter_examples(self, decisions):
+        """For each of the recompiler's code generators, run the translator
+        (in the simulator) on one instruction that uses it, and keep what
+        it generated as comment lines: once with every condition code wanted
+        afterwards and once with none."""
+        import check
+        import drtranslate
+        tail = 5                # an RTS after the sample: lwz, addi, bl and two data words
+        dead = [0xD482]         # ADD.L D2,D2 replaces all five flags; two instructions
+
+        def generated(words, drop):
+            try:
+                m, start, end = drtranslate.translate(self, words)
+            except (RuntimeError, KeyError, ppcsim.Unimplemented, ppcsim.Limit):
+                return None
+            lines = drtranslate.render(self, m, start, end)
+            if drop:
+                lines = lines[lines.index('entry:') + 1:len(lines) - drop]
+                return ['//         ' + ' '.join(line.split()[1:2]).ljust(7) + ' '
+                        + ' '.join(line.split()[2:]) for line in lines]
+            return ['//     ' + line.rstrip() for line in lines if '.long   0x00000000' not in line]
+
+        def simplicity(opcode):
+            op = m68k.decode(opcode)
+            memory = sum(1 for operand in (op.src, op.dst) if operand and '(' in operand)
+            return (not op.legal, bool(check.known_recompiler_defect(opcode)),
+                    check.extension_words(op)[0], memory, opcode)
+
+        for addr, users in self.emitter_users.items():
+            opcode = min(users, key=simplicity)
+            op = m68k.decode(opcode)
+            words = [opcode] + [0x0010] * check.extension_words(op)[0]
+            title = '// For %s, %s, it generates' % (
+                ' '.join('%04X' % word for word in words), ' '.join(m68k.text(op).split()))
+            if decisions[opcode].ends_block:
+                whole = generated(words, 0)
+                if whole:
+                    self.emitter_examples[addr] = [title + ' the block'] + whole
+                continue
+            if decisions[opcode].flags & drmap.FLAG_CONTROL_TRANSFER:
+                whole = generated(words + [0x4E71, 0x4E75], 0)
+                if whole:
+                    self.emitter_examples[addr] = [
+                        title.replace(', it generates', ' (then NOP and RTS), it generates')
+                        + ' the block'] + whole
+                continue
+            wanted = generated(words + [0x4E75], tail)
+            unwanted = generated(words + dead + [0x4E75], tail + 2)
+            if wanted is None or unwanted is None:
+                continue
+            lines = [title] + (wanted or ['//         (nothing)'])
+            if unwanted != wanted:
+                lines += ['// and, when the condition codes are not wanted afterwards,']
+                lines += unwanted or ['//         (nothing)']
+            self.emitter_examples[addr] = lines
 
     def name_local_labels(self):
         """Give branch targets that have no name of their own a name relative
         to the routine they follow: <routine>_L1, <routine>_L2, ...  A target
         further than LOCAL_LABEL_REACH from the nearest named label keeps
         its address-style name, since "local to that routine" would then be
-        a guess."""
+        a guess - unless every branch to it comes from between that named
+        label and the next one, which settles it."""
         code = sorted(addr for addr in self.labels if addr < TABLE_START)
-        anchor, count = None, 0
+        named = [addr for addr in code if not AUTO_LABEL.fullmatch(self.labels[addr])]
+        anchor, count, limit = None, 0, 0
         for addr in code:
             name = self.labels[addr]
             if not AUTO_LABEL.fullmatch(name):
                 anchor, count = addr, 0
+                following = [other for other in named if other > addr]
+                limit = following[0] if following else TABLE_START
                 continue
             if (name.startswith('L_') and anchor is not None
-                    and addr - anchor <= LOCAL_LABEL_REACH
+                    and (addr - anchor <= LOCAL_LABEL_REACH
+                         or (self.branch_refs[addr]
+                             and all(anchor <= ref < limit for ref in self.branch_refs[addr])))
                     and (addr < CODE_BLOCK) == (anchor < CODE_BLOCK)):
                 count += 1
                 self.labels[addr] = '%s_L%d' % (self.labels[anchor], count)
@@ -401,6 +507,8 @@ class Generator:
             return 'op_%04X' % opcode + ('_2' if second else '')
         if addr in self.data_at:
             return 'D_%05X' % addr
+        if addr in self.templates:
+            return 'T_%05X' % addr
         return 'L_%05X' % addr
 
     # -- operand formatting ------------------------------------------------
@@ -463,6 +571,12 @@ class Generator:
             operands[2] = '%s - cb' % self.labels[self.code_refs[addr]]
         if addr in self.emitter_refs:
             operands[1] = '%s - dr_emitters' % self.labels[self.emitter_refs[addr]]
+        if addr in self.template_refs:
+            label = self.labels[self.template_refs[addr]]
+            if insn.mnem == 'lwz':
+                operands[1] = '%s - dr_emitters(%s)' % (label, self.reg(7, addr))
+            else:
+                operands[2] = '%s - dr_emitters' % label
         if addr in self.ann.operands:
             operands[-1] = self.ann.operands[addr]
         text = ' ' * MNEM_COL + insn.mnem
@@ -514,6 +628,16 @@ class Generator:
         m = insn.mnem.rstrip('.')
         ops = insn.ops
         name = lambda i: self.operand(ops[i], addr, insn)
+
+        if addr in self.template_refs and insn.mnem == 'lwz':
+            kind, value = self.kind[self.template_refs[addr]]
+            if kind == 'insn':
+                return 'template: ' + ' '.join(self.instruction_text(
+                    self.template_refs[addr], value).split())
+            if kind == 'long':
+                return 'template: 0x%08X' % value
+        if addr in self.templates:
+            return 'template'
 
         idiom = self.idiom_comment(addr, insn)
         if idiom:
@@ -705,6 +829,7 @@ class Generator:
             lines.append('// Code generator for %d %s:' % (
                 len(users), 'opcode' if len(users) == 1 else 'opcodes'))
             lines += self._forms(users)
+            lines += self.emitter_examples.get(addr, [])
         users = self.decoder_users.get(addr)
         if users and addr in self.labels and not AUTO_LABEL.fullmatch(self.labels[addr]):
             lines.append('// The first pass comes here for %d %s:' % (
@@ -759,12 +884,13 @@ class Generator:
                 out.append(self.with_comment(
                     directive('.short', '0x%04X' % struct.unpack('>H', image[addr:addr + 2])[0]),
                     self.ann.eols.get(addr)))
-        elif kind == 'offs16':
+        elif kind in ('offs16', 'offs16e'):
+            base, base_name = (drmap.DR_EMITTERS, 'dr_emitters') if kind == 'offs16e' else (0, 'cb')
             for addr in range(start, end, 2):
                 if addr != start:
                     self.label_lines(addr, out)
                 value = struct.unpack('>H', image[addr:addr + 2])[0]
-                body = '%s - cb' % self.labels[value] if value else '0'
+                body = '%s - %s' % (self.labels[base + value], base_name) if value else '0'
                 out.append(self.with_comment(directive('.short', body), self.ann.eols.get(addr)))
         elif kind == 'byte':
             addr = start
@@ -940,13 +1066,15 @@ class Generator:
     def report(self):
         code = {a: n for a, n in self.labels.items() if a < TABLE_START}
         auto = sum(1 for n in code.values() if re.fullmatch(r'[LD]_[0-9A-F]{5}', n))
+        templates = sum(1 for n in code.values() if re.fullmatch(r'T_[0-9A-F]{5}', n))
         local = sum(1 for n in code.values() if re.fullmatch(r'.*_L[0-9]+', n))
         manual = sum(1 for a in self.ann.labels if a < TABLE_START)
-        named = len(code) - auto - local - manual
+        named = len(code) - auto - local - manual - templates
         longs = sum(1 for a, (k, _) in self.kind.items() if k == 'long' and a < TABLE_START)
         print('labels below the table: %d hand-named, %d named from the dispatch '
               'table, %d local to a named routine, %d address-only'
               % (manual, named, local, auto))
+        print('recompiler templates labelled: %d' % templates)
         print('undecoded words emitted as .long: %d' % longs)
 
 

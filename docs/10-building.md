@@ -130,7 +130,23 @@ with the files in `annotations/`:
 Routines reached from the dispatch table are named automatically
 (`tools/naming.py`) unless an annotation names them: after the
 instructions that use them, or, for a private opcode that no annotation
-names, after the opcode (`private_fe0f`). Automatic comments
+names, after the opcode (`private_fe0f`).
+
+Parts of the recompiler's source are produced by running the recompiler
+in the simulator (`tools/drmap.py`, `tools/drtranslate.py`):
+
+- its code generators are named after the instructions the first pass
+  assigns to them (`dr_emit_add_l`), and the header of each shows what
+  it generates for one of them;
+- the helpers of the first-pass decoders are named after the
+  instructions whose decoding passes through them (`dr_decode_rts`);
+- a word that an emitter loads as an instruction template has a label of
+  the form `T_12A40`, and the load is commented with the instruction:
+  `lwz addr, T_12A40 - dr_emitters(base_disp)  // template: lbz addr, 0(a1)`;
+- the routines in the operand emitter tables are named after the table
+  and the addressing mode (`dr_operand_load_l_30`).
+
+Automatic comments
 come from `gen.py`; an annotation for the same offset replaces them.
 
 The generator cannot produce wrong code silently: it only writes

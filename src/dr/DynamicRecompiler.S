@@ -197,7 +197,7 @@ dr_fix_branches_L1:
         addi    rec_ptr, rec_ptr, 12
         mtcrf   0x08, addr                              // cr4 = addr[15:12]
         blt     cr4, dr_emit_finish
-        bsol    cr4, dr_templates_L9
+        bsol    cr4, dr_templates_L6
         b       dr_fix_branches_L1
 
 // Flush the new code out of the data cache and into the instruction
@@ -2171,22 +2171,31 @@ dr_ea_length_tables:
 // Pass-3 code generators.  Emitter values stored in the records are
 // offsets from this label.
 dr_emitters:
-        lwz     addr, 0x260(base_disp)
-        rlwinm  data, data, 15, 13, 15                  // data = data[3:1] << 16
+        lwz     addr, T_11598 - dr_emitters(base_disp)  // template: add zero, a0, zero
+T_1133C:
+        rlwinm  data, data, 15, 13, 15                  // template
         add     addr, addr, data
         add     addr, addr, immed_data
         stwu    addr, 4(out_ptr)
         blr
-        lwz     addr, 0x264(base_disp)
+
+dr_operand_address_27:
+        lwz     addr, T_1159C - dr_emitters(base_disp)  // template: add zero, a7, zero
         add     addr, addr, immed_data
         stwu    addr, 4(out_ptr)
         blr
-        lwz     addr, 0x268(base_disp)
-        b       L_11640
-        lwz     addr, 0x26C(base_disp)
-        b       L_11658
-        lwz     addr, 0x270(base_disp)
-dr_emitters_L1:
+
+dr_operand_address_50:
+        lwz     addr, T_115A0 - dr_emitters(base_disp)  // template: addi zero, a0, 0
+        b       dr_operand_load_l_50_L1
+
+dr_operand_address_57:
+        lwz     addr, T_115A4 - dr_emitters(base_disp)  // template: addi zero, a7, 0
+        b       dr_operand_load_l_57_L1
+
+dr_operand_address_60:
+        lwz     addr, T_115A8 - dr_emitters(base_disp)  // template: addi zero, data, 0
+dr_operand_address_60_L1:
         lhax    rtn_addr, pc, blk_ofs
         add     immed_data, addr, immed_data
         rlwinm  addr, data, 31, 29, 31                  // addr = data[3:1]
@@ -2195,32 +2204,32 @@ dr_emitters_L1:
         rlwinm  addr, rtn_addr, 20, 28, 31              // addr = rtn_addr[15:12]
         cmpwi   cr7, addr, 15
         cror    4*cr5+so, 4*cr5+eq, 4*cr5+gt            // cr5.so = cr5.eq | cr5.gt
-        lwz     addr, 0x1148(base_disp)
-        blt     cr5, dr_emitters_L10
+        lwz     addr, T_12480 - dr_emitters(base_disp)  // template: extsh data, d0
+        blt     cr5, dr_operand_address_60_L10
         rlwinm  rtn_addr, rtn_addr, 9, 7, 10            // rtn_addr = rtn_addr[15:12] << 21
-        bne     cr7, dr_emitters_L2
+        bne     cr7, dr_operand_address_60_L2
         lis     rtn_addr, 0xFF20
-dr_emitters_L2:
+dr_operand_address_60_L2:
         add     addr, addr, rtn_addr
         stwu    addr, 4(out_ptr)
-        bns     cr5, dr_emitters_L4
+        bns     cr5, dr_operand_address_60_L4
         lhax    rtn_addr, pc, blk_ofs
-        lwz     addr, 0x114C(base_disp)
-dr_emitters_L3:
+        lwz     addr, T_12484 - dr_emitters(base_disp)  // template: rlwinm data, data, 0, 0, 31
+dr_operand_address_60_L3:
         rlwinm  rtn_addr, rtn_addr, 2, 19, 20           // rtn_addr = rtn_addr[10:9] << 11
         add     addr, addr, rtn_addr
         rlwinm  rtn_addr, rtn_addr, 22, 29, 30          // rtn_addr = rtn_addr[12:11] << 1
         subf    addr, rtn_addr, addr                    // addr = addr - rtn_addr
         stwu    addr, 4(out_ptr)
-dr_emitters_L4:
+dr_operand_address_60_L4:
         lhax    rtn_addr, pc, blk_ofs
-        lwz     addr, 0x1154(base_disp)
+        lwz     addr, T_1248C - dr_emitters(base_disp)  // template: add data, data, a0
         rlwinm  data, data, 10, 18, 20                  // data = data[3:1] << 11
-        bne     cr6, dr_emitters_L5
+        bne     cr6, dr_operand_address_60_L5
         li      data, -0x7800
-dr_emitters_L5:
+dr_operand_address_60_L5:
         add     addr, addr, data
-dr_emitters_L6:
+dr_operand_address_60_L6:
         stwu    addr, 4(out_ptr)
         addi    blk_ofs, blk_ofs, 2
         extsb   addr, rtn_addr                          // addr = sign-extended low byte of rtn_addr
@@ -2228,93 +2237,101 @@ dr_emitters_L6:
         rlwinm  immed_data, immed_data, 0, 6, 10        // immed_data = immed_data[25:21] << 21
         stwu    addr, 4(out_ptr)
         blr
-dr_emitters_L7:
-        lwz     addr, 0x1158(base_disp)
+dr_operand_address_60_L7:
+        lwz     addr, T_12490 - dr_emitters(base_disp)  // template: add data, d0, a0
         rlwinm  data, data, 10, 18, 20                  // data = data[3:1] << 11
-        bne     cr6, dr_emitters_L8
+        bne     cr6, dr_operand_address_60_L8
         li      data, -0x7800
-dr_emitters_L8:
+dr_operand_address_60_L8:
         add     addr, addr, data
         rlwinm  data, rtn_addr, 4, 12, 15               // data = rtn_addr[15:12] << 16
-        bne     cr7, dr_emitters_L9
+        bne     cr7, dr_operand_address_60_L9
         lis     data, 0xFFF9
-dr_emitters_L9:
+dr_operand_address_60_L9:
         add     addr, addr, data
-        b       dr_emitters_L6
-dr_emitters_L10:
-        bns     cr5, dr_emitters_L7
+        b       dr_operand_address_60_L6
+dr_operand_address_60_L10:
+        bns     cr5, dr_operand_address_60_L7
         lhax    rtn_addr, pc, blk_ofs
-        lwz     addr, 0x1150(base_disp)
+        lwz     addr, T_12488 - dr_emitters(base_disp)  // template: rlwinm data, d0, 0, 0, 31
         rlwinm  rtn_addr, rtn_addr, 9, 7, 10            // rtn_addr = rtn_addr[15:12] << 21
-        bne     cr7, dr_emitters_L11
+        bne     cr7, dr_operand_address_60_L11
         lis     rtn_addr, 0xFF20
-dr_emitters_L11:
+dr_operand_address_60_L11:
         add     addr, addr, rtn_addr
         lhax    rtn_addr, pc, blk_ofs
-        b       dr_emitters_L3
+        b       dr_operand_address_60_L3
+
+dr_operand_address_70:
         lhax    rtn_addr, pc, blk_ofs
-        lwz     addr, 0x274(base_disp)
+        lwz     addr, T_115AC - dr_emitters(base_disp)  // template: li zero, 0
         addi    blk_ofs, blk_ofs, 2
         rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
         add     addr, addr, immed_data
         stwu    addr, 4(out_ptr)
         blr
+
+dr_operand_address_71:
         lwzx    rtn_addr, pc, blk_ofs
-        lwz     addr, 0x278(base_disp)
+        lwz     addr, T_115B0 - dr_emitters(base_disp)  // template: oris zero, zero, 0x0000
         addi    blk_ofs, blk_ofs, 4
         rlwimi  addr, rtn_addr, 16, 16, 31              // addr[15:0] = rtn_addr[31:16]
         rlwinm  data, immed_data, 27, 11, 15            // data = immed_data[25:21] << 16
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x27C(base_disp)
+        lwz     addr, T_115B4 - dr_emitters(base_disp)  // template: nop
         rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
         add     addr, addr, immed_data
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         blr
+
+dr_operand_address_72:
         lhax    rtn_addr, pc, blk_ofs
         add     data, blk_ofs, rtn_addr
         addi    data, data, -2
         srwi    addr, data, 15
         cmpwi   cr7, addr, 1
-        lwz     addr, 0x280(base_disp)
-        bne     cr7, L_116E0
-        lwz     addr, 0x284(base_disp)
+        lwz     addr, T_115B8 - dr_emitters(base_disp)  // template: addi zero, pc, 0
+        bne     cr7, dr_operand_load_l_72_L1
+        lwz     addr, T_115BC - dr_emitters(base_disp)  // template: ori rtn_addr, zero, 0x0000
         rlwimi  addr, data, 0, 16, 31                   // addr[15:0] = data[15:0]
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x288(base_disp)
+        lwz     addr, T_115C0 - dr_emitters(base_disp)  // template: add zero, rtn_addr, pc
         add     addr, addr, immed_data
         stwu    addr, 4(out_ptr)
         blr
-        lwz     addr, 0x270(base_disp)
-dr_emitters_L12:
+
+dr_operand_address_73:
+        lwz     addr, T_115A8 - dr_emitters(base_disp)  // template: addi zero, data, 0
+dr_operand_address_73_L1:
         lhax    rtn_addr, pc, blk_ofs
         add     immed_data, addr, immed_data
         mtcrf   0x04, rtn_addr                          // cr5 = rtn_addr[11:8]
         rlwinm  addr, rtn_addr, 20, 28, 31              // addr = rtn_addr[15:12]
         cmpwi   cr7, addr, 15
         cror    4*cr5+so, 4*cr5+eq, 4*cr5+gt            // cr5.so = cr5.eq | cr5.gt
-        lwz     addr, 0x1148(base_disp)
-        blt     cr5, L_11574
+        lwz     addr, T_12480 - dr_emitters(base_disp)  // template: extsh data, d0
+        blt     cr5, dr_operand_address_73_L8
         rlwinm  rtn_addr, rtn_addr, 9, 7, 10            // rtn_addr = rtn_addr[15:12] << 21
-        bne     cr7, dr_emitters_L13
+        bne     cr7, dr_operand_address_73_L2
         lis     rtn_addr, 0xFF20
-dr_emitters_L13:
+dr_operand_address_73_L2:
         add     addr, addr, rtn_addr
         stwu    addr, 4(out_ptr)
-        bns     cr5, dr_emitters_L15
+        bns     cr5, dr_operand_address_73_L4
         lhax    rtn_addr, pc, blk_ofs
-        lwz     addr, 0x114C(base_disp)
-dr_emitters_L14:
+        lwz     addr, T_12484 - dr_emitters(base_disp)  // template: rlwinm data, data, 0, 0, 31
+dr_operand_address_73_L3:
         rlwinm  rtn_addr, rtn_addr, 2, 19, 20           // rtn_addr = rtn_addr[10:9] << 11
         add     addr, addr, rtn_addr
         rlwinm  rtn_addr, rtn_addr, 22, 29, 30          // rtn_addr = rtn_addr[12:11] << 1
         subf    addr, rtn_addr, addr                    // addr = addr - rtn_addr
         stwu    addr, 4(out_ptr)
-dr_emitters_L15:
+dr_operand_address_73_L4:
         lhax    rtn_addr, pc, blk_ofs
-        lwz     addr, 0x115C(base_disp)
-dr_emitters_L16:
+        lwz     addr, T_12494 - dr_emitters(base_disp)  // template: add data, data, pc
+dr_operand_address_73_L5:
         stwu    addr, 4(out_ptr)
         extsb   rtn_addr, rtn_addr                      // rtn_addr = sign-extended low byte of rtn_addr
         add     rtn_addr, rtn_addr, blk_ofs
@@ -2324,143 +2341,182 @@ dr_emitters_L16:
         stwu    addr, 4(out_ptr)
         addi    blk_ofs, blk_ofs, 2
         blr
-L_1155C:
-        lwz     addr, 0x1160(base_disp)
+dr_operand_address_73_L6:
+        lwz     addr, T_12498 - dr_emitters(base_disp)  // template: add data, d0, pc
         rlwinm  data, rtn_addr, 4, 12, 15               // data = rtn_addr[15:12] << 16
-        bne     cr7, L_1156C
+        bne     cr7, dr_operand_address_73_L7
         lis     data, 0xFFF9
-L_1156C:
+dr_operand_address_73_L7:
         add     addr, addr, data
-        b       dr_emitters_L16
-L_11574:
-        bns     cr5, L_1155C
+        b       dr_operand_address_73_L5
+dr_operand_address_73_L8:
+        bns     cr5, dr_operand_address_73_L6
         lhax    rtn_addr, pc, blk_ofs
-        lwz     addr, 0x1150(base_disp)
+        lwz     addr, T_12488 - dr_emitters(base_disp)  // template: rlwinm data, d0, 0, 0, 31
         rlwinm  rtn_addr, rtn_addr, 9, 7, 10            // rtn_addr = rtn_addr[15:12] << 21
-        bne     cr7, L_1158C
+        bne     cr7, dr_operand_address_73_L9
         lis     rtn_addr, 0xFF20
-L_1158C:
+dr_operand_address_73_L9:
         add     addr, addr, rtn_addr
         lhax    rtn_addr, pc, blk_ofs
-        b       dr_emitters_L14
-        add     zero, a0, zero
-        add     zero, a7, zero
-        addi    zero, a0, 0
-        addi    zero, a7, 0
-        addi    zero, data, 0
-        li      zero, 0
-        oris    zero, zero, 0x0000
-        nop
-        addi    zero, pc, 0
-        ori     rtn_addr, zero, 0x0000
-        add     zero, rtn_addr, pc
-        lwz     addr, 0x1044(base_disp)
-L_115C8:
+        b       dr_operand_address_73_L3
+T_11598:
+        add     zero, a0, zero                          // template
+T_1159C:
+        add     zero, a7, zero                          // template
+T_115A0:
+        addi    zero, a0, 0                             // template
+T_115A4:
+        addi    zero, a7, 0                             // template
+T_115A8:
+        addi    zero, data, 0                           // template
+T_115AC:
+        li      zero, 0                                 // template
+T_115B0:
+        oris    zero, zero, 0x0000                      // template
+T_115B4:
+        ALIGN(8)
+T_115B8:
+        addi    zero, pc, 0                             // template
+T_115BC:
+        ori     rtn_addr, zero, 0x0000                  // template
+T_115C0:
+        add     zero, rtn_addr, pc                      // template
+
+dr_operand_load_l_20:
+        lwz     addr, T_1237C - dr_emitters(base_disp)  // template: lwz zero, 0(a0)
+dr_operand_load_l_20_L1:
         rlwinm  data, data, 15, 13, 15                  // data = data[3:1] << 16
-L_115CC:
+dr_operand_load_l_20_L2:
         add     addr, addr, data
-L_115D0:
+dr_operand_load_l_20_L3:
         add     addr, addr, immed_data
         stwu    addr, 4(out_ptr)
         blr
-        lwz     addr, 0x1048(base_disp)
-L_115E0:
+
+dr_operand_load_l_27:
+        lwz     addr, T_12380 - dr_emitters(base_disp)  // template: lwz zero, 0(a7)
+dr_operand_load_l_27_L1:
         add     addr, addr, immed_data
         stwu    addr, 4(out_ptr)
         blr
-        lwz     addr, 0x1044(base_disp)
-L_115F0:
+
+dr_operand_load_l_30:
+        lwz     addr, T_1237C - dr_emitters(base_disp)  // template: lwz zero, 0(a0)
+dr_operand_load_l_30_L1:
         rlwinm  data, data, 15, 13, 15                  // data = data[3:1] << 16
         add     addr, addr, data
         add     addr, addr, immed_data
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x105C(base_disp)
+        lwz     addr, T_12394 - dr_emitters(base_disp)  // template: addi a0, a0, 4
         rlwimi  data, data, 5, 8, 10                    // data[23:21] = data[18:16]
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         blr
-        lwz     addr, 0x1048(base_disp)
-L_11618:
-        lwz     data, 0x1060(base_disp)
+
+dr_operand_load_l_37:
+        lwz     addr, T_12380 - dr_emitters(base_disp)  // template: lwz zero, 0(a7)
+dr_operand_load_l_37_L1:
+        lwz     data, T_12398 - dr_emitters(base_disp)  // template: addi a7, a7, 4
         add     addr, addr, immed_data
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
         blr
-        lwz     addr, 0x1064(base_disp)
-        b       L_115C8
-        lwz     addr, 0x1068(base_disp)
-        b       L_115E0
-        lwz     addr, 0x1044(base_disp)
-L_11640:
+
+dr_operand_load_l_40:
+        lwz     addr, T_1239C - dr_emitters(base_disp)  // template: lwzu zero, -4(a0)
+        b       dr_operand_load_l_20_L1
+
+dr_operand_load_l_47:
+        lwz     addr, T_123A0 - dr_emitters(base_disp)  // template: lwzu zero, -4(a7)
+        b       dr_operand_load_l_27_L1
+
+dr_operand_load_l_50:
+        lwz     addr, T_1237C - dr_emitters(base_disp)  // template: lwz zero, 0(a0)
+dr_operand_load_l_50_L1:
         rlwinm  data, data, 15, 13, 15                  // data = data[3:1] << 16
         lhax    rtn_addr, pc, blk_ofs
         addi    blk_ofs, blk_ofs, 2
         rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
-        b       L_115CC
-        lwz     addr, 0x1048(base_disp)
-L_11658:
+        b       dr_operand_load_l_20_L2
+
+dr_operand_load_l_57:
+        lwz     addr, T_12380 - dr_emitters(base_disp)  // template: lwz zero, 0(a7)
+dr_operand_load_l_57_L1:
         lhax    rtn_addr, pc, blk_ofs
         addi    blk_ofs, blk_ofs, 2
         add     addr, addr, immed_data
         rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
         stwu    addr, 4(out_ptr)
         blr
-        lwz     addr, 0x1078(base_disp)
-        b       dr_emitters_L1
+
+dr_operand_load_l_60:
+        lwz     addr, T_123B0 - dr_emitters(base_disp)  // template: lwz zero, 0(data)
+        b       dr_operand_address_60_L1
+
+dr_operand_load_l_70:
         lhax    rtn_addr, pc, blk_ofs
-        lwz     addr, 0x1074(base_disp)
-L_11680:
+        lwz     addr, T_123AC - dr_emitters(base_disp)  // template: lwz zero, 0(0)
+dr_operand_load_l_70_L1:
         addi    blk_ofs, blk_ofs, 2
-L_11684:
+dr_operand_load_l_70_L2:
         rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
         add     addr, addr, immed_data
         stwu    addr, 4(out_ptr)
         blr
+
+dr_operand_load_l_71:
         lwzx    rtn_addr, pc, blk_ofs
-        lwz     addr, 0x1140(base_disp)
+        lwz     addr, T_12478 - dr_emitters(base_disp)  // template: oris data, zero, 0x0000
         addi    blk_ofs, blk_ofs, 4
         rlwimi  addr, rtn_addr, 16, 16, 31              // addr[15:0] = rtn_addr[31:16]
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x1144(base_disp)
+        lwz     addr, T_1247C - dr_emitters(base_disp)  // template: ori data, data, 0x0000
         rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x1078(base_disp)
+        lwz     addr, T_123B0 - dr_emitters(base_disp)  // template: lwz zero, 0(data)
         add     addr, addr, immed_data
         stwu    addr, 4(out_ptr)
         blr
+
+dr_operand_load_l_72:
         lhax    rtn_addr, pc, blk_ofs
         add     data, blk_ofs, rtn_addr
         addi    data, data, -2
         srwi    addr, data, 15
         cmpwi   cr7, addr, 1
-        lwz     addr, 0x1084(base_disp)
-        beq     cr7, L_116F4
-L_116E0:
+        lwz     addr, T_123BC - dr_emitters(base_disp)  // template: lwz zero, 0(pc)
+        beq     cr7, dr_operand_load_l_72_L3
+dr_operand_load_l_72_L1:
         rlwimi  addr, data, 0, 16, 31                   // addr[15:0] = data[15:0]
-L_116E4:
+dr_operand_load_l_72_L2:
         add     addr, addr, immed_data
         stwu    addr, 4(out_ptr)
         addi    blk_ofs, blk_ofs, 2
         blr
-L_116F4:
-        lwz     addr, 0x1164(base_disp)
+dr_operand_load_l_72_L3:
+        lwz     addr, T_1249C - dr_emitters(base_disp)  // template: ori data, zero, 0x0000
         rlwimi  addr, data, 0, 16, 31                   // addr[15:0] = data[15:0]
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x1088(base_disp)
-        b       L_116E4
-        lwz     addr, 0x1078(base_disp)
-        b       dr_emitters_L12
+        lwz     addr, T_123C0 - dr_emitters(base_disp)  // template: lwzx zero, pc, data
+        b       dr_operand_load_l_72_L2
+
+dr_operand_load_l_73:
+        lwz     addr, T_123B0 - dr_emitters(base_disp)  // template: lwz zero, 0(data)
+        b       dr_operand_address_73_L1
+
+dr_operand_load_l_74:
         lwzx    rtn_addr, pc, blk_ofs
-        lwz     addr, 0x1094(base_disp)
+        lwz     addr, T_123CC - dr_emitters(base_disp)  // template: oris zero, zero, 0x0000
         addi    blk_ofs, blk_ofs, 4
         srwi    data, rtn_addr, 16
         cmpwi   cr7, data, 0
         rlwimi  addr, rtn_addr, 16, 16, 31              // addr[15:0] = rtn_addr[31:16]
         rlwinm  data, immed_data, 27, 11, 15            // data = immed_data[25:21] << 16
         add     addr, addr, data
-        beq     cr7, L_1175C
+        beq     cr7, dr_operand_load_l_74_L1
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x1098(base_disp)
+        lwz     addr, T_123D0 - dr_emitters(base_disp)  // template: nop
         add     addr, addr, data
         clrlwi  data, rtn_addr, 16                      // data = rtn_addr & 0x0000FFFF
         cmpwi   cr7, data, 0
@@ -2469,1245 +2525,1550 @@ L_116F4:
         beqlr   cr7
         stwu    addr, 4(out_ptr)
         blr
-L_1175C:
-        lwz     addr, 0x1098(base_disp)
+dr_operand_load_l_74_L1:
+        lwz     addr, T_123D0 - dr_emitters(base_disp)  // template: nop
         add     addr, addr, data
         rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
         stwu    addr, 4(out_ptr)
         blr
-        lwz     addr, 0x104C(base_disp)
-        b       L_115C8
-        lwz     addr, 0x1050(base_disp)
-        b       L_115E0
-        lwz     addr, 0x104C(base_disp)
-        b       L_115F0
-        lwz     addr, 0x1050(base_disp)
-        b       L_11618
-        lwz     addr, 0x106C(base_disp)
-        b       L_115C8
-        lwz     addr, 0x1070(base_disp)
-        b       L_115E0
-        lwz     addr, 0x104C(base_disp)
-        b       L_11640
-        lwz     addr, 0x1050(base_disp)
-        b       L_11658
-        lwz     addr, 0x1080(base_disp)
-        b       dr_emitters_L1
+
+dr_operand_store_l_20:
+        lwz     addr, T_12384 - dr_emitters(base_disp)  // template: stw zero, 0(a0)
+        b       dr_operand_load_l_20_L1
+
+dr_operand_store_l_27:
+        lwz     addr, T_12388 - dr_emitters(base_disp)  // template: stw zero, 0(a7)
+        b       dr_operand_load_l_27_L1
+
+dr_operand_store_l_30:
+        lwz     addr, T_12384 - dr_emitters(base_disp)  // template: stw zero, 0(a0)
+        b       dr_operand_load_l_30_L1
+
+dr_operand_store_l_37:
+        lwz     addr, T_12388 - dr_emitters(base_disp)  // template: stw zero, 0(a7)
+        b       dr_operand_load_l_37_L1
+
+dr_operand_store_l_40:
+        lwz     addr, T_123A4 - dr_emitters(base_disp)  // template: stwu zero, -4(a0)
+        b       dr_operand_load_l_20_L1
+
+dr_operand_store_l_47:
+        lwz     addr, T_123A8 - dr_emitters(base_disp)  // template: stwu zero, -4(a7)
+        b       dr_operand_load_l_27_L1
+
+dr_operand_store_l_50:
+        lwz     addr, T_12384 - dr_emitters(base_disp)  // template: stw zero, 0(a0)
+        b       dr_operand_load_l_50_L1
+
+dr_operand_store_l_57:
+        lwz     addr, T_12388 - dr_emitters(base_disp)  // template: stw zero, 0(a7)
+        b       dr_operand_load_l_57_L1
+
+dr_operand_store_l_60:
+        lwz     addr, T_123B8 - dr_emitters(base_disp)  // template: stw zero, 0(data)
+        b       dr_operand_address_60_L1
+
+dr_operand_store_l_70:
         lhax    rtn_addr, pc, blk_ofs
-        lwz     addr, 0x107C(base_disp)
-        b       L_11684
+        lwz     addr, T_123B4 - dr_emitters(base_disp)  // template: stw zero, 0(0)
+        b       dr_operand_load_l_70_L2
+
+dr_operand_store_l_71:
         lwzx    rtn_addr, pc, blk_ofs
-        lwz     addr, 0x1140(base_disp)
+        lwz     addr, T_12478 - dr_emitters(base_disp)  // template: oris data, zero, 0x0000
         rlwimi  addr, rtn_addr, 16, 16, 31              // addr[15:0] = rtn_addr[31:16]
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x1144(base_disp)
+        lwz     addr, T_1247C - dr_emitters(base_disp)  // template: ori data, data, 0x0000
         rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x1080(base_disp)
+
+dr_operand_writeback_l_71:
+        lwz     addr, T_123B8 - dr_emitters(base_disp)  // template: stw zero, 0(data)
         add     addr, addr, immed_data
         stwu    addr, 4(out_ptr)
         blr
+
+dr_operand_store_l_72:
         lhax    rtn_addr, pc, blk_ofs
         add     data, blk_ofs, rtn_addr
         addi    data, data, -2
         srwi    addr, data, 15
         cmpwi   cr7, addr, 1
-        lwz     addr, 0x108C(base_disp)
-        bne     cr7, L_116E0
-        lwz     addr, 0x1164(base_disp)
+        lwz     addr, T_123C4 - dr_emitters(base_disp)  // template: stw zero, 0(pc)
+        bne     cr7, dr_operand_load_l_72_L1
+        lwz     addr, T_1249C - dr_emitters(base_disp)  // template: ori data, zero, 0x0000
         rlwimi  addr, data, 0, 16, 31                   // addr[15:0] = data[15:0]
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x1090(base_disp)
-        b       L_116E4
-        lwz     addr, 0x1080(base_disp)
-        b       dr_emitters_L12
-        lwz     addr, 0x1054(base_disp)
+        lwz     addr, T_123C8 - dr_emitters(base_disp)  // template: stwx zero, pc, data
+        b       dr_operand_load_l_72_L2
+
+dr_operand_store_l_73:
+        lwz     addr, T_123B8 - dr_emitters(base_disp)  // template: stw zero, 0(data)
+        b       dr_operand_address_73_L1
+
+dr_operand_writeback_l_30:
+        lwz     addr, T_1238C - dr_emitters(base_disp)  // template: stw zero, -4(a0)
         rlwinm  data, data, 15, 13, 15                  // data = data[3:1] << 16
         add     addr, addr, data
         add     addr, addr, immed_data
         stwu    addr, 4(out_ptr)
         blr
-        lwz     addr, 0x1058(base_disp)
-        b       L_115E0
+
+dr_operand_writeback_l_37:
+        lwz     addr, T_12390 - dr_emitters(base_disp)  // template: stw zero, -4(a7)
+        b       dr_operand_load_l_27_L1
+
+dr_operand_writeback_l_50:
         addi    addr, blk_ofs, -2
         lhax    rtn_addr, pc, addr
-        lwz     addr, 0x104C(base_disp)
+        lwz     addr, T_12384 - dr_emitters(base_disp)  // template: stw zero, 0(a0)
         rlwinm  data, data, 15, 13, 15                  // data = data[3:1] << 16
         rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
-        b       L_115CC
+        b       dr_operand_load_l_20_L2
+
+dr_operand_writeback_l_57:
         addi    addr, blk_ofs, -2
         lhax    rtn_addr, pc, addr
-        lwz     addr, 0x1050(base_disp)
+        lwz     addr, T_12388 - dr_emitters(base_disp)  // template: stw zero, 0(a7)
         rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
-        b       L_115D0
+        b       dr_operand_load_l_20_L3
+
+dr_operand_writeback_l_60:
         addi    data, blk_ofs, -2
         lhax    rtn_addr, pc, data
-        lwz     addr, 0x1080(base_disp)
+        lwz     addr, T_123B8 - dr_emitters(base_disp)  // template: stw zero, 0(data)
         extsb   rtn_addr, rtn_addr                      // rtn_addr = sign-extended low byte of rtn_addr
         rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
         add     addr, addr, immed_data
         stwu    addr, 4(out_ptr)
         blr
+
+dr_operand_writeback_l_73:
         addi    data, blk_ofs, -2
         lhax    rtn_addr, pc, data
-        lwz     addr, 0x1080(base_disp)
-L_118A0:
+        lwz     addr, T_123B8 - dr_emitters(base_disp)  // template: stw zero, 0(data)
+dr_operand_writeback_l_73_L1:
         extsb   rtn_addr, rtn_addr                      // rtn_addr = sign-extended low byte of rtn_addr
         add     rtn_addr, rtn_addr, data
         rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
         add     addr, addr, immed_data
         stwu    addr, 4(out_ptr)
         blr
+
+dr_operand_writeback_l_70:
         addi    data, blk_ofs, -2
         lhax    rtn_addr, pc, data
-        lwz     addr, 0x107C(base_disp)
+        lwz     addr, T_123B4 - dr_emitters(base_disp)  // template: stw zero, 0(0)
         rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
-        add     addr, addr, immed_data
-        stwu    addr, 4(out_ptr)
-        blr
-        lhax    rtn_addr, pc, blk_ofs
-        add     data, blk_ofs, rtn_addr
-        addi    data, data, -2
-        srwi    addr, data, 15
-        cmpwi   cr7, addr, 1
-        lwz     addr, 0x108C(base_disp)
-        bne     cr7, L_116E0
-        lwz     addr, 0x1090(base_disp)
-        add     addr, addr, immed_data
-        stwu    addr, 4(out_ptr)
-        blr
-        lwz     addr, 0x109C(base_disp)
-        b       L_115C8
-        lwz     addr, 0x10A0(base_disp)
-        b       L_115E0
-        lwz     addr, 0x109C(base_disp)
-L_11914:
-        rlwinm  data, data, 15, 13, 15                  // data = data[3:1] << 16
-        add     addr, addr, data
-        add     addr, addr, immed_data
-        stwu    addr, 4(out_ptr)
-        lwz     addr, 0x10B4(base_disp)
-        rlwimi  data, data, 5, 8, 10                    // data[23:21] = data[18:16]
-        add     addr, addr, data
-        stwu    addr, 4(out_ptr)
-        blr
-        lwz     addr, 0x10A0(base_disp)
-L_1193C:
-        lwz     data, 0x10B8(base_disp)
-        add     addr, addr, immed_data
-        stwu    addr, 4(out_ptr)
-        stwu    data, 4(out_ptr)
-        blr
-        lwz     addr, 0x10BC(base_disp)
-        b       L_115C8
-        lwz     addr, 0x10C0(base_disp)
-        b       L_115E0
-        lwz     addr, 0x109C(base_disp)
-        b       L_11640
-        lwz     addr, 0x10A0(base_disp)
-        b       L_11658
-        lwz     addr, 0x10D0(base_disp)
-        b       dr_emitters_L1
-        lhax    rtn_addr, pc, blk_ofs
-        lwz     addr, 0x10CC(base_disp)
-        b       L_11680
-        lwzx    rtn_addr, pc, blk_ofs
-        lwz     addr, 0x1140(base_disp)
-        addi    blk_ofs, blk_ofs, 4
-        rlwimi  addr, rtn_addr, 16, 16, 31              // addr[15:0] = rtn_addr[31:16]
-        stwu    addr, 4(out_ptr)
-        lwz     addr, 0x1144(base_disp)
-        rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
-        stwu    addr, 4(out_ptr)
-        lwz     addr, 0x10D0(base_disp)
-        add     addr, addr, immed_data
-        stwu    addr, 4(out_ptr)
-        blr
-        lhax    rtn_addr, pc, blk_ofs
-        add     data, blk_ofs, rtn_addr
-        addi    data, data, -2
-        srwi    addr, data, 15
-        cmpwi   cr7, addr, 1
-        lwz     addr, 0x10DC(base_disp)
-        beq     cr7, L_119E4
-L_119D0:
-        rlwimi  addr, data, 0, 16, 31                   // addr[15:0] = data[15:0]
-L_119D4:
-        add     addr, addr, immed_data
-        stwu    addr, 4(out_ptr)
-        addi    blk_ofs, blk_ofs, 2
-        blr
-L_119E4:
-        lwz     addr, 0x1164(base_disp)
-        rlwimi  addr, data, 0, 16, 31                   // addr[15:0] = data[15:0]
-        stwu    addr, 4(out_ptr)
-        lwz     addr, 0x10E0(base_disp)
-        b       L_119D4
-        lwz     addr, 0x10D0(base_disp)
-        b       dr_emitters_L12
-        lhax    rtn_addr, pc, blk_ofs
-        addi    blk_ofs, blk_ofs, 2
-        lwz     addr, 0x10EC(base_disp)
-        add     addr, addr, immed_data
-        rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
-        stwu    addr, 4(out_ptr)
-        blr
-        lwz     addr, 0x10A4(base_disp)
-        b       L_115C8
-        lwz     addr, 0x10A8(base_disp)
-        b       L_115E0
-        lwz     addr, 0x10A4(base_disp)
-        b       L_11914
-        lwz     addr, 0x10A8(base_disp)
-        b       L_1193C
-        lwz     addr, 0x10C4(base_disp)
-        b       L_115C8
-        lwz     addr, 0x10C8(base_disp)
-        b       L_115E0
-        lwz     addr, 0x10A4(base_disp)
-        b       L_11640
-        lwz     addr, 0x10A8(base_disp)
-        b       L_11658
-        lwz     addr, 0x10D8(base_disp)
-        b       dr_emitters_L1
-        lhax    rtn_addr, pc, blk_ofs
-        lwz     addr, 0x10D4(base_disp)
-        b       L_11684
-        lwzx    rtn_addr, pc, blk_ofs
-        lwz     addr, 0x1140(base_disp)
-        rlwimi  addr, rtn_addr, 16, 16, 31              // addr[15:0] = rtn_addr[31:16]
-        stwu    addr, 4(out_ptr)
-        lwz     addr, 0x1144(base_disp)
-        rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
-        stwu    addr, 4(out_ptr)
-        lwz     addr, 0x10D8(base_disp)
-        add     addr, addr, immed_data
-        stwu    addr, 4(out_ptr)
-        blr
-        lhax    rtn_addr, pc, blk_ofs
-        add     data, blk_ofs, rtn_addr
-        addi    data, data, -2
-        srwi    addr, data, 15
-        cmpwi   cr7, addr, 1
-        lwz     addr, 0x10E4(base_disp)
-        beq     cr7, L_119D0
-        lwz     addr, 0x1164(base_disp)
-        rlwimi  addr, data, 0, 16, 31                   // addr[15:0] = data[15:0]
-        stwu    addr, 4(out_ptr)
-        lwz     addr, 0x10E8(base_disp)
-        b       L_119D4
-        lwz     addr, 0x10D8(base_disp)
-        b       dr_emitters_L12
-        lwz     addr, 0x10AC(base_disp)
-        rlwinm  data, data, 15, 13, 15                  // data = data[3:1] << 16
-        add     addr, addr, data
-        add     addr, addr, immed_data
-        stwu    addr, 4(out_ptr)
-        blr
-        lwz     addr, 0x10B0(base_disp)
-        b       L_115E0
-        addi    addr, blk_ofs, -2
-        lhax    rtn_addr, pc, addr
-        lwz     addr, 0x10A4(base_disp)
-        rlwinm  data, data, 15, 13, 15                  // data = data[3:1] << 16
-        rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
-        b       L_115CC
-        addi    addr, blk_ofs, -2
-        lhax    rtn_addr, pc, addr
-        lwz     addr, 0x10A8(base_disp)
-        rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
-        b       L_115D0
-        addi    data, blk_ofs, -2
-        lhax    rtn_addr, pc, data
-        lwz     addr, 0x10D8(base_disp)
-        extsb   rtn_addr, rtn_addr                      // rtn_addr = sign-extended low byte of rtn_addr
-        rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
-        add     addr, addr, immed_data
-        stwu    addr, 4(out_ptr)
-        blr
-        addi    data, blk_ofs, -2
-        lhax    rtn_addr, pc, data
-        lwz     addr, 0x10D8(base_disp)
-        b       L_118A0
-        addi    data, blk_ofs, -2
-        lhax    rtn_addr, pc, data
-        lwz     addr, 0x10D4(base_disp)
-        rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
-        add     addr, addr, immed_data
-        stwu    addr, 4(out_ptr)
-        blr
-        lhax    rtn_addr, pc, blk_ofs
-        add     data, blk_ofs, rtn_addr
-        addi    data, data, -2
-        srwi    addr, data, 15
-        cmpwi   cr7, addr, 1
-        lwz     addr, 0x10E4(base_disp)
-        bne     cr7, L_119D0
-        lwz     addr, 0x10E8(base_disp)
-        add     addr, addr, immed_data
-        stwu    addr, 4(out_ptr)
-        blr
-        lwz     addr, 0x10F0(base_disp)
-        b       L_115C8
-        lwz     addr, 0x10F4(base_disp)
-        b       L_115E0
-        lwz     addr, 0x10F0(base_disp)
-        rlwinm  data, data, 15, 13, 15                  // data = data[3:1] << 16
-        add     addr, addr, data
-        add     addr, addr, immed_data
-        stwu    addr, 4(out_ptr)
-        lwz     addr, 0x1108(base_disp)
-        rlwimi  data, data, 5, 8, 10                    // data[23:21] = data[18:16]
-        add     addr, addr, data
-        stwu    addr, 4(out_ptr)
-        blr
-        lwz     addr, 0x10F4(base_disp)
-        add     addr, addr, immed_data
-        lwz     data, 0x110C(base_disp)
-        stwu    addr, 4(out_ptr)
-        stwu    data, 4(out_ptr)
-        blr
-        lwz     addr, 0x1110(base_disp)
-        b       L_115C8
-        lwz     addr, 0x1114(base_disp)
-        add     addr, addr, immed_data
-        stwu    addr, 4(out_ptr)
-        blr
-        lwz     addr, 0x10F0(base_disp)
-        b       L_11640
-        lwz     addr, 0x10F4(base_disp)
-        b       L_11658
-        lwz     addr, 0x1124(base_disp)
-        b       dr_emitters_L1
-        lhax    rtn_addr, pc, blk_ofs
-        lwz     addr, 0x1120(base_disp)
-        b       L_11680
-        lwzx    rtn_addr, pc, blk_ofs
-        lwz     addr, 0x1140(base_disp)
-        addi    blk_ofs, blk_ofs, 4
-        rlwimi  addr, rtn_addr, 16, 16, 31              // addr[15:0] = rtn_addr[31:16]
-        stwu    addr, 4(out_ptr)
-        lwz     addr, 0x1144(base_disp)
-        rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
-        stwu    addr, 4(out_ptr)
-        lwz     addr, 0x1124(base_disp)
-        add     addr, addr, immed_data
-        stwu    addr, 4(out_ptr)
-        blr
-        lhax    rtn_addr, pc, blk_ofs
-        add     data, blk_ofs, rtn_addr
-        addi    data, data, -2
-        srwi    addr, data, 15
-        cmpwi   cr7, addr, 1
-        lwz     addr, 0x1130(base_disp)
-        beq     cr7, L_11C84
-L_11C70:
-        rlwimi  addr, data, 0, 16, 31                   // addr[15:0] = data[15:0]
-L_11C74:
-        addi    blk_ofs, blk_ofs, 2
-L_11C78:
-        add     addr, addr, immed_data
-        stwu    addr, 4(out_ptr)
-        blr
-L_11C84:
-        lwz     addr, 0x1164(base_disp)
-        rlwimi  addr, data, 0, 16, 31                   // addr[15:0] = data[15:0]
-        stwu    addr, 4(out_ptr)
-        lwz     addr, 0x1134(base_disp)
-        b       L_11C74
-        lwz     addr, 0x1124(base_disp)
-        b       dr_emitters_L12
-        lhax    rtn_addr, pc, blk_ofs
-        lwz     addr, 0x10EC(base_disp)
-        addi    blk_ofs, blk_ofs, 2
-        extsb   rtn_addr, rtn_addr                      // rtn_addr = sign-extended low byte of rtn_addr
-        add     addr, addr, immed_data
-        rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
-        stwu    addr, 4(out_ptr)
-        blr
-        lwz     addr, 0x10F8(base_disp)
-        b       L_115C8
-        lwz     addr, 0x1100(base_disp)
-        b       L_115E0
-        lwz     addr, 0x10F8(base_disp)
-        rlwinm  data, data, 15, 13, 15                  // data = data[3:1] << 16
-        add     addr, addr, data
-        add     addr, addr, immed_data
-        stwu    addr, 4(out_ptr)
-        lwz     addr, 0x1108(base_disp)
-        rlwimi  data, data, 5, 8, 10                    // data[23:21] = data[18:16]
-        add     addr, addr, data
-        stwu    addr, 4(out_ptr)
-        blr
-        lwz     addr, 0x1100(base_disp)
-        add     addr, addr, immed_data
-        lwz     data, 0x110C(base_disp)
-        stwu    addr, 4(out_ptr)
-        stwu    data, 4(out_ptr)
-        blr
-        lwz     addr, 0x1118(base_disp)
-        b       L_115C8
-        lwz     addr, 0x111C(base_disp)
-        add     addr, addr, immed_data
-        stwu    addr, 4(out_ptr)
-        blr
-        lwz     addr, 0x10F8(base_disp)
-        b       L_11640
-        lwz     addr, 0x1100(base_disp)
-        b       L_11658
-        lwz     addr, 0x112C(base_disp)
-        b       dr_emitters_L1
-        lhax    rtn_addr, pc, blk_ofs
-        lwz     addr, 0x1128(base_disp)
-        b       L_11684
-        lwzx    rtn_addr, pc, blk_ofs
-        lwz     addr, 0x1140(base_disp)
-        rlwimi  addr, rtn_addr, 16, 16, 31              // addr[15:0] = rtn_addr[31:16]
-        stwu    addr, 4(out_ptr)
-        lwz     addr, 0x1144(base_disp)
-        rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
-        stwu    addr, 4(out_ptr)
-        lwz     addr, 0x112C(base_disp)
-        add     addr, addr, immed_data
-        stwu    addr, 4(out_ptr)
-        blr
-        lhax    rtn_addr, pc, blk_ofs
-        add     data, blk_ofs, rtn_addr
-        addi    data, data, -2
-        srwi    addr, data, 15
-        cmpwi   cr7, addr, 1
-        lwz     addr, 0x1138(base_disp)
-        bne     cr7, L_11C70
-        lwz     addr, 0x1164(base_disp)
-        rlwimi  addr, data, 0, 16, 31                   // addr[15:0] = data[15:0]
-        stwu    addr, 4(out_ptr)
-        lwz     addr, 0x113C(base_disp)
-        b       L_11C78
-        lwz     addr, 0x112C(base_disp)
-        b       dr_emitters_L12
-        lwz     addr, 0x10FC(base_disp)
-        rlwinm  data, data, 15, 13, 15                  // data = data[3:1] << 16
-        add     addr, addr, data
-        add     addr, addr, immed_data
-        stwu    addr, 4(out_ptr)
-        blr
-        lwz     addr, 0x1104(base_disp)
-        add     addr, addr, immed_data
-        stwu    addr, 4(out_ptr)
-        blr
-        addi    addr, blk_ofs, -2
-        lhax    rtn_addr, pc, addr
-        lwz     addr, 0x10F8(base_disp)
-        rlwinm  data, data, 15, 13, 15                  // data = data[3:1] << 16
-        rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
-        b       L_115CC
-        addi    addr, blk_ofs, -2
-        lhax    rtn_addr, pc, addr
-        lwz     addr, 0x1100(base_disp)
-        rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
-        b       L_115D0
-        addi    data, blk_ofs, -2
-        lhax    rtn_addr, pc, data
-        lwz     addr, 0x112C(base_disp)
-        extsb   rtn_addr, rtn_addr                      // rtn_addr = sign-extended low byte of rtn_addr
-        rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
-        add     addr, addr, immed_data
-        stwu    addr, 4(out_ptr)
-        blr
-        addi    data, blk_ofs, -2
-        lhax    rtn_addr, pc, data
-        lwz     addr, 0x112C(base_disp)
-        b       L_118A0
-        addi    data, blk_ofs, -2
-        lhax    rtn_addr, pc, data
-        lwz     addr, 0x1128(base_disp)
-        rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
-        add     addr, addr, immed_data
-        stwu    addr, 4(out_ptr)
-        blr
-        lhax    rtn_addr, pc, blk_ofs
-        add     data, blk_ofs, rtn_addr
-        addi    data, data, -2
-        srwi    addr, data, 15
-        cmpwi   cr7, addr, 1
-        lwz     addr, 0x1138(base_disp)
-        bne     cr7, L_11C70
-        lwz     addr, 0x113C(base_disp)
         add     addr, addr, immed_data
         stwu    addr, 4(out_ptr)
         blr
 
-// Five tables of 16-bit offsets from dr_emitters, 256 bytes each, indexed
-// by a 6-bit effective address field: the code generator for each
-// addressing mode, for each kind of operand access.
-dr_operand_emitters:
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0018
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0028
-        .short  0x0028
-        .short  0x0028
-        .short  0x0028
-        .short  0x0028
-        .short  0x0028
-        .short  0x0028
-        .short  0x0030
-        .short  0x0038
-        .short  0x0038
-        .short  0x0038
-        .short  0x0038
-        .short  0x0038
-        .short  0x0038
-        .short  0x0038
-        .short  0x0038
-        .short  0x0118
-        .short  0x0134
-        .short  0x0168
-        .short  0x01A0
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x028C
-        .short  0x028C
-        .short  0x028C
-        .short  0x028C
-        .short  0x028C
-        .short  0x028C
-        .short  0x028C
-        .short  0x02A4
-        .short  0x02B4
-        .short  0x02B4
-        .short  0x02B4
-        .short  0x02B4
-        .short  0x02B4
-        .short  0x02B4
-        .short  0x02B4
-        .short  0x02DC
-        .short  0x02F4
-        .short  0x02F4
-        .short  0x02F4
-        .short  0x02F4
-        .short  0x02F4
-        .short  0x02F4
-        .short  0x02F4
-        .short  0x02FC
-        .short  0x0304
-        .short  0x0304
-        .short  0x0304
-        .short  0x0304
-        .short  0x0304
-        .short  0x0304
-        .short  0x0304
-        .short  0x031C
-        .short  0x0338
-        .short  0x0338
-        .short  0x0338
-        .short  0x0338
-        .short  0x0338
-        .short  0x0338
-        .short  0x0338
-        .short  0x0338
-        .short  0x0340
-        .short  0x035C
-        .short  0x038C
-        .short  0x03D0
-        .short  0x03D8
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0438
-        .short  0x0438
-        .short  0x0438
-        .short  0x0438
-        .short  0x0438
-        .short  0x0438
-        .short  0x0438
-        .short  0x0440
-        .short  0x0448
-        .short  0x0448
-        .short  0x0448
-        .short  0x0448
-        .short  0x0448
-        .short  0x0448
-        .short  0x0448
-        .short  0x0450
-        .short  0x0458
-        .short  0x0458
-        .short  0x0458
-        .short  0x0458
-        .short  0x0458
-        .short  0x0458
-        .short  0x0458
-        .short  0x0460
-        .short  0x0468
-        .short  0x0468
-        .short  0x0468
-        .short  0x0468
-        .short  0x0468
-        .short  0x0468
-        .short  0x0468
-        .short  0x0470
-        .short  0x0478
-        .short  0x0478
-        .short  0x0478
-        .short  0x0478
-        .short  0x0478
-        .short  0x0478
-        .short  0x0478
-        .short  0x0478
-        .short  0x0480
-        .short  0x048C
-        .short  0x04B8
-        .short  0x04E8
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0438
-        .short  0x0438
-        .short  0x0438
-        .short  0x0438
-        .short  0x0438
-        .short  0x0438
-        .short  0x0438
-        .short  0x0440
-        .short  0x04F0
-        .short  0x04F0
-        .short  0x04F0
-        .short  0x04F0
-        .short  0x04F0
-        .short  0x04F0
-        .short  0x04F0
-        .short  0x0508
-        .short  0x0438
-        .short  0x0438
-        .short  0x0438
-        .short  0x0438
-        .short  0x0438
-        .short  0x0438
-        .short  0x0438
-        .short  0x0440
-        .short  0x0510
-        .short  0x0510
-        .short  0x0510
-        .short  0x0510
-        .short  0x0510
-        .short  0x0510
-        .short  0x0510
-        .short  0x0528
-        .short  0x053C
-        .short  0x053C
-        .short  0x053C
-        .short  0x053C
-        .short  0x053C
-        .short  0x053C
-        .short  0x053C
-        .short  0x053C
-        .short  0x0580
-        .short  0x04A8
-        .short  0x059C
-        .short  0x055C
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x05C8
-        .short  0x05C8
-        .short  0x05C8
-        .short  0x05C8
-        .short  0x05C8
-        .short  0x05C8
-        .short  0x05C8
-        .short  0x05D0
-        .short  0x05D8
-        .short  0x05D8
-        .short  0x05D8
-        .short  0x05D8
-        .short  0x05D8
-        .short  0x05D8
-        .short  0x05D8
-        .short  0x0600
-        .short  0x0618
-        .short  0x0618
-        .short  0x0618
-        .short  0x0618
-        .short  0x0618
-        .short  0x0618
-        .short  0x0618
-        .short  0x0620
-        .short  0x0628
-        .short  0x0628
-        .short  0x0628
-        .short  0x0628
-        .short  0x0628
-        .short  0x0628
-        .short  0x0628
-        .short  0x0630
-        .short  0x0638
-        .short  0x0638
-        .short  0x0638
-        .short  0x0638
-        .short  0x0638
-        .short  0x0638
-        .short  0x0638
-        .short  0x0638
-        .short  0x0640
-        .short  0x064C
-        .short  0x067C
-        .short  0x06C0
-        .short  0x06C8
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x06E4
-        .short  0x06E4
-        .short  0x06E4
-        .short  0x06E4
-        .short  0x06E4
-        .short  0x06E4
-        .short  0x06E4
-        .short  0x06EC
-        .short  0x06F4
-        .short  0x06F4
-        .short  0x06F4
-        .short  0x06F4
-        .short  0x06F4
-        .short  0x06F4
-        .short  0x06F4
-        .short  0x06FC
-        .short  0x0704
-        .short  0x0704
-        .short  0x0704
-        .short  0x0704
-        .short  0x0704
-        .short  0x0704
-        .short  0x0704
-        .short  0x070C
-        .short  0x0714
-        .short  0x0714
-        .short  0x0714
-        .short  0x0714
-        .short  0x0714
-        .short  0x0714
-        .short  0x0714
-        .short  0x071C
-        .short  0x0724
-        .short  0x0724
-        .short  0x0724
-        .short  0x0724
-        .short  0x0724
-        .short  0x0724
-        .short  0x0724
-        .short  0x0724
-        .short  0x072C
-        .short  0x0738
-        .short  0x0764
-        .short  0x0794
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x06E4
-        .short  0x06E4
-        .short  0x06E4
-        .short  0x06E4
-        .short  0x06E4
-        .short  0x06E4
-        .short  0x06E4
-        .short  0x06EC
-        .short  0x079C
-        .short  0x079C
-        .short  0x079C
-        .short  0x079C
-        .short  0x079C
-        .short  0x079C
-        .short  0x079C
-        .short  0x07B4
-        .short  0x06E4
-        .short  0x06E4
-        .short  0x06E4
-        .short  0x06E4
-        .short  0x06E4
-        .short  0x06E4
-        .short  0x06E4
-        .short  0x06EC
-        .short  0x07BC
-        .short  0x07BC
-        .short  0x07BC
-        .short  0x07BC
-        .short  0x07BC
-        .short  0x07BC
-        .short  0x07BC
-        .short  0x07D4
-        .short  0x07E8
-        .short  0x07E8
-        .short  0x07E8
-        .short  0x07E8
-        .short  0x07E8
-        .short  0x07E8
-        .short  0x07E8
-        .short  0x07E8
-        .short  0x0818
-        .short  0x0754
-        .short  0x0834
-        .short  0x0808
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0860
-        .short  0x0860
-        .short  0x0860
-        .short  0x0860
-        .short  0x0860
-        .short  0x0860
-        .short  0x0860
-        .short  0x0868
-        .short  0x0870
-        .short  0x0870
-        .short  0x0870
-        .short  0x0870
-        .short  0x0870
-        .short  0x0870
-        .short  0x0870
-        .short  0x0898
-        .short  0x08B0
-        .short  0x08B0
-        .short  0x08B0
-        .short  0x08B0
-        .short  0x08B0
-        .short  0x08B0
-        .short  0x08B0
-        .short  0x08B8
-        .short  0x08C8
-        .short  0x08C8
-        .short  0x08C8
-        .short  0x08C8
-        .short  0x08C8
-        .short  0x08C8
-        .short  0x08C8
-        .short  0x08D0
-        .short  0x08D8
-        .short  0x08D8
-        .short  0x08D8
-        .short  0x08D8
-        .short  0x08D8
-        .short  0x08D8
-        .short  0x08D8
-        .short  0x08D8
-        .short  0x08E0
-        .short  0x08EC
-        .short  0x091C
-        .short  0x0960
-        .short  0x0968
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0988
-        .short  0x0988
-        .short  0x0988
-        .short  0x0988
-        .short  0x0988
-        .short  0x0988
-        .short  0x0988
-        .short  0x0990
-        .short  0x0998
-        .short  0x0998
-        .short  0x0998
-        .short  0x0998
-        .short  0x0998
-        .short  0x0998
-        .short  0x0998
-        .short  0x09C0
-        .short  0x09D8
-        .short  0x09D8
-        .short  0x09D8
-        .short  0x09D8
-        .short  0x09D8
-        .short  0x09D8
-        .short  0x09D8
-        .short  0x09E0
-        .short  0x09F0
-        .short  0x09F0
-        .short  0x09F0
-        .short  0x09F0
-        .short  0x09F0
-        .short  0x09F0
-        .short  0x09F0
-        .short  0x09F8
-        .short  0x0A00
-        .short  0x0A00
-        .short  0x0A00
-        .short  0x0A00
-        .short  0x0A00
-        .short  0x0A00
-        .short  0x0A00
-        .short  0x0A00
-        .short  0x0A08
-        .short  0x0A14
-        .short  0x0A40
-        .short  0x0A70
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0988
-        .short  0x0988
-        .short  0x0988
-        .short  0x0988
-        .short  0x0988
-        .short  0x0988
-        .short  0x0988
-        .short  0x0990
-        .short  0x0A78
-        .short  0x0A78
-        .short  0x0A78
-        .short  0x0A78
-        .short  0x0A78
-        .short  0x0A78
-        .short  0x0A78
-        .short  0x0A90
-        .short  0x0988
-        .short  0x0988
-        .short  0x0988
-        .short  0x0988
-        .short  0x0988
-        .short  0x0988
-        .short  0x0988
-        .short  0x0990
-        .short  0x0AA0
-        .short  0x0AA0
-        .short  0x0AA0
-        .short  0x0AA0
-        .short  0x0AA0
-        .short  0x0AA0
-        .short  0x0AA0
-        .short  0x0AB8
-        .short  0x0ACC
-        .short  0x0ACC
-        .short  0x0ACC
-        .short  0x0ACC
-        .short  0x0ACC
-        .short  0x0ACC
-        .short  0x0ACC
-        .short  0x0ACC
-        .short  0x0AFC
-        .short  0x0A30
-        .short  0x0B18
-        .short  0x0AEC
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        .short  0x0000
-        lwz     zero, 0(a0)
-        lwz     zero, 0(a7)
-        stw     zero, 0(a0)
-        stw     zero, 0(a7)
-        stw     zero, -4(a0)
-        stw     zero, -4(a7)
-        addi    a0, a0, 4
-        addi    a7, a7, 4
-        lwzu    zero, -4(a0)
-        lwzu    zero, -4(a7)
-        stwu    zero, -4(a0)
-        stwu    zero, -4(a7)
-        lwz     zero, 0(0)
-        lwz     zero, 0(data)
-        stw     zero, 0(0)
-        stw     zero, 0(data)
-        lwz     zero, 0(pc)
-        lwzx    zero, pc, data
-        stw     zero, 0(pc)
-        stwx    zero, pc, data
-        oris    zero, zero, 0x0000
-        nop
-        lha     zero, 0(a0)
-        lha     zero, 0(a7)
-        sth     zero, 0(a0)
-        sth     zero, 0(a7)
-        sth     zero, -2(a0)
-        sth     zero, -2(a7)
-        addi    a0, a0, 2
-        addi    a7, a7, 2
-        lhau    zero, -2(a0)
-        lhau    zero, -2(a7)
-        sthu    zero, -2(a0)
-        sthu    zero, -2(a7)
-        lha     zero, 0(0)
-        lha     zero, 0(data)
-        sth     zero, 0(0)
-        sth     zero, 0(data)
-        lha     zero, 0(pc)
-        lhax    zero, pc, data
-        sth     zero, 0(pc)
-        sthx    zero, pc, data
-        li      zero, 0
-        lbz     zero, 0(a0)
-        lbz     zero, 0(a7)
-        stb     zero, 0(a0)
-        stb     zero, -1(a0)
-        stb     zero, 0(a7)
-        stb     zero, -2(a7)
-        addi    a0, a0, 1
-        addi    a7, a7, 2
-        lbzu    zero, -1(a0)
-        lbzu    zero, -2(a7)
-        stbu    zero, -1(a0)
-        stbu    zero, -2(a7)
-        lbz     zero, 0(0)
-        lbz     zero, 0(data)
-        stb     zero, 0(0)
-        stb     zero, 0(data)
-        lbz     zero, 0(pc)
-        lbzx    zero, pc, data
-        stb     zero, 0(pc)
-        stbx    zero, pc, data
-        oris    data, zero, 0x0000
-        ori     data, data, 0x0000
-        extsh   data, d0                                // data = sign-extended low word of d0
-        rlwinm  data, data, 0, 0, 31                    // data = data[31:0]
-        rlwinm  data, d0, 0, 0, 31                      // data = d0[31:0]
-        add     data, data, a0
-        add     data, d0, a0
-        add     data, data, pc
-        add     data, d0, pc
-        ori     data, zero, 0x0000
-L_124A0:
-        addi    rtn_addr, base_disp, 0xBC4
-L_124A4:
-        rlwinm  data, prefetch_data, 1, 25, 30          // data = prefetch_data[5:0] << 1
-L_124A8:
-        lhzx    rtn_addr, rtn_addr, data
+dr_operand_writeback_l_72:
+        lhax    rtn_addr, pc, blk_ofs
+        add     data, blk_ofs, rtn_addr
+        addi    data, data, -2
+        srwi    addr, data, 15
+        cmpwi   cr7, addr, 1
+        lwz     addr, T_123C4 - dr_emitters(base_disp)  // template: stw zero, 0(pc)
+        bne     cr7, dr_operand_load_l_72_L1
+        lwz     addr, T_123C8 - dr_emitters(base_disp)  // template: stwx zero, pc, data
+        add     addr, addr, immed_data
+        stwu    addr, 4(out_ptr)
+        blr
+
+dr_operand_load_w_20:
+        lwz     addr, T_123D4 - dr_emitters(base_disp)  // template: lha zero, 0(a0)
+        b       dr_operand_load_l_20_L1
+
+dr_operand_load_w_27:
+        lwz     addr, T_123D8 - dr_emitters(base_disp)  // template: lha zero, 0(a7)
+        b       dr_operand_load_l_27_L1
+
+dr_operand_load_w_30:
+        lwz     addr, T_123D4 - dr_emitters(base_disp)  // template: lha zero, 0(a0)
+dr_operand_load_w_30_L1:
+        rlwinm  data, data, 15, 13, 15                  // data = data[3:1] << 16
+        add     addr, addr, data
+        add     addr, addr, immed_data
+        stwu    addr, 4(out_ptr)
+        lwz     addr, T_123EC - dr_emitters(base_disp)  // template: addi a0, a0, 2
+        rlwimi  data, data, 5, 8, 10                    // data[23:21] = data[18:16]
+        add     addr, addr, data
+        stwu    addr, 4(out_ptr)
+        blr
+
+dr_operand_load_w_37:
+        lwz     addr, T_123D8 - dr_emitters(base_disp)  // template: lha zero, 0(a7)
+dr_operand_load_w_37_L1:
+        lwz     data, T_123F0 - dr_emitters(base_disp)  // template: addi a7, a7, 2
+        add     addr, addr, immed_data
+        stwu    addr, 4(out_ptr)
+        stwu    data, 4(out_ptr)
+        blr
+
+dr_operand_load_w_40:
+        lwz     addr, T_123F4 - dr_emitters(base_disp)  // template: lhau zero, -2(a0)
+        b       dr_operand_load_l_20_L1
+
+dr_operand_load_w_47:
+        lwz     addr, T_123F8 - dr_emitters(base_disp)  // template: lhau zero, -2(a7)
+        b       dr_operand_load_l_27_L1
+
+dr_operand_load_w_50:
+        lwz     addr, T_123D4 - dr_emitters(base_disp)  // template: lha zero, 0(a0)
+        b       dr_operand_load_l_50_L1
+
+dr_operand_load_w_57:
+        lwz     addr, T_123D8 - dr_emitters(base_disp)  // template: lha zero, 0(a7)
+        b       dr_operand_load_l_57_L1
+
+dr_operand_load_w_60:
+        lwz     addr, T_12408 - dr_emitters(base_disp)  // template: lha zero, 0(data)
+        b       dr_operand_address_60_L1
+
+dr_operand_load_w_70:
+        lhax    rtn_addr, pc, blk_ofs
+        lwz     addr, T_12404 - dr_emitters(base_disp)  // template: lha zero, 0(0)
+        b       dr_operand_load_l_70_L1
+
+dr_operand_load_w_71:
+        lwzx    rtn_addr, pc, blk_ofs
+        lwz     addr, T_12478 - dr_emitters(base_disp)  // template: oris data, zero, 0x0000
+        addi    blk_ofs, blk_ofs, 4
+        rlwimi  addr, rtn_addr, 16, 16, 31              // addr[15:0] = rtn_addr[31:16]
+        stwu    addr, 4(out_ptr)
+        lwz     addr, T_1247C - dr_emitters(base_disp)  // template: ori data, data, 0x0000
+        rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
+        stwu    addr, 4(out_ptr)
+        lwz     addr, T_12408 - dr_emitters(base_disp)  // template: lha zero, 0(data)
+        add     addr, addr, immed_data
+        stwu    addr, 4(out_ptr)
+        blr
+
+dr_operand_load_w_72:
+        lhax    rtn_addr, pc, blk_ofs
+        add     data, blk_ofs, rtn_addr
+        addi    data, data, -2
+        srwi    addr, data, 15
+        cmpwi   cr7, addr, 1
+        lwz     addr, T_12414 - dr_emitters(base_disp)  // template: lha zero, 0(pc)
+        beq     cr7, dr_operand_load_w_72_L3
+dr_operand_load_w_72_L1:
+        rlwimi  addr, data, 0, 16, 31                   // addr[15:0] = data[15:0]
+dr_operand_load_w_72_L2:
+        add     addr, addr, immed_data
+        stwu    addr, 4(out_ptr)
+        addi    blk_ofs, blk_ofs, 2
+        blr
+dr_operand_load_w_72_L3:
+        lwz     addr, T_1249C - dr_emitters(base_disp)  // template: ori data, zero, 0x0000
+        rlwimi  addr, data, 0, 16, 31                   // addr[15:0] = data[15:0]
+        stwu    addr, 4(out_ptr)
+        lwz     addr, T_12418 - dr_emitters(base_disp)  // template: lhax zero, pc, data
+        b       dr_operand_load_w_72_L2
+
+dr_operand_load_w_73:
+        lwz     addr, T_12408 - dr_emitters(base_disp)  // template: lha zero, 0(data)
+        b       dr_operand_address_73_L1
+
+dr_operand_load_w_74:
+        lhax    rtn_addr, pc, blk_ofs
+        addi    blk_ofs, blk_ofs, 2
+        lwz     addr, T_12424 - dr_emitters(base_disp)  // template: li zero, 0
+        add     addr, addr, immed_data
+        rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
+        stwu    addr, 4(out_ptr)
+        blr
+
+dr_operand_store_w_20:
+        lwz     addr, T_123DC - dr_emitters(base_disp)  // template: sth zero, 0(a0)
+        b       dr_operand_load_l_20_L1
+
+dr_operand_store_w_27:
+        lwz     addr, T_123E0 - dr_emitters(base_disp)  // template: sth zero, 0(a7)
+        b       dr_operand_load_l_27_L1
+
+dr_operand_store_w_30:
+        lwz     addr, T_123DC - dr_emitters(base_disp)  // template: sth zero, 0(a0)
+        b       dr_operand_load_w_30_L1
+
+dr_operand_store_w_37:
+        lwz     addr, T_123E0 - dr_emitters(base_disp)  // template: sth zero, 0(a7)
+        b       dr_operand_load_w_37_L1
+
+dr_operand_store_w_40:
+        lwz     addr, T_123FC - dr_emitters(base_disp)  // template: sthu zero, -2(a0)
+        b       dr_operand_load_l_20_L1
+
+dr_operand_store_w_47:
+        lwz     addr, T_12400 - dr_emitters(base_disp)  // template: sthu zero, -2(a7)
+        b       dr_operand_load_l_27_L1
+
+dr_operand_store_w_50:
+        lwz     addr, T_123DC - dr_emitters(base_disp)  // template: sth zero, 0(a0)
+        b       dr_operand_load_l_50_L1
+
+dr_operand_store_w_57:
+        lwz     addr, T_123E0 - dr_emitters(base_disp)  // template: sth zero, 0(a7)
+        b       dr_operand_load_l_57_L1
+
+dr_operand_store_w_60:
+        lwz     addr, T_12410 - dr_emitters(base_disp)  // template: sth zero, 0(data)
+        b       dr_operand_address_60_L1
+
+dr_operand_store_w_70:
+        lhax    rtn_addr, pc, blk_ofs
+        lwz     addr, T_1240C - dr_emitters(base_disp)  // template: sth zero, 0(0)
+        b       dr_operand_load_l_70_L2
+
+dr_operand_store_w_71:
+        lwzx    rtn_addr, pc, blk_ofs
+        lwz     addr, T_12478 - dr_emitters(base_disp)  // template: oris data, zero, 0x0000
+        rlwimi  addr, rtn_addr, 16, 16, 31              // addr[15:0] = rtn_addr[31:16]
+        stwu    addr, 4(out_ptr)
+        lwz     addr, T_1247C - dr_emitters(base_disp)  // template: ori data, data, 0x0000
+        rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
+        stwu    addr, 4(out_ptr)
+
+dr_operand_writeback_w_71:
+        lwz     addr, T_12410 - dr_emitters(base_disp)  // template: sth zero, 0(data)
+        add     addr, addr, immed_data
+        stwu    addr, 4(out_ptr)
+        blr
+
+dr_operand_store_w_72:
+        lhax    rtn_addr, pc, blk_ofs
+        add     data, blk_ofs, rtn_addr
+        addi    data, data, -2
+        srwi    addr, data, 15
+        cmpwi   cr7, addr, 1
+        lwz     addr, T_1241C - dr_emitters(base_disp)  // template: sth zero, 0(pc)
+        beq     cr7, dr_operand_load_w_72_L1
+        lwz     addr, T_1249C - dr_emitters(base_disp)  // template: ori data, zero, 0x0000
+        rlwimi  addr, data, 0, 16, 31                   // addr[15:0] = data[15:0]
+        stwu    addr, 4(out_ptr)
+        lwz     addr, T_12420 - dr_emitters(base_disp)  // template: sthx zero, pc, data
+        b       dr_operand_load_w_72_L2
+
+dr_operand_store_w_73:
+        lwz     addr, T_12410 - dr_emitters(base_disp)  // template: sth zero, 0(data)
+        b       dr_operand_address_73_L1
+
+dr_operand_writeback_w_30:
+        lwz     addr, T_123E4 - dr_emitters(base_disp)  // template: sth zero, -2(a0)
+        rlwinm  data, data, 15, 13, 15                  // data = data[3:1] << 16
+        add     addr, addr, data
+        add     addr, addr, immed_data
+        stwu    addr, 4(out_ptr)
+        blr
+
+dr_operand_writeback_w_37:
+        lwz     addr, T_123E8 - dr_emitters(base_disp)  // template: sth zero, -2(a7)
+        b       dr_operand_load_l_27_L1
+
+dr_operand_writeback_w_50:
+        addi    addr, blk_ofs, -2
+        lhax    rtn_addr, pc, addr
+        lwz     addr, T_123DC - dr_emitters(base_disp)  // template: sth zero, 0(a0)
+        rlwinm  data, data, 15, 13, 15                  // data = data[3:1] << 16
+        rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
+        b       dr_operand_load_l_20_L2
+
+dr_operand_writeback_w_57:
+        addi    addr, blk_ofs, -2
+        lhax    rtn_addr, pc, addr
+        lwz     addr, T_123E0 - dr_emitters(base_disp)  // template: sth zero, 0(a7)
+        rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
+        b       dr_operand_load_l_20_L3
+
+dr_operand_writeback_w_60:
+        addi    data, blk_ofs, -2
+        lhax    rtn_addr, pc, data
+        lwz     addr, T_12410 - dr_emitters(base_disp)  // template: sth zero, 0(data)
+        extsb   rtn_addr, rtn_addr                      // rtn_addr = sign-extended low byte of rtn_addr
+        rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
+        add     addr, addr, immed_data
+        stwu    addr, 4(out_ptr)
+        blr
+
+dr_operand_writeback_w_73:
+        addi    data, blk_ofs, -2
+        lhax    rtn_addr, pc, data
+        lwz     addr, T_12410 - dr_emitters(base_disp)  // template: sth zero, 0(data)
+        b       dr_operand_writeback_l_73_L1
+
+dr_operand_writeback_w_70:
+        addi    data, blk_ofs, -2
+        lhax    rtn_addr, pc, data
+        lwz     addr, T_1240C - dr_emitters(base_disp)  // template: sth zero, 0(0)
+        rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
+        add     addr, addr, immed_data
+        stwu    addr, 4(out_ptr)
+        blr
+
+dr_operand_writeback_w_72:
+        lhax    rtn_addr, pc, blk_ofs
+        add     data, blk_ofs, rtn_addr
+        addi    data, data, -2
+        srwi    addr, data, 15
+        cmpwi   cr7, addr, 1
+        lwz     addr, T_1241C - dr_emitters(base_disp)  // template: sth zero, 0(pc)
+        bne     cr7, dr_operand_load_w_72_L1
+        lwz     addr, T_12420 - dr_emitters(base_disp)  // template: sthx zero, pc, data
+        add     addr, addr, immed_data
+        stwu    addr, 4(out_ptr)
+        blr
+
+dr_operand_load_b_20:
+        lwz     addr, T_12428 - dr_emitters(base_disp)  // template: lbz zero, 0(a0)
+        b       dr_operand_load_l_20_L1
+
+dr_operand_load_b_27:
+        lwz     addr, T_1242C - dr_emitters(base_disp)  // template: lbz zero, 0(a7)
+        b       dr_operand_load_l_27_L1
+
+dr_operand_load_b_30:
+        lwz     addr, T_12428 - dr_emitters(base_disp)  // template: lbz zero, 0(a0)
+        rlwinm  data, data, 15, 13, 15                  // data = data[3:1] << 16
+        add     addr, addr, data
+        add     addr, addr, immed_data
+        stwu    addr, 4(out_ptr)
+        lwz     addr, T_12440 - dr_emitters(base_disp)  // template: addi a0, a0, 1
+        rlwimi  data, data, 5, 8, 10                    // data[23:21] = data[18:16]
+        add     addr, addr, data
+        stwu    addr, 4(out_ptr)
+        blr
+
+dr_operand_load_b_37:
+        lwz     addr, T_1242C - dr_emitters(base_disp)  // template: lbz zero, 0(a7)
+        add     addr, addr, immed_data
+        lwz     data, T_12444 - dr_emitters(base_disp)  // template: addi a7, a7, 2
+        stwu    addr, 4(out_ptr)
+        stwu    data, 4(out_ptr)
+        blr
+
+dr_operand_load_b_40:
+        lwz     addr, T_12448 - dr_emitters(base_disp)  // template: lbzu zero, -1(a0)
+        b       dr_operand_load_l_20_L1
+
+dr_operand_load_b_47:
+        lwz     addr, T_1244C - dr_emitters(base_disp)  // template: lbzu zero, -2(a7)
+        add     addr, addr, immed_data
+        stwu    addr, 4(out_ptr)
+        blr
+
+dr_operand_load_b_50:
+        lwz     addr, T_12428 - dr_emitters(base_disp)  // template: lbz zero, 0(a0)
+        b       dr_operand_load_l_50_L1
+
+dr_operand_load_b_57:
+        lwz     addr, T_1242C - dr_emitters(base_disp)  // template: lbz zero, 0(a7)
+        b       dr_operand_load_l_57_L1
+
+dr_operand_load_b_60:
+        lwz     addr, T_1245C - dr_emitters(base_disp)  // template: lbz zero, 0(data)
+        b       dr_operand_address_60_L1
+
+dr_operand_load_b_70:
+        lhax    rtn_addr, pc, blk_ofs
+        lwz     addr, T_12458 - dr_emitters(base_disp)  // template: lbz zero, 0(0)
+        b       dr_operand_load_l_70_L1
+
+dr_operand_load_b_71:
+        lwzx    rtn_addr, pc, blk_ofs
+        lwz     addr, T_12478 - dr_emitters(base_disp)  // template: oris data, zero, 0x0000
+        addi    blk_ofs, blk_ofs, 4
+        rlwimi  addr, rtn_addr, 16, 16, 31              // addr[15:0] = rtn_addr[31:16]
+        stwu    addr, 4(out_ptr)
+        lwz     addr, T_1247C - dr_emitters(base_disp)  // template: ori data, data, 0x0000
+        rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
+        stwu    addr, 4(out_ptr)
+        lwz     addr, T_1245C - dr_emitters(base_disp)  // template: lbz zero, 0(data)
+        add     addr, addr, immed_data
+        stwu    addr, 4(out_ptr)
+        blr
+
+dr_operand_load_b_72:
+        lhax    rtn_addr, pc, blk_ofs
+        add     data, blk_ofs, rtn_addr
+        addi    data, data, -2
+        srwi    addr, data, 15
+        cmpwi   cr7, addr, 1
+        lwz     addr, T_12468 - dr_emitters(base_disp)  // template: lbz zero, 0(pc)
+        beq     cr7, dr_operand_load_b_72_L4
+dr_operand_load_b_72_L1:
+        rlwimi  addr, data, 0, 16, 31                   // addr[15:0] = data[15:0]
+dr_operand_load_b_72_L2:
+        addi    blk_ofs, blk_ofs, 2
+dr_operand_load_b_72_L3:
+        add     addr, addr, immed_data
+        stwu    addr, 4(out_ptr)
+        blr
+dr_operand_load_b_72_L4:
+        lwz     addr, T_1249C - dr_emitters(base_disp)  // template: ori data, zero, 0x0000
+        rlwimi  addr, data, 0, 16, 31                   // addr[15:0] = data[15:0]
+        stwu    addr, 4(out_ptr)
+        lwz     addr, T_1246C - dr_emitters(base_disp)  // template: lbzx zero, pc, data
+        b       dr_operand_load_b_72_L2
+
+dr_operand_load_b_73:
+        lwz     addr, T_1245C - dr_emitters(base_disp)  // template: lbz zero, 0(data)
+        b       dr_operand_address_73_L1
+
+dr_operand_load_b_74:
+        lhax    rtn_addr, pc, blk_ofs
+        lwz     addr, T_12424 - dr_emitters(base_disp)  // template: li zero, 0
+        addi    blk_ofs, blk_ofs, 2
+        extsb   rtn_addr, rtn_addr                      // rtn_addr = sign-extended low byte of rtn_addr
+        add     addr, addr, immed_data
+        rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
+        stwu    addr, 4(out_ptr)
+        blr
+
+dr_operand_store_b_20:
+        lwz     addr, T_12430 - dr_emitters(base_disp)  // template: stb zero, 0(a0)
+        b       dr_operand_load_l_20_L1
+
+dr_operand_store_b_27:
+        lwz     addr, T_12438 - dr_emitters(base_disp)  // template: stb zero, 0(a7)
+        b       dr_operand_load_l_27_L1
+
+dr_operand_store_b_30:
+        lwz     addr, T_12430 - dr_emitters(base_disp)  // template: stb zero, 0(a0)
+        rlwinm  data, data, 15, 13, 15                  // data = data[3:1] << 16
+        add     addr, addr, data
+        add     addr, addr, immed_data
+        stwu    addr, 4(out_ptr)
+        lwz     addr, T_12440 - dr_emitters(base_disp)  // template: addi a0, a0, 1
+        rlwimi  data, data, 5, 8, 10                    // data[23:21] = data[18:16]
+        add     addr, addr, data
+        stwu    addr, 4(out_ptr)
+        blr
+
+dr_operand_store_b_37:
+        lwz     addr, T_12438 - dr_emitters(base_disp)  // template: stb zero, 0(a7)
+        add     addr, addr, immed_data
+        lwz     data, T_12444 - dr_emitters(base_disp)  // template: addi a7, a7, 2
+        stwu    addr, 4(out_ptr)
+        stwu    data, 4(out_ptr)
+        blr
+
+dr_operand_store_b_40:
+        lwz     addr, T_12450 - dr_emitters(base_disp)  // template: stbu zero, -1(a0)
+        b       dr_operand_load_l_20_L1
+
+dr_operand_store_b_47:
+        lwz     addr, T_12454 - dr_emitters(base_disp)  // template: stbu zero, -2(a7)
+        add     addr, addr, immed_data
+        stwu    addr, 4(out_ptr)
+        blr
+
+dr_operand_store_b_50:
+        lwz     addr, T_12430 - dr_emitters(base_disp)  // template: stb zero, 0(a0)
+        b       dr_operand_load_l_50_L1
+
+dr_operand_store_b_57:
+        lwz     addr, T_12438 - dr_emitters(base_disp)  // template: stb zero, 0(a7)
+        b       dr_operand_load_l_57_L1
+
+dr_operand_store_b_60:
+        lwz     addr, T_12464 - dr_emitters(base_disp)  // template: stb zero, 0(data)
+        b       dr_operand_address_60_L1
+
+dr_operand_store_b_70:
+        lhax    rtn_addr, pc, blk_ofs
+        lwz     addr, T_12460 - dr_emitters(base_disp)  // template: stb zero, 0(0)
+        b       dr_operand_load_l_70_L2
+
+dr_operand_store_b_71:
+        lwzx    rtn_addr, pc, blk_ofs
+        lwz     addr, T_12478 - dr_emitters(base_disp)  // template: oris data, zero, 0x0000
+        rlwimi  addr, rtn_addr, 16, 16, 31              // addr[15:0] = rtn_addr[31:16]
+        stwu    addr, 4(out_ptr)
+        lwz     addr, T_1247C - dr_emitters(base_disp)  // template: ori data, data, 0x0000
+        rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
+        stwu    addr, 4(out_ptr)
+
+dr_operand_writeback_b_71:
+        lwz     addr, T_12464 - dr_emitters(base_disp)  // template: stb zero, 0(data)
+        add     addr, addr, immed_data
+        stwu    addr, 4(out_ptr)
+        blr
+
+dr_operand_store_b_72:
+        lhax    rtn_addr, pc, blk_ofs
+        add     data, blk_ofs, rtn_addr
+        addi    data, data, -2
+        srwi    addr, data, 15
+        cmpwi   cr7, addr, 1
+        lwz     addr, T_12470 - dr_emitters(base_disp)  // template: stb zero, 0(pc)
+        bne     cr7, dr_operand_load_b_72_L1
+        lwz     addr, T_1249C - dr_emitters(base_disp)  // template: ori data, zero, 0x0000
+        rlwimi  addr, data, 0, 16, 31                   // addr[15:0] = data[15:0]
+        stwu    addr, 4(out_ptr)
+        lwz     addr, T_12474 - dr_emitters(base_disp)  // template: stbx zero, pc, data
+        b       dr_operand_load_b_72_L3
+
+dr_operand_store_b_73:
+        lwz     addr, T_12464 - dr_emitters(base_disp)  // template: stb zero, 0(data)
+        b       dr_operand_address_73_L1
+
+dr_operand_writeback_b_30:
+        lwz     addr, T_12434 - dr_emitters(base_disp)  // template: stb zero, -1(a0)
+        rlwinm  data, data, 15, 13, 15                  // data = data[3:1] << 16
+        add     addr, addr, data
+        add     addr, addr, immed_data
+        stwu    addr, 4(out_ptr)
+        blr
+
+dr_operand_writeback_b_37:
+        lwz     addr, T_1243C - dr_emitters(base_disp)  // template: stb zero, -2(a7)
+        add     addr, addr, immed_data
+        stwu    addr, 4(out_ptr)
+        blr
+
+dr_operand_writeback_b_50:
+        addi    addr, blk_ofs, -2
+        lhax    rtn_addr, pc, addr
+        lwz     addr, T_12430 - dr_emitters(base_disp)  // template: stb zero, 0(a0)
+        rlwinm  data, data, 15, 13, 15                  // data = data[3:1] << 16
+        rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
+        b       dr_operand_load_l_20_L2
+
+dr_operand_writeback_b_57:
+        addi    addr, blk_ofs, -2
+        lhax    rtn_addr, pc, addr
+        lwz     addr, T_12438 - dr_emitters(base_disp)  // template: stb zero, 0(a7)
+        rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
+        b       dr_operand_load_l_20_L3
+
+dr_operand_writeback_b_60:
+        addi    data, blk_ofs, -2
+        lhax    rtn_addr, pc, data
+        lwz     addr, T_12464 - dr_emitters(base_disp)  // template: stb zero, 0(data)
+        extsb   rtn_addr, rtn_addr                      // rtn_addr = sign-extended low byte of rtn_addr
+        rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
+        add     addr, addr, immed_data
+        stwu    addr, 4(out_ptr)
+        blr
+
+dr_operand_writeback_b_73:
+        addi    data, blk_ofs, -2
+        lhax    rtn_addr, pc, data
+        lwz     addr, T_12464 - dr_emitters(base_disp)  // template: stb zero, 0(data)
+        b       dr_operand_writeback_l_73_L1
+
+dr_operand_writeback_b_70:
+        addi    data, blk_ofs, -2
+        lhax    rtn_addr, pc, data
+        lwz     addr, T_12460 - dr_emitters(base_disp)  // template: stb zero, 0(0)
+        rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
+        add     addr, addr, immed_data
+        stwu    addr, 4(out_ptr)
+        blr
+
+dr_operand_writeback_b_72:
+        lhax    rtn_addr, pc, blk_ofs
+        add     data, blk_ofs, rtn_addr
+        addi    data, data, -2
+        srwi    addr, data, 15
+        cmpwi   cr7, addr, 1
+        lwz     addr, T_12470 - dr_emitters(base_disp)  // template: stb zero, 0(pc)
+        bne     cr7, dr_operand_load_b_72_L1
+        lwz     addr, T_12474 - dr_emitters(base_disp)  // template: stbx zero, pc, data
+        add     addr, addr, immed_data
+        stwu    addr, 4(out_ptr)
+        blr
+
+// The operand emitters: ten tables of 16-bit offsets from dr_emitters, each
+// indexed by a 6-bit effective address field (mode * 8 + register), giving
+// the routine that generates the access for that addressing mode.  A zero
+// entry is a mode that cannot occur.  The routines are named after the
+// table and the field: dr_operand_load_l_30 loads a long word from (An)+,
+// and _37 is its A7 variant (A7 is r1, out of sequence with A0-A6).
+//
+// This table: the address of the operand (LEA, PEA, JMP, JSR, MOVEM).
+dr_operand_address_table:
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  dr_operand_address_27 - dr_emitters
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  dr_operand_address_50 - dr_emitters
+        .short  dr_operand_address_50 - dr_emitters
+        .short  dr_operand_address_50 - dr_emitters
+        .short  dr_operand_address_50 - dr_emitters
+        .short  dr_operand_address_50 - dr_emitters
+        .short  dr_operand_address_50 - dr_emitters
+        .short  dr_operand_address_50 - dr_emitters
+        .short  dr_operand_address_57 - dr_emitters
+        .short  dr_operand_address_60 - dr_emitters
+        .short  dr_operand_address_60 - dr_emitters
+        .short  dr_operand_address_60 - dr_emitters
+        .short  dr_operand_address_60 - dr_emitters
+        .short  dr_operand_address_60 - dr_emitters
+        .short  dr_operand_address_60 - dr_emitters
+        .short  dr_operand_address_60 - dr_emitters
+        .short  dr_operand_address_60 - dr_emitters
+        .short  dr_operand_address_70 - dr_emitters
+        .short  dr_operand_address_71 - dr_emitters
+        .short  dr_operand_address_72 - dr_emitters
+        .short  dr_operand_address_73 - dr_emitters
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+
+// Load a long word; includes immediate data (field 74).
+dr_operand_load_l_table:
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  dr_operand_load_l_20 - dr_emitters
+        .short  dr_operand_load_l_20 - dr_emitters
+        .short  dr_operand_load_l_20 - dr_emitters
+        .short  dr_operand_load_l_20 - dr_emitters
+        .short  dr_operand_load_l_20 - dr_emitters
+        .short  dr_operand_load_l_20 - dr_emitters
+        .short  dr_operand_load_l_20 - dr_emitters
+        .short  dr_operand_load_l_27 - dr_emitters
+        .short  dr_operand_load_l_30 - dr_emitters
+        .short  dr_operand_load_l_30 - dr_emitters
+        .short  dr_operand_load_l_30 - dr_emitters
+        .short  dr_operand_load_l_30 - dr_emitters
+        .short  dr_operand_load_l_30 - dr_emitters
+        .short  dr_operand_load_l_30 - dr_emitters
+        .short  dr_operand_load_l_30 - dr_emitters
+        .short  dr_operand_load_l_37 - dr_emitters
+        .short  dr_operand_load_l_40 - dr_emitters
+        .short  dr_operand_load_l_40 - dr_emitters
+        .short  dr_operand_load_l_40 - dr_emitters
+        .short  dr_operand_load_l_40 - dr_emitters
+        .short  dr_operand_load_l_40 - dr_emitters
+        .short  dr_operand_load_l_40 - dr_emitters
+        .short  dr_operand_load_l_40 - dr_emitters
+        .short  dr_operand_load_l_47 - dr_emitters
+        .short  dr_operand_load_l_50 - dr_emitters
+        .short  dr_operand_load_l_50 - dr_emitters
+        .short  dr_operand_load_l_50 - dr_emitters
+        .short  dr_operand_load_l_50 - dr_emitters
+        .short  dr_operand_load_l_50 - dr_emitters
+        .short  dr_operand_load_l_50 - dr_emitters
+        .short  dr_operand_load_l_50 - dr_emitters
+        .short  dr_operand_load_l_57 - dr_emitters
+        .short  dr_operand_load_l_60 - dr_emitters
+        .short  dr_operand_load_l_60 - dr_emitters
+        .short  dr_operand_load_l_60 - dr_emitters
+        .short  dr_operand_load_l_60 - dr_emitters
+        .short  dr_operand_load_l_60 - dr_emitters
+        .short  dr_operand_load_l_60 - dr_emitters
+        .short  dr_operand_load_l_60 - dr_emitters
+        .short  dr_operand_load_l_60 - dr_emitters
+        .short  dr_operand_load_l_70 - dr_emitters
+        .short  dr_operand_load_l_71 - dr_emitters
+        .short  dr_operand_load_l_72 - dr_emitters
+        .short  dr_operand_load_l_73 - dr_emitters
+        .short  dr_operand_load_l_74 - dr_emitters
+        .short  0
+        .short  0
+        .short  0
+
+// Store a long word.
+dr_operand_store_l_table:
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  dr_operand_store_l_20 - dr_emitters
+        .short  dr_operand_store_l_20 - dr_emitters
+        .short  dr_operand_store_l_20 - dr_emitters
+        .short  dr_operand_store_l_20 - dr_emitters
+        .short  dr_operand_store_l_20 - dr_emitters
+        .short  dr_operand_store_l_20 - dr_emitters
+        .short  dr_operand_store_l_20 - dr_emitters
+        .short  dr_operand_store_l_27 - dr_emitters
+        .short  dr_operand_store_l_30 - dr_emitters
+        .short  dr_operand_store_l_30 - dr_emitters
+        .short  dr_operand_store_l_30 - dr_emitters
+        .short  dr_operand_store_l_30 - dr_emitters
+        .short  dr_operand_store_l_30 - dr_emitters
+        .short  dr_operand_store_l_30 - dr_emitters
+        .short  dr_operand_store_l_30 - dr_emitters
+        .short  dr_operand_store_l_37 - dr_emitters
+        .short  dr_operand_store_l_40 - dr_emitters
+        .short  dr_operand_store_l_40 - dr_emitters
+        .short  dr_operand_store_l_40 - dr_emitters
+        .short  dr_operand_store_l_40 - dr_emitters
+        .short  dr_operand_store_l_40 - dr_emitters
+        .short  dr_operand_store_l_40 - dr_emitters
+        .short  dr_operand_store_l_40 - dr_emitters
+        .short  dr_operand_store_l_47 - dr_emitters
+        .short  dr_operand_store_l_50 - dr_emitters
+        .short  dr_operand_store_l_50 - dr_emitters
+        .short  dr_operand_store_l_50 - dr_emitters
+        .short  dr_operand_store_l_50 - dr_emitters
+        .short  dr_operand_store_l_50 - dr_emitters
+        .short  dr_operand_store_l_50 - dr_emitters
+        .short  dr_operand_store_l_50 - dr_emitters
+        .short  dr_operand_store_l_57 - dr_emitters
+        .short  dr_operand_store_l_60 - dr_emitters
+        .short  dr_operand_store_l_60 - dr_emitters
+        .short  dr_operand_store_l_60 - dr_emitters
+        .short  dr_operand_store_l_60 - dr_emitters
+        .short  dr_operand_store_l_60 - dr_emitters
+        .short  dr_operand_store_l_60 - dr_emitters
+        .short  dr_operand_store_l_60 - dr_emitters
+        .short  dr_operand_store_l_60 - dr_emitters
+        .short  dr_operand_store_l_70 - dr_emitters
+        .short  dr_operand_store_l_71 - dr_emitters
+        .short  dr_operand_store_l_72 - dr_emitters
+        .short  dr_operand_store_l_73 - dr_emitters
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+
+// Store a long word back to the operand that was just loaded: -4(An) for
+// (An)+, since the load has already advanced the register, and the same
+// address again for the other modes.
+dr_operand_writeback_l_table:
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  dr_operand_store_l_20 - dr_emitters
+        .short  dr_operand_store_l_20 - dr_emitters
+        .short  dr_operand_store_l_20 - dr_emitters
+        .short  dr_operand_store_l_20 - dr_emitters
+        .short  dr_operand_store_l_20 - dr_emitters
+        .short  dr_operand_store_l_20 - dr_emitters
+        .short  dr_operand_store_l_20 - dr_emitters
+        .short  dr_operand_store_l_27 - dr_emitters
+        .short  dr_operand_writeback_l_30 - dr_emitters
+        .short  dr_operand_writeback_l_30 - dr_emitters
+        .short  dr_operand_writeback_l_30 - dr_emitters
+        .short  dr_operand_writeback_l_30 - dr_emitters
+        .short  dr_operand_writeback_l_30 - dr_emitters
+        .short  dr_operand_writeback_l_30 - dr_emitters
+        .short  dr_operand_writeback_l_30 - dr_emitters
+        .short  dr_operand_writeback_l_37 - dr_emitters
+        .short  dr_operand_store_l_20 - dr_emitters
+        .short  dr_operand_store_l_20 - dr_emitters
+        .short  dr_operand_store_l_20 - dr_emitters
+        .short  dr_operand_store_l_20 - dr_emitters
+        .short  dr_operand_store_l_20 - dr_emitters
+        .short  dr_operand_store_l_20 - dr_emitters
+        .short  dr_operand_store_l_20 - dr_emitters
+        .short  dr_operand_store_l_27 - dr_emitters
+        .short  dr_operand_writeback_l_50 - dr_emitters
+        .short  dr_operand_writeback_l_50 - dr_emitters
+        .short  dr_operand_writeback_l_50 - dr_emitters
+        .short  dr_operand_writeback_l_50 - dr_emitters
+        .short  dr_operand_writeback_l_50 - dr_emitters
+        .short  dr_operand_writeback_l_50 - dr_emitters
+        .short  dr_operand_writeback_l_50 - dr_emitters
+        .short  dr_operand_writeback_l_57 - dr_emitters
+        .short  dr_operand_writeback_l_60 - dr_emitters
+        .short  dr_operand_writeback_l_60 - dr_emitters
+        .short  dr_operand_writeback_l_60 - dr_emitters
+        .short  dr_operand_writeback_l_60 - dr_emitters
+        .short  dr_operand_writeback_l_60 - dr_emitters
+        .short  dr_operand_writeback_l_60 - dr_emitters
+        .short  dr_operand_writeback_l_60 - dr_emitters
+        .short  dr_operand_writeback_l_60 - dr_emitters
+        .short  dr_operand_writeback_l_70 - dr_emitters
+        .short  dr_operand_writeback_l_71 - dr_emitters
+        .short  dr_operand_writeback_l_72 - dr_emitters
+        .short  dr_operand_writeback_l_73 - dr_emitters
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+
+dr_operand_load_w_table:
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  dr_operand_load_w_20 - dr_emitters
+        .short  dr_operand_load_w_20 - dr_emitters
+        .short  dr_operand_load_w_20 - dr_emitters
+        .short  dr_operand_load_w_20 - dr_emitters
+        .short  dr_operand_load_w_20 - dr_emitters
+        .short  dr_operand_load_w_20 - dr_emitters
+        .short  dr_operand_load_w_20 - dr_emitters
+        .short  dr_operand_load_w_27 - dr_emitters
+        .short  dr_operand_load_w_30 - dr_emitters
+        .short  dr_operand_load_w_30 - dr_emitters
+        .short  dr_operand_load_w_30 - dr_emitters
+        .short  dr_operand_load_w_30 - dr_emitters
+        .short  dr_operand_load_w_30 - dr_emitters
+        .short  dr_operand_load_w_30 - dr_emitters
+        .short  dr_operand_load_w_30 - dr_emitters
+        .short  dr_operand_load_w_37 - dr_emitters
+        .short  dr_operand_load_w_40 - dr_emitters
+        .short  dr_operand_load_w_40 - dr_emitters
+        .short  dr_operand_load_w_40 - dr_emitters
+        .short  dr_operand_load_w_40 - dr_emitters
+        .short  dr_operand_load_w_40 - dr_emitters
+        .short  dr_operand_load_w_40 - dr_emitters
+        .short  dr_operand_load_w_40 - dr_emitters
+        .short  dr_operand_load_w_47 - dr_emitters
+        .short  dr_operand_load_w_50 - dr_emitters
+        .short  dr_operand_load_w_50 - dr_emitters
+        .short  dr_operand_load_w_50 - dr_emitters
+        .short  dr_operand_load_w_50 - dr_emitters
+        .short  dr_operand_load_w_50 - dr_emitters
+        .short  dr_operand_load_w_50 - dr_emitters
+        .short  dr_operand_load_w_50 - dr_emitters
+        .short  dr_operand_load_w_57 - dr_emitters
+        .short  dr_operand_load_w_60 - dr_emitters
+        .short  dr_operand_load_w_60 - dr_emitters
+        .short  dr_operand_load_w_60 - dr_emitters
+        .short  dr_operand_load_w_60 - dr_emitters
+        .short  dr_operand_load_w_60 - dr_emitters
+        .short  dr_operand_load_w_60 - dr_emitters
+        .short  dr_operand_load_w_60 - dr_emitters
+        .short  dr_operand_load_w_60 - dr_emitters
+        .short  dr_operand_load_w_70 - dr_emitters
+        .short  dr_operand_load_w_71 - dr_emitters
+        .short  dr_operand_load_w_72 - dr_emitters
+        .short  dr_operand_load_w_73 - dr_emitters
+        .short  dr_operand_load_w_74 - dr_emitters
+        .short  0
+        .short  0
+        .short  0
+
+dr_operand_store_w_table:
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  dr_operand_store_w_20 - dr_emitters
+        .short  dr_operand_store_w_20 - dr_emitters
+        .short  dr_operand_store_w_20 - dr_emitters
+        .short  dr_operand_store_w_20 - dr_emitters
+        .short  dr_operand_store_w_20 - dr_emitters
+        .short  dr_operand_store_w_20 - dr_emitters
+        .short  dr_operand_store_w_20 - dr_emitters
+        .short  dr_operand_store_w_27 - dr_emitters
+        .short  dr_operand_store_w_30 - dr_emitters
+        .short  dr_operand_store_w_30 - dr_emitters
+        .short  dr_operand_store_w_30 - dr_emitters
+        .short  dr_operand_store_w_30 - dr_emitters
+        .short  dr_operand_store_w_30 - dr_emitters
+        .short  dr_operand_store_w_30 - dr_emitters
+        .short  dr_operand_store_w_30 - dr_emitters
+        .short  dr_operand_store_w_37 - dr_emitters
+        .short  dr_operand_store_w_40 - dr_emitters
+        .short  dr_operand_store_w_40 - dr_emitters
+        .short  dr_operand_store_w_40 - dr_emitters
+        .short  dr_operand_store_w_40 - dr_emitters
+        .short  dr_operand_store_w_40 - dr_emitters
+        .short  dr_operand_store_w_40 - dr_emitters
+        .short  dr_operand_store_w_40 - dr_emitters
+        .short  dr_operand_store_w_47 - dr_emitters
+        .short  dr_operand_store_w_50 - dr_emitters
+        .short  dr_operand_store_w_50 - dr_emitters
+        .short  dr_operand_store_w_50 - dr_emitters
+        .short  dr_operand_store_w_50 - dr_emitters
+        .short  dr_operand_store_w_50 - dr_emitters
+        .short  dr_operand_store_w_50 - dr_emitters
+        .short  dr_operand_store_w_50 - dr_emitters
+        .short  dr_operand_store_w_57 - dr_emitters
+        .short  dr_operand_store_w_60 - dr_emitters
+        .short  dr_operand_store_w_60 - dr_emitters
+        .short  dr_operand_store_w_60 - dr_emitters
+        .short  dr_operand_store_w_60 - dr_emitters
+        .short  dr_operand_store_w_60 - dr_emitters
+        .short  dr_operand_store_w_60 - dr_emitters
+        .short  dr_operand_store_w_60 - dr_emitters
+        .short  dr_operand_store_w_60 - dr_emitters
+        .short  dr_operand_store_w_70 - dr_emitters
+        .short  dr_operand_store_w_71 - dr_emitters
+        .short  dr_operand_store_w_72 - dr_emitters
+        .short  dr_operand_store_w_73 - dr_emitters
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+
+dr_operand_writeback_w_table:
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  dr_operand_store_w_20 - dr_emitters
+        .short  dr_operand_store_w_20 - dr_emitters
+        .short  dr_operand_store_w_20 - dr_emitters
+        .short  dr_operand_store_w_20 - dr_emitters
+        .short  dr_operand_store_w_20 - dr_emitters
+        .short  dr_operand_store_w_20 - dr_emitters
+        .short  dr_operand_store_w_20 - dr_emitters
+        .short  dr_operand_store_w_27 - dr_emitters
+        .short  dr_operand_writeback_w_30 - dr_emitters
+        .short  dr_operand_writeback_w_30 - dr_emitters
+        .short  dr_operand_writeback_w_30 - dr_emitters
+        .short  dr_operand_writeback_w_30 - dr_emitters
+        .short  dr_operand_writeback_w_30 - dr_emitters
+        .short  dr_operand_writeback_w_30 - dr_emitters
+        .short  dr_operand_writeback_w_30 - dr_emitters
+        .short  dr_operand_writeback_w_37 - dr_emitters
+        .short  dr_operand_store_w_20 - dr_emitters
+        .short  dr_operand_store_w_20 - dr_emitters
+        .short  dr_operand_store_w_20 - dr_emitters
+        .short  dr_operand_store_w_20 - dr_emitters
+        .short  dr_operand_store_w_20 - dr_emitters
+        .short  dr_operand_store_w_20 - dr_emitters
+        .short  dr_operand_store_w_20 - dr_emitters
+        .short  dr_operand_store_w_27 - dr_emitters
+        .short  dr_operand_writeback_w_50 - dr_emitters
+        .short  dr_operand_writeback_w_50 - dr_emitters
+        .short  dr_operand_writeback_w_50 - dr_emitters
+        .short  dr_operand_writeback_w_50 - dr_emitters
+        .short  dr_operand_writeback_w_50 - dr_emitters
+        .short  dr_operand_writeback_w_50 - dr_emitters
+        .short  dr_operand_writeback_w_50 - dr_emitters
+        .short  dr_operand_writeback_w_57 - dr_emitters
+        .short  dr_operand_writeback_w_60 - dr_emitters
+        .short  dr_operand_writeback_w_60 - dr_emitters
+        .short  dr_operand_writeback_w_60 - dr_emitters
+        .short  dr_operand_writeback_w_60 - dr_emitters
+        .short  dr_operand_writeback_w_60 - dr_emitters
+        .short  dr_operand_writeback_w_60 - dr_emitters
+        .short  dr_operand_writeback_w_60 - dr_emitters
+        .short  dr_operand_writeback_w_60 - dr_emitters
+        .short  dr_operand_writeback_w_70 - dr_emitters
+        .short  dr_operand_writeback_w_71 - dr_emitters
+        .short  dr_operand_writeback_w_72 - dr_emitters
+        .short  dr_operand_writeback_w_73 - dr_emitters
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+
+dr_operand_load_b_table:
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  dr_operand_load_b_20 - dr_emitters
+        .short  dr_operand_load_b_20 - dr_emitters
+        .short  dr_operand_load_b_20 - dr_emitters
+        .short  dr_operand_load_b_20 - dr_emitters
+        .short  dr_operand_load_b_20 - dr_emitters
+        .short  dr_operand_load_b_20 - dr_emitters
+        .short  dr_operand_load_b_20 - dr_emitters
+        .short  dr_operand_load_b_27 - dr_emitters
+        .short  dr_operand_load_b_30 - dr_emitters
+        .short  dr_operand_load_b_30 - dr_emitters
+        .short  dr_operand_load_b_30 - dr_emitters
+        .short  dr_operand_load_b_30 - dr_emitters
+        .short  dr_operand_load_b_30 - dr_emitters
+        .short  dr_operand_load_b_30 - dr_emitters
+        .short  dr_operand_load_b_30 - dr_emitters
+        .short  dr_operand_load_b_37 - dr_emitters
+        .short  dr_operand_load_b_40 - dr_emitters
+        .short  dr_operand_load_b_40 - dr_emitters
+        .short  dr_operand_load_b_40 - dr_emitters
+        .short  dr_operand_load_b_40 - dr_emitters
+        .short  dr_operand_load_b_40 - dr_emitters
+        .short  dr_operand_load_b_40 - dr_emitters
+        .short  dr_operand_load_b_40 - dr_emitters
+        .short  dr_operand_load_b_47 - dr_emitters
+        .short  dr_operand_load_b_50 - dr_emitters
+        .short  dr_operand_load_b_50 - dr_emitters
+        .short  dr_operand_load_b_50 - dr_emitters
+        .short  dr_operand_load_b_50 - dr_emitters
+        .short  dr_operand_load_b_50 - dr_emitters
+        .short  dr_operand_load_b_50 - dr_emitters
+        .short  dr_operand_load_b_50 - dr_emitters
+        .short  dr_operand_load_b_57 - dr_emitters
+        .short  dr_operand_load_b_60 - dr_emitters
+        .short  dr_operand_load_b_60 - dr_emitters
+        .short  dr_operand_load_b_60 - dr_emitters
+        .short  dr_operand_load_b_60 - dr_emitters
+        .short  dr_operand_load_b_60 - dr_emitters
+        .short  dr_operand_load_b_60 - dr_emitters
+        .short  dr_operand_load_b_60 - dr_emitters
+        .short  dr_operand_load_b_60 - dr_emitters
+        .short  dr_operand_load_b_70 - dr_emitters
+        .short  dr_operand_load_b_71 - dr_emitters
+        .short  dr_operand_load_b_72 - dr_emitters
+        .short  dr_operand_load_b_73 - dr_emitters
+        .short  dr_operand_load_b_74 - dr_emitters
+        .short  0
+        .short  0
+        .short  0
+
+dr_operand_store_b_table:
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  dr_operand_store_b_20 - dr_emitters
+        .short  dr_operand_store_b_20 - dr_emitters
+        .short  dr_operand_store_b_20 - dr_emitters
+        .short  dr_operand_store_b_20 - dr_emitters
+        .short  dr_operand_store_b_20 - dr_emitters
+        .short  dr_operand_store_b_20 - dr_emitters
+        .short  dr_operand_store_b_20 - dr_emitters
+        .short  dr_operand_store_b_27 - dr_emitters
+        .short  dr_operand_store_b_30 - dr_emitters
+        .short  dr_operand_store_b_30 - dr_emitters
+        .short  dr_operand_store_b_30 - dr_emitters
+        .short  dr_operand_store_b_30 - dr_emitters
+        .short  dr_operand_store_b_30 - dr_emitters
+        .short  dr_operand_store_b_30 - dr_emitters
+        .short  dr_operand_store_b_30 - dr_emitters
+        .short  dr_operand_store_b_37 - dr_emitters
+        .short  dr_operand_store_b_40 - dr_emitters
+        .short  dr_operand_store_b_40 - dr_emitters
+        .short  dr_operand_store_b_40 - dr_emitters
+        .short  dr_operand_store_b_40 - dr_emitters
+        .short  dr_operand_store_b_40 - dr_emitters
+        .short  dr_operand_store_b_40 - dr_emitters
+        .short  dr_operand_store_b_40 - dr_emitters
+        .short  dr_operand_store_b_47 - dr_emitters
+        .short  dr_operand_store_b_50 - dr_emitters
+        .short  dr_operand_store_b_50 - dr_emitters
+        .short  dr_operand_store_b_50 - dr_emitters
+        .short  dr_operand_store_b_50 - dr_emitters
+        .short  dr_operand_store_b_50 - dr_emitters
+        .short  dr_operand_store_b_50 - dr_emitters
+        .short  dr_operand_store_b_50 - dr_emitters
+        .short  dr_operand_store_b_57 - dr_emitters
+        .short  dr_operand_store_b_60 - dr_emitters
+        .short  dr_operand_store_b_60 - dr_emitters
+        .short  dr_operand_store_b_60 - dr_emitters
+        .short  dr_operand_store_b_60 - dr_emitters
+        .short  dr_operand_store_b_60 - dr_emitters
+        .short  dr_operand_store_b_60 - dr_emitters
+        .short  dr_operand_store_b_60 - dr_emitters
+        .short  dr_operand_store_b_60 - dr_emitters
+        .short  dr_operand_store_b_70 - dr_emitters
+        .short  dr_operand_store_b_71 - dr_emitters
+        .short  dr_operand_store_b_72 - dr_emitters
+        .short  dr_operand_store_b_73 - dr_emitters
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+
+dr_operand_writeback_b_table:
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+        .short  dr_operand_store_b_20 - dr_emitters
+        .short  dr_operand_store_b_20 - dr_emitters
+        .short  dr_operand_store_b_20 - dr_emitters
+        .short  dr_operand_store_b_20 - dr_emitters
+        .short  dr_operand_store_b_20 - dr_emitters
+        .short  dr_operand_store_b_20 - dr_emitters
+        .short  dr_operand_store_b_20 - dr_emitters
+        .short  dr_operand_store_b_27 - dr_emitters
+        .short  dr_operand_writeback_b_30 - dr_emitters
+        .short  dr_operand_writeback_b_30 - dr_emitters
+        .short  dr_operand_writeback_b_30 - dr_emitters
+        .short  dr_operand_writeback_b_30 - dr_emitters
+        .short  dr_operand_writeback_b_30 - dr_emitters
+        .short  dr_operand_writeback_b_30 - dr_emitters
+        .short  dr_operand_writeback_b_30 - dr_emitters
+        .short  dr_operand_writeback_b_37 - dr_emitters
+        .short  dr_operand_store_b_20 - dr_emitters
+        .short  dr_operand_store_b_20 - dr_emitters
+        .short  dr_operand_store_b_20 - dr_emitters
+        .short  dr_operand_store_b_20 - dr_emitters
+        .short  dr_operand_store_b_20 - dr_emitters
+        .short  dr_operand_store_b_20 - dr_emitters
+        .short  dr_operand_store_b_20 - dr_emitters
+        .short  dr_operand_store_b_27 - dr_emitters
+        .short  dr_operand_writeback_b_50 - dr_emitters
+        .short  dr_operand_writeback_b_50 - dr_emitters
+        .short  dr_operand_writeback_b_50 - dr_emitters
+        .short  dr_operand_writeback_b_50 - dr_emitters
+        .short  dr_operand_writeback_b_50 - dr_emitters
+        .short  dr_operand_writeback_b_50 - dr_emitters
+        .short  dr_operand_writeback_b_50 - dr_emitters
+        .short  dr_operand_writeback_b_57 - dr_emitters
+        .short  dr_operand_writeback_b_60 - dr_emitters
+        .short  dr_operand_writeback_b_60 - dr_emitters
+        .short  dr_operand_writeback_b_60 - dr_emitters
+        .short  dr_operand_writeback_b_60 - dr_emitters
+        .short  dr_operand_writeback_b_60 - dr_emitters
+        .short  dr_operand_writeback_b_60 - dr_emitters
+        .short  dr_operand_writeback_b_60 - dr_emitters
+        .short  dr_operand_writeback_b_60 - dr_emitters
+        .short  dr_operand_writeback_b_70 - dr_emitters
+        .short  dr_operand_writeback_b_71 - dr_emitters
+        .short  dr_operand_writeback_b_72 - dr_emitters
+        .short  dr_operand_writeback_b_73 - dr_emitters
+        .short  0
+        .short  0
+        .short  0
+        .short  0
+T_1237C:
+        lwz     zero, 0(a0)                             // template
+T_12380:
+        lwz     zero, 0(a7)                             // template
+T_12384:
+        stw     zero, 0(a0)                             // template
+T_12388:
+        stw     zero, 0(a7)                             // template
+T_1238C:
+        stw     zero, -4(a0)                            // template
+T_12390:
+        stw     zero, -4(a7)                            // template
+T_12394:
+        addi    a0, a0, 4                               // template
+T_12398:
+        addi    a7, a7, 4                               // template
+T_1239C:
+        lwzu    zero, -4(a0)                            // template
+T_123A0:
+        lwzu    zero, -4(a7)                            // template
+T_123A4:
+        stwu    zero, -4(a0)                            // template
+T_123A8:
+        stwu    zero, -4(a7)                            // template
+T_123AC:
+        lwz     zero, 0(0)                              // template
+T_123B0:
+        lwz     zero, 0(data)                           // template
+T_123B4:
+        stw     zero, 0(0)                              // template
+T_123B8:
+        stw     zero, 0(data)                           // template
+T_123BC:
+        lwz     zero, 0(pc)                             // template
+T_123C0:
+        lwzx    zero, pc, data                          // template
+T_123C4:
+        stw     zero, 0(pc)                             // template
+T_123C8:
+        stwx    zero, pc, data                          // template
+T_123CC:
+        oris    zero, zero, 0x0000                      // template
+T_123D0:
+        nop                                             // template
+T_123D4:
+        lha     zero, 0(a0)                             // template
+T_123D8:
+        lha     zero, 0(a7)                             // template
+T_123DC:
+        sth     zero, 0(a0)                             // template
+T_123E0:
+        sth     zero, 0(a7)                             // template
+T_123E4:
+        sth     zero, -2(a0)                            // template
+T_123E8:
+        sth     zero, -2(a7)                            // template
+T_123EC:
+        addi    a0, a0, 2                               // template
+T_123F0:
+        addi    a7, a7, 2                               // template
+T_123F4:
+        lhau    zero, -2(a0)                            // template
+T_123F8:
+        lhau    zero, -2(a7)                            // template
+T_123FC:
+        sthu    zero, -2(a0)                            // template
+T_12400:
+        sthu    zero, -2(a7)                            // template
+T_12404:
+        lha     zero, 0(0)                              // template
+T_12408:
+        lha     zero, 0(data)                           // template
+T_1240C:
+        sth     zero, 0(0)                              // template
+T_12410:
+        sth     zero, 0(data)                           // template
+T_12414:
+        lha     zero, 0(pc)                             // template
+T_12418:
+        lhax    zero, pc, data                          // template
+T_1241C:
+        sth     zero, 0(pc)                             // template
+T_12420:
+        sthx    zero, pc, data                          // template
+T_12424:
+        li      zero, 0                                 // template
+T_12428:
+        lbz     zero, 0(a0)                             // template
+T_1242C:
+        lbz     zero, 0(a7)                             // template
+T_12430:
+        stb     zero, 0(a0)                             // template
+T_12434:
+        stb     zero, -1(a0)                            // template
+T_12438:
+        stb     zero, 0(a7)                             // template
+T_1243C:
+        stb     zero, -2(a7)                            // template
+T_12440:
+        addi    a0, a0, 1                               // template
+T_12444:
+        addi    a7, a7, 2                               // template
+T_12448:
+        lbzu    zero, -1(a0)                            // template
+T_1244C:
+        lbzu    zero, -2(a7)                            // template
+T_12450:
+        stbu    zero, -1(a0)                            // template
+T_12454:
+        stbu    zero, -2(a7)                            // template
+T_12458:
+        lbz     zero, 0(0)                              // template
+T_1245C:
+        lbz     zero, 0(data)                           // template
+T_12460:
+        stb     zero, 0(0)                              // template
+T_12464:
+        stb     zero, 0(data)                           // template
+T_12468:
+        lbz     zero, 0(pc)                             // template
+T_1246C:
+        lbzx    zero, pc, data                          // template
+T_12470:
+        stb     zero, 0(pc)                             // template
+T_12474:
+        stbx    zero, pc, data                          // template
+T_12478:
+        oris    data, zero, 0x0000                      // template
+T_1247C:
+        ori     data, data, 0x0000                      // template
+T_12480:
+        extsh   data, d0                                // template
+T_12484:
+        rlwinm  data, data, 0, 0, 31                    // template
+T_12488:
+        rlwinm  data, d0, 0, 0, 31                      // template
+T_1248C:
+        add     data, data, a0                          // template
+T_12490:
+        add     data, d0, a0                            // template
+T_12494:
+        add     data, data, pc                          // template
+T_12498:
+        add     data, d0, pc                            // template
+T_1249C:
+        ori     data, zero, 0x0000                      // template
+
+// The entries to the operand emitters.  Each picks a table and jumps to the
+// routine for the addressing mode in the opcode being translated
+// (prefetch_data): its source field, bits 5:0, or - for the _dest entries -
+// the destination field of a MOVE, bits 11:6.
+dr_operand_load_l:
+        addi    rtn_addr, base_disp, dr_operand_load_l_table - dr_emitters
+dr_operand_load_l_L1:
+        rlwinm  data, prefetch_data, 1, 25, 30          // the effective address field, as a table index
+dr_operand_load_l_L2:
+        lhzx    rtn_addr, rtn_addr, data                // the routine for this mode
         add     rtn_addr, rtn_addr, base_disp
         mtctr   rtn_addr
         bctr
-L_124B8:
-        addi    rtn_addr, base_disp, 0xD44
-        b       L_124A4
-L_124C0:
-        addi    rtn_addr, base_disp, 0xEC4
-        b       L_124A4
-L_124C8:
-        addi    rtn_addr, base_disp, 0xC44
-L_124CC:
-        rlwinm  data, prefetch_data, 30, 25, 27         // data = prefetch_data[8:6] << 4
+
+dr_operand_load_w:
+        addi    rtn_addr, base_disp, dr_operand_load_w_table - dr_emitters
+        b       dr_operand_load_l_L1
+
+dr_operand_load_b:
+        addi    rtn_addr, base_disp, dr_operand_load_b_table - dr_emitters
+        b       dr_operand_load_l_L1
+
+dr_operand_store_l_dest:
+        addi    rtn_addr, base_disp, dr_operand_store_l_table - dr_emitters
+dr_operand_store_l_dest_L1:
+        rlwinm  data, prefetch_data, 30, 25, 27         // MOVE's destination: mode in bits 8:6, register in bits 11:9
         rlwimi  data, prefetch_data, 24, 28, 30         // data[3:1] = prefetch_data[11:9]
-        b       L_124A8
-L_124D8:
-        addi    rtn_addr, base_disp, 0xDC4
-        b       L_124CC
-L_124E0:
-        addi    rtn_addr, base_disp, 0xF44
-        b       L_124CC
-L_124E8:
-        addi    rtn_addr, base_disp, 0xF44
-        b       L_124A8
-L_124F0:
-        addi    rtn_addr, base_disp, 0xCC4
-        b       L_124A4
-L_124F8:
-        addi    rtn_addr, base_disp, 0xE44
-        b       L_124A4
-L_12500:
-        addi    rtn_addr, base_disp, 0xFC4
-        b       L_124A4
-L_12508:
-        addi    rtn_addr, base_disp, 0xB44
-        b       L_124A4
-L_12510:
+        b       dr_operand_load_l_L2
+
+dr_operand_store_w_dest:
+        addi    rtn_addr, base_disp, dr_operand_store_w_table - dr_emitters
+        b       dr_operand_store_l_dest_L1
+
+dr_operand_store_b_dest:
+        addi    rtn_addr, base_disp, dr_operand_store_b_table - dr_emitters
+        b       dr_operand_store_l_dest_L1
+
+// The caller supplies the table index in data.
+dr_operand_store_b_indexed:
+        addi    rtn_addr, base_disp, dr_operand_store_b_table - dr_emitters
+        b       dr_operand_load_l_L2
+
+dr_operand_writeback_l:
+        addi    rtn_addr, base_disp, dr_operand_writeback_l_table - dr_emitters
+        b       dr_operand_load_l_L1
+
+dr_operand_writeback_w:
+        addi    rtn_addr, base_disp, dr_operand_writeback_w_table - dr_emitters
+        b       dr_operand_load_l_L1
+
+dr_operand_writeback_b:
+        addi    rtn_addr, base_disp, dr_operand_writeback_b_table - dr_emitters
+        b       dr_operand_load_l_L1
+
+dr_operand_address:
+        addi    rtn_addr, base_disp, dr_operand_address_table - dr_emitters
+        b       dr_operand_load_l_L1
+dr_operand_address_L1:
         lwzx    rtn_addr, pc, rtn_addr
-        b       L_12520
-L_12518:
+        b       dr_operand_address_L3
+dr_operand_address_L2:
         lwzx    rtn_addr, pc, blk_ofs
         addi    blk_ofs, blk_ofs, 4
-L_12520:
-        lwz     addr, 0x129C(base_disp)
+dr_operand_address_L3:
+        lwz     addr, T_125D4 - dr_emitters(base_disp)  // template: ori addr, zero, 0x0000
         rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
         stwu    addr, 4(out_ptr)
         srwi    rtn_addr, rtn_addr, 16
-        lwz     addr, 0x12A0(base_disp)
+        lwz     addr, T_125D8 - dr_emitters(base_disp)  // template: oris addr, addr, 0x0000
         cmpwi   cr7, rtn_addr, 0
         or      addr, addr, rtn_addr
         beqlr   cr7
@@ -3716,48 +4077,52 @@ L_12520:
         lwzx    rtn_addr, pc, blk_ofs
         add     rtn_addr, rtn_addr, addr
         addi    blk_ofs, blk_ofs, 4
-        lwz     addr, 0x129C(base_disp)
+        lwz     addr, T_125D4 - dr_emitters(base_disp)  // template: ori addr, zero, 0x0000
         rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x12A0(base_disp)
+        lwz     addr, T_125D8 - dr_emitters(base_disp)  // template: oris addr, addr, 0x0000
         rlwimi  addr, rtn_addr, 16, 16, 31              // addr[15:0] = rtn_addr[31:16]
         stwu    addr, 4(out_ptr)
         blr
         lhax    rtn_addr, pc, blk_ofs
         addi    blk_ofs, blk_ofs, 2
-L_12578:
-        lwz     addr, 0x12A4(base_disp)
+dr_operand_address_L4:
+        lwz     addr, T_125DC - dr_emitters(base_disp)  // template: li addr, 0
         rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
         stwu    addr, 4(out_ptr)
         blr
         lhax    rtn_addr, pc, blk_ofs
         addi    blk_ofs, blk_ofs, 2
         extsb   rtn_addr, rtn_addr                      // rtn_addr = sign-extended low byte of rtn_addr
-        b       L_12578
-L_12598:
+        b       dr_operand_address_L4
+dr_operand_address_L5:
         lhax    rtn_addr, pc, rtn_addr
-        b       L_125A8
-L_125A0:
+        b       dr_operand_address_L7
+dr_operand_address_L6:
         lhax    rtn_addr, pc, blk_ofs
         addi    blk_ofs, blk_ofs, 2
-L_125A8:
-        lwz     addr, 0x12A8(base_disp)
+dr_operand_address_L7:
+        lwz     addr, T_125E0 - dr_emitters(base_disp)  // template: lis addr, 0x0000
         rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
         stwu    addr, 4(out_ptr)
         blr
-L_125B8:
+dr_operand_address_L8:
         lhax    rtn_addr, pc, rtn_addr
         slwi    rtn_addr, rtn_addr, 8
-        b       L_125A8
-L_125C4:
+        b       dr_operand_address_L7
+dr_operand_address_L9:
         lhax    rtn_addr, pc, blk_ofs
         addi    blk_ofs, blk_ofs, 2
         slwi    rtn_addr, rtn_addr, 8
-        b       L_125A8
-        ori     addr, zero, 0x0000
-        oris    addr, addr, 0x0000
-        li      addr, 0
-        lis     addr, 0x0000
+        b       dr_operand_address_L7
+T_125D4:
+        ori     addr, zero, 0x0000                      // template
+T_125D8:
+        oris    addr, addr, 0x0000                      // template
+T_125DC:
+        li      addr, 0                                 // template
+T_125E0:
+        lis     addr, 0x0000                            // template
         b       dr_emit_move_l
         ALIGN(64)
 
@@ -3769,6 +4134,8 @@ L_125C4:
 //     MOVE.L -(An),Dn
 //     MOVE.L (d16,An),Dn
 //     ... and 102 more forms
+// For 2000, MOVE.L D0,D0, it generates
+//         addco.  d0, d0, zero
 dr_emit_move_l:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr6, rtn_addr, 0x0001
@@ -3777,31 +4144,31 @@ dr_emit_move_l:
         ble     cr6, dr_emit_move_l_L8
         ble     cr7, dr_emit_move_l_L11
         lis     immed_data, 0x0060
-        bl      L_124A0
+        bl      dr_operand_load_l
         b       dr_emit_move_l_L9
 dr_emit_move_l_L1:
         rlwinm  addr, prefetch_data, 23, 29, 31         // addr = prefetch_data[11:9]
         cmpwi   cr7, addr, 7
-        lwz     addr, 0x1440(base_disp)
+        lwz     addr, T_12778 - dr_emitters(base_disp)  // template: add a0, d0, zero
         beq     cr6, dr_emit_move_l_L2
         beq     cr7, dr_emit_move_l_L3
         b       dr_emit_move_l_L6
 dr_emit_move_l_L2:
         beq     cr7, dr_emit_next
-        lwz     addr, 0x1448(base_disp)
+        lwz     addr, T_12780 - dr_emitters(base_disp)  // template: add a0, a7, zero
         rlwinm  data, prefetch_data, 12, 8, 10          // data = prefetch_data[11:9] << 21
         b       dr_emit_move_l_L7
 dr_emit_move_l_L3:
-        lwz     addr, 0x1444(base_disp)
+        lwz     addr, T_1277C - dr_emitters(base_disp)  // template: add a7, d0, zero
         rlwinm  data, prefetch_data, 16, 12, 15         // data = prefetch_data[3:0] << 16
         b       dr_emit_move_l_L7
 dr_emit_move_l_L4:
-        lwz     addr, 0x1454(base_disp)
+        lwz     addr, T_1278C - dr_emitters(base_disp)  // template: addco. d0, a7, zero
         rlwinm  data, prefetch_data, 12, 8, 10          // data = prefetch_data[11:9] << 21
         b       dr_emit_move_l_L7
 dr_emit_move_l_L5:
         beq     cr6, dr_emit_move_l_L4
-        lwz     addr, 0x1450(base_disp)
+        lwz     addr, T_12788 - dr_emitters(base_disp)  // template: addco. d0, d0, zero
 dr_emit_move_l_L6:
         rlwinm  data, prefetch_data, 16, 12, 15         // data = prefetch_data[3:0] << 16
         rlwimi  data, prefetch_data, 12, 8, 10          // data[23:21] = prefetch_data[11:9]
@@ -3819,11 +4186,11 @@ dr_emit_move_l_L8:
         bne     cr6, dr_emit_move_l_L9
         lis     immed_data, 0x0020
 dr_emit_move_l_L9:
-        bl      L_124C8
+        bl      dr_operand_store_l_dest
 dr_emit_move_l_L10:
         lhz     addr, 0(rec_ptr)
         mtcrf   0x02, addr                              // cr6 = addr[7:4]
-        lwz     addr, 0x1458(base_disp)
+        lwz     addr, T_12790 - dr_emitters(base_disp)  // template: addco. addr, zero, zero
         ble     cr6, dr_emit_next
         rlwinm  immed_data, immed_data, 27, 11, 15      // immed_data = immed_data[25:21] << 16
         add     addr, addr, immed_data
@@ -3840,7 +4207,7 @@ dr_emit_move_l_L11:
         bne     cr7, dr_emit_move_l_L12
         lis     immed_data, 0x0020
 dr_emit_move_l_L12:
-        bl      L_124A0
+        bl      dr_operand_load_l
         b       dr_emit_move_l_L10
 dr_emit_move_l_L13:
         cmplwi  cr6, rtn_addr, 0x0004
@@ -3855,11 +4222,11 @@ dr_emit_move_l_L13:
         blr
 dr_emit_move_l_L14:
         lis     immed_data, 0x0060
-        bl      L_124A0
+        bl      dr_operand_load_l
 dr_emit_move_l_L15:
         rlwinm  addr, prefetch_data, 23, 29, 31         // addr = prefetch_data[11:9]
         cmpwi   cr7, addr, 7
-        lwz     addr, 0x144C(base_disp)
+        lwz     addr, T_12784 - dr_emitters(base_disp)  // template: add a0, addr, zero
         rlwinm  data, prefetch_data, 12, 8, 10          // data = prefetch_data[11:9] << 21
         bne     cr7, dr_emit_move_l_L16
         lis     data, 0xFE20
@@ -3872,28 +4239,39 @@ dr_emit_move_l_L16:
 dr_emit_push_l_indirect:
         addi    blk_ofs, blk_ofs, 2
         lwzx    rtn_addr, pc, blk_ofs
-        lwz     addr, 0x145C(base_disp)
-        lwz     data, 0x1460(base_disp)
+        lwz     addr, T_12794 - dr_emitters(base_disp)  // template: lwz addr, 0(0)
+        lwz     data, T_12798 - dr_emitters(base_disp)  // template: lwz addr, 0(addr)
         rlwimi  addr, rtn_addr, 16, 16, 31              // addr[15:0] = rtn_addr[31:16]
         stwu    addr, 4(out_ptr)
         rlwimi  data, rtn_addr, 0, 16, 31               // data[15:0] = rtn_addr[15:0]
         stwu    data, 4(out_ptr)
-        lwz     addr, 0x1464(base_disp)
-        lwz     data, 0x1468(base_disp)
+        lwz     addr, T_1279C - dr_emitters(base_disp)  // template: addco. addr, addr, zero
+        lwz     data, T_127A0 - dr_emitters(base_disp)  // template: stwu addr, -4(a7)
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
         b       dr_emit_next
-        add     a0, d0, zero
-        add     a7, d0, zero
-        add     a0, a7, zero
-        add     a0, addr, zero
-        addco.  d0, d0, zero
-        addco.  d0, a7, zero
-        addco.  addr, zero, zero
-        lwz     addr, 0(0)
-        lwz     addr, 0(addr)
-        addco.  addr, addr, zero
-        stwu    addr, -4(a7)
+T_12778:
+        add     a0, d0, zero                            // template
+T_1277C:
+        add     a7, d0, zero                            // template
+T_12780:
+        add     a0, a7, zero                            // template
+T_12784:
+        add     a0, addr, zero                          // template
+T_12788:
+        addco.  d0, d0, zero                            // template
+T_1278C:
+        addco.  d0, a7, zero                            // template
+T_12790:
+        addco.  addr, zero, zero                        // template
+T_12794:
+        lwz     addr, 0(0)                              // template
+T_12798:
+        lwz     addr, 0(addr)                           // template
+T_1279C:
+        addco.  addr, addr, zero                        // template
+T_127A0:
+        stwu    addr, -4(a7)                            // template
         b       dr_emit_move_w
         ALIGN(64)
 
@@ -3917,6 +4295,12 @@ dr_emit_push_l_indirect:
 //     MOVE.W -(An),Dn
 //     MOVE.W (d16,An),Dn
 //     ... and 102 more forms
+// For 3000, MOVE.W D0,D0, it generates
+//         rlwimi  d0, d0, 0, 16, 31
+//         extsh   addr, d0
+//         addco.  addr, addr, zero
+// and, when the condition codes are not wanted afterwards,
+//         rlwimi  d0, d0, 0, 16, 31
 dr_emit_move_w:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr6, rtn_addr, 0x0001
@@ -3925,19 +4309,19 @@ dr_emit_move_w:
         ble     cr6, dr_emit_move_w_L6
         ble     cr7, dr_emit_move_w_L8
         lis     immed_data, 0x0060
-        bl      L_124B8
-        bl      L_124D8
+        bl      dr_operand_load_w
+        bl      dr_operand_store_w_dest
 dr_emit_move_w_L1:
         lhz     addr, 0(rec_ptr)
         mtcrf   0x02, addr                              // cr6 = addr[7:4]
-        lwz     addr, 0x15F8(base_disp)
+        lwz     addr, T_12930 - dr_emitters(base_disp)  // template: addco. addr, addr, zero
         ble     cr6, dr_emit_next
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
 dr_emit_move_w_L2:
         rlwinm  addr, prefetch_data, 23, 29, 31         // addr = prefetch_data[11:9]
         cmpwi   cr7, addr, 7
-        lwz     addr, 0x15E4(base_disp)
+        lwz     addr, T_1291C - dr_emitters(base_disp)  // template: extsh a0, d0
         rlwinm  data, prefetch_data, 21, 7, 10          // data = prefetch_data[3:0] << 21
         rlwimi  data, prefetch_data, 7, 13, 15          // data[18:16] = prefetch_data[11:9]
         bne     cr7, dr_emit_move_w_L3
@@ -3951,7 +4335,7 @@ dr_emit_move_w_L4:
         clrlwi  addr, prefetch_data, 28                 // addr = prefetch_data & 0x0000000F
         cmpwi   cr7, addr, 15
         rlwinm  immed_data, prefetch_data, 21, 7, 10    // immed_data = prefetch_data[3:0] << 21
-        lwz     addr, 0x15E8(base_disp)
+        lwz     addr, T_12920 - dr_emitters(base_disp)  // template: rlwimi d0, d0, 0, 16, 31
         beq     cr7, dr_emit_move_w_L5
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
         add     addr, addr, immed_data
@@ -3960,7 +4344,7 @@ dr_emit_move_w_L4:
         addis   immed_data, immed_data, 0x100
         b       dr_emit_move_w_L7
 dr_emit_move_w_L5:
-        lwz     addr, 0x15EC(base_disp)
+        lwz     addr, T_12924 - dr_emitters(base_disp)  // template: rlwimi d0, a7, 0, 16, 31
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
@@ -3973,13 +4357,13 @@ dr_emit_move_w_L6:
         blt     cr7, dr_emit_move_w_L4
         rlwinm  immed_data, prefetch_data, 21, 7, 10    // immed_data = prefetch_data[3:0] << 21
         addis   immed_data, immed_data, 0x100
-        bl      L_124D8
+        bl      dr_operand_store_w_dest
 dr_emit_move_w_L7:
         lhz     addr, 0(rec_ptr)
         mtcrf   0x02, addr                              // cr6 = addr[7:4]
-        lwz     addr, 0x15F4(base_disp)
+        lwz     addr, T_1292C - dr_emitters(base_disp)  // template: extsh addr, zero
         ble     cr6, dr_emit_next
-        lwz     data, 0x15F8(base_disp)
+        lwz     data, T_12930 - dr_emitters(base_disp)  // template: addco. addr, addr, zero
         add     addr, addr, immed_data
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
@@ -3987,8 +4371,8 @@ dr_emit_move_w_L7:
 dr_emit_move_w_L8:
         beq     cr7, dr_emit_move_w_L9
         lis     immed_data, 0x0060
-        bl      L_124B8
-        lwz     addr, 0x15F0(base_disp)
+        bl      dr_operand_load_w
+        lwz     addr, T_12928 - dr_emitters(base_disp)  // template: rlwimi d0, addr, 0, 16, 31
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
@@ -4011,18 +4395,24 @@ dr_emit_move_w_L10:
         bne     cr7, dr_emit_move_w_L11
         lis     immed_data, 0x0020
 dr_emit_move_w_L11:
-        bl      L_124B8
+        bl      dr_operand_load_w
         b       dr_emit_next
 dr_emit_move_w_L12:
         lis     immed_data, 0x0060
-        bl      L_124B8
+        bl      dr_operand_load_w
         b       dr_emit_move_l_L15
-        extsh   a0, d0                                  // a0 = sign-extended low word of d0
-        rlwimi  d0, d0, 0, 16, 31                       // d0[15:0] = d0[15:0]
-        rlwimi  d0, a7, 0, 16, 31                       // d0[15:0] = a7[15:0]
-        rlwimi  d0, addr, 0, 16, 31                     // d0[15:0] = addr[15:0]
-        extsh   addr, zero                              // addr = sign-extended low word of zero
-        addco.  addr, addr, zero
+T_1291C:
+        extsh   a0, d0                                  // template
+T_12920:
+        rlwimi  d0, d0, 0, 16, 31                       // template
+T_12924:
+        rlwimi  d0, a7, 0, 16, 31                       // template
+T_12928:
+        rlwimi  d0, addr, 0, 16, 31                     // template
+T_1292C:
+        extsh   addr, zero                              // template
+T_12930:
+        addco.  addr, addr, zero                        // template
         b       dr_emit_move_b
         ALIGN(64)
 
@@ -4034,6 +4424,12 @@ dr_emit_move_w_L12:
 //     MOVE.B (d16,An),Dn
 //     MOVE.B (d8,An,Xn),Dn
 //     ... and 82 more forms
+// For 1000, MOVE.B D0,D0, it generates
+//         rlwimi  d0, d0, 0, 24, 31
+//         extsb   addr, d0
+//         addco.  addr, addr, zero
+// and, when the condition codes are not wanted afterwards,
+//         rlwimi  d0, d0, 0, 24, 31
 dr_emit_move_b:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr6, rtn_addr, 0x0001
@@ -4042,21 +4438,21 @@ dr_emit_move_b:
         ble     cr6, dr_emit_move_b_L3
         ble     cr7, dr_emit_move_b_L4
         lis     immed_data, 0x0060
-        bl      L_124C0
-        bl      L_124E0
+        bl      dr_operand_load_b
+        bl      dr_operand_store_b_dest
 dr_emit_move_b_L1:
         lhz     addr, 0(rec_ptr)
         mtcrf   0x02, addr                              // cr6 = addr[7:4]
-        lwz     addr, 0x1700(base_disp)
+        lwz     addr, T_12A38 - dr_emitters(base_disp)  // template: extsb addr, zero
         ble     cr6, dr_emit_next
-        lwz     data, 0x1704(base_disp)
+        lwz     data, T_12A3C - dr_emitters(base_disp)  // template: addco. addr, addr, zero
         add     addr, addr, immed_data
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
         b       dr_emit_next
 dr_emit_move_b_L2:
         rlwinm  immed_data, prefetch_data, 21, 8, 10    // immed_data = prefetch_data[2:0] << 21
-        lwz     addr, 0x16F8(base_disp)
+        lwz     addr, T_12A30 - dr_emitters(base_disp)  // template: rlwimi d0, d0, 0, 24, 31
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
         add     addr, addr, immed_data
         add     addr, addr, data
@@ -4067,12 +4463,12 @@ dr_emit_move_b_L3:
         blt     cr7, dr_emit_move_b_L2
         rlwinm  immed_data, prefetch_data, 21, 8, 10    // immed_data = prefetch_data[2:0] << 21
         addis   immed_data, immed_data, 0x100
-        bl      L_124E0
+        bl      dr_operand_store_b_dest
         b       dr_emit_move_b_L1
 dr_emit_move_b_L4:
         lis     immed_data, 0x0060
-        bl      L_124C0
-        lwz     addr, 0x16FC(base_disp)
+        bl      dr_operand_load_b
+        lwz     addr, T_12A34 - dr_emitters(base_disp)  // template: rlwimi d0, addr, 0, 24, 31
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
@@ -4081,48 +4477,60 @@ dr_emit_move_b_L4:
 // MOVE.B (A1)+,(A0)+ / BNE.S *-2 as a six-instruction PowerPC loop, which
 // tests for a special event on each pass.
 dr_emit_move_b_bne_loop:
-        lwz     addr, 0x1708(base_disp)
-        lwz     data, 0x170C(base_disp)
+        lwz     addr, T_12A40 - dr_emitters(base_disp)  // template: lbz addr, 0(a1)
+        lwz     data, T_12A44 - dr_emitters(base_disp)  // template: addi a1, a1, 1
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
-        lwz     addr, 0x1710(base_disp)
-        lwz     data, 0x1714(base_disp)
+        lwz     addr, T_12A48 - dr_emitters(base_disp)  // template: cmpwi cr7, addr, 0
+        lwz     data, T_12A4C - dr_emitters(base_disp)  // template: stb addr, 0(a0)
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x1718(base_disp)
+        lwz     addr, T_12A50 - dr_emitters(base_disp)  // template: addi a0, a0, 1
         stwu    data, 4(out_ptr)
         stwu    addr, 4(out_ptr)
         lwz     addr, dr_cache_ptr(EmulatorStatePtr)
         lhz     data, 6(rec_ptr)
-        lwz     rtn_addr, 0x171C(base_disp)
+        lwz     rtn_addr, T_12A54 - dr_emitters(base_disp)  // template: bne cr7, T_12A50
         add     immed_data, addr, data
         subf    addr, out_ptr, immed_data               // addr = immed_data - out_ptr
         rlwimi  rtn_addr, addr, 0, 16, 29               // rtn_addr[15:2] = addr[15:2]
         stwu    rtn_addr, 4(out_ptr)
         addi    rtn_addr, blk_ofs, -2
-        bl      dr_templates_L4
-        lwz     addr, 0x1720(base_disp)
+        bl      dr_templates_L1
+        lwz     addr, T_12A58 - dr_emitters(base_disp)  // template: addco. zero, zero, zero
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-        rlwimi  d0, d0, 0, 24, 31                       // d0[7:0] = d0[7:0]
-        rlwimi  d0, addr, 0, 24, 31                     // d0[7:0] = addr[7:0]
-        extsb   addr, zero                              // addr = sign-extended low byte of zero
-        addco.  addr, addr, zero
-        lbz     addr, 0(a1)
-        addi    a1, a1, 1
-        cmpwi   cr7, addr, 0
-        stb     addr, 0(a0)
-dr_emit_move_b_bne_loop_L1:
-        addi    a0, a0, 1
-        bne     cr7, dr_emit_move_b_bne_loop_L1
-        addco.  zero, zero, zero
+T_12A30:
+        rlwimi  d0, d0, 0, 24, 31                       // template
+T_12A34:
+        rlwimi  d0, addr, 0, 24, 31                     // template
+T_12A38:
+        extsb   addr, zero                              // template
+T_12A3C:
+        addco.  addr, addr, zero                        // template
+T_12A40:
+        lbz     addr, 0(a1)                             // template
+T_12A44:
+        addi    a1, a1, 1                               // template
+T_12A48:
+        cmpwi   cr7, addr, 0                            // template
+T_12A4C:
+        stb     addr, 0(a0)                             // template
+T_12A50:
+        addi    a0, a0, 1                               // template
+T_12A54:
+        bne     cr7, T_12A50                            // template
+T_12A58:
+        addco.  zero, zero, zero                        // template
 
 // Code generator for 2048 opcodes:
 //     MOVEQ.L #<q>,Dn
 //     MOVEQ.L #$An,Dn
 //     MOVEQ.L #$Dn,Dn
+// For 7000, MOVEQ.L #$00,D0, it generates
+//         addco.  d0, zero, zero
 dr_emit_moveq_l:
         lhz     rtn_addr, 0(rec_ptr)
-        lwz     addr, 0x1774(base_disp)
+        lwz     addr, T_12AAC - dr_emitters(base_disp)  // template: li d0, 0
         extsb   data, prefetch_data                     // data = sign-extended low byte of prefetch_data
         cmpwi   cr7, data, 0
         mtcrf   0x02, rtn_addr                          // cr6 = rtn_addr[7:4]
@@ -4132,49 +4540,60 @@ dr_emit_moveq_l:
         add     addr, addr, rtn_addr
         stwu    addr, 4(out_ptr)
         ble     cr6, dr_emit_next
-        lwz     addr, 0x177C(base_disp)
+        lwz     addr, T_12AB4 - dr_emitters(base_disp)  // template: addco. d0, d0, zero
         rlwimi  rtn_addr, prefetch_data, 7, 13, 15      // rtn_addr[18:16] = prefetch_data[11:9]
         add     addr, addr, rtn_addr
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
 dr_emit_moveq_l_L1:
-        lwz     addr, 0x1778(base_disp)
+        lwz     addr, T_12AB0 - dr_emitters(base_disp)  // template: addco. d0, zero, zero
         add     addr, addr, rtn_addr
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-        li      d0, 0
-        addco.  d0, zero, zero
-        addco.  d0, d0, zero
+T_12AAC:
+        li      d0, 0                                   // template
+T_12AB0:
+        addco.  d0, zero, zero                          // template
+T_12AB4:
+        addco.  d0, d0, zero                            // template
 
 // Code generator for 64 opcodes:
 //     EXG.L An,An
+// For C148, EXG.L A0,A0, it generates
+//         add     addr, a0, zero
+//         add     a0, a0, zero
+//         add     a0, addr, zero
 dr_emit_exg_l:
         rlwinm  data, prefetch_data, 23, 29, 31         // data = prefetch_data[11:9]
         cmpwi   cr7, data, 7
-        lwz     addr, 0x1818(base_disp)
+        lwz     addr, T_12B50 - dr_emitters(base_disp)  // template: add addr, a0, zero
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
         beq     cr7, dr_emit_exg_l_L1
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x1824(base_disp)
+        lwz     addr, T_12B5C - dr_emitters(base_disp)  // template: add a0, d0, zero
         rlwinm  data, prefetch_data, 12, 8, 10          // data = prefetch_data[11:9] << 21
         add     addr, addr, data
         b       dr_emit_exg_l_2_L1
 dr_emit_exg_l_L1:
-        lwz     addr, 0x181C(base_disp)
+        lwz     addr, T_12B54 - dr_emitters(base_disp)  // template: add addr, a7, zero
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x1828(base_disp)
+        lwz     addr, T_12B60 - dr_emitters(base_disp)  // template: add a7, d0, zero
         b       dr_emit_exg_l_2_L1
 
 // Code generator for 128 opcodes:
 //     EXG.L Dn,Dn
 //     EXG.L Dn,An
+// For C140, EXG.L D0,D0, it generates
+//         add     addr, d0, zero
+//         add     d0, d0, zero
+//         add     d0, addr, zero
 dr_emit_exg_l_2:
-        lwz     addr, 0x1820(base_disp)
+        lwz     addr, T_12B58 - dr_emitters(base_disp)  // template: add addr, d0, zero
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x182C(base_disp)
+        lwz     addr, T_12B64 - dr_emitters(base_disp)  // template: add d0, d0, zero
         rlwinm  data, prefetch_data, 12, 8, 10          // data = prefetch_data[11:9] << 21
         add     addr, addr, data
 dr_emit_exg_l_2_L1:
@@ -4184,25 +4603,33 @@ dr_emit_exg_l_2_L1:
         beq     cr7, dr_emit_exg_l_2_L2
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x1834(base_disp)
+        lwz     addr, T_12B6C - dr_emitters(base_disp)  // template: add d0, addr, zero
         rlwinm  data, prefetch_data, 21, 7, 10          // data = prefetch_data[3:0] << 21
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
 dr_emit_exg_l_2_L2:
         addis   addr, addr, -7
-        lwz     data, 0x1830(base_disp)
+        lwz     data, T_12B68 - dr_emitters(base_disp)  // template: add a7, addr, zero
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
         b       dr_emit_next
-        add     addr, a0, zero
-        add     addr, a7, zero
-        add     addr, d0, zero
-        add     a0, d0, zero
-        add     a7, d0, zero
-        add     d0, d0, zero
-        add     a7, addr, zero
-        add     d0, addr, zero
+T_12B50:
+        add     addr, a0, zero                          // template
+T_12B54:
+        add     addr, a7, zero                          // template
+T_12B58:
+        add     addr, d0, zero                          // template
+T_12B5C:
+        add     a0, d0, zero                            // template
+T_12B60:
+        add     a7, d0, zero                            // template
+T_12B64:
+        add     d0, d0, zero                            // template
+T_12B68:
+        add     a7, addr, zero                          // template
+T_12B6C:
+        add     d0, addr, zero                          // template
 
 // Code generator for 50 opcodes:
 //     CLR.B Dn
@@ -4212,6 +4639,11 @@ dr_emit_exg_l_2_L2:
 //     CLR.B (d16,An)
 //     CLR.B (d8,An,Xn)
 //     ... and 2 more forms
+// For 4200, CLR.B D0, it generates
+//         rlwimi  d0, zero, 0, 24, 31
+//         addco.  zero, zero, zero
+// and, when the condition codes are not wanted afterwards,
+//         rlwimi  d0, zero, 0, 24, 31
 dr_emit_clr_b:
         b       dr_emit_clr_l_L5
 
@@ -4223,6 +4655,11 @@ dr_emit_clr_b:
 //     CLR.W (d16,An)
 //     CLR.W (d8,An,Xn)
 //     ... and 2 more forms
+// For 4240, CLR.W D0, it generates
+//         rlwimi  d0, zero, 0, 16, 31
+//         addco.  zero, zero, zero
+// and, when the condition codes are not wanted afterwards,
+//         rlwimi  d0, zero, 0, 16, 31
 dr_emit_clr_w:
         b       dr_emit_clr_l_L3
 
@@ -4234,6 +4671,8 @@ dr_emit_clr_w:
 //     CLR.L (d16,An)
 //     CLR.L (d8,An,Xn)
 //     ... and 2 more forms
+// For 4280, CLR.L D0, it generates
+//         addco.  d0, zero, zero
 dr_emit_clr_l:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr6, rtn_addr, 0x0000
@@ -4241,16 +4680,16 @@ dr_emit_clr_l:
         beq     cr6, dr_emit_clr_l_L2
         rlwimi  prefetch_data, prefetch_data, 3, 23, 25  // prefetch_data[8:6] = prefetch_data[5:3]
         rlwimi  prefetch_data, prefetch_data, 9, 20, 22  // prefetch_data[11:9] = prefetch_data[2:0]
-        bl      L_124C8
+        bl      dr_operand_store_l_dest
 dr_emit_clr_l_L1:
         lhz     data, 0(rec_ptr)
-        lwz     addr, 0x18FC(base_disp)
+        lwz     addr, T_12C34 - dr_emitters(base_disp)  // template: addco. zero, zero, zero
         mtcrf   0x02, data                              // cr6 = data[7:4]
         ble     cr6, dr_emit_next
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
 dr_emit_clr_l_L2:
-        lwz     addr, 0x18F0(base_disp)
+        lwz     addr, T_12C28 - dr_emitters(base_disp)  // template: addco. d0, zero, zero
         rlwinm  data, prefetch_data, 21, 8, 10          // data = prefetch_data[2:0] << 21
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
@@ -4262,10 +4701,10 @@ dr_emit_clr_l_L3:
         beq     cr6, dr_emit_clr_l_L4
         rlwimi  prefetch_data, prefetch_data, 3, 23, 25  // prefetch_data[8:6] = prefetch_data[5:3]
         rlwimi  prefetch_data, prefetch_data, 9, 20, 22  // prefetch_data[11:9] = prefetch_data[2:0]
-        bl      L_124D8
+        bl      dr_operand_store_w_dest
         b       dr_emit_clr_l_L1
 dr_emit_clr_l_L4:
-        lwz     addr, 0x18F4(base_disp)
+        lwz     addr, T_12C2C - dr_emitters(base_disp)  // template: rlwimi d0, zero, 0, 16, 31
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
@@ -4277,18 +4716,22 @@ dr_emit_clr_l_L5:
         beq     cr6, dr_emit_clr_l_L6
         rlwimi  prefetch_data, prefetch_data, 3, 23, 25  // prefetch_data[8:6] = prefetch_data[5:3]
         rlwimi  prefetch_data, prefetch_data, 9, 20, 22  // prefetch_data[11:9] = prefetch_data[2:0]
-        bl      L_124E0
+        bl      dr_operand_store_b_dest
         b       dr_emit_clr_l_L1
 dr_emit_clr_l_L6:
-        lwz     addr, 0x18F8(base_disp)
+        lwz     addr, T_12C30 - dr_emitters(base_disp)  // template: rlwimi d0, zero, 0, 24, 31
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         b       dr_emit_clr_l_L1
-        addco.  d0, zero, zero
-        rlwimi  d0, zero, 0, 16, 31                     // d0[15:0] = zero[15:0]
-        rlwimi  d0, zero, 0, 24, 31                     // d0[7:0] = zero[7:0]
-        addco.  zero, zero, zero
+T_12C28:
+        addco.  d0, zero, zero                          // template
+T_12C2C:
+        rlwimi  d0, zero, 0, 16, 31                     // template
+T_12C30:
+        rlwimi  d0, zero, 0, 24, 31                     // template
+T_12C34:
+        addco.  zero, zero, zero                        // template
 
 // Code generator for 51 opcodes:
 //     MOVE.W CCR,Dn
@@ -4298,29 +4741,37 @@ dr_emit_clr_l_L6:
 //     MOVE.W CCR,(d16,An)
 //     MOVE.W CCR,(d8,An,Xn)
 //     ... and 3 more forms
+// For 42C0, MOVE.W CCR,D0, it generates
+//         mfcr    data
+//         rlwinm  addr, ccr_x, 7, 27, 27
+//         mfxer   rtn_addr
+//         rlwimi  addr, data, 4, 28, 28
+//         rlwimi  addr, data, 5, 29, 29
+//         rlwimi  addr, rtn_addr, 3, 30, 31
+//         rlwimi  d0, addr, 0, 16, 31
 dr_emit_move_w_2:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr6, rtn_addr, 0x0000
-        lwz     addr, 0x19BC(base_disp)
-        lwz     data, 0x19C0(base_disp)
+        lwz     addr, T_12CF4 - dr_emitters(base_disp)  // template: mfcr data
+        lwz     data, T_12CF8 - dr_emitters(base_disp)  // template: rlwinm addr, ccr_x, 7, 27, 27
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
-        lwz     addr, 0x19C4(base_disp)
-        lwz     data, 0x19C8(base_disp)
+        lwz     addr, T_12CFC - dr_emitters(base_disp)  // template: mfxer rtn_addr
+        lwz     data, T_12D00 - dr_emitters(base_disp)  // template: rlwimi addr, data, 4, 28, 28
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
-        lwz     addr, 0x19CC(base_disp)
-        lwz     data, 0x19D0(base_disp)
+        lwz     addr, T_12D04 - dr_emitters(base_disp)  // template: rlwimi addr, data, 5, 29, 29
+        lwz     data, T_12D08 - dr_emitters(base_disp)  // template: rlwimi addr, rtn_addr, 3, 30, 31
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
         beq     cr6, dr_emit_move_w_2_L1
         lis     immed_data, 0x0060
         rlwimi  prefetch_data, prefetch_data, 3, 23, 25  // prefetch_data[8:6] = prefetch_data[5:3]
         rlwimi  prefetch_data, prefetch_data, 9, 20, 22  // prefetch_data[11:9] = prefetch_data[2:0]
-        bl      L_124D8
+        bl      dr_operand_store_w_dest
         b       dr_emit_next
 dr_emit_move_w_2_L1:
-        lwz     addr, 0x19D4(base_disp)
+        lwz     addr, T_12D0C - dr_emitters(base_disp)  // template: rlwimi d0, addr, 0, 16, 31
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
@@ -4334,45 +4785,67 @@ dr_emit_move_w_2_L1:
 //     MOVE.W (d16,An),CCR
 //     MOVE.W (d8,An,Xn),CCR
 //     ... and 5 more forms
+// For 44C0, MOVE.W D0,CCR, it generates
+//         clrlwi  addr, d0, 16
+//         rlwinm  rtn_addr, addr, 27, 2, 2
+//         rlwinm  ccr_x, addr, 25, 2, 2
+//         rlwimi  rtn_addr, addr, 28, 0, 0
+//         rlwinm  addr, addr, 29, 1, 2
+//         mtcrf   0x80, rtn_addr
+//         mtxer   addr
 dr_emit_move_w_3:
         rlwinm  addr, prefetch_data, 29, 29, 31         // addr = prefetch_data[5:3]
         cmpwi   cr7, addr, 0
         lis     immed_data, 0x0060
         beq     cr7, dr_emit_move_w_3_L2
-        bl      L_124B8
+        bl      dr_operand_load_w
 dr_emit_move_w_3_L1:
-        lwz     addr, 0x19D8(base_disp)
-        lwz     data, 0x19DC(base_disp)
-        lwz     rtn_addr, 0x19E0(base_disp)
+        lwz     addr, T_12D10 - dr_emitters(base_disp)  // template: rlwinm rtn_addr, addr, 27, 2, 2
+        lwz     data, T_12D14 - dr_emitters(base_disp)  // template: rlwinm ccr_x, addr, 25, 2, 2
+        lwz     rtn_addr, T_12D18 - dr_emitters(base_disp)  // template: rlwimi rtn_addr, addr, 28, 0, 0
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
         stwu    rtn_addr, 4(out_ptr)
-        lwz     addr, 0x19E4(base_disp)
-        lwz     data, 0x19E8(base_disp)
-        lwz     rtn_addr, 0x19EC(base_disp)
+        lwz     addr, T_12D1C - dr_emitters(base_disp)  // template: rlwinm addr, addr, 29, 1, 2
+        lwz     data, T_12D20 - dr_emitters(base_disp)  // template: mtcrf 0x80, rtn_addr
+        lwz     rtn_addr, T_12D24 - dr_emitters(base_disp)  // template: mtxer addr
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
         stwu    rtn_addr, 4(out_ptr)
         b       dr_emit_next
 dr_emit_move_w_3_L2:
-        lwz     addr, 0x19F0(base_disp)
+        lwz     addr, T_12D28 - dr_emitters(base_disp)  // template: clrlwi addr, d0, 16
         rlwimi  addr, prefetch_data, 21, 8, 10          // addr[23:21] = prefetch_data[2:0]
         stwu    addr, 4(out_ptr)
         b       dr_emit_move_w_3_L1
-        mfcr    data
-        rlwinm  addr, ccr_x, 7, 27, 27                  // addr = ccr_x[29] << 4
-        mfxer   rtn_addr
-        rlwimi  addr, data, 4, 28, 28                   // addr[3] = data[31]
-        rlwimi  addr, data, 5, 29, 29                   // addr[2] = data[29]
-        rlwimi  addr, rtn_addr, 3, 30, 31               // addr[1:0] = rtn_addr[30:29]
-        rlwimi  d0, addr, 0, 16, 31                     // d0[15:0] = addr[15:0]
-        rlwinm  rtn_addr, addr, 27, 2, 2                // rtn_addr = addr[2] << 29
-        rlwinm  ccr_x, addr, 25, 2, 2                   // ccr_x = addr[4] << 29
-        rlwimi  rtn_addr, addr, 28, 0, 0                // rtn_addr[31] = addr[3]
-        rlwinm  addr, addr, 29, 1, 2                    // addr = addr[1:0] << 29
-        mtcrf   0x80, rtn_addr                          // cr0 = rtn_addr[31:28]
-        mtxer   addr
-        clrlwi  addr, d0, 16                            // addr = d0 & 0x0000FFFF
+T_12CF4:
+        mfcr    data                                    // template
+T_12CF8:
+        rlwinm  addr, ccr_x, 7, 27, 27                  // template
+T_12CFC:
+        mfxer   rtn_addr                                // template
+T_12D00:
+        rlwimi  addr, data, 4, 28, 28                   // template
+T_12D04:
+        rlwimi  addr, data, 5, 29, 29                   // template
+T_12D08:
+        rlwimi  addr, rtn_addr, 3, 30, 31               // template
+T_12D0C:
+        rlwimi  d0, addr, 0, 16, 31                     // template
+T_12D10:
+        rlwinm  rtn_addr, addr, 27, 2, 2                // template
+T_12D14:
+        rlwinm  ccr_x, addr, 25, 2, 2                   // template
+T_12D18:
+        rlwimi  rtn_addr, addr, 28, 0, 0                // template
+T_12D1C:
+        rlwinm  addr, addr, 29, 1, 2                    // template
+T_12D20:
+        mtcrf   0x80, rtn_addr                          // template
+T_12D24:
+        mtxer   addr                                    // template
+T_12D28:
+        clrlwi  addr, d0, 16                            // template
 
 // Code generator for 34 opcodes:
 //     MOVEM.W <list>,(An)
@@ -4381,6 +4854,10 @@ dr_emit_move_w_3_L2:
 //     MOVEM.W <list>,(d8,An,Xn)
 //     MOVEM.W <list>,(xxx).W
 //     MOVEM.W <list>,(xxx).L
+// For 4890 0010, MOVEM.W <list>,(A0), it generates
+//         add     addr, a0, zero
+//         addi    addr, addr, -2
+//         sthu    d4, 2(addr)
 dr_emit_movem_w:
         b       dr_emit_movem_l_L8
 
@@ -4391,22 +4868,26 @@ dr_emit_movem_w:
 //     MOVEM.L <list>,(d8,An,Xn)
 //     MOVEM.L <list>,(xxx).W
 //     MOVEM.L <list>,(xxx).L
+// For 48D0 0010, MOVEM.L <list>,(A0), it generates
+//         add     addr, a0, zero
+//         addi    addr, addr, -4
+//         stwu    d4, 4(addr)
 dr_emit_movem_l:
         rlwinm  data, prefetch_data, 29, 29, 31         // data = prefetch_data[5:3]
         cmpwi   cr7, data, 4
-        lwz     addr, 0x1D24(base_disp)
+        lwz     addr, T_1305C - dr_emitters(base_disp)  // template: add addr, a0, zero
         bt_likely 4*cr7+eq, dr_emit_movem_l_L1
         lis     immed_data, 0x0060
         addi    blk_ofs, blk_ofs, 2
-        bl      L_12508
-        lwz     addr, 0x1D0C(base_disp)
+        bl      dr_operand_address
+        lwz     addr, T_13044 - dr_emitters(base_disp)  // template: addi addr, addr, -4
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x1D10(base_disp)
+        lwz     addr, T_13048 - dr_emitters(base_disp)  // template: stwu d0, 4(addr)
         lis     data, 0x0020
         crclr   4*cr3+so
-        bl      L_130DC
+        bl      dr_movem_mask
         bge     cr4, dr_emit_next
-        lwz     addr, 0x1D14(base_disp)
+        lwz     addr, T_1304C - dr_emitters(base_disp)  // template: stwu a7, 4(addr)
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
 dr_emit_movem_l_L1:
@@ -4418,39 +4899,39 @@ dr_emit_movem_l_L1:
         bne     cr6, dr_emit_movem_l_L5
         bne     cr7, dr_emit_movem_l_L4
 dr_emit_movem_l_L2:
-        lwz     addr, 0x1D54(base_disp)
+        lwz     addr, T_1308C - dr_emitters(base_disp)  // template: stwu a6, -4(a7)
 dr_emit_movem_l_L3:
         mtcrf   0x0F, rtn_addr                          // cr4..cr7 = rtn_addr[15:0]
         lis     data, 0xFFE0
         crset   4*cr3+so
-        bl      L_130F8
+        bl      dr_movem_mask_L3
         b       dr_emit_next
 dr_emit_movem_l_L4:
-        lwz     data, 0x1D44(base_disp)
-        lwz     addr, 0x1D48(base_disp)
+        lwz     data, T_1307C - dr_emitters(base_disp)  // template: addi rtn_addr, a7, -4
+        lwz     addr, T_13080 - dr_emitters(base_disp)  // template: stwu rtn_addr, -4(a7)
         stwu    data, 4(out_ptr)
         stwu    addr, 4(out_ptr)
         b       dr_emit_movem_l_L2
 dr_emit_movem_l_L5:
-        lwz     addr, 0x1D24(base_disp)
+        lwz     addr, T_1305C - dr_emitters(base_disp)  // template: add addr, a0, zero
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x1D2C(base_disp)
+        lwz     addr, T_13064 - dr_emitters(base_disp)  // template: addi a0, a0, -4
         rlwimi  data, prefetch_data, 21, 8, 10          // data[23:21] = prefetch_data[2:0]
         mtcrf   0x0F, rtn_addr                          // cr4..cr7 = rtn_addr[15:0]
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         bns     cr7, dr_emit_movem_l_L6
-        lwz     addr, 0x1D30(base_disp)
+        lwz     addr, T_13068 - dr_emitters(base_disp)  // template: stwu a7, -4(addr)
         stwu    addr, 4(out_ptr)
 dr_emit_movem_l_L6:
-        lwz     addr, 0x1D34(base_disp)
+        lwz     addr, T_1306C - dr_emitters(base_disp)  // template: stwu a6, -4(addr)
 dr_emit_movem_l_L7:
         lis     data, 0xFFE0
         crset   4*cr3+so
-        bl      L_130F8
-        lwz     addr, 0x1D28(base_disp)
+        bl      dr_movem_mask_L3
+        lwz     addr, T_13060 - dr_emitters(base_disp)  // template: add a0, addr, zero
         rlwinm  data, prefetch_data, 21, 8, 10          // data = prefetch_data[2:0] << 21
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
@@ -4458,19 +4939,19 @@ dr_emit_movem_l_L7:
 dr_emit_movem_l_L8:
         rlwinm  data, prefetch_data, 29, 29, 31         // data = prefetch_data[5:3]
         cmpwi   cr7, data, 4
-        lwz     addr, 0x1D24(base_disp)
+        lwz     addr, T_1305C - dr_emitters(base_disp)  // template: add addr, a0, zero
         bt_likely 4*cr7+eq, dr_emit_movem_l_L9
         lis     immed_data, 0x0060
         addi    blk_ofs, blk_ofs, 2
-        bl      L_12508
-        lwz     addr, 0x1D18(base_disp)
+        bl      dr_operand_address
+        lwz     addr, T_13050 - dr_emitters(base_disp)  // template: addi addr, addr, -2
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x1D1C(base_disp)
+        lwz     addr, T_13054 - dr_emitters(base_disp)  // template: sthu d0, 2(addr)
         lis     data, 0x0020
         crclr   4*cr3+so
-        bl      L_130DC
+        bl      dr_movem_mask
         bge     cr4, dr_emit_next
-        lwz     addr, 0x1D20(base_disp)
+        lwz     addr, T_13058 - dr_emitters(base_disp)  // template: sthu a7, 2(addr)
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
 dr_emit_movem_l_L9:
@@ -4482,29 +4963,29 @@ dr_emit_movem_l_L9:
         bne     cr6, dr_emit_movem_l_L12
         bne     cr7, dr_emit_movem_l_L11
 dr_emit_movem_l_L10:
-        lwz     addr, 0x1D58(base_disp)
+        lwz     addr, T_13090 - dr_emitters(base_disp)  // template: sthu a6, -2(a7)
         b       dr_emit_movem_l_L3
 dr_emit_movem_l_L11:
-        lwz     data, 0x1D4C(base_disp)
-        lwz     addr, 0x1D50(base_disp)
+        lwz     data, T_13084 - dr_emitters(base_disp)  // template: addi rtn_addr, a7, -2
+        lwz     addr, T_13088 - dr_emitters(base_disp)  // template: sthu rtn_addr, -2(a7)
         stwu    data, 4(out_ptr)
         stwu    addr, 4(out_ptr)
         b       dr_emit_movem_l_L10
 dr_emit_movem_l_L12:
-        lwz     addr, 0x1D24(base_disp)
+        lwz     addr, T_1305C - dr_emitters(base_disp)  // template: add addr, a0, zero
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x1D38(base_disp)
+        lwz     addr, T_13070 - dr_emitters(base_disp)  // template: addi a0, a0, -2
         rlwimi  data, prefetch_data, 21, 8, 10          // data[23:21] = prefetch_data[2:0]
         mtcrf   0x0F, rtn_addr                          // cr4..cr7 = rtn_addr[15:0]
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         bns     cr7, dr_emit_movem_l_L13
-        lwz     addr, 0x1D3C(base_disp)
+        lwz     addr, T_13074 - dr_emitters(base_disp)  // template: sthu a7, -2(addr)
         stwu    addr, 4(out_ptr)
 dr_emit_movem_l_L13:
-        lwz     addr, 0x1D40(base_disp)
+        lwz     addr, T_13078 - dr_emitters(base_disp)  // template: sthu a6, -2(addr)
         b       dr_emit_movem_l_L7
 
 // Code generator for 36 opcodes:
@@ -4515,6 +4996,10 @@ dr_emit_movem_l_L13:
 //     MOVEM.W (xxx).W,<list>
 //     MOVEM.W (xxx).L,<list>
 //     ... and 2 more forms
+// For 4C90 0010, MOVEM.W (A0),<list>, it generates
+//         add     addr, a0, zero
+//         addi    addr, addr, -2
+//         lhau    d4, 2(addr)
 dr_emit_movem_w_2:
         b       dr_emit_movem_l_2_L6
 
@@ -4526,6 +5011,10 @@ dr_emit_movem_w_2:
 //     MOVEM.L (xxx).W,<list>
 //     MOVEM.L (xxx).L,<list>
 //     ... and 2 more forms
+// For 4CD0 0010, MOVEM.L (A0),<list>, it generates
+//         add     addr, a0, zero
+//         addi    addr, addr, -4
+//         lwzu    d4, 4(addr)
 dr_emit_movem_l_2:
         rlwinm  data, prefetch_data, 29, 29, 31         // data = prefetch_data[5:3]
         cmpwi   cr7, data, 3
@@ -4533,49 +5022,49 @@ dr_emit_movem_l_2:
         lhax    rtn_addr, pc, blk_ofs
         bt_likely 4*cr7+eq, dr_emit_movem_l_2_L1
         addi    blk_ofs, blk_ofs, 2
-        bl      L_12508
-        lwz     addr, 0x1D5C(base_disp)
+        bl      dr_operand_address
+        lwz     addr, T_13094 - dr_emitters(base_disp)  // template: addi addr, addr, -4
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x1D60(base_disp)
+        lwz     addr, T_13098 - dr_emitters(base_disp)  // template: lwzu d0, 4(addr)
         lis     data, 0x0020
         crclr   4*cr3+so
-        bl      L_130DC
+        bl      dr_movem_mask
         bge     cr4, dr_emit_next
-        lwz     addr, 0x1D64(base_disp)
+        lwz     addr, T_1309C - dr_emitters(base_disp)  // template: lwzu a7, 4(addr)
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
 dr_emit_movem_l_2_L1:
         clrlwi  data, prefetch_data, 29                 // data = prefetch_data & 0x00000007
         cmpwi   cr6, data, 7
-        lwz     data, 0x1D7C(base_disp)
+        lwz     data, T_130B4 - dr_emitters(base_disp)  // template: addi a7, a7, -4
         bne     cr6, dr_emit_movem_l_2_L3
         mtcrf   0x0F, rtn_addr                          // cr4..cr7 = rtn_addr[15:0]
-        lwz     addr, 0x1D80(base_disp)
+        lwz     addr, T_130B8 - dr_emitters(base_disp)  // template: lwzu d0, 4(a7)
         stwu    data, 4(out_ptr)
         lis     data, 0x0020
         crclr   4*cr3+so
-        bl      L_130EC
-        lwz     addr, 0x1D84(base_disp)
+        bl      dr_movem_mask_L1
+        lwz     addr, T_130BC - dr_emitters(base_disp)  // template: addi a7, a7, 4
         bge     cr4, dr_emit_movem_l_2_L2
-        lwz     addr, 0x1D88(base_disp)
+        lwz     addr, T_130C0 - dr_emitters(base_disp)  // template: addi a7, a7, 8
 dr_emit_movem_l_2_L2:
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
 dr_emit_movem_l_2_L3:
-        lwz     addr, 0x1D74(base_disp)
+        lwz     addr, T_130AC - dr_emitters(base_disp)  // template: addi addr, a0, -4
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
         add     addr, addr, data
         mtcrf   0x0F, rtn_addr                          // cr4..cr7 = rtn_addr[15:0]
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x1D60(base_disp)
+        lwz     addr, T_13098 - dr_emitters(base_disp)  // template: lwzu d0, 4(addr)
         lis     data, 0x0020
         crclr   4*cr3+so
-        bl      L_130EC
+        bl      dr_movem_mask_L1
         bge     cr4, dr_emit_movem_l_2_L4
-        lwz     addr, 0x1D64(base_disp)
+        lwz     addr, T_1309C - dr_emitters(base_disp)  // template: lwzu a7, 4(addr)
         stwu    addr, 4(out_ptr)
 dr_emit_movem_l_2_L4:
-        lwz     addr, 0x1D78(base_disp)
+        lwz     addr, T_130B0 - dr_emitters(base_disp)  // template: addi a0, addr, 4
 dr_emit_movem_l_2_L5:
         rlwinm  data, prefetch_data, 21, 8, 10          // data = prefetch_data[2:0] << 21
         add     addr, addr, data
@@ -4588,159 +5077,200 @@ dr_emit_movem_l_2_L6:
         lhax    rtn_addr, pc, blk_ofs
         bt_likely 4*cr7+eq, dr_emit_movem_l_2_L7
         addi    blk_ofs, blk_ofs, 2
-        bl      L_12508
-        lwz     addr, 0x1D68(base_disp)
+        bl      dr_operand_address
+        lwz     addr, T_130A0 - dr_emitters(base_disp)  // template: addi addr, addr, -2
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x1D6C(base_disp)
+        lwz     addr, T_130A4 - dr_emitters(base_disp)  // template: lhau d0, 2(addr)
         lis     data, 0x0020
         crclr   4*cr3+so
-        bl      L_130DC
+        bl      dr_movem_mask
         bge     cr4, dr_emit_next
-        lwz     addr, 0x1D70(base_disp)
+        lwz     addr, T_130A8 - dr_emitters(base_disp)  // template: lhau a7, 2(addr)
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
 dr_emit_movem_l_2_L7:
         clrlwi  data, prefetch_data, 29                 // data = prefetch_data & 0x00000007
         cmpwi   cr6, data, 7
-        lwz     data, 0x1D94(base_disp)
+        lwz     data, T_130CC - dr_emitters(base_disp)  // template: addi a7, a7, -2
         bne     cr6, dr_emit_movem_l_2_L9
         mtcrf   0x0F, rtn_addr                          // cr4..cr7 = rtn_addr[15:0]
-        lwz     addr, 0x1D98(base_disp)
+        lwz     addr, T_130D0 - dr_emitters(base_disp)  // template: lhau d0, 2(a7)
         stwu    data, 4(out_ptr)
         lis     data, 0x0020
         crclr   4*cr3+so
-        bl      L_130EC
-        lwz     addr, 0x1D9C(base_disp)
+        bl      dr_movem_mask_L1
+        lwz     addr, T_130D4 - dr_emitters(base_disp)  // template: addi a7, a7, 2
         bge     cr4, dr_emit_movem_l_2_L8
-        lwz     addr, 0x1DA0(base_disp)
+        lwz     addr, T_130D8 - dr_emitters(base_disp)  // template: addi a7, a7, 4
 dr_emit_movem_l_2_L8:
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
 dr_emit_movem_l_2_L9:
-        lwz     addr, 0x1D8C(base_disp)
+        lwz     addr, T_130C4 - dr_emitters(base_disp)  // template: addi addr, a0, -2
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
         add     addr, addr, data
         mtcrf   0x0F, rtn_addr                          // cr4..cr7 = rtn_addr[15:0]
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x1D6C(base_disp)
+        lwz     addr, T_130A4 - dr_emitters(base_disp)  // template: lhau d0, 2(addr)
         lis     data, 0x0020
         crclr   4*cr3+so
-        bl      L_130EC
+        bl      dr_movem_mask_L1
         bge     cr4, dr_emit_movem_l_2_L10
-        lwz     addr, 0x1D70(base_disp)
+        lwz     addr, T_130A8 - dr_emitters(base_disp)  // template: lhau a7, 2(addr)
         stwu    addr, 4(out_ptr)
 dr_emit_movem_l_2_L10:
-        lwz     addr, 0x1D90(base_disp)
+        lwz     addr, T_130C8 - dr_emitters(base_disp)  // template: addi a0, addr, 2
         b       dr_emit_movem_l_2_L5
-        addi    addr, addr, -4
-        stwu    d0, 4(addr)
-        stwu    a7, 4(addr)
-        addi    addr, addr, -2
-        sthu    d0, 2(addr)
-        sthu    a7, 2(addr)
-        add     addr, a0, zero
-        add     a0, addr, zero
-        addi    a0, a0, -4
-        stwu    a7, -4(addr)
-        stwu    a6, -4(addr)
-        addi    a0, a0, -2
-        sthu    a7, -2(addr)
-        sthu    a6, -2(addr)
-        addi    rtn_addr, a7, -4
-        stwu    rtn_addr, -4(a7)
-        addi    rtn_addr, a7, -2
-        sthu    rtn_addr, -2(a7)
-        stwu    a6, -4(a7)
-        sthu    a6, -2(a7)
-        addi    addr, addr, -4
-        lwzu    d0, 4(addr)
-        lwzu    a7, 4(addr)
-        addi    addr, addr, -2
-        lhau    d0, 2(addr)
-        lhau    a7, 2(addr)
-        addi    addr, a0, -4
-        addi    a0, addr, 4
-        addi    a7, a7, -4
-        lwzu    d0, 4(a7)
-        addi    a7, a7, 4
-        addi    a7, a7, 8
-        addi    addr, a0, -2
-        addi    a0, addr, 2
-        addi    a7, a7, -2
-        lhau    d0, 2(a7)
-        addi    a7, a7, 2
-        addi    a7, a7, 4
-L_130DC:
+T_13044:
+        addi    addr, addr, -4                          // template
+T_13048:
+        stwu    d0, 4(addr)                             // template
+T_1304C:
+        stwu    a7, 4(addr)                             // template
+T_13050:
+        addi    addr, addr, -2                          // template
+T_13054:
+        sthu    d0, 2(addr)                             // template
+T_13058:
+        sthu    a7, 2(addr)                             // template
+T_1305C:
+        add     addr, a0, zero                          // template
+T_13060:
+        add     a0, addr, zero                          // template
+T_13064:
+        addi    a0, a0, -4                              // template
+T_13068:
+        stwu    a7, -4(addr)                            // template
+T_1306C:
+        stwu    a6, -4(addr)                            // template
+T_13070:
+        addi    a0, a0, -2                              // template
+T_13074:
+        sthu    a7, -2(addr)                            // template
+T_13078:
+        sthu    a6, -2(addr)                            // template
+T_1307C:
+        addi    rtn_addr, a7, -4                        // template
+T_13080:
+        stwu    rtn_addr, -4(a7)                        // template
+T_13084:
+        addi    rtn_addr, a7, -2                        // template
+T_13088:
+        sthu    rtn_addr, -2(a7)                        // template
+T_1308C:
+        stwu    a6, -4(a7)                              // template
+T_13090:
+        sthu    a6, -2(a7)                              // template
+T_13094:
+        addi    addr, addr, -4                          // template
+T_13098:
+        lwzu    d0, 4(addr)                             // template
+T_1309C:
+        lwzu    a7, 4(addr)                             // template
+T_130A0:
+        addi    addr, addr, -2                          // template
+T_130A4:
+        lhau    d0, 2(addr)                             // template
+T_130A8:
+        lhau    a7, 2(addr)                             // template
+T_130AC:
+        addi    addr, a0, -4                            // template
+T_130B0:
+        addi    a0, addr, 4                             // template
+T_130B4:
+        addi    a7, a7, -4                              // template
+T_130B8:
+        lwzu    d0, 4(a7)                               // template
+T_130BC:
+        addi    a7, a7, 4                               // template
+T_130C0:
+        addi    a7, a7, 8                               // template
+T_130C4:
+        addi    addr, a0, -2                            // template
+T_130C8:
+        addi    a0, addr, 2                             // template
+T_130CC:
+        addi    a7, a7, -2                              // template
+T_130D0:
+        lhau    d0, 2(a7)                               // template
+T_130D4:
+        addi    a7, a7, 2                               // template
+T_130D8:
+        addi    a7, a7, 4                               // template
+
+// For the MOVEM emitters: fetch the register list (the word after the
+// opcode) and spread its bits over cr4-cr7, one bit per register.
+dr_movem_mask:
         lhz     rtn_addr, 2(rec_ptr)
         addi    rtn_addr, rtn_addr, 2
         lhax    rtn_addr, pc, rtn_addr
         mtcrf   0x0F, rtn_addr                          // cr4..cr7 = rtn_addr[15:0]
-L_130EC:
-        bns     cr7, L_130F4
+dr_movem_mask_L1:
+        bns     cr7, dr_movem_mask_L2
         stwu    addr, 4(out_ptr)
-L_130F4:
+dr_movem_mask_L2:
         add     addr, addr, data
-L_130F8:
-        bne     cr7, L_13100
+dr_movem_mask_L3:
+        bne     cr7, dr_movem_mask_L4
         stwu    addr, 4(out_ptr)
-L_13100:
+dr_movem_mask_L4:
         add     addr, addr, data
-        ble     cr7, L_1310C
+        ble     cr7, dr_movem_mask_L5
         stwu    addr, 4(out_ptr)
-L_1310C:
+dr_movem_mask_L5:
         add     addr, addr, data
-        bge     cr7, L_13118
+        bge     cr7, dr_movem_mask_L6
         stwu    addr, 4(out_ptr)
-L_13118:
+dr_movem_mask_L6:
         add     addr, addr, data
-        bns     cr6, L_13124
+        bns     cr6, dr_movem_mask_L7
         stwu    addr, 4(out_ptr)
-L_13124:
+dr_movem_mask_L7:
         add     addr, addr, data
-        bne     cr6, L_13130
+        bne     cr6, dr_movem_mask_L8
         stwu    addr, 4(out_ptr)
-L_13130:
+dr_movem_mask_L8:
         add     addr, addr, data
-        ble     cr6, L_1313C
+        ble     cr6, dr_movem_mask_L9
         stwu    addr, 4(out_ptr)
-L_1313C:
+dr_movem_mask_L9:
         add     addr, addr, data
-        bge     cr6, L_13148
+        bge     cr6, dr_movem_mask_L10
         stwu    addr, 4(out_ptr)
-L_13148:
+dr_movem_mask_L10:
         add     addr, addr, data
-        bns     cr5, L_13154
+        bns     cr5, dr_movem_mask_L11
         stwu    addr, 4(out_ptr)
-L_13154:
+dr_movem_mask_L11:
         add     addr, addr, data
-        bne     cr5, L_13160
+        bne     cr5, dr_movem_mask_L12
         stwu    addr, 4(out_ptr)
-L_13160:
+dr_movem_mask_L12:
         add     addr, addr, data
-        ble     cr5, L_1316C
+        ble     cr5, dr_movem_mask_L13
         stwu    addr, 4(out_ptr)
-L_1316C:
+dr_movem_mask_L13:
         add     addr, addr, data
-        bge     cr5, L_13178
+        bge     cr5, dr_movem_mask_L14
         stwu    addr, 4(out_ptr)
-L_13178:
+dr_movem_mask_L14:
         add     addr, addr, data
-        bns     cr4, L_13184
+        bns     cr4, dr_movem_mask_L15
         stwu    addr, 4(out_ptr)
-L_13184:
+dr_movem_mask_L15:
         add     addr, addr, data
-        bne     cr4, L_13190
+        bne     cr4, dr_movem_mask_L16
         stwu    addr, 4(out_ptr)
-L_13190:
+dr_movem_mask_L16:
         add     addr, addr, data
-        ble     cr4, L_1319C
+        ble     cr4, dr_movem_mask_L17
         stwu    addr, 4(out_ptr)
-L_1319C:
+dr_movem_mask_L17:
         bnslr   cr3
         add     addr, addr, data
-        bge     cr4, L_131AC
+        bge     cr4, dr_movem_mask_L18
         stwu    addr, 4(out_ptr)
-L_131AC:
+dr_movem_mask_L18:
         blr
 
 // Code generator for 488 opcodes:
@@ -4751,13 +5281,18 @@ L_131AC:
 //     ADD.L -(An),Dn
 //     ADD.L (d16,An),Dn
 //     ... and 6 more forms
+// For D080, ADD.L D0,D0, it generates
+//         addco.  d0, d0, d0
+//         mfxer   ccr_x
+// and, when the condition codes are not wanted afterwards,
+//         addco.  d0, d0, d0
 dr_emit_add_l:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr6, rtn_addr, 0x0001
         lis     immed_data, 0x0060
         ble     cr6, dr_emit_add_l_L5
-        bl      L_124A0
-        lwz     addr, 0x2198(base_disp)
+        bl      dr_operand_load_l
+        lwz     addr, T_134D0 - dr_emitters(base_disp)  // template: addco. d0, d0, addr
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
 dr_emit_add_l_L1:
         rlwimi  data, prefetch_data, 12, 8, 10          // data[23:21] = prefetch_data[11:9]
@@ -4769,19 +5304,19 @@ dr_emit_add_l_L3:
         mtcrf   0x02, addr                              // cr6 = addr[7:4]
         bge     cr6, dr_emit_next
 dr_emit_add_l_L4:
-        lwz     addr, 0x21A8(base_disp)
+        lwz     addr, T_134E0 - dr_emitters(base_disp)  // template: mfxer ccr_x
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
 dr_emit_add_l_L5:
         clrlwi  addr, prefetch_data, 28                 // addr = prefetch_data & 0x0000000F
         cmpwi   cr7, addr, 15
-        lwz     addr, 0x2180(base_disp)
+        lwz     addr, T_134B8 - dr_emitters(base_disp)  // template: addco. d0, d0, d0
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
         beq     cr7, dr_emit_add_l_L6
         rlwimi  data, prefetch_data, 11, 17, 20         // data[14:11] = prefetch_data[3:0]
         b       dr_emit_add_l_L1
 dr_emit_add_l_L6:
-        lwz     addr, 0x2184(base_disp)
+        lwz     addr, T_134BC - dr_emitters(base_disp)  // template: addco. d0, d0, a7
         b       dr_emit_add_l_L1
 
 // Code generator for 488 opcodes:
@@ -4792,15 +5327,17 @@ dr_emit_add_l_L6:
 //     ADDA.L -(An),An
 //     ADDA.L (d16,An),An
 //     ... and 6 more forms
+// For D1C0, ADDA.L D0,A0, it generates
+//         add     a0, a0, d0
 dr_emit_adda_l:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr6, rtn_addr, 0x0001
         lis     immed_data, 0x0060
         ble     cr6, dr_emit_adda_l_L4
-        bl      L_124A0
+        bl      dr_operand_load_l
         rlwinm  addr, prefetch_data, 23, 29, 31         // addr = prefetch_data[11:9]
         cmplwi  cr7, addr, 0x0007
-        lwz     addr, 0x21A0(base_disp)
+        lwz     addr, T_134D8 - dr_emitters(base_disp)  // template: add a0, a0, addr
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
         beq     cr7, dr_emit_adda_l_L3
 dr_emit_adda_l_L1:
@@ -4810,26 +5347,26 @@ dr_emit_adda_l_L2:
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
 dr_emit_adda_l_L3:
-        lwz     addr, 0x21A4(base_disp)
+        lwz     addr, T_134DC - dr_emitters(base_disp)  // template: add a7, a7, addr
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
 dr_emit_adda_l_L4:
         rlwinm  addr, prefetch_data, 23, 29, 31         // addr = prefetch_data[11:9]
         cmpwi   cr6, addr, 7
-        lwz     addr, 0x2188(base_disp)
+        lwz     addr, T_134C0 - dr_emitters(base_disp)  // template: add a0, a0, d0
         rlwinm  data, prefetch_data, 11, 17, 20         // data = prefetch_data[3:0] << 11
         cmpwi   cr7, data, 0x7800
         rlwimi  data, prefetch_data, 7, 13, 15          // data[18:16] = prefetch_data[11:9]
         bne     cr7, dr_emit_adda_l_L5
-        lwz     addr, 0x2190(base_disp)
+        lwz     addr, T_134C8 - dr_emitters(base_disp)  // template: add a0, a0, a7
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
         bne     cr6, dr_emit_adda_l_L1
-        lwz     addr, 0x2194(base_disp)
+        lwz     addr, T_134CC - dr_emitters(base_disp)  // template: add a7, a7, a7
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
 dr_emit_adda_l_L5:
         bne     cr6, dr_emit_adda_l_L1
-        lwz     addr, 0x218C(base_disp)
+        lwz     addr, T_134C4 - dr_emitters(base_disp)  // template: add a7, a7, d0
         rlwinm  data, prefetch_data, 11, 17, 20         // data = prefetch_data[3:0] << 11
         b       dr_emit_adda_l_L2
 
@@ -4841,6 +5378,18 @@ dr_emit_adda_l_L5:
 //     ADD.B Dn,(d8,An,Xn)
 //     ADD.B Dn,(xxx).W
 //     ... and 1 more forms
+// For D110, ADD.B D0,(A0), it generates
+//         lbz     addr, 0(a0)
+//         slwi    rtn_addr, d0, 24
+//         slwi    addr, addr, 24
+//         addco.  addr, addr, rtn_addr
+//         srwi    addr, addr, 24
+//         stb     addr, 0(a0)
+//         mfxer   ccr_x
+// and, when the condition codes are not wanted afterwards,
+//         lbz     addr, 0(a0)
+//         add     addr, addr, d0
+//         stb     addr, 0(a0)
 dr_emit_add_b:
         b       dr_emit_add_b_2_L6
 
@@ -4852,6 +5401,18 @@ dr_emit_add_b:
 //     ADD.W Dn,(d8,An,Xn)
 //     ADD.W Dn,(xxx).W
 //     ... and 1 more forms
+// For D150, ADD.W D0,(A0), it generates
+//         lha     addr, 0(a0)
+//         slwi    rtn_addr, d0, 16
+//         slwi    addr, addr, 16
+//         addco.  addr, addr, rtn_addr
+//         srwi    addr, addr, 16
+//         sth     addr, 0(a0)
+//         mfxer   ccr_x
+// and, when the condition codes are not wanted afterwards,
+//         lha     addr, 0(a0)
+//         add     addr, addr, d0
+//         sth     addr, 0(a0)
 dr_emit_add_w:
         b       dr_emit_adda_w_L5
 
@@ -4863,16 +5424,25 @@ dr_emit_add_w:
 //     ADD.L Dn,(d8,An,Xn)
 //     ADD.L Dn,(xxx).W
 //     ... and 1 more forms
+// For D190, ADD.L D0,(A0), it generates
+//         lwz     addr, 0(a0)
+//         addco.  addr, d0, addr
+//         stw     addr, 0(a0)
+//         mfxer   ccr_x
+// and, when the condition codes are not wanted afterwards,
+//         lwz     addr, 0(a0)
+//         addco.  addr, d0, addr
+//         stw     addr, 0(a0)
 dr_emit_add_l_2:
         lis     immed_data, 0x0060
-        bl      L_124A0
-        lwz     addr, 0x219C(base_disp)
+        bl      dr_operand_load_l
+        lwz     addr, T_134D4 - dr_emitters(base_disp)  // template: addco. addr, d0, addr
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
         add     addr, addr, data
 dr_emit_add_l_2_L1:
         lis     immed_data, 0x0060
         stwu    addr, 4(out_ptr)
-        bl      L_124F0
+        bl      dr_operand_writeback_l
         b       dr_emit_add_l_L3
 
 // Code generator for 51 opcodes:
@@ -4883,6 +5453,15 @@ dr_emit_add_l_2_L1:
 //     ADDI.W #<data>,(d16,An)
 //     ADDI.W #<data>,(d8,An,Xn)
 //     ... and 3 more forms
+// For 0640 0010, ADDI.W #<data>,D0, it generates
+//         lis     addr, 0x0010
+//         slwi    rtn_addr, d0, 16
+//         addco.  addr, addr, rtn_addr
+//         rlwimi  d0, addr, 16, 16, 31
+//         mfxer   ccr_x
+// and, when the condition codes are not wanted afterwards,
+//         addi    addr, d0, 16
+//         rlwimi  d0, addr, 0, 16, 31
 dr_emit_addi_w:
         b       dr_emit_adda_w_L8
 
@@ -4894,6 +5473,15 @@ dr_emit_addi_w:
 //     ADDI.B #<data>,(d16,An)
 //     ADDI.B #<data>,(d8,An,Xn)
 //     ... and 3 more forms
+// For 0600 0010, ADDI.B #<data>,D0, it generates
+//         lis     addr, 0x1000
+//         slwi    rtn_addr, d0, 24
+//         addco.  addr, addr, rtn_addr
+//         rlwimi  d0, addr, 8, 24, 31
+//         mfxer   ccr_x
+// and, when the condition codes are not wanted afterwards,
+//         addi    addr, d0, 16
+//         rlwimi  d0, addr, 0, 24, 31
 dr_emit_addi_b:
         b       dr_emit_add_b_2_L9
 
@@ -4905,22 +5493,31 @@ dr_emit_addi_b:
 //     ADDI.L #<data>,(d16,An)
 //     ADDI.L #<data>,(d8,An,Xn)
 //     ... and 3 more forms
+// For 0680 0010 0010, ADDI.L #<data>,D0, it generates
+//         ori     addr, zero, 0x0010
+//         oris    addr, addr, 0x0010
+//         addco.  d0, d0, addr
+//         mfxer   ccr_x
+// and, when the condition codes are not wanted afterwards,
+//         ori     addr, zero, 0x0010
+//         oris    addr, addr, 0x0010
+//         addco.  d0, d0, addr
 dr_emit_addi_l:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr6, rtn_addr, 0x0001
         ble     cr6, dr_emit_addi_l_L1
         lis     immed_data, 0x00A0
         addi    blk_ofs, blk_ofs, 4
-        bl      L_124A0
+        bl      dr_operand_load_l
         lhz     rtn_addr, 2(rec_ptr)
         addi    rtn_addr, rtn_addr, 2
-        bl      L_12510
-        lwz     addr, 0x21AC(base_disp)
+        bl      dr_operand_address_L1
+        lwz     addr, T_134E4 - dr_emitters(base_disp)  // template: addco. addr, addr, rtn_addr
         b       dr_emit_add_l_2_L1
 dr_emit_addi_l_L1:
-        bl      L_12518
+        bl      dr_operand_address_L2
 dr_emit_addi_l_L2:
-        lwz     addr, 0x2198(base_disp)
+        lwz     addr, T_134D0 - dr_emitters(base_disp)  // template: addco. d0, d0, addr
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
         rlwimi  data, prefetch_data, 21, 8, 10          // data[23:21] = prefetch_data[2:0]
         b       dr_emit_add_l_L2
@@ -4933,12 +5530,18 @@ dr_emit_addi_l_L2:
 //     ADDQ.L #<q>,-(An)
 //     ADDQ.L #<q>,(d16,An)
 //     ... and 3 more forms
+// For 5080, ADDQ.L #8,D0, it generates
+//         li      addr, 8
+//         addco.  d0, d0, addr
+//         mfxer   ccr_x
+// and, when the condition codes are not wanted afterwards,
+//         addi    d0, d0, 8
 dr_emit_addq_l:
         clrlwi  rtn_addr, prefetch_data, 26             // rtn_addr = prefetch_data & 0x0000003F
         cmplwi  cr7, rtn_addr, 0x000F
         lis     immed_data, 0x0060
         ble     cr7, dr_emit_addq_l_L4
-        bl      L_124A0
+        bl      dr_operand_load_l
         lhz     rtn_addr, 0(rec_ptr)
         rlwinm  data, prefetch_data, 23, 29, 31         // data = prefetch_data[11:9]
         mtcrf   0x02, rtn_addr                          // cr6 = rtn_addr[7:4]
@@ -4948,19 +5551,19 @@ dr_emit_addq_l:
         li      data, 8
 dr_emit_addq_l_L1:
         bgt     cr6, dr_emit_addq_l_L3
-        lwz     addr, 0x21B8(base_disp)
+        lwz     addr, T_134F0 - dr_emitters(base_disp)  // template: addi addr, addr, 0
 dr_emit_addq_l_L2:
         rlwimi  addr, data, 0, 16, 31                   // addr[15:0] = data[15:0]
         stwu    addr, 4(out_ptr)
-        bl      L_124F0
+        bl      dr_operand_writeback_l
         b       dr_emit_next
 dr_emit_addq_l_L3:
-        lwz     addr, 0x21BC(base_disp)
-        lwz     rtn_addr, 0x21AC(base_disp)
+        lwz     addr, T_134F4 - dr_emitters(base_disp)  // template: li rtn_addr, 0
+        lwz     rtn_addr, T_134E4 - dr_emitters(base_disp)  // template: addco. addr, addr, rtn_addr
         rlwimi  addr, data, 0, 16, 31                   // addr[15:0] = data[15:0]
         stwu    addr, 4(out_ptr)
         stwu    rtn_addr, 4(out_ptr)
-        bl      L_124F0
+        bl      dr_operand_writeback_l
         b       dr_emit_add_l_L4
 dr_emit_addq_l_L4:
         lhz     rtn_addr, 0(rec_ptr)
@@ -4976,12 +5579,12 @@ dr_emit_addq_l_L5:
         beq     cr7, dr_emit_addq_l_L7
         beq     cr5, dr_emit_addq_l_L6
         ble     cr6, dr_emit_addq_l_L6
-        lwz     addr, 0x21C0(base_disp)
+        lwz     addr, T_134F8 - dr_emitters(base_disp)  // template: li addr, 0
         rlwimi  addr, data, 0, 16, 31                   // addr[15:0] = data[15:0]
         stwu    addr, 4(out_ptr)
         b       dr_emit_addi_l_L2
 dr_emit_addq_l_L6:
-        lwz     addr, 0x21B0(base_disp)
+        lwz     addr, T_134E8 - dr_emitters(base_disp)  // template: addi d0, d0, 0
         rlwinm  rtn_addr, prefetch_data, 16, 12, 15     // rtn_addr = prefetch_data[3:0] << 16
         rlwimi  rtn_addr, prefetch_data, 21, 7, 10      // rtn_addr[24:21] = prefetch_data[3:0]
         rlwimi  addr, data, 0, 16, 31                   // addr[15:0] = data[15:0]
@@ -4989,46 +5592,107 @@ dr_emit_addq_l_L6:
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
 dr_emit_addq_l_L7:
-        lwz     addr, 0x21B4(base_disp)
+        lwz     addr, T_134EC - dr_emitters(base_disp)  // template: addi a7, a7, 0
         rlwimi  addr, data, 0, 16, 31                   // addr[15:0] = data[15:0]
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
 
 // Code generator for 64 opcodes:
 //     ADDX.B Dn,Dn
+// For D100, ADDX.B D0,D0, it generates
+//         slwi    rtn_addr, d0, 24
+//         slwi    addr, d0, 24
+//         rlwimi  rtn_addr, ccr_x, 26, 8, 8
+//         rlwimi  addr, ccr_x, 26, 8, 8
+//         crmove  4*cr7+so, eq
+//         addco.  addr, addr, rtn_addr
+//         crand   eq, eq, 4*cr7+so
+//         mfxer   ccr_x
+//         rlwimi  d0, addr, 8, 24, 31
 dr_emit_addx_b:
         b       dr_emit_addq_b_L7
 
 // Code generator for 64 opcodes:
 //     ADDX.W Dn,Dn
+// For D140, ADDX.W D0,D0, it generates
+//         slwi    rtn_addr, d0, 16
+//         slwi    addr, d0, 16
+//         rlwimi  rtn_addr, ccr_x, 18, 16, 16
+//         rlwimi  addr, ccr_x, 18, 16, 16
+//         crmove  4*cr7+so, eq
+//         addco.  addr, addr, rtn_addr
+//         crand   eq, eq, 4*cr7+so
+//         mfxer   ccr_x
+//         rlwimi  d0, addr, 16, 16, 31
 dr_emit_addx_w:
         b       dr_emit_addq_w_L9
 
 // Code generator for 64 opcodes:
 //     ADDX.L Dn,Dn
+// For D180, ADDX.L D0,D0, it generates
+//         mtxer   ccr_x
+//         crmove  4*cr7+so, eq
+//         addeo.  d0, d0, d0
+//         crand   eq, eq, 4*cr7+so
+//         mfxer   ccr_x
 dr_emit_addx_l:
         b       dr_emit_addx_l_2_L1
         ALIGN(16)
 
 // Code generator for 64 opcodes:
 //     ADDX.B -(An),-(An)
+// For D108, ADDX.B -(A0),-(A0), it generates
+//         lbzu    rtn_addr, -1(a0)
+//         lbzu    addr, -1(a0)
+//         slwi    rtn_addr, rtn_addr, 24
+//         slwi    addr, addr, 24
+//         rlwimi  rtn_addr, ccr_x, 26, 8, 8
+//         rlwimi  addr, ccr_x, 26, 8, 8
+//         crmove  4*cr7+so, eq
+//         addco.  addr, addr, rtn_addr
+//         srwi    addr, addr, 24
+//         stb     addr, 0(a0)
+//         crand   eq, eq, 4*cr7+so
+//         mfxer   ccr_x
 dr_emit_addx_b_2:
         b       dr_emit_addq_b_L9
 
 // Code generator for 64 opcodes:
 //     ADDX.W -(An),-(An)
+// For D148, ADDX.W -(A0),-(A0), it generates
+//         lhzu    rtn_addr, -2(a0)
+//         lhzu    addr, -2(a0)
+//         slwi    rtn_addr, rtn_addr, 16
+//         slwi    addr, addr, 16
+//         rlwimi  rtn_addr, ccr_x, 18, 16, 16
+//         rlwimi  addr, ccr_x, 18, 16, 16
+//         crmove  4*cr7+so, eq
+//         addco.  addr, addr, rtn_addr
+//         srwi    addr, addr, 16
+//         sth     addr, 0(a0)
+//         crand   eq, eq, 4*cr7+so
+//         mfxer   ccr_x
 dr_emit_addx_w_2:
         b       dr_emit_addq_w_L11
 
 // Code generator for 64 opcodes:
 //     ADDX.L -(An),-(An)
+// For D188, ADDX.L -(A0),-(A0), it generates
+//         lwzu    rtn_addr, -4(a0)
+//         lwzu    addr, -4(a0)
+//         mtxer   ccr_x
+//         crmove  4*cr7+so, eq
+//         addeo.  addr, addr, rtn_addr
+//         stw     addr, 0(a0)
+//         crand   eq, eq, 4*cr7+so
+//         mfxer   ccr_x
 dr_emit_addx_l_2:
         b       dr_emit_addx_l_2_L4
         ALIGN(64)
 dr_emit_addx_l_2_L1:
         li      rtn_addr, 5
         mtctr   rtn_addr
-        addi    data, base_disp, 0x21C0
+        addi    data, base_disp, T_134F8 - dr_emitters
 dr_emit_addx_l_2_L2:
         lwzu    rtn_addr, 4(data)
         clrlwi  addr, rtn_addr, 22                      // addr = rtn_addr & 0x000003FF
@@ -5045,25 +5709,25 @@ dr_emit_addx_l_2_L3:
 dr_emit_addx_l_2_L4:
         clrlwi  addr, prefetch_data, 29                 // addr = prefetch_data & 0x00000007
         cmplwi  cr7, addr, 0x0007
-        lwz     rtn_addr, 0x21D8(base_disp)
+        lwz     rtn_addr, T_13510 - dr_emitters(base_disp)  // template: lwzu rtn_addr, -4(a0)
         rlwinm  addr, prefetch_data, 16, 13, 15         // addr = prefetch_data[2:0] << 16
         add     rtn_addr, rtn_addr, addr
         bf_likely 4*cr7+eq, dr_emit_addx_l_2_L5
-        lwz     rtn_addr, 0x21DC(base_disp)
+        lwz     rtn_addr, T_13514 - dr_emitters(base_disp)  // template: lwzu rtn_addr, -4(a7)
 dr_emit_addx_l_2_L5:
         stwu    rtn_addr, 4(out_ptr)
         rlwinm  addr, prefetch_data, 23, 29, 31         // addr = prefetch_data[11:9]
         cmplwi  cr7, addr, 0x0007
-        lwz     rtn_addr, 0x21E0(base_disp)
+        lwz     rtn_addr, T_13518 - dr_emitters(base_disp)  // template: lwzu addr, -4(a0)
         rlwinm  addr, prefetch_data, 7, 13, 15          // addr = prefetch_data[11:9] << 16
         add     rtn_addr, rtn_addr, addr
         bf_likely 4*cr7+eq, dr_emit_addx_l_2_L6
-        lwz     rtn_addr, 0x21E4(base_disp)
+        lwz     rtn_addr, T_1351C - dr_emitters(base_disp)  // template: lwzu addr, -4(a7)
 dr_emit_addx_l_2_L6:
         stwu    rtn_addr, 4(out_ptr)
         li      rtn_addr, 6
         mtctr   rtn_addr
-        addi    data, base_disp, 0x21E8
+        addi    data, base_disp, T_13520 - dr_emitters
 dr_emit_addx_l_2_L7:
         lwzu    rtn_addr, 4(data)
         srwi    addr, rtn_addr, 26
@@ -5074,38 +5738,60 @@ dr_emit_addx_l_2_L7:
         rlwinm  addr, prefetch_data, 7, 13, 15          // addr = prefetch_data[11:9] << 16
         add     rtn_addr, rtn_addr, addr
         bf_likely 4*cr7+eq, dr_emit_addx_l_2_L8
-        lwz     rtn_addr, 0x21E8(base_disp)
+        lwz     rtn_addr, T_13520 - dr_emitters(base_disp)  // template: stw addr, 0(a7)
 dr_emit_addx_l_2_L8:
         stwu    rtn_addr, 4(out_ptr)
         bdnz    dr_emit_addx_l_2_L7                     // CTR -= 1; branch while CTR != 0
         b       dr_emit_next
-        addco.  d0, d0, d0
-        addco.  d0, d0, a7
-        add     a0, a0, d0
-        add     a7, a7, d0
-        add     a0, a0, a7
-        add     a7, a7, a7
-        addco.  d0, d0, addr
-        addco.  addr, d0, addr
-        add     a0, a0, addr
-        add     a7, a7, addr
-        mfxer   ccr_x
-        addco.  addr, addr, rtn_addr
-        addi    d0, d0, 0
-        addi    a7, a7, 0
-        addi    addr, addr, 0
-        li      rtn_addr, 0
-        li      addr, 0
+T_134B8:
+        addco.  d0, d0, d0                              // template
+T_134BC:
+        addco.  d0, d0, a7                              // template
+T_134C0:
+        add     a0, a0, d0                              // template
+T_134C4:
+        add     a7, a7, d0                              // template
+T_134C8:
+        add     a0, a0, a7                              // template
+T_134CC:
+        add     a7, a7, a7                              // template
+T_134D0:
+        addco.  d0, d0, addr                            // template
+T_134D4:
+        addco.  addr, d0, addr                          // template
+T_134D8:
+        add     a0, a0, addr                            // template
+T_134DC:
+        add     a7, a7, addr                            // template
+T_134E0:
+        mfxer   ccr_x                                   // template
+T_134E4:
+        addco.  addr, addr, rtn_addr                    // template
+T_134E8:
+        addi    d0, d0, 0                               // template
+T_134EC:
+        addi    a7, a7, 0                               // template
+T_134F0:
+        addi    addr, addr, 0                           // template
+T_134F4:
+        li      rtn_addr, 0                             // template
+T_134F8:
+        li      addr, 0                                 // template
         mtxer   ccr_x
         crmove  4*cr7+so, eq
         addeo.  d0, d0, d0                              // d0 = d0 + d0 + CA
         crand   eq, eq, 4*cr7+so                        // cr0.eq = cr0.eq & cr7.so
         mfxer   ccr_x
-        lwzu    rtn_addr, -4(a0)
-        lwzu    rtn_addr, -4(a7)
-        lwzu    addr, -4(a0)
-        lwzu    addr, -4(a7)
-        stw     addr, 0(a7)
+T_13510:
+        lwzu    rtn_addr, -4(a0)                        // template
+T_13514:
+        lwzu    rtn_addr, -4(a7)                        // template
+T_13518:
+        lwzu    addr, -4(a0)                            // template
+T_1351C:
+        lwzu    addr, -4(a7)                            // template
+T_13520:
+        stw     addr, 0(a7)                             // template
         mtxer   ccr_x
         crmove  4*cr7+so, eq
         addeo.  addr, addr, rtn_addr                    // addr = addr + rtn_addr + CA
@@ -5121,29 +5807,38 @@ dr_emit_addx_l_2_L8:
 //     ADD.W -(An),Dn
 //     ADD.W (d16,An),Dn
 //     ... and 6 more forms
+// For D040, ADD.W D0,D0, it generates
+//         slwi    rtn_addr, d0, 16
+//         slwi    addr, d0, 16
+//         addco.  addr, addr, rtn_addr
+//         rlwimi  d0, addr, 16, 16, 31
+//         mfxer   ccr_x
+// and, when the condition codes are not wanted afterwards,
+//         add     addr, d0, d0
+//         rlwimi  d0, addr, 0, 16, 31
 dr_emit_add_w_2:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr7, rtn_addr, 0x0001
         lis     immed_data, 0x0060
         ble     cr7, dr_emit_add_w_2_L1
-        bl      L_124B8
+        bl      dr_operand_load_w
         lhz     data, 0(rec_ptr)
-        lwz     addr, 0x268C(base_disp)
+        lwz     addr, T_139C4 - dr_emitters(base_disp)  // template: add addr, addr, d0
         mtcrf   0x02, data                              // cr6 = data[7:4]
         rlwinm  data, prefetch_data, 2, 18, 20          // data = prefetch_data[11:9] << 11
         cror    4*cr6+gt, 4*cr6+gt, 4*cr6+lt            // cr6.gt = cr6.gt | cr6.lt
         ble     cr6, dr_emit_add_w_2_L3
-        lwz     addr, 0x269C(base_disp)
+        lwz     addr, T_139D4 - dr_emitters(base_disp)  // template: slwi rtn_addr, d0, 16
         rlwinm  data, prefetch_data, 12, 8, 10          // data = prefetch_data[11:9] << 21
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x2698(base_disp)
+        lwz     addr, T_139D0 - dr_emitters(base_disp)  // template: slwi addr, addr, 16
         b       dr_emit_add_w_2_L6
 dr_emit_add_w_2_L1:
         clrlwi  addr, prefetch_data, 28                 // addr = prefetch_data & 0x0000000F
         cmpwi   cr7, addr, 15
         lhz     data, 0(rec_ptr)
-        lwz     addr, 0x2690(base_disp)
+        lwz     addr, T_139C8 - dr_emitters(base_disp)  // template: add addr, d0, d0
         mtcrf   0x02, data                              // cr6 = data[7:4]
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
         cror    4*cr6+gt, 4*cr6+gt, 4*cr6+lt            // cr6.gt = cr6.gt | cr6.lt
@@ -5156,32 +5851,32 @@ dr_emit_add_w_2_L2:
 dr_emit_add_w_2_L3:
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x2694(base_disp)
+        lwz     addr, T_139CC - dr_emitters(base_disp)  // template: rlwimi d0, addr, 0, 16, 31
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
 dr_emit_add_w_2_L4:
-        lwz     addr, 0x269C(base_disp)
+        lwz     addr, T_139D4 - dr_emitters(base_disp)  // template: slwi rtn_addr, d0, 16
         rlwinm  data, prefetch_data, 12, 8, 10          // data = prefetch_data[11:9] << 21
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x26A0(base_disp)
+        lwz     addr, T_139D8 - dr_emitters(base_disp)  // template: slwi addr, d0, 16
         rlwinm  data, prefetch_data, 21, 7, 10          // data = prefetch_data[3:0] << 21
         bne     cr7, dr_emit_add_w_2_L5
         lis     data, 0xFF20
 dr_emit_add_w_2_L5:
         add     addr, addr, data
 dr_emit_add_w_2_L6:
-        lwz     data, 0x26A4(base_disp)
+        lwz     data, T_139DC - dr_emitters(base_disp)  // template: addco. addr, addr, rtn_addr
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
-        lwz     addr, 0x26A8(base_disp)
+        lwz     addr, T_139E0 - dr_emitters(base_disp)  // template: rlwimi d0, addr, 16, 16, 31
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
 dr_emit_add_w_2_L7:
-        lwz     addr, 0x21A8(base_disp)
+        lwz     addr, T_134E0 - dr_emitters(base_disp)  // template: mfxer ccr_x
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
 
@@ -5193,16 +5888,19 @@ dr_emit_add_w_2_L7:
 //     ADDA.W -(An),An
 //     ADDA.W (d16,An),An
 //     ... and 6 more forms
+// For D0C0, ADDA.W D0,A0, it generates
+//         extsh   addr, d0
+//         add     a0, a0, addr
 dr_emit_adda_w:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr6, rtn_addr, 0x0001
         lis     immed_data, 0x0060
         ble     cr6, dr_emit_adda_w_L3
-        bl      L_124B8
+        bl      dr_operand_load_w
 dr_emit_adda_w_L1:
         rlwinm  addr, prefetch_data, 23, 29, 31         // addr = prefetch_data[11:9]
         cmplwi  cr7, addr, 0x0007
-        lwz     addr, 0x26B4(base_disp)
+        lwz     addr, T_139EC - dr_emitters(base_disp)  // template: add a0, a0, addr
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
         rlwimi  data, prefetch_data, 12, 8, 10          // data[23:21] = prefetch_data[11:9]
         beq     cr7, dr_emit_adda_w_L2
@@ -5210,20 +5908,20 @@ dr_emit_adda_w_L1:
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
 dr_emit_adda_w_L2:
-        lwz     addr, 0x26B8(base_disp)
+        lwz     addr, T_139F0 - dr_emitters(base_disp)  // template: add a7, a7, addr
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
 dr_emit_adda_w_L3:
         rlwinm  data, prefetch_data, 11, 17, 20         // data = prefetch_data[3:0] << 11
         cmpwi   cr7, data, 0x7800
-        lwz     addr, 0x26AC(base_disp)
+        lwz     addr, T_139E4 - dr_emitters(base_disp)  // template: extsh addr, d0
         rlwinm  data, prefetch_data, 21, 7, 10          // data = prefetch_data[3:0] << 21
         beq     cr7, dr_emit_adda_w_L4
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         b       dr_emit_adda_w_L1
 dr_emit_adda_w_L4:
-        lwz     addr, 0x26B0(base_disp)
+        lwz     addr, T_139E8 - dr_emitters(base_disp)  // template: extsh addr, a7
         stwu    addr, 4(out_ptr)
         b       dr_emit_adda_w_L1
 dr_emit_adda_w_L5:
@@ -5232,29 +5930,29 @@ dr_emit_adda_w_L5:
         mtcrf   0x02, data                              // cr6 = data[7:4]
         cror    4*cr6+gt, 4*cr6+gt, 4*cr6+lt            // cr6.gt = cr6.gt | cr6.lt
         bgt     cr6, dr_emit_adda_w_L6
-        bl      L_124B8
-        lwz     addr, 0x268C(base_disp)
+        bl      dr_operand_load_w
+        lwz     addr, T_139C4 - dr_emitters(base_disp)  // template: add addr, addr, d0
         rlwinm  data, prefetch_data, 2, 18, 20          // data = prefetch_data[11:9] << 11
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         lis     immed_data, 0x0060
-        bl      L_124F8
+        bl      dr_operand_writeback_w
         b       dr_emit_next
 dr_emit_adda_w_L6:
-        bl      L_124B8
-        lwz     addr, 0x269C(base_disp)
+        bl      dr_operand_load_w
+        lwz     addr, T_139D4 - dr_emitters(base_disp)  // template: slwi rtn_addr, d0, 16
         rlwinm  data, prefetch_data, 12, 8, 10          // data = prefetch_data[11:9] << 21
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x2698(base_disp)
+        lwz     addr, T_139D0 - dr_emitters(base_disp)  // template: slwi addr, addr, 16
         stwu    addr, 4(out_ptr)
 dr_emit_adda_w_L7:
-        lwz     addr, 0x26A4(base_disp)
-        lwz     data, 0x26BC(base_disp)
+        lwz     addr, T_139DC - dr_emitters(base_disp)  // template: addco. addr, addr, rtn_addr
+        lwz     data, T_139F4 - dr_emitters(base_disp)  // template: srwi addr, addr, 16
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
         lis     immed_data, 0x0060
-        bl      L_124F8
+        bl      dr_operand_writeback_w
         b       dr_emit_add_w_2_L7
 dr_emit_adda_w_L8:
         lhz     data, 0(rec_ptr)
@@ -5266,47 +5964,47 @@ dr_emit_adda_w_L8:
         lis     immed_data, 0x00A0
         bgt     cr6, dr_emit_adda_w_L9
         addi    blk_ofs, blk_ofs, 2
-        bl      L_124B8
+        bl      dr_operand_load_w
         lhz     rtn_addr, 2(rec_ptr)
         addi    rtn_addr, rtn_addr, 2
-        lwz     addr, 0x26C0(base_disp)
+        lwz     addr, T_139F8 - dr_emitters(base_disp)  // template: addi rtn_addr, rtn_addr, 0
         lhax    rtn_addr, pc, rtn_addr
         rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
         stwu    addr, 4(out_ptr)
-        bl      L_124F8
+        bl      dr_operand_writeback_w
         b       dr_emit_next
 dr_emit_adda_w_L9:
         addi    blk_ofs, blk_ofs, 2
-        bl      L_124B8
+        bl      dr_operand_load_w
         lhz     rtn_addr, 2(rec_ptr)
         addi    rtn_addr, rtn_addr, 2
-        bl      L_12598
-        lwz     addr, 0x26C4(base_disp)
+        bl      dr_operand_address_L5
+        lwz     addr, T_139FC - dr_emitters(base_disp)  // template: slwi rtn_addr, rtn_addr, 16
         stwu    addr, 4(out_ptr)
         b       dr_emit_adda_w_L7
 dr_emit_adda_w_L10:
         bgt     cr6, dr_emit_adda_w_L12
-        lwz     addr, 0x26C8(base_disp)
+        lwz     addr, T_13A00 - dr_emitters(base_disp)  // template: addi addr, d0, 0
         lhax    rtn_addr, pc, blk_ofs
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
         rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
 dr_emit_adda_w_L11:
-        lwz     addr, 0x2694(base_disp)
+        lwz     addr, T_139CC - dr_emitters(base_disp)  // template: rlwimi d0, addr, 0, 16, 31
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
 dr_emit_adda_w_L12:
-        bl      L_125A0
+        bl      dr_operand_address_L6
 dr_emit_adda_w_L13:
-        lwz     addr, 0x269C(base_disp)
+        lwz     addr, T_139D4 - dr_emitters(base_disp)  // template: slwi rtn_addr, d0, 16
         rlwinm  data, prefetch_data, 21, 8, 10          // data = prefetch_data[2:0] << 21
         add     addr, addr, data
-        lwz     data, 0x26A4(base_disp)
+        lwz     data, T_139DC - dr_emitters(base_disp)  // template: addco. addr, addr, rtn_addr
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
-        lwz     addr, 0x26A8(base_disp)
+        lwz     addr, T_139E0 - dr_emitters(base_disp)  // template: rlwimi d0, addr, 16, 16, 31
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
@@ -5320,6 +6018,15 @@ dr_emit_adda_w_L13:
 //     ADDQ.W #<q>,-(An)
 //     ADDQ.W #<q>,(d16,An)
 //     ... and 3 more forms
+// For 5040, ADDQ.W #8,D0, it generates
+//         lis     addr, 0x0008
+//         slwi    rtn_addr, d0, 16
+//         addco.  addr, addr, rtn_addr
+//         rlwimi  d0, addr, 16, 16, 31
+//         mfxer   ccr_x
+// and, when the condition codes are not wanted afterwards,
+//         addi    addr, d0, 8
+//         rlwimi  d0, addr, 0, 16, 31
 dr_emit_addq_w:
         clrlwi  rtn_addr, prefetch_data, 26             // rtn_addr = prefetch_data & 0x0000003F
         cmplwi  cr7, rtn_addr, 0x000F
@@ -5329,29 +6036,29 @@ dr_emit_addq_w:
         mtcrf   0x02, rtn_addr                          // cr6 = rtn_addr[7:4]
         cror    4*cr6+gt, 4*cr6+gt, 4*cr6+lt            // cr6.gt = cr6.gt | cr6.lt
         bgt     cr6, dr_emit_addq_w_L2
-        bl      L_124B8
+        bl      dr_operand_load_w
         rlwinm  data, prefetch_data, 23, 29, 31         // data = prefetch_data[11:9]
         cmpwi   cr7, data, 0
-        lwz     addr, 0x21B8(base_disp)
+        lwz     addr, T_134F0 - dr_emitters(base_disp)  // template: addi addr, addr, 0
         bne     cr7, dr_emit_addq_w_L1
         li      data, 8
 dr_emit_addq_w_L1:
         rlwimi  addr, data, 0, 16, 31                   // addr[15:0] = data[15:0]
         stwu    addr, 4(out_ptr)
-        bl      L_124F8
+        bl      dr_operand_writeback_w
         b       dr_emit_next
 dr_emit_addq_w_L2:
         rlwinm  data, prefetch_data, 23, 29, 31         // data = prefetch_data[11:9]
         cmpwi   cr7, data, 0
-        lwz     addr, 0x26CC(base_disp)
+        lwz     addr, T_13A04 - dr_emitters(base_disp)  // template: lis addr, 0x0000
         bne     cr7, dr_emit_addq_w_L3
         li      data, 8
 dr_emit_addq_w_L3:
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         lis     immed_data, 0x00A0
-        bl      L_124B8
-        lwz     addr, 0x26C4(base_disp)
+        bl      dr_operand_load_w
+        lwz     addr, T_139FC - dr_emitters(base_disp)  // template: slwi rtn_addr, rtn_addr, 16
         stwu    addr, 4(out_ptr)
         b       dr_emit_adda_w_L7
 dr_emit_addq_w_L4:
@@ -5368,64 +6075,64 @@ dr_emit_addq_w_L5:
         beq     cr5, dr_emit_addq_l_L6
         bgt     cr6, dr_emit_addq_w_L6
         blt     cr6, dr_emit_addq_w_L7
-        lwz     addr, 0x26C8(base_disp)
+        lwz     addr, T_13A00 - dr_emitters(base_disp)  // template: addi addr, d0, 0
         rlwimi  addr, data, 0, 16, 31                   // addr[15:0] = data[15:0]
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         b       dr_emit_adda_w_L11
 dr_emit_addq_w_L6:
-        lwz     addr, 0x26CC(base_disp)
+        lwz     addr, T_13A04 - dr_emitters(base_disp)  // template: lis addr, 0x0000
         rlwimi  addr, data, 0, 16, 31                   // addr[15:0] = data[15:0]
         stwu    addr, 4(out_ptr)
         b       dr_emit_adda_w_L13
 dr_emit_addq_w_L7:
         cmpwi   cr4, data, 3
         bgt     cr4, dr_emit_addq_w_L8
-        lwz     rtn_addr, 0x26D0(base_disp)
-        lwz     immed_data, 0x26D4(base_disp)
+        lwz     rtn_addr, T_13A08 - dr_emitters(base_disp)  // template: rlwinm ccr_x, d0, 13, 3, 18
+        lwz     immed_data, T_13A0C - dr_emitters(base_disp)  // template: addi ccr_x, ccr_x, 0
         rlwinm  addr, prefetch_data, 21, 8, 10          // addr = prefetch_data[2:0] << 21
         add     rtn_addr, rtn_addr, addr
         stwu    rtn_addr, 4(out_ptr)
         rlwimi  immed_data, data, 13, 16, 31            // immed_data = (immed_data & ~0x0000FFFF) | (rotl(data, 13) & 0x0000FFFF)
         stwu    immed_data, 4(out_ptr)
-        lwz     rtn_addr, 0x26D8(base_disp)
+        lwz     rtn_addr, T_13A10 - dr_emitters(base_disp)  // template: rlwimi d0, ccr_x, 19, 16, 31
         rlwinm  addr, prefetch_data, 16, 13, 15         // addr = prefetch_data[2:0] << 16
         add     rtn_addr, rtn_addr, addr
         stwu    rtn_addr, 4(out_ptr)
         b       dr_emit_next
 dr_emit_addq_w_L8:
-        lwz     rtn_addr, 0x26DC(base_disp)
-        lwz     immed_data, 0x26E0(base_disp)
+        lwz     rtn_addr, T_13A14 - dr_emitters(base_disp)  // template: clrlwi ccr_x, d0, 16
+        lwz     immed_data, T_13A18 - dr_emitters(base_disp)  // template: addi ccr_x, ccr_x, 0
         rlwinm  addr, prefetch_data, 21, 8, 10          // addr = prefetch_data[2:0] << 21
         add     rtn_addr, rtn_addr, addr
         stwu    rtn_addr, 4(out_ptr)
         rlwimi  immed_data, data, 0, 16, 31             // immed_data[15:0] = data[15:0]
         stwu    immed_data, 4(out_ptr)
-        lwz     rtn_addr, 0x26E4(base_disp)
-        lwz     immed_data, 0x26E8(base_disp)
+        lwz     rtn_addr, T_13A1C - dr_emitters(base_disp)  // template: rlwimi d0, ccr_x, 0, 16, 31
+        lwz     immed_data, T_13A20 - dr_emitters(base_disp)  // template: rlwinm ccr_x, ccr_x, 13, 2, 2
         rlwinm  addr, prefetch_data, 16, 13, 15         // addr = prefetch_data[2:0] << 16
         add     rtn_addr, rtn_addr, addr
         stwu    rtn_addr, 4(out_ptr)
         stwu    immed_data, 4(out_ptr)
         b       dr_emit_next
 dr_emit_addq_w_L9:
-        lwz     rtn_addr, 0x26EC(base_disp)
+        lwz     rtn_addr, T_13A24 - dr_emitters(base_disp)  // template: slwi rtn_addr, d0, 16
         rlwinm  addr, prefetch_data, 21, 8, 10          // addr = prefetch_data[2:0] << 21
         add     rtn_addr, rtn_addr, addr
         stwu    rtn_addr, 4(out_ptr)
-        lwz     rtn_addr, 0x26F0(base_disp)
+        lwz     rtn_addr, T_13A28 - dr_emitters(base_disp)  // template: slwi addr, d0, 16
         rlwinm  addr, prefetch_data, 12, 8, 10          // addr = prefetch_data[11:9] << 21
         add     rtn_addr, rtn_addr, addr
         stwu    rtn_addr, 4(out_ptr)
         li      rtn_addr, 6
         mtctr   rtn_addr
-        addi    data, base_disp, 0x26F0
+        addi    data, base_disp, T_13A28 - dr_emitters
 dr_emit_addq_w_L10:
         lwzu    rtn_addr, 4(data)
         stwu    rtn_addr, 4(out_ptr)
         bdnz    dr_emit_addq_w_L10                      // CTR -= 1; branch while CTR != 0
-        lwz     rtn_addr, 0x270C(base_disp)
+        lwz     rtn_addr, T_13A44 - dr_emitters(base_disp)  // template: rlwimi d0, addr, 16, 16, 31
         rlwinm  addr, prefetch_data, 7, 13, 15          // addr = prefetch_data[11:9] << 16
         add     rtn_addr, rtn_addr, addr
         stwu    rtn_addr, 4(out_ptr)
@@ -5433,25 +6140,25 @@ dr_emit_addq_w_L10:
 dr_emit_addq_w_L11:
         clrlwi  addr, prefetch_data, 29                 // addr = prefetch_data & 0x00000007
         cmplwi  cr7, addr, 0x0007
-        lwz     rtn_addr, 0x2710(base_disp)
+        lwz     rtn_addr, T_13A48 - dr_emitters(base_disp)  // template: lhzu rtn_addr, -2(a0)
         rlwinm  addr, prefetch_data, 16, 13, 15         // addr = prefetch_data[2:0] << 16
         add     rtn_addr, rtn_addr, addr
         bf_likely 4*cr7+eq, dr_emit_addq_w_L12
-        lwz     rtn_addr, 0x2714(base_disp)
+        lwz     rtn_addr, T_13A4C - dr_emitters(base_disp)  // template: lhzu rtn_addr, -2(a7)
 dr_emit_addq_w_L12:
         stwu    rtn_addr, 4(out_ptr)
         rlwinm  addr, prefetch_data, 23, 29, 31         // addr = prefetch_data[11:9]
         cmplwi  cr7, addr, 0x0007
-        lwz     rtn_addr, 0x2718(base_disp)
+        lwz     rtn_addr, T_13A50 - dr_emitters(base_disp)  // template: lhzu addr, -2(a0)
         rlwinm  addr, prefetch_data, 7, 13, 15          // addr = prefetch_data[11:9] << 16
         add     rtn_addr, rtn_addr, addr
         bf_likely 4*cr7+eq, dr_emit_addq_w_L13
-        lwz     rtn_addr, 0x271C(base_disp)
+        lwz     rtn_addr, T_13A54 - dr_emitters(base_disp)  // template: lhzu addr, -2(a7)
 dr_emit_addq_w_L13:
         stwu    rtn_addr, 4(out_ptr)
         li      rtn_addr, 10
         mtctr   rtn_addr
-        addi    data, base_disp, 0x2720
+        addi    data, base_disp, T_13A58 - dr_emitters
 dr_emit_addq_w_L14:
         lwzu    rtn_addr, 4(data)
         srwi    addr, rtn_addr, 26
@@ -5462,49 +6169,81 @@ dr_emit_addq_w_L14:
         rlwinm  addr, prefetch_data, 7, 13, 15          // addr = prefetch_data[11:9] << 16
         add     rtn_addr, rtn_addr, addr
         bf_likely 4*cr7+eq, dr_emit_addq_w_L15
-        lwz     rtn_addr, 0x2720(base_disp)
+        lwz     rtn_addr, T_13A58 - dr_emitters(base_disp)  // template: sth addr, 0(a7)
 dr_emit_addq_w_L15:
         stwu    rtn_addr, 4(out_ptr)
         bdnz    dr_emit_addq_w_L14                      // CTR -= 1; branch while CTR != 0
         b       dr_emit_next
-        add     addr, addr, d0
-        add     addr, d0, d0
-        rlwimi  d0, addr, 0, 16, 31                     // d0[15:0] = addr[15:0]
-        slwi    addr, addr, 16
-        slwi    rtn_addr, d0, 16
-        slwi    addr, d0, 16
-        addco.  addr, addr, rtn_addr
-        rlwimi  d0, addr, 16, 16, 31                    // d0[15:0] = addr[31:16]
-        extsh   addr, d0                                // addr = sign-extended low word of d0
-        extsh   addr, a7                                // addr = sign-extended low word of a7
-        add     a0, a0, addr
-        add     a7, a7, addr
-        srwi    addr, addr, 16
-        addi    rtn_addr, rtn_addr, 0
-        slwi    rtn_addr, rtn_addr, 16
-        addi    addr, d0, 0
-        lis     addr, 0x0000
-        rlwinm  ccr_x, d0, 13, 3, 18                    // ccr_x = d0[15:0] << 13
-        addi    ccr_x, ccr_x, 0
-        rlwimi  d0, ccr_x, 19, 16, 31                   // d0[15:0] = ccr_x[28:13]
-        clrlwi  ccr_x, d0, 16                           // ccr_x = d0 & 0x0000FFFF
-        addi    ccr_x, ccr_x, 0
-        rlwimi  d0, ccr_x, 0, 16, 31                    // d0[15:0] = ccr_x[15:0]
-        rlwinm  ccr_x, ccr_x, 13, 2, 2                  // ccr_x = ccr_x[16] << 29
-        slwi    rtn_addr, d0, 16
-        slwi    addr, d0, 16
+T_139C4:
+        add     addr, addr, d0                          // template
+T_139C8:
+        add     addr, d0, d0                            // template
+T_139CC:
+        rlwimi  d0, addr, 0, 16, 31                     // template
+T_139D0:
+        slwi    addr, addr, 16                          // template
+T_139D4:
+        slwi    rtn_addr, d0, 16                        // template
+T_139D8:
+        slwi    addr, d0, 16                            // template
+T_139DC:
+        addco.  addr, addr, rtn_addr                    // template
+T_139E0:
+        rlwimi  d0, addr, 16, 16, 31                    // template
+T_139E4:
+        extsh   addr, d0                                // template
+T_139E8:
+        extsh   addr, a7                                // template
+T_139EC:
+        add     a0, a0, addr                            // template
+T_139F0:
+        add     a7, a7, addr                            // template
+T_139F4:
+        srwi    addr, addr, 16                          // template
+T_139F8:
+        addi    rtn_addr, rtn_addr, 0                   // template
+T_139FC:
+        slwi    rtn_addr, rtn_addr, 16                  // template
+T_13A00:
+        addi    addr, d0, 0                             // template
+T_13A04:
+        lis     addr, 0x0000                            // template
+T_13A08:
+        rlwinm  ccr_x, d0, 13, 3, 18                    // template
+T_13A0C:
+        addi    ccr_x, ccr_x, 0                         // template
+T_13A10:
+        rlwimi  d0, ccr_x, 19, 16, 31                   // template
+T_13A14:
+        clrlwi  ccr_x, d0, 16                           // template
+T_13A18:
+        addi    ccr_x, ccr_x, 0                         // template
+T_13A1C:
+        rlwimi  d0, ccr_x, 0, 16, 31                    // template
+T_13A20:
+        rlwinm  ccr_x, ccr_x, 13, 2, 2                  // template
+T_13A24:
+        slwi    rtn_addr, d0, 16                        // template
+T_13A28:
+        slwi    addr, d0, 16                            // template
         rlwimi  rtn_addr, ccr_x, 18, 16, 16             // rtn_addr[15] = ccr_x[29]
         rlwimi  addr, ccr_x, 18, 16, 16                 // addr[15] = ccr_x[29]
         crmove  4*cr7+so, eq
         addco.  addr, addr, rtn_addr
         crand   eq, eq, 4*cr7+so                        // cr0.eq = cr0.eq & cr7.so
         mfxer   ccr_x
-        rlwimi  d0, addr, 16, 16, 31                    // d0[15:0] = addr[31:16]
-        lhzu    rtn_addr, -2(a0)
-        lhzu    rtn_addr, -2(a7)
-        lhzu    addr, -2(a0)
-        lhzu    addr, -2(a7)
-        sth     addr, 0(a7)
+T_13A44:
+        rlwimi  d0, addr, 16, 16, 31                    // template
+T_13A48:
+        lhzu    rtn_addr, -2(a0)                        // template
+T_13A4C:
+        lhzu    rtn_addr, -2(a7)                        // template
+T_13A50:
+        lhzu    addr, -2(a0)                            // template
+T_13A54:
+        lhzu    addr, -2(a7)                            // template
+T_13A58:
+        sth     addr, 0(a7)                             // template
         slwi    rtn_addr, rtn_addr, 16
         slwi    addr, addr, 16
         rlwimi  rtn_addr, ccr_x, 18, 16, 16             // rtn_addr[15] = ccr_x[29]
@@ -5524,27 +6263,36 @@ dr_emit_addq_w_L15:
 //     ADD.B (d16,An),Dn
 //     ADD.B (d8,An,Xn),Dn
 //     ... and 5 more forms
+// For D000, ADD.B D0,D0, it generates
+//         slwi    rtn_addr, d0, 24
+//         slwi    addr, d0, 24
+//         addco.  addr, addr, rtn_addr
+//         rlwimi  d0, addr, 8, 24, 31
+//         mfxer   ccr_x
+// and, when the condition codes are not wanted afterwards,
+//         add     addr, d0, d0
+//         rlwimi  d0, addr, 0, 24, 31
 dr_emit_add_b_2:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr7, rtn_addr, 0x0001
         lis     immed_data, 0x0060
         ble     cr7, dr_emit_add_b_2_L1
-        bl      L_124C0
+        bl      dr_operand_load_b
         lhz     data, 0(rec_ptr)
-        lwz     addr, 0x268C(base_disp)
+        lwz     addr, T_139C4 - dr_emitters(base_disp)  // template: add addr, addr, d0
         mtcrf   0x02, data                              // cr6 = data[7:4]
         rlwinm  data, prefetch_data, 2, 18, 20          // data = prefetch_data[11:9] << 11
         cror    4*cr6+gt, 4*cr6+gt, 4*cr6+lt            // cr6.gt = cr6.gt | cr6.lt
         ble     cr6, dr_emit_add_b_2_L2
-        lwz     addr, 0x2ACC(base_disp)
+        lwz     addr, T_13E04 - dr_emitters(base_disp)  // template: slwi rtn_addr, d0, 24
         rlwinm  data, prefetch_data, 12, 8, 10          // data = prefetch_data[11:9] << 21
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x2AC8(base_disp)
+        lwz     addr, T_13E00 - dr_emitters(base_disp)  // template: slwi addr, addr, 24
         b       dr_emit_add_b_2_L5
 dr_emit_add_b_2_L1:
         lhz     data, 0(rec_ptr)
-        lwz     addr, 0x2AC0(base_disp)
+        lwz     addr, T_13DF8 - dr_emitters(base_disp)  // template: add addr, d0, d0
         mtcrf   0x02, data                              // cr6 = data[7:4]
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
         cror    4*cr6+gt, 4*cr6+gt, 4*cr6+lt            // cr6.gt = cr6.gt | cr6.lt
@@ -5555,23 +6303,23 @@ dr_emit_add_b_2_L2:
         stwu    addr, 4(out_ptr)
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
 dr_emit_add_b_2_L3:
-        lwz     addr, 0x2AC4(base_disp)
+        lwz     addr, T_13DFC - dr_emitters(base_disp)  // template: rlwimi d0, addr, 0, 24, 31
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
 dr_emit_add_b_2_L4:
-        lwz     addr, 0x2ACC(base_disp)
+        lwz     addr, T_13E04 - dr_emitters(base_disp)  // template: slwi rtn_addr, d0, 24
         rlwinm  data, prefetch_data, 12, 8, 10          // data = prefetch_data[11:9] << 21
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x2AD0(base_disp)
+        lwz     addr, T_13E08 - dr_emitters(base_disp)  // template: slwi addr, d0, 24
         rlwinm  data, prefetch_data, 21, 7, 10          // data = prefetch_data[3:0] << 21
         add     addr, addr, data
 dr_emit_add_b_2_L5:
-        lwz     data, 0x2AD4(base_disp)
+        lwz     data, T_13E0C - dr_emitters(base_disp)  // template: addco. addr, addr, rtn_addr
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
-        lwz     addr, 0x2AD8(base_disp)
+        lwz     addr, T_13E10 - dr_emitters(base_disp)  // template: rlwimi d0, addr, 8, 24, 31
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
@@ -5582,29 +6330,29 @@ dr_emit_add_b_2_L6:
         mtcrf   0x02, data                              // cr6 = data[7:4]
         cror    4*cr6+gt, 4*cr6+gt, 4*cr6+lt            // cr6.gt = cr6.gt | cr6.lt
         bgt     cr6, dr_emit_add_b_2_L7
-        bl      L_124C0
-        lwz     addr, 0x268C(base_disp)
+        bl      dr_operand_load_b
+        lwz     addr, T_139C4 - dr_emitters(base_disp)  // template: add addr, addr, d0
         rlwinm  data, prefetch_data, 2, 18, 20          // data = prefetch_data[11:9] << 11
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         lis     immed_data, 0x0060
-        bl      L_12500
+        bl      dr_operand_writeback_b
         b       dr_emit_next
 dr_emit_add_b_2_L7:
-        bl      L_124C0
-        lwz     addr, 0x2ACC(base_disp)
+        bl      dr_operand_load_b
+        lwz     addr, T_13E04 - dr_emitters(base_disp)  // template: slwi rtn_addr, d0, 24
         rlwinm  data, prefetch_data, 12, 8, 10          // data = prefetch_data[11:9] << 21
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x2AC8(base_disp)
+        lwz     addr, T_13E00 - dr_emitters(base_disp)  // template: slwi addr, addr, 24
         stwu    addr, 4(out_ptr)
 dr_emit_add_b_2_L8:
-        lwz     data, 0x2AD4(base_disp)
-        lwz     addr, 0x2ADC(base_disp)
+        lwz     data, T_13E0C - dr_emitters(base_disp)  // template: addco. addr, addr, rtn_addr
+        lwz     addr, T_13E14 - dr_emitters(base_disp)  // template: srwi addr, addr, 24
         stwu    data, 4(out_ptr)
         stwu    addr, 4(out_ptr)
         lis     immed_data, 0x0060
-        bl      L_12500
+        bl      dr_operand_writeback_b
         b       dr_emit_add_w_2_L7
 dr_emit_add_b_2_L9:
         lhz     data, 0(rec_ptr)
@@ -5616,28 +6364,28 @@ dr_emit_add_b_2_L9:
         lis     immed_data, 0x00A0
         bgt     cr6, dr_emit_add_b_2_L10
         addi    blk_ofs, blk_ofs, 2
-        bl      L_124C0
+        bl      dr_operand_load_b
         lhz     rtn_addr, 2(rec_ptr)
         addi    rtn_addr, rtn_addr, 2
-        lwz     addr, 0x26C0(base_disp)
+        lwz     addr, T_139F8 - dr_emitters(base_disp)  // template: addi rtn_addr, rtn_addr, 0
         lhax    rtn_addr, pc, rtn_addr
         extsb   rtn_addr, rtn_addr                      // rtn_addr = sign-extended low byte of rtn_addr
         rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
         stwu    addr, 4(out_ptr)
-        bl      L_12500
+        bl      dr_operand_writeback_b
         b       dr_emit_next
 dr_emit_add_b_2_L10:
         addi    blk_ofs, blk_ofs, 2
-        bl      L_124C0
+        bl      dr_operand_load_b
         lhz     rtn_addr, 2(rec_ptr)
         addi    rtn_addr, rtn_addr, 2
-        bl      L_125B8
-        lwz     addr, 0x2AE0(base_disp)
+        bl      dr_operand_address_L8
+        lwz     addr, T_13E18 - dr_emitters(base_disp)  // template: slwi rtn_addr, rtn_addr, 24
         stwu    addr, 4(out_ptr)
         b       dr_emit_add_b_2_L8
 dr_emit_add_b_2_L11:
         bgt     cr6, dr_emit_add_b_2_L12
-        lwz     addr, 0x26C8(base_disp)
+        lwz     addr, T_13A00 - dr_emitters(base_disp)  // template: addi addr, d0, 0
         lhax    rtn_addr, pc, blk_ofs
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
         extsb   rtn_addr, rtn_addr                      // rtn_addr = sign-extended low byte of rtn_addr
@@ -5646,15 +6394,15 @@ dr_emit_add_b_2_L11:
         stwu    addr, 4(out_ptr)
         b       dr_emit_add_b_2_L3
 dr_emit_add_b_2_L12:
-        bl      L_125C4
+        bl      dr_operand_address_L9
 dr_emit_add_b_2_L13:
-        lwz     addr, 0x2ACC(base_disp)
+        lwz     addr, T_13E04 - dr_emitters(base_disp)  // template: slwi rtn_addr, d0, 24
         rlwinm  data, prefetch_data, 21, 8, 10          // data = prefetch_data[2:0] << 21
         add     addr, addr, data
-        lwz     data, 0x2AD4(base_disp)
+        lwz     data, T_13E0C - dr_emitters(base_disp)  // template: addco. addr, addr, rtn_addr
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
-        lwz     addr, 0x2AD8(base_disp)
+        lwz     addr, T_13E10 - dr_emitters(base_disp)  // template: rlwimi d0, addr, 8, 24, 31
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
@@ -5668,6 +6416,15 @@ dr_emit_add_b_2_L13:
 //     ADDQ.B #<q>,(d16,An)
 //     ADDQ.B #<q>,(d8,An,Xn)
 //     ... and 2 more forms
+// For 5000, ADDQ.B #8,D0, it generates
+//         lis     addr, 0x0800
+//         slwi    rtn_addr, d0, 24
+//         addco.  addr, addr, rtn_addr
+//         rlwimi  d0, addr, 8, 24, 31
+//         mfxer   ccr_x
+// and, when the condition codes are not wanted afterwards,
+//         addi    addr, d0, 8
+//         rlwimi  d0, addr, 0, 24, 31
 dr_emit_addq_b:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr6, rtn_addr, 0x0000
@@ -5677,29 +6434,29 @@ dr_emit_addq_b:
         mtcrf   0x02, rtn_addr                          // cr6 = rtn_addr[7:4]
         cror    4*cr6+gt, 4*cr6+gt, 4*cr6+lt            // cr6.gt = cr6.gt | cr6.lt
         bgt     cr6, dr_emit_addq_b_L2
-        bl      L_124C0
+        bl      dr_operand_load_b
         rlwinm  data, prefetch_data, 23, 29, 31         // data = prefetch_data[11:9]
         cmpwi   cr7, data, 0
-        lwz     addr, 0x21B8(base_disp)
+        lwz     addr, T_134F0 - dr_emitters(base_disp)  // template: addi addr, addr, 0
         bne     cr7, dr_emit_addq_b_L1
         li      data, 8
 dr_emit_addq_b_L1:
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        bl      L_12500
+        bl      dr_operand_writeback_b
         b       dr_emit_next
 dr_emit_addq_b_L2:
         rlwinm  data, prefetch_data, 31, 21, 23         // data = prefetch_data[11:9] << 8
         cmpwi   cr7, data, 0
-        lwz     addr, 0x26CC(base_disp)
+        lwz     addr, T_13A04 - dr_emitters(base_disp)  // template: lis addr, 0x0000
         bne     cr7, dr_emit_addq_b_L3
         li      data, 0x800
 dr_emit_addq_b_L3:
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         lis     immed_data, 0x00A0
-        bl      L_124C0
-        lwz     addr, 0x2AE0(base_disp)
+        bl      dr_operand_load_b
+        lwz     addr, T_13E18 - dr_emitters(base_disp)  // template: slwi rtn_addr, rtn_addr, 24
         stwu    addr, 4(out_ptr)
         b       dr_emit_add_b_2_L8
 dr_emit_addq_b_L4:
@@ -5713,34 +6470,34 @@ dr_emit_addq_b_L4:
 dr_emit_addq_b_L5:
         ble     cr6, dr_emit_addq_b_L6
         slwi    data, data, 8
-        lwz     addr, 0x26CC(base_disp)
+        lwz     addr, T_13A04 - dr_emitters(base_disp)  // template: lis addr, 0x0000
         rlwimi  addr, data, 0, 16, 31                   // addr[15:0] = data[15:0]
         stwu    addr, 4(out_ptr)
         b       dr_emit_add_b_2_L13
 dr_emit_addq_b_L6:
-        lwz     addr, 0x26C8(base_disp)
+        lwz     addr, T_13A00 - dr_emitters(base_disp)  // template: addi addr, d0, 0
         rlwimi  addr, data, 0, 16, 31                   // addr[15:0] = data[15:0]
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         b       dr_emit_add_b_2_L3
 dr_emit_addq_b_L7:
-        lwz     rtn_addr, 0x2AE4(base_disp)
+        lwz     rtn_addr, T_13E1C - dr_emitters(base_disp)  // template: slwi rtn_addr, d0, 24
         rlwinm  addr, prefetch_data, 21, 8, 10          // addr = prefetch_data[2:0] << 21
         add     rtn_addr, rtn_addr, addr
         stwu    rtn_addr, 4(out_ptr)
-        lwz     rtn_addr, 0x2AE8(base_disp)
+        lwz     rtn_addr, T_13E20 - dr_emitters(base_disp)  // template: slwi addr, d0, 24
         rlwinm  addr, prefetch_data, 12, 8, 10          // addr = prefetch_data[11:9] << 21
         add     rtn_addr, rtn_addr, addr
         stwu    rtn_addr, 4(out_ptr)
         li      rtn_addr, 6
         mtctr   rtn_addr
-        addi    data, base_disp, 0x2AE8
+        addi    data, base_disp, T_13E20 - dr_emitters
 dr_emit_addq_b_L8:
         lwzu    rtn_addr, 4(data)
         stwu    rtn_addr, 4(out_ptr)
         bdnz    dr_emit_addq_b_L8                       // CTR -= 1; branch while CTR != 0
-        lwz     rtn_addr, 0x2B04(base_disp)
+        lwz     rtn_addr, T_13E3C - dr_emitters(base_disp)  // template: rlwimi d0, addr, 8, 24, 31
         rlwinm  addr, prefetch_data, 7, 13, 15          // addr = prefetch_data[11:9] << 16
         add     rtn_addr, rtn_addr, addr
         stwu    rtn_addr, 4(out_ptr)
@@ -5748,25 +6505,25 @@ dr_emit_addq_b_L8:
 dr_emit_addq_b_L9:
         clrlwi  addr, prefetch_data, 29                 // addr = prefetch_data & 0x00000007
         cmplwi  cr7, addr, 0x0007
-        lwz     rtn_addr, 0x2B08(base_disp)
+        lwz     rtn_addr, T_13E40 - dr_emitters(base_disp)  // template: lbzu rtn_addr, -1(a0)
         rlwinm  addr, prefetch_data, 16, 13, 15         // addr = prefetch_data[2:0] << 16
         add     rtn_addr, rtn_addr, addr
         bf_likely 4*cr7+eq, dr_emit_addq_b_L10
-        lwz     rtn_addr, 0x2B0C(base_disp)
+        lwz     rtn_addr, T_13E44 - dr_emitters(base_disp)  // template: lbzu rtn_addr, -2(a7)
 dr_emit_addq_b_L10:
         stwu    rtn_addr, 4(out_ptr)
         rlwinm  addr, prefetch_data, 23, 29, 31         // addr = prefetch_data[11:9]
         cmplwi  cr7, addr, 0x0007
-        lwz     rtn_addr, 0x2B10(base_disp)
+        lwz     rtn_addr, T_13E48 - dr_emitters(base_disp)  // template: lbzu addr, -1(a0)
         rlwinm  addr, prefetch_data, 7, 13, 15          // addr = prefetch_data[11:9] << 16
         add     rtn_addr, rtn_addr, addr
         bf_likely 4*cr7+eq, dr_emit_addq_b_L11
-        lwz     rtn_addr, 0x2B14(base_disp)
+        lwz     rtn_addr, T_13E4C - dr_emitters(base_disp)  // template: lbzu addr, -2(a7)
 dr_emit_addq_b_L11:
         stwu    rtn_addr, 4(out_ptr)
         li      rtn_addr, 10
         mtctr   rtn_addr
-        addi    data, base_disp, 0x2B18
+        addi    data, base_disp, T_13E50 - dr_emitters
 dr_emit_addq_b_L12:
         lwzu    rtn_addr, 4(data)
         srwi    addr, rtn_addr, 26
@@ -5777,34 +6534,51 @@ dr_emit_addq_b_L12:
         rlwinm  addr, prefetch_data, 7, 13, 15          // addr = prefetch_data[11:9] << 16
         add     rtn_addr, rtn_addr, addr
         bf_likely 4*cr7+eq, dr_emit_addq_b_L13
-        lwz     rtn_addr, 0x2B18(base_disp)
+        lwz     rtn_addr, T_13E50 - dr_emitters(base_disp)  // template: stb addr, 0(a7)
 dr_emit_addq_b_L13:
         stwu    rtn_addr, 4(out_ptr)
         bdnz    dr_emit_addq_b_L12                      // CTR -= 1; branch while CTR != 0
         b       dr_emit_next
-        add     addr, d0, d0
-        rlwimi  d0, addr, 0, 24, 31                     // d0[7:0] = addr[7:0]
-        slwi    addr, addr, 24
-        slwi    rtn_addr, d0, 24
-        slwi    addr, d0, 24
-        addco.  addr, addr, rtn_addr
-        rlwimi  d0, addr, 8, 24, 31                     // d0[7:0] = addr[31:24]
-        srwi    addr, addr, 24
-        slwi    rtn_addr, rtn_addr, 24
-        slwi    rtn_addr, d0, 24
-        slwi    addr, d0, 24
+T_13DF8:
+        add     addr, d0, d0                            // template
+T_13DFC:
+        rlwimi  d0, addr, 0, 24, 31                     // template
+T_13E00:
+        slwi    addr, addr, 24                          // template
+T_13E04:
+        slwi    rtn_addr, d0, 24                        // template
+T_13E08:
+        slwi    addr, d0, 24                            // template
+T_13E0C:
+        addco.  addr, addr, rtn_addr                    // template
+T_13E10:
+        rlwimi  d0, addr, 8, 24, 31                     // template
+T_13E14:
+        srwi    addr, addr, 24                          // template
+T_13E18:
+        slwi    rtn_addr, rtn_addr, 24                  // template
+T_13E1C:
+        slwi    rtn_addr, d0, 24                        // template
+T_13E20:
+        slwi    addr, d0, 24                            // template
         rlwimi  rtn_addr, ccr_x, 26, 8, 8               // rtn_addr[23] = ccr_x[29]
         rlwimi  addr, ccr_x, 26, 8, 8                   // addr[23] = ccr_x[29]
         crmove  4*cr7+so, eq
         addco.  addr, addr, rtn_addr
         crand   eq, eq, 4*cr7+so                        // cr0.eq = cr0.eq & cr7.so
         mfxer   ccr_x
-        rlwimi  d0, addr, 8, 24, 31                     // d0[7:0] = addr[31:24]
-        lbzu    rtn_addr, -1(a0)
-        lbzu    rtn_addr, -2(a7)
-        lbzu    addr, -1(a0)
-        lbzu    addr, -2(a7)
-        stb     addr, 0(a7)
+T_13E3C:
+        rlwimi  d0, addr, 8, 24, 31                     // template
+T_13E40:
+        lbzu    rtn_addr, -1(a0)                        // template
+T_13E44:
+        lbzu    rtn_addr, -2(a7)                        // template
+T_13E48:
+        lbzu    addr, -1(a0)                            // template
+T_13E4C:
+        lbzu    addr, -2(a7)                            // template
+T_13E50:
+        stb     addr, 0(a7)                             // template
         slwi    rtn_addr, rtn_addr, 24
         slwi    addr, addr, 24
         rlwimi  rtn_addr, ccr_x, 26, 8, 8               // rtn_addr[23] = ccr_x[29]
@@ -5824,14 +6598,20 @@ dr_emit_addq_b_L13:
 //     SUB.L -(An),Dn
 //     SUB.L (d16,An),Dn
 //     ... and 6 more forms
+// For 9080, SUB.L D0,D0, it generates
+//         subfco. d0, d0, d0
+//         subfe   addr, zero, zero
+//         addc    ccr_x, addr, addr
+// and, when the condition codes are not wanted afterwards,
+//         subfco. d0, d0, d0
 dr_emit_sub_l:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr6, rtn_addr, 0x0001
         lis     immed_data, 0x0060
         ble     cr6, dr_emit_sub_l_L5
         lis     immed_data, 0x0060
-        bl      L_124A0
-        lwz     addr, 0x2DCC(base_disp)
+        bl      dr_operand_load_l
+        lwz     addr, T_14104 - dr_emitters(base_disp)  // template: subfco. d0, addr, d0
         rlwinm  data, prefetch_data, 2, 18, 20          // data = prefetch_data[11:9] << 11
 dr_emit_sub_l_L1:
         rlwimi  data, prefetch_data, 12, 8, 10          // data[23:21] = prefetch_data[11:9]
@@ -5843,28 +6623,28 @@ dr_emit_sub_l_L3:
         mtcrf   0x02, addr                              // cr6 = addr[7:4]
         cror    4*cr6+gt, 4*cr6+lt, 4*cr6+gt            // cr6.gt = cr6.lt | cr6.gt
         ble     cr6, dr_emit_next
-        lwz     addr, 0x2DDC(base_disp)
+        lwz     addr, T_14114 - dr_emitters(base_disp)  // template: subfe addr, zero, zero
         stwu    addr, 4(out_ptr)
         bge     cr6, dr_emit_next
-        lwz     addr, 0x2DE0(base_disp)
+        lwz     addr, T_14118 - dr_emitters(base_disp)  // template: addc ccr_x, addr, addr
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
 dr_emit_sub_l_L4:
-        lwz     addr, 0x2DDC(base_disp)
-        lwz     data, 0x2DE0(base_disp)
+        lwz     addr, T_14114 - dr_emitters(base_disp)  // template: subfe addr, zero, zero
+        lwz     data, T_14118 - dr_emitters(base_disp)  // template: addc ccr_x, addr, addr
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
         b       dr_emit_next
 dr_emit_sub_l_L5:
         clrlwi  addr, prefetch_data, 28                 // addr = prefetch_data & 0x0000000F
         cmpwi   cr7, addr, 15
-        lwz     addr, 0x2DB4(base_disp)
+        lwz     addr, T_140EC - dr_emitters(base_disp)  // template: subfco. d0, d0, d0
         rlwinm  data, prefetch_data, 2, 18, 20          // data = prefetch_data[11:9] << 11
         beq     cr7, dr_emit_sub_l_L6
         rlwimi  data, prefetch_data, 16, 12, 15         // data[19:16] = prefetch_data[3:0]
         b       dr_emit_sub_l_L1
 dr_emit_sub_l_L6:
-        lwz     addr, 0x2DB8(base_disp)
+        lwz     addr, T_140F0 - dr_emitters(base_disp)  // template: subfco. d0, a7, d0
         b       dr_emit_sub_l_L1
 
 // Code generator for 488 opcodes:
@@ -5875,15 +6655,17 @@ dr_emit_sub_l_L6:
 //     SUBA.L -(An),An
 //     SUBA.L (d16,An),An
 //     ... and 6 more forms
+// For 91C0, SUBA.L D0,A0, it generates
+//         subf    a0, d0, a0
 dr_emit_suba_l:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr6, rtn_addr, 0x0001
         lis     immed_data, 0x0060
         ble     cr6, dr_emit_suba_l_L4
-        bl      L_124A0
+        bl      dr_operand_load_l
         rlwinm  addr, prefetch_data, 23, 29, 31         // addr = prefetch_data[11:9]
         cmplwi  cr7, addr, 0x0007
-        lwz     addr, 0x2DD4(base_disp)
+        lwz     addr, T_1410C - dr_emitters(base_disp)  // template: subf a0, addr, a0
         rlwinm  data, prefetch_data, 2, 18, 20          // data = prefetch_data[11:9] << 11
         beq     cr7, dr_emit_suba_l_L3
 dr_emit_suba_l_L1:
@@ -5893,27 +6675,27 @@ dr_emit_suba_l_L2:
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
 dr_emit_suba_l_L3:
-        lwz     addr, 0x2DD8(base_disp)
+        lwz     addr, T_14110 - dr_emitters(base_disp)  // template: subf a7, addr, a7
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
 dr_emit_suba_l_L4:
         rlwinm  addr, prefetch_data, 23, 29, 31         // addr = prefetch_data[11:9]
         cmpwi   cr6, addr, 7
-        lwz     addr, 0x2DBC(base_disp)
+        lwz     addr, T_140F4 - dr_emitters(base_disp)  // template: subf a0, d0, a0
         clrlwi  data, prefetch_data, 28                 // data = prefetch_data & 0x0000000F
         cmpwi   cr7, data, 15
         rlwinm  data, prefetch_data, 16, 12, 15         // data = prefetch_data[3:0] << 16
         rlwimi  data, prefetch_data, 2, 18, 20          // data[13:11] = prefetch_data[11:9]
         bne     cr7, dr_emit_suba_l_L5
-        lwz     addr, 0x2DC4(base_disp)
+        lwz     addr, T_140FC - dr_emitters(base_disp)  // template: subf a0, a7, a0
         rlwinm  data, prefetch_data, 2, 18, 20          // data = prefetch_data[11:9] << 11
         bne     cr6, dr_emit_suba_l_L1
-        lwz     addr, 0x2DC8(base_disp)
+        lwz     addr, T_14100 - dr_emitters(base_disp)  // template: subf a7, a7, a7
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
 dr_emit_suba_l_L5:
         bne     cr6, dr_emit_suba_l_L1
-        lwz     addr, 0x2DC0(base_disp)
+        lwz     addr, T_140F8 - dr_emitters(base_disp)  // template: subf a7, d0, a7
         rlwinm  data, prefetch_data, 16, 12, 15         // data = prefetch_data[3:0] << 16
         b       dr_emit_suba_l_L2
 
@@ -5925,6 +6707,19 @@ dr_emit_suba_l_L5:
 //     SUB.B Dn,(d8,An,Xn)
 //     SUB.B Dn,(xxx).W
 //     ... and 1 more forms
+// For 9110, SUB.B D0,(A0), it generates
+//         lbz     addr, 0(a0)
+//         slwi    rtn_addr, d0, 24
+//         slwi    addr, addr, 24
+//         subfco. addr, rtn_addr, addr
+//         srwi    addr, addr, 24
+//         stb     addr, 0(a0)
+//         subfe   addr, zero, zero
+//         addc    ccr_x, addr, addr
+// and, when the condition codes are not wanted afterwards,
+//         lbz     addr, 0(a0)
+//         subf    addr, d0, addr
+//         stb     addr, 0(a0)
 dr_emit_sub_b:
         b       dr_emit_sub_b_2_L6
 
@@ -5936,6 +6731,19 @@ dr_emit_sub_b:
 //     SUB.W Dn,(d8,An,Xn)
 //     SUB.W Dn,(xxx).W
 //     ... and 1 more forms
+// For 9150, SUB.W D0,(A0), it generates
+//         lha     addr, 0(a0)
+//         slwi    rtn_addr, d0, 16
+//         slwi    addr, addr, 16
+//         subfco. addr, rtn_addr, addr
+//         srwi    addr, addr, 16
+//         sth     addr, 0(a0)
+//         subfe   addr, zero, zero
+//         addc    ccr_x, addr, addr
+// and, when the condition codes are not wanted afterwards,
+//         lha     addr, 0(a0)
+//         subf    addr, d0, addr
+//         sth     addr, 0(a0)
 dr_emit_sub_w:
         b       dr_emit_suba_w_L5
 
@@ -5947,16 +6755,26 @@ dr_emit_sub_w:
 //     SUB.L Dn,(d8,An,Xn)
 //     SUB.L Dn,(xxx).W
 //     ... and 1 more forms
+// For 9190, SUB.L D0,(A0), it generates
+//         lwz     addr, 0(a0)
+//         subfco. addr, d0, addr
+//         stw     addr, 0(a0)
+//         subfe   addr, zero, zero
+//         addc    ccr_x, addr, addr
+// and, when the condition codes are not wanted afterwards,
+//         lwz     addr, 0(a0)
+//         subfco. addr, d0, addr
+//         stw     addr, 0(a0)
 dr_emit_sub_l_2:
         lis     immed_data, 0x0060
-        bl      L_124A0
-        lwz     addr, 0x2DD0(base_disp)
+        bl      dr_operand_load_l
+        lwz     addr, T_14108 - dr_emitters(base_disp)  // template: subfco. addr, d0, addr
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
         add     addr, addr, data
 dr_emit_sub_l_2_L1:
         lis     immed_data, 0x0060
         stwu    addr, 4(out_ptr)
-        bl      L_124F0
+        bl      dr_operand_writeback_l
         b       dr_emit_sub_l_L3
 
 // Code generator for 51 opcodes:
@@ -5967,6 +6785,16 @@ dr_emit_sub_l_2_L1:
 //     SUBI.W #<data>,(d16,An)
 //     SUBI.W #<data>,(d8,An,Xn)
 //     ... and 3 more forms
+// For 0440 0010, SUBI.W #<data>,D0, it generates
+//         lis     addr, 0x0010
+//         slwi    rtn_addr, d0, 16
+//         subfco. addr, addr, rtn_addr
+//         rlwimi  d0, addr, 16, 16, 31
+//         subfe   addr, zero, zero
+//         addc    ccr_x, addr, addr
+// and, when the condition codes are not wanted afterwards,
+//         addi    addr, d0, -16
+//         rlwimi  d0, addr, 0, 16, 31
 dr_emit_subi_w:
         b       dr_emit_suba_w_L8
 
@@ -5978,6 +6806,16 @@ dr_emit_subi_w:
 //     SUBI.B #<data>,(d16,An)
 //     SUBI.B #<data>,(d8,An,Xn)
 //     ... and 3 more forms
+// For 0400 0010, SUBI.B #<data>,D0, it generates
+//         lis     addr, 0x1000
+//         slwi    rtn_addr, d0, 24
+//         subfco. addr, addr, rtn_addr
+//         rlwimi  d0, addr, 8, 24, 31
+//         subfe   addr, zero, zero
+//         addc    ccr_x, addr, addr
+// and, when the condition codes are not wanted afterwards,
+//         addi    addr, d0, -16
+//         rlwimi  d0, addr, 0, 24, 31
 dr_emit_subi_b:
         b       dr_emit_sub_b_2_L9
 
@@ -5989,21 +6827,31 @@ dr_emit_subi_b:
 //     SUBI.L #<data>,(d16,An)
 //     SUBI.L #<data>,(d8,An,Xn)
 //     ... and 3 more forms
+// For 0480 0010 0010, SUBI.L #<data>,D0, it generates
+//         ori     addr, zero, 0x0010
+//         oris    addr, addr, 0x0010
+//         subfco. d0, addr, d0
+//         subfe   addr, zero, zero
+//         addc    ccr_x, addr, addr
+// and, when the condition codes are not wanted afterwards,
+//         ori     addr, zero, 0x0010
+//         oris    addr, addr, 0x0010
+//         subfco. d0, addr, d0
 dr_emit_subi_l:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr6, rtn_addr, 0x0001
         ble     cr6, dr_emit_subi_l_L1
         lis     immed_data, 0x00A0
         addi    blk_ofs, blk_ofs, 4
-        bl      L_124A0
+        bl      dr_operand_load_l
         lhz     rtn_addr, 2(rec_ptr)
         addi    rtn_addr, rtn_addr, 2
-        bl      L_12510
-        lwz     addr, 0x2DE4(base_disp)
+        bl      dr_operand_address_L1
+        lwz     addr, T_1411C - dr_emitters(base_disp)  // template: subfco. addr, addr, rtn_addr
         b       dr_emit_sub_l_2_L1
 dr_emit_subi_l_L1:
-        bl      L_12518
-        lwz     addr, 0x2DCC(base_disp)
+        bl      dr_operand_address_L2
+        lwz     addr, T_14104 - dr_emitters(base_disp)  // template: subfco. d0, addr, d0
         rlwinm  data, prefetch_data, 11, 18, 20         // data = prefetch_data[2:0] << 11
         rlwimi  data, prefetch_data, 21, 8, 10          // data[23:21] = prefetch_data[2:0]
         b       dr_emit_sub_l_L2
@@ -6016,12 +6864,19 @@ dr_emit_subi_l_L1:
 //     SUBQ.L #<q>,-(An)
 //     SUBQ.L #<q>,(d16,An)
 //     ... and 3 more forms
+// For 5180, SUBQ.L #8,D0, it generates
+//         li      addr, 8
+//         subfco. d0, addr, d0
+//         subfe   addr, zero, zero
+//         addc    ccr_x, addr, addr
+// and, when the condition codes are not wanted afterwards,
+//         addi    d0, d0, -8
 dr_emit_subq_l:
         clrlwi  rtn_addr, prefetch_data, 26             // rtn_addr = prefetch_data & 0x0000003F
         cmplwi  cr7, rtn_addr, 0x000F
         lis     immed_data, 0x0060
         ble     cr7, dr_emit_subq_l_L3
-        bl      L_124A0
+        bl      dr_operand_load_l
         lhz     rtn_addr, 0(rec_ptr)
         rlwinm  data, prefetch_data, 23, 29, 31         // data = prefetch_data[11:9]
         mtcrf   0x02, rtn_addr                          // cr6 = rtn_addr[7:4]
@@ -6032,15 +6887,15 @@ dr_emit_subq_l:
 dr_emit_subq_l_L1:
         bgt     cr6, dr_emit_subq_l_L2
         neg     data, data
-        lwz     addr, 0x21B8(base_disp)
+        lwz     addr, T_134F0 - dr_emitters(base_disp)  // template: addi addr, addr, 0
         b       dr_emit_addq_l_L2
 dr_emit_subq_l_L2:
-        lwz     addr, 0x21BC(base_disp)
-        lwz     rtn_addr, 0x2DE8(base_disp)
+        lwz     addr, T_134F4 - dr_emitters(base_disp)  // template: li rtn_addr, 0
+        lwz     rtn_addr, T_14120 - dr_emitters(base_disp)  // template: subfco. addr, rtn_addr, addr
         rlwimi  addr, data, 0, 16, 31                   // addr[15:0] = data[15:0]
         stwu    addr, 4(out_ptr)
         stwu    rtn_addr, 4(out_ptr)
-        bl      L_124F0
+        bl      dr_operand_writeback_l
         b       dr_emit_sub_l_L4
 dr_emit_subq_l_L3:
         lhz     rtn_addr, 0(rec_ptr)
@@ -6056,8 +6911,8 @@ dr_emit_subq_l_L4:
         beq     cr7, dr_emit_subq_l_L6
         beq     cr5, dr_emit_subq_l_L5
         ble     cr6, dr_emit_subq_l_L5
-        lwz     addr, 0x21C0(base_disp)
-        lwz     rtn_addr, 0x2DCC(base_disp)
+        lwz     addr, T_134F8 - dr_emitters(base_disp)  // template: li addr, 0
+        lwz     rtn_addr, T_14104 - dr_emitters(base_disp)  // template: subfco. d0, addr, d0
         rlwimi  addr, data, 0, 16, 31                   // addr[15:0] = data[15:0]
         stwu    addr, 4(out_ptr)
         rlwinm  data, prefetch_data, 21, 8, 10          // data = prefetch_data[2:0] << 21
@@ -6067,7 +6922,7 @@ dr_emit_subq_l_L4:
         b       dr_emit_sub_l_L4
 dr_emit_subq_l_L5:
         neg     data, data
-        lwz     addr, 0x21B0(base_disp)
+        lwz     addr, T_134E8 - dr_emitters(base_disp)  // template: addi d0, d0, 0
         rlwinm  rtn_addr, prefetch_data, 16, 12, 15     // rtn_addr = prefetch_data[3:0] << 16
         rlwimi  rtn_addr, prefetch_data, 21, 7, 10      // rtn_addr[24:21] = prefetch_data[3:0]
         rlwimi  addr, data, 0, 16, 31                   // addr[15:0] = data[15:0]
@@ -6076,24 +6931,38 @@ dr_emit_subq_l_L5:
         b       dr_emit_next
 dr_emit_subq_l_L6:
         neg     data, data
-        lwz     addr, 0x21B4(base_disp)
+        lwz     addr, T_134EC - dr_emitters(base_disp)  // template: addi a7, a7, 0
         rlwimi  addr, data, 0, 16, 31                   // addr[15:0] = data[15:0]
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-        subfco. d0, d0, d0                              // d0 = d0 - d0
-        subfco. d0, a7, d0                              // d0 = d0 - a7
-        subf    a0, d0, a0                              // a0 = a0 - d0
-        subf    a7, d0, a7                              // a7 = a7 - d0
-        subf    a0, a7, a0                              // a0 = a0 - a7
-        subf    a7, a7, a7                              // a7 = a7 - a7
-        subfco. d0, addr, d0                            // d0 = d0 - addr
-        subfco. addr, d0, addr                          // addr = addr - d0
-        subf    a0, addr, a0                            // a0 = a0 - addr
-        subf    a7, addr, a7                            // a7 = a7 - addr
-        subfe   addr, zero, zero                        // addr = zero + ~zero + CA
-        addc    ccr_x, addr, addr
-        subfco. addr, addr, rtn_addr                    // addr = rtn_addr - addr
-        subfco. addr, rtn_addr, addr                    // addr = addr - rtn_addr
+T_140EC:
+        subfco. d0, d0, d0                              // template
+T_140F0:
+        subfco. d0, a7, d0                              // template
+T_140F4:
+        subf    a0, d0, a0                              // template
+T_140F8:
+        subf    a7, d0, a7                              // template
+T_140FC:
+        subf    a0, a7, a0                              // template
+T_14100:
+        subf    a7, a7, a7                              // template
+T_14104:
+        subfco. d0, addr, d0                            // template
+T_14108:
+        subfco. addr, d0, addr                          // template
+T_1410C:
+        subf    a0, addr, a0                            // template
+T_14110:
+        subf    a7, addr, a7                            // template
+T_14114:
+        subfe   addr, zero, zero                        // template
+T_14118:
+        addc    ccr_x, addr, addr                       // template
+T_1411C:
+        subfco. addr, addr, rtn_addr                    // template
+T_14120:
+        subfco. addr, rtn_addr, addr                    // template
 
 // Code generator for 488 opcodes:
 //     SUB.W Dn,Dn
@@ -6103,29 +6972,39 @@ dr_emit_subq_l_L6:
 //     SUB.W -(An),Dn
 //     SUB.W (d16,An),Dn
 //     ... and 6 more forms
+// For 9040, SUB.W D0,D0, it generates
+//         slwi    rtn_addr, d0, 16
+//         slwi    addr, d0, 16
+//         subfco. addr, addr, rtn_addr
+//         rlwimi  d0, addr, 16, 16, 31
+//         subfe   addr, zero, zero
+//         addc    ccr_x, addr, addr
+// and, when the condition codes are not wanted afterwards,
+//         subf    addr, d0, d0
+//         rlwimi  d0, addr, 0, 16, 31
 dr_emit_sub_w_2:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr7, rtn_addr, 0x0001
         lis     immed_data, 0x0060
         ble     cr7, dr_emit_sub_w_2_L1
-        bl      L_124B8
+        bl      dr_operand_load_w
         lhz     data, 0(rec_ptr)
-        lwz     addr, 0x3184(base_disp)
+        lwz     addr, T_144BC - dr_emitters(base_disp)  // template: subf addr, addr, d0
         mtcrf   0x02, data                              // cr6 = data[7:4]
         rlwinm  data, prefetch_data, 2, 18, 20          // data = prefetch_data[11:9] << 11
         cror    4*cr6+gt, 4*cr6+gt, 4*cr6+lt            // cr6.gt = cr6.gt | cr6.lt
         ble     cr6, dr_emit_sub_w_2_L3
-        lwz     addr, 0x3194(base_disp)
+        lwz     addr, T_144CC - dr_emitters(base_disp)  // template: slwi rtn_addr, d0, 16
         rlwinm  data, prefetch_data, 12, 8, 10          // data = prefetch_data[11:9] << 21
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x2698(base_disp)
+        lwz     addr, T_139D0 - dr_emitters(base_disp)  // template: slwi addr, addr, 16
         b       dr_emit_sub_w_2_L6
 dr_emit_sub_w_2_L1:
         clrlwi  addr, prefetch_data, 28                 // addr = prefetch_data & 0x0000000F
         cmpwi   cr7, addr, 15
         lhz     data, 0(rec_ptr)
-        lwz     addr, 0x318C(base_disp)
+        lwz     addr, T_144C4 - dr_emitters(base_disp)  // template: subf addr, d0, d0
         mtcrf   0x02, data                              // cr6 = data[7:4]
         rlwinm  data, prefetch_data, 2, 18, 20          // data = prefetch_data[11:9] << 11
         cror    4*cr6+gt, 4*cr6+gt, 4*cr6+lt            // cr6.gt = cr6.gt | cr6.lt
@@ -6138,27 +7017,27 @@ dr_emit_sub_w_2_L2:
 dr_emit_sub_w_2_L3:
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x3190(base_disp)
+        lwz     addr, T_144C8 - dr_emitters(base_disp)  // template: rlwimi d0, addr, 0, 16, 31
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
 dr_emit_sub_w_2_L4:
-        lwz     addr, 0x3194(base_disp)
+        lwz     addr, T_144CC - dr_emitters(base_disp)  // template: slwi rtn_addr, d0, 16
         rlwinm  data, prefetch_data, 12, 8, 10          // data = prefetch_data[11:9] << 21
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x3198(base_disp)
+        lwz     addr, T_144D0 - dr_emitters(base_disp)  // template: slwi addr, d0, 16
         rlwinm  data, prefetch_data, 21, 7, 10          // data = prefetch_data[3:0] << 21
         bne     cr7, dr_emit_sub_w_2_L5
         lis     data, 0xFF20
 dr_emit_sub_w_2_L5:
         add     addr, addr, data
 dr_emit_sub_w_2_L6:
-        lwz     data, 0x319C(base_disp)
+        lwz     data, T_144D4 - dr_emitters(base_disp)  // template: subfco. addr, addr, rtn_addr
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
-        lwz     addr, 0x31A0(base_disp)
+        lwz     addr, T_144D8 - dr_emitters(base_disp)  // template: rlwimi d0, addr, 16, 16, 31
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
@@ -6172,16 +7051,19 @@ dr_emit_sub_w_2_L6:
 //     SUBA.W -(An),An
 //     SUBA.W (d16,An),An
 //     ... and 6 more forms
+// For 90C0, SUBA.W D0,A0, it generates
+//         extsh   addr, d0
+//         subf    a0, addr, a0
 dr_emit_suba_w:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr6, rtn_addr, 0x0001
         lis     immed_data, 0x0060
         ble     cr6, dr_emit_suba_w_L3
-        bl      L_124B8
+        bl      dr_operand_load_w
 dr_emit_suba_w_L1:
         rlwinm  addr, prefetch_data, 23, 29, 31         // addr = prefetch_data[11:9]
         cmplwi  cr7, addr, 0x0007
-        lwz     addr, 0x31A8(base_disp)
+        lwz     addr, T_144E0 - dr_emitters(base_disp)  // template: subf a0, addr, a0
         rlwinm  data, prefetch_data, 2, 18, 20          // data = prefetch_data[11:9] << 11
         rlwimi  data, prefetch_data, 12, 8, 10          // data[23:21] = prefetch_data[11:9]
         beq     cr7, dr_emit_suba_w_L2
@@ -6189,20 +7071,20 @@ dr_emit_suba_w_L1:
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
 dr_emit_suba_w_L2:
-        lwz     addr, 0x31AC(base_disp)
+        lwz     addr, T_144E4 - dr_emitters(base_disp)  // template: subf a7, addr, a7
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
 dr_emit_suba_w_L3:
         rlwinm  data, prefetch_data, 11, 17, 20         // data = prefetch_data[3:0] << 11
         cmpwi   cr7, data, 0x7800
-        lwz     addr, 0x26AC(base_disp)
+        lwz     addr, T_139E4 - dr_emitters(base_disp)  // template: extsh addr, d0
         rlwinm  data, prefetch_data, 21, 7, 10          // data = prefetch_data[3:0] << 21
         beq     cr7, dr_emit_suba_w_L4
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         b       dr_emit_suba_w_L1
 dr_emit_suba_w_L4:
-        lwz     addr, 0x26B0(base_disp)
+        lwz     addr, T_139E8 - dr_emitters(base_disp)  // template: extsh addr, a7
         stwu    addr, 4(out_ptr)
         b       dr_emit_suba_w_L1
 dr_emit_suba_w_L5:
@@ -6211,29 +7093,29 @@ dr_emit_suba_w_L5:
         mtcrf   0x02, data                              // cr6 = data[7:4]
         cror    4*cr6+gt, 4*cr6+gt, 4*cr6+lt            // cr6.gt = cr6.gt | cr6.lt
         bgt     cr6, dr_emit_suba_w_L6
-        bl      L_124B8
-        lwz     addr, 0x3188(base_disp)
+        bl      dr_operand_load_w
+        lwz     addr, T_144C0 - dr_emitters(base_disp)  // template: subf addr, d0, addr
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         lis     immed_data, 0x0060
-        bl      L_124F8
+        bl      dr_operand_writeback_w
         b       dr_emit_next
 dr_emit_suba_w_L6:
-        bl      L_124B8
-        lwz     addr, 0x3194(base_disp)
+        bl      dr_operand_load_w
+        lwz     addr, T_144CC - dr_emitters(base_disp)  // template: slwi rtn_addr, d0, 16
         rlwinm  data, prefetch_data, 12, 8, 10          // data = prefetch_data[11:9] << 21
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x2698(base_disp)
-        lwz     data, 0x31A4(base_disp)
+        lwz     addr, T_139D0 - dr_emitters(base_disp)  // template: slwi addr, addr, 16
+        lwz     data, T_144DC - dr_emitters(base_disp)  // template: subfco. addr, rtn_addr, addr
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
 dr_emit_suba_w_L7:
-        lwz     addr, 0x26BC(base_disp)
+        lwz     addr, T_139F4 - dr_emitters(base_disp)  // template: srwi addr, addr, 16
         stwu    addr, 4(out_ptr)
         lis     immed_data, 0x0060
-        bl      L_124F8
+        bl      dr_operand_writeback_w
         b       dr_emit_sub_l_L4
 dr_emit_suba_w_L8:
         lhz     data, 0(rec_ptr)
@@ -6245,34 +7127,34 @@ dr_emit_suba_w_L8:
         lis     immed_data, 0x00A0
         bgt     cr6, dr_emit_suba_w_L9
         addi    blk_ofs, blk_ofs, 2
-        bl      L_124B8
+        bl      dr_operand_load_w
         lhz     rtn_addr, 2(rec_ptr)
         addi    rtn_addr, rtn_addr, 2
-        lwz     addr, 0x26C0(base_disp)
+        lwz     addr, T_139F8 - dr_emitters(base_disp)  // template: addi rtn_addr, rtn_addr, 0
         lhax    rtn_addr, pc, rtn_addr
         cmpwi   cr7, rtn_addr, -0x8000
         neg     rtn_addr, rtn_addr
         rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
         beq     cr7, dr_emit_suba_w_L10
         stwu    addr, 4(out_ptr)
-        bl      L_124F8
+        bl      dr_operand_writeback_w
         b       dr_emit_next
 dr_emit_suba_w_L9:
         addi    blk_ofs, blk_ofs, 2
-        bl      L_124B8
+        bl      dr_operand_load_w
 dr_emit_suba_w_L10:
         lhz     rtn_addr, 2(rec_ptr)
         addi    rtn_addr, rtn_addr, 2
-        bl      L_12598
+        bl      dr_operand_address_L5
 dr_emit_suba_w_L11:
-        lwz     addr, 0x31B0(base_disp)
+        lwz     addr, T_144E8 - dr_emitters(base_disp)  // template: slwi rtn_addr, rtn_addr, 16
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x31B4(base_disp)
+        lwz     addr, T_144EC - dr_emitters(base_disp)  // template: subfco. addr, addr, rtn_addr
         stwu    addr, 4(out_ptr)
         b       dr_emit_suba_w_L7
 dr_emit_suba_w_L12:
         bgt     cr6, dr_emit_suba_w_L14
-        lwz     addr, 0x26C8(base_disp)
+        lwz     addr, T_13A00 - dr_emitters(base_disp)  // template: addi addr, d0, 0
         lhax    rtn_addr, pc, blk_ofs
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
         cmpwi   cr7, rtn_addr, -0x8000
@@ -6282,20 +7164,20 @@ dr_emit_suba_w_L12:
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
 dr_emit_suba_w_L13:
-        lwz     addr, 0x3190(base_disp)
+        lwz     addr, T_144C8 - dr_emitters(base_disp)  // template: rlwimi d0, addr, 0, 16, 31
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
 dr_emit_suba_w_L14:
-        bl      L_125A0
+        bl      dr_operand_address_L6
 dr_emit_suba_w_L15:
-        lwz     addr, 0x3194(base_disp)
+        lwz     addr, T_144CC - dr_emitters(base_disp)  // template: slwi rtn_addr, d0, 16
         rlwinm  data, prefetch_data, 21, 8, 10          // data = prefetch_data[2:0] << 21
         add     addr, addr, data
-        lwz     data, 0x319C(base_disp)
+        lwz     data, T_144D4 - dr_emitters(base_disp)  // template: subfco. addr, addr, rtn_addr
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
-        lwz     addr, 0x31A0(base_disp)
+        lwz     addr, T_144D8 - dr_emitters(base_disp)  // template: rlwimi d0, addr, 16, 16, 31
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
@@ -6309,6 +7191,16 @@ dr_emit_suba_w_L15:
 //     SUBQ.W #<q>,-(An)
 //     SUBQ.W #<q>,(d16,An)
 //     ... and 3 more forms
+// For 5140, SUBQ.W #8,D0, it generates
+//         lis     addr, 0x0008
+//         slwi    rtn_addr, d0, 16
+//         subfco. addr, addr, rtn_addr
+//         rlwimi  d0, addr, 16, 16, 31
+//         subfe   addr, zero, zero
+//         addc    ccr_x, addr, addr
+// and, when the condition codes are not wanted afterwards,
+//         addi    addr, d0, -8
+//         rlwimi  d0, addr, 0, 16, 31
 dr_emit_subq_w:
         clrlwi  rtn_addr, prefetch_data, 26             // rtn_addr = prefetch_data & 0x0000003F
         cmplwi  cr7, rtn_addr, 0x000F
@@ -6318,29 +7210,29 @@ dr_emit_subq_w:
         mtcrf   0x02, rtn_addr                          // cr6 = rtn_addr[7:4]
         cror    4*cr6+gt, 4*cr6+gt, 4*cr6+lt            // cr6.gt = cr6.gt | cr6.lt
         bgt     cr6, dr_emit_subq_w_L2
-        bl      L_124B8
+        bl      dr_operand_load_w
         rlwinm  data, prefetch_data, 23, 29, 31         // data = prefetch_data[11:9]
         cmpwi   cr7, data, 0
-        lwz     addr, 0x21B8(base_disp)
+        lwz     addr, T_134F0 - dr_emitters(base_disp)  // template: addi addr, addr, 0
         bne     cr7, dr_emit_subq_w_L1
         li      data, 8
 dr_emit_subq_w_L1:
         neg     data, data
         rlwimi  addr, data, 0, 16, 31                   // addr[15:0] = data[15:0]
         stwu    addr, 4(out_ptr)
-        bl      L_124F8
+        bl      dr_operand_writeback_w
         b       dr_emit_next
 dr_emit_subq_w_L2:
         rlwinm  data, prefetch_data, 23, 29, 31         // data = prefetch_data[11:9]
         cmpwi   cr7, data, 0
-        lwz     addr, 0x26CC(base_disp)
+        lwz     addr, T_13A04 - dr_emitters(base_disp)  // template: lis addr, 0x0000
         bne     cr7, dr_emit_subq_w_L3
         li      data, 8
 dr_emit_subq_w_L3:
         rlwimi  addr, data, 0, 16, 31                   // addr[15:0] = data[15:0]
         stwu    addr, 4(out_ptr)
         lis     immed_data, 0x00A0
-        bl      L_124B8
+        bl      dr_operand_load_w
         b       dr_emit_suba_w_L11
 dr_emit_subq_w_L4:
         lhz     rtn_addr, 0(rec_ptr)
@@ -6356,7 +7248,7 @@ dr_emit_subq_w_L5:
         beq     cr5, dr_emit_subq_l_L5
         bgt     cr6, dr_emit_subq_w_L6
         blt     cr6, dr_emit_subq_w_L7
-        lwz     addr, 0x26C8(base_disp)
+        lwz     addr, T_13A00 - dr_emitters(base_disp)  // template: addi addr, d0, 0
         neg     data, data
         rlwimi  addr, data, 0, 16, 31                   // addr[15:0] = data[15:0]
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
@@ -6364,40 +7256,56 @@ dr_emit_subq_w_L5:
         stwu    addr, 4(out_ptr)
         b       dr_emit_suba_w_L13
 dr_emit_subq_w_L6:
-        lwz     addr, 0x26CC(base_disp)
+        lwz     addr, T_13A04 - dr_emitters(base_disp)  // template: lis addr, 0x0000
         rlwimi  addr, data, 0, 16, 31                   // addr[15:0] = data[15:0]
         stwu    addr, 4(out_ptr)
         b       dr_emit_suba_w_L15
 dr_emit_subq_w_L7:
-        lwz     rtn_addr, 0x31B8(base_disp)
-        lwz     immed_data, 0x31BC(base_disp)
+        lwz     rtn_addr, T_144F0 - dr_emitters(base_disp)  // template: clrlwi ccr_x, d0, 16
+        lwz     immed_data, T_144F4 - dr_emitters(base_disp)  // template: addi ccr_x, ccr_x, 0
         rlwinm  addr, prefetch_data, 21, 8, 10          // addr = prefetch_data[2:0] << 21
         add     rtn_addr, rtn_addr, addr
         stwu    rtn_addr, 4(out_ptr)
         neg     data, data
         rlwimi  immed_data, data, 0, 16, 31             // immed_data[15:0] = data[15:0]
         stwu    immed_data, 4(out_ptr)
-        lwz     rtn_addr, 0x31C0(base_disp)
+        lwz     rtn_addr, T_144F8 - dr_emitters(base_disp)  // template: rlwimi d0, ccr_x, 0, 16, 31
         rlwinm  addr, prefetch_data, 16, 13, 15         // addr = prefetch_data[2:0] << 16
         add     rtn_addr, rtn_addr, addr
         stwu    rtn_addr, 4(out_ptr)
         b       dr_emit_next
-        subf    addr, addr, d0                          // addr = d0 - addr
-        subf    addr, d0, addr                          // addr = addr - d0
-        subf    addr, d0, d0                            // addr = d0 - d0
-        rlwimi  d0, addr, 0, 16, 31                     // d0[15:0] = addr[15:0]
-        slwi    rtn_addr, d0, 16
-        slwi    addr, d0, 16
-        subfco. addr, addr, rtn_addr                    // addr = rtn_addr - addr
-        rlwimi  d0, addr, 16, 16, 31                    // d0[15:0] = addr[31:16]
-        subfco. addr, rtn_addr, addr                    // addr = addr - rtn_addr
-        subf    a0, addr, a0                            // a0 = a0 - addr
-        subf    a7, addr, a7                            // a7 = a7 - addr
-        slwi    rtn_addr, rtn_addr, 16
-        subfco. addr, addr, rtn_addr                    // addr = rtn_addr - addr
-        clrlwi  ccr_x, d0, 16                           // ccr_x = d0 & 0x0000FFFF
-        addi    ccr_x, ccr_x, 0
-        rlwimi  d0, ccr_x, 0, 16, 31                    // d0[15:0] = ccr_x[15:0]
+T_144BC:
+        subf    addr, addr, d0                          // template
+T_144C0:
+        subf    addr, d0, addr                          // template
+T_144C4:
+        subf    addr, d0, d0                            // template
+T_144C8:
+        rlwimi  d0, addr, 0, 16, 31                     // template
+T_144CC:
+        slwi    rtn_addr, d0, 16                        // template
+T_144D0:
+        slwi    addr, d0, 16                            // template
+T_144D4:
+        subfco. addr, addr, rtn_addr                    // template
+T_144D8:
+        rlwimi  d0, addr, 16, 16, 31                    // template
+T_144DC:
+        subfco. addr, rtn_addr, addr                    // template
+T_144E0:
+        subf    a0, addr, a0                            // template
+T_144E4:
+        subf    a7, addr, a7                            // template
+T_144E8:
+        slwi    rtn_addr, rtn_addr, 16                  // template
+T_144EC:
+        subfco. addr, addr, rtn_addr                    // template
+T_144F0:
+        clrlwi  ccr_x, d0, 16                           // template
+T_144F4:
+        addi    ccr_x, ccr_x, 0                         // template
+T_144F8:
+        rlwimi  d0, ccr_x, 0, 16, 31                    // template
 
 // Code generator for 424 opcodes:
 //     SUB.B Dn,Dn
@@ -6407,27 +7315,37 @@ dr_emit_subq_w_L7:
 //     SUB.B (d16,An),Dn
 //     SUB.B (d8,An,Xn),Dn
 //     ... and 5 more forms
+// For 9000, SUB.B D0,D0, it generates
+//         slwi    rtn_addr, d0, 24
+//         slwi    addr, d0, 24
+//         subfco. addr, addr, rtn_addr
+//         rlwimi  d0, addr, 8, 24, 31
+//         subfe   addr, zero, zero
+//         addc    ccr_x, addr, addr
+// and, when the condition codes are not wanted afterwards,
+//         subf    addr, d0, d0
+//         rlwimi  d0, addr, 0, 24, 31
 dr_emit_sub_b_2:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr7, rtn_addr, 0x0001
         lis     immed_data, 0x0060
         ble     cr7, dr_emit_sub_b_2_L1
-        bl      L_124C0
+        bl      dr_operand_load_b
         lhz     data, 0(rec_ptr)
-        lwz     addr, 0x3184(base_disp)
+        lwz     addr, T_144BC - dr_emitters(base_disp)  // template: subf addr, addr, d0
         mtcrf   0x02, data                              // cr6 = data[7:4]
         rlwinm  data, prefetch_data, 2, 18, 20          // data = prefetch_data[11:9] << 11
         cror    4*cr6+gt, 4*cr6+gt, 4*cr6+lt            // cr6.gt = cr6.gt | cr6.lt
         ble     cr6, dr_emit_sub_b_2_L2
-        lwz     addr, 0x3490(base_disp)
+        lwz     addr, T_147C8 - dr_emitters(base_disp)  // template: slwi rtn_addr, d0, 24
         rlwinm  data, prefetch_data, 12, 8, 10          // data = prefetch_data[11:9] << 21
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x2AC8(base_disp)
+        lwz     addr, T_13E00 - dr_emitters(base_disp)  // template: slwi addr, addr, 24
         b       dr_emit_sub_b_2_L5
 dr_emit_sub_b_2_L1:
         lhz     data, 0(rec_ptr)
-        lwz     addr, 0x3488(base_disp)
+        lwz     addr, T_147C0 - dr_emitters(base_disp)  // template: subf addr, d0, d0
         mtcrf   0x02, data                              // cr6 = data[7:4]
         rlwinm  data, prefetch_data, 2, 18, 20          // data = prefetch_data[11:9] << 11
         cror    4*cr6+gt, 4*cr6+gt, 4*cr6+lt            // cr6.gt = cr6.gt | cr6.lt
@@ -6438,23 +7356,23 @@ dr_emit_sub_b_2_L2:
         stwu    addr, 4(out_ptr)
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
 dr_emit_sub_b_2_L3:
-        lwz     addr, 0x348C(base_disp)
+        lwz     addr, T_147C4 - dr_emitters(base_disp)  // template: rlwimi d0, addr, 0, 24, 31
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
 dr_emit_sub_b_2_L4:
-        lwz     addr, 0x3490(base_disp)
+        lwz     addr, T_147C8 - dr_emitters(base_disp)  // template: slwi rtn_addr, d0, 24
         rlwinm  data, prefetch_data, 12, 8, 10          // data = prefetch_data[11:9] << 21
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x3494(base_disp)
+        lwz     addr, T_147CC - dr_emitters(base_disp)  // template: slwi addr, d0, 24
         rlwinm  data, prefetch_data, 21, 7, 10          // data = prefetch_data[3:0] << 21
         add     addr, addr, data
 dr_emit_sub_b_2_L5:
-        lwz     data, 0x3498(base_disp)
+        lwz     data, T_147D0 - dr_emitters(base_disp)  // template: subfco. addr, addr, rtn_addr
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
-        lwz     addr, 0x349C(base_disp)
+        lwz     addr, T_147D4 - dr_emitters(base_disp)  // template: rlwimi d0, addr, 8, 24, 31
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
@@ -6465,29 +7383,29 @@ dr_emit_sub_b_2_L6:
         mtcrf   0x02, data                              // cr6 = data[7:4]
         cror    4*cr6+gt, 4*cr6+gt, 4*cr6+lt            // cr6.gt = cr6.gt | cr6.lt
         bgt     cr6, dr_emit_sub_b_2_L7
-        bl      L_124C0
-        lwz     addr, 0x3188(base_disp)
+        bl      dr_operand_load_b
+        lwz     addr, T_144C0 - dr_emitters(base_disp)  // template: subf addr, d0, addr
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         lis     immed_data, 0x0060
-        bl      L_12500
+        bl      dr_operand_writeback_b
         b       dr_emit_next
 dr_emit_sub_b_2_L7:
-        bl      L_124C0
-        lwz     addr, 0x3490(base_disp)
+        bl      dr_operand_load_b
+        lwz     addr, T_147C8 - dr_emitters(base_disp)  // template: slwi rtn_addr, d0, 24
         rlwinm  data, prefetch_data, 12, 8, 10          // data = prefetch_data[11:9] << 21
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x2AC8(base_disp)
-        lwz     data, 0x34A0(base_disp)
+        lwz     addr, T_13E00 - dr_emitters(base_disp)  // template: slwi addr, addr, 24
+        lwz     data, T_147D8 - dr_emitters(base_disp)  // template: subfco. addr, rtn_addr, addr
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
 dr_emit_sub_b_2_L8:
-        lwz     addr, 0x2ADC(base_disp)
+        lwz     addr, T_13E14 - dr_emitters(base_disp)  // template: srwi addr, addr, 24
         stwu    addr, 4(out_ptr)
         lis     immed_data, 0x0060
-        bl      L_12500
+        bl      dr_operand_writeback_b
         b       dr_emit_sub_l_L4
 dr_emit_sub_b_2_L9:
         lhz     data, 0(rec_ptr)
@@ -6499,32 +7417,32 @@ dr_emit_sub_b_2_L9:
         lis     immed_data, 0x00A0
         bgt     cr6, dr_emit_sub_b_2_L10
         addi    blk_ofs, blk_ofs, 2
-        bl      L_124C0
+        bl      dr_operand_load_b
         lhz     rtn_addr, 2(rec_ptr)
         addi    rtn_addr, rtn_addr, 2
-        lwz     addr, 0x26C0(base_disp)
+        lwz     addr, T_139F8 - dr_emitters(base_disp)  // template: addi rtn_addr, rtn_addr, 0
         lhax    rtn_addr, pc, rtn_addr
         extsb   rtn_addr, rtn_addr                      // rtn_addr = sign-extended low byte of rtn_addr
         neg     rtn_addr, rtn_addr
         rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
         stwu    addr, 4(out_ptr)
-        bl      L_12500
+        bl      dr_operand_writeback_b
         b       dr_emit_next
 dr_emit_sub_b_2_L10:
         addi    blk_ofs, blk_ofs, 2
-        bl      L_124C0
+        bl      dr_operand_load_b
         lhz     rtn_addr, 2(rec_ptr)
         addi    rtn_addr, rtn_addr, 2
-        bl      L_125B8
+        bl      dr_operand_address_L8
 dr_emit_sub_b_2_L11:
-        lwz     addr, 0x34A4(base_disp)
+        lwz     addr, T_147DC - dr_emitters(base_disp)  // template: slwi rtn_addr, rtn_addr, 24
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x34A8(base_disp)
+        lwz     addr, T_147E0 - dr_emitters(base_disp)  // template: subfco. addr, addr, rtn_addr
         stwu    addr, 4(out_ptr)
         b       dr_emit_sub_b_2_L8
 dr_emit_sub_b_2_L12:
         bgt     cr6, dr_emit_sub_b_2_L13
-        lwz     addr, 0x26C8(base_disp)
+        lwz     addr, T_13A00 - dr_emitters(base_disp)  // template: addi addr, d0, 0
         lhax    rtn_addr, pc, blk_ofs
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
         extsb   rtn_addr, rtn_addr                      // rtn_addr = sign-extended low byte of rtn_addr
@@ -6532,20 +7450,20 @@ dr_emit_sub_b_2_L12:
         rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x348C(base_disp)
+        lwz     addr, T_147C4 - dr_emitters(base_disp)  // template: rlwimi d0, addr, 0, 24, 31
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
 dr_emit_sub_b_2_L13:
-        bl      L_125C4
+        bl      dr_operand_address_L9
 dr_emit_sub_b_2_L14:
-        lwz     addr, 0x3490(base_disp)
+        lwz     addr, T_147C8 - dr_emitters(base_disp)  // template: slwi rtn_addr, d0, 24
         rlwinm  data, prefetch_data, 21, 8, 10          // data = prefetch_data[2:0] << 21
         add     addr, addr, data
-        lwz     data, 0x3498(base_disp)
+        lwz     data, T_147D0 - dr_emitters(base_disp)  // template: subfco. addr, addr, rtn_addr
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
-        lwz     addr, 0x349C(base_disp)
+        lwz     addr, T_147D4 - dr_emitters(base_disp)  // template: rlwimi d0, addr, 8, 24, 31
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
@@ -6559,6 +7477,16 @@ dr_emit_sub_b_2_L14:
 //     SUBQ.B #<q>,(d16,An)
 //     SUBQ.B #<q>,(d8,An,Xn)
 //     ... and 2 more forms
+// For 5100, SUBQ.B #8,D0, it generates
+//         lis     addr, 0x0800
+//         slwi    rtn_addr, d0, 24
+//         subfco. addr, addr, rtn_addr
+//         rlwimi  d0, addr, 8, 24, 31
+//         subfe   addr, zero, zero
+//         addc    ccr_x, addr, addr
+// and, when the condition codes are not wanted afterwards,
+//         addi    addr, d0, -8
+//         rlwimi  d0, addr, 0, 24, 31
 dr_emit_subq_b:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr6, rtn_addr, 0x0000
@@ -6568,29 +7496,29 @@ dr_emit_subq_b:
         mtcrf   0x02, rtn_addr                          // cr6 = rtn_addr[7:4]
         cror    4*cr6+gt, 4*cr6+gt, 4*cr6+lt            // cr6.gt = cr6.gt | cr6.lt
         bgt     cr6, dr_emit_subq_b_L2
-        bl      L_124C0
+        bl      dr_operand_load_b
         rlwinm  data, prefetch_data, 23, 29, 31         // data = prefetch_data[11:9]
         cmpwi   cr7, data, 0
-        lwz     addr, 0x21B8(base_disp)
+        lwz     addr, T_134F0 - dr_emitters(base_disp)  // template: addi addr, addr, 0
         bne     cr7, dr_emit_subq_b_L1
         li      data, 8
 dr_emit_subq_b_L1:
         neg     data, data
         rlwimi  addr, data, 0, 16, 31                   // addr[15:0] = data[15:0]
         stwu    addr, 4(out_ptr)
-        bl      L_12500
+        bl      dr_operand_writeback_b
         b       dr_emit_next
 dr_emit_subq_b_L2:
         rlwinm  data, prefetch_data, 31, 21, 23         // data = prefetch_data[11:9] << 8
         cmpwi   cr7, data, 0
-        lwz     addr, 0x26CC(base_disp)
+        lwz     addr, T_13A04 - dr_emitters(base_disp)  // template: lis addr, 0x0000
         bne     cr7, dr_emit_subq_b_L3
         li      data, 0x800
 dr_emit_subq_b_L3:
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         lis     immed_data, 0x00A0
-        bl      L_124C0
+        bl      dr_operand_load_b
         b       dr_emit_sub_b_2_L11
 dr_emit_subq_b_L4:
         lhz     rtn_addr, 0(rec_ptr)
@@ -6603,27 +7531,36 @@ dr_emit_subq_b_L4:
 dr_emit_subq_b_L5:
         ble     cr6, dr_emit_subq_b_L6
         slwi    data, data, 8
-        lwz     addr, 0x26CC(base_disp)
+        lwz     addr, T_13A04 - dr_emitters(base_disp)  // template: lis addr, 0x0000
         rlwimi  addr, data, 0, 16, 31                   // addr[15:0] = data[15:0]
         stwu    addr, 4(out_ptr)
         b       dr_emit_sub_b_2_L14
 dr_emit_subq_b_L6:
-        lwz     addr, 0x26C8(base_disp)
+        lwz     addr, T_13A00 - dr_emitters(base_disp)  // template: addi addr, d0, 0
         neg     data, data
         rlwimi  addr, data, 0, 16, 31                   // addr[15:0] = data[15:0]
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         b       dr_emit_sub_b_2_L3
-        subf    addr, d0, d0                            // addr = d0 - d0
-        rlwimi  d0, addr, 0, 24, 31                     // d0[7:0] = addr[7:0]
-        slwi    rtn_addr, d0, 24
-        slwi    addr, d0, 24
-        subfco. addr, addr, rtn_addr                    // addr = rtn_addr - addr
-        rlwimi  d0, addr, 8, 24, 31                     // d0[7:0] = addr[31:24]
-        subfco. addr, rtn_addr, addr                    // addr = addr - rtn_addr
-        slwi    rtn_addr, rtn_addr, 24
-        subfco. addr, addr, rtn_addr                    // addr = rtn_addr - addr
+T_147C0:
+        subf    addr, d0, d0                            // template
+T_147C4:
+        rlwimi  d0, addr, 0, 24, 31                     // template
+T_147C8:
+        slwi    rtn_addr, d0, 24                        // template
+T_147CC:
+        slwi    addr, d0, 24                            // template
+T_147D0:
+        subfco. addr, addr, rtn_addr                    // template
+T_147D4:
+        rlwimi  d0, addr, 8, 24, 31                     // template
+T_147D8:
+        subfco. addr, rtn_addr, addr                    // template
+T_147DC:
+        slwi    rtn_addr, rtn_addr, 24                  // template
+T_147E0:
+        subfco. addr, addr, rtn_addr                    // template
 
 // Code generator for 424 opcodes:
 //     MULS.W Dn,Dn
@@ -6633,29 +7570,38 @@ dr_emit_subq_b_L6:
 //     MULS.W (d16,An),Dn
 //     MULS.W (d8,An,Xn),Dn
 //     ... and 5 more forms
+// For C1C0, MULS.W D0,D0, it generates
+//         extsh   addr, d0
+//         extsh   rtn_addr, d0
+//         mullw.  d0, addr, rtn_addr
+//         addco   zero, zero, zero
+// and, when the condition codes are not wanted afterwards,
+//         extsh   addr, d0
+//         extsh   rtn_addr, d0
+//         mullw.  d0, addr, rtn_addr
 dr_emit_muls_w:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr7, rtn_addr, 0x0001
         lis     immed_data, 0x0060
         ble     cr7, dr_emit_muls_w_L3
-        bl      L_124B8
+        bl      dr_operand_load_w
 dr_emit_muls_w_L1:
-        lwz     addr, 0x3568(base_disp)
+        lwz     addr, T_148A0 - dr_emitters(base_disp)  // template: extsh rtn_addr, d0
         rlwinm  data, prefetch_data, 12, 8, 10          // data = prefetch_data[11:9] << 21
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x356C(base_disp)
+        lwz     addr, T_148A4 - dr_emitters(base_disp)  // template: mullw. d0, addr, rtn_addr
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
 dr_emit_muls_w_L2:
         lhz     data, 0(rec_ptr)
-        lwz     addr, 0x357C(base_disp)
+        lwz     addr, T_148B4 - dr_emitters(base_disp)  // template: addco zero, zero, zero
         mtcrf   0x02, data                              // cr6 = data[7:4]
         ble     cr6, dr_emit_next
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
 dr_emit_muls_w_L3:
-        lwz     addr, 0x3564(base_disp)
+        lwz     addr, T_1489C - dr_emitters(base_disp)  // template: extsh addr, d0
         rlwinm  data, prefetch_data, 21, 8, 10          // data = prefetch_data[2:0] << 21
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
@@ -6669,39 +7615,55 @@ dr_emit_muls_w_L3:
 //     MULU.W (d16,An),Dn
 //     MULU.W (d8,An,Xn),Dn
 //     ... and 5 more forms
+// For C0C0, MULU.W D0,D0, it generates
+//         clrlwi  addr, d0, 16
+//         clrlwi  rtn_addr, d0, 16
+//         mullw.  d0, addr, rtn_addr
+//         addco   zero, zero, zero
+// and, when the condition codes are not wanted afterwards,
+//         clrlwi  addr, d0, 16
+//         clrlwi  rtn_addr, d0, 16
+//         mullw.  d0, addr, rtn_addr
 dr_emit_mulu_w:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr7, rtn_addr, 0x0001
         lis     immed_data, 0x0060
         ble     cr7, dr_emit_mulu_w_L2
-        bl      L_124B8
-        lwz     addr, 0x3578(base_disp)
+        bl      dr_operand_load_w
+        lwz     addr, T_148B0 - dr_emitters(base_disp)  // template: clrlwi rtn_addr, d0, 16
         rlwinm  data, prefetch_data, 12, 8, 10          // data = prefetch_data[11:9] << 21
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x3574(base_disp)
+        lwz     addr, T_148AC - dr_emitters(base_disp)  // template: clrlwi addr, addr, 16
 dr_emit_mulu_w_L1:
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x356C(base_disp)
+        lwz     addr, T_148A4 - dr_emitters(base_disp)  // template: mullw. d0, addr, rtn_addr
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         b       dr_emit_muls_w_L2
 dr_emit_mulu_w_L2:
-        lwz     addr, 0x3570(base_disp)
+        lwz     addr, T_148A8 - dr_emitters(base_disp)  // template: clrlwi addr, d0, 16
         rlwinm  data, prefetch_data, 21, 8, 10          // data = prefetch_data[2:0] << 21
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x3578(base_disp)
+        lwz     addr, T_148B0 - dr_emitters(base_disp)  // template: clrlwi rtn_addr, d0, 16
         rlwinm  data, prefetch_data, 12, 8, 10          // data = prefetch_data[11:9] << 21
         add     addr, addr, data
         b       dr_emit_mulu_w_L1
-        extsh   addr, d0                                // addr = sign-extended low word of d0
-        extsh   rtn_addr, d0                            // rtn_addr = sign-extended low word of d0
-        mullw.  d0, addr, rtn_addr
-        clrlwi  addr, d0, 16                            // addr = d0 & 0x0000FFFF
-        clrlwi  addr, addr, 16                          // addr = addr & 0x0000FFFF
-        clrlwi  rtn_addr, d0, 16                        // rtn_addr = d0 & 0x0000FFFF
-        addco   zero, zero, zero
+T_1489C:
+        extsh   addr, d0                                // template
+T_148A0:
+        extsh   rtn_addr, d0                            // template
+T_148A4:
+        mullw.  d0, addr, rtn_addr                      // template
+T_148A8:
+        clrlwi  addr, d0, 16                            // template
+T_148AC:
+        clrlwi  addr, addr, 16                          // template
+T_148B0:
+        clrlwi  rtn_addr, d0, 16                        // template
+T_148B4:
+        addco   zero, zero, zero                        // template
 
 // Code generator for 360 opcodes:
 //     DIVS.W Dn,Dn
@@ -6711,6 +7673,12 @@ dr_emit_mulu_w_L2:
 //     DIVS.W (d8,An,Xn),Dn
 //     DIVS.W (xxx).W,Dn
 //     ... and 4 more forms
+// For 81C0, DIVS.W D0,D0, it generates
+//         extsh   addr, d0
+//         or      data, d0, zero
+//         li      base_disp, 0
+//         bl      dr_divs_w
+//         or      d0, rtn_addr, zero
 dr_emit_divs_w:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr7, rtn_addr, 0x0001
@@ -6731,36 +7699,36 @@ dr_emit_divs_w:
         li      addr, 32
         subf    immed_data, immed_data, addr            // immed_data = addr - immed_data
         addi    blk_ofs, blk_ofs, 2
-        lwz     addr, 0x3674(base_disp)
-        addi    rtn_addr, base_disp, 0x3744
+        lwz     addr, T_149AC - dr_emitters(base_disp)  // template: li addr, 0
+        addi    rtn_addr, base_disp, dr_divu_w_L1 - dr_emitters
         rlwimi  addr, immed_data, 0, 16, 31             // addr[15:0] = immed_data[15:0]
         stwu    addr, 4(out_ptr)
         b       dr_emit_divs_w_L3
 dr_emit_divs_w_L1:
         lis     immed_data, 0x0060
-        bl      L_124B8
+        bl      dr_operand_load_w
 dr_emit_divs_w_L2:
-        addi    rtn_addr, base_disp, 0x36A4
+        addi    rtn_addr, base_disp, dr_emit_divu_w_L3 - dr_emitters
 dr_emit_divs_w_L3:
-        lwz     addr, 0x3680(base_disp)
+        lwz     addr, T_149B8 - dr_emitters(base_disp)  // template: or data, d0, zero
         rlwinm  data, prefetch_data, 12, 8, 10          // data = prefetch_data[11:9] << 21
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         lhz     data, 2(rec_ptr)
-        lwz     addr, 0x3684(base_disp)
+        lwz     addr, T_149BC - dr_emitters(base_disp)  // template: li base_disp, 0
         rlwimi  addr, data, 0, 16, 31                   // addr[15:0] = data[15:0]
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x3688(base_disp)
+        lwz     addr, T_149C0 - dr_emitters(base_disp)  // template: bl T_149C0
         subf    rtn_addr, out_ptr, rtn_addr             // rtn_addr = rtn_addr - out_ptr
         rlwimi  addr, rtn_addr, 0, 6, 29                // addr[25:2] = rtn_addr[25:2]
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x368C(base_disp)
+        lwz     addr, T_149C4 - dr_emitters(base_disp)  // template: or d0, rtn_addr, zero
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
 dr_emit_divs_w_L4:
-        lwz     addr, 0x3678(base_disp)
+        lwz     addr, T_149B0 - dr_emitters(base_disp)  // template: extsh addr, d0
         rlwinm  data, prefetch_data, 21, 8, 10          // data = prefetch_data[2:0] << 21
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
@@ -6774,62 +7742,93 @@ dr_emit_divs_w_L4:
 //     DIVU.W (d8,An,Xn),Dn
 //     DIVU.W (xxx).W,Dn
 //     ... and 4 more forms
+// For 80C0, DIVU.W D0,D0, it generates
+//         clrlwi  addr, d0, 16
+//         or      data, d0, zero
+//         li      base_disp, 0
+//         bl      dr_divu_w
+//         or      d0, rtn_addr, zero
 dr_emit_divu_w:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr7, rtn_addr, 0x0001
         lis     immed_data, 0x0060
         ble     cr7, dr_emit_divu_w_L2
-        bl      L_124B8
+        bl      dr_operand_load_w
 dr_emit_divu_w_L1:
-        addi    rtn_addr, base_disp, 0x3704
+        addi    rtn_addr, base_disp, dr_divs_w_L4 - dr_emitters
         b       dr_emit_divs_w_L3
 dr_emit_divu_w_L2:
-        lwz     addr, 0x367C(base_disp)
+        lwz     addr, T_149B4 - dr_emitters(base_disp)  // template: clrlwi addr, d0, 16
         rlwinm  data, prefetch_data, 21, 8, 10          // data = prefetch_data[2:0] << 21
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         b       dr_emit_divu_w_L1
-        li      addr, 0
-        extsh   addr, d0                                // addr = sign-extended low word of d0
-        clrlwi  addr, d0, 16                            // addr = d0 & 0x0000FFFF
-        or      data, d0, zero
-        li      base_disp, 0
+T_149AC:
+        li      addr, 0                                 // template
+T_149B0:
+        extsh   addr, d0                                // template
+T_149B4:
+        clrlwi  addr, d0, 16                            // template
+T_149B8:
+        or      data, d0, zero                          // template
+T_149BC:
+        li      base_disp, 0                            // template
+T_149C0:
+        bl      T_149C0                                 // template
+T_149C4:
+        or      d0, rtn_addr, zero                      // template
+        b       dr_divs_w
+        nop
+        nop
+        nop
+        nop
 dr_emit_divu_w_L3:
-        bl      dr_emit_divu_w_L3
-        or      d0, rtn_addr, zero
-        b       dr_emit_divu_w_L4
         ALIGN(32)
-dr_emit_divu_w_L4:
+
+// Called by the translation of DIVS.W (the emitter above generates the
+// call).  data is the 32-bit dividend, addr the divisor, sign-extended, and
+// base_disp what to add to pc to make it address the instruction.  Returns
+// remainder:quotient in rtn_addr with N and Z set for the quotient and
+// V = C = 0; on overflow returns the dividend unchanged with V set.  A
+// divisor of zero leaves the translation for the interpreter, which
+// executes the instruction again and takes the exception.
+dr_divs_w:
         mtxer   zero
         divwo.  rtn_addr, data, addr
-        bso     dr_emit_divu_w_L5
+        bso     dr_divs_w_L1                            // the PowerPC divide overflowed
         mullw   immed_data, rtn_addr, addr
         extsh.  addr, rtn_addr                          // addr = sign-extended low word of rtn_addr
         subf    immed_data, immed_data, data            // immed_data = data - immed_data
-        cmplw   cr7, addr, rtn_addr
+        cmplw   cr7, addr, rtn_addr                     // does the quotient fit in 16 bits?
         addco   zero, zero, zero
         rlwimi  rtn_addr, immed_data, 16, 0, 15         // rtn_addr[31:16] = immed_data[15:0]
         btlr_likely 4*cr7+eq
-        b       dr_emit_divu_w_L6
-dr_emit_divu_w_L5:
+        b       dr_divs_w_L2
+dr_divs_w_L1:
         or.     addr, addr, addr
-        beq     dr_emit_divu_w_L7
-dr_emit_divu_w_L6:
-        lis     addr, 0x4000
+        beq     dr_divs_w_L3
+dr_divs_w_L2:
+        lis     addr, 0x4000                            // overflow: V set, result = the dividend
         mtxer   addr
         mr      rtn_addr, data
         blr
-dr_emit_divu_w_L7:
-        add     pc, pc, base_disp
-        b       dr_exit_to_interpreter
-        b       dr_emit_divu_w_L8
+dr_divs_w_L3:
+        add     pc, pc, base_disp                       // divide by zero: pc back to the instruction ...
+        b       dr_exit_to_interpreter                  // ... and let the interpreter do it
+        b       dr_divu_w
+        nop
+        nop
+        nop
+dr_divs_w_L4:
         ALIGN(64)
-dr_emit_divu_w_L8:
+
+// The same for DIVU.W; addr is the divisor, zero-extended here.
+dr_divu_w:
         clrlwi  addr, addr, 16                          // addr = addr & 0x0000FFFF
         slwi.   rtn_addr, addr, 16
-        cmplw   cr7, data, rtn_addr
-        bt_unlikely eq, dr_emit_divu_w_L7
-        bf_unlikely 4*cr7+lt, dr_emit_divu_w_L6
+        cmplw   cr7, data, rtn_addr                     // overflow if the dividend is not below divisor << 16
+        bt_unlikely eq, dr_divs_w_L3
+        bf_unlikely 4*cr7+lt, dr_divs_w_L2
         divwu   rtn_addr, data, addr
         mullw   immed_data, rtn_addr, addr
         extsh.  addr, rtn_addr                          // addr = sign-extended low word of rtn_addr
@@ -6837,9 +7836,16 @@ dr_emit_divu_w_L8:
         addco   zero, zero, zero
         rlwimi  rtn_addr, immed_data, 16, 0, 15         // rtn_addr[31:16] = immed_data[15:0]
         blr
-        b       dr_emit_divu_w_L9
+        b       dr_divs_w_shift
+        nop
+        nop
+dr_divu_w_L1:
         ALIGN(64)
-dr_emit_divu_w_L9:
+
+// DIVS.W by an immediate power of two: addr is the shift count.  An
+// arithmetic shift right, plus one if the dividend was negative and bits
+// were lost, is the quotient rounded towards zero.
+dr_divs_w_shift:
         sraw    rtn_addr, data, addr                    // rtn_addr = data >> addr (arithmetic)
         adde    rtn_addr, rtn_addr, zero                // rtn_addr = rtn_addr + zero + CA
         slw     immed_data, rtn_addr, addr
@@ -6849,7 +7855,7 @@ dr_emit_divu_w_L9:
         addco   zero, zero, zero
         rlwimi  rtn_addr, immed_data, 16, 0, 15         // rtn_addr[31:16] = immed_data[15:0]
         btlr_likely 4*cr7+eq
-        b       dr_emit_divu_w_L6
+        b       dr_divs_w_L2
 
 // Code generator for 976 opcodes:
 //     CMP.L Dn,Dn
@@ -6859,6 +7865,9 @@ dr_emit_divu_w_L9:
 //     CMP.L -(An),Dn
 //     CMP.L (d16,An),Dn
 //     ... and 18 more forms
+// For B080, CMP.L D0,D0, it generates
+//         subfco. rtn_addr, d0, d0
+//         addc    addr, d0, rtn_addr
 dr_emit_cmp_cmpa_l:
         lhz     addr, 12(rec_ptr)
         bl      dr_emit_cmpm_l_L9
@@ -6866,10 +7875,10 @@ dr_emit_cmp_cmpa_l:
         cmplwi  cr7, rtn_addr, 0x0001
         lis     immed_data, 0x0060
         ble     cr7, dr_emit_cmp_cmpa_l_L3
-        bl      L_124A0
+        bl      dr_operand_load_l
         rlwinm  addr, prefetch_data, 26, 26, 31         // addr = prefetch_data[11:6]
         cmplwi  cr7, addr, 0x003F
-        lwz     addr, 0x3928(base_disp)
+        lwz     addr, T_14C60 - dr_emitters(base_disp)  // template: subfco. rtn_addr, addr, d0
         beq     cr7, dr_emit_cmp_cmpa_l_L2
         lwz     data, 0xBB0(EmulatorStatePtr)
         rlwinm  immed_data, prefetch_data, 2, 18, 20    // immed_data = prefetch_data[11:9] << 11
@@ -6882,29 +7891,29 @@ dr_emit_cmp_cmpa_l:
         bsol    cr6, dr_emit_cmpi_w_L5
         ble     cr6, dr_emit_next
 dr_emit_cmp_cmpa_l_L1:
-        lwz     data, 0x392C(base_disp)
+        lwz     data, T_14C64 - dr_emitters(base_disp)  // template: addc addr, addr, rtn_addr
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
         b       dr_emit_next
 dr_emit_cmp_cmpa_l_L2:
-        lwz     addr, 0x3930(base_disp)
+        lwz     addr, T_14C68 - dr_emitters(base_disp)  // template: subfco. rtn_addr, addr, a7
         b       dr_emit_cmp_cmpa_l_L1
 dr_emit_cmp_cmpa_l_L3:
         lwz     rtn_addr, 0xBB0(EmulatorStatePtr)
         clrlwi  addr, prefetch_data, 28                 // addr = prefetch_data & 0x0000000F
         cmpwi   cr7, addr, 15
-        lwz     addr, 0x3918(base_disp)
+        lwz     addr, T_14C50 - dr_emitters(base_disp)  // template: subfco. rtn_addr, d0, d0
         rlwinm  data, prefetch_data, 16, 12, 15         // data = prefetch_data[3:0] << 16
         mtcrf   0x02, rtn_addr                          // cr6 = rtn_addr[7:4]
-        lwz     immed_data, 0x391C(base_disp)
+        lwz     immed_data, T_14C54 - dr_emitters(base_disp)  // template: addc addr, d0, rtn_addr
         add     addr, addr, data
         add     immed_data, immed_data, data
         srwi    data, data, 5
         addi    data, data, 0x4000
         bne     cr7, dr_emit_cmp_cmpa_l_L4
         li      data, 0x800
-        lwz     addr, 0x3920(base_disp)
-        lwz     immed_data, 0x3924(base_disp)
+        lwz     addr, T_14C58 - dr_emitters(base_disp)  // template: subfco. rtn_addr, a7, d0
+        lwz     immed_data, T_14C5C - dr_emitters(base_disp)  // template: addc addr, a7, rtn_addr
 dr_emit_cmp_cmpa_l_L4:
         rlwinm  rtn_addr, prefetch_data, 2, 18, 20      // rtn_addr = prefetch_data[11:9] << 11
         rlwimi  rtn_addr, prefetch_data, 6, 17, 17      // rtn_addr[14] = prefetch_data[8]
@@ -6934,6 +7943,11 @@ dr_emit_cmp_cmpa_l_L6:
 //     CMPI.L #<data>,(d16,An)
 //     CMPI.L #<data>,(d8,An,Xn)
 //     ... and 4 more forms
+// For 0C80 0010 0010, CMPI.L #<data>,D0, it generates
+//         ori     addr, zero, 0x0010
+//         oris    addr, addr, 0x0010
+//         subfco. rtn_addr, addr, d0
+//         addc    addr, addr, rtn_addr
 dr_emit_cmpi_l:
         lhz     addr, 12(rec_ptr)
         bl      dr_emit_cmpm_l_L9
@@ -6942,10 +7956,10 @@ dr_emit_cmpi_l:
         ble     cr6, dr_emit_cmpi_l_L2
         lis     immed_data, 0x00A0
         addi    blk_ofs, blk_ofs, 4
-        bl      L_124A0
+        bl      dr_operand_load_l
         lhz     rtn_addr, 2(rec_ptr)
         addi    rtn_addr, rtn_addr, 2
-        bl      L_12510
+        bl      dr_operand_address_L1
         lwz     data, 0xBB0(EmulatorStatePtr)
         mtcrf   0x02, data                              // cr6 = data[7:4]
         bge     cr6, dr_emit_cmpi_l_L1
@@ -6953,10 +7967,10 @@ dr_emit_cmpi_l:
         bsol    cr6, dr_emit_cmpi_w_L3
         ble     cr6, dr_emit_next
 dr_emit_cmpi_l_L1:
-        lwz     addr, 0x3934(base_disp)
+        lwz     addr, T_14C6C - dr_emitters(base_disp)  // template: subfco. rtn_addr, addr, rtn_addr
         b       dr_emit_cmp_cmpa_l_L1
 dr_emit_cmpi_l_L2:
-        bl      L_12518
+        bl      dr_operand_address_L2
         lwz     data, 0xBB0(EmulatorStatePtr)
         rlwinm  immed_data, prefetch_data, 16, 13, 15   // immed_data = prefetch_data[2:0] << 16
         mtcrf   0x02, data                              // cr6 = data[7:4]
@@ -6965,7 +7979,7 @@ dr_emit_cmpi_l_L2:
         bsol    cr6, dr_emit_cmpi_w_L5
         ble     cr6, dr_emit_next
 dr_emit_cmpi_l_L3:
-        lwz     addr, 0x3928(base_disp)
+        lwz     addr, T_14C60 - dr_emitters(base_disp)  // template: subfco. rtn_addr, addr, d0
         rlwinm  data, prefetch_data, 11, 18, 20         // data = prefetch_data[2:0] << 11
         add     addr, addr, data
         b       dr_emit_cmp_cmpa_l_L1
@@ -6978,37 +7992,50 @@ dr_emit_cmpi_l_L3:
 //     TST.L -(An)
 //     TST.L (d16,An)
 //     ... and 6 more forms
+// For 4A80, TST.L D0, it generates
+//         addco.  addr, d0, zero
 dr_emit_tst_l:
         clrlwi  rtn_addr, prefetch_data, 26             // rtn_addr = prefetch_data & 0x0000003F
         cmplwi  cr6, rtn_addr, 0x000F
         lis     immed_data, 0x0060
         ble     cr6, dr_emit_tst_l_L1
-        bl      L_124A0
-        lwz     addr, 0x3940(base_disp)
+        bl      dr_operand_load_l
+        lwz     addr, T_14C78 - dr_emitters(base_disp)  // template: addco. addr, addr, zero
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
 dr_emit_tst_l_L1:
         beq     cr6, dr_emit_tst_l_L3
-        lwz     addr, 0x3938(base_disp)
+        lwz     addr, T_14C70 - dr_emitters(base_disp)  // template: addco. addr, d0, zero
         rlwinm  data, prefetch_data, 16, 12, 15         // data = prefetch_data[3:0] << 16
         add     addr, addr, data
 dr_emit_tst_l_L2:
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
 dr_emit_tst_l_L3:
-        lwz     addr, 0x393C(base_disp)
+        lwz     addr, T_14C74 - dr_emitters(base_disp)  // template: addco. addr, a7, zero
         b       dr_emit_tst_l_L2
-        subfco. rtn_addr, d0, d0                        // rtn_addr = d0 - d0
-        addc    addr, d0, rtn_addr
-        subfco. rtn_addr, a7, d0                        // rtn_addr = d0 - a7
-        addc    addr, a7, rtn_addr
-        subfco. rtn_addr, addr, d0                      // rtn_addr = d0 - addr
-        addc    addr, addr, rtn_addr
-        subfco. rtn_addr, addr, a7                      // rtn_addr = a7 - addr
-        subfco. rtn_addr, addr, rtn_addr                // rtn_addr = rtn_addr - addr
-        addco.  addr, d0, zero
-        addco.  addr, a7, zero
-        addco.  addr, addr, zero
+T_14C50:
+        subfco. rtn_addr, d0, d0                        // template
+T_14C54:
+        addc    addr, d0, rtn_addr                      // template
+T_14C58:
+        subfco. rtn_addr, a7, d0                        // template
+T_14C5C:
+        addc    addr, a7, rtn_addr                      // template
+T_14C60:
+        subfco. rtn_addr, addr, d0                      // template
+T_14C64:
+        addc    addr, addr, rtn_addr                    // template
+T_14C68:
+        subfco. rtn_addr, addr, a7                      // template
+T_14C6C:
+        subfco. rtn_addr, addr, rtn_addr                // template
+T_14C70:
+        addco.  addr, d0, zero                          // template
+T_14C74:
+        addco.  addr, a7, zero                          // template
+T_14C78:
+        addco.  addr, addr, zero                        // template
 
 // Code generator for 488 opcodes:
 //     CMPA.W Dn,An
@@ -7018,6 +8045,10 @@ dr_emit_tst_l_L3:
 //     CMPA.W -(An),An
 //     CMPA.W (d16,An),An
 //     ... and 6 more forms
+// For B0C0, CMPA.W D0,A0, it generates
+//         extsh   addr, d0
+//         subfco. rtn_addr, addr, a0
+//         addc    addr, addr, rtn_addr
 dr_emit_cmpa_w:
         lhz     addr, 12(rec_ptr)
         bl      dr_emit_cmpm_l_L9
@@ -7025,7 +8056,7 @@ dr_emit_cmpa_w:
         cmplwi  cr6, rtn_addr, 0x0001
         lis     immed_data, 0x0060
         ble     cr6, dr_emit_cmpa_w_L6
-        bl      L_124B8
+        bl      dr_operand_load_w
 dr_emit_cmpa_w_L1:
         lwz     data, 0xBB0(EmulatorStatePtr)
         rlwinm  addr, prefetch_data, 23, 29, 31         // addr = prefetch_data[11:9]
@@ -7040,30 +8071,30 @@ dr_emit_cmpa_w_L2:
         bsol    cr6, dr_emit_cmpi_w_L7
         ble     cr6, dr_emit_next
 dr_emit_cmpa_w_L3:
-        lwz     addr, 0x3C0C(base_disp)
+        lwz     addr, T_14F44 - dr_emitters(base_disp)  // template: subfco. rtn_addr, addr, a0
         beq     cr7, dr_emit_cmpa_w_L5
         rlwinm  data, prefetch_data, 2, 18, 20          // data = prefetch_data[11:9] << 11
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
 dr_emit_cmpa_w_L4:
-        lwz     addr, 0x3C2C(base_disp)
+        lwz     addr, T_14F64 - dr_emitters(base_disp)  // template: addc addr, addr, rtn_addr
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
 dr_emit_cmpa_w_L5:
-        lwz     addr, 0x3C10(base_disp)
+        lwz     addr, T_14F48 - dr_emitters(base_disp)  // template: subfco. rtn_addr, addr, a7
         stwu    addr, 4(out_ptr)
         b       dr_emit_cmpa_w_L4
 dr_emit_cmpa_w_L6:
         clrlwi  addr, prefetch_data, 28                 // addr = prefetch_data & 0x0000000F
         cmpwi   cr7, addr, 15
-        lwz     addr, 0x3C08(base_disp)
+        lwz     addr, T_14F40 - dr_emitters(base_disp)  // template: extsh addr, d0
         beq     cr7, dr_emit_cmpa_w_L7
         rlwinm  data, prefetch_data, 21, 7, 10          // data = prefetch_data[3:0] << 21
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         b       dr_emit_cmpa_w_L1
 dr_emit_cmpa_w_L7:
-        lwz     addr, 0x3C14(base_disp)
+        lwz     addr, T_14F4C - dr_emitters(base_disp)  // template: extsh addr, a7
         stwu    addr, 4(out_ptr)
         b       dr_emit_cmpa_w_L1
 
@@ -7075,6 +8106,11 @@ dr_emit_cmpa_w_L7:
 //     CMP.W -(An),Dn
 //     CMP.W (d16,An),Dn
 //     ... and 6 more forms
+// For B040, CMP.W D0,D0, it generates
+//         slwi    addr, d0, 16
+//         slwi    rtn_addr, d0, 16
+//         subfco. rtn_addr, addr, rtn_addr
+//         addc    addr, addr, rtn_addr
 dr_emit_cmp_w:
         lhz     addr, 12(rec_ptr)
         bl      dr_emit_cmpm_l_L9
@@ -7082,11 +8118,11 @@ dr_emit_cmp_w:
         cmpwi   cr6, rtn_addr, 15
         lis     immed_data, 0x0060
         ble     cr6, dr_emit_cmp_w_L4
-        bl      L_124B8
-        lwz     addr, 0x3C20(base_disp)
+        bl      dr_operand_load_w
+        lwz     addr, T_14F58 - dr_emitters(base_disp)  // template: slwi addr, addr, 16
         stwu    addr, 4(out_ptr)
 dr_emit_cmp_w_L1:
-        lwz     addr, 0x3C24(base_disp)
+        lwz     addr, T_14F5C - dr_emitters(base_disp)  // template: slwi rtn_addr, d0, 16
         rlwinm  data, prefetch_data, 12, 8, 10          // data = prefetch_data[11:9] << 21
         rlwimi  data, prefetch_data, 17, 7, 7           // data[24] = prefetch_data[7]
         add     addr, addr, data
@@ -7099,20 +8135,20 @@ dr_emit_cmp_w_L2:
         bsol    cr6, dr_emit_cmpi_w_L3
         ble     cr6, dr_emit_next
 dr_emit_cmp_w_L3:
-        lwz     data, 0x3C28(base_disp)
-        lwz     addr, 0x3C2C(base_disp)
+        lwz     data, T_14F60 - dr_emitters(base_disp)  // template: subfco. rtn_addr, addr, rtn_addr
+        lwz     addr, T_14F64 - dr_emitters(base_disp)  // template: addc addr, addr, rtn_addr
         stwu    data, 4(out_ptr)
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
 dr_emit_cmp_w_L4:
-        lwz     addr, 0x3C18(base_disp)
+        lwz     addr, T_14F50 - dr_emitters(base_disp)  // template: slwi addr, d0, 16
         beq     cr6, dr_emit_cmp_w_L5
         rlwinm  data, prefetch_data, 21, 7, 10          // data = prefetch_data[3:0] << 21
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         b       dr_emit_cmp_w_L1
 dr_emit_cmp_w_L5:
-        lwz     addr, 0x3C1C(base_disp)
+        lwz     addr, T_14F54 - dr_emitters(base_disp)  // template: slwi addr, a7, 16
         stwu    addr, 4(out_ptr)
         b       dr_emit_cmp_w_L1
 
@@ -7124,6 +8160,11 @@ dr_emit_cmp_w_L5:
 //     CMPI.W #<data>,(d16,An)
 //     CMPI.W #<data>,(d8,An,Xn)
 //     ... and 4 more forms
+// For 0C40 0010, CMPI.W #<data>,D0, it generates
+//         lis     addr, 0x0010
+//         slwi    rtn_addr, d0, 16
+//         subfco. rtn_addr, addr, rtn_addr
+//         addc    addr, addr, rtn_addr
 dr_emit_cmpi_w:
         lhz     addr, 12(rec_ptr)
         bl      dr_emit_cmpm_l_L9
@@ -7132,37 +8173,37 @@ dr_emit_cmpi_w:
         ble     cr6, dr_emit_cmpi_w_L1
         lis     immed_data, 0x00A0
         addi    blk_ofs, blk_ofs, 2
-        bl      L_124B8
+        bl      dr_operand_load_w
         lhz     blk_ofs, 2(rec_ptr)
         addi    blk_ofs, blk_ofs, 2
-        bl      L_125A0
-        lwz     addr, 0x3C34(base_disp)
+        bl      dr_operand_address_L6
+        lwz     addr, T_14F6C - dr_emitters(base_disp)  // template: slwi rtn_addr, rtn_addr, 16
         stwu    addr, 4(out_ptr)
         b       dr_emit_cmp_w_L2
 dr_emit_cmpi_w_L1:
-        bl      L_125A0
-        lwz     addr, 0x3C24(base_disp)
+        bl      dr_operand_address_L6
+        lwz     addr, T_14F5C - dr_emitters(base_disp)  // template: slwi rtn_addr, d0, 16
         rlwinm  data, prefetch_data, 21, 8, 10          // data = prefetch_data[2:0] << 21
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         b       dr_emit_cmp_w_L2
 dr_emit_cmpi_w_L2:
         lhz     data, 12(rec_ptr)
-        lwz     addr, 0x3BF0(base_disp)
+        lwz     addr, T_14F28 - dr_emitters(base_disp)  // template: cmplw cr7, rtn_addr, addr
         ori     data, data, 0x0008
         stwu    addr, 4(out_ptr)
         sth     data, 12(rec_ptr)
         blr
 dr_emit_cmpi_w_L3:
         lhz     data, 12(rec_ptr)
-        lwz     addr, 0x3BE0(base_disp)
+        lwz     addr, T_14F18 - dr_emitters(base_disp)  // template: cmpw cr7, rtn_addr, addr
         ori     data, data, 0x0008
         stwu    addr, 4(out_ptr)
         sth     data, 12(rec_ptr)
         blr
 dr_emit_cmpi_w_L4:
         lhz     data, 12(rec_ptr)
-        lwz     rtn_addr, 0x3BF8(base_disp)
+        lwz     rtn_addr, T_14F30 - dr_emitters(base_disp)  // template: cmplw cr7, d0, addr
         add     rtn_addr, rtn_addr, immed_data
         ori     data, data, 0x0008
         stwu    rtn_addr, 4(out_ptr)
@@ -7170,7 +8211,7 @@ dr_emit_cmpi_w_L4:
         blr
 dr_emit_cmpi_w_L5:
         lhz     data, 12(rec_ptr)
-        lwz     rtn_addr, 0x3BE8(base_disp)
+        lwz     rtn_addr, T_14F20 - dr_emitters(base_disp)  // template: cmpw cr7, d0, addr
         add     rtn_addr, rtn_addr, immed_data
         ori     data, data, 0x0008
         stwu    rtn_addr, 4(out_ptr)
@@ -7178,7 +8219,7 @@ dr_emit_cmpi_w_L5:
         blr
 dr_emit_cmpi_w_L6:
         lhz     data, 12(rec_ptr)
-        lwz     rtn_addr, 0x3BFC(base_disp)
+        lwz     rtn_addr, T_14F34 - dr_emitters(base_disp)  // template: cmplw cr7, a0, addr
         add     rtn_addr, rtn_addr, immed_data
         ori     data, data, 0x0008
         stwu    rtn_addr, 4(out_ptr)
@@ -7186,7 +8227,7 @@ dr_emit_cmpi_w_L6:
         blr
 dr_emit_cmpi_w_L7:
         lhz     data, 12(rec_ptr)
-        lwz     rtn_addr, 0x3BEC(base_disp)
+        lwz     rtn_addr, T_14F24 - dr_emitters(base_disp)  // template: cmpw cr7, a0, addr
         add     rtn_addr, rtn_addr, immed_data
         ori     data, data, 0x0008
         stwu    rtn_addr, 4(out_ptr)
@@ -7194,7 +8235,7 @@ dr_emit_cmpi_w_L7:
         blr
 dr_emit_cmpi_w_L8:
         or      data, data, rtn_addr
-        lwz     rtn_addr, 0x3C00(base_disp)
+        lwz     rtn_addr, T_14F38 - dr_emitters(base_disp)  // template: cmpw cr7, zero, zero
         add     rtn_addr, rtn_addr, data
         lhz     data, 12(rec_ptr)
         stwu    rtn_addr, 4(out_ptr)
@@ -7203,7 +8244,7 @@ dr_emit_cmpi_w_L8:
         blr
 dr_emit_cmpi_w_L9:
         or      data, data, rtn_addr
-        lwz     rtn_addr, 0x3C04(base_disp)
+        lwz     rtn_addr, T_14F3C - dr_emitters(base_disp)  // template: cmplw cr7, zero, zero
         add     rtn_addr, rtn_addr, data
         lhz     data, 12(rec_ptr)
         stwu    rtn_addr, 4(out_ptr)
@@ -7219,49 +8260,71 @@ dr_emit_cmpi_w_L9:
 //     TST.W -(An)
 //     TST.W (d16,An)
 //     ... and 6 more forms
+// For 4A40, TST.W D0, it generates
+//         slwi    addr, d0, 16
+//         addco.  addr, addr, zero
 dr_emit_tst_w:
         clrlwi  rtn_addr, prefetch_data, 26             // rtn_addr = prefetch_data & 0x0000003F
         cmplwi  cr6, rtn_addr, 0x000F
         lis     immed_data, 0x0060
         ble     cr6, dr_emit_tst_w_L2
-        bl      L_124B8
-        lwz     addr, 0x3C20(base_disp)
+        bl      dr_operand_load_w
+        lwz     addr, T_14F58 - dr_emitters(base_disp)  // template: slwi addr, addr, 16
 dr_emit_tst_w_L1:
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x3940(base_disp)
+        lwz     addr, T_14C78 - dr_emitters(base_disp)  // template: addco. addr, addr, zero
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
 dr_emit_tst_w_L2:
         beq     cr6, dr_emit_tst_w_L3
-        lwz     addr, 0x3C18(base_disp)
+        lwz     addr, T_14F50 - dr_emitters(base_disp)  // template: slwi addr, d0, 16
         rlwinm  data, prefetch_data, 21, 7, 10          // data = prefetch_data[3:0] << 21
         add     addr, addr, data
         b       dr_emit_tst_w_L1
 dr_emit_tst_w_L3:
-        lwz     addr, 0x3C1C(base_disp)
+        lwz     addr, T_14F54 - dr_emitters(base_disp)  // template: slwi addr, a7, 16
         b       dr_emit_tst_w_L1
-        cmpw    cr7, rtn_addr, addr
+T_14F18:
+        cmpw    cr7, rtn_addr, addr                     // template
         cmpwi   cr7, addr, 0
-        cmpw    cr7, d0, addr
-        cmpw    cr7, a0, addr
-        cmplw   cr7, rtn_addr, addr
+T_14F20:
+        cmpw    cr7, d0, addr                           // template
+T_14F24:
+        cmpw    cr7, a0, addr                           // template
+T_14F28:
+        cmplw   cr7, rtn_addr, addr                     // template
         cmplwi  cr7, addr, 0x0000
-        cmplw   cr7, d0, addr
-        cmplw   cr7, a0, addr
-        cmpw    cr7, zero, zero
-        cmplw   cr7, zero, zero
-        extsh   addr, d0                                // addr = sign-extended low word of d0
-        subfco. rtn_addr, addr, a0                      // rtn_addr = a0 - addr
-        subfco. rtn_addr, addr, a7                      // rtn_addr = a7 - addr
-        extsh   addr, a7                                // addr = sign-extended low word of a7
-        slwi    addr, d0, 16
-        slwi    addr, a7, 16
-        slwi    addr, addr, 16
-        slwi    rtn_addr, d0, 16
-        subfco. rtn_addr, addr, rtn_addr                // rtn_addr = rtn_addr - addr
-        addc    addr, addr, rtn_addr
+T_14F30:
+        cmplw   cr7, d0, addr                           // template
+T_14F34:
+        cmplw   cr7, a0, addr                           // template
+T_14F38:
+        cmpw    cr7, zero, zero                         // template
+T_14F3C:
+        cmplw   cr7, zero, zero                         // template
+T_14F40:
+        extsh   addr, d0                                // template
+T_14F44:
+        subfco. rtn_addr, addr, a0                      // template
+T_14F48:
+        subfco. rtn_addr, addr, a7                      // template
+T_14F4C:
+        extsh   addr, a7                                // template
+T_14F50:
+        slwi    addr, d0, 16                            // template
+T_14F54:
+        slwi    addr, a7, 16                            // template
+T_14F58:
+        slwi    addr, addr, 16                          // template
+T_14F5C:
+        slwi    rtn_addr, d0, 16                        // template
+T_14F60:
+        subfco. rtn_addr, addr, rtn_addr                // template
+T_14F64:
+        addc    addr, addr, rtn_addr                    // template
         slwi    rtn_addr, a7, 16
-        slwi    rtn_addr, rtn_addr, 16
+T_14F6C:
+        slwi    rtn_addr, rtn_addr, 16                  // template
 
 // Code generator for 424 opcodes:
 //     CMP.B Dn,Dn
@@ -7271,6 +8334,11 @@ dr_emit_tst_w_L3:
 //     CMP.B (d16,An),Dn
 //     CMP.B (d8,An,Xn),Dn
 //     ... and 5 more forms
+// For B000, CMP.B D0,D0, it generates
+//         slwi    addr, d0, 24
+//         slwi    rtn_addr, d0, 24
+//         subfco. rtn_addr, addr, rtn_addr
+//         addc    addr, addr, rtn_addr
 dr_emit_cmp_b:
         lhz     addr, 12(rec_ptr)
         bl      dr_emit_cmpm_l_L9
@@ -7278,11 +8346,11 @@ dr_emit_cmp_b:
         cmplwi  cr6, rtn_addr, 0x0001
         lis     immed_data, 0x0060
         ble     cr6, dr_emit_cmp_b_L4
-        bl      L_124C0
-        lwz     addr, 0x3D30(base_disp)
+        bl      dr_operand_load_b
+        lwz     addr, T_15068 - dr_emitters(base_disp)  // template: slwi addr, addr, 24
         stwu    addr, 4(out_ptr)
 dr_emit_cmp_b_L1:
-        lwz     addr, 0x3D34(base_disp)
+        lwz     addr, T_1506C - dr_emitters(base_disp)  // template: slwi rtn_addr, d0, 24
         rlwinm  data, prefetch_data, 12, 8, 10          // data = prefetch_data[11:9] << 21
         add     addr, addr, data
 dr_emit_cmp_b_L2:
@@ -7294,13 +8362,13 @@ dr_emit_cmp_b_L2:
         bsol    cr6, dr_emit_cmpi_w_L3
         ble     cr6, dr_emit_next
 dr_emit_cmp_b_L3:
-        lwz     data, 0x3D38(base_disp)
-        lwz     addr, 0x3D3C(base_disp)
+        lwz     data, T_15070 - dr_emitters(base_disp)  // template: subfco. rtn_addr, addr, rtn_addr
+        lwz     addr, T_15074 - dr_emitters(base_disp)  // template: addc addr, addr, rtn_addr
         stwu    data, 4(out_ptr)
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
 dr_emit_cmp_b_L4:
-        lwz     addr, 0x3D2C(base_disp)
+        lwz     addr, T_15064 - dr_emitters(base_disp)  // template: slwi addr, d0, 24
         rlwinm  data, prefetch_data, 21, 8, 10          // data = prefetch_data[2:0] << 21
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
@@ -7314,6 +8382,11 @@ dr_emit_cmp_b_L4:
 //     CMPI.B #<data>,(d16,An)
 //     CMPI.B #<data>,(d8,An,Xn)
 //     ... and 4 more forms
+// For 0C00 0010, CMPI.B #<data>,D0, it generates
+//         lis     addr, 0x1000
+//         slwi    rtn_addr, d0, 24
+//         subfco. rtn_addr, addr, rtn_addr
+//         addc    addr, addr, rtn_addr
 dr_emit_cmpi_b:
         lhz     addr, 12(rec_ptr)
         bl      dr_emit_cmpm_l_L9
@@ -7322,15 +8395,15 @@ dr_emit_cmpi_b:
         ble     cr6, dr_emit_cmpi_b_L1
         lis     immed_data, 0x00A0
         addi    blk_ofs, blk_ofs, 2
-        bl      L_124C0
+        bl      dr_operand_load_b
         lhz     blk_ofs, 2(rec_ptr)
         addi    blk_ofs, blk_ofs, 2
-        bl      L_125C4
-        lwz     addr, 0x3D40(base_disp)
+        bl      dr_operand_address_L9
+        lwz     addr, T_15078 - dr_emitters(base_disp)  // template: slwi rtn_addr, rtn_addr, 24
         b       dr_emit_cmp_b_L2
 dr_emit_cmpi_b_L1:
-        bl      L_125C4
-        lwz     addr, 0x3D34(base_disp)
+        bl      dr_operand_address_L9
+        lwz     addr, T_1506C - dr_emitters(base_disp)  // template: slwi rtn_addr, d0, 24
         rlwinm  data, prefetch_data, 21, 8, 10          // data = prefetch_data[2:0] << 21
         add     addr, addr, data
         b       dr_emit_cmp_b_L2
@@ -7343,46 +8416,80 @@ dr_emit_cmpi_b_L1:
 //     TST.B (d16,An)
 //     TST.B (d8,An,Xn)
 //     ... and 5 more forms
+// For 4A00, TST.B D0, it generates
+//         slwi    addr, d0, 24
+//         addco.  addr, addr, zero
 dr_emit_tst_b:
         clrlwi  rtn_addr, prefetch_data, 26             // rtn_addr = prefetch_data & 0x0000003F
         cmplwi  cr6, rtn_addr, 0x0007
         lis     immed_data, 0x0060
         ble     cr6, dr_emit_tst_b_L2
-        bl      L_124C0
-        lwz     addr, 0x3D30(base_disp)
+        bl      dr_operand_load_b
+        lwz     addr, T_15068 - dr_emitters(base_disp)  // template: slwi addr, addr, 24
 dr_emit_tst_b_L1:
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x3940(base_disp)
+        lwz     addr, T_14C78 - dr_emitters(base_disp)  // template: addco. addr, addr, zero
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
 dr_emit_tst_b_L2:
-        lwz     addr, 0x3D2C(base_disp)
+        lwz     addr, T_15064 - dr_emitters(base_disp)  // template: slwi addr, d0, 24
         rlwinm  data, prefetch_data, 21, 7, 10          // data = prefetch_data[3:0] << 21
         add     addr, addr, data
         b       dr_emit_tst_b_L1
-        slwi    addr, d0, 24
-        slwi    addr, addr, 24
-        slwi    rtn_addr, d0, 24
-        subfco. rtn_addr, addr, rtn_addr                // rtn_addr = rtn_addr - addr
-        addc    addr, addr, rtn_addr
-        slwi    rtn_addr, rtn_addr, 24
+T_15064:
+        slwi    addr, d0, 24                            // template
+T_15068:
+        slwi    addr, addr, 24                          // template
+T_1506C:
+        slwi    rtn_addr, d0, 24                        // template
+T_15070:
+        subfco. rtn_addr, addr, rtn_addr                // template
+T_15074:
+        addc    addr, addr, rtn_addr                    // template
+T_15078:
+        slwi    rtn_addr, rtn_addr, 24                  // template
 
 // Code generator for 64 opcodes:
 //     CMPM.B (An)+,(An)+
+// For B108, CMPM.B (A0)+,(A0)+, it generates
+//         lbz     addr, 0(a0)
+//         addi    a0, a0, 1
+//         lbz     rtn_addr, 0(a0)
+//         addi    a0, a0, 1
+//         slwi    addr, addr, 24
+//         slwi    rtn_addr, rtn_addr, 24
+//         subfco. rtn_addr, addr, rtn_addr
+//         addc    addr, addr, rtn_addr
 dr_emit_cmpm_b:
         b       dr_emit_cmpm_l_L6
 
 // Code generator for 64 opcodes:
 //     CMPM.W (An)+,(An)+
+// For B148, CMPM.W (A0)+,(A0)+, it generates
+//         lhz     addr, 0(a0)
+//         addi    a0, a0, 2
+//         lhz     rtn_addr, 0(a0)
+//         addi    a0, a0, 2
+//         slwi    addr, addr, 16
+//         slwi    rtn_addr, rtn_addr, 16
+//         subfco. rtn_addr, addr, rtn_addr
+//         addc    addr, addr, rtn_addr
 dr_emit_cmpm_w:
         b       dr_emit_cmpm_l_L3
 
 // Code generator for 64 opcodes:
 //     CMPM.L (An)+,(An)+
+// For B188, CMPM.L (A0)+,(A0)+, it generates
+//         lwz     addr, 0(a0)
+//         addi    a0, a0, 4
+//         lwz     rtn_addr, 0(a0)
+//         addi    a0, a0, 4
+//         subfco. rtn_addr, addr, rtn_addr
+//         addc    addr, addr, rtn_addr
 dr_emit_cmpm_l:
         lhz     addr, 12(rec_ptr)
         bl      dr_emit_cmpm_l_L9
-        lwz     addr, 0x3ED0(base_disp)
+        lwz     addr, T_15208 - dr_emitters(base_disp)  // template: lwz addr, 0(a0)
         clrlwi  data, prefetch_data, 29                 // data = prefetch_data & 0x00000007
         cmpwi   cr7, data, 7
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
@@ -7390,13 +8497,13 @@ dr_emit_cmpm_l:
         lis     data, 0xFFF1
 dr_emit_cmpm_l_L1:
         add     addr, addr, data
-        lwz     rtn_addr, 0x3ED4(base_disp)
+        lwz     rtn_addr, T_1520C - dr_emitters(base_disp)  // template: addi a0, a0, 4
         stwu    addr, 4(out_ptr)
         add     rtn_addr, rtn_addr, data
         slwi    data, data, 5
         add     rtn_addr, rtn_addr, data
         stwu    rtn_addr, 4(out_ptr)
-        lwz     addr, 0x3ED8(base_disp)
+        lwz     addr, T_15210 - dr_emitters(base_disp)  // template: lwz rtn_addr, 0(a0)
         rlwinm  data, prefetch_data, 23, 29, 31         // data = prefetch_data[11:9]
         cmpwi   cr7, data, 7
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
@@ -7404,7 +8511,7 @@ dr_emit_cmpm_l_L1:
         lis     data, 0xFFF1
 dr_emit_cmpm_l_L2:
         add     addr, addr, data
-        lwz     rtn_addr, 0x3EDC(base_disp)
+        lwz     rtn_addr, T_15214 - dr_emitters(base_disp)  // template: addi a0, a0, 4
         stwu    addr, 4(out_ptr)
         add     rtn_addr, rtn_addr, data
         slwi    data, data, 5
@@ -7414,7 +8521,7 @@ dr_emit_cmpm_l_L2:
 dr_emit_cmpm_l_L3:
         lhz     addr, 12(rec_ptr)
         bl      dr_emit_cmpm_l_L9
-        lwz     addr, 0x3EE0(base_disp)
+        lwz     addr, T_15218 - dr_emitters(base_disp)  // template: lhz addr, 0(a0)
         clrlwi  data, prefetch_data, 29                 // data = prefetch_data & 0x00000007
         cmpwi   cr7, data, 7
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
@@ -7422,13 +8529,13 @@ dr_emit_cmpm_l_L3:
         lis     data, 0xFFF1
 dr_emit_cmpm_l_L4:
         add     addr, addr, data
-        lwz     rtn_addr, 0x3EE4(base_disp)
+        lwz     rtn_addr, T_1521C - dr_emitters(base_disp)  // template: addi a0, a0, 2
         stwu    addr, 4(out_ptr)
         add     rtn_addr, rtn_addr, data
         slwi    data, data, 5
         add     rtn_addr, rtn_addr, data
         stwu    rtn_addr, 4(out_ptr)
-        lwz     addr, 0x3EE8(base_disp)
+        lwz     addr, T_15220 - dr_emitters(base_disp)  // template: lhz rtn_addr, 0(a0)
         rlwinm  data, prefetch_data, 23, 29, 31         // data = prefetch_data[11:9]
         cmpwi   cr7, data, 7
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
@@ -7436,25 +8543,25 @@ dr_emit_cmpm_l_L4:
         lis     data, 0xFFF1
 dr_emit_cmpm_l_L5:
         add     addr, addr, data
-        lwz     rtn_addr, 0x3EEC(base_disp)
+        lwz     rtn_addr, T_15224 - dr_emitters(base_disp)  // template: addi a0, a0, 2
         stwu    addr, 4(out_ptr)
         add     rtn_addr, rtn_addr, data
         slwi    data, data, 5
         add     rtn_addr, rtn_addr, data
         stwu    rtn_addr, 4(out_ptr)
-        lwz     addr, 0x3EF0(base_disp)
-        lwz     data, 0x3EF4(base_disp)
+        lwz     addr, T_15228 - dr_emitters(base_disp)  // template: slwi addr, addr, 16
+        lwz     data, T_1522C - dr_emitters(base_disp)  // template: slwi rtn_addr, rtn_addr, 16
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
         b       dr_emit_cmp_w_L2
 dr_emit_cmpm_l_L6:
         lhz     addr, 12(rec_ptr)
         bl      dr_emit_cmpm_l_L9
-        lwz     addr, 0x3EF8(base_disp)
+        lwz     addr, T_15230 - dr_emitters(base_disp)  // template: lbz addr, 0(a0)
         clrlwi  data, prefetch_data, 29                 // data = prefetch_data & 0x00000007
         cmpwi   cr7, data, 7
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
-        lwz     rtn_addr, 0x3EFC(base_disp)
+        lwz     rtn_addr, T_15234 - dr_emitters(base_disp)  // template: addi a0, a0, 1
         bne     cr7, dr_emit_cmpm_l_L7
         lis     data, 0xFFF1
         addi    rtn_addr, rtn_addr, 1
@@ -7465,11 +8572,11 @@ dr_emit_cmpm_l_L7:
         slwi    data, data, 5
         add     rtn_addr, rtn_addr, data
         stwu    rtn_addr, 4(out_ptr)
-        lwz     addr, 0x3F00(base_disp)
+        lwz     addr, T_15238 - dr_emitters(base_disp)  // template: lbz rtn_addr, 0(a0)
         rlwinm  data, prefetch_data, 23, 29, 31         // data = prefetch_data[11:9]
         cmpwi   cr7, data, 7
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
-        lwz     rtn_addr, 0x3F04(base_disp)
+        lwz     rtn_addr, T_1523C - dr_emitters(base_disp)  // template: addi a0, a0, 1
         bne     cr7, dr_emit_cmpm_l_L8
         lis     data, 0xFFF1
         addi    rtn_addr, rtn_addr, 1
@@ -7480,27 +8587,43 @@ dr_emit_cmpm_l_L8:
         slwi    data, data, 5
         add     rtn_addr, rtn_addr, data
         stwu    rtn_addr, 4(out_ptr)
-        lwz     addr, 0x3F08(base_disp)
-        lwz     data, 0x3F0C(base_disp)
+        lwz     addr, T_15240 - dr_emitters(base_disp)  // template: slwi addr, addr, 24
+        lwz     data, T_15244 - dr_emitters(base_disp)  // template: slwi rtn_addr, rtn_addr, 24
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
         b       dr_emit_cmp_w_L2
-        lwz     addr, 0(a0)
-        addi    a0, a0, 4
-        lwz     rtn_addr, 0(a0)
-        addi    a0, a0, 4
-        lhz     addr, 0(a0)
-        addi    a0, a0, 2
-        lhz     rtn_addr, 0(a0)
-        addi    a0, a0, 2
-        slwi    addr, addr, 16
-        slwi    rtn_addr, rtn_addr, 16
-        lbz     addr, 0(a0)
-        addi    a0, a0, 1
-        lbz     rtn_addr, 0(a0)
-        addi    a0, a0, 1
-        slwi    addr, addr, 24
-        slwi    rtn_addr, rtn_addr, 24
+T_15208:
+        lwz     addr, 0(a0)                             // template
+T_1520C:
+        addi    a0, a0, 4                               // template
+T_15210:
+        lwz     rtn_addr, 0(a0)                         // template
+T_15214:
+        addi    a0, a0, 4                               // template
+T_15218:
+        lhz     addr, 0(a0)                             // template
+T_1521C:
+        addi    a0, a0, 2                               // template
+T_15220:
+        lhz     rtn_addr, 0(a0)                         // template
+T_15224:
+        addi    a0, a0, 2                               // template
+T_15228:
+        slwi    addr, addr, 16                          // template
+T_1522C:
+        slwi    rtn_addr, rtn_addr, 16                  // template
+T_15230:
+        lbz     addr, 0(a0)                             // template
+T_15234:
+        addi    a0, a0, 1                               // template
+T_15238:
+        lbz     rtn_addr, 0(a0)                         // template
+T_1523C:
+        addi    a0, a0, 1                               // template
+T_15240:
+        slwi    addr, addr, 24                          // template
+T_15244:
+        slwi    rtn_addr, rtn_addr, 24                  // template
 dr_emit_cmpm_l_L9:
         mtcrf   0x07, addr                              // cr5..cr7 = addr[11:0]
         lhz     addr, 14(rec_ptr)
@@ -7512,36 +8635,36 @@ dr_emit_cmpm_l_L9:
         srw     rtn_addr, rtn_addr, addr
         and     rtn_addr, rtn_addr, data
         cmplwi  cr4, rtn_addr, 0x0000
-        bne     cr4, L_152D8
+        bne     cr4, dr_emit_cmpm_l_L13
         cror    4*cr6+lt, 4*cr6+eq, 4*cr6+so            // cr6.lt = cr6.eq | cr6.so
         crandc  4*cr4+lt, 4*cr7+gt, 4*cr5+gt            // cr4.lt = cr7.gt & ~cr5.gt
         crand   4*cr6+lt, 4*cr4+lt, 4*cr6+lt            // cr6.lt = cr4.lt & cr6.lt
         crnot   4*cr6+gt, 4*cr6+lt
-        bgt     cr6, L_152C8
+        bgt     cr6, dr_emit_cmpm_l_L12
         lwz     rtn_addr, 20(rec_ptr)
         lwz     data, 0xB24(EmulatorStatePtr)
         cmpwi   cr4, rtn_addr, 0
         cmpw    cr5, rtn_addr, data
         cror    4*cr7+so, 4*cr4+lt, 4*cr5+gt            // cr7.so = cr4.lt | cr5.gt
-        bso     cr7, L_152C0
+        bso     cr7, dr_emit_cmpm_l_L11
         lwz     addr, dr_records(EmulatorStatePtr)
-L_152A4:
+dr_emit_cmpm_l_L10:
         lha     immed_data, 2(addr)
         addi    addr, addr, 12
         cmpw    cr4, immed_data, rtn_addr
         cmpw    cr5, immed_data, data
-        beq     cr4, L_152C0
-        blt     cr5, L_152A4
+        beq     cr4, dr_emit_cmpm_l_L11
+        blt     cr5, dr_emit_cmpm_l_L10
         crset   4*cr7+so
-L_152C0:
+dr_emit_cmpm_l_L11:
         cror    4*cr6+gt, 4*cr7+so, 4*cr6+gt            // cr6.gt = cr7.so | cr6.gt
         crandc  4*cr6+lt, 4*cr6+lt, 4*cr7+so            // cr6.lt = cr6.lt & ~cr7.so
-L_152C8:
+dr_emit_cmpm_l_L12:
         cror    4*cr6+lt, 4*cr6+lt, 4*cr7+eq            // cr6.lt = cr6.lt | cr7.eq
         mfcr    addr
         stw     addr, 0xBB0(EmulatorStatePtr)
         blr
-L_152D8:
+dr_emit_cmpm_l_L13:
         crset   4*cr6+gt
         crclr   4*cr6+lt
         mfcr    addr
@@ -7556,6 +8679,15 @@ L_152D8:
 //     NEG.B (d16,An)
 //     NEG.B (d8,An,Xn)
 //     ... and 2 more forms
+// For 4400, NEG.B D0, it generates
+//         slwi    addr, d0, 24
+//         subfco. addr, addr, zero
+//         rlwimi  d0, addr, 8, 24, 31
+//         subfe   addr, zero, zero
+//         addc    ccr_x, addr, addr
+// and, when the condition codes are not wanted afterwards,
+//         neg     addr, d0
+//         rlwimi  d0, addr, 0, 24, 31
 dr_emit_neg_b:
         b       dr_emit_neg_l_L10
 
@@ -7567,6 +8699,15 @@ dr_emit_neg_b:
 //     NEG.W (d16,An)
 //     NEG.W (d8,An,Xn)
 //     ... and 2 more forms
+// For 4440, NEG.W D0, it generates
+//         slwi    addr, d0, 16
+//         subfco. addr, addr, zero
+//         rlwimi  d0, addr, 16, 16, 31
+//         subfe   addr, zero, zero
+//         addc    ccr_x, addr, addr
+// and, when the condition codes are not wanted afterwards,
+//         neg     addr, d0
+//         rlwimi  d0, addr, 0, 16, 31
 dr_emit_neg_w:
         b       dr_emit_neg_l_L4
 
@@ -7578,28 +8719,34 @@ dr_emit_neg_w:
 //     NEG.L (d16,An)
 //     NEG.L (d8,An,Xn)
 //     ... and 2 more forms
+// For 4480, NEG.L D0, it generates
+//         subfco. d0, d0, zero
+//         subfe   addr, zero, zero
+//         addc    ccr_x, addr, addr
+// and, when the condition codes are not wanted afterwards,
+//         subfco. d0, d0, zero
 dr_emit_neg_l:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr6, rtn_addr, 0x0000
         lis     immed_data, 0x0060
         beq     cr6, dr_emit_neg_l_L3
-        bl      L_124A0
-        lwz     addr, 0x4148(base_disp)
+        bl      dr_operand_load_l
+        lwz     addr, T_15480 - dr_emitters(base_disp)  // template: subfco. addr, addr, zero
         stwu    addr, 4(out_ptr)
-        bl      L_124F0
+        bl      dr_operand_writeback_l
 dr_emit_neg_l_L1:
         lhz     data, 0(rec_ptr)
         mtcrf   0x02, data                              // cr6 = data[7:4]
         cror    4*cr6+gt, 4*cr6+lt, 4*cr6+gt            // cr6.gt = cr6.lt | cr6.gt
         ble     cr6, dr_emit_next
 dr_emit_neg_l_L2:
-        lwz     addr, 0x4184(base_disp)
-        lwz     data, 0x4188(base_disp)
+        lwz     addr, T_154BC - dr_emitters(base_disp)  // template: subfe addr, zero, zero
+        lwz     data, T_154C0 - dr_emitters(base_disp)  // template: addc ccr_x, addr, addr
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
         b       dr_emit_next
 dr_emit_neg_l_L3:
-        lwz     addr, 0x414C(base_disp)
+        lwz     addr, T_15484 - dr_emitters(base_disp)  // template: subfco. d0, d0, zero
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
         rlwimi  data, prefetch_data, 21, 8, 10          // data[23:21] = prefetch_data[2:0]
         add     addr, addr, data
@@ -7614,26 +8761,26 @@ dr_emit_neg_l_L4:
         cror    4*cr6+gt, 4*cr6+gt, 4*cr6+lt            // cr6.gt = cr6.gt | cr6.lt
         beq     cr7, dr_emit_neg_l_L6
         bgt     cr6, dr_emit_neg_l_L5
-        bl      L_124B8
-        lwz     addr, 0x4150(base_disp)
+        bl      dr_operand_load_w
+        lwz     addr, T_15488 - dr_emitters(base_disp)  // template: neg addr, addr
         stwu    addr, 4(out_ptr)
-        bl      L_124F8
+        bl      dr_operand_writeback_w
         b       dr_emit_next
 dr_emit_neg_l_L5:
-        bl      L_124B8
-        lwz     addr, 0x4154(base_disp)
-        lwz     data, 0x4148(base_disp)
+        bl      dr_operand_load_w
+        lwz     addr, T_1548C - dr_emitters(base_disp)  // template: slwi addr, addr, 16
+        lwz     data, T_15480 - dr_emitters(base_disp)  // template: subfco. addr, addr, zero
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x4158(base_disp)
+        lwz     addr, T_15490 - dr_emitters(base_disp)  // template: srwi addr, addr, 16
         stwu    data, 4(out_ptr)
         stwu    addr, 4(out_ptr)
-        bl      L_124F8
+        bl      dr_operand_writeback_w
         b       dr_emit_neg_l_L2
 dr_emit_neg_l_L6:
         bgt     cr6, dr_emit_neg_l_L8
-        lwz     addr, 0x415C(base_disp)
+        lwz     addr, T_15494 - dr_emitters(base_disp)  // template: neg addr, d0
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
-        lwz     rtn_addr, 0x4160(base_disp)
+        lwz     rtn_addr, T_15498 - dr_emitters(base_disp)  // template: rlwimi d0, addr, 0, 16, 31
 dr_emit_neg_l_L7:
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
@@ -7641,12 +8788,12 @@ dr_emit_neg_l_L7:
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
 dr_emit_neg_l_L8:
-        lwz     addr, 0x4164(base_disp)
+        lwz     addr, T_1549C - dr_emitters(base_disp)  // template: slwi addr, d0, 16
         rlwinm  data, prefetch_data, 21, 8, 10          // data = prefetch_data[2:0] << 21
-        lwz     rtn_addr, 0x4148(base_disp)
+        lwz     rtn_addr, T_15480 - dr_emitters(base_disp)  // template: subfco. addr, addr, zero
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x4168(base_disp)
+        lwz     addr, T_154A0 - dr_emitters(base_disp)  // template: rlwimi d0, addr, 16, 16, 31
 dr_emit_neg_l_L9:
         stwu    rtn_addr, 4(out_ptr)
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
@@ -7662,52 +8809,69 @@ dr_emit_neg_l_L10:
         cror    4*cr6+gt, 4*cr6+gt, 4*cr6+lt            // cr6.gt = cr6.gt | cr6.lt
         beq     cr7, dr_emit_neg_l_L12
         bgt     cr6, dr_emit_neg_l_L11
-        bl      L_124C0
-        lwz     addr, 0x4150(base_disp)
+        bl      dr_operand_load_b
+        lwz     addr, T_15488 - dr_emitters(base_disp)  // template: neg addr, addr
         stwu    addr, 4(out_ptr)
-        bl      L_12500
+        bl      dr_operand_writeback_b
         b       dr_emit_next
 dr_emit_neg_l_L11:
-        bl      L_124C0
-        lwz     addr, 0x416C(base_disp)
-        lwz     data, 0x4148(base_disp)
+        bl      dr_operand_load_b
+        lwz     addr, T_154A4 - dr_emitters(base_disp)  // template: slwi addr, addr, 24
+        lwz     data, T_15480 - dr_emitters(base_disp)  // template: subfco. addr, addr, zero
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x4170(base_disp)
+        lwz     addr, T_154A8 - dr_emitters(base_disp)  // template: srwi addr, addr, 24
         stwu    data, 4(out_ptr)
         stwu    addr, 4(out_ptr)
-        bl      L_12500
+        bl      dr_operand_writeback_b
         b       dr_emit_neg_l_L2
 dr_emit_neg_l_L12:
         bgt     cr6, dr_emit_neg_l_L13
-        lwz     addr, 0x4174(base_disp)
+        lwz     addr, T_154AC - dr_emitters(base_disp)  // template: neg addr, d0
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
-        lwz     rtn_addr, 0x4178(base_disp)
+        lwz     rtn_addr, T_154B0 - dr_emitters(base_disp)  // template: rlwimi d0, addr, 0, 24, 31
         b       dr_emit_neg_l_L7
 dr_emit_neg_l_L13:
-        lwz     addr, 0x417C(base_disp)
+        lwz     addr, T_154B4 - dr_emitters(base_disp)  // template: slwi addr, d0, 24
         rlwinm  data, prefetch_data, 21, 8, 10          // data = prefetch_data[2:0] << 21
-        lwz     rtn_addr, 0x4148(base_disp)
+        lwz     rtn_addr, T_15480 - dr_emitters(base_disp)  // template: subfco. addr, addr, zero
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x4180(base_disp)
+        lwz     addr, T_154B8 - dr_emitters(base_disp)  // template: rlwimi d0, addr, 8, 24, 31
         b       dr_emit_neg_l_L9
-        subfco. addr, addr, zero                        // addr = zero - addr
-        subfco. d0, d0, zero                            // d0 = zero - d0
-        neg     addr, addr
-        slwi    addr, addr, 16
-        srwi    addr, addr, 16
-        neg     addr, d0
-        rlwimi  d0, addr, 0, 16, 31                     // d0[15:0] = addr[15:0]
-        slwi    addr, d0, 16
-        rlwimi  d0, addr, 16, 16, 31                    // d0[15:0] = addr[31:16]
-        slwi    addr, addr, 24
-        srwi    addr, addr, 24
-        neg     addr, d0
-        rlwimi  d0, addr, 0, 24, 31                     // d0[7:0] = addr[7:0]
-        slwi    addr, d0, 24
-        rlwimi  d0, addr, 8, 24, 31                     // d0[7:0] = addr[31:24]
-        subfe   addr, zero, zero                        // addr = zero + ~zero + CA
-        addc    ccr_x, addr, addr
+T_15480:
+        subfco. addr, addr, zero                        // template
+T_15484:
+        subfco. d0, d0, zero                            // template
+T_15488:
+        neg     addr, addr                              // template
+T_1548C:
+        slwi    addr, addr, 16                          // template
+T_15490:
+        srwi    addr, addr, 16                          // template
+T_15494:
+        neg     addr, d0                                // template
+T_15498:
+        rlwimi  d0, addr, 0, 16, 31                     // template
+T_1549C:
+        slwi    addr, d0, 16                            // template
+T_154A0:
+        rlwimi  d0, addr, 16, 16, 31                    // template
+T_154A4:
+        slwi    addr, addr, 24                          // template
+T_154A8:
+        srwi    addr, addr, 24                          // template
+T_154AC:
+        neg     addr, d0                                // template
+T_154B0:
+        rlwimi  d0, addr, 0, 24, 31                     // template
+T_154B4:
+        slwi    addr, d0, 24                            // template
+T_154B8:
+        rlwimi  d0, addr, 8, 24, 31                     // template
+T_154BC:
+        subfe   addr, zero, zero                        // template
+T_154C0:
+        addc    ccr_x, addr, addr                       // template
 
 // Code generator for 424 opcodes:
 //     OR.L Dn,Dn
@@ -7717,13 +8881,18 @@ dr_emit_neg_l_L13:
 //     OR.L (d16,An),Dn
 //     OR.L (d8,An,Xn),Dn
 //     ... and 5 more forms
+// For 8080, OR.L D0,D0, it generates
+//         or.     d0, d0, d0
+//         addco   zero, zero, zero
+// and, when the condition codes are not wanted afterwards,
+//         or.     d0, d0, d0
 dr_emit_or_l:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr6, rtn_addr, 0x0001
         lis     immed_data, 0x0060
         ble     cr6, dr_emit_or_l_L4
-        bl      L_124A0
-        lwz     addr, 0x4254(base_disp)
+        bl      dr_operand_load_l
+        lwz     addr, T_1558C - dr_emitters(base_disp)  // template: or. d0, d0, addr
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
 dr_emit_or_l_L1:
         rlwimi  data, prefetch_data, 12, 8, 10          // data[23:21] = prefetch_data[11:9]
@@ -7733,12 +8902,12 @@ dr_emit_or_l_L2:
 dr_emit_or_l_L3:
         lhz     addr, 0(rec_ptr)
         mtcrf   0x02, addr                              // cr6 = addr[7:4]
-        lwz     addr, 0x425C(base_disp)
+        lwz     addr, T_15594 - dr_emitters(base_disp)  // template: addco zero, zero, zero
         ble     cr6, dr_emit_next
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
 dr_emit_or_l_L4:
-        lwz     addr, 0x4250(base_disp)
+        lwz     addr, T_15588 - dr_emitters(base_disp)  // template: or. d0, d0, d0
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
         rlwimi  data, prefetch_data, 11, 17, 20         // data[14:11] = prefetch_data[3:0]
         b       dr_emit_or_l_L1
@@ -7751,6 +8920,16 @@ dr_emit_or_l_L4:
 //     OR.B Dn,(d8,An,Xn)
 //     OR.B Dn,(xxx).W
 //     ... and 2 more forms
+// For 8110, OR.B D0,(A0), it generates
+//         lbz     addr, 0(a0)
+//         or      addr, addr, d0
+//         stb     addr, 0(a0)
+//         extsb   addr, addr
+//         addco.  addr, addr, zero
+// and, when the condition codes are not wanted afterwards,
+//         lbz     addr, 0(a0)
+//         or      addr, addr, d0
+//         stb     addr, 0(a0)
 dr_emit_or_b:
         b       dr_emit_or_b_2_L3
 
@@ -7762,6 +8941,16 @@ dr_emit_or_b:
 //     OR.W Dn,(d8,An,Xn)
 //     OR.W Dn,(xxx).W
 //     ... and 2 more forms
+// For 8150, OR.W D0,(A0), it generates
+//         lha     addr, 0(a0)
+//         or      addr, addr, d0
+//         sth     addr, 0(a0)
+//         extsh   addr, addr
+//         addco.  addr, addr, zero
+// and, when the condition codes are not wanted afterwards,
+//         lha     addr, 0(a0)
+//         or      addr, addr, d0
+//         sth     addr, 0(a0)
 dr_emit_or_w:
         b       dr_emit_or_w_2_L3
 
@@ -7773,16 +8962,25 @@ dr_emit_or_w:
 //     OR.L Dn,(d8,An,Xn)
 //     OR.L Dn,(xxx).W
 //     ... and 2 more forms
+// For 8190, OR.L D0,(A0), it generates
+//         lwz     addr, 0(a0)
+//         or.     addr, addr, d0
+//         stw     addr, 0(a0)
+//         addco   zero, zero, zero
+// and, when the condition codes are not wanted afterwards,
+//         lwz     addr, 0(a0)
+//         or.     addr, addr, d0
+//         stw     addr, 0(a0)
 dr_emit_or_l_2:
         lis     immed_data, 0x0060
-        bl      L_124A0
-        lwz     addr, 0x4258(base_disp)
+        bl      dr_operand_load_l
+        lwz     addr, T_15590 - dr_emitters(base_disp)  // template: or. addr, addr, d0
         rlwinm  data, prefetch_data, 2, 18, 20          // data = prefetch_data[11:9] << 11
         add     addr, addr, data
 dr_emit_or_l_2_L1:
         stwu    addr, 4(out_ptr)
         lis     immed_data, 0x0060
-        bl      L_124F0
+        bl      dr_operand_writeback_l
         b       dr_emit_or_l_L3
 
 // Code generator for 51 opcodes:
@@ -7793,6 +8991,12 @@ dr_emit_or_l_2_L1:
 //     ORI.W #<data>,(d16,An)
 //     ORI.W #<data>,(d8,An,Xn)
 //     ... and 3 more forms
+// For 0040 0010, ORI.W #<data>,D0, it generates
+//         ori     d0, d0, 0x0010
+//         extsh   addr, d0
+//         addco.  addr, addr, zero
+// and, when the condition codes are not wanted afterwards,
+//         ori     d0, d0, 0x0010
 dr_emit_ori_w:
         b       dr_emit_or_w_2_L4
 
@@ -7804,6 +9008,12 @@ dr_emit_ori_w:
 //     ORI.B #<data>,(d16,An)
 //     ORI.B #<data>,(d8,An,Xn)
 //     ... and 3 more forms
+// For 0000 0010, ORI.B #<data>,D0, it generates
+//         ori     d0, d0, 0x0010
+//         extsb   addr, d0
+//         addco.  addr, addr, zero
+// and, when the condition codes are not wanted afterwards,
+//         ori     d0, d0, 0x0010
 dr_emit_ori_b:
         b       dr_emit_or_b_2_L4
 
@@ -7815,29 +9025,43 @@ dr_emit_ori_b:
 //     ORI.L #<data>,(d16,An)
 //     ORI.L #<data>,(d8,An,Xn)
 //     ... and 3 more forms
+// For 0080 0010 0010, ORI.L #<data>,D0, it generates
+//         ori     addr, zero, 0x0010
+//         oris    addr, addr, 0x0010
+//         or.     d0, d0, addr
+//         addco   zero, zero, zero
+// and, when the condition codes are not wanted afterwards,
+//         ori     addr, zero, 0x0010
+//         oris    addr, addr, 0x0010
+//         or.     d0, d0, addr
 dr_emit_ori_l:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr6, rtn_addr, 0x0001
         ble     cr6, dr_emit_ori_l_L1
         lis     immed_data, 0x00A0
         addi    blk_ofs, blk_ofs, 4
-        bl      L_124A0
+        bl      dr_operand_load_l
         lhz     rtn_addr, 2(rec_ptr)
         addi    rtn_addr, rtn_addr, 2
-        bl      L_12510
-        lwz     addr, 0x4260(base_disp)
+        bl      dr_operand_address_L1
+        lwz     addr, T_15598 - dr_emitters(base_disp)  // template: or. addr, addr, rtn_addr
         b       dr_emit_or_l_2_L1
 dr_emit_ori_l_L1:
-        bl      L_12518
-        lwz     addr, 0x4254(base_disp)
+        bl      dr_operand_address_L2
+        lwz     addr, T_1558C - dr_emitters(base_disp)  // template: or. d0, d0, addr
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
         rlwimi  data, prefetch_data, 21, 8, 10          // data[23:21] = prefetch_data[2:0]
         b       dr_emit_or_l_L2
-        or.     d0, d0, d0
-        or.     d0, d0, addr
-        or.     addr, addr, d0
-        addco   zero, zero, zero
-        or.     addr, addr, rtn_addr
+T_15588:
+        or.     d0, d0, d0                              // template
+T_1558C:
+        or.     d0, d0, addr                            // template
+T_15590:
+        or.     addr, addr, d0                          // template
+T_15594:
+        addco   zero, zero, zero                        // template
+T_15598:
+        or.     addr, addr, rtn_addr                    // template
 
 // Code generator for 424 opcodes:
 //     OR.W Dn,Dn
@@ -7847,29 +9071,37 @@ dr_emit_ori_l_L1:
 //     OR.W (d16,An),Dn
 //     OR.W (d8,An,Xn),Dn
 //     ... and 5 more forms
+// For 8040, OR.W D0,D0, it generates
+//         mr      addr, d0
+//         rlwimi  d0, addr, 0, 16, 31
+//         extsh   addr, d0
+//         addco.  addr, addr, zero
+// and, when the condition codes are not wanted afterwards,
+//         mr      addr, d0
+//         rlwimi  d0, addr, 0, 16, 31
 dr_emit_or_w_2:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr7, rtn_addr, 0x0001
         lis     immed_data, 0x0060
         ble     cr7, dr_emit_or_w_2_L1
-        bl      L_124B8
-        lwz     addr, 0x4370(base_disp)
+        bl      dr_operand_load_w
+        lwz     addr, T_156A8 - dr_emitters(base_disp)  // template: or addr, addr, d0
         rlwinm  data, prefetch_data, 2, 18, 20          // data = prefetch_data[11:9] << 11
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x4378(base_disp)
+        lwz     addr, T_156B0 - dr_emitters(base_disp)  // template: rlwimi d0, addr, 0, 16, 31
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         b       dr_emit_or_w_2_L2
 dr_emit_or_w_2_L1:
-        lwz     addr, 0x4374(base_disp)
+        lwz     addr, T_156AC - dr_emitters(base_disp)  // template: mr addr, d0
         rlwinm  data, prefetch_data, 12, 8, 10          // data = prefetch_data[11:9] << 21
         mr      immed_data, data
         rlwimi  data, prefetch_data, 11, 18, 20         // data[13:11] = prefetch_data[2:0]
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x4378(base_disp)
+        lwz     addr, T_156B0 - dr_emitters(base_disp)  // template: rlwimi d0, addr, 0, 16, 31
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
@@ -7877,21 +9109,21 @@ dr_emit_or_w_2_L1:
 dr_emit_or_w_2_L2:
         lhz     data, 0(rec_ptr)
         mtcrf   0x02, data                              // cr6 = data[7:4]
-        lwz     addr, 0x437C(base_disp)
+        lwz     addr, T_156B4 - dr_emitters(base_disp)  // template: extsh addr, zero
         ble     cr6, dr_emit_next
-        lwz     data, 0x4380(base_disp)
+        lwz     data, T_156B8 - dr_emitters(base_disp)  // template: addco. addr, addr, zero
         add     addr, addr, immed_data
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
         b       dr_emit_next
 dr_emit_or_w_2_L3:
         lis     immed_data, 0x0060
-        bl      L_124B8
-        lwz     addr, 0x4370(base_disp)
+        bl      dr_operand_load_w
+        lwz     addr, T_156A8 - dr_emitters(base_disp)  // template: or addr, addr, d0
         rlwinm  data, prefetch_data, 2, 18, 20          // data = prefetch_data[11:9] << 11
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        bl      L_124F8
+        bl      dr_operand_writeback_w
         b       dr_emit_or_w_2_L2
 dr_emit_or_w_2_L4:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
@@ -7899,19 +9131,19 @@ dr_emit_or_w_2_L4:
         lis     immed_data, 0x00A0
         ble     cr7, dr_emit_or_w_2_L5
         addi    blk_ofs, blk_ofs, 2
-        bl      L_124B8
+        bl      dr_operand_load_w
         lhz     rtn_addr, 2(rec_ptr)
         addi    rtn_addr, rtn_addr, 2
-        lwz     addr, 0x4384(base_disp)
+        lwz     addr, T_156BC - dr_emitters(base_disp)  // template: ori addr, rtn_addr, 0x0000
         lhax    rtn_addr, pc, rtn_addr
         rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
         stwu    addr, 4(out_ptr)
         lis     immed_data, 0x0060
-        bl      L_124F8
+        bl      dr_operand_writeback_w
         b       dr_emit_or_w_2_L2
 dr_emit_or_w_2_L5:
         lis     immed_data, 0x0100
-        lwz     addr, 0x4388(base_disp)
+        lwz     addr, T_156C0 - dr_emitters(base_disp)  // template: ori d0, d0, 0x0000
         lhax    rtn_addr, pc, blk_ofs
         rlwinm  data, prefetch_data, 21, 8, 10          // data = prefetch_data[2:0] << 21
         add     immed_data, immed_data, data
@@ -7920,13 +9152,20 @@ dr_emit_or_w_2_L5:
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         b       dr_emit_or_w_2_L2
-        or      addr, addr, d0
-        mr      addr, d0
-        rlwimi  d0, addr, 0, 16, 31                     // d0[15:0] = addr[15:0]
-        extsh   addr, zero                              // addr = sign-extended low word of zero
-        addco.  addr, addr, zero
-        ori     addr, rtn_addr, 0x0000
-        ori     d0, d0, 0x0000
+T_156A8:
+        or      addr, addr, d0                          // template
+T_156AC:
+        mr      addr, d0                                // template
+T_156B0:
+        rlwimi  d0, addr, 0, 16, 31                     // template
+T_156B4:
+        extsh   addr, zero                              // template
+T_156B8:
+        addco.  addr, addr, zero                        // template
+T_156BC:
+        ori     addr, rtn_addr, 0x0000                  // template
+T_156C0:
+        ori     d0, d0, 0x0000                          // template
 
 // Code generator for 424 opcodes:
 //     OR.B Dn,Dn
@@ -7936,29 +9175,37 @@ dr_emit_or_w_2_L5:
 //     OR.B (d16,An),Dn
 //     OR.B (d8,An,Xn),Dn
 //     ... and 5 more forms
+// For 8000, OR.B D0,D0, it generates
+//         mr      addr, d0
+//         rlwimi  d0, addr, 0, 24, 31
+//         extsb   addr, d0
+//         addco.  addr, addr, zero
+// and, when the condition codes are not wanted afterwards,
+//         mr      addr, d0
+//         rlwimi  d0, addr, 0, 24, 31
 dr_emit_or_b_2:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr7, rtn_addr, 0x0001
         lis     immed_data, 0x0060
         ble     cr7, dr_emit_or_b_2_L1
-        bl      L_124C0
-        lwz     addr, 0x4370(base_disp)
+        bl      dr_operand_load_b
+        lwz     addr, T_156A8 - dr_emitters(base_disp)  // template: or addr, addr, d0
         rlwinm  data, prefetch_data, 2, 18, 20          // data = prefetch_data[11:9] << 11
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x449C(base_disp)
+        lwz     addr, T_157D4 - dr_emitters(base_disp)  // template: rlwimi d0, addr, 0, 24, 31
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         b       dr_emit_or_b_2_L2
 dr_emit_or_b_2_L1:
-        lwz     addr, 0x4498(base_disp)
+        lwz     addr, T_157D0 - dr_emitters(base_disp)  // template: mr addr, d0
         rlwinm  data, prefetch_data, 12, 8, 10          // data = prefetch_data[11:9] << 21
         mr      immed_data, data
         rlwimi  data, prefetch_data, 11, 18, 20         // data[13:11] = prefetch_data[2:0]
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x449C(base_disp)
+        lwz     addr, T_157D4 - dr_emitters(base_disp)  // template: rlwimi d0, addr, 0, 24, 31
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
@@ -7966,21 +9213,21 @@ dr_emit_or_b_2_L1:
 dr_emit_or_b_2_L2:
         lhz     data, 0(rec_ptr)
         mtcrf   0x02, data                              // cr6 = data[7:4]
-        lwz     addr, 0x44A0(base_disp)
+        lwz     addr, T_157D8 - dr_emitters(base_disp)  // template: extsb addr, zero
         ble     cr6, dr_emit_next
-        lwz     data, 0x44A4(base_disp)
+        lwz     data, T_157DC - dr_emitters(base_disp)  // template: addco. addr, addr, zero
         add     addr, addr, immed_data
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
         b       dr_emit_next
 dr_emit_or_b_2_L3:
         lis     immed_data, 0x0060
-        bl      L_124C0
-        lwz     addr, 0x4370(base_disp)
+        bl      dr_operand_load_b
+        lwz     addr, T_156A8 - dr_emitters(base_disp)  // template: or addr, addr, d0
         rlwinm  data, prefetch_data, 2, 18, 20          // data = prefetch_data[11:9] << 11
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        bl      L_12500
+        bl      dr_operand_writeback_b
         b       dr_emit_or_b_2_L2
 dr_emit_or_b_2_L4:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
@@ -7988,19 +9235,19 @@ dr_emit_or_b_2_L4:
         lis     immed_data, 0x00A0
         ble     cr7, dr_emit_or_b_2_L5
         addi    blk_ofs, blk_ofs, 2
-        bl      L_124C0
+        bl      dr_operand_load_b
         lhz     rtn_addr, 2(rec_ptr)
         addi    rtn_addr, rtn_addr, 2
-        lwz     addr, 0x4384(base_disp)
+        lwz     addr, T_156BC - dr_emitters(base_disp)  // template: ori addr, rtn_addr, 0x0000
         lhax    rtn_addr, pc, rtn_addr
         rlwimi  addr, rtn_addr, 0, 24, 31               // addr[7:0] = rtn_addr[7:0]
         stwu    addr, 4(out_ptr)
         lis     immed_data, 0x0060
-        bl      L_12500
+        bl      dr_operand_writeback_b
         b       dr_emit_or_b_2_L2
 dr_emit_or_b_2_L5:
         lis     immed_data, 0x0100
-        lwz     addr, 0x4388(base_disp)
+        lwz     addr, T_156C0 - dr_emitters(base_disp)  // template: ori d0, d0, 0x0000
         lhax    rtn_addr, pc, blk_ofs
         rlwinm  data, prefetch_data, 21, 8, 10          // data = prefetch_data[2:0] << 21
         add     immed_data, immed_data, data
@@ -8009,10 +9256,14 @@ dr_emit_or_b_2_L5:
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         b       dr_emit_or_b_2_L2
-        mr      addr, d0
-        rlwimi  d0, addr, 0, 24, 31                     // d0[7:0] = addr[7:0]
-        extsb   addr, zero                              // addr = sign-extended low byte of zero
-        addco.  addr, addr, zero
+T_157D0:
+        mr      addr, d0                                // template
+T_157D4:
+        rlwimi  d0, addr, 0, 24, 31                     // template
+T_157D8:
+        extsb   addr, zero                              // template
+T_157DC:
+        addco.  addr, addr, zero                        // template
 
 // Code generator for 424 opcodes:
 //     AND.L Dn,Dn
@@ -8022,13 +9273,18 @@ dr_emit_or_b_2_L5:
 //     AND.L (d16,An),Dn
 //     AND.L (d8,An,Xn),Dn
 //     ... and 5 more forms
+// For C080, AND.L D0,D0, it generates
+//         and.    d0, d0, d0
+//         addco   zero, zero, zero
+// and, when the condition codes are not wanted afterwards,
+//         and.    d0, d0, d0
 dr_emit_and_l:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr6, rtn_addr, 0x0001
         lis     immed_data, 0x0060
         ble     cr6, dr_emit_and_l_L4
-        bl      L_124A0
-        lwz     addr, 0x4570(base_disp)
+        bl      dr_operand_load_l
+        lwz     addr, T_158A8 - dr_emitters(base_disp)  // template: and. d0, d0, addr
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
 dr_emit_and_l_L1:
         rlwimi  data, prefetch_data, 12, 8, 10          // data[23:21] = prefetch_data[11:9]
@@ -8038,12 +9294,12 @@ dr_emit_and_l_L2:
 dr_emit_and_l_L3:
         lhz     addr, 0(rec_ptr)
         mtcrf   0x02, addr                              // cr6 = addr[7:4]
-        lwz     addr, 0x425C(base_disp)
+        lwz     addr, T_15594 - dr_emitters(base_disp)  // template: addco zero, zero, zero
         ble     cr6, dr_emit_next
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
 dr_emit_and_l_L4:
-        lwz     addr, 0x456C(base_disp)
+        lwz     addr, T_158A4 - dr_emitters(base_disp)  // template: and. d0, d0, d0
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
         rlwimi  data, prefetch_data, 11, 17, 20         // data[14:11] = prefetch_data[3:0]
         b       dr_emit_and_l_L1
@@ -8056,6 +9312,16 @@ dr_emit_and_l_L4:
 //     AND.B Dn,(d8,An,Xn)
 //     AND.B Dn,(xxx).W
 //     ... and 1 more forms
+// For C110, AND.B D0,(A0), it generates
+//         lbz     addr, 0(a0)
+//         and     addr, addr, d0
+//         stb     addr, 0(a0)
+//         extsb   addr, addr
+//         addco.  addr, addr, zero
+// and, when the condition codes are not wanted afterwards,
+//         lbz     addr, 0(a0)
+//         and     addr, addr, d0
+//         stb     addr, 0(a0)
 dr_emit_and_b:
         b       dr_emit_and_b_2_L4
 
@@ -8067,6 +9333,16 @@ dr_emit_and_b:
 //     AND.W Dn,(d8,An,Xn)
 //     AND.W Dn,(xxx).W
 //     ... and 1 more forms
+// For C150, AND.W D0,(A0), it generates
+//         lha     addr, 0(a0)
+//         and     addr, addr, d0
+//         sth     addr, 0(a0)
+//         extsh   addr, addr
+//         addco.  addr, addr, zero
+// and, when the condition codes are not wanted afterwards,
+//         lha     addr, 0(a0)
+//         and     addr, addr, d0
+//         sth     addr, 0(a0)
 dr_emit_and_w:
         b       dr_emit_and_w_2_L4
 
@@ -8078,16 +9354,25 @@ dr_emit_and_w:
 //     AND.L Dn,(d8,An,Xn)
 //     AND.L Dn,(xxx).W
 //     ... and 1 more forms
+// For C190, AND.L D0,(A0), it generates
+//         lwz     addr, 0(a0)
+//         and.    addr, d0, addr
+//         stw     addr, 0(a0)
+//         addco   zero, zero, zero
+// and, when the condition codes are not wanted afterwards,
+//         lwz     addr, 0(a0)
+//         and.    addr, d0, addr
+//         stw     addr, 0(a0)
 dr_emit_and_l_2:
         lis     immed_data, 0x0060
-        bl      L_124A0
-        lwz     addr, 0x4574(base_disp)
+        bl      dr_operand_load_l
+        lwz     addr, T_158AC - dr_emitters(base_disp)  // template: and. addr, d0, addr
         rlwinm  data, prefetch_data, 12, 8, 10          // data = prefetch_data[11:9] << 21
         add     addr, addr, data
 dr_emit_and_l_2_L1:
         stwu    addr, 4(out_ptr)
         lis     immed_data, 0x0060
-        bl      L_124F0
+        bl      dr_operand_writeback_l
         b       dr_emit_and_l_L3
 
 // Code generator for 51 opcodes:
@@ -8098,6 +9383,14 @@ dr_emit_and_l_2_L1:
 //     ANDI.W #<data>,(d16,An)
 //     ANDI.W #<data>,(d8,An,Xn)
 //     ... and 3 more forms
+// For 0240 0010, ANDI.W #<data>,D0, it generates
+//         andi.   addr, d0, 0x0010
+//         rlwimi  d0, addr, 0, 16, 31
+//         extsh   addr, d0
+//         addco.  addr, addr, zero
+// and, when the condition codes are not wanted afterwards,
+//         andi.   addr, d0, 0x0010
+//         rlwimi  d0, addr, 0, 16, 31
 dr_emit_andi_w:
         b       dr_emit_and_w_2_L5
 
@@ -8109,6 +9402,14 @@ dr_emit_andi_w:
 //     ANDI.B #<data>,(d16,An)
 //     ANDI.B #<data>,(d8,An,Xn)
 //     ... and 3 more forms
+// For 0200 0010, ANDI.B #<data>,D0, it generates
+//         andi.   addr, d0, 0x0010
+//         rlwimi  d0, addr, 0, 24, 31
+//         extsb   addr, d0
+//         addco.  addr, addr, zero
+// and, when the condition codes are not wanted afterwards,
+//         andi.   addr, d0, 0x0010
+//         rlwimi  d0, addr, 0, 24, 31
 dr_emit_andi_b:
         b       dr_emit_and_b_2_L5
 
@@ -8120,28 +9421,41 @@ dr_emit_andi_b:
 //     ANDI.L #<data>,(d16,An)
 //     ANDI.L #<data>,(d8,An,Xn)
 //     ... and 3 more forms
+// For 0280 0010 0010, ANDI.L #<data>,D0, it generates
+//         ori     addr, zero, 0x0010
+//         oris    addr, addr, 0x0010
+//         and.    d0, d0, addr
+//         addco   zero, zero, zero
+// and, when the condition codes are not wanted afterwards,
+//         ori     addr, zero, 0x0010
+//         oris    addr, addr, 0x0010
+//         and.    d0, d0, addr
 dr_emit_andi_l:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr6, rtn_addr, 0x0001
         ble     cr6, dr_emit_andi_l_L1
         lis     immed_data, 0x00A0
         addi    blk_ofs, blk_ofs, 4
-        bl      L_124A0
+        bl      dr_operand_load_l
         lhz     rtn_addr, 2(rec_ptr)
         addi    rtn_addr, rtn_addr, 2
-        bl      L_12510
-        lwz     addr, 0x4578(base_disp)
+        bl      dr_operand_address_L1
+        lwz     addr, T_158B0 - dr_emitters(base_disp)  // template: and. addr, addr, rtn_addr
         b       dr_emit_and_l_2_L1
 dr_emit_andi_l_L1:
-        bl      L_12518
-        lwz     addr, 0x4570(base_disp)
+        bl      dr_operand_address_L2
+        lwz     addr, T_158A8 - dr_emitters(base_disp)  // template: and. d0, d0, addr
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
         rlwimi  data, prefetch_data, 21, 8, 10          // data[23:21] = prefetch_data[2:0]
         b       dr_emit_and_l_L2
-        and.    d0, d0, d0
-        and.    d0, d0, addr
-        and.    addr, d0, addr
-        and.    addr, addr, rtn_addr
+T_158A4:
+        and.    d0, d0, d0                              // template
+T_158A8:
+        and.    d0, d0, addr                            // template
+T_158AC:
+        and.    addr, d0, addr                          // template
+T_158B0:
+        and.    addr, addr, rtn_addr                    // template
 
 // Code generator for 424 opcodes:
 //     AND.W Dn,Dn
@@ -8151,23 +9465,31 @@ dr_emit_andi_l_L1:
 //     AND.W (d16,An),Dn
 //     AND.W (d8,An,Xn),Dn
 //     ... and 5 more forms
+// For C040, AND.W D0,D0, it generates
+//         and     addr, d0, d0
+//         rlwimi  d0, addr, 0, 16, 31
+//         extsh   addr, d0
+//         addco.  addr, addr, zero
+// and, when the condition codes are not wanted afterwards,
+//         and     addr, d0, d0
+//         rlwimi  d0, addr, 0, 16, 31
 dr_emit_and_w_2:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr7, rtn_addr, 0x0001
         lis     immed_data, 0x0060
         ble     cr7, dr_emit_and_w_2_L1
-        bl      L_124B8
-        lwz     addr, 0x4688(base_disp)
+        bl      dr_operand_load_w
+        lwz     addr, T_159C0 - dr_emitters(base_disp)  // template: and addr, addr, d0
         rlwinm  data, prefetch_data, 2, 18, 20          // data = prefetch_data[11:9] << 11
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x4690(base_disp)
+        lwz     addr, T_159C8 - dr_emitters(base_disp)  // template: rlwimi d0, addr, 0, 16, 31
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         b       dr_emit_and_w_2_L3
 dr_emit_and_w_2_L1:
-        lwz     addr, 0x468C(base_disp)
+        lwz     addr, T_159C4 - dr_emitters(base_disp)  // template: and addr, d0, d0
         rlwinm  data, prefetch_data, 12, 8, 10          // data = prefetch_data[11:9] << 21
         mr      immed_data, data
         rlwimi  data, prefetch_data, 11, 18, 20         // data[13:11] = prefetch_data[2:0]
@@ -8176,27 +9498,27 @@ dr_emit_and_w_2_L1:
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
         addis   immed_data, immed_data, 0x100
 dr_emit_and_w_2_L2:
-        lwz     addr, 0x4690(base_disp)
+        lwz     addr, T_159C8 - dr_emitters(base_disp)  // template: rlwimi d0, addr, 0, 16, 31
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
 dr_emit_and_w_2_L3:
         lhz     data, 0(rec_ptr)
         mtcrf   0x02, data                              // cr6 = data[7:4]
-        lwz     addr, 0x437C(base_disp)
+        lwz     addr, T_156B4 - dr_emitters(base_disp)  // template: extsh addr, zero
         ble     cr6, dr_emit_next
-        lwz     data, 0x4380(base_disp)
+        lwz     data, T_156B8 - dr_emitters(base_disp)  // template: addco. addr, addr, zero
         add     addr, addr, immed_data
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
         b       dr_emit_next
 dr_emit_and_w_2_L4:
         lis     immed_data, 0x0060
-        bl      L_124B8
-        lwz     addr, 0x4688(base_disp)
+        bl      dr_operand_load_w
+        lwz     addr, T_159C0 - dr_emitters(base_disp)  // template: and addr, addr, d0
         rlwinm  data, prefetch_data, 2, 18, 20          // data = prefetch_data[11:9] << 11
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        bl      L_124F8
+        bl      dr_operand_writeback_w
         b       dr_emit_and_w_2_L3
 dr_emit_and_w_2_L5:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
@@ -8204,19 +9526,19 @@ dr_emit_and_w_2_L5:
         lis     immed_data, 0x00A0
         ble     cr7, dr_emit_and_w_2_L6
         addi    blk_ofs, blk_ofs, 2
-        bl      L_124B8
+        bl      dr_operand_load_w
         lhz     rtn_addr, 2(rec_ptr)
         addi    rtn_addr, rtn_addr, 2
-        lwz     addr, 0x4694(base_disp)
+        lwz     addr, T_159CC - dr_emitters(base_disp)  // template: andi. addr, rtn_addr, 0x0000
         lhax    rtn_addr, pc, rtn_addr
         rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
         stwu    addr, 4(out_ptr)
         lis     immed_data, 0x0060
-        bl      L_124F8
+        bl      dr_operand_writeback_w
         b       dr_emit_and_w_2_L3
 dr_emit_and_w_2_L6:
         lis     immed_data, 0x0100
-        lwz     addr, 0x4698(base_disp)
+        lwz     addr, T_159D0 - dr_emitters(base_disp)  // template: andi. addr, d0, 0x0000
         lhax    rtn_addr, pc, blk_ofs
         rlwinm  data, prefetch_data, 21, 8, 10          // data = prefetch_data[2:0] << 21
         add     immed_data, immed_data, data
@@ -8225,11 +9547,16 @@ dr_emit_and_w_2_L6:
         stwu    addr, 4(out_ptr)
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
         b       dr_emit_and_w_2_L2
-        and     addr, addr, d0
-        and     addr, d0, d0
-        rlwimi  d0, addr, 0, 16, 31                     // d0[15:0] = addr[15:0]
-        andi.   addr, rtn_addr, 0x0000
-        andi.   addr, d0, 0x0000
+T_159C0:
+        and     addr, addr, d0                          // template
+T_159C4:
+        and     addr, d0, d0                            // template
+T_159C8:
+        rlwimi  d0, addr, 0, 16, 31                     // template
+T_159CC:
+        andi.   addr, rtn_addr, 0x0000                  // template
+T_159D0:
+        andi.   addr, d0, 0x0000                        // template
 
 // Code generator for 424 opcodes:
 //     AND.B Dn,Dn
@@ -8239,23 +9566,31 @@ dr_emit_and_w_2_L6:
 //     AND.B (d16,An),Dn
 //     AND.B (d8,An,Xn),Dn
 //     ... and 5 more forms
+// For C000, AND.B D0,D0, it generates
+//         and     addr, d0, d0
+//         rlwimi  d0, addr, 0, 24, 31
+//         extsb   addr, d0
+//         addco.  addr, addr, zero
+// and, when the condition codes are not wanted afterwards,
+//         and     addr, d0, d0
+//         rlwimi  d0, addr, 0, 24, 31
 dr_emit_and_b_2:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr7, rtn_addr, 0x0001
         lis     immed_data, 0x0060
         ble     cr7, dr_emit_and_b_2_L1
-        bl      L_124C0
-        lwz     addr, 0x4688(base_disp)
+        bl      dr_operand_load_b
+        lwz     addr, T_159C0 - dr_emitters(base_disp)  // template: and addr, addr, d0
         rlwinm  data, prefetch_data, 2, 18, 20          // data = prefetch_data[11:9] << 11
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x47AC(base_disp)
+        lwz     addr, T_15AE4 - dr_emitters(base_disp)  // template: rlwimi d0, addr, 0, 24, 31
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         b       dr_emit_and_b_2_L3
 dr_emit_and_b_2_L1:
-        lwz     addr, 0x47A8(base_disp)
+        lwz     addr, T_15AE0 - dr_emitters(base_disp)  // template: and addr, d0, d0
         rlwinm  data, prefetch_data, 12, 8, 10          // data = prefetch_data[11:9] << 21
         mr      immed_data, data
         rlwimi  data, prefetch_data, 11, 18, 20         // data[13:11] = prefetch_data[2:0]
@@ -8264,27 +9599,27 @@ dr_emit_and_b_2_L1:
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
         addis   immed_data, immed_data, 0x100
 dr_emit_and_b_2_L2:
-        lwz     addr, 0x47AC(base_disp)
+        lwz     addr, T_15AE4 - dr_emitters(base_disp)  // template: rlwimi d0, addr, 0, 24, 31
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
 dr_emit_and_b_2_L3:
         lhz     data, 0(rec_ptr)
         mtcrf   0x02, data                              // cr6 = data[7:4]
-        lwz     addr, 0x44A0(base_disp)
+        lwz     addr, T_157D8 - dr_emitters(base_disp)  // template: extsb addr, zero
         ble     cr6, dr_emit_next
-        lwz     data, 0x44A4(base_disp)
+        lwz     data, T_157DC - dr_emitters(base_disp)  // template: addco. addr, addr, zero
         add     addr, addr, immed_data
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
         b       dr_emit_next
 dr_emit_and_b_2_L4:
         lis     immed_data, 0x0060
-        bl      L_124C0
-        lwz     addr, 0x4688(base_disp)
+        bl      dr_operand_load_b
+        lwz     addr, T_159C0 - dr_emitters(base_disp)  // template: and addr, addr, d0
         rlwinm  data, prefetch_data, 2, 18, 20          // data = prefetch_data[11:9] << 11
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        bl      L_12500
+        bl      dr_operand_writeback_b
         b       dr_emit_and_b_2_L3
 dr_emit_and_b_2_L5:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
@@ -8292,19 +9627,19 @@ dr_emit_and_b_2_L5:
         lis     immed_data, 0x00A0
         ble     cr7, dr_emit_and_b_2_L6
         addi    blk_ofs, blk_ofs, 2
-        bl      L_124C0
+        bl      dr_operand_load_b
         lhz     rtn_addr, 2(rec_ptr)
         addi    rtn_addr, rtn_addr, 2
-        lwz     addr, 0x4694(base_disp)
+        lwz     addr, T_159CC - dr_emitters(base_disp)  // template: andi. addr, rtn_addr, 0x0000
         lhax    rtn_addr, pc, rtn_addr
         rlwimi  addr, rtn_addr, 0, 24, 31               // addr[7:0] = rtn_addr[7:0]
         stwu    addr, 4(out_ptr)
         lis     immed_data, 0x0060
-        bl      L_12500
+        bl      dr_operand_writeback_b
         b       dr_emit_and_b_2_L3
 dr_emit_and_b_2_L6:
         lis     immed_data, 0x0100
-        lwz     addr, 0x4698(base_disp)
+        lwz     addr, T_159D0 - dr_emitters(base_disp)  // template: andi. addr, d0, 0x0000
         lhax    rtn_addr, pc, blk_ofs
         rlwinm  data, prefetch_data, 21, 8, 10          // data = prefetch_data[2:0] << 21
         add     immed_data, immed_data, data
@@ -8313,8 +9648,10 @@ dr_emit_and_b_2_L6:
         stwu    addr, 4(out_ptr)
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
         b       dr_emit_and_b_2_L2
-        and     addr, d0, d0
-        rlwimi  d0, addr, 0, 24, 31                     // d0[7:0] = addr[7:0]
+T_15AE0:
+        and     addr, d0, d0                            // template
+T_15AE4:
+        rlwimi  d0, addr, 0, 24, 31                     // template
 
 // Code generator for 400 opcodes:
 //     EOR.L Dn,Dn
@@ -8324,27 +9661,32 @@ dr_emit_and_b_2_L6:
 //     EOR.L Dn,(d16,An)
 //     EOR.L Dn,(d8,An,Xn)
 //     ... and 2 more forms
+// For B180, EOR.L D0,D0, it generates
+//         xor.    d0, d0, d0
+//         addco   zero, zero, zero
+// and, when the condition codes are not wanted afterwards,
+//         xor.    d0, d0, d0
 dr_emit_eor_l:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr6, rtn_addr, 0x0001
         lis     immed_data, 0x0060
         ble     cr6, dr_emit_eor_l_L3
-        bl      L_124A0
-        lwz     addr, 0x4860(base_disp)
+        bl      dr_operand_load_l
+        lwz     addr, T_15B98 - dr_emitters(base_disp)  // template: xor. addr, addr, d0
         rlwinm  data, prefetch_data, 2, 18, 20          // data = prefetch_data[11:9] << 11
         add     addr, addr, data
 dr_emit_eor_l_L1:
         stwu    addr, 4(out_ptr)
-        bl      L_124F0
+        bl      dr_operand_writeback_l
 dr_emit_eor_l_L2:
         lhz     addr, 0(rec_ptr)
         mtcrf   0x02, addr                              // cr6 = addr[7:4]
-        lwz     addr, 0x425C(base_disp)
+        lwz     addr, T_15594 - dr_emitters(base_disp)  // template: addco zero, zero, zero
         ble     cr6, dr_emit_next
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
 dr_emit_eor_l_L3:
-        lwz     addr, 0x4858(base_disp)
+        lwz     addr, T_15B90 - dr_emitters(base_disp)  // template: xor. d0, d0, d0
         rlwinm  data, prefetch_data, 2, 18, 20          // data = prefetch_data[11:9] << 11
         rlwimi  data, prefetch_data, 16, 13, 15         // data[18:16] = prefetch_data[2:0]
         rlwimi  data, prefetch_data, 21, 8, 10          // data[23:21] = prefetch_data[2:0]
@@ -8361,6 +9703,14 @@ dr_emit_eor_l_L4:
 //     EORI.W #<data>,(d16,An)
 //     EORI.W #<data>,(d8,An,Xn)
 //     ... and 3 more forms
+// For 0A40 0010, EORI.W #<data>,D0, it generates
+//         xori    addr, d0, 0x0010
+//         rlwimi  d0, addr, 0, 16, 31
+//         extsh   addr, d0
+//         addco.  addr, addr, zero
+// and, when the condition codes are not wanted afterwards,
+//         xori    addr, d0, 0x0010
+//         rlwimi  d0, addr, 0, 16, 31
 dr_emit_eori_w:
         b       dr_emit_eor_w_L4
 
@@ -8372,6 +9722,14 @@ dr_emit_eori_w:
 //     EORI.B #<data>,(d16,An)
 //     EORI.B #<data>,(d8,An,Xn)
 //     ... and 3 more forms
+// For 0A00 0010, EORI.B #<data>,D0, it generates
+//         xori    addr, d0, 0x0010
+//         rlwimi  d0, addr, 0, 24, 31
+//         extsb   addr, d0
+//         addco.  addr, addr, zero
+// and, when the condition codes are not wanted afterwards,
+//         xori    addr, d0, 0x0010
+//         rlwimi  d0, addr, 0, 24, 31
 dr_emit_eori_b:
         b       dr_emit_eor_b_L4
 
@@ -8383,29 +9741,42 @@ dr_emit_eori_b:
 //     EORI.L #<data>,(d16,An)
 //     EORI.L #<data>,(d8,An,Xn)
 //     ... and 3 more forms
+// For 0A80 0010 0010, EORI.L #<data>,D0, it generates
+//         ori     addr, zero, 0x0010
+//         oris    addr, addr, 0x0010
+//         xor.    d0, d0, addr
+//         addco   zero, zero, zero
+// and, when the condition codes are not wanted afterwards,
+//         ori     addr, zero, 0x0010
+//         oris    addr, addr, 0x0010
+//         xor.    d0, d0, addr
 dr_emit_eori_l:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr6, rtn_addr, 0x0001
         ble     cr6, dr_emit_eori_l_L1
         lis     immed_data, 0x00A0
         addi    blk_ofs, blk_ofs, 4
-        bl      L_124A0
+        bl      dr_operand_load_l
         lhz     rtn_addr, 2(rec_ptr)
         addi    rtn_addr, rtn_addr, 2
-        bl      L_12510
-        lwz     addr, 0x4864(base_disp)
+        bl      dr_operand_address_L1
+        lwz     addr, T_15B9C - dr_emitters(base_disp)  // template: xor. addr, addr, rtn_addr
         lis     immed_data, 0x0060
         b       dr_emit_eor_l_L1
 dr_emit_eori_l_L1:
-        bl      L_12518
-        lwz     addr, 0x485C(base_disp)
+        bl      dr_operand_address_L2
+        lwz     addr, T_15B94 - dr_emitters(base_disp)  // template: xor. d0, d0, addr
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
         rlwimi  data, data, 5, 8, 10                    // data[23:21] = data[18:16]
         b       dr_emit_eor_l_L4
-        xor.    d0, d0, d0
-        xor.    d0, d0, addr
-        xor.    addr, addr, d0
-        xor.    addr, addr, rtn_addr
+T_15B90:
+        xor.    d0, d0, d0                              // template
+T_15B94:
+        xor.    d0, d0, addr                            // template
+T_15B98:
+        xor.    addr, addr, d0                          // template
+T_15B9C:
+        xor.    addr, addr, rtn_addr                    // template
 
 // Code generator for 400 opcodes:
 //     EOR.W Dn,Dn
@@ -8415,20 +9786,28 @@ dr_emit_eori_l_L1:
 //     EOR.W Dn,(d16,An)
 //     EOR.W Dn,(d8,An,Xn)
 //     ... and 2 more forms
+// For B140, EOR.W D0,D0, it generates
+//         xor     addr, d0, d0
+//         rlwimi  d0, addr, 0, 16, 31
+//         extsh   addr, d0
+//         addco.  addr, addr, zero
+// and, when the condition codes are not wanted afterwards,
+//         xor     addr, d0, d0
+//         rlwimi  d0, addr, 0, 16, 31
 dr_emit_eor_w:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr7, rtn_addr, 0x0001
         lis     immed_data, 0x0060
         ble     cr7, dr_emit_eor_w_L1
-        bl      L_124B8
-        lwz     addr, 0x4948(base_disp)
+        bl      dr_operand_load_w
+        lwz     addr, T_15C80 - dr_emitters(base_disp)  // template: xor addr, addr, d0
         rlwinm  data, prefetch_data, 2, 18, 20          // data = prefetch_data[11:9] << 11
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        bl      L_124F8
+        bl      dr_operand_writeback_w
         b       dr_emit_eor_w_L3
 dr_emit_eor_w_L1:
-        lwz     addr, 0x494C(base_disp)
+        lwz     addr, T_15C84 - dr_emitters(base_disp)  // template: xor addr, d0, d0
         rlwinm  data, prefetch_data, 12, 8, 10          // data = prefetch_data[11:9] << 21
         rlwimi  data, prefetch_data, 11, 18, 20         // data[13:11] = prefetch_data[2:0]
         add     addr, addr, data
@@ -8437,15 +9816,15 @@ dr_emit_eor_w_L1:
         rlwinm  immed_data, prefetch_data, 21, 8, 10    // immed_data = prefetch_data[2:0] << 21
         addis   immed_data, immed_data, 0x100
 dr_emit_eor_w_L2:
-        lwz     addr, 0x4950(base_disp)
+        lwz     addr, T_15C88 - dr_emitters(base_disp)  // template: rlwimi d0, addr, 0, 16, 31
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
 dr_emit_eor_w_L3:
         lhz     data, 0(rec_ptr)
         mtcrf   0x02, data                              // cr6 = data[7:4]
-        lwz     addr, 0x437C(base_disp)
+        lwz     addr, T_156B4 - dr_emitters(base_disp)  // template: extsh addr, zero
         ble     cr6, dr_emit_next
-        lwz     data, 0x4380(base_disp)
+        lwz     data, T_156B8 - dr_emitters(base_disp)  // template: addco. addr, addr, zero
         add     addr, addr, immed_data
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
@@ -8456,19 +9835,19 @@ dr_emit_eor_w_L4:
         lis     immed_data, 0x00A0
         ble     cr7, dr_emit_eor_w_L5
         addi    blk_ofs, blk_ofs, 2
-        bl      L_124B8
+        bl      dr_operand_load_w
         lhz     rtn_addr, 2(rec_ptr)
         addi    rtn_addr, rtn_addr, 2
-        lwz     addr, 0x4954(base_disp)
+        lwz     addr, T_15C8C - dr_emitters(base_disp)  // template: xori addr, rtn_addr, 0x0000
         lhax    rtn_addr, pc, rtn_addr
         rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
         stwu    addr, 4(out_ptr)
         lis     immed_data, 0x0060
-        bl      L_124F8
+        bl      dr_operand_writeback_w
         b       dr_emit_eor_w_L3
 dr_emit_eor_w_L5:
         lis     immed_data, 0x0100
-        lwz     addr, 0x4958(base_disp)
+        lwz     addr, T_15C90 - dr_emitters(base_disp)  // template: xori addr, d0, 0x0000
         lhax    rtn_addr, pc, blk_ofs
         rlwinm  data, prefetch_data, 21, 8, 10          // data = prefetch_data[2:0] << 21
         add     immed_data, immed_data, data
@@ -8477,11 +9856,16 @@ dr_emit_eor_w_L5:
         stwu    addr, 4(out_ptr)
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
         b       dr_emit_eor_w_L2
-        xor     addr, addr, d0
-        xor     addr, d0, d0
-        rlwimi  d0, addr, 0, 16, 31                     // d0[15:0] = addr[15:0]
-        xori    addr, rtn_addr, 0x0000
-        xori    addr, d0, 0x0000
+T_15C80:
+        xor     addr, addr, d0                          // template
+T_15C84:
+        xor     addr, d0, d0                            // template
+T_15C88:
+        rlwimi  d0, addr, 0, 16, 31                     // template
+T_15C8C:
+        xori    addr, rtn_addr, 0x0000                  // template
+T_15C90:
+        xori    addr, d0, 0x0000                        // template
 
 // Code generator for 400 opcodes:
 //     EOR.B Dn,Dn
@@ -8491,20 +9875,28 @@ dr_emit_eor_w_L5:
 //     EOR.B Dn,(d16,An)
 //     EOR.B Dn,(d8,An,Xn)
 //     ... and 2 more forms
+// For B100, EOR.B D0,D0, it generates
+//         xor     addr, d0, d0
+//         rlwimi  d0, addr, 0, 24, 31
+//         extsb   addr, d0
+//         addco.  addr, addr, zero
+// and, when the condition codes are not wanted afterwards,
+//         xor     addr, d0, d0
+//         rlwimi  d0, addr, 0, 24, 31
 dr_emit_eor_b:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr7, rtn_addr, 0x0001
         lis     immed_data, 0x0060
         ble     cr7, dr_emit_eor_b_L1
-        bl      L_124C0
-        lwz     addr, 0x4948(base_disp)
+        bl      dr_operand_load_b
+        lwz     addr, T_15C80 - dr_emitters(base_disp)  // template: xor addr, addr, d0
         rlwinm  data, prefetch_data, 2, 18, 20          // data = prefetch_data[11:9] << 11
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        bl      L_12500
+        bl      dr_operand_writeback_b
         b       dr_emit_eor_b_L3
 dr_emit_eor_b_L1:
-        lwz     addr, 0x4A3C(base_disp)
+        lwz     addr, T_15D74 - dr_emitters(base_disp)  // template: xor addr, d0, d0
         rlwinm  data, prefetch_data, 12, 8, 10          // data = prefetch_data[11:9] << 21
         rlwimi  data, prefetch_data, 11, 18, 20         // data[13:11] = prefetch_data[2:0]
         add     addr, addr, data
@@ -8513,15 +9905,15 @@ dr_emit_eor_b_L1:
         rlwinm  immed_data, prefetch_data, 21, 8, 10    // immed_data = prefetch_data[2:0] << 21
         addis   immed_data, immed_data, 0x100
 dr_emit_eor_b_L2:
-        lwz     addr, 0x4A40(base_disp)
+        lwz     addr, T_15D78 - dr_emitters(base_disp)  // template: rlwimi d0, addr, 0, 24, 31
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
 dr_emit_eor_b_L3:
         lhz     data, 0(rec_ptr)
         mtcrf   0x02, data                              // cr6 = data[7:4]
-        lwz     addr, 0x44A0(base_disp)
+        lwz     addr, T_157D8 - dr_emitters(base_disp)  // template: extsb addr, zero
         ble     cr6, dr_emit_next
-        lwz     data, 0x44A4(base_disp)
+        lwz     data, T_157DC - dr_emitters(base_disp)  // template: addco. addr, addr, zero
         add     addr, addr, immed_data
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
@@ -8532,19 +9924,19 @@ dr_emit_eor_b_L4:
         lis     immed_data, 0x00A0
         ble     cr7, dr_emit_eor_b_L5
         addi    blk_ofs, blk_ofs, 2
-        bl      L_124C0
+        bl      dr_operand_load_b
         lhz     rtn_addr, 2(rec_ptr)
         addi    rtn_addr, rtn_addr, 2
-        lwz     addr, 0x4954(base_disp)
+        lwz     addr, T_15C8C - dr_emitters(base_disp)  // template: xori addr, rtn_addr, 0x0000
         lhax    rtn_addr, pc, rtn_addr
         rlwimi  addr, rtn_addr, 0, 24, 31               // addr[7:0] = rtn_addr[7:0]
         stwu    addr, 4(out_ptr)
         lis     immed_data, 0x0060
-        bl      L_12500
+        bl      dr_operand_writeback_b
         b       dr_emit_eor_b_L3
 dr_emit_eor_b_L5:
         lis     immed_data, 0x0100
-        lwz     addr, 0x4958(base_disp)
+        lwz     addr, T_15C90 - dr_emitters(base_disp)  // template: xori addr, d0, 0x0000
         lhax    rtn_addr, pc, blk_ofs
         rlwinm  data, prefetch_data, 21, 8, 10          // data = prefetch_data[2:0] << 21
         add     immed_data, immed_data, data
@@ -8553,8 +9945,10 @@ dr_emit_eor_b_L5:
         stwu    addr, 4(out_ptr)
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
         b       dr_emit_eor_b_L2
-        xor     addr, d0, d0
-        rlwimi  d0, addr, 0, 24, 31                     // d0[7:0] = addr[7:0]
+T_15D74:
+        xor     addr, d0, d0                            // template
+T_15D78:
+        rlwimi  d0, addr, 0, 24, 31                     // template
 
 // Code generator for 50 opcodes:
 //     NOT.B Dn
@@ -8564,6 +9958,14 @@ dr_emit_eor_b_L5:
 //     NOT.B (d16,An)
 //     NOT.B (d8,An,Xn)
 //     ... and 2 more forms
+// For 4600, NOT.B D0, it generates
+//         not     addr, d0
+//         rlwimi  d0, addr, 0, 24, 31
+//         extsb.  addr, addr
+//         addco   zero, zero, zero
+// and, when the condition codes are not wanted afterwards,
+//         not     addr, d0
+//         rlwimi  d0, addr, 0, 24, 31
 dr_emit_not_b:
         b       dr_emit_not_l_L7
 
@@ -8575,6 +9977,14 @@ dr_emit_not_b:
 //     NOT.W (d16,An)
 //     NOT.W (d8,An,Xn)
 //     ... and 2 more forms
+// For 4640, NOT.W D0, it generates
+//         not     addr, d0
+//         rlwimi  d0, addr, 0, 16, 31
+//         extsh.  addr, addr
+//         addco   zero, zero, zero
+// and, when the condition codes are not wanted afterwards,
+//         not     addr, d0
+//         rlwimi  d0, addr, 0, 16, 31
 dr_emit_not_w:
         b       dr_emit_not_l_L4
 
@@ -8586,25 +9996,30 @@ dr_emit_not_w:
 //     NOT.L (d16,An)
 //     NOT.L (d8,An,Xn)
 //     ... and 2 more forms
+// For 4680, NOT.L D0, it generates
+//         nor.    d0, d0, d0
+//         addco   zero, zero, zero
+// and, when the condition codes are not wanted afterwards,
+//         nor.    d0, d0, d0
 dr_emit_not_l:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr6, rtn_addr, 0x0000
         lis     immed_data, 0x0060
         beq     cr6, dr_emit_not_l_L3
-        bl      L_124A0
-        lwz     addr, 0x4B60(base_disp)
+        bl      dr_operand_load_l
+        lwz     addr, T_15E98 - dr_emitters(base_disp)  // template: nor. addr, addr, addr
         stwu    addr, 4(out_ptr)
-        bl      L_124F0
+        bl      dr_operand_writeback_l
 dr_emit_not_l_L1:
         lhz     data, 0(rec_ptr)
         mtcrf   0x02, data                              // cr6 = data[7:4]
         ble     cr6, dr_emit_next
 dr_emit_not_l_L2:
-        lwz     addr, 0x4B78(base_disp)
+        lwz     addr, T_15EB0 - dr_emitters(base_disp)  // template: addco zero, zero, zero
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
 dr_emit_not_l_L3:
-        lwz     addr, 0x4B64(base_disp)
+        lwz     addr, T_15E9C - dr_emitters(base_disp)  // template: nor. d0, d0, d0
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
         rlwimi  data, prefetch_data, 21, 8, 10          // data[23:21] = prefetch_data[2:0]
         rlwimi  data, prefetch_data, 11, 18, 20         // data[13:11] = prefetch_data[2:0]
@@ -8616,20 +10031,20 @@ dr_emit_not_l_L4:
         cmplwi  cr6, rtn_addr, 0x0000
         lis     immed_data, 0x0060
         beq     cr6, dr_emit_not_l_L6
-        bl      L_124B8
-        lwz     addr, 0x4B68(base_disp)
+        bl      dr_operand_load_w
+        lwz     addr, T_15EA0 - dr_emitters(base_disp)  // template: not addr, addr
         stwu    addr, 4(out_ptr)
-        bl      L_124F8
+        bl      dr_operand_writeback_w
 dr_emit_not_l_L5:
         lhz     data, 0(rec_ptr)
         mtcrf   0x02, data                              // cr6 = data[7:4]
         ble     cr6, dr_emit_next
-        lwz     addr, 0x4B7C(base_disp)
+        lwz     addr, T_15EB4 - dr_emitters(base_disp)  // template: extsh. addr, addr
         stwu    addr, 4(out_ptr)
         b       dr_emit_not_l_L2
 dr_emit_not_l_L6:
-        lwz     rtn_addr, 0x4B70(base_disp)
-        lwz     addr, 0x4B6C(base_disp)
+        lwz     rtn_addr, T_15EA8 - dr_emitters(base_disp)  // template: rlwimi d0, addr, 0, 16, 31
+        lwz     addr, T_15EA4 - dr_emitters(base_disp)  // template: not addr, d0
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
         add     rtn_addr, rtn_addr, data
         rlwinm  data, prefetch_data, 21, 8, 10          // data = prefetch_data[2:0] << 21
@@ -8643,20 +10058,20 @@ dr_emit_not_l_L7:
         cmplwi  cr6, rtn_addr, 0x0000
         lis     immed_data, 0x0060
         beq     cr6, dr_emit_not_l_L9
-        bl      L_124C0
-        lwz     addr, 0x4B68(base_disp)
+        bl      dr_operand_load_b
+        lwz     addr, T_15EA0 - dr_emitters(base_disp)  // template: not addr, addr
         stwu    addr, 4(out_ptr)
-        bl      L_12500
+        bl      dr_operand_writeback_b
 dr_emit_not_l_L8:
         lhz     data, 0(rec_ptr)
         mtcrf   0x02, data                              // cr6 = data[7:4]
         ble     cr6, dr_emit_next
-        lwz     addr, 0x4B80(base_disp)
+        lwz     addr, T_15EB8 - dr_emitters(base_disp)  // template: extsb. addr, addr
         stwu    addr, 4(out_ptr)
         b       dr_emit_not_l_L2
 dr_emit_not_l_L9:
-        lwz     rtn_addr, 0x4B74(base_disp)
-        lwz     addr, 0x4B6C(base_disp)
+        lwz     rtn_addr, T_15EAC - dr_emitters(base_disp)  // template: rlwimi d0, addr, 0, 24, 31
+        lwz     addr, T_15EA4 - dr_emitters(base_disp)  // template: not addr, d0
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
         add     rtn_addr, rtn_addr, data
         rlwinm  data, prefetch_data, 21, 8, 10          // data = prefetch_data[2:0] << 21
@@ -8665,15 +10080,24 @@ dr_emit_not_l_L9:
         stwu    addr, 4(out_ptr)
         stwu    rtn_addr, 4(out_ptr)
         b       dr_emit_not_l_L8
-        nor.    addr, addr, addr                        // addr = ~(addr | addr)
-        nor.    d0, d0, d0                              // d0 = ~(d0 | d0)
-        not     addr, addr
-        not     addr, d0
-        rlwimi  d0, addr, 0, 16, 31                     // d0[15:0] = addr[15:0]
-        rlwimi  d0, addr, 0, 24, 31                     // d0[7:0] = addr[7:0]
-        addco   zero, zero, zero
-        extsh.  addr, addr                              // addr = sign-extended low word of addr
-        extsb.  addr, addr                              // addr = sign-extended low byte of addr
+T_15E98:
+        nor.    addr, addr, addr                        // template
+T_15E9C:
+        nor.    d0, d0, d0                              // template
+T_15EA0:
+        not     addr, addr                              // template
+T_15EA4:
+        not     addr, d0                                // template
+T_15EA8:
+        rlwimi  d0, addr, 0, 16, 31                     // template
+T_15EAC:
+        rlwimi  d0, addr, 0, 24, 31                     // template
+T_15EB0:
+        addco   zero, zero, zero                        // template
+T_15EB4:
+        extsh.  addr, addr                              // template
+T_15EB8:
+        extsb.  addr, addr                              // template
 
 // Code generator for 51 opcodes:
 //     BTST.L #<bit>,Dn
@@ -8683,8 +10107,12 @@ dr_emit_not_l_L9:
 //     BTST.B #<bit>,(d16,An)
 //     BTST.B #<bit>,(d8,An,Xn)
 //     ... and 3 more forms
+// For 0800 0010, BTST.L #<bit>,D0, it generates
+//         rlwinm  addr, d0, 16, 31, 31
+//         mtcrf   0x01, addr
+//         crnot   eq, 4*cr7+so
 dr_emit_btst:
-        b       L_162D4
+        b       dr_emit_btst_continued
 
 // Code generator for 51 opcodes:
 //     BCHG.L #<bit>,Dn
@@ -8694,8 +10122,15 @@ dr_emit_btst:
 //     BCHG.B #<bit>,(d16,An)
 //     BCHG.B #<bit>,(d8,An,Xn)
 //     ... and 3 more forms
+// For 0840 0010, BCHG.L #<bit>,D0, it generates
+//         rlwinm  addr, d0, 16, 31, 31
+//         mtcrf   0x01, addr
+//         xoris   d0, d0, 0x0001
+//         crnot   eq, 4*cr7+so
+// and, when the condition codes are not wanted afterwards,
+//         xoris   d0, d0, 0x0001
 dr_emit_bchg:
-        b       L_16188
+        b       dr_emit_bchg_continued
 
 // Code generator for 51 opcodes:
 //     BCLR.L #<bit>,Dn
@@ -8705,6 +10140,15 @@ dr_emit_bchg:
 //     BCLR.B #<bit>,(d16,An)
 //     BCLR.B #<bit>,(d8,An,Xn)
 //     ... and 3 more forms
+// For 0880 0010, BCLR.L #<bit>,D0, it generates
+//         rlwinm  addr, d0, 16, 31, 31
+//         mtcrf   0x01, addr
+//         oris    rtn_addr, zero, 0x0001
+//         andc    d0, d0, rtn_addr
+//         crnot   eq, 4*cr7+so
+// and, when the condition codes are not wanted afterwards,
+//         oris    rtn_addr, zero, 0x0001
+//         andc    d0, d0, rtn_addr
 dr_emit_bclr:
         b       dr_emit_bset_L6
 
@@ -8716,13 +10160,20 @@ dr_emit_bclr:
 //     BSET.B #<bit>,(d16,An)
 //     BSET.B #<bit>,(d8,An,Xn)
 //     ... and 3 more forms
+// For 08C0 0010, BSET.L #<bit>,D0, it generates
+//         rlwinm  addr, d0, 16, 31, 31
+//         mtcrf   0x01, addr
+//         oris    d0, d0, 0x0001
+//         crnot   eq, 4*cr7+so
+// and, when the condition codes are not wanted afterwards,
+//         oris    d0, d0, 0x0001
 dr_emit_bset:
         rlwinm  addr, prefetch_data, 29, 29, 31         // addr = prefetch_data[5:3]
         cmpwi   cr7, addr, 0
         beq     cr7, dr_emit_bset_L2
         lis     immed_data, 0x0060
         addi    blk_ofs, blk_ofs, 2
-        bl      L_124C0
+        bl      dr_operand_load_b
         lhz     rtn_addr, 2(rec_ptr)
         lhz     data, 0(rec_ptr)
         addi    rtn_addr, rtn_addr, 2
@@ -8730,28 +10181,28 @@ dr_emit_bset:
         mtcrf   0x02, data                              // cr6 = data[7:4]
         clrlwi  rtn_addr, rtn_addr, 29                  // rtn_addr = rtn_addr & 0x00000007
         ble     cr6, dr_emit_bset_L1
-        lwz     addr, 0x4CCC(base_disp)
+        lwz     addr, T_16004 - dr_emitters(base_disp)  // template: rlwinm rtn_addr, addr, 7, 24, 24
         rlwinm  data, rtn_addr, 11, 16, 20              // data = rtn_addr[4:0] << 11
         subf    addr, data, addr                        // addr = addr - data
         stwu    addr, 4(out_ptr)
-        lwz     data, 0x4CD0(base_disp)
-        lwz     addr, 0x4CD4(base_disp)
+        lwz     data, T_16008 - dr_emitters(base_disp)  // template: mtcrf 0x02, rtn_addr
+        lwz     addr, T_1600C - dr_emitters(base_disp)  // template: ori addr, addr, 0x0000
         stwu    data, 4(out_ptr)
         li      data, 1
         rlwnm   data, data, rtn_addr, 0, 31             // data = rotl(data, rtn_addr) & 0xFFFFFFFF
         rlwimi  addr, data, 0, 24, 31                   // addr[7:0] = data[7:0]
-        lwz     data, 0x4CD8(base_disp)
+        lwz     data, T_16010 - dr_emitters(base_disp)  // template: crnot eq, 4*cr6+lt
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
-        bl      L_12500
+        bl      dr_operand_writeback_b
         b       dr_emit_next
 dr_emit_bset_L1:
-        lwz     addr, 0x4CD4(base_disp)
+        lwz     addr, T_1600C - dr_emitters(base_disp)  // template: ori addr, addr, 0x0000
         li      data, 1
         rlwnm   data, data, rtn_addr, 0, 31             // data = rotl(data, rtn_addr) & 0xFFFFFFFF
         rlwimi  addr, data, 0, 24, 31                   // addr[7:0] = data[7:0]
         stwu    addr, 4(out_ptr)
-        bl      L_12500
+        bl      dr_operand_writeback_b
         b       dr_emit_next
 dr_emit_bset_L2:
         lhz     data, 0(rec_ptr)
@@ -8759,18 +10210,18 @@ dr_emit_bset_L2:
         mtcrf   0x02, data                              // cr6 = data[7:4]
         clrlwi  rtn_addr, rtn_addr, 27                  // rtn_addr = rtn_addr & 0x0000001F
         ble     cr6, dr_emit_bset_L4
-        lwz     addr, 0x4CB8(base_disp)
+        lwz     addr, T_15FF0 - dr_emitters(base_disp)  // template: clrlwi addr, d0, 31
         neg     data, rtn_addr
         addi    data, data, 32
         rlwimi  addr, data, 11, 16, 20                  // addr[15:11] = data[4:0]
         rlwimi  addr, prefetch_data, 21, 8, 10          // addr[23:21] = prefetch_data[2:0]
-        lwz     data, 0x4CBC(base_disp)
+        lwz     data, T_15FF4 - dr_emitters(base_disp)  // template: mtcrf 0x01, addr
         stwu    addr, 4(out_ptr)
         cmpwi   cr7, rtn_addr, 15
         stwu    data, 4(out_ptr)
-        lwz     addr, 0x4CC0(base_disp)
+        lwz     addr, T_15FF8 - dr_emitters(base_disp)  // template: ori d0, d0, 0x0000
         ble     cr7, dr_emit_bset_L3
-        lwz     addr, 0x4CC4(base_disp)
+        lwz     addr, T_15FFC - dr_emitters(base_disp)  // template: oris d0, d0, 0x0000
         addi    rtn_addr, rtn_addr, -16
 dr_emit_bset_L3:
         li      data, 1
@@ -8778,15 +10229,15 @@ dr_emit_bset_L3:
         rlwimi  addr, prefetch_data, 21, 8, 10          // addr[23:21] = prefetch_data[2:0]
         rlwimi  addr, prefetch_data, 16, 13, 15         // addr[18:16] = prefetch_data[2:0]
         rlwimi  addr, data, 0, 16, 31                   // addr[15:0] = data[15:0]
-        lwz     data, 0x4CC8(base_disp)
+        lwz     data, T_16000 - dr_emitters(base_disp)  // template: crnot eq, 4*cr7+so
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
         b       dr_emit_next
 dr_emit_bset_L4:
         cmpwi   cr7, rtn_addr, 15
-        lwz     addr, 0x4CC0(base_disp)
+        lwz     addr, T_15FF8 - dr_emitters(base_disp)  // template: ori d0, d0, 0x0000
         ble     cr7, dr_emit_bset_L5
-        lwz     addr, 0x4CC4(base_disp)
+        lwz     addr, T_15FFC - dr_emitters(base_disp)  // template: oris d0, d0, 0x0000
         addi    rtn_addr, rtn_addr, -16
 dr_emit_bset_L5:
         li      data, 1
@@ -8796,22 +10247,31 @@ dr_emit_bset_L5:
         rlwimi  addr, data, 0, 16, 31                   // addr[15:0] = data[15:0]
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-        clrlwi  addr, d0, 31                            // addr = d0 & 0x00000001
-        mtcrf   0x01, addr                              // cr7 = addr[3:0]
-        ori     d0, d0, 0x0000
-        oris    d0, d0, 0x0000
-        crnot   eq, 4*cr7+so
-        rlwinm  rtn_addr, addr, 7, 24, 24               // rtn_addr = addr[0] << 7
-        mtcrf   0x02, rtn_addr                          // cr6 = rtn_addr[7:4]
-        ori     addr, addr, 0x0000
-        crnot   eq, 4*cr6+lt
+T_15FF0:
+        clrlwi  addr, d0, 31                            // template
+T_15FF4:
+        mtcrf   0x01, addr                              // template
+T_15FF8:
+        ori     d0, d0, 0x0000                          // template
+T_15FFC:
+        oris    d0, d0, 0x0000                          // template
+T_16000:
+        crnot   eq, 4*cr7+so                            // template
+T_16004:
+        rlwinm  rtn_addr, addr, 7, 24, 24               // template
+T_16008:
+        mtcrf   0x02, rtn_addr                          // template
+T_1600C:
+        ori     addr, addr, 0x0000                      // template
+T_16010:
+        crnot   eq, 4*cr6+lt                            // template
 dr_emit_bset_L6:
         rlwinm  addr, prefetch_data, 29, 29, 31         // addr = prefetch_data[5:3]
         cmpwi   cr7, addr, 0
         beq     cr7, dr_emit_bset_L8
         lis     immed_data, 0x0060
         addi    blk_ofs, blk_ofs, 2
-        bl      L_124C0
+        bl      dr_operand_load_b
         lhz     rtn_addr, 2(rec_ptr)
         lhz     data, 0(rec_ptr)
         addi    rtn_addr, rtn_addr, 2
@@ -8819,164 +10279,176 @@ dr_emit_bset_L6:
         mtcrf   0x02, data                              // cr6 = data[7:4]
         clrlwi  rtn_addr, rtn_addr, 29                  // rtn_addr = rtn_addr & 0x00000007
         ble     cr6, dr_emit_bset_L7
-        lwz     addr, 0x4E3C(base_disp)
+        lwz     addr, T_16174 - dr_emitters(base_disp)  // template: rlwinm rtn_addr, addr, 7, 24, 24
         rlwinm  data, rtn_addr, 11, 16, 20              // data = rtn_addr[4:0] << 11
         subf    addr, data, addr                        // addr = addr - data
         stwu    addr, 4(out_ptr)
-        lwz     data, 0x4E40(base_disp)
-        lwz     addr, 0x4E44(base_disp)
+        lwz     data, T_16178 - dr_emitters(base_disp)  // template: mtcrf 0x02, rtn_addr
+        lwz     addr, T_1617C - dr_emitters(base_disp)  // template: ori rtn_addr, zero, 0x0000
         stwu    data, 4(out_ptr)
         li      data, 1
         rlwnm   data, data, rtn_addr, 0, 31             // data = rotl(data, rtn_addr) & 0xFFFFFFFF
         rlwimi  addr, data, 0, 24, 31                   // addr[7:0] = data[7:0]
-        lwz     data, 0x4E48(base_disp)
+        lwz     data, T_16180 - dr_emitters(base_disp)  // template: andc addr, addr, rtn_addr
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x4E4C(base_disp)
+        lwz     addr, T_16184 - dr_emitters(base_disp)  // template: crnot eq, 4*cr6+lt
         stwu    data, 4(out_ptr)
         stwu    addr, 4(out_ptr)
-        bl      L_12500
+        bl      dr_operand_writeback_b
         b       dr_emit_next
 dr_emit_bset_L7:
-        lwz     addr, 0x4E44(base_disp)
+        lwz     addr, T_1617C - dr_emitters(base_disp)  // template: ori rtn_addr, zero, 0x0000
         li      data, 1
         rlwnm   data, data, rtn_addr, 0, 31             // data = rotl(data, rtn_addr) & 0xFFFFFFFF
         rlwimi  addr, data, 0, 24, 31                   // addr[7:0] = data[7:0]
-        lwz     data, 0x4E48(base_disp)
+        lwz     data, T_16180 - dr_emitters(base_disp)  // template: andc addr, addr, rtn_addr
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
-        bl      L_12500
+        bl      dr_operand_writeback_b
         b       dr_emit_next
 dr_emit_bset_L8:
         lhz     data, 0(rec_ptr)
         lhax    rtn_addr, pc, blk_ofs
         mtcrf   0x02, data                              // cr6 = data[7:4]
         clrlwi  rtn_addr, rtn_addr, 27                  // rtn_addr = rtn_addr & 0x0000001F
-        ble     cr6, L_16124
-        lwz     addr, 0x4E24(base_disp)
+        ble     cr6, dr_emit_bset_L10
+        lwz     addr, T_1615C - dr_emitters(base_disp)  // template: clrlwi addr, d0, 31
         neg     data, rtn_addr
         addi    data, data, 32
         rlwimi  addr, data, 11, 16, 20                  // addr[15:11] = data[4:0]
         rlwimi  addr, prefetch_data, 21, 8, 10          // addr[23:21] = prefetch_data[2:0]
-        lwz     data, 0x4E28(base_disp)
+        lwz     data, T_16160 - dr_emitters(base_disp)  // template: mtcrf 0x01, addr
         stwu    addr, 4(out_ptr)
         cmpwi   cr7, rtn_addr, 15
         stwu    data, 4(out_ptr)
-        lwz     addr, 0x4E2C(base_disp)
-        ble     cr7, L_160F8
-        lwz     addr, 0x4E30(base_disp)
+        lwz     addr, T_16164 - dr_emitters(base_disp)  // template: ori rtn_addr, zero, 0x0000
+        ble     cr7, dr_emit_bset_L9
+        lwz     addr, T_16168 - dr_emitters(base_disp)  // template: oris rtn_addr, zero, 0x0000
         addi    rtn_addr, rtn_addr, -16
-L_160F8:
+dr_emit_bset_L9:
         li      data, 1
         rlwnm   data, data, rtn_addr, 0, 31             // data = rotl(data, rtn_addr) & 0xFFFFFFFF
         rlwimi  addr, data, 0, 16, 31                   // addr[15:0] = data[15:0]
-        lwz     data, 0x4E34(base_disp)
+        lwz     data, T_1616C - dr_emitters(base_disp)  // template: andc d0, d0, rtn_addr
         stwu    addr, 4(out_ptr)
         rlwimi  data, prefetch_data, 21, 8, 10          // data[23:21] = prefetch_data[2:0]
         rlwimi  data, prefetch_data, 16, 13, 15         // data[18:16] = prefetch_data[2:0]
-        lwz     addr, 0x4E38(base_disp)
+        lwz     addr, T_16170 - dr_emitters(base_disp)  // template: crnot eq, 4*cr7+so
         stwu    data, 4(out_ptr)
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-L_16124:
+dr_emit_bset_L10:
         cmpwi   cr7, rtn_addr, 15
-        lwz     addr, 0x4E2C(base_disp)
-        ble     cr7, L_16138
-        lwz     addr, 0x4E30(base_disp)
+        lwz     addr, T_16164 - dr_emitters(base_disp)  // template: ori rtn_addr, zero, 0x0000
+        ble     cr7, dr_emit_bset_L11
+        lwz     addr, T_16168 - dr_emitters(base_disp)  // template: oris rtn_addr, zero, 0x0000
         addi    rtn_addr, rtn_addr, -16
-L_16138:
+dr_emit_bset_L11:
         li      data, 1
         rlwnm   data, data, rtn_addr, 0, 31             // data = rotl(data, rtn_addr) & 0xFFFFFFFF
         rlwimi  addr, data, 0, 16, 31                   // addr[15:0] = data[15:0]
-        lwz     data, 0x4E34(base_disp)
+        lwz     data, T_1616C - dr_emitters(base_disp)  // template: andc d0, d0, rtn_addr
         stwu    addr, 4(out_ptr)
         rlwimi  data, prefetch_data, 21, 8, 10          // data[23:21] = prefetch_data[2:0]
         rlwimi  data, prefetch_data, 16, 13, 15         // data[18:16] = prefetch_data[2:0]
         stwu    data, 4(out_ptr)
         b       dr_emit_next
-        clrlwi  addr, d0, 31                            // addr = d0 & 0x00000001
-        mtcrf   0x01, addr                              // cr7 = addr[3:0]
-        ori     rtn_addr, zero, 0x0000
-        oris    rtn_addr, zero, 0x0000
-        andc    d0, d0, rtn_addr                        // d0 = d0 & ~rtn_addr
-        crnot   eq, 4*cr7+so
-        rlwinm  rtn_addr, addr, 7, 24, 24               // rtn_addr = addr[0] << 7
-        mtcrf   0x02, rtn_addr                          // cr6 = rtn_addr[7:4]
-        ori     rtn_addr, zero, 0x0000
-        andc    addr, addr, rtn_addr                    // addr = addr & ~rtn_addr
-        crnot   eq, 4*cr6+lt
-L_16188:
+T_1615C:
+        clrlwi  addr, d0, 31                            // template
+T_16160:
+        mtcrf   0x01, addr                              // template
+T_16164:
+        ori     rtn_addr, zero, 0x0000                  // template
+T_16168:
+        oris    rtn_addr, zero, 0x0000                  // template
+T_1616C:
+        andc    d0, d0, rtn_addr                        // template
+T_16170:
+        crnot   eq, 4*cr7+so                            // template
+T_16174:
+        rlwinm  rtn_addr, addr, 7, 24, 24               // template
+T_16178:
+        mtcrf   0x02, rtn_addr                          // template
+T_1617C:
+        ori     rtn_addr, zero, 0x0000                  // template
+T_16180:
+        andc    addr, addr, rtn_addr                    // template
+T_16184:
+        crnot   eq, 4*cr6+lt                            // template
+
+dr_emit_bchg_continued:
         rlwinm  addr, prefetch_data, 29, 29, 31         // addr = prefetch_data[5:3]
         cmpwi   cr7, addr, 0
-        beq     cr7, L_16214
+        beq     cr7, dr_emit_bchg_continued_L2
         lis     immed_data, 0x0060
         addi    blk_ofs, blk_ofs, 2
-        bl      L_124C0
+        bl      dr_operand_load_b
         lhz     rtn_addr, 2(rec_ptr)
         lhz     data, 0(rec_ptr)
         addi    rtn_addr, rtn_addr, 2
         lhax    rtn_addr, pc, rtn_addr
         mtcrf   0x02, data                              // cr6 = data[7:4]
         clrlwi  rtn_addr, rtn_addr, 29                  // rtn_addr = rtn_addr & 0x00000007
-        ble     cr6, L_161F8
-        lwz     addr, 0x4F8C(base_disp)
+        ble     cr6, dr_emit_bchg_continued_L1
+        lwz     addr, T_162C4 - dr_emitters(base_disp)  // template: rlwinm rtn_addr, addr, 7, 24, 24
         rlwinm  data, rtn_addr, 11, 16, 20              // data = rtn_addr[4:0] << 11
         subf    addr, data, addr                        // addr = addr - data
         stwu    addr, 4(out_ptr)
-        lwz     data, 0x4F90(base_disp)
-        lwz     addr, 0x4F94(base_disp)
+        lwz     data, T_162C8 - dr_emitters(base_disp)  // template: mtcrf 0x02, rtn_addr
+        lwz     addr, T_162CC - dr_emitters(base_disp)  // template: xori addr, addr, 0x0000
         stwu    data, 4(out_ptr)
         li      data, 1
         rlwnm   data, data, rtn_addr, 0, 31             // data = rotl(data, rtn_addr) & 0xFFFFFFFF
         rlwimi  addr, data, 0, 24, 31                   // addr[7:0] = data[7:0]
-        lwz     data, 0x4F98(base_disp)
+        lwz     data, T_162D0 - dr_emitters(base_disp)  // template: crnot eq, 4*cr6+lt
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
-        bl      L_12500
+        bl      dr_operand_writeback_b
         b       dr_emit_next
-L_161F8:
-        lwz     addr, 0x4F94(base_disp)
+dr_emit_bchg_continued_L1:
+        lwz     addr, T_162CC - dr_emitters(base_disp)  // template: xori addr, addr, 0x0000
         li      data, 1
         rlwnm   data, data, rtn_addr, 0, 31             // data = rotl(data, rtn_addr) & 0xFFFFFFFF
         rlwimi  addr, data, 0, 24, 31                   // addr[7:0] = data[7:0]
         stwu    addr, 4(out_ptr)
-        bl      L_12500
+        bl      dr_operand_writeback_b
         b       dr_emit_next
-L_16214:
+dr_emit_bchg_continued_L2:
         lhz     data, 0(rec_ptr)
         lhax    rtn_addr, pc, blk_ofs
         mtcrf   0x02, data                              // cr6 = data[7:4]
         clrlwi  rtn_addr, rtn_addr, 27                  // rtn_addr = rtn_addr & 0x0000001F
-        ble     cr6, L_16280
-        lwz     addr, 0x4F78(base_disp)
+        ble     cr6, dr_emit_bchg_continued_L4
+        lwz     addr, T_162B0 - dr_emitters(base_disp)  // template: clrlwi addr, d0, 31
         neg     data, rtn_addr
         addi    data, data, 32
         rlwimi  addr, data, 11, 16, 20                  // addr[15:11] = data[4:0]
         rlwimi  addr, prefetch_data, 21, 8, 10          // addr[23:21] = prefetch_data[2:0]
-        lwz     data, 0x4F7C(base_disp)
+        lwz     data, T_162B4 - dr_emitters(base_disp)  // template: mtcrf 0x01, addr
         stwu    addr, 4(out_ptr)
         cmpwi   cr7, rtn_addr, 15
         stwu    data, 4(out_ptr)
-        lwz     addr, 0x4F80(base_disp)
-        ble     cr7, L_1625C
-        lwz     addr, 0x4F84(base_disp)
+        lwz     addr, T_162B8 - dr_emitters(base_disp)  // template: xori d0, d0, 0x0000
+        ble     cr7, dr_emit_bchg_continued_L3
+        lwz     addr, T_162BC - dr_emitters(base_disp)  // template: xoris d0, d0, 0x0000
         addi    rtn_addr, rtn_addr, -16
-L_1625C:
+dr_emit_bchg_continued_L3:
         li      data, 1
         rlwnm   data, data, rtn_addr, 0, 31             // data = rotl(data, rtn_addr) & 0xFFFFFFFF
         rlwimi  addr, prefetch_data, 21, 8, 10          // addr[23:21] = prefetch_data[2:0]
         rlwimi  addr, prefetch_data, 16, 13, 15         // addr[18:16] = prefetch_data[2:0]
         rlwimi  addr, data, 0, 16, 31                   // addr[15:0] = data[15:0]
-        lwz     data, 0x4F88(base_disp)
+        lwz     data, T_162C0 - dr_emitters(base_disp)  // template: crnot eq, 4*cr7+so
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
         b       dr_emit_next
-L_16280:
+dr_emit_bchg_continued_L4:
         cmpwi   cr7, rtn_addr, 15
-        lwz     addr, 0x4F80(base_disp)
-        ble     cr7, L_16294
-        lwz     addr, 0x4F84(base_disp)
+        lwz     addr, T_162B8 - dr_emitters(base_disp)  // template: xori d0, d0, 0x0000
+        ble     cr7, dr_emit_bchg_continued_L5
+        lwz     addr, T_162BC - dr_emitters(base_disp)  // template: xoris d0, d0, 0x0000
         addi    rtn_addr, rtn_addr, -16
-L_16294:
+dr_emit_bchg_continued_L5:
         li      data, 1
         rlwnm   data, data, rtn_addr, 0, 31             // data = rotl(data, rtn_addr) & 0xFFFFFFFF
         rlwimi  addr, prefetch_data, 21, 8, 10          // addr[23:21] = prefetch_data[2:0]
@@ -8984,88 +10456,149 @@ L_16294:
         rlwimi  addr, data, 0, 16, 31                   // addr[15:0] = data[15:0]
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-        clrlwi  addr, d0, 31                            // addr = d0 & 0x00000001
-        mtcrf   0x01, addr                              // cr7 = addr[3:0]
-        xori    d0, d0, 0x0000
-        xoris   d0, d0, 0x0000
-        crnot   eq, 4*cr7+so
-        rlwinm  rtn_addr, addr, 7, 24, 24               // rtn_addr = addr[0] << 7
-        mtcrf   0x02, rtn_addr                          // cr6 = rtn_addr[7:4]
-        xori    addr, addr, 0x0000
-        crnot   eq, 4*cr6+lt
-L_162D4:
+T_162B0:
+        clrlwi  addr, d0, 31                            // template
+T_162B4:
+        mtcrf   0x01, addr                              // template
+T_162B8:
+        xori    d0, d0, 0x0000                          // template
+T_162BC:
+        xoris   d0, d0, 0x0000                          // template
+T_162C0:
+        crnot   eq, 4*cr7+so                            // template
+T_162C4:
+        rlwinm  rtn_addr, addr, 7, 24, 24               // template
+T_162C8:
+        mtcrf   0x02, rtn_addr                          // template
+T_162CC:
+        xori    addr, addr, 0x0000                      // template
+T_162D0:
+        crnot   eq, 4*cr6+lt                            // template
+
+dr_emit_btst_continued:
         rlwinm  addr, prefetch_data, 29, 29, 31         // addr = prefetch_data[5:3]
         cmpwi   cr7, addr, 0
-        beq     cr7, L_16320
+        beq     cr7, dr_emit_btst_continued_L1
         lis     immed_data, 0x0060
         addi    blk_ofs, blk_ofs, 2
-        bl      L_124C0
+        bl      dr_operand_load_b
         lhz     rtn_addr, 2(rec_ptr)
         addi    rtn_addr, rtn_addr, 2
         lhax    rtn_addr, pc, rtn_addr
         clrlwi  rtn_addr, rtn_addr, 29                  // rtn_addr = rtn_addr & 0x00000007
-        lwz     addr, 0x5028(base_disp)
+        lwz     addr, T_16360 - dr_emitters(base_disp)  // template: rlwinm addr, addr, 7, 24, 24
         rlwinm  data, rtn_addr, 11, 16, 20              // data = rtn_addr[4:0] << 11
         subf    addr, data, addr                        // addr = addr - data
         stwu    addr, 4(out_ptr)
-        lwz     data, 0x502C(base_disp)
-        lwz     addr, 0x5030(base_disp)
+        lwz     data, T_16364 - dr_emitters(base_disp)  // template: mtcrf 0x02, addr
+        lwz     addr, T_16368 - dr_emitters(base_disp)  // template: crnot eq, 4*cr6+lt
         stwu    data, 4(out_ptr)
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-L_16320:
+dr_emit_btst_continued_L1:
         lhax    rtn_addr, pc, blk_ofs
         clrlwi  rtn_addr, rtn_addr, 27                  // rtn_addr = rtn_addr & 0x0000001F
-        lwz     addr, 0x501C(base_disp)
+        lwz     addr, T_16354 - dr_emitters(base_disp)  // template: clrlwi addr, d0, 31
         neg     data, rtn_addr
         addi    data, data, 32
         rlwimi  addr, data, 11, 16, 20                  // addr[15:11] = data[4:0]
         rlwimi  addr, prefetch_data, 21, 8, 10          // addr[23:21] = prefetch_data[2:0]
-        lwz     data, 0x5020(base_disp)
+        lwz     data, T_16358 - dr_emitters(base_disp)  // template: mtcrf 0x01, addr
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x5024(base_disp)
+        lwz     addr, T_1635C - dr_emitters(base_disp)  // template: crnot eq, 4*cr7+so
         stwu    data, 4(out_ptr)
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-        clrlwi  addr, d0, 31                            // addr = d0 & 0x00000001
-        mtcrf   0x01, addr                              // cr7 = addr[3:0]
-        crnot   eq, 4*cr7+so
-        rlwinm  addr, addr, 7, 24, 24                   // addr = addr[0] << 7
-        mtcrf   0x02, addr                              // cr6 = addr[7:4]
-        crnot   eq, 4*cr6+lt
+T_16354:
+        clrlwi  addr, d0, 31                            // template
+T_16358:
+        mtcrf   0x01, addr                              // template
+T_1635C:
+        crnot   eq, 4*cr7+so                            // template
+T_16360:
+        rlwinm  addr, addr, 7, 24, 24                   // template
+T_16364:
+        mtcrf   0x02, addr                              // template
+T_16368:
+        crnot   eq, 4*cr6+lt                            // template
 
 // Code generator for 64 opcodes:
 //     LSR.B #<q>,Dn
+// For E008, LSR.B #8,D0, it generates
+//         rlwinm  ccr_x, d0, 22, 2, 2
+//         rlwimi  d0, zero, 0, 24, 31
+//         add.    zero, zero, zero
+//         mtxer   ccr_x
+// and, when the condition codes are not wanted afterwards,
+//         rlwimi  d0, zero, 0, 24, 31
 dr_emit_lsr_b:
-        b       L_16604
+        b       dr_emit_lsr_b_continued
 
 // Code generator for 64 opcodes:
 //     LSR.W #<q>,Dn
+// For E048, LSR.W #8,D0, it generates
+//         rlwinm. addr, d0, 24, 24, 31
+//         rlwinm  ccr_x, d0, 22, 2, 2
+//         mtxer   ccr_x
+//         rlwimi  d0, addr, 0, 16, 31
+// and, when the condition codes are not wanted afterwards,
+//         rlwinm. addr, d0, 24, 24, 31
+//         rlwimi  d0, addr, 0, 16, 31
 dr_emit_lsr_w:
-        b       L_16598
+        b       dr_emit_lsr_w_continued
 
 // Code generator for 64 opcodes:
 //     LSR.L #<q>,Dn
+// For E088, LSR.L #8,D0, it generates
+//         rlwinm  ccr_x, d0, 22, 2, 2
+//         srwi.   d0, d0, 8
+//         mtxer   ccr_x
+// and, when the condition codes are not wanted afterwards,
+//         srwi.   d0, d0, 8
 dr_emit_lsr_l:
         b       dr_emit_lsl_l_L12
         nop
 
 // Code generator for 64 opcodes:
 //     LSL.B #<q>,Dn
+// For E108, LSL.B #8,D0, it generates
+//         slwi    addr, d0, 31
+//         addc.   addr, addr, addr
+//         addo    zero, zero, zero
+//         rlwimi  d0, addr, 8, 24, 31
+//         mfxer   ccr_x
+// and, when the condition codes are not wanted afterwards,
+//         rlwimi  d0, zero, 0, 24, 31
 dr_emit_lsl_b:
         b       dr_emit_lsl_l_L6
 
 // Code generator for 64 opcodes:
 //     LSL.W #<q>,Dn
+// For E148, LSL.W #8,D0, it generates
+//         slwi    addr, d0, 23
+//         addc.   addr, addr, addr
+//         addo    zero, zero, zero
+//         rlwimi  d0, addr, 16, 16, 31
+//         mfxer   ccr_x
+// and, when the condition codes are not wanted afterwards,
+//         rlwinm  addr, d0, 8, 16, 23
+//         rlwimi  d0, addr, 0, 16, 31
 dr_emit_lsl_w:
         b       dr_emit_lsl_l_L3
 
 // Code generator for 64 opcodes:
 //     LSL.L #<q>,Dn
+// For E188, LSL.L #8,D0, it generates
+//         slwi    d0, d0, 7
+//         addc.   d0, d0, d0
+//         addo    zero, zero, zero
+//         mfxer   ccr_x
+// and, when the condition codes are not wanted afterwards,
+//         slwi    d0, d0, 8
 dr_emit_lsl_l:
-        bl      L_16B2C
+        bl      dr_shift_count
         lhz     rtn_addr, 0(rec_ptr)
-        lwz     addr, 0x5388(base_disp)
+        lwz     addr, T_166C0 - dr_emitters(base_disp)  // template: rlwinm d0, d0, 0, 0, 31
         rlwinm  immed_data, prefetch_data, 16, 13, 15   // immed_data = prefetch_data[2:0] << 16
         mtcrf   0x02, rtn_addr                          // cr6 = rtn_addr[7:4]
         rlwimi  immed_data, prefetch_data, 21, 8, 10    // immed_data[23:21] = prefetch_data[2:0]
@@ -9086,20 +10619,20 @@ dr_emit_lsl_l_L2:
         rlwinm  rtn_addr, data, 1, 26, 30               // rtn_addr = data[4:0] << 1
         subf    addr, rtn_addr, addr                    // addr = addr - rtn_addr
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x538C(base_disp)
+        lwz     addr, T_166C4 - dr_emitters(base_disp)  // template: addc. d0, d0, d0
         rlwimi  immed_data, prefetch_data, 11, 18, 20   // immed_data[13:11] = prefetch_data[2:0]
         add     addr, addr, immed_data
-        lwz     data, 0x537C(base_disp)
+        lwz     data, T_166B4 - dr_emitters(base_disp)  // template: addo zero, zero, zero
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
         bge     cr6, dr_emit_next
-        lwz     addr, 0x5380(base_disp)
+        lwz     addr, T_166B8 - dr_emitters(base_disp)  // template: mfxer ccr_x
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
 dr_emit_lsl_l_L3:
-        bl      L_16B2C
+        bl      dr_shift_count
         lhz     rtn_addr, 0(rec_ptr)
-        lwz     addr, 0x5390(base_disp)
+        lwz     addr, T_166C8 - dr_emitters(base_disp)  // template: clrlwi addr, d0, 16
         rlwinm  immed_data, prefetch_data, 21, 8, 10    // immed_data = prefetch_data[2:0] << 21
         mtcrf   0x02, rtn_addr                          // cr6 = rtn_addr[7:4]
         cror    4*cr6+gt, 4*cr6+gt, 4*cr6+lt            // cr6.gt = cr6.gt | cr6.lt
@@ -9110,36 +10643,36 @@ dr_emit_lsl_l_L4:
         add     addr, addr, rtn_addr
         rlwinm  rtn_addr, data, 1, 26, 30               // rtn_addr = data[4:0] << 1
         subf    addr, rtn_addr, addr                    // addr = addr - rtn_addr
-        lwz     data, 0x5394(base_disp)
+        lwz     data, T_166CC - dr_emitters(base_disp)  // template: rlwimi d0, addr, 0, 16, 31
         stwu    addr, 4(out_ptr)
         rlwinm  immed_data, prefetch_data, 16, 13, 15   // immed_data = prefetch_data[2:0] << 16
         add     data, data, immed_data
         stwu    data, 4(out_ptr)
         b       dr_emit_next
 dr_emit_lsl_l_L5:
-        lwz     addr, 0x5398(base_disp)
+        lwz     addr, T_166D0 - dr_emitters(base_disp)  // template: slwi addr, d0, 15
         add     addr, addr, immed_data
         rlwinm  rtn_addr, data, 11, 16, 20              // rtn_addr = data[4:0] << 11
         add     addr, addr, rtn_addr
         rlwinm  rtn_addr, data, 1, 26, 30               // rtn_addr = data[4:0] << 1
         subf    addr, rtn_addr, addr                    // addr = addr - rtn_addr
         stwu    addr, 4(out_ptr)
-        lwz     data, 0x539C(base_disp)
-        lwz     addr, 0x537C(base_disp)
+        lwz     data, T_166D4 - dr_emitters(base_disp)  // template: addc. addr, addr, addr
+        lwz     addr, T_166B4 - dr_emitters(base_disp)  // template: addo zero, zero, zero
         stwu    data, 4(out_ptr)
         stwu    addr, 4(out_ptr)
-        lwz     data, 0x53A0(base_disp)
+        lwz     data, T_166D8 - dr_emitters(base_disp)  // template: rlwimi d0, addr, 16, 16, 31
         rlwinm  immed_data, prefetch_data, 16, 13, 15   // immed_data = prefetch_data[2:0] << 16
         add     data, data, immed_data
         stwu    data, 4(out_ptr)
         bge     cr6, dr_emit_next
-        lwz     addr, 0x5380(base_disp)
+        lwz     addr, T_166B8 - dr_emitters(base_disp)  // template: mfxer ccr_x
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
 dr_emit_lsl_l_L6:
-        bl      L_16B2C
+        bl      dr_shift_count
         lhz     rtn_addr, 0(rec_ptr)
-        lwz     addr, 0x53A4(base_disp)
+        lwz     addr, T_166DC - dr_emitters(base_disp)  // template: clrlwi addr, d0, 24
         rlwinm  immed_data, prefetch_data, 21, 8, 10    // immed_data = prefetch_data[2:0] << 21
         mtcrf   0x02, rtn_addr                          // cr6 = rtn_addr[7:4]
         cror    4*cr6+gt, 4*cr6+gt, 4*cr6+lt            // cr6.gt = cr6.gt | cr6.lt
@@ -9151,7 +10684,7 @@ dr_emit_lsl_l_L7:
         add     addr, addr, rtn_addr
         rlwinm  rtn_addr, data, 1, 26, 30               // rtn_addr = data[4:0] << 1
         subf    addr, rtn_addr, addr                    // addr = addr - rtn_addr
-        lwz     data, 0x53A8(base_disp)
+        lwz     data, T_166E0 - dr_emitters(base_disp)  // template: rlwimi d0, addr, 0, 24, 31
         stwu    addr, 4(out_ptr)
 dr_emit_lsl_l_L8:
         rlwinm  immed_data, prefetch_data, 16, 13, 15   // immed_data = prefetch_data[2:0] << 16
@@ -9159,33 +10692,33 @@ dr_emit_lsl_l_L8:
         stwu    data, 4(out_ptr)
         b       dr_emit_next
 dr_emit_lsl_l_L9:
-        lwz     data, 0x53AC(base_disp)
+        lwz     data, T_166E4 - dr_emitters(base_disp)  // template: rlwimi d0, zero, 0, 24, 31
         b       dr_emit_lsl_l_L8
 dr_emit_lsl_l_L10:
-        lwz     addr, 0x53B0(base_disp)
+        lwz     addr, T_166E8 - dr_emitters(base_disp)  // template: slwi addr, d0, 23
         add     addr, addr, immed_data
         rlwinm  rtn_addr, data, 11, 16, 20              // rtn_addr = data[4:0] << 11
         add     addr, addr, rtn_addr
         rlwinm  rtn_addr, data, 1, 26, 30               // rtn_addr = data[4:0] << 1
         subf    addr, rtn_addr, addr                    // addr = addr - rtn_addr
         stwu    addr, 4(out_ptr)
-        lwz     data, 0x53B4(base_disp)
-        lwz     addr, 0x537C(base_disp)
+        lwz     data, T_166EC - dr_emitters(base_disp)  // template: addc. addr, addr, addr
+        lwz     addr, T_166B4 - dr_emitters(base_disp)  // template: addo zero, zero, zero
         stwu    data, 4(out_ptr)
         stwu    addr, 4(out_ptr)
-        lwz     data, 0x53B8(base_disp)
+        lwz     data, T_166F0 - dr_emitters(base_disp)  // template: rlwimi d0, addr, 8, 24, 31
         rlwinm  immed_data, prefetch_data, 16, 13, 15   // immed_data = prefetch_data[2:0] << 16
         add     data, data, immed_data
         stwu    data, 4(out_ptr)
         bge     cr6, dr_emit_next
 dr_emit_lsl_l_L11:
-        lwz     addr, 0x5380(base_disp)
+        lwz     addr, T_166B8 - dr_emitters(base_disp)  // template: mfxer ccr_x
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
 dr_emit_lsl_l_L12:
-        bl      L_16B2C
+        bl      dr_shift_count
         lhz     rtn_addr, 0(rec_ptr)
-        lwz     addr, 0x53BC(base_disp)
+        lwz     addr, T_166F4 - dr_emitters(base_disp)  // template: srwi. d0, d0, 1
         rlwinm  immed_data, prefetch_data, 16, 13, 15   // immed_data = prefetch_data[2:0] << 16
         mtcrf   0x02, rtn_addr                          // cr6 = rtn_addr[7:4]
         rlwimi  immed_data, prefetch_data, 21, 8, 10    // immed_data[23:21] = prefetch_data[2:0]
@@ -9200,19 +10733,20 @@ dr_emit_lsl_l_L12:
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
 dr_emit_lsl_l_L13:
-        lwz     immed_data, 0x53C0(base_disp)
+        lwz     immed_data, T_166F8 - dr_emitters(base_disp)  // template: rlwinm ccr_x, d0, 29, 2, 2
         subf    immed_data, rtn_addr, immed_data        // immed_data = immed_data - rtn_addr
         rlwinm  rtn_addr, prefetch_data, 21, 8, 10      // rtn_addr = prefetch_data[2:0] << 21
         add     immed_data, immed_data, rtn_addr
         stwu    immed_data, 4(out_ptr)
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x5384(base_disp)
+        lwz     addr, T_166BC - dr_emitters(base_disp)  // template: mtxer ccr_x
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-L_16598:
-        bl      L_16B2C
+
+dr_emit_lsr_w_continued:
+        bl      dr_shift_count
         lhz     rtn_addr, 0(rec_ptr)
-        lwz     addr, 0x53C4(base_disp)
+        lwz     addr, T_166FC - dr_emitters(base_disp)  // template: rlwinm. addr, d0, 31, 17, 31
         rlwinm  immed_data, prefetch_data, 21, 8, 10    // immed_data = prefetch_data[2:0] << 21
         mtcrf   0x02, rtn_addr                          // cr6 = rtn_addr[7:4]
         add     addr, addr, immed_data
@@ -9223,26 +10757,27 @@ L_16598:
         rlwinm  rtn_addr, data, 11, 16, 20              // rtn_addr = data[4:0] << 11
         subf    addr, rtn_addr, addr                    // addr = addr - rtn_addr
         stwu    addr, 4(out_ptr)
-        bgt     cr6, L_165E4
-L_165D0:
-        lwz     addr, 0x53C8(base_disp)
+        bgt     cr6, dr_emit_lsr_w_continued_L2
+dr_emit_lsr_w_continued_L1:
+        lwz     addr, T_16700 - dr_emitters(base_disp)  // template: rlwimi d0, addr, 0, 16, 31
         rlwinm  immed_data, prefetch_data, 16, 13, 15   // immed_data = prefetch_data[2:0] << 16
         add     addr, addr, immed_data
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-L_165E4:
-        lwz     addr, 0x53C0(base_disp)
+dr_emit_lsr_w_continued_L2:
+        lwz     addr, T_166F8 - dr_emitters(base_disp)  // template: rlwinm ccr_x, d0, 29, 2, 2
         rlwinm  immed_data, prefetch_data, 21, 8, 10    // immed_data = prefetch_data[2:0] << 21
         add     addr, addr, immed_data
         subf    addr, rtn_addr, addr                    // addr = addr - rtn_addr
-        lwz     data, 0x5384(base_disp)
+        lwz     data, T_166BC - dr_emitters(base_disp)  // template: mtxer ccr_x
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
-        b       L_165D0
-L_16604:
-        bl      L_16B2C
+        b       dr_emit_lsr_w_continued_L1
+
+dr_emit_lsr_b_continued:
+        bl      dr_shift_count
         lhz     rtn_addr, 0(rec_ptr)
-        lwz     addr, 0x53CC(base_disp)
+        lwz     addr, T_16704 - dr_emitters(base_disp)  // template: rlwinm. addr, d0, 31, 25, 31
         rlwinm  immed_data, prefetch_data, 21, 8, 10    // immed_data = prefetch_data[2:0] << 21
         mtcrf   0x02, rtn_addr                          // cr6 = rtn_addr[7:4]
         add     addr, addr, immed_data
@@ -9252,98 +10787,187 @@ L_16604:
         add     addr, rtn_addr, addr
         rlwinm  rtn_addr, data, 11, 16, 20              // rtn_addr = data[4:0] << 11
         subf    addr, rtn_addr, addr                    // addr = addr - rtn_addr
-        bgt     cr6, L_16654
+        bgt     cr6, dr_emit_lsr_b_continued_L2
         beq     cr7, dr_emit_lsl_l_L9
         stwu    addr, 4(out_ptr)
-L_16640:
-        lwz     addr, 0x53D0(base_disp)
+dr_emit_lsr_b_continued_L1:
+        lwz     addr, T_16708 - dr_emitters(base_disp)  // template: rlwimi d0, addr, 0, 24, 31
         rlwinm  immed_data, prefetch_data, 16, 13, 15   // immed_data = prefetch_data[2:0] << 16
         add     addr, addr, immed_data
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-L_16654:
-        beq     cr7, L_1667C
+dr_emit_lsr_b_continued_L2:
+        beq     cr7, dr_emit_lsr_b_continued_L3
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x53C0(base_disp)
+        lwz     addr, T_166F8 - dr_emitters(base_disp)  // template: rlwinm ccr_x, d0, 29, 2, 2
         rlwinm  immed_data, prefetch_data, 21, 8, 10    // immed_data = prefetch_data[2:0] << 21
         add     addr, addr, immed_data
         subf    addr, rtn_addr, addr                    // addr = addr - rtn_addr
-        lwz     data, 0x5384(base_disp)
+        lwz     data, T_166BC - dr_emitters(base_disp)  // template: mtxer ccr_x
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
-        b       L_16640
-L_1667C:
-        lwz     addr, 0x53C0(base_disp)
+        b       dr_emit_lsr_b_continued_L1
+dr_emit_lsr_b_continued_L3:
+        lwz     addr, T_166F8 - dr_emitters(base_disp)  // template: rlwinm ccr_x, d0, 29, 2, 2
         rlwinm  immed_data, prefetch_data, 21, 8, 10    // immed_data = prefetch_data[2:0] << 21
         add     addr, addr, immed_data
         subf    addr, rtn_addr, addr                    // addr = addr - rtn_addr
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x53D4(base_disp)
+        lwz     addr, T_1670C - dr_emitters(base_disp)  // template: rlwimi d0, zero, 0, 24, 31
         rlwinm  immed_data, prefetch_data, 16, 13, 15   // immed_data = prefetch_data[2:0] << 16
         add     addr, addr, immed_data
-        lwz     data, 0x53D8(base_disp)
+        lwz     data, T_16710 - dr_emitters(base_disp)  // template: add. zero, zero, zero
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x5384(base_disp)
+        lwz     addr, T_166BC - dr_emitters(base_disp)  // template: mtxer ccr_x
         stwu    data, 4(out_ptr)
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-        addo    zero, zero, zero
-        mfxer   ccr_x
-        mtxer   ccr_x
-        rlwinm  d0, d0, 0, 0, 31                        // d0 = d0[31:0]
-        addc.   d0, d0, d0
-        clrlwi  addr, d0, 16                            // addr = d0 & 0x0000FFFF
-        rlwimi  d0, addr, 0, 16, 31                     // d0[15:0] = addr[15:0]
-        slwi    addr, d0, 15
-        addc.   addr, addr, addr
-        rlwimi  d0, addr, 16, 16, 31                    // d0[15:0] = addr[31:16]
-        clrlwi  addr, d0, 24                            // addr = d0 & 0x000000FF
-        rlwimi  d0, addr, 0, 24, 31                     // d0[7:0] = addr[7:0]
-        rlwimi  d0, zero, 0, 24, 31                     // d0[7:0] = zero[7:0]
-        slwi    addr, d0, 23
-        addc.   addr, addr, addr
-        rlwimi  d0, addr, 8, 24, 31                     // d0[7:0] = addr[31:24]
-        srwi.   d0, d0, 1
-        rlwinm  ccr_x, d0, 29, 2, 2                     // ccr_x = d0[0] << 29
-        rlwinm. addr, d0, 31, 17, 31                    // addr = d0[15:1]
-        rlwimi  d0, addr, 0, 16, 31                     // d0[15:0] = addr[15:0]
-        rlwinm. addr, d0, 31, 25, 31                    // addr = d0[7:1]
-        rlwimi  d0, addr, 0, 24, 31                     // d0[7:0] = addr[7:0]
-        rlwimi  d0, zero, 0, 24, 31                     // d0[7:0] = zero[7:0]
-        add.    zero, zero, zero
+T_166B4:
+        addo    zero, zero, zero                        // template
+T_166B8:
+        mfxer   ccr_x                                   // template
+T_166BC:
+        mtxer   ccr_x                                   // template
+T_166C0:
+        rlwinm  d0, d0, 0, 0, 31                        // template
+T_166C4:
+        addc.   d0, d0, d0                              // template
+T_166C8:
+        clrlwi  addr, d0, 16                            // template
+T_166CC:
+        rlwimi  d0, addr, 0, 16, 31                     // template
+T_166D0:
+        slwi    addr, d0, 15                            // template
+T_166D4:
+        addc.   addr, addr, addr                        // template
+T_166D8:
+        rlwimi  d0, addr, 16, 16, 31                    // template
+T_166DC:
+        clrlwi  addr, d0, 24                            // template
+T_166E0:
+        rlwimi  d0, addr, 0, 24, 31                     // template
+T_166E4:
+        rlwimi  d0, zero, 0, 24, 31                     // template
+T_166E8:
+        slwi    addr, d0, 23                            // template
+T_166EC:
+        addc.   addr, addr, addr                        // template
+T_166F0:
+        rlwimi  d0, addr, 8, 24, 31                     // template
+T_166F4:
+        srwi.   d0, d0, 1                               // template
+T_166F8:
+        rlwinm  ccr_x, d0, 29, 2, 2                     // template
+T_166FC:
+        rlwinm. addr, d0, 31, 17, 31                    // template
+T_16700:
+        rlwimi  d0, addr, 0, 16, 31                     // template
+T_16704:
+        rlwinm. addr, d0, 31, 25, 31                    // template
+T_16708:
+        rlwimi  d0, addr, 0, 24, 31                     // template
+T_1670C:
+        rlwimi  d0, zero, 0, 24, 31                     // template
+T_16710:
+        add.    zero, zero, zero                        // template
 
 // Code generator for 64 opcodes:
 //     ASR.B #<q>,Dn
+// For E000, ASR.B #8,D0, it generates
+//         slwi    addr, d0, 24
+//         srawi   addr, addr, 8
+//         rlwimi  d0, addr, 8, 24, 31
+//         rlwinm  ccr_x, addr, 6, 2, 2
+//         clrrwi. addr, addr, 24
+//         mtxer   ccr_x
+// and, when the condition codes are not wanted afterwards,
+//         slwi    addr, d0, 24
+//         srawi   addr, addr, 8
+//         rlwimi  d0, addr, 8, 24, 31
 dr_emit_asr_b:
-        b       L_16A1C
+        b       dr_emit_asr_b_continued
 
 // Code generator for 64 opcodes:
 //     ASR.W #<q>,Dn
+// For E040, ASR.W #8,D0, it generates
+//         slwi    addr, d0, 16
+//         srawi   addr, addr, 8
+//         rlwimi  d0, addr, 16, 16, 31
+//         rlwinm  ccr_x, addr, 14, 2, 2
+//         clrrwi. addr, addr, 16
+//         mtxer   ccr_x
+// and, when the condition codes are not wanted afterwards,
+//         slwi    addr, d0, 16
+//         srawi   addr, addr, 8
+//         rlwimi  d0, addr, 16, 16, 31
 dr_emit_asr_w:
-        b       L_169C0
+        b       dr_emit_asr_w_continued
 
 // Code generator for 64 opcodes:
 //     ASR.L #<q>,Dn
+// For E080, ASR.L #8,D0, it generates
+//         srawi   addr, d0, 7
+//         rlwimi. d0, addr, 31, 1, 31
+//         rlwinm  ccr_x, addr, 29, 2, 2
+//         mtxer   ccr_x
+// and, when the condition codes are not wanted afterwards,
+//         srawi   d0, d0, 8
 dr_emit_asr_l:
-        b       L_16954
+        b       dr_emit_asr_l_continued
         nop
 
 // Code generator for 64 opcodes:
 //     ASL.B #<q>,Dn
+// For E100, ASL.B #8,D0, it generates
+//         slwi    addr, d0, 24
+//         add.    data, zero, zero
+//         rlwimi  d0, data, 8, 24, 31
+//         srawi   rtn_addr, data, 8
+//         cmpw    cr7, rtn_addr, addr
+//         rlwinm  ccr_x, addr, 5, 2, 2
+//         beq     cr7, +020
+//         oris    ccr_x, ccr_x, 0x4000
+//         mtxer   ccr_x
+// and, when the condition codes are not wanted afterwards,
+//         rlwimi  d0, zero, 0, 24, 31
 dr_emit_asl_b:
         b       dr_emit_asl_l_L5
 
 // Code generator for 64 opcodes:
 //     ASL.W #<q>,Dn
+// For E140, ASL.W #8,D0, it generates
+//         slwi    addr, d0, 16
+//         rlwinm. data, addr, 8, 0, 7
+//         rlwimi  d0, data, 16, 16, 31
+//         srawi   rtn_addr, data, 8
+//         cmpw    cr7, rtn_addr, addr
+//         rlwinm  ccr_x, addr, 5, 2, 2
+//         beq     cr7, +020
+//         oris    ccr_x, ccr_x, 0x4000
+//         mtxer   ccr_x
+// and, when the condition codes are not wanted afterwards,
+//         rlwinm  addr, d0, 8, 16, 23
+//         rlwimi  d0, addr, 0, 16, 31
 dr_emit_asl_w:
         b       dr_emit_asl_l_L2
 
 // Code generator for 64 opcodes:
 //     ASL.L #<q>,Dn
+// For E180, ASL.L #8,D0, it generates
+//         add     addr, d0, zero
+//         slwi.   d0, d0, 8
+//         srawi   data, d0, 8
+//         cmpw    cr7, data, addr
+//         rlwinm  ccr_x, addr, 5, 2, 2
+//         beq     cr7, +01C
+//         oris    ccr_x, ccr_x, 0x4000
+//         mtxer   ccr_x
+// and, when the condition codes are not wanted afterwards,
+//         slwi    d0, d0, 8
 dr_emit_asl_l:
-        bl      L_16B2C
+        bl      dr_shift_count
         lhz     rtn_addr, 0(rec_ptr)
-        lwz     addr, 0x5388(base_disp)
+        lwz     addr, T_166C0 - dr_emitters(base_disp)  // template: rlwinm d0, d0, 0, 0, 31
         rlwinm  immed_data, prefetch_data, 16, 13, 15   // immed_data = prefetch_data[2:0] << 16
         mtcrf   0x02, rtn_addr                          // cr6 = rtn_addr[7:4]
         rlwimi  immed_data, prefetch_data, 21, 8, 10    // immed_data[23:21] = prefetch_data[2:0]
@@ -9354,46 +10978,46 @@ dr_emit_asl_l:
         rlwinm  rtn_addr, prefetch_data, 16, 13, 15     // rtn_addr = prefetch_data[2:0] << 16
         beq     cr5, dr_emit_asl_l_L1
         addi    data, data, -1
-        lwz     addr, 0x5744(base_disp)
+        lwz     addr, T_16A7C - dr_emitters(base_disp)  // template: add addr, d0, zero
         add     addr, addr, rtn_addr
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x5748(base_disp)
+        lwz     addr, T_16A80 - dr_emitters(base_disp)  // template: slwi. d0, d0, 1
         rlwimi  rtn_addr, prefetch_data, 21, 8, 10      // rtn_addr[23:21] = prefetch_data[2:0]
         rlwimi  rtn_addr, data, 11, 16, 20              // rtn_addr[15:11] = data[4:0]
         add     addr, addr, rtn_addr
         rlwinm  rtn_addr, data, 1, 26, 30               // rtn_addr = data[4:0] << 1
         subf    addr, rtn_addr, addr                    // addr = addr - rtn_addr
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x574C(base_disp)
+        lwz     addr, T_16A84 - dr_emitters(base_disp)  // template: srawi data, d0, 1
         rlwinm  rtn_addr, prefetch_data, 21, 8, 10      // rtn_addr = prefetch_data[2:0] << 21
         rlwimi  rtn_addr, data, 11, 16, 20              // rtn_addr[15:11] = data[4:0]
         add     addr, addr, rtn_addr
         stwu    addr, 4(out_ptr)
-        lwz     immed_data, 0x5750(base_disp)
-        lwz     addr, 0x5754(base_disp)
+        lwz     immed_data, T_16A88 - dr_emitters(base_disp)  // template: cmpw cr7, data, addr
+        lwz     addr, T_16A8C - dr_emitters(base_disp)  // template: rlwinm ccr_x, addr, 0, 2, 2
         addi    rtn_addr, data, 30
         rlwinm  rtn_addr, rtn_addr, 11, 16, 20          // rtn_addr = rtn_addr[4:0] << 11
         stwu    immed_data, 4(out_ptr)
         add     addr, addr, rtn_addr
         stwu    addr, 4(out_ptr)
-        lwz     immed_data, 0x5758(base_disp)
-        lwz     addr, 0x575C(base_disp)
-        lwz     data, 0x5760(base_disp)
+        lwz     immed_data, T_16A90 - dr_emitters(base_disp)  // template: beq cr7, T_16A98
+        lwz     addr, T_16A94 - dr_emitters(base_disp)  // template: oris ccr_x, ccr_x, 0x4000
+        lwz     data, T_16A98 - dr_emitters(base_disp)  // template: mtxer ccr_x
         stwu    immed_data, 4(out_ptr)
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
         b       dr_emit_next
 dr_emit_asl_l_L1:
-        lwz     addr, 0x5740(base_disp)
+        lwz     addr, T_16A78 - dr_emitters(base_disp)  // template: addco. d0, d0, d0
         rlwimi  immed_data, prefetch_data, 11, 18, 20   // immed_data[13:11] = prefetch_data[2:0]
         add     addr, addr, immed_data
         stwu    addr, 4(out_ptr)
         bge     cr6, dr_emit_next
         b       dr_emit_lsl_l_L11
 dr_emit_asl_l_L2:
-        bl      L_16B2C
+        bl      dr_shift_count
         lhz     rtn_addr, 0(rec_ptr)
-        lwz     addr, 0x5390(base_disp)
+        lwz     addr, T_166C8 - dr_emitters(base_disp)  // template: clrlwi addr, d0, 16
         rlwinm  immed_data, prefetch_data, 21, 8, 10    // immed_data = prefetch_data[2:0] << 21
         mtcrf   0x02, rtn_addr                          // cr6 = rtn_addr[7:4]
         rlwinm  rtn_addr, data, 11, 16, 20              // rtn_addr = data[4:0] << 11
@@ -9403,53 +11027,53 @@ dr_emit_asl_l_L2:
         cmpwi   cr5, data, 1
         rlwinm  rtn_addr, prefetch_data, 16, 13, 15     // rtn_addr = prefetch_data[2:0] << 16
         beq     cr5, dr_emit_asl_l_L4
-        lwz     addr, 0x5770(base_disp)
+        lwz     addr, T_16AA8 - dr_emitters(base_disp)  // template: slwi addr, d0, 16
         addi    data, data, -1
         rlwimi  addr, prefetch_data, 21, 8, 10          // addr[23:21] = prefetch_data[2:0]
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x5774(base_disp)
+        lwz     addr, T_16AAC - dr_emitters(base_disp)  // template: rlwinm. data, addr, 1, 0, 14
         rlwinm  rtn_addr, data, 11, 16, 20              // rtn_addr = data[4:0] << 11
         add     addr, addr, rtn_addr
         rlwinm  rtn_addr, data, 1, 26, 30               // rtn_addr = data[4:0] << 1
         subf    addr, rtn_addr, addr                    // addr = addr - rtn_addr
-        lwz     rtn_addr, 0x5778(base_disp)
+        lwz     rtn_addr, T_16AB0 - dr_emitters(base_disp)  // template: rlwimi d0, data, 16, 16, 31
         stwu    addr, 4(out_ptr)
         rlwimi  rtn_addr, prefetch_data, 16, 13, 15     // rtn_addr[18:16] = prefetch_data[2:0]
 dr_emit_asl_l_L3:
-        lwz     addr, 0x577C(base_disp)
+        lwz     addr, T_16AB4 - dr_emitters(base_disp)  // template: srawi rtn_addr, data, 1
         stwu    rtn_addr, 4(out_ptr)
         rlwinm  rtn_addr, data, 11, 16, 20              // rtn_addr = data[4:0] << 11
         add     addr, addr, rtn_addr
         stwu    addr, 4(out_ptr)
-        lwz     immed_data, 0x5780(base_disp)
-        lwz     addr, 0x5784(base_disp)
+        lwz     immed_data, T_16AB8 - dr_emitters(base_disp)  // template: cmpw cr7, rtn_addr, addr
+        lwz     addr, T_16ABC - dr_emitters(base_disp)  // template: rlwinm ccr_x, addr, 0, 2, 2
         addi    rtn_addr, data, 30
         rlwinm  rtn_addr, rtn_addr, 11, 16, 20          // rtn_addr = rtn_addr[4:0] << 11
         stwu    immed_data, 4(out_ptr)
         add     addr, addr, rtn_addr
         stwu    addr, 4(out_ptr)
-        lwz     immed_data, 0x5788(base_disp)
-        lwz     addr, 0x578C(base_disp)
-        lwz     data, 0x5790(base_disp)
+        lwz     immed_data, T_16AC0 - dr_emitters(base_disp)  // template: beq cr7, T_16AC8
+        lwz     addr, T_16AC4 - dr_emitters(base_disp)  // template: oris ccr_x, ccr_x, 0x4000
+        lwz     data, T_16AC8 - dr_emitters(base_disp)  // template: mtxer ccr_x
         stwu    immed_data, 4(out_ptr)
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
         b       dr_emit_next
 dr_emit_asl_l_L4:
-        lwz     addr, 0x5764(base_disp)
-        lwz     data, 0x5768(base_disp)
+        lwz     addr, T_16A9C - dr_emitters(base_disp)  // template: slwi addr, d0, 16
+        lwz     data, T_16AA0 - dr_emitters(base_disp)  // template: addco. addr, addr, addr
         rlwimi  addr, prefetch_data, 21, 8, 10          // addr[23:21] = prefetch_data[2:0]
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x576C(base_disp)
+        lwz     addr, T_16AA4 - dr_emitters(base_disp)  // template: rlwimi d0, addr, 16, 16, 31
         stwu    data, 4(out_ptr)
         rlwimi  addr, prefetch_data, 16, 13, 15         // addr[18:16] = prefetch_data[2:0]
         stwu    addr, 4(out_ptr)
         bge     cr6, dr_emit_next
         b       dr_emit_lsl_l_L11
 dr_emit_asl_l_L5:
-        bl      L_16B2C
+        bl      dr_shift_count
         lhz     rtn_addr, 0(rec_ptr)
-        lwz     addr, 0x53A4(base_disp)
+        lwz     addr, T_166DC - dr_emitters(base_disp)  // template: clrlwi addr, d0, 24
         rlwinm  immed_data, prefetch_data, 21, 8, 10    // immed_data = prefetch_data[2:0] << 21
         mtcrf   0x02, rtn_addr                          // cr6 = rtn_addr[7:4]
         cror    4*cr6+gt, 4*cr6+gt, 4*cr6+lt            // cr6.gt = cr6.gt | cr6.lt
@@ -9458,39 +11082,40 @@ dr_emit_asl_l_L5:
         cmpwi   cr5, data, 1
         rlwinm  rtn_addr, prefetch_data, 16, 13, 15     // rtn_addr = prefetch_data[2:0] << 16
         beq     cr5, dr_emit_asl_l_L8
-        lwz     addr, 0x57A0(base_disp)
+        lwz     addr, T_16AD8 - dr_emitters(base_disp)  // template: slwi addr, d0, 24
         addi    data, data, -1
         rlwimi  addr, prefetch_data, 21, 8, 10          // addr[23:21] = prefetch_data[2:0]
         stwu    addr, 4(out_ptr)
         beq     cr7, dr_emit_asl_l_L7
-        lwz     addr, 0x57A4(base_disp)
+        lwz     addr, T_16ADC - dr_emitters(base_disp)  // template: rlwinm. data, addr, 1, 0, 6
         rlwinm  rtn_addr, data, 11, 16, 20              // rtn_addr = data[4:0] << 11
         add     addr, addr, rtn_addr
         rlwinm  rtn_addr, data, 1, 26, 30               // rtn_addr = data[4:0] << 1
         subf    addr, rtn_addr, addr                    // addr = addr - rtn_addr
 dr_emit_asl_l_L6:
-        lwz     rtn_addr, 0x57A8(base_disp)
+        lwz     rtn_addr, T_16AE0 - dr_emitters(base_disp)  // template: rlwimi d0, data, 8, 24, 31
         stwu    addr, 4(out_ptr)
         rlwimi  rtn_addr, prefetch_data, 16, 13, 15     // rtn_addr[18:16] = prefetch_data[2:0]
         b       dr_emit_asl_l_L3
 dr_emit_asl_l_L7:
-        lwz     addr, 0x57AC(base_disp)
+        lwz     addr, T_16AE4 - dr_emitters(base_disp)  // template: add. data, zero, zero
         b       dr_emit_asl_l_L6
 dr_emit_asl_l_L8:
-        lwz     addr, 0x5794(base_disp)
-        lwz     data, 0x5798(base_disp)
+        lwz     addr, T_16ACC - dr_emitters(base_disp)  // template: slwi addr, d0, 24
+        lwz     data, T_16AD0 - dr_emitters(base_disp)  // template: addco. addr, addr, addr
         rlwimi  addr, prefetch_data, 21, 8, 10          // addr[23:21] = prefetch_data[2:0]
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x579C(base_disp)
+        lwz     addr, T_16AD4 - dr_emitters(base_disp)  // template: rlwimi d0, addr, 8, 24, 31
         stwu    data, 4(out_ptr)
         rlwimi  addr, prefetch_data, 16, 13, 15         // addr[18:16] = prefetch_data[2:0]
         stwu    addr, 4(out_ptr)
         bge     cr6, dr_emit_next
         b       dr_emit_lsl_l_L11
-L_16954:
-        bl      L_16B2C
+
+dr_emit_asr_l_continued:
+        bl      dr_shift_count
         lhz     rtn_addr, 0(rec_ptr)
-        lwz     addr, 0x57B0(base_disp)
+        lwz     addr, T_16AE8 - dr_emitters(base_disp)  // template: srawi d0, d0, 1
         rlwinm  immed_data, prefetch_data, 16, 13, 15   // immed_data = prefetch_data[2:0] << 16
         mtcrf   0x02, rtn_addr                          // cr6 = rtn_addr[7:4]
         rlwimi  immed_data, prefetch_data, 21, 8, 10    // immed_data[23:21] = prefetch_data[2:0]
@@ -9499,119 +11124,167 @@ L_16954:
         add     addr, addr, immed_data
         rlwinm  rtn_addr, data, 11, 16, 20              // rtn_addr = data[4:0] << 11
         add     addr, addr, rtn_addr
-        bgt     cr6, L_1698C
+        bgt     cr6, dr_emit_asr_l_continued_L1
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-L_1698C:
-        lwz     addr, 0x57B4(base_disp)
+dr_emit_asr_l_continued_L1:
+        lwz     addr, T_16AEC - dr_emitters(base_disp)  // template: srawi addr, d0, 0
         rlwimi  rtn_addr, prefetch_data, 21, 8, 10      // rtn_addr[23:21] = prefetch_data[2:0]
         add     addr, addr, rtn_addr
-        lwz     data, 0x57B8(base_disp)
+        lwz     data, T_16AF0 - dr_emitters(base_disp)  // template: rlwimi. d0, addr, 31, 1, 31
         stwu    addr, 4(out_ptr)
         rlwinm  rtn_addr, prefetch_data, 16, 13, 15     // rtn_addr = prefetch_data[2:0] << 16
         add     data, data, rtn_addr
-        lwz     addr, 0x57BC(base_disp)
+        lwz     addr, T_16AF4 - dr_emitters(base_disp)  // template: rlwinm ccr_x, addr, 29, 2, 2
         stwu    data, 4(out_ptr)
-        lwz     data, 0x57C0(base_disp)
+        lwz     data, T_16AF8 - dr_emitters(base_disp)  // template: mtxer ccr_x
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
         b       dr_emit_next
-L_169C0:
-        bl      L_16B2C
+
+dr_emit_asr_w_continued:
+        bl      dr_shift_count
         lhz     rtn_addr, 0(rec_ptr)
-        lwz     addr, 0x57C4(base_disp)
+        lwz     addr, T_16AFC - dr_emitters(base_disp)  // template: slwi addr, d0, 16
         rlwinm  immed_data, prefetch_data, 21, 8, 10    // immed_data = prefetch_data[2:0] << 21
         mtcrf   0x02, rtn_addr                          // cr6 = rtn_addr[7:4]
         add     addr, addr, immed_data
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x57C8(base_disp)
+        lwz     addr, T_16B00 - dr_emitters(base_disp)  // template: srawi addr, addr, 0
         cror    4*cr6+gt, 4*cr6+gt, 4*cr6+lt            // cr6.gt = cr6.gt | cr6.lt
         rlwinm  rtn_addr, data, 11, 16, 20              // rtn_addr = data[4:0] << 11
         add     addr, addr, rtn_addr
-        lwz     data, 0x57CC(base_disp)
+        lwz     data, T_16B04 - dr_emitters(base_disp)  // template: rlwimi d0, addr, 16, 16, 31
         stwu    addr, 4(out_ptr)
         rlwimi  data, prefetch_data, 16, 13, 15         // data[18:16] = prefetch_data[2:0]
         stwu    data, 4(out_ptr)
         ble     cr6, dr_emit_next
-        lwz     addr, 0x57D0(base_disp)
-        lwz     data, 0x57D4(base_disp)
-        lwz     rtn_addr, 0x57D8(base_disp)
+        lwz     addr, T_16B08 - dr_emitters(base_disp)  // template: rlwinm ccr_x, addr, 14, 2, 2
+        lwz     data, T_16B0C - dr_emitters(base_disp)  // template: clrrwi. addr, addr, 16
+        lwz     rtn_addr, T_16B10 - dr_emitters(base_disp)  // template: mtxer ccr_x
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
         stwu    rtn_addr, 4(out_ptr)
         b       dr_emit_next
-L_16A1C:
-        bl      L_16B2C
+
+dr_emit_asr_b_continued:
+        bl      dr_shift_count
         lhz     rtn_addr, 0(rec_ptr)
-        lwz     addr, 0x57DC(base_disp)
+        lwz     addr, T_16B14 - dr_emitters(base_disp)  // template: slwi addr, d0, 24
         rlwinm  immed_data, prefetch_data, 21, 8, 10    // immed_data = prefetch_data[2:0] << 21
         mtcrf   0x02, rtn_addr                          // cr6 = rtn_addr[7:4]
         add     addr, addr, immed_data
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x57E0(base_disp)
+        lwz     addr, T_16B18 - dr_emitters(base_disp)  // template: srawi addr, addr, 0
         cror    4*cr6+gt, 4*cr6+gt, 4*cr6+lt            // cr6.gt = cr6.gt | cr6.lt
         rlwinm  rtn_addr, data, 11, 16, 20              // rtn_addr = data[4:0] << 11
         add     addr, addr, rtn_addr
-        lwz     data, 0x57E4(base_disp)
+        lwz     data, T_16B1C - dr_emitters(base_disp)  // template: rlwimi d0, addr, 8, 24, 31
         stwu    addr, 4(out_ptr)
         rlwimi  data, prefetch_data, 16, 13, 15         // data[18:16] = prefetch_data[2:0]
         stwu    data, 4(out_ptr)
         ble     cr6, dr_emit_next
-        lwz     addr, 0x57E8(base_disp)
-        lwz     data, 0x57EC(base_disp)
-        lwz     rtn_addr, 0x57F0(base_disp)
+        lwz     addr, T_16B20 - dr_emitters(base_disp)  // template: rlwinm ccr_x, addr, 6, 2, 2
+        lwz     data, T_16B24 - dr_emitters(base_disp)  // template: clrrwi. addr, addr, 24
+        lwz     rtn_addr, T_16B28 - dr_emitters(base_disp)  // template: mtxer ccr_x
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
         stwu    rtn_addr, 4(out_ptr)
         b       dr_emit_next
-        addco.  d0, d0, d0
-        add     addr, d0, zero
-        slwi.   d0, d0, 1
-        srawi   data, d0, 1                             // data = d0 >> 1 (arithmetic)
-        cmpw    cr7, data, addr
-        rlwinm  ccr_x, addr, 0, 2, 2                    // ccr_x = addr[29] << 29
-        beq     cr7, L_16A98
-        oris    ccr_x, ccr_x, 0x4000
-L_16A98:
-        mtxer   ccr_x
-        slwi    addr, d0, 16
-        addco.  addr, addr, addr
-        rlwimi  d0, addr, 16, 16, 31                    // d0[15:0] = addr[31:16]
-        slwi    addr, d0, 16
-        rlwinm. data, addr, 1, 0, 14                    // data = addr[30:16] << 17
-        rlwimi  d0, data, 16, 16, 31                    // d0[15:0] = data[31:16]
-        srawi   rtn_addr, data, 1                       // rtn_addr = data >> 1 (arithmetic)
-        cmpw    cr7, rtn_addr, addr
-        rlwinm  ccr_x, addr, 0, 2, 2                    // ccr_x = addr[29] << 29
-        beq     cr7, L_16AC8
-        oris    ccr_x, ccr_x, 0x4000
-L_16AC8:
-        mtxer   ccr_x
-        slwi    addr, d0, 24
-        addco.  addr, addr, addr
-        rlwimi  d0, addr, 8, 24, 31                     // d0[7:0] = addr[31:24]
-        slwi    addr, d0, 24
-        rlwinm. data, addr, 1, 0, 6                     // data = addr[30:24] << 25
-        rlwimi  d0, data, 8, 24, 31                     // d0[7:0] = data[31:24]
-        add.    data, zero, zero
-        srawi   d0, d0, 1                               // d0 = d0 >> 1 (arithmetic)
-        srawi   addr, d0, 0                             // addr = d0 >> 0 (arithmetic)
-        rlwimi. d0, addr, 31, 1, 31                     // d0[30:0] = addr[31:1]
-        rlwinm  ccr_x, addr, 29, 2, 2                   // ccr_x = addr[0] << 29
-        mtxer   ccr_x
-        slwi    addr, d0, 16
-        srawi   addr, addr, 0                           // addr = addr >> 0 (arithmetic)
-        rlwimi  d0, addr, 16, 16, 31                    // d0[15:0] = addr[31:16]
-        rlwinm  ccr_x, addr, 14, 2, 2                   // ccr_x = addr[15] << 29
-        clrrwi. addr, addr, 16                          // addr = addr & 0xFFFF0000
-        mtxer   ccr_x
-        slwi    addr, d0, 24
-        srawi   addr, addr, 0                           // addr = addr >> 0 (arithmetic)
-        rlwimi  d0, addr, 8, 24, 31                     // d0[7:0] = addr[31:24]
-        rlwinm  ccr_x, addr, 6, 2, 2                    // ccr_x = addr[23] << 29
-        clrrwi. addr, addr, 24                          // addr = addr & 0xFF000000
-        mtxer   ccr_x
-L_16B2C:
+T_16A78:
+        addco.  d0, d0, d0                              // template
+T_16A7C:
+        add     addr, d0, zero                          // template
+T_16A80:
+        slwi.   d0, d0, 1                               // template
+T_16A84:
+        srawi   data, d0, 1                             // template
+T_16A88:
+        cmpw    cr7, data, addr                         // template
+T_16A8C:
+        rlwinm  ccr_x, addr, 0, 2, 2                    // template
+T_16A90:
+        beq     cr7, T_16A98                            // template
+T_16A94:
+        oris    ccr_x, ccr_x, 0x4000                    // template
+T_16A98:
+        mtxer   ccr_x                                   // template
+T_16A9C:
+        slwi    addr, d0, 16                            // template
+T_16AA0:
+        addco.  addr, addr, addr                        // template
+T_16AA4:
+        rlwimi  d0, addr, 16, 16, 31                    // template
+T_16AA8:
+        slwi    addr, d0, 16                            // template
+T_16AAC:
+        rlwinm. data, addr, 1, 0, 14                    // template
+T_16AB0:
+        rlwimi  d0, data, 16, 16, 31                    // template
+T_16AB4:
+        srawi   rtn_addr, data, 1                       // template
+T_16AB8:
+        cmpw    cr7, rtn_addr, addr                     // template
+T_16ABC:
+        rlwinm  ccr_x, addr, 0, 2, 2                    // template
+T_16AC0:
+        beq     cr7, T_16AC8                            // template
+T_16AC4:
+        oris    ccr_x, ccr_x, 0x4000                    // template
+T_16AC8:
+        mtxer   ccr_x                                   // template
+T_16ACC:
+        slwi    addr, d0, 24                            // template
+T_16AD0:
+        addco.  addr, addr, addr                        // template
+T_16AD4:
+        rlwimi  d0, addr, 8, 24, 31                     // template
+T_16AD8:
+        slwi    addr, d0, 24                            // template
+T_16ADC:
+        rlwinm. data, addr, 1, 0, 6                     // template
+T_16AE0:
+        rlwimi  d0, data, 8, 24, 31                     // template
+T_16AE4:
+        add.    data, zero, zero                        // template
+T_16AE8:
+        srawi   d0, d0, 1                               // template
+T_16AEC:
+        srawi   addr, d0, 0                             // template
+T_16AF0:
+        rlwimi. d0, addr, 31, 1, 31                     // template
+T_16AF4:
+        rlwinm  ccr_x, addr, 29, 2, 2                   // template
+T_16AF8:
+        mtxer   ccr_x                                   // template
+T_16AFC:
+        slwi    addr, d0, 16                            // template
+T_16B00:
+        srawi   addr, addr, 0                           // template
+T_16B04:
+        rlwimi  d0, addr, 16, 16, 31                    // template
+T_16B08:
+        rlwinm  ccr_x, addr, 14, 2, 2                   // template
+T_16B0C:
+        clrrwi. addr, addr, 16                          // template
+T_16B10:
+        mtxer   ccr_x                                   // template
+T_16B14:
+        slwi    addr, d0, 24                            // template
+T_16B18:
+        srawi   addr, addr, 0                           // template
+T_16B1C:
+        rlwimi  d0, addr, 8, 24, 31                     // template
+T_16B20:
+        rlwinm  ccr_x, addr, 6, 2, 2                    // template
+T_16B24:
+        clrrwi. addr, addr, 24                          // template
+T_16B28:
+        mtxer   ccr_x                                   // template
+
+// For the shift emitters: the immediate count from bits 11:9 of the
+// opcode, where 0 stands for 8.
+dr_shift_count:
         rlwinm  data, prefetch_data, 23, 29, 31         // data = prefetch_data[11:9]
         cmpwi   cr7, data, 0
         bnelr   cr7
@@ -9620,15 +11293,22 @@ L_16B2C:
 
 // Code generator for 1 opcode:
 //     NOP
+// For 4E71, NOP, it generates
+//         eieio   
 dr_emit_nop:
-        lwz     addr, 0x5840(base_disp)
+        lwz     addr, T_16B78 - dr_emitters(base_disp)  // template: eieio
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
 
 // Code generator for 8 opcodes:
 //     SWAP Dn
+// For 4840, SWAP D0, it generates
+//         rotlwi. d0, d0, 16
+//         addco   zero, zero, zero
+// and, when the condition codes are not wanted afterwards,
+//         rotlwi. d0, d0, 16
 dr_emit_swap:
-        lwz     addr, 0x5844(base_disp)
+        lwz     addr, T_16B7C - dr_emitters(base_disp)  // template: rotlwi. d0, d0, 16
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
         lhz     rtn_addr, 0(rec_ptr)
         rlwimi  data, prefetch_data, 21, 8, 10          // data[23:21] = prefetch_data[2:0]
@@ -9636,21 +11316,31 @@ dr_emit_swap:
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         ble     cr6, dr_emit_next
-        lwz     addr, 0x5848(base_disp)
+        lwz     addr, T_16B80 - dr_emitters(base_disp)  // template: addco zero, zero, zero
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-        eieio
-        rotlwi. d0, d0, 16                              // d0 = d0 with halves swapped
-        addco   zero, zero, zero
+T_16B78:
+        eieio                                           // template
+T_16B7C:
+        rotlwi. d0, d0, 16                              // template
+T_16B80:
+        addco   zero, zero, zero                        // template
 
 // Code generator for 8 opcodes:
 //     EXT.W Dn
+// For 4880, EXT.W D0, it generates
+//         extsb.  addr, d0
+//         rlwimi  d0, addr, 0, 16, 31
+//         addco   zero, zero, zero
+// and, when the condition codes are not wanted afterwards,
+//         extsb.  addr, d0
+//         rlwimi  d0, addr, 0, 16, 31
 dr_emit_ext_w:
-        lwz     addr, 0x58A4(base_disp)
+        lwz     addr, T_16BDC - dr_emitters(base_disp)  // template: extsb. addr, d0
         rlwinm  data, prefetch_data, 21, 8, 10          // data = prefetch_data[2:0] << 21
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x58A8(base_disp)
+        lwz     addr, T_16BE0 - dr_emitters(base_disp)  // template: rlwimi d0, addr, 0, 16, 31
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
 dr_emit_ext_w_L1:
         add     addr, addr, data
@@ -9658,30 +11348,45 @@ dr_emit_ext_w_L1:
         lhz     rtn_addr, 0(rec_ptr)
         mtcrf   0x02, rtn_addr                          // cr6 = rtn_addr[7:4]
         ble     cr6, dr_emit_next
-        lwz     addr, 0x58B4(base_disp)
+        lwz     addr, T_16BEC - dr_emitters(base_disp)  // template: addco zero, zero, zero
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
 
 // Code generator for 8 opcodes:
 //     EXT.L Dn
+// For 48C0, EXT.L D0, it generates
+//         extsh.  d0, d0
+//         addco   zero, zero, zero
+// and, when the condition codes are not wanted afterwards,
+//         extsh.  d0, d0
 dr_emit_ext_l:
-        lwz     addr, 0x58AC(base_disp)
+        lwz     addr, T_16BE4 - dr_emitters(base_disp)  // template: extsh. d0, d0
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
         rlwimi  data, prefetch_data, 21, 8, 10          // data[23:21] = prefetch_data[2:0]
         b       dr_emit_ext_w_L1
 
 // Code generator for 8 opcodes:
 //     EXTB.L Dn
+// For 49C0, EXTB.L D0, it generates
+//         extsb.  d0, d0
+//         addco   zero, zero, zero
+// and, when the condition codes are not wanted afterwards,
+//         extsb.  d0, d0
 dr_emit_extb_l:
-        lwz     addr, 0x58B0(base_disp)
+        lwz     addr, T_16BE8 - dr_emitters(base_disp)  // template: extsb. d0, d0
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
         rlwimi  data, prefetch_data, 21, 8, 10          // data[23:21] = prefetch_data[2:0]
         b       dr_emit_ext_w_L1
-        extsb.  addr, d0                                // addr = sign-extended low byte of d0
-        rlwimi  d0, addr, 0, 16, 31                     // d0[15:0] = addr[15:0]
-        extsh.  d0, d0                                  // d0 = sign-extended low word of d0
-        extsb.  d0, d0                                  // d0 = sign-extended low byte of d0
-        addco   zero, zero, zero
+T_16BDC:
+        extsb.  addr, d0                                // template
+T_16BE0:
+        rlwimi  d0, addr, 0, 16, 31                     // template
+T_16BE4:
+        extsh.  d0, d0                                  // template
+T_16BE8:
+        extsb.  d0, d0                                  // template
+T_16BEC:
+        addco   zero, zero, zero                        // template
 
 // Code generator for 224 opcodes:
 //     LEA (An),An
@@ -9691,6 +11396,8 @@ dr_emit_extb_l:
 //     LEA (xxx).L,An
 //     LEA (d16,PC),An
 //     ... and 1 more forms
+// For 41D0, LEA (A0),A0, it generates
+//         add     a0, a0, zero
 dr_emit_lea:
         rlwinm  addr, prefetch_data, 23, 29, 31         // addr = prefetch_data[11:9]
         cmpwi   cr7, addr, 7
@@ -9699,7 +11406,7 @@ dr_emit_lea:
         bne     cr7, dr_emit_lea_L1
         lis     immed_data, 0x0020
 dr_emit_lea_L1:
-        bl      L_12508
+        bl      dr_operand_address
         b       dr_emit_next
 
 // Code generator for 28 opcodes:
@@ -9710,43 +11417,52 @@ dr_emit_lea_L1:
 //     PEA (xxx).L
 //     PEA (d16,PC)
 //     ... and 1 more forms
+// For 4850, PEA (A0), it generates
+//         stwu    a0, -4(a7)
 dr_emit_pea:
         clrlwi  addr, prefetch_data, 26                 // addr = prefetch_data & 0x0000003F
         cmpwi   cr7, addr, 23
         lis     immed_data, 0x0060
         ble     cr7, dr_emit_pea_L1
-        bl      L_12508
-        lwz     addr, 0x5914(base_disp)
+        bl      dr_operand_address
+        lwz     addr, T_16C4C - dr_emitters(base_disp)  // template: stwu addr, -4(a7)
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
 dr_emit_pea_L1:
-        lwz     addr, 0x5918(base_disp)
+        lwz     addr, T_16C50 - dr_emitters(base_disp)  // template: stwu a0, -4(a7)
         rlwinm  data, prefetch_data, 21, 8, 10          // data = prefetch_data[2:0] << 21
         add     addr, addr, data
         bne     cr7, dr_emit_pea_L2
-        lwz     addr, 0x591C(base_disp)
+        lwz     addr, T_16C54 - dr_emitters(base_disp)  // template: stwu a7, -4(a7)
 dr_emit_pea_L2:
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-        stwu    addr, -4(a7)
-        stwu    a0, -4(a7)
-        stwu    a7, -4(a7)
+T_16C4C:
+        stwu    addr, -4(a7)                            // template
+T_16C50:
+        stwu    a0, -4(a7)                              // template
+T_16C54:
+        stwu    a7, -4(a7)                              // template
 
 // Code generator for 8 opcodes:
 //     LINK.W An,#<disp>
+// For 4E50 0010, LINK.W A0,#<disp>, it generates
+//         stwu    a0, -4(a7)
+//         add     a0, a7, zero
+//         addi    a7, a7, 16
 dr_emit_link_w:
-        lwz     rtn_addr, 0x59E8(base_disp)
+        lwz     rtn_addr, T_16D20 - dr_emitters(base_disp)  // template: addi a7, a7, 0
         lhax    immed_data, pc, blk_ofs
         rlwimi  rtn_addr, immed_data, 0, 16, 31         // rtn_addr[15:0] = immed_data[15:0]
         clrlwi  data, prefetch_data, 29                 // data = prefetch_data & 0x00000007
         cmpwi   cr7, data, 7
         beq     cr7, dr_emit_link_w_L3
 dr_emit_link_w_L1:
-        lwz     addr, 0x59E0(base_disp)
+        lwz     addr, T_16D18 - dr_emitters(base_disp)  // template: stwu a0, -4(a7)
         rlwinm  data, prefetch_data, 21, 8, 10          // data = prefetch_data[2:0] << 21
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x59E4(base_disp)
+        lwz     addr, T_16D1C - dr_emitters(base_disp)  // template: add a0, a7, zero
         add     addr, addr, data
 dr_emit_link_w_L2:
         clrlwi  data, rtn_addr, 16                      // data = rtn_addr & 0x0000FFFF
@@ -9756,54 +11472,73 @@ dr_emit_link_w_L2:
         stwu    rtn_addr, 4(out_ptr)
         b       dr_emit_next
 dr_emit_link_w_L3:
-        lwz     addr, 0x59EC(base_disp)
+        lwz     addr, T_16D24 - dr_emitters(base_disp)  // template: stwu a7, -4(a7)
         b       dr_emit_link_w_L2
 
 // Code generator for 8 opcodes:
 //     LINK.L An,#<disp>
+// For 4808 0010 0010, LINK.L A0,#<disp>, it generates
+//         ori     addr, zero, 0x0010
+//         oris    addr, addr, 0x0010
+//         stwu    a0, -4(a7)
+//         add     a0, a7, zero
+//         add     a7, a7, addr
 dr_emit_link_l:
-        bl      L_12518
+        bl      dr_operand_address_L2
         clrlwi  data, prefetch_data, 29                 // data = prefetch_data & 0x00000007
         cmpwi   cr7, data, 7
-        lwz     rtn_addr, 0x59F0(base_disp)
+        lwz     rtn_addr, T_16D28 - dr_emitters(base_disp)  // template: add a7, a7, addr
         bne     cr7, dr_emit_link_w_L1
-        lwz     addr, 0x59EC(base_disp)
-        lwz     rtn_addr, 0x59F0(base_disp)
+        lwz     addr, T_16D24 - dr_emitters(base_disp)  // template: stwu a7, -4(a7)
+        lwz     rtn_addr, T_16D28 - dr_emitters(base_disp)  // template: add a7, a7, addr
         stwu    addr, 4(out_ptr)
         stwu    rtn_addr, 4(out_ptr)
         b       dr_emit_next
 
 // Code generator for 8 opcodes:
 //     UNLK An
+// For 4E58, UNLK A0, it generates
+//         lwz     addr, 0(a0)
+//         addi    a7, a0, 4
+//         add     a0, addr, zero
 dr_emit_unlk:
         clrlwi  data, prefetch_data, 29                 // data = prefetch_data & 0x00000007
         cmpwi   cr7, data, 7
-        lwz     addr, 0x59F4(base_disp)
+        lwz     addr, T_16D2C - dr_emitters(base_disp)  // template: lwz addr, 0(a0)
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
         add     addr, addr, data
         beq     cr7, dr_emit_unlk_L1
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x59F8(base_disp)
+        lwz     addr, T_16D30 - dr_emitters(base_disp)  // template: addi a7, a0, 4
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        lwz     addr, 0x59FC(base_disp)
+        lwz     addr, T_16D34 - dr_emitters(base_disp)  // template: add a0, addr, zero
         rlwinm  data, prefetch_data, 21, 8, 10          // data = prefetch_data[2:0] << 21
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
 dr_emit_unlk_L1:
-        lwz     addr, 0x5A00(base_disp)
+        lwz     addr, T_16D38 - dr_emitters(base_disp)  // template: lwz a7, 0(a7)
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-        stwu    a0, -4(a7)
-        add     a0, a7, zero
-        addi    a7, a7, 0
-        stwu    a7, -4(a7)
-        add     a7, a7, addr
-        lwz     addr, 0(a0)
-        addi    a7, a0, 4
-        add     a0, addr, zero
-        lwz     a7, 0(a7)
+T_16D18:
+        stwu    a0, -4(a7)                              // template
+T_16D1C:
+        add     a0, a7, zero                            // template
+T_16D20:
+        addi    a7, a7, 0                               // template
+T_16D24:
+        stwu    a7, -4(a7)                              // template
+T_16D28:
+        add     a7, a7, addr                            // template
+T_16D2C:
+        lwz     addr, 0(a0)                             // template
+T_16D30:
+        addi    a7, a0, 4                               // template
+T_16D34:
+        add     a0, addr, zero                          // template
+T_16D38:
+        lwz     a7, 0(a7)                               // template
 
 // Code generator for 800 opcodes:
 //     ST.B Dn
@@ -9813,13 +11548,17 @@ dr_emit_unlk_L1:
 //     ST.B (d16,An)
 //     ST.B (d8,An,Xn)
 //     ... and 122 more forms
+// For 50C0, ST.B D0, it generates
+//         add     addr, zero, zero
+//         not     addr, addr
+//         rlwimi  d0, addr, 0, 24, 31
 dr_emit_scc_b:
-        lwz     addr, 0x5A68(base_disp)
+        lwz     addr, T_16DA0 - dr_emitters(base_disp)  // template: add addr, zero, zero
         rlwinm  data, prefetch_data, 29, 29, 31         // data = prefetch_data[5:3]
         cmpwi   cr7, data, 0
         stwu    addr, 4(out_ptr)
         rlwinm  data, prefetch_data, 26, 26, 29         // data = prefetch_data[11:8] << 2
-        addi    rtn_addr, base_disp, 0x5B10
+        addi    rtn_addr, base_disp, dr_scc_sequences - dr_emitters
         lwzx    rtn_addr, rtn_addr, data
         clrlwi  data, rtn_addr, 16                      // data = rtn_addr & 0x0000FFFF
         mtctr   data
@@ -9834,16 +11573,18 @@ dr_emit_scc_b_L2:
         beq     cr7, dr_emit_scc_b_L3
         rlwinm  data, prefetch_data, 1, 25, 30          // data = prefetch_data[5:0] << 1
         lis     immed_data, 0x0060
-        bl      L_124E8
+        bl      dr_operand_store_b_indexed
         b       dr_emit_next
 dr_emit_scc_b_L3:
-        lwz     addr, 0x5A6C(base_disp)
+        lwz     addr, T_16DA4 - dr_emitters(base_disp)  // template: rlwimi d0, addr, 0, 24, 31
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-        add     addr, zero, zero
-        rlwimi  d0, addr, 0, 24, 31                     // d0[7:0] = addr[7:0]
+T_16DA0:
+        add     addr, zero, zero                        // template
+T_16DA4:
+        rlwimi  d0, addr, 0, 24, 31                     // template
         subfe   addr, addr, addr                        // addr = addr + ~addr + CA
         not     addr, addr
         beq     dr_emit_scc_b_L4
@@ -9895,7 +11636,11 @@ dr_emit_scc_b_L13:
         .long   0x40980008
 dr_emit_scc_b_L14:
         li      addr, -1
-D_16E48:
+
+// One long word for each of the sixteen conditions: in the upper half the
+// offset from dr_emitters of the templates that compute the condition into
+// addr, less 4; in the lower half their number plus one.
+dr_scc_sequences:
         .long   0x5A700002
         .long   0x5A6C0001
         .long   0x5A740003
@@ -9911,27 +11656,35 @@ D_16E48:
         .long   0x5A900007
         .long   0x5AF40007
         .long   0x5A8C0008
+dr_scc_sequences_L1:
         .long   0x5AF00008
+
+// Called by the translation of a line-A trap, with pc at the trap word:
+// the recompiler's copy of the interpreter's trap dispatch
+// (aline_os_trap, aline_toolbox_trap).  If the line-A vector is the one
+// expected (+0x720) the trap's routine is looked up in the Mac OS trap
+// tables and entered directly; otherwise the exception is taken.
+dr_aline_trap:
         crset   cr_dr_busy
         lwz     addr, 0x720(EmulatorStatePtr)
         lha     data, 0(pc)
         lwz     rtn_addr, 40(vbr)
         mtcrf   0x04, data                              // cr5 = data[11:8]
         cmplw   cr7, addr, rtn_addr
-        bge     cr5, dr_emit_scc_b_L15
+        bge     cr5, dr_aline_trap_L1
         rlwinm  immed_data, data, 2, 20, 29             // immed_data = data[9:0] << 2
-        ble     cr5, L_16F80
-        b       L_16FC0
-dr_emit_scc_b_L15:
+        ble     cr5, dr_aline_trap_L3
+        b       dr_aline_trap_L4
+dr_aline_trap_L1:
         rlwinm  immed_data, data, 2, 22, 29             // immed_data = data[7:0] << 2
         addi    addr, pc, 2
-        bns     cr5, dr_emit_scc_b_L16
+        bns     cr5, dr_aline_trap_L2
         mflr    base_disp
-        bne     cr7, L_16FF4
+        bne     cr7, dr_aline_trap_L5
         lwz     rtn_addr, 0x7B4(EmulatorStatePtr)
         lwzx    immed_data, immed_data, rtn_addr
         crclr   cr_dr_busy
-        lwz     rtn_addr, 0(base_disp)
+        lwz     rtn_addr, dr_emitters - dr_emitters(base_disp)  // template: lwz addr, T_11598 - dr_emitters(base_disp)
         addi    pc, immed_data, 2
         cmpw    cr6, rtn_addr, pc
         lwz     rtn_addr, 0x728(EmulatorStatePtr)
@@ -9939,7 +11692,7 @@ dr_emit_scc_b_L15:
         stw     a1, 4(a7)
         stw     d1, 8(a7)
         rlwimi  d1, data, 0, 16, 31                     // d1[15:0] = data[15:0]
-        lwz     data, 4(base_disp)
+        lwz     data, T_1133C - dr_emitters(base_disp)  // template: rlwinm data, data, 15, 13, 15
         stw     d2, 12(a7)
         mtctr   data
         stw     a2, 16(a7)
@@ -9947,15 +11700,15 @@ dr_emit_scc_b_L15:
         bt      cr_special_event_pending, dr_exit_to_interpreter
         beqctr  cr6
         b       dr_stale_block_L1
-        b       dr_emit_scc_b_L16
+        b       dr_aline_trap_L2
         ALIGN(32)
-dr_emit_scc_b_L16:
+dr_aline_trap_L2:
         mflr    base_disp
-        bne     cr7, L_16FF4
+        bne     cr7, dr_aline_trap_L5
         lwz     rtn_addr, 0x7B4(EmulatorStatePtr)
         lwzx    immed_data, immed_data, rtn_addr
         crclr   cr_dr_busy
-        lwz     rtn_addr, 0(base_disp)
+        lwz     rtn_addr, dr_emitters - dr_emitters(base_disp)  // template: lwz addr, T_11598 - dr_emitters(base_disp)
         addi    pc, immed_data, 2
         cmpw    cr6, rtn_addr, pc
         lwz     rtn_addr, 0x724(EmulatorStatePtr)
@@ -9964,7 +11717,7 @@ dr_emit_scc_b_L16:
         stw     a1, 8(a7)
         stw     d1, 12(a7)
         rlwimi  d1, data, 0, 16, 31                     // d1[15:0] = data[15:0]
-        lwz     data, 4(base_disp)
+        lwz     data, T_1133C - dr_emitters(base_disp)  // template: rlwinm data, data, 15, 13, 15
         stw     d2, 16(a7)
         stw     a2, 20(a7)
         mtctr   data
@@ -9973,16 +11726,16 @@ dr_emit_scc_b_L16:
         beqctr  cr6
         b       dr_stale_block_L1
         ALIGN(64)
-L_16F80:
+dr_aline_trap_L3:
         mflr    base_disp
         addi    data, pc, 2
-        bne     cr7, L_16FF4
-        lwz     rtn_addr, 0(base_disp)
+        bne     cr7, dr_aline_trap_L5
+        lwz     rtn_addr, dr_emitters - dr_emitters(base_disp)  // template: lwz addr, T_11598 - dr_emitters(base_disp)
         lwz     rtn_addr, 0x7B0(EmulatorStatePtr)
         lwzx    immed_data, immed_data, rtn_addr
         crclr   cr_dr_busy
         addi    pc, immed_data, 2
-        lwz     immed_data, 4(base_disp)
+        lwz     immed_data, T_1133C - dr_emitters(base_disp)  // template: rlwinm data, data, 15, 13, 15
         cmpw    cr6, rtn_addr, pc
         mtctr   immed_data
         stwu    data, -4(a7)
@@ -9990,32 +11743,44 @@ L_16F80:
         beqctr  cr6
         b       dr_stale_block_L1
         ALIGN(64)
-L_16FC0:
+dr_aline_trap_L4:
         mflr    base_disp
-        bne     cr7, L_16FF4
+        bne     cr7, dr_aline_trap_L5
         lwz     rtn_addr, 0x7B0(EmulatorStatePtr)
         lwzx    immed_data, immed_data, rtn_addr
         crclr   cr_dr_busy
-        lwz     rtn_addr, 0(base_disp)
+        lwz     rtn_addr, dr_emitters - dr_emitters(base_disp)  // template: lwz addr, T_11598 - dr_emitters(base_disp)
         addi    pc, immed_data, 2
-        lwz     immed_data, 4(base_disp)
+        lwz     immed_data, T_1133C - dr_emitters(base_disp)  // template: rlwinm data, data, 15, 13, 15
         cmpw    cr6, rtn_addr, pc
         mtctr   immed_data
         bt      cr_special_event_pending, dr_exit_to_interpreter
         beqctr  cr6
         b       dr_stale_block_L1
-L_16FF4:
+dr_aline_trap_L5:
         crclr   cr_dr_busy
         addi    pc, pc, 2
         b       dr_exit_to_interpreter
 
 // Code generator for 127 opcodes:
 //     BRA.S <label>
+// For 6002, BRA.S <label>, it generates the block
+//       +000  b       dr_exit_to_interpreter
+//     entry:
+//       +004  addi    pc, pc, 4
+//       +008  bl      dr_block_exit
 dr_emit_bra_s:
         b       dr_emit_bcc_l_L9
 
 // Code generator for 127 opcodes:
 //     BSR.S <label>
+// For 6102, BSR.S <label>, it generates the block
+//       +000  b       dr_exit_to_interpreter
+//     entry:
+//       +004  addi    data, pc, 0
+//       +008  stwu    data, -4(a7)
+//       +00C  addi    pc, pc, 4
+//       +010  bl      dr_block_exit
 dr_emit_bsr_s:
         b       dr_emit_bcc_l_L8
 
@@ -10027,16 +11792,39 @@ dr_emit_bsr_s:
 //     BNE.S <label>
 //     BEQ.S <label>
 //     ... and 8 more forms
+// For 6202, BHI.S <label> (then NOP and RTS), it generates the block
+//       +000  b       dr_exit_to_interpreter
+//     entry:
+//       +010  beq     +020
+//       +014  subfe   addr, addr, addr
+//       +018  cmpwi   cr6, addr, 0
+//       +01C  bne     cr6, +024
+//       +020  eieio
+//       +024  lwz     pc, 0(a7)
+//       +028  addi    a7, a7, 4
+//       +02C  bl      dr_indirect_exit
 dr_emit_bcc_s:
         b       dr_emit_bcc_l_L2
 
 // Code generator for 1 opcode:
 //     BRA.W <label>
+// For 6000 0010, BRA.W <label>, it generates the block
+//       +000  b       dr_exit_to_interpreter
+//     entry:
+//       +004  addi    pc, pc, 18
+//       +008  bl      dr_block_exit
 dr_emit_bra_w:
         b       dr_emit_jmp
 
 // Code generator for 1 opcode:
 //     BSR.W <label>
+// For 6100 0010, BSR.W <label>, it generates the block
+//       +000  b       dr_exit_to_interpreter
+//     entry:
+//       +004  addi    data, pc, 2
+//       +008  stwu    data, -4(a7)
+//       +00C  addi    pc, pc, 18
+//       +010  bl      dr_block_exit
 dr_emit_bsr_w:
         b       dr_emit_jsr
 
@@ -10048,16 +11836,45 @@ dr_emit_bsr_w:
 //     BNE.W <label>
 //     BEQ.W <label>
 //     ... and 8 more forms
+// For 6200 0010, BHI.W <label> (then NOP and RTS), it generates the block
+//       +000  b       dr_exit_to_interpreter
+//       +004  addi    pc, pc, 18
+//       +008  bl      dr_block_exit
+//     entry:
+//       +014  beq     +024
+//       +018  subfe   addr, addr, addr
+//       +01C  cmpwi   cr6, addr, 0
+//       +020  bf_unlikely 4*cr6+eq, +004
+//       +024  eieio
+//       +028  lwz     pc, 0(a7)
+//       +02C  addi    a7, a7, 4
+//       +030  bl      dr_indirect_exit
 dr_emit_bcc_w:
         b       dr_emit_bcc_l_L1
 
 // Code generator for 1 opcode:
 //     BRA.L <label>
+// For 60FF 0010 0010, BRA.L <label>, it generates the block
+//       +000  b       dr_exit_to_interpreter
+//     entry:
+//       +004  addi    pc, pc, 18
+//       +008  addis   pc, pc, 16
+//       +00C  bt_unlikely cr_special_event_pending, +000
+//       +010  bl      dr_block_exit
 dr_emit_bra_l:
         b       dr_emit_jmp_L3
 
 // Code generator for 1 opcode:
 //     BSR.L <label>
+// For 61FF 0010 0010, BSR.L <label>, it generates the block
+//       +000  b       dr_exit_to_interpreter
+//     entry:
+//       +004  addi    data, pc, 4
+//       +008  stwu    data, -4(a7)
+//       +00C  addi    pc, pc, 18
+//       +010  addis   pc, pc, 16
+//       +014  bt_unlikely cr_special_event_pending, +000
+//       +018  bl      dr_block_exit
 dr_emit_bsr_l:
         b       dr_emit_jmp_L2
 
@@ -10069,6 +11886,21 @@ dr_emit_bsr_l:
 //     BNE.L <label>
 //     BEQ.L <label>
 //     ... and 8 more forms
+// For 62FF 0010 0010, BHI.L <label> (then NOP and RTS), it generates the block
+//       +000  b       dr_exit_to_interpreter
+//       +004  addi    pc, pc, 18
+//       +008  addis   pc, pc, 16
+//       +00C  bt_unlikely cr_special_event_pending, +000
+//       +010  bl      dr_block_exit
+//     entry:
+//       +014  beq     +024
+//       +018  subfe   addr, addr, addr
+//       +01C  cmpwi   cr6, addr, 0
+//       +020  bf_unlikely 4*cr6+eq, +004
+//       +024  eieio
+//       +028  lwz     pc, 0(a7)
+//       +02C  addi    a7, a7, 4
+//       +030  bl      dr_indirect_exit
 dr_emit_bcc_l:
         lwz     addr, dr_cache_ptr(EmulatorStatePtr)
         lhz     data, 6(rec_ptr)
@@ -10077,7 +11909,7 @@ dr_emit_bcc_l:
         mtcrf   0x08, immed_data                        // cr4 = immed_data[15:12]
         add     immed_data, addr, data
         add     rtn_addr, rtn_addr, blk_ofs
-        bl      dr_templates_L17
+        bl      dr_templates_L14
         b       dr_emit_bcc_l_L3
 dr_emit_bcc_l_L1:
         lwz     addr, dr_cache_ptr(EmulatorStatePtr)
@@ -10086,7 +11918,7 @@ dr_emit_bcc_l_L1:
         add     immed_data, addr, data
         mtcrf   0x08, rtn_addr                          // cr4 = rtn_addr[15:12]
         add     rtn_addr, rtn_addr, blk_ofs
-        bl      dr_templates_L17
+        bl      dr_templates_L14
         b       dr_emit_bcc_l_L3
 dr_emit_bcc_l_L2:
         lwz     addr, dr_cache_ptr(EmulatorStatePtr)
@@ -10095,14 +11927,14 @@ dr_emit_bcc_l_L2:
         mtcrf   0x08, rtn_addr                          // cr4 = rtn_addr[15:12]
         add     immed_data, addr, data
         add     rtn_addr, rtn_addr, blk_ofs
-        bl      dr_templates_L4
+        bl      dr_templates_L1
 dr_emit_bcc_l_L3:
         lhz     rtn_addr, 0(rec_ptr)
         rlwinm  data, prefetch_data, 26, 26, 29         // data = prefetch_data[11:8] << 2
         mtcrf   0x01, rtn_addr                          // cr7 = rtn_addr[3:0]
-        addi    rtn_addr, base_disp, 0x5EF0
+        addi    rtn_addr, base_disp, dr_bcc_sequences - dr_emitters
         bge     cr7, dr_emit_bcc_l_L4
-        addi    rtn_addr, base_disp, 0x5F30
+        addi    rtn_addr, base_disp, dr_bcc_sequences_cr7 - dr_emitters
 dr_emit_bcc_l_L4:
         lwzx    rtn_addr, data, rtn_addr
         rlwinm  addr, rtn_addr, 24, 24, 31              // addr = rtn_addr[15:8]
@@ -10131,8 +11963,8 @@ dr_emit_bcc_l_L7:
         b       dr_emit_next
 dr_emit_bcc_l_L8:
         lhz     rtn_addr, 14(rec_ptr)
-        lwz     addr, 0x5E44(base_disp)
-        lwz     data, 0x5E48(base_disp)
+        lwz     addr, T_1717C - dr_emitters(base_disp)  // template: addi data, pc, 0
+        lwz     data, T_17180 - dr_emitters(base_disp)  // template: stwu data, -4(a7)
         addi    rtn_addr, rtn_addr, -2
         rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
         stwu    addr, 4(out_ptr)
@@ -10141,16 +11973,23 @@ dr_emit_bcc_l_L9:
         extsb   rtn_addr, prefetch_data                 // rtn_addr = sign-extended low byte of prefetch_data
         add     rtn_addr, rtn_addr, blk_ofs
         mr      immed_data, out_ptr
-        bl      dr_templates_L4
+        bl      dr_templates_L1
         mr      out_ptr, immed_data
         b       dr_fix_branches
 
 // Code generator for 1 opcode:
 //     JSR (d16,PC)
+// For 4EBA 0010, JSR (d16,PC), it generates the block
+//       +000  b       dr_exit_to_interpreter
+//     entry:
+//       +004  addi    data, pc, 2
+//       +008  stwu    data, -4(a7)
+//       +00C  addi    pc, pc, 18
+//       +010  bl      dr_block_exit
 dr_emit_jsr:
         lhz     rtn_addr, 14(rec_ptr)
-        lwz     addr, 0x5E44(base_disp)
-        lwz     data, 0x5E48(base_disp)
+        lwz     addr, T_1717C - dr_emitters(base_disp)  // template: addi data, pc, 0
+        lwz     data, T_17180 - dr_emitters(base_disp)  // template: stwu data, -4(a7)
         addi    rtn_addr, rtn_addr, -2
         rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
         stwu    addr, 4(out_ptr)
@@ -10158,18 +11997,23 @@ dr_emit_jsr:
 
 // Code generator for 1 opcode:
 //     JMP (d16,PC)
+// For 4EFA 0010, JMP (d16,PC), it generates the block
+//       +000  b       dr_exit_to_interpreter
+//     entry:
+//       +004  addi    pc, pc, 18
+//       +008  bl      dr_block_exit
 dr_emit_jmp:
         lhax    rtn_addr, pc, blk_ofs
 dr_emit_jmp_L1:
         add     rtn_addr, rtn_addr, blk_ofs
         mr      immed_data, out_ptr
-        bl      dr_templates_L17
+        bl      dr_templates_L14
         mr      out_ptr, immed_data
         b       dr_fix_branches
 dr_emit_jmp_L2:
         lhz     rtn_addr, 14(rec_ptr)
-        lwz     addr, 0x5E44(base_disp)
-        lwz     data, 0x5E48(base_disp)
+        lwz     addr, T_1717C - dr_emitters(base_disp)  // template: addi data, pc, 0
+        lwz     data, T_17180 - dr_emitters(base_disp)  // template: stwu data, -4(a7)
         addi    rtn_addr, rtn_addr, -2
         rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
         stwu    addr, 4(out_ptr)
@@ -10177,70 +12021,77 @@ dr_emit_jmp_L2:
 dr_emit_jmp_L3:
         lwzx    rtn_addr, pc, blk_ofs
         b       dr_emit_jmp_L1
-        addi    data, pc, 0
+T_1717C:
+        addi    data, pc, 0                             // template
+T_17180:
+        stwu    data, -4(a7)                            // template
 dr_emit_jmp_L4:
-        stwu    data, -4(a7)
+        bgt     cr7, T_17180
 dr_emit_jmp_L5:
-        bgt     cr7, dr_emit_jmp_L4
+        bge     cr7, dr_emit_jmp_L4
 dr_emit_jmp_L6:
-        bge     cr7, dr_emit_jmp_L5
+        blt     cr7, dr_emit_jmp_L5
 dr_emit_jmp_L7:
-        blt     cr7, dr_emit_jmp_L6
+        ble     cr7, dr_emit_jmp_L6
 dr_emit_jmp_L8:
-        ble     cr7, dr_emit_jmp_L7
+        bne     cr7, dr_emit_jmp_L7
+        beq     cr7, dr_emit_jmp_L8
+        subfe   addr, addr, addr                        // addr = addr + ~addr + CA
 dr_emit_jmp_L9:
-        bne     cr7, dr_emit_jmp_L8
-        beq     cr7, dr_emit_jmp_L9
+        cmpwi   cr6, addr, 0
+        beq     cr6, dr_emit_jmp_L9
+        beq     dr_emit_jmp_L12
         subfe   addr, addr, addr                        // addr = addr + ~addr + CA
 dr_emit_jmp_L10:
         cmpwi   cr6, addr, 0
-        beq     cr6, dr_emit_jmp_L10
-        beq     dr_emit_jmp_L13
-        subfe   addr, addr, addr                        // addr = addr + ~addr + CA
 dr_emit_jmp_L11:
-        cmpwi   cr6, addr, 0
+        bne     cr6, dr_emit_jmp_L10
 dr_emit_jmp_L12:
-        bne     cr6, dr_emit_jmp_L11
-dr_emit_jmp_L13:
-        beq     dr_emit_jmp_L12
-        bne     dr_emit_jmp_L13
-        beq     dr_emit_jmp_L16
+        beq     dr_emit_jmp_L11
+        bne     dr_emit_jmp_L12
+        beq     dr_emit_jmp_L15
         mfxer   rtn_addr
         rlwinm  rtn_addr, rtn_addr, 8, 24, 27           // rtn_addr = rtn_addr[31:28] << 4
         mtcrf   0x02, rtn_addr                          // cr6 = rtn_addr[7:4]
-dr_emit_jmp_L14:
+dr_emit_jmp_L13:
         creqv   4*cr6+lt, lt, 4*cr6+gt                  // cr6.lt = ~(cr0.lt ^ cr6.gt)
+dr_emit_jmp_L14:
+        blt     cr6, dr_emit_jmp_L13
 dr_emit_jmp_L15:
-        blt     cr6, dr_emit_jmp_L14
-dr_emit_jmp_L16:
-        beq     dr_emit_jmp_L15
+        beq     dr_emit_jmp_L14
         subfe   addr, addr, addr                        // addr = addr + ~addr + CA
-dr_emit_jmp_L17:
+dr_emit_jmp_L16:
         cmpwi   cr6, addr, 0
-        beq     cr6, dr_emit_jmp_L17
+        beq     cr6, dr_emit_jmp_L16
+        mfxer   rtn_addr
+        rlwinm  rtn_addr, rtn_addr, 8, 24, 27           // rtn_addr = rtn_addr[31:28] << 4
+dr_emit_jmp_L17:
+        mtcrf   0x02, rtn_addr                          // cr6 = rtn_addr[7:4]
+        ble     cr6, dr_emit_jmp_L17
         mfxer   rtn_addr
         rlwinm  rtn_addr, rtn_addr, 8, 24, 27           // rtn_addr = rtn_addr[31:28] << 4
 dr_emit_jmp_L18:
         mtcrf   0x02, rtn_addr                          // cr6 = rtn_addr[7:4]
-        ble     cr6, dr_emit_jmp_L18
-        mfxer   rtn_addr
-        rlwinm  rtn_addr, rtn_addr, 8, 24, 27           // rtn_addr = rtn_addr[31:28] << 4
 dr_emit_jmp_L19:
-        mtcrf   0x02, rtn_addr                          // cr6 = rtn_addr[7:4]
+        bgt     cr6, dr_emit_jmp_L18
 dr_emit_jmp_L20:
-        bgt     cr6, dr_emit_jmp_L19
+        bge     dr_emit_jmp_L19
 dr_emit_jmp_L21:
-        bge     dr_emit_jmp_L20
-dr_emit_jmp_L22:
-        blt     dr_emit_jmp_L21
-        beq     dr_emit_jmp_L22
+        blt     dr_emit_jmp_L20
+        beq     dr_emit_jmp_L21
         mfxer   rtn_addr
         rlwinm  rtn_addr, rtn_addr, 8, 24, 27           // rtn_addr = rtn_addr[31:28] << 4
         mtcrf   0x02, rtn_addr                          // cr6 = rtn_addr[7:4]
-dr_emit_jmp_L23:
+dr_emit_jmp_L22:
         crxor   4*cr6+lt, lt, 4*cr6+gt                  // cr6.lt = cr0.lt ^ cr6.gt
-        blt     cr6, dr_emit_jmp_L23
-D_17228:
+        blt     cr6, dr_emit_jmp_L22
+
+// One long word for each of the sixteen conditions, for a conditional
+// branch that tests the 68K flags where the interpreter keeps them (cr0
+// and the XER): the offset of the templates (upper half, less 4), their
+// number plus one (bits 15:8), and in the low byte a bit for each template
+// that is a branch whose displacement has to be filled in.
+dr_bcc_sequences:
         .long   0x00000100
         .long   0x00000100
         .long   0x5E6C0510
@@ -10257,6 +12108,10 @@ D_17228:
         .long   0x5ED80620
         .long   0x5E840740
         .long   0x5ED40742
+
+// The same for a branch that follows a compare which left a PowerPC
+// comparison in cr7 (bit 0x0008 of the record's flags).
+dr_bcc_sequences_cr7:
         .long   0x00000100
         .long   0x00000100
         .long   0x5E480202
@@ -10282,15 +12137,30 @@ D_17228:
 //     DBCC.W Dn,<label>
 //     DBCS.W Dn,<label>
 //     ... and 10 more forms
+// For 50C8 0010, DBT.W D0,<label> (then NOP and RTS), it generates the block
+//       +000  b       dr_exit_to_interpreter
+//       +004  addis   d0, d0, 1
+//       +008  b       +02C
+//       +00C  addi    d0, d0, -1
+//       +010  bt_unlikely 4*cr7+eq, +004
+//       +014  addi    pc, pc, 18
+//       +018  bl      dr_block_exit
+//     entry:
+//       +024  clrlwi  data, d0, 16
+//       +028  cmpwi   cr7, data, 0
+//       +02C  eieio
+//       +030  lwz     pc, 0(a7)
+//       +034  addi    a7, a7, 4
+//       +038  bl      dr_indirect_exit
 dr_emit_dbcc_w:
-        lwz     addr, 0x6088(base_disp)
-        lwz     data, 0x608C(base_disp)
+        lwz     addr, T_173C0 - dr_emitters(base_disp)  // template: clrlwi data, d0, 16
+        lwz     data, T_173C4 - dr_emitters(base_disp)  // template: cmpwi cr7, data, 0
         rlwimi  addr, prefetch_data, 21, 8, 10          // addr[23:21] = prefetch_data[2:0]
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
         rlwinm  data, prefetch_data, 26, 26, 29         // data = prefetch_data[11:8] << 2
         cmpwi   cr7, data, 4
-        addi    rtn_addr, base_disp, 0x6138
+        addi    rtn_addr, base_disp, dr_dbcc_sequences - dr_emitters
         lwzx    rtn_addr, data, rtn_addr
         bt_likely 4*cr7+eq, dr_emit_dbcc_w_L4
         rlwinm  addr, rtn_addr, 24, 24, 31              // addr = rtn_addr[15:8]
@@ -10317,27 +12187,27 @@ dr_emit_dbcc_w_L3:
         lwz     addr, dr_cache_ptr(EmulatorStatePtr)
         lhz     data, 6(rec_ptr)
         add     immed_data, addr, data
-        lwz     addr, 0x6090(base_disp)
+        lwz     addr, T_173C8 - dr_emitters(base_disp)  // template: addis d0, d0, 1
         rlwinm  rtn_addr, prefetch_data, 21, 8, 10      // rtn_addr = prefetch_data[2:0] << 21
         rlwimi  rtn_addr, prefetch_data, 16, 13, 15     // rtn_addr[18:16] = prefetch_data[2:0]
         add     addr, addr, rtn_addr
-        lwz     data, 0x6094(base_disp)
+        lwz     data, T_173CC - dr_emitters(base_disp)  // template: b T_173CC
         stwu    addr, 4(immed_data)
         subf    addr, immed_data, out_ptr               // addr = out_ptr - immed_data
         rlwimi  data, addr, 0, 6, 29                    // data[25:2] = addr[25:2]
         stwu    data, 4(immed_data)
-        lwz     addr, 0x6098(base_disp)
-        lwz     data, 0x609C(base_disp)
+        lwz     addr, T_173D0 - dr_emitters(base_disp)  // template: addi d0, d0, -1
+        lwz     data, T_173D4 - dr_emitters(base_disp)  // template: bt_unlikely 4*cr7+eq, T_173C8
         add     addr, addr, rtn_addr
         stwu    addr, 4(immed_data)
         stwu    data, 4(immed_data)
         lhax    rtn_addr, pc, blk_ofs
         add     rtn_addr, rtn_addr, blk_ofs
-        bl      dr_templates_L17
+        bl      dr_templates_L14
         b       dr_emit_next
 dr_emit_dbcc_w_L4:
-        lwz     addr, 0x60A0(base_disp)
-        lwz     data, 0x60A4(base_disp)
+        lwz     addr, T_173D8 - dr_emitters(base_disp)  // template: addi d0, d0, -1
+        lwz     data, T_173DC - dr_emitters(base_disp)  // template: beq cr7, dr_emit_dbcc_w_L7
         rlwimi  addr, prefetch_data, 21, 8, 10          // addr[23:21] = prefetch_data[2:0]
         rlwimi  addr, prefetch_data, 16, 13, 15         // addr[18:16] = prefetch_data[2:0]
         stwu    addr, 4(out_ptr)
@@ -10345,80 +12215,89 @@ dr_emit_dbcc_w_L4:
         lhax    rtn_addr, pc, blk_ofs
         add     rtn_addr, rtn_addr, blk_ofs
         mr      immed_data, out_ptr
-        bl      dr_templates_L17
+        bl      dr_templates_L14
         lwz     addr, 0(out_ptr)
         subf    rtn_addr, out_ptr, immed_data           // rtn_addr = immed_data - out_ptr
         addi    rtn_addr, rtn_addr, 4
         rlwimi  addr, rtn_addr, 0, 16, 29               // addr[15:2] = rtn_addr[15:2]
         stw     addr, 0(out_ptr)
-        lwz     addr, 0x60A8(base_disp)
+        lwz     addr, T_173E0 - dr_emitters(base_disp)  // template: addis d0, d0, 1
         mr      out_ptr, immed_data
         rlwimi  addr, prefetch_data, 21, 8, 10          // addr[23:21] = prefetch_data[2:0]
         rlwimi  addr, prefetch_data, 16, 13, 15         // addr[18:16] = prefetch_data[2:0]
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-        clrlwi  data, d0, 16                            // data = d0 & 0x0000FFFF
-        cmpwi   cr7, data, 0
+T_173C0:
+        clrlwi  data, d0, 16                            // template
+T_173C4:
+        cmpwi   cr7, data, 0                            // template
+T_173C8:
+        addis   d0, d0, 1                               // template
+T_173CC:
+        b       T_173CC                                 // template
+T_173D0:
+        addi    d0, d0, -1                              // template
+T_173D4:
+        bt_unlikely 4*cr7+eq, T_173C8                   // template
+T_173D8:
+        addi    d0, d0, -1                              // template
+T_173DC:
+        beq     cr7, dr_emit_dbcc_w_L7                  // template
+T_173E0:
+        addis   d0, d0, 1                               // template
+        subfe   addr, addr, addr                        // addr = addr + ~addr + CA
 dr_emit_dbcc_w_L5:
-        addis   d0, d0, 1
+        cmpwi   cr6, addr, 0
 dr_emit_dbcc_w_L6:
-        b       dr_emit_dbcc_w_L6
-        addi    d0, d0, -1
-        bt_unlikely 4*cr7+eq, dr_emit_dbcc_w_L5
-        addi    d0, d0, -1
-        beq     cr7, dr_emit_dbcc_w_L9
-        addis   d0, d0, 1
-        subfe   addr, addr, addr                        // addr = addr + ~addr + CA
+        bne     cr6, dr_emit_dbcc_w_L5
 dr_emit_dbcc_w_L7:
-        cmpwi   cr6, addr, 0
+        beq     dr_emit_dbcc_w_L6
+        subfe   addr, addr, addr                        // addr = addr + ~addr + CA
 dr_emit_dbcc_w_L8:
-        bne     cr6, dr_emit_dbcc_w_L7
+        cmpwi   cr6, addr, 0
 dr_emit_dbcc_w_L9:
-        beq     dr_emit_dbcc_w_L8
-        subfe   addr, addr, addr                        // addr = addr + ~addr + CA
+        beq     cr6, dr_emit_dbcc_w_L8
 dr_emit_dbcc_w_L10:
-        cmpwi   cr6, addr, 0
+        bne     dr_emit_dbcc_w_L9
 dr_emit_dbcc_w_L11:
-        beq     cr6, dr_emit_dbcc_w_L10
+        beq     dr_emit_dbcc_w_L10
+        beq     dr_emit_dbcc_w_L11
+        mfxer   rtn_addr
+        rlwinm  rtn_addr, rtn_addr, 8, 24, 27           // rtn_addr = rtn_addr[31:28] << 4
+        mtcrf   0x02, rtn_addr                          // cr6 = rtn_addr[7:4]
 dr_emit_dbcc_w_L12:
-        bne     dr_emit_dbcc_w_L11
-dr_emit_dbcc_w_L13:
-        beq     dr_emit_dbcc_w_L12
-        beq     dr_emit_dbcc_w_L13
-        mfxer   rtn_addr
-        rlwinm  rtn_addr, rtn_addr, 8, 24, 27           // rtn_addr = rtn_addr[31:28] << 4
-        mtcrf   0x02, rtn_addr                          // cr6 = rtn_addr[7:4]
-dr_emit_dbcc_w_L14:
         creqv   4*cr6+lt, lt, 4*cr6+gt                  // cr6.lt = ~(cr0.lt ^ cr6.gt)
-        bge     cr6, dr_emit_dbcc_w_L14
-        beq     dr_emit_dbcc_w_L16
+        bge     cr6, dr_emit_dbcc_w_L12
+        beq     dr_emit_dbcc_w_L14
         subfe   addr, addr, addr                        // addr = addr + ~addr + CA
-dr_emit_dbcc_w_L15:
+dr_emit_dbcc_w_L13:
         cmpwi   cr6, addr, 0
-        bne     cr6, dr_emit_dbcc_w_L15
+        bne     cr6, dr_emit_dbcc_w_L13
+dr_emit_dbcc_w_L14:
+        mfxer   rtn_addr
+        rlwinm  rtn_addr, rtn_addr, 8, 24, 27           // rtn_addr = rtn_addr[31:28] << 4
+dr_emit_dbcc_w_L15:
+        mtcrf   0x02, rtn_addr                          // cr6 = rtn_addr[7:4]
+        bgt     cr6, dr_emit_dbcc_w_L15
+        mfxer   rtn_addr
+        rlwinm  rtn_addr, rtn_addr, 8, 24, 27           // rtn_addr = rtn_addr[31:28] << 4
 dr_emit_dbcc_w_L16:
-        mfxer   rtn_addr
-        rlwinm  rtn_addr, rtn_addr, 8, 24, 27           // rtn_addr = rtn_addr[31:28] << 4
+        mtcrf   0x02, rtn_addr                          // cr6 = rtn_addr[7:4]
 dr_emit_dbcc_w_L17:
-        mtcrf   0x02, rtn_addr                          // cr6 = rtn_addr[7:4]
-        bgt     cr6, dr_emit_dbcc_w_L17
-        mfxer   rtn_addr
-        rlwinm  rtn_addr, rtn_addr, 8, 24, 27           // rtn_addr = rtn_addr[31:28] << 4
+        ble     cr6, dr_emit_dbcc_w_L16
 dr_emit_dbcc_w_L18:
-        mtcrf   0x02, rtn_addr                          // cr6 = rtn_addr[7:4]
-dr_emit_dbcc_w_L19:
-        ble     cr6, dr_emit_dbcc_w_L18
-dr_emit_dbcc_w_L20:
-        blt     dr_emit_dbcc_w_L19
-        bge     dr_emit_dbcc_w_L20
+        blt     dr_emit_dbcc_w_L17
+        bge     dr_emit_dbcc_w_L18
         .long   0x41820018
         mfxer   rtn_addr
         rlwinm  rtn_addr, rtn_addr, 8, 24, 27           // rtn_addr = rtn_addr[31:28] << 4
         mtcrf   0x02, rtn_addr                          // cr6 = rtn_addr[7:4]
-dr_emit_dbcc_w_L21:
+dr_emit_dbcc_w_L19:
         crxor   4*cr6+lt, lt, 4*cr6+gt                  // cr6.lt = cr0.lt ^ cr6.gt
-        bf_unlikely 4*cr6+lt, dr_emit_dbcc_w_L21
-D_17470:
+        bf_unlikely 4*cr6+lt, dr_emit_dbcc_w_L19
+
+// The same for DBcc.
+dr_dbcc_sequences:
         .long   0x60A80100
         .long   0x00000100
         .long   0x60B40512
@@ -10438,19 +12317,24 @@ D_17470:
 
 // Code generator for 1 opcode:
 //     RTD #<disp>
+// For 4E74 0010, RTD #<disp>, it generates the block
+//     entry:
+//       +000  lwz     pc, 0(a7)
+//       +004  addi    a7, a7, 20
+//       +008  bl      dr_indirect_exit
 dr_emit_rtd:
         lhax    rtn_addr, pc, blk_ofs
-        lwz     addr, 0x61DC(base_disp)
+        lwz     addr, T_17514 - dr_emitters(base_disp)  // template: lwz pc, 0(a7)
         cmpwi   cr7, rtn_addr, 0x7FFC
         addi    immed_data, rtn_addr, 4
-        lwz     data, 0x61E4(base_disp)
+        lwz     data, T_1751C - dr_emitters(base_disp)  // template: addi a7, a7, 0
         stwu    addr, 4(out_ptr)
         rlwimi  data, immed_data, 0, 16, 31             // data[15:0] = immed_data[15:0]
         bge     cr7, dr_emit_rtd_L3
 dr_emit_rtd_L1:
         stwu    data, 4(out_ptr)
 dr_emit_rtd_L2:
-        lwz     addr, 0x634C(base_disp)
+        lwz     addr, T_17684 - dr_emitters(base_disp)  // template: bl T_17684
         addi    rtn_addr, base_disp, 0x65A4
         subf    rtn_addr, out_ptr, rtn_addr             // rtn_addr = rtn_addr - out_ptr
         rlwimi  addr, rtn_addr, 0, 6, 29                // addr[25:2] = rtn_addr[25:2]
@@ -10459,25 +12343,37 @@ dr_emit_rtd_L2:
         stwu    zero, 4(out_ptr)
         b       dr_fix_branches
 dr_emit_rtd_L3:
-        lwz     addr, 0x61E0(base_disp)
+        lwz     addr, T_17518 - dr_emitters(base_disp)  // template: addi a7, a7, 4
         rlwimi  data, rtn_addr, 0, 16, 31               // data[15:0] = rtn_addr[15:0]
         stwu    addr, 4(out_ptr)
         b       dr_emit_rtd_L1
 
 // Code generator for 1 opcode:
 //     RTS
+// For 4E75, RTS, it generates the block
+//     entry:
+//       +000  lwz     pc, 0(a7)
+//       +004  addi    a7, a7, 4
+//       +008  bl      dr_indirect_exit
 dr_emit_rts:
-        lwz     addr, 0x61DC(base_disp)
-        lwz     data, 0x61E0(base_disp)
+        lwz     addr, T_17514 - dr_emitters(base_disp)  // template: lwz pc, 0(a7)
+        lwz     data, T_17518 - dr_emitters(base_disp)  // template: addi a7, a7, 4
         stwu    addr, 4(out_ptr)
         b       dr_emit_rtd_L1
-        lwz     pc, 0(a7)
-        addi    a7, a7, 4
-        addi    a7, a7, 0
-        extsh   addr, d0                                // addr = sign-extended low word of d0
-        slwi    addr, addr, 2
-        add     addr, addr, a4
-        lwz     pc, 0(addr)
+T_17514:
+        lwz     pc, 0(a7)                               // template
+T_17518:
+        addi    a7, a7, 4                               // template
+T_1751C:
+        addi    a7, a7, 0                               // template
+T_17520:
+        extsh   addr, d0                                // template
+T_17524:
+        slwi    addr, addr, 2                           // template
+T_17528:
+        add     addr, addr, a4                          // template
+T_1752C:
+        lwz     pc, 0(addr)                             // template
 
 // Code generator for 26 opcodes:
 //     JMP (An)
@@ -10485,9 +12381,13 @@ dr_emit_rts:
 //     JMP (d8,An,Xn)
 //     JMP (xxx).W
 //     JMP (d8,PC,Xn)
+// For 4ED0, JMP (A0), it generates the block
+//     entry:
+//       +000  add     pc, a0, zero
+//       +004  bl      dr_indirect_exit
 dr_emit_jmp_2:
         lis     immed_data, 0x0300
-        bl      L_12508
+        bl      dr_operand_address
         b       dr_emit_rtd_L2
 
 // Code generator for 26 opcodes:
@@ -10496,25 +12396,31 @@ dr_emit_jmp_2:
 //     JSR (d8,An,Xn)
 //     JSR (xxx).W
 //     JSR (d8,PC,Xn)
+// For 4E90, JSR (A0), it generates the block
+//     entry:
+//       +000  addi    data, pc, 0
+//       +004  stwu    data, -4(a7)
+//       +008  add     pc, a0, zero
+//       +00C  bl      dr_indirect_exit
 dr_emit_jsr_2:
         lhz     rtn_addr, 14(rec_ptr)
-        lwz     addr, 0x5E44(base_disp)
-        lwz     data, 0x5E48(base_disp)
+        lwz     addr, T_1717C - dr_emitters(base_disp)  // template: addi data, pc, 0
+        lwz     data, T_17180 - dr_emitters(base_disp)  // template: stwu data, -4(a7)
         addi    rtn_addr, rtn_addr, -2
         rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
         lis     immed_data, 0x0300
-        bl      L_12508
+        bl      dr_operand_address
         b       dr_emit_rtd_L2
         addi    blk_ofs, blk_ofs, 2
         lhax    rtn_addr, pc, blk_ofs
-        lwz     addr, 0x61E8(base_disp)
-        lwz     data, 0x61EC(base_disp)
+        lwz     addr, T_17520 - dr_emitters(base_disp)  // template: extsh addr, d0
+        lwz     data, T_17524 - dr_emitters(base_disp)  // template: slwi addr, addr, 2
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
-        lwz     addr, 0x61F0(base_disp)
-        lwz     data, 0x61F4(base_disp)
+        lwz     addr, T_17528 - dr_emitters(base_disp)  // template: add addr, addr, a4
+        lwz     data, T_1752C - dr_emitters(base_disp)  // template: lwz pc, 0(addr)
         stwu    addr, 4(out_ptr)
         rlwimi  data, rtn_addr, 0, 16, 31               // data[15:0] = rtn_addr[15:0]
         stwu    data, 4(out_ptr)
@@ -10522,13 +12428,17 @@ dr_emit_jsr_2:
 
 // Code generator for 4096 opcodes:
 //     A-LINE $Axxx
+// For A000, A-LINE $A000, it generates the block
+//     entry:
+//       +000  addi    pc, pc, -2
+//       +004  bl      dr_aline_trap
 dr_emit_aline:
-        lwz     addr, 0x6344(base_disp)
+        lwz     addr, dr_templates - dr_emitters(base_disp)  // template: addi pc, pc, 0
         addi    rtn_addr, blk_ofs, -4
-        lwz     data, 0x634C(base_disp)
+        lwz     data, T_17684 - dr_emitters(base_disp)  // template: bl T_17684
         rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
         stwu    addr, 4(out_ptr)
-        addi    rtn_addr, base_disp, 0x5B4C
+        addi    rtn_addr, base_disp, dr_scc_sequences_L1 - dr_emitters
         subf    rtn_addr, out_ptr, rtn_addr             // rtn_addr = rtn_addr - out_ptr
         rlwimi  data, rtn_addr, 0, 6, 29                // data[25:2] = rtn_addr[25:2]
         stwu    data, 4(out_ptr)
@@ -10538,9 +12448,22 @@ dr_emit_aline:
 
 // Code generator for 1 opcode:
 //     F-LINE cpID 6
+// For FC10, F-LINE cpID 6, it generates the block
+//     entry:
+//       +000  lwz     a0, 0(a7)
+//       +004  lwz     data, 24(a7)
+//       +008  slwi.   addr, d0, 16
+//       +00C  lwz     a1, 4(a7)
+//       +010  addco   zero, zero, zero
+//       +014  lwz     d1, 8(a7)
+//       +018  lwz     d2, 12(a7)
+//       +01C  lwz     a2, 16(a7)
+//       +020  addi    a7, a7, 28
+//       +024  mr      pc, data
+//       +028  bl      dr_indirect_exit
 dr_emit_fline:
         li      addr, 10
-        addi    immed_data, base_disp, 0x62B0
+        addi    immed_data, base_disp, dr_emit_fline_2_L1 - dr_emitters
 dr_emit_fline_L1:
         mtctr   addr
 dr_emit_fline_L2:
@@ -10551,9 +12474,22 @@ dr_emit_fline_L2:
 
 // Code generator for 1 opcode:
 //     F-LINE cpID 6
+// For FC11, F-LINE cpID 6, it generates the block
+//     entry:
+//       +000  lwz     data, 20(a7)
+//       +004  slwi.   addr, d0, 16
+//       +008  lwz     a1, 0(a7)
+//       +00C  addco   zero, zero, zero
+//       +010  lwz     d1, 4(a7)
+//       +014  lwz     d2, 8(a7)
+//       +018  lwz     a2, 12(a7)
+//       +01C  addi    a7, a7, 24
+//       +020  mr      pc, data
+//       +024  bl      dr_indirect_exit
 dr_emit_fline_2:
         li      addr, 9
-        addi    immed_data, base_disp, 0x62D8
+        addi    immed_data, base_disp, dr_emit_fline_2_L2 - dr_emitters
+dr_emit_fline_2_L1:
         b       dr_emit_fline_L1
         lwz     a0, 0(a7)
         lwz     data, 24(a7)
@@ -10564,6 +12500,7 @@ dr_emit_fline_2:
         lwz     d2, 12(a7)
         lwz     a2, 16(a7)
         addi    a7, a7, 28
+dr_emit_fline_2_L2:
         mr      pc, data
         lwz     data, 20(a7)
         slwi.   addr, d0, 16
@@ -10575,21 +12512,21 @@ dr_emit_fline_2:
         addi    a7, a7, 24
         mr      pc, data
         lhz     data, 2(rec_ptr)
-        lwz     addr, 0x6344(base_disp)
+        lwz     addr, dr_templates - dr_emitters(base_disp)  // template: addi pc, pc, 0
         cmpwi   cr7, data, 0
         rlwimi  addr, data, 0, 16, 31                   // addr[15:0] = data[15:0]
-        beq     cr7, dr_emit_fline_2_L1
+        beq     cr7, dr_emit_fline_2_L3
         stwu    addr, 4(out_ptr)
-dr_emit_fline_2_L1:
-        addi    data, base_disp, 0x64F0
-        lwz     addr, 0x635C(base_disp)
+dr_emit_fline_2_L3:
+        addi    data, base_disp, dr_templates_L16 - dr_emitters
+        lwz     addr, T_17694 - dr_emitters(base_disp)  // template: b T_17694
         subf    data, out_ptr, data                     // data = data - out_ptr
         rlwimi  addr, data, 0, 6, 29                    // addr[25:2] = data[25:2]
         stwu    addr, 4(out_ptr)
         b       dr_fix_branches
         lhz     rtn_addr, 2(rec_ptr)
         mr      immed_data, out_ptr
-        bl      dr_templates_L13
+        bl      dr_templates_L10
         mr      out_ptr, immed_data
         b       dr_fix_branches
 
@@ -10598,131 +12535,135 @@ dr_emit_fline_2_L1:
 // in the translation cache.
 dr_templates:
         addi    pc, pc, 0                               // advance pc by a 16-bit amount
+T_17680:
         addis   pc, pc, 0                               // advance pc by the high half of a 32-bit amount
+T_17684:
+        bl      T_17684                                 // call into the run-time
+T_17688:
+        bt_unlikely cr_special_event_pending, T_17684   // conditional exit when a special event is pending
+T_1768C:
+        bf_likely cr_special_event_pending, T_17690     // template
+T_17690:
+        b       T_17690                                 // unconditional branch
+T_17694:
+        b       T_17694                                 // unconditional branch (used when chaining blocks)
 dr_templates_L1:
-        bl      dr_templates_L1                         // call into the run-time
-        bt_unlikely cr_special_event_pending, dr_templates_L1  // conditional exit when a special event is pending
-        bf_likely cr_special_event_pending, dr_templates_L2
-dr_templates_L2:
-        b       dr_templates_L2                         // unconditional branch
-dr_templates_L3:
-        b       dr_templates_L3                         // unconditional branch (used when chaining blocks)
-dr_templates_L4:
         lwz     addr, 0xB24(EmulatorStatePtr)
         cmpwi   cr7, rtn_addr, 0
         cmpw    cr6, rtn_addr, addr
-        blt     cr7, dr_templates_L13
+        blt     cr7, dr_templates_L10
         cmpw    cr7, rtn_addr, blk_ofs
-        bgt     cr6, dr_templates_L13
-        bge     cr7, dr_templates_L7
+        bgt     cr6, dr_templates_L10
+        bge     cr7, dr_templates_L4
         lwz     addr, dr_records(EmulatorStatePtr)
-dr_templates_L5:
+dr_templates_L2:
         lhz     data, 2(addr)
         addi    addr, addr, 12
         cmpw    cr7, data, rtn_addr
-        blt     cr7, dr_templates_L5
-        bgt     cr7, dr_templates_L13
+        blt     cr7, dr_templates_L2
+        bgt     cr7, dr_templates_L10
         lhz     addr, -8(addr)
         lwz     data, dr_cache_ptr(EmulatorStatePtr)
         add     addr, addr, data
-        lwz     data, 0x6354(base_disp)
+        lwz     data, T_1768C - dr_emitters(base_disp)  // template: bf_likely cr_special_event_pending, T_17690
         subf    addr, immed_data, addr                  // addr = addr - immed_data
         addi    addr, addr, -4
         rlwimi  data, addr, 0, 16, 29                   // data[15:2] = addr[15:2]
         stwu    data, 4(immed_data)
         cmpwi   cr7, rtn_addr, 0
-        lwz     addr, 0x6344(base_disp)
+        lwz     addr, dr_templates - dr_emitters(base_disp)  // template: addi pc, pc, 0
         rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
-        beq     cr7, dr_templates_L6
+        beq     cr7, dr_templates_L3
         stwu    addr, 4(immed_data)
-dr_templates_L6:
+dr_templates_L3:
         lwz     data, dr_cache_ptr(EmulatorStatePtr)
-        lwz     addr, 0x6358(base_disp)
+        lwz     addr, T_17690 - dr_emitters(base_disp)  // template: b T_17690
         subf    data, immed_data, data                  // data = data - immed_data
         addi    data, data, -4
         rlwimi  addr, data, 0, 6, 29                    // addr[25:2] = data[25:2]
         stwu    addr, 4(immed_data)
         blr
-dr_templates_L7:
+dr_templates_L4:
         mr      addr, rec_ptr
-dr_templates_L8:
+dr_templates_L5:
         lhz     data, 2(addr)
         addi    addr, addr, 12
         cmpw    cr7, data, rtn_addr
-        blt     cr7, dr_templates_L8
-        bgt     cr7, dr_templates_L13
+        blt     cr7, dr_templates_L5
+        bgt     cr7, dr_templates_L10
         lhz     addr, 0(rec_ptr)
         sth     rtn_addr, 6(rec_ptr)
         ori     addr, addr, 0x1000
         sth     addr, 0(rec_ptr)
         blr
-dr_templates_L9:
+dr_templates_L6:
         mr      immed_data, disp_table
         lha     rtn_addr, 6(disp_table)
-dr_templates_L10:
+dr_templates_L7:
         lhz     data, 2(immed_data)
         addi    immed_data, immed_data, 12
         cmpw    cr7, data, rtn_addr
-        blt     cr7, dr_templates_L10
+        blt     cr7, dr_templates_L7
         lbz     rtn_addr, 1(disp_table)
         lhz     immed_data, -8(immed_data)
         lwz     addr, dr_cache_ptr(EmulatorStatePtr)
         lhz     data, 4(disp_table)
         add     immed_data, addr, immed_data
         add     data, addr, data
-dr_templates_L11:
+dr_templates_L8:
         srwi    rtn_addr, rtn_addr, 1
         mtcrf   0x01, rtn_addr                          // cr7 = rtn_addr[3:0]
         cmpwi   cr6, rtn_addr, 0
-        bns     cr7, dr_templates_L12
+        bns     cr7, dr_templates_L9
         subf    addr, data, immed_data                  // addr = immed_data - data
         sth     addr, 2(data)
         lhz     addr, 0(data)
         xori    addr, addr, 0x0020
         sth     addr, 0(data)
-dr_templates_L12:
+dr_templates_L9:
         addi    data, data, 4
-        bne     cr6, dr_templates_L11
+        bne     cr6, dr_templates_L8
         blr
-dr_templates_L13:
+dr_templates_L10:
         cmpwi   cr7, rtn_addr, 0
-        lwz     addr, 0x6344(base_disp)
-        lwz     data, 0x6350(base_disp)
+        lwz     addr, dr_templates - dr_emitters(base_disp)  // template: addi pc, pc, 0
+        lwz     data, T_17688 - dr_emitters(base_disp)  // template: bt_unlikely cr_special_event_pending, T_17684
         rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
-        beq     cr7, dr_templates_L14
+        beq     cr7, dr_templates_L11
         stwu    addr, 4(immed_data)
-dr_templates_L14:
-        bgt     cr7, dr_templates_L16
-dr_templates_L15:
+dr_templates_L11:
+        bgt     cr7, dr_templates_L13
+dr_templates_L12:
         lwz     addr, dr_cache_ptr(EmulatorStatePtr)
         subf    addr, immed_data, addr                  // addr = addr - immed_data
         addi    addr, addr, -4
         rlwimi  data, addr, 0, 16, 29                   // data[15:2] = addr[15:2]
         stwu    data, 4(immed_data)
-dr_templates_L16:
-        lwz     addr, 0x634C(base_disp)
+dr_templates_L13:
+        lwz     addr, T_17684 - dr_emitters(base_disp)  // template: bl T_17684
         addi    data, base_disp, 0x6524
         subf    data, immed_data, data                  // data = data - immed_data
         rlwimi  addr, data, 0, 6, 29                    // addr[25:2] = data[25:2]
         stwu    addr, 4(immed_data)
         blr
-dr_templates_L17:
+dr_templates_L14:
         extsh   data, rtn_addr                          // data = sign-extended low word of rtn_addr
         cmpw    cr7, data, rtn_addr
-        lwz     addr, 0x6344(base_disp)
-        beq     cr7, dr_templates_L13
+        lwz     addr, dr_templates - dr_emitters(base_disp)  // template: addi pc, pc, 0
+        beq     cr7, dr_templates_L10
         cmpwi   cr7, data, 0
         rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
-        lwz     data, 0x6348(base_disp)
+        lwz     data, T_17680 - dr_emitters(base_disp)  // template: addis pc, pc, 0
         stwu    addr, 4(immed_data)
         srwi    addr, rtn_addr, 16
-        bge     cr7, dr_templates_L18
+        bge     cr7, dr_templates_L15
         addi    addr, addr, 1
-dr_templates_L18:
+dr_templates_L15:
         rlwimi  data, addr, 0, 16, 31                   // data[15:0] = addr[15:0]
         stwu    data, 4(immed_data)
-        lwz     data, 0x6350(base_disp)
-        b       dr_templates_L15
+        lwz     data, T_17688 - dr_emitters(base_disp)  // template: bt_unlikely cr_special_event_pending, T_17684
+dr_templates_L16:
+        b       dr_templates_L12
 
 // Leave translated code (or abandon a lookup) and continue in the
 // interpreter with the instruction at pc - 2.
@@ -11543,7 +13484,9 @@ dr_setup_L2:
 dr_credits:
         .ascii  "Dynamic Recompilation by Eric Traut, tuned by Bob Abeles, hacked by Murph"
         .space  7
-D_182F8:
+
+// The same word that init_state and dr_setup store in emulator_version.
+dr_version:
         .long   0x000021F8
 D_182FC:
         .space  0x7D04

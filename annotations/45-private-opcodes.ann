@@ -84,6 +84,9 @@
     FC0A, _FloatAdd: argument 1 = argument 1 + argument 2.  Shares its code
     with FC0B.
 
+@0A21C fc0a_fc0b_special_operands
+    Add or subtract when an argument is zero, infinite or a NaN.
+
 @09FC0 fc0b_float_sub
     FC0B, _FloatSub.
 
@@ -142,6 +145,10 @@
     control register".  D0 is the register number (0-25) and A0 the value.
     Most registers are words of the state block, found through the byte
     table at 0D850; a few numbers are treated specially.
+
+@0D850 ecr_offsets
+    For each emulator control register number, the offset of its word from
+    +0x700 in the state block.
 
 @0D86C fe04_move_from_ecr
 

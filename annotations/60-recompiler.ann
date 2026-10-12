@@ -107,6 +107,74 @@
     translated; the interpreter singles out the same instruction.
 107CC opcode, extension word, bd and od
 
+@130DC dr_movem_mask
+    For the MOVEM emitters: fetch the register list (the word after the
+    opcode) and spread its bits over cr4-cr7, one bit per register.
+
+@16B2C dr_shift_count
+    For the shift emitters: the immediate count from bits 11:9 of the
+    opcode, where 0 stands for 8.
+
+@16E48 dr_scc_sequences
+    One long word for each of the sixteen conditions: in the upper half the
+    offset from dr_emitters of the templates that compute the condition into
+    addr, less 4; in the lower half their number plus one.
+
+@17228 dr_bcc_sequences
+    One long word for each of the sixteen conditions, for a conditional
+    branch that tests the 68K flags where the interpreter keeps them (cr0
+    and the XER): the offset of the templates (upper half, less 4), their
+    number plus one (bits 15:8), and in the low byte a bit for each template
+    that is a branch whose displacement has to be filled in.
+
+@17268 dr_bcc_sequences_cr7
+    The same for a branch that follows a compare which left a PowerPC
+    comparison in cr7 (bit 0x0008 of the record's flags).
+
+@17470 dr_dbcc_sequences
+    The same for DBcc.
+
+@16188 dr_emit_bchg_continued
+@162D4 dr_emit_btst_continued
+@16598 dr_emit_lsr_w_continued
+@16604 dr_emit_lsr_b_continued
+@16954 dr_emit_asr_l_continued
+@169C0 dr_emit_asr_w_continued
+@16A1C dr_emit_asr_b_continued
+
+@182F8 dr_version
+    The same word that init_state and dr_setup store in emulator_version.
+
+@149E0 dr_divs_w
+    Called by the translation of DIVS.W (the emitter above generates the
+    call).  data is the 32-bit dividend, addr the divisor, sign-extended, and
+    base_disp what to add to pc to make it address the instruction.  Returns
+    remainder:quotient in rtn_addr with N and Z set for the quotient and
+    V = C = 0; on overflow returns the dividend unchanged with V set.  A
+    divisor of zero leaves the translation for the interpreter, which
+    executes the instruction again and takes the exception.
+149E8 the PowerPC divide overflowed
+149F8 does the quotient fit in 16 bits?
+14A14 overflow: V set, result = the dividend
+14A24 divide by zero: pc back to the instruction ...
+14A28 ... and let the interpreter do it
+
+@14A40 dr_divu_w
+    The same for DIVU.W; addr is the divisor, zero-extended here.
+14A48 overflow if the dividend is not below divisor << 16
+
+@14A80 dr_divs_w_shift
+    DIVS.W by an immediate power of two: addr is the shift count.  An
+    arithmetic shift right, plus one if the dividend was negative and bits
+    were lost, is the quotient rounded towards zero.
+
+@16E88 dr_aline_trap
+    Called by the translation of a line-A trap, with pc at the trap word:
+    the recompiler's copy of the interpreter's trap dispatch
+    (aline_os_trap, aline_toolbox_trap).  If the line-A vector is the one
+    expected (+0x720) the trap's routine is looked up in the Mac OS trap
+    tables and entered directly; otherwise the exception is taken.
+
 @129D8 dr_emit_move_b_bne_loop
     MOVE.B (A1)+,(A0)+ / BNE.S *-2 as a six-instruction PowerPC loop, which
     tests for a special event on each pass.
@@ -155,10 +223,53 @@
     Pass-3 code generators.  Emitter values stored in the records are
     offsets from this label.
 
-@11E7C dr_operand_emitters
-    Five tables of 16-bit offsets from dr_emitters, 256 bytes each, indexed
-    by a 6-bit effective address field: the code generator for each
-    addressing mode, for each kind of operand access.
+@11E7C dr_operand_address_table
+    The operand emitters: ten tables of 16-bit offsets from dr_emitters, each
+    indexed by a 6-bit effective address field (mode * 8 + register), giving
+    the routine that generates the access for that addressing mode.  A zero
+    entry is a mode that cannot occur.  The routines are named after the
+    table and the field: dr_operand_load_l_30 loads a long word from (An)+,
+    and _37 is its A7 variant (A7 is r1, out of sequence with A0-A6).
+    .
+    This table: the address of the operand (LEA, PEA, JMP, JSR, MOVEM).
+
+@11EFC dr_operand_load_l_table
+    Load a long word; includes immediate data (field 74).
+
+@11F7C dr_operand_store_l_table
+    Store a long word.
+
+@11FFC dr_operand_writeback_l_table
+    Store a long word back to the operand that was just loaded: -4(An) for
+    (An)+, since the load has already advanced the register, and the same
+    address again for the other modes.
+
+@1207C dr_operand_load_w_table
+@120FC dr_operand_store_w_table
+@1217C dr_operand_writeback_w_table
+@121FC dr_operand_load_b_table
+@1227C dr_operand_store_b_table
+@122FC dr_operand_writeback_b_table
+
+@124A0 dr_operand_load_l
+    The entries to the operand emitters.  Each picks a table and jumps to the
+    routine for the addressing mode in the opcode being translated
+    (prefetch_data): its source field, bits 5:0, or - for the _dest entries -
+    the destination field of a MOVE, bits 11:6.
+124A4 the effective address field, as a table index
+124A8 the routine for this mode
+@124B8 dr_operand_load_w
+@124C0 dr_operand_load_b
+@124C8 dr_operand_store_l_dest
+124CC MOVE's destination: mode in bits 8:6, register in bits 11:9
+@124D8 dr_operand_store_w_dest
+@124E0 dr_operand_store_b_dest
+@124E8 dr_operand_store_b_indexed
+    The caller supplies the table index in data.
+@124F0 dr_operand_writeback_l
+@124F8 dr_operand_writeback_w
+@12500 dr_operand_writeback_b
+@12508 dr_operand_address
 
 @1767C dr_templates
     Instruction templates.  These words are never executed here: emitters
