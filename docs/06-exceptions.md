@@ -135,19 +135,20 @@ own handlers without the cost of a 68K exception.
 
 ## Interrupts
 
-The emulator polls; nothing in this image is an interrupt handler. A
-request is recorded in the state block and `cr_special_event_pending` and
-`cr_interrupt_pending` are set in the emulator context's condition
-register by whatever fields the interrupt — the kernel or native code.
-The code gives direct evidence of this: `STOP` waits in a one-instruction
-loop
+The emulator polls; nothing in this image is an interrupt handler. The
+kernel's interrupt handler stores the level in the state block
+(`interrupt_level`) and sets `cr_special_event_pending`,
+`cr_interrupt_asserted` and `cr_interrupt_pending` in the interrupted
+emulator context's condition register
+([13-rom-context.md](13-rom-context.md)). The emulator shows its side of
+this arrangement in `STOP`, which waits in a one-instruction loop
 
 ```
 L_0CA28:
         bf      cr_interrupt_pending, L_0CA28
 ```
 
-which can only end if something outside the emulator changes the bit.
+that can only end when something outside the emulator changes the bit.
 
 Two kinds of request are recognised by `process_special_event`:
 

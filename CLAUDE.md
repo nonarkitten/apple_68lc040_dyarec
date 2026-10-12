@@ -21,6 +21,10 @@ criterion is that the source reassembles to a byte-identical `Emulator.x`.
 - `ppcd/`, `Emulator.asm`, `*.ROM`  the owner's working files and ROM images; untracked and
                     ignored. Leave them alone. Note: `Emulator.x` is a *later* build than the
                     emulator inside the 8600/9600 ROM (see `docs/13-rom-context.md`).
+- `powermac-rom-master/`  reference copy of elliotnunn/powermac-rom, where `Emulator.x` comes
+                    from; untracked and ignored. Its `Internal/EmulatorPublic.a`, `Internal/NKPublic.a`
+                    and `NanoKernel/*.s` are the authority for kernel-side names (files use
+                    classic Mac line endings and MacRoman: convert before grepping).
 - `LICENSE`, `NOTICE.md`  CC0 for the project's own work; Apple's code is not licensed here.
 
 ## Commands

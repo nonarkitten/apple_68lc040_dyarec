@@ -9,12 +9,20 @@ the 4 KB page that begins at the block as a small native stack (it sets
 r1 to block + `0x1000` and saves 84 bytes below that), so the block is in
 practice one page.
 
+The kernel's name for the block is the Emulator Data Page (EDP).
+
 Fields whose purpose has been established have names, defined in
 `src/include/EmulatorState.inc`. The names `saved_usp`, `saved_isp`,
 `saved_msp`, `saved_vbr`, `saved_sfc`, `saved_dfc`, `saved_cacr`,
 `saved_caar` and `trace_pc` are the ones used in US patent 5,574,873; the
 others were chosen for this documentation. Offsets not listed here appear
 in the source as plain numbers.
+
+An independent description of the first `0xC0` bytes exists in the
+`powermac-rom` project (`Internal/EmulatorPublic.a`), written from the
+kernel's point of view. It agrees with the layout below, and records
+short names for the fault save area — `trc_pc`, `imm_d`, `b_dsp`,
+`sr_flg`, `ssw` — that match the patent's register names.
 
 ## 68K register image (`+0x000`)
 
@@ -60,7 +68,12 @@ combination of the S and M bits.
 | `0x074` | `saved_disp_table` | Address of the dispatch table, as passed to `EmEntry` |
 | `0x078` | `saved_code_ptr` | Address of `cb` |
 | `0x07C` | `native_sp` | Stack pointer to restore when leaving through `exit_emulator` |
-| `0x080`–`0x0BF` | | Details of the last bus error (written by `native_exception_handler`, read by `take_bus_error`), and the condition register saved at the time |
+| `0x080` | `fault_saved_flags` | Context flags at the time of the last memory fault |
+| `0x084`–`0x094` | | The kernel's description of the fault, copied from the context block |
+| `0x098`–`0x0A4` | `fault_data`, `fault_immed_data`, `fault_base_disp`, `fault_sr_and_flags` | The scratch registers and `sr_and_flags` as they were when the fault happened, for the bus error frame |
+| `0x0AC` | `fault_lr` | LR likewise |
+| `0x0B0` | `fault_pc` | PowerPC address of the faulting instruction |
+| `0x0B4` | `fault_cr` | Condition register likewise |
 | `0x0C0` | `interrupt_counts` | Eight 32-bit counters: interrupts taken at each level |
 | `0x0E0`–`0x0EF` | | Base addresses and an allocation bit mask for a pool of 0x220-byte areas used when native contexts nest *(inferred)* |
 
@@ -75,15 +88,20 @@ uses, with the kernel's meaning for each (see
 
 | Offset | Name | Contents |
 |---|---|---|
-| `0x140` | `ecb_flags` | Context flags. Set to 7 by `EmEntry`; saved by the kernel when it enters the handler; partly cleared by `native_exception_handler` |
-| `0x144` | `ecb_enables` | Which exceptions are passed to the context's handler. Set to `0xFFFFFFFF` |
+| `0x140` | `ecb_saved_flags` | Context flags to be restored by `ReturnFromException`. Set to 7 by `EmEntry`; written by the kernel when it enters the handler; partly cleared by `native_exception_handler` |
+| `0x144` | `ecb_saved_enables` | Exception enables to be restored. Set to `0xFFFFFFFF` by `EmEntry` |
 | `0x14C` | `ecb_handler` | Address the kernel transfers to on an exception in this context: `native_exception_handler` |
 | `0x154` | `ecb_handler_arg` | Passed to the handler in r4: the address of `take_bus_error` |
 | `0x15C` | `ecb_handler_return` | The handler's return address, set by the kernel: `EmKernelTrapTable` |
 | `0x164`–`0x17C` | | The kernel's description of a memory fault (address, kind and size of access), read by `native_exception_handler` |
-| `0x184` | `ecb_pc` | Where the context resumes. `EmEntry` initially, then `emulator_reset`; rewritten by `native_exception_handler` |
-| `0x194` | `ecb_r3` | r3 at start-up: the address of the state block |
-| `0x19C` | `ecb_r4` | r4 at start-up: the address of the dispatch table |
+| `0x184` | `ecb_pc` | Where `ReturnFromException` resumes the context. The kernel stores the interrupted pc here; `EmEntry` and `native_exception_handler` overwrite it to redirect execution |
+| `0x18C` | `ecb_lr` | LR at the time of the exception, restored on return |
+| `0x194` | `ecb_r3` | r3 likewise. Initially the address of the state block, which is how `EmEntry` receives it |
+| `0x19C` | `ecb_r4` | r4 likewise. Initially the address of the dispatch table |
+
+The context block's general register array (r0 at `0x204`, 8 bytes per
+register) and floating-point registers (`0x300`) follow; the emulator
+does not touch them.
 
 Further up, `0x1C8`–`0x1D8` hold interrupt bookkeeping, including the
 private request level at `0x1D0`.

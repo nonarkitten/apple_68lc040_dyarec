@@ -80,11 +80,10 @@ Legend: `[x]` done, `[~]` partly done, `[ ]` not started.
 - [ ] Try the build with GNU binutils (`powerpc-*-as`) as a second assembler
 
 ### 7. Next (ideas, roughly in order of value)
-- [ ] Find the image that `Emulator.x` came from. It is in none of the 23 ROM chip dumps
-      checked (Quadra 840AV .. PowerBook G3 Series); it calls kernel service 8, which first
-      exists after the G3 ROM, so look in a NewWorld "Mac OS ROM" file (the 4 MB image inside
-      it; the XCOFF wrapper's 2018 date fits a ROM-rebuild project working from one).
-      `tools/rominfo.py` will report "Emulator.x" in its build column when it sees it
+- [x] Find where `Emulator.x` came from: elliotnunn/powermac-rom (identical file), i.e. the
+      emulator of the NewWorld "Mac OS ROM" 8/9/10 era (68K ROM `$077D.45F6`)
+- [ ] Get an actual "Mac OS ROM" file and confirm with `tools/rominfo.py` (needs the 4 MB image
+      unpacked, e.g. with elliotnunn/tbxi, which the project's README now points to)
 - [ ] Diff the two builds routine by routine: what did "tuned by Bob Abeles, hacked by Murph" change?
 - [ ] Extend `tools/check.py`: condition-code effects (which instructions may touch CR0 / XER /
       `ccr_x`), which 68K registers a routine writes, and loops (shifts, MOVEM)
@@ -175,3 +174,16 @@ Open:
   direct-mapped design never shipped in a ROM we have. Kernel services grow 0-4 (NuBus),
   0-5 (PCI), 0-6 (6500), 0-7 (G3); my names for 6/7/8 (RTAS, Cache, MP) fit that timeline
   (CHRP work in 1997, G3 backside cache, MP in 1999) but remain recalled, not verified.
+- powermac-rom (2026-10-11): `Emulator.x` there is byte-identical to ours and is a prebuilt
+  input to its makefile - no emulator source exists in it. Its NanoKernel disassembly and
+  `EmulatorPublic.a` confirmed: service names 0-8 (15 is "Thud"), the ECB layout (+0x84 pc,
+  +0x8C LR, +0x94 r3, +0x9C r4 are the save slots of the exception hand-off), and that the
+  kernel posts interrupts by OR-ing `PostIntMaskInit` (CR bits 8, 9, 10) into the emulator's
+  CR. CR bit 9 is now `cr_interrupt_asserted`.
+- `NKPublic.a` has comments like "SS replaces with jump to emu+f900" on the service table:
+  SheepShaver patches these. Worth a look for how an existing emulator hosts this code -
+  it is effectively a worked example of the "minimal kernel stub" in docs/11.
+- `EmulatorPublic.a` calls +0x740.. "EmuControlRegisters Reg0..Reg14"; our reading is that
+  [+0x708] points there and it holds D0-D7/A0-A6/pc for native code. Not reconciled yet.
+- Still no DR offset table anywhere: not in `Emulator.x`, not in 23 ROM chips, not in
+  powermac-rom. The shipped recompiler never used one.

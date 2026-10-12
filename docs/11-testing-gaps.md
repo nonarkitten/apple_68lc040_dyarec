@@ -153,11 +153,9 @@ Each stage is useful on its own.
 
 ## Things that cannot be confirmed from the image alone
 
-- The services behind kernel traps 6 to 8, which the kernel in the
-  8600/9600 ROM does not implement.
 - The complete layout of the kernel's context blocks, including the
   format of the fault description.
 - Who writes the handler table slots and the "expected vector" fields
   after initialisation, and with what.
-- Which ROM `Emulator.x` was taken from. It is later than every ROM chip
-  image examined ([13-rom-context.md](13-rom-context.md)).
+- The exact "Mac OS ROM" file version `Emulator.x` was extracted from
+  ([13-rom-context.md](13-rom-context.md) gives what is known).

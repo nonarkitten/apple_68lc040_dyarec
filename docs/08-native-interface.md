@@ -76,7 +76,7 @@ repeats 13. The uses visible in the image:
 | 3, 5, 7, 8 (`VMDispatch`, `PowerDispatch`, `CacheDispatch`, `MPDispatch`) | Defaults of handler table slots `+0x968`, `+0x99C`, `+0x9A4`, `+0x9DC`, called by private opcodes |
 | 4 (`PrioritizeInterrupts`) | The SR-change routine, when the interrupt mask is lowered below a pending request |
 | 6 (`RTASDispatch`) | Private opcode `FE20` (the trap instruction is inline at `0DB34`) |
-| 15 (`SystemCrash`) | `switch_to_native`, when no free context save area is left |
+| 15 (`Thud`, the kernel's panic) | `switch_to_native`, when no free context save area is left |
 | 9–13, 16 | Not referenced within the image |
 
 One `sc` (system call) instruction is also present, at `0C480`, in the

@@ -90,8 +90,9 @@ The names of registers and many routines follow the three patents that
 describe the design (US 5,574,873, US 5,623,617 and US 5,790,825; the
 last of them expired on November 8, 2015).
 
-`Emulator.x` is a later build of the emulator than the one in any Power
-Macintosh ROM chip up to the G3;
+`Emulator.x` is the emulator binary from Elliot Nunn's `powermac-rom`
+project, which rebuilds a New World "Mac OS ROM" image. It is a later
+build than the emulator in any Power Macintosh ROM chip up to the G3;
 [docs/13-rom-context.md](docs/13-rom-context.md) traces the builds, and
 describes where the emulator sits in a ROM and how the kernel starts it.
 

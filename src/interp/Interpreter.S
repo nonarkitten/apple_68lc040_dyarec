@@ -28567,7 +28567,7 @@ L_0C410:
         bt_likely 4*cr6+eq, L_0C44C
         crset   cr_special_event_pending
 L_0C44C:
-        ble     cr2, L_0C458
+        bf      cr_interrupt_asserted, L_0C458
         cmpw    cr6, base_disp, immed_data
         bgt     cr6, L_0C4D0
 L_0C458:
@@ -30310,13 +30310,13 @@ take_address_error:
         rlwinm  sr_and_flags, sr_and_flags, 0, 26, 21   // sr_and_flags = sr_and_flags & 0xFFFFFC3F
         bl      take_exception_pc_set
         addi    a7, a7, -84                             // the frame is 92 bytes in all
-        lwz     addr, ecb_flags(EmulatorStatePtr)
+        lwz     addr, ecb_saved_flags(EmulatorStatePtr)
         ori     rtn_addr, rtn_addr, 0xE000
         rlwinm  addr, addr, 0, 28, 15                   // addr = addr & 0xFFFF000F
         sth     rtn_addr, 46(a7)
         stw     addr, 40(a7)
         rlwinm  rtn_addr, disp_table, 29, 16, 31        // rtn_addr = disp_table[18:3]
-        lhz     addr, 180(EmulatorStatePtr)
+        lhz     addr, fault_cr(EmulatorStatePtr)
         sth     rtn_addr, 4(a7)
         sth     addr, 6(a7)
         addi    pc, pc, -2
@@ -30350,7 +30350,7 @@ check_interrupt:
         lbz     base_disp, interrupt_level(EmulatorStatePtr)
         cmplw   cr7, addr, immed_data
         blelr   cr7
-        bf_likely 4*cr2+gt, L_0D404
+        bf_likely cr_interrupt_asserted, L_0D404
         cmplw   cr7, base_disp, addr
         bgtlr   cr7
 L_0D404:
@@ -30388,7 +30388,7 @@ native_exception_handler:
         ori     sr_and_flags, sr_and_flags, 0x0800
         rlwimi  sr_and_flags, disp_table, 21, 22, 22    // sr_and_flags[9] = disp_table[20]
         mtcrf   0x0F, sr_and_flags                      // cr4..cr7 = sr_and_flags[15:0]
-        stw     addr, 180(EmulatorStatePtr)
+        stw     addr, fault_cr(EmulatorStatePtr)
         lwz     addr, ecb_pc(EmulatorStatePtr)
         bne     cr5, L_0D474
         cmpw    cr7, disp_table, addr
@@ -30397,12 +30397,12 @@ native_exception_handler:
         ori     data, code_ptr, take_address_error - cb
 L_0D474:
         stw     data, ecb_pc(EmulatorStatePtr)          // ecb_pc = where to resume
-        lwz     data, ecb_flags(EmulatorStatePtr)
-        stw     addr, 176(EmulatorStatePtr)
+        lwz     data, ecb_saved_flags(EmulatorStatePtr)
+        stw     addr, fault_pc(EmulatorStatePtr)
         mtcrf   0x0F, data                              // cr4..cr7 = data[15:0]
-        stw     data, 128(EmulatorStatePtr)
+        stw     data, fault_saved_flags(EmulatorStatePtr)
         rlwinm  data, data, 0, 28, 15                   // data = data & 0xFFFF000F
-        stw     data, ecb_flags(EmulatorStatePtr)
+        stw     data, ecb_saved_flags(EmulatorStatePtr)
         li      data, 9
         bns     cr6, L_0D4B8
         lwz     addr, 0x17C(EmulatorStatePtr)
@@ -30421,12 +30421,12 @@ L_0D4B8:
 
 // Build a 68020 format $B (long bus fault) frame for a bus error.
 take_bus_error:
-        stw     data, 152(EmulatorStatePtr)
-        stw     immed_data, 156(EmulatorStatePtr)
-        stw     base_disp, 160(EmulatorStatePtr)
+        stw     data, fault_data(EmulatorStatePtr)
+        stw     immed_data, fault_immed_data(EmulatorStatePtr)
+        stw     base_disp, fault_base_disp(EmulatorStatePtr)
         mflr    data
-        stw     data, 172(EmulatorStatePtr)
-        stw     sr_and_flags, 164(EmulatorStatePtr)
+        stw     data, fault_lr(EmulatorStatePtr)
+        stw     sr_and_flags, fault_sr_and_flags(EmulatorStatePtr)
         ori     immed_data, zero, 0xB008                // format $B, vector offset 0x008 (bus error)
         crset   4*cr7+so
         rlwinm  data, sr_and_flags, 8, 16, 23           // data = sr_and_flags[7:0] << 8
@@ -30440,7 +30440,7 @@ take_bus_error:
         stw     prefetch_data, 68(a7)
         sth     rtn_addr, 4(a7)
         stw     addr, 72(a7)
-        lhz     rtn_addr, 180(EmulatorStatePtr)
+        lhz     rtn_addr, fault_cr(EmulatorStatePtr)
         lwz     addr, 136(EmulatorStatePtr)
         sth     rtn_addr, 6(a7)
         lwz     rtn_addr, 140(EmulatorStatePtr)
@@ -30452,7 +30452,7 @@ take_bus_error:
         lwz     addr, 132(EmulatorStatePtr)
         stw     rtn_addr, 36(a7)
         stw     rtn_addr, 16(a7)
-        lwz     rtn_addr, 128(EmulatorStatePtr)
+        lwz     rtn_addr, fault_saved_flags(EmulatorStatePtr)
         stw     addr, 20(a7)
         slwi    addr, addr, 26
         stw     rtn_addr, 40(a7)
@@ -30469,25 +30469,25 @@ take_bus_error:
         lwz     addr, trace_pc(EmulatorStatePtr)
         lhz     rtn_addr, 182(EmulatorStatePtr)
         stw     addr, 24(a7)
-        lwz     addr, 152(EmulatorStatePtr)
+        lwz     addr, fault_data(EmulatorStatePtr)
         sth     rtn_addr, 44(a7)
-        lwz     rtn_addr, 156(EmulatorStatePtr)
+        lwz     rtn_addr, fault_immed_data(EmulatorStatePtr)
         stw     addr, 52(a7)
-        lwz     addr, 160(EmulatorStatePtr)
+        lwz     addr, fault_base_disp(EmulatorStatePtr)
         stw     rtn_addr, 60(a7)
-        lwz     rtn_addr, 172(EmulatorStatePtr)
+        lwz     rtn_addr, fault_lr(EmulatorStatePtr)
         stw     addr, 64(a7)
-        lwz     addr, 176(EmulatorStatePtr)
+        lwz     addr, fault_pc(EmulatorStatePtr)
         stw     rtn_addr, 76(a7)
         stw     addr, 80(a7)
-        lwz     addr, 164(EmulatorStatePtr)
+        lwz     addr, fault_sr_and_flags(EmulatorStatePtr)
         rlwinm  rtn_addr, ccr_x, 2, 31, 31              // rtn_addr = ccr_x[30]
         ori     rtn_addr, rtn_addr, 0xE000
         rlwimi  rtn_addr, addr, 0, 20, 23               // rtn_addr[11:8] = addr[11:8]
         sth     rtn_addr, 46(a7)
         bflr    cr_dr_active
         lwz     rtn_addr, dr_fault_fixup_vector(EmulatorStatePtr)
-        lwz     addr, 176(EmulatorStatePtr)
+        lwz     addr, fault_pc(EmulatorStatePtr)
         mtctr   rtn_addr
         bctr
 L_0D5DC:
@@ -30525,7 +30525,7 @@ L_0D640:
         lwz     immed_data, 40(a7)
         stw     base_disp, 0x17C(EmulatorStatePtr)
         lwz     base_disp, 44(a7)
-        stw     rtn_addr, ecb_flags(EmulatorStatePtr)
+        stw     rtn_addr, ecb_saved_flags(EmulatorStatePtr)
         lhz     rtn_addr, 8(a7)
         stw     immed_data, 0x168(EmulatorStatePtr)
         lwz     addr, 2(a7)
@@ -30539,27 +30539,27 @@ L_0D640:
         lhz     immed_data, 14(a7)
         stw     base_disp, trace_pc(EmulatorStatePtr)
         lwz     base_disp, 72(a7)
-        sth     immed_data, 180(EmulatorStatePtr)
+        sth     immed_data, fault_cr(EmulatorStatePtr)
         lwz     immed_data, 60(a7)
         sth     rtn_addr, 182(EmulatorStatePtr)
         lwz     rtn_addr, 64(a7)
-        stw     immed_data, 152(EmulatorStatePtr)
+        stw     immed_data, fault_data(EmulatorStatePtr)
         lwz     immed_data, 68(a7)
-        stw     base_disp, 160(EmulatorStatePtr)
+        stw     base_disp, fault_base_disp(EmulatorStatePtr)
         lwz     base_disp, 84(a7)
         lwz     addr, 56(a7)
-        stw     immed_data, 156(EmulatorStatePtr)
+        stw     immed_data, fault_immed_data(EmulatorStatePtr)
         lwz     immed_data, 80(a7)
-        stw     base_disp, 0x18C(EmulatorStatePtr)
+        stw     base_disp, ecb_lr(EmulatorStatePtr)
         lwz     prefetch_data, 76(a7)
         stw     immed_data, 168(EmulatorStatePtr)
         lhz     data, 0(a7)
         addi    a7, a7, 92
         bl      set_ccr
         crnand  gt, lt, eq                              // cr0.gt = ~(cr0.lt & cr0.eq)
-        lwz     data, 152(EmulatorStatePtr)
-        lwz     immed_data, 156(EmulatorStatePtr)
-        lwz     base_disp, 160(EmulatorStatePtr)
+        lwz     data, fault_data(EmulatorStatePtr)
+        lwz     immed_data, fault_immed_data(EmulatorStatePtr)
+        lwz     base_disp, fault_base_disp(EmulatorStatePtr)
         stw     addr, ecb_r3(EmulatorStatePtr)
         stw     data, ecb_r4(EmulatorStatePtr)
         lwz     addr, ecb_handler_return(EmulatorStatePtr)
@@ -30579,7 +30579,7 @@ L_0D640:
         rlwimi  disp_table, sr_and_flags, 11, 11, 11    // disp_table[20] = sr_and_flags[9]
         lwz     addr, 168(EmulatorStatePtr)
         cror    cr_special_event_pending, cr_special_event_pending, 4*cr5+so  // cr_special_event_pending = cr_special_event_pending | cr5.so
-        lwz     data, 180(EmulatorStatePtr)
+        lwz     data, fault_cr(EmulatorStatePtr)
         mtctr   addr
         li      addr, 0
         mtcrf   0x4F, data                              // cr1 = data[27:24]; cr4 = data[15:12]; cr5 = data[11:8]; cr6 = data[7:4]; cr7 = data[3:0]
@@ -31582,7 +31582,7 @@ L_0E278:
         rlwimi  sr_and_flags, base_disp, 0, 29, 31      // sr_and_flags[2:0] = base_disp[2:0]
         stw     immed_data, 0x11C(addr)
         lwz     base_disp, 236(addr)
-        cror    cr_interrupt_pending, cr_interrupt_pending, 4*cr2+gt  // cr_interrupt_pending = cr_interrupt_pending | cr2.gt
+        cror    cr_interrupt_pending, cr_interrupt_pending, cr_interrupt_asserted  // cr_interrupt_pending = cr_interrupt_pending | cr_interrupt_asserted
         li      immed_data, 0
         stw     base_disp, 252(addr)
         stb     immed_data, 0(addr)
@@ -31621,7 +31621,7 @@ L_0E2EC:
         cmplwi  cr7, immed_data, 0x0020
         lis     addr, 0x8000
         srw     addr, addr, immed_data
-        beq     cr7, kcall_system_crash
+        beq     cr7, kcall_thud
         or      base_disp, base_disp, addr
         stw     base_disp, 236(EmulatorStatePtr)
         mulli   immed_data, immed_data, 0x220
@@ -32226,10 +32226,10 @@ L_0E8BC:
 // already holds the return address.  (It also recognises the instruction
 // "twi 31, r31, n" anywhere else, by its operand.)
 //
-// The service names are the kernel's.  Slot 14 carries the operand 13,
-// which is harmless because the slot's address decides; slot 16 is beyond
-// the sixteen services of the kernel in the Power Macintosh 8600/9600
-// ROM, which implements only 0 to 5.
+// The service names are those of the NanoKernel disassembly in the
+// powermac-rom project.  Slot 14 carries the operand 13, which is harmless
+// because the slot's address decides; slot 16 is beyond the kernel's
+// sixteen services.
 EmKernelTrapTable:
         twi     31, EmulatorStatePtr, 0                 // 0: ReturnFromException - resume this context at ecb_pc
 
@@ -32247,13 +32247,13 @@ kcall_prioritize_interrupts:
 
 kcall_power_dispatch:
         twi     31, EmulatorStatePtr, 5                 // 5: PowerDispatch
-        twi     31, EmulatorStatePtr, 6                 // 6: RTASDispatch (later kernels)
+        twi     31, EmulatorStatePtr, 6                 // 6: RTASDispatch
 
 kcall_cache_dispatch:
-        twi     31, EmulatorStatePtr, 7                 // 7: CacheDispatch (later kernels)
+        twi     31, EmulatorStatePtr, 7                 // 7: CacheDispatch
 
 kcall_mp_dispatch:
-        twi     31, EmulatorStatePtr, 8                 // 8: MPDispatch (later kernels)
+        twi     31, EmulatorStatePtr, 8                 // 8: MPDispatch
         twi     31, EmulatorStatePtr, 9                 // 9
         twi     31, EmulatorStatePtr, 10                // 10
         twi     31, EmulatorStatePtr, 11                // 11
@@ -32261,8 +32261,8 @@ kcall_mp_dispatch:
         twi     31, EmulatorStatePtr, 13                // 13
         twi     31, EmulatorStatePtr, 13                // 14 (operand 13)
 
-kcall_system_crash:
-        twi     31, EmulatorStatePtr, 15                // 15: SystemCrash
+kcall_thud:
+        twi     31, EmulatorStatePtr, 15                // 15: Thud (kernel panic)
         twi     31, EmulatorStatePtr, 16                // 16
 
 em_entry_save:
@@ -32281,9 +32281,9 @@ em_entry_save:
         ori     r0, code_ptr, emulator_reset - cb       // where ReturnFromException will resume
         stw     r0, ecb_pc(EmulatorStatePtr)
         li      r0, 7
-        stw     r0, ecb_flags(EmulatorStatePtr)
+        stw     r0, ecb_saved_flags(EmulatorStatePtr)
         li      r0, -1
-        stw     r0, ecb_enables(EmulatorStatePtr)
+        stw     r0, ecb_saved_enables(EmulatorStatePtr)
         ori     r0, code_ptr, native_exception_handler - cb  // handler for native exceptions taken while emulating
         stw     r0, ecb_handler(EmulatorStatePtr)
         ori     r0, code_ptr, take_bus_error - cb       // its argument: where to resume for a bus error

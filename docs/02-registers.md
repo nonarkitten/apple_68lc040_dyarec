@@ -81,7 +81,7 @@ flags can be tested with conditional branches. This is how
 |---|---|
 | CR0 | 68K **N** (bit `lt`) and **Z** (bit `eq`). The `gt` and `so` bits carry no 68K state. |
 | CR1 | Dynamic recompiler state: `cr_dr_busy` (lt), `cr_dr_active` (gt), `cr_dr_ready` (eq), `cr_dr_enabled` (so). |
-| CR2 | Emulator state: `cr_special_event_pending` (lt), an interrupt-related flag (gt), `cr_interrupt_pending` (eq), `cr_supervisor` (so). |
+| CR2 | Emulator state: `cr_special_event_pending` (lt), `cr_interrupt_asserted` (gt), `cr_interrupt_pending` (eq), `cr_supervisor` (so). The first three are set by the kernel when it posts an interrupt; see [13-rom-context.md](13-rom-context.md). |
 | CR3 | `cr3.so` is a scratch flag inside the recompiler's translator. Otherwise unused. |
 | CR4–CR7 | Scratch. Loaded from a register with `mtcrf` to test several bits at once, or used for comparisons. |
 

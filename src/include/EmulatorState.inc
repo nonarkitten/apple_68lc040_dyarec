@@ -40,16 +40,30 @@
 
 #define interrupt_counts        0x0C0   // one counter per interrupt level, 4 bytes each
 
+// Scratch state saved when a memory fault interrupts an instruction
+#define fault_saved_flags       0x080   // the context's flags at the time of the fault
+#define fault_data              0x098
+#define fault_immed_data        0x09C
+#define fault_base_disp         0x0A0
+#define fault_sr_and_flags      0x0A4
+#define fault_lr                0x0AC
+#define fault_pc                0x0B0   // PowerPC address of the faulting instruction
+#define fault_cr                0x0B4
+
 // The emulator's context block (ECB), which the kernel shares.  It starts at
-// +0x100; the names follow the kernel's (see docs/13-rom-context.md).
-#define ecb_flags               0x140   // context flags
-#define ecb_enables             0x144   // which exceptions the context's handler wants
+// +0x100; see docs/13-rom-context.md.  When the kernel passes an exception
+// to the context's handler it saves what it is about to overwrite - the
+// flags, pc, LR, r3 and r4 - in the fields below, and ReturnFromException
+// restores them.
+#define ecb_saved_flags         0x140   // context flags to restore
+#define ecb_saved_enables       0x144   // exception enables to restore
 #define ecb_handler             0x14C   // where the kernel sends the context's exceptions
 #define ecb_handler_arg         0x154   // passed to the handler in r4
 #define ecb_handler_return      0x15C   // the handler's return address (EmKernelTrapTable)
-#define ecb_pc                  0x184   // where the context resumes
-#define ecb_r3                  0x194   // r3 at start-up: address of this state block
-#define ecb_r4                  0x19C   // r4 at start-up: address of the dispatch table
+#define ecb_pc                  0x184   // where the context resumes (initially EmEntry)
+#define ecb_lr                  0x18C   // LR to restore
+#define ecb_r3                  0x194   // r3 to restore (initially the address of this block)
+#define ecb_r4                  0x19C   // r4 to restore (initially the address of the dispatch table)
 
 // Replaceable handler addresses (initialised from handler_defaults)
 #define illegal_handler         0x800   // unimplemented opcodes

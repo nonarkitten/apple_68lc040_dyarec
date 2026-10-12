@@ -102,12 +102,15 @@
 
 //@ crbit
 // Condition register bits with a fixed meaning.  CR0 holds the 68K N and Z
-// flags (lt = N, eq = Z); CR2 holds emulator-wide flags.
+// flags (lt = N, eq = Z); CR2 holds emulator-wide flags.  The kernel posts an
+// interrupt by setting bits 8, 9 and 10 in the emulator context's CR, and
+// clears 9 and 10 when the interrupt level returns to zero.
 #define cr_dr_busy                  4   // cr1.lt: the recompiler (not 68K code) owns the borrowed registers
 #define cr_dr_active                5   // cr1.gt: flow-changing instructions enter the recompiler
 #define cr_dr_ready                 6   // cr1.eq: recompiler memory has been set up
 #define cr_dr_enabled               7   // cr1.so: the recompiler has been switched on
 #define cr_special_event_pending    8   // cr2.lt: something needs attention before the next instruction
+#define cr_interrupt_asserted       9   // cr2.gt: the kernel is signalling an interrupt (set and cleared by the kernel)
 #define cr_interrupt_pending        10  // cr2.eq: a 68K interrupt is waiting to be taken
 #define cr_supervisor               11  // cr2.so: the 68K is in supervisor state (SR S bit)
 

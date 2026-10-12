@@ -15,3 +15,8 @@ __pycache__/
 
 # Ignore Apple binaries
 *.ROM
+
+# Reference copy of https://github.com/elliotnunn/powermac-rom (the project
+# Emulator.x was taken from).  Someone else's work, and it contains a 68K
+# ROM image, so it is consulted but not tracked here.
+/powermac-rom-master/

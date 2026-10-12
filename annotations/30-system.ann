@@ -113,26 +113,26 @@
     already holds the return address.  (It also recognises the instruction
     "twi 31, r31, n" anywhere else, by its operand.)
     .
-    The service names are the kernel's.  Slot 14 carries the operand 13,
-    which is harmless because the slot's address decides; slot 16 is beyond
-    the sixteen services of the kernel in the Power Macintosh 8600/9600
-    ROM, which implements only 0 to 5.
+    The service names are those of the NanoKernel disassembly in the
+    powermac-rom project.  Slot 14 carries the operand 13, which is harmless
+    because the slot's address decides; slot 16 is beyond the kernel's
+    sixteen services.
 0E8C0 0: ReturnFromException - resume this context at ecb_pc
 0E8C4 1: RunAlternateContext - run native code
 0E8C8 2: ResetSystem
 0E8CC 3: VMDispatch
 0E8D0 4: PrioritizeInterrupts
 0E8D4 5: PowerDispatch
-0E8D8 6: RTASDispatch (later kernels)
-0E8DC 7: CacheDispatch (later kernels)
-0E8E0 8: MPDispatch (later kernels)
+0E8D8 6: RTASDispatch
+0E8DC 7: CacheDispatch
+0E8E0 8: MPDispatch
 0E8E4 9
 0E8E8 10
 0E8EC 11
 0E8F0 12
 0E8F4 13
 0E8F8 14 (operand 13)
-0E8FC 15: SystemCrash
+0E8FC 15: Thud (kernel panic)
 0E900 16
 
 @0E904 em_entry_save
@@ -188,4 +188,4 @@
 @0E8D4 kcall_power_dispatch
 @0E8DC kcall_cache_dispatch
 @0E8E0 kcall_mp_dispatch
-@0E8FC kcall_system_crash
+@0E8FC kcall_thud
