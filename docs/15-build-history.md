@@ -80,7 +80,7 @@ entries that differ, other than in branch displacements.
 | `private_fe1f` (`0DB44`) | New: private opcode `FE1F`, kernel service 8 |
 | `init_state` (`0DB94`) | The configuration word at `+0x7A0` starts as `0x80000039` instead of `1` |
 | After `handler_defaults` (`0DD74`…) | The set-up of the native context area preserves `+0x4D8` and stores `0xAE0` at `+0x1C8`. The table itself has 151 entries in all three builds |
-| `switch_to_native` (`0E128`) and the return from native code | The pool of save areas described by `+0xE0`…`+0xEC`, 0x220 bytes each; kernel service 15 when none is free |
+| `switch_to_native` (`0E128`), `private_fe07` (`0E380`) | Where the native context area is copied to the 68K stack and back, a save area of 0x220 bytes is now also claimed from, and returned to, a pool described by `+0xE0`…`+0xEC`; kernel service 15 when none is free |
 | `EmKernelTrapTable` (`0E8C0`) | Seventeen entries instead of sixteen |
 | After `interpreter_credits` | Removed: see below |
 | Throughout | Padding is `nop` instead of a branch to the next instruction |
