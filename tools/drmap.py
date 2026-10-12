@@ -55,8 +55,8 @@ GUEST_CODE = 0x00100000         # where the 68K instruction under test is put
 RECORDS = 0x00200000            # instruction record array
 
 
-def decide(image, opcode, extension=(0, 0, 0, 0), layout=EMULATOR_X):
-    """Run pass 1 on one instruction and return its Decision."""
+def _machine(image, opcode, extension, layout):
+    """A machine about to run pass 1 on one instruction."""
     base = ppcsim.LOAD_ADDRESS
     m = ppcsim.Machine()
     m.load(base, image)
@@ -73,6 +73,13 @@ def decide(image, opcode, extension=(0, 0, 0, 0), layout=EMULATOR_X):
     m.r[29] = RECORDS               # rec_ptr
     m.r[7] = base + layout.line_0   # base_disp: decoder tables
     m.pc = base + layout.scan_next
+    return m
+
+
+def decide(image, opcode, extension=(0, 0, 0, 0), layout=EMULATOR_X):
+    """Run pass 1 on one instruction and return its Decision."""
+    base = ppcsim.LOAD_ADDRESS
+    m = _machine(image, opcode, extension, layout)
     while True:
         m.step()
         stop = m.run(stop=(base + layout.scan_next, base + layout.liveness,
@@ -91,6 +98,49 @@ def decide(image, opcode, extension=(0, 0, 0, 0), layout=EMULATOR_X):
     translated = not flags & FLAG_NOT_TRANSLATED
     return Decision(translated, stop == layout.liveness, flags,
                     emitter if translated else None, m.r[23])
+
+
+def entered(image, opcode, extension=(0, 0, 0, 0), layout=EMULATOR_X):
+    """The places pass 1 branches to while it decodes one instruction, as
+    offsets in the image, in order.  The look at a branch's target, which
+    decodes another instruction, is left out."""
+    base = ppcsim.LOAD_ADDRESS
+    m = _machine(image, opcode, extension, layout)
+    stops = (base + layout.scan_next, base + layout.liveness, base + layout.translate_abort)
+    places, returns = [], set()
+    for _ in range(5000):
+        previous = m.pc
+        if m.read(previous, 4) & 1 and m.read(previous, 4) >> 26 in (16, 18, 19):
+            returns.add(previous + 4)           # a call: coming back is not a branch
+        m.step()
+        if m.pc in stops:
+            break
+        if m.pc != previous + 4 and m.pc not in returns:
+            places.append(m.pc - base)
+    return places
+
+
+def paths(image, cache=None, layout=EMULATOR_X):
+    """{offset: [opcodes]}: for every place pass 1 branches to, the opcodes
+    whose decoding goes through it.  Cached like scan()."""
+    import hashlib
+    import json
+    import os
+    digest = hashlib.sha1(image).hexdigest()
+    if cache and os.path.exists(cache):
+        with open(cache) as handle:
+            stored = json.load(handle)
+        if stored.get('digest') == digest:
+            return {int(offset): opcodes for offset, opcodes in stored['paths'].items()}
+    result = collections.defaultdict(list)
+    for opcode in range(0x10000):
+        for offset in sorted(set(entered(image, opcode, layout=layout))):
+            result[offset].append(opcode)
+    if cache:
+        os.makedirs(os.path.dirname(cache), exist_ok=True)
+        with open(cache, 'w') as handle:
+            json.dump({'digest': digest, 'paths': result}, handle)
+    return dict(result)
 
 
 def scan(image, cache=None, layout=EMULATOR_X):

@@ -93,6 +93,59 @@
     dr_scan_store or dr_scan_end_block.  Opcodes the recompiler does not
     translate end the block with a return to the interpreter.
 
+@10764
+    MOVE.B (A1)+,(A0)+ followed by BNE.S back to itself - the loop that
+    copies a C string - is translated as one unit, by its own emitter.
+10768 is the next instruction BNE.S *-2 ?
+10788 the emitter for the pair
+1078C a control transfer that writes N, Z, V, C
+10790 both instructions are consumed
+
+@107B8
+    MOVE.L ([bd.w],od.w),-(A7), opcode 2F30 with extension word 81E2, has an
+    emitter of its own.  It is the one full-format indexed form that is
+    translated; the interpreter singles out the same instruction.
+107CC opcode, extension word, bd and od
+
+@129D8 dr_emit_move_b_bne_loop
+    MOVE.B (A1)+,(A0)+ / BNE.S *-2 as a six-instruction PowerPC loop, which
+    tests for a special event on each pass.
+
+@12744 dr_emit_push_l_indirect
+    MOVE.L ([bd.w],od.w),-(A7).
+
+@10FC4 dr_flagged_ea_index_only
+    The length tables (dr_ea_length_tables) flag addressing modes whose
+    extension word has to be looked at.  The decoders call one of the
+    routines here when they meet the flag, with the effective address field
+    in addr and the provisional length in data.  An indexed mode is accepted
+    if its extension word is in the brief format; anything else flagged ends
+    the block untranslated (flags 0x4300).
+    .
+    This entry accepts (d8,An,Xn) only.
+10FC4 take the provisional length back
+
+@10FDC dr_flagged_ea
+    Accepts (d8,PC,Xn) and (d8,An,Xn).
+10FE0 field 0x3B (mode 7, register 3): (d8,PC,Xn)
+
+@10FEC dr_flagged_ea_mode
+10FEC mode 6: (d8,An,Xn)
+
+@10FFC dr_flagged_dest
+    For a destination: (d8,An,Xn) only.
+
+@11008 dr_flagged_dest_or_an
+    For a destination that may be an address register (mode 1): the
+    instruction is then translated and changes no flags.
+11018 no condition codes read or written
+
+@11020 dr_index_word
+    The extension word of an indexed mode: bit 8 clear (brief format), carry
+    on with the decoder; set (full format), not translated.
+11024 cr5.so = bit 8
+1102C brief format: back to the decoder
+
 @11038 dr_ea_length_tables
     Byte tables indexed by a 6-bit effective address field (and by the
     MOVE destination field) giving the number of extension bytes; the low

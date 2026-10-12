@@ -216,3 +216,30 @@ def emitter_names(emitter_users):
         used[base] += 1
         names[addr] = base if used[base] == 1 else '%s_%d' % (base, used[base])
     return names
+
+
+def decoder_names(users, line_0, slot=0x40):
+    """Names for the places the recompiler's first pass branches to.
+
+    users   offset -> opcodes whose decoding goes through it (drmap.paths)
+
+    The sixteen line decoders occupy one 64-byte slot each from line_0; a
+    place inside a slot that only that line's opcodes reach is left as a
+    local label of the line decoder.
+    """
+    used = collections.Counter()
+    names = {}
+    for addr in sorted(users):
+        opcodes = users[addr]
+        line = (addr - line_0) // slot
+        if 0 <= line < 16 and all(opcode >> 12 == line for opcode in opcodes):
+            continue
+        base = routine_name(opcodes)
+        for suffix in ('_any_any', '_any'):
+            if base.endswith(suffix):
+                base = base[:-len(suffix)]
+        base = 'dr_decode_' + base
+        used[base] += 1
+        names[addr] = base if used[base] == 1 else '%s_%d' % (base, used[base])
+    return names
+

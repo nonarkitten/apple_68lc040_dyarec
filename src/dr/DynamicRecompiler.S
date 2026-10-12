@@ -239,41 +239,66 @@ dr_translate_abort:
 // chooses an emitter and the condition code flags, and returns to
 // dr_scan_store or dr_scan_end_block.  Opcodes the recompiler does not
 // translate end the block with a return to the interpreter.
+//
+// The first pass comes here for 4096 opcodes:
+//     BTST.L Dn,Dn
+//     MOVEP.W (d16,An),Dn
+//     BTST.B Dn,(An)
+//     BTST.B Dn,(An)+
+//     BTST.B Dn,-(An)
+//     BTST.B Dn,(d16,An)
+//     ... and 531 more forms
 dr_line_0:
         rlwinm  addr, prefetch_data, 24, 28, 31         // addr = prefetch_data[11:8]
         cmpwi   cr4, addr, 8
         clrlwi  addr, prefetch_data, 26                 // addr = prefetch_data & 0x0000003F
-        beq     cr4, dr_line_F_L4
+        beq     cr4, dr_decode_btst_bchg_etc_imm
         crnand  4*cr6+eq, 4*cr6+lt, 4*cr6+gt            // cr6.eq = ~(cr6.lt & cr6.gt)
         li      immed_data, 0xC00
-        bne     cr6, dr_line_F_L3
+        bne     cr6, dr_decode_btst_bchg_etc
         rlwinm  data, prefetch_data, 23, 29, 31         // data = prefetch_data[11:9]
         cmpwi   cr4, data, 6
-        bso     cr5, dr_line_F_L3
+        bso     cr5, dr_decode_btst_bchg_etc
         cmpwi   cr5, data, 3
-        beq     cr4, dr_line_F_L5
+        beq     cr4, dr_decode_cmpi_imm
         cmpwi   cr4, data, 5
-        b       dr_line_F_L2
+        b       dr_decode_or_and_etc
         ALIGN(64)
 
+// The first pass comes here for 4096 opcodes:
+//     MOVE.B Dn,Dn
+//     MOVE.B An,Dn (illegal)
+//     MOVE.B (An),Dn
+//     MOVE.B (An)+,Dn
+//     MOVE.B -(An),Dn
+//     MOVE.B (d16,An),Dn
+//     ... and 219 more forms
 dr_line_1:
         cmpwi   cr7, prefetch_data, 0x10D9
         li      out_ptr, dr_emit_move_b - dr_emitters
         li      immed_data, 0x400
-        beql    cr7, dr_line_F_L14
+        beql    cr7, dr_decode_move_b_mem_mem
         addi    rtn_addr, base_disp, 0xDB8
         clrlwi  addr, prefetch_data, 26                 // addr = prefetch_data & 0x0000003F
         lbzx    data, rtn_addr, addr
         mtcrf   0x01, data                              // cr7 = data[3:0]
         add     blk_ofs, blk_ofs, data
-        bsol    cr7, L_10FDC
+        bsol    cr7, dr_flagged_ea
         addi    rtn_addr, base_disp, 0xE38
         rlwinm  addr, prefetch_data, 29, 26, 28         // addr = prefetch_data[8:6] << 3
         rlwimi  addr, prefetch_data, 23, 29, 31         // addr[2:0] = prefetch_data[11:9]
         lbzx    data, rtn_addr, addr
-        b       dr_line_F_L13
+        b       dr_decode_move_b
         ALIGN(64)
 
+// The first pass comes here for 4096 opcodes:
+//     MOVE.L Dn,Dn
+//     MOVE.L An,Dn
+//     MOVE.L (An),Dn
+//     MOVE.L (An)+,Dn
+//     MOVE.L -(An),Dn
+//     MOVE.L (d16,An),Dn
+//     ... and 219 more forms
 dr_line_2:
         li      out_ptr, dr_emit_move_l - dr_emitters
         li      immed_data, 0x400
@@ -282,16 +307,24 @@ dr_line_2:
         lbzx    data, rtn_addr, addr
         mtcrf   0x01, data                              // cr7 = data[3:0]
         add     blk_ofs, blk_ofs, data
-        bsol    cr7, dr_line_F_L15
+        bsol    cr7, dr_decode_move_l_mem
         addi    rtn_addr, base_disp, 0xE38
         rlwinm  addr, prefetch_data, 29, 26, 28         // addr = prefetch_data[8:6] << 3
         rlwimi  addr, prefetch_data, 23, 29, 31         // addr[2:0] = prefetch_data[11:9]
         lbzx    data, rtn_addr, addr
         mtcrf   0x01, data                              // cr7 = data[3:0]
         add     blk_ofs, blk_ofs, data
-        bsol    cr7, L_11008
+        bsol    cr7, dr_flagged_dest_or_an
         b       dr_scan_store
 
+// The first pass comes here for 4096 opcodes:
+//     MOVE.W Dn,Dn
+//     MOVE.W An,Dn
+//     MOVE.W (An),Dn
+//     MOVE.W (An)+,Dn
+//     MOVE.W -(An),Dn
+//     MOVE.W (d16,An),Dn
+//     ... and 219 more forms
 dr_line_3:
         li      out_ptr, dr_emit_move_w - dr_emitters
         li      immed_data, 0x400
@@ -300,39 +333,55 @@ dr_line_3:
         lbzx    data, rtn_addr, addr
         mtcrf   0x01, data                              // cr7 = data[3:0]
         add     blk_ofs, blk_ofs, data
-        bsol    cr7, L_10FDC
+        bsol    cr7, dr_flagged_ea
         addi    rtn_addr, base_disp, 0xE38
         rlwinm  addr, prefetch_data, 29, 26, 28         // addr = prefetch_data[8:6] << 3
         rlwimi  addr, prefetch_data, 23, 29, 31         // addr[2:0] = prefetch_data[11:9]
         lbzx    data, rtn_addr, addr
         mtcrf   0x01, data                              // cr7 = data[3:0]
         add     blk_ofs, blk_ofs, data
-        bsol    cr7, L_11008
+        bsol    cr7, dr_flagged_dest_or_an
         b       dr_scan_store
 
+// The first pass comes here for 4096 opcodes:
+//     ILLEGAL
+//     CHK.L Dn,Dn
+//     CHK.L An,Dn (illegal)
+//     CHK.L (An),Dn
+//     CHK.L (An)+,Dn
+//     CHK.L -(An),Dn
+//     ... and 503 more forms
 dr_line_4:
         rlwinm  addr, prefetch_data, 26, 29, 31         // addr = prefetch_data[8:6]
         cmpwi   cr4, addr, 7
         rlwinm  addr, prefetch_data, 24, 28, 31         // addr = prefetch_data[11:8]
-        beq     cr4, dr_line_F_L20
+        beq     cr4, dr_decode_lea_extb_mem_reg
         cmpwi   cr7, addr, 8
         cmpwi   cr4, addr, 14
-        blt     cr7, L_10878
-        beq     cr7, L_108D0
+        blt     cr7, dr_decode_chk_move_etc
+        beq     cr7, dr_decode_movem_nbcd_etc
         cmpwi   cr7, addr, 12
-        beq     cr4, L_1098C
+        beq     cr4, dr_decode_jsr_jmp_etc
         cmpwi   cr4, addr, 10
-        beq     cr7, L_10A9C
-        beq     cr4, L_10AD0
+        beq     cr7, dr_decode_movem_mulu_muls_divu_divs
+        beq     cr4, dr_decode_tst_tas_illegal
 dr_line_4_L1:
         li      immed_data, 0x4300
         b       dr_scan_end_block
         ALIGN(64)
 
+// The first pass comes here for 4096 opcodes:
+//     ADDQ.B #<q>,Dn
+//     ADDQ.B #<q>,An (illegal)
+//     ADDQ.B #<q>,(An)
+//     ADDQ.B #<q>,(An)+
+//     ADDQ.B #<q>,-(An)
+//     ADDQ.B #<q>,(d16,An)
+//     ... and 324 more forms
 dr_line_5:
         clrlwi  addr, prefetch_data, 26                 // addr = prefetch_data & 0x0000003F
-        blt     cr6, L_10AF8
-        bgt     cr6, L_10B0C
+        blt     cr6, dr_decode_add_sub_etc
+        bgt     cr6, dr_decode_add_sub_w_q
         li      out_ptr, dr_emit_addq_b - dr_emitters
         bns     cr5, dr_line_5_L1
         li      out_ptr, dr_emit_subq_b - dr_emitters
@@ -342,11 +391,19 @@ dr_line_5_L1:
         lbzx    data, rtn_addr, addr
         mtcrf   0x01, data                              // cr7 = data[3:0]
         add     blk_ofs, blk_ofs, data
-        bsol    cr7, L_10FFC
+        bsol    cr7, dr_flagged_dest
         b       dr_scan_store
         b       dr_line_6
         ALIGN(64)
 
+// The first pass comes here for 4096 opcodes:
+//     BRA.S <label>
+//     BSR.S <label>
+//     BHI.S <label>
+//     BLS.S <label>
+//     BCC.S <label>
+//     BCS.S <label>
+//     ... and 42 more forms
 dr_line_6:
         clrlwi  addr, prefetch_data, 24                 // addr = prefetch_data & 0x000000FF
         rlwinm  data, prefetch_data, 24, 28, 31         // data = prefetch_data[11:8]
@@ -358,12 +415,17 @@ dr_line_6:
         sth     addr, 6(rec_ptr)
         cmplwi  cr4, data, 0x0001
         li      out_ptr, dr_emit_bra_s - dr_emitters
-        beq     cr6, dr_bcc_flags_L1
-        beq     cr5, dr_bcc_flags_L3
+        beq     cr6, dr_decode_bra_bsr_etc_l
+        beq     cr5, dr_decode_bra_bsr_etc_w
         addi    addr, addr, 12
-        b       dr_bcc_flags_L4
+        b       dr_decode_bra_bsr_etc_s_2
         ALIGN(64)
 
+// The first pass comes here for 4096 opcodes:
+//     ILLEGAL
+//     MOVEQ.L #<q>,Dn
+//     MOVEQ.L #$An,Dn
+//     MOVEQ.L #$Dn,Dn
 dr_line_7:
         mtcrf   0x04, prefetch_data                     // cr5 = prefetch_data[11:8]
         li      out_ptr, dr_emit_moveq_l - dr_emitters
@@ -374,13 +436,21 @@ dr_line_7:
         b       dr_line_8
         ALIGN(64)
 
+// The first pass comes here for 4096 opcodes:
+//     OR.B Dn,Dn
+//     OR.B An,Dn (illegal)
+//     OR.B (An),Dn
+//     OR.B (An)+,Dn
+//     OR.B -(An),Dn
+//     OR.B (d16,An),Dn
+//     ... and 114 more forms
 dr_line_8:
         crand   4*cr6+eq, 4*cr6+gt, 4*cr6+lt            // cr6.eq = cr6.gt & cr6.lt
         clrlwi  addr, prefetch_data, 26                 // addr = prefetch_data & 0x0000003F
         li      immed_data, 0x400
-        beq     cr6, dr_bcc_flags_L8
-        bso     cr5, dr_bcc_flags_L10
-        blt     cr6, dr_bcc_flags_L7
+        beq     cr6, dr_decode_divu_divs_w_any_dn
+        bso     cr5, dr_decode_or_sbcd_etc
+        blt     cr6, dr_decode_or_l_any_dn
         li      out_ptr, dr_emit_or_w_2 - dr_emitters
         bgt     cr6, dr_line_8_L1
         li      out_ptr, dr_emit_or_b_2 - dr_emitters
@@ -390,27 +460,37 @@ dr_line_8_L1:
 dr_line_8_L2:
         mtcrf   0x01, data                              // cr7 = data[3:0]
         add     blk_ofs, blk_ofs, data
-        bsol    cr7, L_10FDC
+        bsol    cr7, dr_flagged_ea
         b       dr_scan_store
         ALIGN(64)
 
+// The first pass comes here for 4096 opcodes:
+//     SUB.B Dn,Dn
+//     SUB.B An,Dn (illegal)
+//     SUB.B (An),Dn
+//     SUB.B (An)+,Dn
+//     SUB.B -(An),Dn
+//     SUB.B (d16,An),Dn
+//     ... and 114 more forms
 dr_line_9:
         clrlwi  addr, prefetch_data, 26                 // addr = prefetch_data & 0x0000003F
-        bso     cr5, dr_decode_addx_or_add_L1
-        bgt     cr6, dr_decode_addx_or_add_L4
+        bso     cr5, dr_decode_sub_suba_subx
+        bgt     cr6, dr_decode_sub_suba_w_any_reg
         li      immed_data, 0xC00
         li      out_ptr, dr_emit_sub_l - dr_emitters
-        blt     cr6, dr_decode_addx_or_add_L6
+        blt     cr6, dr_decode_sub_suba_etc_l
         li      out_ptr, dr_emit_sub_b_2 - dr_emitters
         addi    rtn_addr, base_disp, 0xDB8
         lbzx    data, rtn_addr, addr
         mtcrf   0x01, data                              // cr7 = data[3:0]
         add     blk_ofs, blk_ofs, data
-        bsol    cr7, L_10FDC
+        bsol    cr7, dr_flagged_ea
         b       dr_scan_store
         b       dr_line_A
         ALIGN(64)
 
+// The first pass comes here for 4096 opcodes:
+//     A-LINE $Axxx
 dr_line_A:
         mr      immed_data, zero
         li      out_ptr, dr_emit_aline - dr_emitters
@@ -418,31 +498,47 @@ dr_line_A:
         b       dr_line_B
         ALIGN(64)
 
+// The first pass comes here for 4096 opcodes:
+//     CMP.B Dn,Dn
+//     CMP.B An,Dn (illegal)
+//     CMP.B (An),Dn
+//     CMP.B (An)+,Dn
+//     CMP.B -(An),Dn
+//     CMP.B (d16,An),Dn
+//     ... and 114 more forms
 dr_line_B:
         clrlwi  addr, prefetch_data, 26                 // addr = prefetch_data & 0x0000003F
         li      immed_data, 0x400
-        bso     cr5, dr_decode_addx_or_add_L9
-        bgt     cr6, dr_decode_addx_or_add_L7
+        bso     cr5, dr_decode_eor_cmpa_cmpm
+        bgt     cr6, dr_decode_cmp_cmpa_w_any_reg
         li      out_ptr, dr_emit_cmp_cmpa_l - dr_emitters
-        blt     cr6, dr_decode_addx_or_add_L6
+        blt     cr6, dr_decode_sub_suba_etc_l
         li      out_ptr, dr_emit_cmp_b - dr_emitters
         addi    rtn_addr, base_disp, 0xDB8
         lbzx    data, rtn_addr, addr
 dr_line_B_L1:
         mtcrf   0x01, data                              // cr7 = data[3:0]
         add     blk_ofs, blk_ofs, data
-        bsol    cr7, L_10FDC
+        bsol    cr7, dr_flagged_ea
         b       dr_scan_store
         b       dr_line_C
         ALIGN(64)
 
+// The first pass comes here for 4096 opcodes:
+//     AND.B Dn,Dn
+//     AND.B An,Dn (illegal)
+//     AND.B (An),Dn
+//     AND.B (An)+,Dn
+//     AND.B -(An),Dn
+//     AND.B (d16,An),Dn
+//     ... and 114 more forms
 dr_line_C:
         crand   4*cr6+eq, 4*cr6+gt, 4*cr6+lt            // cr6.eq = cr6.gt & cr6.lt
         clrlwi  addr, prefetch_data, 26                 // addr = prefetch_data & 0x0000003F
         li      immed_data, 0x400
-        beq     cr6, dr_decode_addx_or_add_L14
-        bso     cr5, dr_decode_addx_or_add_L16
-        blt     cr6, dr_decode_addx_or_add_L13
+        beq     cr6, dr_decode_mulu_muls_w_any_dn
+        bso     cr5, dr_decode_and_exg_abcd
+        blt     cr6, dr_decode_and_l_any_dn
         li      out_ptr, dr_emit_and_w_2 - dr_emitters
         bgt     cr6, dr_line_C_L1
         li      out_ptr, dr_emit_and_b_2 - dr_emitters
@@ -452,28 +548,53 @@ dr_line_C_L1:
 dr_line_C_L2:
         mtcrf   0x01, data                              // cr7 = data[3:0]
         add     blk_ofs, blk_ofs, data
-        bsol    cr7, L_10FDC
+        bsol    cr7, dr_flagged_ea
         b       dr_scan_store
         ALIGN(64)
 
+// The first pass comes here for 4096 opcodes:
+//     ADD.B Dn,Dn
+//     ADD.B An,Dn (illegal)
+//     ADD.B (An),Dn
+//     ADD.B (An)+,Dn
+//     ADD.B -(An),Dn
+//     ADD.B (d16,An),Dn
+//     ... and 114 more forms
 dr_line_D:
         clrlwi  addr, prefetch_data, 26                 // addr = prefetch_data & 0x0000003F
         bso     cr5, dr_decode_addx_or_add
-        bgt     cr6, dr_decode_addx_or_add_L3
+        bgt     cr6, dr_decode_add_adda_w_any_reg
         li      immed_data, 0xC00
         li      out_ptr, dr_emit_add_l - dr_emitters
-        blt     cr6, dr_decode_addx_or_add_L6
+        blt     cr6, dr_decode_sub_suba_etc_l
         li      out_ptr, dr_emit_add_b_2 - dr_emitters
-dr_line_D_L1:
+
+// The first pass comes here for 64 opcodes:
+//     TST.B Dn
+//     TST.B An (illegal)
+//     TST.B (An)
+//     TST.B (An)+
+//     TST.B -(An)
+//     TST.B (d16,An)
+//     ... and 9 more forms
+dr_decode_tst_b:
         addi    rtn_addr, base_disp, 0xDB8
         lbzx    data, rtn_addr, addr
         mtcrf   0x01, data                              // cr7 = data[3:0]
         add     blk_ofs, blk_ofs, data
-        bsol    cr7, L_10FDC
+        bsol    cr7, dr_flagged_ea
         b       dr_scan_store
         b       dr_line_E
         ALIGN(64)
 
+// The first pass comes here for 4096 opcodes:
+//     ASR.B #<q>,Dn
+//     LSR.B #<q>,Dn
+//     ROXR.B #<q>,Dn
+//     ROR.B #<q>,Dn
+//     ASR.B Dn,Dn
+//     LSR.B Dn,Dn
+//     ... and 282 more forms
 dr_line_E:
         crand   4*cr6+gt, 4*cr6+gt, 4*cr6+lt            // cr6.gt = cr6.gt & cr6.lt
         clrlwi  addr, prefetch_data, 26                 // addr = prefetch_data & 0x0000003F
@@ -490,6 +611,14 @@ dr_line_E:
         b       dr_line_F
         ALIGN(64)
 
+// The first pass comes here for 4096 opcodes:
+//     ILLEGAL
+//     F-LINE cpID 0
+//     F-LINE cpID 4
+//     F-LINE cpID 5
+//     F-LINE cpID 6
+//     F-LINE cpID 7
+//     ... and 98 more forms
 dr_line_F:
         cmpwi   cr7, prefetch_data, -0x3F0
         cmpwi   cr6, prefetch_data, -0x3EF
@@ -503,13 +632,40 @@ dr_line_F_L1:
         li      immed_data, 0x2000
         li      out_ptr, dr_emit_fline - dr_emitters
         b       dr_scan_end_block
-dr_line_F_L2:
-        ble     cr5, dr_line_F_L9
-        beq     cr4, dr_line_F_L8
-dr_line_F_L3:
+
+// The first pass comes here for 1152 opcodes:
+//     ORI.B #<data>,Dn
+//     ORI.B #<data>,An (illegal)
+//     ORI.B #<data>,(An)
+//     ORI.B #<data>,(An)+
+//     ORI.B #<data>,-(An)
+//     ORI.B #<data>,(d16,An)
+//     ... and 262 more forms
+dr_decode_or_and_etc:
+        ble     cr5, dr_decode_or_and_etc_imm
+        beq     cr4, dr_decode_eori_imm
+
+// The first pass comes here for 2496 opcodes:
+//     BTST.L Dn,Dn
+//     MOVEP.W (d16,An),Dn
+//     BTST.B Dn,(An)
+//     BTST.B Dn,(An)+
+//     BTST.B Dn,-(An)
+//     BTST.B Dn,(d16,An)
+//     ... and 159 more forms
+dr_decode_btst_bchg_etc:
         li      immed_data, 0x4300
         b       dr_scan_end_block
-dr_line_F_L4:
+
+// The first pass comes here for 256 opcodes:
+//     BTST.L #<bit>,Dn
+//     BTST.B #<bit>,An (illegal)
+//     BTST.B #<bit>,(An)
+//     BTST.B #<bit>,(An)+
+//     BTST.B #<bit>,-(An)
+//     BTST.B #<bit>,(d16,An)
+//     ... and 54 more forms
+dr_decode_btst_bchg_etc_imm:
         li      immed_data, 0x500
         li      out_ptr, dr_emit_btst - dr_emitters
         rlwinm  data, prefetch_data, 28, 28, 29         // data = prefetch_data[7:6] << 2
@@ -519,67 +675,154 @@ dr_line_F_L4:
         lbzx    data, rtn_addr, addr
         mtcrf   0x01, data                              // cr7 = data[3:0]
         add     blk_ofs, blk_ofs, data
-        bsol    cr7, L_10FDC
+        bsol    cr7, dr_flagged_ea
         b       dr_scan_store
-dr_line_F_L5:
+
+// The first pass comes here for 192 opcodes:
+//     CMPI.B #<data>,Dn
+//     CMPI.B #<data>,An (illegal)
+//     CMPI.B #<data>,(An)
+//     CMPI.B #<data>,(An)+
+//     CMPI.B #<data>,-(An)
+//     CMPI.B #<data>,(d16,An)
+//     ... and 39 more forms
+dr_decode_cmpi_imm:
         li      immed_data, 0x400
-        blt     cr6, dr_line_F_L7
+        blt     cr6, dr_decode_cmpi_l_imm
         addi    blk_ofs, blk_ofs, 2
         li      out_ptr, dr_emit_cmpi_w - dr_emitters
-        bgt     cr6, dr_line_F_L6
+        bgt     cr6, dr_decode_cmpi_imm_2
         li      out_ptr, dr_emit_cmpi_b - dr_emitters
-dr_line_F_L6:
+
+// The first pass comes here for 128 opcodes:
+//     CMPI.W #<data>,Dn
+//     CMPI.W #<data>,An (illegal)
+//     CMPI.W #<data>,(An)
+//     CMPI.W #<data>,(An)+
+//     CMPI.W #<data>,-(An)
+//     CMPI.W #<data>,(d16,An)
+//     ... and 24 more forms
+dr_decode_cmpi_imm_2:
         addi    rtn_addr, base_disp, 0xF38
         lbzx    data, rtn_addr, addr
         mtcrf   0x01, data                              // cr7 = data[3:0]
         add     blk_ofs, blk_ofs, data
-        bsol    cr7, L_10FDC
+        bsol    cr7, dr_flagged_ea
         b       dr_scan_store
-dr_line_F_L7:
+
+// The first pass comes here for 64 opcodes:
+//     CMPI.L #<data>,Dn
+//     CMPI.L #<data>,An (illegal)
+//     CMPI.L #<data>,(An)
+//     CMPI.L #<data>,(An)+
+//     CMPI.L #<data>,-(An)
+//     CMPI.L #<data>,(d16,An)
+//     ... and 9 more forms
+dr_decode_cmpi_l_imm:
         addi    blk_ofs, blk_ofs, 4
         li      out_ptr, dr_emit_cmpi_l - dr_emitters
-        b       dr_line_F_L6
-dr_line_F_L8:
+        b       dr_decode_cmpi_imm_2
+
+// The first pass comes here for 192 opcodes:
+//     EORI.B #<data>,Dn
+//     EORI.B #<data>,An (illegal)
+//     EORI.B #<data>,(An)
+//     EORI.B #<data>,(An)+
+//     EORI.B #<data>,-(An)
+//     EORI.B #<data>,(d16,An)
+//     ... and 39 more forms
+dr_decode_eori_imm:
         li      immed_data, 0x400
         li      out_ptr, dr_emit_eori_w - dr_emitters
-        b       dr_line_F_L10
-dr_line_F_L9:
+        b       dr_decode_and_eor_etc_imm
+
+// The first pass comes here for 768 opcodes:
+//     ORI.B #<data>,Dn
+//     ORI.B #<data>,An (illegal)
+//     ORI.B #<data>,(An)
+//     ORI.B #<data>,(An)+
+//     ORI.B #<data>,-(An)
+//     ORI.B #<data>,(d16,An)
+//     ... and 173 more forms
+dr_decode_or_and_etc_imm:
         li      out_ptr, dr_emit_addi_w - dr_emitters
-        beq     cr5, dr_line_F_L10
+        beq     cr5, dr_decode_and_eor_etc_imm
         cmpwi   cr5, data, 1
         li      out_ptr, dr_emit_subi_w - dr_emitters
-        bgt     cr5, dr_line_F_L10
+        bgt     cr5, dr_decode_and_eor_etc_imm
         li      out_ptr, dr_emit_andi_w - dr_emitters
         li      immed_data, 0x400
-        beq     cr5, dr_line_F_L10
+        beq     cr5, dr_decode_and_eor_etc_imm
         li      out_ptr, dr_emit_ori_w - dr_emitters
-dr_line_F_L10:
+
+// The first pass comes here for 768 opcodes:
+//     ANDI.B #<data>,Dn
+//     ANDI.B #<data>,An (illegal)
+//     ANDI.B #<data>,(An)
+//     ANDI.B #<data>,(An)+
+//     ANDI.B #<data>,-(An)
+//     ANDI.B #<data>,(d16,An)
+//     ... and 173 more forms
+dr_decode_and_eor_etc_imm:
         addi    blk_ofs, blk_ofs, 2
-        bgt     cr6, dr_line_F_L11
+        bgt     cr6, dr_decode_or_and_etc_imm_2
         addi    out_ptr, out_ptr, 4
-        bge     cr6, dr_line_F_L11
+        bge     cr6, dr_decode_or_and_etc_imm_2
         addi    blk_ofs, blk_ofs, 2
         addi    out_ptr, out_ptr, 4
-dr_line_F_L11:
+
+// The first pass comes here for 640 opcodes:
+//     ORI.B #<data>,Dn
+//     ORI.B #<data>,An (illegal)
+//     ORI.B #<data>,(An)
+//     ORI.B #<data>,(An)+
+//     ORI.B #<data>,-(An)
+//     ORI.B #<data>,(d16,An)
+//     ... and 144 more forms
+dr_decode_or_and_etc_imm_2:
         addi    data, data, -2
         cmplwi  cr4, data, 0x0001
         addi    rtn_addr, base_disp, 0xE38
-        ble     cr4, dr_line_F_L12
+        ble     cr4, dr_decode_sub_add_imm
         li      immed_data, 0x400
-dr_line_F_L12:
+
+// The first pass comes here for 384 opcodes:
+//     SUBI.B #<data>,Dn
+//     SUBI.B #<data>,An (illegal)
+//     SUBI.B #<data>,(An)
+//     SUBI.B #<data>,(An)+
+//     SUBI.B #<data>,-(An)
+//     SUBI.B #<data>,(d16,An)
+//     ... and 84 more forms
+dr_decode_sub_add_imm:
         lbzx    data, rtn_addr, addr
         mtcrf   0x01, data                              // cr7 = data[3:0]
         add     blk_ofs, blk_ofs, data
-        bsol    cr7, L_10FDC
+        bsol    cr7, dr_flagged_ea
         b       dr_scan_store
-dr_line_F_L13:
+
+// The first pass comes here for 3392 opcodes:
+//     MOVE.B Dn,Dn
+//     MOVE.B (An),Dn
+//     MOVE.B (An)+,Dn
+//     MOVE.B -(An),Dn
+//     MOVE.B (d16,An),Dn
+//     MOVE.B (d8,An,Xn),Dn
+//     ... and 159 more forms
+dr_decode_move_b:
         mtcrf   0x01, data                              // cr7 = data[3:0]
         add     blk_ofs, blk_ofs, data
-        bsol    cr7, L_10FFC
+        bsol    cr7, dr_flagged_dest
         b       dr_scan_store
-dr_line_F_L14:
+
+// MOVE.B (A1)+,(A0)+ followed by BNE.S back to itself - the loop that
+// copies a C string - is translated as one unit, by its own emitter.
+//
+// The first pass comes here for 1 opcode:
+//     MOVE.B (An)+,(An)+
+dr_decode_move_b_mem_mem:
         lhzx    addr, pc, blk_ofs
-        cmpwi   cr7, addr, 0x66FC
+        cmpwi   cr7, addr, 0x66FC                       // is the next instruction BNE.S *-2 ?
         bnelr   cr7
         li      data, 1
         lhz     addr, 0xB28(EmulatorStatePtr)
@@ -587,36 +830,76 @@ dr_line_F_L14:
         sth     addr, 6(rec_ptr)
         addi    addr, addr, 12
         sth     addr, 0xB28(EmulatorStatePtr)
-        li      out_ptr, 0x16A0
-        li      immed_data, 0x2400
-        addi    blk_ofs, blk_ofs, 2
+        li      out_ptr, dr_emit_move_b_bne_loop - dr_emitters  // the emitter for the pair
+        li      immed_data, 0x2400                      // a control transfer that writes N, Z, V, C
+        addi    blk_ofs, blk_ofs, 2                     // both instructions are consumed
         b       dr_scan_store
-dr_line_F_L15:
+
+// The first pass comes here for 768 opcodes:
+//     MOVE.L (d8,An,Xn),Dn
+//     MOVEA.L (d8,An,Xn),An
+//     MOVE.L (d8,An,Xn),(An)
+//     MOVE.L (d8,An,Xn),(An)+
+//     MOVE.L (d8,An,Xn),-(An)
+//     MOVE.L (d8,An,Xn),(d16,An)
+//     ... and 69 more forms
+dr_decode_move_l_mem:
         subf    blk_ofs, data, blk_ofs                  // blk_ofs = blk_ofs - data
         cmpwi   cr4, addr, 59
         rlwinm  addr, addr, 29, 29, 31                  // addr = addr[5:3]
-        beq     cr4, L_11020
+        beq     cr4, dr_index_word
         cmpwi   cr4, addr, 6
-        beq     cr4, dr_line_F_L16
+        beq     cr4, dr_decode_move_l_mem_2
         li      immed_data, 0x4300
         b       dr_scan_end_block
-dr_line_F_L16:
+
+// MOVE.L ([bd.w],od.w),-(A7), opcode 2F30 with extension word 81E2, has an
+// emitter of its own.  It is the one full-format indexed form that is
+// translated; the interpreter singles out the same instruction.
+//
+// The first pass comes here for 512 opcodes:
+//     MOVE.L (d8,An,Xn),Dn
+//     MOVEA.L (d8,An,Xn),An
+//     MOVE.L (d8,An,Xn),(An)
+//     MOVE.L (d8,An,Xn),(An)+
+//     MOVE.L (d8,An,Xn),-(An)
+//     MOVE.L (d8,An,Xn),(d16,An)
+//     ... and 9 more forms
+dr_decode_move_l_mem_2:
         lhzx    rtn_addr, pc, blk_ofs
         cmplwi  cr4, prefetch_data, 0x2F30
         cmplwi  cr5, rtn_addr, 0x81E2
-        bne     cr4, L_11020
-        bne     cr5, L_11020
-        addi    blk_ofs, blk_ofs, 6
-        li      out_ptr, 0x140C
+        bne     cr4, dr_index_word
+        bne     cr5, dr_index_word
+        addi    blk_ofs, blk_ofs, 6                     // opcode, extension word, bd and od
+        li      out_ptr, dr_emit_push_l_indirect - dr_emitters
         b       dr_scan_store
-dr_line_F_L17:
+
+// The first pass comes here for 256 opcodes:
+//     MOVE.W SR,Dn
+//     MOVE.W SR,An (illegal)
+//     MOVE.W SR,(An)
+//     MOVE.W SR,(An)+
+//     MOVE.W SR,-(An)
+//     MOVE.W SR,(d16,An)
+//     ... and 54 more forms
+dr_decode_move_w:
         rlwinm  addr, prefetch_data, 0, 16, 25          // addr = prefetch_data[15:6] << 6
         cmpwi   cr7, addr, 0x42C0
         cmpwi   cr6, addr, 0x44C0
-        beq     cr7, dr_line_F_L18
-        beq     cr6, dr_line_F_L19
+        beq     cr7, dr_decode_move_w_ccr
+        beq     cr6, dr_decode_move_w_any_ccr
         b       dr_line_4_L1
-dr_line_F_L18:
+
+// The first pass comes here for 64 opcodes:
+//     MOVE.W CCR,Dn
+//     MOVE.W CCR,An (illegal)
+//     MOVE.W CCR,(An)
+//     MOVE.W CCR,(An)+
+//     MOVE.W CCR,-(An)
+//     MOVE.W CCR,(d16,An)
+//     ... and 9 more forms
+dr_decode_move_w_ccr:
         li      out_ptr, dr_emit_move_w_2 - dr_emitters
         clrlwi  addr, prefetch_data, 26                 // addr = prefetch_data & 0x0000003F
         addi    rtn_addr, base_disp, 0xE38
@@ -624,9 +907,18 @@ dr_line_F_L18:
         li      immed_data, 0x300
         mtcrf   0x01, data                              // cr7 = data[3:0]
         add     blk_ofs, blk_ofs, data
-        bsol    cr7, L_10FDC
+        bsol    cr7, dr_flagged_ea
         b       dr_scan_store
-dr_line_F_L19:
+
+// The first pass comes here for 64 opcodes:
+//     MOVE.W Dn,CCR
+//     MOVE.W An,CCR (illegal)
+//     MOVE.W (An),CCR
+//     MOVE.W (An)+,CCR
+//     MOVE.W -(An),CCR
+//     MOVE.W (d16,An),CCR
+//     ... and 9 more forms
+dr_decode_move_w_any_ccr:
         li      out_ptr, dr_emit_move_w_3 - dr_emitters
         clrlwi  addr, prefetch_data, 26                 // addr = prefetch_data & 0x0000003F
         addi    rtn_addr, base_disp, 0xDB8
@@ -634,9 +926,18 @@ dr_line_F_L19:
         li      immed_data, 0xC00
         mtcrf   0x01, data                              // cr7 = data[3:0]
         add     blk_ofs, blk_ofs, data
-        bsol    cr7, L_10FDC
+        bsol    cr7, dr_flagged_ea
         b       dr_scan_store
-dr_line_F_L20:
+
+// The first pass comes here for 512 opcodes:
+//     LEA An,An (illegal)
+//     LEA (An),An
+//     LEA (An)+,An (illegal)
+//     LEA -(An),An (illegal)
+//     LEA (d16,An),An
+//     LEA (d8,An,Xn),An
+//     ... and 10 more forms
+dr_decode_lea_extb_mem_reg:
         li      out_ptr, dr_emit_lea - dr_emitters
         clrlwi  addr, prefetch_data, 26                 // addr = prefetch_data & 0x0000003F
         addi    rtn_addr, base_disp, 0x1078
@@ -644,52 +945,106 @@ dr_line_F_L20:
         mr      immed_data, zero
         mtcrf   0x01, data                              // cr7 = data[3:0]
         add     blk_ofs, blk_ofs, data
-        bsol    cr7, L_1085C
+        bsol    cr7, dr_decode_lea_extb_mem_reg_2
         b       dr_scan_store
-L_1085C:
+
+// The first pass comes here for 360 opcodes:
+//     LEA An,An (illegal)
+//     LEA (An)+,An (illegal)
+//     LEA -(An),An (illegal)
+//     LEA (d8,An,Xn),An
+//     LEA Dn,An (illegal)
+//     LEA (d8,PC,Xn),An
+//     ... and 5 more forms
+dr_decode_lea_extb_mem_reg_2:
         rlwinm  rtn_addr, prefetch_data, 0, 16, 28      // rtn_addr = prefetch_data[15:3] << 3
         cmpwi   cr4, rtn_addr, 0x49C0
-        bne     cr4, L_10FDC
+        bne     cr4, dr_flagged_ea
         subf    blk_ofs, data, blk_ofs                  // blk_ofs = blk_ofs - data
         li      out_ptr, dr_emit_extb_l - dr_emitters
         li      immed_data, 0x400
         b       dr_scan_store
-L_10878:
+
+// The first pass comes here for 1792 opcodes:
+//     ILLEGAL
+//     CHK.L Dn,Dn
+//     CHK.L An,Dn (illegal)
+//     CHK.L (An),Dn
+//     CHK.L (An)+,Dn
+//     CHK.L -(An),Dn
+//     ... and 265 more forms
+dr_decode_chk_move_etc:
         clrlwi  addr, prefetch_data, 26                 // addr = prefetch_data & 0x0000003F
         bso     cr5, dr_line_4_L1
         crand   4*cr6+eq, 4*cr6+gt, 4*cr6+lt            // cr6.eq = cr6.gt & cr6.lt
         addi    rtn_addr, base_disp, 0xE38
         lbzx    data, rtn_addr, addr
-        bt_unlikely 4*cr6+eq, dr_line_F_L17
+        bt_unlikely 4*cr6+eq, dr_decode_move_w
         li      immed_data, 0x400
-        beq     cr5, L_108A8
+        beq     cr5, dr_decode_clr_not
         li      immed_data, 0xC00
         li      out_ptr, dr_emit_neg_b - dr_emitters
         ble     cr5, dr_line_4_L1
-        b       L_108B4
-L_108A8:
+        b       dr_decode_clr_neg
+
+// The first pass comes here for 384 opcodes:
+//     CLR.B Dn
+//     CLR.B An (illegal)
+//     CLR.B (An)
+//     CLR.B (An)+
+//     CLR.B -(An)
+//     CLR.B (d16,An)
+//     ... and 84 more forms
+dr_decode_clr_not:
         li      out_ptr, dr_emit_clr_b - dr_emitters
-        ble     cr5, L_108B4
+        ble     cr5, dr_decode_clr_neg
         li      out_ptr, dr_emit_not_b - dr_emitters
-L_108B4:
+
+// The first pass comes here for 384 opcodes:
+//     CLR.B Dn
+//     CLR.B An (illegal)
+//     CLR.B (An)
+//     CLR.B (An)+
+//     CLR.B -(An)
+//     CLR.B (d16,An)
+//     ... and 84 more forms
+dr_decode_clr_neg:
         mtcrf   0x01, data                              // cr7 = data[3:0]
         rlwinm  addr, prefetch_data, 28, 28, 29         // addr = prefetch_data[7:6] << 2
         add     out_ptr, out_ptr, addr
         add     blk_ofs, blk_ofs, data
         clrlwi  addr, prefetch_data, 26                 // addr = prefetch_data & 0x0000003F
-        bsol    cr7, dr_decode_addx_or_add_L18
+        bsol    cr7, dr_flagged_ea_index_only
         b       dr_scan_store
-L_108D0:
+
+// The first pass comes here for 256 opcodes:
+//     NBCD.B Dn
+//     LINK.L An,#<disp>
+//     NBCD.B (An)
+//     NBCD.B (An)+
+//     NBCD.B -(An)
+//     NBCD.B (d16,An)
+//     ... and 54 more forms
+dr_decode_movem_nbcd_etc:
         rlwinm  addr, prefetch_data, 29, 27, 31         // addr = prefetch_data[7:3]
-        blt     cr6, L_10934
+        blt     cr6, dr_decode_movem_ext
         cmpwi   cr4, addr, 1
-        bgt     cr6, L_108F4
+        bgt     cr6, dr_decode_pea_swap_bkpt_any_reg
         bne     cr4, dr_line_4_L1
         li      out_ptr, dr_emit_link_l - dr_emitters
         li      immed_data, 0
         addi    blk_ofs, blk_ofs, 4
         b       dr_scan_store
-L_108F4:
+
+// The first pass comes here for 64 opcodes:
+//     SWAP Dn
+//     BKPT #<q>
+//     PEA (An)
+//     PEA (An)+ (illegal)
+//     PEA -(An) (illegal)
+//     PEA (d16,An)
+//     ... and 9 more forms
+dr_decode_pea_swap_bkpt_any_reg:
         li      out_ptr, dr_emit_pea - dr_emitters
         clrlwi  addr, prefetch_data, 26                 // addr = prefetch_data & 0x0000003F
         addi    rtn_addr, base_disp, 0x1078
@@ -697,17 +1052,35 @@ L_108F4:
         mr      immed_data, zero
         mtcrf   0x01, data                              // cr7 = data[3:0]
         add     blk_ofs, blk_ofs, data
-        bsol    cr7, L_10918
+        bsol    cr7, dr_decode_pea_swap_bkpt_any_reg_2
         b       dr_scan_store
-L_10918:
+
+// The first pass comes here for 45 opcodes:
+//     SWAP Dn
+//     BKPT #<q>
+//     PEA (An)+ (illegal)
+//     PEA -(An) (illegal)
+//     PEA (d8,An,Xn)
+//     PEA (d8,PC,Xn)
+//     ... and 4 more forms
+dr_decode_pea_swap_bkpt_any_reg_2:
         rlwinm  rtn_addr, prefetch_data, 0, 16, 28      // rtn_addr = prefetch_data[15:3] << 3
         cmpwi   cr4, rtn_addr, 0x4840
-        bne     cr4, L_10FDC
+        bne     cr4, dr_flagged_ea
         subf    blk_ofs, data, blk_ofs                  // blk_ofs = blk_ofs - data
         li      out_ptr, dr_emit_swap - dr_emitters
         li      immed_data, 0x400
         b       dr_scan_store
-L_10934:
+
+// The first pass comes here for 128 opcodes:
+//     EXT.W Dn
+//     MOVEM.W <list>,An (illegal)
+//     MOVEM.W <list>,(An)
+//     MOVEM.W <list>,(An)+ (illegal)
+//     MOVEM.W <list>,-(An)
+//     MOVEM.W <list>,(d16,An)
+//     ... and 24 more forms
+dr_decode_movem_ext:
         clrlwi  addr, prefetch_data, 26                 // addr = prefetch_data & 0x0000003F
         li      out_ptr, dr_emit_movem_w - dr_emitters
         rlwinm  data, prefetch_data, 28, 29, 29         // data = prefetch_data[6] << 2
@@ -718,77 +1091,139 @@ L_10934:
         mr      immed_data, zero
         mtcrf   0x01, data                              // cr7 = data[3:0]
         add     blk_ofs, blk_ofs, data
-        bsol    cr7, L_10964
+        bsol    cr7, dr_decode_ext_movem
         b       dr_scan_store
-L_10964:
+
+// The first pass comes here for 76 opcodes:
+//     EXT.W Dn
+//     MOVEM.W <list>,An (illegal)
+//     MOVEM.W <list>,(An)+ (illegal)
+//     MOVEM.W <list>,(d8,An,Xn)
+//     EXT.L Dn
+//     MOVEM.L <list>,An (illegal)
+//     ... and 14 more forms
+dr_decode_ext_movem:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmpwi   cr4, rtn_addr, 0
-        bne     cr4, dr_decode_addx_or_add_L18
+        bne     cr4, dr_flagged_ea_index_only
         subf    blk_ofs, data, blk_ofs                  // blk_ofs = blk_ofs - data
         addi    blk_ofs, blk_ofs, -2
         li      out_ptr, dr_emit_ext_l - dr_emitters
-        bgt     cr6, L_10984
+        bgt     cr6, dr_decode_ext_l_dn
         li      out_ptr, dr_emit_ext_w - dr_emitters
-L_10984:
+
+// The first pass comes here for 8 opcodes:
+//     EXT.L Dn
+dr_decode_ext_l_dn:
         li      immed_data, 0x400
         b       dr_scan_store
-L_1098C:
-        blt     cr6, L_109FC
-        bne     cr6, L_109D0
+
+// The first pass comes here for 256 opcodes:
+//     ILLEGAL
+//     TRAP #<q>
+//     LINK.W An,#<disp>
+//     UNLK An
+//     MOVE.L An,USP
+//     MOVE.L USP,An
+//     ... and 40 more forms
+dr_decode_jsr_jmp_etc:
+        blt     cr6, dr_decode_jsr_jmp_mem
+        bne     cr6, dr_decode_trap_link_unlk
         cmpwi   cr4, prefetch_data, 0x4E75
         cmpwi   cr7, prefetch_data, 0x4E74
         li      immed_data, 0x2000
-        beq     cr4, L_109BC
+        beq     cr4, dr_decode_rts
         cmpwi   cr4, prefetch_data, 0x4E71
-        beq     cr7, L_109C4
+        beq     cr7, dr_decode_rtd_imm
         bne     cr4, dr_line_4_L1
         li      out_ptr, dr_emit_nop - dr_emitters
         mr      immed_data, zero
         b       dr_scan_store
-L_109BC:
+
+// The first pass comes here for 1 opcode:
+//     RTS
+dr_decode_rts:
         li      out_ptr, dr_emit_rts - dr_emitters
         b       dr_scan_end_block
-L_109C4:
+
+// The first pass comes here for 1 opcode:
+//     RTD #<disp>
+dr_decode_rtd_imm:
         li      out_ptr, dr_emit_rtd - dr_emitters
         addi    blk_ofs, blk_ofs, 2
         b       dr_scan_end_block
-L_109D0:
+
+// The first pass comes here for 64 opcodes:
+//     ILLEGAL
+//     TRAP #<q>
+//     LINK.W An,#<disp>
+//     UNLK An
+dr_decode_trap_link_unlk:
         rlwinm  addr, prefetch_data, 29, 28, 31         // addr = prefetch_data[6:3]
         cmpwi   cr4, addr, 10
         cmpwi   cr7, addr, 11
         mr      immed_data, zero
-        beq     cr4, L_109F0
+        beq     cr4, dr_decode_link_w_an_imm
         li      out_ptr, dr_emit_unlk - dr_emitters
         beq     cr7, dr_scan_store
         b       dr_line_4_L1
-L_109F0:
+
+// The first pass comes here for 8 opcodes:
+//     LINK.W An,#<disp>
+dr_decode_link_w_an_imm:
         li      out_ptr, dr_emit_link_w - dr_emitters
         addi    blk_ofs, blk_ofs, 2
         b       dr_scan_store
-L_109FC:
+
+// The first pass comes here for 128 opcodes:
+//     JSR Dn (illegal)
+//     JSR An (illegal)
+//     JSR (An)
+//     JSR (An)+ (illegal)
+//     JSR -(An) (illegal)
+//     JSR (d16,An)
+//     ... and 24 more forms
+dr_decode_jsr_jmp_mem:
         li      out_ptr, dr_emit_jmp_2 - dr_emitters
-        bgt     cr6, L_10A78
+        bgt     cr6, dr_decode_jmp_mem_2
         li      out_ptr, dr_emit_jsr_2 - dr_emitters
-L_10A08:
+
+// The first pass comes here for 64 opcodes:
+//     JMP Dn (illegal)
+//     JMP An (illegal)
+//     JMP (An)
+//     JMP (An)+ (illegal)
+//     JMP -(An) (illegal)
+//     JMP (d16,An)
+//     ... and 9 more forms
+dr_decode_jmp_mem:
         clrlwi  addr, prefetch_data, 26                 // addr = prefetch_data & 0x0000003F
         cmpwi   cr7, addr, 58
         cmpwi   cr4, addr, 57
         addi    rtn_addr, base_disp, 0x1078
         lbzx    data, rtn_addr, addr
         li      immed_data, 0x2000
-        beq     cr7, L_10A4C
+        beq     cr7, dr_decode_jsr_jmp_mem_3
         mtcrf   0x01, data                              // cr7 = data[3:0]
-        beql    cr4, L_10A38
+        beql    cr4, dr_decode_jsr_jmp_mem_2
         add     blk_ofs, blk_ofs, data
-        bsol    cr7, L_10FDC
+        bsol    cr7, dr_flagged_ea
         b       dr_scan_end_block
-L_10A38:
+
+// The first pass comes here for 2 opcodes:
+//     JSR (xxx).L
+//     JMP (xxx).L
+dr_decode_jsr_jmp_mem_2:
         lwzx    rtn_addr, pc, blk_ofs
         cmpwi   cr4, rtn_addr, 0
         bnelr   cr4
         li      immed_data, 0x4300
         b       dr_scan_end_block
-L_10A4C:
+
+// The first pass comes here for 2 opcodes:
+//     JSR (d16,PC)
+//     JMP (d16,PC)
+dr_decode_jsr_jmp_mem_3:
         li      data, 1
         sth     data, 0xB2A(EmulatorStatePtr)
         lhzx    rtn_addr, pc, blk_ofs
@@ -800,17 +1235,35 @@ L_10A4C:
         bns     cr7, dr_scan_end_block
         li      immed_data, 0x4300
         b       dr_scan_end_block
-L_10A78:
+
+// The first pass comes here for 64 opcodes:
+//     JMP Dn (illegal)
+//     JMP An (illegal)
+//     JMP (An)
+//     JMP (An)+ (illegal)
+//     JMP -(An) (illegal)
+//     JMP (d16,An)
+//     ... and 9 more forms
+dr_decode_jmp_mem_2:
         lhzx    rtn_addr, pc, blk_ofs
         cmplwi  cr4, prefetch_data, 0x4EF4
         cmplwi  cr5, rtn_addr, 0x0521
-        bne     cr4, L_10A08
-        bne     cr5, L_10A08
+        bne     cr4, dr_decode_jmp_mem
+        bne     cr5, dr_decode_jmp_mem
         addi    blk_ofs, blk_ofs, 6
         li      immed_data, 0x2000
         li      out_ptr, 0x622C
         b       dr_scan_end_block
-L_10A9C:
+
+// The first pass comes here for 256 opcodes:
+//     MULU/MULS.L Dn,Dl|Dh:Dl
+//     MULU/MULS.L An,Dl|Dh:Dl (illegal)
+//     MULU/MULS.L (An),Dl|Dh:Dl
+//     MULU/MULS.L (An)+,Dl|Dh:Dl
+//     MULU/MULS.L -(An),Dl|Dh:Dl
+//     MULU/MULS.L (d16,An),Dl|Dh:Dl
+//     ... and 54 more forms
+dr_decode_movem_mulu_muls_divu_divs:
         clrlwi  addr, prefetch_data, 26                 // addr = prefetch_data & 0x0000003F
         bge     cr6, dr_line_4_L1
         li      out_ptr, dr_emit_movem_w_2 - dr_emitters
@@ -822,72 +1275,138 @@ L_10A9C:
         mr      immed_data, zero
         mtcrf   0x01, data                              // cr7 = data[3:0]
         add     blk_ofs, blk_ofs, data
-        bsol    cr7, L_10FDC
+        bsol    cr7, dr_flagged_ea
         b       dr_scan_store
-L_10AD0:
+
+// The first pass comes here for 256 opcodes:
+//     TST.B Dn
+//     TST.B An (illegal)
+//     TST.B (An)
+//     TST.B (An)+
+//     TST.B -(An)
+//     TST.B (d16,An)
+//     ... and 52 more forms
+dr_decode_tst_tas_illegal:
         crand   4*cr6+eq, 4*cr6+gt, 4*cr6+lt            // cr6.eq = cr6.gt & cr6.lt
         clrlwi  addr, prefetch_data, 26                 // addr = prefetch_data & 0x0000003F
         li      immed_data, 0x400
         beq     cr6, dr_line_4_L1
         li      out_ptr, dr_emit_tst_w - dr_emitters
-        bgt     cr6, dr_decode_addx_or_add_L5
+        bgt     cr6, dr_decode_suba_add_etc_w
         li      out_ptr, dr_emit_tst_l - dr_emitters
-        blt     cr6, dr_decode_addx_or_add_L6
+        blt     cr6, dr_decode_sub_suba_etc_l
         li      out_ptr, dr_emit_tst_b - dr_emitters
-        b       dr_line_D_L1
-L_10AF8:
-        bgt     cr6, L_10B34
+        b       dr_decode_tst_b
+
+// The first pass comes here for 2048 opcodes:
+//     ADDQ.L #<q>,Dn
+//     ADDQ.L #<q>,An
+//     ADDQ.L #<q>,(An)
+//     ADDQ.L #<q>,(An)+
+//     ADDQ.L #<q>,-(An)
+//     ADDQ.L #<q>,(d16,An)
+//     ... and 264 more forms
+dr_decode_add_sub_etc:
+        bgt     cr6, dr_decode_st_sf_etc_reg
         li      out_ptr, dr_emit_addq_l - dr_emitters
-        bns     cr5, L_10B18
+        bns     cr5, dr_decode_add_sub_q
         li      out_ptr, dr_emit_subq_l - dr_emitters
-        b       L_10B18
-L_10B0C:
+        b       dr_decode_add_sub_q
+
+// The first pass comes here for 1024 opcodes:
+//     ADDQ.W #<q>,Dn
+//     ADDQ.W #<q>,An
+//     ADDQ.W #<q>,(An)
+//     ADDQ.W #<q>,(An)+
+//     ADDQ.W #<q>,-(An)
+//     ADDQ.W #<q>,(d16,An)
+//     ... and 24 more forms
+dr_decode_add_sub_w_q:
         li      out_ptr, dr_emit_addq_w - dr_emitters
-        bns     cr5, L_10B18
+        bns     cr5, dr_decode_add_sub_q
         li      out_ptr, dr_emit_subq_w - dr_emitters
-L_10B18:
+
+// The first pass comes here for 1536 opcodes:
+//     ADDQ.W #<q>,Dn
+//     ADDQ.W #<q>,An
+//     ADDQ.W #<q>,(An)
+//     ADDQ.W #<q>,(An)+
+//     ADDQ.W #<q>,-(An)
+//     ADDQ.W #<q>,(d16,An)
+//     ... and 39 more forms
+dr_decode_add_sub_q:
         li      immed_data, 0xC00
         addi    rtn_addr, base_disp, 0xE38
         lbzx    data, rtn_addr, addr
         mtcrf   0x01, data                              // cr7 = data[3:0]
         add     blk_ofs, blk_ofs, data
-        bsol    cr7, L_11008
+        bsol    cr7, dr_flagged_dest_or_an
         b       dr_scan_store
-L_10B34:
+
+// The first pass comes here for 1024 opcodes:
+//     ST.B Dn
+//     DBT.W Dn,<label>
+//     ST.B (An)
+//     ST.B (An)+
+//     ST.B -(An)
+//     ST.B (d16,An)
+//     ... and 234 more forms
+dr_decode_st_sf_etc_reg:
         addi    rtn_addr, base_disp, 0xE38
         lbzx    data, rtn_addr, addr
         li      immed_data, 0x300
         mtcrf   0x01, data                              // cr7 = data[3:0]
         add     blk_ofs, blk_ofs, data
         li      out_ptr, dr_emit_scc_b - dr_emitters
-        bsol    cr7, L_10B54
+        bsol    cr7, dr_decode_dbt_st_etc_reg_mem
         b       dr_scan_store
-L_10B54:
+
+// The first pass comes here for 352 opcodes:
+//     DBT.W Dn,<label>
+//     ST.B (d8,An,Xn)
+//     DBF.W Dn,<label>
+//     SF.B (d8,An,Xn)
+//     DBHI.W Dn,<label>
+//     SHI.B (d8,An,Xn)
+//     ... and 122 more forms
+dr_decode_dbt_st_etc_reg_mem:
         subf    blk_ofs, data, blk_ofs                  // blk_ofs = blk_ofs - data
         rlwinm  addr, addr, 29, 29, 31                  // addr = addr[5:3]
         cmpwi   cr4, addr, 6
         cmpwi   cr5, addr, 1
-        beq     cr4, L_11020
-        beq     cr5, L_10B74
+        beq     cr4, dr_index_word
+        beq     cr5, dr_decode_dbcc_w_dn
         li      immed_data, 0x4300
         b       dr_scan_end_block
-L_10B74:
+
+// The first pass comes here for 128 opcodes:
+//     DBT.W Dn,<label>
+//     DBF.W Dn,<label>
+//     DBHI.W Dn,<label>
+//     DBLS.W Dn,<label>
+//     DBCC.W Dn,<label>
+//     DBCS.W Dn,<label>
+//     ... and 10 more forms
+dr_decode_dbcc_w_dn:
         li      data, 1
         rlwinm  addr, prefetch_data, 24, 28, 31         // addr = prefetch_data[11:8]
         cmpwi   cr7, addr, 1
         lhz     addr, 0xB28(EmulatorStatePtr)
         sth     data, 0xB2A(EmulatorStatePtr)
         sth     addr, 6(rec_ptr)
-        beq     cr7, L_10B98
+        beq     cr7, dr_decode_dbf_w_dn
         addi    addr, addr, 32
         sth     addr, 0xB28(EmulatorStatePtr)
-L_10B98:
+
+// The first pass comes here for 8 opcodes:
+//     DBF.W Dn,<label>
+dr_decode_dbf_w_dn:
         lhax    prefetch_data, pc, blk_ofs
         li      out_ptr, dr_emit_dbcc_w - dr_emitters
         mtcrf   0x01, prefetch_data                     // cr7 = prefetch_data[3:0]
         li      immed_data, 0x2300
         li      rtn_addr, 2
-        bso     cr7, dr_bcc_flags_L2
+        bso     cr7, dr_decode_bra_bsr_etc_s
         add     data, blk_ofs, prefetch_data
         add     blk_ofs, blk_ofs, rtn_addr
         srwi    addr, data, 4
@@ -926,7 +1445,16 @@ dr_bcc_flags:
         .short  0x2312
         .short  0x2312
         .short  0x2312
-dr_bcc_flags_L1:
+
+// The first pass comes here for 16 opcodes:
+//     BRA.L <label>
+//     BSR.L <label>
+//     BHI.L <label>
+//     BLS.L <label>
+//     BCC.L <label>
+//     BCS.L <label>
+//     ... and 10 more forms
+dr_decode_bra_bsr_etc_l:
         addi    data, base_disp, dr_bcc_flags - dr_line_0
         rlwinm  rtn_addr, prefetch_data, 25, 27, 30     // rtn_addr = prefetch_data[11:8] << 1
         lhzx    immed_data, data, rtn_addr
@@ -935,23 +1463,41 @@ dr_bcc_flags_L1:
         lwzx    prefetch_data, pc, blk_ofs
         li      rtn_addr, 4
         mtcrf   0x01, prefetch_data                     // cr7 = prefetch_data[3:0]
-        bso     cr7, dr_bcc_flags_L2
+        bso     cr7, dr_decode_bra_bsr_etc_s
         lwz     data, 0xB68(EmulatorStatePtr)
-        blt     cr4, dr_bcc_flags_L6
+        blt     cr4, dr_decode_bra_bsr
         addi    out_ptr, out_ptr, 4
         cmpwi   cr7, data, 0
-        beq     cr4, dr_bcc_flags_L6
+        beq     cr4, dr_decode_bra_bsr
         addi    out_ptr, out_ptr, 4
         bne     cr7, dr_scan_advance
         sth     addr, 0xB28(EmulatorStatePtr)
         add     rtn_addr, blk_ofs, rtn_addr
         stw     rtn_addr, 0xB68(EmulatorStatePtr)
-        b       dr_bcc_flags_L5
-dr_bcc_flags_L2:
+        b       dr_decode_bcc
+
+// The first pass comes here for 2032 opcodes:
+//     BRA.S <label>
+//     BSR.S <label>
+//     BHI.S <label>
+//     BLS.S <label>
+//     BCC.S <label>
+//     BCS.S <label>
+//     ... and 10 more forms
+dr_decode_bra_bsr_etc_s:
         add     blk_ofs, blk_ofs, rtn_addr
         li      immed_data, 0x4300
         b       dr_scan_end_block
-dr_bcc_flags_L3:
+
+// The first pass comes here for 16 opcodes:
+//     BRA.W <label>
+//     BSR.W <label>
+//     BHI.W <label>
+//     BLS.W <label>
+//     BCC.W <label>
+//     BCS.W <label>
+//     ... and 10 more forms
+dr_decode_bra_bsr_etc_w:
         addi    data, base_disp, dr_bcc_flags - dr_line_0
         rlwinm  rtn_addr, prefetch_data, 25, 27, 30     // rtn_addr = prefetch_data[11:8] << 1
         lhzx    immed_data, data, rtn_addr
@@ -960,35 +1506,53 @@ dr_bcc_flags_L3:
         lhax    prefetch_data, pc, blk_ofs
         li      rtn_addr, 2
         mtcrf   0x01, prefetch_data                     // cr7 = prefetch_data[3:0]
-        bt_unlikely 4*cr7+so, dr_bcc_flags_L2
+        bt_unlikely 4*cr7+so, dr_decode_bra_bsr_etc_s
         lwz     data, 0xB68(EmulatorStatePtr)
-        blt     cr4, dr_bcc_flags_L6
+        blt     cr4, dr_decode_bra_bsr
         addi    out_ptr, out_ptr, 4
         cmpwi   cr7, data, 0
-        beq     cr4, dr_bcc_flags_L6
+        beq     cr4, dr_decode_bra_bsr
         addi    out_ptr, out_ptr, 4
         bne     cr7, dr_scan_advance
         sth     addr, 0xB28(EmulatorStatePtr)
         add     rtn_addr, blk_ofs, rtn_addr
         stw     rtn_addr, 0xB68(EmulatorStatePtr)
-        b       dr_bcc_flags_L5
-dr_bcc_flags_L4:
+        b       dr_decode_bcc
+
+// The first pass comes here for 4064 opcodes:
+//     BRA.S <label>
+//     BSR.S <label>
+//     BHI.S <label>
+//     BLS.S <label>
+//     BCC.S <label>
+//     BCS.S <label>
+//     ... and 10 more forms
+dr_decode_bra_bsr_etc_s_2:
         addi    data, base_disp, dr_bcc_flags - dr_line_0
         rlwinm  rtn_addr, prefetch_data, 25, 27, 30     // rtn_addr = prefetch_data[11:8] << 1
         lhzx    immed_data, data, rtn_addr
         li      rtn_addr, 0
-        bt_unlikely 4*cr7+so, dr_bcc_flags_L2
+        bt_unlikely 4*cr7+so, dr_decode_bra_bsr_etc_s
         lwz     data, 0xB68(EmulatorStatePtr)
         extsb   prefetch_data, prefetch_data            // prefetch_data = sign-extended low byte of prefetch_data
-        blt     cr4, dr_bcc_flags_L6
+        blt     cr4, dr_decode_bra_bsr
         addi    out_ptr, out_ptr, 4
         cmpwi   cr7, data, 0
-        beq     cr4, dr_bcc_flags_L6
+        beq     cr4, dr_decode_bra_bsr
         addi    out_ptr, out_ptr, 4
         bne     cr7, dr_scan_store
         sth     addr, 0xB28(EmulatorStatePtr)
         stw     blk_ofs, 0xB68(EmulatorStatePtr)
-dr_bcc_flags_L5:
+
+// The first pass comes here for 28 opcodes:
+//     BHI.W <label>
+//     BHI.L <label>
+//     BLS.W <label>
+//     BLS.L <label>
+//     BCC.W <label>
+//     BCC.L <label>
+//     ... and 22 more forms
+dr_decode_bcc:
         add     blk_ofs, blk_ofs, prefetch_data
         stw     blk_ofs, 8(rec_ptr)
         sth     immed_data, 0(rec_ptr)
@@ -1007,7 +1571,15 @@ dr_bcc_flags_L5:
         or      addr, addr, rtn_addr
         stb     addr, 0xBA8(data)
         b       dr_scan_next
-dr_bcc_flags_L6:
+
+// The first pass comes here for 258 opcodes:
+//     BRA.S <label>
+//     BSR.S <label>
+//     BRA.W <label>
+//     BRA.L <label>
+//     BSR.W <label>
+//     BSR.L <label>
+dr_decode_bra_bsr:
         add     data, blk_ofs, prefetch_data
         add     blk_ofs, blk_ofs, rtn_addr
         srwi    addr, data, 4
@@ -1023,23 +1595,59 @@ dr_bcc_flags_L6:
         or      data, data, addr
         stb     data, 0xBA8(rtn_addr)
         b       dr_scan_end_block
-dr_bcc_flags_L7:
+
+// The first pass comes here for 512 opcodes:
+//     OR.L Dn,Dn
+//     OR.L An,Dn (illegal)
+//     OR.L (An),Dn
+//     OR.L (An)+,Dn
+//     OR.L -(An),Dn
+//     OR.L (d16,An),Dn
+//     ... and 9 more forms
+dr_decode_or_l_any_dn:
         addi    rtn_addr, base_disp, 0xEF8
         lbzx    data, rtn_addr, addr
         li      out_ptr, dr_emit_or_l - dr_emitters
         b       dr_line_8_L2
-dr_bcc_flags_L8:
+
+// The first pass comes here for 1024 opcodes:
+//     DIVU.W Dn,Dn
+//     DIVU.W An,Dn (illegal)
+//     DIVU.W (An),Dn
+//     DIVU.W (An)+,Dn
+//     DIVU.W -(An),Dn
+//     DIVU.W (d16,An),Dn
+//     ... and 24 more forms
+dr_decode_divu_divs_w_any_dn:
         li      out_ptr, dr_emit_divs_w - dr_emitters
-        bso     cr5, dr_bcc_flags_L9
+        bso     cr5, dr_decode_divs_w_any_dn
         li      out_ptr, dr_emit_divu_w - dr_emitters
-dr_bcc_flags_L9:
+
+// The first pass comes here for 512 opcodes:
+//     DIVS.W Dn,Dn
+//     DIVS.W An,Dn (illegal)
+//     DIVS.W (An),Dn
+//     DIVS.W (An)+,Dn
+//     DIVS.W -(An),Dn
+//     DIVS.W (d16,An),Dn
+//     ... and 9 more forms
+dr_decode_divs_w_any_dn:
         addi    rtn_addr, base_disp, 0xE78
         lbzx    data, rtn_addr, addr
         mtcrf   0x01, data                              // cr7 = data[3:0]
         add     blk_ofs, blk_ofs, data
-        bsol    cr7, L_10FDC
+        bsol    cr7, dr_flagged_ea
         b       dr_scan_store
-dr_bcc_flags_L10:
+
+// The first pass comes here for 1536 opcodes:
+//     SBCD.B Dn,Dn
+//     SBCD.B -(An),-(An)
+//     OR.B Dn,(An)
+//     OR.B Dn,(An)+
+//     OR.B Dn,-(An)
+//     OR.B Dn,(d16,An)
+//     ... and 39 more forms
+dr_decode_or_sbcd_etc:
         li      out_ptr, dr_emit_or_b - dr_emitters
         rlwinm  data, prefetch_data, 28, 28, 29         // data = prefetch_data[7:6] << 2
         add     out_ptr, out_ptr, data
@@ -1047,125 +1655,273 @@ dr_bcc_flags_L10:
         lbzx    data, rtn_addr, addr
         mtcrf   0x01, data                              // cr7 = data[3:0]
         add     blk_ofs, blk_ofs, data
-        bsol    cr7, L_10FDC
+        bsol    cr7, dr_flagged_ea
         b       dr_scan_store
 
+// The first pass comes here for 2048 opcodes:
+//     ADDX.B Dn,Dn
+//     ADDX.B -(An),-(An)
+//     ADD.B Dn,(An)
+//     ADD.B Dn,(An)+
+//     ADD.B Dn,-(An)
+//     ADD.B Dn,(d16,An)
+//     ... and 54 more forms
 dr_decode_addx_or_add:
         crand   4*cr5+so, 4*cr6+gt, 4*cr6+lt            // cr5.so = cr6.gt & cr6.lt
         mr      immed_data, zero
         cror    4*cr6+eq, 4*cr6+eq, 4*cr6+so            // cr6.eq = cr6.eq | cr6.so
         li      out_ptr, dr_emit_adda_l - dr_emitters
-        bso     cr5, dr_decode_addx_or_add_L6
+        bso     cr5, dr_decode_sub_suba_etc_l
         li      out_ptr, dr_emit_add_b - dr_emitters
-        beq     cr6, dr_decode_addx_or_add_L2
+        beq     cr6, dr_decode_add_dn_mem
         li      out_ptr, dr_emit_addx_b - dr_emitters
         li      immed_data, 0xE00                       // DEFECT: ADDX also reads Z (it never sets it), so 0x100 belongs here too
         rlwinm  data, prefetch_data, 28, 28, 29         // data = prefetch_data[7:6] << 2
         rlwimi  data, prefetch_data, 1, 27, 27          // data[4] = prefetch_data[3]
         add     out_ptr, out_ptr, data
         b       dr_scan_store
-dr_decode_addx_or_add_L1:
+
+// The first pass comes here for 2048 opcodes:
+//     SUBX.B Dn,Dn
+//     SUBX.B -(An),-(An)
+//     SUB.B Dn,(An)
+//     SUB.B Dn,(An)+
+//     SUB.B Dn,-(An)
+//     SUB.B Dn,(d16,An)
+//     ... and 54 more forms
+dr_decode_sub_suba_subx:
         crand   4*cr5+so, 4*cr6+gt, 4*cr6+lt            // cr5.so = cr6.gt & cr6.lt
         mr      immed_data, zero
         cror    4*cr6+eq, 4*cr6+eq, 4*cr6+so            // cr6.eq = cr6.eq | cr6.so
         li      out_ptr, dr_emit_suba_l - dr_emitters
-        bso     cr5, dr_decode_addx_or_add_L6
+        bso     cr5, dr_decode_sub_suba_etc_l
         li      out_ptr, dr_emit_sub_b - dr_emitters
-dr_decode_addx_or_add_L2:
+
+// The first pass comes here for 1152 opcodes:
+//     ADD.B Dn,(An)
+//     ADD.B Dn,(An)+
+//     ADD.B Dn,-(An)
+//     ADD.B Dn,(d16,An)
+//     ADD.B Dn,(d8,An,Xn)
+//     ADD.W Dn,(An)
+//     ... and 33 more forms
+dr_decode_add_dn_mem:
         li      immed_data, 0xC00
         addi    rtn_addr, base_disp, 0xF78
         lbzx    data, rtn_addr, addr
         mtcrf   0x01, data                              // cr7 = data[3:0]
         add     blk_ofs, blk_ofs, data
-        bsol    cr7, dr_decode_addx_or_add_L18
+        bsol    cr7, dr_flagged_ea_index_only
         rlwinm  data, prefetch_data, 28, 28, 29         // data = prefetch_data[7:6] << 2
         add     out_ptr, out_ptr, data
         b       dr_scan_store
-dr_decode_addx_or_add_L3:
+
+// The first pass comes here for 1024 opcodes:
+//     ADD.W Dn,Dn
+//     ADD.W An,Dn
+//     ADD.W (An),Dn
+//     ADD.W (An)+,Dn
+//     ADD.W -(An),Dn
+//     ADD.W (d16,An),Dn
+//     ... and 24 more forms
+dr_decode_add_adda_w_any_reg:
         mr      immed_data, zero
         li      out_ptr, dr_emit_adda_w - dr_emitters
-        blt     cr6, dr_decode_addx_or_add_L5
+        blt     cr6, dr_decode_suba_add_etc_w
         li      out_ptr, dr_emit_add_w_2 - dr_emitters
         li      immed_data, 0xC00
-        b       dr_decode_addx_or_add_L5
-dr_decode_addx_or_add_L4:
+        b       dr_decode_suba_add_etc_w
+
+// The first pass comes here for 1024 opcodes:
+//     SUB.W Dn,Dn
+//     SUB.W An,Dn
+//     SUB.W (An),Dn
+//     SUB.W (An)+,Dn
+//     SUB.W -(An),Dn
+//     SUB.W (d16,An),Dn
+//     ... and 24 more forms
+dr_decode_sub_suba_w_any_reg:
         mr      immed_data, zero
         li      out_ptr, dr_emit_suba_w - dr_emitters
-        blt     cr6, dr_decode_addx_or_add_L5
+        blt     cr6, dr_decode_suba_add_etc_w
         li      out_ptr, dr_emit_sub_w_2 - dr_emitters
         li      immed_data, 0xC00
-dr_decode_addx_or_add_L5:
+
+// The first pass comes here for 1600 opcodes:
+//     SUBA.W Dn,An
+//     SUBA.W An,An
+//     SUBA.W (An),An
+//     SUBA.W (An)+,An
+//     SUBA.W -(An),An
+//     SUBA.W (d16,An),An
+//     ... and 54 more forms
+dr_decode_suba_add_etc_w:
         addi    rtn_addr, base_disp, 0xDF8
         lbzx    data, rtn_addr, addr
         mtcrf   0x01, data                              // cr7 = data[3:0]
         add     blk_ofs, blk_ofs, data
-        bsol    cr7, L_10FDC
+        bsol    cr7, dr_flagged_ea
         b       dr_scan_store
-dr_decode_addx_or_add_L6:
+
+// The first pass comes here for 3136 opcodes:
+//     SUB.L Dn,Dn
+//     SUB.L An,Dn
+//     SUB.L (An),Dn
+//     SUB.L (An)+,Dn
+//     SUB.L -(An),Dn
+//     SUB.L (d16,An),Dn
+//     ... and 99 more forms
+dr_decode_sub_suba_etc_l:
         addi    rtn_addr, base_disp, 0xEB8
         lbzx    data, rtn_addr, addr
         mtcrf   0x01, data                              // cr7 = data[3:0]
         add     blk_ofs, blk_ofs, data
-        bsol    cr7, L_10FDC
+        bsol    cr7, dr_flagged_ea
         b       dr_scan_store
-dr_decode_addx_or_add_L7:
+
+// The first pass comes here for 1024 opcodes:
+//     CMP.W Dn,Dn
+//     CMP.W An,Dn
+//     CMP.W (An),Dn
+//     CMP.W (An)+,Dn
+//     CMP.W -(An),Dn
+//     CMP.W (d16,An),Dn
+//     ... and 24 more forms
+dr_decode_cmp_cmpa_w_any_reg:
         li      out_ptr, dr_emit_cmpa_w - dr_emitters
-        blt     cr6, dr_decode_addx_or_add_L8
+        blt     cr6, dr_decode_cmpa_w_any_an
         li      out_ptr, dr_emit_cmp_w - dr_emitters
-dr_decode_addx_or_add_L8:
+
+// The first pass comes here for 512 opcodes:
+//     CMPA.W Dn,An
+//     CMPA.W An,An
+//     CMPA.W (An),An
+//     CMPA.W (An)+,An
+//     CMPA.W -(An),An
+//     CMPA.W (d16,An),An
+//     ... and 9 more forms
+dr_decode_cmpa_w_any_an:
         addi    rtn_addr, base_disp, 0xDF8
         lbzx    data, rtn_addr, addr
         b       dr_line_B_L1
-dr_decode_addx_or_add_L9:
+
+// The first pass comes here for 2048 opcodes:
+//     EOR.B Dn,Dn
+//     CMPM.B (An)+,(An)+
+//     EOR.B Dn,(An)
+//     EOR.B Dn,(An)+
+//     EOR.B Dn,-(An)
+//     EOR.B Dn,(d16,An)
+//     ... and 54 more forms
+dr_decode_eor_cmpa_cmpm:
         crand   4*cr6+eq, 4*cr6+lt, 4*cr6+gt            // cr6.eq = cr6.lt & cr6.gt
         li      out_ptr, dr_emit_cmp_cmpa_l - dr_emitters
         addi    rtn_addr, base_disp, 0xE38
-        beq     cr6, dr_decode_addx_or_add_L6
+        beq     cr6, dr_decode_sub_suba_etc_l
         li      immed_data, 0x400
         li      out_ptr, dr_emit_eor_l - dr_emitters
-        blt     cr6, dr_decode_addx_or_add_L10
+        blt     cr6, dr_decode_eor_cmpm
         li      out_ptr, dr_emit_eor_w - dr_emitters
-        bgt     cr6, dr_decode_addx_or_add_L10
+        bgt     cr6, dr_decode_eor_cmpm
         li      out_ptr, dr_emit_eor_b - dr_emitters
-dr_decode_addx_or_add_L10:
+
+// The first pass comes here for 1024 opcodes:
+//     EOR.W Dn,Dn
+//     CMPM.W (An)+,(An)+
+//     EOR.W Dn,(An)
+//     EOR.W Dn,(An)+
+//     EOR.W Dn,-(An)
+//     EOR.W Dn,(d16,An)
+//     ... and 24 more forms
+dr_decode_eor_cmpm:
         addi    rtn_addr, base_disp, 0xE38
         lbzx    data, rtn_addr, addr
         mtcrf   0x01, data                              // cr7 = data[3:0]
         add     blk_ofs, blk_ofs, data
-        bsol    cr7, dr_decode_addx_or_add_L11
+        bsol    cr7, dr_decode_cmpm_eor_any_mem
         b       dr_scan_store
-dr_decode_addx_or_add_L11:
+
+// The first pass comes here for 528 opcodes:
+//     CMPM.B (An)+,(An)+
+//     EOR.B Dn,(d8,An,Xn)
+//     CMPM.W (An)+,(An)+
+//     EOR.W Dn,(d8,An,Xn)
+//     CMPM.L (An)+,(An)+
+//     EOR.L Dn,(d8,An,Xn)
+//     ... and 18 more forms
+dr_decode_cmpm_eor_any_mem:
         subf    blk_ofs, data, blk_ofs                  // blk_ofs = blk_ofs - data
         rlwinm  addr, addr, 29, 29, 31                  // addr = addr[5:3]
         cmpwi   cr4, addr, 6
-        beq     cr4, L_11020
+        beq     cr4, dr_index_word
         cmpwi   cr7, addr, 1
-        beq     cr7, dr_decode_addx_or_add_L12
+        beq     cr7, dr_decode_cmpm_mem_mem
         li      immed_data, 0x4300
         b       dr_scan_end_block
-dr_decode_addx_or_add_L12:
+
+// The first pass comes here for 192 opcodes:
+//     CMPM.B (An)+,(An)+
+//     CMPM.W (An)+,(An)+
+//     CMPM.L (An)+,(An)+
+dr_decode_cmpm_mem_mem:
         li      immed_data, 0x400
         rlwinm  rtn_addr, prefetch_data, 28, 28, 29     // rtn_addr = prefetch_data[7:6] << 2
         li      out_ptr, dr_emit_cmpm_b - dr_emitters
         add     out_ptr, out_ptr, rtn_addr
         b       dr_scan_store
-dr_decode_addx_or_add_L13:
+
+// The first pass comes here for 512 opcodes:
+//     AND.L Dn,Dn
+//     AND.L An,Dn (illegal)
+//     AND.L (An),Dn
+//     AND.L (An)+,Dn
+//     AND.L -(An),Dn
+//     AND.L (d16,An),Dn
+//     ... and 9 more forms
+dr_decode_and_l_any_dn:
         li      out_ptr, dr_emit_and_l - dr_emitters
         addi    rtn_addr, base_disp, 0xEF8
         lbzx    data, rtn_addr, addr
         b       dr_line_C_L2
-dr_decode_addx_or_add_L14:
+
+// The first pass comes here for 1024 opcodes:
+//     MULU.W Dn,Dn
+//     MULU.W An,Dn (illegal)
+//     MULU.W (An),Dn
+//     MULU.W (An)+,Dn
+//     MULU.W -(An),Dn
+//     MULU.W (d16,An),Dn
+//     ... and 24 more forms
+dr_decode_mulu_muls_w_any_dn:
         li      out_ptr, dr_emit_muls_w - dr_emitters
-        bso     cr5, dr_decode_addx_or_add_L15
+        bso     cr5, dr_decode_muls_w_any_dn
         li      out_ptr, dr_emit_mulu_w - dr_emitters
-dr_decode_addx_or_add_L15:
+
+// The first pass comes here for 512 opcodes:
+//     MULS.W Dn,Dn
+//     MULS.W An,Dn (illegal)
+//     MULS.W (An),Dn
+//     MULS.W (An)+,Dn
+//     MULS.W -(An),Dn
+//     MULS.W (d16,An),Dn
+//     ... and 9 more forms
+dr_decode_muls_w_any_dn:
         addi    rtn_addr, base_disp, 0xDB8
         lbzx    data, rtn_addr, addr
         mtcrf   0x01, data                              // cr7 = data[3:0]
         add     blk_ofs, blk_ofs, data
-        bsol    cr7, L_10FDC
+        bsol    cr7, dr_flagged_ea
         b       dr_scan_store
-dr_decode_addx_or_add_L16:
+
+// The first pass comes here for 1536 opcodes:
+//     ABCD.B Dn,Dn
+//     ABCD.B -(An),-(An)
+//     AND.B Dn,(An)
+//     AND.B Dn,(An)+
+//     AND.B Dn,-(An)
+//     AND.B Dn,(d16,An)
+//     ... and 39 more forms
+dr_decode_and_exg_abcd:
         li      out_ptr, dr_emit_and_b - dr_emitters
         rlwinm  data, prefetch_data, 28, 28, 29         // data = prefetch_data[7:6] << 2
         add     out_ptr, out_ptr, data
@@ -1173,14 +1929,23 @@ dr_decode_addx_or_add_L16:
         lbzx    data, rtn_addr, addr
         mtcrf   0x01, data                              // cr7 = data[3:0]
         add     blk_ofs, blk_ofs, data
-        bsol    cr7, dr_decode_addx_or_add_L17
+        bsol    cr7, dr_decode_and_exg_abcd_2
         b       dr_scan_store
-dr_decode_addx_or_add_L17:
+
+// The first pass comes here for 720 opcodes:
+//     ABCD.B Dn,Dn
+//     ABCD.B -(An),-(An)
+//     AND.B Dn,(d8,An,Xn)
+//     EXG.L Dn,Dn
+//     EXG.L An,An
+//     AND.W Dn,(d8,An,Xn)
+//     ... and 21 more forms
+dr_decode_and_exg_abcd_2:
         subf    blk_ofs, data, blk_ofs                  // blk_ofs = blk_ofs - data
         rlwinm  addr, addr, 29, 29, 31                  // addr = addr[5:3]
         cmpwi   cr4, addr, 6
         rlwinm  addr, prefetch_data, 29, 27, 31         // addr = prefetch_data[7:3]
-        beq     cr4, L_11020
+        beq     cr4, dr_index_word
         addi    addr, addr, -8
         cmplwi  cr4, addr, 0x0001
         mr      immed_data, zero
@@ -1193,39 +1958,112 @@ dr_decode_addx_or_add_L17:
         beq     cr5, dr_scan_store
         li      immed_data, 0x4300
         b       dr_scan_end_block
-dr_decode_addx_or_add_L18:
-        subf    blk_ofs, data, blk_ofs                  // blk_ofs = blk_ofs - data
+
+// The length tables (dr_ea_length_tables) flag addressing modes whose
+// extension word has to be looked at.  The decoders call one of the
+// routines here when they meet the flag, with the effective address field
+// in addr and the provisional length in data.  An indexed mode is accepted
+// if its extension word is in the brief format; anything else flagged ends
+// the block untranslated (flags 0x4300).
+//
+// This entry accepts (d8,An,Xn) only.
+//
+// The first pass comes here for 1314 opcodes:
+//     SUBX.B Dn,Dn
+//     SUBX.B -(An),-(An)
+//     SUB.B Dn,(d8,An,Xn)
+//     SUBX.W Dn,Dn
+//     SUBX.W -(An),-(An)
+//     SUB.W Dn,(d8,An,Xn)
+//     ... and 132 more forms
+dr_flagged_ea_index_only:
+        subf    blk_ofs, data, blk_ofs                  // take the provisional length back
         rlwinm  addr, addr, 29, 29, 31                  // addr = addr[5:3]
         cmpwi   cr4, addr, 6
-        beq     cr4, L_11020
+        beq     cr4, dr_index_word
         li      immed_data, 0x4300
         b       dr_scan_end_block
-L_10FDC:
+
+// Accepts (d8,PC,Xn) and (d8,An,Xn).
+//
+// The first pass comes here for 7248 opcodes:
+//     MOVE.B An,Dn (illegal)
+//     MOVE.B (d8,An,Xn),Dn
+//     MOVEA.B An,An (illegal)
+//     MOVEA.B (d8,An,Xn),An (illegal)
+//     MOVE.B An,(An) (illegal)
+//     MOVE.B (d8,An,Xn),(An)
+//     ... and 584 more forms
+dr_flagged_ea:
         subf    blk_ofs, data, blk_ofs                  // blk_ofs = blk_ofs - data
-        cmpwi   cr4, addr, 59
+        cmpwi   cr4, addr, 59                           // field 0x3B (mode 7, register 3): (d8,PC,Xn)
         rlwinm  addr, addr, 29, 29, 31                  // addr = addr[5:3]
-        beq     cr4, L_11020
-L_10FEC:
-        cmpwi   cr4, addr, 6
-        beq     cr4, L_11020
+        beq     cr4, dr_index_word
+
+// The first pass comes here for 3674 opcodes:
+//     MOVEA.B Dn,An (illegal)
+//     MOVEA.B (An),An (illegal)
+//     MOVEA.B (An)+,An (illegal)
+//     MOVEA.B -(An),An (illegal)
+//     MOVEA.B (d16,An),An (illegal)
+//     MOVEA.B (d8,An,Xn),An (illegal)
+//     ... and 294 more forms
+dr_flagged_ea_mode:
+        cmpwi   cr4, addr, 6                            // mode 6: (d8,An,Xn)
+        beq     cr4, dr_index_word
         li      immed_data, 0x4300
         b       dr_scan_end_block
-L_10FFC:
+
+// For a destination: (d8,An,Xn) only.
+//
+// The first pass comes here for 1518 opcodes:
+//     MOVEA.B Dn,An (illegal)
+//     MOVEA.B (An),An (illegal)
+//     MOVEA.B (An)+,An (illegal)
+//     MOVEA.B -(An),An (illegal)
+//     MOVEA.B (d16,An),An (illegal)
+//     MOVEA.B (d8,An,Xn),An (illegal)
+//     ... and 98 more forms
+dr_flagged_dest:
         subf    blk_ofs, data, blk_ofs                  // blk_ofs = blk_ofs - data
         rlwinm  addr, addr, 29, 29, 31                  // addr = addr[5:3]
-        b       L_10FEC
-L_11008:
+        b       dr_flagged_ea_mode
+
+// For a destination that may be an address register (mode 1): the
+// instruction is then translated and changes no flags.
+//
+// The first pass comes here for 3388 opcodes:
+//     MOVEA.L Dn,An
+//     MOVEA.L An,An
+//     MOVEA.L (An),An
+//     MOVEA.L (An)+,An
+//     MOVEA.L -(An),An
+//     MOVEA.L (d16,An),An
+//     ... and 218 more forms
+dr_flagged_dest_or_an:
         rlwinm  addr, addr, 29, 29, 31                  // addr = addr[5:3]
         cmpwi   cr4, addr, 1
         subf    blk_ofs, data, blk_ofs                  // blk_ofs = blk_ofs - data
-        bf_unlikely 4*cr4+eq, L_10FEC
-        li      immed_data, 0
+        bf_unlikely 4*cr4+eq, dr_flagged_ea_mode
+        li      immed_data, 0                           // no condition codes read or written
         b       dr_scan_store
-L_11020:
+
+// The extension word of an indexed mode: bit 8 clear (brief format), carry
+// on with the decoder; set (full format), not translated.
+//
+// The first pass comes here for 6656 opcodes:
+//     MOVE.B (d8,An,Xn),Dn
+//     MOVEA.B (d8,An,Xn),An (illegal)
+//     MOVE.B (d8,An,Xn),(An)
+//     MOVE.B (d8,An,Xn),(An)+
+//     MOVE.B (d8,An,Xn),-(An)
+//     MOVE.B (d8,An,Xn),(d16,An)
+//     ... and 280 more forms
+dr_index_word:
         lhax    rtn_addr, pc, blk_ofs
-        mtcrf   0x04, rtn_addr                          // cr5 = rtn_addr[11:8]
+        mtcrf   0x04, rtn_addr                          // cr5.so = bit 8
         addi    blk_ofs, blk_ofs, 2
-        bnslr   cr5
+        bnslr   cr5                                     // brief format: back to the decoder
         li      immed_data, 0x4300
         b       dr_scan_end_block
 
@@ -3029,6 +3867,9 @@ dr_emit_move_l_L16:
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
+
+// MOVE.L ([bd.w],od.w),-(A7).
+dr_emit_push_l_indirect:
         addi    blk_ofs, blk_ofs, 2
         lwzx    rtn_addr, pc, blk_ofs
         lwz     addr, 0x145C(base_disp)
@@ -3236,6 +4077,10 @@ dr_emit_move_b_L4:
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         b       dr_emit_move_b_L1
+
+// MOVE.B (A1)+,(A0)+ / BNE.S *-2 as a six-instruction PowerPC loop, which
+// tests for a special event on each pass.
+dr_emit_move_b_bne_loop:
         lwz     addr, 0x1708(base_disp)
         lwz     data, 0x170C(base_disp)
         stwu    addr, 4(out_ptr)
@@ -3266,9 +4111,9 @@ dr_emit_move_b_L4:
         addi    a1, a1, 1
         cmpwi   cr7, addr, 0
         stb     addr, 0(a0)
-dr_emit_move_b_L5:
+dr_emit_move_b_bne_loop_L1:
         addi    a0, a0, 1
-        bne     cr7, dr_emit_move_b_L5
+        bne     cr7, dr_emit_move_b_bne_loop_L1
         addco.  zero, zero, zero
 
 // Code generator for 2048 opcodes:

@@ -251,6 +251,7 @@ class Generator:
         self.table_users = collections.defaultdict(list)    # handler -> [opcode]
         self.continuation_users = collections.defaultdict(list)
         self.emitter_users = collections.defaultdict(list)  # emitter -> [opcode]
+        self.decoder_users = {}                             # pass-1 decoder helper -> [opcode]
         self.emitter_refs = {}  # addr of "li out_ptr, n" -> emitter address
         self.code_refs = {}     # addr of an "ori x, code_ptr, imm" -> referenced offset
 
@@ -341,6 +342,13 @@ class Generator:
             if not 0 <= addr < TABLE_START or self.kind[addr & ~3][0] != 'insn' or addr & 3:
                 fail('emitter offset %05X is not code' % addr)
         automatic.update(naming.emitter_names(self.emitter_users))
+        # The helpers of the pass-1 decoders, from the opcodes that pass
+        # through them.
+        for addr, opcodes in drmap.paths(self.image[:TABLE_START], cache=os.path.join(
+                ROOT, 'build', 'drpaths.json')).items():
+            if drmap.DR_LINE_0 <= addr < drmap.DR_EMITTERS and self.kind[addr][0] == 'insn':
+                self.decoder_users[addr] = opcodes
+        automatic.update(naming.decoder_names(self.decoder_users, drmap.DR_LINE_0))
         # "li out_ptr, n" in the pass-1 decoders selects emitter n.
         offsets = {addr - drmap.DR_EMITTERS: addr for addr in self.emitter_users}
         for addr in range(drmap.DR_LINE_0, drmap.DR_EMITTERS, 4):
@@ -695,6 +703,11 @@ class Generator:
         users = self.emitter_users.get(addr)
         if users:
             lines.append('// Code generator for %d %s:' % (
+                len(users), 'opcode' if len(users) == 1 else 'opcodes'))
+            lines += self._forms(users)
+        users = self.decoder_users.get(addr)
+        if users and addr in self.labels and not AUTO_LABEL.fullmatch(self.labels[addr]):
+            lines.append('// The first pass comes here for %d %s:' % (
                 len(users), 'opcode' if len(users) == 1 else 'opcodes'))
             lines += self._forms(users)
         return lines
