@@ -85,7 +85,10 @@ A new register or state-field name must be added to `src/include/*.inc`
    `docs/13-rom-context.md` does. The authority for kernel-side names is
    https://github.com/elliotnunn/powermac-rom (the project `Emulator.x`
    came from): `Internal/EmulatorPublic.a`, `Internal/NKPublic.a`,
-   `NanoKernel/*.s`. For names on the 68K side (the private opcodes) it is
+   `NanoKernel/*.s`; https://github.com/elliotnunn/NanoKernel has the kernel
+   by version, one branch each, from the first Power Macs on (its `Emulate.s`
+   emulates missing PowerPC instructions, not 68K). For names on the 68K
+   side (the private opcodes) it is
    https://github.com/elliotnunn/supermario, `Internal/Asm/TrapsPrivate.a`.
    Fetch them when needed rather than keeping a copy here (the files use
    classic Mac line endings and MacRoman).

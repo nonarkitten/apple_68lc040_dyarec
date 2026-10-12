@@ -193,7 +193,9 @@ Open questions for the check:
   its own handler for the same register (ROM `315440`), so this looks like one code base
   serving NuBus and PCI machines, with the choice made by configuration. Still to find:
   who would install it (68K code? a NuBus ROM would show), and which interrupt handler
-  kinds the kernel's `NKConfigurationInfo` selects between (see powermac-rom).
+  kinds the kernel's `NKConfigurationInfo` selects between (see powermac-rom, and the
+  `ExternalInts.s` of https://github.com/elliotnunn/NanoKernel, whose `master` branch is
+  the NuBus machines' kernel).
 - The first build indexes its lookup table by `pc[13:4]`, the later ones by `pc[11:1]`.
   Neither is the direct-mapped table of the patent.
 - `NKPublic.a` in powermac-rom notes "SS replaces with jump to emu+f900" on the
