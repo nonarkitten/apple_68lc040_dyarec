@@ -28,7 +28,8 @@ Legend: `[x]` done, `[~]` partly done, `[ ]` not started.
 ### Source legibility
 - [x] Labels: three address-style labels remain; about 1,400 are `<routine>_L<n>`, which
       is where things stay unless a name helps
-- [~] `EmulatorState` fields: about 75 named, the rest still numeric
+- [~] `EmulatorState` fields: about 120 named. What is left numeric is mostly the kernel's
+      side of the context block and fields used once
 - [x] Symbolic template loads and operand emitter tables in the recompiler; every
       emitter's header shows a translation
 - [ ] The words of the condition sequence tables (`dr_bcc_sequences` and the like) are

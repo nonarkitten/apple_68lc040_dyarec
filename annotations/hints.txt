@@ -61,6 +61,7 @@ opnd  18270 dr_fault_redirect - dr_cb
 opnd  180E8 dr_resume_after_fault - dr_cb
 opnd  10788 dr_emit_move_b_bne_loop - dr_emitters
 opnd  107D0 dr_emit_push_l_indirect - dr_emitters
+opnd  10114 dr_exit_to_interpreter - dr_line_0
 opnd  10C0C dr_bcc_flags - dr_line_0
 opnd  10C68 dr_bcc_flags - dr_line_0
 opnd  10CB8 dr_bcc_flags - dr_line_0

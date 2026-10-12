@@ -72,6 +72,19 @@
 #define native_context          0x710   // address of the native context block
 #define native_return_entry     0x714   // PowerPC address to resume at for private opcode FE02
 #define emulator_version        0x718   // differs in every build: 0x20F3, 0x21F7, 0x21F8 (Emulator.x)
+
+// Emulator control registers and other settings (see fe04_fe05_move_ecr)
+#define expected_aline_vector   0x720   // line-A vector for which traps are dispatched natively
+#define expected_privilege_vector 0x72C // privilege violation vector for which MOVE from SR is allowed in user state
+#define instruction_count       0x738   // test mode: instructions executed
+#define opcode_counts           0x73C   // test mode: address of a table of counts, one per opcode
+#define config_flags            0x7A0   // bits 0 and 1 must both be set for the recompiler to be enabled
+#define toolbox_trap_table      0x7B0   // address of the Mac OS Toolbox trap table (ToolTable, 0xE00)
+#define os_trap_table           0x7B4   // address of the Mac OS trap table (OSTable, 0x400)
+#define dr_memory_base          0x7C0   // memory given to the dynamic recompiler ...
+#define dr_memory_size          0x7C4   // ... and its size
+#define test_hook               0x7C8   // test mode: routine called when bit 18 of the test flags is set ...
+#define test_hook_arg           0x7CC   // ... and the value passed to it
 #define native_regs             0x740   // D0-D7, A0-A6 and the 68K pc, as native code sees them
 
 // Replaceable handler addresses (initialised from handler_defaults)
@@ -85,7 +98,26 @@
 #define reset_handler           0x828   // the RESET instruction
 #define rte_handler             0x82C   // RTE; +0x830.. are sixteen handlers, one per frame format
 #define movec_from_handler      0x878   // MOVEC Rc,Rn
+#define tas_handler             0x880   // called by TAS on memory
+#define cas_b_handler           0x884   // called by CAS, by size
+#define cas_w_handler           0x888
+#define cas_l_handler           0x88C
 #define movec_to_handler        0x87C   // MOVEC Rn,Rc
+#define fbcc_w_stub             0x8FC   // FBcc.W: one of the forty exception stubs (install_exception_stubs)
+#define fbcc_l_stub             0x900   // FBcc.L
+#define cinv_handler            0x93C   // CINVL, CINVP, CINVA
+#define cpush_handler           0x940   // CPUSHL, CPUSHP, CPUSHA
+#define pflush_handler          0x944   // PFLUSH and its variants
+#define ptest_handler           0x948   // PTESTR, PTESTW
+#define move16_from_an_handler  0x94C   // called by MOVE16 from (An) or (An)+ to an absolute address ...
+#define move16_to_an_handler    0x950   // ... and the other way
+#define fc00_handler            0x958   // _ToolBoxCoprocessorNop: fetch, i.e. nothing
+#define fe00_handler            0x95C   // _RiscCoprocessorNop: likewise
+#define fe03_handler            0x964   // _ExecuteRiscContext: kernel service 1 by default
+#define vm_dispatch_handler     0x968   // FE06, FE0A: kernel service 3 by default
+#define power_dispatch_handler  0x99C   // FE0F: kernel service 5
+#define cache_dispatch_handler  0x9A4   // FE11: kernel service 7
+#define mp_dispatch_handler     0x9DC   // FE1F: kernel service 8
 #define mixed_mode_handler      0x9E0   // private opcode FE01
 
 // Dynamic recompiler entry points (stubs until the recompiler is set up)
@@ -103,12 +135,25 @@
 #define dr_cache_limit          0xB0C   // translation stops being stored beyond this
 #define dr_records              0xB14   // scratch array of 12-byte instruction records
 #define dr_cache_ptr            0xB20   // next free byte in the translation cache
+#define dr_last_offset          0xB24   // offset in the block of its last instruction
+#define dr_stub_size            0xB28   // (16 bits) bytes of branch stubs that precede the block's code
+#define dr_needs_exit           0xB2A   // (16 bits) the block begins with a branch to dr_exit_to_interpreter
 #define dr_emit_ptr             0xB2C   // where the block being translated will start
 #define dr_hash_slot            0xB30   // lookup table slot the new block will occupy
+#define dr_resume_offset        0xB34   // (16 bits) offset into a block at which to resume after a fault
+#define dr_saved_addr           0xB38   // addr, data, rtn_addr and CR as they were when translation began
+#define dr_saved_data           0xB3C
+#define dr_saved_rtn_addr       0xB40
+#define dr_saved_cr             0xB44
+#define dr_peek_resume          0xB68   // pass 1: where to go on after looking at a branch's target; 0 otherwise
 #define dr_flush_pending        0xB6C   // nonzero while the whole cache is being discarded
+#define dr_flush_table_left     0xB70   // 2 KB pieces of the lookup table still to clear
+#define dr_flush_bitmap_left    0xB74   // 32-byte blocks of the page bitmap still to clear
 #define dr_invalidate_requests  0xB78   // table of address ranges waiting to be invalidated
 #define dr_invalidate_pending   0xB80   // bit mask of live entries in that table
 #define dr_page_bitmap          0xB90   // one bit per 512 bytes of 68K memory holding translated code
+#define dr_page_bitmap_blocks   0xB94   // its size in 32-byte blocks
 #define dr_memory_limit         0xB98   // highest address the bitmap covers
+#define dr_branch_targets       0xBA8   // pass 1: 64 bits, one per word of the block, set where a branch lands
 
 //@ end

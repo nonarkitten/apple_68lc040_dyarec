@@ -23252,7 +23252,7 @@ aline_os_trap_alt:
         lwz     rtn_addr, 40(vbr)
         rlwinm  base_disp, disp_table, 31, 22, 29       // base_disp = disp_table[10:3] << 2
         cmplw   cr7, addr, rtn_addr
-        lwz     immed_data, 0x7B4(EmulatorStatePtr)
+        lwz     immed_data, os_trap_table(EmulatorStatePtr)
         mr      data, pc
         bne     cr7, take_aline
         lwzx    pc, immed_data, base_disp
@@ -23300,7 +23300,7 @@ aline_os_trap:
         lwz     rtn_addr, 40(vbr)
         rlwinm  base_disp, disp_table, 31, 22, 29       // base_disp = disp_table[10:3] << 2
         cmplw   cr7, addr, rtn_addr
-        lwz     immed_data, 0x7B4(EmulatorStatePtr)
+        lwz     immed_data, os_trap_table(EmulatorStatePtr)
         mr      data, pc
         bne     cr7, take_aline
         lwzx    pc, immed_data, base_disp
@@ -23358,7 +23358,7 @@ aline_toolbox_trap:
         lwz     rtn_addr, 40(vbr)
         rlwinm  base_disp, disp_table, 31, 20, 29       // base_disp = disp_table[12:3] << 2
         cmplw   cr7, addr, rtn_addr
-        lwz     immed_data, 0x7B0(EmulatorStatePtr)
+        lwz     immed_data, toolbox_trap_table(EmulatorStatePtr)
         mr      data, pc
         bne     cr7, take_aline
         lwzx    pc, immed_data, base_disp
@@ -23382,7 +23382,7 @@ aline_toolbox_trap_autopop:
         lwz     rtn_addr, 40(vbr)
         rlwinm  base_disp, disp_table, 31, 20, 29       // base_disp = disp_table[12:3] << 2
         cmplw   cr7, addr, rtn_addr
-        lwz     immed_data, 0x7B0(EmulatorStatePtr)
+        lwz     immed_data, toolbox_trap_table(EmulatorStatePtr)
         bne     cr7, take_aline
         lwzx    pc, immed_data, base_disp
         rlwinm  sr_and_flags, sr_and_flags, 0, 26, 22   // sr_and_flags = sr_and_flags & 0xFFFFFE3F
@@ -29383,7 +29383,7 @@ move_from_sr_user:
 // block, return and let the instruction proceed (the standard handler
 // would only have emulated it); otherwise take the exception.
 privilege_check_failed:
-        lwz     immed_data, 0x72C(EmulatorStatePtr)
+        lwz     immed_data, expected_privilege_vector(EmulatorStatePtr)
         lwz     rtn_addr, 32(vbr)
         cmplw   cr7, immed_data, rtn_addr
         beqlr   cr7
@@ -30133,7 +30133,7 @@ cas_b_mem_2:
 cas_b_mem_3:
         lbz     data, 0(addr)
 cas_b_mem_3_L1:
-        lwz     base_disp, 0x884(EmulatorStatePtr)
+        lwz     base_disp, cas_b_handler(EmulatorStatePtr)
         ori     rtn_addr, code_ptr, reg_access_rtn_addr - cb
         mtlr    base_disp
         rlwimi  rtn_addr, immed_data, 30, 25, 27        // rtn_addr[6:4] = immed_data[8:6]
@@ -30181,7 +30181,7 @@ cas_w_mem_2:
 cas_w_mem_3:
         lhz     data, 0(addr)
 cas_w_mem_3_L1:
-        lwz     base_disp, 0x888(EmulatorStatePtr)
+        lwz     base_disp, cas_w_handler(EmulatorStatePtr)
         ori     rtn_addr, code_ptr, reg_access_rtn_addr - cb
         mtlr    base_disp
         rlwimi  rtn_addr, immed_data, 30, 25, 27        // rtn_addr[6:4] = immed_data[8:6]
@@ -30229,7 +30229,7 @@ cas_l_mem_2:
 cas_l_mem_3:
         lwz     data, 0(addr)
 cas_l_mem_3_L1:
-        lwz     base_disp, 0x88C(EmulatorStatePtr)
+        lwz     base_disp, cas_l_handler(EmulatorStatePtr)
         ori     rtn_addr, code_ptr, reg_access_rtn_addr - cb
         mtlr    base_disp
         rlwimi  rtn_addr, immed_data, 30, 25, 27        // rtn_addr[6:4] = immed_data[8:6]
@@ -30375,7 +30375,7 @@ tas_b_mem:
 //     TAS.B (d8,An,Xn)
 //     TAS.B (xxx).L
 tas_b_mem_2:
-        lwz     rtn_addr, 0x880(EmulatorStatePtr)
+        lwz     rtn_addr, tas_handler(EmulatorStatePtr)
         mtlr    rtn_addr
         blrl
 tas_b_mem_2_L1:
@@ -30542,8 +30542,8 @@ test_mode_events:
         beql    cr7, count_opcode                       // bit 0x0002_0000: count instructions per opcode
         blt     cr4, exit_emulator
         ble     cr7, test_mode_events_L1
-        lwz     addr, 0x7C8(EmulatorStatePtr)           // bit 0x0004_0000: call a hook
-        lwz     data, 0x7CC(EmulatorStatePtr)
+        lwz     addr, test_hook(EmulatorStatePtr)       // bit 0x0004_0000: call a hook
+        lwz     data, test_hook_arg(EmulatorStatePtr)
         mtlr    addr
         cmplwi  cr7, addr, 0x0000
         bnelrl  cr7
@@ -30568,13 +30568,13 @@ check_prefetch_consistency:
         blr
 
 count_instruction:
-        lwz     data, 0x738(EmulatorStatePtr)
+        lwz     data, instruction_count(EmulatorStatePtr)
         addi    data, data, 1
-        stw     data, 0x738(EmulatorStatePtr)
+        stw     data, instruction_count(EmulatorStatePtr)
         blr
 
 count_opcode:
-        lwz     addr, 0x73C(EmulatorStatePtr)
+        lwz     addr, opcode_counts(EmulatorStatePtr)
         rlwinm  immed_data, disp_table, 31, 14, 29      // immed_data = disp_table[18:3] << 2
         lwzx    data, addr, immed_data
         addi    data, data, 1
@@ -31040,21 +31040,21 @@ fe05_move_to_ecr:
         beq     cr6, fe05_move_to_ecr_L6
         b       update_nzvc_zero
 fe05_move_to_ecr_L1:
-        lwz     data, 0x7A0(EmulatorStatePtr)
+        lwz     data, config_flags(EmulatorStatePtr)
         rlwinm  data, data, 0, 29, 29                   // data = data[2] << 2
         cmpwi   cr7, data, 0
         beq     cr7, fe04_fe05_move_ecr_L2
         lwz     a0, 0x700(addr)
         b       update_nzvc_zero
 fe05_move_to_ecr_L2:
-        lwz     data, 0x7A0(EmulatorStatePtr)
+        lwz     data, config_flags(EmulatorStatePtr)
         rlwinm  data, data, 0, 29, 29                   // data = data[2] << 2
         cmpwi   cr7, data, 0
         beq     cr7, fe04_fe05_move_ecr_L2
         stw     a0, 0x700(addr)
         b       update_nzvc_zero
 fe05_move_to_ecr_L3:
-        lwz     data, 0x7A0(EmulatorStatePtr)
+        lwz     data, config_flags(EmulatorStatePtr)
         clrlwi  data, data, 30                          // data = data & 0x00000003
         cmpwi   cr7, data, 3
         bne     cr7, fe04_fe05_move_ecr_L2
@@ -31062,7 +31062,7 @@ fe05_move_to_ecr_L3:
         rlwinm  a0, data, 8, 29, 31                     // a0 = data[26:24]
         b       update_nzvc_zero
 fe05_move_to_ecr_L4:
-        lwz     data, 0x7A0(EmulatorStatePtr)
+        lwz     data, config_flags(EmulatorStatePtr)
         clrlwi  data, data, 30                          // data = data & 0x00000003
         cmpwi   cr7, data, 3
         bne     cr7, fe04_fe05_move_ecr_L2
@@ -31140,7 +31140,7 @@ fc16_invalidate_range:
 // Reached from 1 dispatch table entry:
 //     F-LINE cpID 7
 fe0f_power_dispatch:
-        lwz     immed_data, 0x99C(EmulatorStatePtr)
+        lwz     immed_data, power_dispatch_handler(EmulatorStatePtr)
         mr      addr, d0
         mr      rtn_addr, d1
         mtlr    immed_data
@@ -31159,7 +31159,7 @@ fe0f_power_dispatch:
 // Reached from 1 dispatch table entry:
 //     F-LINE cpID 7
 fe11_cache_dispatch:
-        lwz     immed_data, 0x9A4(EmulatorStatePtr)
+        lwz     immed_data, cache_dispatch_handler(EmulatorStatePtr)
         mr      addr, d0
         mtlr    immed_data
         blrl
@@ -31178,7 +31178,7 @@ fe11_cache_dispatch:
 // Reached from 2 dispatch table entries:
 //     F-LINE cpID 7
 fe06_fe0a_vm_dispatch:
-        lwz     immed_data, 0x968(EmulatorStatePtr)
+        lwz     immed_data, vm_dispatch_handler(EmulatorStatePtr)
         mr      addr, d0
         mtlr    immed_data
         mr      data, a0
@@ -31325,18 +31325,18 @@ init_state:
         stw     data, emulator_version(EmulatorStatePtr)
         oris    data, zero, 0x0000
         ori     data, data, 0x0E00
-        stw     data, 0x7B0(EmulatorStatePtr)
+        stw     data, toolbox_trap_table(EmulatorStatePtr)
         oris    data, zero, 0x0000
         ori     data, data, 0x0400
-        stw     data, 0x7B4(EmulatorStatePtr)
-        stw     zero, 0x720(EmulatorStatePtr)
+        stw     data, os_trap_table(EmulatorStatePtr)
+        stw     zero, expected_aline_vector(EmulatorStatePtr)
         stw     zero, 0x724(EmulatorStatePtr)
         stw     zero, 0x728(EmulatorStatePtr)
-        stw     zero, 0x72C(EmulatorStatePtr)
+        stw     zero, expected_privilege_vector(EmulatorStatePtr)
         lis     data, 0x8000
         ori     data, data, 0x0029
         ori     data, data, 0x0010
-        stw     data, 0x7A0(EmulatorStatePtr)
+        stw     data, config_flags(EmulatorStatePtr)
         addis   data, code_ptr, 1                       // dr_code_base = cb + 0x10000
         stw     data, dr_code_base(EmulatorStatePtr)
         mtcrf   0x40, zero                              // cr1 = zero[27:24]
@@ -31344,8 +31344,8 @@ init_state:
         rlwimi  sr_and_flags, zero, 0, 21, 21           // sr_and_flags[10] = zero[10]
         stw     zero, 0x730(EmulatorStatePtr)
         stw     zero, 0x734(EmulatorStatePtr)
-        stw     zero, 0x738(EmulatorStatePtr)
-        stw     zero, 0x73C(EmulatorStatePtr)
+        stw     zero, instruction_count(EmulatorStatePtr)
+        stw     zero, opcode_counts(EmulatorStatePtr)
         ori     rtn_addr, code_ptr, handler_defaults - cb - 2  // handler_defaults - 2, for the pre-incrementing loop below
         addi    addr, EmulatorStatePtr, 0x7FC
         li      data, 151                               // 151 entries
@@ -32085,7 +32085,7 @@ fe07_handle_mixed_mode_fault_L11:
 //     MOVE16 (An)+,(xxx).L
 move16_mem_mem:
         mtlr    addr
-        lwz     rtn_addr, 0x94C(EmulatorStatePtr)
+        lwz     rtn_addr, move16_from_an_handler(EmulatorStatePtr)
         li      data, 16
         blr
 
@@ -32096,7 +32096,7 @@ move16_mem_mem:
 // Reached from 8 dispatch table entries:
 //     MOVE16 (An),(xxx).L
 move16_mem_mem_2:
-        lwz     rtn_addr, 0x94C(EmulatorStatePtr)
+        lwz     rtn_addr, move16_from_an_handler(EmulatorStatePtr)
         mtlr    rtn_addr
         blrl
 move16_mem_mem_2_L1:
@@ -32118,14 +32118,14 @@ move16_mem_mem_2_L1:
 //     MOVE16 (xxx).L,(An)+
 move16_mem_mem_3:
         mtlr    addr
-        lwz     rtn_addr, 0x950(EmulatorStatePtr)
+        lwz     rtn_addr, move16_to_an_handler(EmulatorStatePtr)
         li      data, 16
         blr
 
 // Reached from 8 dispatch table entries:
 //     MOVE16 (xxx).L,(An)
 move16_mem_mem_4:
-        lwz     rtn_addr, 0x950(EmulatorStatePtr)
+        lwz     rtn_addr, move16_to_an_handler(EmulatorStatePtr)
         mtlr    rtn_addr
         blrl
 move16_mem_mem_4_L1:

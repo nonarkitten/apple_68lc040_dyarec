@@ -117,14 +117,14 @@ private request level at `0x1D0`.
 | `0x714` | `native_return_entry`: PowerPC address resumed by private opcode `FE02`. Initially `native_call_unavailable` |
 | `0x740`–`0x77F` | `native_regs`: D0–D7, A0–A6 and the 68K `pc`, stored in that order by `switch_to_native` and reloaded when native code returns |
 | `0x718` | `emulator_version`: `0x21F8`. A different constant in each build ([15-build-history.md](15-build-history.md)); emulator control register 0 for private opcode `FE04` |
-| `0x720` | Expected line-A vector (see [08-native-interface.md](08-native-interface.md)) |
-| `0x72C` | Expected privilege violation vector |
-| `0x738` | Instruction counter (test mode) |
-| `0x73C` | Address of the per-opcode counter table (test mode) |
-| `0x7A0` | Configuration flags; initialised to `0x80000039` |
-| `0x7B0`, `0x7B4` | `0xE00` and `0x400`: addresses of the Mac OS Toolbox and OS trap dispatch tables in 68K low memory (`ToolTable` and `OSTable`) |
-| `0x7C0`, `0x7C4` | Base address and size of the memory given to the dynamic recompiler |
-| `0x7C8`, `0x7CC` | Test-mode hook routine and its argument |
+| `0x720` | `expected_aline_vector`: the line-A vector for which traps are dispatched natively (see [08-native-interface.md](08-native-interface.md)) |
+| `0x72C` | `expected_privilege_vector` |
+| `0x738` | `instruction_count` (test mode) |
+| `0x73C` | `opcode_counts`: address of the per-opcode counter table (test mode) |
+| `0x7A0` | `config_flags`; initialised to `0x80000039` |
+| `0x7B0`, `0x7B4` | `toolbox_trap_table`, `os_trap_table`: `0xE00` and `0x400`, the addresses of the Mac OS Toolbox and OS trap dispatch tables in 68K low memory (`ToolTable` and `OSTable`) |
+| `0x7C0`, `0x7C4` | `dr_memory_base`, `dr_memory_size`: the memory given to the dynamic recompiler |
+| `0x7C8`, `0x7CC` | `test_hook`, `test_hook_arg` |
 
 ## Handler table (`+0x800`)
 
@@ -147,9 +147,10 @@ different address.
 | `0x828` | `reset_handler` | | The `RESET` instruction |
 | `0x82C` | `rte_handler` | `rte` | `RTE` |
 | `0x830`–`0x86C` | | `rte_format_0`, `rte_format_1`, `rte_format_2`, …; `rte_bad_format` for unsupported formats | `RTE`, by frame format 0–15 |
-| `0x870`–`0x898` | `movec_from_handler` (`0x878`), `movec_to_handler` (`0x87C`) | | `MOVE USP`, `MOVEC`, `TAS` on memory (`0x880`), `CAS`/`CAS2` (`0x884`–`0x894`); `0x898` is `install_exception_stubs` |
-| `0x89C`–`0x938` | | | Forty exception stubs, copied from `exception_stub_defaults` by `install_exception_stubs` |
-| `0x93C`–`0x9E0` | | | Cache control instructions and the private opcodes. `0x964`, `0x968`, `0x99C`, `0x9A4` and `0x9DC` default to kernel traps 1, 3, 5, 7 and 8; `0x9E0` is `mixed_mode_dispatch` |
+| `0x870`–`0x898` | `movec_from_handler` (`0x878`), `movec_to_handler` (`0x87C`), `tas_handler` (`0x880`), `cas_b_handler`, `cas_w_handler`, `cas_l_handler` (`0x884`–`0x88C`) | | `MOVE USP`, `MOVEC`, `TAS` on memory, `CAS`; `CAS2` (`0x890`, `0x894`); `0x898` is `install_exception_stubs` |
+| `0x89C`–`0x938` | `fbcc_w_stub` (`0x8FC`), `fbcc_l_stub` (`0x900`) | | Forty exception stubs, copied from `exception_stub_defaults` by `install_exception_stubs` |
+| `0x93C`–`0x950` | `cinv_handler`, `cpush_handler`, `pflush_handler`, `ptest_handler`, `move16_from_an_handler`, `move16_to_an_handler` | | The cache and MMU instructions and `MOVE16` |
+| `0x958`–`0x9E0` | `fc00_handler` (`0x958`), `fe00_handler` (`0x95C`), `fe03_handler` (`0x964`), `vm_dispatch_handler` (`0x968`), `power_dispatch_handler` (`0x99C`), `cache_dispatch_handler` (`0x9A4`), `mp_dispatch_handler` (`0x9DC`), `mixed_mode_handler` (`0x9E0`) | | The private opcodes ([08-native-interface.md](08-native-interface.md)). `0x964`, `0x968`, `0x99C`, `0x9A4` and `0x9DC` default to kernel traps 1, 3, 5, 7 and 8; `0x9E0` is `mixed_mode_dispatch` |
 | `0xA00` | `dr_dispatch_vector` | a stub | Loaded into `dr_entry` |
 | `0xA04` | `dr_flush_vector` | a stub | Discard all translations |
 | `0xA08` | `dr_invalidate_vector` | a stub | Invalidate translations of an address range |
@@ -171,17 +172,20 @@ different address.
 | `0xB14` | `dr_records` | Array of instruction records used during translation |
 | `0xB18`, `0xB1C` | | Size and address of a table of routines in RAM |
 | `0xB20` | `dr_cache_ptr` | Next free address in the translation cache |
-| `0xB24`–`0xB2A` | | Per-translation scratch |
+| `0xB24` | `dr_last_offset` | Offset in the block of its last instruction |
+| `0xB28` | `dr_stub_size` | Bytes of branch stubs that precede the block's code (16 bits) |
+| `0xB2A` | `dr_needs_exit` | Set if the block begins with a branch to `dr_exit_to_interpreter` (16 bits) |
 | `0xB2C` | `dr_emit_ptr` | Start of the block being translated |
 | `0xB30` | `dr_hash_slot` | Lookup table slot the new block will use |
-| `0xB34`, `0xB36` | | Offset into a block at which to resume after a fault; abort marker |
-| `0xB38`–`0xB44` | | `addr`, `data`, `rtn_addr` and CR saved across a translation |
-| `0xB68` | | Scratch for pass 1 |
+| `0xB34`, `0xB36` | `dr_resume_offset` (`0xB34`) | Offset into a block at which to resume after a fault; abort marker |
+| `0xB38`–`0xB44` | `dr_saved_addr`, `dr_saved_data`, `dr_saved_rtn_addr`, `dr_saved_cr` | `addr`, `data`, `rtn_addr` and CR saved across a translation |
+| `0xB68` | `dr_peek_resume` | Pass 1: where to go on after looking at the instruction at a branch's target |
 | `0xB6C` | `dr_flush_pending` | Non-zero while the cache is being discarded |
-| `0xB70`, `0xB74` | | Progress of the flush (chunks of table and bitmap still to clear) |
+| `0xB70`, `0xB74` | `dr_flush_table_left`, `dr_flush_bitmap_left` | Progress of the flush (chunks of table and bitmap still to clear) |
 | `0xB78` | `dr_invalidate_requests` | Address of a table of 32 pending range invalidations, 16 bytes each |
 | `0xB7C`, `0xB80` | `dr_invalidate_pending` (`0xB80`) | Bit masks of allocated and pending entries in that table |
 | `0xB84`–`0xB8C` | | Progress of the request being serviced |
 | `0xB90` | `dr_page_bitmap` | Address of the bitmap of translated memory |
-| `0xB94` | | Size of the bitmap, in 32-byte units |
+| `0xB94` | `dr_page_bitmap_blocks` | Size of the bitmap, in 32-byte units |
 | `0xB98` | `dr_memory_limit` | Highest address the bitmap covers |
+| `0xBA8` | `dr_branch_targets` | Pass 1: 64 bits, one for each word of the block, set where a branch within the block lands |

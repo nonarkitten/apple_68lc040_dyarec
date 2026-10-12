@@ -1304,263 +1304,263 @@
         b       take_fline
 
 // ---- $F280-$F2BF --------------------------------------------------------
-        lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F280  F-LINE    FBcc.W
+        lwz     rtn_addr, fbcc_w_stub(EmulatorStatePtr)  // F280  F-LINE    FBcc.W
         b       take_fline
-        lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F281  F-LINE    FBcc.W
+        lwz     rtn_addr, fbcc_w_stub(EmulatorStatePtr)  // F281  F-LINE    FBcc.W
         b       take_fline
-        lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F282  F-LINE    FBcc.W
+        lwz     rtn_addr, fbcc_w_stub(EmulatorStatePtr)  // F282  F-LINE    FBcc.W
         b       take_fline
-        lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F283  F-LINE    FBcc.W
+        lwz     rtn_addr, fbcc_w_stub(EmulatorStatePtr)  // F283  F-LINE    FBcc.W
         b       take_fline
-        lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F284  F-LINE    FBcc.W
+        lwz     rtn_addr, fbcc_w_stub(EmulatorStatePtr)  // F284  F-LINE    FBcc.W
         b       take_fline
-        lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F285  F-LINE    FBcc.W
+        lwz     rtn_addr, fbcc_w_stub(EmulatorStatePtr)  // F285  F-LINE    FBcc.W
         b       take_fline
-        lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F286  F-LINE    FBcc.W
+        lwz     rtn_addr, fbcc_w_stub(EmulatorStatePtr)  // F286  F-LINE    FBcc.W
         b       take_fline
-        lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F287  F-LINE    FBcc.W
+        lwz     rtn_addr, fbcc_w_stub(EmulatorStatePtr)  // F287  F-LINE    FBcc.W
         b       take_fline
-        lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F288  F-LINE    FBcc.W
+        lwz     rtn_addr, fbcc_w_stub(EmulatorStatePtr)  // F288  F-LINE    FBcc.W
         b       take_fline
-        lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F289  F-LINE    FBcc.W
+        lwz     rtn_addr, fbcc_w_stub(EmulatorStatePtr)  // F289  F-LINE    FBcc.W
         b       take_fline
-        lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F28A  F-LINE    FBcc.W
+        lwz     rtn_addr, fbcc_w_stub(EmulatorStatePtr)  // F28A  F-LINE    FBcc.W
         b       take_fline
-        lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F28B  F-LINE    FBcc.W
+        lwz     rtn_addr, fbcc_w_stub(EmulatorStatePtr)  // F28B  F-LINE    FBcc.W
         b       take_fline
-        lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F28C  F-LINE    FBcc.W
+        lwz     rtn_addr, fbcc_w_stub(EmulatorStatePtr)  // F28C  F-LINE    FBcc.W
         b       take_fline
-        lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F28D  F-LINE    FBcc.W
+        lwz     rtn_addr, fbcc_w_stub(EmulatorStatePtr)  // F28D  F-LINE    FBcc.W
         b       take_fline
-        lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F28E  F-LINE    FBcc.W
+        lwz     rtn_addr, fbcc_w_stub(EmulatorStatePtr)  // F28E  F-LINE    FBcc.W
         b       take_fline
-        lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F28F  F-LINE    FBcc.W
+        lwz     rtn_addr, fbcc_w_stub(EmulatorStatePtr)  // F28F  F-LINE    FBcc.W
         b       take_fline
-        lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F290  F-LINE    FBcc.W
+        lwz     rtn_addr, fbcc_w_stub(EmulatorStatePtr)  // F290  F-LINE    FBcc.W
         b       take_fline
-        lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F291  F-LINE    FBcc.W
+        lwz     rtn_addr, fbcc_w_stub(EmulatorStatePtr)  // F291  F-LINE    FBcc.W
         b       take_fline
-        lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F292  F-LINE    FBcc.W
+        lwz     rtn_addr, fbcc_w_stub(EmulatorStatePtr)  // F292  F-LINE    FBcc.W
         b       take_fline
-        lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F293  F-LINE    FBcc.W
+        lwz     rtn_addr, fbcc_w_stub(EmulatorStatePtr)  // F293  F-LINE    FBcc.W
         b       take_fline
-        lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F294  F-LINE    FBcc.W
+        lwz     rtn_addr, fbcc_w_stub(EmulatorStatePtr)  // F294  F-LINE    FBcc.W
         b       take_fline
-        lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F295  F-LINE    FBcc.W
+        lwz     rtn_addr, fbcc_w_stub(EmulatorStatePtr)  // F295  F-LINE    FBcc.W
         b       take_fline
-        lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F296  F-LINE    FBcc.W
+        lwz     rtn_addr, fbcc_w_stub(EmulatorStatePtr)  // F296  F-LINE    FBcc.W
         b       take_fline
-        lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F297  F-LINE    FBcc.W
+        lwz     rtn_addr, fbcc_w_stub(EmulatorStatePtr)  // F297  F-LINE    FBcc.W
         b       take_fline
-        lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F298  F-LINE    FBcc.W
+        lwz     rtn_addr, fbcc_w_stub(EmulatorStatePtr)  // F298  F-LINE    FBcc.W
         b       take_fline
-        lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F299  F-LINE    FBcc.W
+        lwz     rtn_addr, fbcc_w_stub(EmulatorStatePtr)  // F299  F-LINE    FBcc.W
         b       take_fline
-        lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F29A  F-LINE    FBcc.W
+        lwz     rtn_addr, fbcc_w_stub(EmulatorStatePtr)  // F29A  F-LINE    FBcc.W
         b       take_fline
-        lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F29B  F-LINE    FBcc.W
+        lwz     rtn_addr, fbcc_w_stub(EmulatorStatePtr)  // F29B  F-LINE    FBcc.W
         b       take_fline
-        lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F29C  F-LINE    FBcc.W
+        lwz     rtn_addr, fbcc_w_stub(EmulatorStatePtr)  // F29C  F-LINE    FBcc.W
         b       take_fline
-        lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F29D  F-LINE    FBcc.W
+        lwz     rtn_addr, fbcc_w_stub(EmulatorStatePtr)  // F29D  F-LINE    FBcc.W
         b       take_fline
-        lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F29E  F-LINE    FBcc.W
+        lwz     rtn_addr, fbcc_w_stub(EmulatorStatePtr)  // F29E  F-LINE    FBcc.W
         b       take_fline
-        lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F29F  F-LINE    FBcc.W
+        lwz     rtn_addr, fbcc_w_stub(EmulatorStatePtr)  // F29F  F-LINE    FBcc.W
         b       take_fline
-        lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F2A0  F-LINE    FBcc.W
+        lwz     rtn_addr, fbcc_w_stub(EmulatorStatePtr)  // F2A0  F-LINE    FBcc.W
         b       take_fline
-        lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F2A1  F-LINE    FBcc.W
+        lwz     rtn_addr, fbcc_w_stub(EmulatorStatePtr)  // F2A1  F-LINE    FBcc.W
         b       take_fline
-        lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F2A2  F-LINE    FBcc.W
+        lwz     rtn_addr, fbcc_w_stub(EmulatorStatePtr)  // F2A2  F-LINE    FBcc.W
         b       take_fline
-        lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F2A3  F-LINE    FBcc.W
+        lwz     rtn_addr, fbcc_w_stub(EmulatorStatePtr)  // F2A3  F-LINE    FBcc.W
         b       take_fline
-        lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F2A4  F-LINE    FBcc.W
+        lwz     rtn_addr, fbcc_w_stub(EmulatorStatePtr)  // F2A4  F-LINE    FBcc.W
         b       take_fline
-        lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F2A5  F-LINE    FBcc.W
+        lwz     rtn_addr, fbcc_w_stub(EmulatorStatePtr)  // F2A5  F-LINE    FBcc.W
         b       take_fline
-        lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F2A6  F-LINE    FBcc.W
+        lwz     rtn_addr, fbcc_w_stub(EmulatorStatePtr)  // F2A6  F-LINE    FBcc.W
         b       take_fline
-        lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F2A7  F-LINE    FBcc.W
+        lwz     rtn_addr, fbcc_w_stub(EmulatorStatePtr)  // F2A7  F-LINE    FBcc.W
         b       take_fline
-        lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F2A8  F-LINE    FBcc.W
+        lwz     rtn_addr, fbcc_w_stub(EmulatorStatePtr)  // F2A8  F-LINE    FBcc.W
         b       take_fline
-        lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F2A9  F-LINE    FBcc.W
+        lwz     rtn_addr, fbcc_w_stub(EmulatorStatePtr)  // F2A9  F-LINE    FBcc.W
         b       take_fline
-        lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F2AA  F-LINE    FBcc.W
+        lwz     rtn_addr, fbcc_w_stub(EmulatorStatePtr)  // F2AA  F-LINE    FBcc.W
         b       take_fline
-        lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F2AB  F-LINE    FBcc.W
+        lwz     rtn_addr, fbcc_w_stub(EmulatorStatePtr)  // F2AB  F-LINE    FBcc.W
         b       take_fline
-        lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F2AC  F-LINE    FBcc.W
+        lwz     rtn_addr, fbcc_w_stub(EmulatorStatePtr)  // F2AC  F-LINE    FBcc.W
         b       take_fline
-        lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F2AD  F-LINE    FBcc.W
+        lwz     rtn_addr, fbcc_w_stub(EmulatorStatePtr)  // F2AD  F-LINE    FBcc.W
         b       take_fline
-        lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F2AE  F-LINE    FBcc.W
+        lwz     rtn_addr, fbcc_w_stub(EmulatorStatePtr)  // F2AE  F-LINE    FBcc.W
         b       take_fline
-        lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F2AF  F-LINE    FBcc.W
+        lwz     rtn_addr, fbcc_w_stub(EmulatorStatePtr)  // F2AF  F-LINE    FBcc.W
         b       take_fline
-        lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F2B0  F-LINE    FBcc.W
+        lwz     rtn_addr, fbcc_w_stub(EmulatorStatePtr)  // F2B0  F-LINE    FBcc.W
         b       take_fline
-        lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F2B1  F-LINE    FBcc.W
+        lwz     rtn_addr, fbcc_w_stub(EmulatorStatePtr)  // F2B1  F-LINE    FBcc.W
         b       take_fline
-        lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F2B2  F-LINE    FBcc.W
+        lwz     rtn_addr, fbcc_w_stub(EmulatorStatePtr)  // F2B2  F-LINE    FBcc.W
         b       take_fline
-        lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F2B3  F-LINE    FBcc.W
+        lwz     rtn_addr, fbcc_w_stub(EmulatorStatePtr)  // F2B3  F-LINE    FBcc.W
         b       take_fline
-        lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F2B4  F-LINE    FBcc.W
+        lwz     rtn_addr, fbcc_w_stub(EmulatorStatePtr)  // F2B4  F-LINE    FBcc.W
         b       take_fline
-        lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F2B5  F-LINE    FBcc.W
+        lwz     rtn_addr, fbcc_w_stub(EmulatorStatePtr)  // F2B5  F-LINE    FBcc.W
         b       take_fline
-        lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F2B6  F-LINE    FBcc.W
+        lwz     rtn_addr, fbcc_w_stub(EmulatorStatePtr)  // F2B6  F-LINE    FBcc.W
         b       take_fline
-        lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F2B7  F-LINE    FBcc.W
+        lwz     rtn_addr, fbcc_w_stub(EmulatorStatePtr)  // F2B7  F-LINE    FBcc.W
         b       take_fline
-        lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F2B8  F-LINE    FBcc.W
+        lwz     rtn_addr, fbcc_w_stub(EmulatorStatePtr)  // F2B8  F-LINE    FBcc.W
         b       take_fline
-        lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F2B9  F-LINE    FBcc.W
+        lwz     rtn_addr, fbcc_w_stub(EmulatorStatePtr)  // F2B9  F-LINE    FBcc.W
         b       take_fline
-        lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F2BA  F-LINE    FBcc.W
+        lwz     rtn_addr, fbcc_w_stub(EmulatorStatePtr)  // F2BA  F-LINE    FBcc.W
         b       take_fline
-        lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F2BB  F-LINE    FBcc.W
+        lwz     rtn_addr, fbcc_w_stub(EmulatorStatePtr)  // F2BB  F-LINE    FBcc.W
         b       take_fline
-        lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F2BC  F-LINE    FBcc.W
+        lwz     rtn_addr, fbcc_w_stub(EmulatorStatePtr)  // F2BC  F-LINE    FBcc.W
         b       take_fline
-        lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F2BD  F-LINE    FBcc.W
+        lwz     rtn_addr, fbcc_w_stub(EmulatorStatePtr)  // F2BD  F-LINE    FBcc.W
         b       take_fline
-        lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F2BE  F-LINE    FBcc.W
+        lwz     rtn_addr, fbcc_w_stub(EmulatorStatePtr)  // F2BE  F-LINE    FBcc.W
         b       take_fline
-        lwz     rtn_addr, 0x8FC(EmulatorStatePtr)       // F2BF  F-LINE    FBcc.W
+        lwz     rtn_addr, fbcc_w_stub(EmulatorStatePtr)  // F2BF  F-LINE    FBcc.W
         b       take_fline
 
 // ---- $F2C0-$F2FF --------------------------------------------------------
-        lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2C0  F-LINE    FBcc.L
+        lwz     rtn_addr, fbcc_l_stub(EmulatorStatePtr)  // F2C0  F-LINE    FBcc.L
         b       take_fline
-        lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2C1  F-LINE    FBcc.L
+        lwz     rtn_addr, fbcc_l_stub(EmulatorStatePtr)  // F2C1  F-LINE    FBcc.L
         b       take_fline
-        lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2C2  F-LINE    FBcc.L
+        lwz     rtn_addr, fbcc_l_stub(EmulatorStatePtr)  // F2C2  F-LINE    FBcc.L
         b       take_fline
-        lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2C3  F-LINE    FBcc.L
+        lwz     rtn_addr, fbcc_l_stub(EmulatorStatePtr)  // F2C3  F-LINE    FBcc.L
         b       take_fline
-        lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2C4  F-LINE    FBcc.L
+        lwz     rtn_addr, fbcc_l_stub(EmulatorStatePtr)  // F2C4  F-LINE    FBcc.L
         b       take_fline
-        lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2C5  F-LINE    FBcc.L
+        lwz     rtn_addr, fbcc_l_stub(EmulatorStatePtr)  // F2C5  F-LINE    FBcc.L
         b       take_fline
-        lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2C6  F-LINE    FBcc.L
+        lwz     rtn_addr, fbcc_l_stub(EmulatorStatePtr)  // F2C6  F-LINE    FBcc.L
         b       take_fline
-        lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2C7  F-LINE    FBcc.L
+        lwz     rtn_addr, fbcc_l_stub(EmulatorStatePtr)  // F2C7  F-LINE    FBcc.L
         b       take_fline
-        lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2C8  F-LINE    FBcc.L
+        lwz     rtn_addr, fbcc_l_stub(EmulatorStatePtr)  // F2C8  F-LINE    FBcc.L
         b       take_fline
-        lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2C9  F-LINE    FBcc.L
+        lwz     rtn_addr, fbcc_l_stub(EmulatorStatePtr)  // F2C9  F-LINE    FBcc.L
         b       take_fline
-        lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2CA  F-LINE    FBcc.L
+        lwz     rtn_addr, fbcc_l_stub(EmulatorStatePtr)  // F2CA  F-LINE    FBcc.L
         b       take_fline
-        lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2CB  F-LINE    FBcc.L
+        lwz     rtn_addr, fbcc_l_stub(EmulatorStatePtr)  // F2CB  F-LINE    FBcc.L
         b       take_fline
-        lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2CC  F-LINE    FBcc.L
+        lwz     rtn_addr, fbcc_l_stub(EmulatorStatePtr)  // F2CC  F-LINE    FBcc.L
         b       take_fline
-        lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2CD  F-LINE    FBcc.L
+        lwz     rtn_addr, fbcc_l_stub(EmulatorStatePtr)  // F2CD  F-LINE    FBcc.L
         b       take_fline
-        lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2CE  F-LINE    FBcc.L
+        lwz     rtn_addr, fbcc_l_stub(EmulatorStatePtr)  // F2CE  F-LINE    FBcc.L
         b       take_fline
-        lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2CF  F-LINE    FBcc.L
+        lwz     rtn_addr, fbcc_l_stub(EmulatorStatePtr)  // F2CF  F-LINE    FBcc.L
         b       take_fline
-        lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2D0  F-LINE    FBcc.L
+        lwz     rtn_addr, fbcc_l_stub(EmulatorStatePtr)  // F2D0  F-LINE    FBcc.L
         b       take_fline
-        lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2D1  F-LINE    FBcc.L
+        lwz     rtn_addr, fbcc_l_stub(EmulatorStatePtr)  // F2D1  F-LINE    FBcc.L
         b       take_fline
-        lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2D2  F-LINE    FBcc.L
+        lwz     rtn_addr, fbcc_l_stub(EmulatorStatePtr)  // F2D2  F-LINE    FBcc.L
         b       take_fline
-        lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2D3  F-LINE    FBcc.L
+        lwz     rtn_addr, fbcc_l_stub(EmulatorStatePtr)  // F2D3  F-LINE    FBcc.L
         b       take_fline
-        lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2D4  F-LINE    FBcc.L
+        lwz     rtn_addr, fbcc_l_stub(EmulatorStatePtr)  // F2D4  F-LINE    FBcc.L
         b       take_fline
-        lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2D5  F-LINE    FBcc.L
+        lwz     rtn_addr, fbcc_l_stub(EmulatorStatePtr)  // F2D5  F-LINE    FBcc.L
         b       take_fline
-        lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2D6  F-LINE    FBcc.L
+        lwz     rtn_addr, fbcc_l_stub(EmulatorStatePtr)  // F2D6  F-LINE    FBcc.L
         b       take_fline
-        lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2D7  F-LINE    FBcc.L
+        lwz     rtn_addr, fbcc_l_stub(EmulatorStatePtr)  // F2D7  F-LINE    FBcc.L
         b       take_fline
-        lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2D8  F-LINE    FBcc.L
+        lwz     rtn_addr, fbcc_l_stub(EmulatorStatePtr)  // F2D8  F-LINE    FBcc.L
         b       take_fline
-        lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2D9  F-LINE    FBcc.L
+        lwz     rtn_addr, fbcc_l_stub(EmulatorStatePtr)  // F2D9  F-LINE    FBcc.L
         b       take_fline
-        lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2DA  F-LINE    FBcc.L
+        lwz     rtn_addr, fbcc_l_stub(EmulatorStatePtr)  // F2DA  F-LINE    FBcc.L
         b       take_fline
-        lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2DB  F-LINE    FBcc.L
+        lwz     rtn_addr, fbcc_l_stub(EmulatorStatePtr)  // F2DB  F-LINE    FBcc.L
         b       take_fline
-        lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2DC  F-LINE    FBcc.L
+        lwz     rtn_addr, fbcc_l_stub(EmulatorStatePtr)  // F2DC  F-LINE    FBcc.L
         b       take_fline
-        lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2DD  F-LINE    FBcc.L
+        lwz     rtn_addr, fbcc_l_stub(EmulatorStatePtr)  // F2DD  F-LINE    FBcc.L
         b       take_fline
-        lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2DE  F-LINE    FBcc.L
+        lwz     rtn_addr, fbcc_l_stub(EmulatorStatePtr)  // F2DE  F-LINE    FBcc.L
         b       take_fline
-        lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2DF  F-LINE    FBcc.L
+        lwz     rtn_addr, fbcc_l_stub(EmulatorStatePtr)  // F2DF  F-LINE    FBcc.L
         b       take_fline
-        lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2E0  F-LINE    FBcc.L
+        lwz     rtn_addr, fbcc_l_stub(EmulatorStatePtr)  // F2E0  F-LINE    FBcc.L
         b       take_fline
-        lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2E1  F-LINE    FBcc.L
+        lwz     rtn_addr, fbcc_l_stub(EmulatorStatePtr)  // F2E1  F-LINE    FBcc.L
         b       take_fline
-        lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2E2  F-LINE    FBcc.L
+        lwz     rtn_addr, fbcc_l_stub(EmulatorStatePtr)  // F2E2  F-LINE    FBcc.L
         b       take_fline
-        lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2E3  F-LINE    FBcc.L
+        lwz     rtn_addr, fbcc_l_stub(EmulatorStatePtr)  // F2E3  F-LINE    FBcc.L
         b       take_fline
-        lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2E4  F-LINE    FBcc.L
+        lwz     rtn_addr, fbcc_l_stub(EmulatorStatePtr)  // F2E4  F-LINE    FBcc.L
         b       take_fline
-        lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2E5  F-LINE    FBcc.L
+        lwz     rtn_addr, fbcc_l_stub(EmulatorStatePtr)  // F2E5  F-LINE    FBcc.L
         b       take_fline
-        lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2E6  F-LINE    FBcc.L
+        lwz     rtn_addr, fbcc_l_stub(EmulatorStatePtr)  // F2E6  F-LINE    FBcc.L
         b       take_fline
-        lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2E7  F-LINE    FBcc.L
+        lwz     rtn_addr, fbcc_l_stub(EmulatorStatePtr)  // F2E7  F-LINE    FBcc.L
         b       take_fline
-        lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2E8  F-LINE    FBcc.L
+        lwz     rtn_addr, fbcc_l_stub(EmulatorStatePtr)  // F2E8  F-LINE    FBcc.L
         b       take_fline
-        lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2E9  F-LINE    FBcc.L
+        lwz     rtn_addr, fbcc_l_stub(EmulatorStatePtr)  // F2E9  F-LINE    FBcc.L
         b       take_fline
-        lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2EA  F-LINE    FBcc.L
+        lwz     rtn_addr, fbcc_l_stub(EmulatorStatePtr)  // F2EA  F-LINE    FBcc.L
         b       take_fline
-        lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2EB  F-LINE    FBcc.L
+        lwz     rtn_addr, fbcc_l_stub(EmulatorStatePtr)  // F2EB  F-LINE    FBcc.L
         b       take_fline
-        lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2EC  F-LINE    FBcc.L
+        lwz     rtn_addr, fbcc_l_stub(EmulatorStatePtr)  // F2EC  F-LINE    FBcc.L
         b       take_fline
-        lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2ED  F-LINE    FBcc.L
+        lwz     rtn_addr, fbcc_l_stub(EmulatorStatePtr)  // F2ED  F-LINE    FBcc.L
         b       take_fline
-        lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2EE  F-LINE    FBcc.L
+        lwz     rtn_addr, fbcc_l_stub(EmulatorStatePtr)  // F2EE  F-LINE    FBcc.L
         b       take_fline
-        lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2EF  F-LINE    FBcc.L
+        lwz     rtn_addr, fbcc_l_stub(EmulatorStatePtr)  // F2EF  F-LINE    FBcc.L
         b       take_fline
-        lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2F0  F-LINE    FBcc.L
+        lwz     rtn_addr, fbcc_l_stub(EmulatorStatePtr)  // F2F0  F-LINE    FBcc.L
         b       take_fline
-        lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2F1  F-LINE    FBcc.L
+        lwz     rtn_addr, fbcc_l_stub(EmulatorStatePtr)  // F2F1  F-LINE    FBcc.L
         b       take_fline
-        lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2F2  F-LINE    FBcc.L
+        lwz     rtn_addr, fbcc_l_stub(EmulatorStatePtr)  // F2F2  F-LINE    FBcc.L
         b       take_fline
-        lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2F3  F-LINE    FBcc.L
+        lwz     rtn_addr, fbcc_l_stub(EmulatorStatePtr)  // F2F3  F-LINE    FBcc.L
         b       take_fline
-        lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2F4  F-LINE    FBcc.L
+        lwz     rtn_addr, fbcc_l_stub(EmulatorStatePtr)  // F2F4  F-LINE    FBcc.L
         b       take_fline
-        lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2F5  F-LINE    FBcc.L
+        lwz     rtn_addr, fbcc_l_stub(EmulatorStatePtr)  // F2F5  F-LINE    FBcc.L
         b       take_fline
-        lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2F6  F-LINE    FBcc.L
+        lwz     rtn_addr, fbcc_l_stub(EmulatorStatePtr)  // F2F6  F-LINE    FBcc.L
         b       take_fline
-        lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2F7  F-LINE    FBcc.L
+        lwz     rtn_addr, fbcc_l_stub(EmulatorStatePtr)  // F2F7  F-LINE    FBcc.L
         b       take_fline
-        lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2F8  F-LINE    FBcc.L
+        lwz     rtn_addr, fbcc_l_stub(EmulatorStatePtr)  // F2F8  F-LINE    FBcc.L
         b       take_fline
-        lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2F9  F-LINE    FBcc.L
+        lwz     rtn_addr, fbcc_l_stub(EmulatorStatePtr)  // F2F9  F-LINE    FBcc.L
         b       take_fline
-        lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2FA  F-LINE    FBcc.L
+        lwz     rtn_addr, fbcc_l_stub(EmulatorStatePtr)  // F2FA  F-LINE    FBcc.L
         b       take_fline
-        lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2FB  F-LINE    FBcc.L
+        lwz     rtn_addr, fbcc_l_stub(EmulatorStatePtr)  // F2FB  F-LINE    FBcc.L
         b       take_fline
-        lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2FC  F-LINE    FBcc.L
+        lwz     rtn_addr, fbcc_l_stub(EmulatorStatePtr)  // F2FC  F-LINE    FBcc.L
         b       take_fline
-        lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2FD  F-LINE    FBcc.L
+        lwz     rtn_addr, fbcc_l_stub(EmulatorStatePtr)  // F2FD  F-LINE    FBcc.L
         b       take_fline
-        lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2FE  F-LINE    FBcc.L
+        lwz     rtn_addr, fbcc_l_stub(EmulatorStatePtr)  // F2FE  F-LINE    FBcc.L
         b       take_fline
-        lwz     rtn_addr, 0x900(EmulatorStatePtr)       // F2FF  F-LINE    FBcc.L
+        lwz     rtn_addr, fbcc_l_stub(EmulatorStatePtr)  // F2FF  F-LINE    FBcc.L
         b       take_fline
 
 // ---- $F300-$F33F --------------------------------------------------------
@@ -2100,53 +2100,53 @@
         b       take_fline
         lwz     rtn_addr, fline_handler(EmulatorStatePtr)  // F407  ILLEGAL
         b       take_fline
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F408  CINVL     NC,(A0)
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F408  CINVL     NC,(A0)
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F409  CINVL     NC,(A1)
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F409  CINVL     NC,(A1)
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F40A  CINVL     NC,(A2)
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F40A  CINVL     NC,(A2)
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F40B  CINVL     NC,(A3)
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F40B  CINVL     NC,(A3)
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F40C  CINVL     NC,(A4)
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F40C  CINVL     NC,(A4)
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F40D  CINVL     NC,(A5)
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F40D  CINVL     NC,(A5)
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F40E  CINVL     NC,(A6)
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F40E  CINVL     NC,(A6)
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F40F  CINVL     NC,(A7)
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F40F  CINVL     NC,(A7)
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F410  CINVP     NC,(A0)
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F410  CINVP     NC,(A0)
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F411  CINVP     NC,(A1)
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F411  CINVP     NC,(A1)
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F412  CINVP     NC,(A2)
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F412  CINVP     NC,(A2)
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F413  CINVP     NC,(A3)
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F413  CINVP     NC,(A3)
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F414  CINVP     NC,(A4)
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F414  CINVP     NC,(A4)
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F415  CINVP     NC,(A5)
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F415  CINVP     NC,(A5)
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F416  CINVP     NC,(A6)
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F416  CINVP     NC,(A6)
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F417  CINVP     NC,(A7)
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F417  CINVP     NC,(A7)
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F418  CINVA     NC
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F418  CINVA     NC
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F419  CINVA     NC
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F419  CINVA     NC
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F41A  CINVA     NC
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F41A  CINVA     NC
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F41B  CINVA     NC
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F41B  CINVA     NC
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F41C  CINVA     NC
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F41C  CINVA     NC
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F41D  CINVA     NC
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F41D  CINVA     NC
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F41E  CINVA     NC
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F41E  CINVA     NC
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F41F  CINVA     NC
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F41F  CINVA     NC
         b       require_supervisor
         lwz     rtn_addr, fline_handler(EmulatorStatePtr)  // F420  ILLEGAL
         b       take_fline
@@ -2164,53 +2164,53 @@
         b       take_fline
         lwz     rtn_addr, fline_handler(EmulatorStatePtr)  // F427  ILLEGAL
         b       take_fline
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F428  CPUSHL    NC,(A0)
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F428  CPUSHL    NC,(A0)
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F429  CPUSHL    NC,(A1)
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F429  CPUSHL    NC,(A1)
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F42A  CPUSHL    NC,(A2)
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F42A  CPUSHL    NC,(A2)
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F42B  CPUSHL    NC,(A3)
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F42B  CPUSHL    NC,(A3)
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F42C  CPUSHL    NC,(A4)
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F42C  CPUSHL    NC,(A4)
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F42D  CPUSHL    NC,(A5)
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F42D  CPUSHL    NC,(A5)
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F42E  CPUSHL    NC,(A6)
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F42E  CPUSHL    NC,(A6)
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F42F  CPUSHL    NC,(A7)
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F42F  CPUSHL    NC,(A7)
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F430  CPUSHP    NC,(A0)
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F430  CPUSHP    NC,(A0)
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F431  CPUSHP    NC,(A1)
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F431  CPUSHP    NC,(A1)
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F432  CPUSHP    NC,(A2)
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F432  CPUSHP    NC,(A2)
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F433  CPUSHP    NC,(A3)
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F433  CPUSHP    NC,(A3)
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F434  CPUSHP    NC,(A4)
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F434  CPUSHP    NC,(A4)
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F435  CPUSHP    NC,(A5)
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F435  CPUSHP    NC,(A5)
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F436  CPUSHP    NC,(A6)
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F436  CPUSHP    NC,(A6)
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F437  CPUSHP    NC,(A7)
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F437  CPUSHP    NC,(A7)
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F438  CPUSHA    NC
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F438  CPUSHA    NC
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F439  CPUSHA    NC
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F439  CPUSHA    NC
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F43A  CPUSHA    NC
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F43A  CPUSHA    NC
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F43B  CPUSHA    NC
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F43B  CPUSHA    NC
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F43C  CPUSHA    NC
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F43C  CPUSHA    NC
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F43D  CPUSHA    NC
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F43D  CPUSHA    NC
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F43E  CPUSHA    NC
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F43E  CPUSHA    NC
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F43F  CPUSHA    NC
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F43F  CPUSHA    NC
         b       require_supervisor
 
 // ---- $F440-$F47F --------------------------------------------------------
@@ -2230,53 +2230,53 @@
         b       take_fline
         lwz     rtn_addr, fline_handler(EmulatorStatePtr)  // F447  ILLEGAL
         b       take_fline
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F448  CINVL     DC,(A0)
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F448  CINVL     DC,(A0)
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F449  CINVL     DC,(A1)
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F449  CINVL     DC,(A1)
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F44A  CINVL     DC,(A2)
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F44A  CINVL     DC,(A2)
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F44B  CINVL     DC,(A3)
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F44B  CINVL     DC,(A3)
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F44C  CINVL     DC,(A4)
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F44C  CINVL     DC,(A4)
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F44D  CINVL     DC,(A5)
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F44D  CINVL     DC,(A5)
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F44E  CINVL     DC,(A6)
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F44E  CINVL     DC,(A6)
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F44F  CINVL     DC,(A7)
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F44F  CINVL     DC,(A7)
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F450  CINVP     DC,(A0)
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F450  CINVP     DC,(A0)
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F451  CINVP     DC,(A1)
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F451  CINVP     DC,(A1)
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F452  CINVP     DC,(A2)
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F452  CINVP     DC,(A2)
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F453  CINVP     DC,(A3)
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F453  CINVP     DC,(A3)
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F454  CINVP     DC,(A4)
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F454  CINVP     DC,(A4)
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F455  CINVP     DC,(A5)
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F455  CINVP     DC,(A5)
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F456  CINVP     DC,(A6)
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F456  CINVP     DC,(A6)
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F457  CINVP     DC,(A7)
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F457  CINVP     DC,(A7)
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F458  CINVA     DC
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F458  CINVA     DC
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F459  CINVA     DC
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F459  CINVA     DC
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F45A  CINVA     DC
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F45A  CINVA     DC
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F45B  CINVA     DC
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F45B  CINVA     DC
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F45C  CINVA     DC
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F45C  CINVA     DC
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F45D  CINVA     DC
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F45D  CINVA     DC
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F45E  CINVA     DC
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F45E  CINVA     DC
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F45F  CINVA     DC
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F45F  CINVA     DC
         b       require_supervisor
         lwz     rtn_addr, fline_handler(EmulatorStatePtr)  // F460  ILLEGAL
         b       take_fline
@@ -2294,53 +2294,53 @@
         b       take_fline
         lwz     rtn_addr, fline_handler(EmulatorStatePtr)  // F467  ILLEGAL
         b       take_fline
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F468  CPUSHL    DC,(A0)
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F468  CPUSHL    DC,(A0)
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F469  CPUSHL    DC,(A1)
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F469  CPUSHL    DC,(A1)
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F46A  CPUSHL    DC,(A2)
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F46A  CPUSHL    DC,(A2)
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F46B  CPUSHL    DC,(A3)
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F46B  CPUSHL    DC,(A3)
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F46C  CPUSHL    DC,(A4)
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F46C  CPUSHL    DC,(A4)
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F46D  CPUSHL    DC,(A5)
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F46D  CPUSHL    DC,(A5)
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F46E  CPUSHL    DC,(A6)
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F46E  CPUSHL    DC,(A6)
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F46F  CPUSHL    DC,(A7)
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F46F  CPUSHL    DC,(A7)
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F470  CPUSHP    DC,(A0)
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F470  CPUSHP    DC,(A0)
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F471  CPUSHP    DC,(A1)
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F471  CPUSHP    DC,(A1)
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F472  CPUSHP    DC,(A2)
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F472  CPUSHP    DC,(A2)
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F473  CPUSHP    DC,(A3)
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F473  CPUSHP    DC,(A3)
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F474  CPUSHP    DC,(A4)
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F474  CPUSHP    DC,(A4)
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F475  CPUSHP    DC,(A5)
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F475  CPUSHP    DC,(A5)
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F476  CPUSHP    DC,(A6)
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F476  CPUSHP    DC,(A6)
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F477  CPUSHP    DC,(A7)
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F477  CPUSHP    DC,(A7)
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F478  CPUSHA    DC
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F478  CPUSHA    DC
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F479  CPUSHA    DC
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F479  CPUSHA    DC
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F47A  CPUSHA    DC
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F47A  CPUSHA    DC
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F47B  CPUSHA    DC
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F47B  CPUSHA    DC
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F47C  CPUSHA    DC
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F47C  CPUSHA    DC
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F47D  CPUSHA    DC
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F47D  CPUSHA    DC
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F47E  CPUSHA    DC
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F47E  CPUSHA    DC
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F47F  CPUSHA    DC
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F47F  CPUSHA    DC
         b       require_supervisor
 
 // ---- $F480-$F4BF --------------------------------------------------------
@@ -2360,53 +2360,53 @@
         b       take_fline
         lwz     rtn_addr, fline_handler(EmulatorStatePtr)  // F487  ILLEGAL
         b       take_fline
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F488  CINVL     IC,(A0)
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F488  CINVL     IC,(A0)
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F489  CINVL     IC,(A1)
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F489  CINVL     IC,(A1)
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F48A  CINVL     IC,(A2)
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F48A  CINVL     IC,(A2)
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F48B  CINVL     IC,(A3)
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F48B  CINVL     IC,(A3)
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F48C  CINVL     IC,(A4)
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F48C  CINVL     IC,(A4)
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F48D  CINVL     IC,(A5)
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F48D  CINVL     IC,(A5)
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F48E  CINVL     IC,(A6)
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F48E  CINVL     IC,(A6)
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F48F  CINVL     IC,(A7)
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F48F  CINVL     IC,(A7)
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F490  CINVP     IC,(A0)
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F490  CINVP     IC,(A0)
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F491  CINVP     IC,(A1)
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F491  CINVP     IC,(A1)
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F492  CINVP     IC,(A2)
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F492  CINVP     IC,(A2)
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F493  CINVP     IC,(A3)
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F493  CINVP     IC,(A3)
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F494  CINVP     IC,(A4)
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F494  CINVP     IC,(A4)
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F495  CINVP     IC,(A5)
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F495  CINVP     IC,(A5)
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F496  CINVP     IC,(A6)
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F496  CINVP     IC,(A6)
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F497  CINVP     IC,(A7)
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F497  CINVP     IC,(A7)
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F498  CINVA     IC
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F498  CINVA     IC
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F499  CINVA     IC
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F499  CINVA     IC
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F49A  CINVA     IC
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F49A  CINVA     IC
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F49B  CINVA     IC
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F49B  CINVA     IC
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F49C  CINVA     IC
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F49C  CINVA     IC
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F49D  CINVA     IC
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F49D  CINVA     IC
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F49E  CINVA     IC
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F49E  CINVA     IC
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F49F  CINVA     IC
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F49F  CINVA     IC
         b       require_supervisor
         lwz     rtn_addr, fline_handler(EmulatorStatePtr)  // F4A0  ILLEGAL
         b       take_fline
@@ -2424,53 +2424,53 @@
         b       take_fline
         lwz     rtn_addr, fline_handler(EmulatorStatePtr)  // F4A7  ILLEGAL
         b       take_fline
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4A8  CPUSHL    IC,(A0)
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F4A8  CPUSHL    IC,(A0)
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4A9  CPUSHL    IC,(A1)
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F4A9  CPUSHL    IC,(A1)
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4AA  CPUSHL    IC,(A2)
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F4AA  CPUSHL    IC,(A2)
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4AB  CPUSHL    IC,(A3)
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F4AB  CPUSHL    IC,(A3)
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4AC  CPUSHL    IC,(A4)
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F4AC  CPUSHL    IC,(A4)
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4AD  CPUSHL    IC,(A5)
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F4AD  CPUSHL    IC,(A5)
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4AE  CPUSHL    IC,(A6)
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F4AE  CPUSHL    IC,(A6)
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4AF  CPUSHL    IC,(A7)
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F4AF  CPUSHL    IC,(A7)
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4B0  CPUSHP    IC,(A0)
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F4B0  CPUSHP    IC,(A0)
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4B1  CPUSHP    IC,(A1)
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F4B1  CPUSHP    IC,(A1)
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4B2  CPUSHP    IC,(A2)
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F4B2  CPUSHP    IC,(A2)
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4B3  CPUSHP    IC,(A3)
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F4B3  CPUSHP    IC,(A3)
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4B4  CPUSHP    IC,(A4)
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F4B4  CPUSHP    IC,(A4)
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4B5  CPUSHP    IC,(A5)
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F4B5  CPUSHP    IC,(A5)
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4B6  CPUSHP    IC,(A6)
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F4B6  CPUSHP    IC,(A6)
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4B7  CPUSHP    IC,(A7)
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F4B7  CPUSHP    IC,(A7)
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4B8  CPUSHA    IC
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F4B8  CPUSHA    IC
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4B9  CPUSHA    IC
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F4B9  CPUSHA    IC
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4BA  CPUSHA    IC
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F4BA  CPUSHA    IC
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4BB  CPUSHA    IC
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F4BB  CPUSHA    IC
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4BC  CPUSHA    IC
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F4BC  CPUSHA    IC
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4BD  CPUSHA    IC
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F4BD  CPUSHA    IC
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4BE  CPUSHA    IC
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F4BE  CPUSHA    IC
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4BF  CPUSHA    IC
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F4BF  CPUSHA    IC
         b       require_supervisor
 
 // ---- $F4C0-$F4FF --------------------------------------------------------
@@ -2490,53 +2490,53 @@
         b       take_fline
         lwz     rtn_addr, fline_handler(EmulatorStatePtr)  // F4C7  ILLEGAL
         b       take_fline
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F4C8  CINVL     BC,(A0)
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F4C8  CINVL     BC,(A0)
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F4C9  CINVL     BC,(A1)
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F4C9  CINVL     BC,(A1)
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F4CA  CINVL     BC,(A2)
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F4CA  CINVL     BC,(A2)
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F4CB  CINVL     BC,(A3)
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F4CB  CINVL     BC,(A3)
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F4CC  CINVL     BC,(A4)
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F4CC  CINVL     BC,(A4)
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F4CD  CINVL     BC,(A5)
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F4CD  CINVL     BC,(A5)
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F4CE  CINVL     BC,(A6)
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F4CE  CINVL     BC,(A6)
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F4CF  CINVL     BC,(A7)
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F4CF  CINVL     BC,(A7)
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F4D0  CINVP     BC,(A0)
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F4D0  CINVP     BC,(A0)
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F4D1  CINVP     BC,(A1)
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F4D1  CINVP     BC,(A1)
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F4D2  CINVP     BC,(A2)
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F4D2  CINVP     BC,(A2)
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F4D3  CINVP     BC,(A3)
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F4D3  CINVP     BC,(A3)
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F4D4  CINVP     BC,(A4)
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F4D4  CINVP     BC,(A4)
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F4D5  CINVP     BC,(A5)
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F4D5  CINVP     BC,(A5)
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F4D6  CINVP     BC,(A6)
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F4D6  CINVP     BC,(A6)
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F4D7  CINVP     BC,(A7)
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F4D7  CINVP     BC,(A7)
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F4D8  CINVA     BC
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F4D8  CINVA     BC
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F4D9  CINVA     BC
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F4D9  CINVA     BC
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F4DA  CINVA     BC
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F4DA  CINVA     BC
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F4DB  CINVA     BC
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F4DB  CINVA     BC
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F4DC  CINVA     BC
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F4DC  CINVA     BC
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F4DD  CINVA     BC
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F4DD  CINVA     BC
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F4DE  CINVA     BC
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F4DE  CINVA     BC
         b       require_supervisor
-        lwz     rtn_addr, 0x93C(EmulatorStatePtr)       // F4DF  CINVA     BC
+        lwz     rtn_addr, cinv_handler(EmulatorStatePtr)  // F4DF  CINVA     BC
         b       require_supervisor
         lwz     rtn_addr, fline_handler(EmulatorStatePtr)  // F4E0  ILLEGAL
         b       take_fline
@@ -2554,119 +2554,119 @@
         b       take_fline
         lwz     rtn_addr, fline_handler(EmulatorStatePtr)  // F4E7  ILLEGAL
         b       take_fline
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4E8  CPUSHL    BC,(A0)
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F4E8  CPUSHL    BC,(A0)
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4E9  CPUSHL    BC,(A1)
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F4E9  CPUSHL    BC,(A1)
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4EA  CPUSHL    BC,(A2)
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F4EA  CPUSHL    BC,(A2)
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4EB  CPUSHL    BC,(A3)
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F4EB  CPUSHL    BC,(A3)
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4EC  CPUSHL    BC,(A4)
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F4EC  CPUSHL    BC,(A4)
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4ED  CPUSHL    BC,(A5)
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F4ED  CPUSHL    BC,(A5)
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4EE  CPUSHL    BC,(A6)
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F4EE  CPUSHL    BC,(A6)
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4EF  CPUSHL    BC,(A7)
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F4EF  CPUSHL    BC,(A7)
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4F0  CPUSHP    BC,(A0)
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F4F0  CPUSHP    BC,(A0)
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4F1  CPUSHP    BC,(A1)
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F4F1  CPUSHP    BC,(A1)
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4F2  CPUSHP    BC,(A2)
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F4F2  CPUSHP    BC,(A2)
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4F3  CPUSHP    BC,(A3)
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F4F3  CPUSHP    BC,(A3)
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4F4  CPUSHP    BC,(A4)
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F4F4  CPUSHP    BC,(A4)
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4F5  CPUSHP    BC,(A5)
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F4F5  CPUSHP    BC,(A5)
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4F6  CPUSHP    BC,(A6)
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F4F6  CPUSHP    BC,(A6)
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4F7  CPUSHP    BC,(A7)
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F4F7  CPUSHP    BC,(A7)
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4F8  CPUSHA    BC
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F4F8  CPUSHA    BC
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4F9  CPUSHA    BC
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F4F9  CPUSHA    BC
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4FA  CPUSHA    BC
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F4FA  CPUSHA    BC
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4FB  CPUSHA    BC
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F4FB  CPUSHA    BC
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4FC  CPUSHA    BC
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F4FC  CPUSHA    BC
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4FD  CPUSHA    BC
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F4FD  CPUSHA    BC
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4FE  CPUSHA    BC
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F4FE  CPUSHA    BC
         b       require_supervisor
-        lwz     rtn_addr, 0x940(EmulatorStatePtr)       // F4FF  CPUSHA    BC
+        lwz     rtn_addr, cpush_handler(EmulatorStatePtr)  // F4FF  CPUSHA    BC
         b       require_supervisor
 
 // ---- $F500-$F53F --------------------------------------------------------
-        lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F500  PFLUSHN   (A0)
+        lwz     rtn_addr, pflush_handler(EmulatorStatePtr)  // F500  PFLUSHN   (A0)
         b       require_supervisor
-        lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F501  PFLUSHN   (A1)
+        lwz     rtn_addr, pflush_handler(EmulatorStatePtr)  // F501  PFLUSHN   (A1)
         b       require_supervisor
-        lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F502  PFLUSHN   (A2)
+        lwz     rtn_addr, pflush_handler(EmulatorStatePtr)  // F502  PFLUSHN   (A2)
         b       require_supervisor
-        lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F503  PFLUSHN   (A3)
+        lwz     rtn_addr, pflush_handler(EmulatorStatePtr)  // F503  PFLUSHN   (A3)
         b       require_supervisor
-        lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F504  PFLUSHN   (A4)
+        lwz     rtn_addr, pflush_handler(EmulatorStatePtr)  // F504  PFLUSHN   (A4)
         b       require_supervisor
-        lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F505  PFLUSHN   (A5)
+        lwz     rtn_addr, pflush_handler(EmulatorStatePtr)  // F505  PFLUSHN   (A5)
         b       require_supervisor
-        lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F506  PFLUSHN   (A6)
+        lwz     rtn_addr, pflush_handler(EmulatorStatePtr)  // F506  PFLUSHN   (A6)
         b       require_supervisor
-        lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F507  PFLUSHN   (A7)
+        lwz     rtn_addr, pflush_handler(EmulatorStatePtr)  // F507  PFLUSHN   (A7)
         b       require_supervisor
-        lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F508  PFLUSH    (A0)
+        lwz     rtn_addr, pflush_handler(EmulatorStatePtr)  // F508  PFLUSH    (A0)
         b       require_supervisor
-        lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F509  PFLUSH    (A1)
+        lwz     rtn_addr, pflush_handler(EmulatorStatePtr)  // F509  PFLUSH    (A1)
         b       require_supervisor
-        lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F50A  PFLUSH    (A2)
+        lwz     rtn_addr, pflush_handler(EmulatorStatePtr)  // F50A  PFLUSH    (A2)
         b       require_supervisor
-        lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F50B  PFLUSH    (A3)
+        lwz     rtn_addr, pflush_handler(EmulatorStatePtr)  // F50B  PFLUSH    (A3)
         b       require_supervisor
-        lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F50C  PFLUSH    (A4)
+        lwz     rtn_addr, pflush_handler(EmulatorStatePtr)  // F50C  PFLUSH    (A4)
         b       require_supervisor
-        lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F50D  PFLUSH    (A5)
+        lwz     rtn_addr, pflush_handler(EmulatorStatePtr)  // F50D  PFLUSH    (A5)
         b       require_supervisor
-        lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F50E  PFLUSH    (A6)
+        lwz     rtn_addr, pflush_handler(EmulatorStatePtr)  // F50E  PFLUSH    (A6)
         b       require_supervisor
-        lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F50F  PFLUSH    (A7)
+        lwz     rtn_addr, pflush_handler(EmulatorStatePtr)  // F50F  PFLUSH    (A7)
         b       require_supervisor
-        lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F510  PFLUSHAN
+        lwz     rtn_addr, pflush_handler(EmulatorStatePtr)  // F510  PFLUSHAN
         b       require_supervisor
-        lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F511  PFLUSHAN
+        lwz     rtn_addr, pflush_handler(EmulatorStatePtr)  // F511  PFLUSHAN
         b       require_supervisor
-        lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F512  PFLUSHAN
+        lwz     rtn_addr, pflush_handler(EmulatorStatePtr)  // F512  PFLUSHAN
         b       require_supervisor
-        lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F513  PFLUSHAN
+        lwz     rtn_addr, pflush_handler(EmulatorStatePtr)  // F513  PFLUSHAN
         b       require_supervisor
-        lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F514  PFLUSHAN
+        lwz     rtn_addr, pflush_handler(EmulatorStatePtr)  // F514  PFLUSHAN
         b       require_supervisor
-        lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F515  PFLUSHAN
+        lwz     rtn_addr, pflush_handler(EmulatorStatePtr)  // F515  PFLUSHAN
         b       require_supervisor
-        lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F516  PFLUSHAN
+        lwz     rtn_addr, pflush_handler(EmulatorStatePtr)  // F516  PFLUSHAN
         b       require_supervisor
-        lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F517  PFLUSHAN
+        lwz     rtn_addr, pflush_handler(EmulatorStatePtr)  // F517  PFLUSHAN
         b       require_supervisor
-        lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F518  PFLUSHA
+        lwz     rtn_addr, pflush_handler(EmulatorStatePtr)  // F518  PFLUSHA
         b       require_supervisor
-        lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F519  PFLUSHA
+        lwz     rtn_addr, pflush_handler(EmulatorStatePtr)  // F519  PFLUSHA
         b       require_supervisor
-        lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F51A  PFLUSHA
+        lwz     rtn_addr, pflush_handler(EmulatorStatePtr)  // F51A  PFLUSHA
         b       require_supervisor
-        lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F51B  PFLUSHA
+        lwz     rtn_addr, pflush_handler(EmulatorStatePtr)  // F51B  PFLUSHA
         b       require_supervisor
-        lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F51C  PFLUSHA
+        lwz     rtn_addr, pflush_handler(EmulatorStatePtr)  // F51C  PFLUSHA
         b       require_supervisor
-        lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F51D  PFLUSHA
+        lwz     rtn_addr, pflush_handler(EmulatorStatePtr)  // F51D  PFLUSHA
         b       require_supervisor
-        lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F51E  PFLUSHA
+        lwz     rtn_addr, pflush_handler(EmulatorStatePtr)  // F51E  PFLUSHA
         b       require_supervisor
-        lwz     rtn_addr, 0x944(EmulatorStatePtr)       // F51F  PFLUSHA
+        lwz     rtn_addr, pflush_handler(EmulatorStatePtr)  // F51F  PFLUSHA
         b       require_supervisor
         lwz     rtn_addr, fline_handler(EmulatorStatePtr)  // F520  ILLEGAL
         b       take_fline
@@ -2750,21 +2750,21 @@
         b       take_fline
         lwz     rtn_addr, fline_handler(EmulatorStatePtr)  // F547  ILLEGAL
         b       take_fline
-        lwz     rtn_addr, 0x948(EmulatorStatePtr)       // F548  PTESTW    (A0)
+        lwz     rtn_addr, ptest_handler(EmulatorStatePtr)  // F548  PTESTW    (A0)
         b       require_supervisor
-        lwz     rtn_addr, 0x948(EmulatorStatePtr)       // F549  PTESTW    (A1)
+        lwz     rtn_addr, ptest_handler(EmulatorStatePtr)  // F549  PTESTW    (A1)
         b       require_supervisor
-        lwz     rtn_addr, 0x948(EmulatorStatePtr)       // F54A  PTESTW    (A2)
+        lwz     rtn_addr, ptest_handler(EmulatorStatePtr)  // F54A  PTESTW    (A2)
         b       require_supervisor
-        lwz     rtn_addr, 0x948(EmulatorStatePtr)       // F54B  PTESTW    (A3)
+        lwz     rtn_addr, ptest_handler(EmulatorStatePtr)  // F54B  PTESTW    (A3)
         b       require_supervisor
-        lwz     rtn_addr, 0x948(EmulatorStatePtr)       // F54C  PTESTW    (A4)
+        lwz     rtn_addr, ptest_handler(EmulatorStatePtr)  // F54C  PTESTW    (A4)
         b       require_supervisor
-        lwz     rtn_addr, 0x948(EmulatorStatePtr)       // F54D  PTESTW    (A5)
+        lwz     rtn_addr, ptest_handler(EmulatorStatePtr)  // F54D  PTESTW    (A5)
         b       require_supervisor
-        lwz     rtn_addr, 0x948(EmulatorStatePtr)       // F54E  PTESTW    (A6)
+        lwz     rtn_addr, ptest_handler(EmulatorStatePtr)  // F54E  PTESTW    (A6)
         b       require_supervisor
-        lwz     rtn_addr, 0x948(EmulatorStatePtr)       // F54F  PTESTW    (A7)
+        lwz     rtn_addr, ptest_handler(EmulatorStatePtr)  // F54F  PTESTW    (A7)
         b       require_supervisor
         lwz     rtn_addr, fline_handler(EmulatorStatePtr)  // F550  ILLEGAL
         b       take_fline
@@ -2814,21 +2814,21 @@
         b       take_fline
         lwz     rtn_addr, fline_handler(EmulatorStatePtr)  // F567  ILLEGAL
         b       take_fline
-        lwz     rtn_addr, 0x948(EmulatorStatePtr)       // F568  PTESTR    (A0)
+        lwz     rtn_addr, ptest_handler(EmulatorStatePtr)  // F568  PTESTR    (A0)
         b       require_supervisor
-        lwz     rtn_addr, 0x948(EmulatorStatePtr)       // F569  PTESTR    (A1)
+        lwz     rtn_addr, ptest_handler(EmulatorStatePtr)  // F569  PTESTR    (A1)
         b       require_supervisor
-        lwz     rtn_addr, 0x948(EmulatorStatePtr)       // F56A  PTESTR    (A2)
+        lwz     rtn_addr, ptest_handler(EmulatorStatePtr)  // F56A  PTESTR    (A2)
         b       require_supervisor
-        lwz     rtn_addr, 0x948(EmulatorStatePtr)       // F56B  PTESTR    (A3)
+        lwz     rtn_addr, ptest_handler(EmulatorStatePtr)  // F56B  PTESTR    (A3)
         b       require_supervisor
-        lwz     rtn_addr, 0x948(EmulatorStatePtr)       // F56C  PTESTR    (A4)
+        lwz     rtn_addr, ptest_handler(EmulatorStatePtr)  // F56C  PTESTR    (A4)
         b       require_supervisor
-        lwz     rtn_addr, 0x948(EmulatorStatePtr)       // F56D  PTESTR    (A5)
+        lwz     rtn_addr, ptest_handler(EmulatorStatePtr)  // F56D  PTESTR    (A5)
         b       require_supervisor
-        lwz     rtn_addr, 0x948(EmulatorStatePtr)       // F56E  PTESTR    (A6)
+        lwz     rtn_addr, ptest_handler(EmulatorStatePtr)  // F56E  PTESTR    (A6)
         b       require_supervisor
-        lwz     rtn_addr, 0x948(EmulatorStatePtr)       // F56F  PTESTR    (A7)
+        lwz     rtn_addr, ptest_handler(EmulatorStatePtr)  // F56F  PTESTR    (A7)
         b       require_supervisor
         lwz     rtn_addr, fline_handler(EmulatorStatePtr)  // F570  ILLEGAL
         b       take_fline
@@ -6244,7 +6244,7 @@
         b       take_fline
 
 // ---- $FC00-$FC3F --------------------------------------------------------
-        lwz     rtn_addr, 0x958(EmulatorStatePtr)       // FC00  F-LINE    cpID 6
+        lwz     rtn_addr, fc00_handler(EmulatorStatePtr)  // FC00  F-LINE    cpID 6
         b       take_fline
         lhz     immed_data, 4(a7)                       // FC01  F-LINE    cpID 6
         b       fc01_decode_sane_op
@@ -7284,13 +7284,13 @@
         b       take_fline
 
 // ---- $FE00-$FE3F --------------------------------------------------------
-        lwz     rtn_addr, 0x95C(EmulatorStatePtr)       // FE00  F-LINE    cpID 7
+        lwz     rtn_addr, fe00_handler(EmulatorStatePtr)  // FE00  F-LINE    cpID 7
         b       take_fline
         lwz     rtn_addr, mixed_mode_handler(EmulatorStatePtr)  // FE01  F-LINE    cpID 7
         b       fe01_mixed_mode
         lwz     data, native_return_entry(EmulatorStatePtr)  // FE02  F-LINE    cpID 7
         b       fe02_return_to_native
-        lwz     addr, 0x964(EmulatorStatePtr)           // FE03  F-LINE    cpID 7
+        lwz     addr, fe03_handler(EmulatorStatePtr)    // FE03  F-LINE    cpID 7
         b       fe03_execute_risc_context
         ori     rtn_addr, code_ptr, fe04_move_from_ecr - cb  // FE04  F-LINE    cpID 7
         b       fe04_fe05_move_ecr
@@ -7346,7 +7346,7 @@
         b       take_fline
         lwz     rtn_addr, 0x9D8(EmulatorStatePtr)       // FE1E  F-LINE    cpID 7
         b       take_fline
-        lwz     rtn_addr, 0x9DC(EmulatorStatePtr)       // FE1F  F-LINE    cpID 7
+        lwz     rtn_addr, mp_dispatch_handler(EmulatorStatePtr)  // FE1F  F-LINE    cpID 7
         b       fe1f_mp_dispatch
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // FE20  F-LINE    cpID 7
         b       fe20_rtas_dispatch

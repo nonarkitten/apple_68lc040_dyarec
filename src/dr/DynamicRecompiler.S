@@ -36,14 +36,14 @@ dr_translate:
         addi    pc, pc, -2                              // pc = address of the first instruction of the block
         lwz     rec_ptr, dr_records(EmulatorStatePtr)   // rec_ptr = start of the record array
         lwz     addr, dr_cache_ptr(EmulatorStatePtr)
-        sth     zero, 0xB28(EmulatorStatePtr)
-        sth     zero, 0xB2A(EmulatorStatePtr)
+        sth     zero, dr_stub_size(EmulatorStatePtr)
+        sth     zero, dr_needs_exit(EmulatorStatePtr)
         li      blk_ofs, 0
         lwz     base_disp, dr_code_base(EmulatorStatePtr)
         stw     addr, dr_emit_ptr(EmulatorStatePtr)
         addi    base_disp, base_disp, 0x280             // base of the pass-1 decoders and their tables
-        stw     zero, 0xB68(EmulatorStatePtr)
-        stw     zero, 0xBA8(EmulatorStatePtr)
+        stw     zero, dr_peek_resume(EmulatorStatePtr)
+        stw     zero, dr_branch_targets(EmulatorStatePtr)
         stw     zero, 0xBAC(EmulatorStatePtr)
         b       dr_scan_next
 
@@ -56,7 +56,7 @@ dr_scan_advance:
 // (out_ptr = emitter offset, immed_data = flags) and move to the next.
 dr_scan_store:
         btl     cr_special_event_pending, dr_translate_abort
-        lwz     addr, 0xB68(EmulatorStatePtr)
+        lwz     addr, dr_peek_resume(EmulatorStatePtr)
         sth     out_ptr, 4(rec_ptr)
         cmpwi   cr6, addr, 0
         cmpwi   cr7, blk_ofs, 120                       // a block is at most 120 bytes of 68K code
@@ -81,7 +81,7 @@ dr_scan_next:
 // recompiler at the following instruction.
 dr_scan_block_full:
         li      addr, 1
-        sth     addr, 0xB2A(EmulatorStatePtr)
+        sth     addr, dr_needs_exit(EmulatorStatePtr)
         sth     blk_ofs, 2(rec_ptr)
         ori     immed_data, zero, 0x8300
         li      out_ptr, 0x6330
@@ -96,14 +96,14 @@ dr_scan_block_full_L2:
         rlwinm  data, immed_data, 2, 21, 21             // data = immed_data[8] << 10
         andc    immed_data, immed_data, data            // immed_data = immed_data & ~data
         rlwinm  immed_data, immed_data, 24, 29, 29      // immed_data = immed_data[10] << 2
-        stw     zero, 0xB68(EmulatorStatePtr)
+        stw     zero, dr_peek_resume(EmulatorStatePtr)
         or      addr, addr, immed_data
         sth     addr, -12(rec_ptr)
         b       dr_scan_next
 
 // Pass 1: the instruction just decoded ends the block.
 dr_scan_end_block:
-        lwz     addr, 0xB68(EmulatorStatePtr)
+        lwz     addr, dr_peek_resume(EmulatorStatePtr)
         lhz     data, 2(rec_ptr)
         cmpwi   cr6, addr, 0
         sth     out_ptr, 4(rec_ptr)
@@ -111,7 +111,7 @@ dr_scan_end_block:
         ori     immed_data, immed_data, 0x8300
         mtcrf   0x08, immed_data                        // cr4 = immed_data[15:12]
         sth     immed_data, 0(rec_ptr)
-        stw     data, 0xB24(EmulatorStatePtr)
+        stw     data, dr_last_offset(EmulatorStatePtr)
         bgt     cr4, dr_scan_block_full_L1
         bne     cr4, dr_liveness
         addi    rec_ptr, rec_ptr, 12
@@ -122,12 +122,12 @@ dr_scan_end_block:
 // anything reads them.
 dr_liveness:
         btl     cr_special_event_pending, dr_translate_abort
-        lhz     addr, 0xB2A(EmulatorStatePtr)
+        lhz     addr, dr_needs_exit(EmulatorStatePtr)
         cmpwi   cr7, addr, 0
         lwz     immed_data, dr_records(EmulatorStatePtr)
         beq     cr7, dr_liveness_L1
         lwz     data, dr_emit_ptr(EmulatorStatePtr)
-        addi    addr, base_disp, 0x75AC
+        addi    addr, base_disp, dr_exit_to_interpreter - dr_line_0
         subf    addr, data, addr                        // addr = addr - data
         rlwinm  addr, addr, 0, 6, 29                    // addr = addr[25:2] << 2
         oris    addr, addr, 0x4800
@@ -136,7 +136,7 @@ dr_liveness:
         stw     data, dr_emit_ptr(EmulatorStatePtr)
 dr_liveness_L1:
         lwz     data, dr_emit_ptr(EmulatorStatePtr)
-        lhz     addr, 0xB28(EmulatorStatePtr)
+        lhz     addr, dr_stub_size(EmulatorStatePtr)
         add     data, addr, data
         stw     data, dr_emit_ptr(EmulatorStatePtr)
         li      addr, 0xC00
@@ -410,8 +410,8 @@ dr_line_6:
         cmpwi   cr6, addr, 255
         cmpwi   cr5, addr, 0
         li      rtn_addr, 1
-        lhz     addr, 0xB28(EmulatorStatePtr)
-        sth     rtn_addr, 0xB2A(EmulatorStatePtr)
+        lhz     addr, dr_stub_size(EmulatorStatePtr)
+        sth     rtn_addr, dr_needs_exit(EmulatorStatePtr)
         sth     addr, 6(rec_ptr)
         cmplwi  cr4, data, 0x0001
         li      out_ptr, dr_emit_bra_s - dr_emitters
@@ -825,11 +825,11 @@ dr_decode_move_b_mem_mem:
         cmpwi   cr7, addr, 0x66FC                       // is the next instruction BNE.S *-2 ?
         bnelr   cr7
         li      data, 1
-        lhz     addr, 0xB28(EmulatorStatePtr)
-        sth     data, 0xB2A(EmulatorStatePtr)
+        lhz     addr, dr_stub_size(EmulatorStatePtr)
+        sth     data, dr_needs_exit(EmulatorStatePtr)
         sth     addr, 6(rec_ptr)
         addi    addr, addr, 12
-        sth     addr, 0xB28(EmulatorStatePtr)
+        sth     addr, dr_stub_size(EmulatorStatePtr)
         li      out_ptr, dr_emit_move_b_bne_loop - dr_emitters  // the emitter for the pair
         li      immed_data, 0x2400                      // a control transfer that writes N, Z, V, C
         addi    blk_ofs, blk_ofs, 2                     // both instructions are consumed
@@ -1225,7 +1225,7 @@ dr_decode_jsr_jmp_mem_2:
 //     JMP (d16,PC)
 dr_decode_jsr_jmp_mem_3:
         li      data, 1
-        sth     data, 0xB2A(EmulatorStatePtr)
+        sth     data, dr_needs_exit(EmulatorStatePtr)
         lhzx    rtn_addr, pc, blk_ofs
         addi    blk_ofs, blk_ofs, 2
         mtcrf   0x01, rtn_addr                          // cr7 = rtn_addr[3:0]
@@ -1391,12 +1391,12 @@ dr_decode_dbcc_w_dn:
         li      data, 1
         rlwinm  addr, prefetch_data, 24, 28, 31         // addr = prefetch_data[11:8]
         cmpwi   cr7, addr, 1
-        lhz     addr, 0xB28(EmulatorStatePtr)
-        sth     data, 0xB2A(EmulatorStatePtr)
+        lhz     addr, dr_stub_size(EmulatorStatePtr)
+        sth     data, dr_needs_exit(EmulatorStatePtr)
         sth     addr, 6(rec_ptr)
         beq     cr7, dr_decode_dbf_w_dn
         addi    addr, addr, 32
-        sth     addr, 0xB28(EmulatorStatePtr)
+        sth     addr, dr_stub_size(EmulatorStatePtr)
 
 // The first pass comes here for 8 opcodes:
 //     DBF.W Dn,<label>
@@ -1464,16 +1464,16 @@ dr_decode_bra_bsr_etc_l:
         li      rtn_addr, 4
         mtcrf   0x01, prefetch_data                     // cr7 = prefetch_data[3:0]
         bso     cr7, dr_decode_bra_bsr_etc_s
-        lwz     data, 0xB68(EmulatorStatePtr)
+        lwz     data, dr_peek_resume(EmulatorStatePtr)
         blt     cr4, dr_decode_bra_bsr
         addi    out_ptr, out_ptr, 4
         cmpwi   cr7, data, 0
         beq     cr4, dr_decode_bra_bsr
         addi    out_ptr, out_ptr, 4
         bne     cr7, dr_scan_advance
-        sth     addr, 0xB28(EmulatorStatePtr)
+        sth     addr, dr_stub_size(EmulatorStatePtr)
         add     rtn_addr, blk_ofs, rtn_addr
-        stw     rtn_addr, 0xB68(EmulatorStatePtr)
+        stw     rtn_addr, dr_peek_resume(EmulatorStatePtr)
         b       dr_decode_bcc
 
 // The first pass comes here for 2032 opcodes:
@@ -1507,16 +1507,16 @@ dr_decode_bra_bsr_etc_w:
         li      rtn_addr, 2
         mtcrf   0x01, prefetch_data                     // cr7 = prefetch_data[3:0]
         bt_unlikely 4*cr7+so, dr_decode_bra_bsr_etc_s
-        lwz     data, 0xB68(EmulatorStatePtr)
+        lwz     data, dr_peek_resume(EmulatorStatePtr)
         blt     cr4, dr_decode_bra_bsr
         addi    out_ptr, out_ptr, 4
         cmpwi   cr7, data, 0
         beq     cr4, dr_decode_bra_bsr
         addi    out_ptr, out_ptr, 4
         bne     cr7, dr_scan_advance
-        sth     addr, 0xB28(EmulatorStatePtr)
+        sth     addr, dr_stub_size(EmulatorStatePtr)
         add     rtn_addr, blk_ofs, rtn_addr
-        stw     rtn_addr, 0xB68(EmulatorStatePtr)
+        stw     rtn_addr, dr_peek_resume(EmulatorStatePtr)
         b       dr_decode_bcc
 
 // The first pass comes here for 4064 opcodes:
@@ -1533,7 +1533,7 @@ dr_decode_bra_bsr_etc_s_2:
         lhzx    immed_data, data, rtn_addr
         li      rtn_addr, 0
         bt_unlikely 4*cr7+so, dr_decode_bra_bsr_etc_s
-        lwz     data, 0xB68(EmulatorStatePtr)
+        lwz     data, dr_peek_resume(EmulatorStatePtr)
         extsb   prefetch_data, prefetch_data            // prefetch_data = sign-extended low byte of prefetch_data
         blt     cr4, dr_decode_bra_bsr
         addi    out_ptr, out_ptr, 4
@@ -1541,8 +1541,8 @@ dr_decode_bra_bsr_etc_s_2:
         beq     cr4, dr_decode_bra_bsr
         addi    out_ptr, out_ptr, 4
         bne     cr7, dr_scan_store
-        sth     addr, 0xB28(EmulatorStatePtr)
-        stw     blk_ofs, 0xB68(EmulatorStatePtr)
+        sth     addr, dr_stub_size(EmulatorStatePtr)
+        stw     blk_ofs, dr_peek_resume(EmulatorStatePtr)
 
 // The first pass comes here for 28 opcodes:
 //     BHI.W <label>
@@ -8642,7 +8642,7 @@ dr_emit_cmpm_l_L9:
         crnot   4*cr6+gt, 4*cr6+lt
         bgt     cr6, dr_emit_cmpm_l_L12
         lwz     rtn_addr, 20(rec_ptr)
-        lwz     data, 0xB24(EmulatorStatePtr)
+        lwz     data, dr_last_offset(EmulatorStatePtr)
         cmpwi   cr4, rtn_addr, 0
         cmpw    cr5, rtn_addr, data
         cror    4*cr7+so, 4*cr4+lt, 4*cr5+gt            // cr7.so = cr4.lt | cr5.gt
@@ -11666,7 +11666,7 @@ dr_scc_sequences_L1:
 // tables and entered directly; otherwise the exception is taken.
 dr_aline_trap:
         crset   cr_dr_busy
-        lwz     addr, 0x720(EmulatorStatePtr)
+        lwz     addr, expected_aline_vector(EmulatorStatePtr)
         lha     data, 0(pc)
         lwz     rtn_addr, 40(vbr)
         mtcrf   0x04, data                              // cr5 = data[11:8]
@@ -11681,7 +11681,7 @@ dr_aline_trap_L1:
         bns     cr5, dr_aline_trap_L2
         mflr    base_disp
         bne     cr7, dr_aline_trap_L5
-        lwz     rtn_addr, 0x7B4(EmulatorStatePtr)
+        lwz     rtn_addr, os_trap_table(EmulatorStatePtr)
         lwzx    immed_data, immed_data, rtn_addr
         crclr   cr_dr_busy
         lwz     rtn_addr, dr_emitters - dr_emitters(base_disp)  // template: lwz addr, T_11598 - dr_emitters(base_disp)
@@ -11705,7 +11705,7 @@ dr_aline_trap_L1:
 dr_aline_trap_L2:
         mflr    base_disp
         bne     cr7, dr_aline_trap_L5
-        lwz     rtn_addr, 0x7B4(EmulatorStatePtr)
+        lwz     rtn_addr, os_trap_table(EmulatorStatePtr)
         lwzx    immed_data, immed_data, rtn_addr
         crclr   cr_dr_busy
         lwz     rtn_addr, dr_emitters - dr_emitters(base_disp)  // template: lwz addr, T_11598 - dr_emitters(base_disp)
@@ -11731,7 +11731,7 @@ dr_aline_trap_L3:
         addi    data, pc, 2
         bne     cr7, dr_aline_trap_L5
         lwz     rtn_addr, dr_emitters - dr_emitters(base_disp)  // template: lwz addr, T_11598 - dr_emitters(base_disp)
-        lwz     rtn_addr, 0x7B0(EmulatorStatePtr)
+        lwz     rtn_addr, toolbox_trap_table(EmulatorStatePtr)
         lwzx    immed_data, immed_data, rtn_addr
         crclr   cr_dr_busy
         addi    pc, immed_data, 2
@@ -11746,7 +11746,7 @@ dr_aline_trap_L3:
 dr_aline_trap_L4:
         mflr    base_disp
         bne     cr7, dr_aline_trap_L5
-        lwz     rtn_addr, 0x7B0(EmulatorStatePtr)
+        lwz     rtn_addr, toolbox_trap_table(EmulatorStatePtr)
         lwzx    immed_data, immed_data, rtn_addr
         crclr   cr_dr_busy
         lwz     rtn_addr, dr_emitters - dr_emitters(base_disp)  // template: lwz addr, T_11598 - dr_emitters(base_disp)
@@ -12548,7 +12548,7 @@ T_17690:
 T_17694:
         b       T_17694                                 // unconditional branch (used when chaining blocks)
 dr_templates_L1:
-        lwz     addr, 0xB24(EmulatorStatePtr)
+        lwz     addr, dr_last_offset(EmulatorStatePtr)
         cmpwi   cr7, rtn_addr, 0
         cmpw    cr6, rtn_addr, addr
         blt     cr7, dr_templates_L10
@@ -12815,7 +12815,7 @@ dr_lookup:
         addi    base_disp, base_disp, 8
         bt_unlikely 4*cr7+eq, dr_promote_hit
         mr      r23, base_disp                          // miss: remember where the search ended
-        sth     zero, 0xB34(EmulatorStatePtr)
+        sth     zero, dr_resume_offset(EmulatorStatePtr)
         b       dr_translate_miss_L1
 
 // Discard every translation.  The lookup table and then the page bitmap
@@ -12823,7 +12823,7 @@ dr_lookup:
 // between chunks; progress is kept in the state block so the work resumes
 // on the next dispatch.
 dr_flush_step:
-        lwz     addr, 0xB70(EmulatorStatePtr)
+        lwz     addr, dr_flush_table_left(EmulatorStatePtr)
         lwz     data, dr_hash_table(EmulatorStatePtr)
         cmplwi  cr6, addr, 0x0000
         li      rtn_addr, 32
@@ -12843,9 +12843,9 @@ dr_flush_step_L2:
         bdnz    dr_flush_step_L2                        // CTR -= 1; branch while CTR != 0
         b       dr_flush_step_L1
 dr_flush_step_L3:
-        lwz     addr, 0xB74(EmulatorStatePtr)
+        lwz     addr, dr_flush_bitmap_left(EmulatorStatePtr)
         lwz     data, dr_page_bitmap(EmulatorStatePtr)
-        lwz     rtn_addr, 0xB94(EmulatorStatePtr)
+        lwz     rtn_addr, dr_page_bitmap_blocks(EmulatorStatePtr)
         cmplwi  cr6, data, 0x0000
         cmplwi  cr7, addr, 0x0040
         subf    rtn_addr, addr, rtn_addr                // rtn_addr = rtn_addr - addr
@@ -12871,17 +12871,17 @@ dr_flush_step_L6:
 dr_flush_done:
         stw     zero, dr_invalidate_pending(EmulatorStatePtr)
         stw     zero, 0xB7C(EmulatorStatePtr)
-        stw     zero, 0xB70(EmulatorStatePtr)
-        stw     zero, 0xB74(EmulatorStatePtr)
+        stw     zero, dr_flush_table_left(EmulatorStatePtr)
+        stw     zero, dr_flush_bitmap_left(EmulatorStatePtr)
         lwz     addr, dr_cache_start(EmulatorStatePtr)
         stw     addr, dr_cache_ptr(EmulatorStatePtr)
         stw     zero, dr_flush_pending(EmulatorStatePtr)
         b       dr_lookup
 dr_flush_done_L1:
-        stw     addr, 0xB74(EmulatorStatePtr)
+        stw     addr, dr_flush_bitmap_left(EmulatorStatePtr)
         b       dr_flush_done_L3
 dr_flush_done_L2:
-        stw     addr, 0xB70(EmulatorStatePtr)
+        stw     addr, dr_flush_table_left(EmulatorStatePtr)
 dr_flush_done_L3:
         mfcr    rtn_addr
         rlwinm  rtn_addr, rtn_addr, 0, 6, 4             // rtn_addr = rtn_addr & 0xFBFFFFFF
@@ -13047,7 +13047,7 @@ dr_stale_block_L1:
 // No translation exists.  Choose a slot in the set (an empty one if there
 // is one, otherwise evict the last), then translate.
 dr_translate_miss:
-        sth     zero, 0xB34(EmulatorStatePtr)
+        sth     zero, dr_resume_offset(EmulatorStatePtr)
 dr_translate_miss_L1:
         lwzu    addr, -32(r23)
         lwzu    data, 8(r23)
@@ -13091,8 +13091,8 @@ dr_translate_done:
         crclr   cr_dr_busy
         lwz     data, dr_emit_ptr(EmulatorStatePtr)
         lwz     addr, dr_hash_slot(EmulatorStatePtr)
-        lhz     rtn_addr, 0xB34(EmulatorStatePtr)
-        sth     zero, 0xB34(EmulatorStatePtr)
+        lhz     rtn_addr, dr_resume_offset(EmulatorStatePtr)
+        sth     zero, dr_resume_offset(EmulatorStatePtr)
         stw     data, 4(addr)                           // slot: code address
         stw     pc, 0(addr)                             // slot: 68K address
         sth     zero, 0xB36(EmulatorStatePtr)
@@ -13118,11 +13118,11 @@ dr_translate_done:
         or      rtn_addr, rtn_addr, immed_data
         stwx    rtn_addr, data, addr
 dr_translate_done_L1:
-        lwz     rtn_addr, 0xB44(EmulatorStatePtr)
-        lwz     addr, 0xB38(EmulatorStatePtr)
-        lwz     data, 0xB3C(EmulatorStatePtr)
+        lwz     rtn_addr, dr_saved_cr(EmulatorStatePtr)
+        lwz     addr, dr_saved_addr(EmulatorStatePtr)
+        lwz     data, dr_saved_data(EmulatorStatePtr)
         mtcrf   0x0F, rtn_addr                          // cr4..cr7 = rtn_addr[15:0]
-        lwz     rtn_addr, 0xB40(EmulatorStatePtr)
+        lwz     rtn_addr, dr_saved_rtn_addr(EmulatorStatePtr)
         bctr
 dr_translate_done_L2:
         bl      dr_request_flush
@@ -13254,19 +13254,19 @@ dr_invalidate_range_L14:
 
 // Ask for the whole translation cache to be discarded.
 dr_request_flush:
-        lwz     data, 0xB94(EmulatorStatePtr)
+        lwz     data, dr_page_bitmap_blocks(EmulatorStatePtr)
         li      addr, 32
-        stw     addr, 0xB70(EmulatorStatePtr)
-        stw     data, 0xB74(EmulatorStatePtr)
+        stw     addr, dr_flush_table_left(EmulatorStatePtr)
+        stw     data, dr_flush_bitmap_left(EmulatorStatePtr)
         li      data, 1
         stw     data, dr_flush_pending(EmulatorStatePtr)
         blr
 
 dr_reset_requests:
         li      addr, 32
-        stw     addr, 0xB70(EmulatorStatePtr)
-        lwz     addr, 0xB94(EmulatorStatePtr)
-        stw     addr, 0xB74(EmulatorStatePtr)
+        stw     addr, dr_flush_table_left(EmulatorStatePtr)
+        lwz     addr, dr_page_bitmap_blocks(EmulatorStatePtr)
+        stw     addr, dr_flush_bitmap_left(EmulatorStatePtr)
         li      addr, 1
         stw     addr, dr_flush_pending(EmulatorStatePtr)
         li      addr, 32
@@ -13319,18 +13319,18 @@ dr_fault_fixup_L2:
 dr_fault_fixup_L3:
         mflr    rtn_addr
         crclr   cr_dr_busy
-        lhz     addr, 0xB34(EmulatorStatePtr)
-        sth     zero, 0xB34(EmulatorStatePtr)
+        lhz     addr, dr_resume_offset(EmulatorStatePtr)
+        sth     zero, dr_resume_offset(EmulatorStatePtr)
         stw     addr, 28(a7)
         bl      dr_request_flush
         mtlr    rtn_addr
-        lwz     addr, 0xB38(EmulatorStatePtr)
+        lwz     addr, dr_saved_addr(EmulatorStatePtr)
         stw     addr, 48(a7)
-        lwz     addr, 0xB3C(EmulatorStatePtr)
+        lwz     addr, dr_saved_data(EmulatorStatePtr)
         stw     addr, 52(a7)
-        lwz     addr, 0xB40(EmulatorStatePtr)
+        lwz     addr, dr_saved_rtn_addr(EmulatorStatePtr)
         stw     addr, 56(a7)
-        lwz     addr, 0xB44(EmulatorStatePtr)
+        lwz     addr, dr_saved_cr(EmulatorStatePtr)
         sth     addr, 44(EmulatorStatePtr)
         addi    pc, pc, 2
         lwz     r23, dr_dispatch_vector(EmulatorStatePtr)
@@ -13353,7 +13353,7 @@ dr_fault_redirect:
         lwz     data, 36(a7)
         ori     rtn_addr, rtn_addr, dr_resume_after_fault - dr_cb
         addi    data, data, 4
-        sth     data, 0xB34(EmulatorStatePtr)
+        sth     data, dr_resume_offset(EmulatorStatePtr)
         blr
 
 dr_resume_in_translator:
@@ -13361,11 +13361,11 @@ dr_resume_in_translator:
 
 dr_resume_after_fault:
         nop
-        stw     addr, 0xB38(EmulatorStatePtr)
-        stw     data, 0xB3C(EmulatorStatePtr)
+        stw     addr, dr_saved_addr(EmulatorStatePtr)
+        stw     data, dr_saved_data(EmulatorStatePtr)
         mfcr    data
-        stw     rtn_addr, 0xB40(EmulatorStatePtr)
-        stw     data, 0xB44(EmulatorStatePtr)
+        stw     rtn_addr, dr_saved_rtn_addr(EmulatorStatePtr)
+        stw     data, dr_saved_cr(EmulatorStatePtr)
         lwz     r23, dr_hash_table(EmulatorStatePtr)
         rlwimi  r23, pc, 4, 16, 26                      // r23[15:5] = pc[11:1]
         lwz     addr, 0(r23)
@@ -13386,15 +13386,15 @@ dr_resume_after_fault:
         b       dr_translate_miss_L1
 dr_resume_after_fault_L1:
         lwz     addr, 4(r23)
-        lhz     data, 0xB34(EmulatorStatePtr)
-        sth     zero, 0xB34(EmulatorStatePtr)
+        lhz     data, dr_resume_offset(EmulatorStatePtr)
+        sth     zero, dr_resume_offset(EmulatorStatePtr)
         add     addr, addr, data
-        lwz     rtn_addr, 0xB40(EmulatorStatePtr)
+        lwz     rtn_addr, dr_saved_rtn_addr(EmulatorStatePtr)
         mtctr   addr
-        lwz     addr, 0xB44(EmulatorStatePtr)
-        lwz     data, 0xB3C(EmulatorStatePtr)
+        lwz     addr, dr_saved_cr(EmulatorStatePtr)
+        lwz     data, dr_saved_data(EmulatorStatePtr)
         mtcrf   0x0F, addr                              // cr4..cr7 = addr[15:0]
-        lwz     addr, 0xB38(EmulatorStatePtr)
+        lwz     addr, dr_saved_addr(EmulatorStatePtr)
         bctr
 dr_resume_after_fault_L2:
         lwz     addr, 48(a7)
@@ -13402,7 +13402,7 @@ dr_resume_after_fault_L2:
         stw     addr, 48(a7)
         lwz     addr, 36(a7)
         lwz     rtn_addr, dr_code_base(EmulatorStatePtr)
-        sth     addr, 0xB34(EmulatorStatePtr)
+        sth     addr, dr_resume_offset(EmulatorStatePtr)
         ori     rtn_addr, rtn_addr, dr_resume_in_translator - dr_cb
         blr
 
@@ -13415,7 +13415,7 @@ dr_null_hook:
 // 2 KB for instruction records.  Then install the recompiler's entry
 // points in the state block in place of the stubs.
 dr_setup:
-        lwz     data, 0x7C0(EmulatorStatePtr)
+        lwz     data, dr_memory_base(EmulatorStatePtr)
         stw     data, dr_hash_table(EmulatorStatePtr)
         lis     addr, 0x0001
         ori     addr, addr, 0x0000
@@ -13427,8 +13427,8 @@ dr_setup:
         li      addr, 0x200
         add     data, data, addr
         stw     data, dr_cache_start(EmulatorStatePtr)
-        lwz     data, 0x7C0(EmulatorStatePtr)
-        lwz     addr, 0x7C4(EmulatorStatePtr)
+        lwz     data, dr_memory_base(EmulatorStatePtr)
+        lwz     addr, dr_memory_size(EmulatorStatePtr)
         add     data, data, addr
         lis     addr, 0x5FFF                            // 0x5FFFEFF0 holds the address of the kernel's SystemInfo record ...
         ori     addr, addr, 0xE000
@@ -13442,7 +13442,7 @@ dr_setup:
         srwi    addr, addr, 9
         addi    addr, addr, 255
         srwi    addr, addr, 8
-        stw     addr, 0xB94(EmulatorStatePtr)
+        stw     addr, dr_page_bitmap_blocks(EmulatorStatePtr)
         slwi    addr, addr, 5
         subf    rtn_addr, addr, rtn_addr                // rtn_addr = rtn_addr - addr
         lwz     addr, dr_cache_start(EmulatorStatePtr)
