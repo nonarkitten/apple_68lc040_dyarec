@@ -77,13 +77,14 @@ Legend: `[x]` done, `[~]` partly done, `[ ]` not started.
 - [ ] Confirm `Emulator.x` against an actual "Mac OS ROM" file with `tools/rominfo.py`
 
 ### Experiments
-- [x] Feasibility check for the two items below: see "The patent's recompiler: feasibility"
-      and `tools/patentmodel.py`
-- [ ] Reconstruct the hypothetical original Dynamic Recompiler from the patent by
-      using the Dynamic Recompiler to extract what the semantic routines might have been
-      and rebuild the Offset Table from that
-- [ ] Compare the performance of the reconstructed Dynamic Recompiler versus the one
-      that was shipped in ROMs; what was lost (if anything); what was gained (if anything)
+- [x] Feasibility of reconstructing the patent's recompiler: feasible only as a new
+      implementation derived from the interpreter (notes below)
+- [x] The patent's performance claims tested with a model instead
+      (`tools/patentmodel.py`, `docs/12-patents.md`): they hold, and the shipped design is
+      well ahead of the patent's except on call and return
+- Reconstructing the patent's recompiler in PowerPC code: **not pursued.** Renee,
+  October 2026: the model answers the question; building it is not expected to teach
+  more.
 
 ## How to continue
 
@@ -113,8 +114,8 @@ Legend: `[x]` done, `[~]` partly done, `[ ]` not started.
 
 **Verdict: feasible, as a new implementation in the manner of the patent, derived
 mechanically from the interpreter. Not as a recovery of Apple's code - none survives.
-A trace-driven model (`tools/patentmodel.py`) already answers the performance question
-to first order; building the real thing would refine the answer, not change it.**
+A trace-driven model (`tools/patentmodel.py`) answers the performance question, and the
+reconstruction was not pursued. The notes are kept in case that changes.**
 
 What US 5,790,825 describes (columns 5-10):
 
@@ -184,11 +185,12 @@ Limits to say out loud: the result would characterise the patent's design, not A
 lost code; the original's semantic routines, special-case encodings and tuning are
 unknown; `DISPATCH_NEXT_PC` in the model (12 instructions) is an assumption.
 
-Suggested order: (a) add the cycle and cache model to the simulator and re-run the
-comparison - cheap, and it tests the patent's own claim; (b) widen the set of programs
-beyond four loops; (c) only then build the reconstruction, if the modelled gap leaves
-anything to learn. It would be new code, not Apple's: where it lives (apart from
-`src/`, or another repository) is Renee's decision.
+Outcome of the cheap test (`docs/12-patents.md`, "The patent's performance claims"): by
+the patent's own way of counting cycles its two examples are reproduced on this image
+(`CLR.B D5`: 4 cycles against 2), its design is about 1.5 times faster than the
+interpreter over small loops, and the shipped recompiler is two to three times faster
+again, level only on a loop of calls and returns. A real cycle and cache model of a 603
+was not built.
 
 ## Leads not yet followed
 

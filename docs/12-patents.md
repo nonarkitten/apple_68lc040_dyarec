@@ -76,6 +76,8 @@ everything inside it.
 | — | Blocks are linked by patching exit calls into direct branches. Indirect exits have a one-entry inline cache. |
 | — | Range invalidation driven by 68K cache-flush operations; incremental, interruptible whole-cache flush; recovery from faults inside translated code. |
 | Figure 9: `update_nzvc_zero` in the interpreter path for `CLR.B` | Present at `06100` with exactly the instructions shown. |
+| Figure 10: the interpreter's routine for `ADDQ.W #4,D2` does its work and branches to `fetch` | The routine (`add_asl_w_any_d2`, `03888`) has the same four instructions with DECODE1, DECODE2, PREFETCH and DISPATCH interleaved among them, and does not go through `fetch`. |
+| Figure 10: the recompiler's semantic routine is the interpreter's routine ending in `blr` instead of the branch to `fetch` | No such routines exist in the image. |
 | Register names in the figures (`disp_table`, `prefetch_data`, `pc`, `cr_sp_event`, `ccr_x`, `immed_data`, `data`) | Same registers. The flag is called `cr_special_event_pending` in US 5,574,873 and that name is used here. |
 
 The credit string in the recompiler's code reads "Dynamic Recompilation by
@@ -84,6 +86,60 @@ with a design that was reworked after the patent was written. The
 patent's scheme is simple enough to translate without analysis; the
 scheme in the image spends more effort translating in order to produce
 better code and to use memory more economically.
+
+### The patent's performance claims
+
+The patent compares its recompiler with the interpreter on a PowerPC 603
+for two instructions. For `CLR.B D5` (Figure 9) it counts 4 cycles
+interpreted and 2 recompiled; for `ADDQ.W #4,D2` (Figure 10) it says
+that the recompiled path generally takes fewer cycles and touches two
+lines of the instruction cache where the interpreter touches three.
+
+Its counting can be stated as a rule: two instructions per cycle while
+execution runs straight on; a taken branch ends the pair; an
+unconditional branch, the never-taken test for special events and the
+return from a semantic routine are "folded out" and cost nothing. That
+is arithmetic, not a model of a 603, but it can be applied to code that
+exists. `tools/patentmodel.py` applies it to the interpreter and to the
+recompiler in this image as they execute in the simulator, and to the
+patent's entries as they would be: the dispatch table's first
+instruction, then the rest of the interpreter's routine without its
+dispatch sequence, in the entry or behind a call, as the patent's rules
+for inline entries decide.
+
+| | Interpreter in this image | Patent's entry |
+|---|---|---|
+| `CLR.B D5`: instructions, cycles, 32-byte lines of code | 7, 4, 2 | 4, 2, 1 |
+| `ADDQ.W #4,D2` | 10, 5, 3 | 9, 4, 2 |
+
+The figure of 4 cycles against 2 is reproduced. So are the three code
+lines against two, though for a different reason than the patent gives:
+this interpreter no longer branches to `fetch`, and its routine for
+`ADDQ.W` happens to straddle two lines.
+
+`CLR.B D5` is the best case, an instruction short enough to need no
+semantic routine. Over whole loops the advantage is smaller, and the
+recompiler that was shipped is further ahead of the patent's than the
+patent's is of the interpreter, except where the loop is dominated by a
+call and return, which the shipped recompiler passes through its
+run-time. Per iteration, in instructions and, after the stroke, cycles
+by the same rule:
+
+| Loop | 68K instructions | Interpreter | Patent's design | Shipped recompiler |
+|---|---|---|---|---|
+| `ADD.L`, `SUBQ.L`, `BNE` | 3 | 26 / 14 | 21 / 9 | 7 / 4 |
+| `MOVE.L (A0)+`, `ADD.L`, `MOVE.L (A1)+`, `DBRA` | 4 | 38 / 20 | 27 / 12 | 13 / 6 |
+| `BSR`, `ADDQ.L`, `ADD.L`, `RTS`, `DBRA` | 5 | 49 / 26 | 37 / 17 | 33 / 16 |
+| `CMP.L`, `BLE`, `ADDQ.L`, `SUBQ.L`, `BNE` | 5 | 47 / 24 | 36 / 17 | 9 / 5 |
+
+The patent's column is an estimate: its run-time routine
+`dispatch_next_pc`, for which the patent gives no code, is charged 12
+instructions whenever control leaves a 64-byte line or passes through
+`RTS`. The other two columns are counts of what the image executes.
+
+The price of the shipped design is in translating. Its translator
+executes between 80 and 115 PowerPC instructions for each 68K
+instruction; the patent claims fewer than twenty for its own.
 
 ## Using the patents with this source
 
