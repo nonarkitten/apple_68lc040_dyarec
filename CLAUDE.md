@@ -27,11 +27,13 @@ criterion is that the source reassembles to a byte-identical `Emulator.x`.
 ## Commands
 - `make`            assemble `src/` into `build/Emulator.x`
 - `make verify`     build and compare against `Emulator.x` (must print OK)
-- `make static-check`  cross-check code against the 68K instruction set (`tools/check.py`);
-                    must end with "OK: no unexplained disagreements"
+- `make static-check`  cross-check code against the 68K instruction set (`tools/check.py`,
+                    must end with "OK: no unexplained disagreements"), then source, tools and
+                    docs against each other (`tools/selfcheck.py`, must end with "OK")
+- `make check`      `verify` and `static-check`; run before every commit
 - `make test`       run 68K programs under the emulator in `tools/ppcsim.py`, interpreted and
-                    recompiled (`tools/selftest.py`); must end with "OK"
-- `make check`      all three of the above; run before every commit
+                    recompiled (`tools/selftest.py`); run it after changing the simulator or
+                    the tools built on it
 - `make fuzz`       random 68K programs, interpreter against recompiler (`tools/fuzz.py`);
                     known recompiler defects are excluded, so any difference is news
 - `python3 tools/check.py --translations`   also scan the recompiler's output for every opcode
@@ -65,9 +67,20 @@ so it understands only what the source already uses: instructions (four
 bytes), `.long`, `.short`, `.byte`, `.ascii`, `.space` and `ALIGN(n)`. A
 label is a line of its own ending in a colon.
 
+## Scope
+The project is closed out (October 2026): the annotation is complete, the
+generator is retired, and testing is static by decision - byte identity,
+structural checks of the code, and consistency of source, tools and docs.
+Checking that Apple's emulator computes correctly is out of scope here; the
+simulator, self-test and fuzzer exist and are kept working, but are not to
+be extended in this repository. Open ideas are parked in `TODO.md`.
+
 ## Rules
 1. `make check` must pass before committing. A change that breaks the byte
-   comparison is wrong by definition.
+   comparison is wrong by definition. `tools/selfcheck.py` holds the docs to
+   the source: when a label is renamed or moved, the references to it have
+   to follow, and a new term in code style that looks like a label may need
+   adding to its list of other terms.
 2. Edits to `src/` change names, comments and layout only. Never change what
    assembles: `make verify` is the guard, and nothing else is.
 3. `docs/` is final, technical and impersonal. No speculation, no progress

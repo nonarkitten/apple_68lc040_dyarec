@@ -22,11 +22,11 @@ Homebrew locations; set `LLVM_BIN` to its `bin` directory otherwise.
 |---|---|
 | `make` | Assemble `src/` into `build/Emulator.x` |
 | `make verify` | Build, then compare `build/Emulator.x` with `./Emulator.x` |
-| `make static-check` | Cross-check the code against the 68K instruction set ([14-static-checks.md](14-static-checks.md)) |
+| `make static-check` | Cross-check the code against the 68K instruction set, and the source, tools and documentation against each other ([14-static-checks.md](14-static-checks.md)) |
 | `make test` | Run 68K test programs under the emulator, interpreted and recompiled, in a simulator ([11-testing-gaps.md](11-testing-gaps.md)) |
 | `make fuzz` | Run 2,000 random 68K programs both ways and compare ([14-static-checks.md](14-static-checks.md)) |
 | `make listing` | Write `build/Emulator.lst`, a disassembly of the result with offsets and symbols |
-| `make check` | `verify`, `static-check` and `test` |
+| `make check` | `verify` and `static-check` |
 | `make clean` | Remove `build/` |
 
 A successful verification prints
@@ -180,6 +180,7 @@ Only the LLVM build has been verified.
 | `tools/show.py START [END] [-x]` | Part of the source with offsets; `-x` adds the instruction words |
 | `tools/image.py` | A library: labels and data ranges, read from `src/` |
 | `tools/m68k.py WORD…` | Decode 68K opcode words |
+| `tools/selfcheck.py [-v]` | The consistency checks: labels against the assembler's symbol table, factual comments against the table, documentation references against the source |
 | `tools/check.py [-v] [--translations]` | The static checks; `-v` lists individual opcodes, `--translations` also examines the recompiler's output for every instruction (about half a minute) |
 | `tools/fuzz.py [COUNT] [--seed N] [--length N] [--known] [--rom ROM]` | Random programs, interpreter against recompiler; with `--rom`, of the build in a ROM image |
 | `tools/rominfo.py ROM…` | Where a ROM maps the emulator, and which build it contains ([13-rom-context.md](13-rom-context.md)) |

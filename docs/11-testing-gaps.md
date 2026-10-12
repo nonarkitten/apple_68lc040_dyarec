@@ -153,7 +153,15 @@ ROM's data structures. Test programs should avoid them, except the
 self-contained ones: `FE08`/`FE09` (time base) and `FE0B`–`FE0E` (cache
 operations).
 
-## What remains
+## What is not tested
+
+The checks this project maintains are static
+([14-static-checks.md](14-static-checks.md)): they establish that the
+source is the original binary and that source, tools and documentation
+agree, and they examine the structure of the code. Executing the
+emulator goes as far as the tools above and no further. Whether the
+emulator computes the right result for every instruction is not
+established here, and would need the following.
 
 1. **A reference to compare against.** The self-test's expected values
    were derived by hand, which limits it to small programs. Running a

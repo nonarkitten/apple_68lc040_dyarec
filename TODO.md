@@ -1,99 +1,84 @@
 # TODO
 
-Progress tracking and open questions. Finished, reader-facing material is in
-`docs/`; workflow rules are in `CLAUDE.md`.
+Status and open questions. Finished, reader-facing material is in `docs/`;
+workflow rules are in `CLAUDE.md`.
 
-## Checklist
+## Status: closed out (October 2026)
 
-Legend: `[x]` done, `[~]` partly done, `[ ]` not started.
+The source reassembles to `Emulator.x`, every routine is named and the code is
+commented, the documentation is complete, and the checks are static by decision.
+What follows is a record of what was done, what was deliberately left, and ideas
+that belong to later work.
 
 ### Done
 - [x] `src/` reassembles to a byte-identical `Emulator.x` (`make verify`)
-- [x] Registers, CR flags and state fields named; every dispatch table entry commented
-- [x] Interpreter core: dispatch, effective addresses, condition codes, exceptions, entry
-- [x] Privileged instructions: SR writes, RTE, MOVEC, CHK, format 2 exceptions
-- [x] Recompiler: run-time, cache management, structure of the translator
-- [x] Recompiler's 142 code generators named from the instructions they translate
-- [x] Kernel interface and ROM context, checked against a ROM and the kernel's disassembly
-- [x] Documentation set (`docs/`, 15 chapters)
-- [x] Static checker (`make static-check`): legality, `rtn_addr`, instruction length,
-      and the recompiler's lengths and flag decisions
-- [x] PowerPC simulator; 68K programs run under the emulator, interpreted and recompiled
-      (`make test`, `tools/run68k.py`); the translator's output can be inspected
-      (`tools/drtranslate.py`)
-- [x] Source of `Emulator.x` identified; licence and notice in place
+- [x] Registers, CR flags and about 130 state fields named; every dispatch table entry
+      commented
+- [x] Interpreter: dispatch, effective addresses, condition codes, exceptions and their
+      frames (formats 0, 1, 2, 4, `$B`, `$E`), privileged instructions, the intricate
+      instructions (MOVEM, long multiply/divide, bit fields, BCD, CAS, CHK2, MOVE16)
+- [x] Apple's private opcodes, with Apple's names from the SuperMario sources (SANE, the
+      trap dispatcher's exit, BlockMove, emulator control registers)
+- [x] Recompiler: run-time, cache management, translator; decoders and emitters named and
+      commented by running them; fault recovery; compare-and-branch fusion
+- [x] Kernel interface and ROM context, checked against two ROMs and the kernel's sources
 - [x] Builds compared (first recompiling build, G3, `Emulator.x`): `tools/buildcmp.py`,
       `docs/15-build-history.md`
-- [x] Apple's private opcodes named from the SuperMario sources (SANE, the trap
-      dispatcher's exit, BlockMove, emulator control registers)
-- [x] Annotation pass: every routine named; the recompiler's decoders and emitters made
-      legible by running them; the intricate interpreter routines described
+- [x] The patents: cross-reference, and the recompiler patent's performance claims tested
+      with a model (`tools/patentmodel.py`, `docs/12-patents.md`)
+- [x] Documentation set (`docs/`, 15 chapters)
+- [x] Static checks (`make static-check`): the code against the 68K instruction set
+      (`tools/check.py`), and source, tools and documentation against each other
+      (`tools/selfcheck.py`)
+- [x] PowerPC simulator, self-test and fuzzer: built along the way, found the defects in
+      `docs/14-static-checks.md`, kept working, not being extended here
+- [x] Generator retired: `src/` is the source
+- [x] Source of `Emulator.x` identified; licence and notice in place
 
-### Source legibility
-- [x] Labels: three address-style labels remain; about 1,400 are `<routine>_L<n>`, which
-      is where things stay unless a name helps
-- [~] `EmulatorState` fields: about 120 named. What is left numeric is mostly the kernel's
-      side of the context block and fields used once
-- [x] Symbolic template loads and operand emitter tables in the recompiler; every
-      emitter's header shows a translation
+### Left as it is, by decision
+- Branch targets inside a routine are `<routine>_L<n>`.
+- Most of the recompiler's code generators are commented by their templates and the
+  example in their header, not line by line. The SANE arithmetic (`FC04`, `FC06`,
+  `FC08`-`FC0F`) is named and outlined, not read line by line.
+- A few dozen state block fields used once are still numbers.
+- **Testing is static.** Whether Apple's emulator computes correctly is not this
+  project's question (Renee, October 2026). The simulator, self-test and fuzzer stay
+  as they are.
+- **The patent's recompiler is not reconstructed.** The model answered the question
+  (notes below).
 
-### Interpreter still to read
-- [x] Bit fields, BCD, MOVEM, MOVE16, CAS, CHK2/CMP2, long multiply/divide: read and
-      described in block comments
-- [~] Private opcodes: all named (Apple's names from SuperMario) and described; the SANE
-      arithmetic (`FC04`, `FC06`, `FC08`-`FC0F`, 4 KB) is not read line by line
-- [x] The routines behind the forty FPU handler slots: they build the 68LC040's format 4
-      frame (`docs/06-exceptions.md`). Nothing in the image or the ROMs calls `install_exception_stubs`
-- [ ] Mixed mode: the layout of the native context block and the format `$E` frame
+### Parked for later work (the ARM project)
+Ideas for dynamic testing, recorded so that they need not be thought of twice:
+- Extend the fuzzer: loops (`DBcc`, backward `Bcc` with bounded counts), `BSR`/`RTS`,
+  programs longer than one block, self-modifying code announced with `FC16`, and
+  compare-and-branch pairs (the recompiler fuses `CMP` with `Bcc`).
+- Compare against an independent 68K emulator on a real instruction test suite.
+- Extend the simulator harness with the kernel's side: faults to
+  `native_exception_handler`, interrupts, `ReturnFromException` (so that `EmEntry` can
+  be used), then odd-address detection.
+- A cycle and cache model in `tools/ppcsim.py`.
 
-### Recompiler still to read
-- [x] Pass-1 decoders and their helpers: named from traces, shared helpers read
-- [~] Code emitters (`11338`-`17640`): legible now (templates, examples, operand emitters)
-      but commented by hand only where something was being looked for
-- [ ] Fault recovery in translated code, line by line
+### Could still be done here, none of it needed
+- `tools/drmap.py` scans with extension words of zero; three decisions depend on them
+  (`docs/09-dynamic-recompiler.md`, "What is translated"). `tools/check.py` could scan a
+  second time with non-zero words.
+- Extend `tools/check.py`: condition-code effects of interpreter routines, registers
+  written, loops.
+- Try the build with GNU binutils as a second assembler.
+- Compare the builds in between (Performa 6400, PowerBook 1400, Power Mac 6500) and the
+  NuBus interpreter-only builds; those ROM images are no longer here. `tools/buildcmp.py`
+  takes any ROM.
+- Confirm `Emulator.x` against an actual "Mac OS ROM" file with `tools/rominfo.py`.
 
-### Testing
-- [x] Differential fuzzer (`make fuzz`): interpreter against recompiler on random
-      straight-line programs; found two recompiler defects, clean otherwise
-- [ ] Extend the fuzzer: loops (`DBcc`, backward `Bcc` with bounded counts), `BSR`/`RTS`,
-      programs longer than one block, self-modifying code announced with `FC16`, and
-      compare-and-branch pairs (the recompiler treats `CMP` + signed `Bcc` specially)
-- [ ] `tools/drmap.py` scans with extension words of zero; three decisions depend on them
-      (`docs/09-dynamic-recompiler.md`, "What is translated"). `tools/check.py` could scan a second time with
-      non-zero words
-- [ ] Compare against an independent 68K emulator on a real instruction test suite
-- [ ] Extend the simulator harness with the kernel's side: faults to
-      `native_exception_handler`, interrupts, `ReturnFromException` (so that `EmEntry`
-      can be used), then odd-address detection
-- [ ] Extend `tools/check.py`: condition-code effects of interpreter routines, registers
-      written, loops
-- [ ] Try the build with GNU binutils as a second assembler
-
-### History
-- [x] Diff the builds (first PCI, G3, `Emulator.x`): what did the tuning change?
-- [ ] The same for the builds in between (Performa 6400, PowerBook 1400, Power Mac 6500)
-      and for the NuBus interpreter-only builds; those ROM images are no longer here.
-      `tools/buildcmp.py` takes any ROM
-- [ ] Confirm `Emulator.x` against an actual "Mac OS ROM" file with `tools/rominfo.py`
-
-### Experiments
-- [x] Feasibility of reconstructing the patent's recompiler: feasible only as a new
-      implementation derived from the interpreter (notes below)
-- [x] The patent's performance claims tested with a model instead
-      (`tools/patentmodel.py`, `docs/12-patents.md`): they hold, and the shipped design is
-      well ahead of the patent's except on call and return
-- Reconstructing the patent's recompiler in PowerPC code: **not pursued.** Renee,
-  October 2026: the model answers the question; building it is not expected to teach
-  more.
-
-## How to continue
+## How to make a change
 
 1. `make check` should print `OK` three times.
 2. To name or comment code: `python3 tools/show.py START +40` (offset or label) finds it;
    edit `src/`; `make check`; commit.
 3. To find out what a piece of 68K code does under the emulator, run it:
    `tools/run68k.py`, or `tools/drtranslate.py` for the recompiler's output.
-4. If a finding changes what the docs say, change the docs in the same commit.
+4. If a finding changes what the docs say, change the docs in the same commit;
+   `tools/selfcheck.py` will complain about a renamed label that the docs still use.
 
 ## Decisions
 
@@ -101,6 +86,8 @@ Legend: `[x]` done, `[~]` partly done, `[ ]` not started.
   `annotations/` are in the history up to commit "Read labels and data ranges from src/
   itself". The tools read labels and data ranges from `src/` (`tools/image.py`).
 - **Local labels**: `<routine>_L<n>` is how they stay.
+- **Testing**: static only. Dynamic and correctness testing belongs to the ARM work.
+- **Patent reconstruction**: not pursued; the model in `tools/patentmodel.py` stands.
 - **External names**: use the kernel's and Mac OS's conventional names, saying
   how each is known. Reference: https://github.com/elliotnunn/powermac-rom.
 - **Automatic handler names**: fine as they are.

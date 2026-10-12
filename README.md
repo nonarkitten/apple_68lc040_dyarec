@@ -77,11 +77,15 @@ named, and most of the recompiler's code generators are commented only
 by what they emit. See [TODO.md](TODO.md).
 
 `make static-check` cross-checks the code against the 68K instruction
-set without running it, and `make fuzz` runs random 68K programs through
-both the interpreter and the recompiler and compares the results.
-Between them they found four genuine (and harmless) defects in Apple's
-code — one in the interpreter and three in the recompiler — which are
-written up in [docs/14-static-checks.md](docs/14-static-checks.md).
+set without running it, and checks the source, the tools and the
+documentation against each other. `make fuzz` runs random 68K programs
+through both the interpreter and the recompiler and compares the
+results. Between them they found four genuine (and harmless) defects in
+Apple's code — one in the interpreter and three in the recompiler — and
+reading turned up a fifth; they are written up in
+[docs/14-static-checks.md](docs/14-static-checks.md). Testing stops
+there by intent: this is a reference for how the emulator works, not a
+verification of it.
 
 The emulator can also be *run*. A small PowerPC simulator in `tools/`
 executes it without a kernel or ROM:
