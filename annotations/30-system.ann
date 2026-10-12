@@ -34,7 +34,7 @@
     the instruction's handler from the state block into rtn_addr.  Continue
     there if in supervisor state.
 
-@0DB44 fe1f_call_handler
+@0DB44
     Private opcode FE1F.  The table entry has loaded rtn_addr from handler
     slot +0x9DC, which defaults to kcall_mp_dispatch (kernel service 8,
     MPDispatch).  The handler is called with D0, A0, D1, A1, D2, A2, D3 and

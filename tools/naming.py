@@ -132,6 +132,16 @@ def routine_name(opcodes):
     return '_'.join(parts)
 
 
+def private_name(opcodes):
+    """Name for a routine used only by Apple's private opcodes (FCxx and
+    FExx, docs/08-native-interface.md), or None.  They are named after the
+    opcodes, which is all that can be said without reading them."""
+    if not all(opcode >= 0xFC00 for opcode in opcodes):
+        return None
+    return 'private_' + '_'.join('%04x' % opcode for opcode in opcodes[:2]) + (
+        '_etc' if len(opcodes) > 2 else '')
+
+
 def ea_routine_name(opcodes, fetches, size_hint=None):
     """Name for an effective address routine, or None if the opcodes do not
     share one addressing mode."""
@@ -157,7 +167,14 @@ def assign(generator, direct, continuation, ea_users):
     ea_users      addr -> opcodes that branch there with rtn_addr loaded
     """
     proposals = {}
+    for source in (direct, continuation):
+        for addr, opcodes in source.items():
+            name = private_name(sorted(opcodes))
+            if name:
+                proposals.setdefault(addr, name)
     for addr, opcodes in direct.items():
+        if addr in proposals:
+            continue
         # An effective address routine moves rtn_addr to LR or CTR so that
         # it can "return" into the operation routine; failing that, a
         # routine every user enters with rtn_addr loaded is one too.

@@ -128,7 +128,9 @@ with the files in `annotations/`:
 | `*.ann` | Labels, block comments and end-of-line comments, keyed by offset |
 
 Routines reached from the dispatch table are named automatically
-(`tools/naming.py`) unless an annotation names them. Automatic comments
+(`tools/naming.py`) unless an annotation names them: after the
+instructions that use them, or, for Apple's private opcodes, after the
+opcode (`private_fe0f`). Automatic comments
 come from `gen.py`; an annotation for the same offset replaces them.
 
 The generator cannot produce wrong code silently: it only writes

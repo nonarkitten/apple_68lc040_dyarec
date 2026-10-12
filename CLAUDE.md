@@ -105,6 +105,7 @@ A new register or state-field name must be added to `src/include/*.inc`
 - Old-style branch prediction hints are spelled with `_likely` / `_unlikely`
   macros (`src/include/Macros.inc`).
 - Routines reached from the dispatch table are named by `tools/naming.py`
-  unless an annotation names them. `cea_`/`fea_` = effective address routines.
+  unless an annotation names them. `cea_`/`fea_` = effective address routines;
+  `private_fe0f` = the routine of private opcode FE0F.
 - Labels without a meaningful name yet look like `L_0C458` (their offset);
   `op_XXXX` is the dispatch table entry for opcode XXXX.

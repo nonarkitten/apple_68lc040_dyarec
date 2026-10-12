@@ -29,10 +29,6 @@ Legend: `[x]` done, `[~]` partly done, `[ ]` not started.
 - [~] Labels: 160 address-style labels (`L_xxxxx`) remain, nearly all in the recompiler's
       decoder helpers (`10680`-`11037`); 1,355 others are `<routine>_L<n>` and could be
       given real names where it helps
-- [ ] Automatic names that are wrong rather than clumsy: `tools/naming.py` calls a routine
-      `cea_`/`fea_` when it looks like an effective address routine. `cea_x_37` was really
-      private opcode `FE1F` (now `fe1f_call_handler`); the other `fline_NN` and `cea_x_NN`
-      routines after `0D700` deserve the same look
 - [~] `EmulatorState` fields: about 75 named, the rest still numeric
 - [ ] Symbolic offsets in the recompiler's descriptor tables (`16E48`, `17228`, `17470`)
       and in its template loads (`lwz addr, 0x1774(base_disp)` and the like)
