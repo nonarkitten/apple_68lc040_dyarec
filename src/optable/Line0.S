@@ -7061,8 +7061,8 @@ op_0CD7:
         b       take_illegal_instruction
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 0CFB  CAS.W     Dc,Du,(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x890(EmulatorStatePtr)       // 0CFC  CAS2.W    Dc1:Dc2,Du1:Du2,(Rn1):(Rn2)
-        b       cea_x_74
+        lwz     rtn_addr, cas2_w_handler(EmulatorStatePtr)  // 0CFC  CAS2.W    Dc1:Dc2,Du1:Du2,(Rn1):(Rn2)
+        b       cas2
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 0CFD  CAS.W     Dc,Du,<ea 7.5>   (illegal)
         b       take_illegal_instruction
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 0CFE  CAS.W     Dc,Du,<ea 7.6>   (illegal)
@@ -8133,8 +8133,8 @@ op_0ED7:
         b       take_illegal_instruction
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 0EFB  CAS.L     Dc,Du,(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x894(EmulatorStatePtr)       // 0EFC  CAS2.L    Dc1:Dc2,Du1:Du2,(Rn1):(Rn2)
-        b       cea_x_74
+        lwz     rtn_addr, cas2_l_handler(EmulatorStatePtr)  // 0EFC  CAS2.L    Dc1:Dc2,Du1:Du2,(Rn1):(Rn2)
+        b       cas2
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 0EFD  CAS.L     Dc,Du,<ea 7.5>   (illegal)
         b       take_illegal_instruction
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 0EFE  CAS.L     Dc,Du,<ea 7.6>   (illegal)

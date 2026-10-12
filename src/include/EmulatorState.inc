@@ -102,6 +102,8 @@
 #define cas_b_handler           0x884   // called by CAS, by size
 #define cas_w_handler           0x888
 #define cas_l_handler           0x88C
+#define cas2_w_handler          0x890   // called by CAS2, by size
+#define cas2_l_handler          0x894
 #define movec_to_handler        0x87C   // MOVEC Rn,Rc
 #define fbcc_w_stub             0x8FC   // FBcc.W: one of the forty exception stubs (install_exception_stubs)
 #define fbcc_l_stub             0x900   // FBcc.L

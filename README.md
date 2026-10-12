@@ -19,7 +19,7 @@ from the kernel (see [docs/11-testing-gaps.md](docs/11-testing-gaps.md)).
 | Path | Contents |
 |---|---|
 | [`docs/`](docs/README.md) | How the emulator works: registers, dispatch, addressing modes, condition codes, exceptions, state layout, the kernel interface, the recompiler |
-| `src/` | The assembly source: about 42,000 lines of emulator and a 135,000-line dispatch table, with role names for registers, labels, and comments |
+| `src/` | The assembly source: about 46,000 lines of emulator and a 135,000-line dispatch table, with role names for registers, labels, and comments |
 | `Emulator.x` | The original binary (an XCOFF object extracted from the ROM), kept as the reference |
 | `annotations/`, `tools/` | The labels and comments, and the Python tools that combine them with the binary to produce `src/` |
 | [`docs/patents/`](docs/patents/) | The three Apple patents that describe the design (all expired) |
@@ -65,12 +65,16 @@ fetch:
 
 ## Status
 
-The whole image round-trips. The interpreter's core, exception handling,
-entry and native-code interface, and the recompiler's run-time and
-overall structure are named and documented. Individual instruction
-handlers carry names derived automatically from the instructions that
-use them; about 1,500 internal branch targets and the recompiler's code
-generators have not been examined one by one. See [TODO.md](TODO.md).
+The whole image round-trips, and every routine in it has a name that
+says what it is: about 260 given by hand, the rest derived mechanically
+— an instruction handler from the instructions that use it, a recompiler
+code generator from the instructions it translates, with an example of
+its output in its header. The interpreter's core, exceptions, the
+kernel and native-code interface, Apple's private opcodes, the intricate
+instructions and the recompiler's translator and run-time are commented
+and documented. Branch targets inside a routine are numbered rather than
+named, and most of the recompiler's code generators are commented only
+by what they emit. See [TODO.md](TODO.md).
 
 `make static-check` cross-checks the code against the 68K instruction
 set without running it, and `make fuzz` runs random 68K programs through

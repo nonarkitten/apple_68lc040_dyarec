@@ -24,6 +24,10 @@ Legend: `[x]` done, `[~]` partly done, `[ ]` not started.
 - [x] Source of `Emulator.x` identified; licence and notice in place
 - [x] Builds compared (first recompiling build, G3, `Emulator.x`): `tools/buildcmp.py`,
       `docs/15-build-history.md`
+- [x] Apple's private opcodes named from the SuperMario sources (SANE, the trap
+      dispatcher's exit, BlockMove, emulator control registers)
+- [x] Annotation pass: every routine named; the recompiler's decoders and emitters made
+      legible by running them; the intricate interpreter routines described
 
 ### Source legibility
 - [x] Labels: three address-style labels remain; about 1,400 are `<routine>_L<n>`, which
@@ -38,8 +42,8 @@ Legend: `[x]` done, `[~]` partly done, `[ ]` not started.
 ### Interpreter still to read
 - [x] Bit fields, BCD, MOVEM, MOVE16, CAS, CHK2/CMP2, long multiply/divide: read and
       described in block comments (`annotations/50-instructions.ann`)
-- [ ] Not described individually: MOVEP, CAS2, MOVES, TRAPcc, RTR, TAS, the bit field
-      insert and modify routines
+- [ ] Not described individually: MOVEP, MOVES, TRAPcc, RTR, the bit field insert and
+      modify routines
 - [~] Private opcodes: all named (Apple's names from SuperMario) and described; the SANE
       arithmetic (`FC04`, `FC06`, `FC08`-`FC0F`, 4 KB) is not read line by line
 - [x] The routines behind the forty FPU handler slots: they build the 68LC040's format 4
@@ -196,9 +200,11 @@ Open questions for the check:
   kernel service table: SheepShaver hosts this emulator without the real
   kernel, so its source is a worked example of the kernel stub still missing
   from `tools/run68k.py`.
-- Three table entries (`2F30`, `4EB0`, `4EF4`) special-case one indexed
-  extension word each (`81E2`, `81E1`, `0521`). Searching a 68K ROM for those
-  words would show what code they were tuned for.
+- The special-cased sequences and operands (`docs/14`) are presumably from hot code in the
+  ROM or system. The SuperMario sources could be searched for them: `MOVE.L ([bd.w],od.w),
+  -(A7)`, `JSR ([bd.w])`, `JMP ([bd.w,A4,D0.W*4])`, and the string loops.
+- SuperMario's SANE sources, if the PowerPC-era package is among them, would show the 68K
+  side of `FC01`-`FC0F` and settle what the bits of D6 and D7 mean.
 - `0C960` is a lone zero word in the middle of code. Cause unknown.
 - The first PCI ROM (1995) already has the hash-lookup recompiler. If the
   patent's direct-mapped design ever existed in a ROM, it predates everything

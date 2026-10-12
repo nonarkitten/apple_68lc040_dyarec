@@ -134,6 +134,20 @@
 0CE60 different: Dc = operand
 0CE70 equal: operand = Du
 
+@0CF90 cas2
+    CAS2.  The table entry has loaded the routine from cas2_w_handler or
+    cas2_l_handler into rtn_addr and it is called first.  The two extension
+    words are read together as one long word: Rn1, Du1 and Dc1 in bits
+    31:28, 24:22 and 18:16, and Rn2, Du2 and Dc2 in bits 15:12, 8:6 and 2:0.
+    Both operands are compared with their Dc; if both are equal both Du are
+    stored, otherwise both operands are loaded into the Dc registers.
+0CF94 the opcode: cr4.so tells CAS2.L from CAS2.W
+0CF98 both extension words
+
+@0D0E0
+    TAS on memory: N and Z from the byte, then bit 7 set.  The routine in
+    tas_handler is called first.  The two accesses are not made atomic.
+
 @0CC0C
     CHK2 and CMP2.  data and rtn_addr are the lower and upper bounds from
     memory; immed_data is the extension word, with the register in bits

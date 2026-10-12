@@ -30265,17 +30265,24 @@ cas_l_mem_3_L5:
         bnelr
         b       fetch
 
+// CAS2.  The table entry has loaded the routine from cas2_w_handler or
+// cas2_l_handler into rtn_addr and it is called first.  The two extension
+// words are read together as one long word: Rn1, Du1 and Dc1 in bits
+// 31:28, 24:22 and 18:16, and Rn2, Du2 and Dc2 in bits 15:12, 8:6 and 2:0.
+// Both operands are compared with their Dc; if both are equal both Du are
+// stored, otherwise both operands are loaded into the Dc registers.
+//
 // Reached from 2 dispatch table entries:
 //     CAS2.W Dc1:Dc2,Du1:Du2,(Rn1):(Rn2)
 //     CAS2.L Dc1:Dc2,Du1:Du2,(Rn1):(Rn2)
-cea_x_74:
+cas2:
         mtlr    rtn_addr
-        mtcrf   0x0F, disp_table                        // cr4..cr7 = disp_table[15:0]
-        lwz     prefetch_data, 0(pc)
+        mtcrf   0x0F, disp_table                        // the opcode: cr4.so tells CAS2.L from CAS2.W
+        lwz     prefetch_data, 0(pc)                    // both extension words
         ori     rtn_addr, code_ptr, reg_access_rtn_addr - cb
         rlwimi  rtn_addr, prefetch_data, 20, 25, 27     // rtn_addr[6:4] = prefetch_data[18:16]
         blrl
-cea_x_74_L1:
+cas2_L1:
         mtlr    rtn_addr
         ori     base_disp, code_ptr, reg_access_base_disp - cb
         rlwimi  base_disp, prefetch_data, 8, 24, 27     // base_disp[7:4] = prefetch_data[31:28]
@@ -30302,23 +30309,23 @@ cea_x_74_L1:
         blrl
         mtlr    base_disp
         mtctr   rtn_addr
-        bns     cr4, cea_x_74_L3
+        bns     cr4, cas2_L3
         lwz     base_disp, 0(addr)
         lwz     rtn_addr, 0(immed_data)
         subfco. base_disp, data, base_disp              // base_disp = base_disp - data
         addc    base_disp, data, base_disp
-        bne     cea_x_74_L5
+        bne     cas2_L5
         subfco. rtn_addr, prefetch_data, rtn_addr       // rtn_addr = rtn_addr - prefetch_data
         addc    rtn_addr, prefetch_data, rtn_addr
-        bne     cea_x_74_L5
+        bne     cas2_L5
         mflr    base_disp
         mfctr   rtn_addr
         stw     base_disp, 0(addr)
         stw     rtn_addr, 0(immed_data)
-cea_x_74_L2:
+cas2_L2:
         lhau    prefetch_data, 4(pc)                    // PREFETCH: pc += 4, load the word there
         b       fetch
-cea_x_74_L3:
+cas2_L3:
         lhz     base_disp, 0(addr)
         lhz     rtn_addr, 0(immed_data)
         slwi    base_disp, base_disp, 16
@@ -30329,19 +30336,19 @@ cea_x_74_L3:
         rlwimi  rtn_addr, prefetch_data, 0, 16, 31      // rtn_addr[15:0] = prefetch_data[15:0]
         subfco. base_disp, data, base_disp              // base_disp = base_disp - data
         addc    base_disp, data, base_disp
-        bne     cea_x_74_L4
+        bne     cas2_L4
         subfco. rtn_addr, prefetch_data, rtn_addr       // rtn_addr = rtn_addr - prefetch_data
         addc    rtn_addr, prefetch_data, rtn_addr
-        bne     cea_x_74_L4
+        bne     cas2_L4
         mflr    base_disp
         mfctr   rtn_addr
         sth     base_disp, 0(addr)
         sth     rtn_addr, 0(immed_data)
-        b       cea_x_74_L2
-cea_x_74_L4:
+        b       cas2_L2
+cas2_L4:
         rlwimi  base_disp, base_disp, 16, 0, 31         // base_disp = (base_disp & ~0xFFFFFFFF) | (rotl(base_disp, 16) & 0xFFFFFFFF)
         rlwimi  rtn_addr, rtn_addr, 16, 0, 31           // rtn_addr = (rtn_addr & ~0xFFFFFFFF) | (rotl(rtn_addr, 16) & 0xFFFFFFFF)
-cea_x_74_L5:
+cas2_L5:
         lwz     prefetch_data, 0(pc)
         ori     data, code_ptr, reg_access_rtn_addr_L1 - cb
         rlwimi  data, prefetch_data, 4, 25, 27          // data[6:4] = prefetch_data[2:0]
@@ -30368,6 +30375,9 @@ tas_b_dn:
 tas_b_mem:
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
 
+// TAS on memory: N and Z from the byte, then bit 7 set.  The routine in
+// tas_handler is called first.  The two accesses are not made atomic.
+//
 // Reached from 8 dispatch table entries:
 //     TAS.B (An)
 // Continuation (via rtn_addr) of 17 dispatch table entries:
@@ -31401,8 +31411,8 @@ handler_defaults:
         .short  cas_b_mem_3_L2 - cb
         .short  cas_w_mem_3_L2 - cb
         .short  cas_l_mem_3_L2 - cb
-        .short  cea_x_74_L1 - cb
-        .short  cea_x_74_L1 - cb
+        .short  cas2_L1 - cb
+        .short  cas2_L1 - cb
         .short  install_exception_stubs - cb
         .short  take_exception - cb
         .short  take_exception - cb

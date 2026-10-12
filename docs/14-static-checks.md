@@ -271,7 +271,11 @@ ROM or system software that mattered for performance.
 
 Three further entries (`2F30`, `4EB0`, `4EF4`) compare `prefetch_data`
 with one particular indexed addressing extension word, giving a short cut
-for the commonest form of that operand.
+for the commonest form of that operand. Decoded, the three instructions
+are `MOVE.L ([bd.w],od.w),-(A7)` (extension word `81E2`),
+`JSR ([bd.w])` (`81E1`) and `JMP ([bd.w,A4,D0.W*4])` (`0521`): a long
+word fetched through a pointer in low memory, a call through such a
+pointer, and a jump through a table.
 
 Two more sequences are found by routines rather than by table entries.
 `MOVEM.L (A7)+,<list>` and `MOVEM.L (d16,An),<list>`, when the list names
