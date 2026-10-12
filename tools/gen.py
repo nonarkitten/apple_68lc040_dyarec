@@ -25,6 +25,7 @@ import struct
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import drmap    # noqa: E402
 import m68k     # noqa: E402
 import naming   # noqa: E402
 import ppc      # noqa: E402
@@ -249,6 +250,8 @@ class Generator:
         self.label_addrs = {}
         self.table_users = collections.defaultdict(list)    # handler -> [opcode]
         self.continuation_users = collections.defaultdict(list)
+        self.emitter_users = collections.defaultdict(list)  # emitter -> [opcode]
+        self.emitter_refs = {}  # addr of "li out_ptr, n" -> emitter address
         self.code_refs = {}     # addr of an "ori x, code_ptr, imm" -> referenced offset
 
     # -- analysis ----------------------------------------------------------
@@ -327,6 +330,25 @@ class Generator:
                                 ea_users[operand[1]].append(opcode)
 
         automatic = naming.assign(self, direct, self.continuation_users, ea_users)
+
+        # The recompiler's code generators, from its own pass-1 decoder.
+        decisions = drmap.scan(self.image[:TABLE_START],
+                               cache=os.path.join(ROOT, 'build', 'drmap.json'))
+        for opcode, decision in decisions.items():
+            if decision.translated:
+                self.emitter_users[drmap.DR_EMITTERS + decision.emitter].append(opcode)
+        for addr in self.emitter_users:
+            if not 0 <= addr < TABLE_START or self.kind[addr & ~3][0] != 'insn' or addr & 3:
+                fail('emitter offset %05X is not code' % addr)
+        automatic.update(naming.emitter_names(self.emitter_users))
+        # "li out_ptr, n" in the pass-1 decoders selects emitter n.
+        offsets = {addr - drmap.DR_EMITTERS: addr for addr in self.emitter_users}
+        for addr in range(drmap.DR_LINE_0, drmap.DR_EMITTERS, 4):
+            kind, value = self.kind[addr]
+            if (kind == 'insn' and value.mnem == 'li' and value.ops[0] == ('r', 30)
+                    and value.ops[1][1] in offsets):
+                self.emitter_refs[addr] = offsets[value.ops[1][1]]
+
         taken = set(self.labels.values())
         for addr, name in automatic.items():
             if addr not in self.labels:
@@ -431,6 +453,8 @@ class Generator:
         operands = [self.operand(o, addr, insn) for o in insn.ops]
         if addr in self.code_refs:
             operands[2] = '%s - cb' % self.labels[self.code_refs[addr]]
+        if addr in self.emitter_refs:
+            operands[1] = '%s - dr_emitters' % self.labels[self.emitter_refs[addr]]
         if addr in self.ann.operands:
             operands[-1] = self.ann.operands[addr]
         text = ' ' * MNEM_COL + insn.mnem
@@ -667,6 +691,11 @@ class Generator:
         if users:
             lines.append('// Continuation (via rtn_addr) of %d dispatch table %s:' % (
                 len(users), 'entry' if len(users) == 1 else 'entries'))
+            lines += self._forms(users)
+        users = self.emitter_users.get(addr)
+        if users:
+            lines.append('// Code generator for %d %s:' % (
+                len(users), 'opcode' if len(users) == 1 else 'opcodes'))
             lines += self._forms(users)
         return lines
 

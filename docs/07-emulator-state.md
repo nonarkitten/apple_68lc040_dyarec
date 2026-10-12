@@ -110,9 +110,12 @@ private request level at `0x1D0`.
 
 | Offset | Contents |
 |---|---|
-| `0x700`, `0x70C`, `0x714` | Addresses used when switching to native code; initially `native_call_unavailable` |
-| `0x708` | Address of the 68K register area shared with native code (the block + `0x740`) |
-| `0x710` | Address of the native context block |
+| `0x700` | `native_call_entry`: PowerPC address at which native code is entered from a mixed mode call. Initially `native_call_unavailable` |
+| `0x704` | `native_toc`: the value given to r2 for that code |
+| `0x708` | `native_regs_ptr`: address of `native_regs`, given to native code in r31 |
+| `0x710` | `native_context`: address of the native context block |
+| `0x714` | `native_return_entry`: PowerPC address resumed by private opcode `FE02`. Initially `native_call_unavailable` |
+| `0x740`–`0x77F` | `native_regs`: D0–D7, A0–A6 and the 68K `pc`, stored in that order by `switch_to_native` and reloaded when native code returns |
 | `0x718` | Initialised to `0x21F8` |
 | `0x720` | Expected line-A vector (see [08-native-interface.md](08-native-interface.md)) |
 | `0x72C` | Expected privilege violation vector |

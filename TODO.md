@@ -67,9 +67,6 @@ Legend: `[x]` done, `[~]` partly done, `[ ]` not started.
 
 ## Leads not yet followed
 
-- `EmulatorPublic.a` in powermac-rom calls state block `+0x740..`
-  "EmuControlRegisters Reg0..Reg14". Our reading is that `+0x708` points there
-  and it holds D0-D7/A0-A6/pc for native code. Not reconciled.
 - `NKPublic.a` there notes "SS replaces with jump to emu+f900" on the kernel
   service table: SheepShaver hosts this emulator without the real kernel, so
   its source is a worked example of the kernel stub we would need.

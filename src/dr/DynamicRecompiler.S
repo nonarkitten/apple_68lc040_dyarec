@@ -243,23 +243,24 @@ dr_line_0:
         rlwinm  addr, prefetch_data, 24, 28, 31         // addr = prefetch_data[11:8]
         cmpwi   cr4, addr, 8
         clrlwi  addr, prefetch_data, 26                 // addr = prefetch_data & 0x0000003F
-        beq     cr4, L_1067C
+        beq     cr4, dr_line_F_L4
         crnand  4*cr6+eq, 4*cr6+lt, 4*cr6+gt            // cr6.eq = ~(cr6.lt & cr6.gt)
         li      immed_data, 0xC00
-        bne     cr6, L_10674
+        bne     cr6, dr_line_F_L3
         rlwinm  data, prefetch_data, 23, 29, 31         // data = prefetch_data[11:9]
         cmpwi   cr4, data, 6
-        bso     cr5, L_10674
+        bso     cr5, dr_line_F_L3
         cmpwi   cr5, data, 3
-        beq     cr4, L_106A8
+        beq     cr4, dr_line_F_L5
         cmpwi   cr4, data, 5
-        b       L_1066C
-        nop
-        nop
+        b       dr_line_F_L2
+        ALIGN(64)
+
+dr_line_1:
         cmpwi   cr7, prefetch_data, 0x10D9
-        li      out_ptr, 0x1608
+        li      out_ptr, dr_emit_move_b - dr_emitters
         li      immed_data, 0x400
-        beql    cr7, L_10764
+        beql    cr7, dr_line_F_L14
         addi    rtn_addr, base_disp, 0xDB8
         clrlwi  addr, prefetch_data, 26                 // addr = prefetch_data & 0x0000003F
         lbzx    data, rtn_addr, addr
@@ -270,16 +271,18 @@ dr_line_0:
         rlwinm  addr, prefetch_data, 29, 26, 28         // addr = prefetch_data[8:6] << 3
         rlwimi  addr, prefetch_data, 23, 29, 31         // addr[2:0] = prefetch_data[11:9]
         lbzx    data, rtn_addr, addr
-        b       L_10754
-        nop
-        li      out_ptr, 0x12C8
+        b       dr_line_F_L13
+        ALIGN(64)
+
+dr_line_2:
+        li      out_ptr, dr_emit_move_l - dr_emitters
         li      immed_data, 0x400
         addi    rtn_addr, base_disp, 0xEB8
         clrlwi  addr, prefetch_data, 26                 // addr = prefetch_data & 0x0000003F
         lbzx    data, rtn_addr, addr
         mtcrf   0x01, data                              // cr7 = data[3:0]
         add     blk_ofs, blk_ofs, data
-        bsol    cr7, L_10798
+        bsol    cr7, dr_line_F_L15
         addi    rtn_addr, base_disp, 0xE38
         rlwinm  addr, prefetch_data, 29, 26, 28         // addr = prefetch_data[8:6] << 3
         rlwimi  addr, prefetch_data, 23, 29, 31         // addr[2:0] = prefetch_data[11:9]
@@ -288,7 +291,9 @@ dr_line_0:
         add     blk_ofs, blk_ofs, data
         bsol    cr7, L_11008
         b       dr_scan_store
-        li      out_ptr, 0x1488
+
+dr_line_3:
+        li      out_ptr, dr_emit_move_w - dr_emitters
         li      immed_data, 0x400
         addi    rtn_addr, base_disp, 0xDF8
         clrlwi  addr, prefetch_data, 26                 // addr = prefetch_data & 0x0000003F
@@ -304,10 +309,12 @@ dr_line_0:
         add     blk_ofs, blk_ofs, data
         bsol    cr7, L_11008
         b       dr_scan_store
+
+dr_line_4:
         rlwinm  addr, prefetch_data, 26, 29, 31         // addr = prefetch_data[8:6]
         cmpwi   cr4, addr, 7
         rlwinm  addr, prefetch_data, 24, 28, 31         // addr = prefetch_data[11:8]
-        beq     cr4, L_10838
+        beq     cr4, dr_line_F_L20
         cmpwi   cr7, addr, 8
         cmpwi   cr4, addr, 14
         blt     cr7, L_10878
@@ -317,17 +324,19 @@ dr_line_0:
         cmpwi   cr4, addr, 10
         beq     cr7, L_10A9C
         beq     cr4, L_10AD0
-dr_line_0_L1:
+dr_line_4_L1:
         li      immed_data, 0x4300
         b       dr_scan_end_block
-        nop
+        ALIGN(64)
+
+dr_line_5:
         clrlwi  addr, prefetch_data, 26                 // addr = prefetch_data & 0x0000003F
         blt     cr6, L_10AF8
         bgt     cr6, L_10B0C
-        li      out_ptr, 0x2930
-        bns     cr5, dr_line_0_L2
-        li      out_ptr, 0x33C4
-dr_line_0_L2:
+        li      out_ptr, dr_emit_addq_b - dr_emitters
+        bns     cr5, dr_line_5_L1
+        li      out_ptr, dr_emit_subq_b - dr_emitters
+dr_line_5_L1:
         li      immed_data, 0xC00
         addi    rtn_addr, base_disp, 0xE38
         lbzx    data, rtn_addr, addr
@@ -335,9 +344,10 @@ dr_line_0_L2:
         add     blk_ofs, blk_ofs, data
         bsol    cr7, L_10FFC
         b       dr_scan_store
-        b       dr_line_0_L3
+        b       dr_line_6
         ALIGN(64)
-dr_line_0_L3:
+
+dr_line_6:
         clrlwi  addr, prefetch_data, 24                 // addr = prefetch_data & 0x000000FF
         rlwinm  data, prefetch_data, 24, 28, 31         // data = prefetch_data[11:8]
         cmpwi   cr6, addr, 255
@@ -347,114 +357,124 @@ dr_line_0_L3:
         sth     rtn_addr, 0xB2A(EmulatorStatePtr)
         sth     addr, 6(rec_ptr)
         cmplwi  cr4, data, 0x0001
-        li      out_ptr, 0x5CC8
+        li      out_ptr, dr_emit_bra_s - dr_emitters
         beq     cr6, L_10C0C
         beq     cr5, L_10C68
         addi    addr, addr, 12
         b       L_10CB8
-        nop
-        nop
+        ALIGN(64)
+
+dr_line_7:
         mtcrf   0x04, prefetch_data                     // cr5 = prefetch_data[11:8]
-        li      out_ptr, 0x1724
+        li      out_ptr, dr_emit_moveq_l - dr_emitters
         li      immed_data, 0x400
         bns     cr5, dr_scan_store
         li      immed_data, 0x4300
         b       dr_scan_end_block
-        b       dr_line_0_L4
+        b       dr_line_8
         ALIGN(64)
-dr_line_0_L4:
+
+dr_line_8:
         crand   4*cr6+eq, 4*cr6+gt, 4*cr6+lt            // cr6.eq = cr6.gt & cr6.lt
         clrlwi  addr, prefetch_data, 26                 // addr = prefetch_data & 0x0000003F
         li      immed_data, 0x400
         beq     cr6, L_10D88
         bso     cr5, L_10DAC
         blt     cr6, L_10D78
-        li      out_ptr, 0x4264
-        bgt     cr6, L_104A4
-        li      out_ptr, 0x438C
-L_104A4:
+        li      out_ptr, dr_emit_or_w_2 - dr_emitters
+        bgt     cr6, dr_line_8_L1
+        li      out_ptr, dr_emit_or_b_2 - dr_emitters
+dr_line_8_L1:
         addi    rtn_addr, base_disp, 0xDB8
         lbzx    data, rtn_addr, addr
-L_104AC:
+dr_line_8_L2:
         mtcrf   0x01, data                              // cr7 = data[3:0]
         add     blk_ofs, blk_ofs, data
         bsol    cr7, L_10FDC
         b       dr_scan_store
-        nop
+        ALIGN(64)
+
+dr_line_9:
         clrlwi  addr, prefetch_data, 26                 // addr = prefetch_data & 0x0000003F
         bso     cr5, L_10E04
         bgt     cr6, L_10E58
         li      immed_data, 0xC00
-        li      out_ptr, 0x2B44
+        li      out_ptr, dr_emit_sub_l - dr_emitters
         blt     cr6, L_10E84
-        li      out_ptr, 0x31C4
+        li      out_ptr, dr_emit_sub_b_2 - dr_emitters
         addi    rtn_addr, base_disp, 0xDB8
         lbzx    data, rtn_addr, addr
         mtcrf   0x01, data                              // cr7 = data[3:0]
         add     blk_ofs, blk_ofs, data
         bsol    cr7, L_10FDC
         b       dr_scan_store
-        b       L_10500
+        b       dr_line_A
         ALIGN(64)
-L_10500:
+
+dr_line_A:
         mr      immed_data, zero
-        li      out_ptr, 0x625C
+        li      out_ptr, dr_emit_aline - dr_emitters
         b       dr_scan_end_block
-        b       L_10540
+        b       dr_line_B
         ALIGN(64)
-L_10540:
+
+dr_line_B:
         clrlwi  addr, prefetch_data, 26                 // addr = prefetch_data & 0x0000003F
         li      immed_data, 0x400
         bso     cr5, L_10EB4
         bgt     cr6, L_10E9C
-        li      out_ptr, 0x3770
+        li      out_ptr, dr_emit_cmp_cmpa_l - dr_emitters
         blt     cr6, L_10E84
-        li      out_ptr, 0x3C38
+        li      out_ptr, dr_emit_cmp_b - dr_emitters
         addi    rtn_addr, base_disp, 0xDB8
         lbzx    data, rtn_addr, addr
-L_10564:
+dr_line_B_L1:
         mtcrf   0x01, data                              // cr7 = data[3:0]
         add     blk_ofs, blk_ofs, data
         bsol    cr7, L_10FDC
         b       dr_scan_store
-        b       L_10580
+        b       dr_line_C
         ALIGN(64)
-L_10580:
+
+dr_line_C:
         crand   4*cr6+eq, 4*cr6+gt, 4*cr6+lt            // cr6.eq = cr6.gt & cr6.lt
         clrlwi  addr, prefetch_data, 26                 // addr = prefetch_data & 0x0000003F
         li      immed_data, 0x400
         beq     cr6, L_10F38
         bso     cr5, L_10F5C
         blt     cr6, L_10F28
-        li      out_ptr, 0x457C
-        bgt     cr6, L_105A4
-        li      out_ptr, 0x469C
-L_105A4:
+        li      out_ptr, dr_emit_and_w_2 - dr_emitters
+        bgt     cr6, dr_line_C_L1
+        li      out_ptr, dr_emit_and_b_2 - dr_emitters
+dr_line_C_L1:
         addi    rtn_addr, base_disp, 0xDB8
         lbzx    data, rtn_addr, addr
-L_105AC:
+dr_line_C_L2:
         mtcrf   0x01, data                              // cr7 = data[3:0]
         add     blk_ofs, blk_ofs, data
         bsol    cr7, L_10FDC
         b       dr_scan_store
-        nop
+        ALIGN(64)
+
+dr_line_D:
         clrlwi  addr, prefetch_data, 26                 // addr = prefetch_data & 0x0000003F
         bso     cr5, L_10DD0
         bgt     cr6, L_10E40
         li      immed_data, 0xC00
-        li      out_ptr, 0x1E78
+        li      out_ptr, dr_emit_add_l - dr_emitters
         blt     cr6, L_10E84
-        li      out_ptr, 0x274C
-L_105DC:
+        li      out_ptr, dr_emit_add_b_2 - dr_emitters
+dr_line_D_L1:
         addi    rtn_addr, base_disp, 0xDB8
         lbzx    data, rtn_addr, addr
         mtcrf   0x01, data                              // cr7 = data[3:0]
         add     blk_ofs, blk_ofs, data
         bsol    cr7, L_10FDC
         b       dr_scan_store
-        b       L_10600
+        b       dr_line_E
         ALIGN(64)
-L_10600:
+
+dr_line_E:
         crand   4*cr6+gt, 4*cr6+gt, 4*cr6+lt            // cr6.gt = cr6.gt & cr6.lt
         clrlwi  addr, prefetch_data, 26                 // addr = prefetch_data & 0x0000003F
         li      immed_data, 0x4300
@@ -467,30 +487,31 @@ L_10600:
         blt     cr7, dr_scan_store
         addi    out_ptr, out_ptr, 0x3A8
         b       dr_scan_store
-        b       L_10640
+        b       dr_line_F
         ALIGN(64)
-L_10640:
+
+dr_line_F:
         cmpwi   cr7, prefetch_data, -0x3F0
         cmpwi   cr6, prefetch_data, -0x3EF
         li      immed_data, 0x4300
-        beq     cr7, L_10660
+        beq     cr7, dr_line_F_L1
         bne     cr6, dr_scan_end_block
         li      immed_data, 0x2000
-        li      out_ptr, 0x62A8
+        li      out_ptr, dr_emit_fline_2 - dr_emitters
         b       dr_scan_end_block
-L_10660:
+dr_line_F_L1:
         li      immed_data, 0x2000
-        li      out_ptr, 0x628C
+        li      out_ptr, dr_emit_fline - dr_emitters
         b       dr_scan_end_block
-L_1066C:
-        ble     cr5, L_106F0
-        beq     cr4, L_106E4
-L_10674:
+dr_line_F_L2:
+        ble     cr5, dr_line_F_L9
+        beq     cr4, dr_line_F_L8
+dr_line_F_L3:
         li      immed_data, 0x4300
         b       dr_scan_end_block
-L_1067C:
+dr_line_F_L4:
         li      immed_data, 0x500
-        li      out_ptr, 0x4B84
+        li      out_ptr, dr_emit_btst - dr_emitters
         rlwinm  data, prefetch_data, 28, 28, 29         // data = prefetch_data[7:6] << 2
         add     out_ptr, out_ptr, data
         addi    blk_ofs, blk_ofs, 2
@@ -500,63 +521,63 @@ L_1067C:
         add     blk_ofs, blk_ofs, data
         bsol    cr7, L_10FDC
         b       dr_scan_store
-L_106A8:
+dr_line_F_L5:
         li      immed_data, 0x400
-        blt     cr6, L_106D8
+        blt     cr6, dr_line_F_L7
         addi    blk_ofs, blk_ofs, 2
-        li      out_ptr, 0x3A6C
-        bgt     cr6, L_106C0
-        li      out_ptr, 0x3CAC
-L_106C0:
+        li      out_ptr, dr_emit_cmpi_w - dr_emitters
+        bgt     cr6, dr_line_F_L6
+        li      out_ptr, dr_emit_cmpi_b - dr_emitters
+dr_line_F_L6:
         addi    rtn_addr, base_disp, 0xF38
         lbzx    data, rtn_addr, addr
         mtcrf   0x01, data                              // cr7 = data[3:0]
         add     blk_ofs, blk_ofs, data
         bsol    cr7, L_10FDC
         b       dr_scan_store
-L_106D8:
+dr_line_F_L7:
         addi    blk_ofs, blk_ofs, 4
-        li      out_ptr, 0x385C
-        b       L_106C0
-L_106E4:
+        li      out_ptr, dr_emit_cmpi_l - dr_emitters
+        b       dr_line_F_L6
+dr_line_F_L8:
         li      immed_data, 0x400
-        li      out_ptr, 0x480C
-        b       L_10714
-L_106F0:
-        li      out_ptr, 0x1F90
-        beq     cr5, L_10714
+        li      out_ptr, dr_emit_eori_w - dr_emitters
+        b       dr_line_F_L10
+dr_line_F_L9:
+        li      out_ptr, dr_emit_addi_w - dr_emitters
+        beq     cr5, dr_line_F_L10
         cmpwi   cr5, data, 1
-        li      out_ptr, 0x2C88
-        bgt     cr5, L_10714
-        li      out_ptr, 0x4524
+        li      out_ptr, dr_emit_subi_w - dr_emitters
+        bgt     cr5, dr_line_F_L10
+        li      out_ptr, dr_emit_andi_w - dr_emitters
         li      immed_data, 0x400
-        beq     cr5, L_10714
-        li      out_ptr, 0x4208
-L_10714:
+        beq     cr5, dr_line_F_L10
+        li      out_ptr, dr_emit_ori_w - dr_emitters
+dr_line_F_L10:
         addi    blk_ofs, blk_ofs, 2
-        bgt     cr6, L_1072C
+        bgt     cr6, dr_line_F_L11
         addi    out_ptr, out_ptr, 4
-        bge     cr6, L_1072C
+        bge     cr6, dr_line_F_L11
         addi    blk_ofs, blk_ofs, 2
         addi    out_ptr, out_ptr, 4
-L_1072C:
+dr_line_F_L11:
         addi    data, data, -2
         cmplwi  cr4, data, 0x0001
         addi    rtn_addr, base_disp, 0xE38
-        ble     cr4, L_10740
+        ble     cr4, dr_line_F_L12
         li      immed_data, 0x400
-L_10740:
+dr_line_F_L12:
         lbzx    data, rtn_addr, addr
         mtcrf   0x01, data                              // cr7 = data[3:0]
         add     blk_ofs, blk_ofs, data
         bsol    cr7, L_10FDC
         b       dr_scan_store
-L_10754:
+dr_line_F_L13:
         mtcrf   0x01, data                              // cr7 = data[3:0]
         add     blk_ofs, blk_ofs, data
         bsol    cr7, L_10FFC
         b       dr_scan_store
-L_10764:
+dr_line_F_L14:
         lhzx    addr, pc, blk_ofs
         cmpwi   cr7, addr, 0x66FC
         bnelr   cr7
@@ -570,16 +591,16 @@ L_10764:
         li      immed_data, 0x2400
         addi    blk_ofs, blk_ofs, 2
         b       dr_scan_store
-L_10798:
+dr_line_F_L15:
         subf    blk_ofs, data, blk_ofs                  // blk_ofs = blk_ofs - data
         cmpwi   cr4, addr, 59
         rlwinm  addr, addr, 29, 29, 31                  // addr = addr[5:3]
         beq     cr4, L_11020
         cmpwi   cr4, addr, 6
-        beq     cr4, L_107B8
+        beq     cr4, dr_line_F_L16
         li      immed_data, 0x4300
         b       dr_scan_end_block
-L_107B8:
+dr_line_F_L16:
         lhzx    rtn_addr, pc, blk_ofs
         cmplwi  cr4, prefetch_data, 0x2F30
         cmplwi  cr5, rtn_addr, 0x81E2
@@ -588,15 +609,15 @@ L_107B8:
         addi    blk_ofs, blk_ofs, 6
         li      out_ptr, 0x140C
         b       dr_scan_store
-L_107D8:
+dr_line_F_L17:
         rlwinm  addr, prefetch_data, 0, 16, 25          // addr = prefetch_data[15:6] << 6
         cmpwi   cr7, addr, 0x42C0
         cmpwi   cr6, addr, 0x44C0
-        beq     cr7, L_107F0
-        beq     cr6, L_10814
-        b       dr_line_0_L1
-L_107F0:
-        li      out_ptr, 0x1900
+        beq     cr7, dr_line_F_L18
+        beq     cr6, dr_line_F_L19
+        b       dr_line_4_L1
+dr_line_F_L18:
+        li      out_ptr, dr_emit_move_w_2 - dr_emitters
         clrlwi  addr, prefetch_data, 26                 // addr = prefetch_data & 0x0000003F
         addi    rtn_addr, base_disp, 0xE38
         lbzx    data, rtn_addr, addr
@@ -605,8 +626,8 @@ L_107F0:
         add     blk_ofs, blk_ofs, data
         bsol    cr7, L_10FDC
         b       dr_scan_store
-L_10814:
-        li      out_ptr, 0x1964
+dr_line_F_L19:
+        li      out_ptr, dr_emit_move_w_3 - dr_emitters
         clrlwi  addr, prefetch_data, 26                 // addr = prefetch_data & 0x0000003F
         addi    rtn_addr, base_disp, 0xDB8
         lbzx    data, rtn_addr, addr
@@ -615,8 +636,8 @@ L_10814:
         add     blk_ofs, blk_ofs, data
         bsol    cr7, L_10FDC
         b       dr_scan_store
-L_10838:
-        li      out_ptr, 0x58B8
+dr_line_F_L20:
+        li      out_ptr, dr_emit_lea - dr_emitters
         clrlwi  addr, prefetch_data, 26                 // addr = prefetch_data & 0x0000003F
         addi    rtn_addr, base_disp, 0x1078
         lbzx    data, rtn_addr, addr
@@ -630,26 +651,26 @@ L_1085C:
         cmpwi   cr4, rtn_addr, 0x49C0
         bne     cr4, L_10FDC
         subf    blk_ofs, data, blk_ofs                  // blk_ofs = blk_ofs - data
-        li      out_ptr, 0x5894
+        li      out_ptr, dr_emit_extb_l - dr_emitters
         li      immed_data, 0x400
         b       dr_scan_store
 L_10878:
         clrlwi  addr, prefetch_data, 26                 // addr = prefetch_data & 0x0000003F
-        bso     cr5, dr_line_0_L1
+        bso     cr5, dr_line_4_L1
         crand   4*cr6+eq, 4*cr6+gt, 4*cr6+lt            // cr6.eq = cr6.gt & cr6.lt
         addi    rtn_addr, base_disp, 0xE38
         lbzx    data, rtn_addr, addr
-        bt_unlikely 4*cr6+eq, L_107D8
+        bt_unlikely 4*cr6+eq, dr_line_F_L17
         li      immed_data, 0x400
         beq     cr5, L_108A8
         li      immed_data, 0xC00
-        li      out_ptr, 0x3FB4
-        ble     cr5, dr_line_0_L1
+        li      out_ptr, dr_emit_neg_b - dr_emitters
+        ble     cr5, dr_line_4_L1
         b       L_108B4
 L_108A8:
-        li      out_ptr, 0x1838
+        li      out_ptr, dr_emit_clr_b - dr_emitters
         ble     cr5, L_108B4
-        li      out_ptr, 0x4A44
+        li      out_ptr, dr_emit_not_b - dr_emitters
 L_108B4:
         mtcrf   0x01, data                              // cr7 = data[3:0]
         rlwinm  addr, prefetch_data, 28, 28, 29         // addr = prefetch_data[7:6] << 2
@@ -663,13 +684,13 @@ L_108D0:
         blt     cr6, L_10934
         cmpwi   cr4, addr, 1
         bgt     cr6, L_108F4
-        bne     cr4, dr_line_0_L1
-        li      out_ptr, 0x5970
+        bne     cr4, dr_line_4_L1
+        li      out_ptr, dr_emit_link_l - dr_emitters
         li      immed_data, 0
         addi    blk_ofs, blk_ofs, 4
         b       dr_scan_store
 L_108F4:
-        li      out_ptr, 0x58D8
+        li      out_ptr, dr_emit_pea - dr_emitters
         clrlwi  addr, prefetch_data, 26                 // addr = prefetch_data & 0x0000003F
         addi    rtn_addr, base_disp, 0x1078
         lbzx    data, rtn_addr, addr
@@ -683,12 +704,12 @@ L_10918:
         cmpwi   cr4, rtn_addr, 0x4840
         bne     cr4, L_10FDC
         subf    blk_ofs, data, blk_ofs                  // blk_ofs = blk_ofs - data
-        li      out_ptr, 0x5814
+        li      out_ptr, dr_emit_swap - dr_emitters
         li      immed_data, 0x400
         b       dr_scan_store
 L_10934:
         clrlwi  addr, prefetch_data, 26                 // addr = prefetch_data & 0x0000003F
-        li      out_ptr, 0x19F4
+        li      out_ptr, dr_emit_movem_w - dr_emitters
         rlwinm  data, prefetch_data, 28, 29, 29         // data = prefetch_data[6] << 2
         add     out_ptr, out_ptr, data
         addi    rtn_addr, base_disp, 0x1038
@@ -705,9 +726,9 @@ L_10964:
         bne     cr4, L_10FC4
         subf    blk_ofs, data, blk_ofs                  // blk_ofs = blk_ofs - data
         addi    blk_ofs, blk_ofs, -2
-        li      out_ptr, 0x5884
+        li      out_ptr, dr_emit_ext_l - dr_emitters
         bgt     cr6, L_10984
-        li      out_ptr, 0x584C
+        li      out_ptr, dr_emit_ext_w - dr_emitters
 L_10984:
         li      immed_data, 0x400
         b       dr_scan_store
@@ -720,15 +741,15 @@ L_1098C:
         beq     cr4, L_109BC
         cmpwi   cr4, prefetch_data, 0x4E71
         beq     cr7, L_109C4
-        bne     cr4, dr_line_0_L1
-        li      out_ptr, 0x5808
+        bne     cr4, dr_line_4_L1
+        li      out_ptr, dr_emit_nop - dr_emitters
         mr      immed_data, zero
         b       dr_scan_store
 L_109BC:
-        li      out_ptr, 0x61CC
+        li      out_ptr, dr_emit_rts - dr_emitters
         b       dr_scan_end_block
 L_109C4:
-        li      out_ptr, 0x6178
+        li      out_ptr, dr_emit_rtd - dr_emitters
         addi    blk_ofs, blk_ofs, 2
         b       dr_scan_end_block
 L_109D0:
@@ -737,17 +758,17 @@ L_109D0:
         cmpwi   cr7, addr, 11
         mr      immed_data, zero
         beq     cr4, L_109F0
-        li      out_ptr, 0x5998
+        li      out_ptr, dr_emit_unlk - dr_emitters
         beq     cr7, dr_scan_store
-        b       dr_line_0_L1
+        b       dr_line_4_L1
 L_109F0:
-        li      out_ptr, 0x5920
+        li      out_ptr, dr_emit_link_w - dr_emitters
         addi    blk_ofs, blk_ofs, 2
         b       dr_scan_store
 L_109FC:
-        li      out_ptr, 0x61F8
+        li      out_ptr, dr_emit_jmp_2 - dr_emitters
         bgt     cr6, L_10A78
-        li      out_ptr, 0x6204
+        li      out_ptr, dr_emit_jsr_2 - dr_emitters
 L_10A08:
         clrlwi  addr, prefetch_data, 26                 // addr = prefetch_data & 0x0000003F
         cmpwi   cr7, addr, 58
@@ -773,9 +794,9 @@ L_10A4C:
         lhzx    rtn_addr, pc, blk_ofs
         addi    blk_ofs, blk_ofs, 2
         mtcrf   0x01, rtn_addr                          // cr7 = rtn_addr[3:0]
-        li      out_ptr, 0x5E08
+        li      out_ptr, dr_emit_jmp - dr_emitters
         bgt     cr6, dr_scan_end_block
-        li      out_ptr, 0x5DEC
+        li      out_ptr, dr_emit_jsr - dr_emitters
         bns     cr7, dr_scan_end_block
         li      immed_data, 0x4300
         b       dr_scan_end_block
@@ -791,8 +812,8 @@ L_10A78:
         b       dr_scan_end_block
 L_10A9C:
         clrlwi  addr, prefetch_data, 26                 // addr = prefetch_data & 0x0000003F
-        bge     cr6, dr_line_0_L1
-        li      out_ptr, 0x1B8C
+        bge     cr6, dr_line_4_L1
+        li      out_ptr, dr_emit_movem_w_2 - dr_emitters
         rlwinm  data, prefetch_data, 28, 29, 29         // data = prefetch_data[6] << 2
         add     out_ptr, out_ptr, data
         addi    rtn_addr, base_disp, 0xFF8
@@ -807,23 +828,23 @@ L_10AD0:
         crand   4*cr6+eq, 4*cr6+gt, 4*cr6+lt            // cr6.eq = cr6.gt & cr6.lt
         clrlwi  addr, prefetch_data, 26                 // addr = prefetch_data & 0x0000003F
         li      immed_data, 0x400
-        beq     cr6, dr_line_0_L1
-        li      out_ptr, 0x3B9C
+        beq     cr6, dr_line_4_L1
+        li      out_ptr, dr_emit_tst_w - dr_emitters
         bgt     cr6, L_10E6C
-        li      out_ptr, 0x38D8
+        li      out_ptr, dr_emit_tst_l - dr_emitters
         blt     cr6, L_10E84
-        li      out_ptr, 0x3CF4
-        b       L_105DC
+        li      out_ptr, dr_emit_tst_b - dr_emitters
+        b       dr_line_D_L1
 L_10AF8:
         bgt     cr6, L_10B34
-        li      out_ptr, 0x1FD8
+        li      out_ptr, dr_emit_addq_l - dr_emitters
         bns     cr5, L_10B18
-        li      out_ptr, 0x2CD0
+        li      out_ptr, dr_emit_subq_l - dr_emitters
         b       L_10B18
 L_10B0C:
-        li      out_ptr, 0x2480
+        li      out_ptr, dr_emit_addq_w - dr_emitters
         bns     cr5, L_10B18
-        li      out_ptr, 0x3080
+        li      out_ptr, dr_emit_subq_w - dr_emitters
 L_10B18:
         li      immed_data, 0xC00
         addi    rtn_addr, base_disp, 0xE38
@@ -838,7 +859,7 @@ L_10B34:
         li      immed_data, 0x300
         mtcrf   0x01, data                              // cr7 = data[3:0]
         add     blk_ofs, blk_ofs, data
-        li      out_ptr, 0x5A04
+        li      out_ptr, dr_emit_scc_b - dr_emitters
         bsol    cr7, L_10B54
         b       dr_scan_store
 L_10B54:
@@ -862,7 +883,7 @@ L_10B74:
         sth     addr, 0xB28(EmulatorStatePtr)
 L_10B98:
         lhax    prefetch_data, pc, blk_ofs
-        li      out_ptr, 0x5F70
+        li      out_ptr, dr_emit_dbcc_w - dr_emitters
         mtcrf   0x01, prefetch_data                     // cr7 = prefetch_data[3:0]
         li      immed_data, 0x2300
         li      rtn_addr, 2
@@ -990,12 +1011,12 @@ L_10D3C:
 L_10D78:
         addi    rtn_addr, base_disp, 0xEF8
         lbzx    data, rtn_addr, addr
-        li      out_ptr, 0x418C
-        b       L_104AC
+        li      out_ptr, dr_emit_or_l - dr_emitters
+        b       dr_line_8_L2
 L_10D88:
-        li      out_ptr, 0x3580
+        li      out_ptr, dr_emit_divs_w - dr_emitters
         bso     cr5, L_10D94
-        li      out_ptr, 0x3644
+        li      out_ptr, dr_emit_divu_w - dr_emitters
 L_10D94:
         addi    rtn_addr, base_disp, 0xE78
         lbzx    data, rtn_addr, addr
@@ -1004,7 +1025,7 @@ L_10D94:
         bsol    cr7, L_10FDC
         b       dr_scan_store
 L_10DAC:
-        li      out_ptr, 0x41DC
+        li      out_ptr, dr_emit_or_b - dr_emitters
         rlwinm  data, prefetch_data, 28, 28, 29         // data = prefetch_data[7:6] << 2
         add     out_ptr, out_ptr, data
         addi    rtn_addr, base_disp, 0xFB8
@@ -1017,11 +1038,11 @@ L_10DD0:
         crand   4*cr5+so, 4*cr6+gt, 4*cr6+lt            // cr5.so = cr6.gt & cr6.lt
         mr      immed_data, zero
         cror    4*cr6+eq, 4*cr6+eq, 4*cr6+so            // cr6.eq = cr6.eq | cr6.so
-        li      out_ptr, 0x1EDC
+        li      out_ptr, dr_emit_adda_l - dr_emitters
         bso     cr5, L_10E84
-        li      out_ptr, 0x1F64
+        li      out_ptr, dr_emit_add_b - dr_emitters
         beq     cr6, L_10E1C
-        li      out_ptr, 0x20A8
+        li      out_ptr, dr_emit_addx_b - dr_emitters
         li      immed_data, 0xE00
         rlwinm  data, prefetch_data, 28, 28, 29         // data = prefetch_data[7:6] << 2
         rlwimi  data, prefetch_data, 1, 27, 27          // data[4] = prefetch_data[3]
@@ -1031,9 +1052,9 @@ L_10E04:
         crand   4*cr5+so, 4*cr6+gt, 4*cr6+lt            // cr5.so = cr6.gt & cr6.lt
         mr      immed_data, zero
         cror    4*cr6+eq, 4*cr6+eq, 4*cr6+so            // cr6.eq = cr6.eq | cr6.so
-        li      out_ptr, 0x2BD0
+        li      out_ptr, dr_emit_suba_l - dr_emitters
         bso     cr5, L_10E84
-        li      out_ptr, 0x2C5C
+        li      out_ptr, dr_emit_sub_b - dr_emitters
 L_10E1C:
         li      immed_data, 0xC00
         addi    rtn_addr, base_disp, 0xF78
@@ -1046,16 +1067,16 @@ L_10E1C:
         b       dr_scan_store
 L_10E40:
         mr      immed_data, zero
-        li      out_ptr, 0x22E0
+        li      out_ptr, dr_emit_adda_w - dr_emitters
         blt     cr6, L_10E6C
-        li      out_ptr, 0x2204
+        li      out_ptr, dr_emit_add_w_2 - dr_emitters
         li      immed_data, 0xC00
         b       L_10E6C
 L_10E58:
         mr      immed_data, zero
-        li      out_ptr, 0x2EC0
+        li      out_ptr, dr_emit_suba_w - dr_emitters
         blt     cr6, L_10E6C
-        li      out_ptr, 0x2DEC
+        li      out_ptr, dr_emit_sub_w_2 - dr_emitters
         li      immed_data, 0xC00
 L_10E6C:
         addi    rtn_addr, base_disp, 0xDF8
@@ -1072,24 +1093,24 @@ L_10E84:
         bsol    cr7, L_10FDC
         b       dr_scan_store
 L_10E9C:
-        li      out_ptr, 0x3944
+        li      out_ptr, dr_emit_cmpa_w - dr_emitters
         blt     cr6, L_10EA8
-        li      out_ptr, 0x39E4
+        li      out_ptr, dr_emit_cmp_w - dr_emitters
 L_10EA8:
         addi    rtn_addr, base_disp, 0xDF8
         lbzx    data, rtn_addr, addr
-        b       L_10564
+        b       dr_line_B_L1
 L_10EB4:
         crand   4*cr6+eq, 4*cr6+lt, 4*cr6+gt            // cr6.eq = cr6.lt & cr6.gt
-        li      out_ptr, 0x3770
+        li      out_ptr, dr_emit_cmp_cmpa_l - dr_emitters
         addi    rtn_addr, base_disp, 0xE38
         beq     cr6, L_10E84
         li      immed_data, 0x400
-        li      out_ptr, 0x47B0
+        li      out_ptr, dr_emit_eor_l - dr_emitters
         blt     cr6, L_10EDC
-        li      out_ptr, 0x4868
+        li      out_ptr, dr_emit_eor_w - dr_emitters
         bgt     cr6, L_10EDC
-        li      out_ptr, 0x495C
+        li      out_ptr, dr_emit_eor_b - dr_emitters
 L_10EDC:
         addi    rtn_addr, base_disp, 0xE38
         lbzx    data, rtn_addr, addr
@@ -1109,18 +1130,18 @@ L_10EF4:
 L_10F14:
         li      immed_data, 0x400
         rlwinm  rtn_addr, prefetch_data, 28, 28, 29     // rtn_addr = prefetch_data[7:6] << 2
-        li      out_ptr, 0x3D44
+        li      out_ptr, dr_emit_cmpm_b - dr_emitters
         add     out_ptr, out_ptr, rtn_addr
         b       dr_scan_store
 L_10F28:
-        li      out_ptr, 0x44A8
+        li      out_ptr, dr_emit_and_l - dr_emitters
         addi    rtn_addr, base_disp, 0xEF8
         lbzx    data, rtn_addr, addr
-        b       L_105AC
+        b       dr_line_C_L2
 L_10F38:
-        li      out_ptr, 0x34AC
+        li      out_ptr, dr_emit_muls_w - dr_emitters
         bso     cr5, L_10F44
-        li      out_ptr, 0x3508
+        li      out_ptr, dr_emit_mulu_w - dr_emitters
 L_10F44:
         addi    rtn_addr, base_disp, 0xDB8
         lbzx    data, rtn_addr, addr
@@ -1129,7 +1150,7 @@ L_10F44:
         bsol    cr7, L_10FDC
         b       dr_scan_store
 L_10F5C:
-        li      out_ptr, 0x44F8
+        li      out_ptr, dr_emit_and_b - dr_emitters
         rlwinm  data, prefetch_data, 28, 28, 29         // data = prefetch_data[7:6] << 2
         add     out_ptr, out_ptr, data
         addi    rtn_addr, base_disp, 0xFB8
@@ -1148,11 +1169,11 @@ L_10F80:
         cmplwi  cr4, addr, 0x0001
         mr      immed_data, zero
         cmplwi  cr5, addr, 0x0009
-        li      out_ptr, 0x1780
+        li      out_ptr, dr_emit_exg_l - dr_emitters
         beq     cr4, dr_scan_store
-        li      out_ptr, 0x17BC
+        li      out_ptr, dr_emit_exg_l_2 - dr_emitters
         blt     cr4, dr_scan_store
-        li      out_ptr, 0x17BC
+        li      out_ptr, dr_emit_exg_l_2 - dr_emitters
         beq     cr5, dr_scan_store
         li      immed_data, 0x4300
         b       dr_scan_end_block
@@ -2883,60 +2904,69 @@ L_125C4:
         oris    addr, addr, 0x0000
         li      addr, 0
         lis     addr, 0x0000
-        b       L_12600
+        b       dr_emit_move_l
         ALIGN(64)
-L_12600:
+
+// Code generator for 3538 opcodes:
+//     MOVE.L Dn,Dn
+//     MOVE.L An,Dn
+//     MOVE.L (An),Dn
+//     MOVE.L (An)+,Dn
+//     MOVE.L -(An),Dn
+//     MOVE.L (d16,An),Dn
+//     ... and 102 more forms
+dr_emit_move_l:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr6, rtn_addr, 0x0001
         rlwinm  immed_data, prefetch_data, 26, 29, 31   // immed_data = prefetch_data[8:6]
         cmplwi  cr7, immed_data, 0x0001
-        ble     cr6, L_12680
-        ble     cr7, L_126C4
+        ble     cr6, dr_emit_move_l_L8
+        ble     cr7, dr_emit_move_l_L11
         lis     immed_data, 0x0060
         bl      L_124A0
-        b       L_126A0
-L_12624:
+        b       dr_emit_move_l_L9
+dr_emit_move_l_L1:
         rlwinm  addr, prefetch_data, 23, 29, 31         // addr = prefetch_data[11:9]
         cmpwi   cr7, addr, 7
         lwz     addr, 0x1440(base_disp)
-        beq     cr6, L_1263C
-        beq     cr7, L_1264C
-        b       L_1266C
-L_1263C:
+        beq     cr6, dr_emit_move_l_L2
+        beq     cr7, dr_emit_move_l_L3
+        b       dr_emit_move_l_L6
+dr_emit_move_l_L2:
         beq     cr7, dr_emit_next
         lwz     addr, 0x1448(base_disp)
         rlwinm  data, prefetch_data, 12, 8, 10          // data = prefetch_data[11:9] << 21
-        b       L_12674
-L_1264C:
+        b       dr_emit_move_l_L7
+dr_emit_move_l_L3:
         lwz     addr, 0x1444(base_disp)
         rlwinm  data, prefetch_data, 16, 12, 15         // data = prefetch_data[3:0] << 16
-        b       L_12674
-L_12658:
+        b       dr_emit_move_l_L7
+dr_emit_move_l_L4:
         lwz     addr, 0x1454(base_disp)
         rlwinm  data, prefetch_data, 12, 8, 10          // data = prefetch_data[11:9] << 21
-        b       L_12674
-L_12664:
-        beq     cr6, L_12658
+        b       dr_emit_move_l_L7
+dr_emit_move_l_L5:
+        beq     cr6, dr_emit_move_l_L4
         lwz     addr, 0x1450(base_disp)
-L_1266C:
+dr_emit_move_l_L6:
         rlwinm  data, prefetch_data, 16, 12, 15         // data = prefetch_data[3:0] << 16
         rlwimi  data, prefetch_data, 12, 8, 10          // data[23:21] = prefetch_data[11:9]
-L_12674:
+dr_emit_move_l_L7:
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-L_12680:
+dr_emit_move_l_L8:
         clrlwi  data, prefetch_data, 28                 // data = prefetch_data & 0x0000000F
         cmpwi   cr6, data, 15
-        beq     cr7, L_12624
-        blt     cr7, L_12664
+        beq     cr7, dr_emit_move_l_L1
+        blt     cr7, dr_emit_move_l_L5
         rlwinm  immed_data, prefetch_data, 21, 7, 10    // immed_data = prefetch_data[3:0] << 21
         addis   immed_data, immed_data, 0x100
-        bne     cr6, L_126A0
+        bne     cr6, dr_emit_move_l_L9
         lis     immed_data, 0x0020
-L_126A0:
+dr_emit_move_l_L9:
         bl      L_124C8
-L_126A4:
+dr_emit_move_l_L10:
         lhz     addr, 0(rec_ptr)
         mtcrf   0x02, addr                              // cr6 = addr[7:4]
         lwz     addr, 0x1458(base_disp)
@@ -2945,20 +2975,20 @@ L_126A4:
         add     addr, addr, immed_data
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-L_126C4:
-        beql    cr7, L_126F0
+dr_emit_move_l_L11:
+        beql    cr7, dr_emit_move_l_L13
         rlwinm  immed_data, prefetch_data, 12, 8, 10    // immed_data = prefetch_data[11:9] << 21
         rlwimi  immed_data, prefetch_data, 18, 7, 7     // immed_data[24] = prefetch_data[6]
         addis   immed_data, immed_data, 0x100
-        bne     cr7, L_126E8
+        bne     cr7, dr_emit_move_l_L12
         rlwinm  addr, prefetch_data, 23, 29, 31         // addr = prefetch_data[11:9]
         cmpwi   cr7, addr, 7
-        bne     cr7, L_126E8
+        bne     cr7, dr_emit_move_l_L12
         lis     immed_data, 0x0020
-L_126E8:
+dr_emit_move_l_L12:
         bl      L_124A0
-        b       L_126A4
-L_126F0:
+        b       dr_emit_move_l_L10
+dr_emit_move_l_L13:
         cmplwi  cr6, rtn_addr, 0x0004
         clrlwi  data, prefetch_data, 29                 // data = prefetch_data & 0x00000007
         rlwinm  rtn_addr, prefetch_data, 23, 29, 31     // rtn_addr = prefetch_data[11:9]
@@ -2966,20 +2996,20 @@ L_126F0:
         cmpw    cr5, data, rtn_addr
         li      data, 16
         bflr_likely 4*cr5+eq
-        beq     cr6, L_12718
+        beq     cr6, dr_emit_move_l_L14
         rlwimi  prefetch_data, data, 0, 26, 28          // prefetch_data[5:3] = data[5:3]
         blr
-L_12718:
+dr_emit_move_l_L14:
         lis     immed_data, 0x0060
         bl      L_124A0
-L_12720:
+dr_emit_move_l_L15:
         rlwinm  addr, prefetch_data, 23, 29, 31         // addr = prefetch_data[11:9]
         cmpwi   cr7, addr, 7
         lwz     addr, 0x144C(base_disp)
         rlwinm  data, prefetch_data, 12, 8, 10          // data = prefetch_data[11:9] << 21
-        bne     cr7, L_12738
+        bne     cr7, dr_emit_move_l_L16
         lis     data, 0xFE20
-L_12738:
+dr_emit_move_l_L16:
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
@@ -3007,66 +3037,75 @@ L_12738:
         lwz     addr, 0(addr)
         addco.  addr, addr, zero
         stwu    addr, -4(a7)
-        b       L_127C0
+        b       dr_emit_move_w
         ALIGN(64)
-L_127C0:
+
+// Code generator for 3538 opcodes:
+//     MOVE.W Dn,Dn
+//     MOVE.W An,Dn
+//     MOVE.W (An),Dn
+//     MOVE.W (An)+,Dn
+//     MOVE.W -(An),Dn
+//     MOVE.W (d16,An),Dn
+//     ... and 102 more forms
+dr_emit_move_w:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr6, rtn_addr, 0x0001
         rlwinm  immed_data, prefetch_data, 26, 29, 31   // immed_data = prefetch_data[8:6]
         cmplwi  cr7, immed_data, 0x0001
-        ble     cr6, L_1286C
-        ble     cr7, L_128AC
+        ble     cr6, dr_emit_move_w_L6
+        ble     cr7, dr_emit_move_w_L8
         lis     immed_data, 0x0060
         bl      L_124B8
         bl      L_124D8
-L_127E4:
+dr_emit_move_w_L1:
         lhz     addr, 0(rec_ptr)
         mtcrf   0x02, addr                              // cr6 = addr[7:4]
         lwz     addr, 0x15F8(base_disp)
         ble     cr6, dr_emit_next
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-L_127FC:
+dr_emit_move_w_L2:
         rlwinm  addr, prefetch_data, 23, 29, 31         // addr = prefetch_data[11:9]
         cmpwi   cr7, addr, 7
         lwz     addr, 0x15E4(base_disp)
         rlwinm  data, prefetch_data, 21, 7, 10          // data = prefetch_data[3:0] << 21
         rlwimi  data, prefetch_data, 7, 13, 15          // data[18:16] = prefetch_data[11:9]
-        bne     cr7, L_1281C
+        bne     cr7, dr_emit_move_w_L3
         rlwinm  data, prefetch_data, 21, 7, 10          // data = prefetch_data[3:0] << 21
         addis   data, data, -15
-L_1281C:
+dr_emit_move_w_L3:
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-L_12828:
+dr_emit_move_w_L4:
         clrlwi  addr, prefetch_data, 28                 // addr = prefetch_data & 0x0000000F
         cmpwi   cr7, addr, 15
         rlwinm  immed_data, prefetch_data, 21, 7, 10    // immed_data = prefetch_data[3:0] << 21
         lwz     addr, 0x15E8(base_disp)
-        beq     cr7, L_12854
+        beq     cr7, dr_emit_move_w_L5
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
         add     addr, addr, immed_data
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         addis   immed_data, immed_data, 0x100
-        b       L_12888
-L_12854:
+        b       dr_emit_move_w_L7
+dr_emit_move_w_L5:
         lwz     addr, 0x15EC(base_disp)
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         lis     immed_data, 0x0020
-        b       L_12888
-L_1286C:
+        b       dr_emit_move_w_L7
+dr_emit_move_w_L6:
         clrlwi  data, prefetch_data, 28                 // data = prefetch_data & 0x0000000F
         cmpwi   cr6, data, 15
-        beq     cr7, L_127FC
-        blt     cr7, L_12828
+        beq     cr7, dr_emit_move_w_L2
+        blt     cr7, dr_emit_move_w_L4
         rlwinm  immed_data, prefetch_data, 21, 7, 10    // immed_data = prefetch_data[3:0] << 21
         addis   immed_data, immed_data, 0x100
         bl      L_124D8
-L_12888:
+dr_emit_move_w_L7:
         lhz     addr, 0(rec_ptr)
         mtcrf   0x02, addr                              // cr6 = addr[7:4]
         lwz     addr, 0x15F4(base_disp)
@@ -3076,58 +3115,67 @@ L_12888:
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
         b       dr_emit_next
-L_128AC:
-        beq     cr7, L_128CC
+dr_emit_move_w_L8:
+        beq     cr7, dr_emit_move_w_L9
         lis     immed_data, 0x0060
         bl      L_124B8
         lwz     addr, 0x15F0(base_disp)
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        b       L_127E4
-L_128CC:
+        b       dr_emit_move_w_L1
+dr_emit_move_w_L9:
         cmplwi  cr7, rtn_addr, 0x0004
         clrlwi  data, prefetch_data, 29                 // data = prefetch_data & 0x00000007
         rlwinm  rtn_addr, prefetch_data, 23, 29, 31     // rtn_addr = prefetch_data[11:9]
-        bt_likely 4*cr7+gt, L_128F0
+        bt_likely 4*cr7+gt, dr_emit_move_w_L10
         cmpw    cr6, data, rtn_addr
         li      data, 16
-        bf_likely 4*cr6+eq, L_128F0
-        beq     cr7, L_12910
+        bf_likely 4*cr6+eq, dr_emit_move_w_L10
+        beq     cr7, dr_emit_move_w_L12
         rlwimi  prefetch_data, data, 0, 26, 28          // prefetch_data[5:3] = data[5:3]
-L_128F0:
+dr_emit_move_w_L10:
         rlwinm  addr, prefetch_data, 23, 29, 31         // addr = prefetch_data[11:9]
         cmpwi   cr7, addr, 7
         rlwinm  immed_data, prefetch_data, 12, 8, 10    // immed_data = prefetch_data[11:9] << 21
         addis   immed_data, immed_data, 0x200
-        bne     cr7, L_12908
+        bne     cr7, dr_emit_move_w_L11
         lis     immed_data, 0x0020
-L_12908:
+dr_emit_move_w_L11:
         bl      L_124B8
         b       dr_emit_next
-L_12910:
+dr_emit_move_w_L12:
         lis     immed_data, 0x0060
         bl      L_124B8
-        b       L_12720
+        b       dr_emit_move_l_L15
         extsh   a0, d0                                  // a0 = sign-extended low word of d0
         rlwimi  d0, d0, 0, 16, 31                       // d0[15:0] = d0[15:0]
         rlwimi  d0, a7, 0, 16, 31                       // d0[15:0] = a7[15:0]
         rlwimi  d0, addr, 0, 16, 31                     // d0[15:0] = addr[15:0]
         extsh   addr, zero                              // addr = sign-extended low word of zero
         addco.  addr, addr, zero
-        b       L_12940
+        b       dr_emit_move_b
         ALIGN(64)
-L_12940:
+
+// Code generator for 2650 opcodes:
+//     MOVE.B Dn,Dn
+//     MOVE.B (An),Dn
+//     MOVE.B (An)+,Dn
+//     MOVE.B -(An),Dn
+//     MOVE.B (d16,An),Dn
+//     MOVE.B (d8,An,Xn),Dn
+//     ... and 82 more forms
+dr_emit_move_b:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr6, rtn_addr, 0x0001
         rlwinm  immed_data, prefetch_data, 26, 29, 31   // immed_data = prefetch_data[8:6]
         cmplwi  cr7, immed_data, 0x0001
-        ble     cr6, L_129A8
-        ble     cr7, L_129BC
+        ble     cr6, dr_emit_move_b_L3
+        ble     cr7, dr_emit_move_b_L4
         lis     immed_data, 0x0060
         bl      L_124C0
         bl      L_124E0
-L_12964:
+dr_emit_move_b_L1:
         lhz     addr, 0(rec_ptr)
         mtcrf   0x02, addr                              // cr6 = addr[7:4]
         lwz     addr, 0x1700(base_disp)
@@ -3137,7 +3185,7 @@ L_12964:
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
         b       dr_emit_next
-L_12988:
+dr_emit_move_b_L2:
         rlwinm  immed_data, prefetch_data, 21, 8, 10    // immed_data = prefetch_data[2:0] << 21
         lwz     addr, 0x16F8(base_disp)
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
@@ -3145,21 +3193,21 @@ L_12988:
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         addis   immed_data, immed_data, 0x100
-        b       L_12964
-L_129A8:
-        blt     cr7, L_12988
+        b       dr_emit_move_b_L1
+dr_emit_move_b_L3:
+        blt     cr7, dr_emit_move_b_L2
         rlwinm  immed_data, prefetch_data, 21, 8, 10    // immed_data = prefetch_data[2:0] << 21
         addis   immed_data, immed_data, 0x100
         bl      L_124E0
-        b       L_12964
-L_129BC:
+        b       dr_emit_move_b_L1
+dr_emit_move_b_L4:
         lis     immed_data, 0x0060
         bl      L_124C0
         lwz     addr, 0x16FC(base_disp)
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        b       L_12964
+        b       dr_emit_move_b_L1
         lwz     addr, 0x1708(base_disp)
         lwz     data, 0x170C(base_disp)
         stwu    addr, 4(out_ptr)
@@ -3190,10 +3238,16 @@ L_129BC:
         addi    a1, a1, 1
         cmpwi   cr7, addr, 0
         stb     addr, 0(a0)
-L_12A50:
+dr_emit_move_b_L5:
         addi    a0, a0, 1
-        bne     cr7, L_12A50
+        bne     cr7, dr_emit_move_b_L5
         addco.  zero, zero, zero
+
+// Code generator for 2048 opcodes:
+//     MOVEQ.L #<q>,Dn
+//     MOVEQ.L #$An,Dn
+//     MOVEQ.L #$Dn,Dn
+dr_emit_moveq_l:
         lhz     rtn_addr, 0(rec_ptr)
         lwz     addr, 0x1774(base_disp)
         extsb   data, prefetch_data                     // data = sign-extended low byte of prefetch_data
@@ -3201,7 +3255,7 @@ L_12A50:
         mtcrf   0x02, rtn_addr                          // cr6 = rtn_addr[7:4]
         rlwinm  rtn_addr, prefetch_data, 12, 8, 10      // rtn_addr = prefetch_data[11:9] << 21
         rlwimi  addr, data, 0, 16, 31                   // addr[15:0] = data[15:0]
-        beq     cr7, L_12A9C
+        beq     cr7, dr_emit_moveq_l_L1
         add     addr, addr, rtn_addr
         stwu    addr, 4(out_ptr)
         ble     cr6, dr_emit_next
@@ -3210,7 +3264,7 @@ L_12A50:
         add     addr, addr, rtn_addr
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-L_12A9C:
+dr_emit_moveq_l_L1:
         lwz     addr, 0x1778(base_disp)
         add     addr, addr, rtn_addr
         stwu    addr, 4(out_ptr)
@@ -3218,22 +3272,31 @@ L_12A9C:
         li      d0, 0
         addco.  d0, zero, zero
         addco.  d0, d0, zero
+
+// Code generator for 64 opcodes:
+//     EXG.L An,An
+dr_emit_exg_l:
         rlwinm  data, prefetch_data, 23, 29, 31         // data = prefetch_data[11:9]
         cmpwi   cr7, data, 7
         lwz     addr, 0x1818(base_disp)
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
-        beq     cr7, L_12AE4
+        beq     cr7, dr_emit_exg_l_L1
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         lwz     addr, 0x1824(base_disp)
         rlwinm  data, prefetch_data, 12, 8, 10          // data = prefetch_data[11:9] << 21
         add     addr, addr, data
-        b       L_12B10
-L_12AE4:
+        b       dr_emit_exg_l_2_L1
+dr_emit_exg_l_L1:
         lwz     addr, 0x181C(base_disp)
         stwu    addr, 4(out_ptr)
         lwz     addr, 0x1828(base_disp)
-        b       L_12B10
+        b       dr_emit_exg_l_2_L1
+
+// Code generator for 128 opcodes:
+//     EXG.L Dn,Dn
+//     EXG.L Dn,An
+dr_emit_exg_l_2:
         lwz     addr, 0x1820(base_disp)
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
         add     addr, addr, data
@@ -3241,11 +3304,11 @@ L_12AE4:
         lwz     addr, 0x182C(base_disp)
         rlwinm  data, prefetch_data, 12, 8, 10          // data = prefetch_data[11:9] << 21
         add     addr, addr, data
-L_12B10:
+dr_emit_exg_l_2_L1:
         clrlwi  data, prefetch_data, 28                 // data = prefetch_data & 0x0000000F
         cmpwi   cr7, data, 15
         rlwinm  data, prefetch_data, 16, 12, 15         // data = prefetch_data[3:0] << 16
-        beq     cr7, L_12B3C
+        beq     cr7, dr_emit_exg_l_2_L2
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         lwz     addr, 0x1834(base_disp)
@@ -3253,7 +3316,7 @@ L_12B10:
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-L_12B3C:
+dr_emit_exg_l_2_L2:
         addis   addr, addr, -7
         lwz     data, 0x1830(base_disp)
         stwu    addr, 4(out_ptr)
@@ -3267,62 +3330,102 @@ L_12B3C:
         add     d0, d0, zero
         add     a7, addr, zero
         add     d0, addr, zero
-        b       L_12BF4
-        b       L_12BC0
+
+// Code generator for 50 opcodes:
+//     CLR.B Dn
+//     CLR.B (An)
+//     CLR.B (An)+
+//     CLR.B -(An)
+//     CLR.B (d16,An)
+//     CLR.B (d8,An,Xn)
+//     ... and 2 more forms
+dr_emit_clr_b:
+        b       dr_emit_clr_l_L5
+
+// Code generator for 50 opcodes:
+//     CLR.W Dn
+//     CLR.W (An)
+//     CLR.W (An)+
+//     CLR.W -(An)
+//     CLR.W (d16,An)
+//     CLR.W (d8,An,Xn)
+//     ... and 2 more forms
+dr_emit_clr_w:
+        b       dr_emit_clr_l_L3
+
+// Code generator for 50 opcodes:
+//     CLR.L Dn
+//     CLR.L (An)
+//     CLR.L (An)+
+//     CLR.L -(An)
+//     CLR.L (d16,An)
+//     CLR.L (d8,An,Xn)
+//     ... and 2 more forms
+dr_emit_clr_l:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr6, rtn_addr, 0x0000
         lis     immed_data, 0x0000
-        beq     cr6, L_12BAC
+        beq     cr6, dr_emit_clr_l_L2
         rlwimi  prefetch_data, prefetch_data, 3, 23, 25  // prefetch_data[8:6] = prefetch_data[5:3]
         rlwimi  prefetch_data, prefetch_data, 9, 20, 22  // prefetch_data[11:9] = prefetch_data[2:0]
         bl      L_124C8
-L_12B94:
+dr_emit_clr_l_L1:
         lhz     data, 0(rec_ptr)
         lwz     addr, 0x18FC(base_disp)
         mtcrf   0x02, data                              // cr6 = data[7:4]
         ble     cr6, dr_emit_next
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-L_12BAC:
+dr_emit_clr_l_L2:
         lwz     addr, 0x18F0(base_disp)
         rlwinm  data, prefetch_data, 21, 8, 10          // data = prefetch_data[2:0] << 21
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-L_12BC0:
+dr_emit_clr_l_L3:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr6, rtn_addr, 0x0000
         lis     immed_data, 0x0000
-        beq     cr6, L_12BE0
+        beq     cr6, dr_emit_clr_l_L4
         rlwimi  prefetch_data, prefetch_data, 3, 23, 25  // prefetch_data[8:6] = prefetch_data[5:3]
         rlwimi  prefetch_data, prefetch_data, 9, 20, 22  // prefetch_data[11:9] = prefetch_data[2:0]
         bl      L_124D8
-        b       L_12B94
-L_12BE0:
+        b       dr_emit_clr_l_L1
+dr_emit_clr_l_L4:
         lwz     addr, 0x18F4(base_disp)
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        b       L_12B94
-L_12BF4:
+        b       dr_emit_clr_l_L1
+dr_emit_clr_l_L5:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr6, rtn_addr, 0x0000
         lis     immed_data, 0x0000
-        beq     cr6, L_12C14
+        beq     cr6, dr_emit_clr_l_L6
         rlwimi  prefetch_data, prefetch_data, 3, 23, 25  // prefetch_data[8:6] = prefetch_data[5:3]
         rlwimi  prefetch_data, prefetch_data, 9, 20, 22  // prefetch_data[11:9] = prefetch_data[2:0]
         bl      L_124E0
-        b       L_12B94
-L_12C14:
+        b       dr_emit_clr_l_L1
+dr_emit_clr_l_L6:
         lwz     addr, 0x18F8(base_disp)
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        b       L_12B94
+        b       dr_emit_clr_l_L1
         addco.  d0, zero, zero
         rlwimi  d0, zero, 0, 16, 31                     // d0[15:0] = zero[15:0]
         rlwimi  d0, zero, 0, 24, 31                     // d0[7:0] = zero[7:0]
         addco.  zero, zero, zero
+
+// Code generator for 51 opcodes:
+//     MOVE.W CCR,Dn
+//     MOVE.W CCR,(An)
+//     MOVE.W CCR,(An)+
+//     MOVE.W CCR,-(An)
+//     MOVE.W CCR,(d16,An)
+//     MOVE.W CCR,(d8,An,Xn)
+//     ... and 3 more forms
+dr_emit_move_w_2:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr6, rtn_addr, 0x0000
         lwz     addr, 0x19BC(base_disp)
@@ -3337,24 +3440,34 @@ L_12C14:
         lwz     data, 0x19D0(base_disp)
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
-        beq     cr6, L_12C88
+        beq     cr6, dr_emit_move_w_2_L1
         lis     immed_data, 0x0060
         rlwimi  prefetch_data, prefetch_data, 3, 23, 25  // prefetch_data[8:6] = prefetch_data[5:3]
         rlwimi  prefetch_data, prefetch_data, 9, 20, 22  // prefetch_data[11:9] = prefetch_data[2:0]
         bl      L_124D8
         b       dr_emit_next
-L_12C88:
+dr_emit_move_w_2_L1:
         lwz     addr, 0x19D4(base_disp)
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
+
+// Code generator for 53 opcodes:
+//     MOVE.W Dn,CCR
+//     MOVE.W (An),CCR
+//     MOVE.W (An)+,CCR
+//     MOVE.W -(An),CCR
+//     MOVE.W (d16,An),CCR
+//     MOVE.W (d8,An,Xn),CCR
+//     ... and 5 more forms
+dr_emit_move_w_3:
         rlwinm  addr, prefetch_data, 29, 29, 31         // addr = prefetch_data[5:3]
         cmpwi   cr7, addr, 0
         lis     immed_data, 0x0060
-        beq     cr7, L_12CE4
+        beq     cr7, dr_emit_move_w_3_L2
         bl      L_124B8
-L_12CB0:
+dr_emit_move_w_3_L1:
         lwz     addr, 0x19D8(base_disp)
         lwz     data, 0x19DC(base_disp)
         lwz     rtn_addr, 0x19E0(base_disp)
@@ -3368,11 +3481,11 @@ L_12CB0:
         stwu    data, 4(out_ptr)
         stwu    rtn_addr, 4(out_ptr)
         b       dr_emit_next
-L_12CE4:
+dr_emit_move_w_3_L2:
         lwz     addr, 0x19F0(base_disp)
         rlwimi  addr, prefetch_data, 21, 8, 10          // addr[23:21] = prefetch_data[2:0]
         stwu    addr, 4(out_ptr)
-        b       L_12CB0
+        b       dr_emit_move_w_3_L1
         mfcr    data
         rlwinm  addr, ccr_x, 7, 27, 27                  // addr = ccr_x[29] << 4
         mfxer   rtn_addr
@@ -3387,11 +3500,29 @@ L_12CE4:
         mtcrf   0x80, rtn_addr                          // cr0 = rtn_addr[31:28]
         mtxer   addr
         clrlwi  addr, d0, 16                            // addr = d0 & 0x0000FFFF
-        b       L_12E10
+
+// Code generator for 34 opcodes:
+//     MOVEM.W <list>,(An)
+//     MOVEM.W <list>,-(An)
+//     MOVEM.W <list>,(d16,An)
+//     MOVEM.W <list>,(d8,An,Xn)
+//     MOVEM.W <list>,(xxx).W
+//     MOVEM.W <list>,(xxx).L
+dr_emit_movem_w:
+        b       dr_emit_movem_l_L8
+
+// Code generator for 34 opcodes:
+//     MOVEM.L <list>,(An)
+//     MOVEM.L <list>,-(An)
+//     MOVEM.L <list>,(d16,An)
+//     MOVEM.L <list>,(d8,An,Xn)
+//     MOVEM.L <list>,(xxx).W
+//     MOVEM.L <list>,(xxx).L
+dr_emit_movem_l:
         rlwinm  data, prefetch_data, 29, 29, 31         // data = prefetch_data[5:3]
         cmpwi   cr7, data, 4
         lwz     addr, 0x1D24(base_disp)
-        bt_likely 4*cr7+eq, L_12D74
+        bt_likely 4*cr7+eq, dr_emit_movem_l_L1
         lis     immed_data, 0x0060
         addi    blk_ofs, blk_ofs, 2
         bl      L_12508
@@ -3405,29 +3536,29 @@ L_12CE4:
         lwz     addr, 0x1D14(base_disp)
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-L_12D74:
+dr_emit_movem_l_L1:
         lhax    rtn_addr, pc, blk_ofs
         clrlwi  data, prefetch_data, 29                 // data = prefetch_data & 0x00000007
         rlwnm   addr, rtn_addr, data, 24, 24            // addr = rotl(rtn_addr, data) & 0x00000080
         cmpwi   cr6, data, 7
         cmpwi   cr7, addr, 0
-        bne     cr6, L_12DBC
-        bne     cr7, L_12DA8
-L_12D90:
+        bne     cr6, dr_emit_movem_l_L5
+        bne     cr7, dr_emit_movem_l_L4
+dr_emit_movem_l_L2:
         lwz     addr, 0x1D54(base_disp)
-L_12D94:
+dr_emit_movem_l_L3:
         mtcrf   0x0F, rtn_addr                          // cr4..cr7 = rtn_addr[15:0]
         lis     data, 0xFFE0
         crset   4*cr3+so
         bl      L_130F8
         b       dr_emit_next
-L_12DA8:
+dr_emit_movem_l_L4:
         lwz     data, 0x1D44(base_disp)
         lwz     addr, 0x1D48(base_disp)
         stwu    data, 4(out_ptr)
         stwu    addr, 4(out_ptr)
-        b       L_12D90
-L_12DBC:
+        b       dr_emit_movem_l_L2
+dr_emit_movem_l_L5:
         lwz     addr, 0x1D24(base_disp)
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
         add     addr, addr, data
@@ -3437,12 +3568,12 @@ L_12DBC:
         mtcrf   0x0F, rtn_addr                          // cr4..cr7 = rtn_addr[15:0]
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        bns     cr7, L_12DEC
+        bns     cr7, dr_emit_movem_l_L6
         lwz     addr, 0x1D30(base_disp)
         stwu    addr, 4(out_ptr)
-L_12DEC:
+dr_emit_movem_l_L6:
         lwz     addr, 0x1D34(base_disp)
-L_12DF0:
+dr_emit_movem_l_L7:
         lis     data, 0xFFE0
         crset   4*cr3+so
         bl      L_130F8
@@ -3451,11 +3582,11 @@ L_12DF0:
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-L_12E10:
+dr_emit_movem_l_L8:
         rlwinm  data, prefetch_data, 29, 29, 31         // data = prefetch_data[5:3]
         cmpwi   cr7, data, 4
         lwz     addr, 0x1D24(base_disp)
-        bt_likely 4*cr7+eq, L_12E54
+        bt_likely 4*cr7+eq, dr_emit_movem_l_L9
         lis     immed_data, 0x0060
         addi    blk_ofs, blk_ofs, 2
         bl      L_12508
@@ -3469,24 +3600,24 @@ L_12E10:
         lwz     addr, 0x1D20(base_disp)
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-L_12E54:
+dr_emit_movem_l_L9:
         lhax    rtn_addr, pc, blk_ofs
         clrlwi  data, prefetch_data, 29                 // data = prefetch_data & 0x00000007
         rlwnm   addr, rtn_addr, data, 24, 24            // addr = rotl(rtn_addr, data) & 0x00000080
         cmpwi   cr6, data, 7
         cmpwi   cr7, addr, 0
-        bne     cr6, L_12E8C
-        bne     cr7, L_12E78
-L_12E70:
+        bne     cr6, dr_emit_movem_l_L12
+        bne     cr7, dr_emit_movem_l_L11
+dr_emit_movem_l_L10:
         lwz     addr, 0x1D58(base_disp)
-        b       L_12D94
-L_12E78:
+        b       dr_emit_movem_l_L3
+dr_emit_movem_l_L11:
         lwz     data, 0x1D4C(base_disp)
         lwz     addr, 0x1D50(base_disp)
         stwu    data, 4(out_ptr)
         stwu    addr, 4(out_ptr)
-        b       L_12E70
-L_12E8C:
+        b       dr_emit_movem_l_L10
+dr_emit_movem_l_L12:
         lwz     addr, 0x1D24(base_disp)
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
         add     addr, addr, data
@@ -3496,18 +3627,38 @@ L_12E8C:
         mtcrf   0x0F, rtn_addr                          // cr4..cr7 = rtn_addr[15:0]
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        bns     cr7, L_12EBC
+        bns     cr7, dr_emit_movem_l_L13
         lwz     addr, 0x1D3C(base_disp)
         stwu    addr, 4(out_ptr)
-L_12EBC:
+dr_emit_movem_l_L13:
         lwz     addr, 0x1D40(base_disp)
-        b       L_12DF0
-        b       L_12F8C
+        b       dr_emit_movem_l_L7
+
+// Code generator for 36 opcodes:
+//     MOVEM.W (An),<list>
+//     MOVEM.W (An)+,<list>
+//     MOVEM.W (d16,An),<list>
+//     MOVEM.W (d8,An,Xn),<list>
+//     MOVEM.W (xxx).W,<list>
+//     MOVEM.W (xxx).L,<list>
+//     ... and 2 more forms
+dr_emit_movem_w_2:
+        b       dr_emit_movem_l_2_L6
+
+// Code generator for 36 opcodes:
+//     MOVEM.L (An),<list>
+//     MOVEM.L (An)+,<list>
+//     MOVEM.L (d16,An),<list>
+//     MOVEM.L (d8,An,Xn),<list>
+//     MOVEM.L (xxx).W,<list>
+//     MOVEM.L (xxx).L,<list>
+//     ... and 2 more forms
+dr_emit_movem_l_2:
         rlwinm  data, prefetch_data, 29, 29, 31         // data = prefetch_data[5:3]
         cmpwi   cr7, data, 3
         lis     immed_data, 0x0060
         lhax    rtn_addr, pc, blk_ofs
-        bt_likely 4*cr7+eq, L_12F0C
+        bt_likely 4*cr7+eq, dr_emit_movem_l_2_L1
         addi    blk_ofs, blk_ofs, 2
         bl      L_12508
         lwz     addr, 0x1D5C(base_disp)
@@ -3520,11 +3671,11 @@ L_12EBC:
         lwz     addr, 0x1D64(base_disp)
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-L_12F0C:
+dr_emit_movem_l_2_L1:
         clrlwi  data, prefetch_data, 29                 // data = prefetch_data & 0x00000007
         cmpwi   cr6, data, 7
         lwz     data, 0x1D7C(base_disp)
-        bne     cr6, L_12F48
+        bne     cr6, dr_emit_movem_l_2_L3
         mtcrf   0x0F, rtn_addr                          // cr4..cr7 = rtn_addr[15:0]
         lwz     addr, 0x1D80(base_disp)
         stwu    data, 4(out_ptr)
@@ -3532,12 +3683,12 @@ L_12F0C:
         crclr   4*cr3+so
         bl      L_130EC
         lwz     addr, 0x1D84(base_disp)
-        bge     cr4, L_12F40
+        bge     cr4, dr_emit_movem_l_2_L2
         lwz     addr, 0x1D88(base_disp)
-L_12F40:
+dr_emit_movem_l_2_L2:
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-L_12F48:
+dr_emit_movem_l_2_L3:
         lwz     addr, 0x1D74(base_disp)
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
         add     addr, addr, data
@@ -3547,22 +3698,22 @@ L_12F48:
         lis     data, 0x0020
         crclr   4*cr3+so
         bl      L_130EC
-        bge     cr4, L_12F78
+        bge     cr4, dr_emit_movem_l_2_L4
         lwz     addr, 0x1D64(base_disp)
         stwu    addr, 4(out_ptr)
-L_12F78:
+dr_emit_movem_l_2_L4:
         lwz     addr, 0x1D78(base_disp)
-L_12F7C:
+dr_emit_movem_l_2_L5:
         rlwinm  data, prefetch_data, 21, 8, 10          // data = prefetch_data[2:0] << 21
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-L_12F8C:
+dr_emit_movem_l_2_L6:
         rlwinm  data, prefetch_data, 29, 29, 31         // data = prefetch_data[5:3]
         cmpwi   cr7, data, 3
         lis     immed_data, 0x0060
         lhax    rtn_addr, pc, blk_ofs
-        bt_likely 4*cr7+eq, L_12FD0
+        bt_likely 4*cr7+eq, dr_emit_movem_l_2_L7
         addi    blk_ofs, blk_ofs, 2
         bl      L_12508
         lwz     addr, 0x1D68(base_disp)
@@ -3575,11 +3726,11 @@ L_12F8C:
         lwz     addr, 0x1D70(base_disp)
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-L_12FD0:
+dr_emit_movem_l_2_L7:
         clrlwi  data, prefetch_data, 29                 // data = prefetch_data & 0x00000007
         cmpwi   cr6, data, 7
         lwz     data, 0x1D94(base_disp)
-        bne     cr6, L_1300C
+        bne     cr6, dr_emit_movem_l_2_L9
         mtcrf   0x0F, rtn_addr                          // cr4..cr7 = rtn_addr[15:0]
         lwz     addr, 0x1D98(base_disp)
         stwu    data, 4(out_ptr)
@@ -3587,12 +3738,12 @@ L_12FD0:
         crclr   4*cr3+so
         bl      L_130EC
         lwz     addr, 0x1D9C(base_disp)
-        bge     cr4, L_13004
+        bge     cr4, dr_emit_movem_l_2_L8
         lwz     addr, 0x1DA0(base_disp)
-L_13004:
+dr_emit_movem_l_2_L8:
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-L_1300C:
+dr_emit_movem_l_2_L9:
         lwz     addr, 0x1D8C(base_disp)
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
         add     addr, addr, data
@@ -3602,12 +3753,12 @@ L_1300C:
         lis     data, 0x0020
         crclr   4*cr3+so
         bl      L_130EC
-        bge     cr4, L_1303C
+        bge     cr4, dr_emit_movem_l_2_L10
         lwz     addr, 0x1D70(base_disp)
         stwu    addr, 4(out_ptr)
-L_1303C:
+dr_emit_movem_l_2_L10:
         lwz     addr, 0x1D90(base_disp)
-        b       L_12F7C
+        b       dr_emit_movem_l_2_L5
         addi    addr, addr, -4
         stwu    d0, 4(addr)
         stwu    a7, 4(addr)
@@ -3718,93 +3869,173 @@ L_1319C:
         stwu    addr, 4(out_ptr)
 L_131AC:
         blr
+
+// Code generator for 488 opcodes:
+//     ADD.L Dn,Dn
+//     ADD.L An,Dn
+//     ADD.L (An),Dn
+//     ADD.L (An)+,Dn
+//     ADD.L -(An),Dn
+//     ADD.L (d16,An),Dn
+//     ... and 6 more forms
+dr_emit_add_l:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr6, rtn_addr, 0x0001
         lis     immed_data, 0x0060
-        ble     cr6, L_131F0
+        ble     cr6, dr_emit_add_l_L5
         bl      L_124A0
         lwz     addr, 0x2198(base_disp)
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
-L_131CC:
+dr_emit_add_l_L1:
         rlwimi  data, prefetch_data, 12, 8, 10          // data[23:21] = prefetch_data[11:9]
-L_131D0:
+dr_emit_add_l_L2:
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-L_131D8:
+dr_emit_add_l_L3:
         lhz     addr, 0(rec_ptr)
         mtcrf   0x02, addr                              // cr6 = addr[7:4]
         bge     cr6, dr_emit_next
-L_131E4:
+dr_emit_add_l_L4:
         lwz     addr, 0x21A8(base_disp)
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-L_131F0:
+dr_emit_add_l_L5:
         clrlwi  addr, prefetch_data, 28                 // addr = prefetch_data & 0x0000000F
         cmpwi   cr7, addr, 15
         lwz     addr, 0x2180(base_disp)
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
-        beq     cr7, L_1320C
+        beq     cr7, dr_emit_add_l_L6
         rlwimi  data, prefetch_data, 11, 17, 20         // data[14:11] = prefetch_data[3:0]
-        b       L_131CC
-L_1320C:
+        b       dr_emit_add_l_L1
+dr_emit_add_l_L6:
         lwz     addr, 0x2184(base_disp)
-        b       L_131CC
+        b       dr_emit_add_l_L1
+
+// Code generator for 488 opcodes:
+//     ADDA.L Dn,An
+//     ADDA.L An,An
+//     ADDA.L (An),An
+//     ADDA.L (An)+,An
+//     ADDA.L -(An),An
+//     ADDA.L (d16,An),An
+//     ... and 6 more forms
+dr_emit_adda_l:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr6, rtn_addr, 0x0001
         lis     immed_data, 0x0060
-        ble     cr6, L_13258
+        ble     cr6, dr_emit_adda_l_L4
         bl      L_124A0
         rlwinm  addr, prefetch_data, 23, 29, 31         // addr = prefetch_data[11:9]
         cmplwi  cr7, addr, 0x0007
         lwz     addr, 0x21A0(base_disp)
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
-        beq     cr7, L_1324C
-L_1323C:
+        beq     cr7, dr_emit_adda_l_L3
+dr_emit_adda_l_L1:
         rlwimi  data, prefetch_data, 12, 8, 10          // data[23:21] = prefetch_data[11:9]
-L_13240:
+dr_emit_adda_l_L2:
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-L_1324C:
+dr_emit_adda_l_L3:
         lwz     addr, 0x21A4(base_disp)
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-L_13258:
+dr_emit_adda_l_L4:
         rlwinm  addr, prefetch_data, 23, 29, 31         // addr = prefetch_data[11:9]
         cmpwi   cr6, addr, 7
         lwz     addr, 0x2188(base_disp)
         rlwinm  data, prefetch_data, 11, 17, 20         // data = prefetch_data[3:0] << 11
         cmpwi   cr7, data, 0x7800
         rlwimi  data, prefetch_data, 7, 13, 15          // data[18:16] = prefetch_data[11:9]
-        bne     cr7, L_1328C
+        bne     cr7, dr_emit_adda_l_L5
         lwz     addr, 0x2190(base_disp)
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
-        bne     cr6, L_1323C
+        bne     cr6, dr_emit_adda_l_L1
         lwz     addr, 0x2194(base_disp)
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-L_1328C:
-        bne     cr6, L_1323C
+dr_emit_adda_l_L5:
+        bne     cr6, dr_emit_adda_l_L1
         lwz     addr, 0x218C(base_disp)
         rlwinm  data, prefetch_data, 11, 17, 20         // data = prefetch_data[3:0] << 11
-        b       L_13240
-        b       L_13B3C
-        b       L_13688
+        b       dr_emit_adda_l_L2
+
+// Code generator for 336 opcodes:
+//     ADD.B Dn,(An)
+//     ADD.B Dn,(An)+
+//     ADD.B Dn,-(An)
+//     ADD.B Dn,(d16,An)
+//     ADD.B Dn,(d8,An,Xn)
+//     ADD.B Dn,(xxx).W
+//     ... and 1 more forms
+dr_emit_add_b:
+        b       dr_emit_add_b_2_L6
+
+// Code generator for 336 opcodes:
+//     ADD.W Dn,(An)
+//     ADD.W Dn,(An)+
+//     ADD.W Dn,-(An)
+//     ADD.W Dn,(d16,An)
+//     ADD.W Dn,(d8,An,Xn)
+//     ADD.W Dn,(xxx).W
+//     ... and 1 more forms
+dr_emit_add_w:
+        b       dr_emit_adda_w_L5
+
+// Code generator for 336 opcodes:
+//     ADD.L Dn,(An)
+//     ADD.L Dn,(An)+
+//     ADD.L Dn,-(An)
+//     ADD.L Dn,(d16,An)
+//     ADD.L Dn,(d8,An,Xn)
+//     ADD.L Dn,(xxx).W
+//     ... and 1 more forms
+dr_emit_add_l_2:
         lis     immed_data, 0x0060
         bl      L_124A0
         lwz     addr, 0x219C(base_disp)
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
         add     addr, addr, data
-L_132B8:
+dr_emit_add_l_2_L1:
         lis     immed_data, 0x0060
         stwu    addr, 4(out_ptr)
         bl      L_124F0
-        b       L_131D8
-        b       L_136F4
-        b       L_13BA8
+        b       dr_emit_add_l_L3
+
+// Code generator for 51 opcodes:
+//     ADDI.W #<data>,Dn
+//     ADDI.W #<data>,(An)
+//     ADDI.W #<data>,(An)+
+//     ADDI.W #<data>,-(An)
+//     ADDI.W #<data>,(d16,An)
+//     ADDI.W #<data>,(d8,An,Xn)
+//     ... and 3 more forms
+dr_emit_addi_w:
+        b       dr_emit_adda_w_L8
+
+// Code generator for 51 opcodes:
+//     ADDI.B #<data>,Dn
+//     ADDI.B #<data>,(An)
+//     ADDI.B #<data>,(An)+
+//     ADDI.B #<data>,-(An)
+//     ADDI.B #<data>,(d16,An)
+//     ADDI.B #<data>,(d8,An,Xn)
+//     ... and 3 more forms
+dr_emit_addi_b:
+        b       dr_emit_add_b_2_L9
+
+// Code generator for 51 opcodes:
+//     ADDI.L #<data>,Dn
+//     ADDI.L #<data>,(An)
+//     ADDI.L #<data>,(An)+
+//     ADDI.L #<data>,-(An)
+//     ADDI.L #<data>,(d16,An)
+//     ADDI.L #<data>,(d8,An,Xn)
+//     ... and 3 more forms
+dr_emit_addi_l:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr6, rtn_addr, 0x0001
-        ble     cr6, L_132FC
+        ble     cr6, dr_emit_addi_l_L1
         lis     immed_data, 0x00A0
         addi    blk_ofs, blk_ofs, 4
         bl      L_124A0
@@ -3812,43 +4043,53 @@ L_132B8:
         addi    rtn_addr, rtn_addr, 2
         bl      L_12510
         lwz     addr, 0x21AC(base_disp)
-        b       L_132B8
-L_132FC:
+        b       dr_emit_add_l_2_L1
+dr_emit_addi_l_L1:
         bl      L_12518
-L_13300:
+dr_emit_addi_l_L2:
         lwz     addr, 0x2198(base_disp)
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
         rlwimi  data, prefetch_data, 21, 8, 10          // data[23:21] = prefetch_data[2:0]
-        b       L_131D0
+        b       dr_emit_add_l_L2
+
+// Code generator for 464 opcodes:
+//     ADDQ.L #<q>,Dn
+//     ADDQ.L #<q>,An
+//     ADDQ.L #<q>,(An)
+//     ADDQ.L #<q>,(An)+
+//     ADDQ.L #<q>,-(An)
+//     ADDQ.L #<q>,(d16,An)
+//     ... and 3 more forms
+dr_emit_addq_l:
         clrlwi  rtn_addr, prefetch_data, 26             // rtn_addr = prefetch_data & 0x0000003F
         cmplwi  cr7, rtn_addr, 0x000F
         lis     immed_data, 0x0060
-        ble     cr7, L_13374
+        ble     cr7, dr_emit_addq_l_L4
         bl      L_124A0
         lhz     rtn_addr, 0(rec_ptr)
         rlwinm  data, prefetch_data, 23, 29, 31         // data = prefetch_data[11:9]
         mtcrf   0x02, rtn_addr                          // cr6 = rtn_addr[7:4]
         cmpwi   cr7, data, 0
         cror    4*cr6+gt, 4*cr6+gt, 4*cr6+lt            // cr6.gt = cr6.gt | cr6.lt
-        bne     cr7, L_13340
+        bne     cr7, dr_emit_addq_l_L1
         li      data, 8
-L_13340:
-        bgt     cr6, L_13358
+dr_emit_addq_l_L1:
+        bgt     cr6, dr_emit_addq_l_L3
         lwz     addr, 0x21B8(base_disp)
-L_13348:
+dr_emit_addq_l_L2:
         rlwimi  addr, data, 0, 16, 31                   // addr[15:0] = data[15:0]
         stwu    addr, 4(out_ptr)
         bl      L_124F0
         b       dr_emit_next
-L_13358:
+dr_emit_addq_l_L3:
         lwz     addr, 0x21BC(base_disp)
         lwz     rtn_addr, 0x21AC(base_disp)
         rlwimi  addr, data, 0, 16, 31                   // addr[15:0] = data[15:0]
         stwu    addr, 4(out_ptr)
         stwu    rtn_addr, 4(out_ptr)
         bl      L_124F0
-        b       L_131E4
-L_13374:
+        b       dr_emit_add_l_L4
+dr_emit_addq_l_L4:
         lhz     rtn_addr, 0(rec_ptr)
         rlwinm  data, prefetch_data, 29, 29, 31         // data = prefetch_data[5:3]
         mtcrf   0x02, rtn_addr                          // cr6 = rtn_addr[7:4]
@@ -3856,17 +4097,17 @@ L_13374:
         rlwinm  data, prefetch_data, 23, 29, 31         // data = prefetch_data[11:9]
         cmpwi   cr4, data, 0
         cror    4*cr6+gt, 4*cr6+gt, 4*cr6+lt            // cr6.gt = cr6.gt | cr6.lt
-        bne     cr4, L_13398
+        bne     cr4, dr_emit_addq_l_L5
         li      data, 8
-L_13398:
-        beq     cr7, L_133D0
-        beq     cr5, L_133B4
-        ble     cr6, L_133B4
+dr_emit_addq_l_L5:
+        beq     cr7, dr_emit_addq_l_L7
+        beq     cr5, dr_emit_addq_l_L6
+        ble     cr6, dr_emit_addq_l_L6
         lwz     addr, 0x21C0(base_disp)
         rlwimi  addr, data, 0, 16, 31                   // addr[15:0] = data[15:0]
         stwu    addr, 4(out_ptr)
-        b       L_13300
-L_133B4:
+        b       dr_emit_addi_l_L2
+dr_emit_addq_l_L6:
         lwz     addr, 0x21B0(base_disp)
         rlwinm  rtn_addr, prefetch_data, 16, 12, 15     // rtn_addr = prefetch_data[3:0] << 16
         rlwimi  rtn_addr, prefetch_data, 21, 7, 10      // rtn_addr[24:21] = prefetch_data[3:0]
@@ -3874,72 +4115,96 @@ L_133B4:
         add     addr, addr, rtn_addr
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-L_133D0:
+dr_emit_addq_l_L7:
         lwz     addr, 0x21B4(base_disp)
         rlwimi  addr, data, 0, 16, 31                   // addr[15:0] = data[15:0]
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-        b       L_13D2C
-        b       L_138F8
-        b       L_13400
-        nop
-        b       L_13D78
-        b       L_13944
-        b       L_13438
+
+// Code generator for 64 opcodes:
+//     ADDX.B Dn,Dn
+dr_emit_addx_b:
+        b       dr_emit_addq_b_L7
+
+// Code generator for 64 opcodes:
+//     ADDX.W Dn,Dn
+dr_emit_addx_w:
+        b       dr_emit_addq_w_L9
+
+// Code generator for 64 opcodes:
+//     ADDX.L Dn,Dn
+dr_emit_addx_l:
+        b       dr_emit_addx_l_2_L1
+        ALIGN(16)
+
+// Code generator for 64 opcodes:
+//     ADDX.B -(An),-(An)
+dr_emit_addx_b_2:
+        b       dr_emit_addq_b_L9
+
+// Code generator for 64 opcodes:
+//     ADDX.W -(An),-(An)
+dr_emit_addx_w_2:
+        b       dr_emit_addq_w_L11
+
+// Code generator for 64 opcodes:
+//     ADDX.L -(An),-(An)
+dr_emit_addx_l_2:
+        b       dr_emit_addx_l_2_L4
         ALIGN(64)
-L_13400:
+dr_emit_addx_l_2_L1:
         li      rtn_addr, 5
         mtctr   rtn_addr
         addi    data, base_disp, 0x21C0
-L_1340C:
+dr_emit_addx_l_2_L2:
         lwzu    rtn_addr, 4(data)
         clrlwi  addr, rtn_addr, 22                      // addr = rtn_addr & 0x000003FF
         cmplwi  cr7, addr, 0x0115
-        bf_likely 4*cr7+eq, L_1342C
+        bf_likely 4*cr7+eq, dr_emit_addx_l_2_L3
         rlwinm  addr, prefetch_data, 12, 8, 10          // addr = prefetch_data[11:9] << 21
         rlwimi  addr, prefetch_data, 7, 13, 15          // addr[18:16] = prefetch_data[11:9]
         rlwimi  addr, prefetch_data, 11, 18, 20         // addr[13:11] = prefetch_data[2:0]
         add     rtn_addr, rtn_addr, addr
-L_1342C:
+dr_emit_addx_l_2_L3:
         stwu    rtn_addr, 4(out_ptr)
-        bdnz    L_1340C                                 // CTR -= 1; branch while CTR != 0
+        bdnz    dr_emit_addx_l_2_L2                     // CTR -= 1; branch while CTR != 0
         b       dr_emit_next
-L_13438:
+dr_emit_addx_l_2_L4:
         clrlwi  addr, prefetch_data, 29                 // addr = prefetch_data & 0x00000007
         cmplwi  cr7, addr, 0x0007
         lwz     rtn_addr, 0x21D8(base_disp)
         rlwinm  addr, prefetch_data, 16, 13, 15         // addr = prefetch_data[2:0] << 16
         add     rtn_addr, rtn_addr, addr
-        bf_likely 4*cr7+eq, L_13454
+        bf_likely 4*cr7+eq, dr_emit_addx_l_2_L5
         lwz     rtn_addr, 0x21DC(base_disp)
-L_13454:
+dr_emit_addx_l_2_L5:
         stwu    rtn_addr, 4(out_ptr)
         rlwinm  addr, prefetch_data, 23, 29, 31         // addr = prefetch_data[11:9]
         cmplwi  cr7, addr, 0x0007
         lwz     rtn_addr, 0x21E0(base_disp)
         rlwinm  addr, prefetch_data, 7, 13, 15          // addr = prefetch_data[11:9] << 16
         add     rtn_addr, rtn_addr, addr
-        bf_likely 4*cr7+eq, L_13474
+        bf_likely 4*cr7+eq, dr_emit_addx_l_2_L6
         lwz     rtn_addr, 0x21E4(base_disp)
-L_13474:
+dr_emit_addx_l_2_L6:
         stwu    rtn_addr, 4(out_ptr)
         li      rtn_addr, 6
         mtctr   rtn_addr
         addi    data, base_disp, 0x21E8
-L_13484:
+dr_emit_addx_l_2_L7:
         lwzu    rtn_addr, 4(data)
         srwi    addr, rtn_addr, 26
         cmplwi  cr7, addr, 0x0024
-        bf_likely 4*cr7+eq, L_134AC
+        bf_likely 4*cr7+eq, dr_emit_addx_l_2_L8
         rlwinm  addr, prefetch_data, 23, 29, 31         // addr = prefetch_data[11:9]
         cmplwi  cr7, addr, 0x0007
         rlwinm  addr, prefetch_data, 7, 13, 15          // addr = prefetch_data[11:9] << 16
         add     rtn_addr, rtn_addr, addr
-        bf_likely 4*cr7+eq, L_134AC
+        bf_likely 4*cr7+eq, dr_emit_addx_l_2_L8
         lwz     rtn_addr, 0x21E8(base_disp)
-L_134AC:
+dr_emit_addx_l_2_L8:
         stwu    rtn_addr, 4(out_ptr)
-        bdnz    L_13484                                 // CTR -= 1; branch while CTR != 0
+        bdnz    dr_emit_addx_l_2_L7                     // CTR -= 1; branch while CTR != 0
         b       dr_emit_next
         addco.  d0, d0, d0
         addco.  d0, d0, a7
@@ -3974,24 +4239,34 @@ L_134AC:
         stw     addr, 0(a0)
         crand   eq, eq, 4*cr7+so                        // cr0.eq = cr0.eq & cr7.so
         mfxer   ccr_x
+
+// Code generator for 488 opcodes:
+//     ADD.W Dn,Dn
+//     ADD.W An,Dn
+//     ADD.W (An),Dn
+//     ADD.W (An)+,Dn
+//     ADD.W -(An),Dn
+//     ADD.W (d16,An),Dn
+//     ... and 6 more forms
+dr_emit_add_w_2:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr7, rtn_addr, 0x0001
         lis     immed_data, 0x0060
-        ble     cr7, L_13580
+        ble     cr7, dr_emit_add_w_2_L1
         bl      L_124B8
         lhz     data, 0(rec_ptr)
         lwz     addr, 0x268C(base_disp)
         mtcrf   0x02, data                              // cr6 = data[7:4]
         rlwinm  data, prefetch_data, 2, 18, 20          // data = prefetch_data[11:9] << 11
         cror    4*cr6+gt, 4*cr6+gt, 4*cr6+lt            // cr6.gt = cr6.gt | cr6.lt
-        ble     cr6, L_135B0
+        ble     cr6, dr_emit_add_w_2_L3
         lwz     addr, 0x269C(base_disp)
         rlwinm  data, prefetch_data, 12, 8, 10          // data = prefetch_data[11:9] << 21
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         lwz     addr, 0x2698(base_disp)
-        b       L_135F0
-L_13580:
+        b       dr_emit_add_w_2_L6
+dr_emit_add_w_2_L1:
         clrlwi  addr, prefetch_data, 28                 // addr = prefetch_data & 0x0000000F
         cmpwi   cr7, addr, 15
         lhz     data, 0(rec_ptr)
@@ -4000,12 +4275,12 @@ L_13580:
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
         cror    4*cr6+gt, 4*cr6+gt, 4*cr6+lt            // cr6.gt = cr6.gt | cr6.lt
         rlwimi  data, prefetch_data, 11, 17, 20         // data[14:11] = prefetch_data[3:0]
-        bne     cr7, L_135AC
+        bne     cr7, dr_emit_add_w_2_L2
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
         addi    data, data, -0x3800
-L_135AC:
-        bgt     cr6, L_135CC
-L_135B0:
+dr_emit_add_w_2_L2:
+        bgt     cr6, dr_emit_add_w_2_L4
+dr_emit_add_w_2_L3:
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         lwz     addr, 0x2694(base_disp)
@@ -4013,18 +4288,18 @@ L_135B0:
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-L_135CC:
+dr_emit_add_w_2_L4:
         lwz     addr, 0x269C(base_disp)
         rlwinm  data, prefetch_data, 12, 8, 10          // data = prefetch_data[11:9] << 21
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         lwz     addr, 0x26A0(base_disp)
         rlwinm  data, prefetch_data, 21, 7, 10          // data = prefetch_data[3:0] << 21
-        bne     cr7, L_135EC
+        bne     cr7, dr_emit_add_w_2_L5
         lis     data, 0xFF20
-L_135EC:
+dr_emit_add_w_2_L5:
         add     addr, addr, data
-L_135F0:
+dr_emit_add_w_2_L6:
         lwz     data, 0x26A4(base_disp)
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
@@ -4032,48 +4307,58 @@ L_135F0:
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-L_1360C:
+dr_emit_add_w_2_L7:
         lwz     addr, 0x21A8(base_disp)
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
+
+// Code generator for 488 opcodes:
+//     ADDA.W Dn,An
+//     ADDA.W An,An
+//     ADDA.W (An),An
+//     ADDA.W (An)+,An
+//     ADDA.W -(An),An
+//     ADDA.W (d16,An),An
+//     ... and 6 more forms
+dr_emit_adda_w:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr6, rtn_addr, 0x0001
         lis     immed_data, 0x0060
-        ble     cr6, L_1365C
+        ble     cr6, dr_emit_adda_w_L3
         bl      L_124B8
-L_1362C:
+dr_emit_adda_w_L1:
         rlwinm  addr, prefetch_data, 23, 29, 31         // addr = prefetch_data[11:9]
         cmplwi  cr7, addr, 0x0007
         lwz     addr, 0x26B4(base_disp)
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
         rlwimi  data, prefetch_data, 12, 8, 10          // data[23:21] = prefetch_data[11:9]
-        beq     cr7, L_13650
+        beq     cr7, dr_emit_adda_w_L2
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-L_13650:
+dr_emit_adda_w_L2:
         lwz     addr, 0x26B8(base_disp)
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-L_1365C:
+dr_emit_adda_w_L3:
         rlwinm  data, prefetch_data, 11, 17, 20         // data = prefetch_data[3:0] << 11
         cmpwi   cr7, data, 0x7800
         lwz     addr, 0x26AC(base_disp)
         rlwinm  data, prefetch_data, 21, 7, 10          // data = prefetch_data[3:0] << 21
-        beq     cr7, L_1367C
+        beq     cr7, dr_emit_adda_w_L4
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        b       L_1362C
-L_1367C:
+        b       dr_emit_adda_w_L1
+dr_emit_adda_w_L4:
         lwz     addr, 0x26B0(base_disp)
         stwu    addr, 4(out_ptr)
-        b       L_1362C
-L_13688:
+        b       dr_emit_adda_w_L1
+dr_emit_adda_w_L5:
         lhz     data, 0(rec_ptr)
         lis     immed_data, 0x0060
         mtcrf   0x02, data                              // cr6 = data[7:4]
         cror    4*cr6+gt, 4*cr6+gt, 4*cr6+lt            // cr6.gt = cr6.gt | cr6.lt
-        bgt     cr6, L_136BC
+        bgt     cr6, dr_emit_adda_w_L6
         bl      L_124B8
         lwz     addr, 0x268C(base_disp)
         rlwinm  data, prefetch_data, 2, 18, 20          // data = prefetch_data[11:9] << 11
@@ -4082,7 +4367,7 @@ L_13688:
         lis     immed_data, 0x0060
         bl      L_124F8
         b       dr_emit_next
-L_136BC:
+dr_emit_adda_w_L6:
         bl      L_124B8
         lwz     addr, 0x269C(base_disp)
         rlwinm  data, prefetch_data, 12, 8, 10          // data = prefetch_data[11:9] << 21
@@ -4090,23 +4375,23 @@ L_136BC:
         stwu    addr, 4(out_ptr)
         lwz     addr, 0x2698(base_disp)
         stwu    addr, 4(out_ptr)
-L_136D8:
+dr_emit_adda_w_L7:
         lwz     addr, 0x26A4(base_disp)
         lwz     data, 0x26BC(base_disp)
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
         lis     immed_data, 0x0060
         bl      L_124F8
-        b       L_1360C
-L_136F4:
+        b       dr_emit_add_w_2_L7
+dr_emit_adda_w_L8:
         lhz     data, 0(rec_ptr)
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         mtcrf   0x02, data                              // cr6 = data[7:4]
         cmplwi  cr7, rtn_addr, 0x0001
         cror    4*cr6+gt, 4*cr6+gt, 4*cr6+lt            // cr6.gt = cr6.gt | cr6.lt
-        ble     cr7, L_1375C
+        ble     cr7, dr_emit_adda_w_L10
         lis     immed_data, 0x00A0
-        bgt     cr6, L_1373C
+        bgt     cr6, dr_emit_adda_w_L9
         addi    blk_ofs, blk_ofs, 2
         bl      L_124B8
         lhz     rtn_addr, 2(rec_ptr)
@@ -4117,7 +4402,7 @@ L_136F4:
         stwu    addr, 4(out_ptr)
         bl      L_124F8
         b       dr_emit_next
-L_1373C:
+dr_emit_adda_w_L9:
         addi    blk_ofs, blk_ofs, 2
         bl      L_124B8
         lhz     rtn_addr, 2(rec_ptr)
@@ -4125,23 +4410,23 @@ L_1373C:
         bl      L_12598
         lwz     addr, 0x26C4(base_disp)
         stwu    addr, 4(out_ptr)
-        b       L_136D8
-L_1375C:
-        bgt     cr6, L_13788
+        b       dr_emit_adda_w_L7
+dr_emit_adda_w_L10:
+        bgt     cr6, dr_emit_adda_w_L12
         lwz     addr, 0x26C8(base_disp)
         lhax    rtn_addr, pc, blk_ofs
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
         rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-L_13778:
+dr_emit_adda_w_L11:
         lwz     addr, 0x2694(base_disp)
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-L_13788:
+dr_emit_adda_w_L12:
         bl      L_125A0
-L_1378C:
+dr_emit_adda_w_L13:
         lwz     addr, 0x269C(base_disp)
         rlwinm  data, prefetch_data, 21, 8, 10          // data = prefetch_data[2:0] << 21
         add     addr, addr, data
@@ -4152,68 +4437,78 @@ L_1378C:
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        b       L_1360C
+        b       dr_emit_add_w_2_L7
+
+// Code generator for 464 opcodes:
+//     ADDQ.W #<q>,Dn
+//     ADDQ.W #<q>,An
+//     ADDQ.W #<q>,(An)
+//     ADDQ.W #<q>,(An)+
+//     ADDQ.W #<q>,-(An)
+//     ADDQ.W #<q>,(d16,An)
+//     ... and 3 more forms
+dr_emit_addq_w:
         clrlwi  rtn_addr, prefetch_data, 26             // rtn_addr = prefetch_data & 0x0000003F
         cmplwi  cr7, rtn_addr, 0x000F
         lis     immed_data, 0x0060
-        ble     cr7, L_13830
+        ble     cr7, dr_emit_addq_w_L4
         lhz     rtn_addr, 0(rec_ptr)
         mtcrf   0x02, rtn_addr                          // cr6 = rtn_addr[7:4]
         cror    4*cr6+gt, 4*cr6+gt, 4*cr6+lt            // cr6.gt = cr6.gt | cr6.lt
-        bgt     cr6, L_13800
+        bgt     cr6, dr_emit_addq_w_L2
         bl      L_124B8
         rlwinm  data, prefetch_data, 23, 29, 31         // data = prefetch_data[11:9]
         cmpwi   cr7, data, 0
         lwz     addr, 0x21B8(base_disp)
-        bne     cr7, L_137F0
+        bne     cr7, dr_emit_addq_w_L1
         li      data, 8
-L_137F0:
+dr_emit_addq_w_L1:
         rlwimi  addr, data, 0, 16, 31                   // addr[15:0] = data[15:0]
         stwu    addr, 4(out_ptr)
         bl      L_124F8
         b       dr_emit_next
-L_13800:
+dr_emit_addq_w_L2:
         rlwinm  data, prefetch_data, 23, 29, 31         // data = prefetch_data[11:9]
         cmpwi   cr7, data, 0
         lwz     addr, 0x26CC(base_disp)
-        bne     cr7, L_13814
+        bne     cr7, dr_emit_addq_w_L3
         li      data, 8
-L_13814:
+dr_emit_addq_w_L3:
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         lis     immed_data, 0x00A0
         bl      L_124B8
         lwz     addr, 0x26C4(base_disp)
         stwu    addr, 4(out_ptr)
-        b       L_136D8
-L_13830:
+        b       dr_emit_adda_w_L7
+dr_emit_addq_w_L4:
         lhz     rtn_addr, 0(rec_ptr)
         rlwinm  data, prefetch_data, 29, 29, 31         // data = prefetch_data[5:3]
         mtcrf   0x02, rtn_addr                          // cr6 = rtn_addr[7:4]
         cmpwi   cr5, data, 1
         rlwinm  data, prefetch_data, 23, 29, 31         // data = prefetch_data[11:9]
         cmpwi   cr4, data, 0
-        bne     cr4, L_13850
+        bne     cr4, dr_emit_addq_w_L5
         li      data, 8
-L_13850:
-        beq     cr7, L_133D0
-        beq     cr5, L_133B4
-        bgt     cr6, L_13878
-        blt     cr6, L_13888
+dr_emit_addq_w_L5:
+        beq     cr7, dr_emit_addq_l_L7
+        beq     cr5, dr_emit_addq_l_L6
+        bgt     cr6, dr_emit_addq_w_L6
+        blt     cr6, dr_emit_addq_w_L7
         lwz     addr, 0x26C8(base_disp)
         rlwimi  addr, data, 0, 16, 31                   // addr[15:0] = data[15:0]
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        b       L_13778
-L_13878:
+        b       dr_emit_adda_w_L11
+dr_emit_addq_w_L6:
         lwz     addr, 0x26CC(base_disp)
         rlwimi  addr, data, 0, 16, 31                   // addr[15:0] = data[15:0]
         stwu    addr, 4(out_ptr)
-        b       L_1378C
-L_13888:
+        b       dr_emit_adda_w_L13
+dr_emit_addq_w_L7:
         cmpwi   cr4, data, 3
-        bgt     cr4, L_138C0
+        bgt     cr4, dr_emit_addq_w_L8
         lwz     rtn_addr, 0x26D0(base_disp)
         lwz     immed_data, 0x26D4(base_disp)
         rlwinm  addr, prefetch_data, 21, 8, 10          // addr = prefetch_data[2:0] << 21
@@ -4226,7 +4521,7 @@ L_13888:
         add     rtn_addr, rtn_addr, addr
         stwu    rtn_addr, 4(out_ptr)
         b       dr_emit_next
-L_138C0:
+dr_emit_addq_w_L8:
         lwz     rtn_addr, 0x26DC(base_disp)
         lwz     immed_data, 0x26E0(base_disp)
         rlwinm  addr, prefetch_data, 21, 8, 10          // addr = prefetch_data[2:0] << 21
@@ -4241,7 +4536,7 @@ L_138C0:
         stwu    rtn_addr, 4(out_ptr)
         stwu    immed_data, 4(out_ptr)
         b       dr_emit_next
-L_138F8:
+dr_emit_addq_w_L9:
         lwz     rtn_addr, 0x26EC(base_disp)
         rlwinm  addr, prefetch_data, 21, 8, 10          // addr = prefetch_data[2:0] << 21
         add     rtn_addr, rtn_addr, addr
@@ -4253,51 +4548,51 @@ L_138F8:
         li      rtn_addr, 6
         mtctr   rtn_addr
         addi    data, base_disp, 0x26F0
-L_13924:
+dr_emit_addq_w_L10:
         lwzu    rtn_addr, 4(data)
         stwu    rtn_addr, 4(out_ptr)
-        bdnz    L_13924                                 // CTR -= 1; branch while CTR != 0
+        bdnz    dr_emit_addq_w_L10                      // CTR -= 1; branch while CTR != 0
         lwz     rtn_addr, 0x270C(base_disp)
         rlwinm  addr, prefetch_data, 7, 13, 15          // addr = prefetch_data[11:9] << 16
         add     rtn_addr, rtn_addr, addr
         stwu    rtn_addr, 4(out_ptr)
         b       dr_emit_next
-L_13944:
+dr_emit_addq_w_L11:
         clrlwi  addr, prefetch_data, 29                 // addr = prefetch_data & 0x00000007
         cmplwi  cr7, addr, 0x0007
         lwz     rtn_addr, 0x2710(base_disp)
         rlwinm  addr, prefetch_data, 16, 13, 15         // addr = prefetch_data[2:0] << 16
         add     rtn_addr, rtn_addr, addr
-        bf_likely 4*cr7+eq, L_13960
+        bf_likely 4*cr7+eq, dr_emit_addq_w_L12
         lwz     rtn_addr, 0x2714(base_disp)
-L_13960:
+dr_emit_addq_w_L12:
         stwu    rtn_addr, 4(out_ptr)
         rlwinm  addr, prefetch_data, 23, 29, 31         // addr = prefetch_data[11:9]
         cmplwi  cr7, addr, 0x0007
         lwz     rtn_addr, 0x2718(base_disp)
         rlwinm  addr, prefetch_data, 7, 13, 15          // addr = prefetch_data[11:9] << 16
         add     rtn_addr, rtn_addr, addr
-        bf_likely 4*cr7+eq, L_13980
+        bf_likely 4*cr7+eq, dr_emit_addq_w_L13
         lwz     rtn_addr, 0x271C(base_disp)
-L_13980:
+dr_emit_addq_w_L13:
         stwu    rtn_addr, 4(out_ptr)
         li      rtn_addr, 10
         mtctr   rtn_addr
         addi    data, base_disp, 0x2720
-L_13990:
+dr_emit_addq_w_L14:
         lwzu    rtn_addr, 4(data)
         srwi    addr, rtn_addr, 26
         cmplwi  cr7, addr, 0x002C
-        bf_likely 4*cr7+eq, L_139B8
+        bf_likely 4*cr7+eq, dr_emit_addq_w_L15
         rlwinm  addr, prefetch_data, 23, 29, 31         // addr = prefetch_data[11:9]
         cmplwi  cr7, addr, 0x0007
         rlwinm  addr, prefetch_data, 7, 13, 15          // addr = prefetch_data[11:9] << 16
         add     rtn_addr, rtn_addr, addr
-        bf_likely 4*cr7+eq, L_139B8
+        bf_likely 4*cr7+eq, dr_emit_addq_w_L15
         lwz     rtn_addr, 0x2720(base_disp)
-L_139B8:
+dr_emit_addq_w_L15:
         stwu    rtn_addr, 4(out_ptr)
-        bdnz    L_13990                                 // CTR -= 1; branch while CTR != 0
+        bdnz    dr_emit_addq_w_L14                      // CTR -= 1; branch while CTR != 0
         b       dr_emit_next
         add     addr, addr, d0
         add     addr, d0, d0
@@ -4347,41 +4642,51 @@ L_139B8:
         sth     addr, 0(a0)
         crand   eq, eq, 4*cr7+so                        // cr0.eq = cr0.eq & cr7.so
         mfxer   ccr_x
+
+// Code generator for 424 opcodes:
+//     ADD.B Dn,Dn
+//     ADD.B (An),Dn
+//     ADD.B (An)+,Dn
+//     ADD.B -(An),Dn
+//     ADD.B (d16,An),Dn
+//     ADD.B (d8,An,Xn),Dn
+//     ... and 5 more forms
+dr_emit_add_b_2:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr7, rtn_addr, 0x0001
         lis     immed_data, 0x0060
-        ble     cr7, L_13AC8
+        ble     cr7, dr_emit_add_b_2_L1
         bl      L_124C0
         lhz     data, 0(rec_ptr)
         lwz     addr, 0x268C(base_disp)
         mtcrf   0x02, data                              // cr6 = data[7:4]
         rlwinm  data, prefetch_data, 2, 18, 20          // data = prefetch_data[11:9] << 11
         cror    4*cr6+gt, 4*cr6+gt, 4*cr6+lt            // cr6.gt = cr6.gt | cr6.lt
-        ble     cr6, L_13AE4
+        ble     cr6, dr_emit_add_b_2_L2
         lwz     addr, 0x2ACC(base_disp)
         rlwinm  data, prefetch_data, 12, 8, 10          // data = prefetch_data[11:9] << 21
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         lwz     addr, 0x2AC8(base_disp)
-        b       L_13B1C
-L_13AC8:
+        b       dr_emit_add_b_2_L5
+dr_emit_add_b_2_L1:
         lhz     data, 0(rec_ptr)
         lwz     addr, 0x2AC0(base_disp)
         mtcrf   0x02, data                              // cr6 = data[7:4]
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
         cror    4*cr6+gt, 4*cr6+gt, 4*cr6+lt            // cr6.gt = cr6.gt | cr6.lt
         rlwimi  data, prefetch_data, 11, 17, 20         // data[14:11] = prefetch_data[3:0]
-        bgt     cr6, L_13B00
-L_13AE4:
+        bgt     cr6, dr_emit_add_b_2_L4
+dr_emit_add_b_2_L2:
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
-L_13AF0:
+dr_emit_add_b_2_L3:
         lwz     addr, 0x2AC4(base_disp)
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-L_13B00:
+dr_emit_add_b_2_L4:
         lwz     addr, 0x2ACC(base_disp)
         rlwinm  data, prefetch_data, 12, 8, 10          // data = prefetch_data[11:9] << 21
         add     addr, addr, data
@@ -4389,7 +4694,7 @@ L_13B00:
         lwz     addr, 0x2AD0(base_disp)
         rlwinm  data, prefetch_data, 21, 7, 10          // data = prefetch_data[3:0] << 21
         add     addr, addr, data
-L_13B1C:
+dr_emit_add_b_2_L5:
         lwz     data, 0x2AD4(base_disp)
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
@@ -4397,13 +4702,13 @@ L_13B1C:
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        b       L_1360C
-L_13B3C:
+        b       dr_emit_add_w_2_L7
+dr_emit_add_b_2_L6:
         lhz     data, 0(rec_ptr)
         lis     immed_data, 0x0060
         mtcrf   0x02, data                              // cr6 = data[7:4]
         cror    4*cr6+gt, 4*cr6+gt, 4*cr6+lt            // cr6.gt = cr6.gt | cr6.lt
-        bgt     cr6, L_13B70
+        bgt     cr6, dr_emit_add_b_2_L7
         bl      L_124C0
         lwz     addr, 0x268C(base_disp)
         rlwinm  data, prefetch_data, 2, 18, 20          // data = prefetch_data[11:9] << 11
@@ -4412,7 +4717,7 @@ L_13B3C:
         lis     immed_data, 0x0060
         bl      L_12500
         b       dr_emit_next
-L_13B70:
+dr_emit_add_b_2_L7:
         bl      L_124C0
         lwz     addr, 0x2ACC(base_disp)
         rlwinm  data, prefetch_data, 12, 8, 10          // data = prefetch_data[11:9] << 21
@@ -4420,23 +4725,23 @@ L_13B70:
         stwu    addr, 4(out_ptr)
         lwz     addr, 0x2AC8(base_disp)
         stwu    addr, 4(out_ptr)
-L_13B8C:
+dr_emit_add_b_2_L8:
         lwz     data, 0x2AD4(base_disp)
         lwz     addr, 0x2ADC(base_disp)
         stwu    data, 4(out_ptr)
         stwu    addr, 4(out_ptr)
         lis     immed_data, 0x0060
         bl      L_12500
-        b       L_1360C
-L_13BA8:
+        b       dr_emit_add_w_2_L7
+dr_emit_add_b_2_L9:
         lhz     data, 0(rec_ptr)
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         mtcrf   0x02, data                              // cr6 = data[7:4]
         cmplwi  cr7, rtn_addr, 0x0001
         cror    4*cr6+gt, 4*cr6+gt, 4*cr6+lt            // cr6.gt = cr6.gt | cr6.lt
-        ble     cr7, L_13C14
+        ble     cr7, dr_emit_add_b_2_L11
         lis     immed_data, 0x00A0
-        bgt     cr6, L_13BF4
+        bgt     cr6, dr_emit_add_b_2_L10
         addi    blk_ofs, blk_ofs, 2
         bl      L_124C0
         lhz     rtn_addr, 2(rec_ptr)
@@ -4448,7 +4753,7 @@ L_13BA8:
         stwu    addr, 4(out_ptr)
         bl      L_12500
         b       dr_emit_next
-L_13BF4:
+dr_emit_add_b_2_L10:
         addi    blk_ofs, blk_ofs, 2
         bl      L_124C0
         lhz     rtn_addr, 2(rec_ptr)
@@ -4456,9 +4761,9 @@ L_13BF4:
         bl      L_125B8
         lwz     addr, 0x2AE0(base_disp)
         stwu    addr, 4(out_ptr)
-        b       L_13B8C
-L_13C14:
-        bgt     cr6, L_13C38
+        b       dr_emit_add_b_2_L8
+dr_emit_add_b_2_L11:
+        bgt     cr6, dr_emit_add_b_2_L12
         lwz     addr, 0x26C8(base_disp)
         lhax    rtn_addr, pc, blk_ofs
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
@@ -4466,10 +4771,10 @@ L_13C14:
         rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        b       L_13AF0
-L_13C38:
+        b       dr_emit_add_b_2_L3
+dr_emit_add_b_2_L12:
         bl      L_125C4
-L_13C3C:
+dr_emit_add_b_2_L13:
         lwz     addr, 0x2ACC(base_disp)
         rlwinm  data, prefetch_data, 21, 8, 10          // data = prefetch_data[2:0] << 21
         add     addr, addr, data
@@ -4480,63 +4785,73 @@ L_13C3C:
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        b       L_1360C
+        b       dr_emit_add_w_2_L7
+
+// Code generator for 400 opcodes:
+//     ADDQ.B #<q>,Dn
+//     ADDQ.B #<q>,(An)
+//     ADDQ.B #<q>,(An)+
+//     ADDQ.B #<q>,-(An)
+//     ADDQ.B #<q>,(d16,An)
+//     ADDQ.B #<q>,(d8,An,Xn)
+//     ... and 2 more forms
+dr_emit_addq_b:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr6, rtn_addr, 0x0000
         lis     immed_data, 0x0060
-        beq     cr6, L_13CE0
+        beq     cr6, dr_emit_addq_b_L4
         lhz     rtn_addr, 0(rec_ptr)
         mtcrf   0x02, rtn_addr                          // cr6 = rtn_addr[7:4]
         cror    4*cr6+gt, 4*cr6+gt, 4*cr6+lt            // cr6.gt = cr6.gt | cr6.lt
-        bgt     cr6, L_13CB0
+        bgt     cr6, dr_emit_addq_b_L2
         bl      L_124C0
         rlwinm  data, prefetch_data, 23, 29, 31         // data = prefetch_data[11:9]
         cmpwi   cr7, data, 0
         lwz     addr, 0x21B8(base_disp)
-        bne     cr7, L_13CA0
+        bne     cr7, dr_emit_addq_b_L1
         li      data, 8
-L_13CA0:
+dr_emit_addq_b_L1:
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         bl      L_12500
         b       dr_emit_next
-L_13CB0:
+dr_emit_addq_b_L2:
         rlwinm  data, prefetch_data, 31, 21, 23         // data = prefetch_data[11:9] << 8
         cmpwi   cr7, data, 0
         lwz     addr, 0x26CC(base_disp)
-        bne     cr7, L_13CC4
+        bne     cr7, dr_emit_addq_b_L3
         li      data, 0x800
-L_13CC4:
+dr_emit_addq_b_L3:
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         lis     immed_data, 0x00A0
         bl      L_124C0
         lwz     addr, 0x2AE0(base_disp)
         stwu    addr, 4(out_ptr)
-        b       L_13B8C
-L_13CE0:
+        b       dr_emit_add_b_2_L8
+dr_emit_addq_b_L4:
         lhz     rtn_addr, 0(rec_ptr)
         rlwinm  data, prefetch_data, 23, 29, 31         // data = prefetch_data[11:9]
         mtcrf   0x02, rtn_addr                          // cr6 = rtn_addr[7:4]
         cmpwi   cr5, data, 0
         cror    4*cr6+gt, 4*cr6+gt, 4*cr6+lt            // cr6.gt = cr6.gt | cr6.lt
-        bne     cr5, L_13CFC
+        bne     cr5, dr_emit_addq_b_L5
         li      data, 8
-L_13CFC:
-        ble     cr6, L_13D14
+dr_emit_addq_b_L5:
+        ble     cr6, dr_emit_addq_b_L6
         slwi    data, data, 8
         lwz     addr, 0x26CC(base_disp)
         rlwimi  addr, data, 0, 16, 31                   // addr[15:0] = data[15:0]
         stwu    addr, 4(out_ptr)
-        b       L_13C3C
-L_13D14:
+        b       dr_emit_add_b_2_L13
+dr_emit_addq_b_L6:
         lwz     addr, 0x26C8(base_disp)
         rlwimi  addr, data, 0, 16, 31                   // addr[15:0] = data[15:0]
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        b       L_13AF0
-L_13D2C:
+        b       dr_emit_add_b_2_L3
+dr_emit_addq_b_L7:
         lwz     rtn_addr, 0x2AE4(base_disp)
         rlwinm  addr, prefetch_data, 21, 8, 10          // addr = prefetch_data[2:0] << 21
         add     rtn_addr, rtn_addr, addr
@@ -4548,51 +4863,51 @@ L_13D2C:
         li      rtn_addr, 6
         mtctr   rtn_addr
         addi    data, base_disp, 0x2AE8
-L_13D58:
+dr_emit_addq_b_L8:
         lwzu    rtn_addr, 4(data)
         stwu    rtn_addr, 4(out_ptr)
-        bdnz    L_13D58                                 // CTR -= 1; branch while CTR != 0
+        bdnz    dr_emit_addq_b_L8                       // CTR -= 1; branch while CTR != 0
         lwz     rtn_addr, 0x2B04(base_disp)
         rlwinm  addr, prefetch_data, 7, 13, 15          // addr = prefetch_data[11:9] << 16
         add     rtn_addr, rtn_addr, addr
         stwu    rtn_addr, 4(out_ptr)
         b       dr_emit_next
-L_13D78:
+dr_emit_addq_b_L9:
         clrlwi  addr, prefetch_data, 29                 // addr = prefetch_data & 0x00000007
         cmplwi  cr7, addr, 0x0007
         lwz     rtn_addr, 0x2B08(base_disp)
         rlwinm  addr, prefetch_data, 16, 13, 15         // addr = prefetch_data[2:0] << 16
         add     rtn_addr, rtn_addr, addr
-        bf_likely 4*cr7+eq, L_13D94
+        bf_likely 4*cr7+eq, dr_emit_addq_b_L10
         lwz     rtn_addr, 0x2B0C(base_disp)
-L_13D94:
+dr_emit_addq_b_L10:
         stwu    rtn_addr, 4(out_ptr)
         rlwinm  addr, prefetch_data, 23, 29, 31         // addr = prefetch_data[11:9]
         cmplwi  cr7, addr, 0x0007
         lwz     rtn_addr, 0x2B10(base_disp)
         rlwinm  addr, prefetch_data, 7, 13, 15          // addr = prefetch_data[11:9] << 16
         add     rtn_addr, rtn_addr, addr
-        bf_likely 4*cr7+eq, L_13DB4
+        bf_likely 4*cr7+eq, dr_emit_addq_b_L11
         lwz     rtn_addr, 0x2B14(base_disp)
-L_13DB4:
+dr_emit_addq_b_L11:
         stwu    rtn_addr, 4(out_ptr)
         li      rtn_addr, 10
         mtctr   rtn_addr
         addi    data, base_disp, 0x2B18
-L_13DC4:
+dr_emit_addq_b_L12:
         lwzu    rtn_addr, 4(data)
         srwi    addr, rtn_addr, 26
         cmplwi  cr7, addr, 0x0026
-        bf_likely 4*cr7+eq, L_13DEC
+        bf_likely 4*cr7+eq, dr_emit_addq_b_L13
         rlwinm  addr, prefetch_data, 23, 29, 31         // addr = prefetch_data[11:9]
         cmplwi  cr7, addr, 0x0007
         rlwinm  addr, prefetch_data, 7, 13, 15          // addr = prefetch_data[11:9] << 16
         add     rtn_addr, rtn_addr, addr
-        bf_likely 4*cr7+eq, L_13DEC
+        bf_likely 4*cr7+eq, dr_emit_addq_b_L13
         lwz     rtn_addr, 0x2B18(base_disp)
-L_13DEC:
+dr_emit_addq_b_L13:
         stwu    rtn_addr, 4(out_ptr)
-        bdnz    L_13DC4                                 // CTR -= 1; branch while CTR != 0
+        bdnz    dr_emit_addq_b_L12                      // CTR -= 1; branch while CTR != 0
         b       dr_emit_next
         add     addr, d0, d0
         rlwimi  d0, addr, 0, 24, 31                     // d0[7:0] = addr[7:0]
@@ -4627,20 +4942,30 @@ L_13DEC:
         stb     addr, 0(a0)
         crand   eq, eq, 4*cr7+so                        // cr0.eq = cr0.eq & cr7.so
         mfxer   ccr_x
+
+// Code generator for 488 opcodes:
+//     SUB.L Dn,Dn
+//     SUB.L An,Dn
+//     SUB.L (An),Dn
+//     SUB.L (An)+,Dn
+//     SUB.L -(An),Dn
+//     SUB.L (d16,An),Dn
+//     ... and 6 more forms
+dr_emit_sub_l:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr6, rtn_addr, 0x0001
         lis     immed_data, 0x0060
-        ble     cr6, L_13EE4
+        ble     cr6, dr_emit_sub_l_L5
         lis     immed_data, 0x0060
         bl      L_124A0
         lwz     addr, 0x2DCC(base_disp)
         rlwinm  data, prefetch_data, 2, 18, 20          // data = prefetch_data[11:9] << 11
-L_13E9C:
+dr_emit_sub_l_L1:
         rlwimi  data, prefetch_data, 12, 8, 10          // data[23:21] = prefetch_data[11:9]
-L_13EA0:
+dr_emit_sub_l_L2:
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-L_13EA8:
+dr_emit_sub_l_L3:
         lhz     addr, 0(rec_ptr)
         mtcrf   0x02, addr                              // cr6 = addr[7:4]
         cror    4*cr6+gt, 4*cr6+lt, 4*cr6+gt            // cr6.gt = cr6.lt | cr6.gt
@@ -4651,44 +4976,54 @@ L_13EA8:
         lwz     addr, 0x2DE0(base_disp)
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-L_13ED0:
+dr_emit_sub_l_L4:
         lwz     addr, 0x2DDC(base_disp)
         lwz     data, 0x2DE0(base_disp)
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
         b       dr_emit_next
-L_13EE4:
+dr_emit_sub_l_L5:
         clrlwi  addr, prefetch_data, 28                 // addr = prefetch_data & 0x0000000F
         cmpwi   cr7, addr, 15
         lwz     addr, 0x2DB4(base_disp)
         rlwinm  data, prefetch_data, 2, 18, 20          // data = prefetch_data[11:9] << 11
-        beq     cr7, L_13F00
+        beq     cr7, dr_emit_sub_l_L6
         rlwimi  data, prefetch_data, 16, 12, 15         // data[19:16] = prefetch_data[3:0]
-        b       L_13E9C
-L_13F00:
+        b       dr_emit_sub_l_L1
+dr_emit_sub_l_L6:
         lwz     addr, 0x2DB8(base_disp)
-        b       L_13E9C
+        b       dr_emit_sub_l_L1
+
+// Code generator for 488 opcodes:
+//     SUBA.L Dn,An
+//     SUBA.L An,An
+//     SUBA.L (An),An
+//     SUBA.L (An)+,An
+//     SUBA.L -(An),An
+//     SUBA.L (d16,An),An
+//     ... and 6 more forms
+dr_emit_suba_l:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr6, rtn_addr, 0x0001
         lis     immed_data, 0x0060
-        ble     cr6, L_13F4C
+        ble     cr6, dr_emit_suba_l_L4
         bl      L_124A0
         rlwinm  addr, prefetch_data, 23, 29, 31         // addr = prefetch_data[11:9]
         cmplwi  cr7, addr, 0x0007
         lwz     addr, 0x2DD4(base_disp)
         rlwinm  data, prefetch_data, 2, 18, 20          // data = prefetch_data[11:9] << 11
-        beq     cr7, L_13F40
-L_13F30:
+        beq     cr7, dr_emit_suba_l_L3
+dr_emit_suba_l_L1:
         rlwimi  data, prefetch_data, 12, 8, 10          // data[23:21] = prefetch_data[11:9]
-L_13F34:
+dr_emit_suba_l_L2:
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-L_13F40:
+dr_emit_suba_l_L3:
         lwz     addr, 0x2DD8(base_disp)
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-L_13F4C:
+dr_emit_suba_l_L4:
         rlwinm  addr, prefetch_data, 23, 29, 31         // addr = prefetch_data[11:9]
         cmpwi   cr6, addr, 7
         lwz     addr, 0x2DBC(base_disp)
@@ -4696,35 +5031,95 @@ L_13F4C:
         cmpwi   cr7, data, 15
         rlwinm  data, prefetch_data, 16, 12, 15         // data = prefetch_data[3:0] << 16
         rlwimi  data, prefetch_data, 2, 18, 20          // data[13:11] = prefetch_data[11:9]
-        bne     cr7, L_13F84
+        bne     cr7, dr_emit_suba_l_L5
         lwz     addr, 0x2DC4(base_disp)
         rlwinm  data, prefetch_data, 2, 18, 20          // data = prefetch_data[11:9] << 11
-        bne     cr6, L_13F30
+        bne     cr6, dr_emit_suba_l_L1
         lwz     addr, 0x2DC8(base_disp)
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-L_13F84:
-        bne     cr6, L_13F30
+dr_emit_suba_l_L5:
+        bne     cr6, dr_emit_suba_l_L1
         lwz     addr, 0x2DC0(base_disp)
         rlwinm  data, prefetch_data, 16, 12, 15         // data = prefetch_data[3:0] << 16
-        b       L_13F34
-        b       L_145B4
-        b       L_14268
+        b       dr_emit_suba_l_L2
+
+// Code generator for 336 opcodes:
+//     SUB.B Dn,(An)
+//     SUB.B Dn,(An)+
+//     SUB.B Dn,-(An)
+//     SUB.B Dn,(d16,An)
+//     SUB.B Dn,(d8,An,Xn)
+//     SUB.B Dn,(xxx).W
+//     ... and 1 more forms
+dr_emit_sub_b:
+        b       dr_emit_sub_b_2_L6
+
+// Code generator for 336 opcodes:
+//     SUB.W Dn,(An)
+//     SUB.W Dn,(An)+
+//     SUB.W Dn,-(An)
+//     SUB.W Dn,(d16,An)
+//     SUB.W Dn,(d8,An,Xn)
+//     SUB.W Dn,(xxx).W
+//     ... and 1 more forms
+dr_emit_sub_w:
+        b       dr_emit_suba_w_L5
+
+// Code generator for 336 opcodes:
+//     SUB.L Dn,(An)
+//     SUB.L Dn,(An)+
+//     SUB.L Dn,-(An)
+//     SUB.L Dn,(d16,An)
+//     SUB.L Dn,(d8,An,Xn)
+//     SUB.L Dn,(xxx).W
+//     ... and 1 more forms
+dr_emit_sub_l_2:
         lis     immed_data, 0x0060
         bl      L_124A0
         lwz     addr, 0x2DD0(base_disp)
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
         add     addr, addr, data
-L_13FB0:
+dr_emit_sub_l_2_L1:
         lis     immed_data, 0x0060
         stwu    addr, 4(out_ptr)
         bl      L_124F0
-        b       L_13EA8
-        b       L_142D4
-        b       L_14620
+        b       dr_emit_sub_l_L3
+
+// Code generator for 51 opcodes:
+//     SUBI.W #<data>,Dn
+//     SUBI.W #<data>,(An)
+//     SUBI.W #<data>,(An)+
+//     SUBI.W #<data>,-(An)
+//     SUBI.W #<data>,(d16,An)
+//     SUBI.W #<data>,(d8,An,Xn)
+//     ... and 3 more forms
+dr_emit_subi_w:
+        b       dr_emit_suba_w_L8
+
+// Code generator for 51 opcodes:
+//     SUBI.B #<data>,Dn
+//     SUBI.B #<data>,(An)
+//     SUBI.B #<data>,(An)+
+//     SUBI.B #<data>,-(An)
+//     SUBI.B #<data>,(d16,An)
+//     SUBI.B #<data>,(d8,An,Xn)
+//     ... and 3 more forms
+dr_emit_subi_b:
+        b       dr_emit_sub_b_2_L9
+
+// Code generator for 51 opcodes:
+//     SUBI.L #<data>,Dn
+//     SUBI.L #<data>,(An)
+//     SUBI.L #<data>,(An)+
+//     SUBI.L #<data>,-(An)
+//     SUBI.L #<data>,(d16,An)
+//     SUBI.L #<data>,(d8,An,Xn)
+//     ... and 3 more forms
+dr_emit_subi_l:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr6, rtn_addr, 0x0001
-        ble     cr6, L_13FF4
+        ble     cr6, dr_emit_subi_l_L1
         lis     immed_data, 0x00A0
         addi    blk_ofs, blk_ofs, 4
         bl      L_124A0
@@ -4732,39 +5127,49 @@ L_13FB0:
         addi    rtn_addr, rtn_addr, 2
         bl      L_12510
         lwz     addr, 0x2DE4(base_disp)
-        b       L_13FB0
-L_13FF4:
+        b       dr_emit_sub_l_2_L1
+dr_emit_subi_l_L1:
         bl      L_12518
         lwz     addr, 0x2DCC(base_disp)
         rlwinm  data, prefetch_data, 11, 18, 20         // data = prefetch_data[2:0] << 11
         rlwimi  data, prefetch_data, 21, 8, 10          // data[23:21] = prefetch_data[2:0]
-        b       L_13EA0
+        b       dr_emit_sub_l_L2
+
+// Code generator for 464 opcodes:
+//     SUBQ.L #<q>,Dn
+//     SUBQ.L #<q>,An
+//     SUBQ.L #<q>,(An)
+//     SUBQ.L #<q>,(An)+
+//     SUBQ.L #<q>,-(An)
+//     SUBQ.L #<q>,(d16,An)
+//     ... and 3 more forms
+dr_emit_subq_l:
         clrlwi  rtn_addr, prefetch_data, 26             // rtn_addr = prefetch_data & 0x0000003F
         cmplwi  cr7, rtn_addr, 0x000F
         lis     immed_data, 0x0060
-        ble     cr7, L_14064
+        ble     cr7, dr_emit_subq_l_L3
         bl      L_124A0
         lhz     rtn_addr, 0(rec_ptr)
         rlwinm  data, prefetch_data, 23, 29, 31         // data = prefetch_data[11:9]
         mtcrf   0x02, rtn_addr                          // cr6 = rtn_addr[7:4]
         cmpwi   cr7, data, 0
         cror    4*cr6+gt, 4*cr6+gt, 4*cr6+lt            // cr6.gt = cr6.gt | cr6.lt
-        bne     cr7, L_14038
+        bne     cr7, dr_emit_subq_l_L1
         li      data, 8
-L_14038:
-        bgt     cr6, L_14048
+dr_emit_subq_l_L1:
+        bgt     cr6, dr_emit_subq_l_L2
         neg     data, data
         lwz     addr, 0x21B8(base_disp)
-        b       L_13348
-L_14048:
+        b       dr_emit_addq_l_L2
+dr_emit_subq_l_L2:
         lwz     addr, 0x21BC(base_disp)
         lwz     rtn_addr, 0x2DE8(base_disp)
         rlwimi  addr, data, 0, 16, 31                   // addr[15:0] = data[15:0]
         stwu    addr, 4(out_ptr)
         stwu    rtn_addr, 4(out_ptr)
         bl      L_124F0
-        b       L_13ED0
-L_14064:
+        b       dr_emit_sub_l_L4
+dr_emit_subq_l_L3:
         lhz     rtn_addr, 0(rec_ptr)
         rlwinm  data, prefetch_data, 29, 29, 31         // data = prefetch_data[5:3]
         mtcrf   0x02, rtn_addr                          // cr6 = rtn_addr[7:4]
@@ -4772,12 +5177,12 @@ L_14064:
         rlwinm  data, prefetch_data, 23, 29, 31         // data = prefetch_data[11:9]
         cmpwi   cr4, data, 0
         cror    4*cr6+gt, 4*cr6+gt, 4*cr6+lt            // cr6.gt = cr6.gt | cr6.lt
-        bne     cr4, L_14088
+        bne     cr4, dr_emit_subq_l_L4
         li      data, 8
-L_14088:
-        beq     cr7, L_140D8
-        beq     cr5, L_140B8
-        ble     cr6, L_140B8
+dr_emit_subq_l_L4:
+        beq     cr7, dr_emit_subq_l_L6
+        beq     cr5, dr_emit_subq_l_L5
+        ble     cr6, dr_emit_subq_l_L5
         lwz     addr, 0x21C0(base_disp)
         lwz     rtn_addr, 0x2DCC(base_disp)
         rlwimi  addr, data, 0, 16, 31                   // addr[15:0] = data[15:0]
@@ -4786,8 +5191,8 @@ L_14088:
         rlwimi  data, prefetch_data, 11, 18, 20         // data[13:11] = prefetch_data[2:0]
         add     rtn_addr, rtn_addr, data
         stwu    rtn_addr, 4(out_ptr)
-        b       L_13ED0
-L_140B8:
+        b       dr_emit_sub_l_L4
+dr_emit_subq_l_L5:
         neg     data, data
         lwz     addr, 0x21B0(base_disp)
         rlwinm  rtn_addr, prefetch_data, 16, 12, 15     // rtn_addr = prefetch_data[3:0] << 16
@@ -4796,7 +5201,7 @@ L_140B8:
         add     addr, addr, rtn_addr
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-L_140D8:
+dr_emit_subq_l_L6:
         neg     data, data
         lwz     addr, 0x21B4(base_disp)
         rlwimi  addr, data, 0, 16, 31                   // addr[15:0] = data[15:0]
@@ -4816,24 +5221,34 @@ L_140D8:
         addc    ccr_x, addr, addr
         subfco. addr, addr, rtn_addr                    // addr = rtn_addr - addr
         subfco. addr, rtn_addr, addr                    // addr = addr - rtn_addr
+
+// Code generator for 488 opcodes:
+//     SUB.W Dn,Dn
+//     SUB.W An,Dn
+//     SUB.W (An),Dn
+//     SUB.W (An)+,Dn
+//     SUB.W -(An),Dn
+//     SUB.W (d16,An),Dn
+//     ... and 6 more forms
+dr_emit_sub_w_2:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr7, rtn_addr, 0x0001
         lis     immed_data, 0x0060
-        ble     cr7, L_14168
+        ble     cr7, dr_emit_sub_w_2_L1
         bl      L_124B8
         lhz     data, 0(rec_ptr)
         lwz     addr, 0x3184(base_disp)
         mtcrf   0x02, data                              // cr6 = data[7:4]
         rlwinm  data, prefetch_data, 2, 18, 20          // data = prefetch_data[11:9] << 11
         cror    4*cr6+gt, 4*cr6+gt, 4*cr6+lt            // cr6.gt = cr6.gt | cr6.lt
-        ble     cr6, L_14198
+        ble     cr6, dr_emit_sub_w_2_L3
         lwz     addr, 0x3194(base_disp)
         rlwinm  data, prefetch_data, 12, 8, 10          // data = prefetch_data[11:9] << 21
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         lwz     addr, 0x2698(base_disp)
-        b       L_141D8
-L_14168:
+        b       dr_emit_sub_w_2_L6
+dr_emit_sub_w_2_L1:
         clrlwi  addr, prefetch_data, 28                 // addr = prefetch_data & 0x0000000F
         cmpwi   cr7, addr, 15
         lhz     data, 0(rec_ptr)
@@ -4842,12 +5257,12 @@ L_14168:
         rlwinm  data, prefetch_data, 2, 18, 20          // data = prefetch_data[11:9] << 11
         cror    4*cr6+gt, 4*cr6+gt, 4*cr6+lt            // cr6.gt = cr6.gt | cr6.lt
         rlwimi  data, prefetch_data, 16, 12, 15         // data[19:16] = prefetch_data[3:0]
-        bne     cr7, L_14194
+        bne     cr7, dr_emit_sub_w_2_L2
         rlwinm  data, prefetch_data, 2, 18, 20          // data = prefetch_data[11:9] << 11
         addis   data, data, -7
-L_14194:
-        bgt     cr6, L_141B4
-L_14198:
+dr_emit_sub_w_2_L2:
+        bgt     cr6, dr_emit_sub_w_2_L4
+dr_emit_sub_w_2_L3:
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         lwz     addr, 0x3190(base_disp)
@@ -4855,18 +5270,18 @@ L_14198:
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-L_141B4:
+dr_emit_sub_w_2_L4:
         lwz     addr, 0x3194(base_disp)
         rlwinm  data, prefetch_data, 12, 8, 10          // data = prefetch_data[11:9] << 21
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         lwz     addr, 0x3198(base_disp)
         rlwinm  data, prefetch_data, 21, 7, 10          // data = prefetch_data[3:0] << 21
-        bne     cr7, L_141D4
+        bne     cr7, dr_emit_sub_w_2_L5
         lis     data, 0xFF20
-L_141D4:
+dr_emit_sub_w_2_L5:
         add     addr, addr, data
-L_141D8:
+dr_emit_sub_w_2_L6:
         lwz     data, 0x319C(base_disp)
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
@@ -4874,45 +5289,55 @@ L_141D8:
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        b       L_13ED0
+        b       dr_emit_sub_l_L4
+
+// Code generator for 488 opcodes:
+//     SUBA.W Dn,An
+//     SUBA.W An,An
+//     SUBA.W (An),An
+//     SUBA.W (An)+,An
+//     SUBA.W -(An),An
+//     SUBA.W (d16,An),An
+//     ... and 6 more forms
+dr_emit_suba_w:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr6, rtn_addr, 0x0001
         lis     immed_data, 0x0060
-        ble     cr6, L_1423C
+        ble     cr6, dr_emit_suba_w_L3
         bl      L_124B8
-L_1420C:
+dr_emit_suba_w_L1:
         rlwinm  addr, prefetch_data, 23, 29, 31         // addr = prefetch_data[11:9]
         cmplwi  cr7, addr, 0x0007
         lwz     addr, 0x31A8(base_disp)
         rlwinm  data, prefetch_data, 2, 18, 20          // data = prefetch_data[11:9] << 11
         rlwimi  data, prefetch_data, 12, 8, 10          // data[23:21] = prefetch_data[11:9]
-        beq     cr7, L_14230
+        beq     cr7, dr_emit_suba_w_L2
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-L_14230:
+dr_emit_suba_w_L2:
         lwz     addr, 0x31AC(base_disp)
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-L_1423C:
+dr_emit_suba_w_L3:
         rlwinm  data, prefetch_data, 11, 17, 20         // data = prefetch_data[3:0] << 11
         cmpwi   cr7, data, 0x7800
         lwz     addr, 0x26AC(base_disp)
         rlwinm  data, prefetch_data, 21, 7, 10          // data = prefetch_data[3:0] << 21
-        beq     cr7, L_1425C
+        beq     cr7, dr_emit_suba_w_L4
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        b       L_1420C
-L_1425C:
+        b       dr_emit_suba_w_L1
+dr_emit_suba_w_L4:
         lwz     addr, 0x26B0(base_disp)
         stwu    addr, 4(out_ptr)
-        b       L_1420C
-L_14268:
+        b       dr_emit_suba_w_L1
+dr_emit_suba_w_L5:
         lhz     data, 0(rec_ptr)
         lis     immed_data, 0x0060
         mtcrf   0x02, data                              // cr6 = data[7:4]
         cror    4*cr6+gt, 4*cr6+gt, 4*cr6+lt            // cr6.gt = cr6.gt | cr6.lt
-        bgt     cr6, L_1429C
+        bgt     cr6, dr_emit_suba_w_L6
         bl      L_124B8
         lwz     addr, 0x3188(base_disp)
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
@@ -4921,7 +5346,7 @@ L_14268:
         lis     immed_data, 0x0060
         bl      L_124F8
         b       dr_emit_next
-L_1429C:
+dr_emit_suba_w_L6:
         bl      L_124B8
         lwz     addr, 0x3194(base_disp)
         rlwinm  data, prefetch_data, 12, 8, 10          // data = prefetch_data[11:9] << 21
@@ -4931,21 +5356,21 @@ L_1429C:
         lwz     data, 0x31A4(base_disp)
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
-L_142C0:
+dr_emit_suba_w_L7:
         lwz     addr, 0x26BC(base_disp)
         stwu    addr, 4(out_ptr)
         lis     immed_data, 0x0060
         bl      L_124F8
-        b       L_13ED0
-L_142D4:
+        b       dr_emit_sub_l_L4
+dr_emit_suba_w_L8:
         lhz     data, 0(rec_ptr)
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         mtcrf   0x02, data                              // cr6 = data[7:4]
         cmplwi  cr7, rtn_addr, 0x0001
         cror    4*cr6+gt, 4*cr6+gt, 4*cr6+lt            // cr6.gt = cr6.gt | cr6.lt
-        ble     cr7, L_14350
+        ble     cr7, dr_emit_suba_w_L12
         lis     immed_data, 0x00A0
-        bgt     cr6, L_14328
+        bgt     cr6, dr_emit_suba_w_L9
         addi    blk_ofs, blk_ofs, 2
         bl      L_124B8
         lhz     rtn_addr, 2(rec_ptr)
@@ -4955,42 +5380,42 @@ L_142D4:
         cmpwi   cr7, rtn_addr, -0x8000
         neg     rtn_addr, rtn_addr
         rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
-        beq     cr7, L_14330
+        beq     cr7, dr_emit_suba_w_L10
         stwu    addr, 4(out_ptr)
         bl      L_124F8
         b       dr_emit_next
-L_14328:
+dr_emit_suba_w_L9:
         addi    blk_ofs, blk_ofs, 2
         bl      L_124B8
-L_14330:
+dr_emit_suba_w_L10:
         lhz     rtn_addr, 2(rec_ptr)
         addi    rtn_addr, rtn_addr, 2
         bl      L_12598
-L_1433C:
+dr_emit_suba_w_L11:
         lwz     addr, 0x31B0(base_disp)
         stwu    addr, 4(out_ptr)
         lwz     addr, 0x31B4(base_disp)
         stwu    addr, 4(out_ptr)
-        b       L_142C0
-L_14350:
-        bgt     cr6, L_14388
+        b       dr_emit_suba_w_L7
+dr_emit_suba_w_L12:
+        bgt     cr6, dr_emit_suba_w_L14
         lwz     addr, 0x26C8(base_disp)
         lhax    rtn_addr, pc, blk_ofs
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
         cmpwi   cr7, rtn_addr, -0x8000
         neg     rtn_addr, rtn_addr
         rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
-        beq     cr7, L_14388
+        beq     cr7, dr_emit_suba_w_L14
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-L_14378:
+dr_emit_suba_w_L13:
         lwz     addr, 0x3190(base_disp)
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-L_14388:
+dr_emit_suba_w_L14:
         bl      L_125A0
-L_1438C:
+dr_emit_suba_w_L15:
         lwz     addr, 0x3194(base_disp)
         rlwinm  data, prefetch_data, 21, 8, 10          // data = prefetch_data[2:0] << 21
         add     addr, addr, data
@@ -5001,66 +5426,76 @@ L_1438C:
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        b       L_13ED0
+        b       dr_emit_sub_l_L4
+
+// Code generator for 464 opcodes:
+//     SUBQ.W #<q>,Dn
+//     SUBQ.W #<q>,An
+//     SUBQ.W #<q>,(An)
+//     SUBQ.W #<q>,(An)+
+//     SUBQ.W #<q>,-(An)
+//     SUBQ.W #<q>,(d16,An)
+//     ... and 3 more forms
+dr_emit_subq_w:
         clrlwi  rtn_addr, prefetch_data, 26             // rtn_addr = prefetch_data & 0x0000003F
         cmplwi  cr7, rtn_addr, 0x000F
         lis     immed_data, 0x0060
-        ble     cr7, L_1442C
+        ble     cr7, dr_emit_subq_w_L4
         lhz     rtn_addr, 0(rec_ptr)
         mtcrf   0x02, rtn_addr                          // cr6 = rtn_addr[7:4]
         cror    4*cr6+gt, 4*cr6+gt, 4*cr6+lt            // cr6.gt = cr6.gt | cr6.lt
-        bgt     cr6, L_14404
+        bgt     cr6, dr_emit_subq_w_L2
         bl      L_124B8
         rlwinm  data, prefetch_data, 23, 29, 31         // data = prefetch_data[11:9]
         cmpwi   cr7, data, 0
         lwz     addr, 0x21B8(base_disp)
-        bne     cr7, L_143F0
+        bne     cr7, dr_emit_subq_w_L1
         li      data, 8
-L_143F0:
+dr_emit_subq_w_L1:
         neg     data, data
         rlwimi  addr, data, 0, 16, 31                   // addr[15:0] = data[15:0]
         stwu    addr, 4(out_ptr)
         bl      L_124F8
         b       dr_emit_next
-L_14404:
+dr_emit_subq_w_L2:
         rlwinm  data, prefetch_data, 23, 29, 31         // data = prefetch_data[11:9]
         cmpwi   cr7, data, 0
         lwz     addr, 0x26CC(base_disp)
-        bne     cr7, L_14418
+        bne     cr7, dr_emit_subq_w_L3
         li      data, 8
-L_14418:
+dr_emit_subq_w_L3:
         rlwimi  addr, data, 0, 16, 31                   // addr[15:0] = data[15:0]
         stwu    addr, 4(out_ptr)
         lis     immed_data, 0x00A0
         bl      L_124B8
-        b       L_1433C
-L_1442C:
+        b       dr_emit_suba_w_L11
+dr_emit_subq_w_L4:
         lhz     rtn_addr, 0(rec_ptr)
         rlwinm  data, prefetch_data, 29, 29, 31         // data = prefetch_data[5:3]
         mtcrf   0x02, rtn_addr                          // cr6 = rtn_addr[7:4]
         cmpwi   cr5, data, 1
         rlwinm  data, prefetch_data, 23, 29, 31         // data = prefetch_data[11:9]
         cmpwi   cr4, data, 0
-        bne     cr4, L_1444C
+        bne     cr4, dr_emit_subq_w_L5
         li      data, 8
-L_1444C:
-        beq     cr7, L_140D8
-        beq     cr5, L_140B8
-        bgt     cr6, L_14478
-        blt     cr6, L_14488
+dr_emit_subq_w_L5:
+        beq     cr7, dr_emit_subq_l_L6
+        beq     cr5, dr_emit_subq_l_L5
+        bgt     cr6, dr_emit_subq_w_L6
+        blt     cr6, dr_emit_subq_w_L7
         lwz     addr, 0x26C8(base_disp)
         neg     data, data
         rlwimi  addr, data, 0, 16, 31                   // addr[15:0] = data[15:0]
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        b       L_14378
-L_14478:
+        b       dr_emit_suba_w_L13
+dr_emit_subq_w_L6:
         lwz     addr, 0x26CC(base_disp)
         rlwimi  addr, data, 0, 16, 31                   // addr[15:0] = data[15:0]
         stwu    addr, 4(out_ptr)
-        b       L_1438C
-L_14488:
+        b       dr_emit_suba_w_L15
+dr_emit_subq_w_L7:
         lwz     rtn_addr, 0x31B8(base_disp)
         lwz     immed_data, 0x31BC(base_disp)
         rlwinm  addr, prefetch_data, 21, 8, 10          // addr = prefetch_data[2:0] << 21
@@ -5090,41 +5525,51 @@ L_14488:
         clrlwi  ccr_x, d0, 16                           // ccr_x = d0 & 0x0000FFFF
         addi    ccr_x, ccr_x, 0
         rlwimi  d0, ccr_x, 0, 16, 31                    // d0[15:0] = ccr_x[15:0]
+
+// Code generator for 424 opcodes:
+//     SUB.B Dn,Dn
+//     SUB.B (An),Dn
+//     SUB.B (An)+,Dn
+//     SUB.B -(An),Dn
+//     SUB.B (d16,An),Dn
+//     SUB.B (d8,An,Xn),Dn
+//     ... and 5 more forms
+dr_emit_sub_b_2:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr7, rtn_addr, 0x0001
         lis     immed_data, 0x0060
-        ble     cr7, L_14540
+        ble     cr7, dr_emit_sub_b_2_L1
         bl      L_124C0
         lhz     data, 0(rec_ptr)
         lwz     addr, 0x3184(base_disp)
         mtcrf   0x02, data                              // cr6 = data[7:4]
         rlwinm  data, prefetch_data, 2, 18, 20          // data = prefetch_data[11:9] << 11
         cror    4*cr6+gt, 4*cr6+gt, 4*cr6+lt            // cr6.gt = cr6.gt | cr6.lt
-        ble     cr6, L_1455C
+        ble     cr6, dr_emit_sub_b_2_L2
         lwz     addr, 0x3490(base_disp)
         rlwinm  data, prefetch_data, 12, 8, 10          // data = prefetch_data[11:9] << 21
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         lwz     addr, 0x2AC8(base_disp)
-        b       L_14594
-L_14540:
+        b       dr_emit_sub_b_2_L5
+dr_emit_sub_b_2_L1:
         lhz     data, 0(rec_ptr)
         lwz     addr, 0x3488(base_disp)
         mtcrf   0x02, data                              // cr6 = data[7:4]
         rlwinm  data, prefetch_data, 2, 18, 20          // data = prefetch_data[11:9] << 11
         cror    4*cr6+gt, 4*cr6+gt, 4*cr6+lt            // cr6.gt = cr6.gt | cr6.lt
         rlwimi  data, prefetch_data, 16, 12, 15         // data[19:16] = prefetch_data[3:0]
-        bgt     cr6, L_14578
-L_1455C:
+        bgt     cr6, dr_emit_sub_b_2_L4
+dr_emit_sub_b_2_L2:
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
-L_14568:
+dr_emit_sub_b_2_L3:
         lwz     addr, 0x348C(base_disp)
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-L_14578:
+dr_emit_sub_b_2_L4:
         lwz     addr, 0x3490(base_disp)
         rlwinm  data, prefetch_data, 12, 8, 10          // data = prefetch_data[11:9] << 21
         add     addr, addr, data
@@ -5132,7 +5577,7 @@ L_14578:
         lwz     addr, 0x3494(base_disp)
         rlwinm  data, prefetch_data, 21, 7, 10          // data = prefetch_data[3:0] << 21
         add     addr, addr, data
-L_14594:
+dr_emit_sub_b_2_L5:
         lwz     data, 0x3498(base_disp)
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
@@ -5140,13 +5585,13 @@ L_14594:
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        b       L_13ED0
-L_145B4:
+        b       dr_emit_sub_l_L4
+dr_emit_sub_b_2_L6:
         lhz     data, 0(rec_ptr)
         lis     immed_data, 0x0060
         mtcrf   0x02, data                              // cr6 = data[7:4]
         cror    4*cr6+gt, 4*cr6+gt, 4*cr6+lt            // cr6.gt = cr6.gt | cr6.lt
-        bgt     cr6, L_145E8
+        bgt     cr6, dr_emit_sub_b_2_L7
         bl      L_124C0
         lwz     addr, 0x3188(base_disp)
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
@@ -5155,7 +5600,7 @@ L_145B4:
         lis     immed_data, 0x0060
         bl      L_12500
         b       dr_emit_next
-L_145E8:
+dr_emit_sub_b_2_L7:
         bl      L_124C0
         lwz     addr, 0x3490(base_disp)
         rlwinm  data, prefetch_data, 12, 8, 10          // data = prefetch_data[11:9] << 21
@@ -5165,21 +5610,21 @@ L_145E8:
         lwz     data, 0x34A0(base_disp)
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
-L_1460C:
+dr_emit_sub_b_2_L8:
         lwz     addr, 0x2ADC(base_disp)
         stwu    addr, 4(out_ptr)
         lis     immed_data, 0x0060
         bl      L_12500
-        b       L_13ED0
-L_14620:
+        b       dr_emit_sub_l_L4
+dr_emit_sub_b_2_L9:
         lhz     data, 0(rec_ptr)
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         mtcrf   0x02, data                              // cr6 = data[7:4]
         cmplwi  cr7, rtn_addr, 0x0001
         cror    4*cr6+gt, 4*cr6+gt, 4*cr6+lt            // cr6.gt = cr6.gt | cr6.lt
-        ble     cr7, L_14698
+        ble     cr7, dr_emit_sub_b_2_L12
         lis     immed_data, 0x00A0
-        bgt     cr6, L_14670
+        bgt     cr6, dr_emit_sub_b_2_L10
         addi    blk_ofs, blk_ofs, 2
         bl      L_124C0
         lhz     rtn_addr, 2(rec_ptr)
@@ -5192,20 +5637,20 @@ L_14620:
         stwu    addr, 4(out_ptr)
         bl      L_12500
         b       dr_emit_next
-L_14670:
+dr_emit_sub_b_2_L10:
         addi    blk_ofs, blk_ofs, 2
         bl      L_124C0
         lhz     rtn_addr, 2(rec_ptr)
         addi    rtn_addr, rtn_addr, 2
         bl      L_125B8
-L_14684:
+dr_emit_sub_b_2_L11:
         lwz     addr, 0x34A4(base_disp)
         stwu    addr, 4(out_ptr)
         lwz     addr, 0x34A8(base_disp)
         stwu    addr, 4(out_ptr)
-        b       L_1460C
-L_14698:
-        bgt     cr6, L_146CC
+        b       dr_emit_sub_b_2_L8
+dr_emit_sub_b_2_L12:
+        bgt     cr6, dr_emit_sub_b_2_L13
         lwz     addr, 0x26C8(base_disp)
         lhax    rtn_addr, pc, blk_ofs
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
@@ -5218,9 +5663,9 @@ L_14698:
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-L_146CC:
+dr_emit_sub_b_2_L13:
         bl      L_125C4
-L_146D0:
+dr_emit_sub_b_2_L14:
         lwz     addr, 0x3490(base_disp)
         rlwinm  data, prefetch_data, 21, 8, 10          // data = prefetch_data[2:0] << 21
         add     addr, addr, data
@@ -5231,62 +5676,72 @@ L_146D0:
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        b       L_13ED0
+        b       dr_emit_sub_l_L4
+
+// Code generator for 400 opcodes:
+//     SUBQ.B #<q>,Dn
+//     SUBQ.B #<q>,(An)
+//     SUBQ.B #<q>,(An)+
+//     SUBQ.B #<q>,-(An)
+//     SUBQ.B #<q>,(d16,An)
+//     SUBQ.B #<q>,(d8,An,Xn)
+//     ... and 2 more forms
+dr_emit_subq_b:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr6, rtn_addr, 0x0000
         lis     immed_data, 0x0060
-        beq     cr6, L_14770
+        beq     cr6, dr_emit_subq_b_L4
         lhz     rtn_addr, 0(rec_ptr)
         mtcrf   0x02, rtn_addr                          // cr6 = rtn_addr[7:4]
         cror    4*cr6+gt, 4*cr6+gt, 4*cr6+lt            // cr6.gt = cr6.gt | cr6.lt
-        bgt     cr6, L_14748
+        bgt     cr6, dr_emit_subq_b_L2
         bl      L_124C0
         rlwinm  data, prefetch_data, 23, 29, 31         // data = prefetch_data[11:9]
         cmpwi   cr7, data, 0
         lwz     addr, 0x21B8(base_disp)
-        bne     cr7, L_14734
+        bne     cr7, dr_emit_subq_b_L1
         li      data, 8
-L_14734:
+dr_emit_subq_b_L1:
         neg     data, data
         rlwimi  addr, data, 0, 16, 31                   // addr[15:0] = data[15:0]
         stwu    addr, 4(out_ptr)
         bl      L_12500
         b       dr_emit_next
-L_14748:
+dr_emit_subq_b_L2:
         rlwinm  data, prefetch_data, 31, 21, 23         // data = prefetch_data[11:9] << 8
         cmpwi   cr7, data, 0
         lwz     addr, 0x26CC(base_disp)
-        bne     cr7, L_1475C
+        bne     cr7, dr_emit_subq_b_L3
         li      data, 0x800
-L_1475C:
+dr_emit_subq_b_L3:
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         lis     immed_data, 0x00A0
         bl      L_124C0
-        b       L_14684
-L_14770:
+        b       dr_emit_sub_b_2_L11
+dr_emit_subq_b_L4:
         lhz     rtn_addr, 0(rec_ptr)
         rlwinm  data, prefetch_data, 23, 29, 31         // data = prefetch_data[11:9]
         mtcrf   0x02, rtn_addr                          // cr6 = rtn_addr[7:4]
         cmpwi   cr5, data, 0
         cror    4*cr6+gt, 4*cr6+gt, 4*cr6+lt            // cr6.gt = cr6.gt | cr6.lt
-        bne     cr5, L_1478C
+        bne     cr5, dr_emit_subq_b_L5
         li      data, 8
-L_1478C:
-        ble     cr6, L_147A4
+dr_emit_subq_b_L5:
+        ble     cr6, dr_emit_subq_b_L6
         slwi    data, data, 8
         lwz     addr, 0x26CC(base_disp)
         rlwimi  addr, data, 0, 16, 31                   // addr[15:0] = data[15:0]
         stwu    addr, 4(out_ptr)
-        b       L_146D0
-L_147A4:
+        b       dr_emit_sub_b_2_L14
+dr_emit_subq_b_L6:
         lwz     addr, 0x26C8(base_disp)
         neg     data, data
         rlwimi  addr, data, 0, 16, 31                   // addr[15:0] = data[15:0]
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        b       L_14568
+        b       dr_emit_sub_b_2_L3
         subf    addr, d0, d0                            // addr = d0 - d0
         rlwimi  d0, addr, 0, 24, 31                     // d0[7:0] = addr[7:0]
         slwi    rtn_addr, d0, 24
@@ -5296,12 +5751,22 @@ L_147A4:
         subfco. addr, rtn_addr, addr                    // addr = addr - rtn_addr
         slwi    rtn_addr, rtn_addr, 24
         subfco. addr, addr, rtn_addr                    // addr = rtn_addr - addr
+
+// Code generator for 424 opcodes:
+//     MULS.W Dn,Dn
+//     MULS.W (An),Dn
+//     MULS.W (An)+,Dn
+//     MULS.W -(An),Dn
+//     MULS.W (d16,An),Dn
+//     MULS.W (d8,An,Xn),Dn
+//     ... and 5 more forms
+dr_emit_muls_w:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr7, rtn_addr, 0x0001
         lis     immed_data, 0x0060
-        ble     cr7, L_1482C
+        ble     cr7, dr_emit_muls_w_L3
         bl      L_124B8
-L_147F8:
+dr_emit_muls_w_L1:
         lwz     addr, 0x3568(base_disp)
         rlwinm  data, prefetch_data, 12, 8, 10          // data = prefetch_data[11:9] << 21
         add     addr, addr, data
@@ -5309,36 +5774,46 @@ L_147F8:
         lwz     addr, 0x356C(base_disp)
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-L_14814:
+dr_emit_muls_w_L2:
         lhz     data, 0(rec_ptr)
         lwz     addr, 0x357C(base_disp)
         mtcrf   0x02, data                              // cr6 = data[7:4]
         ble     cr6, dr_emit_next
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-L_1482C:
+dr_emit_muls_w_L3:
         lwz     addr, 0x3564(base_disp)
         rlwinm  data, prefetch_data, 21, 8, 10          // data = prefetch_data[2:0] << 21
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        b       L_147F8
+        b       dr_emit_muls_w_L1
+
+// Code generator for 424 opcodes:
+//     MULU.W Dn,Dn
+//     MULU.W (An),Dn
+//     MULU.W (An)+,Dn
+//     MULU.W -(An),Dn
+//     MULU.W (d16,An),Dn
+//     MULU.W (d8,An,Xn),Dn
+//     ... and 5 more forms
+dr_emit_mulu_w:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr7, rtn_addr, 0x0001
         lis     immed_data, 0x0060
-        ble     cr7, L_1487C
+        ble     cr7, dr_emit_mulu_w_L2
         bl      L_124B8
         lwz     addr, 0x3578(base_disp)
         rlwinm  data, prefetch_data, 12, 8, 10          // data = prefetch_data[11:9] << 21
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         lwz     addr, 0x3574(base_disp)
-L_14868:
+dr_emit_mulu_w_L1:
         stwu    addr, 4(out_ptr)
         lwz     addr, 0x356C(base_disp)
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        b       L_14814
-L_1487C:
+        b       dr_emit_muls_w_L2
+dr_emit_mulu_w_L2:
         lwz     addr, 0x3570(base_disp)
         rlwinm  data, prefetch_data, 21, 8, 10          // data = prefetch_data[2:0] << 21
         add     addr, addr, data
@@ -5346,7 +5821,7 @@ L_1487C:
         lwz     addr, 0x3578(base_disp)
         rlwinm  data, prefetch_data, 12, 8, 10          // data = prefetch_data[11:9] << 21
         add     addr, addr, data
-        b       L_14868
+        b       dr_emit_mulu_w_L1
         extsh   addr, d0                                // addr = sign-extended low word of d0
         extsh   rtn_addr, d0                            // rtn_addr = sign-extended low word of d0
         mullw.  d0, addr, rtn_addr
@@ -5354,22 +5829,32 @@ L_1487C:
         clrlwi  addr, addr, 16                          // addr = addr & 0x0000FFFF
         clrlwi  rtn_addr, d0, 16                        // rtn_addr = d0 & 0x0000FFFF
         addco   zero, zero, zero
+
+// Code generator for 360 opcodes:
+//     DIVS.W Dn,Dn
+//     DIVS.W An,Dn (illegal)
+//     DIVS.W (An),Dn
+//     DIVS.W (d16,An),Dn
+//     DIVS.W (d8,An,Xn),Dn
+//     DIVS.W (xxx).W,Dn
+//     ... and 4 more forms
+dr_emit_divs_w:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr7, rtn_addr, 0x0001
-        ble     cr7, L_14968
+        ble     cr7, dr_emit_divs_w_L4
         clrlwi  data, prefetch_data, 26                 // data = prefetch_data & 0x0000003F
         cmplwi  cr7, data, 0x003C
-        bne     cr7, L_14918
+        bne     cr7, dr_emit_divs_w_L1
         lhax    data, pc, blk_ofs
         cmplwi  cr7, data, 0x0000
         cntlzw  immed_data, data                        // immed_data = number of leading zero bits in data
         addi    immed_data, immed_data, 1
         slw     addr, data, immed_data
-        beq     cr7, L_14918
+        beq     cr7, dr_emit_divs_w_L1
         cmplwi  cr7, addr, 0x0000
         cmplwi  cr6, immed_data, 0x0020
         crorc   4*cr6+eq, 4*cr6+eq, 4*cr7+eq            // cr6.eq = cr6.eq | ~cr7.eq
-        beq     cr6, L_14918
+        beq     cr6, dr_emit_divs_w_L1
         li      addr, 32
         subf    immed_data, immed_data, addr            // immed_data = addr - immed_data
         addi    blk_ofs, blk_ofs, 2
@@ -5377,13 +5862,13 @@ L_1487C:
         addi    rtn_addr, base_disp, 0x3744
         rlwimi  addr, immed_data, 0, 16, 31             // addr[15:0] = immed_data[15:0]
         stwu    addr, 4(out_ptr)
-        b       L_14924
-L_14918:
+        b       dr_emit_divs_w_L3
+dr_emit_divs_w_L1:
         lis     immed_data, 0x0060
         bl      L_124B8
-L_14920:
+dr_emit_divs_w_L2:
         addi    rtn_addr, base_disp, 0x36A4
-L_14924:
+dr_emit_divs_w_L3:
         lwz     addr, 0x3680(base_disp)
         rlwinm  data, prefetch_data, 12, 8, 10          // data = prefetch_data[11:9] << 21
         add     addr, addr, data
@@ -5401,40 +5886,50 @@ L_14924:
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-L_14968:
+dr_emit_divs_w_L4:
         lwz     addr, 0x3678(base_disp)
         rlwinm  data, prefetch_data, 21, 8, 10          // data = prefetch_data[2:0] << 21
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        b       L_14920
+        b       dr_emit_divs_w_L2
+
+// Code generator for 360 opcodes:
+//     DIVU.W Dn,Dn
+//     DIVU.W An,Dn (illegal)
+//     DIVU.W (An),Dn
+//     DIVU.W (d16,An),Dn
+//     DIVU.W (d8,An,Xn),Dn
+//     DIVU.W (xxx).W,Dn
+//     ... and 4 more forms
+dr_emit_divu_w:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr7, rtn_addr, 0x0001
         lis     immed_data, 0x0060
-        ble     cr7, L_14998
+        ble     cr7, dr_emit_divu_w_L2
         bl      L_124B8
-L_14990:
+dr_emit_divu_w_L1:
         addi    rtn_addr, base_disp, 0x3704
-        b       L_14924
-L_14998:
+        b       dr_emit_divs_w_L3
+dr_emit_divu_w_L2:
         lwz     addr, 0x367C(base_disp)
         rlwinm  data, prefetch_data, 21, 8, 10          // data = prefetch_data[2:0] << 21
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        b       L_14990
+        b       dr_emit_divu_w_L1
         li      addr, 0
         extsh   addr, d0                                // addr = sign-extended low word of d0
         clrlwi  addr, d0, 16                            // addr = d0 & 0x0000FFFF
         or      data, d0, zero
         li      base_disp, 0
-L_149C0:
-        bl      L_149C0
+dr_emit_divu_w_L3:
+        bl      dr_emit_divu_w_L3
         or      d0, rtn_addr, zero
-        b       L_149E0
+        b       dr_emit_divu_w_L4
         ALIGN(32)
-L_149E0:
+dr_emit_divu_w_L4:
         mtxer   zero
         divwo.  rtn_addr, data, addr
-        bso     L_14A0C
+        bso     dr_emit_divu_w_L5
         mullw   immed_data, rtn_addr, addr
         extsh.  addr, rtn_addr                          // addr = sign-extended low word of rtn_addr
         subf    immed_data, immed_data, data            // immed_data = data - immed_data
@@ -5442,26 +5937,26 @@ L_149E0:
         addco   zero, zero, zero
         rlwimi  rtn_addr, immed_data, 16, 0, 15         // rtn_addr[31:16] = immed_data[15:0]
         btlr_likely 4*cr7+eq
-        b       L_14A14
-L_14A0C:
+        b       dr_emit_divu_w_L6
+dr_emit_divu_w_L5:
         or.     addr, addr, addr
-        beq     L_14A24
-L_14A14:
+        beq     dr_emit_divu_w_L7
+dr_emit_divu_w_L6:
         lis     addr, 0x4000
         mtxer   addr
         mr      rtn_addr, data
         blr
-L_14A24:
+dr_emit_divu_w_L7:
         add     pc, pc, base_disp
         b       dr_exit_to_interpreter
-        b       L_14A40
+        b       dr_emit_divu_w_L8
         ALIGN(64)
-L_14A40:
+dr_emit_divu_w_L8:
         clrlwi  addr, addr, 16                          // addr = addr & 0x0000FFFF
         slwi.   rtn_addr, addr, 16
         cmplw   cr7, data, rtn_addr
-        bt_unlikely eq, L_14A24
-        bf_unlikely 4*cr7+lt, L_14A14
+        bt_unlikely eq, dr_emit_divu_w_L7
+        bf_unlikely 4*cr7+lt, dr_emit_divu_w_L6
         divwu   rtn_addr, data, addr
         mullw   immed_data, rtn_addr, addr
         extsh.  addr, rtn_addr                          // addr = sign-extended low word of rtn_addr
@@ -5469,9 +5964,9 @@ L_14A40:
         addco   zero, zero, zero
         rlwimi  rtn_addr, immed_data, 16, 0, 15         // rtn_addr[31:16] = immed_data[15:0]
         blr
-        b       L_14A80
+        b       dr_emit_divu_w_L9
         ALIGN(64)
-L_14A80:
+dr_emit_divu_w_L9:
         sraw    rtn_addr, data, addr                    // rtn_addr = data >> addr (arithmetic)
         adde    rtn_addr, rtn_addr, zero                // rtn_addr = rtn_addr + zero + CA
         slw     immed_data, rtn_addr, addr
@@ -5481,37 +5976,47 @@ L_14A80:
         addco   zero, zero, zero
         rlwimi  rtn_addr, immed_data, 16, 0, 15         // rtn_addr[31:16] = immed_data[15:0]
         btlr_likely 4*cr7+eq
-        b       L_14A14
+        b       dr_emit_divu_w_L6
+
+// Code generator for 976 opcodes:
+//     CMP.L Dn,Dn
+//     CMP.L An,Dn
+//     CMP.L (An),Dn
+//     CMP.L (An)+,Dn
+//     CMP.L -(An),Dn
+//     CMP.L (d16,An),Dn
+//     ... and 18 more forms
+dr_emit_cmp_cmpa_l:
         lhz     addr, 12(rec_ptr)
-        bl      L_15248
+        bl      dr_emit_cmpm_l_L9
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr7, rtn_addr, 0x0001
         lis     immed_data, 0x0060
-        ble     cr7, L_14B14
+        ble     cr7, dr_emit_cmp_cmpa_l_L3
         bl      L_124A0
         rlwinm  addr, prefetch_data, 26, 26, 31         // addr = prefetch_data[11:6]
         cmplwi  cr7, addr, 0x003F
         lwz     addr, 0x3928(base_disp)
-        beq     cr7, L_14B0C
+        beq     cr7, dr_emit_cmp_cmpa_l_L2
         lwz     data, 0xBB0(EmulatorStatePtr)
         rlwinm  immed_data, prefetch_data, 2, 18, 20    // immed_data = prefetch_data[11:9] << 11
         rlwimi  immed_data, prefetch_data, 6, 17, 17    // immed_data[14] = prefetch_data[8]
         mtcrf   0x02, data                              // cr6 = data[7:4]
         add     addr, addr, immed_data
         slwi    immed_data, immed_data, 5
-        bge     cr6, L_14AFC
-        beql    cr6, L_14E24
-        bsol    cr6, L_14E40
+        bge     cr6, dr_emit_cmp_cmpa_l_L1
+        beql    cr6, dr_emit_cmpi_w_L4
+        bsol    cr6, dr_emit_cmpi_w_L5
         ble     cr6, dr_emit_next
-L_14AFC:
+dr_emit_cmp_cmpa_l_L1:
         lwz     data, 0x392C(base_disp)
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
         b       dr_emit_next
-L_14B0C:
+dr_emit_cmp_cmpa_l_L2:
         lwz     addr, 0x3930(base_disp)
-        b       L_14AFC
-L_14B14:
+        b       dr_emit_cmp_cmpa_l_L1
+dr_emit_cmp_cmpa_l_L3:
         lwz     rtn_addr, 0xBB0(EmulatorStatePtr)
         clrlwi  addr, prefetch_data, 28                 // addr = prefetch_data & 0x0000000F
         cmpwi   cr7, addr, 15
@@ -5523,35 +6028,45 @@ L_14B14:
         add     immed_data, immed_data, data
         srwi    data, data, 5
         addi    data, data, 0x4000
-        bne     cr7, L_14B50
+        bne     cr7, dr_emit_cmp_cmpa_l_L4
         li      data, 0x800
         lwz     addr, 0x3920(base_disp)
         lwz     immed_data, 0x3924(base_disp)
-L_14B50:
+dr_emit_cmp_cmpa_l_L4:
         rlwinm  rtn_addr, prefetch_data, 2, 18, 20      // rtn_addr = prefetch_data[11:9] << 11
         rlwimi  rtn_addr, prefetch_data, 6, 17, 17      // rtn_addr[14] = prefetch_data[8]
         cmpwi   cr7, rtn_addr, 0x7800
         add     addr, addr, rtn_addr
         addi    rtn_addr, rtn_addr, 0x4000
-        bne     cr7, L_14B74
+        bne     cr7, dr_emit_cmp_cmpa_l_L5
         subf    addr, rtn_addr, addr                    // addr = addr - rtn_addr
         addi    addr, addr, 0x800
         li      rtn_addr, 0x800
-L_14B74:
+dr_emit_cmp_cmpa_l_L5:
         slwi    rtn_addr, rtn_addr, 5
-        bge     cr6, L_14B88
-        beql    cr6, L_14EB4
-        bsol    cr6, L_14E94
+        bge     cr6, dr_emit_cmp_cmpa_l_L6
+        beql    cr6, dr_emit_cmpi_w_L9
+        bsol    cr6, dr_emit_cmpi_w_L8
         ble     cr6, dr_emit_next
-L_14B88:
+dr_emit_cmp_cmpa_l_L6:
         stwu    addr, 4(out_ptr)
         stwu    immed_data, 4(out_ptr)
         b       dr_emit_next
+
+// Code generator for 52 opcodes:
+//     CMPI.L #<data>,Dn
+//     CMPI.L #<data>,(An)
+//     CMPI.L #<data>,(An)+
+//     CMPI.L #<data>,-(An)
+//     CMPI.L #<data>,(d16,An)
+//     CMPI.L #<data>,(d8,An,Xn)
+//     ... and 4 more forms
+dr_emit_cmpi_l:
         lhz     addr, 12(rec_ptr)
-        bl      L_15248
+        bl      dr_emit_cmpm_l_L9
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr6, rtn_addr, 0x0001
-        ble     cr6, L_14BE0
+        ble     cr6, dr_emit_cmpi_l_L2
         lis     immed_data, 0x00A0
         addi    blk_ofs, blk_ofs, 4
         bl      L_124A0
@@ -5560,46 +6075,56 @@ L_14B88:
         bl      L_12510
         lwz     data, 0xBB0(EmulatorStatePtr)
         mtcrf   0x02, data                              // cr6 = data[7:4]
-        bge     cr6, L_14BD8
-        beql    cr6, L_14DF4
-        bsol    cr6, L_14E0C
+        bge     cr6, dr_emit_cmpi_l_L1
+        beql    cr6, dr_emit_cmpi_w_L2
+        bsol    cr6, dr_emit_cmpi_w_L3
         ble     cr6, dr_emit_next
-L_14BD8:
+dr_emit_cmpi_l_L1:
         lwz     addr, 0x3934(base_disp)
-        b       L_14AFC
-L_14BE0:
+        b       dr_emit_cmp_cmpa_l_L1
+dr_emit_cmpi_l_L2:
         bl      L_12518
         lwz     data, 0xBB0(EmulatorStatePtr)
         rlwinm  immed_data, prefetch_data, 16, 13, 15   // immed_data = prefetch_data[2:0] << 16
         mtcrf   0x02, data                              // cr6 = data[7:4]
-        bge     cr6, L_14C00
-        beql    cr6, L_14E24
-        bsol    cr6, L_14E40
+        bge     cr6, dr_emit_cmpi_l_L3
+        beql    cr6, dr_emit_cmpi_w_L4
+        bsol    cr6, dr_emit_cmpi_w_L5
         ble     cr6, dr_emit_next
-L_14C00:
+dr_emit_cmpi_l_L3:
         lwz     addr, 0x3928(base_disp)
         rlwinm  data, prefetch_data, 11, 18, 20         // data = prefetch_data[2:0] << 11
         add     addr, addr, data
-        b       L_14AFC
+        b       dr_emit_cmp_cmpa_l_L1
+
+// Code generator for 61 opcodes:
+//     TST.L Dn
+//     TST.L An
+//     TST.L (An)
+//     TST.L (An)+
+//     TST.L -(An)
+//     TST.L (d16,An)
+//     ... and 6 more forms
+dr_emit_tst_l:
         clrlwi  rtn_addr, prefetch_data, 26             // rtn_addr = prefetch_data & 0x0000003F
         cmplwi  cr6, rtn_addr, 0x000F
         lis     immed_data, 0x0060
-        ble     cr6, L_14C30
+        ble     cr6, dr_emit_tst_l_L1
         bl      L_124A0
         lwz     addr, 0x3940(base_disp)
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-L_14C30:
-        beq     cr6, L_14C48
+dr_emit_tst_l_L1:
+        beq     cr6, dr_emit_tst_l_L3
         lwz     addr, 0x3938(base_disp)
         rlwinm  data, prefetch_data, 16, 12, 15         // data = prefetch_data[3:0] << 16
         add     addr, addr, data
-L_14C40:
+dr_emit_tst_l_L2:
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-L_14C48:
+dr_emit_tst_l_L3:
         lwz     addr, 0x393C(base_disp)
-        b       L_14C40
+        b       dr_emit_tst_l_L2
         subfco. rtn_addr, d0, d0                        // rtn_addr = d0 - d0
         addc    addr, d0, rtn_addr
         subfco. rtn_addr, a7, d0                        // rtn_addr = d0 - a7
@@ -5611,97 +6136,127 @@ L_14C48:
         addco.  addr, d0, zero
         addco.  addr, a7, zero
         addco.  addr, addr, zero
+
+// Code generator for 488 opcodes:
+//     CMPA.W Dn,An
+//     CMPA.W An,An
+//     CMPA.W (An),An
+//     CMPA.W (An)+,An
+//     CMPA.W -(An),An
+//     CMPA.W (d16,An),An
+//     ... and 6 more forms
+dr_emit_cmpa_w:
         lhz     addr, 12(rec_ptr)
-        bl      L_15248
+        bl      dr_emit_cmpm_l_L9
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr6, rtn_addr, 0x0001
         lis     immed_data, 0x0060
-        ble     cr6, L_14CF0
+        ble     cr6, dr_emit_cmpa_w_L6
         bl      L_124B8
-L_14C98:
+dr_emit_cmpa_w_L1:
         lwz     data, 0xBB0(EmulatorStatePtr)
         rlwinm  addr, prefetch_data, 23, 29, 31         // addr = prefetch_data[11:9]
         cmpwi   cr7, addr, 7
         mtcrf   0x02, data                              // cr6 = data[7:4]
-        bne     cr7, L_14CB0
+        bne     cr7, dr_emit_cmpa_w_L2
         addi    addr, addr, -22
-L_14CB0:
+dr_emit_cmpa_w_L2:
         slwi    immed_data, addr, 16
-        bge     cr6, L_14CC4
-        beql    cr6, L_14E5C
-        bsol    cr6, L_14E78
+        bge     cr6, dr_emit_cmpa_w_L3
+        beql    cr6, dr_emit_cmpi_w_L6
+        bsol    cr6, dr_emit_cmpi_w_L7
         ble     cr6, dr_emit_next
-L_14CC4:
+dr_emit_cmpa_w_L3:
         lwz     addr, 0x3C0C(base_disp)
-        beq     cr7, L_14CE4
+        beq     cr7, dr_emit_cmpa_w_L5
         rlwinm  data, prefetch_data, 2, 18, 20          // data = prefetch_data[11:9] << 11
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-L_14CD8:
+dr_emit_cmpa_w_L4:
         lwz     addr, 0x3C2C(base_disp)
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-L_14CE4:
+dr_emit_cmpa_w_L5:
         lwz     addr, 0x3C10(base_disp)
         stwu    addr, 4(out_ptr)
-        b       L_14CD8
-L_14CF0:
+        b       dr_emit_cmpa_w_L4
+dr_emit_cmpa_w_L6:
         clrlwi  addr, prefetch_data, 28                 // addr = prefetch_data & 0x0000000F
         cmpwi   cr7, addr, 15
         lwz     addr, 0x3C08(base_disp)
-        beq     cr7, L_14D10
+        beq     cr7, dr_emit_cmpa_w_L7
         rlwinm  data, prefetch_data, 21, 7, 10          // data = prefetch_data[3:0] << 21
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        b       L_14C98
-L_14D10:
+        b       dr_emit_cmpa_w_L1
+dr_emit_cmpa_w_L7:
         lwz     addr, 0x3C14(base_disp)
         stwu    addr, 4(out_ptr)
-        b       L_14C98
+        b       dr_emit_cmpa_w_L1
+
+// Code generator for 488 opcodes:
+//     CMP.W Dn,Dn
+//     CMP.W An,Dn
+//     CMP.W (An),Dn
+//     CMP.W (An)+,Dn
+//     CMP.W -(An),Dn
+//     CMP.W (d16,An),Dn
+//     ... and 6 more forms
+dr_emit_cmp_w:
         lhz     addr, 12(rec_ptr)
-        bl      L_15248
+        bl      dr_emit_cmpm_l_L9
         clrlwi  rtn_addr, prefetch_data, 26             // rtn_addr = prefetch_data & 0x0000003F
         cmpwi   cr6, rtn_addr, 15
         lis     immed_data, 0x0060
-        ble     cr6, L_14D80
+        ble     cr6, dr_emit_cmp_w_L4
         bl      L_124B8
         lwz     addr, 0x3C20(base_disp)
         stwu    addr, 4(out_ptr)
-L_14D40:
+dr_emit_cmp_w_L1:
         lwz     addr, 0x3C24(base_disp)
         rlwinm  data, prefetch_data, 12, 8, 10          // data = prefetch_data[11:9] << 21
         rlwimi  data, prefetch_data, 17, 7, 7           // data[24] = prefetch_data[7]
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-L_14D54:
+dr_emit_cmp_w_L2:
         lwz     data, 0xBB0(EmulatorStatePtr)
         mtcrf   0x02, data                              // cr6 = data[7:4]
-        bge     cr6, L_14D6C
-        beql    cr6, L_14DF4
-        bsol    cr6, L_14E0C
+        bge     cr6, dr_emit_cmp_w_L3
+        beql    cr6, dr_emit_cmpi_w_L2
+        bsol    cr6, dr_emit_cmpi_w_L3
         ble     cr6, dr_emit_next
-L_14D6C:
+dr_emit_cmp_w_L3:
         lwz     data, 0x3C28(base_disp)
         lwz     addr, 0x3C2C(base_disp)
         stwu    data, 4(out_ptr)
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-L_14D80:
+dr_emit_cmp_w_L4:
         lwz     addr, 0x3C18(base_disp)
-        beq     cr6, L_14D98
+        beq     cr6, dr_emit_cmp_w_L5
         rlwinm  data, prefetch_data, 21, 7, 10          // data = prefetch_data[3:0] << 21
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        b       L_14D40
-L_14D98:
+        b       dr_emit_cmp_w_L1
+dr_emit_cmp_w_L5:
         lwz     addr, 0x3C1C(base_disp)
         stwu    addr, 4(out_ptr)
-        b       L_14D40
+        b       dr_emit_cmp_w_L1
+
+// Code generator for 52 opcodes:
+//     CMPI.W #<data>,Dn
+//     CMPI.W #<data>,(An)
+//     CMPI.W #<data>,(An)+
+//     CMPI.W #<data>,-(An)
+//     CMPI.W #<data>,(d16,An)
+//     CMPI.W #<data>,(d8,An,Xn)
+//     ... and 4 more forms
+dr_emit_cmpi_w:
         lhz     addr, 12(rec_ptr)
-        bl      L_15248
+        bl      dr_emit_cmpm_l_L9
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr6, rtn_addr, 0x0001
-        ble     cr6, L_14DDC
+        ble     cr6, dr_emit_cmpi_w_L1
         lis     immed_data, 0x00A0
         addi    blk_ofs, blk_ofs, 2
         bl      L_124B8
@@ -5710,29 +6265,29 @@ L_14D98:
         bl      L_125A0
         lwz     addr, 0x3C34(base_disp)
         stwu    addr, 4(out_ptr)
-        b       L_14D54
-L_14DDC:
+        b       dr_emit_cmp_w_L2
+dr_emit_cmpi_w_L1:
         bl      L_125A0
         lwz     addr, 0x3C24(base_disp)
         rlwinm  data, prefetch_data, 21, 8, 10          // data = prefetch_data[2:0] << 21
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        b       L_14D54
-L_14DF4:
+        b       dr_emit_cmp_w_L2
+dr_emit_cmpi_w_L2:
         lhz     data, 12(rec_ptr)
         lwz     addr, 0x3BF0(base_disp)
         ori     data, data, 0x0008
         stwu    addr, 4(out_ptr)
         sth     data, 12(rec_ptr)
         blr
-L_14E0C:
+dr_emit_cmpi_w_L3:
         lhz     data, 12(rec_ptr)
         lwz     addr, 0x3BE0(base_disp)
         ori     data, data, 0x0008
         stwu    addr, 4(out_ptr)
         sth     data, 12(rec_ptr)
         blr
-L_14E24:
+dr_emit_cmpi_w_L4:
         lhz     data, 12(rec_ptr)
         lwz     rtn_addr, 0x3BF8(base_disp)
         add     rtn_addr, rtn_addr, immed_data
@@ -5740,7 +6295,7 @@ L_14E24:
         stwu    rtn_addr, 4(out_ptr)
         sth     data, 12(rec_ptr)
         blr
-L_14E40:
+dr_emit_cmpi_w_L5:
         lhz     data, 12(rec_ptr)
         lwz     rtn_addr, 0x3BE8(base_disp)
         add     rtn_addr, rtn_addr, immed_data
@@ -5748,7 +6303,7 @@ L_14E40:
         stwu    rtn_addr, 4(out_ptr)
         sth     data, 12(rec_ptr)
         blr
-L_14E5C:
+dr_emit_cmpi_w_L6:
         lhz     data, 12(rec_ptr)
         lwz     rtn_addr, 0x3BFC(base_disp)
         add     rtn_addr, rtn_addr, immed_data
@@ -5756,7 +6311,7 @@ L_14E5C:
         stwu    rtn_addr, 4(out_ptr)
         sth     data, 12(rec_ptr)
         blr
-L_14E78:
+dr_emit_cmpi_w_L7:
         lhz     data, 12(rec_ptr)
         lwz     rtn_addr, 0x3BEC(base_disp)
         add     rtn_addr, rtn_addr, immed_data
@@ -5764,7 +6319,7 @@ L_14E78:
         stwu    rtn_addr, 4(out_ptr)
         sth     data, 12(rec_ptr)
         blr
-L_14E94:
+dr_emit_cmpi_w_L8:
         or      data, data, rtn_addr
         lwz     rtn_addr, 0x3C00(base_disp)
         add     rtn_addr, rtn_addr, data
@@ -5773,7 +6328,7 @@ L_14E94:
         ori     data, data, 0x0008
         sth     data, 12(rec_ptr)
         blr
-L_14EB4:
+dr_emit_cmpi_w_L9:
         or      data, data, rtn_addr
         lwz     rtn_addr, 0x3C04(base_disp)
         add     rtn_addr, rtn_addr, data
@@ -5782,26 +6337,36 @@ L_14EB4:
         ori     data, data, 0x0008
         sth     data, 12(rec_ptr)
         blr
+
+// Code generator for 61 opcodes:
+//     TST.W Dn
+//     TST.W An
+//     TST.W (An)
+//     TST.W (An)+
+//     TST.W -(An)
+//     TST.W (d16,An)
+//     ... and 6 more forms
+dr_emit_tst_w:
         clrlwi  rtn_addr, prefetch_data, 26             // rtn_addr = prefetch_data & 0x0000003F
         cmplwi  cr6, rtn_addr, 0x000F
         lis     immed_data, 0x0060
-        ble     cr6, L_14EFC
+        ble     cr6, dr_emit_tst_w_L2
         bl      L_124B8
         lwz     addr, 0x3C20(base_disp)
-L_14EEC:
+dr_emit_tst_w_L1:
         stwu    addr, 4(out_ptr)
         lwz     addr, 0x3940(base_disp)
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-L_14EFC:
-        beq     cr6, L_14F10
+dr_emit_tst_w_L2:
+        beq     cr6, dr_emit_tst_w_L3
         lwz     addr, 0x3C18(base_disp)
         rlwinm  data, prefetch_data, 21, 7, 10          // data = prefetch_data[3:0] << 21
         add     addr, addr, data
-        b       L_14EEC
-L_14F10:
+        b       dr_emit_tst_w_L1
+dr_emit_tst_w_L3:
         lwz     addr, 0x3C1C(base_disp)
-        b       L_14EEC
+        b       dr_emit_tst_w_L1
         cmpw    cr7, rtn_addr, addr
         cmpwi   cr7, addr, 0
         cmpw    cr7, d0, addr
@@ -5824,44 +6389,64 @@ L_14F10:
         addc    addr, addr, rtn_addr
         slwi    rtn_addr, a7, 16
         slwi    rtn_addr, rtn_addr, 16
+
+// Code generator for 424 opcodes:
+//     CMP.B Dn,Dn
+//     CMP.B (An),Dn
+//     CMP.B (An)+,Dn
+//     CMP.B -(An),Dn
+//     CMP.B (d16,An),Dn
+//     CMP.B (d8,An,Xn),Dn
+//     ... and 5 more forms
+dr_emit_cmp_b:
         lhz     addr, 12(rec_ptr)
-        bl      L_15248
+        bl      dr_emit_cmpm_l_L9
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr6, rtn_addr, 0x0001
         lis     immed_data, 0x0060
-        ble     cr6, L_14FD0
+        ble     cr6, dr_emit_cmp_b_L4
         bl      L_124C0
         lwz     addr, 0x3D30(base_disp)
         stwu    addr, 4(out_ptr)
-L_14F94:
+dr_emit_cmp_b_L1:
         lwz     addr, 0x3D34(base_disp)
         rlwinm  data, prefetch_data, 12, 8, 10          // data = prefetch_data[11:9] << 21
         add     addr, addr, data
-L_14FA0:
+dr_emit_cmp_b_L2:
         lwz     data, 0xBB0(EmulatorStatePtr)
         stwu    addr, 4(out_ptr)
         mtcrf   0x02, data                              // cr6 = data[7:4]
-        bge     cr6, L_14FBC
-        beql    cr6, L_14DF4
-        bsol    cr6, L_14E0C
+        bge     cr6, dr_emit_cmp_b_L3
+        beql    cr6, dr_emit_cmpi_w_L2
+        bsol    cr6, dr_emit_cmpi_w_L3
         ble     cr6, dr_emit_next
-L_14FBC:
+dr_emit_cmp_b_L3:
         lwz     data, 0x3D38(base_disp)
         lwz     addr, 0x3D3C(base_disp)
         stwu    data, 4(out_ptr)
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-L_14FD0:
+dr_emit_cmp_b_L4:
         lwz     addr, 0x3D2C(base_disp)
         rlwinm  data, prefetch_data, 21, 8, 10          // data = prefetch_data[2:0] << 21
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        b       L_14F94
+        b       dr_emit_cmp_b_L1
+
+// Code generator for 52 opcodes:
+//     CMPI.B #<data>,Dn
+//     CMPI.B #<data>,(An)
+//     CMPI.B #<data>,(An)+
+//     CMPI.B #<data>,-(An)
+//     CMPI.B #<data>,(d16,An)
+//     CMPI.B #<data>,(d8,An,Xn)
+//     ... and 4 more forms
+dr_emit_cmpi_b:
         lhz     addr, 12(rec_ptr)
-        bl      L_15248
+        bl      dr_emit_cmpm_l_L9
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr6, rtn_addr, 0x0001
-        ble     cr6, L_15018
+        ble     cr6, dr_emit_cmpi_b_L1
         lis     immed_data, 0x00A0
         addi    blk_ofs, blk_ofs, 2
         bl      L_124C0
@@ -5869,46 +6454,68 @@ L_14FD0:
         addi    blk_ofs, blk_ofs, 2
         bl      L_125C4
         lwz     addr, 0x3D40(base_disp)
-        b       L_14FA0
-L_15018:
+        b       dr_emit_cmp_b_L2
+dr_emit_cmpi_b_L1:
         bl      L_125C4
         lwz     addr, 0x3D34(base_disp)
         rlwinm  data, prefetch_data, 21, 8, 10          // data = prefetch_data[2:0] << 21
         add     addr, addr, data
-        b       L_14FA0
+        b       dr_emit_cmp_b_L2
+
+// Code generator for 53 opcodes:
+//     TST.B Dn
+//     TST.B (An)
+//     TST.B (An)+
+//     TST.B -(An)
+//     TST.B (d16,An)
+//     TST.B (d8,An,Xn)
+//     ... and 5 more forms
+dr_emit_tst_b:
         clrlwi  rtn_addr, prefetch_data, 26             // rtn_addr = prefetch_data & 0x0000003F
         cmplwi  cr6, rtn_addr, 0x0007
         lis     immed_data, 0x0060
-        ble     cr6, L_15054
+        ble     cr6, dr_emit_tst_b_L2
         bl      L_124C0
         lwz     addr, 0x3D30(base_disp)
-L_15044:
+dr_emit_tst_b_L1:
         stwu    addr, 4(out_ptr)
         lwz     addr, 0x3940(base_disp)
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-L_15054:
+dr_emit_tst_b_L2:
         lwz     addr, 0x3D2C(base_disp)
         rlwinm  data, prefetch_data, 21, 7, 10          // data = prefetch_data[3:0] << 21
         add     addr, addr, data
-        b       L_15044
+        b       dr_emit_tst_b_L1
         slwi    addr, d0, 24
         slwi    addr, addr, 24
         slwi    rtn_addr, d0, 24
         subfco. rtn_addr, addr, rtn_addr                // rtn_addr = rtn_addr - addr
         addc    addr, addr, rtn_addr
         slwi    rtn_addr, rtn_addr, 24
-        b       L_1517C
-        b       L_150F8
+
+// Code generator for 64 opcodes:
+//     CMPM.B (An)+,(An)+
+dr_emit_cmpm_b:
+        b       dr_emit_cmpm_l_L6
+
+// Code generator for 64 opcodes:
+//     CMPM.W (An)+,(An)+
+dr_emit_cmpm_w:
+        b       dr_emit_cmpm_l_L3
+
+// Code generator for 64 opcodes:
+//     CMPM.L (An)+,(An)+
+dr_emit_cmpm_l:
         lhz     addr, 12(rec_ptr)
-        bl      L_15248
+        bl      dr_emit_cmpm_l_L9
         lwz     addr, 0x3ED0(base_disp)
         clrlwi  data, prefetch_data, 29                 // data = prefetch_data & 0x00000007
         cmpwi   cr7, data, 7
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
-        bne     cr7, L_150A4
+        bne     cr7, dr_emit_cmpm_l_L1
         lis     data, 0xFFF1
-L_150A4:
+dr_emit_cmpm_l_L1:
         add     addr, addr, data
         lwz     rtn_addr, 0x3ED4(base_disp)
         stwu    addr, 4(out_ptr)
@@ -5920,9 +6527,9 @@ L_150A4:
         rlwinm  data, prefetch_data, 23, 29, 31         // data = prefetch_data[11:9]
         cmpwi   cr7, data, 7
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
-        bne     cr7, L_150D8
+        bne     cr7, dr_emit_cmpm_l_L2
         lis     data, 0xFFF1
-L_150D8:
+dr_emit_cmpm_l_L2:
         add     addr, addr, data
         lwz     rtn_addr, 0x3EDC(base_disp)
         stwu    addr, 4(out_ptr)
@@ -5930,17 +6537,17 @@ L_150D8:
         slwi    data, data, 5
         add     rtn_addr, rtn_addr, data
         stwu    rtn_addr, 4(out_ptr)
-        b       L_14D54
-L_150F8:
+        b       dr_emit_cmp_w_L2
+dr_emit_cmpm_l_L3:
         lhz     addr, 12(rec_ptr)
-        bl      L_15248
+        bl      dr_emit_cmpm_l_L9
         lwz     addr, 0x3EE0(base_disp)
         clrlwi  data, prefetch_data, 29                 // data = prefetch_data & 0x00000007
         cmpwi   cr7, data, 7
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
-        bne     cr7, L_15118
+        bne     cr7, dr_emit_cmpm_l_L4
         lis     data, 0xFFF1
-L_15118:
+dr_emit_cmpm_l_L4:
         add     addr, addr, data
         lwz     rtn_addr, 0x3EE4(base_disp)
         stwu    addr, 4(out_ptr)
@@ -5952,9 +6559,9 @@ L_15118:
         rlwinm  data, prefetch_data, 23, 29, 31         // data = prefetch_data[11:9]
         cmpwi   cr7, data, 7
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
-        bne     cr7, L_1514C
+        bne     cr7, dr_emit_cmpm_l_L5
         lis     data, 0xFFF1
-L_1514C:
+dr_emit_cmpm_l_L5:
         add     addr, addr, data
         lwz     rtn_addr, 0x3EEC(base_disp)
         stwu    addr, 4(out_ptr)
@@ -5966,19 +6573,19 @@ L_1514C:
         lwz     data, 0x3EF4(base_disp)
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
-        b       L_14D54
-L_1517C:
+        b       dr_emit_cmp_w_L2
+dr_emit_cmpm_l_L6:
         lhz     addr, 12(rec_ptr)
-        bl      L_15248
+        bl      dr_emit_cmpm_l_L9
         lwz     addr, 0x3EF8(base_disp)
         clrlwi  data, prefetch_data, 29                 // data = prefetch_data & 0x00000007
         cmpwi   cr7, data, 7
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
         lwz     rtn_addr, 0x3EFC(base_disp)
-        bne     cr7, L_151A4
+        bne     cr7, dr_emit_cmpm_l_L7
         lis     data, 0xFFF1
         addi    rtn_addr, rtn_addr, 1
-L_151A4:
+dr_emit_cmpm_l_L7:
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         add     rtn_addr, rtn_addr, data
@@ -5990,10 +6597,10 @@ L_151A4:
         cmpwi   cr7, data, 7
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
         lwz     rtn_addr, 0x3F04(base_disp)
-        bne     cr7, L_151DC
+        bne     cr7, dr_emit_cmpm_l_L8
         lis     data, 0xFFF1
         addi    rtn_addr, rtn_addr, 1
-L_151DC:
+dr_emit_cmpm_l_L8:
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         add     rtn_addr, rtn_addr, data
@@ -6004,7 +6611,7 @@ L_151DC:
         lwz     data, 0x3F0C(base_disp)
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
-        b       L_14D54
+        b       dr_emit_cmp_w_L2
         lwz     addr, 0(a0)
         addi    a0, a0, 4
         lwz     rtn_addr, 0(a0)
@@ -6021,7 +6628,7 @@ L_151DC:
         addi    a0, a0, 1
         slwi    addr, addr, 24
         slwi    rtn_addr, rtn_addr, 24
-L_15248:
+dr_emit_cmpm_l_L9:
         mtcrf   0x07, addr                              // cr5..cr7 = addr[11:0]
         lhz     addr, 14(rec_ptr)
         srwi    data, addr, 4
@@ -6067,49 +6674,79 @@ L_152D8:
         mfcr    addr
         stw     addr, 0xBB0(EmulatorStatePtr)
         blr
-        b       L_153F8
-        b       L_15350
+
+// Code generator for 50 opcodes:
+//     NEG.B Dn
+//     NEG.B (An)
+//     NEG.B (An)+
+//     NEG.B -(An)
+//     NEG.B (d16,An)
+//     NEG.B (d8,An,Xn)
+//     ... and 2 more forms
+dr_emit_neg_b:
+        b       dr_emit_neg_l_L10
+
+// Code generator for 50 opcodes:
+//     NEG.W Dn
+//     NEG.W (An)
+//     NEG.W (An)+
+//     NEG.W -(An)
+//     NEG.W (d16,An)
+//     NEG.W (d8,An,Xn)
+//     ... and 2 more forms
+dr_emit_neg_w:
+        b       dr_emit_neg_l_L4
+
+// Code generator for 50 opcodes:
+//     NEG.L Dn
+//     NEG.L (An)
+//     NEG.L (An)+
+//     NEG.L -(An)
+//     NEG.L (d16,An)
+//     NEG.L (d8,An,Xn)
+//     ... and 2 more forms
+dr_emit_neg_l:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr6, rtn_addr, 0x0000
         lis     immed_data, 0x0060
-        beq     cr6, L_15338
+        beq     cr6, dr_emit_neg_l_L3
         bl      L_124A0
         lwz     addr, 0x4148(base_disp)
         stwu    addr, 4(out_ptr)
         bl      L_124F0
-L_15314:
+dr_emit_neg_l_L1:
         lhz     data, 0(rec_ptr)
         mtcrf   0x02, data                              // cr6 = data[7:4]
         cror    4*cr6+gt, 4*cr6+lt, 4*cr6+gt            // cr6.gt = cr6.lt | cr6.gt
         ble     cr6, dr_emit_next
-L_15324:
+dr_emit_neg_l_L2:
         lwz     addr, 0x4184(base_disp)
         lwz     data, 0x4188(base_disp)
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
         b       dr_emit_next
-L_15338:
+dr_emit_neg_l_L3:
         lwz     addr, 0x414C(base_disp)
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
         rlwimi  data, prefetch_data, 21, 8, 10          // data[23:21] = prefetch_data[2:0]
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        b       L_15314
-L_15350:
+        b       dr_emit_neg_l_L1
+dr_emit_neg_l_L4:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr7, rtn_addr, 0x0000
         lhz     data, 0(rec_ptr)
         lis     immed_data, 0x0060
         mtcrf   0x02, data                              // cr6 = data[7:4]
         cror    4*cr6+gt, 4*cr6+gt, 4*cr6+lt            // cr6.gt = cr6.gt | cr6.lt
-        beq     cr7, L_153A8
-        bgt     cr6, L_15384
+        beq     cr7, dr_emit_neg_l_L6
+        bgt     cr6, dr_emit_neg_l_L5
         bl      L_124B8
         lwz     addr, 0x4150(base_disp)
         stwu    addr, 4(out_ptr)
         bl      L_124F8
         b       dr_emit_next
-L_15384:
+dr_emit_neg_l_L5:
         bl      L_124B8
         lwz     addr, 0x4154(base_disp)
         lwz     data, 0x4148(base_disp)
@@ -6118,46 +6755,46 @@ L_15384:
         stwu    data, 4(out_ptr)
         stwu    addr, 4(out_ptr)
         bl      L_124F8
-        b       L_15324
-L_153A8:
-        bgt     cr6, L_153CC
+        b       dr_emit_neg_l_L2
+dr_emit_neg_l_L6:
+        bgt     cr6, dr_emit_neg_l_L8
         lwz     addr, 0x415C(base_disp)
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
         lwz     rtn_addr, 0x4160(base_disp)
-L_153B8:
+dr_emit_neg_l_L7:
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         add     addr, rtn_addr, data
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-L_153CC:
+dr_emit_neg_l_L8:
         lwz     addr, 0x4164(base_disp)
         rlwinm  data, prefetch_data, 21, 8, 10          // data = prefetch_data[2:0] << 21
         lwz     rtn_addr, 0x4148(base_disp)
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         lwz     addr, 0x4168(base_disp)
-L_153E4:
+dr_emit_neg_l_L9:
         stwu    rtn_addr, 4(out_ptr)
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        b       L_15324
-L_153F8:
+        b       dr_emit_neg_l_L2
+dr_emit_neg_l_L10:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr7, rtn_addr, 0x0000
         lhz     data, 0(rec_ptr)
         lis     immed_data, 0x0060
         mtcrf   0x02, data                              // cr6 = data[7:4]
         cror    4*cr6+gt, 4*cr6+gt, 4*cr6+lt            // cr6.gt = cr6.gt | cr6.lt
-        beq     cr7, L_15450
-        bgt     cr6, L_1542C
+        beq     cr7, dr_emit_neg_l_L12
+        bgt     cr6, dr_emit_neg_l_L11
         bl      L_124C0
         lwz     addr, 0x4150(base_disp)
         stwu    addr, 4(out_ptr)
         bl      L_12500
         b       dr_emit_next
-L_1542C:
+dr_emit_neg_l_L11:
         bl      L_124C0
         lwz     addr, 0x416C(base_disp)
         lwz     data, 0x4148(base_disp)
@@ -6166,21 +6803,21 @@ L_1542C:
         stwu    data, 4(out_ptr)
         stwu    addr, 4(out_ptr)
         bl      L_12500
-        b       L_15324
-L_15450:
-        bgt     cr6, L_15464
+        b       dr_emit_neg_l_L2
+dr_emit_neg_l_L12:
+        bgt     cr6, dr_emit_neg_l_L13
         lwz     addr, 0x4174(base_disp)
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
         lwz     rtn_addr, 0x4178(base_disp)
-        b       L_153B8
-L_15464:
+        b       dr_emit_neg_l_L7
+dr_emit_neg_l_L13:
         lwz     addr, 0x417C(base_disp)
         rlwinm  data, prefetch_data, 21, 8, 10          // data = prefetch_data[2:0] << 21
         lwz     rtn_addr, 0x4148(base_disp)
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         lwz     addr, 0x4180(base_disp)
-        b       L_153E4
+        b       dr_emit_neg_l_L9
         subfco. addr, addr, zero                        // addr = zero - addr
         subfco. d0, d0, zero                            // d0 = zero - d0
         neg     addr, addr
@@ -6198,47 +6835,117 @@ L_15464:
         rlwimi  d0, addr, 8, 24, 31                     // d0[7:0] = addr[31:24]
         subfe   addr, zero, zero                        // addr = zero + ~zero + CA
         addc    ccr_x, addr, addr
+
+// Code generator for 424 opcodes:
+//     OR.L Dn,Dn
+//     OR.L (An),Dn
+//     OR.L (An)+,Dn
+//     OR.L -(An),Dn
+//     OR.L (d16,An),Dn
+//     OR.L (d8,An,Xn),Dn
+//     ... and 5 more forms
+dr_emit_or_l:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr6, rtn_addr, 0x0001
         lis     immed_data, 0x0060
-        ble     cr6, L_15504
+        ble     cr6, dr_emit_or_l_L4
         bl      L_124A0
         lwz     addr, 0x4254(base_disp)
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
-L_154E0:
+dr_emit_or_l_L1:
         rlwimi  data, prefetch_data, 12, 8, 10          // data[23:21] = prefetch_data[11:9]
-L_154E4:
+dr_emit_or_l_L2:
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-L_154EC:
+dr_emit_or_l_L3:
         lhz     addr, 0(rec_ptr)
         mtcrf   0x02, addr                              // cr6 = addr[7:4]
         lwz     addr, 0x425C(base_disp)
         ble     cr6, dr_emit_next
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-L_15504:
+dr_emit_or_l_L4:
         lwz     addr, 0x4250(base_disp)
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
         rlwimi  data, prefetch_data, 11, 17, 20         // data[14:11] = prefetch_data[3:0]
-        b       L_154E0
-        b       L_1574C
-        b       L_15624
+        b       dr_emit_or_l_L1
+
+// Code generator for 344 opcodes:
+//     OR.B Dn,(An)
+//     OR.B Dn,(An)+
+//     OR.B Dn,-(An)
+//     OR.B Dn,(d16,An)
+//     OR.B Dn,(d8,An,Xn)
+//     OR.B Dn,(xxx).W
+//     ... and 2 more forms
+dr_emit_or_b:
+        b       dr_emit_or_b_2_L3
+
+// Code generator for 344 opcodes:
+//     OR.W Dn,(An)
+//     OR.W Dn,(An)+
+//     OR.W Dn,-(An)
+//     OR.W Dn,(d16,An)
+//     OR.W Dn,(d8,An,Xn)
+//     OR.W Dn,(xxx).W
+//     ... and 2 more forms
+dr_emit_or_w:
+        b       dr_emit_or_w_2_L3
+
+// Code generator for 344 opcodes:
+//     OR.L Dn,(An)
+//     OR.L Dn,(An)+
+//     OR.L Dn,-(An)
+//     OR.L Dn,(d16,An)
+//     OR.L Dn,(d8,An,Xn)
+//     OR.L Dn,(xxx).W
+//     ... and 2 more forms
+dr_emit_or_l_2:
         lis     immed_data, 0x0060
         bl      L_124A0
         lwz     addr, 0x4258(base_disp)
         rlwinm  data, prefetch_data, 2, 18, 20          // data = prefetch_data[11:9] << 11
         add     addr, addr, data
-L_15530:
+dr_emit_or_l_2_L1:
         stwu    addr, 4(out_ptr)
         lis     immed_data, 0x0060
         bl      L_124F0
-        b       L_154EC
-        b       L_15644
-        b       L_1576C
+        b       dr_emit_or_l_L3
+
+// Code generator for 51 opcodes:
+//     ORI.W #<data>,Dn
+//     ORI.W #<data>,(An)
+//     ORI.W #<data>,(An)+
+//     ORI.W #<data>,-(An)
+//     ORI.W #<data>,(d16,An)
+//     ORI.W #<data>,(d8,An,Xn)
+//     ... and 3 more forms
+dr_emit_ori_w:
+        b       dr_emit_or_w_2_L4
+
+// Code generator for 51 opcodes:
+//     ORI.B #<data>,Dn
+//     ORI.B #<data>,(An)
+//     ORI.B #<data>,(An)+
+//     ORI.B #<data>,-(An)
+//     ORI.B #<data>,(d16,An)
+//     ORI.B #<data>,(d8,An,Xn)
+//     ... and 3 more forms
+dr_emit_ori_b:
+        b       dr_emit_or_b_2_L4
+
+// Code generator for 51 opcodes:
+//     ORI.L #<data>,Dn
+//     ORI.L #<data>,(An)
+//     ORI.L #<data>,(An)+
+//     ORI.L #<data>,-(An)
+//     ORI.L #<data>,(d16,An)
+//     ORI.L #<data>,(d8,An,Xn)
+//     ... and 3 more forms
+dr_emit_ori_l:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr6, rtn_addr, 0x0001
-        ble     cr6, L_15574
+        ble     cr6, dr_emit_ori_l_L1
         lis     immed_data, 0x00A0
         addi    blk_ofs, blk_ofs, 4
         bl      L_124A0
@@ -6246,22 +6953,32 @@ L_15530:
         addi    rtn_addr, rtn_addr, 2
         bl      L_12510
         lwz     addr, 0x4260(base_disp)
-        b       L_15530
-L_15574:
+        b       dr_emit_or_l_2_L1
+dr_emit_ori_l_L1:
         bl      L_12518
         lwz     addr, 0x4254(base_disp)
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
         rlwimi  data, prefetch_data, 21, 8, 10          // data[23:21] = prefetch_data[2:0]
-        b       L_154E4
+        b       dr_emit_or_l_L2
         or.     d0, d0, d0
         or.     d0, d0, addr
         or.     addr, addr, d0
         addco   zero, zero, zero
         or.     addr, addr, rtn_addr
+
+// Code generator for 424 opcodes:
+//     OR.W Dn,Dn
+//     OR.W (An),Dn
+//     OR.W (An)+,Dn
+//     OR.W -(An),Dn
+//     OR.W (d16,An),Dn
+//     OR.W (d8,An,Xn),Dn
+//     ... and 5 more forms
+dr_emit_or_w_2:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr7, rtn_addr, 0x0001
         lis     immed_data, 0x0060
-        ble     cr7, L_155D4
+        ble     cr7, dr_emit_or_w_2_L1
         bl      L_124B8
         lwz     addr, 0x4370(base_disp)
         rlwinm  data, prefetch_data, 2, 18, 20          // data = prefetch_data[11:9] << 11
@@ -6271,8 +6988,8 @@ L_15574:
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        b       L_15600
-L_155D4:
+        b       dr_emit_or_w_2_L2
+dr_emit_or_w_2_L1:
         lwz     addr, 0x4374(base_disp)
         rlwinm  data, prefetch_data, 12, 8, 10          // data = prefetch_data[11:9] << 21
         mr      immed_data, data
@@ -6284,7 +7001,7 @@ L_155D4:
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         addis   immed_data, immed_data, 0x100
-L_15600:
+dr_emit_or_w_2_L2:
         lhz     data, 0(rec_ptr)
         mtcrf   0x02, data                              // cr6 = data[7:4]
         lwz     addr, 0x437C(base_disp)
@@ -6294,7 +7011,7 @@ L_15600:
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
         b       dr_emit_next
-L_15624:
+dr_emit_or_w_2_L3:
         lis     immed_data, 0x0060
         bl      L_124B8
         lwz     addr, 0x4370(base_disp)
@@ -6302,12 +7019,12 @@ L_15624:
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         bl      L_124F8
-        b       L_15600
-L_15644:
+        b       dr_emit_or_w_2_L2
+dr_emit_or_w_2_L4:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr7, rtn_addr, 0x0001
         lis     immed_data, 0x00A0
-        ble     cr7, L_15680
+        ble     cr7, dr_emit_or_w_2_L5
         addi    blk_ofs, blk_ofs, 2
         bl      L_124B8
         lhz     rtn_addr, 2(rec_ptr)
@@ -6318,8 +7035,8 @@ L_15644:
         stwu    addr, 4(out_ptr)
         lis     immed_data, 0x0060
         bl      L_124F8
-        b       L_15600
-L_15680:
+        b       dr_emit_or_w_2_L2
+dr_emit_or_w_2_L5:
         lis     immed_data, 0x0100
         lwz     addr, 0x4388(base_disp)
         lhax    rtn_addr, pc, blk_ofs
@@ -6329,7 +7046,7 @@ L_15680:
         rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        b       L_15600
+        b       dr_emit_or_w_2_L2
         or      addr, addr, d0
         mr      addr, d0
         rlwimi  d0, addr, 0, 16, 31                     // d0[15:0] = addr[15:0]
@@ -6337,10 +7054,20 @@ L_15680:
         addco.  addr, addr, zero
         ori     addr, rtn_addr, 0x0000
         ori     d0, d0, 0x0000
+
+// Code generator for 424 opcodes:
+//     OR.B Dn,Dn
+//     OR.B (An),Dn
+//     OR.B (An)+,Dn
+//     OR.B -(An),Dn
+//     OR.B (d16,An),Dn
+//     OR.B (d8,An,Xn),Dn
+//     ... and 5 more forms
+dr_emit_or_b_2:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr7, rtn_addr, 0x0001
         lis     immed_data, 0x0060
-        ble     cr7, L_156FC
+        ble     cr7, dr_emit_or_b_2_L1
         bl      L_124C0
         lwz     addr, 0x4370(base_disp)
         rlwinm  data, prefetch_data, 2, 18, 20          // data = prefetch_data[11:9] << 11
@@ -6350,8 +7077,8 @@ L_15680:
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        b       L_15728
-L_156FC:
+        b       dr_emit_or_b_2_L2
+dr_emit_or_b_2_L1:
         lwz     addr, 0x4498(base_disp)
         rlwinm  data, prefetch_data, 12, 8, 10          // data = prefetch_data[11:9] << 21
         mr      immed_data, data
@@ -6363,7 +7090,7 @@ L_156FC:
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         addis   immed_data, immed_data, 0x100
-L_15728:
+dr_emit_or_b_2_L2:
         lhz     data, 0(rec_ptr)
         mtcrf   0x02, data                              // cr6 = data[7:4]
         lwz     addr, 0x44A0(base_disp)
@@ -6373,7 +7100,7 @@ L_15728:
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
         b       dr_emit_next
-L_1574C:
+dr_emit_or_b_2_L3:
         lis     immed_data, 0x0060
         bl      L_124C0
         lwz     addr, 0x4370(base_disp)
@@ -6381,12 +7108,12 @@ L_1574C:
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         bl      L_12500
-        b       L_15728
-L_1576C:
+        b       dr_emit_or_b_2_L2
+dr_emit_or_b_2_L4:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr7, rtn_addr, 0x0001
         lis     immed_data, 0x00A0
-        ble     cr7, L_157A8
+        ble     cr7, dr_emit_or_b_2_L5
         addi    blk_ofs, blk_ofs, 2
         bl      L_124C0
         lhz     rtn_addr, 2(rec_ptr)
@@ -6397,8 +7124,8 @@ L_1576C:
         stwu    addr, 4(out_ptr)
         lis     immed_data, 0x0060
         bl      L_12500
-        b       L_15728
-L_157A8:
+        b       dr_emit_or_b_2_L2
+dr_emit_or_b_2_L5:
         lis     immed_data, 0x0100
         lwz     addr, 0x4388(base_disp)
         lhax    rtn_addr, pc, blk_ofs
@@ -6408,52 +7135,122 @@ L_157A8:
         rlwimi  addr, rtn_addr, 0, 24, 31               // addr[7:0] = rtn_addr[7:0]
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        b       L_15728
+        b       dr_emit_or_b_2_L2
         mr      addr, d0
         rlwimi  d0, addr, 0, 24, 31                     // d0[7:0] = addr[7:0]
         extsb   addr, zero                              // addr = sign-extended low byte of zero
         addco.  addr, addr, zero
+
+// Code generator for 424 opcodes:
+//     AND.L Dn,Dn
+//     AND.L (An),Dn
+//     AND.L (An)+,Dn
+//     AND.L -(An),Dn
+//     AND.L (d16,An),Dn
+//     AND.L (d8,An,Xn),Dn
+//     ... and 5 more forms
+dr_emit_and_l:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr6, rtn_addr, 0x0001
         lis     immed_data, 0x0060
-        ble     cr6, L_15820
+        ble     cr6, dr_emit_and_l_L4
         bl      L_124A0
         lwz     addr, 0x4570(base_disp)
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
-L_157FC:
+dr_emit_and_l_L1:
         rlwimi  data, prefetch_data, 12, 8, 10          // data[23:21] = prefetch_data[11:9]
-L_15800:
+dr_emit_and_l_L2:
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-L_15808:
+dr_emit_and_l_L3:
         lhz     addr, 0(rec_ptr)
         mtcrf   0x02, addr                              // cr6 = addr[7:4]
         lwz     addr, 0x425C(base_disp)
         ble     cr6, dr_emit_next
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-L_15820:
+dr_emit_and_l_L4:
         lwz     addr, 0x456C(base_disp)
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
         rlwimi  data, prefetch_data, 11, 17, 20         // data[14:11] = prefetch_data[3:0]
-        b       L_157FC
-        b       L_15A5C
-        b       L_1593C
+        b       dr_emit_and_l_L1
+
+// Code generator for 336 opcodes:
+//     AND.B Dn,(An)
+//     AND.B Dn,(An)+
+//     AND.B Dn,-(An)
+//     AND.B Dn,(d16,An)
+//     AND.B Dn,(d8,An,Xn)
+//     AND.B Dn,(xxx).W
+//     ... and 1 more forms
+dr_emit_and_b:
+        b       dr_emit_and_b_2_L4
+
+// Code generator for 336 opcodes:
+//     AND.W Dn,(An)
+//     AND.W Dn,(An)+
+//     AND.W Dn,-(An)
+//     AND.W Dn,(d16,An)
+//     AND.W Dn,(d8,An,Xn)
+//     AND.W Dn,(xxx).W
+//     ... and 1 more forms
+dr_emit_and_w:
+        b       dr_emit_and_w_2_L4
+
+// Code generator for 336 opcodes:
+//     AND.L Dn,(An)
+//     AND.L Dn,(An)+
+//     AND.L Dn,-(An)
+//     AND.L Dn,(d16,An)
+//     AND.L Dn,(d8,An,Xn)
+//     AND.L Dn,(xxx).W
+//     ... and 1 more forms
+dr_emit_and_l_2:
         lis     immed_data, 0x0060
         bl      L_124A0
         lwz     addr, 0x4574(base_disp)
         rlwinm  data, prefetch_data, 12, 8, 10          // data = prefetch_data[11:9] << 21
         add     addr, addr, data
-L_1584C:
+dr_emit_and_l_2_L1:
         stwu    addr, 4(out_ptr)
         lis     immed_data, 0x0060
         bl      L_124F0
-        b       L_15808
-        b       L_1595C
-        b       L_15A7C
+        b       dr_emit_and_l_L3
+
+// Code generator for 51 opcodes:
+//     ANDI.W #<data>,Dn
+//     ANDI.W #<data>,(An)
+//     ANDI.W #<data>,(An)+
+//     ANDI.W #<data>,-(An)
+//     ANDI.W #<data>,(d16,An)
+//     ANDI.W #<data>,(d8,An,Xn)
+//     ... and 3 more forms
+dr_emit_andi_w:
+        b       dr_emit_and_w_2_L5
+
+// Code generator for 51 opcodes:
+//     ANDI.B #<data>,Dn
+//     ANDI.B #<data>,(An)
+//     ANDI.B #<data>,(An)+
+//     ANDI.B #<data>,-(An)
+//     ANDI.B #<data>,(d16,An)
+//     ANDI.B #<data>,(d8,An,Xn)
+//     ... and 3 more forms
+dr_emit_andi_b:
+        b       dr_emit_and_b_2_L5
+
+// Code generator for 51 opcodes:
+//     ANDI.L #<data>,Dn
+//     ANDI.L #<data>,(An)
+//     ANDI.L #<data>,(An)+
+//     ANDI.L #<data>,-(An)
+//     ANDI.L #<data>,(d16,An)
+//     ANDI.L #<data>,(d8,An,Xn)
+//     ... and 3 more forms
+dr_emit_andi_l:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr6, rtn_addr, 0x0001
-        ble     cr6, L_15890
+        ble     cr6, dr_emit_andi_l_L1
         lis     immed_data, 0x00A0
         addi    blk_ofs, blk_ofs, 4
         bl      L_124A0
@@ -6461,21 +7258,31 @@ L_1584C:
         addi    rtn_addr, rtn_addr, 2
         bl      L_12510
         lwz     addr, 0x4578(base_disp)
-        b       L_1584C
-L_15890:
+        b       dr_emit_and_l_2_L1
+dr_emit_andi_l_L1:
         bl      L_12518
         lwz     addr, 0x4570(base_disp)
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
         rlwimi  data, prefetch_data, 21, 8, 10          // data[23:21] = prefetch_data[2:0]
-        b       L_15800
+        b       dr_emit_and_l_L2
         and.    d0, d0, d0
         and.    d0, d0, addr
         and.    addr, d0, addr
         and.    addr, addr, rtn_addr
+
+// Code generator for 424 opcodes:
+//     AND.W Dn,Dn
+//     AND.W (An),Dn
+//     AND.W (An)+,Dn
+//     AND.W -(An),Dn
+//     AND.W (d16,An),Dn
+//     AND.W (d8,An,Xn),Dn
+//     ... and 5 more forms
+dr_emit_and_w_2:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr7, rtn_addr, 0x0001
         lis     immed_data, 0x0060
-        ble     cr7, L_158EC
+        ble     cr7, dr_emit_and_w_2_L1
         bl      L_124B8
         lwz     addr, 0x4688(base_disp)
         rlwinm  data, prefetch_data, 2, 18, 20          // data = prefetch_data[11:9] << 11
@@ -6485,8 +7292,8 @@ L_15890:
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        b       L_15918
-L_158EC:
+        b       dr_emit_and_w_2_L3
+dr_emit_and_w_2_L1:
         lwz     addr, 0x468C(base_disp)
         rlwinm  data, prefetch_data, 12, 8, 10          // data = prefetch_data[11:9] << 21
         mr      immed_data, data
@@ -6495,11 +7302,11 @@ L_158EC:
         stwu    addr, 4(out_ptr)
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
         addis   immed_data, immed_data, 0x100
-L_1590C:
+dr_emit_and_w_2_L2:
         lwz     addr, 0x4690(base_disp)
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-L_15918:
+dr_emit_and_w_2_L3:
         lhz     data, 0(rec_ptr)
         mtcrf   0x02, data                              // cr6 = data[7:4]
         lwz     addr, 0x437C(base_disp)
@@ -6509,7 +7316,7 @@ L_15918:
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
         b       dr_emit_next
-L_1593C:
+dr_emit_and_w_2_L4:
         lis     immed_data, 0x0060
         bl      L_124B8
         lwz     addr, 0x4688(base_disp)
@@ -6517,12 +7324,12 @@ L_1593C:
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         bl      L_124F8
-        b       L_15918
-L_1595C:
+        b       dr_emit_and_w_2_L3
+dr_emit_and_w_2_L5:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr7, rtn_addr, 0x0001
         lis     immed_data, 0x00A0
-        ble     cr7, L_15998
+        ble     cr7, dr_emit_and_w_2_L6
         addi    blk_ofs, blk_ofs, 2
         bl      L_124B8
         lhz     rtn_addr, 2(rec_ptr)
@@ -6533,8 +7340,8 @@ L_1595C:
         stwu    addr, 4(out_ptr)
         lis     immed_data, 0x0060
         bl      L_124F8
-        b       L_15918
-L_15998:
+        b       dr_emit_and_w_2_L3
+dr_emit_and_w_2_L6:
         lis     immed_data, 0x0100
         lwz     addr, 0x4698(base_disp)
         lhax    rtn_addr, pc, blk_ofs
@@ -6544,16 +7351,26 @@ L_15998:
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
-        b       L_1590C
+        b       dr_emit_and_w_2_L2
         and     addr, addr, d0
         and     addr, d0, d0
         rlwimi  d0, addr, 0, 16, 31                     // d0[15:0] = addr[15:0]
         andi.   addr, rtn_addr, 0x0000
         andi.   addr, d0, 0x0000
+
+// Code generator for 424 opcodes:
+//     AND.B Dn,Dn
+//     AND.B (An),Dn
+//     AND.B (An)+,Dn
+//     AND.B -(An),Dn
+//     AND.B (d16,An),Dn
+//     AND.B (d8,An,Xn),Dn
+//     ... and 5 more forms
+dr_emit_and_b_2:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr7, rtn_addr, 0x0001
         lis     immed_data, 0x0060
-        ble     cr7, L_15A0C
+        ble     cr7, dr_emit_and_b_2_L1
         bl      L_124C0
         lwz     addr, 0x4688(base_disp)
         rlwinm  data, prefetch_data, 2, 18, 20          // data = prefetch_data[11:9] << 11
@@ -6563,8 +7380,8 @@ L_15998:
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        b       L_15A38
-L_15A0C:
+        b       dr_emit_and_b_2_L3
+dr_emit_and_b_2_L1:
         lwz     addr, 0x47A8(base_disp)
         rlwinm  data, prefetch_data, 12, 8, 10          // data = prefetch_data[11:9] << 21
         mr      immed_data, data
@@ -6573,11 +7390,11 @@ L_15A0C:
         stwu    addr, 4(out_ptr)
         rlwinm  data, prefetch_data, 7, 13, 15          // data = prefetch_data[11:9] << 16
         addis   immed_data, immed_data, 0x100
-L_15A2C:
+dr_emit_and_b_2_L2:
         lwz     addr, 0x47AC(base_disp)
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-L_15A38:
+dr_emit_and_b_2_L3:
         lhz     data, 0(rec_ptr)
         mtcrf   0x02, data                              // cr6 = data[7:4]
         lwz     addr, 0x44A0(base_disp)
@@ -6587,7 +7404,7 @@ L_15A38:
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
         b       dr_emit_next
-L_15A5C:
+dr_emit_and_b_2_L4:
         lis     immed_data, 0x0060
         bl      L_124C0
         lwz     addr, 0x4688(base_disp)
@@ -6595,12 +7412,12 @@ L_15A5C:
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         bl      L_12500
-        b       L_15A38
-L_15A7C:
+        b       dr_emit_and_b_2_L3
+dr_emit_and_b_2_L5:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr7, rtn_addr, 0x0001
         lis     immed_data, 0x00A0
-        ble     cr7, L_15AB8
+        ble     cr7, dr_emit_and_b_2_L6
         addi    blk_ofs, blk_ofs, 2
         bl      L_124C0
         lhz     rtn_addr, 2(rec_ptr)
@@ -6611,8 +7428,8 @@ L_15A7C:
         stwu    addr, 4(out_ptr)
         lis     immed_data, 0x0060
         bl      L_12500
-        b       L_15A38
-L_15AB8:
+        b       dr_emit_and_b_2_L3
+dr_emit_and_b_2_L6:
         lis     immed_data, 0x0100
         lwz     addr, 0x4698(base_disp)
         lhax    rtn_addr, pc, blk_ofs
@@ -6622,41 +7439,81 @@ L_15AB8:
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
-        b       L_15A2C
+        b       dr_emit_and_b_2_L2
         and     addr, d0, d0
         rlwimi  d0, addr, 0, 24, 31                     // d0[7:0] = addr[7:0]
+
+// Code generator for 400 opcodes:
+//     EOR.L Dn,Dn
+//     EOR.L Dn,(An)
+//     EOR.L Dn,(An)+
+//     EOR.L Dn,-(An)
+//     EOR.L Dn,(d16,An)
+//     EOR.L Dn,(d8,An,Xn)
+//     ... and 2 more forms
+dr_emit_eor_l:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr6, rtn_addr, 0x0001
         lis     immed_data, 0x0060
-        ble     cr6, L_15B28
+        ble     cr6, dr_emit_eor_l_L3
         bl      L_124A0
         lwz     addr, 0x4860(base_disp)
         rlwinm  data, prefetch_data, 2, 18, 20          // data = prefetch_data[11:9] << 11
         add     addr, addr, data
-L_15B08:
+dr_emit_eor_l_L1:
         stwu    addr, 4(out_ptr)
         bl      L_124F0
-L_15B10:
+dr_emit_eor_l_L2:
         lhz     addr, 0(rec_ptr)
         mtcrf   0x02, addr                              // cr6 = addr[7:4]
         lwz     addr, 0x425C(base_disp)
         ble     cr6, dr_emit_next
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-L_15B28:
+dr_emit_eor_l_L3:
         lwz     addr, 0x4858(base_disp)
         rlwinm  data, prefetch_data, 2, 18, 20          // data = prefetch_data[11:9] << 11
         rlwimi  data, prefetch_data, 16, 13, 15         // data[18:16] = prefetch_data[2:0]
         rlwimi  data, prefetch_data, 21, 8, 10          // data[23:21] = prefetch_data[2:0]
-L_15B38:
+dr_emit_eor_l_L4:
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        b       L_15B10
-        b       L_15C1C
-        b       L_15D10
+        b       dr_emit_eor_l_L2
+
+// Code generator for 51 opcodes:
+//     EORI.W #<data>,Dn
+//     EORI.W #<data>,(An)
+//     EORI.W #<data>,(An)+
+//     EORI.W #<data>,-(An)
+//     EORI.W #<data>,(d16,An)
+//     EORI.W #<data>,(d8,An,Xn)
+//     ... and 3 more forms
+dr_emit_eori_w:
+        b       dr_emit_eor_w_L4
+
+// Code generator for 51 opcodes:
+//     EORI.B #<data>,Dn
+//     EORI.B #<data>,(An)
+//     EORI.B #<data>,(An)+
+//     EORI.B #<data>,-(An)
+//     EORI.B #<data>,(d16,An)
+//     EORI.B #<data>,(d8,An,Xn)
+//     ... and 3 more forms
+dr_emit_eori_b:
+        b       dr_emit_eor_b_L4
+
+// Code generator for 51 opcodes:
+//     EORI.L #<data>,Dn
+//     EORI.L #<data>,(An)
+//     EORI.L #<data>,(An)+
+//     EORI.L #<data>,-(An)
+//     EORI.L #<data>,(d16,An)
+//     EORI.L #<data>,(d8,An,Xn)
+//     ... and 3 more forms
+dr_emit_eori_l:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr6, rtn_addr, 0x0001
-        ble     cr6, L_15B7C
+        ble     cr6, dr_emit_eori_l_L1
         lis     immed_data, 0x00A0
         addi    blk_ofs, blk_ofs, 4
         bl      L_124A0
@@ -6665,29 +7522,39 @@ L_15B38:
         bl      L_12510
         lwz     addr, 0x4864(base_disp)
         lis     immed_data, 0x0060
-        b       L_15B08
-L_15B7C:
+        b       dr_emit_eor_l_L1
+dr_emit_eori_l_L1:
         bl      L_12518
         lwz     addr, 0x485C(base_disp)
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
         rlwimi  data, data, 5, 8, 10                    // data[23:21] = data[18:16]
-        b       L_15B38
+        b       dr_emit_eor_l_L4
         xor.    d0, d0, d0
         xor.    d0, d0, addr
         xor.    addr, addr, d0
         xor.    addr, addr, rtn_addr
+
+// Code generator for 400 opcodes:
+//     EOR.W Dn,Dn
+//     EOR.W Dn,(An)
+//     EOR.W Dn,(An)+
+//     EOR.W Dn,-(An)
+//     EOR.W Dn,(d16,An)
+//     EOR.W Dn,(d8,An,Xn)
+//     ... and 2 more forms
+dr_emit_eor_w:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr7, rtn_addr, 0x0001
         lis     immed_data, 0x0060
-        ble     cr7, L_15BCC
+        ble     cr7, dr_emit_eor_w_L1
         bl      L_124B8
         lwz     addr, 0x4948(base_disp)
         rlwinm  data, prefetch_data, 2, 18, 20          // data = prefetch_data[11:9] << 11
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         bl      L_124F8
-        b       L_15BF8
-L_15BCC:
+        b       dr_emit_eor_w_L3
+dr_emit_eor_w_L1:
         lwz     addr, 0x494C(base_disp)
         rlwinm  data, prefetch_data, 12, 8, 10          // data = prefetch_data[11:9] << 21
         rlwimi  data, prefetch_data, 11, 18, 20         // data[13:11] = prefetch_data[2:0]
@@ -6696,11 +7563,11 @@ L_15BCC:
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
         rlwinm  immed_data, prefetch_data, 21, 8, 10    // immed_data = prefetch_data[2:0] << 21
         addis   immed_data, immed_data, 0x100
-L_15BEC:
+dr_emit_eor_w_L2:
         lwz     addr, 0x4950(base_disp)
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-L_15BF8:
+dr_emit_eor_w_L3:
         lhz     data, 0(rec_ptr)
         mtcrf   0x02, data                              // cr6 = data[7:4]
         lwz     addr, 0x437C(base_disp)
@@ -6710,11 +7577,11 @@ L_15BF8:
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
         b       dr_emit_next
-L_15C1C:
+dr_emit_eor_w_L4:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr7, rtn_addr, 0x0001
         lis     immed_data, 0x00A0
-        ble     cr7, L_15C58
+        ble     cr7, dr_emit_eor_w_L5
         addi    blk_ofs, blk_ofs, 2
         bl      L_124B8
         lhz     rtn_addr, 2(rec_ptr)
@@ -6725,8 +7592,8 @@ L_15C1C:
         stwu    addr, 4(out_ptr)
         lis     immed_data, 0x0060
         bl      L_124F8
-        b       L_15BF8
-L_15C58:
+        b       dr_emit_eor_w_L3
+dr_emit_eor_w_L5:
         lis     immed_data, 0x0100
         lwz     addr, 0x4958(base_disp)
         lhax    rtn_addr, pc, blk_ofs
@@ -6736,24 +7603,34 @@ L_15C58:
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
-        b       L_15BEC
+        b       dr_emit_eor_w_L2
         xor     addr, addr, d0
         xor     addr, d0, d0
         rlwimi  d0, addr, 0, 16, 31                     // d0[15:0] = addr[15:0]
         xori    addr, rtn_addr, 0x0000
         xori    addr, d0, 0x0000
+
+// Code generator for 400 opcodes:
+//     EOR.B Dn,Dn
+//     EOR.B Dn,(An)
+//     EOR.B Dn,(An)+
+//     EOR.B Dn,-(An)
+//     EOR.B Dn,(d16,An)
+//     EOR.B Dn,(d8,An,Xn)
+//     ... and 2 more forms
+dr_emit_eor_b:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr7, rtn_addr, 0x0001
         lis     immed_data, 0x0060
-        ble     cr7, L_15CC0
+        ble     cr7, dr_emit_eor_b_L1
         bl      L_124C0
         lwz     addr, 0x4948(base_disp)
         rlwinm  data, prefetch_data, 2, 18, 20          // data = prefetch_data[11:9] << 11
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         bl      L_12500
-        b       L_15CEC
-L_15CC0:
+        b       dr_emit_eor_b_L3
+dr_emit_eor_b_L1:
         lwz     addr, 0x4A3C(base_disp)
         rlwinm  data, prefetch_data, 12, 8, 10          // data = prefetch_data[11:9] << 21
         rlwimi  data, prefetch_data, 11, 18, 20         // data[13:11] = prefetch_data[2:0]
@@ -6762,11 +7639,11 @@ L_15CC0:
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
         rlwinm  immed_data, prefetch_data, 21, 8, 10    // immed_data = prefetch_data[2:0] << 21
         addis   immed_data, immed_data, 0x100
-L_15CE0:
+dr_emit_eor_b_L2:
         lwz     addr, 0x4A40(base_disp)
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-L_15CEC:
+dr_emit_eor_b_L3:
         lhz     data, 0(rec_ptr)
         mtcrf   0x02, data                              // cr6 = data[7:4]
         lwz     addr, 0x44A0(base_disp)
@@ -6776,11 +7653,11 @@ L_15CEC:
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
         b       dr_emit_next
-L_15D10:
+dr_emit_eor_b_L4:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr7, rtn_addr, 0x0001
         lis     immed_data, 0x00A0
-        ble     cr7, L_15D4C
+        ble     cr7, dr_emit_eor_b_L5
         addi    blk_ofs, blk_ofs, 2
         bl      L_124C0
         lhz     rtn_addr, 2(rec_ptr)
@@ -6791,8 +7668,8 @@ L_15D10:
         stwu    addr, 4(out_ptr)
         lis     immed_data, 0x0060
         bl      L_12500
-        b       L_15CEC
-L_15D4C:
+        b       dr_emit_eor_b_L3
+dr_emit_eor_b_L5:
         lis     immed_data, 0x0100
         lwz     addr, 0x4958(base_disp)
         lhax    rtn_addr, pc, blk_ofs
@@ -6802,52 +7679,82 @@ L_15D4C:
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
-        b       L_15CE0
+        b       dr_emit_eor_b_L2
         xor     addr, d0, d0
         rlwimi  d0, addr, 0, 24, 31                     // d0[7:0] = addr[7:0]
-        b       L_15E38
-        b       L_15DD8
+
+// Code generator for 50 opcodes:
+//     NOT.B Dn
+//     NOT.B (An)
+//     NOT.B (An)+
+//     NOT.B -(An)
+//     NOT.B (d16,An)
+//     NOT.B (d8,An,Xn)
+//     ... and 2 more forms
+dr_emit_not_b:
+        b       dr_emit_not_l_L7
+
+// Code generator for 50 opcodes:
+//     NOT.W Dn
+//     NOT.W (An)
+//     NOT.W (An)+
+//     NOT.W -(An)
+//     NOT.W (d16,An)
+//     NOT.W (d8,An,Xn)
+//     ... and 2 more forms
+dr_emit_not_w:
+        b       dr_emit_not_l_L4
+
+// Code generator for 50 opcodes:
+//     NOT.L Dn
+//     NOT.L (An)
+//     NOT.L (An)+
+//     NOT.L -(An)
+//     NOT.L (d16,An)
+//     NOT.L (d8,An,Xn)
+//     ... and 2 more forms
+dr_emit_not_l:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr6, rtn_addr, 0x0000
         lis     immed_data, 0x0060
-        beq     cr6, L_15DBC
+        beq     cr6, dr_emit_not_l_L3
         bl      L_124A0
         lwz     addr, 0x4B60(base_disp)
         stwu    addr, 4(out_ptr)
         bl      L_124F0
-L_15DA4:
+dr_emit_not_l_L1:
         lhz     data, 0(rec_ptr)
         mtcrf   0x02, data                              // cr6 = data[7:4]
         ble     cr6, dr_emit_next
-L_15DB0:
+dr_emit_not_l_L2:
         lwz     addr, 0x4B78(base_disp)
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-L_15DBC:
+dr_emit_not_l_L3:
         lwz     addr, 0x4B64(base_disp)
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
         rlwimi  data, prefetch_data, 21, 8, 10          // data[23:21] = prefetch_data[2:0]
         rlwimi  data, prefetch_data, 11, 18, 20         // data[13:11] = prefetch_data[2:0]
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
-        b       L_15DA4
-L_15DD8:
+        b       dr_emit_not_l_L1
+dr_emit_not_l_L4:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr6, rtn_addr, 0x0000
         lis     immed_data, 0x0060
-        beq     cr6, L_15E10
+        beq     cr6, dr_emit_not_l_L6
         bl      L_124B8
         lwz     addr, 0x4B68(base_disp)
         stwu    addr, 4(out_ptr)
         bl      L_124F8
-L_15DF8:
+dr_emit_not_l_L5:
         lhz     data, 0(rec_ptr)
         mtcrf   0x02, data                              // cr6 = data[7:4]
         ble     cr6, dr_emit_next
         lwz     addr, 0x4B7C(base_disp)
         stwu    addr, 4(out_ptr)
-        b       L_15DB0
-L_15E10:
+        b       dr_emit_not_l_L2
+dr_emit_not_l_L6:
         lwz     rtn_addr, 0x4B70(base_disp)
         lwz     addr, 0x4B6C(base_disp)
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
@@ -6857,24 +7764,24 @@ L_15E10:
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         stwu    rtn_addr, 4(out_ptr)
-        b       L_15DF8
-L_15E38:
+        b       dr_emit_not_l_L5
+dr_emit_not_l_L7:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr6, rtn_addr, 0x0000
         lis     immed_data, 0x0060
-        beq     cr6, L_15E70
+        beq     cr6, dr_emit_not_l_L9
         bl      L_124C0
         lwz     addr, 0x4B68(base_disp)
         stwu    addr, 4(out_ptr)
         bl      L_12500
-L_15E58:
+dr_emit_not_l_L8:
         lhz     data, 0(rec_ptr)
         mtcrf   0x02, data                              // cr6 = data[7:4]
         ble     cr6, dr_emit_next
         lwz     addr, 0x4B80(base_disp)
         stwu    addr, 4(out_ptr)
-        b       L_15DB0
-L_15E70:
+        b       dr_emit_not_l_L2
+dr_emit_not_l_L9:
         lwz     rtn_addr, 0x4B74(base_disp)
         lwz     addr, 0x4B6C(base_disp)
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
@@ -6884,7 +7791,7 @@ L_15E70:
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         stwu    rtn_addr, 4(out_ptr)
-        b       L_15E58
+        b       dr_emit_not_l_L8
         nor.    addr, addr, addr                        // addr = ~(addr | addr)
         nor.    d0, d0, d0                              // d0 = ~(d0 | d0)
         not     addr, addr
@@ -6894,12 +7801,52 @@ L_15E70:
         addco   zero, zero, zero
         extsh.  addr, addr                              // addr = sign-extended low word of addr
         extsb.  addr, addr                              // addr = sign-extended low byte of addr
+
+// Code generator for 51 opcodes:
+//     BTST.L #<bit>,Dn
+//     BTST.B #<bit>,(An)
+//     BTST.B #<bit>,(An)+
+//     BTST.B #<bit>,-(An)
+//     BTST.B #<bit>,(d16,An)
+//     BTST.B #<bit>,(d8,An,Xn)
+//     ... and 3 more forms
+dr_emit_btst:
         b       L_162D4
+
+// Code generator for 51 opcodes:
+//     BCHG.L #<bit>,Dn
+//     BCHG.B #<bit>,(An)
+//     BCHG.B #<bit>,(An)+
+//     BCHG.B #<bit>,-(An)
+//     BCHG.B #<bit>,(d16,An)
+//     BCHG.B #<bit>,(d8,An,Xn)
+//     ... and 3 more forms
+dr_emit_bchg:
         b       L_16188
-        b       L_16014
+
+// Code generator for 51 opcodes:
+//     BCLR.L #<bit>,Dn
+//     BCLR.B #<bit>,(An)
+//     BCLR.B #<bit>,(An)+
+//     BCLR.B #<bit>,-(An)
+//     BCLR.B #<bit>,(d16,An)
+//     BCLR.B #<bit>,(d8,An,Xn)
+//     ... and 3 more forms
+dr_emit_bclr:
+        b       dr_emit_bset_L6
+
+// Code generator for 51 opcodes:
+//     BSET.L #<bit>,Dn
+//     BSET.B #<bit>,(An)
+//     BSET.B #<bit>,(An)+
+//     BSET.B #<bit>,-(An)
+//     BSET.B #<bit>,(d16,An)
+//     BSET.B #<bit>,(d8,An,Xn)
+//     ... and 3 more forms
+dr_emit_bset:
         rlwinm  addr, prefetch_data, 29, 29, 31         // addr = prefetch_data[5:3]
         cmpwi   cr7, addr, 0
-        beq     cr7, L_15F54
+        beq     cr7, dr_emit_bset_L2
         lis     immed_data, 0x0060
         addi    blk_ofs, blk_ofs, 2
         bl      L_124C0
@@ -6909,7 +7856,7 @@ L_15E70:
         lhax    rtn_addr, pc, rtn_addr
         mtcrf   0x02, data                              // cr6 = data[7:4]
         clrlwi  rtn_addr, rtn_addr, 29                  // rtn_addr = rtn_addr & 0x00000007
-        ble     cr6, L_15F38
+        ble     cr6, dr_emit_bset_L1
         lwz     addr, 0x4CCC(base_disp)
         rlwinm  data, rtn_addr, 11, 16, 20              // data = rtn_addr[4:0] << 11
         subf    addr, data, addr                        // addr = addr - data
@@ -6925,7 +7872,7 @@ L_15E70:
         stwu    data, 4(out_ptr)
         bl      L_12500
         b       dr_emit_next
-L_15F38:
+dr_emit_bset_L1:
         lwz     addr, 0x4CD4(base_disp)
         li      data, 1
         rlwnm   data, data, rtn_addr, 0, 31             // data = rotl(data, rtn_addr) & 0xFFFFFFFF
@@ -6933,12 +7880,12 @@ L_15F38:
         stwu    addr, 4(out_ptr)
         bl      L_12500
         b       dr_emit_next
-L_15F54:
+dr_emit_bset_L2:
         lhz     data, 0(rec_ptr)
         lhax    rtn_addr, pc, blk_ofs
         mtcrf   0x02, data                              // cr6 = data[7:4]
         clrlwi  rtn_addr, rtn_addr, 27                  // rtn_addr = rtn_addr & 0x0000001F
-        ble     cr6, L_15FC0
+        ble     cr6, dr_emit_bset_L4
         lwz     addr, 0x4CB8(base_disp)
         neg     data, rtn_addr
         addi    data, data, 32
@@ -6949,10 +7896,10 @@ L_15F54:
         cmpwi   cr7, rtn_addr, 15
         stwu    data, 4(out_ptr)
         lwz     addr, 0x4CC0(base_disp)
-        ble     cr7, L_15F9C
+        ble     cr7, dr_emit_bset_L3
         lwz     addr, 0x4CC4(base_disp)
         addi    rtn_addr, rtn_addr, -16
-L_15F9C:
+dr_emit_bset_L3:
         li      data, 1
         rlwnm   data, data, rtn_addr, 0, 31             // data = rotl(data, rtn_addr) & 0xFFFFFFFF
         rlwimi  addr, prefetch_data, 21, 8, 10          // addr[23:21] = prefetch_data[2:0]
@@ -6962,13 +7909,13 @@ L_15F9C:
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
         b       dr_emit_next
-L_15FC0:
+dr_emit_bset_L4:
         cmpwi   cr7, rtn_addr, 15
         lwz     addr, 0x4CC0(base_disp)
-        ble     cr7, L_15FD4
+        ble     cr7, dr_emit_bset_L5
         lwz     addr, 0x4CC4(base_disp)
         addi    rtn_addr, rtn_addr, -16
-L_15FD4:
+dr_emit_bset_L5:
         li      data, 1
         rlwnm   data, data, rtn_addr, 0, 31             // data = rotl(data, rtn_addr) & 0xFFFFFFFF
         rlwimi  addr, prefetch_data, 21, 8, 10          // addr[23:21] = prefetch_data[2:0]
@@ -6985,10 +7932,10 @@ L_15FD4:
         mtcrf   0x02, rtn_addr                          // cr6 = rtn_addr[7:4]
         ori     addr, addr, 0x0000
         crnot   eq, 4*cr6+lt
-L_16014:
+dr_emit_bset_L6:
         rlwinm  addr, prefetch_data, 29, 29, 31         // addr = prefetch_data[5:3]
         cmpwi   cr7, addr, 0
-        beq     cr7, L_160B0
+        beq     cr7, dr_emit_bset_L8
         lis     immed_data, 0x0060
         addi    blk_ofs, blk_ofs, 2
         bl      L_124C0
@@ -6998,7 +7945,7 @@ L_16014:
         lhax    rtn_addr, pc, rtn_addr
         mtcrf   0x02, data                              // cr6 = data[7:4]
         clrlwi  rtn_addr, rtn_addr, 29                  // rtn_addr = rtn_addr & 0x00000007
-        ble     cr6, L_1608C
+        ble     cr6, dr_emit_bset_L7
         lwz     addr, 0x4E3C(base_disp)
         rlwinm  data, rtn_addr, 11, 16, 20              // data = rtn_addr[4:0] << 11
         subf    addr, data, addr                        // addr = addr - data
@@ -7016,7 +7963,7 @@ L_16014:
         stwu    addr, 4(out_ptr)
         bl      L_12500
         b       dr_emit_next
-L_1608C:
+dr_emit_bset_L7:
         lwz     addr, 0x4E44(base_disp)
         li      data, 1
         rlwnm   data, data, rtn_addr, 0, 31             // data = rotl(data, rtn_addr) & 0xFFFFFFFF
@@ -7026,7 +7973,7 @@ L_1608C:
         stwu    data, 4(out_ptr)
         bl      L_12500
         b       dr_emit_next
-L_160B0:
+dr_emit_bset_L8:
         lhz     data, 0(rec_ptr)
         lhax    rtn_addr, pc, blk_ofs
         mtcrf   0x02, data                              // cr6 = data[7:4]
@@ -7213,12 +8160,36 @@ L_16320:
         rlwinm  addr, addr, 7, 24, 24                   // addr = addr[0] << 7
         mtcrf   0x02, addr                              // cr6 = addr[7:4]
         crnot   eq, 4*cr6+lt
+
+// Code generator for 64 opcodes:
+//     LSR.B #<q>,Dn
+dr_emit_lsr_b:
         b       L_16604
+
+// Code generator for 64 opcodes:
+//     LSR.W #<q>,Dn
+dr_emit_lsr_w:
         b       L_16598
-        b       L_16534
+
+// Code generator for 64 opcodes:
+//     LSR.L #<q>,Dn
+dr_emit_lsr_l:
+        b       dr_emit_lsl_l_L12
         nop
-        b       L_16494
-        b       L_16400
+
+// Code generator for 64 opcodes:
+//     LSL.B #<q>,Dn
+dr_emit_lsl_b:
+        b       dr_emit_lsl_l_L6
+
+// Code generator for 64 opcodes:
+//     LSL.W #<q>,Dn
+dr_emit_lsl_w:
+        b       dr_emit_lsl_l_L3
+
+// Code generator for 64 opcodes:
+//     LSL.L #<q>,Dn
+dr_emit_lsl_l:
         bl      L_16B2C
         lhz     rtn_addr, 0(rec_ptr)
         lwz     addr, 0x5388(base_disp)
@@ -7227,15 +8198,15 @@ L_16320:
         rlwimi  immed_data, prefetch_data, 21, 8, 10    // immed_data[23:21] = prefetch_data[2:0]
         cror    4*cr6+gt, 4*cr6+gt, 4*cr6+lt            // cr6.gt = cr6.gt | cr6.lt
         add     addr, addr, immed_data
-        bgt     cr6, L_163C0
-L_163A8:
+        bgt     cr6, dr_emit_lsl_l_L2
+dr_emit_lsl_l_L1:
         rlwinm  rtn_addr, data, 11, 16, 20              // rtn_addr = data[4:0] << 11
         add     addr, addr, rtn_addr
         rlwinm  rtn_addr, data, 1, 26, 30               // rtn_addr = data[4:0] << 1
         subf    addr, rtn_addr, addr                    // addr = addr - rtn_addr
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-L_163C0:
+dr_emit_lsl_l_L2:
         addi    data, data, -1
         rlwinm  rtn_addr, data, 11, 16, 20              // rtn_addr = data[4:0] << 11
         add     addr, addr, rtn_addr
@@ -7252,7 +8223,7 @@ L_163C0:
         lwz     addr, 0x5380(base_disp)
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-L_16400:
+dr_emit_lsl_l_L3:
         bl      L_16B2C
         lhz     rtn_addr, 0(rec_ptr)
         lwz     addr, 0x5390(base_disp)
@@ -7260,9 +8231,9 @@ L_16400:
         mtcrf   0x02, rtn_addr                          // cr6 = rtn_addr[7:4]
         cror    4*cr6+gt, 4*cr6+gt, 4*cr6+lt            // cr6.gt = cr6.gt | cr6.lt
         add     addr, addr, immed_data
-        bgt     cr6, L_16448
+        bgt     cr6, dr_emit_lsl_l_L5
         rlwinm  rtn_addr, data, 11, 16, 20              // rtn_addr = data[4:0] << 11
-L_16424:
+dr_emit_lsl_l_L4:
         add     addr, addr, rtn_addr
         rlwinm  rtn_addr, data, 1, 26, 30               // rtn_addr = data[4:0] << 1
         subf    addr, rtn_addr, addr                    // addr = addr - rtn_addr
@@ -7272,7 +8243,7 @@ L_16424:
         add     data, data, immed_data
         stwu    data, 4(out_ptr)
         b       dr_emit_next
-L_16448:
+dr_emit_lsl_l_L5:
         lwz     addr, 0x5398(base_disp)
         add     addr, addr, immed_data
         rlwinm  rtn_addr, data, 11, 16, 20              // rtn_addr = data[4:0] << 11
@@ -7292,7 +8263,7 @@ L_16448:
         lwz     addr, 0x5380(base_disp)
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-L_16494:
+dr_emit_lsl_l_L6:
         bl      L_16B2C
         lhz     rtn_addr, 0(rec_ptr)
         lwz     addr, 0x53A4(base_disp)
@@ -7300,24 +8271,24 @@ L_16494:
         mtcrf   0x02, rtn_addr                          // cr6 = rtn_addr[7:4]
         cror    4*cr6+gt, 4*cr6+gt, 4*cr6+lt            // cr6.gt = cr6.gt | cr6.lt
         add     addr, addr, immed_data
-        bgt     cr6, L_164E8
-L_164B4:
-        beq     cr7, L_164E0
+        bgt     cr6, dr_emit_lsl_l_L10
+dr_emit_lsl_l_L7:
+        beq     cr7, dr_emit_lsl_l_L9
         rlwinm  rtn_addr, data, 11, 16, 20              // rtn_addr = data[4:0] << 11
         add     addr, addr, rtn_addr
         rlwinm  rtn_addr, data, 1, 26, 30               // rtn_addr = data[4:0] << 1
         subf    addr, rtn_addr, addr                    // addr = addr - rtn_addr
         lwz     data, 0x53A8(base_disp)
         stwu    addr, 4(out_ptr)
-L_164D0:
+dr_emit_lsl_l_L8:
         rlwinm  immed_data, prefetch_data, 16, 13, 15   // immed_data = prefetch_data[2:0] << 16
         add     data, data, immed_data
         stwu    data, 4(out_ptr)
         b       dr_emit_next
-L_164E0:
+dr_emit_lsl_l_L9:
         lwz     data, 0x53AC(base_disp)
-        b       L_164D0
-L_164E8:
+        b       dr_emit_lsl_l_L8
+dr_emit_lsl_l_L10:
         lwz     addr, 0x53B0(base_disp)
         add     addr, addr, immed_data
         rlwinm  rtn_addr, data, 11, 16, 20              // rtn_addr = data[4:0] << 11
@@ -7334,11 +8305,11 @@ L_164E8:
         add     data, data, immed_data
         stwu    data, 4(out_ptr)
         bge     cr6, dr_emit_next
-L_16528:
+dr_emit_lsl_l_L11:
         lwz     addr, 0x5380(base_disp)
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-L_16534:
+dr_emit_lsl_l_L12:
         bl      L_16B2C
         lhz     rtn_addr, 0(rec_ptr)
         lwz     addr, 0x53BC(base_disp)
@@ -7352,10 +8323,10 @@ L_16534:
         add     addr, rtn_addr, addr
         rlwinm  rtn_addr, data, 11, 16, 20              // rtn_addr = data[4:0] << 11
         subf    addr, rtn_addr, addr                    // addr = addr - rtn_addr
-        bgt     cr6, L_16574
+        bgt     cr6, dr_emit_lsl_l_L13
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-L_16574:
+dr_emit_lsl_l_L13:
         lwz     immed_data, 0x53C0(base_disp)
         subf    immed_data, rtn_addr, immed_data        // immed_data = immed_data - rtn_addr
         rlwinm  rtn_addr, prefetch_data, 21, 8, 10      // rtn_addr = prefetch_data[2:0] << 21
@@ -7409,7 +8380,7 @@ L_16604:
         rlwinm  rtn_addr, data, 11, 16, 20              // rtn_addr = data[4:0] << 11
         subf    addr, rtn_addr, addr                    // addr = addr - rtn_addr
         bgt     cr6, L_16654
-        beq     cr7, L_164E0
+        beq     cr7, dr_emit_lsl_l_L9
         stwu    addr, 4(out_ptr)
 L_16640:
         lwz     addr, 0x53D0(base_disp)
@@ -7467,12 +8438,36 @@ L_1667C:
         rlwimi  d0, addr, 0, 24, 31                     // d0[7:0] = addr[7:0]
         rlwimi  d0, zero, 0, 24, 31                     // d0[7:0] = zero[7:0]
         add.    zero, zero, zero
+
+// Code generator for 64 opcodes:
+//     ASR.B #<q>,Dn
+dr_emit_asr_b:
         b       L_16A1C
+
+// Code generator for 64 opcodes:
+//     ASR.W #<q>,Dn
+dr_emit_asr_w:
         b       L_169C0
+
+// Code generator for 64 opcodes:
+//     ASR.L #<q>,Dn
+dr_emit_asr_l:
         b       L_16954
         nop
-        b       L_168C0
-        b       L_167EC
+
+// Code generator for 64 opcodes:
+//     ASL.B #<q>,Dn
+dr_emit_asl_b:
+        b       dr_emit_asl_l_L5
+
+// Code generator for 64 opcodes:
+//     ASL.W #<q>,Dn
+dr_emit_asl_w:
+        b       dr_emit_asl_l_L2
+
+// Code generator for 64 opcodes:
+//     ASL.L #<q>,Dn
+dr_emit_asl_l:
         bl      L_16B2C
         lhz     rtn_addr, 0(rec_ptr)
         lwz     addr, 0x5388(base_disp)
@@ -7481,10 +8476,10 @@ L_1667C:
         rlwimi  immed_data, prefetch_data, 21, 8, 10    // immed_data[23:21] = prefetch_data[2:0]
         cror    4*cr6+gt, 4*cr6+gt, 4*cr6+lt            // cr6.gt = cr6.gt | cr6.lt
         add     addr, addr, immed_data
-        ble     cr6, L_163A8
+        ble     cr6, dr_emit_lsl_l_L1
         cmpwi   cr5, data, 1
         rlwinm  rtn_addr, prefetch_data, 16, 13, 15     // rtn_addr = prefetch_data[2:0] << 16
-        beq     cr5, L_167D4
+        beq     cr5, dr_emit_asl_l_L1
         addi    data, data, -1
         lwz     addr, 0x5744(base_disp)
         add     addr, addr, rtn_addr
@@ -7515,14 +8510,14 @@ L_1667C:
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
         b       dr_emit_next
-L_167D4:
+dr_emit_asl_l_L1:
         lwz     addr, 0x5740(base_disp)
         rlwimi  immed_data, prefetch_data, 11, 18, 20   // immed_data[13:11] = prefetch_data[2:0]
         add     addr, addr, immed_data
         stwu    addr, 4(out_ptr)
         bge     cr6, dr_emit_next
-        b       L_16528
-L_167EC:
+        b       dr_emit_lsl_l_L11
+dr_emit_asl_l_L2:
         bl      L_16B2C
         lhz     rtn_addr, 0(rec_ptr)
         lwz     addr, 0x5390(base_disp)
@@ -7531,10 +8526,10 @@ L_167EC:
         rlwinm  rtn_addr, data, 11, 16, 20              // rtn_addr = data[4:0] << 11
         cror    4*cr6+gt, 4*cr6+gt, 4*cr6+lt            // cr6.gt = cr6.gt | cr6.lt
         add     addr, addr, immed_data
-        ble     cr6, L_16424
+        ble     cr6, dr_emit_lsl_l_L4
         cmpwi   cr5, data, 1
         rlwinm  rtn_addr, prefetch_data, 16, 13, 15     // rtn_addr = prefetch_data[2:0] << 16
-        beq     cr5, L_16898
+        beq     cr5, dr_emit_asl_l_L4
         lwz     addr, 0x5770(base_disp)
         addi    data, data, -1
         rlwimi  addr, prefetch_data, 21, 8, 10          // addr[23:21] = prefetch_data[2:0]
@@ -7547,7 +8542,7 @@ L_167EC:
         lwz     rtn_addr, 0x5778(base_disp)
         stwu    addr, 4(out_ptr)
         rlwimi  rtn_addr, prefetch_data, 16, 13, 15     // rtn_addr[18:16] = prefetch_data[2:0]
-L_1684C:
+dr_emit_asl_l_L3:
         lwz     addr, 0x577C(base_disp)
         stwu    rtn_addr, 4(out_ptr)
         rlwinm  rtn_addr, data, 11, 16, 20              // rtn_addr = data[4:0] << 11
@@ -7567,7 +8562,7 @@ L_1684C:
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
         b       dr_emit_next
-L_16898:
+dr_emit_asl_l_L4:
         lwz     addr, 0x5764(base_disp)
         lwz     data, 0x5768(base_disp)
         rlwimi  addr, prefetch_data, 21, 8, 10          // addr[23:21] = prefetch_data[2:0]
@@ -7577,8 +8572,8 @@ L_16898:
         rlwimi  addr, prefetch_data, 16, 13, 15         // addr[18:16] = prefetch_data[2:0]
         stwu    addr, 4(out_ptr)
         bge     cr6, dr_emit_next
-        b       L_16528
-L_168C0:
+        b       dr_emit_lsl_l_L11
+dr_emit_asl_l_L5:
         bl      L_16B2C
         lhz     rtn_addr, 0(rec_ptr)
         lwz     addr, 0x53A4(base_disp)
@@ -7586,29 +8581,29 @@ L_168C0:
         mtcrf   0x02, rtn_addr                          // cr6 = rtn_addr[7:4]
         cror    4*cr6+gt, 4*cr6+gt, 4*cr6+lt            // cr6.gt = cr6.gt | cr6.lt
         add     addr, addr, immed_data
-        ble     cr6, L_164B4
+        ble     cr6, dr_emit_lsl_l_L7
         cmpwi   cr5, data, 1
         rlwinm  rtn_addr, prefetch_data, 16, 13, 15     // rtn_addr = prefetch_data[2:0] << 16
-        beq     cr5, L_1692C
+        beq     cr5, dr_emit_asl_l_L8
         lwz     addr, 0x57A0(base_disp)
         addi    data, data, -1
         rlwimi  addr, prefetch_data, 21, 8, 10          // addr[23:21] = prefetch_data[2:0]
         stwu    addr, 4(out_ptr)
-        beq     cr7, L_16924
+        beq     cr7, dr_emit_asl_l_L7
         lwz     addr, 0x57A4(base_disp)
         rlwinm  rtn_addr, data, 11, 16, 20              // rtn_addr = data[4:0] << 11
         add     addr, addr, rtn_addr
         rlwinm  rtn_addr, data, 1, 26, 30               // rtn_addr = data[4:0] << 1
         subf    addr, rtn_addr, addr                    // addr = addr - rtn_addr
-L_16914:
+dr_emit_asl_l_L6:
         lwz     rtn_addr, 0x57A8(base_disp)
         stwu    addr, 4(out_ptr)
         rlwimi  rtn_addr, prefetch_data, 16, 13, 15     // rtn_addr[18:16] = prefetch_data[2:0]
-        b       L_1684C
-L_16924:
+        b       dr_emit_asl_l_L3
+dr_emit_asl_l_L7:
         lwz     addr, 0x57AC(base_disp)
-        b       L_16914
-L_1692C:
+        b       dr_emit_asl_l_L6
+dr_emit_asl_l_L8:
         lwz     addr, 0x5794(base_disp)
         lwz     data, 0x5798(base_disp)
         rlwimi  addr, prefetch_data, 21, 8, 10          // addr[23:21] = prefetch_data[2:0]
@@ -7618,7 +8613,7 @@ L_1692C:
         rlwimi  addr, prefetch_data, 16, 13, 15         // addr[18:16] = prefetch_data[2:0]
         stwu    addr, 4(out_ptr)
         bge     cr6, dr_emit_next
-        b       L_16528
+        b       dr_emit_lsl_l_L11
 L_16954:
         bl      L_16B2C
         lhz     rtn_addr, 0(rec_ptr)
@@ -7749,9 +8744,17 @@ L_16B2C:
         bnelr   cr7
         li      data, 8
         blr
+
+// Code generator for 1 opcode:
+//     NOP
+dr_emit_nop:
         lwz     addr, 0x5840(base_disp)
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
+
+// Code generator for 8 opcodes:
+//     SWAP Dn
+dr_emit_swap:
         lwz     addr, 0x5844(base_disp)
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
         lhz     rtn_addr, 0(rec_ptr)
@@ -7766,13 +8769,17 @@ L_16B2C:
         eieio
         rotlwi. d0, d0, 16                              // d0 = d0 with halves swapped
         addco   zero, zero, zero
+
+// Code generator for 8 opcodes:
+//     EXT.W Dn
+dr_emit_ext_w:
         lwz     addr, 0x58A4(base_disp)
         rlwinm  data, prefetch_data, 21, 8, 10          // data = prefetch_data[2:0] << 21
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         lwz     addr, 0x58A8(base_disp)
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
-L_16B9C:
+dr_emit_ext_w_L1:
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         lhz     rtn_addr, 0(rec_ptr)
@@ -7781,87 +8788,127 @@ L_16B9C:
         lwz     addr, 0x58B4(base_disp)
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
+
+// Code generator for 8 opcodes:
+//     EXT.L Dn
+dr_emit_ext_l:
         lwz     addr, 0x58AC(base_disp)
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
         rlwimi  data, prefetch_data, 21, 8, 10          // data[23:21] = prefetch_data[2:0]
-        b       L_16B9C
+        b       dr_emit_ext_w_L1
+
+// Code generator for 8 opcodes:
+//     EXTB.L Dn
+dr_emit_extb_l:
         lwz     addr, 0x58B0(base_disp)
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
         rlwimi  data, prefetch_data, 21, 8, 10          // data[23:21] = prefetch_data[2:0]
-        b       L_16B9C
+        b       dr_emit_ext_w_L1
         extsb.  addr, d0                                // addr = sign-extended low byte of d0
         rlwimi  d0, addr, 0, 16, 31                     // d0[15:0] = addr[15:0]
         extsh.  d0, d0                                  // d0 = sign-extended low word of d0
         extsb.  d0, d0                                  // d0 = sign-extended low byte of d0
         addco   zero, zero, zero
+
+// Code generator for 224 opcodes:
+//     LEA (An),An
+//     LEA (d16,An),An
+//     LEA (d8,An,Xn),An
+//     LEA (xxx).W,An
+//     LEA (xxx).L,An
+//     LEA (d16,PC),An
+//     ... and 1 more forms
+dr_emit_lea:
         rlwinm  addr, prefetch_data, 23, 29, 31         // addr = prefetch_data[11:9]
         cmpwi   cr7, addr, 7
         rlwinm  immed_data, prefetch_data, 12, 8, 10    // immed_data = prefetch_data[11:9] << 21
         addis   immed_data, immed_data, 0x200
-        bne     cr7, L_16C08
+        bne     cr7, dr_emit_lea_L1
         lis     immed_data, 0x0020
-L_16C08:
+dr_emit_lea_L1:
         bl      L_12508
         b       dr_emit_next
+
+// Code generator for 28 opcodes:
+//     PEA (An)
+//     PEA (d16,An)
+//     PEA (d8,An,Xn)
+//     PEA (xxx).W
+//     PEA (xxx).L
+//     PEA (d16,PC)
+//     ... and 1 more forms
+dr_emit_pea:
         clrlwi  addr, prefetch_data, 26                 // addr = prefetch_data & 0x0000003F
         cmpwi   cr7, addr, 23
         lis     immed_data, 0x0060
-        ble     cr7, L_16C30
+        ble     cr7, dr_emit_pea_L1
         bl      L_12508
         lwz     addr, 0x5914(base_disp)
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-L_16C30:
+dr_emit_pea_L1:
         lwz     addr, 0x5918(base_disp)
         rlwinm  data, prefetch_data, 21, 8, 10          // data = prefetch_data[2:0] << 21
         add     addr, addr, data
-        bne     cr7, L_16C44
+        bne     cr7, dr_emit_pea_L2
         lwz     addr, 0x591C(base_disp)
-L_16C44:
+dr_emit_pea_L2:
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
         stwu    addr, -4(a7)
         stwu    a0, -4(a7)
         stwu    a7, -4(a7)
+
+// Code generator for 8 opcodes:
+//     LINK.W An,#<disp>
+dr_emit_link_w:
         lwz     rtn_addr, 0x59E8(base_disp)
         lhax    immed_data, pc, blk_ofs
         rlwimi  rtn_addr, immed_data, 0, 16, 31         // rtn_addr[15:0] = immed_data[15:0]
         clrlwi  data, prefetch_data, 29                 // data = prefetch_data & 0x00000007
         cmpwi   cr7, data, 7
-        beq     cr7, L_16CA0
-L_16C70:
+        beq     cr7, dr_emit_link_w_L3
+dr_emit_link_w_L1:
         lwz     addr, 0x59E0(base_disp)
         rlwinm  data, prefetch_data, 21, 8, 10          // data = prefetch_data[2:0] << 21
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         lwz     addr, 0x59E4(base_disp)
         add     addr, addr, data
-L_16C88:
+dr_emit_link_w_L2:
         clrlwi  data, rtn_addr, 16                      // data = rtn_addr & 0x0000FFFF
         cmpwi   cr7, data, 0
         stwu    addr, 4(out_ptr)
         beq     cr7, dr_emit_next
         stwu    rtn_addr, 4(out_ptr)
         b       dr_emit_next
-L_16CA0:
+dr_emit_link_w_L3:
         lwz     addr, 0x59EC(base_disp)
-        b       L_16C88
+        b       dr_emit_link_w_L2
+
+// Code generator for 8 opcodes:
+//     LINK.L An,#<disp>
+dr_emit_link_l:
         bl      L_12518
         clrlwi  data, prefetch_data, 29                 // data = prefetch_data & 0x00000007
         cmpwi   cr7, data, 7
         lwz     rtn_addr, 0x59F0(base_disp)
-        bne     cr7, L_16C70
+        bne     cr7, dr_emit_link_w_L1
         lwz     addr, 0x59EC(base_disp)
         lwz     rtn_addr, 0x59F0(base_disp)
         stwu    addr, 4(out_ptr)
         stwu    rtn_addr, 4(out_ptr)
         b       dr_emit_next
+
+// Code generator for 8 opcodes:
+//     UNLK An
+dr_emit_unlk:
         clrlwi  data, prefetch_data, 29                 // data = prefetch_data & 0x00000007
         cmpwi   cr7, data, 7
         lwz     addr, 0x59F4(base_disp)
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
         add     addr, addr, data
-        beq     cr7, L_16D0C
+        beq     cr7, dr_emit_unlk_L1
         stwu    addr, 4(out_ptr)
         lwz     addr, 0x59F8(base_disp)
         add     addr, addr, data
@@ -7871,7 +8918,7 @@ L_16CA0:
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
-L_16D0C:
+dr_emit_unlk_L1:
         lwz     addr, 0x5A00(base_disp)
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
@@ -7884,6 +8931,16 @@ L_16D0C:
         addi    a7, a0, 4
         add     a0, addr, zero
         lwz     a7, 0(a7)
+
+// Code generator for 800 opcodes:
+//     ST.B Dn
+//     ST.B (An)
+//     ST.B (An)+
+//     ST.B -(An)
+//     ST.B (d16,An)
+//     ST.B (d8,An,Xn)
+//     ... and 122 more forms
+dr_emit_scc_b:
         lwz     addr, 0x5A68(base_disp)
         rlwinm  data, prefetch_data, 29, 29, 31         // data = prefetch_data[5:3]
         cmpwi   cr7, data, 0
@@ -7895,18 +8952,18 @@ L_16D0C:
         mtctr   data
         srwi    rtn_addr, rtn_addr, 16
         add     immed_data, base_disp, rtn_addr
-        b       L_16D74
-L_16D6C:
+        b       dr_emit_scc_b_L2
+dr_emit_scc_b_L1:
         lwzu    addr, 4(immed_data)
         stwu    addr, 4(out_ptr)
-L_16D74:
-        bdnz    L_16D6C                                 // CTR -= 1; branch while CTR != 0
-        beq     cr7, L_16D8C
+dr_emit_scc_b_L2:
+        bdnz    dr_emit_scc_b_L1                        // CTR -= 1; branch while CTR != 0
+        beq     cr7, dr_emit_scc_b_L3
         rlwinm  data, prefetch_data, 1, 25, 30          // data = prefetch_data[5:0] << 1
         lis     immed_data, 0x0060
         bl      L_124E8
         b       dr_emit_next
-L_16D8C:
+dr_emit_scc_b_L3:
         lwz     addr, 0x5A6C(base_disp)
         rlwinm  data, prefetch_data, 16, 13, 15         // data = prefetch_data[2:0] << 16
         add     addr, addr, data
@@ -7916,54 +8973,54 @@ L_16D8C:
         rlwimi  d0, addr, 0, 24, 31                     // d0[7:0] = addr[7:0]
         subfe   addr, addr, addr                        // addr = addr + ~addr + CA
         not     addr, addr
-        beq     L_16DB8
+        beq     dr_emit_scc_b_L4
         subfe   addr, addr, addr                        // addr = addr + ~addr + CA
-L_16DB8:
-        bne     L_16DC0
+dr_emit_scc_b_L4:
+        bne     dr_emit_scc_b_L5
         li      addr, -1
-L_16DC0:
-        beq     L_16DC8
+dr_emit_scc_b_L5:
+        beq     dr_emit_scc_b_L6
         li      addr, -1
-L_16DC8:
-        beq     L_16DE4
+dr_emit_scc_b_L6:
+        beq     dr_emit_scc_b_L8
         mfxer   rtn_addr
         mcrxr   cr6                                     // cr6 = XER[SO,OV,CA]; clear them in XER
         creqv   4*cr6+lt, lt, 4*cr6+gt                  // cr6.lt = ~(cr0.lt ^ cr6.gt)
-        bge     cr6, L_16DE0
+        bge     cr6, dr_emit_scc_b_L7
         li      addr, -1
-L_16DE0:
+dr_emit_scc_b_L7:
         mtxer   rtn_addr
-L_16DE4:
+dr_emit_scc_b_L8:
         subfe   addr, addr, addr                        // addr = addr + ~addr + CA
         not     addr, addr
-        bne     L_16DF4
+        bne     dr_emit_scc_b_L9
         ori     addr, addr, 0xFFFF
-L_16DF4:
+dr_emit_scc_b_L9:
         mfxer   rtn_addr
         mcrxr   cr6                                     // cr6 = XER[SO,OV,CA]; clear them in XER
-        bgt     cr6, L_16E04
+        bgt     cr6, dr_emit_scc_b_L10
         li      addr, -1
-L_16E04:
+dr_emit_scc_b_L10:
         mtxer   rtn_addr
         mfxer   rtn_addr
         mcrxr   cr6                                     // cr6 = XER[SO,OV,CA]; clear them in XER
-        ble     cr6, L_16E18
+        ble     cr6, dr_emit_scc_b_L11
         li      addr, -1
-L_16E18:
+dr_emit_scc_b_L11:
         mtxer   rtn_addr
-        blt     L_16E24
+        blt     dr_emit_scc_b_L12
         li      addr, -1
-L_16E24:
-        bge     L_16E2C
+dr_emit_scc_b_L12:
+        bge     dr_emit_scc_b_L13
         li      addr, -1
-L_16E2C:
-        beq     L_16E44
+dr_emit_scc_b_L13:
+        beq     dr_emit_scc_b_L14
         mfxer   rtn_addr
         mcrxr   cr6                                     // cr6 = XER[SO,OV,CA]; clear them in XER
         crxor   4*cr6+lt, lt, 4*cr6+gt                  // cr6.lt = cr0.lt ^ cr6.gt
         mtxer   rtn_addr
         .long   0x40980008
-L_16E44:
+dr_emit_scc_b_L14:
         li      addr, -1
 D_16E48:
         .long   0x5A700002
@@ -7988,14 +9045,14 @@ D_16E48:
         lwz     rtn_addr, 40(vbr)
         mtcrf   0x04, data                              // cr5 = data[11:8]
         cmplw   cr7, addr, rtn_addr
-        bge     cr5, L_16EB0
+        bge     cr5, dr_emit_scc_b_L15
         rlwinm  immed_data, data, 2, 20, 29             // immed_data = data[9:0] << 2
         ble     cr5, L_16F80
         b       L_16FC0
-L_16EB0:
+dr_emit_scc_b_L15:
         rlwinm  immed_data, data, 2, 22, 29             // immed_data = data[7:0] << 2
         addi    addr, pc, 2
-        bns     cr5, L_16F20
+        bns     cr5, dr_emit_scc_b_L16
         mflr    base_disp
         bne     cr7, L_16FF4
         lwz     rtn_addr, 0x7B4(EmulatorStatePtr)
@@ -8017,9 +9074,9 @@ L_16EB0:
         bt      cr_special_event_pending, dr_exit_to_interpreter
         beqctr  cr6
         b       dr_stale_block_L1
-        b       L_16F20
+        b       dr_emit_scc_b_L16
         ALIGN(32)
-L_16F20:
+dr_emit_scc_b_L16:
         mflr    base_disp
         bne     cr7, L_16FF4
         lwz     rtn_addr, 0x7B4(EmulatorStatePtr)
@@ -8078,14 +9135,68 @@ L_16FF4:
         crclr   cr_dr_busy
         addi    pc, pc, 2
         b       dr_exit_to_interpreter
-        b       L_1710C
-        b       L_170F0
-        b       L_17064
-        b       L_17140
-        b       L_17124
-        b       L_17044
-        b       L_17174
-        b       L_17158
+
+// Code generator for 127 opcodes:
+//     BRA.S <label>
+dr_emit_bra_s:
+        b       dr_emit_bcc_l_L9
+
+// Code generator for 127 opcodes:
+//     BSR.S <label>
+dr_emit_bsr_s:
+        b       dr_emit_bcc_l_L8
+
+// Code generator for 1778 opcodes:
+//     BHI.S <label>
+//     BLS.S <label>
+//     BCC.S <label>
+//     BCS.S <label>
+//     BNE.S <label>
+//     BEQ.S <label>
+//     ... and 8 more forms
+dr_emit_bcc_s:
+        b       dr_emit_bcc_l_L2
+
+// Code generator for 1 opcode:
+//     BRA.W <label>
+dr_emit_bra_w:
+        b       dr_emit_jmp
+
+// Code generator for 1 opcode:
+//     BSR.W <label>
+dr_emit_bsr_w:
+        b       dr_emit_jsr
+
+// Code generator for 14 opcodes:
+//     BHI.W <label>
+//     BLS.W <label>
+//     BCC.W <label>
+//     BCS.W <label>
+//     BNE.W <label>
+//     BEQ.W <label>
+//     ... and 8 more forms
+dr_emit_bcc_w:
+        b       dr_emit_bcc_l_L1
+
+// Code generator for 1 opcode:
+//     BRA.L <label>
+dr_emit_bra_l:
+        b       dr_emit_jmp_L3
+
+// Code generator for 1 opcode:
+//     BSR.L <label>
+dr_emit_bsr_l:
+        b       dr_emit_jmp_L2
+
+// Code generator for 14 opcodes:
+//     BHI.L <label>
+//     BLS.L <label>
+//     BCC.L <label>
+//     BCS.L <label>
+//     BNE.L <label>
+//     BEQ.L <label>
+//     ... and 8 more forms
+dr_emit_bcc_l:
         lwz     addr, dr_cache_ptr(EmulatorStatePtr)
         lhz     data, 6(rec_ptr)
         lwzx    rtn_addr, pc, blk_ofs
@@ -8094,8 +9205,8 @@ L_16FF4:
         add     immed_data, addr, data
         add     rtn_addr, rtn_addr, blk_ofs
         bl      dr_templates_L17
-        b       L_17080
-L_17044:
+        b       dr_emit_bcc_l_L3
+dr_emit_bcc_l_L1:
         lwz     addr, dr_cache_ptr(EmulatorStatePtr)
         lhz     data, 6(rec_ptr)
         lhax    rtn_addr, pc, blk_ofs
@@ -8103,8 +9214,8 @@ L_17044:
         mtcrf   0x08, rtn_addr                          // cr4 = rtn_addr[15:12]
         add     rtn_addr, rtn_addr, blk_ofs
         bl      dr_templates_L17
-        b       L_17080
-L_17064:
+        b       dr_emit_bcc_l_L3
+dr_emit_bcc_l_L2:
         lwz     addr, dr_cache_ptr(EmulatorStatePtr)
         lhz     data, 6(rec_ptr)
         extsb   rtn_addr, prefetch_data                 // rtn_addr = sign-extended low byte of prefetch_data
@@ -8112,40 +9223,40 @@ L_17064:
         add     immed_data, addr, data
         add     rtn_addr, rtn_addr, blk_ofs
         bl      dr_templates_L4
-L_17080:
+dr_emit_bcc_l_L3:
         lhz     rtn_addr, 0(rec_ptr)
         rlwinm  data, prefetch_data, 26, 26, 29         // data = prefetch_data[11:8] << 2
         mtcrf   0x01, rtn_addr                          // cr7 = rtn_addr[3:0]
         addi    rtn_addr, base_disp, 0x5EF0
-        bge     cr7, L_17098
+        bge     cr7, dr_emit_bcc_l_L4
         addi    rtn_addr, base_disp, 0x5F30
-L_17098:
+dr_emit_bcc_l_L4:
         lwzx    rtn_addr, data, rtn_addr
         rlwinm  addr, rtn_addr, 24, 24, 31              // addr = rtn_addr[15:8]
         stb     rtn_addr, 1(rec_ptr)
         mtctr   addr
         srwi    data, rtn_addr, 16
         add     immed_data, base_disp, data
-        b       L_170E4
-L_170B4:
+        b       dr_emit_bcc_l_L7
+dr_emit_bcc_l_L5:
         mtcrf   0x01, rtn_addr                          // cr7 = rtn_addr[3:0]
         lwzu    addr, 4(immed_data)
-        bf_likely 4*cr7+so, L_170E0
+        bf_likely 4*cr7+so, dr_emit_bcc_l_L6
         lwz     addr, dr_cache_ptr(EmulatorStatePtr)
         lhz     data, 6(rec_ptr)
         add     data, addr, data
         lwz     addr, 0(immed_data)
         subf    data, out_ptr, data                     // data = data - out_ptr
         rlwimi  addr, data, 0, 16, 29                   // addr[15:2] = data[15:2]
-        blt     cr4, L_170E0
+        blt     cr4, dr_emit_bcc_l_L6
         oris    addr, addr, 0x0020
-L_170E0:
+dr_emit_bcc_l_L6:
         stwu    addr, 4(out_ptr)
-L_170E4:
+dr_emit_bcc_l_L7:
         srwi    rtn_addr, rtn_addr, 1
-        bdnz    L_170B4                                 // CTR -= 1; branch while CTR != 0
+        bdnz    dr_emit_bcc_l_L5                        // CTR -= 1; branch while CTR != 0
         b       dr_emit_next
-L_170F0:
+dr_emit_bcc_l_L8:
         lhz     rtn_addr, 14(rec_ptr)
         lwz     addr, 0x5E44(base_disp)
         lwz     data, 0x5E48(base_disp)
@@ -8153,14 +9264,17 @@ L_170F0:
         rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
-L_1710C:
+dr_emit_bcc_l_L9:
         extsb   rtn_addr, prefetch_data                 // rtn_addr = sign-extended low byte of prefetch_data
         add     rtn_addr, rtn_addr, blk_ofs
         mr      immed_data, out_ptr
         bl      dr_templates_L4
         mr      out_ptr, immed_data
         b       dr_fix_branches
-L_17124:
+
+// Code generator for 1 opcode:
+//     JSR (d16,PC)
+dr_emit_jsr:
         lhz     rtn_addr, 14(rec_ptr)
         lwz     addr, 0x5E44(base_disp)
         lwz     data, 0x5E48(base_disp)
@@ -8168,15 +9282,18 @@ L_17124:
         rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
-L_17140:
+
+// Code generator for 1 opcode:
+//     JMP (d16,PC)
+dr_emit_jmp:
         lhax    rtn_addr, pc, blk_ofs
-L_17144:
+dr_emit_jmp_L1:
         add     rtn_addr, rtn_addr, blk_ofs
         mr      immed_data, out_ptr
         bl      dr_templates_L17
         mr      out_ptr, immed_data
         b       dr_fix_branches
-L_17158:
+dr_emit_jmp_L2:
         lhz     rtn_addr, 14(rec_ptr)
         lwz     addr, 0x5E44(base_disp)
         lwz     data, 0x5E48(base_disp)
@@ -8184,72 +9301,72 @@ L_17158:
         rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
         stwu    addr, 4(out_ptr)
         stwu    data, 4(out_ptr)
-L_17174:
+dr_emit_jmp_L3:
         lwzx    rtn_addr, pc, blk_ofs
-        b       L_17144
+        b       dr_emit_jmp_L1
         addi    data, pc, 0
-L_17180:
+dr_emit_jmp_L4:
         stwu    data, -4(a7)
-L_17184:
-        bgt     cr7, L_17180
-L_17188:
-        bge     cr7, L_17184
-L_1718C:
-        blt     cr7, L_17188
-L_17190:
-        ble     cr7, L_1718C
-L_17194:
-        bne     cr7, L_17190
-        beq     cr7, L_17194
+dr_emit_jmp_L5:
+        bgt     cr7, dr_emit_jmp_L4
+dr_emit_jmp_L6:
+        bge     cr7, dr_emit_jmp_L5
+dr_emit_jmp_L7:
+        blt     cr7, dr_emit_jmp_L6
+dr_emit_jmp_L8:
+        ble     cr7, dr_emit_jmp_L7
+dr_emit_jmp_L9:
+        bne     cr7, dr_emit_jmp_L8
+        beq     cr7, dr_emit_jmp_L9
         subfe   addr, addr, addr                        // addr = addr + ~addr + CA
-L_171A0:
+dr_emit_jmp_L10:
         cmpwi   cr6, addr, 0
-        beq     cr6, L_171A0
-        beq     L_171B8
+        beq     cr6, dr_emit_jmp_L10
+        beq     dr_emit_jmp_L13
         subfe   addr, addr, addr                        // addr = addr + ~addr + CA
-L_171B0:
+dr_emit_jmp_L11:
         cmpwi   cr6, addr, 0
-L_171B4:
-        bne     cr6, L_171B0
-L_171B8:
-        beq     L_171B4
-        bne     L_171B8
-        beq     L_171D8
+dr_emit_jmp_L12:
+        bne     cr6, dr_emit_jmp_L11
+dr_emit_jmp_L13:
+        beq     dr_emit_jmp_L12
+        bne     dr_emit_jmp_L13
+        beq     dr_emit_jmp_L16
         mfxer   rtn_addr
         rlwinm  rtn_addr, rtn_addr, 8, 24, 27           // rtn_addr = rtn_addr[31:28] << 4
         mtcrf   0x02, rtn_addr                          // cr6 = rtn_addr[7:4]
-L_171D0:
+dr_emit_jmp_L14:
         creqv   4*cr6+lt, lt, 4*cr6+gt                  // cr6.lt = ~(cr0.lt ^ cr6.gt)
-L_171D4:
-        blt     cr6, L_171D0
-L_171D8:
-        beq     L_171D4
+dr_emit_jmp_L15:
+        blt     cr6, dr_emit_jmp_L14
+dr_emit_jmp_L16:
+        beq     dr_emit_jmp_L15
         subfe   addr, addr, addr                        // addr = addr + ~addr + CA
-L_171E0:
+dr_emit_jmp_L17:
         cmpwi   cr6, addr, 0
-        beq     cr6, L_171E0
+        beq     cr6, dr_emit_jmp_L17
         mfxer   rtn_addr
         rlwinm  rtn_addr, rtn_addr, 8, 24, 27           // rtn_addr = rtn_addr[31:28] << 4
-L_171F0:
+dr_emit_jmp_L18:
         mtcrf   0x02, rtn_addr                          // cr6 = rtn_addr[7:4]
-        ble     cr6, L_171F0
+        ble     cr6, dr_emit_jmp_L18
         mfxer   rtn_addr
         rlwinm  rtn_addr, rtn_addr, 8, 24, 27           // rtn_addr = rtn_addr[31:28] << 4
-L_17200:
+dr_emit_jmp_L19:
         mtcrf   0x02, rtn_addr                          // cr6 = rtn_addr[7:4]
-L_17204:
-        bgt     cr6, L_17200
-L_17208:
-        bge     L_17204
-L_1720C:
-        blt     L_17208
-        beq     L_1720C
+dr_emit_jmp_L20:
+        bgt     cr6, dr_emit_jmp_L19
+dr_emit_jmp_L21:
+        bge     dr_emit_jmp_L20
+dr_emit_jmp_L22:
+        blt     dr_emit_jmp_L21
+        beq     dr_emit_jmp_L22
         mfxer   rtn_addr
         rlwinm  rtn_addr, rtn_addr, 8, 24, 27           // rtn_addr = rtn_addr[31:28] << 4
         mtcrf   0x02, rtn_addr                          // cr6 = rtn_addr[7:4]
-L_17220:
+dr_emit_jmp_L23:
         crxor   4*cr6+lt, lt, 4*cr6+gt                  // cr6.lt = cr0.lt ^ cr6.gt
-        blt     cr6, L_17220
+        blt     cr6, dr_emit_jmp_L23
 D_17228:
         .long   0x00000100
         .long   0x00000100
@@ -8283,6 +9400,16 @@ D_17228:
         .long   0x5E500202
         .long   0x5E480202
         .long   0x5E540202
+
+// Code generator for 128 opcodes:
+//     DBT.W Dn,<label>
+//     DBF.W Dn,<label>
+//     DBHI.W Dn,<label>
+//     DBLS.W Dn,<label>
+//     DBCC.W Dn,<label>
+//     DBCS.W Dn,<label>
+//     ... and 10 more forms
+dr_emit_dbcc_w:
         lwz     addr, 0x6088(base_disp)
         lwz     data, 0x608C(base_disp)
         rlwimi  addr, prefetch_data, 21, 8, 10          // addr[23:21] = prefetch_data[2:0]
@@ -8292,16 +9419,16 @@ D_17228:
         cmpwi   cr7, data, 4
         addi    rtn_addr, base_disp, 0x6138
         lwzx    rtn_addr, data, rtn_addr
-        bt_likely 4*cr7+eq, L_1736C
+        bt_likely 4*cr7+eq, dr_emit_dbcc_w_L4
         rlwinm  addr, rtn_addr, 24, 24, 31              // addr = rtn_addr[15:8]
         mtctr   addr
         srwi    data, rtn_addr, 16
         add     immed_data, base_disp, data
-        b       L_17310
-L_172E4:
+        b       dr_emit_dbcc_w_L3
+dr_emit_dbcc_w_L1:
         mtcrf   0x01, rtn_addr                          // cr7 = rtn_addr[3:0]
         lwzu    addr, 4(immed_data)
-        bf_likely 4*cr7+so, L_1730C
+        bf_likely 4*cr7+so, dr_emit_dbcc_w_L2
         lwz     addr, dr_cache_ptr(EmulatorStatePtr)
         lhz     data, 6(rec_ptr)
         add     data, addr, data
@@ -8309,11 +9436,11 @@ L_172E4:
         lwz     addr, 0(immed_data)
         subf    data, out_ptr, data                     // data = data - out_ptr
         rlwimi  addr, data, 0, 16, 29                   // addr[15:2] = data[15:2]
-L_1730C:
+dr_emit_dbcc_w_L2:
         stwu    addr, 4(out_ptr)
-L_17310:
+dr_emit_dbcc_w_L3:
         srwi    rtn_addr, rtn_addr, 1
-        bdnz    L_172E4                                 // CTR -= 1; branch while CTR != 0
+        bdnz    dr_emit_dbcc_w_L1                       // CTR -= 1; branch while CTR != 0
         lwz     addr, dr_cache_ptr(EmulatorStatePtr)
         lhz     data, 6(rec_ptr)
         add     immed_data, addr, data
@@ -8335,7 +9462,7 @@ L_17310:
         add     rtn_addr, rtn_addr, blk_ofs
         bl      dr_templates_L17
         b       dr_emit_next
-L_1736C:
+dr_emit_dbcc_w_L4:
         lwz     addr, 0x60A0(base_disp)
         lwz     data, 0x60A4(base_disp)
         rlwimi  addr, prefetch_data, 21, 8, 10          // addr[23:21] = prefetch_data[2:0]
@@ -8359,65 +9486,65 @@ L_1736C:
         b       dr_emit_next
         clrlwi  data, d0, 16                            // data = d0 & 0x0000FFFF
         cmpwi   cr7, data, 0
-L_173C8:
+dr_emit_dbcc_w_L5:
         addis   d0, d0, 1
-L_173CC:
-        b       L_173CC
+dr_emit_dbcc_w_L6:
+        b       dr_emit_dbcc_w_L6
         addi    d0, d0, -1
-        bt_unlikely 4*cr7+eq, L_173C8
+        bt_unlikely 4*cr7+eq, dr_emit_dbcc_w_L5
         addi    d0, d0, -1
-        beq     cr7, L_173F0
+        beq     cr7, dr_emit_dbcc_w_L9
         addis   d0, d0, 1
         subfe   addr, addr, addr                        // addr = addr + ~addr + CA
-L_173E8:
+dr_emit_dbcc_w_L7:
         cmpwi   cr6, addr, 0
-L_173EC:
-        bne     cr6, L_173E8
-L_173F0:
-        beq     L_173EC
+dr_emit_dbcc_w_L8:
+        bne     cr6, dr_emit_dbcc_w_L7
+dr_emit_dbcc_w_L9:
+        beq     dr_emit_dbcc_w_L8
         subfe   addr, addr, addr                        // addr = addr + ~addr + CA
-L_173F8:
+dr_emit_dbcc_w_L10:
         cmpwi   cr6, addr, 0
-L_173FC:
-        beq     cr6, L_173F8
-L_17400:
-        bne     L_173FC
-L_17404:
-        beq     L_17400
-        beq     L_17404
+dr_emit_dbcc_w_L11:
+        beq     cr6, dr_emit_dbcc_w_L10
+dr_emit_dbcc_w_L12:
+        bne     dr_emit_dbcc_w_L11
+dr_emit_dbcc_w_L13:
+        beq     dr_emit_dbcc_w_L12
+        beq     dr_emit_dbcc_w_L13
         mfxer   rtn_addr
         rlwinm  rtn_addr, rtn_addr, 8, 24, 27           // rtn_addr = rtn_addr[31:28] << 4
         mtcrf   0x02, rtn_addr                          // cr6 = rtn_addr[7:4]
-L_17418:
+dr_emit_dbcc_w_L14:
         creqv   4*cr6+lt, lt, 4*cr6+gt                  // cr6.lt = ~(cr0.lt ^ cr6.gt)
-        bge     cr6, L_17418
-        beq     L_17430
+        bge     cr6, dr_emit_dbcc_w_L14
+        beq     dr_emit_dbcc_w_L16
         subfe   addr, addr, addr                        // addr = addr + ~addr + CA
-L_17428:
+dr_emit_dbcc_w_L15:
         cmpwi   cr6, addr, 0
-        bne     cr6, L_17428
-L_17430:
+        bne     cr6, dr_emit_dbcc_w_L15
+dr_emit_dbcc_w_L16:
         mfxer   rtn_addr
         rlwinm  rtn_addr, rtn_addr, 8, 24, 27           // rtn_addr = rtn_addr[31:28] << 4
-L_17438:
+dr_emit_dbcc_w_L17:
         mtcrf   0x02, rtn_addr                          // cr6 = rtn_addr[7:4]
-        bgt     cr6, L_17438
+        bgt     cr6, dr_emit_dbcc_w_L17
         mfxer   rtn_addr
         rlwinm  rtn_addr, rtn_addr, 8, 24, 27           // rtn_addr = rtn_addr[31:28] << 4
-L_17448:
+dr_emit_dbcc_w_L18:
         mtcrf   0x02, rtn_addr                          // cr6 = rtn_addr[7:4]
-L_1744C:
-        ble     cr6, L_17448
-L_17450:
-        blt     L_1744C
-        bge     L_17450
+dr_emit_dbcc_w_L19:
+        ble     cr6, dr_emit_dbcc_w_L18
+dr_emit_dbcc_w_L20:
+        blt     dr_emit_dbcc_w_L19
+        bge     dr_emit_dbcc_w_L20
         .long   0x41820018
         mfxer   rtn_addr
         rlwinm  rtn_addr, rtn_addr, 8, 24, 27           // rtn_addr = rtn_addr[31:28] << 4
         mtcrf   0x02, rtn_addr                          // cr6 = rtn_addr[7:4]
-L_17468:
+dr_emit_dbcc_w_L21:
         crxor   4*cr6+lt, lt, 4*cr6+gt                  // cr6.lt = cr0.lt ^ cr6.gt
-        bf_unlikely 4*cr6+lt, L_17468
+        bf_unlikely 4*cr6+lt, dr_emit_dbcc_w_L21
 D_17470:
         .long   0x60A80100
         .long   0x00000100
@@ -8435,6 +9562,10 @@ D_17470:
         .long   0x61200620
         .long   0x60CC0742
         .long   0x611C0740
+
+// Code generator for 1 opcode:
+//     RTD #<disp>
+dr_emit_rtd:
         lhax    rtn_addr, pc, blk_ofs
         lwz     addr, 0x61DC(base_disp)
         cmpwi   cr7, rtn_addr, 0x7FFC
@@ -8442,10 +9573,10 @@ D_17470:
         lwz     data, 0x61E4(base_disp)
         stwu    addr, 4(out_ptr)
         rlwimi  data, immed_data, 0, 16, 31             // data[15:0] = immed_data[15:0]
-        bge     cr7, L_174F4
-L_174D0:
+        bge     cr7, dr_emit_rtd_L3
+dr_emit_rtd_L1:
         stwu    data, 4(out_ptr)
-L_174D4:
+dr_emit_rtd_L2:
         lwz     addr, 0x634C(base_disp)
         addi    rtn_addr, base_disp, 0x65A4
         subf    rtn_addr, out_ptr, rtn_addr             // rtn_addr = rtn_addr - out_ptr
@@ -8454,15 +9585,19 @@ L_174D4:
         stwu    zero, 4(out_ptr)
         stwu    zero, 4(out_ptr)
         b       dr_fix_branches
-L_174F4:
+dr_emit_rtd_L3:
         lwz     addr, 0x61E0(base_disp)
         rlwimi  data, rtn_addr, 0, 16, 31               // data[15:0] = rtn_addr[15:0]
         stwu    addr, 4(out_ptr)
-        b       L_174D0
+        b       dr_emit_rtd_L1
+
+// Code generator for 1 opcode:
+//     RTS
+dr_emit_rts:
         lwz     addr, 0x61DC(base_disp)
         lwz     data, 0x61E0(base_disp)
         stwu    addr, 4(out_ptr)
-        b       L_174D0
+        b       dr_emit_rtd_L1
         lwz     pc, 0(a7)
         addi    a7, a7, 4
         addi    a7, a7, 0
@@ -8470,9 +9605,25 @@ L_174F4:
         slwi    addr, addr, 2
         add     addr, addr, a4
         lwz     pc, 0(addr)
+
+// Code generator for 26 opcodes:
+//     JMP (An)
+//     JMP (d16,An)
+//     JMP (d8,An,Xn)
+//     JMP (xxx).W
+//     JMP (d8,PC,Xn)
+dr_emit_jmp_2:
         lis     immed_data, 0x0300
         bl      L_12508
-        b       L_174D4
+        b       dr_emit_rtd_L2
+
+// Code generator for 26 opcodes:
+//     JSR (An)
+//     JSR (d16,An)
+//     JSR (d8,An,Xn)
+//     JSR (xxx).W
+//     JSR (d8,PC,Xn)
+dr_emit_jsr_2:
         lhz     rtn_addr, 14(rec_ptr)
         lwz     addr, 0x5E44(base_disp)
         lwz     data, 0x5E48(base_disp)
@@ -8482,7 +9633,7 @@ L_174F4:
         stwu    data, 4(out_ptr)
         lis     immed_data, 0x0300
         bl      L_12508
-        b       L_174D4
+        b       dr_emit_rtd_L2
         addi    blk_ofs, blk_ofs, 2
         lhax    rtn_addr, pc, blk_ofs
         lwz     addr, 0x61E8(base_disp)
@@ -8494,7 +9645,11 @@ L_174F4:
         stwu    addr, 4(out_ptr)
         rlwimi  data, rtn_addr, 0, 16, 31               // data[15:0] = rtn_addr[15:0]
         stwu    data, 4(out_ptr)
-        b       L_174D4
+        b       dr_emit_rtd_L2
+
+// Code generator for 4096 opcodes:
+//     A-LINE $Axxx
+dr_emit_aline:
         lwz     addr, 0x6344(base_disp)
         addi    rtn_addr, blk_ofs, -4
         lwz     data, 0x634C(base_disp)
@@ -8507,18 +9662,26 @@ L_174F4:
         stwu    zero, 4(out_ptr)
         stwu    zero, 4(out_ptr)
         b       dr_fix_branches
+
+// Code generator for 1 opcode:
+//     F-LINE cpID 6
+dr_emit_fline:
         li      addr, 10
         addi    immed_data, base_disp, 0x62B0
-L_175CC:
+dr_emit_fline_L1:
         mtctr   addr
-L_175D0:
+dr_emit_fline_L2:
         lwzu    addr, 4(immed_data)
         stwu    addr, 4(out_ptr)
-        bdnz    L_175D0                                 // CTR -= 1; branch while CTR != 0
-        b       L_174D4
+        bdnz    dr_emit_fline_L2                        // CTR -= 1; branch while CTR != 0
+        b       dr_emit_rtd_L2
+
+// Code generator for 1 opcode:
+//     F-LINE cpID 6
+dr_emit_fline_2:
         li      addr, 9
         addi    immed_data, base_disp, 0x62D8
-        b       L_175CC
+        b       dr_emit_fline_L1
         lwz     a0, 0(a7)
         lwz     data, 24(a7)
         slwi.   addr, d0, 16
@@ -8542,9 +9705,9 @@ L_175D0:
         lwz     addr, 0x6344(base_disp)
         cmpwi   cr7, data, 0
         rlwimi  addr, data, 0, 16, 31                   // addr[15:0] = data[15:0]
-        beq     cr7, L_17650
+        beq     cr7, dr_emit_fline_2_L1
         stwu    addr, 4(out_ptr)
-L_17650:
+dr_emit_fline_2_L1:
         addi    data, base_disp, 0x64F0
         lwz     addr, 0x635C(base_disp)
         subf    data, out_ptr, data                     // data = data - out_ptr

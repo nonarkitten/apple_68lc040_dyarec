@@ -178,3 +178,24 @@ def assign(generator, direct, continuation, ea_users):
         used[base] += 1
         names[addr] = base if used[base] == 1 else '%s_%d' % (base, used[base])
     return names
+
+
+def emitter_names(emitter_users):
+    """Names for the recompiler's code generators.
+
+    emitter_users   address of an emitter -> opcodes whose translation it
+                    produces (from tools/drmap.py)
+    """
+    used = collections.Counter()
+    names = {}
+    for addr in sorted(emitter_users):
+        ops = [m68k.decode(opcode) for opcode in emitter_users[addr]]
+        legal = [op for op in ops if op.legal] or ops
+        parts = ['dr_emit', _clean(_mnemonic(legal))]
+        sizes = {op.size for op in legal}
+        if len(sizes) == 1 and next(iter(sizes)):
+            parts.append(next(iter(sizes)).lower())
+        base = '_'.join(parts)
+        used[base] += 1
+        names[addr] = base if used[base] == 1 else '%s_%d' % (base, used[base])
+    return names

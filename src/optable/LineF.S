@@ -7288,7 +7288,7 @@
         b       take_fline
         lwz     rtn_addr, mixed_mode_handler(EmulatorStatePtr)  // FE01  F-LINE    cpID 7
         b       fline_34
-        lwz     data, 0x714(EmulatorStatePtr)           // FE02  F-LINE    cpID 7
+        lwz     data, native_return_entry(EmulatorStatePtr)  // FE02  F-LINE    cpID 7
         b       fline_35
         lwz     addr, 0x964(EmulatorStatePtr)           // FE03  F-LINE    cpID 7
         b       fline_19

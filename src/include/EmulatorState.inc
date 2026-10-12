@@ -65,6 +65,14 @@
 #define ecb_r3                  0x194   // r3 to restore (initially the address of this block)
 #define ecb_r4                  0x19C   // r4 to restore (initially the address of the dispatch table)
 
+// Switching to native code (see switch_to_native)
+#define native_call_entry       0x700   // PowerPC address to start at when 68K code calls native code
+#define native_toc              0x704   // r2 for that code
+#define native_regs_ptr         0x708   // address of native_regs
+#define native_context          0x710   // address of the native context block
+#define native_return_entry     0x714   // PowerPC address to resume at for private opcode FE02
+#define native_regs             0x740   // D0-D7, A0-A6 and the 68K pc, as native code sees them
+
 // Replaceable handler addresses (initialised from handler_defaults)
 #define illegal_handler         0x800   // unimplemented opcodes
 #define aline_handler           0x804   // line 1010 opcodes

@@ -17,6 +17,18 @@ Three properties are checked without executing anything:
               instruction, pc advances by exactly the length of the
               instruction (opcode word plus extension words).
 
+Two more checks concern the dynamic recompiler.  Its first pass decides,
+for every instruction, how long it is and which condition codes it writes
+(tools/drmap.py obtains those decisions by running the pass in a
+simulator):
+
+  dr length   The recompiler's idea of an instruction's length agrees with
+              the instruction's encoding.
+
+  dr flags    The recompiler's idea of which condition codes an instruction
+              writes (none; N, Z, V, C; or all five) agrees with the 68K
+              definition of the instruction.
+
 A disagreement means one of three things: the decoder in tools/m68k.py is
 wrong about that opcode (so the comment on its table entry is too), the
 checker's model is too simple for that routine, or the emulator really
@@ -38,6 +50,7 @@ import re
 import struct
 import sys
 
+import drmap
 import gen
 import m68k
 
@@ -321,6 +334,80 @@ def summarise(title, items, verbose):
                   + (' ...' if len(opcodes) > 16 else ''))
 
 
+# Condition codes written, by mnemonic: every flag, all but X, or none.
+WRITES_ALL = {'ADD', 'ADDI', 'ADDQ', 'SUB', 'SUBI', 'SUBQ', 'NEG', 'ASL', 'ASR', 'LSL',
+              'LSR', 'ADDX', 'SUBX', 'NEGX', 'ABCD', 'SBCD', 'NBCD', 'ROXL', 'ROXR'}
+WRITES_NZVC = {'MOVE', 'MOVEQ', 'AND', 'ANDI', 'OR', 'ORI', 'EOR', 'EORI', 'NOT', 'CLR',
+               'TST', 'CMP', 'CMPI', 'CMPA', 'CMPM', 'EXT', 'EXTB', 'SWAP', 'MULU',
+               'MULS', 'DIVU', 'DIVS', 'MULU/MULS', 'DIVU/DIVS', 'ROL', 'ROR', 'BTST',
+               'BCHG', 'BCLR', 'BSET', 'TAS', 'CHK'}
+WRITES_NONE = {'MOVEA', 'ADDA', 'SUBA', 'LEA', 'PEA', 'EXG', 'LINK', 'UNLK', 'NOP',
+               'MOVEM', 'MOVEP'}
+
+
+def expected_flag_writes(op):
+    """drmap flag bits the instruction should have, or None if this check
+    does not cover it."""
+    if 'CCR' in (op.src, op.dst) or 'SR' in (op.src, op.dst) or 'USP' in (op.src, op.dst):
+        return None
+    to_address_register = len(op.dst) == 2 and op.dst[0] == 'A'
+    if op.name in WRITES_ALL:
+        if op.name in ('ADDQ', 'SUBQ') and to_address_register:
+            return 0
+        return drmap.FLAG_SETS_NZVC | drmap.FLAG_SETS_X
+    if op.name in WRITES_NZVC:
+        return drmap.FLAG_SETS_NZVC
+    if op.name in WRITES_NONE:
+        return 0
+    return None
+
+
+def check_recompiler(generator, verbose):
+    """Compare the decisions of the recompiler's first pass with the
+    instruction set.  Returns the number of disagreements."""
+    decisions = drmap.scan(generator.image[:TABLE],
+                           cache=gen.os.path.join(gen.ROOT, 'build', 'drmap.json'))
+    wrong_length, wrong_flags, invalid = [], [], []
+    translated = lengths = flags = 0
+    for opcode, decision in sorted(decisions.items()):
+        if not decision.translated:
+            continue
+        translated += 1
+        op = m68k.decode(opcode)
+        if op.name in ('A-LINE', 'F-LINE'):
+            continue
+        if not op.legal:
+            invalid.append((opcode, 'not a valid instruction'))
+            continue
+        if not decision.ends_block and not CONTROL_FLOW.match(op.name):
+            words, _ = extension_words(op)
+            if decision.length == 2 + 2 * words:
+                lengths += 1
+            else:
+                wrong_length.append((opcode, 'expected %d, recompiler says %d' % (
+                    2 + 2 * words, decision.length)))
+        expected = expected_flag_writes(op)
+        if expected is not None:
+            actual = decision.flags & (drmap.FLAG_SETS_NZVC | drmap.FLAG_SETS_X)
+            if actual == expected:
+                flags += 1
+            else:
+                wrong_flags.append((opcode, 'expected %03X, recompiler says %03X' % (
+                    expected, actual)))
+
+    print('\nDynamic recompiler, first pass: %d opcodes translated, %d left to the '
+          'interpreter' % (translated, 0x10000 - translated))
+    summarise('Recompiler: instruction length differs from the encoding',
+              wrong_length, verbose)
+    summarise('Recompiler: condition codes written differ from the 68K definition',
+              wrong_flags, verbose)
+    summarise('Recompiler: invalid opcodes it nevertheless assigns a code generator '
+              '(not counted as failures)', invalid, verbose)
+    print('\nRecompiler length agrees for %d opcodes; condition codes written agree '
+          'for %d' % (lengths, flags))
+    return len(wrong_length) + len(wrong_flags)
+
+
 def main():
     verbose = '-v' in sys.argv[1:]
     generator = gen.Generator()
@@ -426,6 +513,7 @@ def main():
         print('  %5d  %s' % (count, reason))
     failures = (len(wrongly_implemented) + len(wrongly_rejected)
                 + len(missing_rtn_addr) + len(wrong_length))
+    failures += check_recompiler(generator, verbose)
     print('\n%s' % ('FAILED: %d unexplained disagreements' % failures if failures
                     else 'OK: no unexplained disagreements'))
     return 1 if failures else 0

@@ -30906,7 +30906,7 @@ fline_22_L7:
         lwz     data, 0x7A8(EmulatorStatePtr)
         lwz     immed_data, 0x7AC(EmulatorStatePtr)
         xor     data, data, a0
-        lwz     addr, 0x710(EmulatorStatePtr)
+        lwz     addr, native_context(EmulatorStatePtr)
         and     data, data, immed_data
         and     immed_data, immed_data, a0
         stw     immed_data, 0x7A8(EmulatorStatePtr)
@@ -31297,11 +31297,11 @@ handler_defaults:
         .short  0
 handler_defaults_L1:
         addi    addr, EmulatorStatePtr, 0x740
-        stw     addr, 0x708(EmulatorStatePtr)
+        stw     addr, native_regs_ptr(EmulatorStatePtr)
         ori     addr, code_ptr, native_call_unavailable - cb
         stw     addr, 0x70C(EmulatorStatePtr)
-        stw     addr, 0x700(EmulatorStatePtr)
-        stw     addr, 0x714(EmulatorStatePtr)
+        stw     addr, native_call_entry(EmulatorStatePtr)
+        stw     addr, native_return_entry(EmulatorStatePtr)
         ori     addr, code_ptr, fline_36_L8 - cb
         stw     addr, 0x7A4(EmulatorStatePtr)
         li      addr, 0x907
@@ -31317,7 +31317,7 @@ handler_defaults_L2:
         stwu    zero, -8(addr)
         bdnz    handler_defaults_L2                     // CTR -= 1; branch while CTR != 0
         stw     base_disp, 0x4D8(EmulatorStatePtr)
-        stw     addr, 0x710(EmulatorStatePtr)
+        stw     addr, native_context(EmulatorStatePtr)
         lwz     base_disp, 0x7A8(EmulatorStatePtr)
         stw     base_disp, 0(addr)
         stw     base_disp, 64(addr)
@@ -31370,8 +31370,8 @@ mixed_mode_dispatch_L1:
         bne     cr5, mixed_mode_call_68k_L3
 
 mixed_mode_call_native:
-        lwz     addr, 0x710(EmulatorStatePtr)
-        lwz     data, 0x700(EmulatorStatePtr)
+        lwz     addr, native_context(EmulatorStatePtr)
+        lwz     data, native_call_entry(EmulatorStatePtr)
         addi    base_disp, base_disp, -2
         ori     sr_and_flags, sr_and_flags, 0x0800
         stw     base_disp, 0x1F4(addr)
@@ -31587,7 +31587,7 @@ L_0E110:
 // Reached from 1 dispatch table entry:
 //     F-LINE cpID 7
 fline_35:
-        lwz     addr, 0x710(EmulatorStatePtr)
+        lwz     addr, native_context(EmulatorStatePtr)
         ori     sr_and_flags, sr_and_flags, 0x0800
 
 // Save the 68K registers where native code can find them and ask the
@@ -31598,10 +31598,10 @@ fline_35:
 // be delivered to the 68K handler.
 switch_to_native:
         mfcr    immed_data
-        lwz     rtn_addr, 0x708(EmulatorStatePtr)
+        lwz     rtn_addr, native_regs_ptr(EmulatorStatePtr)
         rlwinm  immed_data, immed_data, 8, 28, 31       // immed_data = immed_data[27:24]
         stw     immed_data, 0x7B8(EmulatorStatePtr)
-        lwz     immed_data, 0x704(EmulatorStatePtr)
+        lwz     immed_data, native_toc(EmulatorStatePtr)
         mtcrf   0x0F, zero                              // cr4..cr7 = zero[15:0]
         stw     rtn_addr, 0x1FC(addr)
         stw     immed_data, 0x114(addr)
@@ -31629,7 +31629,7 @@ switch_to_native_L1:
         lis     data, 0x0020
         bfl     cr_interrupt_pending, kcall_run_alternate_context
         lwz     a7, 0x10C(addr)
-        lwz     addr, 0x710(EmulatorStatePtr)
+        lwz     addr, native_context(EmulatorStatePtr)
         lbz     immed_data, 0(addr)
         lwz     d0, 0(rtn_addr)
         lwz     d1, 4(rtn_addr)
@@ -31674,8 +31674,8 @@ switch_to_native_L2:
         rlwimi  sr_and_flags, addr, 0, 20, 23           // sr_and_flags[11:8] = addr[11:8]
         mtcrf   0x0F, addr                              // cr4..cr7 = addr[15:0]
         clrlwi  data, data, 27                          // data = data & 0x0000001F
-        lwz     rtn_addr, 0x708(EmulatorStatePtr)
-        lwz     addr, 0x710(EmulatorStatePtr)
+        lwz     rtn_addr, native_regs_ptr(EmulatorStatePtr)
+        lwz     addr, native_context(EmulatorStatePtr)
         stw     pc, 60(rtn_addr)
         stw     data, 64(rtn_addr)
         crandc  cr_interrupt_pending, cr_interrupt_pending, 4*cr7+so  // cr_interrupt_pending = cr_interrupt_pending & ~cr7.so
@@ -31708,7 +31708,7 @@ switch_to_native_L4:
         stw     base_disp, 0(a7)
         stw     immed_data, 12(a7)
         li      immed_data, 96
-        lwz     addr, 0x710(EmulatorStatePtr)
+        lwz     addr, native_context(EmulatorStatePtr)
         lwz     base_disp, 216(addr)
         addi    rtn_addr, a7, 0x310
         mtctr   immed_data
@@ -31740,7 +31740,7 @@ switch_to_native_L5:
         stw     addr, 0x214(rtn_addr)
         stw     immed_data, 0x218(rtn_addr)
         stw     zero, 0x210(rtn_addr)
-        lwz     addr, 0x710(EmulatorStatePtr)
+        lwz     addr, native_context(EmulatorStatePtr)
         stw     rtn_addr, 232(a7)
         stw     base_disp, 216(addr)
 L_0E35C:
@@ -31805,7 +31805,7 @@ fline_36_L5:
         mr      pc, addr
         stw     base_disp, trace_pc(EmulatorStatePtr)
         li      immed_data, 96
-        lwz     rtn_addr, 0x710(EmulatorStatePtr)
+        lwz     rtn_addr, native_context(EmulatorStatePtr)
         addi    addr, a7, 0x318
         lwz     base_disp, 240(a7)
         mtctr   immed_data

@@ -248,3 +248,20 @@
 @180F8 dr_resume_in_translator
 @180FC dr_resume_after_fault
 @181A8 dr_null_hook
+
+# The other fifteen pass-1 decoders (see dr_line_0).
+@102C0 dr_line_1
+@10300 dr_line_2
+@10340 dr_line_3
+@10380 dr_line_4
+@103C0 dr_line_5
+@10400 dr_line_6
+@10440 dr_line_7
+@10480 dr_line_8
+@104C0 dr_line_9
+@10500 dr_line_A
+@10540 dr_line_B
+@10580 dr_line_C
+@105C0 dr_line_D
+@10600 dr_line_E
+@10640 dr_line_F
