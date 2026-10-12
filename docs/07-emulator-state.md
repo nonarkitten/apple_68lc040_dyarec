@@ -69,7 +69,7 @@ combination of the S and M bits.
 | `0x078` | `saved_code_ptr` | Address of `cb` |
 | `0x07C` | `native_sp` | Stack pointer to restore when leaving through `exit_emulator` |
 | `0x080` | `fault_saved_flags` | Context flags at the time of the last memory fault |
-| `0x084`–`0x094` | | The kernel's description of the fault, copied from the context block |
+| `0x084`–`0x094` | `fault_memret_status`, `fault_memret_ear`, `fault_memret_ea`, `fault_memret_data`, `fault_memret_data_lo` | The kernel's description of the fault, copied from the context block (`ecb_memret_status` and the fields after it) |
 | `0x098`–`0x0A4` | `fault_data`, `fault_immed_data`, `fault_base_disp`, `fault_sr_and_flags` | The scratch registers and `sr_and_flags` as they were when the fault happened, for the bus error frame |
 | `0x0AC` | `fault_lr` | LR likewise |
 | `0x0B0` | `fault_pc` | PowerPC address of the faulting instruction |
@@ -93,7 +93,7 @@ uses, with the kernel's meaning for each (see
 | `0x14C` | `ecb_handler` | Address the kernel transfers to on an exception in this context: `native_exception_handler` |
 | `0x154` | `ecb_handler_arg` | Passed to the handler in r4: the address of `take_bus_error` |
 | `0x15C` | `ecb_handler_return` | The handler's return address, set by the kernel: `EmKernelTrapTable` |
-| `0x164`–`0x17C` | | The kernel's description of a memory fault (address, kind and size of access), read by `native_exception_handler` |
+| `0x164`–`0x17C` | `ecb_memret_status` (`0x164`), `ecb_memret_data` (`0x168`, `0x16C`), `ecb_memret_ear` (`0x174`), `ecb_memret_ea` (`0x17C`) | The kernel's description of a memory fault — its `MemRetStatus`, `MemRetData`, `MemRetEAR` and `MemRetEA` — read by `native_exception_handler` |
 | `0x184` | `ecb_pc` | Where `ReturnFromException` resumes the context. The kernel stores the interrupted pc here; `EmEntry` and `native_exception_handler` overwrite it to redirect execution |
 | `0x18C` | `ecb_lr` | LR at the time of the exception, restored on return |
 | `0x194` | `ecb_r3` | r3 likewise. Initially the address of the state block, which is how `EmEntry` receives it |
@@ -177,7 +177,7 @@ different address.
 | `0xB2A` | `dr_needs_exit` | Set if the block begins with a branch to `dr_exit_to_interpreter` (16 bits) |
 | `0xB2C` | `dr_emit_ptr` | Start of the block being translated |
 | `0xB30` | `dr_hash_slot` | Lookup table slot the new block will use |
-| `0xB34`, `0xB36` | `dr_resume_offset` (`0xB34`) | Offset into a block at which to resume after a fault; abort marker |
+| `0xB34`, `0xB36` | `dr_resume_offset`, `dr_retranslating` | Offset into a block at which to resume after a fault; set while the block is being translated again for that purpose |
 | `0xB38`–`0xB44` | `dr_saved_addr`, `dr_saved_data`, `dr_saved_rtn_addr`, `dr_saved_cr` | `addr`, `data`, `rtn_addr` and CR saved across a translation |
 | `0xB68` | `dr_peek_resume` | Pass 1: where to go on after looking at the instruction at a branch's target |
 | `0xB6C` | `dr_flush_pending` | Non-zero while the cache is being discarded |

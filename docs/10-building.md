@@ -127,7 +127,7 @@ and comments keyed by offset — and they keep the marks of it:
   and its decoder (`tools/ppc.py`) refused any word it could not spell
   in a way that assembles back to the same bits; such words are `.long`.
 - A routine reached from the dispatch table is named after the
-  instructions that use it (`add_l_dn_dn`), with a number where several
+  instructions that use it (`add_l_mem_d0`), with a number where several
   share a description, unless it was given a name by hand. The list of
   instructions is in the comment above it.
 - The comments on rotate-and-mask and condition register instructions,

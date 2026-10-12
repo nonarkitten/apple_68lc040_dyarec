@@ -222,6 +222,41 @@ exceptions taken in the emulator context.
 address, the data buffers, the special status word and the saved scratch
 registers, from which the 68K handler's `RTE` can resume the instruction.
 
+The kernel's description of the access is its `MemRet` record in the
+context block (`IntraState.MemRetStatus`, `MemRetData`, `MemRetEAR` and
+`MemRetEA` in the kernel's sources; `ecb_memret_status` and so on here).
+`native_exception_handler` copies it to `fault_memret_status` …
+`fault_memret_data_lo`, and for a fault that is not a data access puts 9
+and the faulting address there instead.
+
+The frame is 92 bytes. Its first 24 follow the 68020's layout so that a
+handler finds what it expects; the rest is the emulator's own:
+
+| Frame offset | Contents |
+|---|---|
+| `+0x00`, `+0x02`, `+0x06` | SR, PC, format word `$B008` |
+| `+0x08` | XER (the 68K V and C) |
+| `+0x0A` | Special status word, derived from the kernel's status |
+| `+0x0C` | The opcode being executed |
+| `+0x0E` | Upper half of the CR (the 68K N and Z, and the emulator's flags) |
+| `+0x10` | Fault address (`MemRetEAR`) |
+| `+0x14` | Effective address of the access (`MemRetEA`) |
+| `+0x18` | Data of the access, second word (the 68020's data output buffer) |
+| `+0x1C` | The kernel's status for the access |
+| `+0x20` | `trace_pc` |
+| `+0x24` | `pc`; for a fault in translated code, the offset of the faulting instruction within the block's translation |
+| `+0x28`, `+0x2C` | Data of the access, both words (`+0x2C` is the 68020's data input buffer) |
+| `+0x30` | The context's flags when the fault was taken |
+| `+0x34` | Lower half of the CR |
+| `+0x36` | `0xE000`, X, and four flags from `sr_and_flags` |
+| `+0x38`, `+0x3C`, `+0x40`, `+0x44`, `+0x48`, `+0x4C` | `addr`, `data`, `rtn_addr`, `immed_data`, `base_disp`, `prefetch_data` |
+| `+0x50`, `+0x54` | CTR, LR |
+| `+0x58` | PowerPC address of the instruction that faulted |
+
+`RTE` from this frame (`0D5DC`) reloads all of it and has the kernel
+resume the emulator at the saved PowerPC address, in the middle of the
+instruction's routine.
+
 ## RTE
 
 `RTE` reads the format field of the frame at `a7` and calls one of sixteen
@@ -232,7 +267,7 @@ discard. Format `$B` (`0D5DC`) restores the
 internal state saved by a bus or address error. Format `$E` — not a
 Motorola format — is a frame the emulator itself builds to hold a saved
 native context when an interrupt has to be delivered to 68K code while
-native code was running (`0E408`; see
+native code was running (`rte_format_e`, `0E408`; see
 [08-native-interface.md](08-native-interface.md)). Every other format
 raises a format error exception (vector offset `0x038`).
 

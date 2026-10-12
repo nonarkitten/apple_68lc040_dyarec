@@ -30730,21 +30730,31 @@ native_exception_handler_L1:
         stw     data, ecb_saved_flags(EmulatorStatePtr)
         li      data, 9
         bns     cr6, native_exception_handler_L2
-        lwz     addr, 0x17C(EmulatorStatePtr)
-        lwz     data, 0x168(EmulatorStatePtr)
-        stw     addr, 140(EmulatorStatePtr)
-        lwz     addr, 0x16C(EmulatorStatePtr)
-        stw     data, 144(EmulatorStatePtr)
-        lwz     data, 0x164(EmulatorStatePtr)
-        stw     addr, 148(EmulatorStatePtr)
-        lwz     addr, 0x174(EmulatorStatePtr)
+        lwz     addr, ecb_memret_ea(EmulatorStatePtr)
+        lwz     data, ecb_memret_data(EmulatorStatePtr)
+        stw     addr, fault_memret_ea(EmulatorStatePtr)
+        lwz     addr, ecb_memret_data_lo(EmulatorStatePtr)
+        stw     data, fault_memret_data(EmulatorStatePtr)
+        lwz     data, ecb_memret_status(EmulatorStatePtr)
+        stw     addr, fault_memret_data_lo(EmulatorStatePtr)
+        lwz     addr, ecb_memret_ear(EmulatorStatePtr)
 native_exception_handler_L2:
-        stw     data, 132(EmulatorStatePtr)
-        stw     addr, 136(EmulatorStatePtr)
+        stw     data, fault_memret_status(EmulatorStatePtr)
+        stw     addr, fault_memret_ear(EmulatorStatePtr)
         li      addr, 0
         blr
 
 // Build a 68020 format $B (long bus fault) frame for a bus error.
+//
+// The frame is laid out like the 68020's: SR, PC and the format word,
+// then 84 bytes of internal state.  take_exception_pc_set comes back here
+// with a7 at the start of those 84 bytes (frame offset 8) and pushes the
+// first three fields when this routine returns.  The fields the 68020
+// defines - special status word, fault address, data buffers - are where
+// a handler expects them; the rest of the area holds what the emulator
+// needs to finish the instruction after RTE: its scratch registers, the
+// PowerPC address at which the access was made, and the kernel's record
+// of the access (docs/06-exceptions.md has the layout).
 take_bus_error:
         stw     data, fault_data(EmulatorStatePtr)
         stw     immed_data, fault_immed_data(EmulatorStatePtr)
@@ -30757,61 +30767,61 @@ take_bus_error:
         rlwinm  data, sr_and_flags, 8, 16, 23           // data = sr_and_flags[7:0] << 8
         rlwinm  sr_and_flags, sr_and_flags, 0, 26, 21   // sr_and_flags = sr_and_flags & 0xFFFFFC3F
         bl      take_exception_pc_set
-        addi    a7, a7, -84
-        stw     addr, 48(a7)
+        addi    a7, a7, -84                             // the 84 bytes after SR, PC and the format word
+        stw     addr, 48(a7)                            // frame +0x38: addr
         mfctr   addr
-        stw     rtn_addr, 56(a7)
+        stw     rtn_addr, 56(a7)                        // +0x40: rtn_addr
         rlwinm  rtn_addr, disp_table, 29, 16, 31        // rtn_addr = disp_table[18:3]
-        stw     prefetch_data, 68(a7)
-        sth     rtn_addr, 4(a7)
-        stw     addr, 72(a7)
+        stw     prefetch_data, 68(a7)                   // +0x4C: prefetch_data
+        sth     rtn_addr, 4(a7)                         // +0x0C: the opcode being executed
+        stw     addr, 72(a7)                            // +0x50: CTR
         lhz     rtn_addr, fault_cr(EmulatorStatePtr)
-        lwz     addr, 136(EmulatorStatePtr)
-        sth     rtn_addr, 6(a7)
-        lwz     rtn_addr, 140(EmulatorStatePtr)
-        stw     addr, 8(a7)
-        lwz     addr, 144(EmulatorStatePtr)
-        stw     rtn_addr, 12(a7)
-        lwz     rtn_addr, 148(EmulatorStatePtr)
-        stw     addr, 32(a7)
-        lwz     addr, 132(EmulatorStatePtr)
-        stw     rtn_addr, 36(a7)
-        stw     rtn_addr, 16(a7)
+        lwz     addr, fault_memret_ear(EmulatorStatePtr)
+        sth     rtn_addr, 6(a7)                         // +0x0E: upper half of the CR at the fault (cr0-cr3)
+        lwz     rtn_addr, fault_memret_ea(EmulatorStatePtr)
+        stw     addr, 8(a7)                             // +0x10: the fault address
+        lwz     addr, fault_memret_data(EmulatorStatePtr)
+        stw     rtn_addr, 12(a7)                        // +0x14: the access's effective address
+        lwz     rtn_addr, fault_memret_data_lo(EmulatorStatePtr)
+        stw     addr, 32(a7)                            // +0x28: data of the access, first word
+        lwz     addr, fault_memret_status(EmulatorStatePtr)
+        stw     rtn_addr, 36(a7)                        // +0x2C: second word (the 68020's data input buffer)
+        stw     rtn_addr, 16(a7)                        // +0x18: and again (its data output buffer)
         lwz     rtn_addr, fault_saved_flags(EmulatorStatePtr)
-        stw     addr, 20(a7)
+        stw     addr, 20(a7)                            // +0x1C: the kernel's status for the access
         slwi    addr, addr, 26
-        stw     rtn_addr, 40(a7)
+        stw     rtn_addr, 40(a7)                        // +0x30: the context's flags at the fault
         rlwimi  addr, addr, 12, 25, 25                  // addr[6] = addr[26]
         mfxer   rtn_addr
         rlwimi  addr, addr, 9, 26, 27                   // addr[5:4] = addr[28:27]
-        stw     pc, 28(a7)
+        stw     pc, 28(a7)                              // +0x24: pc
         rlwimi  rtn_addr, rtn_addr, 8, 24, 24           // rtn_addr[7] = rtn_addr[31]
         rlwimi  addr, data, 21, 29, 29                  // addr[2] = data[13]
-        sth     rtn_addr, 0(a7)
+        sth     rtn_addr, 0(a7)                         // +0x08: XER
         ori     addr, addr, 0x0101
-        sth     addr, 2(a7)
+        sth     addr, 2(a7)                             // +0x0A: special status word
         addi    pc, pc, -2
         lwz     addr, trace_pc(EmulatorStatePtr)
         lhz     rtn_addr, 182(EmulatorStatePtr)
-        stw     addr, 24(a7)
+        stw     addr, 24(a7)                            // +0x20: trace_pc
         lwz     addr, fault_data(EmulatorStatePtr)
-        sth     rtn_addr, 44(a7)
+        sth     rtn_addr, 44(a7)                        // +0x34: its lower half (cr4-cr7)
         lwz     rtn_addr, fault_immed_data(EmulatorStatePtr)
-        stw     addr, 52(a7)
+        stw     addr, 52(a7)                            // +0x3C: data
         lwz     addr, fault_base_disp(EmulatorStatePtr)
-        stw     rtn_addr, 60(a7)
+        stw     rtn_addr, 60(a7)                        // +0x44: immed_data
         lwz     rtn_addr, fault_lr(EmulatorStatePtr)
-        stw     addr, 64(a7)
+        stw     addr, 64(a7)                            // +0x48: base_disp
         lwz     addr, fault_pc(EmulatorStatePtr)
-        stw     rtn_addr, 76(a7)
-        stw     addr, 80(a7)
+        stw     rtn_addr, 76(a7)                        // +0x54: LR
+        stw     addr, 80(a7)                            // +0x58: PowerPC address of the instruction that faulted
         lwz     addr, fault_sr_and_flags(EmulatorStatePtr)
         rlwinm  rtn_addr, ccr_x, 2, 31, 31              // rtn_addr = ccr_x[30]
         ori     rtn_addr, rtn_addr, 0xE000
         rlwimi  rtn_addr, addr, 0, 20, 23               // rtn_addr[11:8] = addr[11:8]
-        sth     rtn_addr, 46(a7)
-        bflr    cr_dr_active
-        lwz     rtn_addr, dr_fault_fixup_vector(EmulatorStatePtr)
+        sth     rtn_addr, 46(a7)                        // +0x36: 0xE000, X, and four flags from sr_and_flags
+        bflr    cr_dr_active                            // recompiler off: done
+        lwz     rtn_addr, dr_fault_fixup_vector(EmulatorStatePtr) // otherwise it has the frame to adjust (dr_fault_fixup)
         lwz     addr, fault_pc(EmulatorStatePtr)
         mtctr   rtn_addr
         bctr
@@ -30844,19 +30854,19 @@ take_bus_error_L2:
         rlwinm  immed_data, immed_data, 0, 31, 25       // immed_data = immed_data & 0xFFFFFFC1
 take_bus_error_L3:
         lwz     base_disp, 20(a7)
-        stw     rtn_addr, 0x174(EmulatorStatePtr)
+        stw     rtn_addr, ecb_memret_ear(EmulatorStatePtr)
         lwz     rtn_addr, 48(a7)
-        stw     immed_data, 0x164(EmulatorStatePtr)
+        stw     immed_data, ecb_memret_status(EmulatorStatePtr)
         lwz     immed_data, 40(a7)
-        stw     base_disp, 0x17C(EmulatorStatePtr)
+        stw     base_disp, ecb_memret_ea(EmulatorStatePtr)
         lwz     base_disp, 44(a7)
         stw     rtn_addr, ecb_saved_flags(EmulatorStatePtr)
         lhz     rtn_addr, 8(a7)
-        stw     immed_data, 0x168(EmulatorStatePtr)
+        stw     immed_data, ecb_memret_data(EmulatorStatePtr)
         lwz     addr, 2(a7)
         lhz     immed_data, 12(a7)
         addi    pc, addr, 2
-        stw     base_disp, 0x16C(EmulatorStatePtr)
+        stw     base_disp, ecb_memret_data_lo(EmulatorStatePtr)
         lwz     base_disp, 32(a7)
         sth     rtn_addr, 184(EmulatorStatePtr)
         lhz     rtn_addr, 52(a7)
@@ -31431,7 +31441,7 @@ handler_defaults:
         .short  take_bus_error_L1 - cb
         .short  rte_bad_format - cb
         .short  rte_bad_format - cb
-        .short  fe07_handle_mixed_mode_fault_L5 - cb
+        .short  rte_format_e - cb
         .short  rte_bad_format - cb
         .short  move_l_usp_an_L1 - cb
         .short  move_l_an_usp_L1 - cb
@@ -31484,10 +31494,10 @@ handler_defaults:
         .short  take_exception - cb
         .short  take_exception - cb
         .short  take_exception - cb
-        .short  native_invalidate_range - cb
-        .short  native_invalidate_range - cb
-        .short  native_invalidate_range_L2 - cb
-        .short  native_invalidate_range_L2 - cb
+        .short  cinv_cpush_flush - cb
+        .short  cinv_cpush_flush - cb
+        .short  pflush_ptest_nop - cb
+        .short  pflush_ptest_nop - cb
         .short  move16_mem_mem_2_L1 - cb
         .short  move16_mem_mem_4_L1 - cb
         .short  move16_mem_L1 - cb
@@ -31564,7 +31574,7 @@ handler_defaults_L1:
         stw     addr, 0x70C(EmulatorStatePtr)
         stw     addr, native_call_entry(EmulatorStatePtr)
         stw     addr, native_return_entry(EmulatorStatePtr)
-        ori     addr, code_ptr, fe07_handle_mixed_mode_fault_L8 - cb
+        ori     addr, code_ptr, native_invalidate_range - cb
         stw     addr, native_invalidate_entry(EmulatorStatePtr)
         li      addr, 0x907
         stw     addr, 0x7AC(EmulatorStatePtr)
@@ -31865,17 +31875,24 @@ fe02_return_to_native:
 // context block says why: 255 = resume 68K code, 240..247 = an interrupt
 // arrived while native code was running, other values = an exception to
 // be delivered to the 68K handler.
+//
+// The native context block is the kernel's ContextBlock; the offsets
+// used here are its fields (names from the kernel's sources): +0x000 the
+// flags, whose first byte is the status that comes back; +0x0D8 a pointer
+// to a save area; +0x0EC LR; +0x0FC PC; +0x10C r1; +0x114 r2; +0x11C r3;
+// +0x1FC r31.  Native code runs on the 68K stack, with r2 from native_toc
+// and r31 pointing at native_regs, where it finds the 68K registers.
 switch_to_native:
-        mfcr    immed_data
+        mfcr    immed_data                              // keep the recompiler's flags (cr1)
         lwz     rtn_addr, native_regs_ptr(EmulatorStatePtr)
         rlwinm  immed_data, immed_data, 8, 28, 31       // immed_data = immed_data[27:24]
         stw     immed_data, native_saved_dr_flags(EmulatorStatePtr)
         lwz     immed_data, native_toc(EmulatorStatePtr)
         mtcrf   0x0F, zero                              // cr4..cr7 = zero[15:0]
-        stw     rtn_addr, 0x1FC(addr)
-        stw     immed_data, 0x114(addr)
-        stw     data, 252(addr)
-        stw     pc, 60(rtn_addr)
+        stw     rtn_addr, 0x1FC(addr)                   // native r31 = address of native_regs
+        stw     immed_data, 0x114(addr)                 // native r2
+        stw     data, 252(addr)                         // native PC = the code to run
+        stw     pc, 60(rtn_addr)                        // the 68K pc, where native code can see it
         stw     zero, 64(rtn_addr)
 switch_to_native_L1:
         stw     d0, 0(rtn_addr)
@@ -31893,13 +31910,13 @@ switch_to_native_L1:
         stw     a4, 48(rtn_addr)
         stw     a5, 52(rtn_addr)
         stw     a6, 56(rtn_addr)
-        stw     a7, 0x10C(addr)
-        stb     zero, 0(addr)
+        stw     a7, 0x10C(addr)                         // native r1 = the 68K stack pointer
+        stb     zero, 0(addr)                           // status: none yet
         lis     data, 0x0020
-        bfl     cr_interrupt_pending, kcall_run_alternate_context
-        lwz     a7, 0x10C(addr)
+        bfl     cr_interrupt_pending, kcall_run_alternate_context // run the native context, unless an interrupt is already waiting
+        lwz     a7, 0x10C(addr)                         // back: the 68K stack pointer, as native code left it
         lwz     addr, native_context(EmulatorStatePtr)
-        lbz     immed_data, 0(addr)
+        lbz     immed_data, 0(addr)                     // why the kernel came back
         lwz     d0, 0(rtn_addr)
         lwz     d1, 4(rtn_addr)
         lwz     d2, 8(rtn_addr)
@@ -31908,7 +31925,7 @@ switch_to_native_L1:
         lwz     d5, 20(rtn_addr)
         lwz     d6, 24(rtn_addr)
         lwz     d7, 28(rtn_addr)
-        cmpwi   cr5, immed_data, 255
+        cmpwi   cr5, immed_data, 255                    // 255: native code is finished with the emulator's services
         lwz     a0, 32(rtn_addr)
         lwz     a1, 36(rtn_addr)
         lwz     a2, 40(rtn_addr)
@@ -31918,13 +31935,13 @@ switch_to_native_L1:
         lwz     a6, 56(rtn_addr)
         lwz     data, 64(rtn_addr)
         bne     cr5, switch_to_native_L2
-        lwz     pc, 60(rtn_addr)
+        lwz     pc, 60(rtn_addr)                        // resume 68K code where native code says
         rlwinm  sr_and_flags, sr_and_flags, 0, 21, 19   // sr_and_flags = sr_and_flags & 0xFFFFF7FF
         cror    cr_interrupt_pending, cr_interrupt_pending, cr_special_event_pending  // cr_interrupt_pending = cr_interrupt_pending | cr_special_event_pending
         lha     prefetch_data, 0(pc)
         b       move_w_mem_ccr
 switch_to_native_L2:
-        addi    base_disp, immed_data, -240
+        addi    base_disp, immed_data, -240             // 240-247: an interrupt at level 0-7 arrived
         addi    pc, pc, -2
         cmplwi  cr5, base_disp, 0x0007
         stw     pc, trace_pc(EmulatorStatePtr)
@@ -31969,16 +31986,16 @@ switch_to_native_L4:
         rlwimi  data, sr_and_flags, 8, 16, 23           // data[15:8] = sr_and_flags[7:0]
         rlwinm  sr_and_flags, sr_and_flags, 0, 26, 21   // sr_and_flags = sr_and_flags & 0xFFFFFC3F
         bl      enter_supervisor
-        addi    a7, a7, -0x310
-        lwz     base_disp, trace_pc(EmulatorStatePtr)
+        addi    a7, a7, -0x310                          // the frame: 0x310 bytes below the SR, PC and format word to come
+        lwz     base_disp, trace_pc(EmulatorStatePtr)   // +0x08: trace_pc, the 68K pc to come back to
         oris    immed_data, zero, 0x1300
-        stw     rtn_addr, 4(a7)
-        stw     addr, 8(a7)
+        stw     rtn_addr, 4(a7)                         // +0x0C: where this routine returns to
+        stw     addr, 8(a7)                             // +0x10: the CR, with four flags of sr_and_flags
         stw     base_disp, 0(a7)
-        stw     immed_data, 12(a7)
-        li      immed_data, 96
+        stw     immed_data, 12(a7)                      // +0x14: 0x13000000, by which the frame is recognised
+        li      immed_data, 96                          // +0x18: the first 0x300 bytes of the native context block
         lwz     addr, native_context(EmulatorStatePtr)
-        lwz     base_disp, 216(addr)
+        lwz     base_disp, 216(addr)                    // has the native context a save area ?
         addi    rtn_addr, a7, 0x310
         mtctr   immed_data
         addi    addr, addr, 0x300
@@ -31990,34 +32007,34 @@ switch_to_native_L5:
         stwu    base_disp, -8(rtn_addr)
         bdnz    switch_to_native_L5                     // CTR -= 1; branch while CTR != 0
         bt_likely 4*cr7+eq, switch_to_native_L6
-        lwz     base_disp, 236(EmulatorStatePtr)
+        lwz     base_disp, 236(EmulatorStatePtr)        // then it needs a fresh one: find a free one in the pool ...
         lwz     immed_data, 232(EmulatorStatePtr)
         andc    immed_data, immed_data, base_disp       // immed_data = immed_data & ~base_disp
         cntlzw  immed_data, immed_data                  // immed_data = number of leading zero bits in immed_data
         cmplwi  cr7, immed_data, 0x0020
         lis     addr, 0x8000
         srw     addr, addr, immed_data
-        beq     cr7, kcall_thud
+        beq     cr7, kcall_thud                         // ... or stop: none left
         or      base_disp, base_disp, addr
         stw     base_disp, 236(EmulatorStatePtr)
-        mulli   immed_data, immed_data, 0x220
+        mulli   immed_data, immed_data, 0x220           // each is 0x220 bytes
         lwz     rtn_addr, 224(EmulatorStatePtr)
         lwz     base_disp, 228(EmulatorStatePtr)
         add     rtn_addr, rtn_addr, immed_data
         add     base_disp, base_disp, immed_data
         lwz     immed_data, 232(a7)
-        stw     addr, 0x214(rtn_addr)
-        stw     immed_data, 0x218(rtn_addr)
+        stw     addr, 0x214(rtn_addr)                   // the save area records its own bit in the pool ...
+        stw     immed_data, 0x218(rtn_addr)             // ... and the save area it replaces
         stw     zero, 0x210(rtn_addr)
         lwz     addr, native_context(EmulatorStatePtr)
-        stw     rtn_addr, 232(a7)
-        stw     base_disp, 216(addr)
+        stw     rtn_addr, 232(a7)                       // the frame's copy of the context points to the old one
+        stw     base_disp, 216(addr)                    // the native context to the new
 switch_to_native_L6:
-        lwz     base_disp, 0x7A8(EmulatorStatePtr)
+        lwz     base_disp, 0x7A8(EmulatorStatePtr)      // the native context starts again with its initial flags ...
         ori     immed_data, zero, 0xE05C
         stw     base_disp, 0(addr)
         stw     base_disp, 64(addr)
-        lis     base_disp, 0x7DF2
+        lis     base_disp, 0x7DF2                       // ... and exception enables
         ori     base_disp, base_disp, 0xF700
         stw     base_disp, 4(addr)
         stw     base_disp, 68(addr)
@@ -32067,50 +32084,48 @@ fe07_handle_mixed_mode_fault_L3:
 fe07_handle_mixed_mode_fault_L4:
         cmpwi   zero, 1
         b       fe07_handle_mixed_mode_fault_L1
-fe07_handle_mixed_mode_fault_L5:
-        lhz     immed_data, 20(a7)
+
+// RTE from a format $E frame (the handler in slot +0x868): the frame a
+// switch to native code leaves on the 68K stack when an interrupt or
+// exception has to be handled by 68K code first.  Puts the saved native
+// context back, returns the save area that was claimed for the interval,
+// and resumes in switch_to_native.
+rte_format_e:
+        lhz     immed_data, 20(a7)                      // the mark at +0x14
         lbz     rtn_addr, 0x317(a7)
         cmpwi   cr7, immed_data, 0x1300
-        lwz     base_disp, 8(a7)
+        lwz     base_disp, 8(a7)                        // +0x08: the 68K pc
         bne     cr7, rte_bad_format
         ori     sr_and_flags, sr_and_flags, 0x0800
         mr      pc, addr
         stw     base_disp, trace_pc(EmulatorStatePtr)
-        li      immed_data, 96
+        li      immed_data, 96                          // copy the 0x300 bytes back into the native context block
         lwz     rtn_addr, native_context(EmulatorStatePtr)
         addi    addr, a7, 0x318
-        lwz     base_disp, 240(a7)
+        lwz     base_disp, 240(a7)                      // was a save area claimed ?
         mtctr   immed_data
         addi    rtn_addr, rtn_addr, 0x300
         cmplwi  cr7, base_disp, 0x0000
-fe07_handle_mixed_mode_fault_L6:
+rte_format_e_L1:
         lwz     immed_data, -4(addr)
         lwzu    base_disp, -8(addr)
         stw     immed_data, -4(rtn_addr)
         stwu    base_disp, -8(rtn_addr)
-        bdnz    fe07_handle_mixed_mode_fault_L6         // CTR -= 1; branch while CTR != 0
-        beq     cr7, fe07_handle_mixed_mode_fault_L7
-        lwz     addr, 216(rtn_addr)
+        bdnz    rte_format_e_L1         // CTR -= 1; branch while CTR != 0
+        beq     cr7, rte_format_e_L2
+        lwz     addr, 216(rtn_addr)                     // then free it: the context gets the one it had before ...
         lwz     base_disp, 0x218(addr)
         stw     base_disp, 216(rtn_addr)
-        lwz     immed_data, 0x214(addr)
+        lwz     immed_data, 0x214(addr)                 // ... and the pool its bit
         lwz     base_disp, 236(EmulatorStatePtr)
         andc    base_disp, base_disp, immed_data        // base_disp = base_disp & ~immed_data
         stw     base_disp, 236(EmulatorStatePtr)
-fe07_handle_mixed_mode_fault_L7:
-        lwz     rtn_addr, 12(a7)
-        lwz     addr, 16(a7)
-        addi    a7, a7, 0x318
+rte_format_e_L2:
+        lwz     rtn_addr, 12(a7)                        // +0x0C: back into switch_to_native
+        lwz     addr, 16(a7)                            // +0x10: the saved CR and flags
+        addi    a7, a7, 0x318                           // the frame is 0x318 bytes
         mtlr    rtn_addr
         b       set_ccr
-fe07_handle_mixed_mode_fault_L8:
-        addi    EmulatorStatePtr, EmulatorStatePtr, -0x740
-        lwz     rtn_addr, native_saved_dr_flags(EmulatorStatePtr)
-        mtcrf   0x01, rtn_addr                          // cr7 = rtn_addr[3:0]
-        lwz     rtn_addr, dr_invalidate_vector(EmulatorStatePtr)
-        bnelr   cr7
-        mtctr   rtn_addr
-        bctr
 
 // Not an opcode: the routine whose address is published in emulator control
 // register 15 (native_invalidate_entry).  Native code calls it, with r31
@@ -32119,13 +32134,26 @@ fe07_handle_mixed_mode_fault_L8:
 // arguments straight on to dr_invalidate_range, or returns at once if the
 // recompiler is not ready.
 native_invalidate_range:
-        bf      cr_dr_ready, native_invalidate_range_L1  // EmulatorStatePtr again
-        lwz     data, dr_flush_vector(EmulatorStatePtr)  // the recompiler's flags as they were when native code was entered
+        addi    EmulatorStatePtr, EmulatorStatePtr, -0x740  // EmulatorStatePtr again
+        lwz     rtn_addr, native_saved_dr_flags(EmulatorStatePtr)  // the recompiler's flags as they were when native code was entered
+        mtcrf   0x01, rtn_addr                          // cr7 = rtn_addr[3:0]
+        lwz     rtn_addr, dr_invalidate_vector(EmulatorStatePtr)
+        bnelr   cr7                                     // recompiler not ready
+        mtctr   rtn_addr
+        bctr
+
+// The default of cinv_handler and cpush_handler: CINV and CPUSH discard
+// every translation if the recompiler is ready, and do nothing else.
+cinv_cpush_flush:
+        bf      cr_dr_ready, cinv_cpush_flush_L1
+        lwz     data, dr_flush_vector(EmulatorStatePtr)
         mtctr   data
         bctrl
-native_invalidate_range_L1:
+cinv_cpush_flush_L1:
         b       fetch
-native_invalidate_range_L2:
+
+// The default of pflush_handler and ptest_handler: nothing.
+pflush_ptest_nop:
         b       fetch
 
 // Reached from 8 dispatch table entries:

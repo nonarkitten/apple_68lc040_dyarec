@@ -43,7 +43,7 @@ Legend: `[x]` done, `[~]` partly done, `[ ]` not started.
 - [~] Private opcodes: all named (Apple's names from SuperMario) and described; the SANE
       arithmetic (`FC04`, `FC06`, `FC08`-`FC0F`, 4 KB) is not read line by line
 - [x] The routines behind the forty FPU handler slots: they build the 68LC040's format 4
-      frame (`docs/06`). Nothing in the image or the ROMs calls `install_exception_stubs`
+      frame (`docs/06-exceptions.md`). Nothing in the image or the ROMs calls `install_exception_stubs`
 - [ ] Mixed mode: the layout of the native context block and the format `$E` frame
 
 ### Recompiler still to read
@@ -59,7 +59,7 @@ Legend: `[x]` done, `[~]` partly done, `[ ]` not started.
       programs longer than one block, self-modifying code announced with `FC16`, and
       compare-and-branch pairs (the recompiler treats `CMP` + signed `Bcc` specially)
 - [ ] `tools/drmap.py` scans with extension words of zero; three decisions depend on them
-      (`docs/09`, "What is translated"). `tools/check.py` could scan a second time with
+      (`docs/09-dynamic-recompiler.md`, "What is translated"). `tools/check.py` could scan a second time with
       non-zero words
 - [ ] Compare against an independent 68K emulator on a real instruction test suite
 - [ ] Extend the simulator harness with the kernel's side: faults to
@@ -195,7 +195,7 @@ was not built.
 ## Leads not yet followed
 
 - The recompiler translates 171 invalid opcodes that the interpreter rejects
-  (`docs/09`). The code it emits for `OR.B D0,(d8,PC,Xn)` reads at one
+  (`docs/09-dynamic-recompiler.md`). The code it emits for `OR.B D0,(d8,PC,Xn)` reads at one
   displacement and writes at another, which looks like a further slip in an
   emitter nobody could have tested.
 - Some code generators differ between the first build and `Emulator.x` without any
@@ -219,7 +219,7 @@ was not built.
   kernel service table: SheepShaver hosts this emulator without the real
   kernel, so its source is a worked example of the kernel stub still missing
   from `tools/run68k.py`.
-- The special-cased sequences and operands (`docs/14`) are presumably from hot code in the
+- The special-cased sequences and operands (`docs/14-static-checks.md`) are presumably from hot code in the
   ROM or system. The SuperMario sources could be searched for them: `MOVE.L ([bd.w],od.w),
   -(A7)`, `JSR ([bd.w])`, `JMP ([bd.w,A4,D0.W*4])`, and the string loops.
 - The 68K side of `FC01`-`FC0F` (the SANE package as built for Power Macs) is not in

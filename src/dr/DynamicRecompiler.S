@@ -221,7 +221,7 @@ dr_emit_finish_L1:
 // A special event became pending during translation.  Give up, restore
 // the borrowed registers and let the interpreter handle the event.
 dr_translate_abort:
-        lhz     rtn_addr, 0xB36(EmulatorStatePtr)
+        lhz     rtn_addr, dr_retranslating(EmulatorStatePtr)
         cmpwi   cr6, rtn_addr, 0
         bnelr   cr6
         addi    pc, pc, 2
@@ -13225,7 +13225,7 @@ dr_translate_done:
         sth     zero, dr_resume_offset(EmulatorStatePtr)
         stw     data, 4(addr)                           // slot: code address
         stw     pc, 0(addr)                             // slot: 68K address
-        sth     zero, 0xB36(EmulatorStatePtr)
+        sth     zero, dr_retranslating(EmulatorStatePtr)
         lwz     addr, dr_cache_limit(EmulatorStatePtr)
         add     data, data, rtn_addr
         mtctr   data
@@ -13415,16 +13415,16 @@ dr_reset_requests_L1:
 // PowerPC instruction is inside the translation cache, work out the 68K
 // address it corresponds to so that the frame holds a 68K pc.
 dr_fault_fixup:
-        mr      base_disp, data
-        bt      cr_dr_busy, dr_fault_fixup_L3
-        lwz     data, dr_cache_start(EmulatorStatePtr)
+        mr      base_disp, data                         // keep data
+        bt      cr_dr_busy, dr_fault_fixup_L3           // the fault was in the translator itself
+        lwz     data, dr_cache_start(EmulatorStatePtr)  // was the faulting instruction in the translation cache ?
         cmplw   cr7, addr, data
         lwz     data, dr_cache_limit(EmulatorStatePtr)
         blt     cr7, dr_fault_fixup_L2
         cmplw   cr7, addr, data
         bge     cr7, dr_fault_fixup_L2
-        lwz     data, 28(a7)
-        lwz     r23, dr_hash_table(EmulatorStatePtr)
+        lwz     data, 28(a7)                            // the pc saved in the frame: inside a block it is still the block's
+        lwz     r23, dr_hash_table(EmulatorStatePtr)    // find the block in the lookup table
         rlwimi  r23, data, 4, 16, 26                    // r23[15:5] = data[11:1]
         lwz     rtn_addr, 0(r23)
         cmplw   cr7, rtn_addr, data
@@ -13437,32 +13437,32 @@ dr_fault_fixup:
         beq     cr7, dr_fault_fixup_L1
         addi    r23, r23, 8
 dr_fault_fixup_L1:
-        lwz     rtn_addr, 4(r23)
-        subf    rtn_addr, rtn_addr, addr                // rtn_addr = addr - rtn_addr
-        stw     rtn_addr, 28(a7)
+        lwz     rtn_addr, 4(r23)                        // where its translation starts
+        subf    rtn_addr, rtn_addr, addr                // offset of the faulting instruction within the translation
+        stw     rtn_addr, 28(a7)                        // the frame holds that offset in place of the pc
 dr_fault_fixup_L2:
-        lwz     r23, dr_dispatch_vector(EmulatorStatePtr)
+        lwz     r23, dr_dispatch_vector(EmulatorStatePtr) // give back the registers the run-time and the translator borrow
         lwz     disp_table, saved_disp_table(EmulatorStatePtr)
         lwz     code_ptr, saved_code_ptr(EmulatorStatePtr)
         mr      data, base_disp
         blr
 dr_fault_fixup_L3:
-        mflr    rtn_addr
+        mflr    rtn_addr                                // a fault while translating: give the translation up
         crclr   cr_dr_busy
-        lhz     addr, dr_resume_offset(EmulatorStatePtr)
+        lhz     addr, dr_resume_offset(EmulatorStatePtr) // nothing to resume in a block
         sth     zero, dr_resume_offset(EmulatorStatePtr)
         stw     addr, 28(a7)
-        bl      dr_request_flush
+        bl      dr_request_flush                        // and discard every translation
         mtlr    rtn_addr
-        lwz     addr, dr_saved_addr(EmulatorStatePtr)
+        lwz     addr, dr_saved_addr(EmulatorStatePtr)   // the frame gets the values addr, data and rtn_addr had ...
         stw     addr, 48(a7)
         lwz     addr, dr_saved_data(EmulatorStatePtr)
         stw     addr, 52(a7)
         lwz     addr, dr_saved_rtn_addr(EmulatorStatePtr)
         stw     addr, 56(a7)
-        lwz     addr, dr_saved_cr(EmulatorStatePtr)
-        sth     addr, 44(EmulatorStatePtr)
-        addi    pc, pc, 2
+        lwz     addr, dr_saved_cr(EmulatorStatePtr)     // ... and the lower half of the CR as it was before translation began;
+        sth     addr, 44(EmulatorStatePtr)              // stored at +0x2C of the state block - the frame's field is 44(a7), as in take_bus_error
+        addi    pc, pc, 2                               // pc was moved back by dr_translate
         lwz     r23, dr_dispatch_vector(EmulatorStatePtr)
         lwz     disp_table, saved_disp_table(EmulatorStatePtr)
         lwz     code_ptr, saved_code_ptr(EmulatorStatePtr)
@@ -13472,31 +13472,31 @@ dr_fault_fixup_L3:
 // Called while a bus error frame is being built for a fault inside
 // translated code or inside the translator.
 dr_fault_redirect:
-        bt      cr_dr_busy, dr_resume_after_fault_L2
-        lwz     addr, dr_cache_start(EmulatorStatePtr)
+        bt      cr_dr_busy, dr_resume_after_fault_L2    // the frame was made while translating
+        lwz     addr, dr_cache_start(EmulatorStatePtr)  // was the access made from the translation cache ?
         lwz     data, dr_cache_limit(EmulatorStatePtr)
         cmplw   cr7, rtn_addr, addr
         cmplw   cr6, rtn_addr, data
         bltlr   cr7
         bgelr   cr6
-        lwz     rtn_addr, dr_code_base(EmulatorStatePtr)
-        lwz     data, 36(a7)
+        lwz     rtn_addr, dr_code_base(EmulatorStatePtr) // then do not resume at that address: the block may be gone
+        lwz     data, 36(a7)                            // the offset dr_fault_fixup left in the frame ...
         ori     rtn_addr, rtn_addr, dr_resume_after_fault - dr_cb
-        addi    data, data, 4
-        sth     data, dr_resume_offset(EmulatorStatePtr)
+        addi    data, data, 4                           // ... past the instruction that faulted
+        sth     data, dr_resume_offset(EmulatorStatePtr) // remembered for dr_resume_after_fault
         blr
 
 dr_resume_in_translator:
-        crclr   cr_dr_busy
+        crclr   cr_dr_busy                              // the translation in progress when the fault came is not continued
 
 dr_resume_after_fault:
         nop
-        stw     addr, dr_saved_addr(EmulatorStatePtr)
+        stw     addr, dr_saved_addr(EmulatorStatePtr)   // keep the registers that are about to be used
         stw     data, dr_saved_data(EmulatorStatePtr)
         mfcr    data
         stw     rtn_addr, dr_saved_rtn_addr(EmulatorStatePtr)
         stw     data, dr_saved_cr(EmulatorStatePtr)
-        lwz     r23, dr_hash_table(EmulatorStatePtr)
+        lwz     r23, dr_hash_table(EmulatorStatePtr)    // look the block up again
         rlwimi  r23, pc, 4, 16, 26                      // r23[15:5] = pc[11:1]
         lwz     addr, 0(r23)
         cmplw   cr7, addr, pc
@@ -13511,15 +13511,15 @@ dr_resume_after_fault:
         cmplw   cr7, addr, pc
         beq     cr7, dr_resume_after_fault_L1
         addi    r23, r23, 8
-        li      addr, -1
-        sth     addr, 0xB36(EmulatorStatePtr)
+        li      addr, -1                                // no longer translated:
+        sth     addr, dr_retranslating(EmulatorStatePtr) // translate it afresh and come back
         b       dr_translate_miss_L1
 dr_resume_after_fault_L1:
-        lwz     addr, 4(r23)
-        lhz     data, dr_resume_offset(EmulatorStatePtr)
+        lwz     addr, 4(r23)                            // its translation, as it is now
+        lhz     data, dr_resume_offset(EmulatorStatePtr) // plus the offset to resume at
         sth     zero, dr_resume_offset(EmulatorStatePtr)
         add     addr, addr, data
-        lwz     rtn_addr, dr_saved_rtn_addr(EmulatorStatePtr)
+        lwz     rtn_addr, dr_saved_rtn_addr(EmulatorStatePtr) // restore, and continue inside the block
         mtctr   addr
         lwz     addr, dr_saved_cr(EmulatorStatePtr)
         lwz     data, dr_saved_data(EmulatorStatePtr)
@@ -13527,10 +13527,10 @@ dr_resume_after_fault_L1:
         lwz     addr, dr_saved_addr(EmulatorStatePtr)
         bctr
 dr_resume_after_fault_L2:
-        lwz     addr, 48(a7)
+        lwz     addr, 48(a7)                            // clear the saved cr_dr_busy
         rlwinm  addr, addr, 0, 28, 26                   // addr = addr & 0xFFFFFFEF
         stw     addr, 48(a7)
-        lwz     addr, 36(a7)
+        lwz     addr, 36(a7)                            // the offset recorded when the translation was given up
         lwz     rtn_addr, dr_code_base(EmulatorStatePtr)
         sth     addr, dr_resume_offset(EmulatorStatePtr)
         ori     rtn_addr, rtn_addr, dr_resume_in_translator - dr_cb

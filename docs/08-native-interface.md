@@ -116,11 +116,21 @@ records) and then:
   the 68K caller.
 
 `switch_to_native` (`0E128`) stores D0–D7, A0–A6 and the 68K `pc` in the
-register area shared with native code (its address is at `+0x708` in the
-state block), stores `a7` in the native context block (address at
-`+0x710`) and issues kernel trap 1. The kernel runs the native context
-*(inferred)*. When control returns, a status byte at the start of the
-native context block says why:
+register area shared with native code, `native_regs`, sets up the native
+context block and issues kernel trap 1, `RunAlternateContext`. The
+native context block is one of the kernel's context blocks, like the
+emulator's own; the fields set are these (names from the kernel's
+sources, [13-rom-context.md](13-rom-context.md)):
+
+| Context block offset | Kernel's field | Set to |
+|---|---|---|
+| `+0x000` | `Flags`, first byte | 0; on return, the status below |
+| `+0x0FC` | `PC` | The native code to run |
+| `+0x10C` | `r1` | `a7`: native code runs on the 68K stack |
+| `+0x114` | `r2` | `native_toc` |
+| `+0x1FC` | `r31` | The address of `native_regs` |
+
+When control returns, the status byte says why:
 
 | Status | Meaning |
 |---|---|
@@ -129,11 +139,27 @@ native context block says why:
 | other | An exception is to be delivered to 68K code |
 
 To deliver an interrupt that arrived in native code, the emulator builds
-a private exception frame (format `$E`, `0x318` bytes) on the 68K
-supervisor stack containing a copy of the native context, runs the 68K
-interrupt handler, and on the handler's `RTE` (`0E408`) copies the
-context back and resumes native code. Nested native contexts are given
-save areas from a pool whose allocation mask is in the state block.
+a private exception frame of format `$E` on the 68K supervisor stack,
+holding a copy of the native context, and runs the 68K interrupt
+handler. On the handler's `RTE`, `rte_format_e` (`0E408`) copies the
+context back and resumes native code.
+
+| Frame offset | Contents |
+|---|---|
+| `+0x00`, `+0x02`, `+0x06` | SR, PC, format word |
+| `+0x08` | `trace_pc`: the 68K `pc` to come back to |
+| `+0x0C` | The address in `switch_to_native` at which to continue |
+| `+0x10` | The CR, with four flags of `sr_and_flags` |
+| `+0x14` | `0x13000000`, by which the frame is recognised |
+| `+0x18`–`+0x317` | The first `0x300` bytes of the native context block: its two kernel states, the special registers, r0–r31 and f0–f31 |
+
+The frame is `0x318` bytes. If the native context has a save area (a
+pointer at `+0x0D8` of the context block), the handler may enter native
+code again, so a fresh save area of `0x220` bytes is claimed for the
+interval from a pool described by `+0xE0`–`+0xEC` of the state block and
+returned by `rte_format_e`. With none free the emulator calls kernel
+service 15. Private opcode `FE07` inspects such a frame on behalf of a
+68K handler.
 
 ## Private opcodes
 
@@ -212,7 +238,7 @@ slot `+0x960` is called first.
 | 11, 12 | `instruction_count`, `opcode_counts` | |
 | 13 | `native_return_entry` | |
 | 14 | `expected_privilege_vector` | |
-| 15 | `native_invalidate_entry` | Address of `native_invalidate_range` (`0E4A8`), which native code may call to have translations of a range discarded |
+| 15 | `native_invalidate_entry` | Address of `native_invalidate_range` (`0E48C`), which native code may call to have translations of a range discarded |
 | 16, 17 | `toolbox_trap_table`, `os_trap_table` | |
 | 18 | | The recompiler's switches. Reading gives three flags from the CR; writing sets `cr_dr_enabled` and `cr_dr_ready` from bits 0 and 1 of A0, calls `dr_setup` when the recompiler is first enabled and flushes its cache when it becomes ready. Ignored unless bits 0 and 1 of `config_flags` are both set |
 | 19 | `config_flags` | |

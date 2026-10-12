@@ -19,6 +19,7 @@ exactly at the end of the image, which catches a statement it miscounted.
     Image().kind          word offset -> ('insn', Insn) or ('data', (start, end, directive))
     Image().lines         offset -> the source lines of the statement there, with the
                           comments and labels above it
+    Image().where         offset -> (file, line number) of that statement
     Image().table_users   offset of a routine -> opcodes whose table entry branches to it
 """
 
@@ -109,6 +110,7 @@ class Image:
         self.label_addrs = {}
         self.data = []                              # (start, end, directive)
         self.lines = collections.defaultdict(list)
+        self.where = {}
         self.read_source()
 
         self.kind = {}
@@ -150,6 +152,7 @@ class Image:
             except ValueError as error:
                 fail('%s:%d: %s' % (path, number, error))
             self.lines[location] += pending
+            self.where[location] = (path, number)
             pending = []
             if directive:
                 self.data.append((location, location + size, directive))

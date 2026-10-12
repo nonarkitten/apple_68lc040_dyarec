@@ -2,9 +2,10 @@
 #
 #   make            assemble src/ into build/Emulator.x
 #   make verify     build, then compare with ./Emulator.x
-#   make static-check  cross-check the code against the 68K instruction set (tools/check.py)
+#   make static-check  cross-check the code against the 68K instruction set (tools/check.py),
+#                   and the source, tools and documentation against each other (tools/selfcheck.py)
+#   make check      verify and static-check (run before committing)
 #   make test       run 68K test programs under the emulator in a simulator (tools/selftest.py)
-#   make check      verify, static-check and test (run before committing)
 #   make fuzz       compare interpreter and recompiler on random 68K programs (tools/fuzz.py)
 #   make listing    build/Emulator.lst: offsets, bytes and symbols
 #   make clean
@@ -48,10 +49,11 @@ verify: $(BUILD)/Emulator.x
 		exit 1; \
 	fi
 
-check: verify static-check test
+check: verify static-check
 
-static-check:
+static-check: $(BUILD)/Emulator.o
 	$(PYTHON) tools/check.py
+	$(PYTHON) tools/selfcheck.py
 
 test:
 	$(PYTHON) tools/selftest.py

@@ -61,7 +61,7 @@ apart from padding. The differences are all in system support.
 
 | Where (label in `Emulator.x`) | Change |
 |---|---|
-| `cas_l_mem_3` (`0CF28`) | `CAS.L` on an address that is a multiple of four is done with `lwarx`/`stwcx.`; the first build has only the load-compare-store sequence that the later builds keep for other addresses |
+| `cas_l_mem_3` (`0CF10`) | `CAS.L` on an address that is a multiple of four is done with `lwarx`/`stwcx.`; the first build has only the load-compare-store sequence that the later builds keep for other addresses |
 | `test_mode_events` (`0D2B4`) | Test-mode bit 18 and its hook at `+0x7C8` are new |
 | `fe04_fe05_move_ecr` (`0D824`) | Private opcodes `FE04`/`FE05` accept 26 register numbers instead of 24; the two new ones are the hook and its argument |
 | `fe0f_power_dispatch` (`0D9EC`) | `FE0F` passes D1 as well as D0 |
@@ -80,7 +80,7 @@ entries that differ, other than in branch displacements.
 | `check_interrupt` (`0D3E4`) | New, with its call in `special_event_continue`: the private interrupt request and its per-level table at `+0xAE0` ([06-exceptions.md](06-exceptions.md)). The G3 build goes straight to `take_interrupt` |
 | `fe1f_mp_dispatch` (`0DB44`) | New: private opcode `FE1F`, kernel service 8 |
 | `init_state` (`0DB94`) | The configuration word at `+0x7A0` starts as `0x80000039` instead of `1` |
-| After `handler_defaults` (`0DD74`…) | The set-up of the native context area preserves `+0x4D8` and stores `0xAE0` at `+0x1C8`. The table itself has 151 entries in all three builds |
+| The code after `handler_defaults`, from `0DD74` | The set-up of the native context area preserves `+0x4D8` and stores `0xAE0` at `+0x1C8`. The table itself has 151 entries in all three builds |
 | `switch_to_native` (`0E128`), `fe07_handle_mixed_mode_fault` (`0E380`) | Where the native context area is copied to the 68K stack and back, a save area of 0x220 bytes is now also claimed from, and returned to, a pool described by `+0xE0`…`+0xEC`; kernel service 15 when none is free |
 | `EmKernelTrapTable` (`0E8C0`) | Seventeen entries instead of sixteen |
 | After `interpreter_credits` | Removed: see below |

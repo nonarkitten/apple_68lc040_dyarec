@@ -42,6 +42,11 @@
 
 // Scratch state saved when a memory fault interrupts an instruction
 #define fault_saved_flags       0x080   // the context's flags at the time of the fault
+#define fault_memret_status     0x084   // the kernel's description of the faulting access, copied from the
+#define fault_memret_ear        0x088   //   ECB's MemRet fields below: status, address (EAR), effective
+#define fault_memret_ea         0x08C   //   address, and eight bytes of data
+#define fault_memret_data       0x090
+#define fault_memret_data_lo    0x094
 #define fault_data              0x098
 #define fault_immed_data        0x09C
 #define fault_base_disp         0x0A0
@@ -60,6 +65,11 @@
 #define ecb_handler             0x14C   // where the kernel sends the context's exceptions
 #define ecb_handler_arg         0x154   // passed to the handler in r4
 #define ecb_handler_return      0x15C   // the handler's return address (EmKernelTrapTable)
+#define ecb_memret_status       0x164   // IntraState.MemRetStatus: the kernel's state for the memory access
+#define ecb_memret_data         0x168   // IntraState.MemRetData (eight bytes)
+#define ecb_memret_data_lo      0x16C
+#define ecb_memret_ear          0x174   // IntraState.MemRetEAR: the address that faulted
+#define ecb_memret_ea           0x17C   // IntraState.MemRetEA
 #define ecb_pc                  0x184   // where the context resumes (initially EmEntry)
 #define ecb_lr                  0x18C   // LR to restore
 #define ecb_r3                  0x194   // r3 to restore (initially the address of this block)
@@ -147,6 +157,7 @@
 #define dr_emit_ptr             0xB2C   // where the block being translated will start
 #define dr_hash_slot            0xB30   // lookup table slot the new block will occupy
 #define dr_resume_offset        0xB34   // (16 bits) offset into a block at which to resume after a fault
+#define dr_retranslating        0xB36   // (16 bits) a block is being translated again to resume in it after a fault
 #define dr_saved_addr           0xB38   // addr, data, rtn_addr and CR as they were when translation began
 #define dr_saved_data           0xB3C
 #define dr_saved_rtn_addr       0xB40

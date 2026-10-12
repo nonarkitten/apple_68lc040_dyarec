@@ -13,11 +13,14 @@ results compared.
 
 The checks also validate this project's own material. The comment on
 every dispatch table entry comes from the 68K decoder in `tools/m68k.py`;
-a disagreement between that decoder and the emulator shows up here.
+a disagreement between that decoder and the emulator shows up here. A
+third tool, `tools/selfcheck.py`, is concerned with nothing else: it
+checks the source, the tools and the documentation against one another
+(see [The project's own consistency](#the-projects-own-consistency)).
 
 Between them the checks found four defects in the original code, all in
-corners that ordinary software does not reach. They are described under
-[Findings](#findings).
+corners that ordinary software does not reach, and reading the code
+turned up a fifth. They are described under [Findings](#findings).
 
 ## What is checked
 
@@ -109,6 +112,28 @@ With `--translations` the checker also translates every translated
 instruction on its own and examines the generated code, which must not
 name r23: that register holds the recompiler's entry point and is not
 part of the 68K's state. 37,642 translations are examined; 50 fail.
+
+### The project's own consistency
+
+The source is edited by hand and the documentation refers to it by name
+and by offset, so the two can drift apart without changing a byte of the
+build. `tools/selfcheck.py`, run by `make static-check` after
+`check.py`, looks for that. It does not execute or judge the emulator.
+
+- **Offsets.** The tools find labels by walking the source and counting
+  bytes (`tools/image.py`). Every label must be at the offset the
+  assembler gave it, which is read from the symbol table of the build.
+- **Comments that state facts.** "Reached from *n* dispatch table
+  entries" above a routine must agree with the table, and the opcode
+  written beside each of the 65,536 table entries must be that entry's.
+- **The documentation.** A label quoted with its offset —
+  `fetch` (`06084`) — must be at that offset; a state block field quoted
+  with its offset must have it; a word in code style that has the form
+  of a label must be a label, a register or a field in the source; links
+  and quoted paths must lead to files that exist.
+
+**Result:** 7,180 labels, 68,040 comments and about a thousand
+references agree.
 
 ### Interpreter against recompiler
 
@@ -227,6 +252,25 @@ another `ADDX`, which write X and so keep their flags.
 not translated at all. Nor was `ADDX` in the first recompiling build:
 its translation, and with it this defect, came with the later tuning
 ([15-build-history.md](15-build-history.md)).
+
+### A slip in the recompiler's fault path
+
+Found by reading, not by a check. When a bus error interrupts the
+translator, `dr_fault_fixup` puts the values that `addr`, `data` and
+`rtn_addr` had before translation began into the frame being built, at
+`48(a7)`, `52(a7)` and `56(a7)`. The lower half of the saved CR, which
+belongs at `44(a7)`, is stored with the same displacement from the wrong
+base register:
+
+```
+180A8   sth     addr, 44(EmulatorStatePtr)      // B07F002C
+0D58C   sth     rtn_addr, 44(a7)                // B0A1002C: the same field in take_bus_error
+```
+
+The half word lands at `+0x2C` of the state block, in the image of the
+68K registers that is only meaningful while the emulator is not running,
+and the frame keeps the translator's CR4–CR7. Both are scratch at that
+point, so the slip has no visible effect.
 
 ### Invalid opcodes that the recompiler translates
 

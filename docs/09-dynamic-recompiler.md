@@ -546,20 +546,28 @@ A bus error can occur in the middle of a translated block, where the
 the translator itself. Two routines called while the bus error frame is
 being built repair the picture:
 
-- `dr_fault_redirect` (`180C4`), if the faulting PowerPC address is in
-  the translation cache, records the position within the block and
-  arranges for execution to resume through `dr_resume_after_fault`.
-- `dr_fault_fixup` (`17FFC`) converts a saved address inside the cache
-  back to an offset relative to the block's translation by finding the
-  block in the lookup table, so that the frame built for the 68K handler
-  remains valid even if the translation is moved or discarded before the
-  handler returns. If the fault interrupted the translator
-  (`cr_dr_busy`), the translation is abandoned and the saved scratch
-  registers are restored first.
+- `dr_fault_fixup` (`17FFC`), called as the frame is completed, deals
+  with a faulting PowerPC address inside the translation cache. It finds
+  the block in the lookup table from the `pc` in the frame — inside a
+  block `pc` is still the block's — and replaces that field
+  (frame `+0x24`) with the offset of the faulting instruction from the
+  start of the block's translation. The frame then stays valid even if
+  the translation is moved or discarded before the handler returns. If
+  the fault interrupted the translator instead (`cr_dr_busy`), the
+  translation is given up: the frame receives the values `addr`, `data`
+  and `rtn_addr` had before translation began, and a flush of the whole
+  cache is requested.
+- `dr_fault_redirect` (`180C4`), called by `RTE` from such a frame,
+  refuses to resume at a saved address inside the cache. It records the
+  offset from the frame, plus four to pass the instruction that faulted,
+  in `dr_resume_offset`, and substitutes the address of
+  `dr_resume_after_fault`.
 
-On `RTE` from such a frame, `dr_resume_after_fault` /
-`dr_resume_in_translator` look the block up again and continue at the
-recorded offset, retranslating if the block has gone.
+`dr_resume_after_fault` (`180FC`) looks the block up again and continues
+at the recorded offset inside its translation. If the block is no longer
+translated it sets `dr_retranslating` and has it translated afresh
+first. `dr_resume_in_translator` is the entry used when the fault had
+interrupted the translator.
 
 ## Limits
 

@@ -111,7 +111,7 @@ label is a line of its own ending in a colon.
 - Old-style branch prediction hints are spelled with `_likely` / `_unlikely`
   macros (`src/include/Macros.inc`).
 - Most routines reached from the dispatch table are named after the
-  instructions that use them (`add_l_dn_dn`, numbered when several share a
+  instructions that use them (`add_l_mem_d0`, numbered when several share a
   description). `cea_`/`fea_` = effective address routines. Private opcode
   routines carry the opcode and Apple's name (`fc0a_float_add`).
 - In the recompiler, `dr_emit_*` (code generators) and `dr_decode_*` (first-pass
