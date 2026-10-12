@@ -5,10 +5,10 @@ what a real ROM shows about the image's surroundings: where it is loaded,
 how the kernel starts it, and what the kernel does when the emulator
 traps or faults.
 
-The evidence is the ROM of the Power Macintosh 8600 and 9600 (4 MB,
-checksum `960FC647`, version `$077D`), examined with
-`tools/rominfo.py` and by disassembling its kernel. ROM images are not
-part of this repository.
+The evidence is a set of 23 Macintosh ROM images, examined with
+`tools/rominfo.py`, and in particular the ROM of the Power Macintosh 8600
+and 9600 (4 MB, checksum `960FC647`, version `$077D`), whose kernel was
+disassembled. ROM images are not part of this repository.
 
 Names of kernel structures and services in this chapter (`ConfigInfo`
 field names, `ContextBlock`, `KernelData`, `ReturnFromException`, the
@@ -24,29 +24,62 @@ it is known:
 - **[later]** known from later versions of the kernel, and not present
   in this ROM.
 
-## The emulator in this ROM is an earlier build
+## Builds of the emulator
 
-The emulator in the 8600/9600 ROM is **not** byte-identical to
-`Emulator.x`. It is an earlier build of the same program **[ROM]**:
+`Emulator.x` is not found in any of the 23 Macintosh ROM images that were
+examined (ROM chips of machines from the Quadra 840AV to the PowerBook G3
+Series); it is a later build than all of them. Running
+`tools/rominfo.py` over those images groups them by the emulator they
+contain **[ROM]**:
 
-| | 8600/9600 ROM | `Emulator.x` |
-|---|---|---|
-| Interpreter credit | `0E7C0` "680x0 Emulation written by Gary Davidian" | `0EA00`, same text |
-| Recompiler credit | `1735C` "Dynamic Recompilation by Eric Traut" | `182A8` "Dynamic Recompilation by Eric Traut, tuned by Bob Abeles, hacked by Murph" |
-| Interpreter block | full to `10000` | code to `0EA44`, then padding |
-| Recompiler block | code to `17380` | code to `182FC` |
-| `EmEntry` | `0E660` | `0E8B0` |
-| Kernel trap table | `0E680`, 16 entries (0–15) | `0E8C0`, 17 entries |
-| Dispatch table, first instructions that differ | — | 438 (`CHK`, `CAS`, `TAS`, `CHK2`/`CMP2`, `MOVE` to/from SR, private opcodes) |
+| Emulator build | Recompiler credit | Recompiler code ends | Kernel services | Found in |
+|---|---|---|---|---|
+| — | (68K machines: no emulator) | | | Quadra 660AV/840AV, PowerBook 190cs, PowerBook 520/540; and a damaged Power Mac 9700 prototype dump |
+| Interpreter only, three variants | none | | 0–4 | Power Mac 6100/7100/8100, Workgroup Server 9150 |
+| First with the recompiler | "Eric Traut" | `17380` | 0–5 | Power Mac 7200/7500/8500/9500 (both versions), 7300/7600/8600/9600 (both versions), PowerBook 2300, Pippin |
+| Variant of the above | "Eric Traut" | `173A0` | 0–5 | Power Mac and Performa 5200/5300/6200/6300 |
+| Tuned, two variants | "Eric Traut, tuned by Bob Abeles" | `180A8` | 0–5 | Performa 6400; PowerBook 1400 |
+| Tuned | "Eric Traut, tuned by Bob Abeles" | `182E8` | 0–6 | Power Mac 6500 |
+| Tuned | "Eric Traut, tuned by Bob Abeles" | `182E8` | 0–7 | Power Mac G3, PowerBook G3 Series |
+| **`Emulator.x`** | "Eric Traut, tuned by Bob Abeles, hacked by Murph" | `182FC` | uses 0–8 | none of the above |
 
-The recompiler in the ROM begins with the same instructions and uses the
-same state block fields as the one documented in
-[09-dynamic-recompiler.md](09-dynamic-recompiler.md): it is the same
-design, about 4 KB smaller. `Emulator.x` therefore comes from a later
-ROM. The interface to the kernel described below is the one the ROM's
-kernel implements; the later emulator uses the same context block
-offsets and the same first six services, plus three services this kernel
-does not have.
+"Kernel services" is the range of service numbers for which the kernel
+in the same ROM installs a routine; for `Emulator.x` it is the range the
+emulator calls.
+
+Some observations:
+
+- In the NuBus Power Macs the emulator is interpretive only, and its code
+  is at ROM offset `320000` rather than `360000`. The dispatch table is
+  at `380000` in every Power Macintosh ROM examined.
+- The recompiler appears with the first PCI Power Macs, and it is
+  already the design documented in
+  [09-dynamic-recompiler.md](09-dynamic-recompiler.md): the first build's
+  recompiler begins with the same instructions and uses the same state
+  block fields. The direct-mapped cache of US 5,790,825, and its 128 KB
+  offset table, are not in any of these ROMs.
+- The dispatch table changes little. Between the first recompiling
+  build and the G3 build only 26 entries have a different first
+  instruction (`TAS` and private opcodes); between the G3 build and
+  `Emulator.x`, 435 do (`CHK`, `CAS`, `CHK2`/`CMP2`, `TAS`, `MOVE`
+  to and from the SR, private opcodes).
+- `lwarx`/`stwcx.` (in the recompiler's invalidation requests) first
+  appear in the G3 build.
+- Each later kernel adds services: 5 with the first PCI machines, 6 with
+  the Power Mac 6500, 7 with the G3. `Emulator.x` calls service 8, which
+  none of these kernels provides, so it belongs with a kernel later than
+  the G3's — that is, to the generation of machines whose ROM is loaded
+  from a file rather than held in a chip *(inferred from the above; no
+  such image was examined)*.
+- The `UNPK -(Ay),-(A7)` defect
+  ([14-static-checks.md](14-static-checks.md)) is present, at the same
+  offset, in the first recompiling build, the G3 build and `Emulator.x`.
+
+The rest of this chapter uses the Power Macintosh 8600/9600 ROM
+(checksum `960FC647`), which contains the first recompiling build. The
+interface to the kernel described below is the one that ROM's kernel
+implements; `Emulator.x` uses the same context block offsets and the
+same first six services.
 
 ## Where the emulator lives
 
@@ -137,9 +170,9 @@ operand is 13: it is still service 14. Step 2 is what makes the inline
 | 3 | `VMDispatch` | implemented | Private opcodes `FE06`, `FE0A` (handler slot `+0x968`) |
 | 4 | `PrioritizeInterrupts` | implemented | Lowering the SR interrupt mask below a pending request |
 | 5 | `PowerDispatch` | implemented | Private opcode `FE0F` (handler slot `+0x99C`) |
-| 6 | `RTASDispatch` **[later]** | not implemented | Private opcode `FE20` |
-| 7 | `CacheDispatch` **[later]** | not implemented | Private opcode `FE11` (handler slot `+0x9A4`) |
-| 8 | `MPDispatch` **[later]** | not implemented | Private opcode `FE1F` (handler slot `+0x9DC`) |
+| 6 | `RTASDispatch` **[later]** | not implemented (first in the Power Mac 6500 ROM) | Private opcode `FE20` |
+| 7 | `CacheDispatch` **[later]** | not implemented (first in the G3 ROMs) | Private opcode `FE11` (handler slot `+0x9A4`) |
+| 8 | `MPDispatch` **[later]** | not implemented (in none of the ROMs examined) | Private opcode `FE1F` (handler slot `+0x9DC`) |
 | 9–14 | | not implemented | Not used |
 | 15 | `SystemCrash` | the same routine as every unimplemented service | No free native context save area |
 | 16 | | outside the kernel's table | Not used |
@@ -214,5 +247,12 @@ $ python3 tools/rominfo.py "path/to/8600-9600.ROM"
 ```
 
 prints the configuration record fields, the mapped addresses, and a
-comparison of the ROM's emulator with `Emulator.x`. Run against a ROM
-that contains the same build as `Emulator.x`, it reports "Identical".
+comparison of the ROM's emulator with `Emulator.x`. Given several ROMs,
+
+```
+$ python3 tools/rominfo.py *.ROM
+```
+
+it prints one line for each: a fingerprint of the emulator build, where
+the code is, the recompiler credit and the kernel's services. A ROM that
+contains the same build as `Emulator.x` is reported as such.

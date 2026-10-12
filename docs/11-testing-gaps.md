@@ -159,5 +159,5 @@ Each stage is useful on its own.
   format of the fault description.
 - Who writes the handler table slots and the "expected vector" fields
   after initialisation, and with what.
-- Which ROM `Emulator.x` was taken from. The 8600/9600 ROM contains an
-  earlier build ([13-rom-context.md](13-rom-context.md)).
+- Which ROM `Emulator.x` was taken from. It is later than every ROM chip
+  image examined ([13-rom-context.md](13-rom-context.md)).

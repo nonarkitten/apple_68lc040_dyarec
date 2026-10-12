@@ -2,7 +2,9 @@
 """Report where a Power Macintosh ROM puts the emulator, and how the copy in
 that ROM compares with Emulator.x.
 
-Usage: rominfo.py path/to/4MB.ROM
+Usage: rominfo.py path/to/4MB.ROM            full report on one ROM
+       rominfo.py ROM ROM ...                one line per ROM: which build of
+                                             the emulator each one contains
 
 A PCI Power Macintosh ROM carries a configuration record for its kernel
 (known as NKConfigurationInfo) at ROM offset 0x30D000.  Offsets in the
@@ -94,9 +96,84 @@ def extent(image, start, stop):
     return end
 
 
+FIRST_TABLE_ENTRY = bytes.fromhex('7D04DB78')      # or data, d0, prefetch_data (ORI.B #,D0)
+SECOND_TABLE_ENTRY = bytes.fromhex('7D24DB78')     # or data, d1, prefetch_data (ORI.B #,D1)
+SERVICE_TABLE_SETUP = bytes.fromhex('390105F0')    # kernel: addi r8, r1, 0x5F0
+
+
+def find_emulator(rom):
+    """Locate the dispatch table and the emulator code in any ROM, without
+    relying on a configuration record.  Returns (code offset, table offset)
+    or None."""
+    table = rom.find(FIRST_TABLE_ENTRY)
+    while table >= 0 and not (table % 8 == 0
+                              and rom[table + 8:table + 12] == SECOND_TABLE_ENTRY):
+        table = rom.find(FIRST_TABLE_ENTRY, table + 4)
+    credit = rom.find(b'680x0 Emulation')
+    if table < 0 or credit < 0:
+        return None
+    return credit & ~0xFFFF, table
+
+
+def kernel_services(rom):
+    """Service numbers the kernel installs a routine of their own for.  The
+    kernel fills a 16-entry table with a default routine and then stores
+    individual routines with "addi r23, r25, x / stw r23, n(r8)" pairs."""
+    at = rom.find(SERVICE_TABLE_SETUP)
+    if at < 0:
+        return None
+    previous = word(rom, at - 4)                    # addi r23, r25, default routine
+    default = previous & 0xFFFF if previous >> 16 == 0x3AF9 else None
+    slots, pending = set(), None
+    for offset in range(at + 4, at + 240, 4):
+        value = word(rom, offset)
+        if value >> 16 == 0x3AF9:                   # addi r23, r25, x
+            pending = value & 0xFFFF
+        elif value >> 16 == 0x92E8:                 # stw r23, n(r8)
+            if pending != default:
+                slots.add((value & 0xFFFF) // 4)
+        elif value >> 16 not in (0x3AC0, 0x36D6, 0x7EE8, 0x4082):
+            break
+    return sorted(slot for slot in slots if slot < 16)
+
+
+def summary(paths):
+    import hashlib
+    reference = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                             'Emulator.x')
+    with open(reference, 'rb') as handle:
+        ours = handle.read()[0x3C:0x3C + CODE_SIZE + TABLE_SIZE]
+    print('build       code    credit  recompiler            services  ROM')
+    for path in paths:
+        with open(path, 'rb') as handle:
+            rom = handle.read()
+        name = os.path.basename(path)
+        found = find_emulator(rom)
+        if not found:
+            print('%-10s  %s' % ('(none)', name))
+            continue
+        code, table = found
+        image = rom[code:table] + rom[table:table + TABLE_SIZE]
+        build = 'Emulator.x' if image == ours else hashlib.sha1(image).hexdigest()[:10]
+        credit = rom.find(b'680x0 Emulation') - code
+        recompiler = [text for _, text in credits(rom[code:table])
+                      if text.startswith('Dynamic')]
+        who = recompiler[0][len('Dynamic Recompilation by '):] if recompiler else '-'
+        services = kernel_services(rom)
+        print('%-10s  %06X  +%05X  %-20s  %-8s  %s' % (
+            build, code, credit, who.replace('Eric Traut', 'Traut')
+            .replace('tuned by Bob Abeles', 'Abeles').replace('hacked by Murph', 'Murph'),
+            '?' if not services else
+            ('0-%d' % services[-1] if services == list(range(len(services)))
+             else ','.join(str(n) for n in services)), name))
+
+
 def main():
-    if len(sys.argv) != 2:
+    if len(sys.argv) < 2:
         sys.exit(__doc__)
+    if len(sys.argv) > 2:
+        summary(sys.argv[1:])
+        return
     with open(sys.argv[1], 'rb') as handle:
         rom = handle.read()
     print('ROM: %d bytes, checksum %08X, version $%04X' % (

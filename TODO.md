@@ -80,8 +80,11 @@ Legend: `[x]` done, `[~]` partly done, `[ ]` not started.
 - [ ] Try the build with GNU binutils (`powerpc-*-as`) as a second assembler
 
 ### 7. Next (ideas, roughly in order of value)
-- [ ] Find the ROM that `Emulator.x` came from (it is a later build than the 8600/9600 ROM's)
-      and run `tools/rominfo.py` on it; its kernel should implement services 6-8
+- [ ] Find the image that `Emulator.x` came from. It is in none of the 23 ROM chip dumps
+      checked (Quadra 840AV .. PowerBook G3 Series); it calls kernel service 8, which first
+      exists after the G3 ROM, so look in a NewWorld "Mac OS ROM" file (the 4 MB image inside
+      it; the XCOFF wrapper's 2018 date fits a ROM-rebuild project working from one).
+      `tools/rominfo.py` will report "Emulator.x" in its build column when it sees it
 - [ ] Diff the two builds routine by routine: what did "tuned by Bob Abeles, hacked by Murph" change?
 - [ ] Extend `tools/check.py`: condition-code effects (which instructions may touch CR0 / XER /
       `ccr_x`), which 68K registers a routine writes, and loops (shifts, MOVEM)
@@ -167,3 +170,8 @@ Open:
   `4EF4` with `81E2`, `81E1`, `0521`). What code uses those exact
   extension words is unknown - probably the trap dispatcher or a jump
   table idiom in the ROM; searching the 68K ROM for them would tell.
+- ROM archive scan (2026-10-11): five recompiling builds before `Emulator.x`. The very first
+  PCI ROM (7200/7500/8500/9500 v1) already has the hash-lookup recompiler, so the patent's
+  direct-mapped design never shipped in a ROM we have. Kernel services grow 0-4 (NuBus),
+  0-5 (PCI), 0-6 (6500), 0-7 (G3); my names for 6/7/8 (RTAS, Cache, MP) fit that timeline
+  (CHRP work in 1997, G3 backside cache, MP in 1999) but remain recalled, not verified.
