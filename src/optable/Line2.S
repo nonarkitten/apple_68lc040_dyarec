@@ -1483,7 +1483,7 @@
         lwz     data, 0(a7)                             // 22D7  MOVE.L    (A7),(A1)+
         b       move_l_ea_mem_20
         cmpwi   cr7, prefetch_data, 0x22D8              // 22D8  MOVE.L    (A0)+,(A1)+
-        b       move_l_mem_mem_43
+        b       move_l_a0_inc_a1_inc_run
         ori     rtn_addr, code_ptr, move_l_ea_mem_20 - cb  // 22D9  MOVE.L    (A1)+,(A1)+
         b       fea_l_31
         cmpwi   cr7, prefetch_data, 0x22DA              // 22DA  MOVE.L    (A2)+,(A1)+

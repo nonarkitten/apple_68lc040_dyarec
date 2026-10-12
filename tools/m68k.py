@@ -411,10 +411,11 @@ def _lineF(op):
                 name = ('PFLUSHN', 'PFLUSH', 'PFLUSHAN', 'PFLUSHA')[mode]
                 return _op(name, '', '' if mode >= 2 else '(A%d)' % reg, '')
             return ILLEGAL
-        if kind in (5, 6):                          # PTESTW / PTESTR (68040 only)
+        if kind == 5:                               # PTESTW / PTESTR (68040 only)
             if mode == 1:
-                return _op('PTESTW' if kind == 5 else 'PTESTR', '', '(A%d)' % reg, '')
-            return ILLEGAL
+                return _op('PTESTW', '', '(A%d)' % reg, '')
+            if mode == 5:
+                return _op('PTESTR', '', '(A%d)' % reg, '')
         return ILLEGAL
     if cpid == 3:                                   # MOVE16
         if kind == 0:

@@ -7,6 +7,13 @@
 #       optable  the 68K opcode dispatch table (two instructions per opcode)
 #
 # A range ends where the next one starts.
+#
+# Adding the word "frozen" after the kind hands a file over to manual
+# maintenance: tools/gen.py stops rewriting it, and it is edited directly
+# from then on (remove the "Generated ... do not edit" banner when doing so).
+# The rest of the image is still generated.  Labels a frozen file defines or
+# uses must keep matching the generated files; "make verify" will say if
+# they do not.
 
 00000   interp/Interpreter.S    code
 10000   dr/DynamicRecompiler.S  code

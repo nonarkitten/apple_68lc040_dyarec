@@ -97,6 +97,7 @@ class Annotations:
         self.reg_overrides = []                 # (start, end, regno, name)
         self.operands = {}                      # addr -> replacement operand text
         self.layout = []                        # (start, path, kind)
+        self.frozen = set()                     # files that are now maintained by hand
         self._load_layout(os.path.join(directory, 'layout.txt'))
         self._load_hints(os.path.join(directory, 'hints.txt'))
         for name in sorted(os.listdir(directory)):
@@ -113,9 +114,11 @@ class Annotations:
     def _load_layout(self, path):
         for number, text in self._meaningful(path):
             fields = text.split()
-            if len(fields) != 3:
-                fail('%s:%d: expected "start file kind"' % (path, number))
+            if len(fields) not in (3, 4) or fields[3:] not in ([], ['frozen']):
+                fail('%s:%d: expected "start file kind [frozen]"' % (path, number))
             self.layout.append((int(fields[0], 16), fields[1], fields[2]))
+            if fields[3:]:
+                self.frozen.add(fields[1])
         self.layout.sort()
         if not self.layout or self.layout[0][0] != 0:
             fail('layout must start at offset 0')
@@ -828,8 +831,10 @@ class Generator:
                       '//'] + GENERATED_BANNER.rstrip('\n').split('\n') + ['']
             while out and out[0] == '':
                 out.pop(0)
-            self.write(path, '\n'.join(header + out) + '\n')
             written.append(path)
+            if path in self.ann.frozen:
+                continue                        # hand-maintained from now on
+            self.write(path, '\n'.join(header + out) + '\n')
         self.write_top(written)
         return written
 

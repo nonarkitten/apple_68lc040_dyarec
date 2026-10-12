@@ -116,10 +116,14 @@ operations).
 Each stage is useful on its own.
 
 1. **Static cross-checks (no execution).** Use the dispatch table as a
-   specification: for each opcode, check mechanically that the entry and
-   the routine it reaches have the properties the 68K instruction
-   requires (for example, that every `ADD` variant ends by copying XER
-   to `ccr_x`). `tools/gen.py` already has the table-to-routine mapping.
+   specification and check mechanically that the code reached from each
+   entry has the properties the 68K instruction requires. This stage
+   exists: `make static-check` verifies which opcodes are implemented,
+   the `rtn_addr` convention, and the length of every instruction; see
+   [14-static-checks.md](14-static-checks.md). The same approach extends
+   to condition codes (for example, that every `ADD` variant copies the
+   XER to `ccr_x` and that no `MOVEA` path touches CR0) and to which
+   68K registers a routine writes.
 2. **Bare interpreter in a PowerPC emulator.** Load the image at a
    suitable address in QEMU (or a simple PowerPC interpreter), provide
    the minimal kernel stub from section 2 and a reset vector, and run

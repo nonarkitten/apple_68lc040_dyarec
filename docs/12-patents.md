@@ -38,12 +38,22 @@ and most of it applies to this image unchanged.
 
 US 5,623,617 shares its description with US 5,574,873. Its claims concern
 emulation routines that recognise a *sequence* of guest instructions and
-emulate the sequence as a unit, bypassing the dispatch between them (its
-figures 9 and 10 give the example of a repeated instruction). In this
-image a related idea is visible in `DBcc`, whose table entry takes the
-loop branch and loads the next opcode itself. The patent's own example —
-a routine that tests `prefetch_data` for a specific following opcode — is
-not documented here.
+emulate the sequence as a unit, bypassing the dispatch between them: its
+figure 10 shows a dispatch table entry whose first instruction tests
+`prefetch_data` — the next opcode — for a repeat of the instruction.
+
+This image does exactly that. The entry for `MOVE.L (A0)+,(A1)+` is
+
+```
+        cmpwi   cr7, prefetch_data, 0x22D8      // 22D8  MOVE.L (A0)+,(A1)+
+        b       move_l_a0_inc_a1_inc_run
+```
+
+and the routine loops for as long as the comparison succeeds. Twelve
+table entries look ahead in this way, for runs of one instruction and
+for three two-instruction idioms; they are listed in
+[14-static-checks.md](14-static-checks.md). `DBcc` is a related case:
+its table entry takes the loop branch and loads the next opcode itself.
 
 ## US 5,790,825 — the dynamic recompiler
 

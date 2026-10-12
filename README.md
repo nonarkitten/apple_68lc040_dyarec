@@ -71,6 +71,13 @@ handlers carry names derived automatically from the instructions that
 use them; about 1,500 internal branch targets and the recompiler's code
 generators have not been examined one by one. See [TODO.md](TODO.md).
 
+`make static-check` cross-checks the code against the 68K instruction
+set without running it: which opcodes are implemented, and that every
+instruction advances the program counter by its own length. It verifies
+46,000 opcodes, and found one genuine (and harmless) defect in Apple's
+code along the way — see
+[docs/14-static-checks.md](docs/14-static-checks.md).
+
 ## Provenance and rights
 
 The emulator is Apple's code, reproduced here for study; nobody involved

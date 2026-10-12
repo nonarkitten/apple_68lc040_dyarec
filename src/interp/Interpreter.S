@@ -22714,14 +22714,35 @@ L_0902C:
         bflr_likely cr_special_event_pending            // DISPATCH unless a special event is pending
         b       process_special_event
 
+// ===========================================================================
+// Instruction sequences
+// ===========================================================================
+// US patent 5,623,617 describes emulation routines that look at the next
+// opcode - it is already in prefetch_data - and, when it is the one they
+// expect, emulate it too without going back through the dispatch table.
+// Twelve dispatch table entries begin with a comparison of prefetch_data
+// for this purpose.  (Three more compare it with a particular indexed
+// addressing extension word, to short-cut the commonest form.)
+//
+// This is MOVE.L (A0)+,(A1)+, the body of an unrolled copy loop.  The
+// table entry compares the next opcode with $22D8, the instruction
+// itself.  While the next opcode is the same and no special event is
+// pending, the routine stays in a two-instruction PowerPC loop that
+// copies a longword and steps pc; the condition codes are set once, from
+// the last longword, when the run ends.
+//
+// The same treatment is given to MOVE.L (A1)+,(A0)+, MOVE.L (A2)+,(A1)+,
+// MOVE.L (A0)+,(A2)+, MOVE.L (A4)+,(A5)+ (copies), MOVE.L D6,(A1)+ and
+// MOVE.L D6,(A5)+ (fills) and EOR.L D6,(A5)+.
+//
 // Reached from 1 dispatch table entry:
 //     MOVE.L (An)+,(An)+
-move_l_mem_mem_43:
+move_l_a0_inc_a1_inc_run:
         lwz     data, 0(a0)
-        rlwimi  disp_table, prefetch_data, 3, 13, 28    // DECODE1: disp_table[18:3] = opcode in prefetch_data
+        rlwimi  disp_table, prefetch_data, 3, 13, 28    // DECODE1 for whatever follows the run
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
-        stw     data, 0(a1)
-        beq     cr7, L_09080
+        stw     data, 0(a1)                             // copy one longword
+        beq     cr7, move_l_a0_inc_a1_inc_again         // the next instruction is the same one
 L_09054:
         mtlr    disp_table                              // DECODE2: LR = address of the next dispatch entry
         addco.  data, data, zero                        // test data: N,Z from result; V=0, C=0
@@ -22729,16 +22750,17 @@ L_09054:
         addi    a1, a1, 4
         bflr_likely cr_special_event_pending            // DISPATCH unless a special event is pending
         b       process_special_event
-        b       L_09080
+        b       move_l_a0_inc_a1_inc_again
         ALIGN(64)
-L_09080:
-        cmpwi   cr7, prefetch_data, 0x22D8
-        bt      cr_special_event_pending, L_09054
+
+move_l_a0_inc_a1_inc_again:
+        cmpwi   cr7, prefetch_data, 0x22D8              // and the one after that?
+        bt      cr_special_event_pending, L_09054       // an event is pending: finish normally
         lwzu    data, 4(a0)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // DECODE1: disp_table[18:3] = opcode in prefetch_data
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         stwu    data, 4(a1)
-        beq     cr7, L_09080
+        beq     cr7, move_l_a0_inc_a1_inc_again
         b       L_09054
 
 // Reached from 1 dispatch table entry:
@@ -22921,12 +22943,18 @@ move_w_mem_mem_63:
         addi    a5, a5, 2
         bflr_likely cr_special_event_pending            // DISPATCH unless a special event is pending
         b       process_special_event
-        b       move_b_mem_mem_59
+        b       move_b_a1_inc_a0_inc_then_bne
         ALIGN(32)
 
+// MOVE.B (A1)+,(A0)+ followed by BNE.S to itself ($66FC): the classic
+// copy-until-zero loop.  When the table entry's comparison finds the
+// branch, the whole loop runs here, one PowerPC iteration per byte,
+// leaving through the ordinary dispatch when a zero byte has been copied
+// or a special event is pending.
+//
 // Reached from 1 dispatch table entry:
 //     MOVE.B (An)+,(An)+
-move_b_mem_mem_59:
+move_b_a1_inc_a0_inc_then_bne:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // DECODE1: disp_table[18:3] = opcode in prefetch_data
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         lbz     data, 0(a1)
@@ -22959,12 +22987,17 @@ L_093B4:
         addi    a0, a0, 1
         bflr_likely cr_special_event_pending            // DISPATCH unless a special event is pending
         b       process_special_event
-        b       move_b_mem_d0_2
+        b       move_b_a0_inc_d0_then_cmp
         ALIGN(32)
 
+// MOVE.B (A0)+,D0 followed by CMP.B (A1)+,D0 ($B019), the body of a
+// string comparison: both instructions are emulated here when the table
+// entry's comparison finds the second.  (MOVE.B (A0)+,D1 with
+// CMP.B (A1)+,D1 is handled the same way just below.)
+//
 // Reached from 1 dispatch table entry:
 //     MOVE.B (An)+,Dn
-move_b_mem_d0_2:
+move_b_a0_inc_d0_then_cmp:
         lbz     data, 0(a0)
         addi    a0, a0, 1
         rlwimi  d0, data, 0, 24, 31                     // d0[7:0] = data[7:0]
@@ -28381,11 +28414,22 @@ L_0C2C4:
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         blr
 
+// UNPK -(Ay),-(A7),#<adjustment>.
+//
+// DEFECT IN THE ORIGINAL CODE.  The other forms of UNPK reach the common
+// code at L_0C2FC through L_0C2C4, which first executes
+// "lhau rtn_addr, 2(pc)" to step over the adjustment word and pick up
+// the next opcode.  This entry calls L_0C2FC directly.  As a result
+// DECODE1 there uses whatever happens to be in rtn_addr as the next
+// opcode, and pc ends up 2 short.  Unpacking BCD onto the stack is not
+// something software does, which is presumably why it was never noticed;
+// the same code is in the Power Macintosh 8600/9600 ROM.
+//
 // Reached from 8 dispatch table entries:
 //     UNPK -(An),-(An),#<adj>
-unpk:
+unpk_to_a7:
         addi    addr, a7, -1
-        bl      L_0C2FC
+        bl      L_0C2FC                                 // should be L_0C2C4
         mr      a7, addr
         bfctr_likely cr_special_event_pending           // DISPATCH unless a special event is pending
         b       process_special_event
@@ -30569,7 +30613,7 @@ take_illegal_instruction:
 //     F-LINE cpID 5
 //     F-LINE cpID 7
 //     F-LINE cpID 6
-//     ... and 30 more forms
+//     ... and 29 more forms
 take_fline:
         mtlr    rtn_addr
         li      immed_data, 44                          // vector offset 0x2C: line 1111 emulator

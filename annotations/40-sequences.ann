@@ -1,0 +1,57 @@
+# Routines that recognise a sequence of 68K instructions, and one defect.
+# Both were found by tools/check.py, which compares the distance pc advances
+# with the length of the instruction.
+
+@09040 move_l_a0_inc_a1_inc_run
+    ===========================================================================
+    Instruction sequences
+    ===========================================================================
+    US patent 5,623,617 describes emulation routines that look at the next
+    opcode - it is already in prefetch_data - and, when it is the one they
+    expect, emulate it too without going back through the dispatch table.
+    Twelve dispatch table entries begin with a comparison of prefetch_data
+    for this purpose.  (Three more compare it with a particular indexed
+    addressing extension word, to short-cut the commonest form.)
+    .
+    This is MOVE.L (A0)+,(A1)+, the body of an unrolled copy loop.  The
+    table entry compares the next opcode with $22D8, the instruction
+    itself.  While the next opcode is the same and no special event is
+    pending, the routine stays in a two-instruction PowerPC loop that
+    copies a longword and steps pc; the condition codes are set once, from
+    the last longword, when the run ends.
+    .
+    The same treatment is given to MOVE.L (A1)+,(A0)+, MOVE.L (A2)+,(A1)+,
+    MOVE.L (A0)+,(A2)+, MOVE.L (A4)+,(A5)+ (copies), MOVE.L D6,(A1)+ and
+    MOVE.L D6,(A5)+ (fills) and EOR.L D6,(A5)+.
+09044 DECODE1 for whatever follows the run
+0904C copy one longword
+09050 the next instruction is the same one
+@09080 move_l_a0_inc_a1_inc_again
+09080 and the one after that?
+09084 an event is pending: finish normally
+
+@09360 move_b_a1_inc_a0_inc_then_bne
+    MOVE.B (A1)+,(A0)+ followed by BNE.S to itself ($66FC): the classic
+    copy-until-zero loop.  When the table entry's comparison finds the
+    branch, the whole loop runs here, one PowerPC iteration per byte,
+    leaving through the ordinary dispatch when a zero byte has been copied
+    or a special event is pending.
+
+@093E0 move_b_a0_inc_d0_then_cmp
+    MOVE.B (A0)+,D0 followed by CMP.B (A1)+,D0 ($B019), the body of a
+    string comparison: both instructions are emulated here when the table
+    entry's comparison finds the second.  (MOVE.B (A0)+,D1 with
+    CMP.B (A1)+,D1 is handled the same way just below.)
+
+@0C2E8 unpk_to_a7
+    UNPK -(Ay),-(A7),#<adjustment>.
+    .
+    DEFECT IN THE ORIGINAL CODE.  The other forms of UNPK reach the common
+    code at L_0C2FC through L_0C2C4, which first executes
+    "lhau rtn_addr, 2(pc)" to step over the adjustment word and pick up
+    the next opcode.  This entry calls L_0C2FC directly.  As a result
+    DECODE1 there uses whatever happens to be in rtn_addr as the next
+    opcode, and pc ends up 2 short.  Unpacking BCD onto the stack is not
+    something software does, which is presumably why it was never noticed;
+    the same code is in the Power Macintosh 8600/9600 ROM.
+0C2EC should be L_0C2C4

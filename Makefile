@@ -4,6 +4,7 @@
 #   make verify     build, then compare with ./Emulator.x
 #   make regen      regenerate src/ from Emulator.x + annotations/
 #   make check      regen + verify (run before committing)
+#   make static-check  cross-check the code against the 68K instruction set (tools/check.py)
 #   make listing    build/Emulator.lst: offsets, bytes and symbols
 #   make clean
 #
@@ -23,7 +24,7 @@ REFERENCE := Emulator.x
 BUILD     := build
 SOURCES   := $(shell find src -name '*.S' -o -name '*.inc' 2>/dev/null)
 
-.PHONY: all verify regen check listing clean
+.PHONY: all verify regen check static-check listing clean
 
 all: $(BUILD)/Emulator.x
 
@@ -51,6 +52,9 @@ regen:
 
 check: regen
 	@$(MAKE) --no-print-directory verify
+
+static-check:
+	$(PYTHON) tools/check.py
 
 listing: $(BUILD)/Emulator.o
 	$(PPC_OBJDUMP) -d --no-show-raw-insn $< > $(BUILD)/Emulator.lst

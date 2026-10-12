@@ -53,7 +53,7 @@
         lbz     data, 0(a7)                             // 1017  MOVE.B    (A7),D0
         b       move_b_mem_d0
         cmpwi   cr7, prefetch_data, -0x4FE7             // 1018  MOVE.B    (A0)+,D0
-        b       move_b_mem_d0_2
+        b       move_b_a0_inc_d0_then_cmp
         ori     rtn_addr, code_ptr, move_b_mem_d0 - cb  // 1019  MOVE.B    (A1)+,D0
         b       fea_b_31
         ori     rtn_addr, code_ptr, move_b_mem_d0 - cb  // 101A  MOVE.B    (A2)+,D0
@@ -445,7 +445,7 @@
         ori     rtn_addr, code_ptr, move_b_mem_mem_6 - cb  // 10D8  MOVE.B    (A0)+,(A0)+
         b       fea_b_30
         cmpwi   cr7, prefetch_data, 0x66FC              // 10D9  MOVE.B    (A1)+,(A0)+
-        b       move_b_mem_mem_59
+        b       move_b_a1_inc_a0_inc_then_bne
         ori     rtn_addr, code_ptr, move_b_mem_mem_6 - cb  // 10DA  MOVE.B    (A2)+,(A0)+
         b       fea_b_32
         ori     rtn_addr, code_ptr, move_b_mem_mem_6 - cb  // 10DB  MOVE.B    (A3)+,(A0)+

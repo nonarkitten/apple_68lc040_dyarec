@@ -18,13 +18,19 @@ criterion is that the source reassembles to a byte-identical `Emulator.x`.
 - `docs/`           finished technical documentation. `docs/patents/` holds the three patents.
 - `TODO.md`         checklist, open questions, working notes.
 - `build/`          build output (ignored).
-- `ppcd/`, `Emulator.asm`  the owner's earlier working files; untracked and ignored. Leave them alone.
+- `ppcd/`, `Emulator.asm`, `*.ROM`  the owner's working files and ROM images; untracked and
+                    ignored. Leave them alone. Note: `Emulator.x` is a *later* build than the
+                    emulator inside the 8600/9600 ROM (see `docs/13-rom-context.md`).
+- `LICENSE`, `NOTICE.md`  CC0 for the project's own work; Apple's code is not licensed here.
 
 ## Commands
 - `make`            assemble `src/` into `build/Emulator.x`
 - `make verify`     build and compare against `Emulator.x` (must print OK)
 - `make regen`      rebuild `src/` from `Emulator.x` + `annotations/`
 - `make check`      `regen` then `verify`; run before every commit
+- `make static-check`  cross-check code against the 68K instruction set (`tools/check.py`);
+                    must end with "OK: no unexplained disagreements"
+- `python3 tools/rominfo.py ROM`   where a ROM maps the emulator; compare its build with Emulator.x
 - `python3 tools/show.py START END [-c] [-x]`   listing with offsets (hex), for reading code
 - `python3 tools/m68k.py 4E75 ...`              decode 68K opcode words
 
@@ -49,6 +55,9 @@ A new register or state-field name must be added to `src/include/*.inc`
 1. `make check` must pass before committing. A change that breaks the byte
    comparison is wrong by definition.
 2. Never edit generated files in `src/`; edit `annotations/` or the tools.
+   The generator is to be retired gradually and only as needed: to hand a
+   file over to manual editing, mark it `frozen` in `annotations/layout.txt`.
+   Do not freeze files on your own initiative.
 3. `docs/` is final, technical and impersonal. No speculation, no progress
    notes, no first person. Uncertain material goes in `TODO.md` until it is
    confirmed, or is stated in the docs as explicitly *(inferred)* with the
@@ -58,9 +67,13 @@ A new register or state-field name must be added to `src/include/*.inc`
 5. Claims in comments and docs must be backed by code that has actually
    been read. When the code and a patent disagree, the code wins and the
    difference is worth documenting (`docs/12-patents.md`).
-6. Do not import facts about the surrounding ROM or kernel from memory or
-   from other projects into `docs/`; the image is the only evidence here.
-   Put such leads in `TODO.md`.
+6. Conventional names for things outside the image (kernel services and
+   structures, Mac OS low-memory globals, info records) may and should be
+   used - the owner asked for this. Say how each is known, as
+   `docs/13-rom-context.md` does: read from a ROM, follows from the image,
+   or a name recalled from headers / other disassemblies. Verify against
+   a ROM where one is available (`tools/rominfo.py`; ROM files are
+   git-ignored and must never be committed).
 7. Offsets are relative to `EmTop` (start of the image) and written as five
    hex digits. Bit numbers in prose are LSB = 0.
 8. Commit at milestones with messages that say what was learned, not just

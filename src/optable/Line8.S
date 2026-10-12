@@ -8265,21 +8265,21 @@ op_8F57:
         clrlwi  data, d7, 24                            // 8F87  UNPK      D7,D7,#<adj>
         b       sbcd_pack_etc_reg_reg_8
         lbzu    data, -1(a0)                            // 8F88  UNPK      -(A0),-(A7),#<adj>
-        b       unpk
+        b       unpk_to_a7
         lbzu    data, -1(a1)                            // 8F89  UNPK      -(A1),-(A7),#<adj>
-        b       unpk
+        b       unpk_to_a7
         lbzu    data, -1(a2)                            // 8F8A  UNPK      -(A2),-(A7),#<adj>
-        b       unpk
+        b       unpk_to_a7
         lbzu    data, -1(a3)                            // 8F8B  UNPK      -(A3),-(A7),#<adj>
-        b       unpk
+        b       unpk_to_a7
         lbzu    data, -1(a4)                            // 8F8C  UNPK      -(A4),-(A7),#<adj>
-        b       unpk
+        b       unpk_to_a7
         lbzu    data, -1(a5)                            // 8F8D  UNPK      -(A5),-(A7),#<adj>
-        b       unpk
+        b       unpk_to_a7
         lbzu    data, -1(a6)                            // 8F8E  UNPK      -(A6),-(A7),#<adj>
-        b       unpk
+        b       unpk_to_a7
         lbzu    data, -2(a7)                            // 8F8F  UNPK      -(A7),-(A7),#<adj>
-        b       unpk
+        b       unpk_to_a7
 op_8F90:
         mr      addr, a0                                // 8F90  OR.L      D7,(A0)
         b       or_l_d7_mem_2

@@ -31,6 +31,7 @@ described and the difference is noted.
 | [11-testing-gaps.md](11-testing-gaps.md) | What the image depends on, and what running it would take |
 | [12-patents.md](12-patents.md) | Cross-reference between the patents and the code |
 | [13-rom-context.md](13-rom-context.md) | The emulator in a real ROM: addresses, kernel start-up, kernel services |
+| [14-static-checks.md](14-static-checks.md) | Mechanical checks of the code against the 68K instruction set, and what they found |
 | [glossary.md](glossary.md) | Terms and names |
 
 ## Conventions

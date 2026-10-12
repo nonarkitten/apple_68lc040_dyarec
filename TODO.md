@@ -16,11 +16,13 @@ Legend: `[x]` done, `[~]` partly done, `[ ]` not started.
 - [x] 68040 opcode-word decoder for naming dispatch table entries (`tools/m68k.py`)
 - [x] Source generator driven by annotation files (`tools/gen.py`)
 - [x] `make` builds `build/Emulator.x`; `make verify` compares it with the reference
+- [x] Static checker (`make static-check`): legality, `rtn_addr` convention, instruction length
+- [x] ROM inspection tool (`tools/rominfo.py`)
 
 ### 2. Legible source
 - [x] Role names for every register (patent names: `d0`, `a0`, `pc`, `prefetch_data`, ...)
 - [~] Symbolic condition-register flag bits (CR1 and CR2 done; one CR2 bit, cr2.gt, still unnamed)
-- [~] Symbolic `EmulatorState` field offsets (about 45 named; many still numeric)
+- [~] Symbolic `EmulatorState` field offsets (about 55 named, incl. the context block; many still numeric)
 - [x] Alignment padding expressed as directives rather than runs of `nop`
 - [x] Embedded data tables emitted as data (with symbolic code offsets where they hold pointers)
 - [x] Automatic end-of-line comments for cryptic PowerPC instructions (rotate/mask, CR logic, ...)
@@ -64,16 +66,28 @@ Legend: `[x]` done, `[~]` partly done, `[ ]` not started.
 - [x] Building and verifying
 - [x] Known gaps and what would be needed to run and test the code
 - [x] Cross-reference to the three patents
+- [x] The emulator in a real ROM (addresses, kernel start-up and services)
+- [x] Static checks and their findings
 - [ ] Per-instruction-family notes (shifts, multiply/divide, bit fields, BCD) once those routines are read
 - [ ] Extend the recompiler chapter once the emitters are read
 
 ### 6. Wrap-up
 - [x] README rewritten for the new repository layout
-- [ ] Merge branch `emulator-disassembly` into `master` (left for Renee)
-- [ ] Decide whether to freeze `src/` as hand-maintained source (see "Open decisions")
-- [ ] Re-point or remove the `origin` remote (still `ogamespec/ppcd`)
+- [x] Repository published; `origin` is `nonarkitten/apple_68lc040_dyarec` (done by Renee)
+- [x] Licence: CC0 for the project's own work, with `NOTICE.md` on scope (Renee to confirm the wording)
+- [x] Per-file freeze mechanism for retiring the generator gradually (`frozen` in `annotations/layout.txt`)
+- [ ] Merge branch `rom-context` (ROM findings, licence, static checker)
 - [ ] Try the build with GNU binutils (`powerpc-*-as`) as a second assembler
-- [ ] Decide what to do with the untracked legacy files (`ppcd/`, `Emulator.asm`; currently git-ignored)
+
+### 7. Next (ideas, roughly in order of value)
+- [ ] Find the ROM that `Emulator.x` came from (it is a later build than the 8600/9600 ROM's)
+      and run `tools/rominfo.py` on it; its kernel should implement services 6-8
+- [ ] Diff the two builds routine by routine: what did "tuned by Bob Abeles, hacked by Murph" change?
+- [ ] Extend `tools/check.py`: condition-code effects (which instructions may touch CR0 / XER /
+      `ccr_x`), which 68K registers a routine writes, and loops (shifts, MOVEM)
+- [ ] Minimal kernel stub + PowerPC interpreter harness to actually execute 68K test programs
+      (`docs/11-testing-gaps.md`, stage 2); the kernel protocol is now known
+- [ ] Read the routines behind the forty FPU "exception stub" slots (`0E6D4`-`0E78F`)
 
 ## How to continue
 
@@ -88,25 +102,26 @@ Suggested order: private opcodes and privileged instructions
 (`0C3D0`-`0D0EC`), then the arithmetic families, then the recompiler's
 decoders and emitters.
 
-## Open decisions (for Renee)
+## Decisions
 
-- **Freezing the source.** While analysis is ongoing `src/` is generated
-  and must not be edited by hand. Once the annotations are considered
-  complete the generator could be retired and `src/` edited directly.
-- **Load address.** The image is position independent and the docs use
-  offsets from `EmTop` only. The original `Emulator.asm` assumed the
-  dispatch table at `0x68000000` (as in US5574873). My recollection is
-  that PCI Power Macs map the code at `0x68060000` and the table at
-  `0x68080000`, but that is not something this image can confirm, so it
-  is deliberately not stated in `docs/`. Worth checking against a ROM's
-  configuration data.
-- **Licence / legal note.** The code is Apple's. The README describes
-  provenance but the repository has no licence file (the old one covered
-  ppcd and was removed with it).
-- **Names of kernel-side things.** The docs describe the kernel interface
-  only from the emulator's side and avoid names from other reverse
-  engineering efforts (NanoKernel, ContextBlock, KernelData, ...). If you
-  want those names used, they can be added once checked against a source.
+Settled (2026-10-11):
+- **Generator**: keep it, retire it gradually and only as needed. A file is
+  handed over to manual editing by marking it `frozen` in
+  `annotations/layout.txt`; nothing is frozen yet.
+- **External names**: use the conventional names for kernel structures,
+  services and Mac OS globals, saying how each is known.
+- **Load address**: settled by the ROM - code `0x68060000`, table
+  `0x68080000` (`docs/13-rom-context.md`). The docs still use offsets from
+  `EmTop` throughout, since the image is position independent.
+- **Automatic handler names**: fine as they are (the patent's own names are
+  no prettier).
+
+Open:
+- **Licence wording.** I chose CC0 for everything that is ours and an
+  explicit statement that Apple's code is not ours to license. That gives
+  you "no claim over it" without pretending to put Apple's work in the
+  public domain, which nobody but Apple can do. Not legal advice; change
+  `NOTICE.md` if you want a different stance.
 
 ## Notes and findings (working log)
 
@@ -132,3 +147,23 @@ decoders and emitters.
   pinned down.
 - Ideas not yet pursued: a static checker that uses the dispatch table as
   a specification (see `docs/11-testing-gaps.md`, stage 1).
+- The emulator in the 8600/9600 ROM (960FC647) is an earlier build than
+  `Emulator.x`: interpreter credit at `0E7C0`, recompiler credit only
+  "Eric Traut", recompiler ends at `17380`, trap table of 16 entries.
+  Same recompiler design (hash lookup, three passes), so the patent's
+  direct-mapped scheme and its 128 KB offset table are not in that ROM
+  either. If an even earlier DR ROM exists (the first PCI machines,
+  1995), it would be the place to look for the patent's design.
+- The kernel in that ROM implements services 0-5 only; `Emulator.x` also
+  uses 6, 7 and 8, so it expects a later kernel.
+- `tools/check.py` found a real defect in the original: `UNPK -(Ay),-(A7)`
+  (`unpk_to_a7`, `0C2E8`) skips the instruction that steps over the
+  adjustment word. Present in both builds.
+- It also caught a mistake in `tools/m68k.py` (PTESTR was decoded at the
+  wrong opcodes), since fixed - the table comments for `F568`-`F56F`
+  changed.
+- Twelve dispatch table entries look ahead at the next opcode (US5623617);
+  three more special-case one indexed extension word (`2F30`, `4EB0`,
+  `4EF4` with `81E2`, `81E1`, `0521`). What code uses those exact
+  extension words is unknown - probably the trap dispatcher or a jump
+  table idiom in the ROM; searching the 68K ROM for them would tell.

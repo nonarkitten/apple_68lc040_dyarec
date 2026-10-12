@@ -2814,21 +2814,21 @@
         b       take_fline
         lwz     rtn_addr, fline_handler(EmulatorStatePtr)  // F567  ILLEGAL
         b       take_fline
-        lwz     rtn_addr, 0x948(EmulatorStatePtr)       // F568  ILLEGAL
+        lwz     rtn_addr, 0x948(EmulatorStatePtr)       // F568  PTESTR    (A0)
         b       require_supervisor
-        lwz     rtn_addr, 0x948(EmulatorStatePtr)       // F569  ILLEGAL
+        lwz     rtn_addr, 0x948(EmulatorStatePtr)       // F569  PTESTR    (A1)
         b       require_supervisor
-        lwz     rtn_addr, 0x948(EmulatorStatePtr)       // F56A  ILLEGAL
+        lwz     rtn_addr, 0x948(EmulatorStatePtr)       // F56A  PTESTR    (A2)
         b       require_supervisor
-        lwz     rtn_addr, 0x948(EmulatorStatePtr)       // F56B  ILLEGAL
+        lwz     rtn_addr, 0x948(EmulatorStatePtr)       // F56B  PTESTR    (A3)
         b       require_supervisor
-        lwz     rtn_addr, 0x948(EmulatorStatePtr)       // F56C  ILLEGAL
+        lwz     rtn_addr, 0x948(EmulatorStatePtr)       // F56C  PTESTR    (A4)
         b       require_supervisor
-        lwz     rtn_addr, 0x948(EmulatorStatePtr)       // F56D  ILLEGAL
+        lwz     rtn_addr, 0x948(EmulatorStatePtr)       // F56D  PTESTR    (A5)
         b       require_supervisor
-        lwz     rtn_addr, 0x948(EmulatorStatePtr)       // F56E  ILLEGAL
+        lwz     rtn_addr, 0x948(EmulatorStatePtr)       // F56E  PTESTR    (A6)
         b       require_supervisor
-        lwz     rtn_addr, 0x948(EmulatorStatePtr)       // F56F  ILLEGAL
+        lwz     rtn_addr, 0x948(EmulatorStatePtr)       // F56F  PTESTR    (A7)
         b       require_supervisor
         lwz     rtn_addr, fline_handler(EmulatorStatePtr)  // F570  ILLEGAL
         b       take_fline
@@ -2880,21 +2880,21 @@
         b       take_fline
         lwz     rtn_addr, fline_handler(EmulatorStatePtr)  // F587  ILLEGAL
         b       take_fline
-        lwz     rtn_addr, fline_handler(EmulatorStatePtr)  // F588  PTESTR    (A0)
+        lwz     rtn_addr, fline_handler(EmulatorStatePtr)  // F588  ILLEGAL
         b       take_fline
-        lwz     rtn_addr, fline_handler(EmulatorStatePtr)  // F589  PTESTR    (A1)
+        lwz     rtn_addr, fline_handler(EmulatorStatePtr)  // F589  ILLEGAL
         b       take_fline
-        lwz     rtn_addr, fline_handler(EmulatorStatePtr)  // F58A  PTESTR    (A2)
+        lwz     rtn_addr, fline_handler(EmulatorStatePtr)  // F58A  ILLEGAL
         b       take_fline
-        lwz     rtn_addr, fline_handler(EmulatorStatePtr)  // F58B  PTESTR    (A3)
+        lwz     rtn_addr, fline_handler(EmulatorStatePtr)  // F58B  ILLEGAL
         b       take_fline
-        lwz     rtn_addr, fline_handler(EmulatorStatePtr)  // F58C  PTESTR    (A4)
+        lwz     rtn_addr, fline_handler(EmulatorStatePtr)  // F58C  ILLEGAL
         b       take_fline
-        lwz     rtn_addr, fline_handler(EmulatorStatePtr)  // F58D  PTESTR    (A5)
+        lwz     rtn_addr, fline_handler(EmulatorStatePtr)  // F58D  ILLEGAL
         b       take_fline
-        lwz     rtn_addr, fline_handler(EmulatorStatePtr)  // F58E  PTESTR    (A6)
+        lwz     rtn_addr, fline_handler(EmulatorStatePtr)  // F58E  ILLEGAL
         b       take_fline
-        lwz     rtn_addr, fline_handler(EmulatorStatePtr)  // F58F  PTESTR    (A7)
+        lwz     rtn_addr, fline_handler(EmulatorStatePtr)  // F58F  ILLEGAL
         b       take_fline
         lwz     rtn_addr, fline_handler(EmulatorStatePtr)  // F590  ILLEGAL
         b       take_fline
