@@ -45,9 +45,9 @@ data  182A8 182F8 ascii
 data  182F8 182FC long
 
 # Per-condition descriptor tables used by the Bcc / DBcc / Scc emitters.
-data  16E48 16E88 long
-data  17228 172A8 long
-data  17470 174B0 long
+data  16E48 16E88 seq16
+data  17228 172A8 seq8
+data  17470 174B0 seq8
 
 # Offsets from dr_cb (the recompiler's code block) that the code builds with
 # "ori reg, dr_code_base, offset".

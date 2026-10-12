@@ -167,7 +167,7 @@ routines are labelled with the opcode and the name
 | `FE01` | | Mixed mode switch: `mixed_mode_dispatch` (through handler slot `+0x9E0`). SuperMario has `FEED`, `_MixedMode`, for this; in this image `FEED` is an ordinary line-F opcode |
 | `FE02` | | Return to native code: `switch_to_native` |
 | `FE03` | `_ExecuteRiscContext` | (A7) points to a native context block. Calls handler slot `+0x964`, by default kernel service 1 |
-| `FE04`, `FE05` | `_MoveFromECR`, `_MoveToECR` | Read or write an *emulator control register*, using A0 for the value. D0 (0–25) is the register number: a byte table (`0D850`) gives its offset from `+0x700` in the state block; register 0 is `emulator_version`. Some numbers are special-cased: `0x09` written sets the test-mode switches in `sr_and_flags`; `0x12` reads or sets the dynamic recompiler's enable bits; `0x13` is the configuration word at `+0x7A0` |
+| `FE04`, `FE05` | `_MoveFromECR`, `_MoveToECR` | Read or write an *emulator control register*, using A0 for the value and D0 for the register number; see below |
 | `FE06`, `FE0A` | `FE0A`: `_VMDispatch`, `_KernelVMDispatch` | D0 is a selector, A0, A1 and D1 parameters, D0 the result. Calls handler slot `+0x968`, by default kernel service 3. SuperMario lists 29 selectors, from `mmuInit` to `mmuSwitchTo040` |
 | `FE07` | `_HandleMixedModeFault` | "Handle mixed mode interrupts and page faults": works on the exception frame on the stack and gives back a native save area ([15-build-history.md](15-build-history.md)) |
 | `FE08` | `_ReadTimeBase32` | D0 = low half of the PowerPC time base |
@@ -188,6 +188,38 @@ serviced.
 
 The recompiler never begins a translated block at opcode `FE02` or at
 `AAFE` (the trap word that begins a routine descriptor).
+
+### Emulator control registers
+
+`FE04` and `FE05` are how 68K code configures the emulator: the fields
+that `init_state` leaves empty — where the Mac OS trap tables are, which
+exception vectors to expect, what memory the recompiler may use — are
+written this way. D0 is the register number, 0 to 25, and A0 the value;
+a byte table (`ecr_offsets`, `0D850`) gives each register's word in the
+state block. A number out of range does nothing. The routine in handler
+slot `+0x960` is called first.
+
+| Register | Field | Notes |
+|---|---|---|
+| 0 | `emulator_version` (`+0x718`) | Cannot be written |
+| 1, 2, 3 | `native_call_entry`, `native_toc`, `native_regs_ptr` | |
+| 4 | `+0x70C` | Initialised like `native_call_entry` |
+| 5 | `native_context` | |
+| 6 | `expected_aline_vector` | Line-A traps are dispatched natively while the 68K vector has this value |
+| 7, 8 | `os_trap_exit`, `os_trap_exit_no_a0` | 68K addresses that the native dispatch gives an OS trap routine to return to: code ending in `FC10` or `FC11` |
+| 9 | `+0x730` | Test-mode switches; writing also copies the low 16 bits into the upper half of `sr_and_flags` |
+| 10 | `+0x734` | |
+| 11, 12 | `instruction_count`, `opcode_counts` | |
+| 13 | `native_return_entry` | |
+| 14 | `expected_privilege_vector` | |
+| 15 | `native_invalidate_entry` | Address of `native_invalidate_range` (`0E4A8`), which native code may call to have translations of a range discarded |
+| 16, 17 | `toolbox_trap_table`, `os_trap_table` | |
+| 18 | | The recompiler's switches. Reading gives three flags from the CR; writing sets `cr_dr_enabled` and `cr_dr_ready` from bits 0 and 1 of A0, calls `dr_setup` when the recompiler is first enabled and flushes its cache when it becomes ready. Ignored unless bits 0 and 1 of `config_flags` are both set |
+| 19 | `config_flags` | |
+| 20 | `+0x7BC` | Exists only if bit 2 of `config_flags` is set |
+| 21, 22 | `dr_memory_base`, `dr_memory_size` | |
+| 23 | `+0x7A8` | Written under the mask at `+0x7AC`; the same bits are changed in two words of the native context block |
+| 24, 25 | `test_hook`, `test_hook_arg` | |
 
 ### SANE
 

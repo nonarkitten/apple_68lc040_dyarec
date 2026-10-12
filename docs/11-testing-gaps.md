@@ -188,7 +188,9 @@ operations).
 
 - The complete layout of the kernel's context blocks, including the
   format of the fault description.
-- Who writes the handler table slots and the "expected vector" fields
-  after initialisation, and with what.
+- Who writes the handler table slots after initialisation, and with
+  what. (The "expected vector" fields and the other settings are written
+  by 68K code through the emulator control registers,
+  [08-native-interface.md](08-native-interface.md).)
 - The exact "Mac OS ROM" file version `Emulator.x` was extracted from
   ([13-rom-context.md](13-rom-context.md) gives what is known).

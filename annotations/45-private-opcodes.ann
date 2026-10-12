@@ -144,15 +144,37 @@
     FE04 and FE05, _MoveFromECR and _MoveToECR: read or write an "emulator
     control register".  D0 is the register number (0-25) and A0 the value.
     Most registers are words of the state block, found through the byte
-    table at 0D850; a few numbers are treated specially.
+    table ecr_offsets; a few numbers are treated specially.  The routine in
+    handler slot +0x960 is called first.  This is how the 68K ROM sets the
+    emulator up: where the trap tables are, which line-A vector to expect,
+    what memory the recompiler may have.
+
+@0E4A8 native_invalidate_range
+    Not an opcode: the routine whose address is published in emulator control
+    register 15 (native_invalidate_entry).  Native code calls it, with r31
+    still pointing at native_regs as the emulator left it, to have the
+    recompiler discard its translations of a range of memory; it passes its
+    arguments straight on to dr_invalidate_range, or returns at once if the
+    recompiler is not ready.
+0E4A8 EmulatorStatePtr again
+0E4AC the recompiler's flags as they were when native code was entered
 
 @0D850 ecr_offsets
     For each emulator control register number, the offset of its word from
     +0x700 in the state block.
 
 @0D86C fe04_move_from_ecr
+0D86C register 20 exists only if bit 2 of config_flags is set
+0D874 register 18: the recompiler's switches, from the CR
 
 @0D884 fe05_move_to_ecr
+0D88C register 18: switch the recompiler on or off
+0D894 register 23: change bits of a word, under a mask
+0D8A4 register 0, the version, cannot be written
+0D8AC register 9: the test-mode switches go into sr_and_flags as well
+0D938 enabled now and not before: dr_setup
+0D94C ready now and not before: flush the whole cache
+0D95C the interpreter's control transfers now go to dr_dispatch
 
 @0DA44 fe06_fe0a_vm_dispatch
     FE0A, _VMDispatch (also _KernelVMDispatch): D0 is a selector and A0, A1

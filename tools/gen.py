@@ -314,6 +314,18 @@ class Generator:
                     value = struct.unpack('>H', self.image[addr:addr + 2])[0]
                     if value:
                         wanted.add(base + value)
+            if kind in ('seq8', 'seq16'):
+                # The recompiler's condition tables: each long word names a
+                # run of templates by the offset from dr_emitters of the
+                # word before it, and gives the number of templates plus one
+                # (seq8: in one byte, followed by a byte of flags).
+                for addr in range(start, end, 4):
+                    offset, rest = struct.unpack('>HH', self.image[addr:addr + 4])
+                    count = (rest >> 8 if kind == 'seq8' else rest) - 1
+                    if offset:
+                        first = drmap.DR_EMITTERS + offset + 4
+                        wanted.add(first)
+                        self.templates.update(range(first, first + 4 * count, 4))
             wanted.add(start)
 
         # Which 68K opcodes reach each routine, and how.
@@ -892,6 +904,21 @@ class Generator:
                 value = struct.unpack('>H', image[addr:addr + 2])[0]
                 body = '%s - %s' % (self.labels[base + value], base_name) if value else '0'
                 out.append(self.with_comment(directive('.short', body), self.ann.eols.get(addr)))
+        elif kind in ('seq8', 'seq16'):
+            for addr in range(start, end, 4):
+                if addr != start:
+                    self.label_lines(addr, out)
+                offset, rest = struct.unpack('>HH', image[addr:addr + 4])
+                first = '%s - dr_emitters - 4' % self.labels[drmap.DR_EMITTERS + offset + 4] \
+                    if offset else '0'
+                condition = m68k.CC[(addr - start) // 4 % 16]
+                if kind == 'seq8':
+                    second = directive('.byte', '%d, 0x%02X' % (rest >> 8, rest & 0xFF))
+                else:
+                    second = directive('.short', '%d' % rest)
+                out.append(self.with_comment(directive('.short', first),
+                                             self.ann.eols.get(addr) or condition))
+                out.append(second)
         elif kind == 'byte':
             addr = start
             while addr < end:

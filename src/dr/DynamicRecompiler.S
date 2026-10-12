@@ -11604,79 +11604,103 @@ T_16DA0:
         add     addr, zero, zero                        // template
 T_16DA4:
         rlwimi  d0, addr, 0, 24, 31                     // template
-        subfe   addr, addr, addr                        // addr = addr + ~addr + CA
-        not     addr, addr
-        beq     dr_emit_scc_b_L4
-        subfe   addr, addr, addr                        // addr = addr + ~addr + CA
-dr_emit_scc_b_L4:
-        bne     dr_emit_scc_b_L5
-        li      addr, -1
-dr_emit_scc_b_L5:
-        beq     dr_emit_scc_b_L6
-        li      addr, -1
-dr_emit_scc_b_L6:
-        beq     dr_emit_scc_b_L8
-        mfxer   rtn_addr
-        mcrxr   cr6                                     // cr6 = XER[SO,OV,CA]; clear them in XER
-        creqv   4*cr6+lt, lt, 4*cr6+gt                  // cr6.lt = ~(cr0.lt ^ cr6.gt)
-        bge     cr6, dr_emit_scc_b_L7
-        li      addr, -1
-dr_emit_scc_b_L7:
-        mtxer   rtn_addr
-dr_emit_scc_b_L8:
-        subfe   addr, addr, addr                        // addr = addr + ~addr + CA
-        not     addr, addr
-        bne     dr_emit_scc_b_L9
-        ori     addr, addr, 0xFFFF
-dr_emit_scc_b_L9:
-        mfxer   rtn_addr
-        mcrxr   cr6                                     // cr6 = XER[SO,OV,CA]; clear them in XER
-        bgt     cr6, dr_emit_scc_b_L10
-        li      addr, -1
-dr_emit_scc_b_L10:
-        mtxer   rtn_addr
-        mfxer   rtn_addr
-        mcrxr   cr6                                     // cr6 = XER[SO,OV,CA]; clear them in XER
-        ble     cr6, dr_emit_scc_b_L11
-        li      addr, -1
-dr_emit_scc_b_L11:
-        mtxer   rtn_addr
-        blt     dr_emit_scc_b_L12
-        li      addr, -1
-dr_emit_scc_b_L12:
-        bge     dr_emit_scc_b_L13
-        li      addr, -1
-dr_emit_scc_b_L13:
-        beq     dr_emit_scc_b_L14
-        mfxer   rtn_addr
-        mcrxr   cr6                                     // cr6 = XER[SO,OV,CA]; clear them in XER
-        crxor   4*cr6+lt, lt, 4*cr6+gt                  // cr6.lt = cr0.lt ^ cr6.gt
-        mtxer   rtn_addr
+T_16DA8:
+        subfe   addr, addr, addr                        // template
+T_16DAC:
+        not     addr, addr                              // template
+T_16DB0:
+        beq     T_16DB8                                 // template
+T_16DB4:
+        subfe   addr, addr, addr                        // template
+T_16DB8:
+        bne     T_16DC0                                 // template
+        li      addr, -1                                // template
+T_16DC0:
+        beq     T_16DC8                                 // template
+        li      addr, -1                                // template
+T_16DC8:
+        beq     T_16DE4                                 // template
+T_16DCC:
+        mfxer   rtn_addr                                // template
+        mcrxr   cr6                                     // template
+        creqv   4*cr6+lt, lt, 4*cr6+gt                  // template
+        bge     cr6, T_16DE0                            // template
+        li      addr, -1                                // template
+T_16DE0:
+        mtxer   rtn_addr                                // template
+T_16DE4:
+        subfe   addr, addr, addr                        // template
+        not     addr, addr                              // template
+        bne     T_16DF4                                 // template
+        ori     addr, addr, 0xFFFF                      // template
+T_16DF4:
+        mfxer   rtn_addr                                // template
+        mcrxr   cr6                                     // template
+        bgt     cr6, T_16E04                            // template
+        li      addr, -1                                // template
+T_16E04:
+        mtxer   rtn_addr                                // template
+T_16E08:
+        mfxer   rtn_addr                                // template
+        mcrxr   cr6                                     // template
+        ble     cr6, T_16E18                            // template
+        li      addr, -1                                // template
+T_16E18:
+        mtxer   rtn_addr                                // template
+T_16E1C:
+        blt     T_16E24                                 // template
+        li      addr, -1                                // template
+T_16E24:
+        bge     T_16E2C                                 // template
+        li      addr, -1                                // template
+T_16E2C:
+        beq     T_16E44                                 // template
+T_16E30:
+        mfxer   rtn_addr                                // template
+        mcrxr   cr6                                     // template
+        crxor   4*cr6+lt, lt, 4*cr6+gt                  // template
+        mtxer   rtn_addr                                // template
         .long   0x40980008
-dr_emit_scc_b_L14:
-        li      addr, -1
+T_16E44:
+        li      addr, -1                                // template
 
 // One long word for each of the sixteen conditions: in the upper half the
 // offset from dr_emitters of the templates that compute the condition into
 // addr, less 4; in the lower half their number plus one.
 dr_scc_sequences:
-        .long   0x5A700002
-        .long   0x5A6C0001
-        .long   0x5A740003
-        .long   0x5AA80005
-        .long   0x5A780002
-        .long   0x5A6C0003
-        .long   0x5A840003
-        .long   0x5A7C0003
-        .long   0x5AB80006
-        .long   0x5ACC0006
-        .long   0x5AE00003
-        .long   0x5AE80003
-        .long   0x5A900007
-        .long   0x5AF40007
-        .long   0x5A8C0008
+        .short  T_16DAC - dr_emitters - 4               // T
+        .short  2
+        .short  T_16DA8 - dr_emitters - 4               // F
+        .short  1
+        .short  T_16DB0 - dr_emitters - 4               // HI
+        .short  3
+        .short  T_16DE4 - dr_emitters - 4               // LS
+        .short  5
+        .short  T_16DB4 - dr_emitters - 4               // CC
+        .short  2
+        .short  T_16DA8 - dr_emitters - 4               // CS
+        .short  3
+        .short  T_16DC0 - dr_emitters - 4               // NE
+        .short  3
+        .short  T_16DB8 - dr_emitters - 4               // EQ
+        .short  3
+        .short  T_16DF4 - dr_emitters - 4               // VC
+        .short  6
+        .short  T_16E08 - dr_emitters - 4               // VS
+        .short  6
+        .short  T_16E1C - dr_emitters - 4               // PL
+        .short  3
+        .short  T_16E24 - dr_emitters - 4               // MI
+        .short  3
+        .short  T_16DCC - dr_emitters - 4               // GE
+        .short  7
+        .short  T_16E30 - dr_emitters - 4               // LT
+        .short  7
+        .short  T_16DC8 - dr_emitters - 4               // GT
+        .short  8
 dr_scc_sequences_L1:
-        .long   0x5AF00008
+        .short  T_16E2C - dr_emitters - 4               // LE
+        .short  8
 
 // Called by the translation of a line-A trap, with pc at the trap word:
 // the recompiler's copy of the interpreter's trap dispatch
@@ -11706,7 +11730,7 @@ dr_aline_trap_L1:
         lwz     rtn_addr, dr_emitters - dr_emitters(base_disp)  // template: lwz addr, T_11598 - dr_emitters(base_disp)
         addi    pc, immed_data, 2
         cmpw    cr6, rtn_addr, pc
-        lwz     rtn_addr, 0x728(EmulatorStatePtr)
+        lwz     rtn_addr, os_trap_exit_no_a0(EmulatorStatePtr)
         stwu    rtn_addr, -28(a7)
         stw     a1, 4(a7)
         stw     d1, 8(a7)
@@ -11730,7 +11754,7 @@ dr_aline_trap_L2:
         lwz     rtn_addr, dr_emitters - dr_emitters(base_disp)  // template: lwz addr, T_11598 - dr_emitters(base_disp)
         addi    pc, immed_data, 2
         cmpw    cr6, rtn_addr, pc
-        lwz     rtn_addr, 0x724(EmulatorStatePtr)
+        lwz     rtn_addr, os_trap_exit(EmulatorStatePtr)
         stwu    rtn_addr, -32(a7)
         stw     a0, 4(a7)
         stw     a1, 8(a7)
@@ -12044,66 +12068,77 @@ T_1717C:
         addi    data, pc, 0                             // template
 T_17180:
         stwu    data, -4(a7)                            // template
-dr_emit_jmp_L4:
-        bgt     cr7, T_17180
-dr_emit_jmp_L5:
-        bge     cr7, dr_emit_jmp_L4
-dr_emit_jmp_L6:
-        blt     cr7, dr_emit_jmp_L5
-dr_emit_jmp_L7:
-        ble     cr7, dr_emit_jmp_L6
-dr_emit_jmp_L8:
-        bne     cr7, dr_emit_jmp_L7
-        beq     cr7, dr_emit_jmp_L8
-        subfe   addr, addr, addr                        // addr = addr + ~addr + CA
-dr_emit_jmp_L9:
-        cmpwi   cr6, addr, 0
-        beq     cr6, dr_emit_jmp_L9
-        beq     dr_emit_jmp_L12
-        subfe   addr, addr, addr                        // addr = addr + ~addr + CA
-dr_emit_jmp_L10:
-        cmpwi   cr6, addr, 0
-dr_emit_jmp_L11:
-        bne     cr6, dr_emit_jmp_L10
-dr_emit_jmp_L12:
-        beq     dr_emit_jmp_L11
-        bne     dr_emit_jmp_L12
-        beq     dr_emit_jmp_L15
-        mfxer   rtn_addr
-        rlwinm  rtn_addr, rtn_addr, 8, 24, 27           // rtn_addr = rtn_addr[31:28] << 4
-        mtcrf   0x02, rtn_addr                          // cr6 = rtn_addr[7:4]
-dr_emit_jmp_L13:
-        creqv   4*cr6+lt, lt, 4*cr6+gt                  // cr6.lt = ~(cr0.lt ^ cr6.gt)
-dr_emit_jmp_L14:
-        blt     cr6, dr_emit_jmp_L13
-dr_emit_jmp_L15:
-        beq     dr_emit_jmp_L14
-        subfe   addr, addr, addr                        // addr = addr + ~addr + CA
-dr_emit_jmp_L16:
-        cmpwi   cr6, addr, 0
-        beq     cr6, dr_emit_jmp_L16
-        mfxer   rtn_addr
-        rlwinm  rtn_addr, rtn_addr, 8, 24, 27           // rtn_addr = rtn_addr[31:28] << 4
-dr_emit_jmp_L17:
-        mtcrf   0x02, rtn_addr                          // cr6 = rtn_addr[7:4]
-        ble     cr6, dr_emit_jmp_L17
-        mfxer   rtn_addr
-        rlwinm  rtn_addr, rtn_addr, 8, 24, 27           // rtn_addr = rtn_addr[31:28] << 4
-dr_emit_jmp_L18:
-        mtcrf   0x02, rtn_addr                          // cr6 = rtn_addr[7:4]
-dr_emit_jmp_L19:
-        bgt     cr6, dr_emit_jmp_L18
-dr_emit_jmp_L20:
-        bge     dr_emit_jmp_L19
-dr_emit_jmp_L21:
-        blt     dr_emit_jmp_L20
-        beq     dr_emit_jmp_L21
-        mfxer   rtn_addr
-        rlwinm  rtn_addr, rtn_addr, 8, 24, 27           // rtn_addr = rtn_addr[31:28] << 4
-        mtcrf   0x02, rtn_addr                          // cr6 = rtn_addr[7:4]
-dr_emit_jmp_L22:
-        crxor   4*cr6+lt, lt, 4*cr6+gt                  // cr6.lt = cr0.lt ^ cr6.gt
-        blt     cr6, dr_emit_jmp_L22
+T_17184:
+        bgt     cr7, T_17180                            // template
+T_17188:
+        bge     cr7, T_17184                            // template
+T_1718C:
+        blt     cr7, T_17188                            // template
+T_17190:
+        ble     cr7, T_1718C                            // template
+T_17194:
+        bne     cr7, T_17190                            // template
+T_17198:
+        beq     cr7, T_17194                            // template
+T_1719C:
+        subfe   addr, addr, addr                        // template
+T_171A0:
+        cmpwi   cr6, addr, 0                            // template
+        beq     cr6, T_171A0                            // template
+T_171A8:
+        beq     T_171B8                                 // template
+T_171AC:
+        subfe   addr, addr, addr                        // template
+T_171B0:
+        cmpwi   cr6, addr, 0                            // template
+T_171B4:
+        bne     cr6, T_171B0                            // template
+T_171B8:
+        beq     T_171B4                                 // template
+T_171BC:
+        bne     T_171B8                                 // template
+T_171C0:
+        beq     T_171D8                                 // template
+T_171C4:
+        mfxer   rtn_addr                                // template
+        rlwinm  rtn_addr, rtn_addr, 8, 24, 27           // template
+        mtcrf   0x02, rtn_addr                          // template
+T_171D0:
+        creqv   4*cr6+lt, lt, 4*cr6+gt                  // template
+T_171D4:
+        blt     cr6, T_171D0                            // template
+T_171D8:
+        beq     T_171D4                                 // template
+        subfe   addr, addr, addr                        // template
+T_171E0:
+        cmpwi   cr6, addr, 0                            // template
+        beq     cr6, T_171E0                            // template
+T_171E8:
+        mfxer   rtn_addr                                // template
+        rlwinm  rtn_addr, rtn_addr, 8, 24, 27           // template
+T_171F0:
+        mtcrf   0x02, rtn_addr                          // template
+        ble     cr6, T_171F0                            // template
+T_171F8:
+        mfxer   rtn_addr                                // template
+        rlwinm  rtn_addr, rtn_addr, 8, 24, 27           // template
+T_17200:
+        mtcrf   0x02, rtn_addr                          // template
+T_17204:
+        bgt     cr6, T_17200                            // template
+T_17208:
+        bge     T_17204                                 // template
+T_1720C:
+        blt     T_17208                                 // template
+T_17210:
+        beq     T_1720C                                 // template
+T_17214:
+        mfxer   rtn_addr                                // template
+        rlwinm  rtn_addr, rtn_addr, 8, 24, 27           // template
+        mtcrf   0x02, rtn_addr                          // template
+T_17220:
+        crxor   4*cr6+lt, lt, 4*cr6+gt                  // template
+        blt     cr6, T_17220                            // template
 
 // One long word for each of the sixteen conditions, for a conditional
 // branch that tests the 68K flags where the interpreter keeps them (cr0
@@ -12111,42 +12146,74 @@ dr_emit_jmp_L22:
 // number plus one (bits 15:8), and in the low byte a bit for each template
 // that is a branch whose displacement has to be filled in.
 dr_bcc_sequences:
-        .long   0x00000100
-        .long   0x00000100
-        .long   0x5E6C0510
-        .long   0x5E9C0512
-        .long   0x5E700408
-        .long   0x5E600408
-        .long   0x5E800202
-        .long   0x5E7C0202
-        .long   0x5EAC0510
-        .long   0x5EBC0510
-        .long   0x5ECC0202
-        .long   0x5ED00202
-        .long   0x5E880620
-        .long   0x5ED80620
-        .long   0x5E840740
-        .long   0x5ED40742
+        .short  0                                       // T
+        .byte   1, 0x00
+        .short  0                                       // F
+        .byte   1, 0x00
+        .short  T_171A8 - dr_emitters - 4               // HI
+        .byte   5, 0x10
+        .short  T_171D8 - dr_emitters - 4               // LS
+        .byte   5, 0x12
+        .short  T_171AC - dr_emitters - 4               // CC
+        .byte   4, 0x08
+        .short  T_1719C - dr_emitters - 4               // CS
+        .byte   4, 0x08
+        .short  T_171BC - dr_emitters - 4               // NE
+        .byte   2, 0x02
+        .short  T_171B8 - dr_emitters - 4               // EQ
+        .byte   2, 0x02
+        .short  T_171E8 - dr_emitters - 4               // VC
+        .byte   5, 0x10
+        .short  T_171F8 - dr_emitters - 4               // VS
+        .byte   5, 0x10
+        .short  T_17208 - dr_emitters - 4               // PL
+        .byte   2, 0x02
+        .short  T_1720C - dr_emitters - 4               // MI
+        .byte   2, 0x02
+        .short  T_171C4 - dr_emitters - 4               // GE
+        .byte   6, 0x20
+        .short  T_17214 - dr_emitters - 4               // LT
+        .byte   6, 0x20
+        .short  T_171C0 - dr_emitters - 4               // GT
+        .byte   7, 0x40
+        .short  T_17210 - dr_emitters - 4               // LE
+        .byte   7, 0x42
 
 // The same for a branch that follows a compare which left a PowerPC
 // comparison in cr7 (bit 0x0008 of the record's flags).
 dr_bcc_sequences_cr7:
-        .long   0x00000100
-        .long   0x00000100
-        .long   0x5E480202
-        .long   0x5E540202
-        .long   0x5E4C0202
-        .long   0x5E500202
-        .long   0x5E580202
-        .long   0x5E5C0202
-        .long   0x5EAC0510
-        .long   0x5EBC0510
-        .long   0x5ECC0202
-        .long   0x5ED00202
-        .long   0x5E4C0202
-        .long   0x5E500202
-        .long   0x5E480202
-        .long   0x5E540202
+        .short  0                                       // T
+        .byte   1, 0x00
+        .short  0                                       // F
+        .byte   1, 0x00
+        .short  T_17184 - dr_emitters - 4               // HI
+        .byte   2, 0x02
+        .short  T_17190 - dr_emitters - 4               // LS
+        .byte   2, 0x02
+        .short  T_17188 - dr_emitters - 4               // CC
+        .byte   2, 0x02
+        .short  T_1718C - dr_emitters - 4               // CS
+        .byte   2, 0x02
+        .short  T_17194 - dr_emitters - 4               // NE
+        .byte   2, 0x02
+        .short  T_17198 - dr_emitters - 4               // EQ
+        .byte   2, 0x02
+        .short  T_171E8 - dr_emitters - 4               // VC
+        .byte   5, 0x10
+        .short  T_171F8 - dr_emitters - 4               // VS
+        .byte   5, 0x10
+        .short  T_17208 - dr_emitters - 4               // PL
+        .byte   2, 0x02
+        .short  T_1720C - dr_emitters - 4               // MI
+        .byte   2, 0x02
+        .short  T_17188 - dr_emitters - 4               // GE
+        .byte   2, 0x02
+        .short  T_1718C - dr_emitters - 4               // LT
+        .byte   2, 0x02
+        .short  T_17184 - dr_emitters - 4               // GT
+        .byte   2, 0x02
+        .short  T_17190 - dr_emitters - 4               // LE
+        .byte   2, 0x02
 
 // Code generator for 128 opcodes:
 //     DBT.W Dn,<label>
@@ -12226,7 +12293,7 @@ dr_emit_dbcc_w_L3:
         b       dr_emit_next
 dr_emit_dbcc_w_L4:
         lwz     addr, T_173D8 - dr_emitters(base_disp)  // template: addi d0, d0, -1
-        lwz     data, T_173DC - dr_emitters(base_disp)  // template: beq cr7, dr_emit_dbcc_w_L7
+        lwz     data, T_173DC - dr_emitters(base_disp)  // template: beq cr7, T_173F0
         rlwimi  addr, prefetch_data, 21, 8, 10          // addr[23:21] = prefetch_data[2:0]
         rlwimi  addr, prefetch_data, 16, 13, 15         // addr[18:16] = prefetch_data[2:0]
         stwu    addr, 4(out_ptr)
@@ -12261,78 +12328,103 @@ T_173D4:
 T_173D8:
         addi    d0, d0, -1                              // template
 T_173DC:
-        beq     cr7, dr_emit_dbcc_w_L7                  // template
+        beq     cr7, T_173F0                            // template
 T_173E0:
         addis   d0, d0, 1                               // template
-        subfe   addr, addr, addr                        // addr = addr + ~addr + CA
-dr_emit_dbcc_w_L5:
-        cmpwi   cr6, addr, 0
-dr_emit_dbcc_w_L6:
-        bne     cr6, dr_emit_dbcc_w_L5
-dr_emit_dbcc_w_L7:
-        beq     dr_emit_dbcc_w_L6
-        subfe   addr, addr, addr                        // addr = addr + ~addr + CA
-dr_emit_dbcc_w_L8:
-        cmpwi   cr6, addr, 0
-dr_emit_dbcc_w_L9:
-        beq     cr6, dr_emit_dbcc_w_L8
-dr_emit_dbcc_w_L10:
-        bne     dr_emit_dbcc_w_L9
-dr_emit_dbcc_w_L11:
-        beq     dr_emit_dbcc_w_L10
-        beq     dr_emit_dbcc_w_L11
-        mfxer   rtn_addr
-        rlwinm  rtn_addr, rtn_addr, 8, 24, 27           // rtn_addr = rtn_addr[31:28] << 4
-        mtcrf   0x02, rtn_addr                          // cr6 = rtn_addr[7:4]
-dr_emit_dbcc_w_L12:
-        creqv   4*cr6+lt, lt, 4*cr6+gt                  // cr6.lt = ~(cr0.lt ^ cr6.gt)
-        bge     cr6, dr_emit_dbcc_w_L12
-        beq     dr_emit_dbcc_w_L14
-        subfe   addr, addr, addr                        // addr = addr + ~addr + CA
-dr_emit_dbcc_w_L13:
-        cmpwi   cr6, addr, 0
-        bne     cr6, dr_emit_dbcc_w_L13
-dr_emit_dbcc_w_L14:
-        mfxer   rtn_addr
-        rlwinm  rtn_addr, rtn_addr, 8, 24, 27           // rtn_addr = rtn_addr[31:28] << 4
-dr_emit_dbcc_w_L15:
-        mtcrf   0x02, rtn_addr                          // cr6 = rtn_addr[7:4]
-        bgt     cr6, dr_emit_dbcc_w_L15
-        mfxer   rtn_addr
-        rlwinm  rtn_addr, rtn_addr, 8, 24, 27           // rtn_addr = rtn_addr[31:28] << 4
-dr_emit_dbcc_w_L16:
-        mtcrf   0x02, rtn_addr                          // cr6 = rtn_addr[7:4]
-dr_emit_dbcc_w_L17:
-        ble     cr6, dr_emit_dbcc_w_L16
-dr_emit_dbcc_w_L18:
-        blt     dr_emit_dbcc_w_L17
-        bge     dr_emit_dbcc_w_L18
+T_173E4:
+        subfe   addr, addr, addr                        // template
+T_173E8:
+        cmpwi   cr6, addr, 0                            // template
+T_173EC:
+        bne     cr6, T_173E8                            // template
+T_173F0:
+        beq     T_173EC                                 // template
+T_173F4:
+        subfe   addr, addr, addr                        // template
+T_173F8:
+        cmpwi   cr6, addr, 0                            // template
+T_173FC:
+        beq     cr6, T_173F8                            // template
+T_17400:
+        bne     T_173FC                                 // template
+T_17404:
+        beq     T_17400                                 // template
+T_17408:
+        beq     T_17404                                 // template
+T_1740C:
+        mfxer   rtn_addr                                // template
+        rlwinm  rtn_addr, rtn_addr, 8, 24, 27           // template
+        mtcrf   0x02, rtn_addr                          // template
+T_17418:
+        creqv   4*cr6+lt, lt, 4*cr6+gt                  // template
+        bge     cr6, T_17418                            // template
+T_17420:
+        beq     T_17430                                 // template
+        subfe   addr, addr, addr                        // template
+T_17428:
+        cmpwi   cr6, addr, 0                            // template
+        bne     cr6, T_17428                            // template
+T_17430:
+        mfxer   rtn_addr                                // template
+        rlwinm  rtn_addr, rtn_addr, 8, 24, 27           // template
+T_17438:
+        mtcrf   0x02, rtn_addr                          // template
+        bgt     cr6, T_17438                            // template
+T_17440:
+        mfxer   rtn_addr                                // template
+        rlwinm  rtn_addr, rtn_addr, 8, 24, 27           // template
+T_17448:
+        mtcrf   0x02, rtn_addr                          // template
+T_1744C:
+        ble     cr6, T_17448                            // template
+T_17450:
+        blt     T_1744C                                 // template
+T_17454:
+        bge     T_17450                                 // template
+T_17458:
         .long   0x41820018
-        mfxer   rtn_addr
-        rlwinm  rtn_addr, rtn_addr, 8, 24, 27           // rtn_addr = rtn_addr[31:28] << 4
-        mtcrf   0x02, rtn_addr                          // cr6 = rtn_addr[7:4]
-dr_emit_dbcc_w_L19:
-        crxor   4*cr6+lt, lt, 4*cr6+gt                  // cr6.lt = cr0.lt ^ cr6.gt
-        bf_unlikely 4*cr6+lt, dr_emit_dbcc_w_L19
+T_1745C:
+        mfxer   rtn_addr                                // template
+        rlwinm  rtn_addr, rtn_addr, 8, 24, 27           // template
+        mtcrf   0x02, rtn_addr                          // template
+T_17468:
+        crxor   4*cr6+lt, lt, 4*cr6+gt                  // template
+        bf_unlikely 4*cr6+lt, T_17468                   // template
 
 // The same for DBcc.
 dr_dbcc_sequences:
-        .long   0x60A80100
-        .long   0x00000100
-        .long   0x60B40512
-        .long   0x60E40510
-        .long   0x60B80408
-        .long   0x60A80408
-        .long   0x60C80202
-        .long   0x60C40202
-        .long   0x60F40510
-        .long   0x61040510
-        .long   0x61140202
-        .long   0x61180202
-        .long   0x60D00620
-        .long   0x61200620
-        .long   0x60CC0742
-        .long   0x611C0740
+        .short  T_173E4 - dr_emitters - 4               // T
+        .byte   1, 0x00
+        .short  0                                       // F
+        .byte   1, 0x00
+        .short  T_173F0 - dr_emitters - 4               // HI
+        .byte   5, 0x12
+        .short  T_17420 - dr_emitters - 4               // LS
+        .byte   5, 0x10
+        .short  T_173F4 - dr_emitters - 4               // CC
+        .byte   4, 0x08
+        .short  T_173E4 - dr_emitters - 4               // CS
+        .byte   4, 0x08
+        .short  T_17404 - dr_emitters - 4               // NE
+        .byte   2, 0x02
+        .short  T_17400 - dr_emitters - 4               // EQ
+        .byte   2, 0x02
+        .short  T_17430 - dr_emitters - 4               // VC
+        .byte   5, 0x10
+        .short  T_17440 - dr_emitters - 4               // VS
+        .byte   5, 0x10
+        .short  T_17450 - dr_emitters - 4               // PL
+        .byte   2, 0x02
+        .short  T_17454 - dr_emitters - 4               // MI
+        .byte   2, 0x02
+        .short  T_1740C - dr_emitters - 4               // GE
+        .byte   6, 0x20
+        .short  T_1745C - dr_emitters - 4               // LT
+        .byte   6, 0x20
+        .short  T_17408 - dr_emitters - 4               // GT
+        .byte   7, 0x42
+        .short  T_17458 - dr_emitters - 4               // LE
+        .byte   7, 0x40
 
 // Code generator for 1 opcode:
 //     RTD #<disp>

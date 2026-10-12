@@ -36,19 +36,14 @@ Legend: `[x]` done, `[~]` partly done, `[ ]` not started.
       side of the context block and fields used once
 - [x] Symbolic template loads and operand emitter tables in the recompiler; every
       emitter's header shows a translation
-- [ ] The words of the condition sequence tables (`dr_bcc_sequences` and the like) are
-      still plain numbers
 
 ### Interpreter still to read
 - [x] Bit fields, BCD, MOVEM, MOVE16, CAS, CHK2/CMP2, long multiply/divide: read and
       described in block comments (`annotations/50-instructions.ann`)
-- [ ] Not described individually: MOVEP, MOVES, TRAPcc, RTR, the bit field insert and
-      modify routines
 - [~] Private opcodes: all named (Apple's names from SuperMario) and described; the SANE
       arithmetic (`FC04`, `FC06`, `FC08`-`FC0F`, 4 KB) is not read line by line
 - [x] The routines behind the forty FPU handler slots: they build the 68LC040's format 4
-      frame (`docs/06`). What calls `install_exception_stubs` (handler slot `+0x898`) has not
-      been traced
+      frame (`docs/06`). Nothing in the image or the ROMs calls `install_exception_stubs`
 - [ ] Mixed mode: the layout of the native context block and the format `$E` frame
 
 ### Recompiler still to read

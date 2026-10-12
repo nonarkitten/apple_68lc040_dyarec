@@ -145,6 +145,13 @@ through `fpu_format_4_exception` (`0E794`). The same call installs
 `rte_format_4` as the `RTE` handler for format 4. `FSAVE` and `FRESTORE`
 check for supervisor state first.
 
+Nothing in the image calls `install_exception_stubs` or refers to its
+slot, and no 68K instruction leads to it (every opcode, every `MOVEC`
+register number and every emulator control register was tried in the
+simulator). Nor does the PowerPC code of the two ROMs examined refer to
+the slot. It is there for native code elsewhere to call; on a machine
+where nothing does, floating point instructions produce format 0 frames.
+
 ### Replaceable handlers
 
 The dispatch table entries for unimplemented, line-A and line-F opcodes do

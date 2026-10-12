@@ -162,3 +162,47 @@
     MOVE16: sixteen bytes between addresses rounded down to a multiple of
     sixteen, as four word loads and four word stores.  The routine in
     handler slot +0x94C (or +0x950, by direction) is called first.
+
+@079C0
+    BFCHG, BFCLR and BFSET on a register.  A mask with ones for the field is
+    made by shifting -1 left by 32 minus the width and rotating it right by
+    the offset.  N and Z come from the old field; then the register is
+    changed under the mask according to the opcode still in disp_table.
+079EC ones for the width, at the top
+079F0 rotated into place
+07A00 the old field, for N and Z
+
+@07B00
+    BFINS on a register: the source register's low bits are moved to the top
+    by the shift that makes the mask (which also sets N and Z from the
+    value inserted), rotated into place with it, and merged.
+07B20 the value, left-justified; N and Z
+07B4C clear the field, then put the value in
+
+@07EA0
+    RTR: the condition codes from the word on the stack, then RTS.
+07EA4 Z, N for cr0; X for ccr_x; V, C for the XER
+
+@0CCEC
+    TRAPcc.  The condition is looked up rather than computed: the word for
+    the condition in condition_truth_table has one bit for each combination
+    of the flags, and the flags, gathered from the XER and cr0 into a
+    five-bit number, select it.
+0CCEC C and V ...
+0CCF4 ... N and Z
+0CD04 the truth bit for this combination
+
+@0C850
+    MOVES.  Privileged; otherwise the move is an ordinary one - the source
+    and destination function codes select nothing.  The routine in handler
+    slot +0x824 is called first.
+
+@06344 movep_from_memory
+    MOVEP (d16,An),Dn: the bytes are at every other address, two for a word
+    and four for a long, and are loaded one at a time.  The sixteen short
+    routines that come here (movep_mem_dn and the like) form the address for
+    one address register each.
+
+@06374 movep_to_memory
+    MOVEP Dn,(d16,An).
+

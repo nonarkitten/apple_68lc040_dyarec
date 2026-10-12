@@ -8920,7 +8920,7 @@ movea_mem_a0:
 //     MOVEP.L (d16,An),Dn
 movep_mem_dn:
         add     addr, a0, prefetch_data
-        b       move_clr_b_reg_mem_17_L1
+        b       movep_from_memory
 
 // Continuation (via rtn_addr) of 9 dispatch table entries:
 //     LEA (d8,An,Xn),An
@@ -8938,7 +8938,7 @@ lea_mem_a0:
 //     MOVEP.L Dn,(d16,An)
 movep_dn_mem:
         add     addr, a0, prefetch_data
-        b       move_clr_b_reg_mem_17_L2
+        b       movep_to_memory
 
 // Continuation (via rtn_addr) of 33 dispatch table entries:
 //     MOVEA.L (d8,An,Xn),An
@@ -8961,7 +8961,7 @@ movea_mem_a1:
 //     MOVEP.L (d16,An),Dn
 movep_mem_dn_2:
         add     addr, a1, prefetch_data
-        b       move_clr_b_reg_mem_17_L1
+        b       movep_from_memory
 
 // Continuation (via rtn_addr) of 9 dispatch table entries:
 //     LEA (d8,An,Xn),An
@@ -8979,7 +8979,7 @@ lea_mem_a1:
 //     MOVEP.L Dn,(d16,An)
 movep_dn_mem_2:
         add     addr, a1, prefetch_data
-        b       move_clr_b_reg_mem_17_L2
+        b       movep_to_memory
 
 // Continuation (via rtn_addr) of 33 dispatch table entries:
 //     MOVEA.L (d8,An,Xn),An
@@ -9002,7 +9002,7 @@ movea_mem_a2:
 //     MOVEP.L (d16,An),Dn
 movep_mem_dn_3:
         add     addr, a2, prefetch_data
-        b       move_clr_b_reg_mem_17_L1
+        b       movep_from_memory
 
 // Continuation (via rtn_addr) of 9 dispatch table entries:
 //     LEA (d8,An,Xn),An
@@ -9020,7 +9020,7 @@ lea_mem_a2:
 //     MOVEP.L Dn,(d16,An)
 movep_dn_mem_3:
         add     addr, a2, prefetch_data
-        b       move_clr_b_reg_mem_17_L2
+        b       movep_to_memory
 
 // Continuation (via rtn_addr) of 33 dispatch table entries:
 //     MOVEA.L (d8,An,Xn),An
@@ -9043,7 +9043,7 @@ movea_mem_a3:
 //     MOVEP.L (d16,An),Dn
 movep_mem_dn_4:
         add     addr, a3, prefetch_data
-        b       move_clr_b_reg_mem_17_L1
+        b       movep_from_memory
 
 // Continuation (via rtn_addr) of 9 dispatch table entries:
 //     LEA (d8,An,Xn),An
@@ -9061,7 +9061,7 @@ lea_mem_a3:
 //     MOVEP.L Dn,(d16,An)
 movep_dn_mem_4:
         add     addr, a3, prefetch_data
-        b       move_clr_b_reg_mem_17_L2
+        b       movep_to_memory
 
 // Continuation (via rtn_addr) of 33 dispatch table entries:
 //     MOVEA.L (d8,An,Xn),An
@@ -9084,7 +9084,7 @@ movea_mem_a4:
 //     MOVEP.L (d16,An),Dn
 movep_mem_dn_5:
         add     addr, a4, prefetch_data
-        b       move_clr_b_reg_mem_17_L1
+        b       movep_from_memory
 
 // Continuation (via rtn_addr) of 9 dispatch table entries:
 //     LEA (d8,An,Xn),An
@@ -9102,7 +9102,7 @@ lea_mem_a4:
 //     MOVEP.L Dn,(d16,An)
 movep_dn_mem_5:
         add     addr, a4, prefetch_data
-        b       move_clr_b_reg_mem_17_L2
+        b       movep_to_memory
 
 // Continuation (via rtn_addr) of 33 dispatch table entries:
 //     MOVEA.L (d8,An,Xn),An
@@ -9125,7 +9125,7 @@ movea_mem_a5:
 //     MOVEP.L (d16,An),Dn
 movep_mem_dn_6:
         add     addr, a5, prefetch_data
-        b       move_clr_b_reg_mem_17_L1
+        b       movep_from_memory
 
 // Continuation (via rtn_addr) of 9 dispatch table entries:
 //     LEA (d8,An,Xn),An
@@ -9143,7 +9143,7 @@ lea_mem_a5:
 //     MOVEP.L Dn,(d16,An)
 movep_dn_mem_6:
         add     addr, a5, prefetch_data
-        b       move_clr_b_reg_mem_17_L2
+        b       movep_to_memory
 
 // Continuation (via rtn_addr) of 33 dispatch table entries:
 //     MOVEA.L (d8,An,Xn),An
@@ -9166,7 +9166,7 @@ movea_mem_a6:
 //     MOVEP.L (d16,An),Dn
 movep_mem_dn_7:
         add     addr, a6, prefetch_data
-        b       move_clr_b_reg_mem_17_L1
+        b       movep_from_memory
 
 // Continuation (via rtn_addr) of 9 dispatch table entries:
 //     LEA (d8,An,Xn),An
@@ -9184,7 +9184,7 @@ lea_mem_a6:
 //     MOVEP.L Dn,(d16,An)
 movep_dn_mem_7:
         add     addr, a6, prefetch_data
-        b       move_clr_b_reg_mem_17_L2
+        b       movep_to_memory
 
 // Continuation (via rtn_addr) of 34 dispatch table entries:
 //     MOVEA.L (d8,An,Xn),An
@@ -9207,7 +9207,7 @@ movea_mem_a7:
 //     MOVEP.L (d16,An),Dn
 movep_mem_dn_8:
         add     addr, a7, prefetch_data
-        b       move_clr_b_reg_mem_17_L1
+        b       movep_from_memory
 
 // Continuation (via rtn_addr) of 9 dispatch table entries:
 //     LEA (d8,An,Xn),An
@@ -9225,7 +9225,7 @@ lea_mem_a7:
 //     MOVEP.L Dn,(d16,An)
 movep_dn_mem_8:
         add     addr, a7, prefetch_data
-        b       move_clr_b_reg_mem_17_L2
+        b       movep_to_memory
 
 // Reached from 9 dispatch table entries:
 //     ADD.B Dn,(d16,An)
@@ -18251,7 +18251,12 @@ move_clr_b_reg_mem_17:
         lhau    prefetch_data, 4(pc)                    // PREFETCH: pc += 4, load the word there
         lwz     addr, -4(pc)
         b       link_l_a7_imm_L3
-move_clr_b_reg_mem_17_L1:
+
+// MOVEP (d16,An),Dn: the bytes are at every other address, two for a word
+// and four for a long, and are loaded one at a time.  The sixteen short
+// routines that come here (movep_mem_dn and the like) form the address for
+// one address register each.
+movep_from_memory:
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         mtcrf   0x0F, disp_table                        // cr4..cr7 = disp_table[15:0]
         mtctr   rtn_addr
@@ -18264,7 +18269,9 @@ move_clr_b_reg_mem_17_L1:
         lbz     data, 6(addr)
         rlwimi  data, rtn_addr, 8, 0, 23                // data[31:8] = rtn_addr[23:0]
         bctr
-move_clr_b_reg_mem_17_L2:
+
+// MOVEP Dn,(d16,An).
+movep_to_memory:
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         mtcrf   0x0F, disp_table                        // cr4..cr7 = disp_table[15:0]
         stb     data, 0(addr)
@@ -18272,12 +18279,12 @@ move_clr_b_reg_mem_17_L2:
         mtlr    disp_table                              // DECODE2: LR = address of the next dispatch entry
         rotlwi  data, data, 8                           // data = rotl(data, 8)
         stb     data, 2(addr)
-        bne     cr5, move_clr_b_reg_mem_17_L3
+        bne     cr5, movep_to_memory_L1
         rotlwi  data, data, 8                           // data = rotl(data, 8)
         stb     data, 4(addr)
         rotlwi  data, data, 8                           // data = rotl(data, 8)
         stb     data, 6(addr)
-move_clr_b_reg_mem_17_L3:
+movep_to_memory_L1:
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         bflr_likely cr_special_event_pending            // DISPATCH unless a special event is pending
         b       process_special_event
@@ -20698,6 +20705,11 @@ bfextu_bfexts_bfffo_mem_3_L2:
         b       bfchg_bfclr_bfset
         ALIGN(64)
 
+// BFCHG, BFCLR and BFSET on a register.  A mask with ones for the field is
+// made by shifting -1 left by 32 minus the width and rotating it right by
+// the offset.  N and Z come from the old field; then the register is
+// changed under the mask according to the opcode still in disp_table.
+//
 // Reached from 24 dispatch table entries:
 //     BFCHG Dn{ofs:wid}
 //     BFCLR Dn{ofs:wid}
@@ -20714,12 +20726,12 @@ bfchg_bfclr_bfset:
         mtctr   addr
         mtcrf   0x0F, disp_table                        // cr4..cr7 = disp_table[15:0]
         clrlwi  immed_data, immed_data, 27              // immed_data = immed_data & 0x0000001F
-        slw     data, data, immed_data
-        rlwnm   data, data, base_disp, 0, 31            // data = rotl(data, base_disp) & 0xFFFFFFFF
+        slw     data, data, immed_data                  // ones for the width, at the top
+        rlwnm   data, data, base_disp, 0, 31            // rotated into place
         neg     rtn_addr, base_disp
         bctrl
         and     immed_data, base_disp, data
-        rlwnm.  addr, immed_data, rtn_addr, 0, 31       // addr = rotl(immed_data, rtn_addr) & 0xFFFFFFFF
+        rlwnm.  addr, immed_data, rtn_addr, 0, 31       // the old field, for N and Z
         addco   zero, zero, zero                        // V=0, C=0
         bne     cr4, bfchg_bfclr_bfset_L1
         or      base_disp, base_disp, data
@@ -20814,6 +20826,10 @@ bfchg_bfclr_bfset_mem_3_L5:
         b       process_special_event
         ALIGN(64)
 
+// BFINS on a register: the source register's low bits are moved to the top
+// by the shift that makes the mask (which also sets N and Z from the
+// value inserted), rotated into place with it, and merged.
+//
 // Reached from 8 dispatch table entries:
 //     BFINS Dn,Dn{ofs:wid}
 bfins:
@@ -20825,7 +20841,7 @@ bfins:
         mtlr    data
         clrlwi  immed_data, immed_data, 27              // immed_data = immed_data & 0x0000001F
         blrl
-        slw.    data, base_disp, immed_data
+        slw.    data, base_disp, immed_data             // the value, left-justified; N and Z
         rlwinm  base_disp, prefetch_data, 26, 27, 31    // base_disp = prefetch_data[10:6]
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         bltl    cr5, bfins_mem_3_L1
@@ -20836,7 +20852,7 @@ bfins:
         blrl
         rlwnm   rtn_addr, rtn_addr, addr, 0, 31         // rtn_addr = rotl(rtn_addr, addr) & 0xFFFFFFFF
         rlwnm   data, data, addr, 0, 31                 // data = rotl(data, addr) & 0xFFFFFFFF
-        andc    base_disp, base_disp, rtn_addr          // base_disp = base_disp & ~rtn_addr
+        andc    base_disp, base_disp, rtn_addr          // clear the field, then put the value in
         addco   base_disp, base_disp, data
         blr
         ALIGN(32)
@@ -21104,11 +21120,13 @@ jsr_mem_3:
         b       process_special_event
         ALIGN(32)
 
+// RTR: the condition codes from the word on the stack, then RTS.
+//
 // Reached from 1 dispatch table entry:
 //     RTR
 rtr:
         lwzu    pc, 2(a7)
-        rlwinm  immed_data, data, 27, 2, 2              // immed_data = data[2] << 29
+        rlwinm  immed_data, data, 27, 2, 2              // Z, N for cr0; X for ccr_x; V, C for the XER
         rlwinm  ccr_x, data, 25, 2, 2                   // ccr_x = data[4] << 29
         rlwimi  immed_data, data, 28, 0, 0              // immed_data[31] = data[3]
         rlwinm  data, data, 29, 1, 2                    // data = data[1:0] << 29
@@ -23256,7 +23274,7 @@ aline_os_trap_alt:
         mr      data, pc
         bne     cr7, take_aline
         lwzx    pc, immed_data, base_disp
-        lwz     rtn_addr, 0x728(EmulatorStatePtr)
+        lwz     rtn_addr, os_trap_exit_no_a0(EmulatorStatePtr)
         rlwinm  sr_and_flags, sr_and_flags, 0, 26, 22   // sr_and_flags = sr_and_flags & 0xFFFFFE3F
         lha     prefetch_data, 0(pc)
         stwu    rtn_addr, -28(a7)
@@ -23304,7 +23322,7 @@ aline_os_trap:
         mr      data, pc
         bne     cr7, take_aline
         lwzx    pc, immed_data, base_disp
-        lwz     rtn_addr, 0x724(EmulatorStatePtr)
+        lwz     rtn_addr, os_trap_exit(EmulatorStatePtr)
         rlwinm  sr_and_flags, sr_and_flags, 0, 26, 22   // sr_and_flags = sr_and_flags & 0xFFFFFE3F
         lha     prefetch_data, 0(pc)
         stwu    rtn_addr, -32(a7)
@@ -29152,6 +29170,10 @@ movec_tables_L1:
 moves_b_rn_mem:
         li      data, -1
 
+// MOVES.  Privileged; otherwise the move is an ordinary one - the source
+// and destination function codes select nothing.  The routine in handler
+// slot +0x824 is called first.
+//
 // Reached from 17 dispatch table entries:
 //     MOVES.B Rn,(An)+
 //     MOVES.B Rn,(d8,An,Xn)
@@ -29954,6 +29976,11 @@ format2_exception:
 trapcc:
         ori     base_disp, code_ptr, condition_truth_table - cb
 
+// TRAPcc.  The condition is looked up rather than computed: the word for
+// the condition in condition_truth_table has one bit for each combination
+// of the flags, and the flags, gathered from the XER and cr0 into a
+// five-bit number, select it.
+//
 // Reached from 9 dispatch table entries:
 //     TRAPHI
 //     TRAPLS
@@ -29963,13 +29990,13 @@ trapcc:
 //     TRAPGE
 //     ... and 3 more forms
 trapcc_2:
-        mfxer   immed_data
+        mfxer   immed_data                              // C and V ...
         rlwinm  data, disp_table, 23, 26, 29            // data = disp_table[14:11] << 2
-        mfcr    rtn_addr
+        mfcr    rtn_addr                                // ... N and Z
         rlwinm  immed_data, immed_data, 3, 30, 31       // immed_data = immed_data[30:29]
         lwzx    data, base_disp, data
         rlwimi  immed_data, rtn_addr, 5, 27, 29         // immed_data[4:2] = rtn_addr[31:29]
-        rlwnm   data, data, immed_data, 31, 31          // data = rotl(data, immed_data) & 0x00000001
+        rlwnm   data, data, immed_data, 31, 31          // the truth bit for this combination
         cmplwi  cr6, data, 0x0000
         bne     cr6, trapv_trapvs_L2
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // DECODE1: disp_table[18:3] = opcode in prefetch_data
@@ -30997,7 +31024,10 @@ fe03_execute_risc_context:
 // FE04 and FE05, _MoveFromECR and _MoveToECR: read or write an "emulator
 // control register".  D0 is the register number (0-25) and A0 the value.
 // Most registers are words of the state block, found through the byte
-// table at 0D850; a few numbers are treated specially.
+// table ecr_offsets; a few numbers are treated specially.  The routine in
+// handler slot +0x960 is called first.  This is how the 68K ROM sets the
+// emulator up: where the trap tables are, which line-A vector to expect,
+// what memory the recompiler may have.
 //
 // Reached from 2 dispatch table entries:
 //     F-LINE cpID 7
@@ -31027,9 +31057,9 @@ ecr_offsets:
 // Continuation (via rtn_addr) of 1 dispatch table entry:
 //     F-LINE cpID 7
 fe04_move_from_ecr:
-        cmplwi  cr7, d0, 0x0014
+        cmplwi  cr7, d0, 0x0014                         // register 20 exists only if bit 2 of config_flags is set
         beq     cr7, fe05_move_to_ecr_L1
-        cmplwi  cr7, d0, 0x0012
+        cmplwi  cr7, d0, 0x0012                         // register 18: the recompiler's switches, from the CR
         beq     cr7, fe05_move_to_ecr_L3
         lwz     a0, 0x700(addr)
         b       update_nzvc_zero
@@ -31039,15 +31069,15 @@ fe04_move_from_ecr:
 fe05_move_to_ecr:
         cmplwi  cr7, d0, 0x0014
         beq     cr7, fe05_move_to_ecr_L2
-        cmplwi  cr7, d0, 0x0012
+        cmplwi  cr7, d0, 0x0012                         // register 18: switch the recompiler on or off
         beq     cr7, fe05_move_to_ecr_L4
-        cmplwi  cr7, d0, 0x0017
+        cmplwi  cr7, d0, 0x0017                         // register 23: change bits of a word, under a mask
         beq     cr7, fe05_move_to_ecr_L7
         cmplwi  cr7, d0, 0x0000
         cmplwi  cr6, d0, 0x0009
-        beq     cr7, fe04_fe05_move_ecr_L2
+        beq     cr7, fe04_fe05_move_ecr_L2              // register 0, the version, cannot be written
         stw     a0, 0x700(addr)
-        beq     cr6, fe05_move_to_ecr_L6
+        beq     cr6, fe05_move_to_ecr_L6                // register 9: the test-mode switches go into sr_and_flags as well
         b       update_nzvc_zero
 fe05_move_to_ecr_L1:
         lwz     data, config_flags(EmulatorStatePtr)
@@ -31086,17 +31116,17 @@ fe05_move_to_ecr_L4:
         cror    cr_dr_ready, cr_dr_ready, cr_dr_enabled  // cr_dr_ready = cr_dr_ready | cr_dr_enabled
         bf      cr_dr_enabled, update_nzvc_zero
         crandc  4*cr7+so, cr_dr_enabled, 4*cr7+so       // cr7.so = cr_dr_enabled & ~cr7.so
-        lwz     data, dr_setup_vector(EmulatorStatePtr)
+        lwz     data, dr_setup_vector(EmulatorStatePtr)  // enabled now and not before: dr_setup
         bns     cr7, fe05_move_to_ecr_L5
         mtctr   data
         bctrl
 fe05_move_to_ecr_L5:
         crandc  4*cr7+eq, cr_dr_ready, 4*cr7+eq         // cr7.eq = cr_dr_ready & ~cr7.eq
-        lwz     data, dr_flush_vector(EmulatorStatePtr)
+        lwz     data, dr_flush_vector(EmulatorStatePtr)  // ready now and not before: flush the whole cache
         bne     cr7, update_nzvc_zero
         mtctr   data
         bctrl
-        lwz     dr_entry, dr_dispatch_vector(EmulatorStatePtr)
+        lwz     dr_entry, dr_dispatch_vector(EmulatorStatePtr)  // the interpreter's control transfers now go to dr_dispatch
         b       update_nzvc_zero
 fe05_move_to_ecr_L6:
         andi.   data, a0, 0xFFFF
@@ -31340,8 +31370,8 @@ init_state:
         ori     data, data, 0x0400
         stw     data, os_trap_table(EmulatorStatePtr)
         stw     zero, expected_aline_vector(EmulatorStatePtr)
-        stw     zero, 0x724(EmulatorStatePtr)
-        stw     zero, 0x728(EmulatorStatePtr)
+        stw     zero, os_trap_exit(EmulatorStatePtr)
+        stw     zero, os_trap_exit_no_a0(EmulatorStatePtr)
         stw     zero, expected_privilege_vector(EmulatorStatePtr)
         lis     data, 0x8000
         ori     data, data, 0x0029
@@ -31454,10 +31484,10 @@ handler_defaults:
         .short  take_exception - cb
         .short  take_exception - cb
         .short  take_exception - cb
-        .short  fe07_handle_mixed_mode_fault_L9 - cb
-        .short  fe07_handle_mixed_mode_fault_L9 - cb
-        .short  fe07_handle_mixed_mode_fault_L11 - cb
-        .short  fe07_handle_mixed_mode_fault_L11 - cb
+        .short  native_invalidate_range - cb
+        .short  native_invalidate_range - cb
+        .short  native_invalidate_range_L2 - cb
+        .short  native_invalidate_range_L2 - cb
         .short  move16_mem_mem_2_L1 - cb
         .short  move16_mem_mem_4_L1 - cb
         .short  move16_mem_L1 - cb
@@ -31535,7 +31565,7 @@ handler_defaults_L1:
         stw     addr, native_call_entry(EmulatorStatePtr)
         stw     addr, native_return_entry(EmulatorStatePtr)
         ori     addr, code_ptr, fe07_handle_mixed_mode_fault_L8 - cb
-        stw     addr, 0x7A4(EmulatorStatePtr)
+        stw     addr, native_invalidate_entry(EmulatorStatePtr)
         li      addr, 0x907
         stw     addr, 0x7AC(EmulatorStatePtr)
         li      addr, 6
@@ -31839,7 +31869,7 @@ switch_to_native:
         mfcr    immed_data
         lwz     rtn_addr, native_regs_ptr(EmulatorStatePtr)
         rlwinm  immed_data, immed_data, 8, 28, 31       // immed_data = immed_data[27:24]
-        stw     immed_data, 0x7B8(EmulatorStatePtr)
+        stw     immed_data, native_saved_dr_flags(EmulatorStatePtr)
         lwz     immed_data, native_toc(EmulatorStatePtr)
         mtcrf   0x0F, zero                              // cr4..cr7 = zero[15:0]
         stw     rtn_addr, 0x1FC(addr)
@@ -32075,20 +32105,27 @@ fe07_handle_mixed_mode_fault_L7:
         b       set_ccr
 fe07_handle_mixed_mode_fault_L8:
         addi    EmulatorStatePtr, EmulatorStatePtr, -0x740
-        lwz     rtn_addr, 0x7B8(EmulatorStatePtr)
+        lwz     rtn_addr, native_saved_dr_flags(EmulatorStatePtr)
         mtcrf   0x01, rtn_addr                          // cr7 = rtn_addr[3:0]
         lwz     rtn_addr, dr_invalidate_vector(EmulatorStatePtr)
         bnelr   cr7
         mtctr   rtn_addr
         bctr
-fe07_handle_mixed_mode_fault_L9:
-        bf      cr_dr_ready, fe07_handle_mixed_mode_fault_L10
-        lwz     data, dr_flush_vector(EmulatorStatePtr)
+
+// Not an opcode: the routine whose address is published in emulator control
+// register 15 (native_invalidate_entry).  Native code calls it, with r31
+// still pointing at native_regs as the emulator left it, to have the
+// recompiler discard its translations of a range of memory; it passes its
+// arguments straight on to dr_invalidate_range, or returns at once if the
+// recompiler is not ready.
+native_invalidate_range:
+        bf      cr_dr_ready, native_invalidate_range_L1  // EmulatorStatePtr again
+        lwz     data, dr_flush_vector(EmulatorStatePtr)  // the recompiler's flags as they were when native code was entered
         mtctr   data
         bctrl
-fe07_handle_mixed_mode_fault_L10:
+native_invalidate_range_L1:
         b       fetch
-fe07_handle_mixed_mode_fault_L11:
+native_invalidate_range_L2:
         b       fetch
 
 // Reached from 8 dispatch table entries:

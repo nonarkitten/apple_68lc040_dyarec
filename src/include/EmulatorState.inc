@@ -75,12 +75,16 @@
 
 // Emulator control registers and other settings (see fe04_fe05_move_ecr)
 #define expected_aline_vector   0x720   // line-A vector for which traps are dispatched natively
+#define os_trap_exit            0x724   // 68K return address given to an OS trap routine: code that ends in FC10
+#define os_trap_exit_no_a0      0x728   // the same for traps that do not save A0: code that ends in FC11
 #define expected_privilege_vector 0x72C // privilege violation vector for which MOVE from SR is allowed in user state
 #define instruction_count       0x738   // test mode: instructions executed
 #define opcode_counts           0x73C   // test mode: address of a table of counts, one per opcode
 #define config_flags            0x7A0   // bits 0 and 1 must both be set for the recompiler to be enabled
+#define native_invalidate_entry 0x7A4   // PowerPC address native code calls to invalidate translated code
 #define toolbox_trap_table      0x7B0   // address of the Mac OS Toolbox trap table (ToolTable, 0xE00)
 #define os_trap_table           0x7B4   // address of the Mac OS trap table (OSTable, 0x400)
+#define native_saved_dr_flags   0x7B8   // the recompiler's CR flags, kept here while native code runs
 #define dr_memory_base          0x7C0   // memory given to the dynamic recompiler ...
 #define dr_memory_size          0x7C4   // ... and its size
 #define test_hook               0x7C8   // test mode: routine called when bit 18 of the test flags is set ...
