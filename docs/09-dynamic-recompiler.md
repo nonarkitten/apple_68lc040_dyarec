@@ -13,8 +13,11 @@ each other. [12-patents.md](12-patents.md) lists the differences.
 
 **Scope.** This chapter covers the run-time (dispatch, cache management,
 invalidation, linking) and the structure of the translator. It does not
-describe the individual code generators (`11338`–`17640`, about 6,000
-instructions) beyond the conventions they share.
+describe the individual code generators (`dr_emitters`, `11338`–`17640`,
+about 6,000 instructions) one by one; instead it shows what they produce.
+`tools/drtranslate.py` runs the translator itself, in a simulator, on any
+68K code and prints the PowerPC code that results; the examples below are
+its output.
 
 ## State and switches
 
@@ -52,6 +55,9 @@ bottom:
 | Margin | 2 KB | |
 | Instruction records | 2 KB | `dr_records` |
 | Page bitmap | computed from the amount of memory | `dr_page_bitmap` |
+
+Translated code reaches the emulator's routines with ordinary relative
+branches, so this memory must lie within 32 MB of the emulator's code.
 
 The page bitmap has one bit for every 512 bytes of 68K address space up
 to `dr_memory_limit`. The limit is read from a kernel data structure
@@ -198,15 +204,192 @@ pointer has passed `dr_cache_limit`, a full flush is requested and
 execution continues in the interpreter. Otherwise the saved scratch
 registers are restored and the new block is entered.
 
+## What is translated
+
+Running the first pass on every opcode (`tools/drmap.py`) gives the
+recompiler's own answer. It assigns a code generator to 41,911 of the
+65,536 opcodes, through 142 generators. An instruction it does not
+translate ends the block: the translation stops in front of it and
+returns to the interpreter, which executes that one instruction and
+re-enters the recompiler afterwards.
+
+| Translated | Left to the interpreter |
+|---|---|
+| `MOVE`, `MOVEA`, `MOVEQ`, `LEA`, `PEA`, `CLR`, `EXG`, `SWAP`, `EXT`; `MOVE` to and from the CCR | `MOVEP`, `MOVES`, `MOVE16`, `MOVEC`; `MOVE` to and from the SR; `ANDI`/`ORI`/`EORI` to the CCR or SR |
+| `ADD`, `SUB`, `CMP` and their A, I, Q, M forms; `NEG`; `ADDX` | `SUBX`, `NEGX`, `ABCD`, `SBCD`, `NBCD`, `PACK`, `UNPK` |
+| `AND`, `OR`, `EOR`, `NOT`, `TST` | Bit field instructions |
+| `MULU.W`, `MULS.W`; `DIVU.W` and `DIVS.W` for 296 of their 424 forms | The remaining forms of `DIVU.W`/`DIVS.W`; 32-bit multiply and divide |
+| `ASL`, `ASR`, `LSL`, `LSR` by an immediate count | Shifts by a register count or on memory; all rotates |
+| `BTST`, `BCHG`, `BCLR`, `BSET` with an immediate bit number | The same with the bit number in a register |
+| `Bcc`, `BRA`, `BSR`, `DBcc`, `Scc`, `JMP`, `JSR`, `RTS`, `RTD` | Short branches with an odd displacement; `JMP` and `JSR` to an absolute long address; `RTE`, `RTR`, `TRAP`, `TRAPV`, `TRAPcc`, `CHK`, `CHK2`, `CAS`, `TAS` |
+| `LINK`, `UNLK`, `MOVEM`, `NOP`; line-A traps | `STOP`, `RESET`, cache and MMU instructions, everything invalid |
+
+Each instruction's record carries flag bits that the later passes use:
+
+| Bit | Meaning |
+|---|---|
+| `0x0100` | Reads N, Z, V, C |
+| `0x0200` | Reads X |
+| `0x0400` | Writes N, Z, V, C |
+| `0x0800` | Writes X |
+| `0x1000` | Is the target of a branch within the block |
+| `0x2000` | Transfers control |
+| `0x4000` | Not translated |
+| `0x8000` | Last record of the block |
+| `0x0004` | On a conditional branch: the instruction at the branch target replaces N, Z, V and C |
+
+An instruction that changes only some of the flags it writes — `BTST`
+sets Z and leaves the rest — is marked as both reading and writing the
+group. For a conditional branch the decoder looks ahead at the
+instruction at the branch target, which is how the last bit is obtained:
+it tells the liveness pass whether the flags are still wanted along the
+taken path.
+
+`make static-check` confirms two properties of these decisions for every
+translated instruction: the length the recompiler computes equals the
+length of the encoding, and the flags it believes the instruction writes
+are the ones the 68K instruction does write
+([14-static-checks.md](14-static-checks.md)).
+
+## What translated code looks like
+
+A counted loop:
+
+```
+68K     0  7001   MOVEQ   #1,D0
+        2  5380   SUBQ.L  #1,D0
+        4  66FC   BNE.S   2
+        6  4E75   RTS
+
+  +000  b       dr_exit_to_interpreter
+  +004  bf_likely cr_special_event_pending, +014
+  +008  addi    pc, pc, 2
+  +00C  b       +000
+entry:
+  +010  li      d0, 1
+  +014  li      addr, 1
+  +018  subfco. d0, addr, d0
+  +01C  subfe   addr, zero, zero
+  +020  addc    ccr_x, addr, addr
+  +024  bne     +004
+  +028  lwz     pc, 0(a7)
+  +02C  addi    a7, a7, 4
+  +030  bl      dr_indirect_exit
+  +034  .long   0x00000000
+  +038  .long   0x00000000
+```
+
+- `MOVEQ` has become a bare `li`. Its condition codes are overwritten by
+  the `SUBQ` before anything reads them, so pass 2 dropped them. The
+  interpreter would have used `addic.` and then cleared V and C.
+- `SUBQ` is the same three instructions the interpreter uses
+  ([05-condition-codes.md](05-condition-codes.md)).
+- The backward branch goes to a stub ahead of the entry point that tests
+  `cr_special_event_pending` before re-entering the loop. If an event is
+  pending the stub sets `pc` and leaves for the interpreter; an interrupt
+  is therefore never delayed by more than one iteration.
+- `pc` is not maintained inside the block. It is given a value only
+  where control leaves.
+- `RTS` loads the new `pc` and calls `dr_indirect_exit`; the two zero
+  words after the call are its one-entry cache.
+
+Memory operands, and a store whose flags are needed:
+
+```
+68K     0  2028 0010   MOVE.L  16(A0),D0
+        4  D098        ADD.L   (A0)+,D0
+        6  2140 0004   MOVE.L  D0,4(A0)
+       10  4E75        RTS
+
+entry:
+  +000  lwz     d0, 16(a0)
+  +004  lwz     addr, 0(a0)
+  +008  addi    a0, a0, 4
+  +00C  addco.  d0, d0, addr
+  +010  mfxer   ccr_x
+  +014  stw     d0, 4(a0)
+  +018  addco.  addr, d0, zero
+  +01C  lwz     pc, 0(a7)
+  ...
+```
+
+The first `MOVE.L` is one load instruction. The last one must leave the
+condition codes correct at the end of the block, so it is followed by the
+`addco.` idiom.
+
+A comparison and a forward branch out of the block:
+
+```
+68K     0  3018        MOVE.W  (A0)+,D0
+        2  B058        CMP.W   (A0)+,D0
+        4  6600 0008   BNE.W   14
+        8  4E75        RTS
+
+  +000  b       dr_exit_to_interpreter
+  +004  addi    pc, pc, 14
+  +008  bl      dr_block_exit
+  +00C  .long   0x00000000
+  +010  .long   0x00000000
+entry:
+  +014  lha     addr, 0(a0)
+  +018  addi    a0, a0, 2
+  +01C  rlwimi  d0, addr, 0, 16, 31
+  +020  lha     addr, 0(a0)
+  +024  addi    a0, a0, 2
+  +028  slwi    addr, addr, 16
+  +02C  slwi    rtn_addr, d0, 16
+  +030  subfco. rtn_addr, addr, rtn_addr
+  +034  addc    addr, addr, rtn_addr
+  +038  bf_unlikely eq, +004
+  +03C  lwz     pc, 0(a7)
+  ...
+```
+
+The taken side of the branch is a stub placed ahead of the entry point: it
+sets `pc` for the target and calls `dr_block_exit`, which will turn the
+call into a direct branch once the target has been translated. A forward
+branch whose target is inside the block becomes a plain conditional
+branch.
+
+A block that reaches an instruction the recompiler does not translate
+simply stops in front of it:
+
+```
+68K     0  7005   MOVEQ   #5,D0
+        2  E398   ROL.L   #1,D0
+
+entry:
+  +000  li      d0, 5
+  +004  addco.  d0, d0, zero
+  +008  addi    pc, pc, 2
+  +00C  b       dr_exit_to_interpreter
+```
+
+Here the `MOVEQ` keeps its flags, because the interpreter's `ROL` is
+going to read X and the liveness pass cannot see past the end of the
+block.
+
+## A difference from the interpreter
+
+The first pass does not check every addressing mode for validity. It
+assigns code generators to 171 opcodes that are not valid 68K
+instructions and that the interpreter sends to the illegal instruction
+exception: `DIVU.W An,Dn` and `DIVS.W An,Dn` (128 opcodes), and 43
+instructions that would write to a `(d8,PC,Xn)` destination. Translated,
+`DIVU.W A0,D0` divides by D0, and `OR.B D0,(d8,PC,Xn)` performs the
+store. Whether such an opcode traps therefore depends on whether it is
+reached by the interpreter or inside a translated block. No correct
+program contains these opcodes.
+
 ## Leaving a block
 
 ### Known targets: chaining
 
-A block that ends by going to a fixed 68K address ends with a call into
-the run-time. The first time it is executed, the run-time looks the
-target up (translating it if need be) and then, in `dr_chain_block`,
-*overwrites the call* with a direct branch to the target block and
-flushes that word from the caches. From then on the two blocks run back
+A block that ends by going to a fixed 68K address ends with a call to
+`dr_block_exit` (`17860`). The first time it is executed, the run-time
+looks the target up (translating it if need be) and then, in
+`dr_chain_block`, *overwrites the call* with a direct branch to the
+target block and flushes that word from the caches. From then on the two blocks run back
 to back without entering the run-time.
 
 ### Computed targets: inline caching

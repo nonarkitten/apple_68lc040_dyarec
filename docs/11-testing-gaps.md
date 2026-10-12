@@ -78,7 +78,7 @@ for a first test. To use it:
 
 | Requirement | Reason |
 |---|---|
-| Base and size of a RAM block at `+0x7C0`/`+0x7C4` | `dr_setup` carves it up |
+| Base and size of a RAM block at `+0x7C0`/`+0x7C4`, within 32 MB of the emulator's code | `dr_setup` carves it up; translated code branches directly to emulator routines |
 | A readable structure at the address stored at `0x5FFFEFF0`, with the memory size at offset 8 | `dr_setup` reads it to size the page bitmap |
 | Working `dcbz`, `dcbf`, `icbi` with 32-byte cache blocks | Table clearing and code publication assume a 32-byte block size |
 | Both of the low two bits of the configuration word at `+0x7A0` set | The enabling code checks them. `init_state` sets only bit 0; bit 1 must be set afterwards, which 68K code can do with private opcode `FE05`, selector `0x13` |
@@ -124,6 +124,10 @@ Each stage is useful on its own.
    to condition codes (for example, that every `ADD` variant copies the
    XER to `ccr_x` and that no `MOVEA` path touches CR0) and to which
    68K registers a routine writes.
+   A step beyond static checking also exists: `tools/ppcsim.py` is a
+   PowerPC simulator sufficient to run the emulator's initialisation and
+   the whole of the recompiler's translator, which is how
+   `tools/drtranslate.py` shows the code generated for any 68K input.
 2. **Bare interpreter in a PowerPC emulator.** Load the image at a
    suitable address in QEMU (or a simple PowerPC interpreter), provide
    the minimal kernel stub from section 2 and a reset vector, and run

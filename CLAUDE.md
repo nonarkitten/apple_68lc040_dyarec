@@ -30,6 +30,9 @@ criterion is that the source reassembles to a byte-identical `Emulator.x`.
 - `make static-check`  cross-check code against the 68K instruction set (`tools/check.py`);
                     must end with "OK: no unexplained disagreements"
 - `python3 tools/rominfo.py ROM`   where a ROM maps the emulator; compare its build with Emulator.x
+- `python3 tools/drtranslate.py 7001 5380 66FC 4E75`   run the recompiler's translator (in
+                    `tools/ppcsim.py`) on 68K words and print the PowerPC code it emits
+- `python3 tools/drmap.py 4E75`     what the recompiler's first pass decides for an opcode
 - `python3 tools/show.py START END [-c] [-x]`   listing with offsets (hex), for reading code
 - `python3 tools/m68k.py 4E75 ...`              decode 68K opcode words
 

@@ -73,6 +73,24 @@ advanced — taken branches, jumps, returns, exceptions — are set aside.
 The remaining 497 valid opcodes are control transfers and instructions
 that always trap, which have no sequential path to check.
 
+### The recompiler's first pass
+
+The dynamic recompiler decides, for each instruction it translates, how
+long the instruction is and which condition codes it writes; the rest of
+the translation depends on both. `tools/drmap.py` obtains those
+decisions by running the recompiler's first pass in a simulator
+(`tools/ppcsim.py`) on all 65,536 opcodes, and the checker compares them
+with the instruction set:
+
+- the length must equal 2 bytes plus 2 for each extension word;
+- the flags written must be those of the 68K instruction: none (`MOVEA`,
+  `LEA`, `ADDA`, …), N Z V C (`MOVE`, logical operations, `CMP`, …), or
+  all five (`ADD`, `SUB`, shifts, …).
+
+**Result: no disagreements**, over 34,802 opcodes for length and 34,491
+for flags. (Control transfers are excluded from the first, and
+instructions involving the SR or CCR from the second.)
+
 ## Findings
 
 ### A defect: `UNPK -(Ay),-(A7)`
@@ -93,6 +111,18 @@ The instruction — unpacking a BCD byte onto the stack — is not one that
 compilers or hand-written code used, so the defect has no practical
 consequence. The same code is present in the earlier build in the Power
 Macintosh 8600/9600 ROM.
+
+### Invalid opcodes that the recompiler translates
+
+The recompiler's first pass gives a code generator to 171 opcodes that
+are not valid instructions and that the interpreter rejects: `DIVU.W` and
+`DIVS.W` with an address register as the source, and logical, arithmetic
+and bit instructions with a `(d8,PC,Xn)` destination. Running the
+translator on them (`tools/drtranslate.py`) shows that it generates
+working code — `DIVU.W A0,D0` is translated as a division by D0 — so
+these opcodes behave differently depending on whether they are
+interpreted or translated. See
+[09-dynamic-recompiler.md](09-dynamic-recompiler.md).
 
 ### Instruction sequences
 
@@ -144,7 +174,8 @@ right register; they show that the control structure around every
 instruction is consistent with its encoding. The opcodes not fully
 analysed are mainly those whose routines loop (shifts by a register
 count, `MOVEM`, bit fields, multiply and divide) or jump through a
-computed address. The dynamic recompiler's output is not examined.
+computed address. For the dynamic recompiler only the first pass's
+decisions are checked, not the code it generates.
 
 Opcodes for which a check is known to fail because the original code is
 wrong are listed in `KNOWN_DEFECTS` in the tool, so that

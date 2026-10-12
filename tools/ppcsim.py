@@ -215,6 +215,8 @@ class Machine:
         if xo == 0:                                     # mcrf
             self.set_crf(rd >> 2, (self.cr >> (28 - 4 * (ra >> 2))) & 0xF)
             return nxt
+        if xo == 150:                                   # isync
+            return nxt
         a, b = self.crbit(ra), self.crbit(rb)
         logic = {33: 1 ^ (a | b), 129: a & (1 ^ b), 193: a ^ b, 225: 1 ^ (a & b),
                  257: a & b, 289: 1 ^ (a ^ b), 417: a | (1 ^ b), 449: a | b}

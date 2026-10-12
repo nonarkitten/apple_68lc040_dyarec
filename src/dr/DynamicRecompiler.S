@@ -9867,6 +9867,14 @@ dr_exit_to_interpreter:
         crmove  cr_special_event_pending, 4*cr5+gt
         mtctr   disp_table                              // DECODE2: CTR = address of the next dispatch entry
         blrl
+
+// A translated block ends with a call to this routine when the block that
+// follows is at a fixed address: pc already holds that address (plus 2).
+// Look it up; if a translation exists, dr_chain_block replaces the call
+// that came here with a direct branch to it, otherwise translate it.
+// (Also reached by falling out of the special event processing in
+// dr_exit_to_interpreter.)
+dr_block_exit:
         lwz     r23, dr_hash_table(EmulatorStatePtr)
         rlwimi  r23, pc, 4, 16, 26                      // r23[15:5] = pc[11:1]
         lwz     data, 0(r23)

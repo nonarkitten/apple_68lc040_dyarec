@@ -265,3 +265,11 @@
 @105C0 dr_line_D
 @10600 dr_line_E
 @10640 dr_line_F
+
+@17860 dr_block_exit
+    A translated block ends with a call to this routine when the block that
+    follows is at a fixed address: pc already holds that address (plus 2).
+    Look it up; if a translation exists, dr_chain_block replaces the call
+    that came here with a direct branch to it, otherwise translate it.
+    (Also reached by falling out of the special event processing in
+    dr_exit_to_interpreter.)

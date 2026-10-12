@@ -22,6 +22,7 @@ Homebrew locations; set `LLVM_BIN` to its `bin` directory otherwise.
 |---|---|
 | `make` | Assemble `src/` into `build/Emulator.x` |
 | `make verify` | Build, then compare `build/Emulator.x` with `./Emulator.x` |
+| `make static-check` | Cross-check the code against the 68K instruction set ([14-static-checks.md](14-static-checks.md)) |
 | `make listing` | Write `build/Emulator.lst`, a disassembly of the result with offsets and symbols |
 | `make regen` | Regenerate `src/` from `Emulator.x` and `annotations/` |
 | `make check` | `regen` followed by `verify` |
@@ -145,3 +146,15 @@ above cover the encodings on which assemblers differ, so GNU binutils
 (`powerpc-eabi-as` or similar, with the `-many` or `-mppc` option) is
 expected to work with `PPC_AS` overridden on the `make` command line.
 Only the LLVM build has been verified.
+
+## Other tools
+
+| Tool | Purpose |
+|---|---|
+| `tools/show.py START END` | Listing of part of the image with offsets |
+| `tools/m68k.py WORD…` | Decode 68K opcode words |
+| `tools/check.py [-v]` | The static checks; `-v` lists individual opcodes |
+| `tools/rominfo.py ROM…` | Where a ROM maps the emulator, and which build it contains ([13-rom-context.md](13-rom-context.md)) |
+| `tools/ppcsim.py` | A small PowerPC simulator (a library), enough to run parts of the image |
+| `tools/drmap.py WORD…` | What the recompiler's first pass decides for an opcode |
+| `tools/drtranslate.py WORD…` | Run the recompiler's translator on 68K code and print the PowerPC code it generates |
