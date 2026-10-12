@@ -92,7 +92,13 @@ Both ROM builds carry, after the interpreter's credit string, a second
 version of `write_sr` that also copies the new interrupt mask into bits
 5:3 of a hardware register at `0x50F2A000`. Its address is the default
 contents of handler slot `+0x96C`. `Emulator.x` has neither the routine
-nor the default.
+nor the default. No PowerPC code in either ROM loads that slot or stores
+to `write_sr_handler` (no load or store with those displacements between
+ROM offsets `300000` and `380000`), so the routine is not put to use by
+the kernel or the emulator themselves. It is not the only code for that
+register in these ROMs: the kernel of the 8600/9600 ROM has an
+exception handler (ROM offset `315440`) that writes and reads the same
+address.
 
 ## The recompiler: first build to the G3 build
 
