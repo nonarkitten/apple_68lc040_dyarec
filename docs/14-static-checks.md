@@ -134,6 +134,11 @@ further programs (about 290,000 random instructions) ran identically.
 The generator does not produce loops, calls, traps or self-modifying
 code.
 
+With `--rom` the same test is applied to the emulator build in a ROM
+image. The first recompiling build agrees with itself on 6,000 programs,
+and shows the first of the two defects when the affected opcodes are put
+back ([15-build-history.md](15-build-history.md)).
+
 ## Findings
 
 ### A defect: `UNPK -(Ay),-(A7)`
@@ -183,7 +188,9 @@ tests for A7 and handles it; the paths for memory destinations and for
 
 Run interpreted, `MOVEA.W A7,A0` with A7 = `$00010000` leaves 0 in A0;
 run recompiled it leaves whatever the low word of r23 was. Moving only
-the low half of the stack pointer is not something programs do.
+the low half of the stack pointer is not something programs do. The
+defect is in the first recompiling build already
+([15-build-history.md](15-build-history.md)).
 
 ### A defect: the recompiler does not know that ADDX reads Z
 
@@ -217,7 +224,9 @@ usual multi-word addition the instruction before `ADDX` is an `ADD` or
 another `ADDX`, which write X and so keep their flags.
 
 `SUBX`, `NEGX` and the BCD instructions have the same property and are
-not translated at all.
+not translated at all. Nor was `ADDX` in the first recompiling build:
+its translation, and with it this defect, came with the later tuning
+([15-build-history.md](15-build-history.md)).
 
 ### Invalid opcodes that the recompiler translates
 

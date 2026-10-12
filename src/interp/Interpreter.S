@@ -31066,24 +31066,29 @@ fline_33:
         bflr_likely cr_special_event_pending            // DISPATCH unless a special event is pending
         b       process_special_event
 
+// Private opcode FE1F.  The table entry has loaded rtn_addr from handler
+// slot +0x9DC, which defaults to kcall_mp_dispatch (kernel service 8,
+// MPDispatch).  The handler is called with D0, A0, D1, A1, D2, A2, D3 and
+// A3 in r0 and r3 to r9, and r3 to r6 are returned in D0, A0, D1 and A1.
+//
 // Reached from 1 dispatch table entry:
 //     F-LINE cpID 7
-cea_x_37:
-        mtlr    rtn_addr
+fe1f_call_handler:
+        mtlr    rtn_addr                                // the handler's address
         mr      zero, d0
         mr      addr, a0
         mr      data, d1
         mr      rtn_addr, a1
         mr      immed_data, d2
         mr      base_disp, a2
-        mr      d0, d3
+        mr      d0, d3                                  // r8 and r9 are D0 and D1, already copied to r0 and r4
         mr      d1, a3
-        blrl
+        blrl                                            // call the handler
         mr      d0, addr
         mr      a0, data
         mr      d1, rtn_addr
         mr      a1, immed_data
-        li      zero, 0
+        li      zero, 0                                 // r0 is the emulator's zero register again
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // DECODE1: disp_table[18:3] = opcode in prefetch_data
         mtlr    disp_table                              // DECODE2: LR = address of the next dispatch entry
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
@@ -31100,7 +31105,7 @@ init_state:
         crclr   cr_dr_busy
         oris    data, zero, 0x0000
         ori     data, data, 0x21F8
-        stw     data, 0x718(EmulatorStatePtr)
+        stw     data, emulator_version(EmulatorStatePtr)
         oris    data, zero, 0x0000
         ori     data, data, 0x0E00
         stw     data, 0x7B0(EmulatorStatePtr)

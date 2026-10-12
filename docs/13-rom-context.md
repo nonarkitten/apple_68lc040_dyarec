@@ -82,11 +82,10 @@ Some observations:
   recompiler begins with the same instructions and uses the same state
   block fields. The direct-mapped cache of US 5,790,825, and its 128 KB
   offset table, are not in any of these ROMs.
-- The dispatch table changes little. Between the first recompiling
-  build and the G3 build only 26 entries have a different first
-  instruction (`TAS` and private opcodes); between the G3 build and
-  `Emulator.x`, 435 do (`CHK`, `CAS`, `CHK2`/`CMP2`, `TAS`, `MOVE`
-  to and from the SR, private opcodes).
+- The dispatch table hardly changes. Leaving aside the displacements of
+  branches to routines that have moved, three entries differ between
+  the first recompiling build and the G3 build (private opcodes `FE01`,
+  `FE11` and `FE20`) and none between the G3 build and `Emulator.x`.
 - `lwarx`/`stwcx.` (in the recompiler's invalidation requests) first
   appear in the G3 build.
 - Each later kernel adds services: 5 with the first PCI machines, 6 with
@@ -96,6 +95,10 @@ Some observations:
 - The `UNPK -(Ay),-(A7)` defect
   ([14-static-checks.md](14-static-checks.md)) is present, at the same
   offset, in the first recompiling build, the G3 build and `Emulator.x`.
+
+What changed in the code from the first recompiling build to the G3
+build, and from there to `Emulator.x`, is the subject of
+[15-build-history.md](15-build-history.md).
 
 The rest of this chapter uses the Power Macintosh 8600/9600 ROM
 (checksum `960FC647`), which contains the first recompiling build. The
@@ -303,3 +306,6 @@ $ python3 tools/rominfo.py *.ROM
 it prints one line for each: a fingerprint of the emulator build, where
 the code is, the recompiler credit and the kernel's services. A ROM that
 contains the same build as `Emulator.x` is reported as such.
+
+`tools/buildcmp.py` compares the code of a ROM's build with `Emulator.x`
+routine by routine ([15-build-history.md](15-build-history.md)).

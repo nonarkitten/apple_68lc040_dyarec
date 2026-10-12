@@ -43,6 +43,11 @@ DR_TRANSLATE_ABORT = 0x10234
 DR_LINE_0 = 0x10280
 DR_EMITTERS = 0x11338
 
+# The four of them that pass 1 needs.  Other builds of the emulator have the
+# same routines at other offsets (tools/buildcmp.py finds them).
+Layout = collections.namedtuple('Layout', 'scan_next liveness translate_abort line_0')
+EMULATOR_X = Layout(DR_SCAN_NEXT, DR_LIVENESS, DR_TRANSLATE_ABORT, DR_LINE_0)
+
 PEEK_RESUME_OFFSET = 0xB68      # state block: blk_ofs to return to after looking at a branch target
 
 STATE = 0x68FFF000              # emulator state block
@@ -50,14 +55,14 @@ GUEST_CODE = 0x00100000         # where the 68K instruction under test is put
 RECORDS = 0x00200000            # instruction record array
 
 
-def decide(image, opcode, extension=(0, 0, 0, 0)):
+def decide(image, opcode, extension=(0, 0, 0, 0), layout=EMULATOR_X):
     """Run pass 1 on one instruction and return its Decision."""
     base = ppcsim.LOAD_ADDRESS
     m = ppcsim.Machine()
     m.load(base, image)
     m.write(STATE + 0xB00, 4, base + DR_CB)                 # dr_code_base
     for line in range(16):                                  # dr_line_decoders
-        m.write(STATE + 0xA1C + 4 * line, 4, base + DR_LINE_0 + 0x40 * line)
+        m.write(STATE + 0xA1C + 4 * line, 4, base + layout.line_0 + 0x40 * line)
     m.write(STATE + 0xB14, 4, RECORDS)                      # dr_records
     m.write(GUEST_CODE, 2, opcode)
     for index, word in enumerate(extension):
@@ -66,29 +71,29 @@ def decide(image, opcode, extension=(0, 0, 0, 0)):
     m.r[24] = GUEST_CODE            # pc: start of the block
     m.r[23] = 0                     # blk_ofs
     m.r[29] = RECORDS               # rec_ptr
-    m.r[7] = base + DR_LINE_0       # base_disp: decoder tables
-    m.pc = base + DR_SCAN_NEXT
+    m.r[7] = base + layout.line_0   # base_disp: decoder tables
+    m.pc = base + layout.scan_next
     while True:
         m.step()
-        stop = m.run(stop=(base + DR_SCAN_NEXT, base + DR_LIVENESS,
-                           base + DR_TRANSLATE_ABORT), limit=5000) - base
+        stop = m.run(stop=(base + layout.scan_next, base + layout.liveness,
+                           base + layout.translate_abort), limit=5000) - base
         # A conditional branch makes the decoder look at the instruction at
         # its target before going on; that visit to dr_scan_next has the
         # resume offset parked in the state block.
-        if stop != DR_SCAN_NEXT or m.read(STATE + PEEK_RESUME_OFFSET, 4) == 0:
+        if stop != layout.scan_next or m.read(STATE + PEEK_RESUME_OFFSET, 4) == 0:
             break
-    if stop == DR_TRANSLATE_ABORT:
+    if stop == layout.translate_abort:
         raise RuntimeError('pass 1 aborted on opcode %04X' % opcode)
     flags = m.read(RECORDS, 2)
     emitter = m.read(RECORDS + 4, 2)
     if emitter & 0x8000:
         emitter -= 0x10000
     translated = not flags & FLAG_NOT_TRANSLATED
-    return Decision(translated, stop == DR_LIVENESS, flags,
+    return Decision(translated, stop == layout.liveness, flags,
                     emitter if translated else None, m.r[23])
 
 
-def scan(image, cache=None):
+def scan(image, cache=None, layout=EMULATOR_X):
     """Decide every opcode.  The run takes several seconds, so the result
     can be kept in a cache file (keyed by a digest of the image)."""
     import hashlib
@@ -101,7 +106,7 @@ def scan(image, cache=None):
         if stored.get('digest') == digest:
             return {int(opcode): Decision(*fields)
                     for opcode, fields in stored['decisions'].items()}
-    decisions = {opcode: decide(image, opcode) for opcode in range(0x10000)}
+    decisions = {opcode: decide(image, opcode, layout=layout) for opcode in range(0x10000)}
     if cache:
         os.makedirs(os.path.dirname(cache), exist_ok=True)
         with open(cache, 'w') as handle:

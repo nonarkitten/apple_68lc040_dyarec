@@ -116,7 +116,7 @@ private request level at `0x1D0`.
 | `0x710` | `native_context`: address of the native context block |
 | `0x714` | `native_return_entry`: PowerPC address resumed by private opcode `FE02`. Initially `native_call_unavailable` |
 | `0x740`–`0x77F` | `native_regs`: D0–D7, A0–A6 and the 68K `pc`, stored in that order by `switch_to_native` and reloaded when native code returns |
-| `0x718` | Initialised to `0x21F8` |
+| `0x718` | `emulator_version`: `0x21F8`. A different constant in each build ([15-build-history.md](15-build-history.md)); variable 0 of private opcode `FE04` |
 | `0x720` | Expected line-A vector (see [08-native-interface.md](08-native-interface.md)) |
 | `0x72C` | Expected privilege violation vector |
 | `0x738` | Instruction counter (test mode) |

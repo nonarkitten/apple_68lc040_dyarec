@@ -34,6 +34,16 @@
     the instruction's handler from the state block into rtn_addr.  Continue
     there if in supervisor state.
 
+@0DB44 fe1f_call_handler
+    Private opcode FE1F.  The table entry has loaded rtn_addr from handler
+    slot +0x9DC, which defaults to kcall_mp_dispatch (kernel service 8,
+    MPDispatch).  The handler is called with D0, A0, D1, A1, D2, A2, D3 and
+    A3 in r0 and r3 to r9, and r3 to r6 are returned in D0, A0, D1 and A1.
+0DB44 the handler's address
+0DB60 r8 and r9 are D0 and D1, already copied to r0 and r4
+0DB68 call the handler
+0DB7C r0 is the emulator's zero register again
+
 @0DB94 init_state
     Fill in the emulator state block: constants, the table of replaceable
     handler addresses (copied from handler_defaults with code_ptr added),

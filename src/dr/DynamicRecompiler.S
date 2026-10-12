@@ -358,10 +358,10 @@ dr_line_6:
         sth     addr, 6(rec_ptr)
         cmplwi  cr4, data, 0x0001
         li      out_ptr, dr_emit_bra_s - dr_emitters
-        beq     cr6, L_10C0C
-        beq     cr5, L_10C68
+        beq     cr6, dr_bcc_flags_L1
+        beq     cr5, dr_bcc_flags_L3
         addi    addr, addr, 12
-        b       L_10CB8
+        b       dr_bcc_flags_L4
         ALIGN(64)
 
 dr_line_7:
@@ -378,9 +378,9 @@ dr_line_8:
         crand   4*cr6+eq, 4*cr6+gt, 4*cr6+lt            // cr6.eq = cr6.gt & cr6.lt
         clrlwi  addr, prefetch_data, 26                 // addr = prefetch_data & 0x0000003F
         li      immed_data, 0x400
-        beq     cr6, L_10D88
-        bso     cr5, L_10DAC
-        blt     cr6, L_10D78
+        beq     cr6, dr_bcc_flags_L8
+        bso     cr5, dr_bcc_flags_L10
+        blt     cr6, dr_bcc_flags_L7
         li      out_ptr, dr_emit_or_w_2 - dr_emitters
         bgt     cr6, dr_line_8_L1
         li      out_ptr, dr_emit_or_b_2 - dr_emitters
@@ -887,7 +887,7 @@ L_10B98:
         mtcrf   0x01, prefetch_data                     // cr7 = prefetch_data[3:0]
         li      immed_data, 0x2300
         li      rtn_addr, 2
-        bso     cr7, L_10C5C
+        bso     cr7, dr_bcc_flags_L2
         add     data, blk_ofs, prefetch_data
         add     blk_ofs, blk_ofs, rtn_addr
         srwi    addr, data, 4
@@ -903,16 +903,31 @@ L_10B98:
         or      data, data, addr
         stb     data, 0xBA8(rtn_addr)
         b       dr_scan_store
-        subfic  pc, zero, 0x2300                        // pc = 0x2300 - zero
-        subfic  sr_and_flags, zero, 0x2320              // sr_and_flags = 0x2320 - zero
-        subfic  sr_and_flags, zero, 0x2320              // sr_and_flags = 0x2320 - zero
-        subfic  sr_and_flags, zero, 0x2320              // sr_and_flags = 0x2320 - zero
-        subfic  pc, zero, 0x2300                        // pc = 0x2300 - zero
-        subfic  pc, zero, 0x2300                        // pc = 0x2300 - zero
-        subfic  pc, a2, 0x2312                          // pc = 0x2312 - a2
-        subfic  pc, a2, 0x2312                          // pc = 0x2312 - a2
-L_10C0C:
-        addi    data, base_disp, 0x96C
+
+// Record flags for a conditional branch, indexed by its condition (T, F,
+// HI, LS, CC, CS, NE, EQ, VC, VS, PL, MI, GE, LT, GT, LE).  All are 0x2300,
+// a control transfer that reads every flag.  The low bits sort the
+// conditions into classes for the emitters: 0x20 for the six that test C
+// and Z, 0x12 for the four signed comparisons.
+dr_bcc_flags:
+        .short  0x2300
+        .short  0x2300
+        .short  0x2320
+        .short  0x2320
+        .short  0x2320
+        .short  0x2320
+        .short  0x2320
+        .short  0x2320
+        .short  0x2300
+        .short  0x2300
+        .short  0x2300
+        .short  0x2300
+        .short  0x2312
+        .short  0x2312
+        .short  0x2312
+        .short  0x2312
+dr_bcc_flags_L1:
+        addi    data, base_disp, dr_bcc_flags - dr_line_0
         rlwinm  rtn_addr, prefetch_data, 25, 27, 30     // rtn_addr = prefetch_data[11:8] << 1
         lhzx    immed_data, data, rtn_addr
         addi    addr, addr, 16
@@ -920,24 +935,24 @@ L_10C0C:
         lwzx    prefetch_data, pc, blk_ofs
         li      rtn_addr, 4
         mtcrf   0x01, prefetch_data                     // cr7 = prefetch_data[3:0]
-        bso     cr7, L_10C5C
+        bso     cr7, dr_bcc_flags_L2
         lwz     data, 0xB68(EmulatorStatePtr)
-        blt     cr4, L_10D3C
+        blt     cr4, dr_bcc_flags_L6
         addi    out_ptr, out_ptr, 4
         cmpwi   cr7, data, 0
-        beq     cr4, L_10D3C
+        beq     cr4, dr_bcc_flags_L6
         addi    out_ptr, out_ptr, 4
         bne     cr7, dr_scan_advance
         sth     addr, 0xB28(EmulatorStatePtr)
         add     rtn_addr, blk_ofs, rtn_addr
         stw     rtn_addr, 0xB68(EmulatorStatePtr)
-        b       L_10CF4
-L_10C5C:
+        b       dr_bcc_flags_L5
+dr_bcc_flags_L2:
         add     blk_ofs, blk_ofs, rtn_addr
         li      immed_data, 0x4300
         b       dr_scan_end_block
-L_10C68:
-        addi    data, base_disp, 0x96C
+dr_bcc_flags_L3:
+        addi    data, base_disp, dr_bcc_flags - dr_line_0
         rlwinm  rtn_addr, prefetch_data, 25, 27, 30     // rtn_addr = prefetch_data[11:8] << 1
         lhzx    immed_data, data, rtn_addr
         addi    addr, addr, 16
@@ -945,35 +960,35 @@ L_10C68:
         lhax    prefetch_data, pc, blk_ofs
         li      rtn_addr, 2
         mtcrf   0x01, prefetch_data                     // cr7 = prefetch_data[3:0]
-        bt_unlikely 4*cr7+so, L_10C5C
+        bt_unlikely 4*cr7+so, dr_bcc_flags_L2
         lwz     data, 0xB68(EmulatorStatePtr)
-        blt     cr4, L_10D3C
+        blt     cr4, dr_bcc_flags_L6
         addi    out_ptr, out_ptr, 4
         cmpwi   cr7, data, 0
-        beq     cr4, L_10D3C
+        beq     cr4, dr_bcc_flags_L6
         addi    out_ptr, out_ptr, 4
         bne     cr7, dr_scan_advance
         sth     addr, 0xB28(EmulatorStatePtr)
         add     rtn_addr, blk_ofs, rtn_addr
         stw     rtn_addr, 0xB68(EmulatorStatePtr)
-        b       L_10CF4
-L_10CB8:
-        addi    data, base_disp, 0x96C
+        b       dr_bcc_flags_L5
+dr_bcc_flags_L4:
+        addi    data, base_disp, dr_bcc_flags - dr_line_0
         rlwinm  rtn_addr, prefetch_data, 25, 27, 30     // rtn_addr = prefetch_data[11:8] << 1
         lhzx    immed_data, data, rtn_addr
         li      rtn_addr, 0
-        bt_unlikely 4*cr7+so, L_10C5C
+        bt_unlikely 4*cr7+so, dr_bcc_flags_L2
         lwz     data, 0xB68(EmulatorStatePtr)
         extsb   prefetch_data, prefetch_data            // prefetch_data = sign-extended low byte of prefetch_data
-        blt     cr4, L_10D3C
+        blt     cr4, dr_bcc_flags_L6
         addi    out_ptr, out_ptr, 4
         cmpwi   cr7, data, 0
-        beq     cr4, L_10D3C
+        beq     cr4, dr_bcc_flags_L6
         addi    out_ptr, out_ptr, 4
         bne     cr7, dr_scan_store
         sth     addr, 0xB28(EmulatorStatePtr)
         stw     blk_ofs, 0xB68(EmulatorStatePtr)
-L_10CF4:
+dr_bcc_flags_L5:
         add     blk_ofs, blk_ofs, prefetch_data
         stw     blk_ofs, 8(rec_ptr)
         sth     immed_data, 0(rec_ptr)
@@ -992,7 +1007,7 @@ L_10CF4:
         or      addr, addr, rtn_addr
         stb     addr, 0xBA8(data)
         b       dr_scan_next
-L_10D3C:
+dr_bcc_flags_L6:
         add     data, blk_ofs, prefetch_data
         add     blk_ofs, blk_ofs, rtn_addr
         srwi    addr, data, 4
@@ -1008,23 +1023,23 @@ L_10D3C:
         or      data, data, addr
         stb     data, 0xBA8(rtn_addr)
         b       dr_scan_end_block
-L_10D78:
+dr_bcc_flags_L7:
         addi    rtn_addr, base_disp, 0xEF8
         lbzx    data, rtn_addr, addr
         li      out_ptr, dr_emit_or_l - dr_emitters
         b       dr_line_8_L2
-L_10D88:
+dr_bcc_flags_L8:
         li      out_ptr, dr_emit_divs_w - dr_emitters
-        bso     cr5, L_10D94
+        bso     cr5, dr_bcc_flags_L9
         li      out_ptr, dr_emit_divu_w - dr_emitters
-L_10D94:
+dr_bcc_flags_L9:
         addi    rtn_addr, base_disp, 0xE78
         lbzx    data, rtn_addr, addr
         mtcrf   0x01, data                              // cr7 = data[3:0]
         add     blk_ofs, blk_ofs, data
         bsol    cr7, L_10FDC
         b       dr_scan_store
-L_10DAC:
+dr_bcc_flags_L10:
         li      out_ptr, dr_emit_or_b - dr_emitters
         rlwinm  data, prefetch_data, 28, 28, 29         // data = prefetch_data[7:6] << 2
         add     out_ptr, out_ptr, data
@@ -10676,7 +10691,7 @@ dr_setup_L2:
         bdnz    dr_setup_L2                             // CTR -= 1; branch while CTR != 0
         oris    data, zero, 0x0000
         ori     data, data, 0x21F8
-        stw     data, 0x718(EmulatorStatePtr)
+        stw     data, emulator_version(EmulatorStatePtr)
         b       dr_reset_requests
         blr
 

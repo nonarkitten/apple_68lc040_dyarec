@@ -274,6 +274,13 @@
     (Also reached by falling out of the special event processing in
     dr_exit_to_interpreter.)
 
+@10BEC dr_bcc_flags
+    Record flags for a conditional branch, indexed by its condition (T, F,
+    HI, LS, CC, CS, NE, EQ, VC, VS, PL, MI, GE, LT, GT, LE).  All are 0x2300,
+    a control transfer that reads every flag.  The low bits sort the
+    conditions into classes for the emitters: 0x20 for the six that test C
+    and Z, 0x12 for the four signed comparisons.
+
 @10DD0 dr_decode_addx_or_add
 10DF0 DEFECT: ADDX also reads Z (it never sets it), so 0x100 belongs here too
 

@@ -17,6 +17,7 @@ the image uses. With it, and with no kernel, ROM or operating system:
 | `tools/fuzz.py` (`make fuzz`) | Random 68K programs, each run interpreted and recompiled and the results compared; a differing program is reduced to its shortest form |
 | `tools/drtranslate.py` | The recompiler's translator on any 68K code, printing the PowerPC code it generates |
 | `tools/drmap.py` | The recompiler's first pass, for every opcode |
+| `tools/buildcmp.py`, `tools/fuzz.py --rom` | The same, with the emulator build found in a ROM image: its recompiler's decisions and output beside those of `Emulator.x`, and its interpreter against its recompiler |
 
 ```
 $ python3 tools/run68k.py --both 6002 4E71 7064 7200 D280 5380 66FA 4AFC

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Random 68K programs, run interpreted and recompiled, and compared.
 
-Usage: fuzz.py [COUNT] [--seed N] [--length N] [--known] [-v]
+Usage: fuzz.py [COUNT] [--seed N] [--length N] [--known] [--rom ROM] [-v]
 
 The interpreter and the dynamic recompiler implement the same instructions
 with largely separate code, so each is a check on the other.  This tool
@@ -15,6 +15,9 @@ still differs and printed, with what each run produced.
 Opcodes the recompiler is already known to mistranslate
 (check.known_recompiler_defect) are left out, so that a difference means
 something new; --known puts them back.
+
+With --rom the emulator tested is the build in that ROM image instead of
+Emulator.x (see tools/buildcmp.py).
 
 Programs are built to stay inside what the simulator can run without a
 kernel: no traps, no privileged state changes, no jumps or backward
@@ -244,16 +247,23 @@ def main():
     INCLUDE_KNOWN = '--known' in arguments
     options = {'--seed': 1, '--length': 12}
     count = 200
+    rom = None
     index = 0
     while index < len(arguments):
         if arguments[index] in options:
             options[arguments[index]] = int(arguments[index + 1])
+            index += 1
+        elif arguments[index] == '--rom':
+            rom = arguments[index + 1]
             index += 1
         elif arguments[index].isdigit():
             count = int(arguments[index])
         index += 1
     generator = gen.Generator()
     generator.analyse()
+    if rom:
+        import buildcmp
+        generator = buildcmp.as_build(generator, buildcmp.rom_image(rom))
     run68k.PROGRAM, run68k.STACK = PROGRAM, STACK
     pool = Pool()
     fixed = 16                          # items of set-up at the start of every program

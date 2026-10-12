@@ -71,6 +71,7 @@
 #define native_regs_ptr         0x708   // address of native_regs
 #define native_context          0x710   // address of the native context block
 #define native_return_entry     0x714   // PowerPC address to resume at for private opcode FE02
+#define emulator_version        0x718   // differs in every build: 0x20F3, 0x21F7, 0x21F8 (Emulator.x)
 #define native_regs             0x740   // D0-D7, A0-A6 and the 68K pc, as native code sees them
 
 // Replaceable handler addresses (initialised from handler_defaults)

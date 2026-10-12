@@ -36,6 +36,9 @@ criterion is that the source reassembles to a byte-identical `Emulator.x`.
 - `python3 tools/check.py --translations`   also scan the recompiler's output for every opcode
 - `python3 tools/run68k.py [--dr|--both] WORDS`   run one 68K program (end it with 4AFC)
 - `python3 tools/rominfo.py ROM`   where a ROM maps the emulator; compare its build with Emulator.x
+- `python3 tools/buildcmp.py ROM [--emitters | WORDS]`   what differs between a ROM's emulator build
+                    and Emulator.x: routines, table entries, the recompiler's decisions and output
+                    (`tools/fuzz.py --rom ROM` fuzzes that build)
 - `python3 tools/drtranslate.py 7001 5380 66FC 4E75`   run the recompiler's translator (in
                     `tools/ppcsim.py`) on 68K words and print the PowerPC code it emits
 - `python3 tools/drmap.py 4E75`     what the recompiler's first pass decides for an opcode

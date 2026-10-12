@@ -149,7 +149,7 @@ clear from the code:
 | `FC16` | Invalidate translated code for the range A0, length D0 (calls `dr_invalidate_vector` when the recompiler is ready) |
 | `FE01` | Mixed mode switch: `mixed_mode_dispatch` (through handler slot `+0x9E0`) |
 | `FE02` | Return to native code: `switch_to_native` |
-| `FE04`, `FE05` | Read (`FE04`) or write (`FE05`) a 32-bit emulator variable, using A0 for the value. D0 (0–25) selects the variable: a byte table (`0D850`) gives its offset from `+0x700` in the state block. Some selectors are special-cased: `0x09` written sets the test-mode switches in `sr_and_flags`; `0x12` reads or sets the dynamic recompiler's enable bits; `0x13` is the configuration word at `+0x7A0` |
+| `FE04`, `FE05` | Read (`FE04`) or write (`FE05`) a 32-bit emulator variable, using A0 for the value. D0 (0–25) selects the variable: a byte table (`0D850`) gives its offset from `+0x700` in the state block; variable 0 is `emulator_version`. Some selectors are special-cased: `0x09` written sets the test-mode switches in `sr_and_flags`; `0x12` reads or sets the dynamic recompiler's enable bits; `0x13` is the configuration word at `+0x7A0` |
 | `FE08` | D0 = low half of the PowerPC time base |
 | `FE09` | A0:D0 = 64-bit PowerPC time base, read consistently |
 | `FE0B` | Instruction cache block invalidate (`icbi`) over the range A0, length D0 |

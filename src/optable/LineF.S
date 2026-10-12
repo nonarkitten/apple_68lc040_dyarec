@@ -7347,7 +7347,7 @@
         lwz     rtn_addr, 0x9D8(EmulatorStatePtr)       // FE1E  F-LINE    cpID 7
         b       take_fline
         lwz     rtn_addr, 0x9DC(EmulatorStatePtr)       // FE1F  F-LINE    cpID 7
-        b       cea_x_37
+        b       fe1f_call_handler
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // FE20  F-LINE    cpID 7
         b       fline_33
         lwz     rtn_addr, fline_handler(EmulatorStatePtr)  // FE21  F-LINE    cpID 7

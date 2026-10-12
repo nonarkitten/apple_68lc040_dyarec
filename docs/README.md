@@ -32,6 +32,7 @@ described and the difference is noted.
 | [12-patents.md](12-patents.md) | Cross-reference between the patents and the code |
 | [13-rom-context.md](13-rom-context.md) | The emulator in a real ROM: addresses, kernel start-up, kernel services |
 | [14-static-checks.md](14-static-checks.md) | Mechanical checks — static analysis and random testing — and the defects they found |
+| [15-build-history.md](15-build-history.md) | What changed between the first recompiling build, the G3 build and `Emulator.x` |
 | [glossary.md](glossary.md) | Terms and names |
 
 ## Conventions

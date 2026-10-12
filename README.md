@@ -107,7 +107,10 @@ last of them expired on November 8, 2015).
 project, which rebuilds a New World "Mac OS ROM" image. It is a later
 build than the emulator in any Power Macintosh ROM chip up to the G3;
 [docs/13-rom-context.md](docs/13-rom-context.md) traces the builds, and
-describes where the emulator sits in a ROM and how the kernel starts it.
+describes where the emulator sits in a ROM and how the kernel starts it;
+[docs/15-build-history.md](docs/15-build-history.md) shows what changed
+in the code between the first recompiling build, the G3 build and this
+one.
 
 The repository began as a fork of the `ppcd` PowerPC disassembler, which
 it no longer contains.

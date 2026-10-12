@@ -88,6 +88,11 @@ so when the recompiler is active they jump to `dr_dispatch` (`17964`)
 instead of to the next dispatch table entry, with LR still holding that
 entry's address.
 
+One taken branch is not among them: the short form of `BNE` (`bne_s`,
+`07F40`) dispatches its target in the interpreter without testing
+`cr_dr_active`. `BNE.W`, `BNE.L` and every other condition's short form
+do enter the recompiler. A branch that is not taken does not.
+
 `dr_dispatch`:
 
 1. Looks at the opcode about to execute. `AAFE` and `FE02` are never
@@ -134,6 +139,7 @@ instruction:
 | +2 | Offset of the instruction from the start of the block |
 | +4 | The emitter (code generator) chosen for the instruction; after pass 3, the offset of its translation within the translated block |
 | +6 | For a branch within the block, the offset of its target |
+| +8 | For a conditional branch whose target was examined (below), the target's offset |
 
 Every loop in the translator tests `cr_special_event_pending`. If an
 event arrives the translation is abandoned (`dr_translate_abort`), the
@@ -165,12 +171,21 @@ become PowerPC branches within the translation.
 ### Pass 2: condition code liveness (`dr_liveness_loop`)
 
 The records are walked from last to first, carrying a mask of the
-condition codes that are still wanted. An instruction that sets flags
-which are overwritten before anything reads them has those flag bits
-cleared in its record. The emitters consult the bits and produce shorter
-code — typically the non-recording, non-carrying form of the same PowerPC
-instruction — when the flags are dead. At the end of a block all flags
-are assumed live.
+condition codes that are still wanted. Two flag groups are tracked: N,
+Z, V and C together, and X. For each record the pass
+
+- sets bit `0x0040` (N, Z, V, C) or `0x0080` (X) if the instruction
+  writes that group and it is wanted afterwards — the instruction must
+  produce it;
+- replaces the two "writes" bits (`0x0400`, `0x0800`) by the groups that
+  are wanted afterwards and that the instruction does not write — they
+  must survive it;
+- then removes what the instruction writes from the mask and adds what
+  it reads.
+
+The emitters consult these bits and produce shorter code — typically
+the non-recording, non-carrying form of the same PowerPC instruction —
+when flags are dead. At the end of a block all flags are assumed live.
 
 ### Pass 3: emit (`dr_emit_next`)
 
@@ -221,8 +236,21 @@ re-enters the recompiler afterwards.
 | `MULU.W`, `MULS.W`; `DIVU.W` and `DIVS.W` for 296 of their 424 forms | The remaining forms of `DIVU.W`/`DIVS.W`; 32-bit multiply and divide |
 | `ASL`, `ASR`, `LSL`, `LSR` by an immediate count | Shifts by a register count or on memory; all rotates |
 | `BTST`, `BCHG`, `BCLR`, `BSET` with an immediate bit number | The same with the bit number in a register |
-| `Bcc`, `BRA`, `BSR`, `DBcc`, `Scc`, `JMP`, `JSR`, `RTS`, `RTD` | Short branches with an odd displacement; `JMP` and `JSR` to an absolute long address; `RTE`, `RTR`, `TRAP`, `TRAPV`, `TRAPcc`, `CHK`, `CHK2`, `CAS`, `TAS` |
+| `Bcc`, `BRA`, `BSR`, `DBcc`, `Scc`, `JMP`, `JSR`, `RTS`, `RTD` | The cases below; `RTE`, `RTR`, `TRAP`, `TRAPV`, `TRAPcc`, `CHK`, `CHK2`, `CAS`, `TAS` |
 | `LINK`, `UNLK`, `MOVEM`, `NOP`; line-A traps | `STOP`, `RESET`, cache and MMU instructions, everything invalid |
+
+The counts above are for extension words of zero, which is how the scan
+is run. Three decisions depend on the words that follow the opcode:
+
+- An indexed addressing mode whose extension word is in the full format
+  (bit 8 set) is not translated. 6,422 of the translated opcodes have an
+  indexed mode.
+- `Bcc`, `BRA`, `BSR`, `DBcc` and `JSR (d16,PC)` are not translated when
+  the displacement is odd.
+- `JMP (xxx).L` and `JSR (xxx).L` are translated unless the address is
+  zero (`10A38`), which is why the scan does not count them. *(Inferred:
+  a jump to address zero is the form of a jump whose address is filled
+  in later, as in a jump table entry not yet loaded.)*
 
 Each instruction's record carries flag bits that the later passes use:
 
@@ -237,13 +265,20 @@ Each instruction's record carries flag bits that the later passes use:
 | `0x4000` | Not translated |
 | `0x8000` | Last record of the block |
 | `0x0004` | On a conditional branch: the instruction at the branch target replaces N, Z, V and C |
+| `0x0020` | On a conditional branch: the condition is HI, LS, CC, CS, NE or EQ |
+| `0x0012` | On a conditional branch: the condition is GE, LT, GT or LE |
 
 An instruction that changes only some of the flags it writes — `BTST`
 sets Z and leaves the rest — is marked as both reading and writing the
 group. For a conditional branch the decoder looks ahead at the
 instruction at the branch target, which is how the last bit is obtained:
 it tells the liveness pass whether the flags are still wanted along the
-taken path.
+taken path. The two classes of condition come from the table
+`dr_bcc_flags` (`10BEC`). They let the emitter of a preceding compare
+prepare for the branch: before a branch of the signed class, `CMP`,
+`CMPA`, `CMPI` and `CMPM` also emit a PowerPC signed compare into CR7,
+and the branch tests that instead of rebuilding N⊕V
+([15-build-history.md](15-build-history.md) shows the code).
 
 `make static-check` confirms two properties of these decisions for every
 translated instruction: the length the recompiler computes equals the

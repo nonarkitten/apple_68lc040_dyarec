@@ -156,8 +156,9 @@ Only the LLVM build has been verified.
 | `tools/show.py START END` | Listing of part of the image with offsets |
 | `tools/m68k.py WORD…` | Decode 68K opcode words |
 | `tools/check.py [-v] [--translations]` | The static checks; `-v` lists individual opcodes, `--translations` also examines the recompiler's output for every instruction (about half a minute) |
-| `tools/fuzz.py [COUNT] [--seed N] [--length N] [--known]` | Random programs, interpreter against recompiler |
+| `tools/fuzz.py [COUNT] [--seed N] [--length N] [--known] [--rom ROM]` | Random programs, interpreter against recompiler; with `--rom`, of the build in a ROM image |
 | `tools/rominfo.py ROM…` | Where a ROM maps the emulator, and which build it contains ([13-rom-context.md](13-rom-context.md)) |
+| `tools/buildcmp.py ROM [--emitters \| WORD…]` | What differs between the build in a ROM and `Emulator.x` ([15-build-history.md](15-build-history.md)) |
 | `tools/ppcsim.py` | A small PowerPC simulator (a library), enough to run parts of the image |
 | `tools/drmap.py WORD…` | What the recompiler's first pass decides for an opcode |
 | `tools/drtranslate.py WORD…` | Run the recompiler's translator on 68K code and print the PowerPC code it generates |

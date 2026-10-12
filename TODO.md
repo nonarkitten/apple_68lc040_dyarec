@@ -15,18 +15,24 @@ Legend: `[x]` done, `[~]` partly done, `[ ]` not started.
 - [x] Recompiler: run-time, cache management, structure of the translator
 - [x] Recompiler's 142 code generators named from the instructions they translate
 - [x] Kernel interface and ROM context, checked against a ROM and the kernel's disassembly
-- [x] Documentation set (`docs/`, 14 chapters)
+- [x] Documentation set (`docs/`, 15 chapters)
 - [x] Static checker (`make static-check`): legality, `rtn_addr`, instruction length,
       and the recompiler's lengths and flag decisions
 - [x] PowerPC simulator; 68K programs run under the emulator, interpreted and recompiled
       (`make test`, `tools/run68k.py`); the translator's output can be inspected
       (`tools/drtranslate.py`)
 - [x] Source of `Emulator.x` identified; licence and notice in place
+- [x] Builds compared (first recompiling build, G3, `Emulator.x`): `tools/buildcmp.py`,
+      `docs/15-build-history.md`
 
 ### Source legibility
-- [~] Labels: 189 address-style labels (`L_xxxxx`) remain, nearly all in the recompiler's
-      decoder helpers (`10680`-`11037`); 1,327 others are `<routine>_L<n>` and could be
+- [~] Labels: 160 address-style labels (`L_xxxxx`) remain, nearly all in the recompiler's
+      decoder helpers (`10680`-`11037`); 1,355 others are `<routine>_L<n>` and could be
       given real names where it helps
+- [ ] Automatic names that are wrong rather than clumsy: `tools/naming.py` calls a routine
+      `cea_`/`fea_` when it looks like an effective address routine. `cea_x_37` was really
+      private opcode `FE1F` (now `fe1f_call_handler`); the other `fline_NN` and `cea_x_NN`
+      routines after `0D700` deserve the same look
 - [~] `EmulatorState` fields: about 75 named, the rest still numeric
 - [ ] Symbolic offsets in the recompiler's descriptor tables (`16E48`, `17228`, `17470`)
       and in its template loads (`lwz addr, 0x1774(base_disp)` and the like)
@@ -47,7 +53,11 @@ Legend: `[x]` done, `[~]` partly done, `[ ]` not started.
 - [x] Differential fuzzer (`make fuzz`): interpreter against recompiler on random
       straight-line programs; found two recompiler defects, clean otherwise
 - [ ] Extend the fuzzer: loops (`DBcc`, backward `Bcc` with bounded counts), `BSR`/`RTS`,
-      programs longer than one block, self-modifying code announced with `FC16`
+      programs longer than one block, self-modifying code announced with `FC16`, and
+      compare-and-branch pairs (the recompiler treats `CMP` + signed `Bcc` specially)
+- [ ] `tools/drmap.py` scans with extension words of zero; three decisions depend on them
+      (`docs/09`, "What is translated"). `tools/check.py` could scan a second time with
+      non-zero words
 - [ ] Compare against an independent 68K emulator on a real instruction test suite
 - [ ] Extend the simulator harness with the kernel's side: faults to
       `native_exception_handler`, interrupts, `ReturnFromException` (so that `EmEntry`
@@ -57,8 +67,10 @@ Legend: `[x]` done, `[~]` partly done, `[ ]` not started.
 - [ ] Try the build with GNU binutils as a second assembler
 
 ### History
-- [ ] Diff the builds (first PCI, G3, `Emulator.x`): what did the tuning change?
-      (`tools/drtranslate.py` could be pointed at the G3 ROM's emulator to compare output)
+- [x] Diff the builds (first PCI, G3, `Emulator.x`): what did the tuning change?
+- [ ] The same for the builds in between (Performa 6400, PowerBook 1400, Power Mac 6500)
+      and for the NuBus interpreter-only builds; those ROM images are no longer here.
+      `tools/buildcmp.py` takes any ROM
 - [ ] Confirm `Emulator.x` against an actual "Mac OS ROM" file with `tools/rominfo.py`
 
 ## How to continue
@@ -80,7 +92,8 @@ Legend: `[x]` done, `[~]` partly done, `[ ]` not started.
   how each is known. Reference: https://github.com/elliotnunn/powermac-rom.
 - **Automatic handler names**: fine as they are.
 - **Repository contents**: only what the work needs. Two ROM images are kept
-  locally (git-ignored) for `tools/rominfo.py`: 8600/9600 v2 and G3 v3.
+  locally (git-ignored) for `tools/rominfo.py` and `tools/buildcmp.py`: 8600/9600 v2
+  and G3 v3.
 - **Licence**: CC0 for the project's own work; Apple's code is not licensed
   here (`NOTICE.md`). Wording is Renee's to change.
 
@@ -90,15 +103,22 @@ Legend: `[x]` done, `[~]` partly done, `[ ]` not started.
   (`docs/09`). The code it emits for `OR.B D0,(d8,PC,Xn)` reads at one
   displacement and writes at another, which looks like a further slip in an
   emitter nobody could have tested.
-- Are the two recompiler defects (`MOVE.W A7`, `ADDX` flags) in the earlier builds
-  too? `tools/drmap.py`/`drtranslate.py` assume `Emulator.x`'s offsets; pointing them
-  at the G3 or 8600 ROM's emulator needs the key routines located there first.
-- SUBX is not translated although ADDX is. Possibly someone noticed the sticky-Z
-  problem for SUBX and backed it out without fixing ADDX - checking the earlier
-  builds' decisions for SUBX would tell.
-- Bit `0x0002` in a conditional branch's record flags is set for some branches
-  and not others; meaning unknown. (Bit `0x0004` is "the instruction at the
-  target replaces N, Z, V, C".)
+- Conditional branch record flags: `0x0020` and `0x0012` are classes of condition
+  (`dr_bcc_flags`), and the signed class makes a preceding compare emit `cmpw cr7`.
+  What the `0x0020` class is used for, and bit `0x0008` (which selects between two
+  tables in `dr_emit_bcc_l`, `1708C`), have not been read.
+- Some code generators differ between the first build and `Emulator.x` without any
+  difference showing in `buildcmp.py --emitters` or in the sequences tried by hand
+  (around `ADDQ.B`, `TST`, `Scc`, `JMP`, `JSR`, `LINK`). Reading them, or sampling
+  pairs of instructions, would say what else was tuned.
+- A taken `BNE.S` does not enter the recompiler from the interpreter (`bne_s`, `07F40`);
+  every other taken branch does. Deliberate? It is the same in the first build.
+- Both ROM builds keep a second `write_sr` after the credit string that writes the
+  interrupt mask to a register at `0x50F2A000`, and offer it in handler slot `+0x96C`.
+  It looks like the NuBus machines' version; a NuBus ROM would show whether their
+  kernel installs it in `write_sr_handler`.
+- The first build indexes its lookup table by `pc[13:4]`, the later ones by `pc[11:1]`.
+  Neither is the direct-mapped table of the patent.
 - `NKPublic.a` in powermac-rom notes "SS replaces with jump to emu+f900" on the
   kernel service table: SheepShaver hosts this emulator without the real
   kernel, so its source is a worked example of the kernel stub still missing
@@ -106,8 +126,6 @@ Legend: `[x]` done, `[~]` partly done, `[ ]` not started.
 - Three table entries (`2F30`, `4EB0`, `4EF4`) special-case one indexed
   extension word each (`81E2`, `81E1`, `0521`). Searching a 68K ROM for those
   words would show what code they were tuned for.
-- `0x21F8` is the last word of the recompiler (`182F8`) and is stored at
-  `+0x718` by `init_state` and `dr_setup`. Meaning unknown.
 - `0C960` is a lone zero word in the middle of code. Cause unknown.
 - The first PCI ROM (1995) already has the hash-lookup recompiler. If the
   patent's direct-mapped design ever existed in a ROM, it predates everything
