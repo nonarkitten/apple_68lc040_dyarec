@@ -273,6 +273,19 @@ Three further entries (`2F30`, `4EB0`, `4EF4`) compare `prefetch_data`
 with one particular indexed addressing extension word, giving a short cut
 for the commonest form of that operand.
 
+Two more sequences are found by routines rather than by table entries.
+`MOVEM.L (A7)+,<list>` and `MOVEM.L (d16,An),<list>`, when the list names
+only D4–D7 and A2–A4, look for `UNLK A6` (`4E5E`) after the list and
+perform both: the end of a compiled procedure (`movem_l_mem_list`,
+`08740`).
+
+The recompiler recognises two sequences of its own in the first pass,
+both from the lists above: `MOVE.B (A1)+,(A0)+` followed by `BNE.S` to
+itself is translated as a single PowerPC loop
+(`dr_emit_move_b_bne_loop`), and `MOVE.L ([bd.w],od.w),-(A7)` — `2F30`
+with extension word `81E2` — is the one full-format indexed instruction
+it translates (`dr_emit_push_l_indirect`).
+
 ### Routines that distinguish instructions at run time
 
 Most of the 534 "other lengths" cases are one routine shared by `ABCD`,

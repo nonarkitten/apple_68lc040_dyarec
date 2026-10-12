@@ -35,7 +35,10 @@ Legend: `[x]` done, `[~]` partly done, `[ ]` not started.
       still plain numbers
 
 ### Interpreter still to read
-- [ ] Bit fields, BCD, MOVEM, MOVEP, MOVE16, CAS/CAS2, CHK2/CMP2, long multiply/divide
+- [x] Bit fields, BCD, MOVEM, MOVE16, CAS, CHK2/CMP2, long multiply/divide: read and
+      described in block comments (`annotations/50-instructions.ann`)
+- [ ] Not described individually: MOVEP, CAS2, MOVES, TRAPcc, RTR, TAS, the bit field
+      insert and modify routines
 - [~] Private opcodes: all named (Apple's names from SuperMario) and described; the SANE
       arithmetic (`FC04`, `FC06`, `FC08`-`FC0F`, 4 KB) is not read line by line
 - [ ] The routines behind the forty FPU handler slots (`0E6D4`-`0E78F`)

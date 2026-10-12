@@ -1,0 +1,150 @@
+# Block comments for the instructions whose routines are more than a few
+# lines.  The routines keep the names tools/naming.py gives them.
+
+@08600
+    ===========================================================================
+    MOVEM
+    ===========================================================================
+    The register list - the word after the opcode, already in prefetch_data
+    when a routine is entered - is copied into the condition register with
+    mtcrf, one bit per register, and the transfer is sixteen conditional
+    loads or stores in a row.  There is no loop and no counting of bits.
+    .
+    The short routines here are the -(An) and (An)+ forms for each address
+    register: they set addr, call the common code, and put the final address
+    back in the register.
+
+@086A0
+    MOVEM.L <list>,-(A7), opcode 48E7.  The table entry has ORed 0x0F38 into
+    the list: if the result is 0x0F38 the list names nothing outside D4-D7
+    and A2-A4, the registers a compiled procedure saves, and only those
+    seven are tested.  Other lists go to the general code.
+086A0 nothing but D4-D7/A2-A4 ?
+086AC cr4-cr7 = the register list
+086B0 the opcode after the list
+086E8 the stores, highest register first
+
+@08740
+    MOVEM.L (A7)+,<list>, opcode 4CDF: the same short cut for a list within
+    D4-D7/A2-A4 (0x1CF0 in this direction), taken only when no special event
+    is pending.  If the instruction that follows is UNLK A6 (4E5E) - the end
+    of a procedure - the two are done together.
+08758 is the next instruction UNLK A6 ?
+
+@08800
+    MOVEM.L (d16,An),<list> and its relatives, with the same short cut and
+    the same look ahead for UNLK A6.
+
+@088FC
+    MOVEM.L <list>,(d16,An): the general form.  One conditional store for
+    each of D0-D7 and A0-A6 (A7 follows).
+08900 cr4-cr7 = the register list
+
+@06BEC
+    MULU.L and MULS.L.  immed_data is the extension word: bit 11 signed,
+    bit 10 a 64-bit product in Dh:Dl; Dl is in bits 14:12 and Dh in bits 2:0.
+    The registers are read and written through the reg_access routines.
+    .
+    32-bit signed:    mullwo. gives the product and the overflow flag.
+    32-bit unsigned:  V is set by hand if the high half (mulhwu) is not zero.
+    64-bit:           both halves are computed and Z is made to cover all
+                      64 bits.
+06BF4 cr5.lt = signed, cr5.gt = 64-bit product
+06C2C the product does not fit: V
+06C5C Z only if both halves are zero
+
+@06CA8
+    DIVU.L and DIVS.L.  immed_data is the extension word, as for the long
+    multiply: bit 11 signed, bit 10 a 64-bit dividend in Dr:Dq.
+    .
+    A 32-bit dividend is divided with divwo. or divwuo. and the remainder
+    obtained by multiplying back.  So is a 64-bit dividend whose upper half
+    is only the sign extension of the lower (or zero, unsigned).  A real
+    64-bit dividend is divided by long division in base 65536: the operands
+    are made positive, the divisor is normalised with cntlzw, and each of
+    two steps estimates a 16-bit quotient digit with divwu from the
+    divisor's upper half and then corrects it by adding the divisor back
+    while the partial remainder is negative.  The signs are put right at
+    the end.
+    .
+    A zero divisor takes the exception; a quotient that does not fit sets V
+    and leaves the registers alone.
+06CB4 divisor zero ?
+06CF8 overflow: V set, nothing stored
+06D48 is the upper half only a sign extension ?
+06D84 quotient would not fit in 32 bits ?
+06D8C normalise: shift divisor and dividend left
+06DA8 first quotient digit, estimated ...
+06DD8 ... and corrected
+06DEC second digit
+
+@07780
+    ===========================================================================
+    Bit fields
+    ===========================================================================
+    The extension word gives the offset in bits 10:6 and the width in bits
+    4:0 (0 means 32); bit 11 or bit 5 set means that the offset or the width
+    is in a data register instead, and the two routines at bfins_mem_3_L1
+    and _L2 fetch them.
+    .
+    For a field in a register the register is rotated left by the offset,
+    which brings the field to the top, and shifted right by 32 minus the
+    width - arithmetically where the sign is wanted, which also sets N and Z.
+07790 offset in a register ?
+0779C width in a register ?
+077AC N and Z from the field
+
+@07920
+    A field in memory.  The byte address is advanced by the offset divided
+    by eight (arithmetically: offsets may be negative) and the remaining
+    three bits are a shift.  Four bytes are loaded; a field that runs into a
+    fifth byte has that byte fetched and merged in separately.  BFEXTU
+    shifts the field down logically, BFEXTS arithmetically, and BFFFO counts
+    leading zeros and adds the offset.  The result goes to its register
+    through reg_access_base_disp.
+07934 whole bytes of offset
+07948 bits of offset within the byte
+0796C does the field reach a fifth byte ?
+0797C BFFFO: position of the first one bit
+
+@0C040 bcd_dn_dn
+    ABCD, SBCD, PACK and UNPK between data registers share this routine, which
+    tells them apart by the opcode still held in disp_table.  addr is the
+    destination register's value and data the source.
+    .
+    ABCD adds the two bytes and X in binary, then corrects in one step: 6 is
+    added to each digit whose sum passed 9, found from the carries between
+    the nibbles, with no loop over digits.  SBCD is the mirror image.  As
+    the 68K requires, Z is only ever cleared.
+0C048 below ABCD: SBCD
+0C04C PACK or UNPK
+0C058 X is the carry in
+0C064 binary sum
+0C094 0x66 where a digit needs correcting
+0C0A4 Z stays clear if it was clear
+
+@0CE20
+    CAS.  immed_data is the extension word: Dc in bits 2:0, Du in bits 8:6.
+    The operand is compared with Dc as CMP would; if they are equal Du is
+    stored in the operand, otherwise the operand is loaded into Dc.  The
+    routine in handler slot +0x884 (+0x888 and +0x88C for the other sizes)
+    is called first.  Only the long form with an aligned address
+    (cas_l_mem_3_L3) uses lwarx and stwcx. to make the exchange atomic.
+0CE54 compare; the flags are CMP's
+0CE60 different: Dc = operand
+0CE70 equal: operand = Du
+
+@0CC0C
+    CHK2 and CMP2.  data and rtn_addr are the lower and upper bounds from
+    memory; immed_data is the extension word, with the register in bits
+    15:12 (an address register is compared whole, a data register after
+    sign extension from the operand size) and bit 11 choosing CHK2.  Z is
+    set if the register equals a bound and C if it is outside them; CHK2
+    then takes the CHK exception when C is set.
+0CC30 bounds the wrong way round ?
+0CC5C CHK2 and out of bounds
+
+@0E4D0
+    MOVE16: sixteen bytes between addresses rounded down to a multiple of
+    sixteen, as four word loads and four word stores.  The routine in
+    handler slot +0x94C (or +0x950, by direction) is called first.

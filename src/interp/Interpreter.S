@@ -19271,6 +19271,15 @@ mulu_muls_l_imm:
         lhau    prefetch_data, 6(pc)
         b       mulu_muls_l_mem_3_L1
 
+// MULU.L and MULS.L.  immed_data is the extension word: bit 11 signed,
+// bit 10 a 64-bit product in Dh:Dl; Dl is in bits 14:12 and Dh in bits 2:0.
+// The registers are read and written through the reg_access routines.
+//
+// 32-bit signed:    mullwo. gives the product and the overflow flag.
+// 32-bit unsigned:  V is set by hand if the high half (mulhwu) is not zero.
+// 64-bit:           both halves are computed and Z is made to cover all
+// 64 bits.
+//
 // Reached from 24 dispatch table entries:
 //     MULU/MULS.L Dn,Dl|Dh:Dl
 //     MULU/MULS.L (An),Dl|Dh:Dl
@@ -19281,7 +19290,7 @@ mulu_muls_l_mem_3:
         addco   immed_data, prefetch_data, zero         // immed_data = prefetch_data; V=0, C=0
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
 mulu_muls_l_mem_3_L1:
-        mtcrf   0x0F, immed_data                        // cr4..cr7 = immed_data[15:0]
+        mtcrf   0x0F, immed_data                        // cr5.lt = signed, cr5.gt = 64-bit product
         ori     addr, code_ptr, reg_access_base_disp - cb
         rlwimi  addr, immed_data, 24, 25, 27            // addr[6:4] = immed_data[14:12]
         mtlr    addr
@@ -19297,7 +19306,7 @@ mulu_muls_l_mem_3_L2:
         mullw.  base_disp, base_disp, data
         blr
 mulu_muls_l_mem_3_L3:
-        lis     rtn_addr, 0x4000
+        lis     rtn_addr, 0x4000                        // the product does not fit: V
         mtxer   rtn_addr
         mullw.  base_disp, base_disp, data
         blr
@@ -19310,7 +19319,7 @@ mulu_muls_l_mem_3_L4:
         mulhw.  rtn_addr, base_disp, data               // rtn_addr = high 32 bits of base_disp * data (signed)
         mullw   base_disp, base_disp, data
         cmpwi   cr7, base_disp, 0
-        crand   eq, eq, 4*cr7+eq                        // cr0.eq = cr0.eq & cr7.eq
+        crand   eq, eq, 4*cr7+eq                        // Z only if both halves are zero
         bctr
 mulu_muls_l_mem_3_L5:
         blrl
@@ -19347,6 +19356,22 @@ divu_divs_l_mem_2:
         lwz     data, 0(addr)
         b       divu_divs_l_mem_3_L1
 
+// DIVU.L and DIVS.L.  immed_data is the extension word, as for the long
+// multiply: bit 11 signed, bit 10 a 64-bit dividend in Dr:Dq.
+//
+// A 32-bit dividend is divided with divwo. or divwuo. and the remainder
+// obtained by multiplying back.  So is a 64-bit dividend whose upper half
+// is only the sign extension of the lower (or zero, unsigned).  A real
+// 64-bit dividend is divided by long division in base 65536: the operands
+// are made positive, the divisor is normalised with cntlzw, and each of
+// two steps estimates a 16-bit quotient digit with divwu from the
+// divisor's upper half and then corrects it by adding the divisor back
+// while the partial remainder is negative.  The signs are put right at
+// the end.
+//
+// A zero divisor takes the exception; a quotient that does not fit sets V
+// and leaves the registers alone.
+//
 // Reached from 24 dispatch table entries:
 //     DIVU/DIVS.L Dn,Dq|Dr:Dq
 //     DIVU/DIVS.L (An),Dq|Dr:Dq
@@ -19358,7 +19383,7 @@ divu_divs_l_mem_3:
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
 divu_divs_l_mem_3_L1:
         mtxer   zero
-        or.     data, data, data
+        or.     data, data, data                        // divisor zero ?
         mtcrf   0x0F, immed_data                        // cr4..cr7 = immed_data[15:0]
         ori     addr, code_ptr, reg_access_base_disp - cb
         rlwimi  addr, immed_data, 24, 25, 27            // addr[6:4] = immed_data[14:12]
@@ -19377,7 +19402,7 @@ divu_divs_l_mem_3_L2:
         subf    rtn_addr, rtn_addr, immed_data          // rtn_addr = immed_data - rtn_addr
         bnsctr
 divu_divs_l_mem_3_L3:
-        rlwimi  disp_table, prefetch_data, 3, 13, 28    // DECODE1: disp_table[18:3] = opcode in prefetch_data
+        rlwimi  disp_table, prefetch_data, 3, 13, 28    // overflow: V set, nothing stored
         mtlr    disp_table                              // DECODE2: LR = address of the next dispatch entry
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         lis     data, 0x4000
@@ -19400,7 +19425,7 @@ divu_divs_l_mem_3_L6:
         bge     cr5, divu_divs_l_mem_3_L8
         blrl
         srawi   immed_data, base_disp, 31               // immed_data = base_disp >> 31 (arithmetic)
-        cmplw   cr7, rtn_addr, immed_data
+        cmplw   cr7, rtn_addr, immed_data               // is the upper half only a sign extension ?
         mtctr   addr
         beq     cr7, divu_divs_l_mem_3_L2
         cmpwi   cr6, rtn_addr, 0
@@ -19418,16 +19443,16 @@ divu_divs_l_mem_3_L8:
         mtctr   addr
         beq     cr7, divu_divs_l_mem_3_L5
 divu_divs_l_mem_3_L9:
-        cmplw   cr7, rtn_addr, data
+        cmplw   cr7, rtn_addr, data                     // quotient would not fit in 32 bits ?
         bge     cr7, divu_divs_l_mem_3_L3
-        cntlzw  prefetch_data, data                     // prefetch_data = number of leading zero bits in data
+        cntlzw  prefetch_data, data                     // normalise: shift divisor and dividend left
         xor     rtn_addr, rtn_addr, base_disp
         slw     data, data, prefetch_data
         rlwnm   rtn_addr, rtn_addr, prefetch_data, 0, 31  // rtn_addr = rotl(rtn_addr, prefetch_data) & 0xFFFFFFFF
         slw     base_disp, base_disp, prefetch_data
         xor     rtn_addr, rtn_addr, base_disp
         srwi    immed_data, data, 16
-        divwu   addr, rtn_addr, immed_data
+        divwu   addr, rtn_addr, immed_data              // first quotient digit, estimated ...
         mullw   immed_data, addr, immed_data
         subf    rtn_addr, immed_data, rtn_addr          // rtn_addr = rtn_addr - immed_data
         slwi    rtn_addr, rtn_addr, 16
@@ -19440,13 +19465,13 @@ divu_divs_l_mem_3_L9:
         add     base_disp, base_disp, addr
         bge     divu_divs_l_mem_3_L11
 divu_divs_l_mem_3_L10:
-        addc    rtn_addr, rtn_addr, data
+        addc    rtn_addr, rtn_addr, data                // ... and corrected
         addze.  immed_data, immed_data                  // immed_data = immed_data + CA
         addi    base_disp, base_disp, -1
         blt     divu_divs_l_mem_3_L10
 divu_divs_l_mem_3_L11:
         srwi    immed_data, data, 16
-        divwu   addr, rtn_addr, immed_data
+        divwu   addr, rtn_addr, immed_data              // second digit
         mullw   immed_data, addr, immed_data
         subf    rtn_addr, immed_data, rtn_addr          // rtn_addr = rtn_addr - immed_data
         slwi    rtn_addr, rtn_addr, 16
@@ -20450,6 +20475,18 @@ bset_b_imm_mem_3_L3:
         b       bftst
         ALIGN(64)
 
+// ===========================================================================
+// Bit fields
+// ===========================================================================
+// The extension word gives the offset in bits 10:6 and the width in bits
+// 4:0 (0 means 32); bit 11 or bit 5 set means that the offset or the width
+// is in a data register instead, and the two routines at bfins_mem_3_L1
+// and _L2 fetch them.
+//
+// For a field in a register the register is rotated left by the offset,
+// which brings the field to the top, and shifted right by 32 minus the
+// width - arithmetically where the sign is wanted, which also sets N and Z.
+//
 // Reached from 8 dispatch table entries:
 //     BFTST Dn{ofs:wid}
 bftst:
@@ -20457,14 +20494,14 @@ bftst:
         rlwinm  base_disp, prefetch_data, 26, 27, 31    // base_disp = prefetch_data[10:6]
         neg     immed_data, prefetch_data
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
-        bltl    cr5, bfins_mem_3_L1
+        bltl    cr5, bfins_mem_3_L1                     // offset in a register ?
         rlwnm   data, data, base_disp, 0, 31            // data = rotl(data, base_disp) & 0xFFFFFFFF
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // DECODE1: disp_table[18:3] = opcode in prefetch_data
-        beql    cr6, bfins_mem_3_L2
+        beql    cr6, bfins_mem_3_L2                     // width in a register ?
         mtlr    disp_table                              // DECODE2: LR = address of the next dispatch entry
         clrlwi  immed_data, immed_data, 27              // immed_data = immed_data & 0x0000001F
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
-        sraw.   data, data, immed_data                  // data = data >> immed_data (arithmetic)
+        sraw.   data, data, immed_data                  // N and Z from the field
         addco   zero, zero, zero                        // V=0, C=0
         bflr_likely cr_special_event_pending            // DISPATCH unless a special event is pending
         b       process_special_event
@@ -20602,6 +20639,14 @@ bfextu_bfexts_bfffo_mem_2:
         mr      immed_data, prefetch_data
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
 
+// A field in memory.  The byte address is advanced by the offset divided
+// by eight (arithmetically: offsets may be negative) and the remaining
+// three bits are a shift.  Four bytes are loaded; a field that runs into a
+// fifth byte has that byte fetched and merged in separately.  BFEXTU
+// shifts the field down logically, BFEXTS arithmetically, and BFFFO counts
+// leading zeros and adds the offset.  The result goes to its register
+// through reg_access_base_disp.
+//
 // Continuation (via rtn_addr) of 30 dispatch table entries:
 //     BFEXTU (d8,An,Xn){ofs:wid},Dn
 //     BFEXTS (d8,An,Xn){ofs:wid},Dn
@@ -20616,12 +20661,12 @@ bfextu_bfexts_bfffo_mem_3:
         ori     data, code_ptr, reg_access_base_disp_L1 - cb
         rlwimi  data, immed_data, 24, 25, 27            // data[6:4] = immed_data[14:12]
         bltl    cr5, bfins_mem_3_L1
-        srawi   rtn_addr, base_disp, 3                  // rtn_addr = base_disp >> 3 (arithmetic)
+        srawi   rtn_addr, base_disp, 3                  // whole bytes of offset
         neg     immed_data, immed_data
         add     addr, addr, rtn_addr
         beql    cr6, bfins_mem_3_L2
         mtcrf   0x0F, disp_table                        // cr4..cr7 = disp_table[15:0]
-        clrlwi  rtn_addr, base_disp, 29                 // rtn_addr = base_disp & 0x00000007
+        clrlwi  rtn_addr, base_disp, 29                 // bits of offset within the byte
         clrlwi  immed_data, immed_data, 27              // immed_data = immed_data & 0x0000001F
         cmplw   rtn_addr, immed_data
         mtctr   data
@@ -20630,11 +20675,11 @@ bfextu_bfexts_bfffo_mem_3:
         lwz     base_disp, 0(addr)
         addco   zero, zero, zero                        // V=0, C=0
         slw     base_disp, base_disp, rtn_addr
-        bgtl    bfextu_bfexts_bfffo_mem_3_L2
+        bgtl    bfextu_bfexts_bfffo_mem_3_L2            // does the field reach a fifth byte ?
         srw     base_disp, base_disp, immed_data
         slw.    rtn_addr, base_disp, immed_data
         bnectr  cr4
-        cntlzw  addr, base_disp                         // addr = number of leading zero bits in base_disp
+        cntlzw  addr, base_disp                         // BFFFO: position of the first one bit
         add     base_disp, data, addr
         bctr
 bfextu_bfexts_bfffo_mem_3_L1:
@@ -21737,6 +21782,18 @@ condition_truth_table:
         .long   0x81806061
         .long   0x7E7F9F9E
 
+// ===========================================================================
+// MOVEM
+// ===========================================================================
+// The register list - the word after the opcode, already in prefetch_data
+// when a routine is entered - is copied into the condition register with
+// mtcrf, one bit per register, and the transfer is sixteen conditional
+// loads or stores in a row.  There is no loop and no counting of bits.
+//
+// The short routines here are the -(An) and (An)+ forms for each address
+// register: they set addr, call the common code, and put the final address
+// back in the register.
+//
 // Reached from 2 dispatch table entries:
 //     MOVEM.W <list>,-(An)
 //     MOVEM.L <list>,-(An)
@@ -21855,14 +21912,19 @@ movem_w_mem_list:
         bfctr_likely cr_special_event_pending           // DISPATCH unless a special event is pending
         b       process_special_event
 
+// MOVEM.L <list>,-(A7), opcode 48E7.  The table entry has ORed 0x0F38 into
+// the list: if the result is 0x0F38 the list names nothing outside D4-D7
+// and A2-A4, the registers a compiled procedure saves, and only those
+// seven are tested.  Other lists go to the general code.
+//
 // Reached from 1 dispatch table entry:
 //     MOVEM.L <list>,-(An)
 movem_l_list_mem:
-        cmpwi   cr7, data, 0xF38
+        cmpwi   cr7, data, 0xF38                        // nothing but D4-D7/A2-A4 ?
         mr      addr, a7
         bne     cr7, movem_l_list_mem_4_L18
-        mtcrf   0x0F, prefetch_data                     // cr4..cr7 = prefetch_data[15:0]
-        lha     immed_data, 2(pc)
+        mtcrf   0x0F, prefetch_data                     // cr4-cr7 = the register list
+        lha     immed_data, 2(pc)                       // the opcode after the list
         lhau    prefetch_data, 4(pc)                    // PREFETCH: pc += 4, load the word there
         rlwimi  disp_table, immed_data, 3, 13, 28       // DECODE1: disp_table[18:3] = opcode in immed_data
         mtctr   disp_table                              // DECODE2: CTR = address of the next dispatch entry
@@ -21883,7 +21945,7 @@ movem_l_list_mem_L6:
         b       process_special_event
         ALIGN(8)
 movem_l_list_mem_L7:
-        stwu    a4, -4(a7)
+        stwu    a4, -4(a7)                              // the stores, highest register first
         bns     cr6, movem_l_list_mem_L1
 movem_l_list_mem_L8:
         stwu    a3, -4(a7)
@@ -21907,6 +21969,11 @@ movem_l_list_mem_L13:
         b       movem_l_mem_list
         ALIGN(64)
 
+// MOVEM.L (A7)+,<list>, opcode 4CDF: the same short cut for a list within
+// D4-D7/A2-A4 (0x1CF0 in this direction), taken only when no special event
+// is pending.  If the instruction that follows is UNLK A6 (4E5E) - the end
+// of a procedure - the two are done together.
+//
 // Reached from 1 dispatch table entry:
 //     MOVEM.L (An)+,<list>
 movem_l_mem_list:
@@ -21916,7 +21983,7 @@ movem_l_mem_list:
         bne     cr7, movem_l_mem_list_4_L2
         lha     immed_data, 2(pc)
         mtcrf   0x0E, prefetch_data                     // cr4..cr6 = prefetch_data[15:4]
-        cmpwi   cr7, immed_data, 0x4E5E
+        cmpwi   cr7, immed_data, 0x4E5E                 // is the next instruction UNLK A6 ?
         lhau    prefetch_data, 4(pc)                    // PREFETCH: pc += 4, load the word there
         rlwimi  disp_table, immed_data, 3, 13, 28       // DECODE1: disp_table[18:3] = opcode in immed_data
         mtctr   disp_table                              // DECODE2: CTR = address of the next dispatch entry
@@ -21961,6 +22028,9 @@ movem_l_mem_list_L13:
         b       movem_l_mem_list_2
         ALIGN(64)
 
+// MOVEM.L (d16,An),<list> and its relatives, with the same short cut and
+// the same look ahead for UNLK A6.
+//
 // Reached from 10 dispatch table entries:
 //     MOVEM.L (d16,An),<list>
 //     MOVEM.L (xxx).W,<list>
@@ -22054,12 +22124,15 @@ movem_l_list_mem_3:
         addi    addr, addr, -4
         b       movem_l_list_mem_4_L1
 
+// MOVEM.L <list>,(d16,An): the general form.  One conditional store for
+// each of D0-D7 and A0-A6 (A7 follows).
+//
 // Reached from 9 dispatch table entries:
 //     MOVEM.L <list>,(d16,An)
 //     MOVEM.L <list>,(xxx).W
 movem_l_list_mem_4:
         lhau    base_disp, 2(pc)                        // base_disp = next word: pc += 2, load the word there
-        mtcrf   0x0F, prefetch_data                     // cr4..cr7 = prefetch_data[15:0]
+        mtcrf   0x0F, prefetch_data                     // cr4-cr7 = the register list
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         add     addr, addr, base_disp
 movem_l_list_mem_4_L1:
@@ -28167,7 +28240,7 @@ nbcd_b_d0:
 //     ABCD.B Dn,Dn
 sbcd_pack_etc_reg_reg:
         mr      addr, d0
-        bl      sbcd_pack_etc_reg_reg_8_L1
+        bl      bcd_dn_dn
         mr      d0, addr
         bfctr_likely cr_special_event_pending           // DISPATCH unless a special event is pending
         b       process_special_event
@@ -28184,7 +28257,7 @@ nbcd_b_d1:
 //     ABCD.B Dn,Dn
 sbcd_pack_etc_reg_reg_2:
         mr      addr, d1
-        bl      sbcd_pack_etc_reg_reg_8_L1
+        bl      bcd_dn_dn
         mr      d1, addr
         bfctr_likely cr_special_event_pending           // DISPATCH unless a special event is pending
         b       process_special_event
@@ -28201,7 +28274,7 @@ nbcd_b_d2:
 //     ABCD.B Dn,Dn
 sbcd_pack_etc_reg_reg_3:
         mr      addr, d2
-        bl      sbcd_pack_etc_reg_reg_8_L1
+        bl      bcd_dn_dn
         mr      d2, addr
         bfctr_likely cr_special_event_pending           // DISPATCH unless a special event is pending
         b       process_special_event
@@ -28218,7 +28291,7 @@ nbcd_b_d3:
 //     ABCD.B Dn,Dn
 sbcd_pack_etc_reg_reg_4:
         mr      addr, d3
-        bl      sbcd_pack_etc_reg_reg_8_L1
+        bl      bcd_dn_dn
         mr      d3, addr
         bfctr_likely cr_special_event_pending           // DISPATCH unless a special event is pending
         b       process_special_event
@@ -28235,7 +28308,7 @@ nbcd_b_d4:
 //     ABCD.B Dn,Dn
 sbcd_pack_etc_reg_reg_5:
         mr      addr, d4
-        bl      sbcd_pack_etc_reg_reg_8_L1
+        bl      bcd_dn_dn
         mr      d4, addr
         bfctr_likely cr_special_event_pending           // DISPATCH unless a special event is pending
         b       process_special_event
@@ -28252,7 +28325,7 @@ nbcd_b_d5:
 //     ABCD.B Dn,Dn
 sbcd_pack_etc_reg_reg_6:
         mr      addr, d5
-        bl      sbcd_pack_etc_reg_reg_8_L1
+        bl      bcd_dn_dn
         mr      d5, addr
         bfctr_likely cr_special_event_pending           // DISPATCH unless a special event is pending
         b       process_special_event
@@ -28269,7 +28342,7 @@ nbcd_b_d6:
 //     ABCD.B Dn,Dn
 sbcd_pack_etc_reg_reg_7:
         mr      addr, d6
-        bl      sbcd_pack_etc_reg_reg_8_L1
+        bl      bcd_dn_dn
         mr      d6, addr
         bfctr_likely cr_special_event_pending           // DISPATCH unless a special event is pending
         b       process_special_event
@@ -28286,21 +28359,30 @@ nbcd_b_d7:
 //     ABCD.B Dn,Dn
 sbcd_pack_etc_reg_reg_8:
         mr      addr, d7
-        bl      sbcd_pack_etc_reg_reg_8_L1
+        bl      bcd_dn_dn
         mr      d7, addr
         bfctr_likely cr_special_event_pending           // DISPATCH unless a special event is pending
         b       process_special_event
-sbcd_pack_etc_reg_reg_8_L1:
+
+// ABCD, SBCD, PACK and UNPK between data registers share this routine, which
+// tells them apart by the opcode still held in disp_table.  addr is the
+// destination register's value and data the source.
+//
+// ABCD adds the two bytes and X in binary, then corrects in one step: 6 is
+// added to each digit whose sum passed 9, found from the carries between
+// the nibbles, with no loop over digits.  SBCD is the mirror image.  As
+// the 68K requires, Z is only ever cleared.
+bcd_dn_dn:
         rlwinm  immed_data, disp_table, 29, 16, 28      // immed_data = disp_table[18:6] << 3
         rlwimi  immed_data, zero, 0, 20, 22             // immed_data[11:9] = zero[11:9]
-        cmplwi  cr7, immed_data, 0x8100
-        cmplwi  cr6, immed_data, 0x8180
-        ble     cr7, sbcd_pack_etc_reg_reg_8_L2
-        ble     cr6, sbcd_pack_etc_reg_reg_8_L3
-        mtxer   ccr_x
+        cmplwi  cr7, immed_data, 0x8100                 // below ABCD: SBCD
+        cmplwi  cr6, immed_data, 0x8180                 // PACK or UNPK
+        ble     cr7, bcd_dn_dn_L1
+        ble     cr6, bcd_dn_dn_L2
+        mtxer   ccr_x                                   // X is the carry in
         clrlwi  base_disp, addr, 24                     // base_disp = addr & 0x000000FF
         crmove  4*cr7+so, eq
-        adde    immed_data, data, base_disp             // immed_data = data + base_disp + CA
+        adde    immed_data, data, base_disp             // binary sum
         rlwinm  base_disp, base_disp, 0, 24, 27         // base_disp = base_disp[7:4] << 4
         subfic  rtn_addr, immed_data, 153               // rtn_addr = 153 - immed_data
         rlwinm  data, data, 0, 24, 27                   // data = data[7:4] << 4
@@ -28312,13 +28394,13 @@ sbcd_pack_etc_reg_reg_8_L1:
         addco   ccr_x, rtn_addr, rtn_addr
         rlwimi  rtn_addr, base_disp, 28, 4, 7           // rtn_addr[27:24] = base_disp[31:28]
         mtctr   disp_table                              // DECODE2: CTR = address of the next dispatch entry
-        andis.  rtn_addr, rtn_addr, 0x6600
+        andis.  rtn_addr, rtn_addr, 0x6600              // 0x66 where a digit needs correcting
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         add.    immed_data, immed_data, rtn_addr
         rlwimi  addr, immed_data, 8, 24, 31             // addr[7:0] = immed_data[31:24]
-        crand   eq, eq, 4*cr7+so                        // cr0.eq = cr0.eq & cr7.so
+        crand   eq, eq, 4*cr7+so                        // Z stays clear if it was clear
         blr
-sbcd_pack_etc_reg_reg_8_L2:
+bcd_dn_dn_L1:
         rlwinm  rtn_addr, ccr_x, 3, 31, 31              // rtn_addr = ccr_x[29]
         clrlwi  base_disp, addr, 24                     // base_disp = addr & 0x000000FF
         crmove  4*cr7+so, eq
@@ -28340,9 +28422,9 @@ sbcd_pack_etc_reg_reg_8_L2:
         crand   eq, eq, 4*cr7+so                        // cr0.eq = cr0.eq & cr7.so
         rlwimi  addr, immed_data, 0, 24, 31             // addr[7:0] = immed_data[7:0]
         blr
-sbcd_pack_etc_reg_reg_8_L3:
+bcd_dn_dn_L2:
         lhau    rtn_addr, 2(pc)                         // rtn_addr = next word: pc += 2, load the word there
-        beq     cr6, sbcd_pack_etc_reg_reg_8_L4
+        beq     cr6, bcd_dn_dn_L3
         add     data, data, prefetch_data
         rlwimi  disp_table, rtn_addr, 3, 13, 28         // DECODE1: disp_table[18:3] = opcode in rtn_addr
         rlwimi  data, data, 28, 24, 27                  // data[7:4] = data[11:8]
@@ -28350,7 +28432,7 @@ sbcd_pack_etc_reg_reg_8_L3:
         rlwimi  addr, data, 0, 24, 31                   // addr[7:0] = data[7:0]
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         blr
-sbcd_pack_etc_reg_reg_8_L4:
+bcd_dn_dn_L3:
         clrlwi  immed_data, data, 28                    // immed_data = data & 0x0000000F
         rlwimi  disp_table, rtn_addr, 3, 13, 28         // DECODE1: disp_table[18:3] = opcode in rtn_addr
         rlwimi  immed_data, data, 4, 20, 23             // immed_data[11:8] = data[7:4]
@@ -29765,6 +29847,13 @@ chk2_cmp2_l_mem_rn_2:
         mr      immed_data, prefetch_data
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
 
+// CHK2 and CMP2.  data and rtn_addr are the lower and upper bounds from
+// memory; immed_data is the extension word, with the register in bits
+// 15:12 (an address register is compared whole, a data register after
+// sign extension from the operand size) and bit 11 choosing CHK2.  Z is
+// set if the register equals a bound and C if it is outside them; CHK2
+// then takes the CHK exception when C is set.
+//
 // Continuation (via rtn_addr) of 10 dispatch table entries:
 //     CHK2/CMP2.L (d8,An,Xn),Rn
 //     CHK2/CMP2.L (xxx).L,Rn
@@ -29781,7 +29870,7 @@ chk2_cmp2_l_mem_rn_3_L2:
         mtcrf   0x0F, immed_data                        // cr4..cr7 = immed_data[15:0]
         cror    4*cr4+lt, 4*cr4+lt, eq                  // cr4.lt = cr4.lt | cr0.eq
         blrl
-        cmplw   cr6, data, rtn_addr
+        cmplw   cr6, data, rtn_addr                     // bounds the wrong way round ?
         blt     cr4, chk2_cmp2_l_mem_rn_3_L3
         slw     base_disp, base_disp, addr
         sraw    base_disp, base_disp, addr              // base_disp = base_disp >> addr (arithmetic)
@@ -29794,7 +29883,7 @@ chk2_cmp2_l_mem_rn_3_L4:
         crand   4*cr5+lt, 4*cr5+lt, 4*cr7+lt            // cr5.lt = cr5.lt & cr7.lt
         subfco. base_disp, data, base_disp              // base_disp = base_disp - data
         addc    base_disp, data, base_disp
-        blt     cr5, take_chk_exception
+        blt     cr5, take_chk_exception                 // CHK2 and out of bounds
 chk2_cmp2_l_mem_rn_3_L5:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // DECODE1: disp_table[18:3] = opcode in prefetch_data
         mtlr    disp_table                              // DECODE2: LR = address of the next dispatch entry
@@ -30031,6 +30120,13 @@ cas_b_mem_2:
         mr      immed_data, prefetch_data
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
 
+// CAS.  immed_data is the extension word: Dc in bits 2:0, Du in bits 8:6.
+// The operand is compared with Dc as CMP would; if they are equal Du is
+// stored in the operand, otherwise the operand is loaded into Dc.  The
+// routine in handler slot +0x884 (+0x888 and +0x88C for the other sizes)
+// is called first.  Only the long form with an aligned address
+// (cas_l_mem_3_L3) uses lwarx and stwcx. to make the exchange atomic.
+//
 // Continuation (via rtn_addr) of 9 dispatch table entries:
 //     CAS.B Dc,Du,(d8,An,Xn)
 //     CAS.B Dc,Du,(xxx).L
@@ -30050,14 +30146,14 @@ cas_b_mem_3_L2:
         slwi    data, data, 24
         blrl
         slwi    immed_data, base_disp, 24
-        subfco. data, immed_data, data                  // data = data - immed_data
+        subfco. data, immed_data, data                  // compare; the flags are CMP's
         addc    data, immed_data, data
         rlwimi  base_disp, data, 8, 24, 31              // base_disp[7:0] = data[31:24]
-        bnelr
+        bnelr                                           // different: Dc = operand
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // DECODE1: disp_table[18:3] = opcode in prefetch_data
         mtlr    disp_table                              // DECODE2: LR = address of the next dispatch entry
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
-        stb     rtn_addr, 0(addr)
+        stb     rtn_addr, 0(addr)                       // equal: operand = Du
         bflr_likely cr_special_event_pending            // DISPATCH unless a special event is pending
         b       process_special_event
 
@@ -31993,6 +32089,10 @@ move16_mem_mem:
         li      data, 16
         blr
 
+// MOVE16: sixteen bytes between addresses rounded down to a multiple of
+// sixteen, as four word loads and four word stores.  The routine in
+// handler slot +0x94C (or +0x950, by direction) is called first.
+//
 // Reached from 8 dispatch table entries:
 //     MOVE16 (An),(xxx).L
 move16_mem_mem_2:
