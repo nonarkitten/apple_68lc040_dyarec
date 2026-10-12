@@ -90,9 +90,17 @@
 
 @0D440 native_exception_handler
     Entered by the kernel when the processor takes an exception while the
-    emulator context is running (the address is registered at EmEntry).
-    Converts the kernel's description of the fault into the information a
-    68K bus error frame needs.
+    emulator context is running (its address is in ecb_handler).  On entry
+    data (r4) holds ecb_handler_arg, the address of take_bus_error, and LR
+    holds ecb_handler_return, the address of EmKernelTrapTable; the kernel
+    has stored its description of the fault in the context block.
+    .
+    Chooses where the emulator should resume - take_bus_error, or
+    take_address_error if the fault was the deliberate jump past the
+    dispatch table for an odd pc - stores that in ecb_pc, copies the fault
+    details to where take_bus_error expects them, and returns.  Returning
+    lands on slot 0 of the trap table, ReturnFromException, with r3 = 0.
+0D474 ecb_pc = where to resume
 
 @0D4C8 take_bus_error
     Build a 68020 format $B (long bus fault) frame for a bus error.

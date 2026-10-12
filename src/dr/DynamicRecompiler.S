@@ -9445,10 +9445,10 @@ dr_setup:
         lwz     data, 0x7C0(EmulatorStatePtr)
         lwz     addr, 0x7C4(EmulatorStatePtr)
         add     data, data, addr
-        lis     addr, 0x5FFF                            // address of the kernel's information record
+        lis     addr, 0x5FFF                            // 0x5FFFEFF0 holds the address of the kernel's SystemInfo record ...
         ori     addr, addr, 0xE000
         lwz     addr, 0xFF0(addr)
-        lwz     addr, 8(addr)
+        lwz     addr, 8(addr)                           // ... whose third word is the logical memory size
         addi    addr, addr, -1
         stw     addr, dr_memory_limit(EmulatorStatePtr)
         stw     zero, dr_page_bitmap(EmulatorStatePtr)

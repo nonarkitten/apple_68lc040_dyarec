@@ -56,7 +56,9 @@ bottom:
 The page bitmap has one bit for every 512 bytes of 68K address space up
 to `dr_memory_limit`. The limit is read from a kernel data structure
 whose address is found at the fixed location `0x5FFFEFF0` — the one
-absolute address in the recompiler. The bitmap is only allocated if it
+absolute address in the recompiler. (It is the kernel's `SystemInfo`
+record, and the value read is the logical memory size; see
+[13-rom-context.md](13-rom-context.md).) The bitmap is only allocated if it
 fits.
 
 `dr_setup` then replaces the stubs in the state block with the addresses

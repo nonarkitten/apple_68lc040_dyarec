@@ -97,20 +97,43 @@
     block and r4 = address of the dispatch table (OpcodeTblTop).
 
     Saves the caller's non-volatile registers in a frame at the top of the
-    state block's page, records where the code and the table are, describes
-    the emulator context to the kernel (flags, the handlers for native
-    exceptions, and emulator_reset as the place to start), and issues
-    kernel trap 0.  Nothing in this image branches to emulator_reset: the
-    kernel is expected to resume the context there.
+    state block's page, records where the code and the table are, fills in
+    the emulator's context block (flags, the handler for native exceptions
+    and its argument, and emulator_reset as the place to resume), and
+    issues kernel trap 0, ReturnFromException.  The kernel resumes the
+    context at ecb_pc, which is how emulator_reset is reached.
 0E8B0 r1 = top of the 4 KB page that starts at the state block
 0E8B8 not reached (the operand is 0xDEAD)
 
 @0E8C0 EmKernelTrapTable
-    Kernel service calls.  Each is an unconditional trap instruction whose
-    immediate operand selects the service; the kernel returns to the
-    instruction after the trap, so callers reach these with a branch-and-
-    link, or with a plain branch when LR already holds the return address.
-    There is no entry 14: slot 14 repeats 13.
+    Kernel service calls.  Each is an unconditional trap instruction.  The
+    kernel recognises a trap taken inside this table by its address - slot
+    n is service n - and resumes at the following instruction, so callers
+    reach these with a branch-and-link, or with a plain branch when LR
+    already holds the return address.  (It also recognises the instruction
+    "twi 31, r31, n" anywhere else, by its operand.)
+    .
+    The service names are the kernel's.  Slot 14 carries the operand 13,
+    which is harmless because the slot's address decides; slot 16 is beyond
+    the sixteen services of the kernel in the Power Macintosh 8600/9600
+    ROM, which implements only 0 to 5.
+0E8C0 0: ReturnFromException - resume this context at ecb_pc
+0E8C4 1: RunAlternateContext - run native code
+0E8C8 2: ResetSystem
+0E8CC 3: VMDispatch
+0E8D0 4: PrioritizeInterrupts
+0E8D4 5: PowerDispatch
+0E8D8 6: RTASDispatch (later kernels)
+0E8DC 7: CacheDispatch (later kernels)
+0E8E0 8: MPDispatch (later kernels)
+0E8E4 9
+0E8E8 10
+0E8EC 11
+0E8F0 12
+0E8F4 13
+0E8F8 14 (operand 13)
+0E8FC 15: SystemCrash
+0E900 16
 
 @0E904 em_entry_save
 0E904 save CR ...
@@ -119,9 +142,10 @@
 0E914 r3: the state block
 0E918 r4: the dispatch table
 0E920 code_ptr = this code's own address, rounded down to 64 KB
-0E934 where the kernel is to start the emulator context
+0E934 where ReturnFromException will resume
 0E94C handler for native exceptions taken while emulating
-0E960 kernel trap 0
+0E954 its argument: where to resume for a bus error
+0E960 ReturnFromException: resume at ecb_pc
 
 @0E964 emulator_reset
     The emulator context starts here: clear the 68K registers, initialise
@@ -156,3 +180,12 @@
 @095E0 aline_os_trap_alt
 @09720 aline_toolbox_trap
 @09780 aline_toolbox_trap_autopop
+
+@0E8C4 kcall_run_alternate_context
+@0E8C8 kcall_reset_system
+@0E8CC kcall_vm_dispatch
+@0E8D0 kcall_prioritize_interrupts
+@0E8D4 kcall_power_dispatch
+@0E8DC kcall_cache_dispatch
+@0E8E0 kcall_mp_dispatch
+@0E8FC kcall_system_crash

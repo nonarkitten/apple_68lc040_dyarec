@@ -43,18 +43,27 @@ kernel with which it shares part of the state block.
 | Jumps 1 MB past the dispatch table on an odd `pc` | Deliver the resulting instruction access exception as above |
 | Polls `cr_special_event_pending`, `cr_interrupt_pending`, `interrupt_level` | Set them, in the emulator's saved context, when an interrupt arrives |
 
-The layout of the kernel's part of the state block (`+0x140` onwards) is
-only partly known from the emulator's side.
+The parts of the context block that the emulator and kernel share are
+listed in [07-emulator-state.md](07-emulator-state.md).
 
 **To fill, minimally:** a stub that
-1. on trap 0, sets `EmulatorStatePtr`, `disp_table` and `code_ptr` as
-   `em_entry_save` left them, sets r0 to 0, and jumps to `emulator_reset`;
-2. treats every other trap as fatal;
-3. never raises an interrupt.
+1. calls `EmEntry` with r3 = the state block and r4 = the dispatch
+   table, as the kernel does;
+2. on trap 0 (`ReturnFromException`), jumps to the address in `ecb_pc`
+   with the registers unchanged — the first time, that is
+   `emulator_reset`;
+3. treats every other trap as fatal;
+4. never raises an interrupt.
 
 That is enough to execute user-mode 68K code that does not fault. It can
 be a few dozen instructions of PowerPC, or a hook in a host emulator
 that intercepts the `twi 31, r31, n` instruction.
+
+To add memory faults: on a data access exception, store the fault
+description in the context block, load r4 from `ecb_handler_arg`, set LR
+to the address of `EmKernelTrapTable` and jump to `ecb_handler`. The
+handler returns through trap 0. [13-rom-context.md](13-rom-context.md)
+gives the protocol as the real kernel implements it.
 
 **To fill properly:** an implementation of the kernel's context block and
 exception reflection. The kernel is a separate component of the same
@@ -140,10 +149,11 @@ Each stage is useful on its own.
 
 ## Things that cannot be confirmed from the image alone
 
-- The services behind each kernel trap number.
-- The complete layout of the kernel's context block.
-- The addresses at which the ROM loads the code and the table.
+- The services behind kernel traps 6 to 8, which the kernel in the
+  8600/9600 ROM does not implement.
+- The complete layout of the kernel's context blocks, including the
+  format of the fault description.
 - Who writes the handler table slots and the "expected vector" fields
   after initialisation, and with what.
-- The purpose of the individual private opcodes that only forward to
-  kernel traps.
+- Which ROM `Emulator.x` was taken from. The 8600/9600 ROM contains an
+  earlier build ([13-rom-context.md](13-rom-context.md)).

@@ -5,9 +5,11 @@ PowerPC program that runs Motorola 680x0 code on Power Macintosh
 computers. It consists of an interpreter, a dynamic recompiler ("DR") and a
 512 KB dispatch table.
 
-All statements here are derived from the code in `src/`, which reassembles
-to the original binary. Where a statement is an inference rather than
-something the code shows directly, it is marked *(inferred)*. Where the
+Chapters 1 to 12 are derived from the code in `src/`, which reassembles
+to the original binary; where a statement there is an inference rather
+than something the code shows directly, it is marked *(inferred)*.
+Chapter 13 adds what a ROM containing the emulator and its kernel shows,
+and settles most of those inferences. Where the
 three Apple patents in [`patents/`](patents/) describe the same mechanism,
 the patent is cited; where the code differs from a patent, the code is
 described and the difference is noted.
@@ -28,6 +30,7 @@ described and the difference is noted.
 | [10-building.md](10-building.md) | Building the source and verifying it against the original |
 | [11-testing-gaps.md](11-testing-gaps.md) | What the image depends on, and what running it would take |
 | [12-patents.md](12-patents.md) | Cross-reference between the patents and the code |
+| [13-rom-context.md](13-rom-context.md) | The emulator in a real ROM: addresses, kernel start-up, kernel services |
 | [glossary.md](glossary.md) | Terms and names |
 
 ## Conventions

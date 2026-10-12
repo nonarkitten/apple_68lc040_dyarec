@@ -28569,7 +28569,7 @@ L_0C4D0:
         b       L_0C494
 L_0C4EC:
         mflr    base_disp
-        bl      L_0E8D0
+        bl      kcall_prioritize_interrupts
         mtlr    base_disp
         lbz     base_disp, interrupt_level(EmulatorStatePtr)
         cmpw    cr6, base_disp, immed_data
@@ -29035,7 +29035,7 @@ L_0C9D8:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // DECODE1: disp_table[18:3] = opcode in prefetch_data
         eieio
         bl      init_state
-        bl      L_0E8C8
+        bl      kcall_reset_system
         lwz     data, 0xA18(EmulatorStatePtr)
         mtctr   data
         bctrl
@@ -30266,7 +30266,7 @@ take_address_error:
         rlwinm  sr_and_flags, sr_and_flags, 0, 26, 21   // sr_and_flags = sr_and_flags & 0xFFFFFC3F
         bl      take_exception_pc_set
         addi    a7, a7, -84                             // the frame is 92 bytes in all
-        lwz     addr, 0x140(EmulatorStatePtr)
+        lwz     addr, ecb_flags(EmulatorStatePtr)
         ori     rtn_addr, rtn_addr, 0xE000
         rlwinm  addr, addr, 0, 28, 15                   // addr = addr & 0xFFFF000F
         sth     rtn_addr, 46(a7)
@@ -30327,9 +30327,16 @@ L_0D404:
         blr
 
 // Entered by the kernel when the processor takes an exception while the
-// emulator context is running (the address is registered at EmEntry).
-// Converts the kernel's description of the fault into the information a
-// 68K bus error frame needs.
+// emulator context is running (its address is in ecb_handler).  On entry
+// data (r4) holds ecb_handler_arg, the address of take_bus_error, and LR
+// holds ecb_handler_return, the address of EmKernelTrapTable; the kernel
+// has stored its description of the fault in the context block.
+//
+// Chooses where the emulator should resume - take_bus_error, or
+// take_address_error if the fault was the deliberate jump past the
+// dispatch table for an odd pc - stores that in ecb_pc, copies the fault
+// details to where take_bus_error expects them, and returns.  Returning
+// lands on slot 0 of the trap table, ReturnFromException, with r3 = 0.
 native_exception_handler:
         rlwinm  addr, sr_and_flags, 21, 31, 31          // addr = sr_and_flags[11]
         twi     24, addr, 0
@@ -30338,20 +30345,20 @@ native_exception_handler:
         rlwimi  sr_and_flags, disp_table, 21, 22, 22    // sr_and_flags[9] = disp_table[20]
         mtcrf   0x0F, sr_and_flags                      // cr4..cr7 = sr_and_flags[15:0]
         stw     addr, 180(EmulatorStatePtr)
-        lwz     addr, 0x184(EmulatorStatePtr)
+        lwz     addr, ecb_pc(EmulatorStatePtr)
         bne     cr5, L_0D474
         cmpw    cr7, disp_table, addr
         rlwimi  disp_table, zero, 20, 11, 11            // disp_table[20] = zero[0]
         bne     cr7, L_0D474
         ori     data, code_ptr, take_address_error - cb
 L_0D474:
-        stw     data, 0x184(EmulatorStatePtr)
-        lwz     data, 0x140(EmulatorStatePtr)
+        stw     data, ecb_pc(EmulatorStatePtr)          // ecb_pc = where to resume
+        lwz     data, ecb_flags(EmulatorStatePtr)
         stw     addr, 176(EmulatorStatePtr)
         mtcrf   0x0F, data                              // cr4..cr7 = data[15:0]
         stw     data, 128(EmulatorStatePtr)
         rlwinm  data, data, 0, 28, 15                   // data = data & 0xFFFF000F
-        stw     data, 0x140(EmulatorStatePtr)
+        stw     data, ecb_flags(EmulatorStatePtr)
         li      data, 9
         bns     cr6, L_0D4B8
         lwz     addr, 0x17C(EmulatorStatePtr)
@@ -30459,7 +30466,7 @@ L_0D610:
         lhz     base_disp, 10(a7)
         lwz     immed_data, 28(a7)
         mtcrf   0x0F, base_disp                         // cr4..cr7 = base_disp[15:0]
-        stw     rtn_addr, 0x184(EmulatorStatePtr)
+        stw     rtn_addr, ecb_pc(EmulatorStatePtr)
         lwz     rtn_addr, 16(a7)
         sth     base_disp, 188(EmulatorStatePtr)
         bso     cr5, L_0D640
@@ -30474,7 +30481,7 @@ L_0D640:
         lwz     immed_data, 40(a7)
         stw     base_disp, 0x17C(EmulatorStatePtr)
         lwz     base_disp, 44(a7)
-        stw     rtn_addr, 0x140(EmulatorStatePtr)
+        stw     rtn_addr, ecb_flags(EmulatorStatePtr)
         lhz     rtn_addr, 8(a7)
         stw     immed_data, 0x168(EmulatorStatePtr)
         lwz     addr, 2(a7)
@@ -30509,9 +30516,9 @@ L_0D640:
         lwz     data, 152(EmulatorStatePtr)
         lwz     immed_data, 156(EmulatorStatePtr)
         lwz     base_disp, 160(EmulatorStatePtr)
-        stw     addr, 0x194(EmulatorStatePtr)
-        stw     data, 0x19C(EmulatorStatePtr)
-        lwz     addr, 0x15C(EmulatorStatePtr)
+        stw     addr, ecb_r3(EmulatorStatePtr)
+        stw     data, ecb_r4(EmulatorStatePtr)
+        lwz     addr, ecb_handler_return(EmulatorStatePtr)
         lhz     data, 184(EmulatorStatePtr)
         mtlr    addr
         mfxer   addr
@@ -31074,8 +31081,8 @@ handler_defaults:
         .short  fetch - cb
         .short  fetch - cb
         .short  L_0D838 - cb
-        .short  L_0E8C4 - cb
-        .short  L_0E8CC - cb
+        .short  kcall_run_alternate_context - cb
+        .short  kcall_vm_dispatch - cb
         .short  0
         .short  0
         .short  0
@@ -31088,11 +31095,9 @@ handler_defaults:
         .short  take_exception - cb
         .short  take_exception - cb
         .short  take_exception - cb
-        .short  L_0E8D4 - cb
+        .short  kcall_power_dispatch - cb
         .short  take_exception - cb
-        .short  L_0E8DC - cb
-        .short  take_exception - cb
-        .short  take_exception - cb
+        .short  kcall_cache_dispatch - cb
         .short  take_exception - cb
         .short  take_exception - cb
         .short  take_exception - cb
@@ -31104,7 +31109,9 @@ handler_defaults:
         .short  take_exception - cb
         .short  take_exception - cb
         .short  take_exception - cb
-        .short  L_0E8E0 - cb
+        .short  take_exception - cb
+        .short  take_exception - cb
+        .short  kcall_mp_dispatch - cb
         .short  mixed_mode_dispatch - cb
         .short  0
         .short  0
@@ -31469,7 +31476,7 @@ L_0E154:
         stw     a7, 0x10C(addr)
         stb     zero, 0(addr)
         lis     data, 0x0020
-        bfl     cr_interrupt_pending, L_0E8C4
+        bfl     cr_interrupt_pending, kcall_run_alternate_context
         lwz     a7, 0x10C(addr)
         lwz     addr, 0x710(EmulatorStatePtr)
         lbz     immed_data, 0(addr)
@@ -31570,7 +31577,7 @@ L_0E2EC:
         cmplwi  cr7, immed_data, 0x0020
         lis     addr, 0x8000
         srw     addr, addr, immed_data
-        beq     cr7, L_0E8FC
+        beq     cr7, kcall_system_crash
         or      base_disp, base_disp, addr
         stw     base_disp, 236(EmulatorStatePtr)
         mulli   immed_data, immed_data, 0x220
@@ -32156,11 +32163,11 @@ exit_emulator:
 // Called once by native code with r3 = address of the emulator state
 // block and r4 = address of the dispatch table (OpcodeTblTop).
 // Saves the caller's non-volatile registers in a frame at the top of the
-// state block's page, records where the code and the table are, describes
-// the emulator context to the kernel (flags, the handlers for native
-// exceptions, and emulator_reset as the place to start), and issues
-// kernel trap 0.  Nothing in this image branches to emulator_reset: the
-// kernel is expected to resume the context there.
+// state block's page, records where the code and the table are, fills in
+// the emulator's context block (flags, the handler for native exceptions
+// and its argument, and emulator_reset as the place to resume), and
+// issues kernel trap 0, ReturnFromException.  The kernel resumes the
+// context at ecb_pc, which is how emulator_reset is reached.
 EmEntry:
         addi    r1, r3, 0x1000                          // r1 = top of the 4 KB page that starts at the state block
         bl      em_entry_save
@@ -32168,37 +32175,51 @@ EmEntry:
 L_0E8BC:
         b       L_0E8BC
 
-// Kernel service calls.  Each is an unconditional trap instruction whose
-// immediate operand selects the service; the kernel returns to the
-// instruction after the trap, so callers reach these with a branch-and-
-// link, or with a plain branch when LR already holds the return address.
-// There is no entry 14: slot 14 repeats 13.
+// Kernel service calls.  Each is an unconditional trap instruction.  The
+// kernel recognises a trap taken inside this table by its address - slot
+// n is service n - and resumes at the following instruction, so callers
+// reach these with a branch-and-link, or with a plain branch when LR
+// already holds the return address.  (It also recognises the instruction
+// "twi 31, r31, n" anywhere else, by its operand.)
+//
+// The service names are the kernel's.  Slot 14 carries the operand 13,
+// which is harmless because the slot's address decides; slot 16 is beyond
+// the sixteen services of the kernel in the Power Macintosh 8600/9600
+// ROM, which implements only 0 to 5.
 EmKernelTrapTable:
-        twi     31, EmulatorStatePtr, 0                 // unconditional trap
-L_0E8C4:
-        twi     31, EmulatorStatePtr, 1                 // unconditional trap
-L_0E8C8:
-        twi     31, EmulatorStatePtr, 2                 // unconditional trap
-L_0E8CC:
-        twi     31, EmulatorStatePtr, 3                 // unconditional trap
-L_0E8D0:
-        twi     31, EmulatorStatePtr, 4                 // unconditional trap
-L_0E8D4:
-        twi     31, EmulatorStatePtr, 5                 // unconditional trap
-        twi     31, EmulatorStatePtr, 6                 // unconditional trap
-L_0E8DC:
-        twi     31, EmulatorStatePtr, 7                 // unconditional trap
-L_0E8E0:
-        twi     31, EmulatorStatePtr, 8                 // unconditional trap
-        twi     31, EmulatorStatePtr, 9                 // unconditional trap
-        twi     31, EmulatorStatePtr, 10                // unconditional trap
-        twi     31, EmulatorStatePtr, 11                // unconditional trap
-        twi     31, EmulatorStatePtr, 12                // unconditional trap
-        twi     31, EmulatorStatePtr, 13                // unconditional trap
-        twi     31, EmulatorStatePtr, 13                // unconditional trap
-L_0E8FC:
-        twi     31, EmulatorStatePtr, 15                // unconditional trap
-        twi     31, EmulatorStatePtr, 16                // unconditional trap
+        twi     31, EmulatorStatePtr, 0                 // 0: ReturnFromException - resume this context at ecb_pc
+
+kcall_run_alternate_context:
+        twi     31, EmulatorStatePtr, 1                 // 1: RunAlternateContext - run native code
+
+kcall_reset_system:
+        twi     31, EmulatorStatePtr, 2                 // 2: ResetSystem
+
+kcall_vm_dispatch:
+        twi     31, EmulatorStatePtr, 3                 // 3: VMDispatch
+
+kcall_prioritize_interrupts:
+        twi     31, EmulatorStatePtr, 4                 // 4: PrioritizeInterrupts
+
+kcall_power_dispatch:
+        twi     31, EmulatorStatePtr, 5                 // 5: PowerDispatch
+        twi     31, EmulatorStatePtr, 6                 // 6: RTASDispatch (later kernels)
+
+kcall_cache_dispatch:
+        twi     31, EmulatorStatePtr, 7                 // 7: CacheDispatch (later kernels)
+
+kcall_mp_dispatch:
+        twi     31, EmulatorStatePtr, 8                 // 8: MPDispatch (later kernels)
+        twi     31, EmulatorStatePtr, 9                 // 9
+        twi     31, EmulatorStatePtr, 10                // 10
+        twi     31, EmulatorStatePtr, 11                // 11
+        twi     31, EmulatorStatePtr, 12                // 12
+        twi     31, EmulatorStatePtr, 13                // 13
+        twi     31, EmulatorStatePtr, 13                // 14 (operand 13)
+
+kcall_system_crash:
+        twi     31, EmulatorStatePtr, 15                // 15: SystemCrash
+        twi     31, EmulatorStatePtr, 16                // 16
 
 em_entry_save:
         mfcr    r11                                     // save CR ...
@@ -32211,20 +32232,20 @@ em_entry_save:
         mflr    code_ptr                                // code_ptr = this code's own address, rounded down to 64 KB
         clrrwi  code_ptr, code_ptr, 16                  // code_ptr = code_ptr & 0xFFFF0000
         stw     code_ptr, saved_code_ptr(EmulatorStatePtr)
-        stw     addr, 0x194(EmulatorStatePtr)
-        stw     data, 0x19C(EmulatorStatePtr)
-        ori     r0, code_ptr, emulator_reset - cb       // where the kernel is to start the emulator context
-        stw     r0, 0x184(EmulatorStatePtr)
+        stw     addr, ecb_r3(EmulatorStatePtr)
+        stw     data, ecb_r4(EmulatorStatePtr)
+        ori     r0, code_ptr, emulator_reset - cb       // where ReturnFromException will resume
+        stw     r0, ecb_pc(EmulatorStatePtr)
         li      r0, 7
-        stw     r0, 0x140(EmulatorStatePtr)
+        stw     r0, ecb_flags(EmulatorStatePtr)
         li      r0, -1
-        stw     r0, 0x144(EmulatorStatePtr)
+        stw     r0, ecb_enables(EmulatorStatePtr)
         ori     r0, code_ptr, native_exception_handler - cb  // handler for native exceptions taken while emulating
-        stw     r0, 0x14C(EmulatorStatePtr)
-        ori     r0, code_ptr, take_bus_error - cb
-        stw     r0, 0x154(EmulatorStatePtr)
+        stw     r0, ecb_handler(EmulatorStatePtr)
+        ori     r0, code_ptr, take_bus_error - cb       // its argument: where to resume for a bus error
+        stw     r0, ecb_handler_arg(EmulatorStatePtr)
         li      addr, 0
-        b       EmKernelTrapTable                       // kernel trap 0
+        b       EmKernelTrapTable                       // ReturnFromException: resume at ecb_pc
 
 // The emulator context starts here: clear the 68K registers, initialise
 // the state block, then do what a 68K does on reset - load the stack

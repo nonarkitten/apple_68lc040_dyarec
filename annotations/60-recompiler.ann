@@ -232,7 +232,8 @@
     request table, the translation cache, the page bitmap at the top, and
     2 KB for instruction records.  Then install the recompiler's entry
     points in the state block in place of the stubs.
-181E8 address of the kernel's information record
+181E8 0x5FFFEFF0 holds the address of the kernel's SystemInfo record ...
+181F4 ... whose third word is the logical memory size
 18250 dr_dispatch
 18258 dr_request_flush
 18260 dr_invalidate_range

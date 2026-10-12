@@ -31,7 +31,7 @@
 #define saved_caar              0x064
 
 #define trace_pc                0x06C   // start of the instruction being traced
-#define interrupt_level         0x071   // byte: level of the interrupt being requested
+#define interrupt_level         0x071   // byte: level of the interrupt being requested (low byte of the kernel's "IPL value" word at 0x070)
 
 // Values needed to get back to native code
 #define saved_disp_table        0x074   // address of the dispatch table (OpcodeTblTop)
@@ -39,6 +39,17 @@
 #define native_sp               0x07C   // stack pointer of the native caller of the emulator
 
 #define interrupt_counts        0x0C0   // one counter per interrupt level, 4 bytes each
+
+// The emulator's context block (ECB), which the kernel shares.  It starts at
+// +0x100; the names follow the kernel's (see docs/13-rom-context.md).
+#define ecb_flags               0x140   // context flags
+#define ecb_enables             0x144   // which exceptions the context's handler wants
+#define ecb_handler             0x14C   // where the kernel sends the context's exceptions
+#define ecb_handler_arg         0x154   // passed to the handler in r4
+#define ecb_handler_return      0x15C   // the handler's return address (EmKernelTrapTable)
+#define ecb_pc                  0x184   // where the context resumes
+#define ecb_r3                  0x194   // r3 at start-up: address of this state block
+#define ecb_r4                  0x19C   // r4 at start-up: address of the dispatch table
 
 // Replaceable handler addresses (initialised from handler_defaults)
 #define illegal_handler         0x800   // unimplemented opcodes

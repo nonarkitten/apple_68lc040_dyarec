@@ -57,9 +57,10 @@ The dynamic recompiler assumes its code block is exactly 64 KB above the
 interpreter's (`init_state` stores `code_ptr + 0x10000` as `dr_code_base`).
 
 US patent 5,574,873 gives `$68000000` for the dispatch table and
-`$68080000` for the code in the 1994 design. The address used on any
-particular machine is chosen by the ROM that loads this image, not by the
-image.
+`$68080000` for the code in the 1994 design. In the Power Macintosh
+8600/9600 ROM the code is mapped at `0x68060000` and the dispatch table
+at `0x68080000`; see [13-rom-context.md](13-rom-context.md). The address
+is chosen by the ROM that carries the emulator, not by the emulator.
 
 ## How the parts work together
 

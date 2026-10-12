@@ -56,7 +56,7 @@ combination of the S and M bits.
 | Offset | Name | Contents |
 |---|---|---|
 | `0x06C` | `trace_pc` | Address of the instruction being traced; also used to remember the 68K pc across a switch to native code |
-| `0x071` | `interrupt_level` | Byte: level of the interrupt being requested |
+| `0x071` | `interrupt_level` | Byte: level of the interrupt being requested. It is the low byte of the word at `0x070` in which the kernel publishes the interrupt level |
 | `0x074` | `saved_disp_table` | Address of the dispatch table, as passed to `EmEntry` |
 | `0x078` | `saved_code_ptr` | Address of `cb` |
 | `0x07C` | `native_sp` | Stack pointer to restore when leaving through `exit_emulator` |
@@ -64,23 +64,29 @@ combination of the S and M bits.
 | `0x0C0` | `interrupt_counts` | Eight 32-bit counters: interrupts taken at each level |
 | `0x0E0`–`0x0EF` | | Base addresses and an allocation bit mask for a pool of 0x220-byte areas used when native contexts nest *(inferred)* |
 
-## Kernel context area (`+0x140`)
+## The emulator's context block (`+0x100`)
 
-The fields between `0x140` and about `0x1FF` are shared with the kernel.
-`EmEntry` initialises some and `native_exception_handler` reads others,
-but their layout is defined by the kernel, which is not part of this
-image. What the emulator does with them:
+The kernel keeps a *context block* for every context it runs. The
+emulator's own (the "ECB") is inside the state block, at `+0x100`; the
+offset is given to the kernel by the ROM's configuration record. Both
+the kernel and the emulator read and write it. The fields the emulator
+uses, with the kernel's meaning for each (see
+[13-rom-context.md](13-rom-context.md)):
 
-| Offset | Use by the emulator |
-|---|---|
-| `0x140` | Flags. Set to 7 at entry; saved and partly cleared when a native exception is being handled |
-| `0x144` | Set to `0xFFFFFFFF` at entry |
-| `0x14C` | Set to the address of `native_exception_handler` |
-| `0x154` | Set to the address of `take_bus_error` |
-| `0x164`–`0x17C` | Read by `native_exception_handler` when describing a fault |
-| `0x184` | Set to the address of `emulator_reset` at entry; read and rewritten as the address at which the emulator context will resume |
-| `0x194`, `0x19C` | Set at entry to the values of r3 and r4 |
-| `0x1C8`–`0x1D8` | Interrupt bookkeeping, including the private request level at `0x1D0` |
+| Offset | Name | Contents |
+|---|---|---|
+| `0x140` | `ecb_flags` | Context flags. Set to 7 by `EmEntry`; saved by the kernel when it enters the handler; partly cleared by `native_exception_handler` |
+| `0x144` | `ecb_enables` | Which exceptions are passed to the context's handler. Set to `0xFFFFFFFF` |
+| `0x14C` | `ecb_handler` | Address the kernel transfers to on an exception in this context: `native_exception_handler` |
+| `0x154` | `ecb_handler_arg` | Passed to the handler in r4: the address of `take_bus_error` |
+| `0x15C` | `ecb_handler_return` | The handler's return address, set by the kernel: `EmKernelTrapTable` |
+| `0x164`–`0x17C` | | The kernel's description of a memory fault (address, kind and size of access), read by `native_exception_handler` |
+| `0x184` | `ecb_pc` | Where the context resumes. `EmEntry` initially, then `emulator_reset`; rewritten by `native_exception_handler` |
+| `0x194` | `ecb_r3` | r3 at start-up: the address of the state block |
+| `0x19C` | `ecb_r4` | r4 at start-up: the address of the dispatch table |
+
+Further up, `0x1C8`–`0x1D8` hold interrupt bookkeeping, including the
+private request level at `0x1D0`.
 
 ## Miscellaneous (`+0x700`)
 
@@ -95,7 +101,7 @@ image. What the emulator does with them:
 | `0x738` | Instruction counter (test mode) |
 | `0x73C` | Address of the per-opcode counter table (test mode) |
 | `0x7A0` | Configuration flags; initialised to `0x80000039` |
-| `0x7B0`, `0x7B4` | `0xE00` and `0x400`: addresses of the Mac OS Toolbox and OS trap dispatch tables in 68K low memory |
+| `0x7B0`, `0x7B4` | `0xE00` and `0x400`: addresses of the Mac OS Toolbox and OS trap dispatch tables in 68K low memory (`ToolTable` and `OSTable`) |
 | `0x7C0`, `0x7C4` | Base address and size of the memory given to the dynamic recompiler |
 | `0x7C8`, `0x7CC` | Test-mode hook routine and its argument |
 
