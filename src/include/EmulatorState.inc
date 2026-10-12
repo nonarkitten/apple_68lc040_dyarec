@@ -69,7 +69,15 @@
 #define illegal_handler         0x800   // unimplemented opcodes
 #define aline_handler           0x804   // line 1010 opcodes
 #define fline_handler           0x808   // line 1111 opcodes
+#define privilege_handler       0x80C   // privilege violation
+#define format2_handler         0x810   // exceptions with a format 2 frame (CHK, TRAPcc, zero divide)
 #define special_event_hook      0x814   // called first by process_special_event
+#define write_sr_handler        0x818   // every write to the system byte of the SR
+#define reset_handler           0x828   // the RESET instruction
+#define rte_handler             0x82C   // RTE; +0x830.. are sixteen handlers, one per frame format
+#define movec_from_handler      0x878   // MOVEC Rc,Rn
+#define movec_to_handler        0x87C   // MOVEC Rn,Rc
+#define mixed_mode_handler      0x9E0   // private opcode FE01
 
 // Dynamic recompiler entry points (stubs until the recompiler is set up)
 #define dr_dispatch_vector      0xA00   // copied into dr_entry

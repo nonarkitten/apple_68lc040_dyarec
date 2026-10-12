@@ -16114,92 +16114,111 @@ roxr_roxl_l_q_d7:
         bfctr_likely cr_special_event_pending           // DISPATCH unless a special event is pending
         b       process_special_event
         ALIGN(64)
-roxr_roxl_l_q_d7_L1:
+
+// ===========================================================================
+// Register access tables
+// ===========================================================================
+// For instructions that name a register in an extension word (MOVEC,
+// MOVES, CHK2, CAS, bit fields, long multiply and divide) the register
+// number is only known at run time.  Rather than test it, the emulator
+// indexes a table of code: sixteen entries of sixteen bytes, D0-D7 then
+// A0-A7.  Each entry is two two-instruction stubs:
+//
+// +0   copy the register to base_disp, then call back through LR
+// +8   copy base_disp to the register, then fetch
+//
+// A routine forms the address of the stub it wants with
+// "ori reg, code_ptr, reg_access_base_disp - cb" followed by an rlwimi
+// that inserts the register number, and jumps to it.
+reg_access_base_disp:
         mr      base_disp, d0
         blrl
-roxr_roxl_l_q_d7_L2:
+reg_access_base_disp_L1:
         mr      d0, base_disp
         b       fetch
-roxr_roxl_l_q_d7_L3:
+reg_access_base_disp_L2:
         mr      base_disp, d1
         blrl
         mr      d1, base_disp
         b       fetch
-roxr_roxl_l_q_d7_L4:
+reg_access_base_disp_L3:
         mr      base_disp, d2
         blrl
         mr      d2, base_disp
         b       fetch
-roxr_roxl_l_q_d7_L5:
+reg_access_base_disp_L4:
         mr      base_disp, d3
         blrl
         mr      d3, base_disp
         b       fetch
-roxr_roxl_l_q_d7_L6:
+reg_access_base_disp_L5:
         mr      base_disp, d4
         blrl
         mr      d4, base_disp
         b       fetch
-roxr_roxl_l_q_d7_L7:
+reg_access_base_disp_L6:
         mr      base_disp, d5
         blrl
         mr      d5, base_disp
         b       fetch
-roxr_roxl_l_q_d7_L8:
+reg_access_base_disp_L7:
         mr      base_disp, d6
         blrl
         mr      d6, base_disp
         b       fetch
-roxr_roxl_l_q_d7_L9:
+reg_access_base_disp_L8:
         mr      base_disp, d7
         blrl
         mr      d7, base_disp
         b       fetch
-roxr_roxl_l_q_d7_L10:
+reg_access_base_disp_L9:
         mr      base_disp, a0
         blrl
-roxr_roxl_l_q_d7_L11:
+reg_access_base_disp_L10:
         mr      a0, base_disp
         b       fetch
-roxr_roxl_l_q_d7_L12:
+reg_access_base_disp_L11:
         mr      base_disp, a1
         blrl
         mr      a1, base_disp
         b       fetch
-roxr_roxl_l_q_d7_L13:
+reg_access_base_disp_L12:
         mr      base_disp, a2
         blrl
         mr      a2, base_disp
         b       fetch
-roxr_roxl_l_q_d7_L14:
+reg_access_base_disp_L13:
         mr      base_disp, a3
         blrl
         mr      a3, base_disp
         b       fetch
-roxr_roxl_l_q_d7_L15:
+reg_access_base_disp_L14:
         mr      base_disp, a4
         blrl
         mr      a4, base_disp
         b       fetch
-roxr_roxl_l_q_d7_L16:
+reg_access_base_disp_L15:
         mr      base_disp, a5
         blrl
         mr      a5, base_disp
         b       fetch
-roxr_roxl_l_q_d7_L17:
+reg_access_base_disp_L16:
         mr      base_disp, a6
         blrl
         mr      a6, base_disp
         b       fetch
-roxr_roxl_l_q_d7_L18:
+reg_access_base_disp_L17:
         mr      base_disp, a7
         blrl
         mr      a7, base_disp
         b       fetch
-roxr_roxl_l_q_d7_L19:
+
+// The same for rtn_addr: +0 copies the register to rtn_addr and jumps to
+// CTR; +8 copies rtn_addr to the register and returns.
+reg_access_rtn_addr:
         mr      rtn_addr, d0
         bctr
-roxr_roxl_l_q_d7_L20:
+reg_access_rtn_addr_L1:
         mr      d0, rtn_addr
         blr
         mr      rtn_addr, d1
@@ -16230,7 +16249,7 @@ roxr_roxl_l_q_d7_L20:
         bctr
         mr      d7, rtn_addr
         blr
-roxr_roxl_l_q_d7_L21:
+reg_access_rtn_addr_L2:
         neg     immed_data, d0
         blr
         neg     immed_data, d7
@@ -19263,7 +19282,7 @@ mulu_muls_l_mem_3:
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
 mulu_muls_l_mem_3_L1:
         mtcrf   0x0F, immed_data                        // cr4..cr7 = immed_data[15:0]
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L1 - cb
+        ori     addr, code_ptr, reg_access_base_disp - cb
         rlwimi  addr, immed_data, 24, 25, 27            // addr[6:4] = immed_data[14:12]
         mtlr    addr
         bgt     cr5, mulu_muls_l_mem_3_L4
@@ -19283,7 +19302,7 @@ mulu_muls_l_mem_3_L3:
         mullw.  base_disp, base_disp, data
         blr
 mulu_muls_l_mem_3_L4:
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L20 - cb
+        ori     addr, code_ptr, reg_access_rtn_addr_L1 - cb
         rlwimi  addr, immed_data, 4, 25, 27             // addr[6:4] = immed_data[2:0]
         mtctr   addr
         bge     cr5, mulu_muls_l_mem_3_L5
@@ -19341,11 +19360,11 @@ divu_divs_l_mem_3_L1:
         mtxer   zero
         or.     data, data, data
         mtcrf   0x0F, immed_data                        // cr4..cr7 = immed_data[15:0]
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L1 - cb
+        ori     addr, code_ptr, reg_access_base_disp - cb
         rlwimi  addr, immed_data, 24, 25, 27            // addr[6:4] = immed_data[14:12]
         mtctr   addr
         beq     divu_divs_l_mem_3_L15
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L20 - cb
+        ori     addr, code_ptr, reg_access_rtn_addr_L1 - cb
         rlwimi  addr, immed_data, 4, 25, 27             // addr[6:4] = immed_data[2:0]
         bgt     cr5, divu_divs_l_mem_3_L6
         bge     cr5, divu_divs_l_mem_3_L4
@@ -19462,7 +19481,7 @@ divu_divs_l_mem_3_L14:
         bctr
 divu_divs_l_mem_3_L15:
         li      immed_data, 0x2014
-        b       chk2_cmp2_l_mem_rn_3_L9
+        b       take_format2_exception
         b       andi_b_imm_mem
         ALIGN(64)
 
@@ -20503,7 +20522,7 @@ bfextu:
         mtcrf   0x0F, prefetch_data                     // cr4..cr7 = prefetch_data[15:0]
         rlwinm  base_disp, prefetch_data, 26, 27, 31    // base_disp = prefetch_data[10:6]
         neg     immed_data, prefetch_data
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L2 - cb
+        ori     addr, code_ptr, reg_access_base_disp_L1 - cb
         bltl    cr5, bfins_mem_3_L1
         rlwimi  addr, prefetch_data, 24, 25, 27         // addr[6:4] = prefetch_data[14:12]
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
@@ -20523,7 +20542,7 @@ bfffo:
         mtcrf   0x0F, prefetch_data                     // cr4..cr7 = prefetch_data[15:0]
         rlwinm  base_disp, prefetch_data, 26, 27, 31    // base_disp = prefetch_data[10:6]
         neg     immed_data, prefetch_data
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L2 - cb
+        ori     addr, code_ptr, reg_access_base_disp_L1 - cb
         bltl    cr5, bfins_mem_3_L1
         rlwimi  addr, prefetch_data, 24, 25, 27         // addr[6:4] = prefetch_data[14:12]
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
@@ -20545,7 +20564,7 @@ bfexts:
         mtcrf   0x0F, prefetch_data                     // cr4..cr7 = prefetch_data[15:0]
         rlwinm  base_disp, prefetch_data, 26, 27, 31    // base_disp = prefetch_data[10:6]
         neg     immed_data, prefetch_data
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L2 - cb
+        ori     addr, code_ptr, reg_access_base_disp_L1 - cb
         bltl    cr5, bfins_mem_3_L1
         rlwimi  addr, prefetch_data, 24, 25, 27         // addr[6:4] = prefetch_data[14:12]
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
@@ -20594,7 +20613,7 @@ bfextu_bfexts_bfffo_mem_2:
 bfextu_bfexts_bfffo_mem_3:
         mtcrf   0x0F, immed_data                        // cr4..cr7 = immed_data[15:0]
         rlwinm  base_disp, immed_data, 26, 27, 31       // base_disp = immed_data[10:6]
-        ori     data, code_ptr, roxr_roxl_l_q_d7_L2 - cb
+        ori     data, code_ptr, reg_access_base_disp_L1 - cb
         rlwimi  data, immed_data, 24, 25, 27            // data[6:4] = immed_data[14:12]
         bltl    cr5, bfins_mem_3_L1
         srawi   rtn_addr, base_disp, 3                  // rtn_addr = base_disp >> 3 (arithmetic)
@@ -20754,7 +20773,7 @@ bfchg_bfclr_bfset_mem_3_L5:
 //     BFINS Dn,Dn{ofs:wid}
 bfins:
         mtcrf   0x0F, prefetch_data                     // cr4..cr7 = prefetch_data[15:0]
-        ori     data, code_ptr, roxr_roxl_l_q_d7_L1 - cb
+        ori     data, code_ptr, reg_access_base_disp - cb
         rlwimi  data, prefetch_data, 24, 25, 27         // data[6:4] = prefetch_data[14:12]
         neg     immed_data, prefetch_data
         beql    cr6, bfins_mem_3_L2
@@ -20789,7 +20808,7 @@ bfins_mem:
 //     BFINS Dn,(xxx).L{ofs:wid}
 bfins_mem_2:
         mtcrf   0x0F, immed_data                        // cr4..cr7 = immed_data[15:0]
-        ori     data, code_ptr, roxr_roxl_l_q_d7_L1 - cb
+        ori     data, code_ptr, reg_access_base_disp - cb
         rlwinm  base_disp, immed_data, 26, 27, 31       // base_disp = immed_data[10:6]
         rlwimi  data, immed_data, 24, 25, 27            // data[6:4] = immed_data[14:12]
         bltl    cr5, bfins_mem_3_L1
@@ -20851,12 +20870,12 @@ bfins_mem_3:
         add     addr, addr, base_disp
         b       bfins_mem_2
 bfins_mem_3_L1:
-        ori     rtn_addr, code_ptr, roxr_roxl_l_q_d7_L1 - cb
+        ori     rtn_addr, code_ptr, reg_access_base_disp - cb
         rlwimi  rtn_addr, base_disp, 4, 25, 27          // rtn_addr[6:4] = base_disp[2:0]
         mtctr   rtn_addr
         bctr
 bfins_mem_3_L2:
-        ori     rtn_addr, code_ptr, roxr_roxl_l_q_d7_L21 - cb
+        ori     rtn_addr, code_ptr, reg_access_rtn_addr_L2 - cb
         rlwimi  rtn_addr, immed_data, 3, 26, 28         // rtn_addr[5:3] = immed_data[2:0]
         mtctr   rtn_addr
         bctr
@@ -28488,7 +28507,7 @@ move_w_sr_dn:
         rlwinm  data, sr_and_flags, 8, 16, 23           // data = sr_and_flags[7:0] << 8
         mtlr    rtn_addr
         rlwimi  data, ccr_x, 7, 27, 27                  // data[4] = ccr_x[29]
-        bf      cr_supervisor, stop_wait_L5
+        bf      cr_supervisor, move_from_sr_user
         blr
 
 // Reached from 8 dispatch table entries:
@@ -28545,7 +28564,7 @@ move_w_sr_mem_5_L1:
 // into CR0, V and C into XER, X into ccr_x.  Continues through a
 // replaceable handler.
 set_ccr:
-        lwz     base_disp, 0x818(EmulatorStatePtr)
+        lwz     base_disp, write_sr_handler(EmulatorStatePtr)
         rlwinm  immed_data, data, 27, 2, 2              // immed_data = data[2] << 29
         mtctr   base_disp
         rlwinm  ccr_x, data, 25, 2, 2                   // ccr_x = data[4] << 29
@@ -28554,33 +28573,54 @@ set_ccr:
         mtcrf   0x80, immed_data                        // cr0 = immed_data[31:28]
         mtxer   base_disp
         bctr
-set_ccr_L1:
+
+// ===========================================================================
+// Writing the status register
+// ===========================================================================
+// Load the upper byte of the SR from data (bits 15:8).  Everything that
+// changes the SR comes through here, by way of handler slot +0x818:
+// MOVE to SR, ANDI/ORI/EORI to SR, STOP, RTE.
+//
+// - The interrupt mask is copied into sr_and_flags.  If the kernel is
+// signalling an interrupt above the new mask, or the private request
+// level is non-zero, the special event flag is set so that it is
+// taken at the next instruction boundary.  When the kernel's level
+// byte says priorities need re-evaluating, PrioritizeInterrupts is
+// called first.
+// - cr_dr_active is recomputed: translated code is not used while a
+// trace bit or a test-mode flag is set.
+// - If T1, T0, S and M are all unchanged, that is all.
+// - Otherwise a7 is stored in the slot of the outgoing stack pointer and
+// loaded from the slot of the incoming one (stack_pointer_slots, indexed
+// by S and M), cr_supervisor is updated, and a set trace bit raises the
+// special event flag.
+write_sr:
         eieio
         mr      immed_data, data
         rlwimi  immed_data, sr_and_flags, 8, 16, 19     // immed_data[15:12] = sr_and_flags[7:4]
-        cmplw   cr7, data, immed_data
-        rlwimi  sr_and_flags, data, 24, 29, 31          // sr_and_flags[2:0] = data[10:8]
+        cmplw   cr7, data, immed_data                   // would T1, T0, S and M be unchanged?
+        rlwimi  sr_and_flags, data, 24, 29, 31          // new interrupt mask
         li      base_disp, 0x4C0
         and     base_disp, base_disp, sr_and_flags
         cmpwi   cr6, base_disp, 0
-        crand   cr_dr_active, cr_dr_enabled, 4*cr6+eq   // cr_dr_active = cr_dr_enabled & cr6.eq
+        crand   cr_dr_active, cr_dr_enabled, 4*cr6+eq   // use translated code only if no trace or test-mode bit
         lbz     base_disp, interrupt_level(EmulatorStatePtr)
         lwz     immed_data, 0x1D0(EmulatorStatePtr)
         cmpwi   cr6, immed_data, 0
         rlwinm  immed_data, data, 24, 29, 31            // immed_data = data[10:8]
-        bt_likely 4*cr6+eq, set_ccr_L2
+        bt_likely 4*cr6+eq, write_sr_L1
         crset   cr_special_event_pending
-set_ccr_L2:
-        bf      cr_interrupt_asserted, set_ccr_L3
+write_sr_L1:
+        bf      cr_interrupt_asserted, write_sr_L2
         cmpw    cr6, base_disp, immed_data
-        bgt     cr6, set_ccr_L6
-set_ccr_L3:
+        bgt     cr6, write_sr_L5
+write_sr_L2:
         cmpwi   cr6, immed_data, 0
         lwz     immed_data, 0x1CC(EmulatorStatePtr)
         rlwinm  immed_data, immed_data, 0, 23, 23       // immed_data = immed_data[8] << 8
-        bne     cr6, set_ccr_L4
+        bne     cr6, write_sr_L3
         cmpwi   cr6, immed_data, 0
-        beq     cr6, set_ccr_L4
+        beq     cr6, write_sr_L3
         mr      base_disp, addr
         li      addr, 1
         li      zero, 13
@@ -28589,33 +28629,33 @@ set_ccr_L3:
         li      zero, 0
         mcrf    cr0, cr6                                // cr0 = cr6
         mr      addr, base_disp
-set_ccr_L4:
+write_sr_L3:
         beqlr   cr7
-set_ccr_L5:
-        ori     base_disp, code_ptr, stack_pointer_slots - cb
+write_sr_L4:
+        ori     base_disp, code_ptr, stack_pointer_slots - cb  // slot of the stack pointer in use until now
         rlwimi  base_disp, sr_and_flags, 28, 30, 31     // base_disp[1:0] = sr_and_flags[5:4]
-        rlwimi  sr_and_flags, data, 24, 24, 27          // sr_and_flags[7:4] = data[15:12]
+        rlwimi  sr_and_flags, data, 24, 24, 27          // new T1, T0, S, M
         lbz     immed_data, 0(base_disp)
         mtcrf   0x02, sr_and_flags                      // cr6 = sr_and_flags[7:4]
-        rlwimi  base_disp, data, 20, 30, 31             // base_disp[1:0] = data[13:12]
+        rlwimi  base_disp, data, 20, 30, 31             // slot of the stack pointer to use from now on
         crxor   4*cr6+eq, cr_supervisor, 4*cr6+eq       // cr6.eq = cr_supervisor ^ cr6.eq
         lbz     base_disp, 0(base_disp)
-        cror    cr_special_event_pending, cr_special_event_pending, 4*cr6+lt  // cr_special_event_pending = cr_special_event_pending | cr6.lt
-        stwx    a7, EmulatorStatePtr, immed_data
-        cror    cr_special_event_pending, cr_special_event_pending, 4*cr6+gt  // cr_special_event_pending = cr_special_event_pending | cr6.gt
-        lwzx    a7, EmulatorStatePtr, base_disp
+        cror    cr_special_event_pending, cr_special_event_pending, 4*cr6+lt  // T1 set: trace
+        stwx    a7, EmulatorStatePtr, immed_data        // save the old stack pointer
+        cror    cr_special_event_pending, cr_special_event_pending, 4*cr6+gt  // T0 set: trace
+        lwzx    a7, EmulatorStatePtr, base_disp         // load the new one
         bnelr   cr6
-        crnot   cr_supervisor, cr_supervisor
+        crnot   cr_supervisor, cr_supervisor            // S changed
         blr
-set_ccr_L6:
+write_sr_L5:
         lbz     base_disp, 112(EmulatorStatePtr)
         cmpwi   cr6, base_disp, 128
-        bge     cr6, set_ccr_L7
+        bge     cr6, write_sr_L6
         crset   cr_interrupt_pending
         crset   cr_special_event_pending
         beqlr   cr7
-        b       set_ccr_L5
-set_ccr_L7:
+        b       write_sr_L4
+write_sr_L6:
         mflr    base_disp
         bl      kcall_prioritize_interrupts
         mtlr    base_disp
@@ -28624,7 +28664,7 @@ set_ccr_L7:
         cror    cr_interrupt_pending, cr_interrupt_pending, 4*cr6+gt  // cr_interrupt_pending = cr_interrupt_pending | cr6.gt
         cror    cr_special_event_pending, cr_special_event_pending, 4*cr6+gt  // cr_special_event_pending = cr_special_event_pending | cr6.gt
         beqlr   cr7
-        b       set_ccr_L5
+        b       write_sr_L4
 
 // Offsets in the state block of the saved stack pointer for each value of
 // the SR S and M bits: USP, USP, ISP, MSP.
@@ -28636,22 +28676,26 @@ stack_pointer_slots:
 move_w_mem_sr:
         bfl     cr_supervisor, privilege_check_failed
         addi    a7, a7, 2
-move_w_mem_sr_L1:
+
+move_to_sr_from_addr:
         lhz     data, 0(addr)
-move_w_mem_sr_L2:
-        lwz     base_disp, 0x818(EmulatorStatePtr)
+
+// MOVE to SR, common part: data = the new SR.  write_sr takes the system
+// byte; the condition codes are loaded here.
+move_to_sr:
+        lwz     base_disp, write_sr_handler(EmulatorStatePtr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // DECODE1: disp_table[18:3] = opcode in prefetch_data
         mtctr   base_disp
-        rlwinm  ccr_x, data, 25, 2, 2                   // ccr_x = data[4] << 29
-        bfl     cr_supervisor, stop_wait_L2
-        btctrl  cr_supervisor
+        rlwinm  ccr_x, data, 25, 2, 2                   // X
+        bfl     cr_supervisor, move_to_sr_user
+        btctrl  cr_supervisor                           // supervisor: write_sr
         mtlr    disp_table                              // DECODE2: LR = address of the next dispatch entry
         rlwinm  immed_data, data, 27, 2, 2              // immed_data = data[2] << 29
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         rlwimi  immed_data, data, 28, 0, 0              // immed_data[31] = data[3]
         rlwinm  data, data, 29, 1, 2                    // data = data[1:0] << 29
-        mtcrf   0x80, immed_data                        // cr0 = immed_data[31:28]
-        mtxer   data
+        mtcrf   0x80, immed_data                        // N, Z
+        mtxer   data                                    // V, C
         bflr_likely cr_special_event_pending            // DISPATCH unless a special event is pending
         b       process_special_event
 
@@ -28659,14 +28703,14 @@ move_w_mem_sr_L2:
 //     MOVE.W Dn,SR
 move_w_dn_sr:
         bfl     cr_supervisor, privilege_check_failed
-        b       move_w_mem_sr_L2
+        b       move_to_sr
 
 // Reached from 8 dispatch table entries:
 //     MOVE.W (An),SR
 move_w_mem_sr_2:
         bfl     cr_supervisor, privilege_check_failed
         lhz     data, 0(addr)
-        b       move_w_mem_sr_L2
+        b       move_to_sr
 
 // Reached from 11 dispatch table entries:
 //     MOVE.W (d16,An),SR
@@ -28677,7 +28721,7 @@ move_w_ea_sr:
         bfl     cr_supervisor, privilege_check_failed
         lhz     data, 0(addr)
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
-        b       move_w_mem_sr_L2
+        b       move_to_sr
 
 // Reached from 8 dispatch table entries:
 //     MOVE.W -(An),SR
@@ -28692,7 +28736,7 @@ move_w_mem_sr_3:
 move_w_mem_sr_4:
         mtctr   addr
         bfl     cr_supervisor, privilege_check_failed
-        ori     rtn_addr, code_ptr, move_w_mem_sr_L1 - cb
+        ori     rtn_addr, code_ptr, move_to_sr_from_addr - cb
         bctr
 
 // Reached from 1 dispatch table entry:
@@ -28700,7 +28744,7 @@ move_w_mem_sr_4:
 andi_w_imm_sr:
         rlwinm  data, sr_and_flags, 8, 16, 23           // data = sr_and_flags[7:0] << 8
         mtctr   base_disp
-        bfl     cr_supervisor, stop_wait_L3
+        bfl     cr_supervisor, andi_to_sr_user
         and     data, data, prefetch_data
         lhau    rtn_addr, 2(pc)                         // rtn_addr = next word: pc += 2, load the word there
         bctrl
@@ -28728,7 +28772,7 @@ andi_b_imm_ccr:
 eori_w_imm_sr:
         rlwinm  data, sr_and_flags, 8, 16, 23           // data = sr_and_flags[7:0] << 8
         mtctr   base_disp
-        bfl     cr_supervisor, stop_wait_L4
+        bfl     cr_supervisor, ori_eori_to_sr_user
         xor     data, data, prefetch_data
         lhau    rtn_addr, 2(pc)                         // rtn_addr = next word: pc += 2, load the word there
         bctrl
@@ -28756,7 +28800,7 @@ eori_b_imm_ccr:
 ori_w_imm_sr:
         rlwinm  data, sr_and_flags, 8, 16, 23           // data = sr_and_flags[7:0] << 8
         mtctr   base_disp
-        bfl     cr_supervisor, stop_wait_L4
+        bfl     cr_supervisor, ori_eori_to_sr_user
         or      data, data, prefetch_data
         lhau    rtn_addr, 2(pc)                         // rtn_addr = next word: pc += 2, load the word there
         bctrl
@@ -28778,33 +28822,50 @@ ori_b_imm_ccr:
         or      ccr_x, ccr_x, immed_data
         bflr_likely cr_special_event_pending            // DISPATCH unless a special event is pending
         b       process_special_event
-ori_b_imm_ccr_L1:
+
+// Throwaway frame: load the SR from it, discard it, and continue with the
+// frame beneath.
+rte_format_1:
         addi    a7, a7, 8
         bl      set_ccr
-ori_b_imm_ccr_L2:
-        lhz     data, 6(a7)
+
+// ===========================================================================
+// RTE
+// ===========================================================================
+// Reached through require_supervisor and handler slot +0x82C.  The frame
+// format (bits 15:12 of the word at 6(a7)) selects one of sixteen
+// handlers from the table at +0x830; each is entered with data = the
+// stacked SR and addr = the stacked pc.
+rte:
+        lhz     data, 6(a7)                             // format / vector offset word
         mr      rtn_addr, EmulatorStatePtr
-        rlwimi  rtn_addr, data, 22, 26, 29              // rtn_addr[5:2] = data[15:12]
+        rlwimi  rtn_addr, data, 22, 26, 29              // +0x830 + 4 * format
         lwz     rtn_addr, 0x830(rtn_addr)
-        lhz     data, 0(a7)
+        lhz     data, 0(a7)                             // stacked SR
         mtlr    rtn_addr
-        lwz     addr, 2(a7)
+        lwz     addr, 2(a7)                             // stacked pc
         blrl
-ori_b_imm_ccr_L3:
+
+// Six-word frame: four more bytes to discard than format 0.
+rte_format_2:
         addi    a7, a7, 4
-ori_b_imm_ccr_L4:
+
+// Pop the frame, load the SR and condition codes, and resume at the
+// stacked pc.
+rte_format_0:
         addi    a7, a7, 8
         bl      set_ccr
         lha     prefetch_data, 0(addr)
         mr      pc, addr
-        rlwimi  disp_table, pc, 20, 11, 11              // disp_table[20] = pc[0]
+        rlwimi  disp_table, pc, 20, 11, 11              // odd address check
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // DECODE1: disp_table[18:3] = opcode in prefetch_data
         mtlr    disp_table                              // DECODE2: LR = address of the next dispatch entry
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         bflr_likely cr_special_event_pending            // DISPATCH unless a special event is pending
         b       process_special_event
-ori_b_imm_ccr_L5:
-        li      immed_data, 56
+
+rte_bad_format:
+        li      immed_data, 56                          // vector offset 0x38: format error
         b       take_exception
 
 // Reached from 8 dispatch table entries:
@@ -28829,10 +28890,17 @@ move_l_usp_an_L1:
         mtctr   data
         lwz     data, saved_usp(EmulatorStatePtr)
         bctr
-move_l_usp_an_L2:
+
+// MOVEC Rn,Rc (4E7B), through handler slot +0x87C.  The extension word in
+// prefetch_data names the control register (low 12 bits) and the general
+// register (high 4 bits).  movec_tables gives the control register's slot
+// in the state block and the offset of the routine that stores it; the
+// general register is read through reg_access_base_disp.  A control
+// register with no table entry is an illegal instruction.
+movec_to_control:
         rlwinm  data, prefetch_data, 0, 21, 28          // data = prefetch_data[10:3] << 3
         ori     rtn_addr, code_ptr, movec_tables - cb
-        ori     base_disp, code_ptr, roxr_roxl_l_q_d7_L1 - cb
+        ori     base_disp, code_ptr, reg_access_base_disp - cb
         rlwimi  rtn_addr, prefetch_data, 0, 29, 31      // rtn_addr[2:0] = prefetch_data[2:0]
         rlwimi  base_disp, prefetch_data, 24, 24, 27    // base_disp[7:4] = prefetch_data[15:12]
         rlwimi  rtn_addr, prefetch_data, 24, 28, 28     // rtn_addr[3] = prefetch_data[11]
@@ -28846,11 +28914,13 @@ move_l_usp_an_L2:
         lbz     immed_data, 0(rtn_addr)
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // DECODE1: disp_table[18:3] = opcode in prefetch_data
         beqctr  cr7
-        b       move_l_usp_an_L4
-move_l_usp_an_L3:
+        b       movec_from_control_L1
+
+// MOVEC Rc,Rn (4E7A), through handler slot +0x878.
+movec_from_control:
         rlwinm  data, prefetch_data, 0, 21, 28          // data = prefetch_data[10:3] << 3
         ori     rtn_addr, code_ptr, movec_tables - cb
-        ori     base_disp, code_ptr, roxr_roxl_l_q_d7_L2 - cb
+        ori     base_disp, code_ptr, reg_access_base_disp_L1 - cb
         rlwimi  rtn_addr, prefetch_data, 0, 29, 31      // rtn_addr[2:0] = prefetch_data[2:0]
         rlwimi  base_disp, prefetch_data, 24, 24, 27    // base_disp[7:4] = prefetch_data[15:12]
         rlwimi  rtn_addr, prefetch_data, 24, 28, 28     // rtn_addr[3] = prefetch_data[11]
@@ -28864,7 +28934,7 @@ move_l_usp_an_L3:
         lwzx    base_disp, EmulatorStatePtr, immed_data
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         beqctr  cr7
-move_l_usp_an_L4:
+movec_from_control_L1:
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)
         addi    pc, pc, -2
         b       take_illegal_instruction
@@ -29055,7 +29125,7 @@ moves_l_rn_mem_4_L2:
         blr
 moves_l_rn_mem_4_L3:
         mtcrf   0x0C, immed_data                        // cr4..cr5 = immed_data[15:8]
-        ori     rtn_addr, code_ptr, roxr_roxl_l_q_d7_L1 - cb
+        ori     rtn_addr, code_ptr, reg_access_base_disp - cb
         rlwimi  rtn_addr, immed_data, 24, 24, 27        // rtn_addr[7:4] = immed_data[15:12]
         blt     cr5, moves_l_rn_mem_4_L6
         mflr    base_disp
@@ -29116,16 +29186,27 @@ stop_wait:
         crset   cr_interrupt_pending
 stop_wait_L1:
         b       process_special_event
-stop_wait_L2:
+
+// MOVE to SR executed in user state (allowed through by
+// privilege_check_failed): the S and M bits keep their current values.
+move_to_sr_user:
         rlwimi  data, sr_and_flags, 8, 18, 19           // data[13:12] = sr_and_flags[5:4]
         bctr
-stop_wait_L3:
+
+// ANDI to SR in user state: S and M are forced on in the mask, so they
+// cannot be cleared.
+andi_to_sr_user:
         ori     prefetch_data, prefetch_data, 0x3000
         b       privilege_check_failed
-stop_wait_L4:
+
+// ORI or EORI to SR in user state: S and M are removed from the operand.
+ori_eori_to_sr_user:
         rlwinm  prefetch_data, prefetch_data, 0, 20, 17  // prefetch_data = prefetch_data & 0xFFFFCFFF
         b       privilege_check_failed
-stop_wait_L5:
+
+// MOVE from SR in user state.  MOVE SR,D7 (40C7) always takes the
+// privilege violation; the other forms go through privilege_check_failed.
+move_from_sr_user:
         rlwinm  immed_data, disp_table, 29, 16, 31      // immed_data = disp_table[18:3]
         cmplwi  cr7, immed_data, 0x40C7
         beq     cr7, take_privilege_violation
@@ -29141,7 +29222,7 @@ privilege_check_failed:
         beqlr   cr7
 
 take_privilege_violation:
-        lwz     rtn_addr, 0x80C(EmulatorStatePtr)
+        lwz     rtn_addr, privilege_handler(EmulatorStatePtr)
         li      immed_data, 32                          // vector offset 0x20: privilege violation
         mtctr   rtn_addr
         bctrl
@@ -29182,7 +29263,7 @@ chk_w_ea_d0:
 //     CHK.W (d8,PC,Xn),Dn
 chk_w_mem_d0:
         clrlwi. immed_data, d0, 16                      // immed_data = d0 & 0x0000FFFF
-        b       chk_w_mem_d7_L1
+        b       chk_w_test
 
 // Reached from 11 dispatch table entries:
 //     CHK.W (d16,An),Dn
@@ -29203,7 +29284,7 @@ chk_w_ea_d1:
 //     CHK.W (d8,PC,Xn),Dn
 chk_w_mem_d1:
         clrlwi. immed_data, d1, 16                      // immed_data = d1 & 0x0000FFFF
-        b       chk_w_mem_d7_L1
+        b       chk_w_test
 
 // Reached from 11 dispatch table entries:
 //     CHK.W (d16,An),Dn
@@ -29224,7 +29305,7 @@ chk_w_ea_d2:
 //     CHK.W (d8,PC,Xn),Dn
 chk_w_mem_d2:
         clrlwi. immed_data, d2, 16                      // immed_data = d2 & 0x0000FFFF
-        b       chk_w_mem_d7_L1
+        b       chk_w_test
 
 // Reached from 11 dispatch table entries:
 //     CHK.W (d16,An),Dn
@@ -29245,7 +29326,7 @@ chk_w_ea_d3:
 //     CHK.W (d8,PC,Xn),Dn
 chk_w_mem_d3:
         clrlwi. immed_data, d3, 16                      // immed_data = d3 & 0x0000FFFF
-        b       chk_w_mem_d7_L1
+        b       chk_w_test
 
 // Reached from 11 dispatch table entries:
 //     CHK.W (d16,An),Dn
@@ -29266,7 +29347,7 @@ chk_w_ea_d4:
 //     CHK.W (d8,PC,Xn),Dn
 chk_w_mem_d4:
         clrlwi. immed_data, d4, 16                      // immed_data = d4 & 0x0000FFFF
-        b       chk_w_mem_d7_L1
+        b       chk_w_test
 
 // Reached from 11 dispatch table entries:
 //     CHK.W (d16,An),Dn
@@ -29287,7 +29368,7 @@ chk_w_ea_d5:
 //     CHK.W (d8,PC,Xn),Dn
 chk_w_mem_d5:
         clrlwi. immed_data, d5, 16                      // immed_data = d5 & 0x0000FFFF
-        b       chk_w_mem_d7_L1
+        b       chk_w_test
 
 // Reached from 11 dispatch table entries:
 //     CHK.W (d16,An),Dn
@@ -29308,7 +29389,7 @@ chk_w_ea_d6:
 //     CHK.W (d8,PC,Xn),Dn
 chk_w_mem_d6:
         clrlwi. immed_data, d6, 16                      // immed_data = d6 & 0x0000FFFF
-        b       chk_w_mem_d7_L1
+        b       chk_w_test
 
 // Reached from 11 dispatch table entries:
 //     CHK.W (d16,An),Dn
@@ -29329,10 +29410,14 @@ chk_w_ea_d7:
 //     CHK.W (d8,PC,Xn),Dn
 chk_w_mem_d7:
         clrlwi. immed_data, d7, 16                      // immed_data = d7 & 0x0000FFFF
-        b       chk_w_mem_d7_L1
-chk_w_mem_d7_L1:
+        b       chk_w_test
+
+// CHK.W: immed_data = the register's low word, zero-extended, and data =
+// the bound.  An unsigned comparison catches both "greater than the
+// bound" and "negative".
+chk_w_test:
         cmpw    cr7, immed_data, data
-        bgt     cr7, chk_l_ea_d7_L2
+        bgt     cr7, chk_w_failed
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // DECODE1: disp_table[18:3] = opcode in prefetch_data
         mtlr    disp_table                              // DECODE2: LR = address of the next dispatch entry
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
@@ -29358,7 +29443,7 @@ chk_l_mem_d0:
 //     CHK.L #<data>,Dn
 chk_l_ea_d0:
         or.     immed_data, d0, d0
-        b       chk_l_ea_d7_L1
+        b       chk_l_test
 
 // Reached from 10 dispatch table entries:
 //     CHK.L (d16,An),Dn
@@ -29379,7 +29464,7 @@ chk_l_mem_d1:
 //     CHK.L #<data>,Dn
 chk_l_ea_d1:
         or.     immed_data, d1, d1
-        b       chk_l_ea_d7_L1
+        b       chk_l_test
 
 // Reached from 10 dispatch table entries:
 //     CHK.L (d16,An),Dn
@@ -29400,7 +29485,7 @@ chk_l_mem_d2:
 //     CHK.L #<data>,Dn
 chk_l_ea_d2:
         or.     immed_data, d2, d2
-        b       chk_l_ea_d7_L1
+        b       chk_l_test
 
 // Reached from 10 dispatch table entries:
 //     CHK.L (d16,An),Dn
@@ -29421,7 +29506,7 @@ chk_l_mem_d3:
 //     CHK.L #<data>,Dn
 chk_l_ea_d3:
         or.     immed_data, d3, d3
-        b       chk_l_ea_d7_L1
+        b       chk_l_test
 
 // Reached from 10 dispatch table entries:
 //     CHK.L (d16,An),Dn
@@ -29442,7 +29527,7 @@ chk_l_mem_d4:
 //     CHK.L #<data>,Dn
 chk_l_ea_d4:
         or.     immed_data, d4, d4
-        b       chk_l_ea_d7_L1
+        b       chk_l_test
 
 // Reached from 10 dispatch table entries:
 //     CHK.L (d16,An),Dn
@@ -29463,7 +29548,7 @@ chk_l_mem_d5:
 //     CHK.L #<data>,Dn
 chk_l_ea_d5:
         or.     immed_data, d5, d5
-        b       chk_l_ea_d7_L1
+        b       chk_l_test
 
 // Reached from 10 dispatch table entries:
 //     CHK.L (d16,An),Dn
@@ -29484,7 +29569,7 @@ chk_l_mem_d6:
 //     CHK.L #<data>,Dn
 chk_l_ea_d6:
         or.     immed_data, d6, d6
-        b       chk_l_ea_d7_L1
+        b       chk_l_test
 
 // Reached from 10 dispatch table entries:
 //     CHK.L (d16,An),Dn
@@ -29505,20 +29590,23 @@ chk_l_mem_d7:
 //     CHK.L #<data>,Dn
 chk_l_ea_d7:
         or.     immed_data, d7, d7
-        b       chk_l_ea_d7_L1
-chk_l_ea_d7_L1:
+        b       chk_l_test
+
+chk_l_test:
         cmpw    cr7, immed_data, data
         cror    4*cr7+gt, 4*cr7+gt, lt                  // cr7.gt = cr7.gt | cr0.lt
-        bgt     cr7, chk_l_ea_d7_L3
+        bgt     cr7, chk_l_failed
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // DECODE1: disp_table[18:3] = opcode in prefetch_data
         mtlr    disp_table                              // DECODE2: LR = address of the next dispatch entry
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         bflr_likely cr_special_event_pending            // DISPATCH unless a special event is pending
         b       process_special_event
-chk_l_ea_d7_L2:
-        extsh.  immed_data, immed_data                  // immed_data = sign-extended low word of immed_data
-chk_l_ea_d7_L3:
-        b       chk2_cmp2_l_mem_rn_3_L8
+
+chk_w_failed:
+        extsh.  immed_data, immed_data                  // give N the sign of the word for the exception
+
+chk_l_failed:
+        b       take_chk_exception
 
 // Reached from 10 dispatch table entries:
 //     CHK2/CMP2.B (d16,An),Rn
@@ -29602,7 +29690,7 @@ chk2_cmp2_l_mem_rn_3_L1:
         lwz     rtn_addr, 4(addr)
         addic.  addr, zero, 0
 chk2_cmp2_l_mem_rn_3_L2:
-        ori     base_disp, code_ptr, roxr_roxl_l_q_d7_L1 - cb
+        ori     base_disp, code_ptr, reg_access_base_disp - cb
         rlwimi  base_disp, immed_data, 24, 24, 27       // base_disp[7:4] = immed_data[15:12]
         mtlr    base_disp
         mtcrf   0x0F, immed_data                        // cr4..cr7 = immed_data[15:0]
@@ -29621,7 +29709,7 @@ chk2_cmp2_l_mem_rn_3_L4:
         crand   4*cr5+lt, 4*cr5+lt, 4*cr7+lt            // cr5.lt = cr5.lt & cr7.lt
         subfco. base_disp, data, base_disp              // base_disp = base_disp - data
         addc    base_disp, data, base_disp
-        blt     cr5, chk2_cmp2_l_mem_rn_3_L8
+        blt     cr5, take_chk_exception
 chk2_cmp2_l_mem_rn_3_L5:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // DECODE1: disp_table[18:3] = opcode in prefetch_data
         mtlr    disp_table                              // DECODE2: LR = address of the next dispatch entry
@@ -29636,37 +29724,49 @@ chk2_cmp2_l_mem_rn_3_L7:
         subfco. rtn_addr, base_disp, rtn_addr           // rtn_addr = rtn_addr - base_disp
         addc    rtn_addr, base_disp, rtn_addr
         bge     cr5, chk2_cmp2_l_mem_rn_3_L5
-chk2_cmp2_l_mem_rn_3_L8:
-        li      immed_data, 0x2018
-chk2_cmp2_l_mem_rn_3_L9:
+
+take_chk_exception:
+        li      immed_data, 0x2018                      // format 2, vector offset 0x18: CHK
+
+// Raise an exception whose frame carries the address of the instruction
+// (format 2).  pc has moved on by an amount that depends on the
+// addressing mode, so the start of the instruction is found by searching
+// backwards from pc, up to seven words, for the opcode word - which is
+// recovered from disp_table.
+take_format2_exception:
         li      base_disp, 7
-        mr      addr, pc
+        mr      addr, pc                                // start at pc
         mtctr   base_disp
-        rlwinm  data, disp_table, 29, 16, 31            // data = disp_table[18:3]
-chk2_cmp2_l_mem_rn_3_L10:
-        lhzu    base_disp, -2(addr)
+        rlwinm  data, disp_table, 29, 16, 31            // the opcode of this instruction
+take_format2_exception_L1:
+        lhzu    base_disp, -2(addr)                     // step back one word
         cmpw    cr6, data, base_disp
-        bdnzf   4*cr6+eq, chk2_cmp2_l_mem_rn_3_L10
-chk2_cmp2_l_mem_rn_3_L11:
-        lwz     rtn_addr, 0x810(EmulatorStatePtr)
-        crset   4*cr7+so
+        bdnzf   4*cr6+eq, take_format2_exception_L1
+
+raise_format2:
+        lwz     rtn_addr, format2_handler(EmulatorStatePtr)
+        crset   4*cr7+so                                // ask take_exception to return for the extra longword
         mtlr    rtn_addr
         blrl
 
 // Reached from 16 dispatch table entries:
 //     TRAP #<q>
 trap_q:
-        lwz     rtn_addr, 0x810(EmulatorStatePtr)
+        lwz     rtn_addr, format2_handler(EmulatorStatePtr)
         crclr   4*cr7+so
         mtlr    rtn_addr
         blrl
-trap_q_L1:
+
+// Default for handler slot +0x810: push a format 2 frame.  Entered with
+// addr = the instruction address for the frame, and cr7.so saying whether
+// there is one (TRAP #n comes here with it clear, for a format 0 frame).
+format2_exception:
         rlwinm  data, sr_and_flags, 8, 16, 23           // data = sr_and_flags[7:0] << 8
         rlwinm  base_disp, sr_and_flags, 2, 23, 23      // base_disp = sr_and_flags[6] << 8
         rlwinm  sr_and_flags, sr_and_flags, 0, 26, 23   // sr_and_flags = sr_and_flags & 0xFFFFFF3F
         or      sr_and_flags, sr_and_flags, base_disp
         bl      take_exception_pc_set
-        stwu    addr, -4(a7)
+        stwu    addr, -4(a7)                            // the extra longword: address of the instruction
         blr
 
 // Reached from 20 dispatch table entries:
@@ -29756,7 +29856,7 @@ trapv_trapvs_L2:
         rlwnm   addr, addr, disp_table, 24, 31          // addr = rotl(addr, disp_table) & 0x000000FF
         subf    addr, addr, pc                          // addr = pc - addr
         li      immed_data, 0x201C
-        b       chk2_cmp2_l_mem_rn_3_L11
+        b       raise_format2
 
 // Reached from 8 dispatch table entries:
 //     MOVE.W CCR,Dn
@@ -29853,13 +29953,13 @@ cas_b_mem_3:
         lbz     data, 0(addr)
 cas_b_mem_3_L1:
         lwz     base_disp, 0x884(EmulatorStatePtr)
-        ori     rtn_addr, code_ptr, roxr_roxl_l_q_d7_L19 - cb
+        ori     rtn_addr, code_ptr, reg_access_rtn_addr - cb
         mtlr    base_disp
         rlwimi  rtn_addr, immed_data, 30, 25, 27        // rtn_addr[6:4] = immed_data[8:6]
         blrl
 cas_b_mem_3_L2:
         mtlr    rtn_addr
-        ori     base_disp, code_ptr, roxr_roxl_l_q_d7_L1 - cb
+        ori     base_disp, code_ptr, reg_access_base_disp - cb
         rlwimi  base_disp, immed_data, 4, 25, 27        // base_disp[6:4] = immed_data[2:0]
         mtctr   base_disp
         slwi    data, data, 24
@@ -29901,13 +30001,13 @@ cas_w_mem_3:
         lhz     data, 0(addr)
 cas_w_mem_3_L1:
         lwz     base_disp, 0x888(EmulatorStatePtr)
-        ori     rtn_addr, code_ptr, roxr_roxl_l_q_d7_L19 - cb
+        ori     rtn_addr, code_ptr, reg_access_rtn_addr - cb
         mtlr    base_disp
         rlwimi  rtn_addr, immed_data, 30, 25, 27        // rtn_addr[6:4] = immed_data[8:6]
         blrl
 cas_w_mem_3_L2:
         mtlr    rtn_addr
-        ori     base_disp, code_ptr, roxr_roxl_l_q_d7_L1 - cb
+        ori     base_disp, code_ptr, reg_access_base_disp - cb
         rlwimi  base_disp, immed_data, 4, 25, 27        // base_disp[6:4] = immed_data[2:0]
         mtctr   base_disp
         slwi    data, data, 16
@@ -29949,13 +30049,13 @@ cas_l_mem_3:
         lwz     data, 0(addr)
 cas_l_mem_3_L1:
         lwz     base_disp, 0x88C(EmulatorStatePtr)
-        ori     rtn_addr, code_ptr, roxr_roxl_l_q_d7_L19 - cb
+        ori     rtn_addr, code_ptr, reg_access_rtn_addr - cb
         mtlr    base_disp
         rlwimi  rtn_addr, immed_data, 30, 25, 27        // rtn_addr[6:4] = immed_data[8:6]
         blrl
 cas_l_mem_3_L2:
         mtlr    rtn_addr
-        ori     base_disp, code_ptr, roxr_roxl_l_q_d7_L1 - cb
+        ori     base_disp, code_ptr, reg_access_base_disp - cb
         rlwimi  base_disp, immed_data, 4, 25, 27        // base_disp[6:4] = immed_data[2:0]
         mtctr   base_disp
         clrlwi. base_disp, addr, 30                     // base_disp = addr & 0x00000003
@@ -29991,31 +30091,31 @@ cea_x_74:
         mtlr    rtn_addr
         mtcrf   0x0F, disp_table                        // cr4..cr7 = disp_table[15:0]
         lwz     prefetch_data, 0(pc)
-        ori     rtn_addr, code_ptr, roxr_roxl_l_q_d7_L19 - cb
+        ori     rtn_addr, code_ptr, reg_access_rtn_addr - cb
         rlwimi  rtn_addr, prefetch_data, 20, 25, 27     // rtn_addr[6:4] = prefetch_data[18:16]
         blrl
 cea_x_74_L1:
         mtlr    rtn_addr
-        ori     base_disp, code_ptr, roxr_roxl_l_q_d7_L1 - cb
+        ori     base_disp, code_ptr, reg_access_base_disp - cb
         rlwimi  base_disp, prefetch_data, 8, 24, 27     // base_disp[7:4] = prefetch_data[31:28]
         mtctr   base_disp
         blrl
         mr      addr, base_disp
         mr      data, rtn_addr
-        ori     rtn_addr, code_ptr, roxr_roxl_l_q_d7_L19 - cb
+        ori     rtn_addr, code_ptr, reg_access_rtn_addr - cb
         rlwimi  rtn_addr, prefetch_data, 4, 25, 27      // rtn_addr[6:4] = prefetch_data[2:0]
         mtlr    rtn_addr
-        ori     base_disp, code_ptr, roxr_roxl_l_q_d7_L1 - cb
+        ori     base_disp, code_ptr, reg_access_base_disp - cb
         rlwimi  base_disp, prefetch_data, 24, 24, 27    // base_disp[7:4] = prefetch_data[15:12]
         mtctr   base_disp
         blrl
         mr      immed_data, base_disp
         mr      base_disp, prefetch_data
         mr      prefetch_data, rtn_addr
-        ori     rtn_addr, code_ptr, roxr_roxl_l_q_d7_L19 - cb
+        ori     rtn_addr, code_ptr, reg_access_rtn_addr - cb
         rlwimi  rtn_addr, base_disp, 30, 25, 27         // rtn_addr[6:4] = base_disp[8:6]
         mtlr    rtn_addr
-        ori     rtn_addr, code_ptr, roxr_roxl_l_q_d7_L1 - cb
+        ori     rtn_addr, code_ptr, reg_access_base_disp - cb
         rlwimi  rtn_addr, base_disp, 14, 25, 27         // rtn_addr[6:4] = base_disp[24:22]
         mtctr   rtn_addr
         blrl
@@ -30062,10 +30162,10 @@ cea_x_74_L4:
         rlwimi  rtn_addr, rtn_addr, 16, 0, 31           // rtn_addr = (rtn_addr & ~0xFFFFFFFF) | (rotl(rtn_addr, 16) & 0xFFFFFFFF)
 cea_x_74_L5:
         lwz     prefetch_data, 0(pc)
-        ori     data, code_ptr, roxr_roxl_l_q_d7_L20 - cb
+        ori     data, code_ptr, reg_access_rtn_addr_L1 - cb
         rlwimi  data, prefetch_data, 4, 25, 27          // data[6:4] = prefetch_data[2:0]
         mtctr   data
-        ori     data, code_ptr, roxr_roxl_l_q_d7_L2 - cb
+        ori     data, code_ptr, reg_access_base_disp_L1 - cb
         rlwimi  data, prefetch_data, 20, 25, 27         // data[6:4] = prefetch_data[18:16]
         mtlr    data
         lhau    prefetch_data, 4(pc)                    // PREFETCH: pc += 4, load the word there
@@ -30181,7 +30281,7 @@ arm_trace:
         andc    immed_data, data, immed_data            // immed_data = data & ~immed_data
         cmpwi   cr7, immed_data, 0x50C8
         bne     cr7, arm_trace_L1
-        ori     base_disp, code_ptr, roxr_roxl_l_q_d7_L1 - cb
+        ori     base_disp, code_ptr, reg_access_base_disp - cb
         rlwimi  base_disp, data, 4, 25, 27              // base_disp[6:4] = data[2:0]
         mtlr    base_disp
         blrl
@@ -30502,7 +30602,7 @@ take_bus_error_L1:
         srwi    base_disp, immed_data, 12
         cmpwi   cr7, base_disp, 14
         lwz     rtn_addr, 88(a7)
-        bne     cr7, ori_b_imm_ccr_L5
+        bne     cr7, rte_bad_format
         ori     sr_and_flags, sr_and_flags, 0x0800
         lhz     base_disp, 14(a7)
         slwi    base_disp, base_disp, 16
@@ -31047,34 +31147,34 @@ handler_defaults:
         .short  take_exception - cb
         .short  take_exception - cb
         .short  take_exception - cb
-        .short  trap_q_L1 - cb
+        .short  format2_exception - cb
         .short  special_event_continue - cb
-        .short  set_ccr_L1 - cb
+        .short  write_sr - cb
         .short  move_w_ccr_dn_L1 - cb
         .short  move_w_ccr_mem_2_L1 - cb
         .short  moves_l_rn_mem_4_L3 - cb
         .short  moves_l_rn_mem_4_L8 - cb
-        .short  ori_b_imm_ccr_L2 - cb
-        .short  ori_b_imm_ccr_L4 - cb
-        .short  ori_b_imm_ccr_L1 - cb
-        .short  ori_b_imm_ccr_L3 - cb
-        .short  ori_b_imm_ccr_L5 - cb
-        .short  ori_b_imm_ccr_L5 - cb
-        .short  ori_b_imm_ccr_L5 - cb
-        .short  ori_b_imm_ccr_L5 - cb
-        .short  ori_b_imm_ccr_L5 - cb
-        .short  ori_b_imm_ccr_L5 - cb
-        .short  ori_b_imm_ccr_L5 - cb
-        .short  ori_b_imm_ccr_L5 - cb
+        .short  rte - cb
+        .short  rte_format_0 - cb
+        .short  rte_format_1 - cb
+        .short  rte_format_2 - cb
+        .short  rte_bad_format - cb
+        .short  rte_bad_format - cb
+        .short  rte_bad_format - cb
+        .short  rte_bad_format - cb
+        .short  rte_bad_format - cb
+        .short  rte_bad_format - cb
+        .short  rte_bad_format - cb
+        .short  rte_bad_format - cb
         .short  take_bus_error_L1 - cb
-        .short  ori_b_imm_ccr_L5 - cb
-        .short  ori_b_imm_ccr_L5 - cb
+        .short  rte_bad_format - cb
+        .short  rte_bad_format - cb
         .short  fline_36_L5 - cb
-        .short  ori_b_imm_ccr_L5 - cb
+        .short  rte_bad_format - cb
         .short  move_l_usp_an_L1 - cb
         .short  move_l_an_usp_L1 - cb
-        .short  move_l_usp_an_L3 - cb
-        .short  move_l_usp_an_L2 - cb
+        .short  movec_from_control - cb
+        .short  movec_to_control - cb
         .short  tas_b_mem_2_L1 - cb
         .short  cas_b_mem_3_L2 - cb
         .short  cas_w_mem_3_L2 - cb
@@ -31700,7 +31800,7 @@ fline_36_L5:
         lbz     rtn_addr, 0x317(a7)
         cmpwi   cr7, immed_data, 0x1300
         lwz     base_disp, 8(a7)
-        bne     cr7, ori_b_imm_ccr_L5
+        bne     cr7, rte_bad_format
         ori     sr_and_flags, sr_and_flags, 0x0800
         mr      pc, addr
         stw     base_disp, trace_pc(EmulatorStatePtr)
@@ -31810,7 +31910,7 @@ move16_mem_mem_4_L1:
 // Reached from 8 dispatch table entries:
 //     MOVE16 (An)+,(Ay)+
 move16_mem:
-        ori     rtn_addr, code_ptr, roxr_roxl_l_q_d7_L10 - cb
+        ori     rtn_addr, code_ptr, reg_access_base_disp_L9 - cb
         rlwimi  rtn_addr, prefetch_data, 24, 25, 27     // rtn_addr[6:4] = prefetch_data[14:12]
         mtctr   rtn_addr
         mtlr    addr
@@ -31818,7 +31918,7 @@ move16_mem:
         li      data, 16
         bctr
 move16_mem_L1:
-        ori     rtn_addr, code_ptr, roxr_roxl_l_q_d7_L11 - cb
+        ori     rtn_addr, code_ptr, reg_access_base_disp_L10 - cb
         rlwimi  rtn_addr, prefetch_data, 24, 25, 27     // rtn_addr[6:4] = prefetch_data[14:12]
         mtlr    rtn_addr
         clrrwi  addr, addr, 4                           // addr = addr & 0xFFFFFFF0
@@ -32040,7 +32140,7 @@ fline_mem_30:
         b       take_fline
 fline_mem_30_L1:
         addi    a7, a7, 8
-        b       ori_b_imm_ccr_L4
+        b       rte_format_0
 fline_mem_30_L2:
         li      addr, 0
         addi    rtn_addr, pc, -2

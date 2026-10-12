@@ -1044,37 +1044,37 @@
         b       take_fline
 
 // ---- $F200-$F23F --------------------------------------------------------
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L1 - cb  // F200  F-LINE    FPU general,D0
+        ori     addr, code_ptr, reg_access_base_disp - cb  // F200  F-LINE    FPU general,D0
         b       fline_dn
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L3 - cb  // F201  F-LINE    FPU general,D1
+        ori     addr, code_ptr, reg_access_base_disp_L2 - cb  // F201  F-LINE    FPU general,D1
         b       fline_dn
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L4 - cb  // F202  F-LINE    FPU general,D2
+        ori     addr, code_ptr, reg_access_base_disp_L3 - cb  // F202  F-LINE    FPU general,D2
         b       fline_dn
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L5 - cb  // F203  F-LINE    FPU general,D3
+        ori     addr, code_ptr, reg_access_base_disp_L4 - cb  // F203  F-LINE    FPU general,D3
         b       fline_dn
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L6 - cb  // F204  F-LINE    FPU general,D4
+        ori     addr, code_ptr, reg_access_base_disp_L5 - cb  // F204  F-LINE    FPU general,D4
         b       fline_dn
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L7 - cb  // F205  F-LINE    FPU general,D5
+        ori     addr, code_ptr, reg_access_base_disp_L6 - cb  // F205  F-LINE    FPU general,D5
         b       fline_dn
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L8 - cb  // F206  F-LINE    FPU general,D6
+        ori     addr, code_ptr, reg_access_base_disp_L7 - cb  // F206  F-LINE    FPU general,D6
         b       fline_dn
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L9 - cb  // F207  F-LINE    FPU general,D7
+        ori     addr, code_ptr, reg_access_base_disp_L8 - cb  // F207  F-LINE    FPU general,D7
         b       fline_dn
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L10 - cb  // F208  F-LINE    FPU general,A0
+        ori     addr, code_ptr, reg_access_base_disp_L9 - cb  // F208  F-LINE    FPU general,A0
         b       fline_an
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L12 - cb  // F209  F-LINE    FPU general,A1
+        ori     addr, code_ptr, reg_access_base_disp_L11 - cb  // F209  F-LINE    FPU general,A1
         b       fline_an
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L13 - cb  // F20A  F-LINE    FPU general,A2
+        ori     addr, code_ptr, reg_access_base_disp_L12 - cb  // F20A  F-LINE    FPU general,A2
         b       fline_an
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L14 - cb  // F20B  F-LINE    FPU general,A3
+        ori     addr, code_ptr, reg_access_base_disp_L13 - cb  // F20B  F-LINE    FPU general,A3
         b       fline_an
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L15 - cb  // F20C  F-LINE    FPU general,A4
+        ori     addr, code_ptr, reg_access_base_disp_L14 - cb  // F20C  F-LINE    FPU general,A4
         b       fline_an
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L16 - cb  // F20D  F-LINE    FPU general,A5
+        ori     addr, code_ptr, reg_access_base_disp_L15 - cb  // F20D  F-LINE    FPU general,A5
         b       fline_an
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L17 - cb  // F20E  F-LINE    FPU general,A6
+        ori     addr, code_ptr, reg_access_base_disp_L16 - cb  // F20E  F-LINE    FPU general,A6
         b       fline_an
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L18 - cb  // F20F  F-LINE    FPU general,A7
+        ori     addr, code_ptr, reg_access_base_disp_L17 - cb  // F20F  F-LINE    FPU general,A7
         b       fline_an
         mr      addr, a0                                // F210  F-LINE    FPU general,(A0)
         b       fline_mem
@@ -1174,37 +1174,37 @@
         b       take_fline
 
 // ---- $F240-$F27F --------------------------------------------------------
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L1 - cb  // F240  F-LINE    FScc/FDBcc/FTRAPcc,D0
+        ori     addr, code_ptr, reg_access_base_disp - cb  // F240  F-LINE    FScc/FDBcc/FTRAPcc,D0
         b       fline_dn_2
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L3 - cb  // F241  F-LINE    FScc/FDBcc/FTRAPcc,D1
+        ori     addr, code_ptr, reg_access_base_disp_L2 - cb  // F241  F-LINE    FScc/FDBcc/FTRAPcc,D1
         b       fline_dn_2
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L4 - cb  // F242  F-LINE    FScc/FDBcc/FTRAPcc,D2
+        ori     addr, code_ptr, reg_access_base_disp_L3 - cb  // F242  F-LINE    FScc/FDBcc/FTRAPcc,D2
         b       fline_dn_2
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L5 - cb  // F243  F-LINE    FScc/FDBcc/FTRAPcc,D3
+        ori     addr, code_ptr, reg_access_base_disp_L4 - cb  // F243  F-LINE    FScc/FDBcc/FTRAPcc,D3
         b       fline_dn_2
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L6 - cb  // F244  F-LINE    FScc/FDBcc/FTRAPcc,D4
+        ori     addr, code_ptr, reg_access_base_disp_L5 - cb  // F244  F-LINE    FScc/FDBcc/FTRAPcc,D4
         b       fline_dn_2
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L7 - cb  // F245  F-LINE    FScc/FDBcc/FTRAPcc,D5
+        ori     addr, code_ptr, reg_access_base_disp_L6 - cb  // F245  F-LINE    FScc/FDBcc/FTRAPcc,D5
         b       fline_dn_2
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L8 - cb  // F246  F-LINE    FScc/FDBcc/FTRAPcc,D6
+        ori     addr, code_ptr, reg_access_base_disp_L7 - cb  // F246  F-LINE    FScc/FDBcc/FTRAPcc,D6
         b       fline_dn_2
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L9 - cb  // F247  F-LINE    FScc/FDBcc/FTRAPcc,D7
+        ori     addr, code_ptr, reg_access_base_disp_L8 - cb  // F247  F-LINE    FScc/FDBcc/FTRAPcc,D7
         b       fline_dn_2
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L1 - cb  // F248  F-LINE    FScc/FDBcc/FTRAPcc,A0
+        ori     addr, code_ptr, reg_access_base_disp - cb  // F248  F-LINE    FScc/FDBcc/FTRAPcc,A0
         b       fline_an_2
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L3 - cb  // F249  F-LINE    FScc/FDBcc/FTRAPcc,A1
+        ori     addr, code_ptr, reg_access_base_disp_L2 - cb  // F249  F-LINE    FScc/FDBcc/FTRAPcc,A1
         b       fline_an_2
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L4 - cb  // F24A  F-LINE    FScc/FDBcc/FTRAPcc,A2
+        ori     addr, code_ptr, reg_access_base_disp_L3 - cb  // F24A  F-LINE    FScc/FDBcc/FTRAPcc,A2
         b       fline_an_2
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L5 - cb  // F24B  F-LINE    FScc/FDBcc/FTRAPcc,A3
+        ori     addr, code_ptr, reg_access_base_disp_L4 - cb  // F24B  F-LINE    FScc/FDBcc/FTRAPcc,A3
         b       fline_an_2
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L6 - cb  // F24C  F-LINE    FScc/FDBcc/FTRAPcc,A4
+        ori     addr, code_ptr, reg_access_base_disp_L5 - cb  // F24C  F-LINE    FScc/FDBcc/FTRAPcc,A4
         b       fline_an_2
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L7 - cb  // F24D  F-LINE    FScc/FDBcc/FTRAPcc,A5
+        ori     addr, code_ptr, reg_access_base_disp_L6 - cb  // F24D  F-LINE    FScc/FDBcc/FTRAPcc,A5
         b       fline_an_2
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L8 - cb  // F24E  F-LINE    FScc/FDBcc/FTRAPcc,A6
+        ori     addr, code_ptr, reg_access_base_disp_L7 - cb  // F24E  F-LINE    FScc/FDBcc/FTRAPcc,A6
         b       fline_an_2
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L9 - cb  // F24F  F-LINE    FScc/FDBcc/FTRAPcc,A7
+        ori     addr, code_ptr, reg_access_base_disp_L8 - cb  // F24F  F-LINE    FScc/FDBcc/FTRAPcc,A7
         b       fline_an_2
         mr      addr, a0                                // F250  F-LINE    FScc/FDBcc/FTRAPcc,(A0)
         b       fline_mem_10
@@ -7286,7 +7286,7 @@
 // ---- $FE00-$FE3F --------------------------------------------------------
         lwz     rtn_addr, 0x95C(EmulatorStatePtr)       // FE00  F-LINE    cpID 7
         b       take_fline
-        lwz     rtn_addr, 0x9E0(EmulatorStatePtr)       // FE01  F-LINE    cpID 7
+        lwz     rtn_addr, mixed_mode_handler(EmulatorStatePtr)  // FE01  F-LINE    cpID 7
         b       fline_34
         lwz     data, 0x714(EmulatorStatePtr)           // FE02  F-LINE    cpID 7
         b       fline_35

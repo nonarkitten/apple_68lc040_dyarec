@@ -5658,21 +5658,21 @@ op_E7D7:
         b       ror_l_dn_d7
 
 // ---- $EAC0-$EAFF --------------------------------------------------------
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L1 - cb  // EAC0  BFCHG     D0{ofs:wid}
+        ori     addr, code_ptr, reg_access_base_disp - cb  // EAC0  BFCHG     D0{ofs:wid}
         b       bfchg_bfclr_bfset
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L3 - cb  // EAC1  BFCHG     D1{ofs:wid}
+        ori     addr, code_ptr, reg_access_base_disp_L2 - cb  // EAC1  BFCHG     D1{ofs:wid}
         b       bfchg_bfclr_bfset
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L4 - cb  // EAC2  BFCHG     D2{ofs:wid}
+        ori     addr, code_ptr, reg_access_base_disp_L3 - cb  // EAC2  BFCHG     D2{ofs:wid}
         b       bfchg_bfclr_bfset
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L5 - cb  // EAC3  BFCHG     D3{ofs:wid}
+        ori     addr, code_ptr, reg_access_base_disp_L4 - cb  // EAC3  BFCHG     D3{ofs:wid}
         b       bfchg_bfclr_bfset
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L6 - cb  // EAC4  BFCHG     D4{ofs:wid}
+        ori     addr, code_ptr, reg_access_base_disp_L5 - cb  // EAC4  BFCHG     D4{ofs:wid}
         b       bfchg_bfclr_bfset
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L7 - cb  // EAC5  BFCHG     D5{ofs:wid}
+        ori     addr, code_ptr, reg_access_base_disp_L6 - cb  // EAC5  BFCHG     D5{ofs:wid}
         b       bfchg_bfclr_bfset
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L8 - cb  // EAC6  BFCHG     D6{ofs:wid}
+        ori     addr, code_ptr, reg_access_base_disp_L7 - cb  // EAC6  BFCHG     D6{ofs:wid}
         b       bfchg_bfclr_bfset
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L9 - cb  // EAC7  BFCHG     D7{ofs:wid}
+        ori     addr, code_ptr, reg_access_base_disp_L8 - cb  // EAC7  BFCHG     D7{ofs:wid}
         b       bfchg_bfclr_bfset
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // EAC8  BFCHG     A0{ofs:wid}   (illegal)
         b       take_illegal_instruction
@@ -6698,21 +6698,21 @@ op_E7D7:
         b       ror_l_dn_d7
 
 // ---- $ECC0-$ECFF --------------------------------------------------------
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L1 - cb  // ECC0  BFCLR     D0{ofs:wid}
+        ori     addr, code_ptr, reg_access_base_disp - cb  // ECC0  BFCLR     D0{ofs:wid}
         b       bfchg_bfclr_bfset
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L3 - cb  // ECC1  BFCLR     D1{ofs:wid}
+        ori     addr, code_ptr, reg_access_base_disp_L2 - cb  // ECC1  BFCLR     D1{ofs:wid}
         b       bfchg_bfclr_bfset
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L4 - cb  // ECC2  BFCLR     D2{ofs:wid}
+        ori     addr, code_ptr, reg_access_base_disp_L3 - cb  // ECC2  BFCLR     D2{ofs:wid}
         b       bfchg_bfclr_bfset
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L5 - cb  // ECC3  BFCLR     D3{ofs:wid}
+        ori     addr, code_ptr, reg_access_base_disp_L4 - cb  // ECC3  BFCLR     D3{ofs:wid}
         b       bfchg_bfclr_bfset
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L6 - cb  // ECC4  BFCLR     D4{ofs:wid}
+        ori     addr, code_ptr, reg_access_base_disp_L5 - cb  // ECC4  BFCLR     D4{ofs:wid}
         b       bfchg_bfclr_bfset
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L7 - cb  // ECC5  BFCLR     D5{ofs:wid}
+        ori     addr, code_ptr, reg_access_base_disp_L6 - cb  // ECC5  BFCLR     D5{ofs:wid}
         b       bfchg_bfclr_bfset
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L8 - cb  // ECC6  BFCLR     D6{ofs:wid}
+        ori     addr, code_ptr, reg_access_base_disp_L7 - cb  // ECC6  BFCLR     D6{ofs:wid}
         b       bfchg_bfclr_bfset
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L9 - cb  // ECC7  BFCLR     D7{ofs:wid}
+        ori     addr, code_ptr, reg_access_base_disp_L8 - cb  // ECC7  BFCLR     D7{ofs:wid}
         b       bfchg_bfclr_bfset
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // ECC8  BFCLR     A0{ofs:wid}   (illegal)
         b       take_illegal_instruction
@@ -7738,21 +7738,21 @@ op_E7D7:
         b       ror_l_dn_d7
 
 // ---- $EEC0-$EEFF --------------------------------------------------------
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L1 - cb  // EEC0  BFSET     D0{ofs:wid}
+        ori     addr, code_ptr, reg_access_base_disp - cb  // EEC0  BFSET     D0{ofs:wid}
         b       bfchg_bfclr_bfset
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L3 - cb  // EEC1  BFSET     D1{ofs:wid}
+        ori     addr, code_ptr, reg_access_base_disp_L2 - cb  // EEC1  BFSET     D1{ofs:wid}
         b       bfchg_bfclr_bfset
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L4 - cb  // EEC2  BFSET     D2{ofs:wid}
+        ori     addr, code_ptr, reg_access_base_disp_L3 - cb  // EEC2  BFSET     D2{ofs:wid}
         b       bfchg_bfclr_bfset
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L5 - cb  // EEC3  BFSET     D3{ofs:wid}
+        ori     addr, code_ptr, reg_access_base_disp_L4 - cb  // EEC3  BFSET     D3{ofs:wid}
         b       bfchg_bfclr_bfset
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L6 - cb  // EEC4  BFSET     D4{ofs:wid}
+        ori     addr, code_ptr, reg_access_base_disp_L5 - cb  // EEC4  BFSET     D4{ofs:wid}
         b       bfchg_bfclr_bfset
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L7 - cb  // EEC5  BFSET     D5{ofs:wid}
+        ori     addr, code_ptr, reg_access_base_disp_L6 - cb  // EEC5  BFSET     D5{ofs:wid}
         b       bfchg_bfclr_bfset
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L8 - cb  // EEC6  BFSET     D6{ofs:wid}
+        ori     addr, code_ptr, reg_access_base_disp_L7 - cb  // EEC6  BFSET     D6{ofs:wid}
         b       bfchg_bfclr_bfset
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L9 - cb  // EEC7  BFSET     D7{ofs:wid}
+        ori     addr, code_ptr, reg_access_base_disp_L8 - cb  // EEC7  BFSET     D7{ofs:wid}
         b       bfchg_bfclr_bfset
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // EEC8  BFSET     A0{ofs:wid}   (illegal)
         b       take_illegal_instruction
@@ -8258,21 +8258,21 @@ op_E7D7:
         b       rol_l_dn_d7
 
 // ---- $EFC0-$EFFF --------------------------------------------------------
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L1 - cb  // EFC0  BFINS     Dn,D0{ofs:wid}
+        ori     addr, code_ptr, reg_access_base_disp - cb  // EFC0  BFINS     Dn,D0{ofs:wid}
         b       bfins
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L3 - cb  // EFC1  BFINS     Dn,D1{ofs:wid}
+        ori     addr, code_ptr, reg_access_base_disp_L2 - cb  // EFC1  BFINS     Dn,D1{ofs:wid}
         b       bfins
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L4 - cb  // EFC2  BFINS     Dn,D2{ofs:wid}
+        ori     addr, code_ptr, reg_access_base_disp_L3 - cb  // EFC2  BFINS     Dn,D2{ofs:wid}
         b       bfins
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L5 - cb  // EFC3  BFINS     Dn,D3{ofs:wid}
+        ori     addr, code_ptr, reg_access_base_disp_L4 - cb  // EFC3  BFINS     Dn,D3{ofs:wid}
         b       bfins
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L6 - cb  // EFC4  BFINS     Dn,D4{ofs:wid}
+        ori     addr, code_ptr, reg_access_base_disp_L5 - cb  // EFC4  BFINS     Dn,D4{ofs:wid}
         b       bfins
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L7 - cb  // EFC5  BFINS     Dn,D5{ofs:wid}
+        ori     addr, code_ptr, reg_access_base_disp_L6 - cb  // EFC5  BFINS     Dn,D5{ofs:wid}
         b       bfins
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L8 - cb  // EFC6  BFINS     Dn,D6{ofs:wid}
+        ori     addr, code_ptr, reg_access_base_disp_L7 - cb  // EFC6  BFINS     Dn,D6{ofs:wid}
         b       bfins
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L9 - cb  // EFC7  BFINS     Dn,D7{ofs:wid}
+        ori     addr, code_ptr, reg_access_base_disp_L8 - cb  // EFC7  BFINS     Dn,D7{ofs:wid}
         b       bfins
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // EFC8  BFINS     Dn,A0{ofs:wid}   (illegal)
         b       take_illegal_instruction

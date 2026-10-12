@@ -273,7 +273,7 @@ op_0057:
         b       take_illegal_instruction
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 007B  ORI.W     #<data>,(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     base_disp, 0x818(EmulatorStatePtr)      // 007C  ORI.W     #<data>,SR
+        lwz     base_disp, write_sr_handler(EmulatorStatePtr)  // 007C  ORI.W     #<data>,SR
         b       ori_w_imm_sr
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 007D  ORI.W     #<data>,<ea 7.5>   (illegal)
         b       take_illegal_instruction
@@ -1361,7 +1361,7 @@ op_0257:
         b       take_illegal_instruction
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 027B  ANDI.W    #<data>,(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     base_disp, 0x818(EmulatorStatePtr)      // 027C  ANDI.W    #<data>,SR
+        lwz     base_disp, write_sr_handler(EmulatorStatePtr)  // 027C  ANDI.W    #<data>,SR
         b       andi_w_imm_sr
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 027D  ANDI.W    #<data>,<ea 7.5>   (illegal)
         b       take_illegal_instruction
@@ -5713,7 +5713,7 @@ op_0A57:
         b       take_illegal_instruction
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 0A7B  EORI.W    #<data>,(d8,PC,Xn)   (illegal)
         b       take_illegal_instruction
-        lwz     base_disp, 0x818(EmulatorStatePtr)      // 0A7C  EORI.W    #<data>,SR
+        lwz     base_disp, write_sr_handler(EmulatorStatePtr)  // 0A7C  EORI.W    #<data>,SR
         b       eori_w_imm_sr
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 0A7D  EORI.W    #<data>,<ea 7.5>   (illegal)
         b       take_illegal_instruction

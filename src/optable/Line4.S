@@ -5682,21 +5682,21 @@ op_4817:
         b       take_illegal_instruction
 
 // ---- $4AC0-$4AFF --------------------------------------------------------
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L1 - cb  // 4AC0  TAS.B     D0
+        ori     addr, code_ptr, reg_access_base_disp - cb  // 4AC0  TAS.B     D0
         b       tas_b_dn
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L3 - cb  // 4AC1  TAS.B     D1
+        ori     addr, code_ptr, reg_access_base_disp_L2 - cb  // 4AC1  TAS.B     D1
         b       tas_b_dn
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L4 - cb  // 4AC2  TAS.B     D2
+        ori     addr, code_ptr, reg_access_base_disp_L3 - cb  // 4AC2  TAS.B     D2
         b       tas_b_dn
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L5 - cb  // 4AC3  TAS.B     D3
+        ori     addr, code_ptr, reg_access_base_disp_L4 - cb  // 4AC3  TAS.B     D3
         b       tas_b_dn
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L6 - cb  // 4AC4  TAS.B     D4
+        ori     addr, code_ptr, reg_access_base_disp_L5 - cb  // 4AC4  TAS.B     D4
         b       tas_b_dn
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L7 - cb  // 4AC5  TAS.B     D5
+        ori     addr, code_ptr, reg_access_base_disp_L6 - cb  // 4AC5  TAS.B     D5
         b       tas_b_dn
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L8 - cb  // 4AC6  TAS.B     D6
+        ori     addr, code_ptr, reg_access_base_disp_L7 - cb  // 4AC6  TAS.B     D6
         b       tas_b_dn
-        ori     addr, code_ptr, roxr_roxl_l_q_d7_L9 - cb  // 4AC7  TAS.B     D7
+        ori     addr, code_ptr, reg_access_base_disp_L8 - cb  // 4AC7  TAS.B     D7
         b       tas_b_dn
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 4AC8  TAS.B     A0   (illegal)
         b       take_illegal_instruction
@@ -7606,13 +7606,13 @@ op_4AD7:
         b       move_l_usp_an
         ori     data, code_ptr, movea_mem_a7 - cb       // 4E6F  MOVE.L    USP,A7
         b       move_l_usp_an
-        lwz     rtn_addr, 0x828(EmulatorStatePtr)       // 4E70  RESET
+        lwz     rtn_addr, reset_handler(EmulatorStatePtr)  // 4E70  RESET
         b       require_supervisor
         eieio                                           // 4E71  NOP
         b       fetch
         clrlwi  data, prefetch_data, 16                 // 4E72  STOP      #<data>
         b       stop_imm
-        lwz     rtn_addr, 0x82C(EmulatorStatePtr)       // 4E73  RTE
+        lwz     rtn_addr, rte_handler(EmulatorStatePtr)  // 4E73  RTE
         b       require_supervisor
         lwz     pc, 0(a7)                               // 4E74  RTD       #<disp>
         b       rtd_imm
@@ -7626,9 +7626,9 @@ op_4AD7:
         b       take_illegal_instruction
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 4E79  ILLEGAL
         b       take_illegal_instruction
-        lwz     rtn_addr, 0x878(EmulatorStatePtr)       // 4E7A  MOVEC.L   Rc,Rn
+        lwz     rtn_addr, movec_from_handler(EmulatorStatePtr)  // 4E7A  MOVEC.L   Rc,Rn
         b       require_supervisor
-        lwz     rtn_addr, 0x87C(EmulatorStatePtr)       // 4E7B  MOVEC.L   Rn,Rc
+        lwz     rtn_addr, movec_to_handler(EmulatorStatePtr)  // 4E7B  MOVEC.L   Rn,Rc
         b       require_supervisor
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 4E7C  ILLEGAL
         b       take_illegal_instruction

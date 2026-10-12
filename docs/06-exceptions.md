@@ -222,13 +222,37 @@ require_supervisor:
         b       take_privilege_violation
 ```
 
-`MOVE from SR` has a special case. On a 68000 it is not privileged, and
-Mac OS installs a privilege violation handler that emulates it. If the
-privilege violation vector still holds the address recorded at `+0x72C`,
-`privilege_check_failed` (`0CA68`) simply lets the instruction run.
+### The status register
 
-Changing the SR goes through a routine at `0C410` that swaps `a7` with
-the right saved stack pointer (using `stack_pointer_slots`), updates
-`cr_supervisor`, re-evaluates the interrupt mask and trace bits, and sets
-the special event flag if an interrupt is now deliverable or tracing has
-been switched on.
+Every write to the system byte of the SR goes through `write_sr`
+(`0C410`, reached through `write_sr_handler`). It copies the new
+interrupt mask into `sr_and_flags` and raises the special event flag if
+an interrupt is now deliverable; recomputes `cr_dr_active`; and, if any
+of T1, T0, S or M changed, stores `a7` in the slot of the outgoing stack
+pointer and loads it from the slot of the incoming one
+(`stack_pointer_slots`), updates `cr_supervisor`, and raises the special
+event flag if a trace bit is now set.
+
+On a 68000 `MOVE from SR` is not privileged, and software written for it
+runs in user state on later processors only because the operating system
+emulates the instruction in its privilege violation handler. The emulator
+short-circuits that. If the privilege violation vector still holds the
+address recorded at `+0x72C` in the state block,
+`privilege_check_failed` (`0CA68`) lets the instruction proceed instead
+of taking the exception. The same applies to writes to the SR from user
+state, with S and M protected: `move_to_sr_user` keeps their current
+values, `andi_to_sr_user` forces them on in the mask, and
+`ori_eori_to_sr_user` removes them from the operand. One encoding is
+excepted: `MOVE SR,D7` (`40C7`) in user state always takes the
+exception.
+
+### Exceptions that record the instruction address
+
+`CHK`, `CHK2`, `TRAPcc`, `TRAPV` and division by zero push a format 2
+frame, which contains the address of the instruction as well as the
+return address. By the time the condition is detected `pc` has moved on
+by an amount that depends on the addressing mode, and nothing recorded
+where the instruction began. `take_format2_exception` (`0CC90`) finds
+out by searching: it recovers the opcode from `disp_table` and steps
+backwards from `pc`, up to seven words, until it finds a word equal to
+it.

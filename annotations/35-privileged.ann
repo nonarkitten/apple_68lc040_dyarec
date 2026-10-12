@@ -1,0 +1,138 @@
+# Status register, RTE, MOVEC, CHK and TRAP: offsets 0C3D0-0D0EC, and the
+# register access tables they use.
+
+@05700 reg_access_base_disp
+    ===========================================================================
+    Register access tables
+    ===========================================================================
+    For instructions that name a register in an extension word (MOVEC,
+    MOVES, CHK2, CAS, bit fields, long multiply and divide) the register
+    number is only known at run time.  Rather than test it, the emulator
+    indexes a table of code: sixteen entries of sixteen bytes, D0-D7 then
+    A0-A7.  Each entry is two two-instruction stubs:
+    .
+        +0   copy the register to base_disp, then call back through LR
+        +8   copy base_disp to the register, then fetch
+    .
+    A routine forms the address of the stub it wants with
+    "ori reg, code_ptr, reg_access_base_disp - cb" followed by an rlwimi
+    that inserts the register number, and jumps to it.
+@05800 reg_access_rtn_addr
+    The same for rtn_addr: +0 copies the register to rtn_addr and jumps to
+    CTR; +8 copies rtn_addr to the register and returns.
+
+@0C410 write_sr
+    ===========================================================================
+    Writing the status register
+    ===========================================================================
+    Load the upper byte of the SR from data (bits 15:8).  Everything that
+    changes the SR comes through here, by way of handler slot +0x818:
+    MOVE to SR, ANDI/ORI/EORI to SR, STOP, RTE.
+    .
+    - The interrupt mask is copied into sr_and_flags.  If the kernel is
+      signalling an interrupt above the new mask, or the private request
+      level is non-zero, the special event flag is set so that it is
+      taken at the next instruction boundary.  When the kernel's level
+      byte says priorities need re-evaluating, PrioritizeInterrupts is
+      called first.
+    - cr_dr_active is recomputed: translated code is not used while a
+      trace bit or a test-mode flag is set.
+    - If T1, T0, S and M are all unchanged, that is all.
+    - Otherwise a7 is stored in the slot of the outgoing stack pointer and
+      loaded from the slot of the incoming one (stack_pointer_slots, indexed
+      by S and M), cr_supervisor is updated, and a set trace bit raises the
+      special event flag.
+0C41C would T1, T0, S and M be unchanged?
+0C420 new interrupt mask
+0C430 use translated code only if no trace or test-mode bit
+0C494 slot of the stack pointer in use until now
+0C49C new T1, T0, S, M
+0C4A8 slot of the stack pointer to use from now on
+0C4B4 T1 set: trace
+0C4B8 save the old stack pointer
+0C4BC T0 set: trace
+0C4C0 load the new one
+0C4C8 S changed
+
+@0C51C move_to_sr_from_addr
+@0C520 move_to_sr
+    MOVE to SR, common part: data = the new SR.  write_sr takes the system
+    byte; the condition codes are loaded here.
+0C52C X
+0C534 supervisor: write_sr
+0C54C N, Z
+0C550 V, C
+
+@0C68C rte
+    ===========================================================================
+    RTE
+    ===========================================================================
+    Reached through require_supervisor and handler slot +0x82C.  The frame
+    format (bits 15:12 of the word at 6(a7)) selects one of sixteen
+    handlers from the table at +0x830; each is entered with data = the
+    stacked SR and addr = the stacked pc.
+0C68C format / vector offset word
+0C694 +0x830 + 4 * format
+0C69C stacked SR
+0C6A4 stacked pc
+@0C684 rte_format_1
+    Throwaway frame: load the SR from it, discard it, and continue with the
+    frame beneath.
+@0C6AC rte_format_2
+    Six-word frame: four more bytes to discard than format 0.
+@0C6B0 rte_format_0
+    Pop the frame, load the SR and condition codes, and resume at the
+    stacked pc.
+0C6C0 odd address check
+@0C6D8 rte_bad_format
+0C6D8 vector offset 0x38: format error
+
+@0C714 movec_to_control
+    MOVEC Rn,Rc (4E7B), through handler slot +0x87C.  The extension word in
+    prefetch_data names the control register (low 12 bits) and the general
+    register (high 4 bits).  movec_tables gives the control register's slot
+    in the state block and the offset of the routine that stores it; the
+    general register is read through reg_access_base_disp.  A control
+    register with no table entry is an illegal instruction.
+@0C758 movec_from_control
+    MOVEC Rc,Rn (4E7A), through handler slot +0x878.
+
+@0CA44 move_to_sr_user
+    MOVE to SR executed in user state (allowed through by
+    privilege_check_failed): the S and M bits keep their current values.
+@0CA4C andi_to_sr_user
+    ANDI to SR in user state: S and M are forced on in the mask, so they
+    cannot be cleared.
+@0CA54 ori_eori_to_sr_user
+    ORI or EORI to SR in user state: S and M are removed from the operand.
+@0CA5C move_from_sr_user
+    MOVE from SR in user state.  MOVE SR,D7 (40C7) always takes the
+    privilege violation; the other forms go through privilege_check_failed.
+
+@0CAF4 chk_w_test
+    CHK.W: immed_data = the register's low word, zero-extended, and data =
+    the bound.  An unsigned comparison catches both "greater than the
+    bound" and "negative".
+@0CB70 chk_l_test
+@0CB90 chk_w_failed
+0CB90 give N the sign of the word for the exception
+@0CB94 chk_l_failed
+
+@0CC8C take_chk_exception
+0CC8C format 2, vector offset 0x18: CHK
+@0CC90 take_format2_exception
+    Raise an exception whose frame carries the address of the instruction
+    (format 2).  pc has moved on by an amount that depends on the
+    addressing mode, so the start of the instruction is found by searching
+    backwards from pc, up to seven words, for the opcode word - which is
+    recovered from disp_table.
+0CC94 start at pc
+0CC9C the opcode of this instruction
+0CCA0 step back one word
+@0CCAC raise_format2
+0CCB0 ask take_exception to return for the extra longword
+@0CCCC format2_exception
+    Default for handler slot +0x810: push a format 2 frame.  Entered with
+    addr = the instruction address for the frame, and cr7.so saying whether
+    there is one (TRAP #n comes here with it clear, for a format 0 frame).
+0CCE0 the extra longword: address of the instruction

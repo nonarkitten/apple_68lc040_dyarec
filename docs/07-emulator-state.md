@@ -136,12 +136,15 @@ different address.
 | `0x800` | `illegal_handler` | `take_exception` | Unimplemented opcodes |
 | `0x804` | `aline_handler` | `take_exception` | Line 1010 opcodes |
 | `0x808` | `fline_handler` | `take_exception` | Line 1111 opcodes |
-| `0x80C` | | `take_exception` | Privilege violation |
-| `0x810` | | `0CCCC` | Exceptions with a format 2 frame |
+| `0x80C` | `privilege_handler` | `take_exception` | Privilege violation |
+| `0x810` | `format2_handler` | `format2_exception` | Exceptions with a format 2 frame |
 | `0x814` | `special_event_hook` | `special_event_continue` | First step of `process_special_event` |
-| `0x818`–`0x82C` | | | Writing the SR, `MOVE from SR`, `RESET` (`0x828`), `RTE` (`0x82C`) and related operations |
-| `0x830`–`0x86C` | | | `RTE`, by frame format 0–15 |
-| `0x870`–`0x898` | | | `MOVEC` (`0x870`–`0x87C`), `TAS` on memory (`0x880`) and other rarely used instructions; `0x898` is `install_exception_stubs` |
+| `0x818` | `write_sr_handler` | `write_sr` | Every write to the system byte of the SR |
+| `0x81C`–`0x824` | | | `MOVE from SR` and related operations |
+| `0x828` | `reset_handler` | | The `RESET` instruction |
+| `0x82C` | `rte_handler` | `rte` | `RTE` |
+| `0x830`–`0x86C` | | `rte_format_0`, `rte_format_1`, `rte_format_2`, …; `rte_bad_format` for unsupported formats | `RTE`, by frame format 0–15 |
+| `0x870`–`0x898` | `movec_from_handler` (`0x878`), `movec_to_handler` (`0x87C`) | | `MOVE USP`, `MOVEC`, `TAS` on memory (`0x880`), `CAS`/`CAS2` (`0x884`–`0x894`); `0x898` is `install_exception_stubs` |
 | `0x89C`–`0x938` | | | Forty exception stubs, copied from `exception_stub_defaults` by `install_exception_stubs` |
 | `0x93C`–`0x9E0` | | | Cache control instructions and the private opcodes. `0x964`, `0x968`, `0x99C`, `0x9A4` and `0x9DC` default to kernel traps 1, 3, 5, 7 and 8; `0x9E0` is `mixed_mode_dispatch` |
 | `0xA00` | `dr_dispatch_vector` | a stub | Loaded into `dr_entry` |
