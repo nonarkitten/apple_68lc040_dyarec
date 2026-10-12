@@ -1044,37 +1044,37 @@
         b       take_fline
 
 // ---- $F200-$F23F --------------------------------------------------------
-        ori     addr, code_ptr, L_05700 - cb            // F200  F-LINE    FPU general,D0
+        ori     addr, code_ptr, roxr_roxl_l_q_d7_L1 - cb  // F200  F-LINE    FPU general,D0
         b       fline_dn
-        ori     addr, code_ptr, L_05710 - cb            // F201  F-LINE    FPU general,D1
+        ori     addr, code_ptr, roxr_roxl_l_q_d7_L3 - cb  // F201  F-LINE    FPU general,D1
         b       fline_dn
-        ori     addr, code_ptr, L_05720 - cb            // F202  F-LINE    FPU general,D2
+        ori     addr, code_ptr, roxr_roxl_l_q_d7_L4 - cb  // F202  F-LINE    FPU general,D2
         b       fline_dn
-        ori     addr, code_ptr, L_05730 - cb            // F203  F-LINE    FPU general,D3
+        ori     addr, code_ptr, roxr_roxl_l_q_d7_L5 - cb  // F203  F-LINE    FPU general,D3
         b       fline_dn
-        ori     addr, code_ptr, L_05740 - cb            // F204  F-LINE    FPU general,D4
+        ori     addr, code_ptr, roxr_roxl_l_q_d7_L6 - cb  // F204  F-LINE    FPU general,D4
         b       fline_dn
-        ori     addr, code_ptr, L_05750 - cb            // F205  F-LINE    FPU general,D5
+        ori     addr, code_ptr, roxr_roxl_l_q_d7_L7 - cb  // F205  F-LINE    FPU general,D5
         b       fline_dn
-        ori     addr, code_ptr, L_05760 - cb            // F206  F-LINE    FPU general,D6
+        ori     addr, code_ptr, roxr_roxl_l_q_d7_L8 - cb  // F206  F-LINE    FPU general,D6
         b       fline_dn
-        ori     addr, code_ptr, L_05770 - cb            // F207  F-LINE    FPU general,D7
+        ori     addr, code_ptr, roxr_roxl_l_q_d7_L9 - cb  // F207  F-LINE    FPU general,D7
         b       fline_dn
-        ori     addr, code_ptr, L_05780 - cb            // F208  F-LINE    FPU general,A0
+        ori     addr, code_ptr, roxr_roxl_l_q_d7_L10 - cb  // F208  F-LINE    FPU general,A0
         b       fline_an
-        ori     addr, code_ptr, L_05790 - cb            // F209  F-LINE    FPU general,A1
+        ori     addr, code_ptr, roxr_roxl_l_q_d7_L12 - cb  // F209  F-LINE    FPU general,A1
         b       fline_an
-        ori     addr, code_ptr, L_057A0 - cb            // F20A  F-LINE    FPU general,A2
+        ori     addr, code_ptr, roxr_roxl_l_q_d7_L13 - cb  // F20A  F-LINE    FPU general,A2
         b       fline_an
-        ori     addr, code_ptr, L_057B0 - cb            // F20B  F-LINE    FPU general,A3
+        ori     addr, code_ptr, roxr_roxl_l_q_d7_L14 - cb  // F20B  F-LINE    FPU general,A3
         b       fline_an
-        ori     addr, code_ptr, L_057C0 - cb            // F20C  F-LINE    FPU general,A4
+        ori     addr, code_ptr, roxr_roxl_l_q_d7_L15 - cb  // F20C  F-LINE    FPU general,A4
         b       fline_an
-        ori     addr, code_ptr, L_057D0 - cb            // F20D  F-LINE    FPU general,A5
+        ori     addr, code_ptr, roxr_roxl_l_q_d7_L16 - cb  // F20D  F-LINE    FPU general,A5
         b       fline_an
-        ori     addr, code_ptr, L_057E0 - cb            // F20E  F-LINE    FPU general,A6
+        ori     addr, code_ptr, roxr_roxl_l_q_d7_L17 - cb  // F20E  F-LINE    FPU general,A6
         b       fline_an
-        ori     addr, code_ptr, L_057F0 - cb            // F20F  F-LINE    FPU general,A7
+        ori     addr, code_ptr, roxr_roxl_l_q_d7_L18 - cb  // F20F  F-LINE    FPU general,A7
         b       fline_an
         mr      addr, a0                                // F210  F-LINE    FPU general,(A0)
         b       fline_mem
@@ -1092,37 +1092,37 @@
         b       fline_mem
         mr      addr, a7                                // F217  F-LINE    FPU general,(A7)
         b       fline_mem
-        ori     addr, code_ptr, L_00860 - cb            // F218  F-LINE    FPU general,(A0)+
+        ori     addr, code_ptr, fea_l_30_L1 - cb        // F218  F-LINE    FPU general,(A0)+
         b       fline_mem_2
-        ori     addr, code_ptr, L_008E0 - cb            // F219  F-LINE    FPU general,(A1)+
+        ori     addr, code_ptr, fea_l_31_L1 - cb        // F219  F-LINE    FPU general,(A1)+
         b       fline_mem_2
-        ori     addr, code_ptr, L_00960 - cb            // F21A  F-LINE    FPU general,(A2)+
+        ori     addr, code_ptr, fea_l_32_L1 - cb        // F21A  F-LINE    FPU general,(A2)+
         b       fline_mem_2
-        ori     addr, code_ptr, L_009E0 - cb            // F21B  F-LINE    FPU general,(A3)+
+        ori     addr, code_ptr, fea_l_33_L1 - cb        // F21B  F-LINE    FPU general,(A3)+
         b       fline_mem_2
-        ori     addr, code_ptr, L_00A60 - cb            // F21C  F-LINE    FPU general,(A4)+
+        ori     addr, code_ptr, fea_l_34_L1 - cb        // F21C  F-LINE    FPU general,(A4)+
         b       fline_mem_2
-        ori     addr, code_ptr, L_00AE0 - cb            // F21D  F-LINE    FPU general,(A5)+
+        ori     addr, code_ptr, fea_l_35_L1 - cb        // F21D  F-LINE    FPU general,(A5)+
         b       fline_mem_2
-        ori     addr, code_ptr, L_00B60 - cb            // F21E  F-LINE    FPU general,(A6)+
+        ori     addr, code_ptr, fea_l_36_L1 - cb        // F21E  F-LINE    FPU general,(A6)+
         b       fline_mem_2
-        ori     addr, code_ptr, L_00BE0 - cb            // F21F  F-LINE    FPU general,(A7)+
+        ori     addr, code_ptr, fea_l_37_L1 - cb        // F21F  F-LINE    FPU general,(A7)+
         b       fline_mem_2
-        ori     addr, code_ptr, L_00860 - cb            // F220  F-LINE    FPU general,-(A0)
+        ori     addr, code_ptr, fea_l_30_L1 - cb        // F220  F-LINE    FPU general,-(A0)
         b       fline_mem_3
-        ori     addr, code_ptr, L_008E0 - cb            // F221  F-LINE    FPU general,-(A1)
+        ori     addr, code_ptr, fea_l_31_L1 - cb        // F221  F-LINE    FPU general,-(A1)
         b       fline_mem_3
-        ori     addr, code_ptr, L_00960 - cb            // F222  F-LINE    FPU general,-(A2)
+        ori     addr, code_ptr, fea_l_32_L1 - cb        // F222  F-LINE    FPU general,-(A2)
         b       fline_mem_3
-        ori     addr, code_ptr, L_009E0 - cb            // F223  F-LINE    FPU general,-(A3)
+        ori     addr, code_ptr, fea_l_33_L1 - cb        // F223  F-LINE    FPU general,-(A3)
         b       fline_mem_3
-        ori     addr, code_ptr, L_00A60 - cb            // F224  F-LINE    FPU general,-(A4)
+        ori     addr, code_ptr, fea_l_34_L1 - cb        // F224  F-LINE    FPU general,-(A4)
         b       fline_mem_3
-        ori     addr, code_ptr, L_00AE0 - cb            // F225  F-LINE    FPU general,-(A5)
+        ori     addr, code_ptr, fea_l_35_L1 - cb        // F225  F-LINE    FPU general,-(A5)
         b       fline_mem_3
-        ori     addr, code_ptr, L_00B60 - cb            // F226  F-LINE    FPU general,-(A6)
+        ori     addr, code_ptr, fea_l_36_L1 - cb        // F226  F-LINE    FPU general,-(A6)
         b       fline_mem_3
-        ori     addr, code_ptr, L_00BE0 - cb            // F227  F-LINE    FPU general,-(A7)
+        ori     addr, code_ptr, fea_l_37_L1 - cb        // F227  F-LINE    FPU general,-(A7)
         b       fline_mem_3
         mr      addr, a0                                // F228  F-LINE    FPU general,(d16,A0)
         b       fline_mem_4
@@ -1174,37 +1174,37 @@
         b       take_fline
 
 // ---- $F240-$F27F --------------------------------------------------------
-        ori     addr, code_ptr, L_05700 - cb            // F240  F-LINE    FScc/FDBcc/FTRAPcc,D0
+        ori     addr, code_ptr, roxr_roxl_l_q_d7_L1 - cb  // F240  F-LINE    FScc/FDBcc/FTRAPcc,D0
         b       fline_dn_2
-        ori     addr, code_ptr, L_05710 - cb            // F241  F-LINE    FScc/FDBcc/FTRAPcc,D1
+        ori     addr, code_ptr, roxr_roxl_l_q_d7_L3 - cb  // F241  F-LINE    FScc/FDBcc/FTRAPcc,D1
         b       fline_dn_2
-        ori     addr, code_ptr, L_05720 - cb            // F242  F-LINE    FScc/FDBcc/FTRAPcc,D2
+        ori     addr, code_ptr, roxr_roxl_l_q_d7_L4 - cb  // F242  F-LINE    FScc/FDBcc/FTRAPcc,D2
         b       fline_dn_2
-        ori     addr, code_ptr, L_05730 - cb            // F243  F-LINE    FScc/FDBcc/FTRAPcc,D3
+        ori     addr, code_ptr, roxr_roxl_l_q_d7_L5 - cb  // F243  F-LINE    FScc/FDBcc/FTRAPcc,D3
         b       fline_dn_2
-        ori     addr, code_ptr, L_05740 - cb            // F244  F-LINE    FScc/FDBcc/FTRAPcc,D4
+        ori     addr, code_ptr, roxr_roxl_l_q_d7_L6 - cb  // F244  F-LINE    FScc/FDBcc/FTRAPcc,D4
         b       fline_dn_2
-        ori     addr, code_ptr, L_05750 - cb            // F245  F-LINE    FScc/FDBcc/FTRAPcc,D5
+        ori     addr, code_ptr, roxr_roxl_l_q_d7_L7 - cb  // F245  F-LINE    FScc/FDBcc/FTRAPcc,D5
         b       fline_dn_2
-        ori     addr, code_ptr, L_05760 - cb            // F246  F-LINE    FScc/FDBcc/FTRAPcc,D6
+        ori     addr, code_ptr, roxr_roxl_l_q_d7_L8 - cb  // F246  F-LINE    FScc/FDBcc/FTRAPcc,D6
         b       fline_dn_2
-        ori     addr, code_ptr, L_05770 - cb            // F247  F-LINE    FScc/FDBcc/FTRAPcc,D7
+        ori     addr, code_ptr, roxr_roxl_l_q_d7_L9 - cb  // F247  F-LINE    FScc/FDBcc/FTRAPcc,D7
         b       fline_dn_2
-        ori     addr, code_ptr, L_05700 - cb            // F248  F-LINE    FScc/FDBcc/FTRAPcc,A0
+        ori     addr, code_ptr, roxr_roxl_l_q_d7_L1 - cb  // F248  F-LINE    FScc/FDBcc/FTRAPcc,A0
         b       fline_an_2
-        ori     addr, code_ptr, L_05710 - cb            // F249  F-LINE    FScc/FDBcc/FTRAPcc,A1
+        ori     addr, code_ptr, roxr_roxl_l_q_d7_L3 - cb  // F249  F-LINE    FScc/FDBcc/FTRAPcc,A1
         b       fline_an_2
-        ori     addr, code_ptr, L_05720 - cb            // F24A  F-LINE    FScc/FDBcc/FTRAPcc,A2
+        ori     addr, code_ptr, roxr_roxl_l_q_d7_L4 - cb  // F24A  F-LINE    FScc/FDBcc/FTRAPcc,A2
         b       fline_an_2
-        ori     addr, code_ptr, L_05730 - cb            // F24B  F-LINE    FScc/FDBcc/FTRAPcc,A3
+        ori     addr, code_ptr, roxr_roxl_l_q_d7_L5 - cb  // F24B  F-LINE    FScc/FDBcc/FTRAPcc,A3
         b       fline_an_2
-        ori     addr, code_ptr, L_05740 - cb            // F24C  F-LINE    FScc/FDBcc/FTRAPcc,A4
+        ori     addr, code_ptr, roxr_roxl_l_q_d7_L6 - cb  // F24C  F-LINE    FScc/FDBcc/FTRAPcc,A4
         b       fline_an_2
-        ori     addr, code_ptr, L_05750 - cb            // F24D  F-LINE    FScc/FDBcc/FTRAPcc,A5
+        ori     addr, code_ptr, roxr_roxl_l_q_d7_L7 - cb  // F24D  F-LINE    FScc/FDBcc/FTRAPcc,A5
         b       fline_an_2
-        ori     addr, code_ptr, L_05760 - cb            // F24E  F-LINE    FScc/FDBcc/FTRAPcc,A6
+        ori     addr, code_ptr, roxr_roxl_l_q_d7_L8 - cb  // F24E  F-LINE    FScc/FDBcc/FTRAPcc,A6
         b       fline_an_2
-        ori     addr, code_ptr, L_05770 - cb            // F24F  F-LINE    FScc/FDBcc/FTRAPcc,A7
+        ori     addr, code_ptr, roxr_roxl_l_q_d7_L9 - cb  // F24F  F-LINE    FScc/FDBcc/FTRAPcc,A7
         b       fline_an_2
         mr      addr, a0                                // F250  F-LINE    FScc/FDBcc/FTRAPcc,(A0)
         b       fline_mem_10
@@ -1222,37 +1222,37 @@
         b       fline_mem_10
         mr      addr, a7                                // F257  F-LINE    FScc/FDBcc/FTRAPcc,(A7)
         b       fline_mem_10
-        ori     addr, code_ptr, L_00860 - cb            // F258  F-LINE    FScc/FDBcc/FTRAPcc,(A0)+
+        ori     addr, code_ptr, fea_l_30_L1 - cb        // F258  F-LINE    FScc/FDBcc/FTRAPcc,(A0)+
         b       fline_mem_11
-        ori     addr, code_ptr, L_008E0 - cb            // F259  F-LINE    FScc/FDBcc/FTRAPcc,(A1)+
+        ori     addr, code_ptr, fea_l_31_L1 - cb        // F259  F-LINE    FScc/FDBcc/FTRAPcc,(A1)+
         b       fline_mem_11
-        ori     addr, code_ptr, L_00960 - cb            // F25A  F-LINE    FScc/FDBcc/FTRAPcc,(A2)+
+        ori     addr, code_ptr, fea_l_32_L1 - cb        // F25A  F-LINE    FScc/FDBcc/FTRAPcc,(A2)+
         b       fline_mem_11
-        ori     addr, code_ptr, L_009E0 - cb            // F25B  F-LINE    FScc/FDBcc/FTRAPcc,(A3)+
+        ori     addr, code_ptr, fea_l_33_L1 - cb        // F25B  F-LINE    FScc/FDBcc/FTRAPcc,(A3)+
         b       fline_mem_11
-        ori     addr, code_ptr, L_00A60 - cb            // F25C  F-LINE    FScc/FDBcc/FTRAPcc,(A4)+
+        ori     addr, code_ptr, fea_l_34_L1 - cb        // F25C  F-LINE    FScc/FDBcc/FTRAPcc,(A4)+
         b       fline_mem_11
-        ori     addr, code_ptr, L_00AE0 - cb            // F25D  F-LINE    FScc/FDBcc/FTRAPcc,(A5)+
+        ori     addr, code_ptr, fea_l_35_L1 - cb        // F25D  F-LINE    FScc/FDBcc/FTRAPcc,(A5)+
         b       fline_mem_11
-        ori     addr, code_ptr, L_00B60 - cb            // F25E  F-LINE    FScc/FDBcc/FTRAPcc,(A6)+
+        ori     addr, code_ptr, fea_l_36_L1 - cb        // F25E  F-LINE    FScc/FDBcc/FTRAPcc,(A6)+
         b       fline_mem_11
-        ori     addr, code_ptr, L_00BE0 - cb            // F25F  F-LINE    FScc/FDBcc/FTRAPcc,(A7)+
+        ori     addr, code_ptr, fea_l_37_L1 - cb        // F25F  F-LINE    FScc/FDBcc/FTRAPcc,(A7)+
         b       fline_mem_11
-        ori     addr, code_ptr, L_00860 - cb            // F260  F-LINE    FScc/FDBcc/FTRAPcc,-(A0)
+        ori     addr, code_ptr, fea_l_30_L1 - cb        // F260  F-LINE    FScc/FDBcc/FTRAPcc,-(A0)
         b       fline_mem_12
-        ori     addr, code_ptr, L_008E0 - cb            // F261  F-LINE    FScc/FDBcc/FTRAPcc,-(A1)
+        ori     addr, code_ptr, fea_l_31_L1 - cb        // F261  F-LINE    FScc/FDBcc/FTRAPcc,-(A1)
         b       fline_mem_12
-        ori     addr, code_ptr, L_00960 - cb            // F262  F-LINE    FScc/FDBcc/FTRAPcc,-(A2)
+        ori     addr, code_ptr, fea_l_32_L1 - cb        // F262  F-LINE    FScc/FDBcc/FTRAPcc,-(A2)
         b       fline_mem_12
-        ori     addr, code_ptr, L_009E0 - cb            // F263  F-LINE    FScc/FDBcc/FTRAPcc,-(A3)
+        ori     addr, code_ptr, fea_l_33_L1 - cb        // F263  F-LINE    FScc/FDBcc/FTRAPcc,-(A3)
         b       fline_mem_12
-        ori     addr, code_ptr, L_00A60 - cb            // F264  F-LINE    FScc/FDBcc/FTRAPcc,-(A4)
+        ori     addr, code_ptr, fea_l_34_L1 - cb        // F264  F-LINE    FScc/FDBcc/FTRAPcc,-(A4)
         b       fline_mem_12
-        ori     addr, code_ptr, L_00AE0 - cb            // F265  F-LINE    FScc/FDBcc/FTRAPcc,-(A5)
+        ori     addr, code_ptr, fea_l_35_L1 - cb        // F265  F-LINE    FScc/FDBcc/FTRAPcc,-(A5)
         b       fline_mem_12
-        ori     addr, code_ptr, L_00B60 - cb            // F266  F-LINE    FScc/FDBcc/FTRAPcc,-(A6)
+        ori     addr, code_ptr, fea_l_36_L1 - cb        // F266  F-LINE    FScc/FDBcc/FTRAPcc,-(A6)
         b       fline_mem_12
-        ori     addr, code_ptr, L_00BE0 - cb            // F267  F-LINE    FScc/FDBcc/FTRAPcc,-(A7)
+        ori     addr, code_ptr, fea_l_37_L1 - cb        // F267  F-LINE    FScc/FDBcc/FTRAPcc,-(A7)
         b       fline_mem_12
         mr      addr, a0                                // F268  F-LINE    FScc/FDBcc/FTRAPcc,(d16,A0)
         b       fline_mem_13
@@ -1628,21 +1628,21 @@
         b       take_fline
         lwz     rtn_addr, fline_handler(EmulatorStatePtr)  // F31F  F-LINE    FSAVE,(A7)+
         b       take_fline
-        ori     addr, code_ptr, L_00860 - cb            // F320  F-LINE    FSAVE,-(A0)
+        ori     addr, code_ptr, fea_l_30_L1 - cb        // F320  F-LINE    FSAVE,-(A0)
         b       fline_mem_18
-        ori     addr, code_ptr, L_008E0 - cb            // F321  F-LINE    FSAVE,-(A1)
+        ori     addr, code_ptr, fea_l_31_L1 - cb        // F321  F-LINE    FSAVE,-(A1)
         b       fline_mem_18
-        ori     addr, code_ptr, L_00960 - cb            // F322  F-LINE    FSAVE,-(A2)
+        ori     addr, code_ptr, fea_l_32_L1 - cb        // F322  F-LINE    FSAVE,-(A2)
         b       fline_mem_18
-        ori     addr, code_ptr, L_009E0 - cb            // F323  F-LINE    FSAVE,-(A3)
+        ori     addr, code_ptr, fea_l_33_L1 - cb        // F323  F-LINE    FSAVE,-(A3)
         b       fline_mem_18
-        ori     addr, code_ptr, L_00A60 - cb            // F324  F-LINE    FSAVE,-(A4)
+        ori     addr, code_ptr, fea_l_34_L1 - cb        // F324  F-LINE    FSAVE,-(A4)
         b       fline_mem_18
-        ori     addr, code_ptr, L_00AE0 - cb            // F325  F-LINE    FSAVE,-(A5)
+        ori     addr, code_ptr, fea_l_35_L1 - cb        // F325  F-LINE    FSAVE,-(A5)
         b       fline_mem_18
-        ori     addr, code_ptr, L_00B60 - cb            // F326  F-LINE    FSAVE,-(A6)
+        ori     addr, code_ptr, fea_l_36_L1 - cb        // F326  F-LINE    FSAVE,-(A6)
         b       fline_mem_18
-        ori     addr, code_ptr, L_00BE0 - cb            // F327  F-LINE    FSAVE,-(A7)
+        ori     addr, code_ptr, fea_l_37_L1 - cb        // F327  F-LINE    FSAVE,-(A7)
         b       fline_mem_18
         add     addr, a0, prefetch_data                 // F328  F-LINE    FSAVE,(d16,A0)
         b       fline_mem_19
@@ -1742,21 +1742,21 @@
         b       fline_mem_23
         mr      addr, a7                                // F357  F-LINE    FRESTORE,(A7)
         b       fline_mem_23
-        ori     addr, code_ptr, L_00860 - cb            // F358  F-LINE    FRESTORE,(A0)+
+        ori     addr, code_ptr, fea_l_30_L1 - cb        // F358  F-LINE    FRESTORE,(A0)+
         b       fline_mem_24
-        ori     addr, code_ptr, L_008E0 - cb            // F359  F-LINE    FRESTORE,(A1)+
+        ori     addr, code_ptr, fea_l_31_L1 - cb        // F359  F-LINE    FRESTORE,(A1)+
         b       fline_mem_24
-        ori     addr, code_ptr, L_00960 - cb            // F35A  F-LINE    FRESTORE,(A2)+
+        ori     addr, code_ptr, fea_l_32_L1 - cb        // F35A  F-LINE    FRESTORE,(A2)+
         b       fline_mem_24
-        ori     addr, code_ptr, L_009E0 - cb            // F35B  F-LINE    FRESTORE,(A3)+
+        ori     addr, code_ptr, fea_l_33_L1 - cb        // F35B  F-LINE    FRESTORE,(A3)+
         b       fline_mem_24
-        ori     addr, code_ptr, L_00A60 - cb            // F35C  F-LINE    FRESTORE,(A4)+
+        ori     addr, code_ptr, fea_l_34_L1 - cb        // F35C  F-LINE    FRESTORE,(A4)+
         b       fline_mem_24
-        ori     addr, code_ptr, L_00AE0 - cb            // F35D  F-LINE    FRESTORE,(A5)+
+        ori     addr, code_ptr, fea_l_35_L1 - cb        // F35D  F-LINE    FRESTORE,(A5)+
         b       fline_mem_24
-        ori     addr, code_ptr, L_00B60 - cb            // F35E  F-LINE    FRESTORE,(A6)+
+        ori     addr, code_ptr, fea_l_36_L1 - cb        // F35E  F-LINE    FRESTORE,(A6)+
         b       fline_mem_24
-        ori     addr, code_ptr, L_00BE0 - cb            // F35F  F-LINE    FRESTORE,(A7)+
+        ori     addr, code_ptr, fea_l_37_L1 - cb        // F35F  F-LINE    FRESTORE,(A7)+
         b       fline_mem_24
         lwz     rtn_addr, fline_handler(EmulatorStatePtr)  // F360  F-LINE    FRESTORE,-(A0)
         b       take_fline
@@ -3124,37 +3124,37 @@
         b       take_fline
 
 // ---- $F600-$F63F --------------------------------------------------------
-        ori     addr, code_ptr, L_00860 - cb            // F600  MOVE16    (A0)+,(xxx).L
+        ori     addr, code_ptr, fea_l_30_L1 - cb        // F600  MOVE16    (A0)+,(xxx).L
         b       move16_mem_mem
-        ori     addr, code_ptr, L_008E0 - cb            // F601  MOVE16    (A1)+,(xxx).L
+        ori     addr, code_ptr, fea_l_31_L1 - cb        // F601  MOVE16    (A1)+,(xxx).L
         b       move16_mem_mem
-        ori     addr, code_ptr, L_00960 - cb            // F602  MOVE16    (A2)+,(xxx).L
+        ori     addr, code_ptr, fea_l_32_L1 - cb        // F602  MOVE16    (A2)+,(xxx).L
         b       move16_mem_mem
-        ori     addr, code_ptr, L_009E0 - cb            // F603  MOVE16    (A3)+,(xxx).L
+        ori     addr, code_ptr, fea_l_33_L1 - cb        // F603  MOVE16    (A3)+,(xxx).L
         b       move16_mem_mem
-        ori     addr, code_ptr, L_00A60 - cb            // F604  MOVE16    (A4)+,(xxx).L
+        ori     addr, code_ptr, fea_l_34_L1 - cb        // F604  MOVE16    (A4)+,(xxx).L
         b       move16_mem_mem
-        ori     addr, code_ptr, L_00AE0 - cb            // F605  MOVE16    (A5)+,(xxx).L
+        ori     addr, code_ptr, fea_l_35_L1 - cb        // F605  MOVE16    (A5)+,(xxx).L
         b       move16_mem_mem
-        ori     addr, code_ptr, L_00B60 - cb            // F606  MOVE16    (A6)+,(xxx).L
+        ori     addr, code_ptr, fea_l_36_L1 - cb        // F606  MOVE16    (A6)+,(xxx).L
         b       move16_mem_mem
-        ori     addr, code_ptr, L_00BE0 - cb            // F607  MOVE16    (A7)+,(xxx).L
+        ori     addr, code_ptr, fea_l_37_L1 - cb        // F607  MOVE16    (A7)+,(xxx).L
         b       move16_mem_mem
-        ori     addr, code_ptr, L_00860 - cb            // F608  MOVE16    (xxx).L,(A0)+
+        ori     addr, code_ptr, fea_l_30_L1 - cb        // F608  MOVE16    (xxx).L,(A0)+
         b       move16_mem_mem_3
-        ori     addr, code_ptr, L_008E0 - cb            // F609  MOVE16    (xxx).L,(A1)+
+        ori     addr, code_ptr, fea_l_31_L1 - cb        // F609  MOVE16    (xxx).L,(A1)+
         b       move16_mem_mem_3
-        ori     addr, code_ptr, L_00960 - cb            // F60A  MOVE16    (xxx).L,(A2)+
+        ori     addr, code_ptr, fea_l_32_L1 - cb        // F60A  MOVE16    (xxx).L,(A2)+
         b       move16_mem_mem_3
-        ori     addr, code_ptr, L_009E0 - cb            // F60B  MOVE16    (xxx).L,(A3)+
+        ori     addr, code_ptr, fea_l_33_L1 - cb        // F60B  MOVE16    (xxx).L,(A3)+
         b       move16_mem_mem_3
-        ori     addr, code_ptr, L_00A60 - cb            // F60C  MOVE16    (xxx).L,(A4)+
+        ori     addr, code_ptr, fea_l_34_L1 - cb        // F60C  MOVE16    (xxx).L,(A4)+
         b       move16_mem_mem_3
-        ori     addr, code_ptr, L_00AE0 - cb            // F60D  MOVE16    (xxx).L,(A5)+
+        ori     addr, code_ptr, fea_l_35_L1 - cb        // F60D  MOVE16    (xxx).L,(A5)+
         b       move16_mem_mem_3
-        ori     addr, code_ptr, L_00B60 - cb            // F60E  MOVE16    (xxx).L,(A6)+
+        ori     addr, code_ptr, fea_l_36_L1 - cb        // F60E  MOVE16    (xxx).L,(A6)+
         b       move16_mem_mem_3
-        ori     addr, code_ptr, L_00BE0 - cb            // F60F  MOVE16    (xxx).L,(A7)+
+        ori     addr, code_ptr, fea_l_37_L1 - cb        // F60F  MOVE16    (xxx).L,(A7)+
         b       move16_mem_mem_3
         addi    addr, a0, 16                            // F610  MOVE16    (A0),(xxx).L
         b       move16_mem_mem_2
@@ -3188,21 +3188,21 @@
         b       move16_mem_mem_4
         addi    addr, a7, 16                            // F61F  MOVE16    (xxx).L,(A7)
         b       move16_mem_mem_4
-        ori     addr, code_ptr, L_00860 - cb            // F620  MOVE16    (A0)+,(Ay)+
+        ori     addr, code_ptr, fea_l_30_L1 - cb        // F620  MOVE16    (A0)+,(Ay)+
         b       move16_mem
-        ori     addr, code_ptr, L_008E0 - cb            // F621  MOVE16    (A1)+,(Ay)+
+        ori     addr, code_ptr, fea_l_31_L1 - cb        // F621  MOVE16    (A1)+,(Ay)+
         b       move16_mem
-        ori     addr, code_ptr, L_00960 - cb            // F622  MOVE16    (A2)+,(Ay)+
+        ori     addr, code_ptr, fea_l_32_L1 - cb        // F622  MOVE16    (A2)+,(Ay)+
         b       move16_mem
-        ori     addr, code_ptr, L_009E0 - cb            // F623  MOVE16    (A3)+,(Ay)+
+        ori     addr, code_ptr, fea_l_33_L1 - cb        // F623  MOVE16    (A3)+,(Ay)+
         b       move16_mem
-        ori     addr, code_ptr, L_00A60 - cb            // F624  MOVE16    (A4)+,(Ay)+
+        ori     addr, code_ptr, fea_l_34_L1 - cb        // F624  MOVE16    (A4)+,(Ay)+
         b       move16_mem
-        ori     addr, code_ptr, L_00AE0 - cb            // F625  MOVE16    (A5)+,(Ay)+
+        ori     addr, code_ptr, fea_l_35_L1 - cb        // F625  MOVE16    (A5)+,(Ay)+
         b       move16_mem
-        ori     addr, code_ptr, L_00B60 - cb            // F626  MOVE16    (A6)+,(Ay)+
+        ori     addr, code_ptr, fea_l_36_L1 - cb        // F626  MOVE16    (A6)+,(Ay)+
         b       move16_mem
-        ori     addr, code_ptr, L_00BE0 - cb            // F627  MOVE16    (A7)+,(Ay)+
+        ori     addr, code_ptr, fea_l_37_L1 - cb        // F627  MOVE16    (A7)+,(Ay)+
         b       move16_mem
         lwz     rtn_addr, fline_handler(EmulatorStatePtr)  // F628  ILLEGAL
         b       take_fline

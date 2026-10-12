@@ -110,6 +110,8 @@ class Walker:
         self.event = names['process_special_event']
         self.terminal = {}
         for name, addr in names.items():
+            if gen.AUTO_LABEL.fullmatch(name):
+                continue                        # a local label inside a routine
             if name.startswith('take_') or name in (
                     'exit_emulator', 'switch_to_native', 'mixed_mode_dispatch',
                     'privilege_check_failed'):

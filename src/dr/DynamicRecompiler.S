@@ -60,7 +60,7 @@ dr_scan_store:
         sth     out_ptr, 4(rec_ptr)
         cmpwi   cr6, addr, 0
         cmpwi   cr7, blk_ofs, 120                       // a block is at most 120 bytes of 68K code
-        bne     cr6, L_100A4
+        bne     cr6, dr_scan_block_full_L2
         sth     immed_data, 0(rec_ptr)
         addi    rec_ptr, rec_ptr, 12
         bge     cr7, dr_scan_block_full
@@ -86,11 +86,11 @@ dr_scan_block_full:
         ori     immed_data, zero, 0x8300
         li      out_ptr, 0x6330
         b       dr_scan_end_block
-L_10098:
+dr_scan_block_full_L1:
         li      out_ptr, 0x6300
         sth     out_ptr, 4(rec_ptr)
         b       dr_liveness
-L_100A4:
+dr_scan_block_full_L2:
         mr      blk_ofs, addr
         lhz     addr, -12(rec_ptr)
         rlwinm  data, immed_data, 2, 21, 21             // data = immed_data[8] << 10
@@ -107,12 +107,12 @@ dr_scan_end_block:
         lhz     data, 2(rec_ptr)
         cmpwi   cr6, addr, 0
         sth     out_ptr, 4(rec_ptr)
-        bf_unlikely 4*cr6+eq, L_100A4
+        bf_unlikely 4*cr6+eq, dr_scan_block_full_L2
         ori     immed_data, immed_data, 0x8300
         mtcrf   0x08, immed_data                        // cr4 = immed_data[15:12]
         sth     immed_data, 0(rec_ptr)
         stw     data, 0xB24(EmulatorStatePtr)
-        bgt     cr4, L_10098
+        bgt     cr4, dr_scan_block_full_L1
         bne     cr4, dr_liveness
         addi    rec_ptr, rec_ptr, 12
         sth     blk_ofs, 2(rec_ptr)
@@ -125,7 +125,7 @@ dr_liveness:
         lhz     addr, 0xB2A(EmulatorStatePtr)
         cmpwi   cr7, addr, 0
         lwz     immed_data, dr_records(EmulatorStatePtr)
-        beq     cr7, L_10130
+        beq     cr7, dr_liveness_L1
         lwz     data, dr_emit_ptr(EmulatorStatePtr)
         addi    addr, base_disp, 0x75AC
         subf    addr, data, addr                        // addr = addr - data
@@ -134,7 +134,7 @@ dr_liveness:
         stw     addr, 0(data)
         addi    data, data, 4
         stw     data, dr_emit_ptr(EmulatorStatePtr)
-L_10130:
+dr_liveness_L1:
         lwz     data, dr_emit_ptr(EmulatorStatePtr)
         lhz     addr, 0xB28(EmulatorStatePtr)
         add     data, addr, data
@@ -142,7 +142,7 @@ L_10130:
         li      addr, 0xC00
         addi    rec_ptr, rec_ptr, -12
         cmplw   cr7, rec_ptr, immed_data
-        b       L_10178
+        b       dr_liveness_loop_L1
 
 dr_liveness_loop:
         lhz     data, 0(rec_ptr)
@@ -155,7 +155,7 @@ dr_liveness_loop:
         sth     data, 0(rec_ptr)
         addi    rec_ptr, rec_ptr, -12
         cmplw   cr7, rec_ptr, immed_data
-L_10178:
+dr_liveness_loop_L1:
         btl     cr_special_event_pending, dr_translate_abort
         bge     cr7, dr_liveness_loop
         lwz     out_ptr, dr_emit_ptr(EmulatorStatePtr)
@@ -192,13 +192,13 @@ dr_fix_branches:
         btl     cr_special_event_pending, dr_translate_abort
         lwz     rec_ptr, dr_records(EmulatorStatePtr)
         addi    rec_ptr, rec_ptr, -12
-L_101E8:
+dr_fix_branches_L1:
         lhz     addr, 12(rec_ptr)
         addi    rec_ptr, rec_ptr, 12
         mtcrf   0x08, addr                              // cr4 = addr[15:12]
         blt     cr4, dr_emit_finish
-        bsol    cr4, L_17748
-        b       L_101E8
+        bsol    cr4, dr_templates_L9
+        b       dr_fix_branches_L1
 
 // Flush the new code out of the data cache and into the instruction
 // cache, then hand the block to the run-time.
@@ -206,13 +206,13 @@ dr_emit_finish:
         btl     cr_special_event_pending, dr_translate_abort
         addi    out_ptr, out_ptr, 4
         lwz     addr, dr_cache_ptr(EmulatorStatePtr)
-L_1020C:
+dr_emit_finish_L1:
         cmplw   cr7, addr, out_ptr
         dcbf    0, addr
         sync
         icbi    0, addr
         addi    addr, addr, 32
-        blt     cr7, L_1020C
+        blt     cr7, dr_emit_finish_L1
         sync
         isync
         addi    pc, pc, 2
@@ -317,7 +317,7 @@ dr_line_0:
         cmpwi   cr4, addr, 10
         beq     cr7, L_10A9C
         beq     cr4, L_10AD0
-L_103B4:
+dr_line_0_L1:
         li      immed_data, 0x4300
         b       dr_scan_end_block
         nop
@@ -325,9 +325,9 @@ L_103B4:
         blt     cr6, L_10AF8
         bgt     cr6, L_10B0C
         li      out_ptr, 0x2930
-        bns     cr5, L_103D8
+        bns     cr5, dr_line_0_L2
         li      out_ptr, 0x33C4
-L_103D8:
+dr_line_0_L2:
         li      immed_data, 0xC00
         addi    rtn_addr, base_disp, 0xE38
         lbzx    data, rtn_addr, addr
@@ -335,9 +335,9 @@ L_103D8:
         add     blk_ofs, blk_ofs, data
         bsol    cr7, L_10FFC
         b       dr_scan_store
-        b       L_10400
+        b       dr_line_0_L3
         ALIGN(64)
-L_10400:
+dr_line_0_L3:
         clrlwi  addr, prefetch_data, 24                 // addr = prefetch_data & 0x000000FF
         rlwinm  data, prefetch_data, 24, 28, 31         // data = prefetch_data[11:8]
         cmpwi   cr6, addr, 255
@@ -360,9 +360,9 @@ L_10400:
         bns     cr5, dr_scan_store
         li      immed_data, 0x4300
         b       dr_scan_end_block
-        b       L_10480
+        b       dr_line_0_L4
         ALIGN(64)
-L_10480:
+dr_line_0_L4:
         crand   4*cr6+eq, 4*cr6+gt, 4*cr6+lt            // cr6.eq = cr6.gt & cr6.lt
         clrlwi  addr, prefetch_data, 26                 // addr = prefetch_data & 0x0000003F
         li      immed_data, 0x400
@@ -594,7 +594,7 @@ L_107D8:
         cmpwi   cr6, addr, 0x44C0
         beq     cr7, L_107F0
         beq     cr6, L_10814
-        b       L_103B4
+        b       dr_line_0_L1
 L_107F0:
         li      out_ptr, 0x1900
         clrlwi  addr, prefetch_data, 26                 // addr = prefetch_data & 0x0000003F
@@ -635,7 +635,7 @@ L_1085C:
         b       dr_scan_store
 L_10878:
         clrlwi  addr, prefetch_data, 26                 // addr = prefetch_data & 0x0000003F
-        bso     cr5, L_103B4
+        bso     cr5, dr_line_0_L1
         crand   4*cr6+eq, 4*cr6+gt, 4*cr6+lt            // cr6.eq = cr6.gt & cr6.lt
         addi    rtn_addr, base_disp, 0xE38
         lbzx    data, rtn_addr, addr
@@ -644,7 +644,7 @@ L_10878:
         beq     cr5, L_108A8
         li      immed_data, 0xC00
         li      out_ptr, 0x3FB4
-        ble     cr5, L_103B4
+        ble     cr5, dr_line_0_L1
         b       L_108B4
 L_108A8:
         li      out_ptr, 0x1838
@@ -663,7 +663,7 @@ L_108D0:
         blt     cr6, L_10934
         cmpwi   cr4, addr, 1
         bgt     cr6, L_108F4
-        bne     cr4, L_103B4
+        bne     cr4, dr_line_0_L1
         li      out_ptr, 0x5970
         li      immed_data, 0
         addi    blk_ofs, blk_ofs, 4
@@ -720,7 +720,7 @@ L_1098C:
         beq     cr4, L_109BC
         cmpwi   cr4, prefetch_data, 0x4E71
         beq     cr7, L_109C4
-        bne     cr4, L_103B4
+        bne     cr4, dr_line_0_L1
         li      out_ptr, 0x5808
         mr      immed_data, zero
         b       dr_scan_store
@@ -739,7 +739,7 @@ L_109D0:
         beq     cr4, L_109F0
         li      out_ptr, 0x5998
         beq     cr7, dr_scan_store
-        b       L_103B4
+        b       dr_line_0_L1
 L_109F0:
         li      out_ptr, 0x5920
         addi    blk_ofs, blk_ofs, 2
@@ -791,7 +791,7 @@ L_10A78:
         b       dr_scan_end_block
 L_10A9C:
         clrlwi  addr, prefetch_data, 26                 // addr = prefetch_data & 0x0000003F
-        bge     cr6, L_103B4
+        bge     cr6, dr_line_0_L1
         li      out_ptr, 0x1B8C
         rlwinm  data, prefetch_data, 28, 29, 29         // data = prefetch_data[6] << 2
         add     out_ptr, out_ptr, data
@@ -807,7 +807,7 @@ L_10AD0:
         crand   4*cr6+eq, 4*cr6+gt, 4*cr6+lt            // cr6.eq = cr6.gt & cr6.lt
         clrlwi  addr, prefetch_data, 26                 // addr = prefetch_data & 0x0000003F
         li      immed_data, 0x400
-        beq     cr6, L_103B4
+        beq     cr6, dr_line_0_L1
         li      out_ptr, 0x3B9C
         bgt     cr6, L_10E6C
         li      out_ptr, 0x38D8
@@ -1311,7 +1311,7 @@ dr_emitters:
         lwz     addr, 0x26C(base_disp)
         b       L_11658
         lwz     addr, 0x270(base_disp)
-L_11374:
+dr_emitters_L1:
         lhax    rtn_addr, pc, blk_ofs
         add     immed_data, addr, immed_data
         rlwinm  addr, data, 31, 29, 31                  // addr = data[3:1]
@@ -1321,31 +1321,31 @@ L_11374:
         cmpwi   cr7, addr, 15
         cror    4*cr5+so, 4*cr5+eq, 4*cr5+gt            // cr5.so = cr5.eq | cr5.gt
         lwz     addr, 0x1148(base_disp)
-        blt     cr5, L_1142C
+        blt     cr5, dr_emitters_L10
         rlwinm  rtn_addr, rtn_addr, 9, 7, 10            // rtn_addr = rtn_addr[15:12] << 21
-        bne     cr7, L_113A8
+        bne     cr7, dr_emitters_L2
         lis     rtn_addr, 0xFF20
-L_113A8:
+dr_emitters_L2:
         add     addr, addr, rtn_addr
         stwu    addr, 4(out_ptr)
-        bns     cr5, L_113D0
+        bns     cr5, dr_emitters_L4
         lhax    rtn_addr, pc, blk_ofs
         lwz     addr, 0x114C(base_disp)
-L_113BC:
+dr_emitters_L3:
         rlwinm  rtn_addr, rtn_addr, 2, 19, 20           // rtn_addr = rtn_addr[10:9] << 11
         add     addr, addr, rtn_addr
         rlwinm  rtn_addr, rtn_addr, 22, 29, 30          // rtn_addr = rtn_addr[12:11] << 1
         subf    addr, rtn_addr, addr                    // addr = addr - rtn_addr
         stwu    addr, 4(out_ptr)
-L_113D0:
+dr_emitters_L4:
         lhax    rtn_addr, pc, blk_ofs
         lwz     addr, 0x1154(base_disp)
         rlwinm  data, data, 10, 18, 20                  // data = data[3:1] << 11
-        bne     cr6, L_113E4
+        bne     cr6, dr_emitters_L5
         li      data, -0x7800
-L_113E4:
+dr_emitters_L5:
         add     addr, addr, data
-L_113E8:
+dr_emitters_L6:
         stwu    addr, 4(out_ptr)
         addi    blk_ofs, blk_ofs, 2
         extsb   addr, rtn_addr                          // addr = sign-extended low byte of rtn_addr
@@ -1353,30 +1353,30 @@ L_113E8:
         rlwinm  immed_data, immed_data, 0, 6, 10        // immed_data = immed_data[25:21] << 21
         stwu    addr, 4(out_ptr)
         blr
-L_11404:
+dr_emitters_L7:
         lwz     addr, 0x1158(base_disp)
         rlwinm  data, data, 10, 18, 20                  // data = data[3:1] << 11
-        bne     cr6, L_11414
+        bne     cr6, dr_emitters_L8
         li      data, -0x7800
-L_11414:
+dr_emitters_L8:
         add     addr, addr, data
         rlwinm  data, rtn_addr, 4, 12, 15               // data = rtn_addr[15:12] << 16
-        bne     cr7, L_11424
+        bne     cr7, dr_emitters_L9
         lis     data, 0xFFF9
-L_11424:
+dr_emitters_L9:
         add     addr, addr, data
-        b       L_113E8
-L_1142C:
-        bns     cr5, L_11404
+        b       dr_emitters_L6
+dr_emitters_L10:
+        bns     cr5, dr_emitters_L7
         lhax    rtn_addr, pc, blk_ofs
         lwz     addr, 0x1150(base_disp)
         rlwinm  rtn_addr, rtn_addr, 9, 7, 10            // rtn_addr = rtn_addr[15:12] << 21
-        bne     cr7, L_11444
+        bne     cr7, dr_emitters_L11
         lis     rtn_addr, 0xFF20
-L_11444:
+dr_emitters_L11:
         add     addr, addr, rtn_addr
         lhax    rtn_addr, pc, blk_ofs
-        b       L_113BC
+        b       dr_emitters_L3
         lhax    rtn_addr, pc, blk_ofs
         lwz     addr, 0x274(base_disp)
         addi    blk_ofs, blk_ofs, 2
@@ -1412,7 +1412,7 @@ L_11444:
         stwu    addr, 4(out_ptr)
         blr
         lwz     addr, 0x270(base_disp)
-L_114DC:
+dr_emitters_L12:
         lhax    rtn_addr, pc, blk_ofs
         add     immed_data, addr, immed_data
         mtcrf   0x04, rtn_addr                          // cr5 = rtn_addr[11:8]
@@ -1422,24 +1422,24 @@ L_114DC:
         lwz     addr, 0x1148(base_disp)
         blt     cr5, L_11574
         rlwinm  rtn_addr, rtn_addr, 9, 7, 10            // rtn_addr = rtn_addr[15:12] << 21
-        bne     cr7, L_11508
+        bne     cr7, dr_emitters_L13
         lis     rtn_addr, 0xFF20
-L_11508:
+dr_emitters_L13:
         add     addr, addr, rtn_addr
         stwu    addr, 4(out_ptr)
-        bns     cr5, L_11530
+        bns     cr5, dr_emitters_L15
         lhax    rtn_addr, pc, blk_ofs
         lwz     addr, 0x114C(base_disp)
-L_1151C:
+dr_emitters_L14:
         rlwinm  rtn_addr, rtn_addr, 2, 19, 20           // rtn_addr = rtn_addr[10:9] << 11
         add     addr, addr, rtn_addr
         rlwinm  rtn_addr, rtn_addr, 22, 29, 30          // rtn_addr = rtn_addr[12:11] << 1
         subf    addr, rtn_addr, addr                    // addr = addr - rtn_addr
         stwu    addr, 4(out_ptr)
-L_11530:
+dr_emitters_L15:
         lhax    rtn_addr, pc, blk_ofs
         lwz     addr, 0x115C(base_disp)
-L_11538:
+dr_emitters_L16:
         stwu    addr, 4(out_ptr)
         extsb   rtn_addr, rtn_addr                      // rtn_addr = sign-extended low byte of rtn_addr
         add     rtn_addr, rtn_addr, blk_ofs
@@ -1456,7 +1456,7 @@ L_1155C:
         lis     data, 0xFFF9
 L_1156C:
         add     addr, addr, data
-        b       L_11538
+        b       dr_emitters_L16
 L_11574:
         bns     cr5, L_1155C
         lhax    rtn_addr, pc, blk_ofs
@@ -1467,7 +1467,7 @@ L_11574:
 L_1158C:
         add     addr, addr, rtn_addr
         lhax    rtn_addr, pc, blk_ofs
-        b       L_1151C
+        b       dr_emitters_L14
         add     zero, a0, zero
         add     zero, a7, zero
         addi    zero, a0, 0
@@ -1531,7 +1531,7 @@ L_11658:
         stwu    addr, 4(out_ptr)
         blr
         lwz     addr, 0x1078(base_disp)
-        b       L_11374
+        b       dr_emitters_L1
         lhax    rtn_addr, pc, blk_ofs
         lwz     addr, 0x1074(base_disp)
 L_11680:
@@ -1574,7 +1574,7 @@ L_116F4:
         lwz     addr, 0x1088(base_disp)
         b       L_116E4
         lwz     addr, 0x1078(base_disp)
-        b       L_114DC
+        b       dr_emitters_L12
         lwzx    rtn_addr, pc, blk_ofs
         lwz     addr, 0x1094(base_disp)
         addi    blk_ofs, blk_ofs, 4
@@ -1617,7 +1617,7 @@ L_1175C:
         lwz     addr, 0x1050(base_disp)
         b       L_11658
         lwz     addr, 0x1080(base_disp)
-        b       L_11374
+        b       dr_emitters_L1
         lhax    rtn_addr, pc, blk_ofs
         lwz     addr, 0x107C(base_disp)
         b       L_11684
@@ -1645,7 +1645,7 @@ L_1175C:
         lwz     addr, 0x1090(base_disp)
         b       L_116E4
         lwz     addr, 0x1080(base_disp)
-        b       L_114DC
+        b       dr_emitters_L12
         lwz     addr, 0x1054(base_disp)
         rlwinm  data, data, 15, 13, 15                  // data = data[3:1] << 16
         add     addr, addr, data
@@ -1732,7 +1732,7 @@ L_1193C:
         lwz     addr, 0x10A0(base_disp)
         b       L_11658
         lwz     addr, 0x10D0(base_disp)
-        b       L_11374
+        b       dr_emitters_L1
         lhax    rtn_addr, pc, blk_ofs
         lwz     addr, 0x10CC(base_disp)
         b       L_11680
@@ -1769,7 +1769,7 @@ L_119E4:
         lwz     addr, 0x10E0(base_disp)
         b       L_119D4
         lwz     addr, 0x10D0(base_disp)
-        b       L_114DC
+        b       dr_emitters_L12
         lhax    rtn_addr, pc, blk_ofs
         addi    blk_ofs, blk_ofs, 2
         lwz     addr, 0x10EC(base_disp)
@@ -1794,7 +1794,7 @@ L_119E4:
         lwz     addr, 0x10A8(base_disp)
         b       L_11658
         lwz     addr, 0x10D8(base_disp)
-        b       L_11374
+        b       dr_emitters_L1
         lhax    rtn_addr, pc, blk_ofs
         lwz     addr, 0x10D4(base_disp)
         b       L_11684
@@ -1822,7 +1822,7 @@ L_119E4:
         lwz     addr, 0x10E8(base_disp)
         b       L_119D4
         lwz     addr, 0x10D8(base_disp)
-        b       L_114DC
+        b       dr_emitters_L12
         lwz     addr, 0x10AC(base_disp)
         rlwinm  data, data, 15, 13, 15                  // data = data[3:1] << 16
         add     addr, addr, data
@@ -1903,7 +1903,7 @@ L_119E4:
         lwz     addr, 0x10F4(base_disp)
         b       L_11658
         lwz     addr, 0x1124(base_disp)
-        b       L_11374
+        b       dr_emitters_L1
         lhax    rtn_addr, pc, blk_ofs
         lwz     addr, 0x1120(base_disp)
         b       L_11680
@@ -1941,7 +1941,7 @@ L_11C84:
         lwz     addr, 0x1134(base_disp)
         b       L_11C74
         lwz     addr, 0x1124(base_disp)
-        b       L_114DC
+        b       dr_emitters_L12
         lhax    rtn_addr, pc, blk_ofs
         lwz     addr, 0x10EC(base_disp)
         addi    blk_ofs, blk_ofs, 2
@@ -1981,7 +1981,7 @@ L_11C84:
         lwz     addr, 0x1100(base_disp)
         b       L_11658
         lwz     addr, 0x112C(base_disp)
-        b       L_11374
+        b       dr_emitters_L1
         lhax    rtn_addr, pc, blk_ofs
         lwz     addr, 0x1128(base_disp)
         b       L_11684
@@ -2009,7 +2009,7 @@ L_11C84:
         lwz     addr, 0x113C(base_disp)
         b       L_11C78
         lwz     addr, 0x112C(base_disp)
-        b       L_114DC
+        b       dr_emitters_L12
         lwz     addr, 0x10FC(base_disp)
         rlwinm  data, data, 15, 13, 15                  // data = data[3:1] << 16
         add     addr, addr, data
@@ -3178,7 +3178,7 @@ L_129BC:
         rlwimi  rtn_addr, addr, 0, 16, 29               // rtn_addr[15:2] = addr[15:2]
         stwu    rtn_addr, 4(out_ptr)
         addi    rtn_addr, blk_ofs, -2
-        bl      L_17698
+        bl      dr_templates_L4
         lwz     addr, 0x1720(base_disp)
         stwu    addr, 4(out_ptr)
         b       dr_emit_next
@@ -8016,7 +8016,7 @@ L_16EB0:
         stw     addr, 24(a7)
         bt      cr_special_event_pending, dr_exit_to_interpreter
         beqctr  cr6
-        b       L_17C94
+        b       dr_stale_block_L1
         b       L_16F20
         ALIGN(32)
 L_16F20:
@@ -8041,7 +8041,7 @@ L_16F20:
         stw     addr, 28(a7)
         bt      cr_special_event_pending, dr_exit_to_interpreter
         beqctr  cr6
-        b       L_17C94
+        b       dr_stale_block_L1
         ALIGN(64)
 L_16F80:
         mflr    base_disp
@@ -8058,7 +8058,7 @@ L_16F80:
         stwu    data, -4(a7)
         bt      cr_special_event_pending, dr_exit_to_interpreter
         beqctr  cr6
-        b       L_17C94
+        b       dr_stale_block_L1
         ALIGN(64)
 L_16FC0:
         mflr    base_disp
@@ -8073,7 +8073,7 @@ L_16FC0:
         mtctr   immed_data
         bt      cr_special_event_pending, dr_exit_to_interpreter
         beqctr  cr6
-        b       L_17C94
+        b       dr_stale_block_L1
 L_16FF4:
         crclr   cr_dr_busy
         addi    pc, pc, 2
@@ -8093,7 +8093,7 @@ L_16FF4:
         mtcrf   0x08, immed_data                        // cr4 = immed_data[15:12]
         add     immed_data, addr, data
         add     rtn_addr, rtn_addr, blk_ofs
-        bl      L_177F0
+        bl      dr_templates_L17
         b       L_17080
 L_17044:
         lwz     addr, dr_cache_ptr(EmulatorStatePtr)
@@ -8102,7 +8102,7 @@ L_17044:
         add     immed_data, addr, data
         mtcrf   0x08, rtn_addr                          // cr4 = rtn_addr[15:12]
         add     rtn_addr, rtn_addr, blk_ofs
-        bl      L_177F0
+        bl      dr_templates_L17
         b       L_17080
 L_17064:
         lwz     addr, dr_cache_ptr(EmulatorStatePtr)
@@ -8111,7 +8111,7 @@ L_17064:
         mtcrf   0x08, rtn_addr                          // cr4 = rtn_addr[15:12]
         add     immed_data, addr, data
         add     rtn_addr, rtn_addr, blk_ofs
-        bl      L_17698
+        bl      dr_templates_L4
 L_17080:
         lhz     rtn_addr, 0(rec_ptr)
         rlwinm  data, prefetch_data, 26, 26, 29         // data = prefetch_data[11:8] << 2
@@ -8157,7 +8157,7 @@ L_1710C:
         extsb   rtn_addr, prefetch_data                 // rtn_addr = sign-extended low byte of prefetch_data
         add     rtn_addr, rtn_addr, blk_ofs
         mr      immed_data, out_ptr
-        bl      L_17698
+        bl      dr_templates_L4
         mr      out_ptr, immed_data
         b       dr_fix_branches
 L_17124:
@@ -8173,7 +8173,7 @@ L_17140:
 L_17144:
         add     rtn_addr, rtn_addr, blk_ofs
         mr      immed_data, out_ptr
-        bl      L_177F0
+        bl      dr_templates_L17
         mr      out_ptr, immed_data
         b       dr_fix_branches
 L_17158:
@@ -8333,7 +8333,7 @@ L_17310:
         stwu    data, 4(immed_data)
         lhax    rtn_addr, pc, blk_ofs
         add     rtn_addr, rtn_addr, blk_ofs
-        bl      L_177F0
+        bl      dr_templates_L17
         b       dr_emit_next
 L_1736C:
         lwz     addr, 0x60A0(base_disp)
@@ -8345,7 +8345,7 @@ L_1736C:
         lhax    rtn_addr, pc, blk_ofs
         add     rtn_addr, rtn_addr, blk_ofs
         mr      immed_data, out_ptr
-        bl      L_177F0
+        bl      dr_templates_L17
         lwz     addr, 0(out_ptr)
         subf    rtn_addr, out_ptr, immed_data           // rtn_addr = immed_data - out_ptr
         addi    rtn_addr, rtn_addr, 4
@@ -8553,7 +8553,7 @@ L_17650:
         b       dr_fix_branches
         lhz     rtn_addr, 2(rec_ptr)
         mr      immed_data, out_ptr
-        bl      L_177A8
+        bl      dr_templates_L13
         mr      out_ptr, immed_data
         b       dr_fix_branches
 
@@ -8563,29 +8563,29 @@ L_17650:
 dr_templates:
         addi    pc, pc, 0                               // advance pc by a 16-bit amount
         addis   pc, pc, 0                               // advance pc by the high half of a 32-bit amount
-L_17684:
-        bl      L_17684                                 // call into the run-time
-        bt_unlikely cr_special_event_pending, L_17684   // conditional exit when a special event is pending
-        bf_likely cr_special_event_pending, L_17690
-L_17690:
-        b       L_17690                                 // unconditional branch
-L_17694:
-        b       L_17694                                 // unconditional branch (used when chaining blocks)
-L_17698:
+dr_templates_L1:
+        bl      dr_templates_L1                         // call into the run-time
+        bt_unlikely cr_special_event_pending, dr_templates_L1  // conditional exit when a special event is pending
+        bf_likely cr_special_event_pending, dr_templates_L2
+dr_templates_L2:
+        b       dr_templates_L2                         // unconditional branch
+dr_templates_L3:
+        b       dr_templates_L3                         // unconditional branch (used when chaining blocks)
+dr_templates_L4:
         lwz     addr, 0xB24(EmulatorStatePtr)
         cmpwi   cr7, rtn_addr, 0
         cmpw    cr6, rtn_addr, addr
-        blt     cr7, L_177A8
+        blt     cr7, dr_templates_L13
         cmpw    cr7, rtn_addr, blk_ofs
-        bgt     cr6, L_177A8
-        bge     cr7, L_1771C
+        bgt     cr6, dr_templates_L13
+        bge     cr7, dr_templates_L7
         lwz     addr, dr_records(EmulatorStatePtr)
-L_176B8:
+dr_templates_L5:
         lhz     data, 2(addr)
         addi    addr, addr, 12
         cmpw    cr7, data, rtn_addr
-        blt     cr7, L_176B8
-        bgt     cr7, L_177A8
+        blt     cr7, dr_templates_L5
+        bgt     cr7, dr_templates_L13
         lhz     addr, -8(addr)
         lwz     data, dr_cache_ptr(EmulatorStatePtr)
         add     addr, addr, data
@@ -8597,9 +8597,9 @@ L_176B8:
         cmpwi   cr7, rtn_addr, 0
         lwz     addr, 0x6344(base_disp)
         rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
-        beq     cr7, L_17700
+        beq     cr7, dr_templates_L6
         stwu    addr, 4(immed_data)
-L_17700:
+dr_templates_L6:
         lwz     data, dr_cache_ptr(EmulatorStatePtr)
         lwz     addr, 0x6358(base_disp)
         subf    data, immed_data, data                  // data = data - immed_data
@@ -8607,86 +8607,86 @@ L_17700:
         rlwimi  addr, data, 0, 6, 29                    // addr[25:2] = data[25:2]
         stwu    addr, 4(immed_data)
         blr
-L_1771C:
+dr_templates_L7:
         mr      addr, rec_ptr
-L_17720:
+dr_templates_L8:
         lhz     data, 2(addr)
         addi    addr, addr, 12
         cmpw    cr7, data, rtn_addr
-        blt     cr7, L_17720
-        bgt     cr7, L_177A8
+        blt     cr7, dr_templates_L8
+        bgt     cr7, dr_templates_L13
         lhz     addr, 0(rec_ptr)
         sth     rtn_addr, 6(rec_ptr)
         ori     addr, addr, 0x1000
         sth     addr, 0(rec_ptr)
         blr
-L_17748:
+dr_templates_L9:
         mr      immed_data, disp_table
         lha     rtn_addr, 6(disp_table)
-L_17750:
+dr_templates_L10:
         lhz     data, 2(immed_data)
         addi    immed_data, immed_data, 12
         cmpw    cr7, data, rtn_addr
-        blt     cr7, L_17750
+        blt     cr7, dr_templates_L10
         lbz     rtn_addr, 1(disp_table)
         lhz     immed_data, -8(immed_data)
         lwz     addr, dr_cache_ptr(EmulatorStatePtr)
         lhz     data, 4(disp_table)
         add     immed_data, addr, immed_data
         add     data, addr, data
-L_17778:
+dr_templates_L11:
         srwi    rtn_addr, rtn_addr, 1
         mtcrf   0x01, rtn_addr                          // cr7 = rtn_addr[3:0]
         cmpwi   cr6, rtn_addr, 0
-        bns     cr7, L_1779C
+        bns     cr7, dr_templates_L12
         subf    addr, data, immed_data                  // addr = immed_data - data
         sth     addr, 2(data)
         lhz     addr, 0(data)
         xori    addr, addr, 0x0020
         sth     addr, 0(data)
-L_1779C:
+dr_templates_L12:
         addi    data, data, 4
-        bne     cr6, L_17778
+        bne     cr6, dr_templates_L11
         blr
-L_177A8:
+dr_templates_L13:
         cmpwi   cr7, rtn_addr, 0
         lwz     addr, 0x6344(base_disp)
         lwz     data, 0x6350(base_disp)
         rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
-        beq     cr7, L_177C0
+        beq     cr7, dr_templates_L14
         stwu    addr, 4(immed_data)
-L_177C0:
-        bgt     cr7, L_177D8
-L_177C4:
+dr_templates_L14:
+        bgt     cr7, dr_templates_L16
+dr_templates_L15:
         lwz     addr, dr_cache_ptr(EmulatorStatePtr)
         subf    addr, immed_data, addr                  // addr = addr - immed_data
         addi    addr, addr, -4
         rlwimi  data, addr, 0, 16, 29                   // data[15:2] = addr[15:2]
         stwu    data, 4(immed_data)
-L_177D8:
+dr_templates_L16:
         lwz     addr, 0x634C(base_disp)
         addi    data, base_disp, 0x6524
         subf    data, immed_data, data                  // data = data - immed_data
         rlwimi  addr, data, 0, 6, 29                    // addr[25:2] = data[25:2]
         stwu    addr, 4(immed_data)
         blr
-L_177F0:
+dr_templates_L17:
         extsh   data, rtn_addr                          // data = sign-extended low word of rtn_addr
         cmpw    cr7, data, rtn_addr
         lwz     addr, 0x6344(base_disp)
-        beq     cr7, L_177A8
+        beq     cr7, dr_templates_L13
         cmpwi   cr7, data, 0
         rlwimi  addr, rtn_addr, 0, 16, 31               // addr[15:0] = rtn_addr[15:0]
         lwz     data, 0x6348(base_disp)
         stwu    addr, 4(immed_data)
         srwi    addr, rtn_addr, 16
-        bge     cr7, L_1781C
+        bge     cr7, dr_templates_L18
         addi    addr, addr, 1
-L_1781C:
+dr_templates_L18:
         rlwimi  data, addr, 0, 16, 31                   // data[15:0] = addr[15:0]
         stwu    data, 4(immed_data)
         lwz     data, 0x6350(base_disp)
-        b       L_177C4
+        b       dr_templates_L15
 
 // Leave translated code (or abandon a lookup) and continue in the
 // interpreter with the instruction at pc - 2.
@@ -8763,7 +8763,7 @@ dr_indirect_exit:
         mtctr   data
         mtcrf   0x01, pc                                // cr7 = pc[3:0]
         beqctr  cr5                                     // same target as last time: go straight there
-        bf_likely 4*cr7+so, L_17C94
+        bf_likely 4*cr7+so, dr_stale_block_L1
         b       dr_exit_to_interpreter
         b       dr_promote_hit
         ALIGN(64)
@@ -8831,7 +8831,7 @@ dr_lookup:
         bt_unlikely 4*cr7+eq, dr_promote_hit
         mr      r23, base_disp                          // miss: remember where the search ended
         sth     zero, 0xB34(EmulatorStatePtr)
-        b       L_17CDC
+        b       dr_translate_miss_L1
 
 // Discard every translation.  The lookup table and then the page bitmap
 // are cleared 2 KB at a time with dcbz, checking for special events
@@ -8845,19 +8845,19 @@ dr_flush_step:
         subf    rtn_addr, addr, rtn_addr                // rtn_addr = rtn_addr - addr
         mulli   rtn_addr, rtn_addr, 0x800
         add     data, data, rtn_addr
-L_17A08:
-        beq     cr6, L_17A30
-        bt      cr_special_event_pending, L_17AAC
+dr_flush_step_L1:
+        beq     cr6, dr_flush_step_L3
+        bt      cr_special_event_pending, dr_flush_done_L2
         li      rtn_addr, 64
         mtctr   rtn_addr
         addi    addr, addr, -1
         cmplwi  cr6, addr, 0x0000
-L_17A20:
+dr_flush_step_L2:
         dcbz    0, data
         addi    data, data, 32
-        bdnz    L_17A20                                 // CTR -= 1; branch while CTR != 0
-        b       L_17A08
-L_17A30:
+        bdnz    dr_flush_step_L2                        // CTR -= 1; branch while CTR != 0
+        b       dr_flush_step_L1
+dr_flush_step_L3:
         lwz     addr, 0xB74(EmulatorStatePtr)
         lwz     data, dr_page_bitmap(EmulatorStatePtr)
         lwz     rtn_addr, 0xB94(EmulatorStatePtr)
@@ -8867,21 +8867,21 @@ L_17A30:
         slwi    rtn_addr, rtn_addr, 5
         add     data, data, rtn_addr
         li      immed_data, 64
-L_17A54:
+dr_flush_step_L4:
         beq     cr6, dr_flush_done
-        bt      cr_special_event_pending, L_17AA4
-        bge     cr7, L_17A64
+        bt      cr_special_event_pending, dr_flush_done_L1
+        bge     cr7, dr_flush_step_L5
         mr      immed_data, addr
-L_17A64:
+dr_flush_step_L5:
         mtctr   immed_data
         subf    addr, immed_data, addr                  // addr = addr - immed_data
         cmplwi  cr6, addr, 0x0000
         cmplwi  cr7, addr, 0x0040
-L_17A74:
+dr_flush_step_L6:
         dcbz    0, data
         addi    data, data, 32
-        bdnz    L_17A74                                 // CTR -= 1; branch while CTR != 0
-        b       L_17A54
+        bdnz    dr_flush_step_L6                        // CTR -= 1; branch while CTR != 0
+        b       dr_flush_step_L4
 
 dr_flush_done:
         stw     zero, dr_invalidate_pending(EmulatorStatePtr)
@@ -8892,12 +8892,12 @@ dr_flush_done:
         stw     addr, dr_cache_ptr(EmulatorStatePtr)
         stw     zero, dr_flush_pending(EmulatorStatePtr)
         b       dr_lookup
-L_17AA4:
+dr_flush_done_L1:
         stw     addr, 0xB74(EmulatorStatePtr)
-        b       L_17AB0
-L_17AAC:
+        b       dr_flush_done_L3
+dr_flush_done_L2:
         stw     addr, 0xB70(EmulatorStatePtr)
-L_17AB0:
+dr_flush_done_L3:
         mfcr    rtn_addr
         rlwinm  rtn_addr, rtn_addr, 0, 6, 4             // rtn_addr = rtn_addr & 0xFBFFFFFF
         mtcrf   0x40, rtn_addr                          // cr1 = rtn_addr[27:24]
@@ -8921,44 +8921,44 @@ dr_invalidate_step:
         cmplwi  cr6, immed_data, 0x0040
         lwz     data, 4(base_disp)
         lwz     base_disp, 8(base_disp)
-        blt     cr6, L_17AFC
+        blt     cr6, dr_invalidate_step_L1
         li      immed_data, 64
-L_17AFC:
-        bt      cr_special_event_pending, L_17AB0
+dr_invalidate_step_L1:
+        bt      cr_special_event_pending, dr_flush_done_L3
         mtctr   immed_data
         stw     immed_data, 0xB8C(EmulatorStatePtr)
-L_17B08:
+dr_invalidate_step_L2:
         lwz     rtn_addr, 0(base_disp)
         cmplw   cr7, rtn_addr, addr
         cmplw   cr6, rtn_addr, data
-        blt     cr7, L_17B1C
+        blt     cr7, dr_invalidate_step_L3
         bltl    cr6, dr_drop_entry
-L_17B1C:
+dr_invalidate_step_L3:
         lwzu    rtn_addr, 8(base_disp)
         cmplw   cr7, rtn_addr, addr
         cmplw   cr6, rtn_addr, data
-        blt     cr7, L_17B30
+        blt     cr7, dr_invalidate_step_L4
         bltl    cr6, dr_drop_entry
-L_17B30:
+dr_invalidate_step_L4:
         lwzu    rtn_addr, 8(base_disp)
         cmplw   cr7, rtn_addr, addr
         cmplw   cr6, rtn_addr, data
-        blt     cr7, L_17B44
+        blt     cr7, dr_invalidate_step_L5
         bltl    cr6, dr_drop_entry
-L_17B44:
+dr_invalidate_step_L5:
         lwzu    rtn_addr, 8(base_disp)
         cmplw   cr7, rtn_addr, addr
         cmplw   cr6, rtn_addr, data
-        blt     cr7, L_17B58
+        blt     cr7, dr_invalidate_step_L6
         bltl    cr6, dr_drop_entry
-L_17B58:
+dr_invalidate_step_L6:
         addi    base_disp, base_disp, 8
         rlwinm  rtn_addr, base_disp, 0, 16, 26          // rtn_addr = base_disp[15:5] << 5
         cmpwi   cr7, rtn_addr, 0
-        bf_likely 4*cr7+eq, L_17B6C
+        bf_likely 4*cr7+eq, dr_invalidate_step_L7
         lwz     base_disp, dr_hash_table(EmulatorStatePtr)
-L_17B6C:
-        bdnz    L_17B08                                 // CTR -= 1; branch while CTR != 0
+dr_invalidate_step_L7:
+        bdnz    dr_invalidate_step_L2                   // CTR -= 1; branch while CTR != 0
         lwz     rtn_addr, 0xB88(EmulatorStatePtr)
         lwz     immed_data, 0xB8C(EmulatorStatePtr)
         stw     base_disp, 8(rtn_addr)
@@ -8968,27 +8968,27 @@ L_17B6C:
         cmplwi  cr6, immed_data, 0x0040
         stw     immed_data, 12(rtn_addr)
         lwz     base_disp, 8(rtn_addr)
-        beq     cr7, L_17BA4
-        blt     cr6, L_17AFC
+        beq     cr7, dr_invalidate_step_L8
+        blt     cr6, dr_invalidate_step_L1
         li      immed_data, 64
-        b       L_17AFC
-L_17BA4:
+        b       dr_invalidate_step_L1
+dr_invalidate_step_L8:
         lwz     base_disp, 0xB84(EmulatorStatePtr)
         addi    immed_data, EmulatorStatePtr, 0xB80
         lis     rtn_addr, 0x8000
         srw     rtn_addr, rtn_addr, base_disp
         mcrf    cr7, cr0                                // cr7 = cr0
-L_17BB8:
+dr_invalidate_step_L9:
         lwarx   data, 0, immed_data
         andc    data, data, rtn_addr                    // data = data & ~rtn_addr
         stwcx.  data, 0, immed_data
-        bf_unlikely eq, L_17BB8
+        bf_unlikely eq, dr_invalidate_step_L9
         addi    immed_data, EmulatorStatePtr, 0xB7C
-L_17BCC:
+dr_invalidate_step_L10:
         lwarx   data, 0, immed_data
         andc    data, data, rtn_addr                    // data = data & ~rtn_addr
         stwcx.  data, 0, immed_data
-        bf_unlikely eq, L_17BCC
+        bf_unlikely eq, dr_invalidate_step_L10
         mcrf    cr0, cr7                                // cr0 = cr7
         lwz     data, dr_invalidate_pending(EmulatorStatePtr)
         b       dr_invalidate_step
@@ -9014,9 +9014,9 @@ dr_drop_entry:
         sync
         isync
         blr
-        b       L_17C40
+        b       dr_drop_entry_L1
         ALIGN(64)
-L_17C40:
+dr_drop_entry_L1:
         lwz     rtn_addr, -16(r23)
         stw     pc, -16(r23)
         lwz     data, -4(r23)
@@ -9028,9 +9028,9 @@ L_17C40:
         stw     data, -12(r23)
         stw     immed_data, -4(r23)
         bctr
-        b       L_17C80
+        b       dr_drop_entry_L2
         ALIGN(64)
-L_17C80:
+dr_drop_entry_L2:
         stw     pc, 0(base_disp)
         stw     rtn_addr, 4(base_disp)
         bctr
@@ -9040,7 +9040,7 @@ L_17C80:
 dr_stale_block:
         bt      cr_special_event_pending, dr_exit_to_interpreter
         lwz     base_disp, dr_records(EmulatorStatePtr)
-L_17C94:
+dr_stale_block_L1:
         lwz     r23, dr_hash_table(EmulatorStatePtr)
         rlwimi  r23, pc, 4, 16, 26                      // r23[15:5] = pc[11:1]
         lwz     data, 0(r23)
@@ -9048,35 +9048,35 @@ L_17C94:
         cmpw    cr7, data, pc
         mtctr   rtn_addr
         lwzu    data, 8(r23)
-        beq     cr7, L_17C80
+        beq     cr7, dr_drop_entry_L2
         cmpw    cr7, data, pc
         lwzu    data, 8(r23)
-        beq     cr7, L_17C40
+        beq     cr7, dr_drop_entry_L1
         cmpw    cr7, data, pc
         lwzu    data, 8(r23)
-        beq     cr7, L_17C40
+        beq     cr7, dr_drop_entry_L1
         cmpw    cr7, data, pc
         addi    r23, r23, 8
-        bt_unlikely 4*cr7+eq, L_17C40
+        bt_unlikely 4*cr7+eq, dr_drop_entry_L1
 
 // No translation exists.  Choose a slot in the set (an empty one if there
 // is one, otherwise evict the last), then translate.
 dr_translate_miss:
         sth     zero, 0xB34(EmulatorStatePtr)
-L_17CDC:
+dr_translate_miss_L1:
         lwzu    addr, -32(r23)
         lwzu    data, 8(r23)
         cmpwi   cr7, addr, 0
         cmpwi   cr6, data, 0
-        beq     cr7, L_17D48
+        beq     cr7, dr_translate_miss_L2
         lwzu    rtn_addr, 8(r23)
-        beq     cr6, L_17D48
+        beq     cr6, dr_translate_miss_L2
         cmpwi   cr7, rtn_addr, 0
         lwzu    immed_data, 8(r23)
-        beq     cr7, L_17D48
+        beq     cr7, dr_translate_miss_L2
         cmpwi   cr7, immed_data, 0
         addi    r23, r23, 8
-        beq     cr7, L_17D48
+        beq     cr7, dr_translate_miss_L2
         lwz     addr, dr_code_base(EmulatorStatePtr)
         lwz     data, -4(r23)
         ori     rtn_addr, addr, dr_stale_block - dr_cb
@@ -9091,7 +9091,7 @@ L_17CDC:
         isync
         stw     zero, -8(r23)
         stw     zero, -4(r23)
-L_17D48:
+dr_translate_miss_L2:
         lwz     addr, dr_cache_ptr(EmulatorStatePtr)
         addi    addr, r23, -8
         stw     addr, dr_hash_slot(EmulatorStatePtr)
@@ -9118,7 +9118,7 @@ dr_translate_done:
         stw     code_ptr, dr_cache_ptr(EmulatorStatePtr)
         lwz     disp_table, saved_disp_table(EmulatorStatePtr)
         lwz     code_ptr, saved_code_ptr(EmulatorStatePtr)
-        bge     cr7, L_17DE8
+        bge     cr7, dr_translate_done_L2
         lwz     addr, dr_memory_limit(EmulatorStatePtr)
         lwz     data, dr_page_bitmap(EmulatorStatePtr)
         cmplw   cr6, pc, addr
@@ -9127,19 +9127,19 @@ dr_translate_done:
         lis     immed_data, 0x8000
         rlwinm  rtn_addr, pc, 23, 27, 31                // bit number: one bit per 512 bytes
         srw     immed_data, immed_data, rtn_addr
-        bgt     cr6, L_17DD0
-        beq     cr7, L_17DD0
+        bgt     cr6, dr_translate_done_L1
+        beq     cr7, dr_translate_done_L1
         lwzx    rtn_addr, data, addr
         or      rtn_addr, rtn_addr, immed_data
         stwx    rtn_addr, data, addr
-L_17DD0:
+dr_translate_done_L1:
         lwz     rtn_addr, 0xB44(EmulatorStatePtr)
         lwz     addr, 0xB38(EmulatorStatePtr)
         lwz     data, 0xB3C(EmulatorStatePtr)
         mtcrf   0x0F, rtn_addr                          // cr4..cr7 = rtn_addr[15:0]
         lwz     rtn_addr, 0xB40(EmulatorStatePtr)
         bctr
-L_17DE8:
+dr_translate_done_L2:
         bl      dr_request_flush
         b       dr_exit_to_interpreter
         b       dr_invalidate_range
@@ -9154,50 +9154,50 @@ dr_invalidate_range:
         lwz     rtn_addr, dr_flush_pending(EmulatorStatePtr)
         cmpwi   cr4, data, 0
         cmplwi  cr5, rtn_addr, 0x0000
-        beq     cr4, L_17F74
-        blt     cr4, L_17F70
-        bne     cr5, L_17F74
+        beq     cr4, dr_invalidate_range_L12
+        blt     cr4, dr_invalidate_range_L11
+        bne     cr5, dr_invalidate_range_L12
         addi    data, data, 1
         add     data, addr, data
         cmplw   cr5, addr, data
         cmplwi  cr4, addr, 0x0080
-        bge     cr5, L_17F88
-L_17E30:
-        ble     cr4, L_17F80
+        bge     cr5, dr_invalidate_range_L14
+dr_invalidate_range_L1:
+        ble     cr4, dr_invalidate_range_L13
         addi    addr, addr, -128
-L_17E38:
+dr_invalidate_range_L2:
         lwz     immed_data, dr_memory_limit(EmulatorStatePtr)
         lwz     base_disp, dr_page_bitmap(EmulatorStatePtr)
         cmplw   cr4, data, immed_data
         cmplwi  cr5, base_disp, 0x0000
         srwi    rtn_addr, data, 14
         srwi    immed_data, addr, 14
-        bgt     cr4, L_17ED0
-        beq     cr5, L_17ED0
+        bgt     cr4, dr_invalidate_range_L6
+        beq     cr5, dr_invalidate_range_L6
         subf    rtn_addr, immed_data, rtn_addr          // rtn_addr = rtn_addr - immed_data
         cmplwi  cr4, rtn_addr, 0x0000
         mtctr   rtn_addr
-        bt_likely 4*cr4+eq, L_17EAC
+        bt_likely 4*cr4+eq, dr_invalidate_range_L5
         rlwinm  immed_data, addr, 20, 12, 29            // immed_data = addr[31:14] << 2
         lwzux   immed_data, base_disp, immed_data
         rlwinm  rtn_addr, addr, 23, 27, 31              // rtn_addr = addr[13:9]
         slw     immed_data, immed_data, rtn_addr
         cmplwi  cr4, immed_data, 0x0000
-        bne     cr4, L_17ED0
-        bdz     L_17E94                                 // CTR -= 1; branch when CTR == 0
-L_17E84:
+        bne     cr4, dr_invalidate_range_L6
+        bdz     dr_invalidate_range_L4                  // CTR -= 1; branch when CTR == 0
+dr_invalidate_range_L3:
         lwzu    immed_data, 4(base_disp)
         cmplwi  cr4, immed_data, 0x0000
-        bne     cr4, L_17ED0
-        bdnz    L_17E84                                 // CTR -= 1; branch while CTR != 0
-L_17E94:
+        bne     cr4, dr_invalidate_range_L6
+        bdnz    dr_invalidate_range_L3                  // CTR -= 1; branch while CTR != 0
+dr_invalidate_range_L4:
         lwzu    immed_data, 4(base_disp)
         rlwinm  rtn_addr, data, 23, 27, 31              // rtn_addr = data[13:9]
         cntlzw  immed_data, immed_data                  // immed_data = number of leading zero bits in immed_data
         cmplw   cr4, immed_data, rtn_addr
-        bt_likely 4*cr4+gt, L_17F74
-        b       L_17ED0
-L_17EAC:
+        bt_likely 4*cr4+gt, dr_invalidate_range_L12
+        b       dr_invalidate_range_L6
+dr_invalidate_range_L5:
         rlwinm  immed_data, addr, 20, 12, 29            // immed_data = addr[31:14] << 2
         lwzx    immed_data, base_disp, immed_data
         rlwinm  rtn_addr, addr, 23, 27, 31              // rtn_addr = addr[13:9]
@@ -9206,21 +9206,21 @@ L_17EAC:
         add     immed_data, immed_data, rtn_addr
         rlwinm  rtn_addr, data, 23, 27, 31              // rtn_addr = data[13:9]
         cmplw   cr4, immed_data, rtn_addr
-        bt_likely 4*cr4+gt, L_17F74
-L_17ED0:
+        bt_likely 4*cr4+gt, dr_invalidate_range_L12
+dr_invalidate_range_L6:
         mcrf    cr5, cr0                                // cr5 = cr0
         mtctr   r23
         addi    immed_data, EmulatorStatePtr, 0xB7C
-L_17EDC:
+dr_invalidate_range_L7:
         lwarx   rtn_addr, 0, immed_data
         lis     r23, 0x8000
         nor.    base_disp, rtn_addr, rtn_addr           // base_disp = ~(rtn_addr | rtn_addr)
         cntlzw  base_disp, base_disp                    // base_disp = number of leading zero bits in base_disp
-        beq     L_17F68
+        beq     dr_invalidate_range_L10
         srw     r23, r23, base_disp
         or      rtn_addr, rtn_addr, r23
         stwcx.  rtn_addr, 0, immed_data
-        bf_unlikely eq, L_17EDC
+        bf_unlikely eq, dr_invalidate_range_L7
         lwz     immed_data, dr_invalidate_requests(EmulatorStatePtr)
         slwi    rtn_addr, base_disp, 4
         add     immed_data, immed_data, rtn_addr
@@ -9234,36 +9234,36 @@ L_17EDC:
         srwi    data, data, 1
         subf    rtn_addr, addr, data                    // rtn_addr = data - addr
         cmplwi  cr4, rtn_addr, 0x0800
-        bf_likely 4*cr4+gt, L_17F3C
+        bf_likely 4*cr4+gt, dr_invalidate_range_L8
         li      rtn_addr, 0x800
-L_17F3C:
+dr_invalidate_range_L8:
         stw     rtn_addr, 12(immed_data)
         addi    immed_data, EmulatorStatePtr, 0xB80
-L_17F44:
+dr_invalidate_range_L9:
         lwarx   rtn_addr, 0, immed_data
         lis     r23, 0x8000
         srw     r23, r23, base_disp
         or      rtn_addr, rtn_addr, r23
         stwcx.  rtn_addr, 0, immed_data
-        bf_unlikely eq, L_17F44
+        bf_unlikely eq, dr_invalidate_range_L9
         mfctr   r23
         mcrf    cr0, cr5                                // cr0 = cr5
-        b       L_17F74
-L_17F68:
+        b       dr_invalidate_range_L12
+dr_invalidate_range_L10:
         mfctr   r23
         mcrf    cr0, cr5                                // cr0 = cr5
-L_17F70:
+dr_invalidate_range_L11:
         bl      dr_request_flush
-L_17F74:
+dr_invalidate_range_L12:
         mtlr    r23
         lwz     r23, dr_dispatch_vector(EmulatorStatePtr)
         blr
-L_17F80:
+dr_invalidate_range_L13:
         mr      addr, zero
-        b       L_17E38
-L_17F88:
+        b       dr_invalidate_range_L2
+dr_invalidate_range_L14:
         li      data, -1
-        b       L_17E30
+        b       dr_invalidate_range_L1
         b       dr_request_flush
         ALIGN(32)
 
@@ -9287,13 +9287,13 @@ dr_reset_requests:
         li      addr, 32
         mtctr   addr
         lwz     data, dr_invalidate_requests(EmulatorStatePtr)
-L_17FE0:
+dr_reset_requests_L1:
         stw     zero, 0(data)
         stw     zero, 4(data)
         stw     zero, 8(data)
         stw     zero, 12(data)
         addi    data, data, 16
-        bdnz    L_17FE0                                 // CTR -= 1; branch while CTR != 0
+        bdnz    dr_reset_requests_L1                    // CTR -= 1; branch while CTR != 0
         blr
 
 // Called while an exception frame is being built.  If the faulting
@@ -9301,37 +9301,37 @@ L_17FE0:
 // address it corresponds to so that the frame holds a 68K pc.
 dr_fault_fixup:
         mr      base_disp, data
-        bt      cr_dr_busy, L_18070
+        bt      cr_dr_busy, dr_fault_fixup_L3
         lwz     data, dr_cache_start(EmulatorStatePtr)
         cmplw   cr7, addr, data
         lwz     data, dr_cache_limit(EmulatorStatePtr)
-        blt     cr7, L_1805C
+        blt     cr7, dr_fault_fixup_L2
         cmplw   cr7, addr, data
-        bge     cr7, L_1805C
+        bge     cr7, dr_fault_fixup_L2
         lwz     data, 28(a7)
         lwz     r23, dr_hash_table(EmulatorStatePtr)
         rlwimi  r23, data, 4, 16, 26                    // r23[15:5] = data[11:1]
         lwz     rtn_addr, 0(r23)
         cmplw   cr7, rtn_addr, data
-        beq     cr7, L_18050
+        beq     cr7, dr_fault_fixup_L1
         lwzu    rtn_addr, 8(r23)
         cmplw   cr7, rtn_addr, data
-        beq     cr7, L_18050
+        beq     cr7, dr_fault_fixup_L1
         lwzu    rtn_addr, 8(r23)
         cmplw   cr7, rtn_addr, data
-        beq     cr7, L_18050
+        beq     cr7, dr_fault_fixup_L1
         addi    r23, r23, 8
-L_18050:
+dr_fault_fixup_L1:
         lwz     rtn_addr, 4(r23)
         subf    rtn_addr, rtn_addr, addr                // rtn_addr = addr - rtn_addr
         stw     rtn_addr, 28(a7)
-L_1805C:
+dr_fault_fixup_L2:
         lwz     r23, dr_dispatch_vector(EmulatorStatePtr)
         lwz     disp_table, saved_disp_table(EmulatorStatePtr)
         lwz     code_ptr, saved_code_ptr(EmulatorStatePtr)
         mr      data, base_disp
         blr
-L_18070:
+dr_fault_fixup_L3:
         mflr    rtn_addr
         crclr   cr_dr_busy
         lhz     addr, 0xB34(EmulatorStatePtr)
@@ -9357,7 +9357,7 @@ L_18070:
 // Called while a bus error frame is being built for a fault inside
 // translated code or inside the translator.
 dr_fault_redirect:
-        bt      cr_dr_busy, L_18188
+        bt      cr_dr_busy, dr_resume_after_fault_L2
         lwz     addr, dr_cache_start(EmulatorStatePtr)
         lwz     data, dr_cache_limit(EmulatorStatePtr)
         cmplw   cr7, rtn_addr, addr
@@ -9385,21 +9385,21 @@ dr_resume_after_fault:
         rlwimi  r23, pc, 4, 16, 26                      // r23[15:5] = pc[11:1]
         lwz     addr, 0(r23)
         cmplw   cr7, addr, pc
-        beq     cr7, L_1815C
+        beq     cr7, dr_resume_after_fault_L1
         lwzu    addr, 8(r23)
         cmplw   cr7, addr, pc
-        beq     cr7, L_1815C
+        beq     cr7, dr_resume_after_fault_L1
         lwzu    addr, 8(r23)
         cmplw   cr7, addr, pc
-        beq     cr7, L_1815C
+        beq     cr7, dr_resume_after_fault_L1
         lwzu    addr, 8(r23)
         cmplw   cr7, addr, pc
-        beq     cr7, L_1815C
+        beq     cr7, dr_resume_after_fault_L1
         addi    r23, r23, 8
         li      addr, -1
         sth     addr, 0xB36(EmulatorStatePtr)
-        b       L_17CDC
-L_1815C:
+        b       dr_translate_miss_L1
+dr_resume_after_fault_L1:
         lwz     addr, 4(r23)
         lhz     data, 0xB34(EmulatorStatePtr)
         sth     zero, 0xB34(EmulatorStatePtr)
@@ -9411,7 +9411,7 @@ L_1815C:
         mtcrf   0x0F, addr                              // cr4..cr7 = addr[15:0]
         lwz     addr, 0xB38(EmulatorStatePtr)
         bctr
-L_18188:
+dr_resume_after_fault_L2:
         lwz     addr, 48(a7)
         rlwinm  addr, addr, 0, 28, 26                   // addr = addr & 0xFFFFFFEF
         stw     addr, 48(a7)
@@ -9463,10 +9463,10 @@ dr_setup:
         lwz     addr, dr_cache_start(EmulatorStatePtr)
         addis   addr, addr, 1
         cmplw   cr7, addr, rtn_addr
-        bgt     cr7, L_1823C
+        bgt     cr7, dr_setup_L1
         mr      data, rtn_addr
         stw     data, dr_page_bitmap(EmulatorStatePtr)
-L_1823C:
+dr_setup_L1:
         addi    data, data, -0x800
         stw     data, dr_records(EmulatorStatePtr)
         addi    data, data, -0x800
@@ -9486,10 +9486,10 @@ L_1823C:
         mtctr   addr
         addi    addr, data, 0x280                       // dr_line_0: the sixteen pass-1 decoders are 64 bytes apart
         addi    data, EmulatorStatePtr, 0xA18
-L_18288:
+dr_setup_L2:
         stwu    addr, 4(data)
         addi    addr, addr, 64
-        bdnz    L_18288                                 // CTR -= 1; branch while CTR != 0
+        bdnz    dr_setup_L2                             // CTR -= 1; branch while CTR != 0
         oris    data, zero, 0x0000
         ori     data, data, 0x21F8
         stw     data, 0x718(EmulatorStatePtr)

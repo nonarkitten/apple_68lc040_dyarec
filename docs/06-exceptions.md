@@ -144,8 +144,8 @@ emulator context's condition register
 this arrangement in `STOP`, which waits in a one-instruction loop
 
 ```
-L_0CA28:
-        bf      cr_interrupt_pending, L_0CA28
+stop_wait:
+        bf      cr_interrupt_pending, stop_wait
 ```
 
 that can only end when something outside the emulator changes the bit.

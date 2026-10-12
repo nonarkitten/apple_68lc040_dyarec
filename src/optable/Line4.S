@@ -482,19 +482,19 @@ op_4097:
         b       move_w_sr_mem_3
         ori     addr, code_ptr, cea_w_37 - cb           // 40DF  MOVE.W    SR,(A7)+
         b       move_w_sr_mem_3
-        ori     addr, code_ptr, L_00860 - cb            // 40E0  MOVE.W    SR,-(A0)
+        ori     addr, code_ptr, fea_l_30_L1 - cb        // 40E0  MOVE.W    SR,-(A0)
         b       move_w_sr_mem_4
-        ori     addr, code_ptr, L_008E0 - cb            // 40E1  MOVE.W    SR,-(A1)
+        ori     addr, code_ptr, fea_l_31_L1 - cb        // 40E1  MOVE.W    SR,-(A1)
         b       move_w_sr_mem_4
-        ori     addr, code_ptr, L_00960 - cb            // 40E2  MOVE.W    SR,-(A2)
+        ori     addr, code_ptr, fea_l_32_L1 - cb        // 40E2  MOVE.W    SR,-(A2)
         b       move_w_sr_mem_4
-        ori     addr, code_ptr, L_009E0 - cb            // 40E3  MOVE.W    SR,-(A3)
+        ori     addr, code_ptr, fea_l_33_L1 - cb        // 40E3  MOVE.W    SR,-(A3)
         b       move_w_sr_mem_4
-        ori     addr, code_ptr, L_00A60 - cb            // 40E4  MOVE.W    SR,-(A4)
+        ori     addr, code_ptr, fea_l_34_L1 - cb        // 40E4  MOVE.W    SR,-(A4)
         b       move_w_sr_mem_4
-        ori     addr, code_ptr, L_00AE0 - cb            // 40E5  MOVE.W    SR,-(A5)
+        ori     addr, code_ptr, fea_l_35_L1 - cb        // 40E5  MOVE.W    SR,-(A5)
         b       move_w_sr_mem_4
-        ori     addr, code_ptr, L_00B60 - cb            // 40E6  MOVE.W    SR,-(A6)
+        ori     addr, code_ptr, fea_l_36_L1 - cb        // 40E6  MOVE.W    SR,-(A6)
         b       move_w_sr_mem_4
         addi    addr, a7, -2                            // 40E7  MOVE.W    SR,-(A7)
         b       move_w_sr_mem_5
@@ -3658,21 +3658,21 @@ op_4697:
         b       move_w_mem_sr_4
         mr      addr, a7                                // 46DF  MOVE.W    (A7)+,SR
         b       move_w_mem_sr
-        ori     addr, code_ptr, L_00860 - cb            // 46E0  MOVE.W    -(A0),SR
+        ori     addr, code_ptr, fea_l_30_L1 - cb        // 46E0  MOVE.W    -(A0),SR
         b       move_w_mem_sr_3
-        ori     addr, code_ptr, L_008E0 - cb            // 46E1  MOVE.W    -(A1),SR
+        ori     addr, code_ptr, fea_l_31_L1 - cb        // 46E1  MOVE.W    -(A1),SR
         b       move_w_mem_sr_3
-        ori     addr, code_ptr, L_00960 - cb            // 46E2  MOVE.W    -(A2),SR
+        ori     addr, code_ptr, fea_l_32_L1 - cb        // 46E2  MOVE.W    -(A2),SR
         b       move_w_mem_sr_3
-        ori     addr, code_ptr, L_009E0 - cb            // 46E3  MOVE.W    -(A3),SR
+        ori     addr, code_ptr, fea_l_33_L1 - cb        // 46E3  MOVE.W    -(A3),SR
         b       move_w_mem_sr_3
-        ori     addr, code_ptr, L_00A60 - cb            // 46E4  MOVE.W    -(A4),SR
+        ori     addr, code_ptr, fea_l_34_L1 - cb        // 46E4  MOVE.W    -(A4),SR
         b       move_w_mem_sr_3
-        ori     addr, code_ptr, L_00AE0 - cb            // 46E5  MOVE.W    -(A5),SR
+        ori     addr, code_ptr, fea_l_35_L1 - cb        // 46E5  MOVE.W    -(A5),SR
         b       move_w_mem_sr_3
-        ori     addr, code_ptr, L_00B60 - cb            // 46E6  MOVE.W    -(A6),SR
+        ori     addr, code_ptr, fea_l_36_L1 - cb        // 46E6  MOVE.W    -(A6),SR
         b       move_w_mem_sr_3
-        ori     addr, code_ptr, L_00BE0 - cb            // 46E7  MOVE.W    -(A7),SR
+        ori     addr, code_ptr, fea_l_37_L1 - cb        // 46E7  MOVE.W    -(A7),SR
         b       move_w_mem_sr_3
         add     addr, a0, prefetch_data                 // 46E8  MOVE.W    (d16,A0),SR
         b       move_w_ea_sr
@@ -5682,21 +5682,21 @@ op_4817:
         b       take_illegal_instruction
 
 // ---- $4AC0-$4AFF --------------------------------------------------------
-        ori     addr, code_ptr, L_05700 - cb            // 4AC0  TAS.B     D0
+        ori     addr, code_ptr, roxr_roxl_l_q_d7_L1 - cb  // 4AC0  TAS.B     D0
         b       tas_b_dn
-        ori     addr, code_ptr, L_05710 - cb            // 4AC1  TAS.B     D1
+        ori     addr, code_ptr, roxr_roxl_l_q_d7_L3 - cb  // 4AC1  TAS.B     D1
         b       tas_b_dn
-        ori     addr, code_ptr, L_05720 - cb            // 4AC2  TAS.B     D2
+        ori     addr, code_ptr, roxr_roxl_l_q_d7_L4 - cb  // 4AC2  TAS.B     D2
         b       tas_b_dn
-        ori     addr, code_ptr, L_05730 - cb            // 4AC3  TAS.B     D3
+        ori     addr, code_ptr, roxr_roxl_l_q_d7_L5 - cb  // 4AC3  TAS.B     D3
         b       tas_b_dn
-        ori     addr, code_ptr, L_05740 - cb            // 4AC4  TAS.B     D4
+        ori     addr, code_ptr, roxr_roxl_l_q_d7_L6 - cb  // 4AC4  TAS.B     D4
         b       tas_b_dn
-        ori     addr, code_ptr, L_05750 - cb            // 4AC5  TAS.B     D5
+        ori     addr, code_ptr, roxr_roxl_l_q_d7_L7 - cb  // 4AC5  TAS.B     D5
         b       tas_b_dn
-        ori     addr, code_ptr, L_05760 - cb            // 4AC6  TAS.B     D6
+        ori     addr, code_ptr, roxr_roxl_l_q_d7_L8 - cb  // 4AC6  TAS.B     D6
         b       tas_b_dn
-        ori     addr, code_ptr, L_05770 - cb            // 4AC7  TAS.B     D7
+        ori     addr, code_ptr, roxr_roxl_l_q_d7_L9 - cb  // 4AC7  TAS.B     D7
         b       tas_b_dn
         lwz     rtn_addr, illegal_handler(EmulatorStatePtr)  // 4AC8  TAS.B     A0   (illegal)
         b       take_illegal_instruction

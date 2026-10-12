@@ -189,3 +189,7 @@
 @0E8DC kcall_cache_dispatch
 @0E8E0 kcall_mp_dispatch
 @0E8FC kcall_thud
+
+@0CA28 stop_wait
+    STOP: wait here until the kernel posts an interrupt.  Nothing in the
+    loop changes the bit it tests.

@@ -7679,19 +7679,19 @@ op_0DD7:
         b       moves_b_rn_mem_2
         ori     addr, code_ptr, cea_b_37 - cb           // 0E1F  MOVES.B   Rn,(A7)+
         b       moves_b_rn_mem_2
-        ori     addr, code_ptr, L_00860 - cb            // 0E20  MOVES.B   Rn,-(A0)
+        ori     addr, code_ptr, fea_l_30_L1 - cb        // 0E20  MOVES.B   Rn,-(A0)
         b       moves_b_rn_mem
-        ori     addr, code_ptr, L_008E0 - cb            // 0E21  MOVES.B   Rn,-(A1)
+        ori     addr, code_ptr, fea_l_31_L1 - cb        // 0E21  MOVES.B   Rn,-(A1)
         b       moves_b_rn_mem
-        ori     addr, code_ptr, L_00960 - cb            // 0E22  MOVES.B   Rn,-(A2)
+        ori     addr, code_ptr, fea_l_32_L1 - cb        // 0E22  MOVES.B   Rn,-(A2)
         b       moves_b_rn_mem
-        ori     addr, code_ptr, L_009E0 - cb            // 0E23  MOVES.B   Rn,-(A3)
+        ori     addr, code_ptr, fea_l_33_L1 - cb        // 0E23  MOVES.B   Rn,-(A3)
         b       moves_b_rn_mem
-        ori     addr, code_ptr, L_00A60 - cb            // 0E24  MOVES.B   Rn,-(A4)
+        ori     addr, code_ptr, fea_l_34_L1 - cb        // 0E24  MOVES.B   Rn,-(A4)
         b       moves_b_rn_mem
-        ori     addr, code_ptr, L_00AE0 - cb            // 0E25  MOVES.B   Rn,-(A5)
+        ori     addr, code_ptr, fea_l_35_L1 - cb        // 0E25  MOVES.B   Rn,-(A5)
         b       moves_b_rn_mem
-        ori     addr, code_ptr, L_00B60 - cb            // 0E26  MOVES.B   Rn,-(A6)
+        ori     addr, code_ptr, fea_l_36_L1 - cb        // 0E26  MOVES.B   Rn,-(A6)
         b       moves_b_rn_mem
         addi    addr, a7, -2                            // 0E27  MOVES.B   Rn,-(A7)
         b       moves_b_rn_mem_4
@@ -7809,21 +7809,21 @@ op_0DD7:
         b       moves_w_rn_mem_2
         ori     addr, code_ptr, cea_w_37 - cb           // 0E5F  MOVES.W   Rn,(A7)+
         b       moves_w_rn_mem_2
-        ori     addr, code_ptr, L_00860 - cb            // 0E60  MOVES.W   Rn,-(A0)
+        ori     addr, code_ptr, fea_l_30_L1 - cb        // 0E60  MOVES.W   Rn,-(A0)
         b       moves_w_rn_mem
-        ori     addr, code_ptr, L_008E0 - cb            // 0E61  MOVES.W   Rn,-(A1)
+        ori     addr, code_ptr, fea_l_31_L1 - cb        // 0E61  MOVES.W   Rn,-(A1)
         b       moves_w_rn_mem
-        ori     addr, code_ptr, L_00960 - cb            // 0E62  MOVES.W   Rn,-(A2)
+        ori     addr, code_ptr, fea_l_32_L1 - cb        // 0E62  MOVES.W   Rn,-(A2)
         b       moves_w_rn_mem
-        ori     addr, code_ptr, L_009E0 - cb            // 0E63  MOVES.W   Rn,-(A3)
+        ori     addr, code_ptr, fea_l_33_L1 - cb        // 0E63  MOVES.W   Rn,-(A3)
         b       moves_w_rn_mem
-        ori     addr, code_ptr, L_00A60 - cb            // 0E64  MOVES.W   Rn,-(A4)
+        ori     addr, code_ptr, fea_l_34_L1 - cb        // 0E64  MOVES.W   Rn,-(A4)
         b       moves_w_rn_mem
-        ori     addr, code_ptr, L_00AE0 - cb            // 0E65  MOVES.W   Rn,-(A5)
+        ori     addr, code_ptr, fea_l_35_L1 - cb        // 0E65  MOVES.W   Rn,-(A5)
         b       moves_w_rn_mem
-        ori     addr, code_ptr, L_00B60 - cb            // 0E66  MOVES.W   Rn,-(A6)
+        ori     addr, code_ptr, fea_l_36_L1 - cb        // 0E66  MOVES.W   Rn,-(A6)
         b       moves_w_rn_mem
-        ori     addr, code_ptr, L_00BE0 - cb            // 0E67  MOVES.W   Rn,-(A7)
+        ori     addr, code_ptr, fea_l_37_L1 - cb        // 0E67  MOVES.W   Rn,-(A7)
         b       moves_w_rn_mem
         mr      addr, a0                                // 0E68  MOVES.W   Rn,(d16,A0)
         b       moves_w_rn_mem_3
@@ -7939,21 +7939,21 @@ op_0DD7:
         b       moves_l_rn_mem_2
         ori     addr, code_ptr, cea_l_37 - cb           // 0E9F  MOVES.L   Rn,(A7)+
         b       moves_l_rn_mem_2
-        ori     addr, code_ptr, L_00860 - cb            // 0EA0  MOVES.L   Rn,-(A0)
+        ori     addr, code_ptr, fea_l_30_L1 - cb        // 0EA0  MOVES.L   Rn,-(A0)
         b       moves_l_rn_mem
-        ori     addr, code_ptr, L_008E0 - cb            // 0EA1  MOVES.L   Rn,-(A1)
+        ori     addr, code_ptr, fea_l_31_L1 - cb        // 0EA1  MOVES.L   Rn,-(A1)
         b       moves_l_rn_mem
-        ori     addr, code_ptr, L_00960 - cb            // 0EA2  MOVES.L   Rn,-(A2)
+        ori     addr, code_ptr, fea_l_32_L1 - cb        // 0EA2  MOVES.L   Rn,-(A2)
         b       moves_l_rn_mem
-        ori     addr, code_ptr, L_009E0 - cb            // 0EA3  MOVES.L   Rn,-(A3)
+        ori     addr, code_ptr, fea_l_33_L1 - cb        // 0EA3  MOVES.L   Rn,-(A3)
         b       moves_l_rn_mem
-        ori     addr, code_ptr, L_00A60 - cb            // 0EA4  MOVES.L   Rn,-(A4)
+        ori     addr, code_ptr, fea_l_34_L1 - cb        // 0EA4  MOVES.L   Rn,-(A4)
         b       moves_l_rn_mem
-        ori     addr, code_ptr, L_00AE0 - cb            // 0EA5  MOVES.L   Rn,-(A5)
+        ori     addr, code_ptr, fea_l_35_L1 - cb        // 0EA5  MOVES.L   Rn,-(A5)
         b       moves_l_rn_mem
-        ori     addr, code_ptr, L_00B60 - cb            // 0EA6  MOVES.L   Rn,-(A6)
+        ori     addr, code_ptr, fea_l_36_L1 - cb        // 0EA6  MOVES.L   Rn,-(A6)
         b       moves_l_rn_mem
-        ori     addr, code_ptr, L_00BE0 - cb            // 0EA7  MOVES.L   Rn,-(A7)
+        ori     addr, code_ptr, fea_l_37_L1 - cb        // 0EA7  MOVES.L   Rn,-(A7)
         b       moves_l_rn_mem
         mr      addr, a0                                // 0EA8  MOVES.L   Rn,(d16,A0)
         b       moves_l_rn_mem_3

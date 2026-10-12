@@ -47,11 +47,16 @@
     UNPK -(Ay),-(A7),#<adjustment>.
     .
     DEFECT IN THE ORIGINAL CODE.  The other forms of UNPK reach the common
-    code at L_0C2FC through L_0C2C4, which first executes
+    code at unpk_store through pack_unpk_adjust, which first executes
     "lhau rtn_addr, 2(pc)" to step over the adjustment word and pick up
-    the next opcode.  This entry calls L_0C2FC directly.  As a result
+    the next opcode.  This entry calls unpk_store directly.  As a result
     DECODE1 there uses whatever happens to be in rtn_addr as the next
     opcode, and pc ends up 2 short.  Unpacking BCD onto the stack is not
     something software does, which is presumably why it was never noticed;
     the same code is in the Power Macintosh 8600/9600 ROM.
-0C2EC should be L_0C2C4
+0C2EC should be pack_unpk_adjust
+
+@0C2C4 pack_unpk_adjust
+    PACK and UNPK: step over the adjustment word, leaving the opcode after
+    it in rtn_addr for DECODE1.
+@0C2FC unpk_store

@@ -80,11 +80,11 @@ that always trap, which have no sequential path to check.
 Opcodes `8F88`–`8F8F` advance `pc` by 2 instead of 4.
 
 `UNPK` has an adjustment word after the opcode. The general routine
-(`L_0C2C4`) executes `lhau rtn_addr, 2(pc)` — stepping over the
+(`pack_unpk_adjust`) executes `lhau rtn_addr, 2(pc)` — stepping over the
 adjustment and collecting the next opcode in `rtn_addr` — before the
-common code at `L_0C2FC`, which performs DECODE1 from `rtn_addr`. The
+common code at `unpk_store`, which performs DECODE1 from `rtn_addr`. The
 variant for a destination of `-(A7)`, `unpk_to_a7` (`0C2E8`), exists
-because a byte predecrement of A7 moves it by 2; it calls `L_0C2FC`
+because a byte predecrement of A7 moves it by 2; it calls `unpk_store`
 directly and so skips that instruction. The next instruction is
 therefore decoded from whatever `rtn_addr` last held, with `pc` 2 bytes
 short.
