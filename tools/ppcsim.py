@@ -56,6 +56,17 @@ class Machine:
         self.images = []                # (start, end, bytes): read-only until written over
         self.steps = 0
 
+    def copy(self):
+        """An independent machine in the same state (images are shared)."""
+        other = Machine()
+        other.r = list(self.r)
+        other.cr, other.lr, other.ctr, other.pc = self.cr, self.lr, self.ctr, self.pc
+        other.ca, other.ov, other.so, other.xer_count = self.ca, self.ov, self.so, self.xer_count
+        other.mem = dict(self.mem)
+        other.images = self.images
+        other.steps = self.steps
+        return other
+
     # -- memory --------------------------------------------------------------
 
     def load(self, address, data):
@@ -274,8 +285,19 @@ class Machine:
             result = (a * b) >> 32
         elif xo == 75:                                  # mulhw
             result = ((_signed(a) * _signed(b)) >> 32) & M32
-        elif xo == 459:                                 # divwu
-            result = a // b if b else 0
+        elif xo & 0x1FF in (459, 491):                  # divwu, divw (and OE forms)
+            signed = xo & 0x1FF == 491
+            invalid = b == 0 or (signed and a == 0x80000000 and b == M32)
+            if invalid:
+                result = 0                              # undefined by the architecture
+            elif signed:
+                quotient = abs(_signed(a)) // abs(_signed(b))
+                result = (-quotient if (a ^ b) & 0x80000000 else quotient) & M32
+            else:
+                result = a // b
+            if xo & 0x200:
+                self.ov = int(invalid)
+                self.so |= self.ov
         elif xo == 28:
             logical = s & b
         elif xo == 60:
@@ -346,6 +368,21 @@ class Machine:
                 r[ra] = address
         elif xo in (54, 86, 278, 246, 982, 598, 854):          # cache hints, sync, eieio
             pass
+        elif xo in (533, 597, 661, 725):                        # lswx, lswi, stswx, stswi
+            indexed = xo in (533, 661)
+            count = self.xer_count if indexed else (rb or 32)
+            address = (base + b) & M32 if indexed else base
+            register = rd
+            for offset in range(count):
+                shift = 24 - 8 * (offset & 3)
+                if xo in (533, 597):                            # load
+                    if offset & 3 == 0:
+                        r[register] = 0
+                    r[register] |= self.read(address + offset, 1) << shift
+                else:
+                    self.write(address + offset, 1, (r[register] >> shift) & 0xFF)
+                if offset & 3 == 3:
+                    register = (register + 1) & 31
         elif xo == 512:                                         # mcrxr
             self.set_crf(rd >> 2, (self.so << 3) | (self.ov << 2) | (self.ca << 1))
             self.so = self.ov = self.ca = 0

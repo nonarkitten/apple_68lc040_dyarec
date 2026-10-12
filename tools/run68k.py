@@ -33,6 +33,9 @@ STACK = 0x00010000
 DR_MEMORY, DR_MEMORY_SIZE = 0x69000000, 0x00100000
 SYSTEM_INFO = 0x5FFFEC80
 RETURN = 0xDEAD0000
+EMULATOR_MEMORY = ((STATE, STATE + 0x1000),                         # state block
+                   (DR_MEMORY, DR_MEMORY + DR_MEMORY_SIZE),         # the recompiler's memory
+                   (0x5FFFE000, 0x5FFFF000))                        # kernel information records
 
 
 class Result:
@@ -46,7 +49,9 @@ class Result:
                     | m.ov << 1 | m.ca)
         self.steps = steps
         self.note = note
-        self.memory = {a: b for a, b in m.mem.items() if a < 0x00100000 and b}
+        # Everything the program wrote, leaving out the emulator's own data.
+        self.memory = {a: b for a, b in m.mem.items()
+                       if b and not any(low <= a < high for low, high in EMULATOR_MEMORY)}
 
     def state(self):
         return (self.d, self.a, self.pc, self.sr_high, self.ccr, self.memory)
@@ -62,13 +67,22 @@ class Result:
         return '\n'.join(lines)
 
 
-def run(generator, words, recompile=False, limit=2000000):
+_booted = {}
+
+
+def boot(generator, first, recompile, quick):
+    """A machine stopped at the first dispatch of a program whose first two
+    words are `first`, with the recompiler switched on if asked.  The result
+    is cached; callers must copy it."""
+    key = (generator, tuple(first), recompile, quick)
+    if key in _booted:
+        return _booted[key]
     names = generator.label_addrs
     m = ppcsim.Machine()
     m.load(BASE, generator.image)
     m.write(0, 4, STACK)                        # 68K reset vector: initial SSP
     m.write(4, 4, PROGRAM)                      #                   initial PC
-    for index, word in enumerate(words):
+    for index, word in enumerate(first):
         m.write(PROGRAM + 2 * index, 2, word)
     # What the kernel provides before the emulator context first runs.
     m.r[31] = STATE
@@ -77,15 +91,12 @@ def run(generator, words, recompile=False, limit=2000000):
     m.write(STATE + 0x74, 4, m.r[29])           # saved_disp_table
     m.write(STATE + 0x78, 4, m.r[30])           # saved_code_ptr
     m.pc = BASE + names['emulator_reset']
-
     table = range(BASE + gen.TABLE_START, BASE + gen.IMAGE_SIZE)
-    stop = BASE + names['take_illegal_instruction']
-    note = ''
+    while m.pc not in table:
+        m.step()
     if recompile:
-        # Run to the first dispatch, then do what private opcode FE05 with
-        # selector 0x12 does: set the recompiler up and switch it on.
-        while m.pc not in table:
-            m.step()
+        # Do what private opcode FE05 with selector 0x12 does: set the
+        # recompiler up and switch it on.
         m.write(STATE + 0x7C0, 4, DR_MEMORY)
         m.write(STATE + 0x7C4, 4, DR_MEMORY_SIZE)
         m.write(0x5FFFEFF0, 4, SYSTEM_INFO)
@@ -96,8 +107,31 @@ def run(generator, words, recompile=False, limit=2000000):
         for bit in (5, 6, 7):                   # cr_dr_active, cr_dr_ready, cr_dr_enabled
             m.set_crbit(bit, 1)
         m.r[23] = m.read(STATE + 0xA00, 4)      # dr_entry = dr_dispatch_vector
+        if quick:
+            # dr_setup leaves a whole-cache flush pending, which the first
+            # dispatch would carry out.  The memory is already clear, so
+            # leave things as dr_flush_done would.
+            m.write(STATE + 0xB20, 4, m.read(STATE + 0xB08, 4))
+            for field in (0xB6C, 0xB70, 0xB74):
+                m.write(STATE + field, 4, 0)
+    m.steps = 0
+    _booted[key] = m
+    return m
+
+
+def run(generator, words, recompile=False, limit=2000000, quick=False):
+    """Run a program to its first invalid opcode and return a Result.
+
+    quick   skip the recompiler's initial cache flush (for bulk testing)
+    """
+    names = generator.label_addrs
+    m = boot(generator, words[:2], recompile, quick).copy()
+    for index, word in enumerate(words):
+        m.write(PROGRAM + 2 * index, 2, word)
+    stop = BASE + names['take_illegal_instruction']
+    cache = ()
+    if recompile:
         cache = range(m.read(STATE + 0xB08, 4), m.read(STATE + 0xB0C, 4))
-    before = m.steps
     translated = 0
     for _ in range(limit):
         if m.pc == stop:
@@ -107,9 +141,8 @@ def run(generator, words, recompile=False, limit=2000000):
         m.step()
     else:
         raise ppcsim.Limit('the 68K program did not reach an invalid opcode')
-    if recompile:
-        note = '%d of them in translated code' % translated
-    return Result(m, m.steps - before, note, translated)
+    note = '%d of them in translated code' % translated if recompile else ''
+    return Result(m, m.steps, note, translated)
 
 
 def main():

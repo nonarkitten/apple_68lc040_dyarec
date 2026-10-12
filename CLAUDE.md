@@ -31,6 +31,9 @@ criterion is that the source reassembles to a byte-identical `Emulator.x`.
                     must end with "OK: no unexplained disagreements"
 - `make test`       run 68K programs under the emulator in `tools/ppcsim.py`, interpreted and
                     recompiled (`tools/selftest.py`); must end with "OK"
+- `make fuzz`       random 68K programs, interpreter against recompiler (`tools/fuzz.py`);
+                    known recompiler defects are excluded, so any difference is news
+- `python3 tools/check.py --translations`   also scan the recompiler's output for every opcode
 - `python3 tools/run68k.py [--dr|--both] WORDS`   run one 68K program (end it with 4AFC)
 - `python3 tools/rominfo.py ROM`   where a ROM maps the emulator; compare its build with Emulator.x
 - `python3 tools/drtranslate.py 7001 5380 66FC 4E75`   run the recompiler's translator (in

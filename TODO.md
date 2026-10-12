@@ -44,8 +44,11 @@ Legend: `[x]` done, `[~]` partly done, `[ ]` not started.
 - [ ] Fault recovery in translated code, line by line
 
 ### Testing
+- [x] Differential fuzzer (`make fuzz`): interpreter against recompiler on random
+      straight-line programs; found two recompiler defects, clean otherwise
+- [ ] Extend the fuzzer: loops (`DBcc`, backward `Bcc` with bounded counts), `BSR`/`RTS`,
+      programs longer than one block, self-modifying code announced with `FC16`
 - [ ] Compare against an independent 68K emulator on a real instruction test suite
-- [ ] Generate programs and compare interpreter against recompiler at scale
 - [ ] Extend the simulator harness with the kernel's side: faults to
       `native_exception_handler`, interrupts, `ReturnFromException` (so that `EmEntry`
       can be used), then odd-address detection
@@ -87,6 +90,12 @@ Legend: `[x]` done, `[~]` partly done, `[ ]` not started.
   (`docs/09`). The code it emits for `OR.B D0,(d8,PC,Xn)` reads at one
   displacement and writes at another, which looks like a further slip in an
   emitter nobody could have tested.
+- Are the two recompiler defects (`MOVE.W A7`, `ADDX` flags) in the earlier builds
+  too? `tools/drmap.py`/`drtranslate.py` assume `Emulator.x`'s offsets; pointing them
+  at the G3 or 8600 ROM's emulator needs the key routines located there first.
+- SUBX is not translated although ADDX is. Possibly someone noticed the sticky-Z
+  problem for SUBX and backed it out without fixing ADDX - checking the earlier
+  builds' decisions for SUBX would tell.
 - Bit `0x0002` in a conditional branch's record flags is set for some branches
   and not others; meaning unknown. (Bit `0x0004` is "the instruction at the
   target replaces N, Z, V, C".)

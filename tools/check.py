@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Static checks that use the dispatch table as a specification.
 
-Usage: check.py [-v]
+Usage: check.py [-v] [--translations]
 
 Each of the 65536 dispatch table entries starts the emulation of a known
 68K instruction, which says what the code reached from it ought to do.
@@ -27,7 +27,13 @@ simulator):
 
   dr flags    The recompiler's idea of which condition codes an instruction
               writes (none; N, Z, V, C; or all five) agrees with the 68K
-              definition of the instruction.
+              definition of the instruction, and an instruction whose result
+              depends on the old N, Z, V or C is marked as reading them.
+
+  dr code     (only with --translations; about a minute)  Every translated
+              instruction is translated on its own and the generated code is
+              examined: it must not touch r23, which holds the recompiler's
+              entry point and is not a 68K register.
 
 A disagreement means one of three things: the decoder in tools/m68k.py is
 wrong about that opcode (so the comment on its table entry is too), the
@@ -65,6 +71,24 @@ KNOWN_DEFECTS = {
     opcode: 'pc advances 2 instead of 4, and the next opcode is taken from a stale register'
     for opcode in range(0x8F88, 0x8F90)         # UNPK -(Ay),-(A7),#<adj>
 }
+
+
+
+def known_recompiler_defect(opcode):
+    """Why the recompiler is known to mistranslate this opcode, or None.
+
+    Both defects were found by tools/fuzz.py and are described in
+    docs/14-static-checks.md."""
+    op = m68k.decode(opcode)
+    if not op.legal:
+        return None
+    if op.name == 'ADDX':
+        return 'not marked as reading Z, which ADDX leaves alone when its result is zero'
+    if op.name in ('MOVE', 'MOVEA') and op.size == 'W' and op.src == 'A7' \
+            and not (len(op.dst) == 2 and op.dst[0] == 'D'):
+        return 'generated code reads r23 instead of A7'
+    return None
+
 
 CONTROL_FLOW = re.compile(
     r'^(B(RA|SR|[A-Z]{2})|DB[A-Z]{1,2}|JMP|JSR|RT[SERD]|TRAP.*|CHK.*|STOP|RESET|'
@@ -343,6 +367,9 @@ WRITES_NZVC = {'MOVE', 'MOVEQ', 'AND', 'ANDI', 'OR', 'ORI', 'EOR', 'EORI', 'NOT'
                'BCHG', 'BCLR', 'BSET', 'TAS', 'CHK'}
 WRITES_NONE = {'MOVEA', 'ADDA', 'SUBA', 'LEA', 'PEA', 'EXG', 'LINK', 'UNLK', 'NOP',
                'MOVEM', 'MOVEP'}
+# Instructions whose resulting flags depend on the old N, Z, V or C: those
+# that clear Z but never set it, and those that change only Z.
+READS_NZVC = {'ADDX', 'SUBX', 'NEGX', 'ABCD', 'SBCD', 'NBCD', 'BTST', 'BCHG', 'BCLR', 'BSET'}
 
 
 def expected_flag_writes(op):
@@ -362,12 +389,43 @@ def expected_flag_writes(op):
     return None
 
 
-def check_recompiler(generator, verbose):
+def check_translations(generator, decisions, verbose):
+    """Translate each translated opcode on its own and look at the code.
+    Returns the number of unexplained problems."""
+    import random
+
+    import drtranslate
+    import fuzz
+    rng = random.Random(1)
+    stray, known = [], []
+    examined = 0
+    for opcode, decision in sorted(decisions.items()):
+        op = m68k.decode(opcode)
+        if not decision.translated or not op.legal or op.name in ('A-LINE', 'F-LINE'):
+            continue
+        words = [opcode] + fuzz.extension(rng, opcode) + [0x4E75]
+        try:
+            m, start, end = drtranslate.translate(generator, words)
+        except Exception:
+            continue                    # the translator declined this operand combination
+        examined += 1
+        if 23 in drtranslate.registers_used(m, start, end):
+            reason = known_recompiler_defect(opcode)
+            (known if reason and 'r23' in reason else stray).append(
+                (opcode, 'translation uses r23'))
+    print('\nRecompiler output: %d single-instruction translations examined' % examined)
+    summarise('Recompiler: generated code uses r23', stray, verbose)
+    summarise('Recompiler: known defect, generated code reads r23 instead of A7 '
+              '(not counted as failures)', known, verbose)
+    return len(stray)
+
+
+def check_recompiler(generator, verbose, translations=False):
     """Compare the decisions of the recompiler's first pass with the
     instruction set.  Returns the number of disagreements."""
     decisions = drmap.scan(generator.image[:TABLE],
                            cache=gen.os.path.join(gen.ROOT, 'build', 'drmap.json'))
-    wrong_length, wrong_flags, invalid = [], [], []
+    wrong_length, wrong_flags, invalid, known_reads = [], [], [], []
     translated = lengths = flags = 0
     for opcode, decision in sorted(decisions.items()):
         if not decision.translated:
@@ -394,6 +452,10 @@ def check_recompiler(generator, verbose):
             else:
                 wrong_flags.append((opcode, 'expected %03X, recompiler says %03X' % (
                     expected, actual)))
+        if op.name in READS_NZVC and not decision.flags & drmap.FLAG_USES_NZVC:
+            reason = known_recompiler_defect(opcode)
+            (known_reads if reason else wrong_flags).append(
+                (opcode, 'reads Z but is not marked as reading N, Z, V, C'))
 
     print('\nDynamic recompiler, first pass: %d opcodes translated, %d left to the '
           'interpreter' % (translated, 0x10000 - translated))
@@ -401,11 +463,16 @@ def check_recompiler(generator, verbose):
               wrong_length, verbose)
     summarise('Recompiler: condition codes written differ from the 68K definition',
               wrong_flags, verbose)
+    summarise('Recompiler: known defect, flags read are not recorded '
+              '(not counted as failures)', known_reads, verbose)
     summarise('Recompiler: invalid opcodes it nevertheless assigns a code generator '
               '(not counted as failures)', invalid, verbose)
     print('\nRecompiler length agrees for %d opcodes; condition codes written agree '
           'for %d' % (lengths, flags))
-    return len(wrong_length) + len(wrong_flags)
+    failures = len(wrong_length) + len(wrong_flags)
+    if translations:
+        failures += check_translations(generator, decisions, verbose)
+    return failures
 
 
 def main():
@@ -513,7 +580,7 @@ def main():
         print('  %5d  %s' % (count, reason))
     failures = (len(wrongly_implemented) + len(wrongly_rejected)
                 + len(missing_rtn_addr) + len(wrong_length))
-    failures += check_recompiler(generator, verbose)
+    failures += check_recompiler(generator, verbose, '--translations' in sys.argv[1:])
     print('\n%s' % ('FAILED: %d unexplained disagreements' % failures if failures
                     else 'OK: no unexplained disagreements'))
     return 1 if failures else 0

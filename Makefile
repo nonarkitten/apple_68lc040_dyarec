@@ -6,6 +6,7 @@
 #   make check      regen + verify (run before committing)
 #   make static-check  cross-check the code against the 68K instruction set (tools/check.py)
 #   make test       run 68K test programs under the emulator in a simulator (tools/selftest.py)
+#   make fuzz       compare interpreter and recompiler on random 68K programs (tools/fuzz.py)
 #   make listing    build/Emulator.lst: offsets, bytes and symbols
 #   make clean
 #
@@ -25,7 +26,7 @@ REFERENCE := Emulator.x
 BUILD     := build
 SOURCES   := $(shell find src -name '*.S' -o -name '*.inc' 2>/dev/null)
 
-.PHONY: all verify regen check static-check test listing clean
+.PHONY: all verify regen check static-check test fuzz listing clean
 
 all: $(BUILD)/Emulator.x
 
@@ -59,6 +60,9 @@ static-check:
 
 test:
 	$(PYTHON) tools/selftest.py
+
+fuzz:
+	$(PYTHON) tools/fuzz.py 2000
 
 listing: $(BUILD)/Emulator.o
 	$(PPC_OBJDUMP) -d --no-show-raw-insn $< > $(BUILD)/Emulator.lst

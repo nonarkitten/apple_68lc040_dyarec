@@ -396,11 +396,11 @@ dr_line_8_L2:
 
 dr_line_9:
         clrlwi  addr, prefetch_data, 26                 // addr = prefetch_data & 0x0000003F
-        bso     cr5, L_10E04
-        bgt     cr6, L_10E58
+        bso     cr5, dr_decode_addx_or_add_L1
+        bgt     cr6, dr_decode_addx_or_add_L4
         li      immed_data, 0xC00
         li      out_ptr, dr_emit_sub_l - dr_emitters
-        blt     cr6, L_10E84
+        blt     cr6, dr_decode_addx_or_add_L6
         li      out_ptr, dr_emit_sub_b_2 - dr_emitters
         addi    rtn_addr, base_disp, 0xDB8
         lbzx    data, rtn_addr, addr
@@ -421,10 +421,10 @@ dr_line_A:
 dr_line_B:
         clrlwi  addr, prefetch_data, 26                 // addr = prefetch_data & 0x0000003F
         li      immed_data, 0x400
-        bso     cr5, L_10EB4
-        bgt     cr6, L_10E9C
+        bso     cr5, dr_decode_addx_or_add_L9
+        bgt     cr6, dr_decode_addx_or_add_L7
         li      out_ptr, dr_emit_cmp_cmpa_l - dr_emitters
-        blt     cr6, L_10E84
+        blt     cr6, dr_decode_addx_or_add_L6
         li      out_ptr, dr_emit_cmp_b - dr_emitters
         addi    rtn_addr, base_disp, 0xDB8
         lbzx    data, rtn_addr, addr
@@ -440,9 +440,9 @@ dr_line_C:
         crand   4*cr6+eq, 4*cr6+gt, 4*cr6+lt            // cr6.eq = cr6.gt & cr6.lt
         clrlwi  addr, prefetch_data, 26                 // addr = prefetch_data & 0x0000003F
         li      immed_data, 0x400
-        beq     cr6, L_10F38
-        bso     cr5, L_10F5C
-        blt     cr6, L_10F28
+        beq     cr6, dr_decode_addx_or_add_L14
+        bso     cr5, dr_decode_addx_or_add_L16
+        blt     cr6, dr_decode_addx_or_add_L13
         li      out_ptr, dr_emit_and_w_2 - dr_emitters
         bgt     cr6, dr_line_C_L1
         li      out_ptr, dr_emit_and_b_2 - dr_emitters
@@ -458,11 +458,11 @@ dr_line_C_L2:
 
 dr_line_D:
         clrlwi  addr, prefetch_data, 26                 // addr = prefetch_data & 0x0000003F
-        bso     cr5, L_10DD0
-        bgt     cr6, L_10E40
+        bso     cr5, dr_decode_addx_or_add
+        bgt     cr6, dr_decode_addx_or_add_L3
         li      immed_data, 0xC00
         li      out_ptr, dr_emit_add_l - dr_emitters
-        blt     cr6, L_10E84
+        blt     cr6, dr_decode_addx_or_add_L6
         li      out_ptr, dr_emit_add_b_2 - dr_emitters
 dr_line_D_L1:
         addi    rtn_addr, base_disp, 0xDB8
@@ -677,7 +677,7 @@ L_108B4:
         add     out_ptr, out_ptr, addr
         add     blk_ofs, blk_ofs, data
         clrlwi  addr, prefetch_data, 26                 // addr = prefetch_data & 0x0000003F
-        bsol    cr7, L_10FC4
+        bsol    cr7, dr_decode_addx_or_add_L18
         b       dr_scan_store
 L_108D0:
         rlwinm  addr, prefetch_data, 29, 27, 31         // addr = prefetch_data[7:3]
@@ -723,7 +723,7 @@ L_10934:
 L_10964:
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmpwi   cr4, rtn_addr, 0
-        bne     cr4, L_10FC4
+        bne     cr4, dr_decode_addx_or_add_L18
         subf    blk_ofs, data, blk_ofs                  // blk_ofs = blk_ofs - data
         addi    blk_ofs, blk_ofs, -2
         li      out_ptr, dr_emit_ext_l - dr_emitters
@@ -830,9 +830,9 @@ L_10AD0:
         li      immed_data, 0x400
         beq     cr6, dr_line_4_L1
         li      out_ptr, dr_emit_tst_w - dr_emitters
-        bgt     cr6, L_10E6C
+        bgt     cr6, dr_decode_addx_or_add_L5
         li      out_ptr, dr_emit_tst_l - dr_emitters
-        blt     cr6, L_10E84
+        blt     cr6, dr_decode_addx_or_add_L6
         li      out_ptr, dr_emit_tst_b - dr_emitters
         b       dr_line_D_L1
 L_10AF8:
@@ -1034,122 +1034,123 @@ L_10DAC:
         add     blk_ofs, blk_ofs, data
         bsol    cr7, L_10FDC
         b       dr_scan_store
-L_10DD0:
+
+dr_decode_addx_or_add:
         crand   4*cr5+so, 4*cr6+gt, 4*cr6+lt            // cr5.so = cr6.gt & cr6.lt
         mr      immed_data, zero
         cror    4*cr6+eq, 4*cr6+eq, 4*cr6+so            // cr6.eq = cr6.eq | cr6.so
         li      out_ptr, dr_emit_adda_l - dr_emitters
-        bso     cr5, L_10E84
+        bso     cr5, dr_decode_addx_or_add_L6
         li      out_ptr, dr_emit_add_b - dr_emitters
-        beq     cr6, L_10E1C
+        beq     cr6, dr_decode_addx_or_add_L2
         li      out_ptr, dr_emit_addx_b - dr_emitters
-        li      immed_data, 0xE00
+        li      immed_data, 0xE00                       // DEFECT: ADDX also reads Z (it never sets it), so 0x100 belongs here too
         rlwinm  data, prefetch_data, 28, 28, 29         // data = prefetch_data[7:6] << 2
         rlwimi  data, prefetch_data, 1, 27, 27          // data[4] = prefetch_data[3]
         add     out_ptr, out_ptr, data
         b       dr_scan_store
-L_10E04:
+dr_decode_addx_or_add_L1:
         crand   4*cr5+so, 4*cr6+gt, 4*cr6+lt            // cr5.so = cr6.gt & cr6.lt
         mr      immed_data, zero
         cror    4*cr6+eq, 4*cr6+eq, 4*cr6+so            // cr6.eq = cr6.eq | cr6.so
         li      out_ptr, dr_emit_suba_l - dr_emitters
-        bso     cr5, L_10E84
+        bso     cr5, dr_decode_addx_or_add_L6
         li      out_ptr, dr_emit_sub_b - dr_emitters
-L_10E1C:
+dr_decode_addx_or_add_L2:
         li      immed_data, 0xC00
         addi    rtn_addr, base_disp, 0xF78
         lbzx    data, rtn_addr, addr
         mtcrf   0x01, data                              // cr7 = data[3:0]
         add     blk_ofs, blk_ofs, data
-        bsol    cr7, L_10FC4
+        bsol    cr7, dr_decode_addx_or_add_L18
         rlwinm  data, prefetch_data, 28, 28, 29         // data = prefetch_data[7:6] << 2
         add     out_ptr, out_ptr, data
         b       dr_scan_store
-L_10E40:
+dr_decode_addx_or_add_L3:
         mr      immed_data, zero
         li      out_ptr, dr_emit_adda_w - dr_emitters
-        blt     cr6, L_10E6C
+        blt     cr6, dr_decode_addx_or_add_L5
         li      out_ptr, dr_emit_add_w_2 - dr_emitters
         li      immed_data, 0xC00
-        b       L_10E6C
-L_10E58:
+        b       dr_decode_addx_or_add_L5
+dr_decode_addx_or_add_L4:
         mr      immed_data, zero
         li      out_ptr, dr_emit_suba_w - dr_emitters
-        blt     cr6, L_10E6C
+        blt     cr6, dr_decode_addx_or_add_L5
         li      out_ptr, dr_emit_sub_w_2 - dr_emitters
         li      immed_data, 0xC00
-L_10E6C:
+dr_decode_addx_or_add_L5:
         addi    rtn_addr, base_disp, 0xDF8
         lbzx    data, rtn_addr, addr
         mtcrf   0x01, data                              // cr7 = data[3:0]
         add     blk_ofs, blk_ofs, data
         bsol    cr7, L_10FDC
         b       dr_scan_store
-L_10E84:
+dr_decode_addx_or_add_L6:
         addi    rtn_addr, base_disp, 0xEB8
         lbzx    data, rtn_addr, addr
         mtcrf   0x01, data                              // cr7 = data[3:0]
         add     blk_ofs, blk_ofs, data
         bsol    cr7, L_10FDC
         b       dr_scan_store
-L_10E9C:
+dr_decode_addx_or_add_L7:
         li      out_ptr, dr_emit_cmpa_w - dr_emitters
-        blt     cr6, L_10EA8
+        blt     cr6, dr_decode_addx_or_add_L8
         li      out_ptr, dr_emit_cmp_w - dr_emitters
-L_10EA8:
+dr_decode_addx_or_add_L8:
         addi    rtn_addr, base_disp, 0xDF8
         lbzx    data, rtn_addr, addr
         b       dr_line_B_L1
-L_10EB4:
+dr_decode_addx_or_add_L9:
         crand   4*cr6+eq, 4*cr6+lt, 4*cr6+gt            // cr6.eq = cr6.lt & cr6.gt
         li      out_ptr, dr_emit_cmp_cmpa_l - dr_emitters
         addi    rtn_addr, base_disp, 0xE38
-        beq     cr6, L_10E84
+        beq     cr6, dr_decode_addx_or_add_L6
         li      immed_data, 0x400
         li      out_ptr, dr_emit_eor_l - dr_emitters
-        blt     cr6, L_10EDC
+        blt     cr6, dr_decode_addx_or_add_L10
         li      out_ptr, dr_emit_eor_w - dr_emitters
-        bgt     cr6, L_10EDC
+        bgt     cr6, dr_decode_addx_or_add_L10
         li      out_ptr, dr_emit_eor_b - dr_emitters
-L_10EDC:
+dr_decode_addx_or_add_L10:
         addi    rtn_addr, base_disp, 0xE38
         lbzx    data, rtn_addr, addr
         mtcrf   0x01, data                              // cr7 = data[3:0]
         add     blk_ofs, blk_ofs, data
-        bsol    cr7, L_10EF4
+        bsol    cr7, dr_decode_addx_or_add_L11
         b       dr_scan_store
-L_10EF4:
+dr_decode_addx_or_add_L11:
         subf    blk_ofs, data, blk_ofs                  // blk_ofs = blk_ofs - data
         rlwinm  addr, addr, 29, 29, 31                  // addr = addr[5:3]
         cmpwi   cr4, addr, 6
         beq     cr4, L_11020
         cmpwi   cr7, addr, 1
-        beq     cr7, L_10F14
+        beq     cr7, dr_decode_addx_or_add_L12
         li      immed_data, 0x4300
         b       dr_scan_end_block
-L_10F14:
+dr_decode_addx_or_add_L12:
         li      immed_data, 0x400
         rlwinm  rtn_addr, prefetch_data, 28, 28, 29     // rtn_addr = prefetch_data[7:6] << 2
         li      out_ptr, dr_emit_cmpm_b - dr_emitters
         add     out_ptr, out_ptr, rtn_addr
         b       dr_scan_store
-L_10F28:
+dr_decode_addx_or_add_L13:
         li      out_ptr, dr_emit_and_l - dr_emitters
         addi    rtn_addr, base_disp, 0xEF8
         lbzx    data, rtn_addr, addr
         b       dr_line_C_L2
-L_10F38:
+dr_decode_addx_or_add_L14:
         li      out_ptr, dr_emit_muls_w - dr_emitters
-        bso     cr5, L_10F44
+        bso     cr5, dr_decode_addx_or_add_L15
         li      out_ptr, dr_emit_mulu_w - dr_emitters
-L_10F44:
+dr_decode_addx_or_add_L15:
         addi    rtn_addr, base_disp, 0xDB8
         lbzx    data, rtn_addr, addr
         mtcrf   0x01, data                              // cr7 = data[3:0]
         add     blk_ofs, blk_ofs, data
         bsol    cr7, L_10FDC
         b       dr_scan_store
-L_10F5C:
+dr_decode_addx_or_add_L16:
         li      out_ptr, dr_emit_and_b - dr_emitters
         rlwinm  data, prefetch_data, 28, 28, 29         // data = prefetch_data[7:6] << 2
         add     out_ptr, out_ptr, data
@@ -1157,9 +1158,9 @@ L_10F5C:
         lbzx    data, rtn_addr, addr
         mtcrf   0x01, data                              // cr7 = data[3:0]
         add     blk_ofs, blk_ofs, data
-        bsol    cr7, L_10F80
+        bsol    cr7, dr_decode_addx_or_add_L17
         b       dr_scan_store
-L_10F80:
+dr_decode_addx_or_add_L17:
         subf    blk_ofs, data, blk_ofs                  // blk_ofs = blk_ofs - data
         rlwinm  addr, addr, 29, 29, 31                  // addr = addr[5:3]
         cmpwi   cr4, addr, 6
@@ -1177,7 +1178,7 @@ L_10F80:
         beq     cr5, dr_scan_store
         li      immed_data, 0x4300
         b       dr_scan_end_block
-L_10FC4:
+dr_decode_addx_or_add_L18:
         subf    blk_ofs, data, blk_ofs                  // blk_ofs = blk_ofs - data
         rlwinm  addr, addr, 29, 29, 31                  // addr = addr[5:3]
         cmpwi   cr4, addr, 6
@@ -3040,6 +3041,18 @@ dr_emit_move_l_L16:
         b       dr_emit_move_w
         ALIGN(64)
 
+// Code generator for MOVE.W and MOVEA.W.
+//
+// DEFECT IN THE ORIGINAL CODE.  A register-direct source is turned into a
+// PowerPC register number by adding the opcode's low four bits to 8,
+// which gives r8-r15 for D0-D7 and r16-r22 for A0-A6 - and r23 for A7,
+// which actually lives in r1.  The path for a data register destination
+// tests for A7 (dr_emit_move_w_L4 compares the four bits with 15) and
+// handles it; the paths for a memory destination and for MOVEA.W do not.
+// The 50 opcodes MOVE.W A7,<memory> and MOVEA.W A7,An are therefore
+// translated into code that reads r23, the recompiler's own entry
+// address, in place of the stack pointer.  Found by tools/fuzz.py.
+//
 // Code generator for 3538 opcodes:
 //     MOVE.W Dn,Dn
 //     MOVE.W An,Dn

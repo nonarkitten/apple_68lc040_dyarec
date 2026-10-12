@@ -14,6 +14,7 @@ the image uses. With it, and with no kernel, ROM or operating system:
 |---|---|
 | `tools/run68k.py` | A 68K program under the emulator, from `emulator_reset` to the first invalid opcode; optionally with the dynamic recompiler switched on |
 | `tools/selftest.py` (`make test`) | Seventeen small 68K programs, each run interpreted and recompiled, checked against results worked out by hand |
+| `tools/fuzz.py` (`make fuzz`) | Random 68K programs, each run interpreted and recompiled and the results compared; a differing program is reduced to its shortest form |
 | `tools/drtranslate.py` | The recompiler's translator on any 68K code, printing the PowerPC code it generates |
 | `tools/drmap.py` | The recompiler's first pass, for every opcode |
 
@@ -162,10 +163,10 @@ operations).
    to compare; test-mode bit 31 of `sr_and_flags` (`exit_emulator`) and
    `special_event_hook` are ready-made places to stop after each
    instruction.
-2. **Interpreter against recompiler at scale.** `run68k.py --both`
-   compares the two on one program. Doing so over generated programs is
-   a strong test of both, since they share almost no code for the
-   instructions the recompiler translates inline.
+2. **Wider random testing.** `tools/fuzz.py` compares interpreter and
+   recompiler on straight-line code with forward branches
+   ([14-static-checks.md](14-static-checks.md)). It does not yet generate
+   loops, subroutine calls, or programs that modify themselves.
 3. **Exceptions.** Deliver data access faults to
    `native_exception_handler` as the kernel does
    ([13-rom-context.md](13-rom-context.md)), and check the bus and

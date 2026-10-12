@@ -1,14 +1,23 @@
-# 14. Static Checks
+# 14. Checks and What They Found
 
-`tools/check.py` (`make static-check`) tests the emulator's code against
-the 68K instruction set without executing it. It relies on one fact: each
-of the 65,536 dispatch table entries is the start of a *known* 68K
-instruction, so the instruction says what the code reached from that
-entry must do.
+Two kinds of mechanical check are applied to the emulator's code.
+
+`tools/check.py` (`make static-check`) tests it against the 68K
+instruction set without executing it. It relies on one fact: each of the
+65,536 dispatch table entries is the start of a *known* 68K instruction,
+so the instruction says what the code reached from that entry must do.
+
+`tools/fuzz.py` (`make fuzz`) executes it: random 68K programs are run
+both by the interpreter and through the dynamic recompiler, and the
+results compared.
 
 The checks also validate this project's own material. The comment on
 every dispatch table entry comes from the 68K decoder in `tools/m68k.py`;
 a disagreement between that decoder and the emulator shows up here.
+
+Between them the checks found four defects in the original code, all in
+corners that ordinary software does not reach. They are described under
+[Findings](#findings).
 
 ## What is checked
 
@@ -87,9 +96,43 @@ with the instruction set:
   `LEA`, `ADDA`, …), N Z V C (`MOVE`, logical operations, `CMP`, …), or
   all five (`ADD`, `SUB`, shifts, …).
 
-**Result: no disagreements**, over 34,802 opcodes for length and 34,491
-for flags. (Control transfers are excluded from the first, and
-instructions involving the SR or CCR from the second.)
+- an instruction whose resulting flags depend on the old ones — one that
+  changes only Z, or clears Z but never sets it — must be marked as
+  reading them.
+
+**Result:** no disagreements over 34,802 opcodes for length and 34,491 for
+flags written. (Control transfers are excluded from the first, and
+instructions involving the SR or CCR from the second.) The third rule
+fails for `ADDX`; see Findings.
+
+With `--translations` the checker also translates every translated
+instruction on its own and examines the generated code, which must not
+name r23: that register holds the recompiler's entry point and is not
+part of the 68K's state. 37,642 translations are examined; 50 fail.
+
+### Interpreter against recompiler
+
+`tools/fuzz.py` builds random 68K programs: sixteen instructions that
+load every register and the condition codes with random values, then a
+random sequence drawn evenly from about eighty mnemonics (40,070 valid
+opcodes), with random operands and occasional forward conditional
+branches. Each program is run twice in the simulator
+([11-testing-gaps.md](11-testing-gaps.md)), interpreted and recompiled,
+and the registers, condition codes and all of memory are compared. A
+program that differs is cut down automatically to the shortest one that
+still does.
+
+The two engines share the interpreter's routines for the complicated
+instructions but have entirely separate code for the ones the recompiler
+translates inline, and the recompiler adds its own decisions about
+instruction lengths and flag liveness, so agreement is a real test of
+both.
+
+**Result:** 7 of the first 4,000 programs differed, all traced to the
+two recompiler defects below. With the affected opcodes left out, 18,000
+further programs (about 290,000 random instructions) ran identically.
+The generator does not produce loops, calls, traps or self-modifying
+code.
 
 ## Findings
 
@@ -116,6 +159,65 @@ The instruction — unpacking a BCD byte onto the stack — is not one that
 compilers or hand-written code used, so the defect has no practical
 consequence. The same code is present in the earlier build in the Power
 Macintosh 8600/9600 ROM.
+
+### A defect: the recompiler reads r23 for A7 in word moves
+
+`MOVE.W A7,<memory>` and `MOVEA.W A7,An` — 50 opcodes — are translated
+into code that uses PowerPC register r23 where it should use r1.
+
+The code generator `dr_emit_move_w` turns a register-direct source into
+a PowerPC register number by adding the opcode's low four bits to 8.
+That is right for D0–D7 (r8–r15) and A0–A6 (r16–r22), but A7 is r1, and
+the formula gives r23 — the register that holds the address of
+`dr_dispatch`. The generator's path for a data register destination
+tests for A7 and handles it; the paths for memory destinations and for
+`MOVEA.W` do not. `MOVE.L` and every other instruction are unaffected.
+
+```
+68K     3F4F 1064   MOVE.W  A7,$1064(A7)
+
+        sth     dr_entry, 0x1064(a7)        // should be: sth a7, ...
+        extsh   addr, dr_entry
+        addco.  addr, addr, zero
+```
+
+Run interpreted, `MOVEA.W A7,A0` with A7 = `$00010000` leaves 0 in A0;
+run recompiled it leaves whatever the low word of r23 was. Moving only
+the low half of the stack pointer is not something programs do.
+
+### A defect: the recompiler does not know that ADDX reads Z
+
+`ADDX` clears Z if its result is non-zero and otherwise leaves Z as it
+was, so that Z after a multi-word addition describes the whole result.
+Its result therefore depends on the previous Z. The first pass's record
+for `ADDX` says that it reads X and writes all five flags, but not that
+it reads N, Z, V and C (`0x0E00` where `0x0F00` is needed; the constant
+is at `10DF0`).
+
+The liveness pass consequently treats the flags of the preceding
+instruction as dead whenever that instruction writes N, Z, V, C but not
+X, and the code generator leaves them out:
+
+```
+68K     44FC 0004   MOVE    #4,CCR          Z = 1
+        7001        MOVEQ   #1,D0           Z = 0
+        D782        ADDX.L  D2,D3           0 + 0 + 0: Z unchanged, so 0
+
+        li      d0, 1                       // MOVEQ, flags omitted
+        mtxer   ccr_x
+        crmove  4*cr7+so, eq                // the Z that ADDX keeps: stale
+        addeo.  d3, d3, d2
+        crand   eq, eq, 4*cr7+so
+```
+
+Interpreted, the program ends with Z clear; recompiled, with Z set. The
+difference needs an instruction such as `MOVE`, `TST` or `CMP` directly
+before an `ADDX` whose result is zero, followed by a test of Z. In the
+usual multi-word addition the instruction before `ADDX` is an `ADD` or
+another `ADDX`, which write X and so keep their flags.
+
+`SUBX`, `NEGX` and the BCD instructions have the same property and are
+not translated at all.
 
 ### Invalid opcodes that the recompiler translates
 
@@ -173,8 +275,7 @@ forms and the look-ahead entries above account for the rest.
 
 ## Limits
 
-The checks are static and partial. (Programs can also be executed; see
-[11-testing-gaps.md](11-testing-gaps.md).) They do not show that an instruction
+The static checks are partial. They do not show that an instruction
 computes the right result, sets the right condition codes or writes the
 right register; they show that the control structure around every
 instruction is consistent with its encoding. The opcodes not fully

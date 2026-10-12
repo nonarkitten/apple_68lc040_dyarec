@@ -37,8 +37,18 @@ def labelled(generator):
     return generator.label_addrs
 
 
+_prepared = {}
+
+
 def prepare(generator):
-    """A machine on which init_state and dr_setup have run."""
+    """A machine on which init_state and dr_setup have run (a fresh copy
+    each time; the work is done once)."""
+    if generator not in _prepared:
+        _prepared[generator] = _prepare(generator)
+    return _prepared[generator].copy()
+
+
+def _prepare(generator):
     names = labelled(generator)
     m = ppcsim.Machine()
     m.load(BASE, generator.image)
@@ -81,6 +91,22 @@ def translate(generator, words):
     # dr_cache_ptr still holds where this block's code starts; the slot the
     # translator filled in holds its entry point, which follows a short stub.
     return m, m.read(STATE + 0xB20, 4), m.r[30]
+
+
+def registers_used(m, start, end):
+    """The set of general register numbers named by the instructions of a
+    translated block."""
+    used = set()
+    for address in range(start, end, 4):
+        insn = ppc.decode(m.read(address, 4), address)
+        if insn is None:
+            continue
+        for operand in insn.ops:
+            if operand[0] in ('r', 'rz'):
+                used.add(operand[1])
+            elif operand[0] == 'mem':
+                used.add(operand[2][1])
+    return used
 
 
 def entry_point(m):

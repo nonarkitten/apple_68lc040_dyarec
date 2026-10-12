@@ -73,11 +73,11 @@ use them; about 1,500 internal branch targets and the recompiler's code
 generators have not been examined one by one. See [TODO.md](TODO.md).
 
 `make static-check` cross-checks the code against the 68K instruction
-set without running it: which opcodes are implemented, that every
-instruction advances the program counter by its own length, and that the
-recompiler's view of each instruction agrees with the instruction set.
-It found one genuine (and harmless) defect in Apple's code — see
-[docs/14-static-checks.md](docs/14-static-checks.md).
+set without running it, and `make fuzz` runs random 68K programs through
+both the interpreter and the recompiler and compares the results.
+Between them they found four genuine (and harmless) defects in Apple's
+code — one in the interpreter and three in the recompiler — which are
+written up in [docs/14-static-checks.md](docs/14-static-checks.md).
 
 The emulator can also be *run*. A small PowerPC simulator in `tools/`
 executes it without a kernel or ROM:
@@ -86,6 +86,7 @@ executes it without a kernel or ROM:
 $ python3 tools/run68k.py --both 6002 4E71 7064 7200 D280 5380 66FA 4AFC   # sum 1..100
 $ python3 tools/drtranslate.py 7001 5380 66FC 4E75     # what the recompiler generates
 $ make test                                             # 17 programs, interpreted and recompiled
+$ make fuzz                                             # 2,000 random programs, both ways
 ```
 
 See [docs/11-testing-gaps.md](docs/11-testing-gaps.md).

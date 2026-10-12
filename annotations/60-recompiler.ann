@@ -273,3 +273,19 @@
     that came here with a direct branch to it, otherwise translate it.
     (Also reached by falling out of the special event processing in
     dr_exit_to_interpreter.)
+
+@10DD0 dr_decode_addx_or_add
+10DF0 DEFECT: ADDX also reads Z (it never sets it), so 0x100 belongs here too
+
+@127C0 dr_emit_move_w
+    Code generator for MOVE.W and MOVEA.W.
+    .
+    DEFECT IN THE ORIGINAL CODE.  A register-direct source is turned into a
+    PowerPC register number by adding the opcode's low four bits to 8,
+    which gives r8-r15 for D0-D7 and r16-r22 for A0-A6 - and r23 for A7,
+    which actually lives in r1.  The path for a data register destination
+    tests for A7 (dr_emit_move_w_L4 compares the four bits with 15) and
+    handles it; the paths for a memory destination and for MOVEA.W do not.
+    The 50 opcodes MOVE.W A7,<memory> and MOVEA.W A7,An are therefore
+    translated into code that reads r23, the recompiler's own entry
+    address, in place of the stack pointer.  Found by tools/fuzz.py.

@@ -369,17 +369,27 @@ Here the `MOVEQ` keeps its flags, because the interpreter's `ROL` is
 going to read X and the liveness pass cannot see past the end of the
 block.
 
-## A difference from the interpreter
+## Differences from the interpreter
 
-The first pass does not check every addressing mode for validity. It
-assigns code generators to 171 opcodes that are not valid 68K
-instructions and that the interpreter sends to the illegal instruction
-exception: `DIVU.W An,Dn` and `DIVS.W An,Dn` (128 opcodes), and 43
-instructions that would write to a `(d8,PC,Xn)` destination. Translated,
-`DIVU.W A0,D0` divides by D0, and `OR.B D0,(d8,PC,Xn)` performs the
-store. Whether such an opcode traps therefore depends on whether it is
-reached by the interpreter or inside a translated block. No correct
-program contains these opcodes.
+Translated code is meant to behave exactly as the interpreter does. Three
+cases are known in which it does not; all were found mechanically, and
+[14-static-checks.md](14-static-checks.md) gives the details.
+
+- **Invalid opcodes.** The first pass does not check every addressing
+  mode for validity. It assigns code generators to 171 opcodes that are
+  not valid 68K instructions and that the interpreter sends to the
+  illegal instruction exception: `DIVU.W An,Dn` and `DIVS.W An,Dn` (128
+  opcodes), and 43 instructions that would write to a `(d8,PC,Xn)`
+  destination. Translated, `DIVU.W A0,D0` divides by D0, and
+  `OR.B D0,(d8,PC,Xn)` performs the store.
+- **Word moves from A7.** `MOVE.W A7,<memory>` and `MOVEA.W A7,An` (50
+  opcodes) are translated into code that reads r23 instead of r1.
+- **`ADDX` and Z.** `ADDX` is recorded as not reading N, Z, V and C,
+  although it leaves Z unchanged when its result is zero. An instruction
+  before it that writes those flags but not X can have them optimised
+  away, and `ADDX` then sees a stale Z.
+
+Apart from these, random programs run identically both ways.
 
 ## Leaving a block
 
