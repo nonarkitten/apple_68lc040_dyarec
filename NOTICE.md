@@ -27,8 +27,7 @@ Everything in this repository that is *not* Apple's code is original to
 this project:
 
 - the documentation in `docs/` (other than the patents);
-- the labels, names and comments (`annotations/`, and as they appear in
-  `src/`);
+- the labels, names and comments in `src/`;
 - the tools in `tools/`, the `Makefile` and the include files;
 - `README.md`, `TODO.md`, `CLAUDE.md` and this notice.
 

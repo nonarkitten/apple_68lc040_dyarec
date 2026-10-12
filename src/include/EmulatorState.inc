@@ -7,7 +7,7 @@
 // are named; other offsets appear as plain numbers in the source.
 //
 // Names beginning "saved_" and "trace_pc" are the ones used in US5574873.
-// tools/gen.py reads this file: every "#define name offset" between the
+// tools/image.py reads this file: every "#define name offset" between the
 // "//@ state" and "//@ end" markers names a displacement from
 // EmulatorStatePtr.
 

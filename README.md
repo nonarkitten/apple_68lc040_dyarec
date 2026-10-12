@@ -21,7 +21,7 @@ from the kernel (see [docs/11-testing-gaps.md](docs/11-testing-gaps.md)).
 | [`docs/`](docs/README.md) | How the emulator works: registers, dispatch, addressing modes, condition codes, exceptions, state layout, the kernel interface, the recompiler |
 | `src/` | The assembly source: about 46,000 lines of emulator and a 135,000-line dispatch table, with role names for registers, labels, and comments |
 | `Emulator.x` | The original binary (an XCOFF object extracted from the ROM), kept as the reference |
-| `annotations/`, `tools/` | The labels and comments, and the Python tools that combine them with the binary to produce `src/` |
+| `tools/` | Python tools: the build's last step, a static checker, a PowerPC simulator that runs the emulator, a fuzzer, and comparisons with the builds in ROM images |
 | [`docs/patents/`](docs/patents/) | The three Apple patents that describe the design (all expired) |
 | [`TODO.md`](TODO.md) | Progress checklist and open questions |
 

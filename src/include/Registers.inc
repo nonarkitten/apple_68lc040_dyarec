@@ -2,7 +2,7 @@
 //
 // The emulator's source referred to registers by role, never by number.
 // The role names below are the ones listed in US patent 5,574,873
-// (columns 9-12).  tools/gen.py also reads this file: the "//@" lines mark
+// (columns 9-12).  tools/image.py also reads this file: the "//@" lines mark
 // the sections it parses, so keep one definition per line.
 
 //@ plain
@@ -76,8 +76,8 @@
 
 //@ alias
 // Names used only inside the dynamic recompiler's translator, where three
-// of the registers above are borrowed for other purposes (see
-// annotations/hints.txt for the ranges).
+// of the registers above are borrowed for other purposes (offsets 10000 to
+// 17748, from dr_translate to the end of the emitters).
 #define blk_ofs             23      // offset of the 68K instruction being translated within its block
 #define rec_ptr             29      // current 12-byte instruction record
 #define out_ptr             30      // last PowerPC word written to the translation cache

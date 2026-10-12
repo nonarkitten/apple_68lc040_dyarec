@@ -10,7 +10,7 @@ faithful rendering of the original binary: assembling it must reproduce
 |---|---|---|
 | A C preprocessor | Register and field names, comments | Any `cc -E` |
 | An assembler for 32-bit big-endian PowerPC ELF | Assembling | LLVM's `llvm-mc` by default |
-| Python 3 | Wrapping the result in XCOFF; regenerating the source | Standard library only |
+| Python 3 | Wrapping the result in XCOFF; the checking tools | Standard library only |
 | `make` | Driving the above | |
 
 On macOS: `brew install llvm`. The Makefile looks for LLVM in the usual
@@ -26,8 +26,7 @@ Homebrew locations; set `LLVM_BIN` to its `bin` directory otherwise.
 | `make test` | Run 68K test programs under the emulator, interpreted and recompiled, in a simulator ([11-testing-gaps.md](11-testing-gaps.md)) |
 | `make fuzz` | Run 2,000 random 68K programs both ways and compare ([14-static-checks.md](14-static-checks.md)) |
 | `make listing` | Write `build/Emulator.lst`, a disassembly of the result with offsets and symbols |
-| `make regen` | Regenerate `src/` from `Emulator.x` and `annotations/` |
-| `make check` | `regen` followed by `verify` |
+| `make check` | `verify`, `static-check` and `test` |
 | `make clean` | Remove `build/` |
 
 A successful verification prints
@@ -115,24 +114,28 @@ the least significant), for example
         mtcrf   0x03, base_disp                         // cr6..cr7 = base_disp[7:0]
 ```
 
-## How the source is produced
+## How the source was produced
 
-The files in `src/` (other than `src/include/`) are written by
-`tools/gen.py`. It decodes the reference image and combines the result
-with the files in `annotations/`:
+The source is maintained by hand: names and comments are changed by
+editing `src/`, and `make verify` shows that nothing else changed.
 
-| File | Contents |
-|---|---|
-| `layout.txt` | Which source file each range of the image goes to |
-| `hints.txt` | Ranges that are data rather than code, register names that apply to particular ranges, and a few operand spellings |
-| `*.ann` | Labels, block comments and end-of-line comments, keyed by offset |
+It did not begin that way. The files were written by a generator that
+decoded the reference image and merged in a set of annotations — labels
+and comments keyed by offset — and they keep the marks of it:
 
-Routines reached from the dispatch table are named automatically
-(`tools/naming.py`) unless an annotation names them: after the
-instructions that use them, or, for a private opcode that no annotation
-names, after the opcode (`private_fe0f`).
+- The generator only wrote instructions it had decoded from the image,
+  and its decoder (`tools/ppc.py`) refused any word it could not spell
+  in a way that assembles back to the same bits; such words are `.long`.
+- A routine reached from the dispatch table is named after the
+  instructions that use it (`add_l_dn_dn`), with a number where several
+  share a description, unless it was given a name by hand. The list of
+  instructions is in the comment above it.
+- The comments on rotate-and-mask and condition register instructions,
+  and those marking DECODE1, DECODE2, PREFETCH and DISPATCH, are in one
+  pattern throughout because they were produced mechanically.
+- Branch targets inside a routine are numbered: `<routine>_L<n>`.
 
-Parts of the recompiler's source are produced by running the recompiler
+Parts of the recompiler's source were produced by running the recompiler
 in the simulator (`tools/drmap.py`, `tools/drtranslate.py`):
 
 - its code generators are named after the instructions the first pass
@@ -146,18 +149,21 @@ in the simulator (`tools/drmap.py`, `tools/drtranslate.py`):
 - the routines in the operand emitter tables are named after the table
   and the addressing mode (`dr_operand_load_l_30`).
 
-Automatic comments
-come from `gen.py`; an annotation for the same offset replaces them.
+Those examples and names can be checked at any time with the same tools.
+The generator and the annotations are in the repository's history.
 
-The generator cannot produce wrong code silently: it only writes
-instructions it has decoded from the image, the decoder
-(`tools/ppc.py`) refuses any word it cannot spell in a way that
-assembles back to the same bits (such words are emitted as `.long`), and
-the result is checked by `make verify`. An incorrect annotation can make
-a name or comment misleading, but cannot change the binary.
+## How the tools read the source
 
-`tools/show.py START END` prints a listing of any part of the image with
-offsets, which is the convenient view for writing annotations.
+The checking and simulation tools need the offsets of labels and need to
+know which bytes are data. `tools/image.py` obtains both from `src/` by
+walking the files in the order `src/Emulator.S` includes them and
+counting bytes: four for an instruction, the operands of `.long`,
+`.short`, `.byte`, `.ascii` and `.space`, the padding of `ALIGN`. The
+count has to end exactly at the end of the image. A statement of a kind
+the source does not already use would need adding there.
+
+`tools/show.py START [END]` prints any part of the source with the
+offset of each statement; `START` and `END` may be labels.
 
 ## Verifying with another assembler
 
@@ -171,14 +177,15 @@ Only the LLVM build has been verified.
 
 | Tool | Purpose |
 |---|---|
-| `tools/show.py START END` | Listing of part of the image with offsets |
+| `tools/show.py START [END] [-x]` | Part of the source with offsets; `-x` adds the instruction words |
+| `tools/image.py` | A library: labels and data ranges, read from `src/` |
 | `tools/m68k.py WORD…` | Decode 68K opcode words |
 | `tools/check.py [-v] [--translations]` | The static checks; `-v` lists individual opcodes, `--translations` also examines the recompiler's output for every instruction (about half a minute) |
 | `tools/fuzz.py [COUNT] [--seed N] [--length N] [--known] [--rom ROM]` | Random programs, interpreter against recompiler; with `--rom`, of the build in a ROM image |
 | `tools/rominfo.py ROM…` | Where a ROM maps the emulator, and which build it contains ([13-rom-context.md](13-rom-context.md)) |
 | `tools/buildcmp.py ROM [--emitters \| WORD…]` | What differs between the build in a ROM and `Emulator.x` ([15-build-history.md](15-build-history.md)) |
 | `tools/ppcsim.py` | A small PowerPC simulator (a library), enough to run parts of the image |
-| `tools/drmap.py WORD…` | What the recompiler's first pass decides for an opcode |
+| `tools/drmap.py WORD…` | What the recompiler's first pass decides for an opcode, and the decoder helpers it goes through |
 | `tools/drtranslate.py WORD…` | Run the recompiler's translator on 68K code and print the PowerPC code it generates |
 | `tools/run68k.py [--dr\|--both] WORD…` | Run a 68K program under the emulator and print the registers it ends with |
 | `tools/selftest.py [-v]` | The 68K test programs |

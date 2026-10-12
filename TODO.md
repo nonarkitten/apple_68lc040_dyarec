@@ -39,7 +39,7 @@ Legend: `[x]` done, `[~]` partly done, `[ ]` not started.
 
 ### Interpreter still to read
 - [x] Bit fields, BCD, MOVEM, MOVE16, CAS, CHK2/CMP2, long multiply/divide: read and
-      described in block comments (`annotations/50-instructions.ann`)
+      described in block comments
 - [~] Private opcodes: all named (Apple's names from SuperMario) and described; the SANE
       arithmetic (`FC04`, `FC06`, `FC08`-`FC0F`, 4 KB) is not read line by line
 - [x] The routines behind the forty FPU handler slots: they build the 68LC040's format 4
@@ -86,19 +86,19 @@ Legend: `[x]` done, `[~]` partly done, `[ ]` not started.
 
 ## How to continue
 
-1. `make check`, `make static-check` and `make test` should all print `OK`.
-2. Pick an item. To name and comment code: `python3 tools/show.py START END`
-   prints it with offsets; add labels and comments to a file in
-   `annotations/`; `make check`; commit.
+1. `make check` should print `OK` three times.
+2. To name or comment code: `python3 tools/show.py START +40` (offset or label) finds it;
+   edit `src/`; `make check`; commit.
 3. To find out what a piece of 68K code does under the emulator, run it:
    `tools/run68k.py`, or `tools/drtranslate.py` for the recompiler's output.
 4. If a finding changes what the docs say, change the docs in the same commit.
 
 ## Decisions
 
-- **Generator**: kept; retire it gradually and only as needed. A file is handed
-  over to manual editing by marking it `frozen` in `annotations/layout.txt`.
-  Nothing is frozen yet.
+- **Generator**: retired (October 2026). `src/` is edited by hand; the generator and
+  `annotations/` are in the history up to commit "Read labels and data ranges from src/
+  itself". The tools read labels and data ranges from `src/` (`tools/image.py`).
+- **Local labels**: `<routine>_L<n>` is how they stay.
 - **External names**: use the kernel's and Mac OS's conventional names, saying
   how each is known. Reference: https://github.com/elliotnunn/powermac-rom.
 - **Automatic handler names**: fine as they are.
