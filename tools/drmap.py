@@ -8,6 +8,7 @@ decided.  Nothing here interprets the recompiler: the answers are the
 recompiler's own.
 
     scan(image) -> {opcode: Decision}
+    entered(image, opcode) -> the places the first pass branches to for it
 
     Decision.translated   False if the instruction ends the block and is
                           left to the interpreter
@@ -120,29 +121,6 @@ def entered(image, opcode, extension=(0, 0, 0, 0), layout=EMULATOR_X):
     return places
 
 
-def paths(image, cache=None, layout=EMULATOR_X):
-    """{offset: [opcodes]}: for every place pass 1 branches to, the opcodes
-    whose decoding goes through it.  Cached like scan()."""
-    import hashlib
-    import json
-    import os
-    digest = hashlib.sha1(image).hexdigest()
-    if cache and os.path.exists(cache):
-        with open(cache) as handle:
-            stored = json.load(handle)
-        if stored.get('digest') == digest:
-            return {int(offset): opcodes for offset, opcodes in stored['paths'].items()}
-    result = collections.defaultdict(list)
-    for opcode in range(0x10000):
-        for offset in sorted(set(entered(image, opcode, layout=layout))):
-            result[offset].append(opcode)
-    if cache:
-        os.makedirs(os.path.dirname(cache), exist_ok=True)
-        with open(cache, 'w') as handle:
-            json.dump({'digest': digest, 'paths': result}, handle)
-    return dict(result)
-
-
 def scan(image, cache=None, layout=EMULATOR_X):
     """Decide every opcode.  The run takes several seconds, so the result
     can be kept in a cache file (keyed by a digest of the image)."""
@@ -168,11 +146,13 @@ if __name__ == '__main__':
     import os
     import sys
     sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import image as source
     import m68k
-    with open(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-                           'Emulator.x'), 'rb') as handle:
-        image = handle.read()[0x3C:0x3C + 0x20000]
+    emulator = source.Image()
+    code = emulator.image[:source.TABLE_START]
     for argument in sys.argv[1:]:
         opcode = int(argument, 16)
         print('%04X  %-30s %s' % (opcode, ' '.join(m68k.text(opcode).split()),
-                                  decide(image, opcode)))
+                                  decide(code, opcode)))
+        print('      through %s' % ', '.join(
+            emulator.labels.get(offset, '%05X' % offset) for offset in entered(code, opcode)))

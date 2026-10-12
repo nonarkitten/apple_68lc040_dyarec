@@ -18,7 +18,7 @@ import struct
 import sys
 
 import drmap
-import gen
+import image
 import m68k
 import ppc
 import ppcsim
@@ -33,28 +33,28 @@ SYSTEM_INFO = 0x5FFFEC80
 RETURN = 0xDEAD0000             # sentinel return address for called routines
 
 
-def labelled(generator):
-    return generator.label_addrs
+def labelled(emulator):
+    return emulator.label_addrs
 
 
 _prepared = {}
 
 
-def prepare(generator):
+def prepare(emulator):
     """A machine on which init_state and dr_setup have run (a fresh copy
     each time; the work is done once)."""
-    if generator not in _prepared:
-        _prepared[generator] = _prepare(generator)
-    return _prepared[generator].copy()
+    if emulator not in _prepared:
+        _prepared[emulator] = _prepare(emulator)
+    return _prepared[emulator].copy()
 
 
-def _prepare(generator):
-    names = labelled(generator)
+def _prepare(emulator):
+    names = labelled(emulator)
     m = ppcsim.Machine()
-    m.load(BASE, generator.image)
+    m.load(BASE, emulator.image)
     m.r[31] = STATE
     m.r[30] = BASE                              # code_ptr
-    m.r[29] = BASE + gen.TABLE_START            # disp_table
+    m.r[29] = BASE + image.TABLE_START            # disp_table
     m.write(STATE + 0x74, 4, m.r[29])           # saved_disp_table
     m.write(STATE + 0x78, 4, m.r[30])           # saved_code_ptr
     m.write(STATE + 0x7C0, 4, DR_MEMORY)        # memory for the recompiler
@@ -71,10 +71,10 @@ def _prepare(generator):
     return m
 
 
-def translate(generator, words):
+def translate(emulator, words):
     """Return (machine, start, end) for the translated block, or raise."""
-    names = labelled(generator)
-    m = prepare(generator)
+    names = labelled(emulator)
+    m = prepare(emulator)
     for index, word in enumerate(words):
         m.write(GUEST + 2 * index, 2, word)
     # As dr_translate_miss leaves things: a lookup table slot chosen, the
@@ -113,9 +113,9 @@ def entry_point(m):
     return m.read(STATE + 0xB2C, 4)
 
 
-def render(generator, m, start, end):
+def render(emulator, m, start, end):
     """Disassemble the block, naming branch targets."""
-    g = generator
+    g = emulator
     lines = []
     entry = entry_point(m)
     for address in range(start, end, 4):
@@ -132,17 +132,17 @@ def render(generator, m, start, end):
                 target = operand[1]
                 if start <= target < end:
                     operands.append('+%03X' % (target - start))
-                elif BASE <= target < BASE + gen.IMAGE_SIZE:
+                elif BASE <= target < BASE + image.IMAGE_SIZE:
                     offset = target - BASE
                     name = g.labels.get(offset)
-                    if name is None and offset >= gen.TABLE_START:
-                        opcode, second = divmod(offset - gen.TABLE_START, 8)
+                    if name is None and offset >= image.TABLE_START:
+                        opcode, second = divmod(offset - image.TABLE_START, 8)
                         name = 'op_%04X%s' % (opcode, '_2' if second else '')
                     operands.append(name or 'EmTop+0x%05X' % offset)
                 else:
                     operands.append('0x%08X' % target)
             else:
-                operands.append(g.operand(operand, 0, insn))
+                operands.append(g.operand(operand, insn))
         lines.append('  +%03X  %-7s %s' % (address - start, insn.mnem, ', '.join(operands)))
     return lines
 
@@ -151,8 +151,7 @@ def main():
     if len(sys.argv) < 2:
         sys.exit(__doc__)
     words = [int(word, 16) for word in ' '.join(sys.argv[1:]).split()]
-    generator = gen.Generator()
-    generator.analyse()
+    emulator = image.Image()
     print('68K code:')
     offset = 0
     while offset < len(words):
@@ -162,9 +161,9 @@ def main():
         print('  %2d  %-14s %s' % (2 * offset, ' '.join('%04X' % w for w in words[offset:offset + count]),
                                   ' '.join(m68k.text(op).split())))
         offset += count
-    m, start, end = translate(generator, words)
+    m, start, end = translate(emulator, words)
     print('\nTranslation (%d instructions):' % ((end - start) // 4))
-    print('\n'.join(render(generator, m, start, end)))
+    print('\n'.join(render(emulator, m, start, end)))
 
 
 if __name__ == '__main__':

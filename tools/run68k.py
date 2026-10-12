@@ -23,7 +23,7 @@ initially zero.
 import sys
 
 import drmap
-import gen
+import image
 import ppcsim
 
 BASE = ppcsim.LOAD_ADDRESS
@@ -70,16 +70,16 @@ class Result:
 _booted = {}
 
 
-def boot(generator, first, recompile, quick):
+def boot(emulator, first, recompile, quick):
     """A machine stopped at the first dispatch of a program whose first two
     words are `first`, with the recompiler switched on if asked.  The result
     is cached; callers must copy it."""
-    key = (generator, tuple(first), recompile, quick)
+    key = (emulator, tuple(first), recompile, quick)
     if key in _booted:
         return _booted[key]
-    names = generator.label_addrs
+    names = emulator.label_addrs
     m = ppcsim.Machine()
-    m.load(BASE, generator.image)
+    m.load(BASE, emulator.image)
     m.write(0, 4, STACK)                        # 68K reset vector: initial SSP
     m.write(4, 4, PROGRAM)                      #                   initial PC
     for index, word in enumerate(first):
@@ -87,11 +87,11 @@ def boot(generator, first, recompile, quick):
     # What the kernel provides before the emulator context first runs.
     m.r[31] = STATE
     m.r[30] = BASE
-    m.r[29] = BASE + gen.TABLE_START
+    m.r[29] = BASE + image.TABLE_START
     m.write(STATE + 0x74, 4, m.r[29])           # saved_disp_table
     m.write(STATE + 0x78, 4, m.r[30])           # saved_code_ptr
     m.pc = BASE + names['emulator_reset']
-    table = range(BASE + gen.TABLE_START, BASE + gen.IMAGE_SIZE)
+    table = range(BASE + image.TABLE_START, BASE + image.IMAGE_SIZE)
     while m.pc not in table:
         m.step()
     if recompile:
@@ -119,13 +119,13 @@ def boot(generator, first, recompile, quick):
     return m
 
 
-def run(generator, words, recompile=False, limit=2000000, quick=False):
+def run(emulator, words, recompile=False, limit=2000000, quick=False):
     """Run a program to its first invalid opcode and return a Result.
 
     quick   skip the recompiler's initial cache flush (for bulk testing)
     """
-    names = generator.label_addrs
-    m = boot(generator, words[:2], recompile, quick).copy()
+    names = emulator.label_addrs
+    m = boot(emulator, words[:2], recompile, quick).copy()
     for index, word in enumerate(words):
         m.write(PROGRAM + 2 * index, 2, word)
     stop = BASE + names['take_illegal_instruction']
@@ -153,13 +153,12 @@ def main():
                                                  if not a.startswith('--')).split()]
     if not words:
         sys.exit(__doc__)
-    generator = gen.Generator()
-    generator.analyse()
+    emulator = image.Image()
     if not both:
-        print(run(generator, words, recompile).show())
+        print(run(emulator, words, recompile).show())
         return 0
-    interpreted = run(generator, words)
-    recompiled = run(generator, words, recompile=True)
+    interpreted = run(emulator, words)
+    recompiled = run(emulator, words, recompile=True)
     print('interpreted:\n' + interpreted.show())
     print('recompiled:\n' + recompiled.show())
     same = interpreted.state() == recompiled.state()

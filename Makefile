@@ -2,10 +2,9 @@
 #
 #   make            assemble src/ into build/Emulator.x
 #   make verify     build, then compare with ./Emulator.x
-#   make regen      regenerate src/ from Emulator.x + annotations/
-#   make check      regen + verify (run before committing)
 #   make static-check  cross-check the code against the 68K instruction set (tools/check.py)
 #   make test       run 68K test programs under the emulator in a simulator (tools/selftest.py)
+#   make check      verify, static-check and test (run before committing)
 #   make fuzz       compare interpreter and recompiler on random 68K programs (tools/fuzz.py)
 #   make listing    build/Emulator.lst: offsets, bytes and symbols
 #   make clean
@@ -26,7 +25,7 @@ REFERENCE := Emulator.x
 BUILD     := build
 SOURCES   := $(shell find src -name '*.S' -o -name '*.inc' 2>/dev/null)
 
-.PHONY: all verify regen check static-check test fuzz listing clean
+.PHONY: all verify check static-check test fuzz listing clean
 
 all: $(BUILD)/Emulator.x
 
@@ -49,11 +48,7 @@ verify: $(BUILD)/Emulator.x
 		exit 1; \
 	fi
 
-regen:
-	$(PYTHON) tools/gen.py
-
-check: regen
-	@$(MAKE) --no-print-directory verify
+check: verify static-check test
 
 static-check:
 	$(PYTHON) tools/check.py

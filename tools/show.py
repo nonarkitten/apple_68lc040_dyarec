@@ -1,64 +1,55 @@
 #!/usr/bin/env python3
-"""Print an annotated listing of part of the image, with offsets.
+"""Print part of the source with the offsets of its statements.
 
-Usage: show.py START END [START END ...] [-c] [-x]
+Usage: show.py START [END] [-x]
 
-    -c   include the automatic end-of-line comments
-    -x   include the raw instruction word
+START and END are offsets in the image, in hex, or labels; END may also be
++N, a number of bytes (hex), and defaults to +40.  -x adds the instruction
+words.
 
-The generated source has no offsets on instruction lines; this is the tool
-for reading the code next to its addresses while writing annotations.
+    $ python3 tools/show.py take_exception +20
+    $ python3 tools/show.py 0D780 0D7A0 -x
+
+The offsets come from walking src/ (tools/image.py); nothing is
+disassembled here.
 """
 
 import sys
 
-import gen
+import image
 
 
-def listing(generator, start, end, comments=False, raw=False):
-    g = generator
-    addr = start & ~3
-    while addr < end:
-        users = g.table_users.get(addr)
-        if users and addr < gen.TABLE_START:
-            forms = []
-            for opcode in users:
-                form = gen.generalise(gen.m68k.text(opcode))
-                if form not in forms:
-                    forms.append(form)
-            extra = '' if len(forms) <= 4 else ' (+%d forms)' % (len(forms) - 4)
-            print('        ; <- %d: %s%s' % (len(users), ' | '.join(forms[:4]), extra))
-        if addr in g.labels:
-            print('%s:' % g.labels[addr])
-        kind, value = g.kind[addr]
-        word = '%08X ' % g.words[addr // 4] if raw else ''
-        if kind == 'insn':
-            text = g.instruction_text(addr, value).strip()
-            mnem, _, rest = text.partition(' ')
-            line = '%05X %s%-7s %s' % (addr, word, mnem, rest.strip())
-            note = g.ann.eols.get(addr) or (g.auto_comment(addr, value) if comments else None)
-            if note:
-                line = '%-52s ; %s' % (line, note)
-        elif kind == 'data':
-            line = '%05X %s.data   %08X (%s)' % (addr, word, g.words[addr // 4], value[2])
-        else:
-            line = '%05X %s.long   %08X' % (addr, word, g.words[addr // 4])
-        print(line.rstrip())
-        addr += 4
+def place(im, text, start=None):
+    if text.startswith('+'):
+        return start + int(text[1:], 16)
+    if text in im.label_addrs:
+        return im.label_addrs[text]
+    try:
+        return int(text, 16)
+    except ValueError:
+        sys.exit('show.py: %s is neither a label nor a hex offset' % text)
+
+
+def listing(im, start, end, raw=False):
+    for addr in sorted(a for a in im.lines if start <= a < end):
+        lines = im.lines[addr]
+        for line in lines[:-1]:
+            print(line)
+        words = ''
+        if raw:
+            kind = im.kind[addr & ~3][0]
+            words = ('%08X ' % im.words[addr // 4]) if kind == 'insn' and not addr & 3 else ' ' * 9
+        print('%05X %s%s' % (addr, words, lines[-1].strip()))
 
 
 def main():
-    args = [a for a in sys.argv[1:] if not a.startswith('-')]
-    flags = [a for a in sys.argv[1:] if a.startswith('-')]
-    if not args or len(args) % 2:
+    arguments = [a for a in sys.argv[1:] if a != '-x']
+    if not arguments:
         sys.exit(__doc__)
-    generator = gen.Generator()
-    generator.analyse()
-    for index in range(0, len(args), 2):
-        if index:
-            print('-----')
-        listing(generator, int(args[index], 16), int(args[index + 1], 16),
-                comments='-c' in flags, raw='-x' in flags)
+    im = image.Image()
+    start = place(im, arguments[0])
+    end = place(im, arguments[1] if len(arguments) > 1 else '+40', start)
+    listing(im, start, end, raw='-x' in sys.argv)
 
 
 if __name__ == '__main__':

@@ -52,15 +52,16 @@ unchecked.
 """
 
 import collections
+import os
 import re
 import struct
 import sys
 
 import drmap
-import gen
+import image
 import m68k
 
-TABLE = gen.TABLE_START
+TABLE = image.TABLE_START
 STEP_LIMIT = 4000               # instructions examined per opcode
 SPECIAL_EVENT_BIT = 8           # cr_special_event_pending
 DR_ACTIVE_BIT = 5               # cr_dr_active
@@ -139,15 +140,15 @@ def extension_words(op):
 # ---------------------------------------------------------------------------
 
 class Walker:
-    def __init__(self, generator):
-        self.g = generator
-        self.words = generator.words
-        self.kind = generator.kind
-        names = generator.label_addrs
+    def __init__(self, emulator):
+        self.g = emulator
+        self.words = emulator.words
+        self.kind = emulator.kind
+        names = emulator.label_addrs
         self.event = names['process_special_event']
         self.terminal = {}
         for name, addr in names.items():
-            if gen.AUTO_LABEL.fullmatch(name):
+            if image.LOCAL_LABEL.fullmatch(name):
                 continue                        # a local label inside a routine
             if name.startswith('take_') or name in (
                     'exit_emulator', 'switch_to_native', 'mixed_mode_dispatch',
@@ -160,7 +161,7 @@ class Walker:
         defaults = names['handler_defaults']
         self.vectors = {}
         for index in range(151):
-            value = struct.unpack_from('>H', generator.image, defaults + 2 * index)[0]
+            value = struct.unpack_from('>H', emulator.image, defaults + 2 * index)[0]
             if value:
                 self.vectors[0x800 + 4 * index] = value
 
@@ -307,13 +308,13 @@ class Walker:
 # The checks
 # ---------------------------------------------------------------------------
 
-def classify(generator, opcode):
+def classify(emulator, opcode):
     """How the emulator treats the opcode: 'illegal', 'fline', 'aline' or
     'implemented'."""
     entry = TABLE + opcode * 8
-    kind, insn = generator.kind[entry + 4]
+    kind, insn = emulator.kind[entry + 4]
     if kind == 'insn' and insn.ops and insn.ops[-1][0] == 'tgt':
-        name = generator.labels.get(insn.ops[-1][1], '')
+        name = emulator.labels.get(insn.ops[-1][1], '')
         if name == 'take_illegal_instruction':
             return 'illegal'
         if name == 'take_fline':
@@ -323,11 +324,11 @@ def classify(generator, opcode):
     return 'implemented'
 
 
-def reads_rtn_addr(generator, addr):
+def reads_rtn_addr(emulator, addr):
     """True if the routine at addr moves rtn_addr to LR or CTR before
     giving it a value of its own."""
     for step in range(3):
-        kind, insn = generator.kind.get(addr + 4 * step, ('long', None))
+        kind, insn = emulator.kind.get(addr + 4 * step, ('long', None))
         if kind != 'insn':
             return False
         if insn.mnem in ('mtlr', 'mtctr') and insn.ops[0] == ('r', 5):
@@ -348,7 +349,7 @@ def summarise(title, items, verbose):
     print('\n%s: %d' % (title, len(items)))
     groups = collections.OrderedDict()
     for opcode, detail in items:
-        key = (gen.generalise(m68k.text(opcode)), detail)
+        key = (image.generalise(m68k.text(opcode)), detail)
         groups.setdefault(key, []).append(opcode)
     for (form, detail), opcodes in sorted(groups.items(), key=lambda kv: -len(kv[1])):
         line = '  %5d  %-44s %s' % (len(opcodes), form, detail)
@@ -389,7 +390,7 @@ def expected_flag_writes(op):
     return None
 
 
-def check_translations(generator, decisions, verbose):
+def check_translations(emulator, decisions, verbose):
     """Translate each translated opcode on its own and look at the code.
     Returns the number of unexplained problems."""
     import random
@@ -405,7 +406,7 @@ def check_translations(generator, decisions, verbose):
             continue
         words = [opcode] + fuzz.extension(rng, opcode) + [0x4E75]
         try:
-            m, start, end = drtranslate.translate(generator, words)
+            m, start, end = drtranslate.translate(emulator, words)
         except Exception:
             continue                    # the translator declined this operand combination
         examined += 1
@@ -420,11 +421,11 @@ def check_translations(generator, decisions, verbose):
     return len(stray)
 
 
-def check_recompiler(generator, verbose, translations=False):
+def check_recompiler(emulator, verbose, translations=False):
     """Compare the decisions of the recompiler's first pass with the
     instruction set.  Returns the number of disagreements."""
-    decisions = drmap.scan(generator.image[:TABLE],
-                           cache=gen.os.path.join(gen.ROOT, 'build', 'drmap.json'))
+    decisions = drmap.scan(emulator.image[:TABLE],
+                           cache=os.path.join(image.ROOT, 'build', 'drmap.json'))
     wrong_length, wrong_flags, invalid, known_reads = [], [], [], []
     translated = lengths = flags = 0
     for opcode, decision in sorted(decisions.items()):
@@ -471,15 +472,14 @@ def check_recompiler(generator, verbose, translations=False):
           'for %d' % (lengths, flags))
     failures = len(wrong_length) + len(wrong_flags)
     if translations:
-        failures += check_translations(generator, decisions, verbose)
+        failures += check_translations(emulator, decisions, verbose)
     return failures
 
 
 def main():
     verbose = '-v' in sys.argv[1:]
-    generator = gen.Generator()
-    generator.analyse()
-    walker = Walker(generator)
+    emulator = image.Image()
+    walker = Walker(emulator)
 
     wrongly_implemented, wrongly_rejected, missing_rtn_addr = [], [], []
     wrong_length, unchecked = [], collections.Counter()
@@ -488,7 +488,7 @@ def main():
 
     for opcode in range(0x10000):
         op = m68k.decode(opcode)
-        treatment = classify(generator, opcode)
+        treatment = classify(emulator, opcode)
         private = opcode >= 0xFC00
         coprocessor = op.name == 'F-LINE'
 
@@ -517,12 +517,12 @@ def main():
 
         # -- rtn_addr ------------------------------------------------------
         entry = TABLE + opcode * 8
-        first = generator.kind[entry][1]
-        second = generator.kind[entry + 4][1]
+        first = emulator.kind[entry][1]
+        second = emulator.kind[entry + 4][1]
         target = second.ops[-1][1] if second.ops and second.ops[-1][0] == 'tgt' else None
-        if target is not None and target < TABLE and reads_rtn_addr(generator, target):
+        if target is not None and target < TABLE and reads_rtn_addr(emulator, target):
             if not (first.ops and first.ops[0] == ('r', 5)):
-                missing_rtn_addr.append((opcode, '-> %s' % generator.labels.get(target)))
+                missing_rtn_addr.append((opcode, '-> %s' % emulator.labels.get(target)))
 
         # -- length --------------------------------------------------------
         words, variable = extension_words(op)
@@ -580,7 +580,7 @@ def main():
         print('  %5d  %s' % (count, reason))
     failures = (len(wrongly_implemented) + len(wrongly_rejected)
                 + len(missing_rtn_addr) + len(wrong_length))
-    failures += check_recompiler(generator, verbose, '--translations' in sys.argv[1:])
+    failures += check_recompiler(emulator, verbose, '--translations' in sys.argv[1:])
     print('\n%s' % ('FAILED: %d unexplained disagreements' % failures if failures
                     else 'OK: no unexplained disagreements'))
     return 1 if failures else 0

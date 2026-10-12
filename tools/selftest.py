@@ -14,7 +14,7 @@ at its first instruction, and ends with ILLEGAL.
 
 import sys
 
-import gen
+import image
 import run68k
 
 X, N, Z, V, C = 16, 8, 4, 2, 1
@@ -91,8 +91,7 @@ def mismatches(result, expected):
 
 def main():
     verbose = '-v' in sys.argv[1:]
-    generator = gen.Generator()
-    generator.analyse()
+    emulator = image.Image()
     failures = 0
     for name, source, expected in TESTS:
         words = ENTRY + [int(word, 16) for word in source.split()]
@@ -101,7 +100,7 @@ def main():
         outcomes = []
         for mode, recompile in (('interpreted', False), ('recompiled', True)):
             try:
-                result = run68k.run(generator, words, recompile)
+                result = run68k.run(emulator, words, recompile)
                 problems = mismatches(result, expected)
                 if recompile and not result.translated:
                     problems.append('no translated code was executed')

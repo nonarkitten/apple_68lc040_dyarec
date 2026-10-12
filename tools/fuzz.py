@@ -30,7 +30,7 @@ import random
 import sys
 
 import check
-import gen
+import image
 import m68k
 import run68k
 
@@ -188,24 +188,24 @@ def listing(items):
     return '\n'.join(lines)
 
 
-def outcome(generator, words, recompile):
+def outcome(emulator, words, recompile):
     """('ok', state) or ('error', description)."""
     try:
-        return ('ok', run68k.run(generator, words, recompile, limit=400000,
+        return ('ok', run68k.run(emulator, words, recompile, limit=400000,
                                  quick=True).state())
     except Exception as error:
         return ('error', '%s: %s' % (type(error).__name__, str(error)[:60]))
 
 
-def differs(generator, items):
+def differs(emulator, items):
     words = assemble(items)
-    interpreted = outcome(generator, words, False)
+    interpreted = outcome(emulator, words, False)
     if interpreted[0] == 'error':
         return False                    # the simulator cannot run it; not a comparison
-    return outcome(generator, words, True) != interpreted
+    return outcome(emulator, words, True) != interpreted
 
 
-def minimise(generator, items, fixed):
+def minimise(emulator, items, fixed):
     """Drop instructions (after the first `fixed`, the set-up) while the two
     runs still differ."""
     changed = True
@@ -213,17 +213,17 @@ def minimise(generator, items, fixed):
         changed = False
         for index in range(len(items) - 1, fixed - 1, -1):
             shorter = items[:index] + items[index + 1:]
-            if differs(generator, shorter):
+            if differs(emulator, shorter):
                 items, changed = shorter, True
     return items
 
 
-def describe(generator, items):
+def describe(emulator, items):
     words = assemble(items)
     results = []
     for recompile in (False, True):
         try:
-            results.append(run68k.run(generator, words, recompile, limit=400000, quick=True))
+            results.append(run68k.run(emulator, words, recompile, limit=400000, quick=True))
         except Exception as error:
             results.append(error)
     lines = [listing(items)]
@@ -259,11 +259,10 @@ def main():
         elif arguments[index].isdigit():
             count = int(arguments[index])
         index += 1
-    generator = gen.Generator()
-    generator.analyse()
+    emulator = image.Image()
     if rom:
         import buildcmp
-        generator = buildcmp.as_build(generator, buildcmp.rom_image(rom))
+        emulator = buildcmp.as_build(emulator, buildcmp.rom_image(rom))
     run68k.PROGRAM, run68k.STACK = PROGRAM, STACK
     pool = Pool()
     fixed = 16                          # items of set-up at the start of every program
@@ -273,22 +272,22 @@ def main():
         rng = random.Random(options['--seed'] * 1000003 + number)
         items = make_program(rng, pool, options['--length'])
         words = assemble(items)
-        interpreted = outcome(generator, words, False)
+        interpreted = outcome(emulator, words, False)
         if interpreted[0] == 'error':
             unrunnable += 1
             if verbose:
                 print('program %d not runnable: %s' % (number, interpreted[1]))
             continue
-        if outcome(generator, words, True) == interpreted:
+        if outcome(emulator, words, True) == interpreted:
             continue
         different += 1
-        small = minimise(generator, items, fixed)
-        culprit = ' / '.join(gen.generalise(m68k.text(item[1][0])) if item[0] == 'ins'
+        small = minimise(emulator, items, fixed)
+        culprit = ' / '.join(image.generalise(m68k.text(item[1][0])) if item[0] == 'ins'
                              else 'Bcc' for item in small[fixed:])
         signatures[culprit] += 1
         if signatures[culprit] == 1 or verbose:
             print('\nProgram %d (seed %d) differs.  Shortest form:' % (number, options['--seed']))
-            print(describe(generator, small))
+            print(describe(emulator, small))
     print('\n%d programs: %d ran both ways, %d differed, %d could not be run in the simulator'
           % (count, count - unrunnable, different, unrunnable))
     for culprit, times in signatures.most_common():

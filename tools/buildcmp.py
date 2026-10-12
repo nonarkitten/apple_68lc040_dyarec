@@ -37,11 +37,11 @@ import sys
 import check
 import drmap
 import drtranslate
-import gen
+import image
 import m68k
 import rominfo
 
-CODE_SIZE = gen.TABLE_START
+CODE_SIZE = image.TABLE_START
 PADDING = (0x00000000, 0x60000000, 0x48000004)     # zero, nop, branch to the next instruction
 
 
@@ -98,13 +98,13 @@ def locate(reference, other, offset):
 
 # -- routines ---------------------------------------------------------------
 
-def routine_differences(generator, other, start, stop):
+def routine_differences(emulator, other, start, stop):
     """Align other[start:...] with the reference and return
     (words in other, words in reference, padding-only differences,
      {routine: [regions, words in other, words in reference]})."""
-    g = generator
+    g = emulator
     named = sorted(addr for addr, name in g.labels.items()
-                   if addr < CODE_SIZE and not gen.AUTO_LABEL.fullmatch(name))
+                   if addr < CODE_SIZE and not image.LOCAL_LABEL.fullmatch(name))
 
     def routine(addr):
         return g.labels[named[bisect.bisect_right(named, addr) - 1]]
@@ -128,8 +128,8 @@ def routine_differences(generator, other, start, stop):
     return len(theirs), len(ours), padding, routines
 
 
-def report_routines(generator, other, title, start, stop):
-    theirs, ours, padding, routines = routine_differences(generator, other, start, stop)
+def report_routines(emulator, other, title, start, stop):
+    theirs, ours, padding, routines = routine_differences(emulator, other, start, stop)
     print('%s: %d words in the ROM, %d in Emulator.x; %d routines differ'
           ' (%d differences in padding ignored)' % (title, theirs, ours, len(routines), padding))
     if routines:
@@ -139,8 +139,8 @@ def report_routines(generator, other, title, start, stop):
     print()
 
 
-def report_table(generator, other):
-    ours = words(generator.image[CODE_SIZE:])
+def report_table(emulator, other):
+    ours = words(emulator.image[CODE_SIZE:])
     theirs = words(other[CODE_SIZE:])
     different = [opcode for opcode in range(0x10000)
                  if [masked(w) for w in ours[2 * opcode:2 * opcode + 2]]
@@ -152,8 +152,8 @@ def report_table(generator, other):
 
 # -- the recompiler ---------------------------------------------------------
 
-def recompiler_layout(generator, other):
-    found = [locate(generator.image, other, generator.label_addrs[name])
+def recompiler_layout(emulator, other):
+    found = [locate(emulator.image, other, emulator.label_addrs[name])
              for name in ('dr_scan_next', 'dr_liveness', 'dr_translate_abort', 'dr_line_0')]
     return None if None in found else drmap.Layout(*found)
 
@@ -172,12 +172,12 @@ def by_mnemonic(opcodes):
     return ', '.join('%s %d' % item for item in count.items()) or 'none'
 
 
-def report_decisions(generator, other):
-    layout = recompiler_layout(generator, other)
+def report_decisions(emulator, other):
+    layout = recompiler_layout(emulator, other)
     if layout is None:
         print('Recompiler: not found in the ROM\'s build\n')
         return
-    ours = decisions_of(generator.image, drmap.EMULATOR_X)
+    ours = decisions_of(emulator.image, drmap.EMULATOR_X)
     theirs = decisions_of(other, layout)
     print('Recompiler, first pass, all 65536 opcodes:')
     print('  translated: %d in the ROM, %d in Emulator.x' % (
@@ -205,22 +205,22 @@ def report_decisions(generator, other):
     print()
 
 
-def as_build(generator, image):
-    """A stand-in for the generator that describes another build: enough of
-    it for tools/drtranslate.py and tools/run68k.py."""
-    build = copy.copy(generator)
-    build.image = image
+def as_build(emulator, other):
+    """A stand-in for the Image that describes another build: enough of it
+    for tools/drtranslate.py and tools/run68k.py."""
+    build = copy.copy(emulator)
+    build.image = other
     build.label_addrs = {}
     for name in ('emulator_reset', 'init_state', 'dr_setup', 'dr_translate',
                  'dr_translate_done', 'dr_exit_to_interpreter', 'dr_indirect_exit',
                  'dr_block_exit', 'process_special_event'):
-        at = locate(generator.image, image, generator.label_addrs[name])
+        at = locate(emulator.image, other, emulator.label_addrs[name])
         if at is not None:
             build.label_addrs[name] = at
     # Opcode 4AFC (ILLEGAL): the second word of its table entry is a branch
     # to take_illegal_instruction.
     entry = CODE_SIZE + 0x4AFC * 8 + 4
-    branch = struct.unpack_from('>I', image, entry)[0]
+    branch = struct.unpack_from('>I', other, entry)[0]
     build.label_addrs['take_illegal_instruction'] = entry + (
         (branch & 0x03FFFFFC) - (0x04000000 if branch & 0x02000000 else 0))
     build.labels = {addr: name for name, addr in build.label_addrs.items()}
@@ -245,9 +245,9 @@ def translation(build, code):
     return drtranslate.render(build, m, start, end), tuple(comparable)
 
 
-def side_by_side(generator, build, code):
+def side_by_side(emulator, build, code):
     theirs, _ = translation(build, code)
-    ours, _ = translation(generator, code)
+    ours, _ = translation(emulator, code)
     print('  %-50s   %s' % ('ROM', 'Emulator.x'))
     for index in range(max(len(theirs), len(ours))):
         left = theirs[index] if index < len(theirs) else ''
@@ -262,17 +262,17 @@ CONTEXTS = (('all flags wanted', [0x4E75]),
             ('all flags dead', [0xD281, 0x4E75]))
 
 
-def report_emitters(generator, other):
-    layout = recompiler_layout(generator, other)
+def report_emitters(emulator, other):
+    layout = recompiler_layout(emulator, other)
     if layout is None:
         sys.exit('no recompiler in the ROM\'s build')
-    build = as_build(generator, other)
-    ours = decisions_of(generator.image, drmap.EMULATOR_X)
+    build = as_build(emulator, other)
+    ours = decisions_of(emulator.image, drmap.EMULATOR_X)
     theirs = decisions_of(other, layout)
     users = collections.defaultdict(list)
     for opcode in range(0x10000):
         if (ours[opcode].translated and theirs[opcode].translated
-                and not ours[opcode].ends_block and check.classify(generator, opcode) == 'implemented'
+                and not ours[opcode].ends_block and check.classify(emulator, opcode) == 'implemented'
                 and not check.known_recompiler_defect(opcode)):
             users[ours[opcode].emitter].append(opcode)
     same = 0
@@ -284,9 +284,9 @@ def report_emitters(generator, other):
             extension = [0x0010] * check.extension_words(m68k.decode(opcode))[0]
             for title, tail in CONTEXTS:
                 code = [opcode] + extension + tail
-                if translation(build, code)[1] != translation(generator, code)[1]:
+                if translation(build, code)[1] != translation(emulator, code)[1]:
                     different.append('%04X (%s)' % (opcode, title))
-        name = generator.labels.get(drmap.DR_EMITTERS + emitter, '%04X' % emitter)
+        name = emulator.labels.get(drmap.DR_EMITTERS + emitter, '%04X' % emitter)
         same += not different
         if different:
             print('  %-20s differs for %s' % (name, ', '.join(different)))
@@ -298,22 +298,21 @@ def main():
     arguments = [a for a in sys.argv[1:] if not a.startswith('--')]
     if not arguments:
         sys.exit(__doc__)
-    generator = gen.Generator()
-    generator.analyse()
+    emulator = image.Image()
     other = rom_image(arguments[0])
-    if other == generator.image:
+    if other == emulator.image:
         print('The ROM contains Emulator.x itself.')
         return
     if '--emitters' in sys.argv:
-        report_emitters(generator, other)
+        report_emitters(emulator, other)
     elif len(arguments) > 1:
         code = [int(word, 16) for word in ' '.join(arguments[1:]).split()]
-        side_by_side(generator, as_build(generator, other), code)
+        side_by_side(emulator, as_build(emulator, other), code)
     else:
-        report_routines(generator, other, 'Interpreter', 0, 0x10000)
-        report_routines(generator, other, 'Recompiler', 0x10000, CODE_SIZE)
-        report_table(generator, other)
-        report_decisions(generator, other)
+        report_routines(emulator, other, 'Interpreter', 0, 0x10000)
+        report_routines(emulator, other, 'Recompiler', 0x10000, CODE_SIZE)
+        report_table(emulator, other)
+        report_decisions(emulator, other)
 
 
 if __name__ == '__main__':
