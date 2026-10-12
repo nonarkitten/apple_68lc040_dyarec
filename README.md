@@ -9,9 +9,10 @@ Power Macs run 68K software. It contains
   and "Murph", and
 - the 512 KB dispatch table that both are built around.
 
-It is provided as an educational reference for people writing emulators.
-It is not intended to be run or reused: on its own the code cannot run
-(see [docs/11-testing-gaps.md](docs/11-testing-gaps.md)).
+It is provided as an educational reference for people writing emulators,
+not as something to reuse. Outside a Power Macintosh the code can only
+be run in the bundled simulator, and only for programs that need nothing
+from the kernel (see [docs/11-testing-gaps.md](docs/11-testing-gaps.md)).
 
 ## What is here
 
@@ -72,11 +73,22 @@ use them; about 1,500 internal branch targets and the recompiler's code
 generators have not been examined one by one. See [TODO.md](TODO.md).
 
 `make static-check` cross-checks the code against the 68K instruction
-set without running it: which opcodes are implemented, and that every
-instruction advances the program counter by its own length. It verifies
-46,000 opcodes, and found one genuine (and harmless) defect in Apple's
-code along the way — see
+set without running it: which opcodes are implemented, that every
+instruction advances the program counter by its own length, and that the
+recompiler's view of each instruction agrees with the instruction set.
+It found one genuine (and harmless) defect in Apple's code — see
 [docs/14-static-checks.md](docs/14-static-checks.md).
+
+The emulator can also be *run*. A small PowerPC simulator in `tools/`
+executes it without a kernel or ROM:
+
+```
+$ python3 tools/run68k.py --both 6002 4E71 7064 7200 D280 5380 66FA 4AFC   # sum 1..100
+$ python3 tools/drtranslate.py 7001 5380 66FC 4E75     # what the recompiler generates
+$ make test                                             # 17 programs, interpreted and recompiled
+```
+
+See [docs/11-testing-gaps.md](docs/11-testing-gaps.md).
 
 ## Provenance and rights
 

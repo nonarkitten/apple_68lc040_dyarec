@@ -29,6 +29,9 @@ criterion is that the source reassembles to a byte-identical `Emulator.x`.
 - `make check`      `regen` then `verify`; run before every commit
 - `make static-check`  cross-check code against the 68K instruction set (`tools/check.py`);
                     must end with "OK: no unexplained disagreements"
+- `make test`       run 68K programs under the emulator in `tools/ppcsim.py`, interpreted and
+                    recompiled (`tools/selftest.py`); must end with "OK"
+- `python3 tools/run68k.py [--dr|--both] WORDS`   run one 68K program (end it with 4AFC)
 - `python3 tools/rominfo.py ROM`   where a ROM maps the emulator; compare its build with Emulator.x
 - `python3 tools/drtranslate.py 7001 5380 66FC 4E75`   run the recompiler's translator (in
                     `tools/ppcsim.py`) on 68K words and print the PowerPC code it emits
@@ -55,7 +58,8 @@ A new register or state-field name must be added to `src/include/*.inc`
 
 ## Rules
 1. `make check` must pass before committing. A change that breaks the byte
-   comparison is wrong by definition.
+   comparison is wrong by definition. `make static-check` and `make test`
+   must also still pass.
 2. Never edit generated files in `src/`; edit `annotations/` or the tools.
    The generator is to be retired gradually and only as needed: to hand a
    file over to manual editing, mark it `frozen` in `annotations/layout.txt`.

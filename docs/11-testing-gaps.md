@@ -1,12 +1,52 @@
-# 11. Running and Testing: What Is Missing
+# 11. Running and Testing
 
-The build proves that the source matches the original binary. It does not
-prove that the binary runs, and nothing in this repository executes it.
-The original is presumed correct because it shipped.
+The build proves that the source matches the original binary. This
+chapter is about executing it: what the image needs from its
+surroundings, how much of that the tools in this repository supply, and
+what is still missing.
 
-This chapter lists what the image needs from its surroundings — the
-"holes" — and what it would take to fill each one well enough to execute
-and test the code.
+## What can be run today
+
+`tools/ppcsim.py` is a simulator for the user-mode PowerPC instructions
+the image uses. With it, and with no kernel, ROM or operating system:
+
+| Tool | What it runs |
+|---|---|
+| `tools/run68k.py` | A 68K program under the emulator, from `emulator_reset` to the first invalid opcode; optionally with the dynamic recompiler switched on |
+| `tools/selftest.py` (`make test`) | Seventeen small 68K programs, each run interpreted and recompiled, checked against results worked out by hand |
+| `tools/drtranslate.py` | The recompiler's translator on any 68K code, printing the PowerPC code it generates |
+| `tools/drmap.py` | The recompiler's first pass, for every opcode |
+
+```
+$ python3 tools/run68k.py --both 6002 4E71 7064 7200 D280 5380 66FA 4AFC
+interpreted:
+  D0-D7  00000000 000013BA 00000000 ...
+  PC 0000100E   SR 2704   CCR --Z--   (3620 PowerPC instructions)
+recompiled:
+  D0-D7  00000000 000013BA 00000000 ...
+  PC 0000100E   SR 2704   CCR --Z--   (8632 PowerPC instructions, 703 of them in translated code)
+SAME
+```
+
+(The program sums the integers 1 to 100. The totals include reset and,
+for the recompiled run, setting the recompiler up and translating.)
+
+`run68k.py` stands in for the kernel in the simplest possible way. It
+sets `EmulatorStatePtr`, `code_ptr` and `disp_table`, puts a reset vector
+at address 0, and starts at `emulator_reset`; memory is flat and
+initially zero. To use the recompiler it lets the emulator reach its
+first dispatch, calls `dr_setup` with a block of memory and a
+`SystemInfo` record in place, sets the three CR1 flags and loads
+`dr_entry` — the effect of private opcode `FE05` with selector `0x12`.
+The first control transfer then enters `dr_dispatch`, which performs the
+initial flush and starts translating.
+
+For the loop in that example, interpretation costs 26 PowerPC
+instructions per iteration of three 68K instructions, and the
+translation costs 7.
+
+What the simulator cannot do is anything that needs the kernel: a kernel
+trap, a memory fault or an interrupt ends the run with an error.
 
 ## Dependencies
 
@@ -111,49 +151,36 @@ ROM's data structures. Test programs should avoid them, except the
 self-contained ones: `FE08`/`FE09` (time base) and `FE0B`–`FE0E` (cache
 operations).
 
-## A staged plan for making the code testable
+## What remains
 
-Each stage is useful on its own.
-
-1. **Static cross-checks (no execution).** Use the dispatch table as a
-   specification and check mechanically that the code reached from each
-   entry has the properties the 68K instruction requires. This stage
-   exists: `make static-check` verifies which opcodes are implemented,
-   the `rtn_addr` convention, and the length of every instruction; see
-   [14-static-checks.md](14-static-checks.md). The same approach extends
-   to condition codes (for example, that every `ADD` variant copies the
-   XER to `ccr_x` and that no `MOVEA` path touches CR0) and to which
-   68K registers a routine writes.
-   A step beyond static checking also exists: `tools/ppcsim.py` is a
-   PowerPC simulator sufficient to run the emulator's initialisation and
-   the whole of the recompiler's translator, which is how
-   `tools/drtranslate.py` shows the code generated for any 68K input.
-2. **Bare interpreter in a PowerPC emulator.** Load the image at a
-   suitable address in QEMU (or a simple PowerPC interpreter), provide
-   the minimal kernel stub from section 2 and a reset vector, and run
-   small hand-assembled 68K programs. Compare final register values
-   with expectations.
-3. **Differential testing.** Run a 68K instruction test suite — the
-   single-step JSON tests published for 68000-family cores, or random
-   instruction sequences — under both this emulator and a reference 68K
-   emulator (Musashi, UAE, Moira), comparing registers, CCR and memory
-   after every instruction. Test-mode bit 31 of `sr_and_flags`
-   (`exit_emulator`) and the `special_event_hook` provide ready-made
-   places to stop after each instruction and export the state.
-4. **Exceptions.** Extend the stub so that data access exceptions reach
-   `native_exception_handler` with the fields it reads filled in, and
-   check the bus and address error frames.
-5. **Interrupts.** Have the stub set `interrupt_level`,
-   `cr_interrupt_pending` and `cr_special_event_pending` at chosen
+1. **A reference to compare against.** The self-test's expected values
+   were derived by hand, which limits it to small programs. Running a
+   68K instruction test suite, or random instruction sequences, under
+   both this emulator and an independent 68K emulator (Musashi, UAE,
+   Moira) and comparing the state after every instruction would cover
+   the instruction set properly. `run68k.py` already produces the state
+   to compare; test-mode bit 31 of `sr_and_flags` (`exit_emulator`) and
+   `special_event_hook` are ready-made places to stop after each
+   instruction.
+2. **Interpreter against recompiler at scale.** `run68k.py --both`
+   compares the two on one program. Doing so over generated programs is
+   a strong test of both, since they share almost no code for the
+   instructions the recompiler translates inline.
+3. **Exceptions.** Deliver data access faults to
+   `native_exception_handler` as the kernel does
+   ([13-rom-context.md](13-rom-context.md)), and check the bus and
+   address error frames. Odd-address detection needs the fetch from 1 MB
+   above the dispatch table to fault.
+4. **Interrupts.** Set `interrupt_level` and the three CR2 bits at chosen
    instruction boundaries; check frames, masking and the `STOP` loop.
-6. **Dynamic recompiler.** Provide the memory and information record
-   from section 3, enable the recompiler, and repeat stage 3. Running
-   the same programs with and without the recompiler and comparing the
-   results is a strong test of both. Add tests that modify code and
-   announce it with `FC16`.
-7. **System level.** Supply the real kernel and ROM. At this point the
-   environment is a Power Macintosh, and existing whole-machine
-   emulators are the practical vehicle.
+5. **Kernel services.** At least `ReturnFromException`, so that the
+   emulator can be started through `EmEntry` rather than at
+   `emulator_reset`.
+6. **Self-modifying code** under the recompiler: programs that modify
+   code and announce it with `FC16` or `CINV`.
+7. **System level.** With the real kernel and ROM the environment is a
+   Power Macintosh, and existing whole-machine emulators are the
+   practical vehicle.
 
 ## Things that cannot be confirmed from the image alone
 

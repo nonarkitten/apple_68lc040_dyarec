@@ -23,6 +23,7 @@ Homebrew locations; set `LLVM_BIN` to its `bin` directory otherwise.
 | `make` | Assemble `src/` into `build/Emulator.x` |
 | `make verify` | Build, then compare `build/Emulator.x` with `./Emulator.x` |
 | `make static-check` | Cross-check the code against the 68K instruction set ([14-static-checks.md](14-static-checks.md)) |
+| `make test` | Run 68K test programs under the emulator, interpreted and recompiled, in a simulator ([11-testing-gaps.md](11-testing-gaps.md)) |
 | `make listing` | Write `build/Emulator.lst`, a disassembly of the result with offsets and symbols |
 | `make regen` | Regenerate `src/` from `Emulator.x` and `annotations/` |
 | `make check` | `regen` followed by `verify` |
@@ -158,3 +159,5 @@ Only the LLVM build has been verified.
 | `tools/ppcsim.py` | A small PowerPC simulator (a library), enough to run parts of the image |
 | `tools/drmap.py WORD…` | What the recompiler's first pass decides for an opcode |
 | `tools/drtranslate.py WORD…` | Run the recompiler's translator on 68K code and print the PowerPC code it generates |
+| `tools/run68k.py [--dr\|--both] WORD…` | Run a 68K program under the emulator and print the registers it ends with |
+| `tools/selftest.py [-v]` | The 68K test programs |

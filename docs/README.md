@@ -28,7 +28,7 @@ described and the difference is noted.
 | [08-native-interface.md](08-native-interface.md) | Entry, the kernel, native code, private opcodes |
 | [09-dynamic-recompiler.md](09-dynamic-recompiler.md) | The dynamic recompiler |
 | [10-building.md](10-building.md) | Building the source and verifying it against the original |
-| [11-testing-gaps.md](11-testing-gaps.md) | What the image depends on, and what running it would take |
+| [11-testing-gaps.md](11-testing-gaps.md) | Running the emulator: what works in the simulator, what the image depends on, what is missing |
 | [12-patents.md](12-patents.md) | Cross-reference between the patents and the code |
 | [13-rom-context.md](13-rom-context.md) | The emulator in a real ROM: addresses, kernel start-up, kernel services |
 | [14-static-checks.md](14-static-checks.md) | Mechanical checks of the code against the 68K instruction set, and what they found |

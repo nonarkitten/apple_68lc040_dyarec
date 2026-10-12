@@ -346,6 +346,9 @@ class Machine:
                 r[ra] = address
         elif xo in (54, 86, 278, 246, 982, 598, 854):          # cache hints, sync, eieio
             pass
+        elif xo == 512:                                         # mcrxr
+            self.set_crf(rd >> 2, (self.so << 3) | (self.ov << 2) | (self.ca << 1))
+            self.so = self.ov = self.ca = 0
         elif xo == 1014:                                        # dcbz (32-byte blocks)
             address = (base + b) & ~31 & M32
             for offset in range(32):

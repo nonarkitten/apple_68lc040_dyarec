@@ -5,6 +5,7 @@
 #   make regen      regenerate src/ from Emulator.x + annotations/
 #   make check      regen + verify (run before committing)
 #   make static-check  cross-check the code against the 68K instruction set (tools/check.py)
+#   make test       run 68K test programs under the emulator in a simulator (tools/selftest.py)
 #   make listing    build/Emulator.lst: offsets, bytes and symbols
 #   make clean
 #
@@ -24,7 +25,7 @@ REFERENCE := Emulator.x
 BUILD     := build
 SOURCES   := $(shell find src -name '*.S' -o -name '*.inc' 2>/dev/null)
 
-.PHONY: all verify regen check static-check listing clean
+.PHONY: all verify regen check static-check test listing clean
 
 all: $(BUILD)/Emulator.x
 
@@ -55,6 +56,9 @@ check: regen
 
 static-check:
 	$(PYTHON) tools/check.py
+
+test:
+	$(PYTHON) tools/selftest.py
 
 listing: $(BUILD)/Emulator.o
 	$(PPC_OBJDUMP) -d --no-show-raw-insn $< > $(BUILD)/Emulator.lst

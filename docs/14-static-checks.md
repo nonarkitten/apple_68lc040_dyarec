@@ -107,6 +107,11 @@ directly and so skips that instruction. The next instruction is
 therefore decoded from whatever `rtn_addr` last held, with `pc` 2 bytes
 short.
 
+Executing it confirms the analysis. Under `tools/run68k.py`, the program
+`LEA $2004,A0` / `UNPK -(A0),-(A7),#0` / `MOVEQ #2,D1` ends with D1 still
+zero and D0 equal to 2: the `MOVEQ` was dispatched as a different
+opcode. With `-(A1)` as the destination the same program sets D1.
+
 The instruction — unpacking a BCD byte onto the stack — is not one that
 compilers or hand-written code used, so the defect has no practical
 consequence. The same code is present in the earlier build in the Power
@@ -168,7 +173,8 @@ forms and the look-ahead entries above account for the rest.
 
 ## Limits
 
-The checks are static and partial. They do not show that an instruction
+The checks are static and partial. (Programs can also be executed; see
+[11-testing-gaps.md](11-testing-gaps.md).) They do not show that an instruction
 computes the right result, sets the right condition codes or writes the
 right register; they show that the control structure around every
 instruction is consistent with its encoding. The opcodes not fully
