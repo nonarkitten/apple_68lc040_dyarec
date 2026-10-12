@@ -1,0 +1,203 @@
+# Apple's private opcodes: line-F opcodes FCxx and FExx, through which 68K code
+# in the ROM and the system asks the emulator and the kernel for services.
+#
+# The names are Apple's, from the macros that define the opcodes in the
+# SuperMario ROM sources (Internal/Asm/TrapsPrivate.a, February 1994):
+# _DecodeSANEop OPWORD $FC01 and so on.  That file predates the opcodes from
+# FC14 and FE0B on; those are named here after what the code does or after
+# the kernel service they call (docs/13-rom-context.md).
+
+@097C0 fc01_decode_sane_op
+    ===========================================================================
+    FC01-FC0F: the SANE floating point package
+    ===========================================================================
+    SANE is the Mac OS floating point package (_FP68K).  Its 68K code keeps
+    the structure of the software package, but the steps that cost the most
+    are single private opcodes, done here with PowerPC integer instructions.
+    Between them the 68K registers hold the operation's state:
+    .
+      D0, D1:D2   argument 1: exponent, and 64-bit significand
+      D3, D4:D5   argument 2, likewise
+      D6          the SANE operation word in the upper half
+      D7          status: the signs of the arguments in bits 7 and 6, their
+                  classes (1 zero, 2 infinite, 3 NaN) in bits 11:10 and 9:8,
+                  and in bits 4:1 the number of bytes of arguments to
+                  remove on exit
+      A0, A1      addresses of the destination and source operands
+    .
+    FC01, _DecodeSANEop.  On entry the stack holds the return address, the
+    operation word (already loaded into immed_data by the table entry) and
+    the operand addresses.  The opcode is followed in the 68K code by a mask
+    word and a table of long words: the operation word is masked and selects
+    a table entry, whose value is the offset of the 68K code that continues
+    the operation; bit 0 of the entry says that there are two operands.  A
+    64-byte aligned work area is made 128 bytes below the stack pointer and
+    D0-D7, A0, A1 and the old stack pointer are saved in it.
+097C0 the SANE operation word, masked by the word after the opcode
+097CC the table entry for this operation
+097D8 bit 0: two operands
+097DC opcode at the entry's target; pc moves there
+097E0 a7 = the work area
+0981C the stack pointer as it was
+09820 A0 = address of the destination operand
+09824 D6 = operation word << 16
+0982C A1 = address of the source operand
+09830 14 bytes of arguments to remove
+0983C 10 bytes of arguments to remove
+
+@09860 fc02_exit_sane_op
+    FC02, _ExitSANEop.  Restores D0-D7, A0 and A1 from the work area, removes
+    the arguments and returns to the caller of the package - unless one of
+    bits 28:24 of D7 is set together with its counterpart among bits 4:0 of
+    D6, in which case nothing is done and the 68K code that follows runs
+    (presumably SANE's halts: an exception whose halt is enabled).
+09874 the return address
+098B0 a7 = old stack pointer + bytes of arguments
+
+@098C0 fc03_load_arg1_extended
+    FC03, _LoadArg1Extended.  Unpacks the extended value at (A0) into D0 and
+    D1:D2, normalising it, and records its sign and class in D7.  Bit 21 of
+    D6 selects the 96-bit form of an extended, which has two unused bytes
+    after the exponent.
+
+@09980 fc04_load_arg2_convert
+    FC04, _LoadArg2Convert.  Unpacks the source operand at (A1) into D3 and
+    D4:D5, converting from the format that the operation word names.
+
+@09B88 fc05_copy_arg2_to_arg1
+    FC05, _CopyArg2ToArg1.
+
+@09BAC fc06_check_result_arg1
+    FC06, _CheckResultArg1.
+
+@09DE0 fc07_store_arg1_extended
+    FC07, _StoreArg1Extended.  Packs D0 and D1:D2 with the sign from D7 into
+    the extended at (A0).
+
+@09E60 fc08_store_arg1_double
+    FC08, _StoreArg1Double.
+
+@09EE0 fc09_store_arg1_single
+    FC09, _StoreArg1Single.
+
+@09F40 fc0a_float_add
+    FC0A, _FloatAdd: argument 1 = argument 1 + argument 2.  Shares its code
+    with FC0B.
+
+@09FC0 fc0b_float_sub
+    FC0B, _FloatSub.
+
+@0A280 fc0c_float_mul
+    FC0C, _FloatMul.
+
+@0A440 fc0d_float_div
+    FC0D, _FloatDiv.
+
+@0A620 fc0e_float_rem
+    FC0E, _FloatRem.
+
+@0A80C fc0f_float_sqrt
+    FC0F, _FloatSqrt.
+
+@096E0 fc11_atrap_os_no_a0_exit
+    FC10 and FC11, _ATrapOSExit and _ATrapOSNoA0Exit: the way out of the 68K
+    operating system trap dispatcher.  Restores the registers the dispatcher
+    saved (A1, D1, D2, A2), sets N and Z from D0.W as TST.W would, and returns
+    to the caller of the trap.  FC10's table entry restores A0 first and
+    falls into FC11's.
+096E4 N and Z from the result code in D0.W
+096FC V = C = 0
+09710 the saved registers and the return address
+
+@0A9B4 fc12_fc13_move_bytes
+    FC12 and FC13, _MoveBytes and _MoveBytesNoDCBZ: the body of BlockMove.
+    Copies D0 bytes from (A0) to (A1) with the PowerPC string instructions and
+    returns D0 = 0 with the condition codes set for it.  Up to 20 bytes are
+    moved by one lswx/stswx pair.  For more, the destination range is first
+    reported to the dynamic recompiler, if it is ready, since the bytes
+    moved may be code.  Long moves go 32 bytes at a time, and the loop at
+    0AC1C clears each destination cache block with dcbz before filling it;
+    the opcode's low bit, examined at 0AAE0, is what tells FC13 from FC12.
+0A9B8 XER = byte count for lswx/stswx
+0A9D0 D0 = 0, as a result code
+0A9E0 tell the recompiler: D0 bytes at (A1) are changing
+0AAE0 the opcode's low bit: 1 = do not use dcbz
+
+@0A9AC fc14_fc15_move_bytes
+    FC14 and FC15: the same copy, without the report to the recompiler.
+    (These are later than the SuperMario sources, which stop at FC13.
+    Mac OS has BlockMoveData for moves that are known not to be code.)
+
+@0D9D0 fc16_invalidate_range
+    FC16: tell the dynamic recompiler that the D0 bytes at (A0) have changed
+    (docs/09-dynamic-recompiler.md).
+
+@0D804 fe03_execute_risc_context
+    FE03, _ExecuteRiscContext: (A7) points to a native context block.  Calls
+    handler slot +0x964, which defaults to kernel service 1,
+    RunAlternateContext.
+
+@0D824 fe04_fe05_move_ecr
+    FE04 and FE05, _MoveFromECR and _MoveToECR: read or write an "emulator
+    control register".  D0 is the register number (0-25) and A0 the value.
+    Most registers are words of the state block, found through the byte
+    table at 0D850; a few numbers are treated specially.
+
+@0D86C fe04_move_from_ecr
+
+@0D884 fe05_move_to_ecr
+
+@0DA44 fe06_fe0a_vm_dispatch
+    FE0A, _VMDispatch (also _KernelVMDispatch): D0 is a selector and A0, A1
+    and D1 are parameters; the result is returned in D0.  Calls handler slot
+    +0x968, which defaults to kernel service 3, VMDispatch.  FE06 is a second
+    entry that differs in one condition register bit.
+
+@0DA8C fe09_read_time_base_64
+    FE09, _ReadTimeBase64: A0 = upper and D0 = lower half of the PowerPC time
+    base.  (FE08, _ReadTimeBase32, is done by its table entry.)
+
+@0DAA4 fe0b_fe0e_cache_range
+    FE0B-FE0E: apply a PowerPC cache instruction to every 32-byte block of
+    the D0 bytes at (A0).  The table entry supplies the loop for the
+    instruction in rtn_addr.  Stops early if an interrupt becomes pending,
+    with D0 and the 68K pc left so that the opcode resumes afterwards.
+
+@0DAEC fe0b_icbi_range
+@0DAFC fe0c_dcbf_range
+@0DB0C fe0d_dcbst_range
+@0DB1C fe0e_dcbz_range
+
+@0D9EC fe0f_power_dispatch
+    FE0F: calls handler slot +0x99C, which defaults to kernel service 5,
+    PowerDispatch, with D0 and D1.
+
+@0DA1C fe11_cache_dispatch
+    FE11: calls handler slot +0x9A4, which defaults to kernel service 7,
+    CacheDispatch.
+
+@0DB2C fe20_rtas_dispatch
+    FE20: kernel service 6, RTASDispatch, with A0.
+
+@0DB44 fe1f_mp_dispatch
+    FE1F.  The table entry has loaded rtn_addr from handler
+    slot +0x9DC, which defaults to kcall_mp_dispatch (kernel service 8,
+    MPDispatch).  The handler is called with D0, A0, D1, A1, D2, A2, D3 and
+    A3 in r0 and r3 to r9, and r3 to r6 are returned in D0, A0, D1 and A1.
+0DB44 the handler's address
+0DB60 r8 and r9 are D0 and D1, already copied to r0 and r4
+0DB68 call the handler
+0DB7C r0 is the emulator's zero register again
+
+@0DE10 fe01_mixed_mode
+    FE01: the mixed mode switch.  The table entry has loaded rtn_addr from
+    mixed_mode_handler, by default mixed_mode_dispatch.  (In the SuperMario
+    sources the opcode for this is FEED, _MixedMode.)
+
+@0E120 fe02_return_to_native
+    FE02: 68K code called from native code returns; falls into
+    switch_to_native.
+
+@0E380 fe07_handle_mixed_mode_fault
+    FE07, _HandleMixedModeFault: "handle mixed mode interrupts and page
+    faults".  Looks at the exception frame on the stack.

@@ -37,6 +37,11 @@ by 68K opcode (`OpcodeTblTop`).
 **Emitter** — A routine in the recompiler that generates the PowerPC code
 for one kind of 68K instruction or operand.
 
+**Emulator control register (ECR)** — Apple's term for a word of the
+emulator's state that 68K code can read and write by number with
+private opcodes `FE04` and `FE05`. See
+[08-native-interface.md](08-native-interface.md).
+
 **Emulator state block** — The memory addressed by `EmulatorStatePtr`.
 See [07-emulator-state.md](07-emulator-state.md).
 
@@ -77,14 +82,19 @@ code, based on routine descriptors.
 **Page bitmap** — The recompiler's record, one bit per 512 bytes, of
 which 68K memory contains code that has been translated.
 
-**Private opcode** — One of the line-F opcodes (`FC01`–`FC16`,
-`FE01`–`FE20`) that the emulator implements as services to its host.
+**Private opcode** — One of the line-F opcodes (`FC00`–`FC16`,
+`FE00`–`FE20`) through which 68K code in the ROM and the system asks the
+emulator and the kernel for services.
 
 **Record** — The 12-byte entry describing one 68K instruction during
 translation.
 
 **Routine descriptor** — The data structure describing a routine's
 instruction set and calling conventions, used by mixed mode.
+
+**SANE** — The Standard Apple Numerics Environment, the Mac OS
+floating point package. Private opcodes `FC01`–`FC0F` carry out its
+expensive steps. See [08-native-interface.md](08-native-interface.md).
 
 **Special event** — Anything that must be dealt with before the next 68K
 instruction: an interrupt, a trace, an odd `pc`, a test-mode action.

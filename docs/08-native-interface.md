@@ -138,39 +138,82 @@ save areas from a pool whose allocation mask is in the state block.
 ## Private opcodes
 
 Line-F opcodes with coprocessor ID 6 and 7 are not used by any Motorola
-processor. The dispatch table gives 40 of them real entries
-(`FC01`–`FC16` and `FE01`–`FE20`, with gaps). They are how 68K code — in
-practice, the ROM — asks the host for services. Those whose behaviour is
-clear from the code:
+processor. The dispatch table gives 42 of them entries of their own
+(`FC00`–`FC16` and `FE00`–`FE20`, with gaps). They are how 68K code in
+the ROM and the system asks the emulator, and through it the kernel, for
+services.
 
-| Opcode | Behaviour |
-|---|---|
-| `FC12`–`FC15` | Block copy between the addresses in A0 and A1, length in D0, using the PowerPC string instructions (four variants) |
-| `FC16` | Invalidate translated code for the range A0, length D0 (calls `dr_invalidate_vector` when the recompiler is ready) |
-| `FE01` | Mixed mode switch: `mixed_mode_dispatch` (through handler slot `+0x9E0`) |
-| `FE02` | Return to native code: `switch_to_native` |
-| `FE04`, `FE05` | Read (`FE04`) or write (`FE05`) a 32-bit emulator variable, using A0 for the value. D0 (0–25) selects the variable: a byte table (`0D850`) gives its offset from `+0x700` in the state block; variable 0 is `emulator_version`. Some selectors are special-cased: `0x09` written sets the test-mode switches in `sr_and_flags`; `0x12` reads or sets the dynamic recompiler's enable bits; `0x13` is the configuration word at `+0x7A0` |
-| `FE08` | D0 = low half of the PowerPC time base |
-| `FE09` | A0:D0 = 64-bit PowerPC time base, read consistently |
-| `FE0B` | Instruction cache block invalidate (`icbi`) over the range A0, length D0 |
-| `FE0C` | Data cache block flush (`dcbf`) over the range |
-| `FE0D` | Data cache block store (`dcbst`) over the range |
-| `FE0E` | Data cache block zero (`dcbz`) over the range |
-| `FE20` | Kernel trap 6 with A0 in r3 |
+Apple's names for them, where given, are those of the macros that define
+the opcodes in the SuperMario ROM sources (`Internal/Asm/TrapsPrivate.a`,
+February 1994; see [13-rom-context.md](13-rom-context.md)). That file predates the recompiler and the PCI
+machines; opcodes it does not have are described from the code. The
+routines are labelled with the opcode and the name
+(`fc0a_float_add`, `fe04_move_from_ecr`).
+
+| Opcode | Apple's name | Behaviour |
+|---|---|---|
+| `FC00` | `_ToolBoxCoprocessorNop` | Goes to the handler in slot `+0x958`. The default is `fetch`, so the opcode does nothing; elsewhere it would be a line-F exception |
+| `FC01` | `_DecodeSANEop` | Start of a SANE operation: see below |
+| `FC02` | `_ExitSANEop` | End of a SANE operation |
+| `FC03`, `FC04`, `FC05` | `_LoadArg1Extended`, `_LoadArg2Convert`, `_CopyArg2ToArg1` | Unpack operands |
+| `FC06` | `_CheckResultArg1` | |
+| `FC07`, `FC08`, `FC09` | `_StoreArg1Extended`, `_StoreArg1Double`, `_StoreArg1Single` | Pack the result |
+| `FC0A`–`FC0F` | `_FloatAdd`, `_FloatSub`, `_FloatMul`, `_FloatDiv`, `_FloatRem`, `_FloatSqrt` | Arithmetic on the unpacked operands |
+| `FC10`, `FC11` | `_ATrapOSExit`, `_ATrapOSNoA0Exit` | The exit path of the 68K operating system trap dispatcher: restore A1, D1, D2 and A2 from the stack (`FC10`: A0 first), set N and Z from D0.W, return to the trap's caller |
+| `FC12`, `FC13` | `_MoveBytes`, `_MoveBytesNoDCBZ` | The body of `BlockMove`: copy D0 bytes from (A0) to (A1) with the PowerPC string instructions. A move of more than 20 bytes is first reported to the recompiler as a change to the destination range. `FC13` does not use `dcbz` on the destination |
+| `FC14`, `FC15` | | The same two copies without the report to the recompiler |
+| `FC16` | | Invalidate translated code for the range A0, length D0 (calls `dr_invalidate_vector` when the recompiler is ready) |
+| `FE00` | `_RiscCoprocessorNop` | As `FC00`, with slot `+0x95C`. The SuperMario Gestalt code executes it with a line-F handler installed to find out whether it is running under the emulator |
+| `FE01` | | Mixed mode switch: `mixed_mode_dispatch` (through handler slot `+0x9E0`). SuperMario has `FEED`, `_MixedMode`, for this; in this image `FEED` is an ordinary line-F opcode |
+| `FE02` | | Return to native code: `switch_to_native` |
+| `FE03` | `_ExecuteRiscContext` | (A7) points to a native context block. Calls handler slot `+0x964`, by default kernel service 1 |
+| `FE04`, `FE05` | `_MoveFromECR`, `_MoveToECR` | Read or write an *emulator control register*, using A0 for the value. D0 (0–25) is the register number: a byte table (`0D850`) gives its offset from `+0x700` in the state block; register 0 is `emulator_version`. Some numbers are special-cased: `0x09` written sets the test-mode switches in `sr_and_flags`; `0x12` reads or sets the dynamic recompiler's enable bits; `0x13` is the configuration word at `+0x7A0` |
+| `FE06`, `FE0A` | `FE0A`: `_VMDispatch`, `_KernelVMDispatch` | D0 is a selector, A0, A1 and D1 parameters, D0 the result. Calls handler slot `+0x968`, by default kernel service 3. SuperMario lists 29 selectors, from `mmuInit` to `mmuSwitchTo040` |
+| `FE07` | `_HandleMixedModeFault` | "Handle mixed mode interrupts and page faults": works on the exception frame on the stack and gives back a native save area ([15-build-history.md](15-build-history.md)) |
+| `FE08` | `_ReadTimeBase32` | D0 = low half of the PowerPC time base |
+| `FE09` | `_ReadTimeBase64` | A0:D0 = 64-bit PowerPC time base, read consistently |
+| `FE0B` | | Instruction cache block invalidate (`icbi`) over the range A0, length D0 |
+| `FE0C` | | Data cache block flush (`dcbf`) over the range |
+| `FE0D` | | Data cache block store (`dcbst`) over the range |
+| `FE0E` | | Data cache block zero (`dcbz`) over the range |
+| `FE0F` | | Calls handler slot `+0x99C`, by default kernel service 5, with D0 and D1 |
+| `FE11` | | Calls handler slot `+0x9A4`, by default kernel service 7 |
+| `FE1F` | | Calls handler slot `+0x9DC`, by default kernel service 8, with eight registers as arguments |
+| `FE20` | | Kernel service 6 with A0 in r3 |
 
 The four cache operations run 32 bytes per iteration and stop early if an
 interrupt becomes pending, leaving the remaining length in D0 and the 68K
 `pc` on the same instruction so that it resumes after the interrupt is
 serviced.
 
-`FE03`, `FE06`, `FE0A`, `FE0F`, `FE11` and `FE1F` copy 68K registers into
-PowerPC argument registers, call a handler table slot (several of which
-default to kernel traps) and copy results back. `FC01`–`FC11` operate on
-exception stack frames and the status register; their individual
-functions are outside the scope of this chapter.
-
 The recompiler never begins a translated block at opcode `FE02` or at
 `AAFE` (the trap word that begins a routine descriptor).
+
+### SANE
+
+`FC01`–`FC0F` accelerate SANE, the Mac OS floating point package
+(`_FP68K`). A 68LC040 has no floating point unit, so SANE's arithmetic
+is software; here its expensive steps are single opcodes, carried out
+with PowerPC integer instructions (`097C0`–`0A9AB`, 4.5 KB of the
+interpreter). The package's 68K code remains in charge of the
+sequence, and the state of an operation is held in 68K registers from
+one opcode to the next:
+
+| Register | Holds |
+|---|---|
+| D0, D1:D2 | Argument 1: exponent, and 64-bit significand |
+| D3, D4:D5 | Argument 2 |
+| D6 | The SANE operation word, in the upper half |
+| D7 | Status: the signs of the two arguments (bits 7 and 6), their classes — zero, infinite, NaN — (bits 11:10 and 9:8), and the size of the caller's arguments (bits 4:1) |
+| A0, A1 | Addresses of the destination and source operands |
+
+`FC01` is followed in the 68K code by a mask word and a table of long
+words. It masks the operation word found on the stack, uses the result
+to pick a table entry, and continues 68K execution at the offset the
+entry holds — a computed jump to the code for that operation. Before
+that it makes a 64-byte-aligned work area below the stack pointer and
+saves D0–D7, A0 and A1 there. `FC02` restores them, removes the caller's
+arguments and returns to the caller.
 
 ## Line-A traps
 

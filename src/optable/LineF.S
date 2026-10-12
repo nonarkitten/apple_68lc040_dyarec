@@ -6247,49 +6247,49 @@
         lwz     rtn_addr, 0x958(EmulatorStatePtr)       // FC00  F-LINE    cpID 6
         b       take_fline
         lhz     immed_data, 4(a7)                       // FC01  F-LINE    cpID 6
-        b       private_fc01
+        b       fc01_decode_sane_op
         lwz     addr, 40(a7)                            // FC02  F-LINE    cpID 6
-        b       private_fc02
+        b       fc02_exit_sane_op
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // FC03  F-LINE    cpID 6
-        b       private_fc03
+        b       fc03_load_arg1_extended
         rlwinm. addr, d6, 5, 29, 31                     // FC04  F-LINE    cpID 6
-        b       private_fc04
+        b       fc04_load_arg2_convert
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // FC05  F-LINE    cpID 6
-        b       private_fc05
+        b       fc05_copy_arg2_to_arg1
         rlwinm. data, d7, 22, 30, 31                    // FC06  F-LINE    cpID 6
-        b       private_fc06
+        b       fc06_check_result_arg1
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // FC07  F-LINE    cpID 6
-        b       private_fc07
+        b       fc07_store_arg1_extended
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // FC08  F-LINE    cpID 6
-        b       private_fc08
+        b       fc08_store_arg1_double
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // FC09  F-LINE    cpID 6
-        b       private_fc09
+        b       fc09_store_arg1_single
         rlwinm. data, d7, 24, 28, 31                    // FC0A  F-LINE    cpID 6
-        b       private_fc0a
+        b       fc0a_float_add
         rlwinm. data, d7, 24, 28, 31                    // FC0B  F-LINE    cpID 6
-        b       private_fc0b
+        b       fc0b_float_sub
         rlwinm. data, d7, 24, 28, 31                    // FC0C  F-LINE    cpID 6
-        b       private_fc0c
+        b       fc0c_float_mul
         rlwinm. data, d7, 24, 28, 31                    // FC0D  F-LINE    cpID 6
-        b       private_fc0d
+        b       fc0d_float_div
         rlwinm. data, d7, 24, 28, 31                    // FC0E  F-LINE    cpID 6
-        b       private_fc0e
+        b       fc0e_float_rem
         andi.   data, d7, 0x0C80                        // FC0F  F-LINE    cpID 6
-        b       private_fc0f
+        b       fc0f_float_sqrt
         lwz     a0, 0(a7)                               // FC10  F-LINE    cpID 6
         addi    a7, a7, 4
         lwz     pc, 20(a7)                              // FC11  F-LINE    cpID 6
-        b       private_fc11
+        b       fc11_atrap_os_no_a0_exit
         cmplwi  cr7, d0, 0x0014                         // FC12  F-LINE    cpID 6
-        b       private_fc12_fc13
+        b       fc12_fc13_move_bytes
         cmplwi  cr7, d0, 0x0014                         // FC13  F-LINE    cpID 6
-        b       private_fc12_fc13
+        b       fc12_fc13_move_bytes
         cmplwi  cr7, d0, 0x0014                         // FC14  F-LINE    cpID 6
-        b       private_fc14_fc15
+        b       fc14_fc15_move_bytes
         cmplwi  cr7, d0, 0x0014                         // FC15  F-LINE    cpID 6
-        b       private_fc14_fc15
+        b       fc14_fc15_move_bytes
         nop                                             // FC16  F-LINE    cpID 6
-        b       private_fc16
+        b       fc16_invalidate_range
         lwz     rtn_addr, 0x978(EmulatorStatePtr)       // FC17  F-LINE    cpID 6
         b       take_fline
         lwz     rtn_addr, 0x97C(EmulatorStatePtr)       // FC18  F-LINE    cpID 6
@@ -7287,39 +7287,39 @@
         lwz     rtn_addr, 0x95C(EmulatorStatePtr)       // FE00  F-LINE    cpID 7
         b       take_fline
         lwz     rtn_addr, mixed_mode_handler(EmulatorStatePtr)  // FE01  F-LINE    cpID 7
-        b       private_fe01
+        b       fe01_mixed_mode
         lwz     data, native_return_entry(EmulatorStatePtr)  // FE02  F-LINE    cpID 7
-        b       private_fe02
+        b       fe02_return_to_native
         lwz     addr, 0x964(EmulatorStatePtr)           // FE03  F-LINE    cpID 7
-        b       private_fe03
-        ori     rtn_addr, code_ptr, private_fe04 - cb   // FE04  F-LINE    cpID 7
-        b       private_fe04_fe05
-        ori     rtn_addr, code_ptr, private_fe05 - cb   // FE05  F-LINE    cpID 7
-        b       private_fe04_fe05
+        b       fe03_execute_risc_context
+        ori     rtn_addr, code_ptr, fe04_move_from_ecr - cb  // FE04  F-LINE    cpID 7
+        b       fe04_fe05_move_ecr
+        ori     rtn_addr, code_ptr, fe05_move_to_ecr - cb  // FE05  F-LINE    cpID 7
+        b       fe04_fe05_move_ecr
         crset   4*cr7+so                                // FE06  F-LINE    cpID 7
-        b       private_fe06_fe0a
+        b       fe06_fe0a_vm_dispatch
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // FE07  F-LINE    cpID 7
-        b       private_fe07
+        b       fe07_handle_mixed_mode_fault
         mftb    d0                                      // FE08  F-LINE    cpID 7
         b       fetch
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // FE09  F-LINE    cpID 7
-        b       private_fe09
+        b       fe09_read_time_base_64
         crclr   4*cr7+so                                // FE0A  F-LINE    cpID 7
-        b       private_fe06_fe0a
-        ori     rtn_addr, code_ptr, private_fe0b - cb   // FE0B  F-LINE    cpID 7
-        b       private_fe0b_fe0c_etc
-        ori     rtn_addr, code_ptr, private_fe0c - cb   // FE0C  F-LINE    cpID 7
-        b       private_fe0b_fe0c_etc
-        ori     rtn_addr, code_ptr, private_fe0d - cb   // FE0D  F-LINE    cpID 7
-        b       private_fe0b_fe0c_etc
-        ori     rtn_addr, code_ptr, private_fe0e - cb   // FE0E  F-LINE    cpID 7
-        b       private_fe0b_fe0c_etc
+        b       fe06_fe0a_vm_dispatch
+        ori     rtn_addr, code_ptr, fe0b_icbi_range - cb  // FE0B  F-LINE    cpID 7
+        b       fe0b_fe0e_cache_range
+        ori     rtn_addr, code_ptr, fe0c_dcbf_range - cb  // FE0C  F-LINE    cpID 7
+        b       fe0b_fe0e_cache_range
+        ori     rtn_addr, code_ptr, fe0d_dcbst_range - cb  // FE0D  F-LINE    cpID 7
+        b       fe0b_fe0e_cache_range
+        ori     rtn_addr, code_ptr, fe0e_dcbz_range - cb  // FE0E  F-LINE    cpID 7
+        b       fe0b_fe0e_cache_range
         mr      zero, zero                              // FE0F  F-LINE    cpID 7
-        b       private_fe0f
+        b       fe0f_power_dispatch
         lwz     rtn_addr, 0x9A0(EmulatorStatePtr)       // FE10  F-LINE    cpID 7
         b       take_fline
         mr      zero, zero                              // FE11  F-LINE    cpID 7
-        b       private_fe11
+        b       fe11_cache_dispatch
         lwz     rtn_addr, 0x9A8(EmulatorStatePtr)       // FE12  F-LINE    cpID 7
         b       take_fline
         lwz     rtn_addr, 0x9AC(EmulatorStatePtr)       // FE13  F-LINE    cpID 7
@@ -7347,9 +7347,9 @@
         lwz     rtn_addr, 0x9D8(EmulatorStatePtr)       // FE1E  F-LINE    cpID 7
         b       take_fline
         lwz     rtn_addr, 0x9DC(EmulatorStatePtr)       // FE1F  F-LINE    cpID 7
-        b       private_fe1f
+        b       fe1f_mp_dispatch
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // FE20  F-LINE    cpID 7
-        b       private_fe20
+        b       fe20_rtas_dispatch
         lwz     rtn_addr, fline_handler(EmulatorStatePtr)  // FE21  F-LINE    cpID 7
         b       take_fline
         lwz     rtn_addr, fline_handler(EmulatorStatePtr)  // FE22  F-LINE    cpID 7

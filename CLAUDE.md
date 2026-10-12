@@ -85,8 +85,10 @@ A new register or state-field name must be added to `src/include/*.inc`
    `docs/13-rom-context.md` does. The authority for kernel-side names is
    https://github.com/elliotnunn/powermac-rom (the project `Emulator.x`
    came from): `Internal/EmulatorPublic.a`, `Internal/NKPublic.a`,
-   `NanoKernel/*.s`. Fetch it when needed rather than keeping a copy here
-   (its files use classic Mac line endings and MacRoman).
+   `NanoKernel/*.s`. For names on the 68K side (the private opcodes) it is
+   https://github.com/elliotnunn/supermario, `Internal/Asm/TrapsPrivate.a`.
+   Fetch them when needed rather than keeping a copy here (the files use
+   classic Mac line endings and MacRoman).
 7. Keep the repository focused: no scratch files, dumps, third-party
    trees or reference copies. Working files go in a temp directory.
 8. Offsets are relative to `EmTop` (start of the image) and written as five
@@ -105,7 +107,8 @@ A new register or state-field name must be added to `src/include/*.inc`
 - Old-style branch prediction hints are spelled with `_likely` / `_unlikely`
   macros (`src/include/Macros.inc`).
 - Routines reached from the dispatch table are named by `tools/naming.py`
-  unless an annotation names them. `cea_`/`fea_` = effective address routines;
-  `private_fe0f` = the routine of private opcode FE0F.
+  unless an annotation names them. `cea_`/`fea_` = effective address routines.
+  Private opcode routines are named in `annotations/45-private-opcodes.ann`
+  (`fc0a_float_add`); one without a name there would be `private_fc0a`.
 - Labels without a meaningful name yet look like `L_0C458` (their offset);
   `op_XXXX` is the dispatch table entry for opcode XXXX.

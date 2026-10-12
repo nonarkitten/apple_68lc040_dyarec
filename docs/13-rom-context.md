@@ -29,6 +29,14 @@ Each statement below is marked with how it is known:
 - **[name]** a conventional name attached to something whose behaviour
   is established by one of the above.
 
+Names on the 68K side — the private opcodes of
+[08-native-interface.md](08-native-interface.md) — come from a different
+source: the SuperMario ROM sources (a Macintosh ROM source tree of
+February 1994, published at https://github.com/elliotnunn/supermario),
+whose `Internal/Asm/TrapsPrivate.a` defines the opcodes as assembler
+macros. Those sources are of the time of the first Power Macintoshes and
+do not contain the emulator or the kernel.
+
 ## Where `Emulator.x` comes from
 
 The `powermac-rom` makefile takes `Emulator.x` as a ready-made input; it

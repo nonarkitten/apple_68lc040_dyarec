@@ -23250,25 +23250,31 @@ aline_os_trap:
         btctr   cr_dr_active
         bflr_likely cr_special_event_pending            // DISPATCH unless a special event is pending
         b       process_special_event
-        b       private_fc11
+        b       fc11_atrap_os_no_a0_exit
         ALIGN(32)
 
+// FC10 and FC11, _ATrapOSExit and _ATrapOSNoA0Exit: the way out of the 68K
+// operating system trap dispatcher.  Restores the registers the dispatcher
+// saved (A1, D1, D2, A2), sets N and Z from D0.W as TST.W would, and returns
+// to the caller of the trap.  FC10's table entry restores A0 first and
+// falls into FC11's.
+//
 // Reached from 1 dispatch table entry:
 //     F-LINE cpID 6
-private_fc11:
+fc11_atrap_os_no_a0_exit:
         lha     prefetch_data, 0(pc)
-        slwi.   data, d0, 16
+        slwi.   data, d0, 16                            // N and Z from the result code in D0.W
         rlwimi  disp_table, pc, 20, 11, 11              // disp_table[20] = pc[0]
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // DECODE1: disp_table[18:3] = opcode in prefetch_data
         mtlr    disp_table                              // DECODE2: LR = address of the next dispatch entry
         mtctr   dr_entry
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
-        addco   zero, zero, zero                        // V=0, C=0
+        addco   zero, zero, zero                        // V = C = 0
         lwz     a1, 0(a7)
         lwz     d1, 4(a7)
         lwz     d2, 8(a7)
         lwz     a2, 12(a7)
-        addi    a7, a7, 24
+        addi    a7, a7, 24                              // the saved registers and the return address
         btctr   cr_dr_active
         bflr_likely cr_special_event_pending            // DISPATCH unless a special event is pending
         b       process_special_event
@@ -23317,18 +23323,44 @@ aline_toolbox_trap_autopop:
         bflr_likely cr_special_event_pending            // DISPATCH unless a special event is pending
         b       process_special_event
 
+// ===========================================================================
+// FC01-FC0F: the SANE floating point package
+// ===========================================================================
+// SANE is the Mac OS floating point package (_FP68K).  Its 68K code keeps
+// the structure of the software package, but the steps that cost the most
+// are single private opcodes, done here with PowerPC integer instructions.
+// Between them the 68K registers hold the operation's state:
+//
+// D0, D1:D2   argument 1: exponent, and 64-bit significand
+// D3, D4:D5   argument 2, likewise
+// D6          the SANE operation word in the upper half
+// D7          status: the signs of the arguments in bits 7 and 6, their
+// classes (1 zero, 2 infinite, 3 NaN) in bits 11:10 and 9:8,
+// and in bits 4:1 the number of bytes of arguments to
+// remove on exit
+// A0, A1      addresses of the destination and source operands
+//
+// FC01, _DecodeSANEop.  On entry the stack holds the return address, the
+// operation word (already loaded into immed_data by the table entry) and
+// the operand addresses.  The opcode is followed in the 68K code by a mask
+// word and a table of long words: the operation word is masked and selects
+// a table entry, whose value is the offset of the 68K code that continues
+// the operation; bit 0 of the entry says that there are two operands.  A
+// 64-byte aligned work area is made 128 bytes below the stack pointer and
+// D0-D7, A0, A1 and the old stack pointer are saved in it.
+//
 // Reached from 1 dispatch table entry:
 //     F-LINE cpID 6
-private_fc01:
-        and     base_disp, immed_data, prefetch_data
+fc01_decode_sane_op:
+        and     base_disp, immed_data, prefetch_data    // the SANE operation word, masked by the word after the opcode
         addi    pc, pc, 2
         slwi    base_disp, base_disp, 2
-        lwzx    rtn_addr, pc, base_disp
+        lwzx    rtn_addr, pc, base_disp                 // the table entry for this operation
         addi    addr, a7, -128
         clrrwi. data, rtn_addr, 1                       // data = rtn_addr & 0xFFFFFFFE
-        mtcrf   0x01, rtn_addr                          // cr7 = rtn_addr[3:0]
-        lhaux   data, pc, data
-        clrrwi  a7, addr, 6                             // a7 = addr & 0xFFFFFFC0
+        mtcrf   0x01, rtn_addr                          // bit 0: two operands
+        lhaux   data, pc, data                          // opcode at the entry's target; pc moves there
+        clrrwi  a7, addr, 6                             // a7 = the work area
         rlwimi  disp_table, data, 3, 13, 28             // DECODE1: disp_table[18:3] = opcode in data
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         mtlr    disp_table                              // DECODE2: LR = address of the next dispatch entry
@@ -23343,30 +23375,36 @@ private_fc01:
         stw     d7, 28(a7)
         stw     a0, 32(a7)
         stw     a1, 36(a7)
-        stw     addr, 40(a7)
-        lwz     a0, 6(addr)
-        slwi    d6, immed_data, 16
-        bns     cr7, private_fc01_L1
-        lwz     a1, 10(addr)
-        ori     d7, zero, 0x000E
+        stw     addr, 40(a7)                            // the stack pointer as it was
+        lwz     a0, 6(addr)                             // A0 = address of the destination operand
+        slwi    d6, immed_data, 16                      // D6 = operation word << 16
+        bns     cr7, fc01_decode_sane_op_L1
+        lwz     a1, 10(addr)                            // A1 = address of the source operand
+        ori     d7, zero, 0x000E                        // 14 bytes of arguments to remove
         bflr_likely cr_special_event_pending            // DISPATCH unless a special event is pending
         b       process_special_event
-private_fc01_L1:
-        ori     d7, zero, 0x000A
+fc01_decode_sane_op_L1:
+        ori     d7, zero, 0x000A                        // 10 bytes of arguments to remove
         bflr_likely cr_special_event_pending            // DISPATCH unless a special event is pending
         b       process_special_event
-        b       private_fc02
+        b       fc02_exit_sane_op
         ALIGN(32)
 
+// FC02, _ExitSANEop.  Restores D0-D7, A0 and A1 from the work area, removes
+// the arguments and returns to the caller of the package - unless one of
+// bits 28:24 of D7 is set together with its counterpart among bits 4:0 of
+// D6, in which case nothing is done and the 68K code that follows runs
+// (presumably SANE's halts: an exception whose halt is enabled).
+//
 // Reached from 1 dispatch table entry:
 //     F-LINE cpID 6
-private_fc02:
+fc02_exit_sane_op:
         rlwinm  immed_data, d6, 24, 3, 7                // immed_data = d6[4:0] << 24
         and     immed_data, immed_data, d7
         cmplwi  cr7, immed_data, 0x0000
         rlwinm  data, d7, 0, 27, 30                     // data = d7[4:1] << 1
-        bne     cr7, private_fc02_L1
-        lwz     pc, 0(addr)
+        bne     cr7, fc02_exit_sane_op_L1
+        lwz     pc, 0(addr)                             // the return address
         lwz     d0, 0(a7)
         lha     prefetch_data, 0(pc)
         lwz     d1, 4(a7)
@@ -23381,15 +23419,20 @@ private_fc02:
         lwz     d7, 28(a7)
         lwz     a0, 32(a7)
         lwz     a1, 36(a7)
-        add     a7, addr, data
+        add     a7, addr, data                          // a7 = old stack pointer + bytes of arguments
         bflr_likely cr_special_event_pending            // DISPATCH unless a special event is pending
         b       process_special_event
-private_fc02_L1:
+fc02_exit_sane_op_L1:
         b       fetch
 
+// FC03, _LoadArg1Extended.  Unpacks the extended value at (A0) into D0 and
+// D1:D2, normalising it, and records its sign and class in D7.  Bit 21 of
+// D6 selects the 96-bit form of an extended, which has two unused bytes
+// after the exponent.
+//
 // Reached from 1 dispatch table entry:
 //     F-LINE cpID 6
-private_fc03:
+fc03_load_arg1_extended:
         lhz     data, 0(a0)
         rlwinm  addr, d6, 12, 30, 30                    // addr = d6[21] << 1
         clrlwi  d0, data, 17                            // d0 = data & 0x00007FFF
@@ -23403,23 +23446,23 @@ private_fc03:
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         rlwimi  d7, data, 24, 24, 24                    // d7[7] = data[15]
         lwz     d2, 6(addr)
-        beq     cr7, private_fc03_L4
-        bge     cr6, private_fc03_L1
+        beq     cr7, fc03_load_arg1_extended_L4
+        bge     cr6, fc03_load_arg1_extended_L1
         bfctr_likely cr_special_event_pending           // DISPATCH unless a special event is pending
         b       process_special_event
-private_fc03_L1:
+fc03_load_arg1_extended_L1:
         cmpwi   cr7, d2, 0
-        bne     cr6, private_fc03_L3
-        bne     cr7, private_fc03_L2
+        bne     cr6, fc03_load_arg1_extended_L3
+        bne     cr7, fc03_load_arg1_extended_L2
         ori     d7, d7, 0x0400
         li      d0, 0
         bfctr_likely cr_special_event_pending           // DISPATCH unless a special event is pending
         b       process_special_event
-private_fc03_L2:
+fc03_load_arg1_extended_L2:
         mr      d1, d2
         li      d2, 0
         addi    d0, d0, -32
-private_fc03_L3:
+fc03_load_arg1_extended_L3:
         cntlzw  data, d1                                // data = number of leading zero bits in d1
         xor     d1, d1, d2
         rlwnm   d1, d1, data, 0, 31                     // d1 = rotl(d1, data) & 0xFFFFFFFF
@@ -23428,14 +23471,14 @@ private_fc03_L3:
         xor     d1, d1, d2
         bfctr_likely cr_special_event_pending           // DISPATCH unless a special event is pending
         b       process_special_event
-private_fc03_L4:
+fc03_load_arg1_extended_L4:
         clrlwi  d1, d1, 1                               // d1 = d1 & 0x7FFFFFFF
         or.     data, d1, d2
-        bne     private_fc03_L5
+        bne     fc03_load_arg1_extended_L5
         ori     d7, d7, 0x0800
         bfctr_likely cr_special_event_pending           // DISPATCH unless a special event is pending
         b       process_special_event
-private_fc03_L5:
+fc03_load_arg1_extended_L5:
         xoris   data, d1, 0x4000
         oris    d1, d1, 0x4000
         rlwinm  data, data, 26, 7, 7                    // data = data[30] << 24
@@ -23444,14 +23487,17 @@ private_fc03_L5:
         bfctr_likely cr_special_event_pending           // DISPATCH unless a special event is pending
         b       process_special_event
 
+// FC04, _LoadArg2Convert.  Unpacks the source operand at (A1) into D3 and
+// D4:D5, converting from the format that the operation word names.
+//
 // Reached from 1 dispatch table entry:
 //     F-LINE cpID 6
-private_fc04:
+fc04_load_arg2_convert:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // DECODE1: disp_table[18:3] = opcode in prefetch_data
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         mtctr   disp_table                              // DECODE2: CTR = address of the next dispatch entry
-        bne     private_fc04_L11
-private_fc04_L1:
+        bne     fc04_load_arg2_convert_L11
+fc04_load_arg2_convert_L1:
         lhz     data, 0(a1)
         rlwinm  addr, d6, 12, 30, 30                    // addr = d6[21] << 1
         clrlwi  d3, data, 17                            // d3 = data & 0x00007FFF
@@ -23461,29 +23507,29 @@ private_fc04_L1:
         cmpwi   d4, 0
         rlwimi  d7, data, 23, 25, 25                    // d7[6] = data[15]
         lwz     d5, 6(addr)
-        beq     cr7, private_fc04_L8
-        bge     private_fc04_L3
+        beq     cr7, fc04_load_arg2_convert_L8
+        bge     fc04_load_arg2_convert_L3
         bfctr_likely cr_special_event_pending           // DISPATCH unless a special event is pending
         b       process_special_event
-private_fc04_L2:
-        beq     cr7, private_fc04_L9
+fc04_load_arg2_convert_L2:
+        beq     cr7, fc04_load_arg2_convert_L9
         addi    d3, d3, 1
-private_fc04_L3:
+fc04_load_arg2_convert_L3:
         cmpwi   cr7, d5, 0
-        bne     private_fc04_L6
-        bne     cr7, private_fc04_L5
-private_fc04_L4:
+        bne     fc04_load_arg2_convert_L6
+        bne     cr7, fc04_load_arg2_convert_L5
+fc04_load_arg2_convert_L4:
         ori     d7, d7, 0x0100
         li      d3, 0
         bfctr_likely cr_special_event_pending           // DISPATCH unless a special event is pending
         b       process_special_event
-private_fc04_L5:
+fc04_load_arg2_convert_L5:
         mr      d4, d5
         li      d5, 0
         addi    d3, d3, -32
-private_fc04_L6:
+fc04_load_arg2_convert_L6:
         ori     d7, d7, 0x0020
-private_fc04_L7:
+fc04_load_arg2_convert_L7:
         cntlzw  data, d4                                // data = number of leading zero bits in d4
         xor     d4, d4, d5
         rlwnm   d4, d4, data, 0, 31                     // d4 = rotl(d4, data) & 0xFFFFFFFF
@@ -23492,35 +23538,35 @@ private_fc04_L7:
         xor     d4, d4, d5
         bfctr_likely cr_special_event_pending           // DISPATCH unless a special event is pending
         b       process_special_event
-private_fc04_L8:
+fc04_load_arg2_convert_L8:
         clrlwi  d4, d4, 1                               // d4 = d4 & 0x7FFFFFFF
-private_fc04_L9:
+fc04_load_arg2_convert_L9:
         or.     data, d4, d5
         li      d3, 0x7FFF
-        bne     private_fc04_L10
+        bne     fc04_load_arg2_convert_L10
         ori     d7, d7, 0x0200
         bfctr_likely cr_special_event_pending           // DISPATCH unless a special event is pending
         b       process_special_event
-private_fc04_L10:
+fc04_load_arg2_convert_L10:
         clrlwi. immed_data, d7, 31                      // immed_data = d7 & 0x00000001
         xoris   data, d4, 0x4000
         oris    d4, d4, 0x4000
         rlwinm  data, data, 26, 7, 7                    // data = data[30] << 24
         ori     d7, d7, 0x0301
         or      d7, d7, data
-        beq     private_fc05_L1
+        beq     fc05_copy_arg2_to_arg1_L1
         rlwinm  data, d1, 0, 8, 15                      // data = d1[23:16] << 16
         rlwinm  immed_data, d4, 0, 8, 15                // immed_data = d4[23:16] << 16
         cmpw    cr7, data, immed_data
-        ble     cr7, private_fc05_L1
+        ble     cr7, fc05_copy_arg2_to_arg1_L1
         bfctr_likely cr_special_event_pending           // DISPATCH unless a special event is pending
         b       process_special_event
-private_fc04_L11:
+fc04_load_arg2_convert_L11:
         cmpwi   cr7, addr, 3
         slwi.   data, addr, 30
-        bgt     cr7, private_fc04_L14
-        beq     cr7, private_fc04_L1
-        blt     private_fc04_L12
+        bgt     cr7, fc04_load_arg2_convert_L14
+        beq     cr7, fc04_load_arg2_convert_L1
+        blt     fc04_load_arg2_convert_L12
         lwz     data, 0(a1)
         lwz     d5, 4(a1)
         rlwinm  d3, data, 12, 21, 31                    // d3 = data[30:20]
@@ -23531,11 +23577,11 @@ private_fc04_L11:
         slwi    d5, d5, 11
         addi    d3, d3, 0x3C01
         rlwimi  d7, data, 7, 25, 25                     // d7[6] = data[31]
-        bge     cr7, private_fc04_L2
+        bge     cr7, fc04_load_arg2_convert_L2
         oris    d4, d4, 0x8000
         bfctr_likely cr_special_event_pending           // DISPATCH unless a special event is pending
         b       process_special_event
-private_fc04_L12:
+fc04_load_arg2_convert_L12:
         lwz     data, 0(a1)
         li      d5, 0
         rlwinm  d3, data, 9, 24, 31                     // d3 = data[30:23]
@@ -23544,37 +23590,37 @@ private_fc04_L12:
         rlwinm. d4, data, 8, 1, 23                      // d4 = data[22:0] << 8
         addi    d3, d3, 0x3F81
         rlwimi  d7, data, 7, 25, 25                     // d7[6] = data[31]
-        bge     cr7, private_fc04_L2
+        bge     cr7, fc04_load_arg2_convert_L2
         oris    d4, d4, 0x8000
         bfctr_likely cr_special_event_pending           // DISPATCH unless a special event is pending
         b       process_special_event
-private_fc04_L13:
+fc04_load_arg2_convert_L13:
         lha     d4, 0(a1)
         li      d5, 0
         srawi   data, d4, 31                            // data = d4 >> 31 (arithmetic)
-        b       private_fc04_L15
-private_fc04_L14:
-        blt     private_fc04_L16
-        beq     private_fc04_L13
+        b       fc04_load_arg2_convert_L15
+fc04_load_arg2_convert_L14:
+        blt     fc04_load_arg2_convert_L16
+        beq     fc04_load_arg2_convert_L13
         lwz     d4, 0(a1)
         li      d5, 0
         srawi   data, d4, 31                            // data = d4 >> 31 (arithmetic)
-private_fc04_L15:
+fc04_load_arg2_convert_L15:
         xor     d4, data, d4
         subfc.  d4, data, d4                            // d4 = d4 - data
         rlwimi  d7, data, 0, 25, 25                     // d7[6] = data[6]
-        beq     private_fc04_L4
+        beq     fc04_load_arg2_convert_L4
         cntlzw  data, d4                                // data = number of leading zero bits in d4
         slw     d4, d4, data
         subfic  d3, data, 0x401E                        // d3 = 0x401E - data
         bfctr_likely cr_special_event_pending           // DISPATCH unless a special event is pending
         b       process_special_event
-private_fc04_L16:
+fc04_load_arg2_convert_L16:
         lwz     d4, 4(a1)
         lwz     immed_data, 0(a1)
         srawi   data, d4, 31                            // data = d4 >> 31 (arithmetic)
         xor.    d5, data, immed_data
-        beq     private_fc04_L15
+        beq     fc04_load_arg2_convert_L15
         srawi   data, immed_data, 31                    // data = immed_data >> 31 (arithmetic)
         xor     d5, data, d4
         xor     d4, data, immed_data
@@ -23582,25 +23628,27 @@ private_fc04_L16:
         subfe.  d4, data, d4                            // d4 = d4 + ~data + CA
         rlwimi  d7, data, 0, 25, 25                     // d7[6] = data[6]
         li      d3, 0x403E
-        bgt     private_fc04_L7
+        bgt     fc04_load_arg2_convert_L7
         mr      d4, d5
         li      d5, 0
-        blt     private_fc04_L17
+        blt     fc04_load_arg2_convert_L17
         li      d3, 0x401E
         bfctr_likely cr_special_event_pending           // DISPATCH unless a special event is pending
         b       process_special_event
-private_fc04_L17:
+fc04_load_arg2_convert_L17:
         li      d3, 0x7FFF
         lis     d4, 0x4014
         rlwinm  d7, d7, 0, 26, 24                       // d7 = d7 & 0xFFFFFFBF
-        b       private_fc04_L10
+        b       fc04_load_arg2_convert_L10
 
+// FC05, _CopyArg2ToArg1.
+//
 // Reached from 1 dispatch table entry:
 //     F-LINE cpID 6
-private_fc05:
+fc05_copy_arg2_to_arg1:
         mtctr   disp_table                              // DECODE2: CTR = address of the next dispatch entry
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
-private_fc05_L1:
+fc05_copy_arg2_to_arg1_L1:
         mr      d0, d3
         rlwimi  d7, d7, 2, 20, 21                       // d7[11:10] = d7[9:8]
         mr      d1, d4
@@ -23609,188 +23657,193 @@ private_fc05_L1:
         bfctr_likely cr_special_event_pending           // DISPATCH unless a special event is pending
         b       process_special_event
 
+// FC06, _CheckResultArg1.
+//
 // Reached from 1 dispatch table entry:
 //     F-LINE cpID 6
-private_fc06:
+fc06_check_result_arg1:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // DECODE1: disp_table[18:3] = opcode in prefetch_data
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         mtctr   disp_table                              // DECODE2: CTR = address of the next dispatch entry
-        bne     private_fc06_L3
-private_fc06_L1:
+        bne     fc06_check_result_arg1_L3
+fc06_check_result_arg1_L1:
         andi.   data, d6, 0x6060
         cmplwi  cr7, d0, 0x7FFE
         rlwinm  d6, d6, 0, 25, 23                       // d6 = d6 & 0xFFFFFF7F
-        bne     private_fc06_L9
+        bne     fc06_check_result_arg1_L9
         rlwinm. data, d7, 20, 28, 30                    // data = d7[15:13] << 1
-        bge     cr7, private_fc06_L9
+        bge     cr7, fc06_check_result_arg1_L9
         rlwimi  data, d2, 0, 31, 31                     // data[0] = d2[0]
         cmpwi   cr7, data, 8
-        beq     private_fc06_L5
+        beq     fc06_check_result_arg1_L5
         cmpwi   cr6, d2, -1
         oris    d7, d7, 0x1000
-        ble     cr7, private_fc06_L5
+        ble     cr7, fc06_check_result_arg1_L5
         addi    d2, d2, 1
         ori     d6, d6, 0x0080
-        bne     cr6, private_fc06_L5
+        bne     cr6, fc06_check_result_arg1_L5
         addic   d1, d1, 1
         oris    d1, d1, 0x8000
         addze   d0, d0                                  // d0 = d0 + CA
-        b       private_fc06_L5
-private_fc06_L2:
+        b       fc06_check_result_arg1_L5
+fc06_check_result_arg1_L2:
         rlwinm. data, d7, 21, 30, 31                    // data = d7[12:11]
-        beq     private_fc06_L1
-private_fc06_L3:
+        beq     fc06_check_result_arg1_L1
+fc06_check_result_arg1_L3:
         andi.   data, d7, 0x0001
-        bne     private_fc06_L6
-private_fc06_L4:
+        bne     fc06_check_result_arg1_L6
+fc06_check_result_arg1_L4:
         rlwinm  d6, d6, 0, 25, 23                       // d6 = d6 & 0xFFFFFF7F
-private_fc06_L5:
+fc06_check_result_arg1_L5:
         ori     immed_data, zero, 0xF360
         srwi    data, d7, 16
         andc    d7, d7, immed_data                      // d7 = d7 & ~immed_data
         or      d6, d6, data
         bfctr_likely cr_special_event_pending           // DISPATCH unless a special event is pending
         b       process_special_event
-private_fc06_L6:
+fc06_check_result_arg1_L6:
         rlwinm. data, d6, 25, 0, 1                      // data = d6[6:5] << 30
         rlwinm  d6, d6, 0, 25, 23                       // d6 = d6 & 0xFFFFFF7F
-        beq     private_fc06_L8
-        bgt     private_fc06_L7
+        beq     fc06_check_result_arg1_L8
+        bgt     fc06_check_result_arg1_L7
         clrrwi  d1, d1, 8                               // d1 = d1 & 0xFFFFFF00
         li      d2, 0
-private_fc06_L7:
+fc06_check_result_arg1_L7:
         clrrwi  d2, d2, 11                              // d2 = d2 & 0xFFFFF800
-private_fc06_L8:
+fc06_check_result_arg1_L8:
         clrlwi  data, d1, 2                             // data = d1 & 0x3FFFFFFF
         or.     data, data, d2
-        bne     private_fc06_L5
+        bne     fc06_check_result_arg1_L5
         lis     d1, 0x4015
-        b       private_fc06_L5
-private_fc06_L9:
+        b       fc06_check_result_arg1_L5
+fc06_check_result_arg1_L9:
         rlwinm. data, d6, 25, 0, 1                      // data = d6[6:5] << 30
-        bne     private_fc06_L13
+        bne     fc06_check_result_arg1_L13
         neg.    rtn_addr, d0
         li      base_disp, 0x7FFE
-        bgt     private_fc06_L20
+        bgt     fc06_check_result_arg1_L20
         rlwinm. data, d7, 20, 28, 30                    // data = d7[15:13] << 1
-        bne     private_fc06_L21
-private_fc06_L10:
+        bne     fc06_check_result_arg1_L21
+fc06_check_result_arg1_L10:
         cmpw    cr7, d0, base_disp
-        ble     cr7, private_fc06_L5
+        ble     cr7, fc06_check_result_arg1_L5
         rlwinm  addr, d6, 19, 30, 31                    // addr = d6[14:13]
         li      data, 202
         rlwimi  addr, d7, 27, 29, 29                    // addr[2] = d7[7]
         rlwnm.  data, data, addr, 24, 24                // data = rotl(data, addr) & 0x00000080
         oris    d7, d7, 0x1400
-        bne     private_fc06_L12
+        bne     fc06_check_result_arg1_L12
         rlwinm. data, d6, 25, 0, 1                      // data = d6[6:5] << 30
         mr      d0, base_disp
         li      d1, -1
         li      d2, -1
-        beq     private_fc06_L5
-        bgt     private_fc06_L11
+        beq     fc06_check_result_arg1_L5
+        bgt     fc06_check_result_arg1_L11
         clrrwi  d1, d1, 8                               // d1 = d1 & 0xFFFFFF00
         li      d2, 0
-private_fc06_L11:
+fc06_check_result_arg1_L11:
         clrrwi  d2, d2, 11                              // d2 = d2 & 0xFFFFF800
-        b       private_fc06_L5
-private_fc06_L12:
+        b       fc06_check_result_arg1_L5
+fc06_check_result_arg1_L12:
         ori     d7, d7, 0x0800
         li      d0, 0x7FFF
         li      d1, 0
         li      d2, 0
-        b       private_fc06_L5
-private_fc06_L13:
-        bgt     private_fc06_L18
+        b       fc06_check_result_arg1_L5
+fc06_check_result_arg1_L13:
+        bgt     fc06_check_result_arg1_L18
         addic.  data, d0, -0x3F81
         li      base_disp, 0x407E
         li      rtn_addr, 40
-        blt     private_fc06_L19
-private_fc06_L14:
+        blt     fc06_check_result_arg1_L19
+fc06_check_result_arg1_L14:
         add     d0, d0, rtn_addr
-        bl      private_fc0b_L7
+        bl      fc0b_float_sub_L7
         srwi.   data, data, 28
-        bne     private_fc06_L21
-private_fc06_L15:
+        bne     fc06_check_result_arg1_L21
+fc06_check_result_arg1_L15:
         cmpwi   cr6, d1, 0
-        beq     cr6, private_fc06_L17
-private_fc06_L16:
+        beq     cr6, fc06_check_result_arg1_L17
+fc06_check_result_arg1_L16:
         cntlzw  data, d1                                // data = number of leading zero bits in d1
         xor     d1, d1, d2
         rlwnm   d1, d1, data, 0, 31                     // d1 = rotl(d1, data) & 0xFFFFFFFF
         subfc   d0, data, d0                            // d0 = d0 - data
         slw     d2, d2, data
         xor     d1, d1, d2
-        b       private_fc06_L10
-private_fc06_L17:
+        b       fc06_check_result_arg1_L10
+fc06_check_result_arg1_L17:
         addi    d0, d0, -32
         cntlzw  data, d2                                // data = number of leading zero bits in d2
         slw     d1, d2, data
         subfc   d0, data, d0                            // d0 = d0 - data
         li      d2, 0
-        b       private_fc06_L10
-private_fc06_L18:
+        b       fc06_check_result_arg1_L10
+fc06_check_result_arg1_L18:
         addic.  data, d0, -0x3C01
         li      base_disp, 0x43FE
         li      rtn_addr, 11
-        bge     private_fc06_L14
-private_fc06_L19:
+        bge     fc06_check_result_arg1_L14
+fc06_check_result_arg1_L19:
         subfc   rtn_addr, data, rtn_addr                // rtn_addr = rtn_addr - data
-private_fc06_L20:
+fc06_check_result_arg1_L20:
         add     d0, d0, rtn_addr
-        bl      private_fc0b_L7
+        bl      fc0b_float_sub_L7
         srwi.   data, data, 28
-        beq     private_fc06_L15
+        beq     fc06_check_result_arg1_L15
         oris    d7, d7, 0x0200
-private_fc06_L21:
+fc06_check_result_arg1_L21:
         rlwinm. addr, d6, 19, 30, 31                    // addr = d6[14:13]
         oris    d7, d7, 0x1000
-        bne     private_fc06_L23
+        bne     fc06_check_result_arg1_L23
         rlwimi  data, d2, 0, 31, 31                     // data[0] = d2[0]
         cmpwi   cr7, data, 8
-        ble     cr7, private_fc06_L24
-private_fc06_L22:
+        ble     cr7, fc06_check_result_arg1_L24
+fc06_check_result_arg1_L22:
         cmpwi   cr6, d1, 0
         addic   d2, d2, 1
         ori     d6, d6, 0x0080
         addze   d1, d1                                  // d1 = d1 + CA
-        bge     cr6, private_fc06_L15
+        bge     cr6, fc06_check_result_arg1_L15
         oris    d1, d1, 0x8000
         addze   d0, d0                                  // d0 = d0 + CA
-        b       private_fc06_L10
-private_fc06_L23:
+        b       fc06_check_result_arg1_L10
+fc06_check_result_arg1_L23:
         rlwimi  addr, d7, 27, 29, 29                    // addr[2] = d7[7]
         li      data, 66
         rlwnm.  data, data, addr, 24, 24                // data = rotl(data, addr) & 0x00000080
-        bne     private_fc06_L22
-private_fc06_L24:
+        bne     fc06_check_result_arg1_L22
+fc06_check_result_arg1_L24:
         cmpwi   cr6, d1, 0
         cmpwi   cr7, d2, 0
-        blt     cr6, private_fc06_L10
-        bne     cr6, private_fc06_L16
-        bne     cr7, private_fc06_L17
+        blt     cr6, fc06_check_result_arg1_L10
+        bne     cr6, fc06_check_result_arg1_L16
+        bne     cr7, fc06_check_result_arg1_L17
         ori     d7, d7, 0x0400
         li      d0, 0
-        b       private_fc06_L5
-        b       private_fc07
+        b       fc06_check_result_arg1_L5
+        b       fc07_store_arg1_extended
         ALIGN(32)
 
+// FC07, _StoreArg1Extended.  Packs D0 and D1:D2 with the sign from D7 into
+// the extended at (A0).
+//
 // Reached from 1 dispatch table entry:
 //     F-LINE cpID 6
-private_fc07:
+fc07_store_arg1_extended:
         mtctr   disp_table                              // DECODE2: CTR = address of the next dispatch entry
         extsh.  data, d0                                // data = sign-extended low word of d0
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         rlwinm  addr, d6, 12, 30, 30                    // addr = d6[21] << 1
         rlwimi  data, d7, 8, 16, 16                     // data[15] = d7[7]
         add     addr, addr, a0
-        blt     private_fc07_L1
+        blt     fc07_store_arg1_extended_L1
         sth     data, 0(a0)
         stw     d1, 2(addr)
         stw     d2, 6(addr)
         bfctr_likely cr_special_event_pending           // DISPATCH unless a special event is pending
         b       process_special_event
-private_fc07_L1:
+fc07_store_arg1_extended_L1:
         cmpwi   cr7, d0, -64
         rlwinm  data, d7, 8, 16, 16                     // data = d7[7] << 15
         sth     data, 0(a0)
@@ -23803,44 +23856,46 @@ private_fc07_L1:
         srw     rtn_addr, d1, rtn_addr
         or      data, data, rtn_addr
         srw     immed_data, d1, base_disp
-        bgt     cr7, private_fc07_L2
+        bgt     cr7, fc07_store_arg1_extended_L2
         li      immed_data, 0
         li      data, 0
-private_fc07_L2:
+fc07_store_arg1_extended_L2:
         stw     immed_data, 2(addr)
         stw     data, 6(addr)
         bfctr_likely cr_special_event_pending           // DISPATCH unless a special event is pending
         b       process_special_event
         ALIGN(32)
 
+// FC08, _StoreArg1Double.
+//
 // Reached from 1 dispatch table entry:
 //     F-LINE cpID 6
-private_fc08:
+fc08_store_arg1_double:
         addic.  addr, d0, -0x3C00
         mtctr   disp_table                              // DECODE2: CTR = address of the next dispatch entry
         slwi    data, addr, 20
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
-        ble     private_fc08_L2
+        ble     fc08_store_arg1_double_L2
         addi    addr, d0, -0x4400
         slwi    immed_data, d1, 21
         orc     data, data, addr                        // data = data | ~addr
         rlwimi  immed_data, d2, 21, 11, 31              // immed_data[20:0] = d2[31:11]
         rlwimi  data, d1, 21, 12, 31                    // data[19:0] = d1[30:11]
-private_fc08_L1:
+fc08_store_arg1_double_L1:
         stw     immed_data, 4(a0)
         rlwimi  data, d7, 24, 0, 0                      // data[31] = d7[7]
         stw     data, 0(a0)
         bfctr_likely cr_special_event_pending           // DISPATCH unless a special event is pending
         b       process_special_event
-private_fc08_L2:
+fc08_store_arg1_double_L2:
         cmpwi   cr7, d0, 0x3BCC
-        bgt     cr7, private_fc08_L3
+        bgt     cr7, fc08_store_arg1_double_L3
         rlwinm  data, d7, 24, 0, 0                      // data = d7[7] << 31
         stw     zero, 4(a0)
         stw     data, 0(a0)
         bfctr_likely cr_special_event_pending           // DISPATCH unless a special event is pending
         b       process_special_event
-private_fc08_L3:
+fc08_store_arg1_double_L3:
         subfic  base_disp, d0, 0x3C0C                   // base_disp = 0x3C0C - d0
         addi    rtn_addr, d0, -0x3BEC
         srw     immed_data, d2, base_disp
@@ -23850,36 +23905,41 @@ private_fc08_L3:
         srw     rtn_addr, d1, rtn_addr
         or      immed_data, immed_data, rtn_addr
         srw     data, d1, base_disp
-        b       private_fc08_L1
+        b       fc08_store_arg1_double_L1
 
+// FC09, _StoreArg1Single.
+//
 // Reached from 1 dispatch table entry:
 //     F-LINE cpID 6
-private_fc09:
+fc09_store_arg1_single:
         addic.  addr, d0, -0x3F80
         mtctr   disp_table                              // DECODE2: CTR = address of the next dispatch entry
         slwi    data, addr, 23
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
-        ble     private_fc09_L2
+        ble     fc09_store_arg1_single_L2
         addi    addr, d0, -0x4080
         orc     data, data, addr                        // data = data | ~addr
         rlwimi  data, d1, 24, 9, 31                     // data[22:0] = d1[30:8]
-private_fc09_L1:
+fc09_store_arg1_single_L1:
         rlwimi  data, d7, 24, 0, 0                      // data[31] = d7[7]
         stw     data, 0(a0)
         bfctr_likely cr_special_event_pending           // DISPATCH unless a special event is pending
         b       process_special_event
-private_fc09_L2:
+fc09_store_arg1_single_L2:
         addi    data, d0, -0x3F6A
         subfic  addr, d0, 0x3F89                        // addr = 0x3F89 - d0
         rlwimi  addr, data, 6, 26, 26                   // addr[5] = data[31]
         srw     data, d1, addr
-        b       private_fc09_L1
-        b       private_fc0a
+        b       fc09_store_arg1_single_L1
+        b       fc0a_float_add
         ALIGN(64)
 
+// FC0A, _FloatAdd: argument 1 = argument 1 + argument 2.  Shares its code
+// with FC0B.
+//
 // Reached from 1 dispatch table entry:
 //     F-LINE cpID 6
-private_fc0a:
+fc0a_float_add:
         mtcrf   0x0F, d7                                // cr4..cr7 = d7[15:0]
         crxor   4*cr6+lt, 4*cr6+lt, 4*cr6+gt            // cr6.lt = cr6.lt ^ cr6.gt
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // DECODE1: disp_table[18:3] = opcode in prefetch_data
@@ -23887,36 +23947,38 @@ private_fc0a:
         subfc.  rtn_addr, d3, d0                        // rtn_addr = d0 - d3
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         mtctr   disp_table                              // DECODE2: CTR = address of the next dispatch entry
-        blt     cr6, private_fc0b_L1
-private_fc0a_L1:
-        ori     addr, code_ptr, private_fc0a_L2 - cb
-        bgt     private_fc0b_L16
-        bne     private_fc0b_L9
+        blt     cr6, fc0b_float_sub_L1
+fc0a_float_add_L1:
+        ori     addr, code_ptr, fc0a_float_add_L2 - cb
+        bgt     fc0b_float_sub_L16
+        bne     fc0b_float_sub_L9
         addc    d2, d2, d5
         adde    d1, d1, d4                              // d1 = d1 + d4 + CA
         rlwinm  d7, d7, 0, 19, 15                       // d7 = d7 & 0xFFFF1FFF
-        b       private_fc0a_L3
-private_fc0a_L2:
+        b       fc0a_float_add_L3
+fc0a_float_add_L2:
         addc    d2, d2, d5
         adde.   d1, d1, d4                              // d1 = d1 + d4 + CA
         rlwimi  d7, data, 16, 16, 18                    // d7[15:13] = data[31:29]
-        blt     private_fc06_L1
+        blt     fc06_check_result_arg1_L1
         rlwinm  data, data, 15, 17, 17                  // data = data[31] << 14
         or      d7, d7, data
-private_fc0a_L3:
+fc0a_float_add_L3:
         rlwimi  d7, d2, 15, 16, 16                      // d7[15] = d2[0]
         srwi    d2, d2, 1
         rlwimi  d2, d1, 31, 0, 0                        // d2[31] = d1[0]
         addi    d0, d0, 1
         srwi    d1, d1, 1
         oris    d1, d1, 0x8000
-        b       private_fc06_L1
-        b       private_fc0b
+        b       fc06_check_result_arg1_L1
+        b       fc0b_float_sub
         ALIGN(64)
 
+// FC0B, _FloatSub.
+//
 // Reached from 1 dispatch table entry:
 //     F-LINE cpID 6
-private_fc0b:
+fc0b_float_sub:
         mtcrf   0x0F, d7                                // cr4..cr7 = d7[15:0]
         crxor   4*cr6+lt, 4*cr6+lt, 4*cr6+gt            // cr6.lt = cr6.lt ^ cr6.gt
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // DECODE1: disp_table[18:3] = opcode in prefetch_data
@@ -23924,65 +23986,65 @@ private_fc0b:
         subfc.  rtn_addr, d3, d0                        // rtn_addr = d0 - d3
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         mtctr   disp_table                              // DECODE2: CTR = address of the next dispatch entry
-        blt     cr6, private_fc0a_L1
-private_fc0b_L1:
-        ori     addr, code_ptr, private_fc0b_L5 - cb
-        bgt     private_fc0b_L16
-        bne     private_fc0b_L8
+        blt     cr6, fc0a_float_add_L1
+fc0b_float_sub_L1:
+        ori     addr, code_ptr, fc0b_float_sub_L5 - cb
+        bgt     fc0b_float_sub_L16
+        bne     fc0b_float_sub_L8
         subfc   d2, d5, d2                              // d2 = d2 - d5
         subfe.  d1, d4, d1                              // d1 = d1 + ~d4 + CA
         cmpwi   cr7, d2, 0
         rlwinm  d7, d7, 0, 19, 15                       // d7 = d7 & 0xFFFF1FFF
-        bgt     private_fc0b_L6
-        blt     private_fc0b_L3
-        bne     cr7, private_fc0b_L4
-private_fc0b_L2:
+        bgt     fc0b_float_sub_L6
+        blt     fc0b_float_sub_L3
+        bne     cr7, fc0b_float_sub_L4
+fc0b_float_sub_L2:
         li      data, 4
         rlwinm  addr, d6, 19, 30, 31                    // addr = d6[14:13]
         ori     d7, d7, 0x0400
         srw     data, data, addr
         li      d0, 0
         rlwimi  d7, data, 7, 24, 24                     // d7[7] = data[0]
-        b       private_fc06_L4
-private_fc0b_L3:
+        b       fc06_check_result_arg1_L4
+fc0b_float_sub_L3:
         subfic  d2, d2, 0                               // d2 = 0 - d2
         subfze. d1, d1                                  // d1 = ~d1 + CA
         xori    d7, d7, 0x0080
-        bne     private_fc0b_L6
-private_fc0b_L4:
+        bne     fc0b_float_sub_L6
+fc0b_float_sub_L4:
         addi    d0, d0, -32
         cntlzw  data, d2                                // data = number of leading zero bits in d2
         slw     d1, d2, data
         subfc   d0, data, d0                            // d0 = d0 - data
         li      d2, 0
-        b       private_fc06_L1
-private_fc0b_L5:
+        b       fc06_check_result_arg1_L1
+fc0b_float_sub_L5:
         subfic  data, data, 0                           // data = 0 - data
         subfe   d2, d2, d5                              // d2 = d5 + ~d2 + CA
         subfe.  d1, d1, d4                              // d1 = d4 + ~d1 + CA
         rlwimi  d7, data, 16, 16, 18                    // d7[15:13] = data[31:29]
-        blt     private_fc06_L1
+        blt     fc06_check_result_arg1_L1
         addc    d2, d2, d2
         adde.   d1, d1, d1                              // d1 = d1 + d1 + CA
         rlwimi  d2, d7, 17, 31, 31                      // d2[0] = d7[15]
         addi    d0, d0, -1
         rlwimi  d7, d7, 1, 16, 17                       // d7[15:14] = d7[14:13]
-        blt     private_fc06_L1
-        beq     private_fc0b_L4
-private_fc0b_L6:
+        blt     fc06_check_result_arg1_L1
+        beq     fc0b_float_sub_L4
+fc0b_float_sub_L6:
         cntlzw  data, d1                                // data = number of leading zero bits in d1
         xor     d1, d1, d2
         rlwnm   d1, d1, data, 0, 31                     // d1 = rotl(d1, data) & 0xFFFFFFFF
         subfc   d0, data, d0                            // d0 = d0 - data
         slw     d2, d2, data
         xor     d1, d1, d2
-        b       private_fc06_L1
-private_fc0b_L7:
+        b       fc06_check_result_arg1_L1
+fc0b_float_sub_L7:
         rlwinm. data, d7, 16, 0, 2                      // data = d7[15:13] << 29
         cmplwi  cr7, rtn_addr, 0x0002
         rlwinm  d7, d7, 0, 19, 16                       // d7 = d7 & 0xFFFF9FFF
-        beq     private_fc0b_L10
-        bgt     cr7, private_fc0b_L13
+        beq     fc0b_float_sub_L10
+        bgt     cr7, fc0b_float_sub_L13
         subfic  addr, rtn_addr, 32                      // addr = 32 - rtn_addr
         srw     data, data, rtn_addr
         slw     immed_data, d2, addr
@@ -23995,21 +24057,21 @@ private_fc0b_L7:
         subfc   immed_data, immed_data, data            // immed_data = data - immed_data
         rlwimi  data, immed_data, 30, 2, 2              // data[29] = immed_data[31]
         blr
-private_fc0b_L8:
+fc0b_float_sub_L8:
         xori    d7, d7, 0x0080
-private_fc0b_L9:
+fc0b_float_sub_L9:
         neg     rtn_addr, rtn_addr
         mtlr    addr
         mr      d0, d3
-private_fc0b_L10:
+fc0b_float_sub_L10:
         cmplwi  cr7, d2, 0x0000
         cmplwi  cr6, rtn_addr, 0x0021
         cmplwi  cr5, rtn_addr, 0x0041
-        beq     cr7, private_fc0b_L17
-private_fc0b_L11:
+        beq     cr7, fc0b_float_sub_L17
+fc0b_float_sub_L11:
         subfic  addr, rtn_addr, 32                      // addr = 32 - rtn_addr
-        bge     cr6, private_fc0b_L14
-private_fc0b_L12:
+        bge     cr6, fc0b_float_sub_L14
+fc0b_float_sub_L12:
         srw     immed_data, d2, rtn_addr
         slw     d2, d2, addr
         slw     addr, d1, addr
@@ -24019,16 +24081,16 @@ private_fc0b_L12:
         or      d2, immed_data, addr
         rlwimi  data, rtn_addr, 30, 2, 2                // data[29] = rtn_addr[31]
         blr
-private_fc0b_L13:
+fc0b_float_sub_L13:
         cmplwi  cr6, rtn_addr, 0x0021
         cmplwi  cr5, rtn_addr, 0x0041
         ori     d2, d2, 0x0001
         subfic  addr, rtn_addr, 32                      // addr = 32 - rtn_addr
-        blt     cr6, private_fc0b_L12
-private_fc0b_L14:
+        blt     cr6, fc0b_float_sub_L12
+fc0b_float_sub_L14:
         rlwnm   data, d1, addr, 0, 1                    // data = rotl(d1, addr) & 0xC0000000
         oris    data, data, 0x2000
-        bge     cr5, private_fc0b_L15
+        bge     cr5, fc0b_float_sub_L15
         addi    rtn_addr, rtn_addr, -32
         mr      immed_data, d2
         srw     d2, d1, rtn_addr
@@ -24039,14 +24101,14 @@ private_fc0b_L14:
         neg     addr, addr
         rlwimi  data, addr, 30, 2, 2                    // data[29] = addr[31]
         blr
-private_fc0b_L15:
+fc0b_float_sub_L15:
         rlwinm  data, data, 0, 1, 2                     // data = data[30:29] << 29
         li      d1, 0
         li      d2, 0
         beqlr   cr5
         lis     data, 0x2000
         blr
-private_fc0b_L16:
+fc0b_float_sub_L16:
         mtlr    addr
         mr      data, d2
         or.     d2, d5, d5
@@ -24056,8 +24118,8 @@ private_fc0b_L16:
         mr      d1, d4
         mr      d4, data
         cmplwi  cr5, rtn_addr, 0x0041
-        bne     private_fc0b_L11
-private_fc0b_L17:
+        bne     fc0b_float_sub_L11
+fc0b_float_sub_L17:
         subfic  addr, rtn_addr, 32                      // addr = 32 - rtn_addr
         bge     cr6, L_0A1C8
         slw     d2, d1, addr
@@ -24091,58 +24153,60 @@ L_0A214:
 L_0A21C:
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         mtctr   disp_table                              // DECODE2: CTR = address of the next dispatch entry
-        bso     cr7, private_fc06_L6
+        bso     cr7, fc06_check_result_arg1_L6
         blt     cr5, L_0A258
         bgt     cr5, L_0A24C
-        bso     cr5, private_fc06_L1
+        bso     cr5, fc06_check_result_arg1_L1
 L_0A234:
         mr      d0, d3
         rlwimi  d7, d7, 2, 20, 21                       // d7[11:10] = d7[9:8]
         mr      d1, d4
         rlwimi  d7, d7, 1, 24, 24                       // d7[7] = d7[6]
         mr      d2, d5
-        b       private_fc06_L2
+        b       fc06_check_result_arg1_L2
 L_0A24C:
         bns     cr5, L_0A234
-        bge     cr6, private_fc06_L4
-        b       private_fc0b_L2
+        bge     cr6, fc06_check_result_arg1_L4
+        b       fc0b_float_sub_L2
 L_0A258:
-        bne     cr5, private_fc06_L4
-        bge     cr6, private_fc06_L4
+        bne     cr5, fc06_check_result_arg1_L4
+        bge     cr6, fc06_check_result_arg1_L4
         xori    d7, d7, 0x0481
         lis     d1, 0x4002
         oris    d7, d7, 0x0100
-        b       private_fc06_L6
-        b       private_fc0c
+        b       fc06_check_result_arg1_L6
+        b       fc0c_float_mul
         ALIGN(64)
 
+// FC0C, _FloatMul.
+//
 // Reached from 1 dispatch table entry:
 //     F-LINE cpID 6
-private_fc0c:
+fc0c_float_mul:
         cmpwi   cr6, d2, 0
         cmpwi   cr7, d5, 0
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // DECODE1: disp_table[18:3] = opcode in prefetch_data
-        bne     private_fc0c_L11
+        bne     fc0c_float_mul_L11
         rlwinm  immed_data, d7, 1, 24, 24               // immed_data = d7[6] << 7
-        beq     cr6, private_fc0c_L6
+        beq     cr6, fc0c_float_mul_L6
         add     d0, d0, d3
-        beq     cr7, private_fc0c_L4
+        beq     cr7, fc0c_float_mul_L4
         cmpw    cr6, d2, d5
         xor     d7, d7, immed_data
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         mtctr   disp_table                              // DECODE2: CTR = address of the next dispatch entry
-        beq     cr6, private_fc0c_L10
+        beq     cr6, fc0c_float_mul_L10
         mullw   immed_data, d4, d2
         addi    d0, d0, -0x3FFE
         mulhwu  data, d4, d2                            // data = high 32 bits of d4 * d2 (unsigned)
-private_fc0c_L1:
+fc0c_float_mul_L1:
         mullw   rtn_addr, d1, d5
         addc    immed_data, immed_data, rtn_addr
         mulhwu  rtn_addr, d1, d5                        // rtn_addr = high 32 bits of d1 * d5 (unsigned)
         or      base_disp, d2, d5
         adde    data, data, rtn_addr                    // data = data + rtn_addr + CA
         clrlwi  base_disp, base_disp, 1                 // base_disp = base_disp & 0x7FFFFFFF
-private_fc0c_L2:
+fc0c_float_mul_L2:
         mulhwu  rtn_addr, d2, d5                        // rtn_addr = high 32 bits of d2 * d5 (unsigned)
         mullw   d2, d1, d4
         mulhwu  d1, d1, d4                              // d1 = high 32 bits of d1 * d4 (unsigned)
@@ -24151,141 +24215,143 @@ private_fc0c_L2:
         clrlwi  addr, immed_data, 2                     // addr = immed_data & 0x3FFFFFFF
         adde    d2, d2, data                            // d2 = d2 + data + CA
         or      addr, addr, base_disp
-private_fc0c_L3:
+fc0c_float_mul_L3:
         addze.  d1, d1                                  // d1 = d1 + CA
         rlwimi  d7, immed_data, 16, 16, 17              // d7[15:14] = immed_data[31:30]
         neg     addr, addr
         rlwimi  d7, addr, 14, 18, 18                    // d7[13] = addr[31]
-        blt     private_fc06_L1
+        blt     fc06_check_result_arg1_L1
         addc    d2, d2, d2
         addi    d0, d0, -1
         rlwimi  d2, d7, 17, 31, 31                      // d2[0] = d7[15]
         adde    d1, d1, d1                              // d1 = d1 + d1 + CA
         rlwimi  d7, d7, 1, 16, 17                       // d7[15:14] = d7[14:13]
-        b       private_fc06_L1
-private_fc0c_L4:
+        b       fc06_check_result_arg1_L1
+fc0c_float_mul_L4:
         slwi.   data, d4, 1
         xor     d7, d7, immed_data
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         mtctr   disp_table                              // DECODE2: CTR = address of the next dispatch entry
-        beq     private_fc0c_L9
+        beq     fc0c_float_mul_L9
         mullw   immed_data, d2, d4
         mulhwu  data, d2, d4                            // data = high 32 bits of d2 * d4 (unsigned)
         addi    d0, d0, -0x3FFE
         mullw   d2, d1, d4
-private_fc0c_L5:
+fc0c_float_mul_L5:
         clrlwi  addr, immed_data, 2                     // addr = immed_data & 0x3FFFFFFF
         mulhwu  d1, d1, d4                              // d1 = high 32 bits of d1 * d4 (unsigned)
         addc    d2, d2, data
-        b       private_fc0c_L3
-private_fc0c_L6:
+        b       fc0c_float_mul_L3
+fc0c_float_mul_L6:
         slwi.   data, d1, 1
         xor     d7, d7, immed_data
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         add     d0, d0, d3
-        beq     private_fc0c_L8
+        beq     fc0c_float_mul_L8
         mullw   d2, d1, d4
-        beq     cr7, private_fc0c_L7
+        beq     cr7, fc0c_float_mul_L7
         mtctr   disp_table                              // DECODE2: CTR = address of the next dispatch entry
         mullw   immed_data, d1, d5
         addi    d0, d0, -0x3FFE
         mulhwu  data, d1, d5                            // data = high 32 bits of d1 * d5 (unsigned)
-        b       private_fc0c_L5
-private_fc0c_L7:
+        b       fc0c_float_mul_L5
+fc0c_float_mul_L7:
         mulhwu. d1, d1, d4                              // d1 = high 32 bits of d1 * d4 (unsigned)
         addi    d0, d0, -0x3FFE
         mtctr   disp_table                              // DECODE2: CTR = address of the next dispatch entry
-        blt     private_fc06_L1
+        blt     fc06_check_result_arg1_L1
         addc    d2, d2, d2
         addi    d0, d0, -1
         adde    d1, d1, d1                              // d1 = d1 + d1 + CA
-        b       private_fc06_L1
-private_fc0c_L8:
+        b       fc06_check_result_arg1_L1
+fc0c_float_mul_L8:
         mr      d1, d4
         mr      d2, d5
         mtctr   disp_table                              // DECODE2: CTR = address of the next dispatch entry
-private_fc0c_L9:
+fc0c_float_mul_L9:
         addi    d0, d0, -0x3FFF
-        b       private_fc06_L1
-private_fc0c_L10:
+        b       fc06_check_result_arg1_L1
+fc0c_float_mul_L10:
         cmpw    cr7, d1, d4
         mullw   immed_data, d4, d2
         addi    d0, d0, -0x3FFE
         mulhwu  data, d4, d2                            // data = high 32 bits of d4 * d2 (unsigned)
-        bne     cr7, private_fc0c_L1
+        bne     cr7, fc0c_float_mul_L1
         addc    immed_data, immed_data, immed_data
         clrlwi  base_disp, d2, 1                        // base_disp = d2 & 0x7FFFFFFF
         adde    data, data, data                        // data = data + data + CA
-        b       private_fc0c_L2
-private_fc0c_L11:
+        b       fc0c_float_mul_L2
+fc0c_float_mul_L11:
         mtcrf   0x0F, d7                                // cr4..cr7 = d7[15:0]
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         rlwinm  immed_data, d7, 1, 24, 24               // immed_data = d7[6] << 7
         mtctr   disp_table                              // DECODE2: CTR = address of the next dispatch entry
-        bso     cr7, private_fc06_L6
+        bso     cr7, fc06_check_result_arg1_L6
         xor     d7, d7, immed_data
         cror    4*cr5+lt, 4*cr5+lt, 4*cr5+eq            // cr5.lt = cr5.lt | cr5.eq
         li      d1, 0
         li      d2, 0
         li      d0, 0
         ori     d7, d7, 0x0400
-        bge     cr5, private_fc06_L4
+        bge     cr5, fc06_check_result_arg1_L4
         cror    4*cr5+gt, 4*cr5+gt, 4*cr5+so            // cr5.gt = cr5.gt | cr5.so
         li      d0, 0x7FFF
         rlwimi  d7, d0, 11, 20, 21                      // d7 = (d7 & ~0x00000C00) | (rotl(d0, 11) & 0x00000C00)
-        ble     cr5, private_fc06_L4
+        ble     cr5, fc06_check_result_arg1_L4
         ori     d7, d7, 0x0C01
         lis     d1, 0x4008
         oris    d7, d7, 0x0100
-        b       private_fc06_L6
-        b       private_fc0d
+        b       fc06_check_result_arg1_L6
+        b       fc0d_float_div
         ALIGN(64)
 
+// FC0D, _FloatDiv.
+//
 // Reached from 1 dispatch table entry:
 //     F-LINE cpID 6
-private_fc0d:
+fc0d_float_div:
         subfc   data, d5, d2                            // data = d2 - d5
         rlwinm  addr, d7, 1, 24, 24                     // addr = d7[6] << 7
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // DECODE1: disp_table[18:3] = opcode in prefetch_data
-        bne     private_fc0d_L12
+        bne     fc0d_float_div_L12
         oris    d4, d4, 0x8000
         subfe.  immed_data, d4, d1                      // immed_data = d1 + ~d4 + CA
         slwi    base_disp, d4, 1
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         mtctr   disp_table                              // DECODE2: CTR = address of the next dispatch entry
-        bge     private_fc0d_L1
+        bge     fc0d_float_div_L1
         addc    data, data, d2
         addi    d0, d0, -1
         adde    immed_data, immed_data, d1              // immed_data = immed_data + d1 + CA
-private_fc0d_L1:
+fc0d_float_div_L1:
         or.     base_disp, base_disp, d5
         subf    d0, d3, d0                              // d0 = d0 - d3
         xor     d7, d7, addr
         addi    d0, d0, 0x3FFF
-        beq     private_fc06_L1
+        beq     fc06_check_result_arg1_L1
         cmpwi   cr7, d5, 0
         or.     base_disp, immed_data, data
         srwi    rtn_addr, d4, 16
         mr      d1, immed_data
         mr      d2, data
-        bl      private_fc0d_L2
+        bl      fc0d_float_div_L2
         or.     data, d1, d2
         mr      base_disp, addr
-        bl      private_fc0d_L2
+        bl      fc0d_float_div_L2
         or.     data, d1, d2
         rlwimi  d7, addr, 15, 16, 16                    // d7[15] = addr[0]
         srwi    d2, addr, 1
         rlwimi  d2, base_disp, 31, 0, 0                 // d2[31] = base_disp[0]
         srwi    d1, base_disp, 1
         oris    d1, d1, 0x8000
-        beq     private_fc06_L1
+        beq     fc06_check_result_arg1_L1
         ori     d7, d7, 0x2000
-        b       private_fc06_L1
-private_fc0d_L2:
+        b       fc06_check_result_arg1_L1
+fc0d_float_div_L2:
         cmplw   cr6, d1, d4
         divwu   addr, d1, rtn_addr
         beqlr
-        bge     cr6, private_fc0d_L6
+        bge     cr6, fc0d_float_div_L6
         mullw   immed_data, rtn_addr, addr
         clrlwi  data, d4, 16                            // data = d4 & 0x0000FFFF
         subf    immed_data, immed_data, d1              // immed_data = d1 - immed_data
@@ -24295,101 +24361,103 @@ private_fc0d_L2:
         cmplw   immed_data, data
         subf    immed_data, data, immed_data            // immed_data = immed_data - data
         slwi    addr, addr, 16
-        blt     private_fc0d_L7
-private_fc0d_L3:
+        blt     fc0d_float_div_L7
+fc0d_float_div_L3:
         divwu   immed_data, immed_data, rtn_addr
         addc    addr, addr, immed_data
         addze.  data, zero                              // data = zero + CA
-        bne     private_fc0d_L11
+        bne     fc0d_float_div_L11
         mullw   data, addr, d4
         mulhwu  immed_data, addr, d4                    // immed_data = high 32 bits of addr * d4 (unsigned)
         subfc   data, data, d2                          // data = d2 - data
-        beq     cr7, private_fc0d_L8
+        beq     cr7, fc0d_float_div_L8
         subfe   immed_data, immed_data, d1              // immed_data = d1 + ~immed_data + CA
         mullw   d2, addr, d5
         mulhwu  d1, addr, d5                            // d1 = high 32 bits of addr * d5 (unsigned)
         subfic  d2, d2, 0                               // d2 = 0 - d2
         subfe   d1, d1, data                            // d1 = data + ~d1 + CA
-private_fc0d_L4:
+fc0d_float_div_L4:
         subfe.  immed_data, zero, immed_data            // immed_data = immed_data + ~zero + CA
         beqlr
-private_fc0d_L5:
+fc0d_float_div_L5:
         addc    d2, d2, d5
         adde    d1, d1, d4                              // d1 = d1 + d4 + CA
         addze.  immed_data, immed_data                  // immed_data = immed_data + CA
         addi    addr, addr, -1
-        blt     private_fc0d_L5
+        blt     fc0d_float_div_L5
         blr
-private_fc0d_L6:
+fc0d_float_div_L6:
         subfc   d1, d5, d2                              // d1 = d2 - d5
         subfe.  immed_data, immed_data, immed_data      // immed_data = immed_data + ~immed_data + CA
         li      d2, 0
         li      addr, 0
-        bne     private_fc0d_L5
+        bne     fc0d_float_div_L5
         blr
-private_fc0d_L7:
+fc0d_float_div_L7:
         addc    immed_data, immed_data, d4
         addze.  data, zero                              // data = zero + CA
         addis   addr, addr, -1
-        beq     private_fc0d_L7
-        b       private_fc0d_L3
-private_fc0d_L8:
+        beq     fc0d_float_div_L7
+        b       fc0d_float_div_L3
+fc0d_float_div_L8:
         subfe.  immed_data, immed_data, d1              // immed_data = d1 + ~immed_data + CA
         li      d2, 0
         mr      d1, data
-private_fc0d_L9:
+fc0d_float_div_L9:
         beqlr
-private_fc0d_L10:
+fc0d_float_div_L10:
         addc    d1, d1, d4
         addze.  immed_data, immed_data                  // immed_data = immed_data + CA
         addi    addr, addr, -1
-        blt     private_fc0d_L10
+        blt     fc0d_float_div_L10
         blr
-private_fc0d_L11:
+fc0d_float_div_L11:
         subfc   data, d5, d2                            // data = d2 - d5
         subfe   immed_data, d4, d1                      // immed_data = d1 + ~d4 + CA
         li      d2, 0
         mr      d1, data
         li      addr, 0
-        b       private_fc0d_L5
-private_fc0d_L12:
+        b       fc0d_float_div_L5
+fc0d_float_div_L12:
         mtcrf   0x0F, d7                                // cr4..cr7 = d7[15:0]
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         mtctr   disp_table                              // DECODE2: CTR = address of the next dispatch entry
-        bso     cr7, private_fc06_L6
+        bso     cr7, fc06_check_result_arg1_L6
         xor     d7, d7, addr
         li      d1, 0
         li      d2, 0
-        beq     cr5, private_fc0d_L14
-        bns     cr5, private_fc06_L4
-        blt     cr5, private_fc06_L4
+        beq     cr5, fc0d_float_div_L14
+        bns     cr5, fc06_check_result_arg1_L4
+        blt     cr5, fc06_check_result_arg1_L4
         li      d0, 0x7FFF
         oris    d7, d7, 0x0800
         ori     d7, d7, 0x0800
-        ble     cr5, private_fc06_L4
+        ble     cr5, fc06_check_result_arg1_L4
         rlwinm  d7, d7, 0, 5, 3                         // d7 = d7 & 0xF7FFFFFF
-private_fc0d_L13:
+fc0d_float_div_L13:
         oris    d7, d7, 0x0100
         ori     d7, d7, 0x0C01
         lis     d1, 0x4004
-        b       private_fc06_L6
-private_fc0d_L14:
-        blt     cr5, private_fc0d_L13
+        b       fc06_check_result_arg1_L6
+fc0d_float_div_L14:
+        blt     cr5, fc0d_float_div_L13
         ori     d7, d7, 0x0400
         li      d0, 0
-        b       private_fc06_L4
+        b       fc06_check_result_arg1_L4
 
+// FC0E, _FloatRem.
+//
 // Reached from 1 dispatch table entry:
 //     F-LINE cpID 6
-private_fc0e:
-        bne     private_fc0e_L12
+fc0e_float_rem:
+        bne     fc0e_float_rem_L12
         oris    d4, d4, 0x8000
         subfc   data, d5, d2                            // data = d2 - d5
         subfe   immed_data, d4, d1                      // immed_data = d1 + ~d4 + CA
         addze   base_disp, d0                           // base_disp = d0 + CA
         subf.   rtn_addr, base_disp, d3                 // rtn_addr = d3 - base_disp
         li      addr, 0
-        bge     private_fc0e_L2
+        bge     fc0e_float_rem_L2
         clrlwi  immed_data, rtn_addr, 27                // immed_data = rtn_addr & 0x0000001F
         subf    base_disp, d0, base_disp                // base_disp = base_disp - d0
         add.    immed_data, immed_data, base_disp
@@ -24399,90 +24467,90 @@ private_fc0e:
         mtctr   data
         cmpwi   cr7, d5, 0
         srwi    rtn_addr, d4, 16
-        beq     private_fc0e_L8
+        beq     fc0e_float_rem_L8
         add     d0, d0, immed_data
-        ble     cr5, private_fc0e_L7
+        ble     cr5, fc0e_float_rem_L7
         addi    immed_data, immed_data, -16
-        bl      private_fc0e_L10
+        bl      fc0e_float_rem_L10
         addi    d0, d0, -32
-        bdnz    private_fc0e_L8                         // CTR -= 1; branch while CTR != 0
-private_fc0e_L1:
+        bdnz    fc0e_float_rem_L8                       // CTR -= 1; branch while CTR != 0
+fc0e_float_rem_L1:
         cmpwi   cr6, d1, 0
-        blt     cr6, private_fc0e_L2
+        blt     cr6, fc0e_float_rem_L2
         addc    d2, d2, d2
         addi    d0, d0, -1
         adde    d1, d1, d1                              // d1 = d1 + d1 + CA
-private_fc0e_L2:
+fc0e_float_rem_L2:
         subf.   rtn_addr, d3, d0                        // rtn_addr = d0 - d3
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // DECODE1: disp_table[18:3] = opcode in prefetch_data
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         mtctr   disp_table                              // DECODE2: CTR = address of the next dispatch entry
-        bge     private_fc0e_L5
+        bge     fc0e_float_rem_L5
         subfc   data, d5, d2                            // data = d2 - d5
         subfe   immed_data, d4, d1                      // immed_data = d1 + ~d4 + CA
         addze.  rtn_addr, rtn_addr                      // rtn_addr = rtn_addr + CA
-        blt     private_fc0e_L4
+        blt     fc0e_float_rem_L4
         or.     base_disp, immed_data, data
-        beq     private_fc0e_L6
+        beq     fc0e_float_rem_L6
         subfc   d2, data, d5                            // d2 = d5 - data
         subfe   d1, immed_data, d4                      // d1 = d4 + ~immed_data + CA
-private_fc0e_L3:
+fc0e_float_rem_L3:
         addi    addr, addr, 1
         xori    d7, d7, 0x00C0
-private_fc0e_L4:
+fc0e_float_rem_L4:
         cmpwi   cr6, d1, 0
         cmpwi   cr7, d2, 0
         mr      d5, addr
         rlwinm  d4, d7, 24, 0, 1                        // d4 = d7[7:6] << 30
         addis   d4, d4, 0x4000
         srawi   d4, d4, 31                              // d4 = d4 >> 31 (arithmetic)
-        blt     cr6, private_fc06_L1
-        bne     cr6, private_fc0b_L6
-        bne     cr7, private_fc0b_L4
+        blt     cr6, fc06_check_result_arg1_L1
+        bne     cr6, fc0b_float_sub_L6
+        bne     cr7, fc0b_float_sub_L4
         li      d0, 0
         ori     d7, d7, 0x0400
-        b       private_fc06_L4
-private_fc0e_L5:
+        b       fc06_check_result_arg1_L4
+fc0e_float_rem_L5:
         subfc   d2, d2, d5                              // d2 = d5 - d2
         subfe   d1, d1, d4                              // d1 = d4 + ~d1 + CA
-        b       private_fc0e_L3
-private_fc0e_L6:
+        b       fc0e_float_rem_L3
+fc0e_float_rem_L6:
         clrlwi  data, addr, 31                          // data = addr & 0x00000001
         add     addr, addr, data
         neg     data, data
         andi.   data, data, 0x00C0
         xor     d7, d7, data
-        b       private_fc0e_L4
-private_fc0e_L7:
-        bl      private_fc0e_L10
+        b       fc0e_float_rem_L4
+fc0e_float_rem_L7:
+        bl      fc0e_float_rem_L10
         mr      base_disp, addr
-        bl      private_fc0e_L11
+        bl      fc0e_float_rem_L11
         rlwimi  addr, base_disp, 16, 0, 15              // addr[31:16] = base_disp[15:0]
         addi    d0, d0, -32
-        bdz     private_fc0e_L1                         // CTR -= 1; branch when CTR == 0
-private_fc0e_L8:
+        bdz     fc0e_float_rem_L1                       // CTR -= 1; branch when CTR == 0
+fc0e_float_rem_L8:
         or.     addr, d1, d2
         addi    d0, d0, -32
-        beq     private_fc0e_L9
-        bl      private_fc0d_L2
-        bdz     private_fc0e_L1                         // CTR -= 1; branch when CTR == 0
-        bf      cr_interrupt_pending, private_fc0e_L8
+        beq     fc0e_float_rem_L9
+        bl      fc0d_float_div_L2
+        bdz     fc0e_float_rem_L1                       // CTR -= 1; branch when CTR == 0
+        bf      cr_interrupt_pending, fc0e_float_rem_L8
         or.     addr, d1, d2
-        beq     private_fc0e_L9
+        beq     fc0e_float_rem_L9
         mtctr   disp_table                              // DECODE2: CTR = address of the next dispatch entry
         rlwinm  sr_and_flags, sr_and_flags, 0, 24, 22   // sr_and_flags = sr_and_flags & 0xFFFFFEFF
         b       process_special_event
-private_fc0e_L9:
+fc0e_float_rem_L9:
         addi    d0, d3, -1
-        b       private_fc0e_L2
-private_fc0e_L10:
+        b       fc0e_float_rem_L2
+fc0e_float_rem_L10:
         subfic  base_disp, immed_data, 32               // base_disp = 32 - immed_data
         slw     data, d1, base_disp
         srw     d1, d1, immed_data
         slw     base_disp, d2, base_disp
         srw     d2, d2, immed_data
         or      d2, data, d2
-private_fc0e_L11:
+fc0e_float_rem_L11:
         divwu   addr, d1, rtn_addr
         srwi    immed_data, d1, 16
         slwi    d1, d1, 16
@@ -24493,13 +24561,13 @@ private_fc0e_L11:
         subfe.  immed_data, data, immed_data            // immed_data = immed_data + ~data + CA
         slwi    d2, d2, 16
         rlwimi  d2, base_disp, 16, 16, 31               // d2[15:0] = base_disp[31:16]
-        beq     cr7, private_fc0d_L9
+        beq     cr7, fc0d_float_div_L9
         mullw   data, d5, addr
         subfc   d2, data, d2                            // d2 = d2 - data
         mulhwu  data, d5, addr                          // data = high 32 bits of d5 * addr (unsigned)
         subfe   d1, data, d1                            // d1 = d1 + ~data + CA
-        b       private_fc0d_L4
-private_fc0e_L12:
+        b       fc0d_float_div_L4
+fc0e_float_rem_L12:
         mtcrf   0x0F, d7                                // cr4..cr7 = d7[15:0]
         rlwinm  d4, d7, 24, 0, 1                        // d4 = d7[7:6] << 30
         addis   d4, d4, 0x4000
@@ -24508,23 +24576,25 @@ private_fc0e_L12:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // DECODE1: disp_table[18:3] = opcode in prefetch_data
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         mtctr   disp_table                              // DECODE2: CTR = address of the next dispatch entry
-        bso     cr7, private_fc06_L6
+        bso     cr7, fc06_check_result_arg1_L6
         andi.   data, d7, 0x0900
-        beq     private_fc06_L2
+        beq     fc06_check_result_arg1_L2
         oris    d7, d7, 0x0100
         ori     d7, d7, 0x0C01
         li      d0, 0x7FFF
         lis     d1, 0x4009
         li      d2, 0
-        b       private_fc06_L6
+        b       fc06_check_result_arg1_L6
 
+// FC0F, _FloatSqrt.
+//
 // Reached from 1 dispatch table entry:
 //     F-LINE cpID 6
-private_fc0f:
+fc0f_float_sqrt:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // DECODE1: disp_table[18:3] = opcode in prefetch_data
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         mtctr   disp_table                              // DECODE2: CTR = address of the next dispatch entry
-        bne     private_fc0f_L13
+        bne     fc0f_float_sqrt_L13
         lis     base_disp, 0x1000
         mr      data, d2
         clrlwi  immed_data, d1, 1                       // immed_data = d1 & 0x7FFFFFFF
@@ -24534,148 +24604,161 @@ private_fc0f:
         addi    d0, d0, 0x3FFF
         srwi    d0, d0, 1
         add     immed_data, immed_data, d1
-        beq     private_fc0f_L3
+        beq     fc0f_float_sqrt_L3
         subf    immed_data, d1, immed_data              // immed_data = immed_data - d1
         rlwinm  rtn_addr, data, 28, 3, 3                // rtn_addr = data[0] << 28
         srwi    data, data, 1
         rlwimi  data, immed_data, 31, 0, 0              // data[31] = immed_data[0]
         srwi    immed_data, immed_data, 1
-        b       private_fc0f_L3
-private_fc0f_L1:
+        b       fc0f_float_sqrt_L3
+fc0f_float_sqrt_L1:
         add     d1, addr, base_disp
         rotlwi  base_disp, base_disp, 31                // base_disp = rotl(base_disp, 31)
-        beq     cr6, private_fc0f_L4
-private_fc0f_L2:
+        beq     cr6, fc0f_float_sqrt_L4
+fc0f_float_sqrt_L2:
         adde    immed_data, immed_data, immed_data      // immed_data = immed_data + immed_data + CA
-private_fc0f_L3:
+fc0f_float_sqrt_L3:
         or      addr, d1, base_disp
         subf.   immed_data, addr, immed_data            // immed_data = immed_data - addr
         cmpwi   cr6, base_disp, 1
         addc    data, data, data
-        bge     private_fc0f_L1
+        bge     fc0f_float_sqrt_L1
         add     immed_data, immed_data, addr
         rotlwi  base_disp, base_disp, 31                // base_disp = rotl(base_disp, 31)
-        bne     cr6, private_fc0f_L2
-private_fc0f_L4:
+        bne     cr6, fc0f_float_sqrt_L2
+fc0f_float_sqrt_L4:
         or      data, data, rtn_addr
         adde    immed_data, immed_data, immed_data      // immed_data = immed_data + immed_data + CA
         subfc   addr, base_disp, data                   // addr = data - base_disp
         subfe.  addr, d1, immed_data                    // addr = immed_data + ~d1 + CA
         li      rtn_addr, 0
-        blt     private_fc0f_L5
+        blt     fc0f_float_sqrt_L5
         subfc   data, base_disp, data                   // data = data - base_disp
         subfe   immed_data, d1, immed_data              // immed_data = immed_data + ~d1 + CA
         ori     d1, d1, 0x0001
-private_fc0f_L5:
+fc0f_float_sqrt_L5:
         or.     addr, immed_data, data
         rotlwi  base_disp, base_disp, 31                // base_disp = rotl(base_disp, 31)
-        bne     private_fc0f_L7
+        bne     fc0f_float_sqrt_L7
         slwi    d1, d1, 1
-        b       private_fc06_L1
-private_fc0f_L6:
+        b       fc06_check_result_arg1_L1
+fc0f_float_sqrt_L6:
         add     d2, addr, base_disp
         rotlwi  base_disp, base_disp, 31                // base_disp = rotl(base_disp, 31)
-        beq     cr6, private_fc0f_L8
-private_fc0f_L7:
+        beq     cr6, fc0f_float_sqrt_L8
+fc0f_float_sqrt_L7:
         addc    data, data, data
         adde    immed_data, immed_data, immed_data      // immed_data = immed_data + immed_data + CA
         or      addr, d2, base_disp
         subfc   data, addr, data                        // data = data - addr
         subfe.  immed_data, d1, immed_data              // immed_data = immed_data + ~d1 + CA
         cmpwi   cr6, base_disp, 1
-        bge     private_fc0f_L6
+        bge     fc0f_float_sqrt_L6
         addc    data, data, addr
         adde    immed_data, immed_data, d1              // immed_data = immed_data + d1 + CA
         rotlwi  base_disp, base_disp, 31                // base_disp = rotl(base_disp, 31)
-        bne     cr6, private_fc0f_L7
-private_fc0f_L8:
+        bne     cr6, fc0f_float_sqrt_L7
+fc0f_float_sqrt_L8:
         or.     addr, immed_data, data
         addc    data, data, data
         li      base_disp, 0
-        bne     private_fc0f_L12
+        bne     fc0f_float_sqrt_L12
         addc    d2, d2, d2
         adde    d1, d1, d1                              // d1 = d1 + d1 + CA
-        b       private_fc06_L1
-private_fc0f_L9:
+        b       fc06_check_result_arg1_L1
+fc0f_float_sqrt_L9:
         addc    rtn_addr, rtn_addr, rtn_addr
         adde    data, data, data                        // data = data + data + CA
-private_fc0f_L10:
+fc0f_float_sqrt_L10:
         adde    immed_data, immed_data, immed_data      // immed_data = immed_data + immed_data + CA
         subfc   rtn_addr, addr, rtn_addr                // rtn_addr = rtn_addr - addr
         subfe   data, d2, data                          // data = data + ~d2 + CA
         subfe.  immed_data, d1, immed_data              // immed_data = immed_data + ~d1 + CA
-        bge     private_fc0f_L11
+        bge     fc0f_float_sqrt_L11
         addc    rtn_addr, rtn_addr, addr
         adde    data, data, d2                          // data = data + d2 + CA
         adde    immed_data, immed_data, d1              // immed_data = immed_data + d1 + CA
         blr
-private_fc0f_L11:
+fc0f_float_sqrt_L11:
         xor     addr, addr, base_disp
         add     base_disp, base_disp, addr
         addc    base_disp, base_disp, addr
         addze   d2, d2                                  // d2 = d2 + CA
         blr
-private_fc0f_L12:
+fc0f_float_sqrt_L12:
         oris    addr, base_disp, 0x8000
-        bl      private_fc0f_L10
+        bl      fc0f_float_sqrt_L10
         oris    addr, base_disp, 0x4000
-        bl      private_fc0f_L9
+        bl      fc0f_float_sqrt_L9
         oris    addr, base_disp, 0x2000
-        bl      private_fc0f_L9
+        bl      fc0f_float_sqrt_L9
         rlwimi  d7, base_disp, 17, 16, 16               // d7[15] = base_disp[30]
         addc    base_disp, base_disp, base_disp
         ori     d7, d7, 0x2000
         adde    d2, d2, d2                              // d2 = d2 + d2 + CA
         adde    d1, d1, d1                              // d1 = d1 + d1 + CA
-        b       private_fc06_L1
-private_fc0f_L13:
+        b       fc06_check_result_arg1_L1
+fc0f_float_sqrt_L13:
         mtcrf   0x0F, d7                                // cr4..cr7 = d7[15:0]
-        bgt     cr5, private_fc06_L3
-        bge     cr6, private_fc06_L3
+        bgt     cr5, fc06_check_result_arg1_L3
+        bge     cr6, fc06_check_result_arg1_L3
         ori     d7, d7, 0x0C01
         oris    d7, d7, 0x0100
         li      d0, 0x7FFF
         lis     d1, 0x4001
         li      d2, 0
-        b       private_fc06_L6
+        b       fc06_check_result_arg1_L6
 
+// FC14 and FC15: the same copy, without the report to the recompiler.
+// (These are later than the SuperMario sources, which stop at FC13.
+// Mac OS has BlockMoveData for moves that are known not to be code.)
+//
 // Reached from 2 dispatch table entries:
 //     F-LINE cpID 6
-private_fc14_fc15:
-        bgt     cr7, private_fc12_fc13_L4
-        b       private_fc12_fc13_L1
+fc14_fc15_move_bytes:
+        bgt     cr7, fc12_fc13_move_bytes_L4
+        b       fc12_fc13_move_bytes_L1
 
+// FC12 and FC13, _MoveBytes and _MoveBytesNoDCBZ: the body of BlockMove.
+// Copies D0 bytes from (A0) to (A1) with the PowerPC string instructions and
+// returns D0 = 0 with the condition codes set for it.  Up to 20 bytes are
+// moved by one lswx/stswx pair.  For more, the destination range is first
+// reported to the dynamic recompiler, if it is ready, since the bytes
+// moved may be code.  Long moves go 32 bytes at a time, and the loop at
+// 0AC1C clears each destination cache block with dcbz before filling it;
+// the opcode's low bit, examined at 0AAE0, is what tells FC13 from FC12.
+//
 // Reached from 2 dispatch table entries:
 //     F-LINE cpID 6
-private_fc12_fc13:
-        bgt     cr7, private_fc12_fc13_L3
-private_fc12_fc13_L1:
-        mtxer   d0
+fc12_fc13_move_bytes:
+        bgt     cr7, fc12_fc13_move_bytes_L3
+fc12_fc13_move_bytes_L1:
+        mtxer   d0                                      // XER = byte count for lswx/stswx
         lswx    addr, 0, a0
         stswx   addr, 0, a1
-private_fc12_fc13_L2:
+fc12_fc13_move_bytes_L2:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // DECODE1: disp_table[18:3] = opcode in prefetch_data
         mtlr    disp_table                              // DECODE2: LR = address of the next dispatch entry
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
-        addco.  d0, zero, zero                          // d0 = zero; N,Z from result; V=0, C=0
+        addco.  d0, zero, zero                          // D0 = 0, as a result code
         bflr_likely cr_special_event_pending            // DISPATCH unless a special event is pending
         b       process_special_event
-private_fc12_fc13_L3:
-        bf      cr_dr_ready, private_fc12_fc13_L4
-        lwz     data, dr_invalidate_vector(EmulatorStatePtr)
+fc12_fc13_move_bytes_L3:
+        bf      cr_dr_ready, fc12_fc13_move_bytes_L4
+        lwz     data, dr_invalidate_vector(EmulatorStatePtr)  // tell the recompiler: D0 bytes at (A1) are changing
         mr      addr, a1
         mtctr   data
         mr      data, d0
         bctrl
         mtctr   disp_table                              // DECODE2: CTR = address of the next dispatch entry
-private_fc12_fc13_L4:
+fc12_fc13_move_bytes_L4:
         subfc.  data, a0, a1                            // data = a1 - a0
         cmplwi  cr7, d0, 0x005E
         cmplw   cr6, data, d0
-        beq     private_fc12_fc13_L2
-        bgt     cr7, private_fc12_fc13_L11
-private_fc12_fc13_L5:
-        blt     cr6, private_fc12_fc13_L8
+        beq     fc12_fc13_move_bytes_L2
+        bgt     cr7, fc12_fc13_move_bytes_L11
+fc12_fc13_move_bytes_L5:
+        blt     cr6, fc12_fc13_move_bytes_L8
         neg     base_disp, a1
         clrlwi  base_disp, base_disp, 29                // base_disp = base_disp & 0x00000007
         mtxer   base_disp
@@ -24688,21 +24771,21 @@ private_fc12_fc13_L5:
         lwz     data, 4(a0)
         stwux   immed_data, a1, base_disp
         stw     data, 4(a1)
-        bdz     private_fc12_fc13_L7                    // CTR -= 1; branch when CTR == 0
-private_fc12_fc13_L6:
+        bdz     fc12_fc13_move_bytes_L7                 // CTR -= 1; branch when CTR == 0
+fc12_fc13_move_bytes_L6:
         lwzu    immed_data, 8(a0)
         lwz     data, 4(a0)
         stwu    immed_data, 8(a1)
         stw     data, 4(a1)
-        bdnz    private_fc12_fc13_L6                    // CTR -= 1; branch while CTR != 0
-private_fc12_fc13_L7:
+        bdnz    fc12_fc13_move_bytes_L6                 // CTR -= 1; branch while CTR != 0
+fc12_fc13_move_bytes_L7:
         clrlwi  data, d0, 29                            // data = d0 & 0x00000007
         mtxer   data
         li      base_disp, 8
         lswx    addr, base_disp, a0
         stswx   addr, base_disp, a1
-        b       private_fc12_fc13_L2
-private_fc12_fc13_L8:
+        b       fc12_fc13_move_bytes_L2
+fc12_fc13_move_bytes_L8:
         add     a1, a1, d0
         add     a0, a0, d0
         clrlwi  base_disp, a1, 29                       // base_disp = a1 & 0x00000007
@@ -24718,59 +24801,59 @@ private_fc12_fc13_L8:
         lwz     data, 4(a0)
         stwux   immed_data, a1, base_disp
         stw     data, 4(a1)
-        bdz     private_fc12_fc13_L10                   // CTR -= 1; branch when CTR == 0
-private_fc12_fc13_L9:
+        bdz     fc12_fc13_move_bytes_L10                // CTR -= 1; branch when CTR == 0
+fc12_fc13_move_bytes_L9:
         lwzu    immed_data, -8(a0)
         lwz     data, 4(a0)
         stwu    immed_data, -8(a1)
         stw     data, 4(a1)
-        bdnz    private_fc12_fc13_L9                    // CTR -= 1; branch while CTR != 0
-private_fc12_fc13_L10:
+        bdnz    fc12_fc13_move_bytes_L9                 // CTR -= 1; branch while CTR != 0
+fc12_fc13_move_bytes_L10:
         clrlwi  base_disp, d0, 29                       // base_disp = d0 & 0x00000007
         mtxer   base_disp
         neg     base_disp, base_disp
         lswx    addr, base_disp, a0
         stswx   addr, base_disp, a1
-        b       private_fc12_fc13_L2
-private_fc12_fc13_L11:
+        b       fc12_fc13_move_bytes_L2
+fc12_fc13_move_bytes_L11:
         cmpwi   cr7, d0, 0
-        rlwinm  immed_data, disp_table, 2, 26, 26       // immed_data = disp_table[3] << 5
-        blt     cr6, private_fc12_fc13_L15
+        rlwinm  immed_data, disp_table, 2, 26, 26       // the opcode's low bit: 1 = do not use dcbz
+        blt     cr6, fc12_fc13_move_bytes_L15
         addi    immed_data, immed_data, -32
         cmplw   cr6, data, immed_data
-        blt     cr7, private_fc12_fc13_L2
+        blt     cr7, fc12_fc13_move_bytes_L2
         neg     base_disp, a1
-        bgt     cr6, private_fc12_fc13_L14
+        bgt     cr6, fc12_fc13_move_bytes_L14
         clrlwi  base_disp, base_disp, 27                // base_disp = base_disp & 0x0000001F
         cmpwi   cr6, base_disp, 16
         subfc   d0, base_disp, d0                       // d0 = d0 - base_disp
         srwi    data, d0, 5
         mtctr   data
-        ble     cr6, private_fc12_fc13_L12
+        ble     cr6, fc12_fc13_move_bytes_L12
         addi    base_disp, base_disp, -16
         lswi    addr, a0, 16
         addi    a0, a0, 16
         stswi   addr, a1, 16
         addi    a1, a1, 16
-private_fc12_fc13_L12:
+fc12_fc13_move_bytes_L12:
         mtxer   base_disp
         lswx    addr, 0, a0
         stswx   addr, 0, a1
         li      addr, 32
         bl      L_0AC1C
-private_fc12_fc13_L13:
+fc12_fc13_move_bytes_L13:
         cmplwi  cr7, d0, 0x0014
         add     a0, a0, addr
         add     a1, a1, addr
-        ble     cr7, private_fc12_fc13_L1
+        ble     cr7, fc12_fc13_move_bytes_L1
         cmplwi  cr7, d0, 0x005E
         subfc   data, a0, a1                            // data = a1 - a0
         cmplw   cr6, data, d0
-        ble     cr7, private_fc12_fc13_L5
+        ble     cr7, fc12_fc13_move_bytes_L5
         mtlr    disp_table                              // DECODE2: LR = address of the next dispatch entry
         rlwinm  sr_and_flags, sr_and_flags, 0, 24, 22   // sr_and_flags = sr_and_flags & 0xFFFFFEFF
         b       process_special_event
-private_fc12_fc13_L14:
+fc12_fc13_move_bytes_L14:
         clrlwi  base_disp, base_disp, 29                // base_disp = base_disp & 0x00000007
         mtxer   base_disp
         lswx    addr, 0, a0
@@ -24778,11 +24861,11 @@ private_fc12_fc13_L14:
         stswx   addr, 0, a1
         li      addr, 8
         bl      L_0AC84
-        b       private_fc12_fc13_L13
-private_fc12_fc13_L15:
+        b       fc12_fc13_move_bytes_L13
+fc12_fc13_move_bytes_L15:
         subfic  immed_data, immed_data, 31              // immed_data = 31 - immed_data
         cmpw    cr6, data, immed_data
-        blt     cr7, private_fc12_fc13_L2
+        blt     cr7, fc12_fc13_move_bytes_L2
         add     a1, a1, d0
         add     a0, a0, d0
         ble     cr6, L_0ABF0
@@ -24806,7 +24889,7 @@ L_0ABCC:
         li      addr, -32
         bl      L_0AC1C
         neg     addr, d0
-        b       private_fc12_fc13_L13
+        b       fc12_fc13_move_bytes_L13
 L_0ABF0:
         clrlwi  base_disp, a1, 29                       // base_disp = a1 & 0x00000007
         mtxer   base_disp
@@ -24818,7 +24901,7 @@ L_0ABF0:
         li      addr, -8
         bl      L_0AC84
         neg     addr, d0
-        b       private_fc12_fc13_L13
+        b       fc12_fc13_move_bytes_L13
 L_0AC1C:
         lwzux   immed_data, a0, base_disp
         dcbz    a1, base_disp
@@ -30787,9 +30870,13 @@ push_exception_frame:
         bfctr_likely cr_special_event_pending           // DISPATCH unless a special event is pending
         b       process_special_event
 
+// FE03, _ExecuteRiscContext: (A7) points to a native context block.  Calls
+// handler slot +0x964, which defaults to kernel service 1,
+// RunAlternateContext.
+//
 // Reached from 1 dispatch table entry:
 //     F-LINE cpID 7
-private_fe03:
+fe03_execute_risc_context:
         lwz     data, 0(a7)
         mtlr    addr
         clrrwi  addr, data, 6                           // addr = data & 0xFFFFFFC0
@@ -30799,21 +30886,26 @@ private_fe03:
         lbz     data, 0(addr)
         b       test_byte
 
+// FE04 and FE05, _MoveFromECR and _MoveToECR: read or write an "emulator
+// control register".  D0 is the register number (0-25) and A0 the value.
+// Most registers are words of the state block, found through the byte
+// table at 0D850; a few numbers are treated specially.
+//
 // Reached from 2 dispatch table entries:
 //     F-LINE cpID 7
-private_fe04_fe05:
+fe04_fe05_move_ecr:
         lwz     data, 0x960(EmulatorStatePtr)
         cmplwi  d0, 0x0019
         mtlr    data
         ori     addr, code_ptr, D_0D850 - cb
         blrl
-private_fe04_fe05_L1:
+fe04_fe05_move_ecr_L1:
         mtlr    rtn_addr
-        bgt     private_fe04_fe05_L2
+        bgt     fe04_fe05_move_ecr_L2
         lbzx    data, addr, d0
         add     addr, EmulatorStatePtr, data
         blr
-private_fe04_fe05_L2:
+fe04_fe05_move_ecr_L2:
         b       update_vc_zero
 D_0D850:
         .byte   0x18, 0x00, 0x04, 0x08, 0x0C, 0x10, 0x20, 0x24
@@ -30823,56 +30915,56 @@ D_0D850:
 
 // Continuation (via rtn_addr) of 1 dispatch table entry:
 //     F-LINE cpID 7
-private_fe04:
+fe04_move_from_ecr:
         cmplwi  cr7, d0, 0x0014
-        beq     cr7, private_fe05_L1
+        beq     cr7, fe05_move_to_ecr_L1
         cmplwi  cr7, d0, 0x0012
-        beq     cr7, private_fe05_L3
+        beq     cr7, fe05_move_to_ecr_L3
         lwz     a0, 0x700(addr)
         b       update_nzvc_zero
 
 // Continuation (via rtn_addr) of 1 dispatch table entry:
 //     F-LINE cpID 7
-private_fe05:
+fe05_move_to_ecr:
         cmplwi  cr7, d0, 0x0014
-        beq     cr7, private_fe05_L2
+        beq     cr7, fe05_move_to_ecr_L2
         cmplwi  cr7, d0, 0x0012
-        beq     cr7, private_fe05_L4
+        beq     cr7, fe05_move_to_ecr_L4
         cmplwi  cr7, d0, 0x0017
-        beq     cr7, private_fe05_L7
+        beq     cr7, fe05_move_to_ecr_L7
         cmplwi  cr7, d0, 0x0000
         cmplwi  cr6, d0, 0x0009
-        beq     cr7, private_fe04_fe05_L2
+        beq     cr7, fe04_fe05_move_ecr_L2
         stw     a0, 0x700(addr)
-        beq     cr6, private_fe05_L6
+        beq     cr6, fe05_move_to_ecr_L6
         b       update_nzvc_zero
-private_fe05_L1:
+fe05_move_to_ecr_L1:
         lwz     data, 0x7A0(EmulatorStatePtr)
         rlwinm  data, data, 0, 29, 29                   // data = data[2] << 2
         cmpwi   cr7, data, 0
-        beq     cr7, private_fe04_fe05_L2
+        beq     cr7, fe04_fe05_move_ecr_L2
         lwz     a0, 0x700(addr)
         b       update_nzvc_zero
-private_fe05_L2:
+fe05_move_to_ecr_L2:
         lwz     data, 0x7A0(EmulatorStatePtr)
         rlwinm  data, data, 0, 29, 29                   // data = data[2] << 2
         cmpwi   cr7, data, 0
-        beq     cr7, private_fe04_fe05_L2
+        beq     cr7, fe04_fe05_move_ecr_L2
         stw     a0, 0x700(addr)
         b       update_nzvc_zero
-private_fe05_L3:
+fe05_move_to_ecr_L3:
         lwz     data, 0x7A0(EmulatorStatePtr)
         clrlwi  data, data, 30                          // data = data & 0x00000003
         cmpwi   cr7, data, 3
-        bne     cr7, private_fe04_fe05_L2
+        bne     cr7, fe04_fe05_move_ecr_L2
         mfcr    data
         rlwinm  a0, data, 8, 29, 31                     // a0 = data[26:24]
         b       update_nzvc_zero
-private_fe05_L4:
+fe05_move_to_ecr_L4:
         lwz     data, 0x7A0(EmulatorStatePtr)
         clrlwi  data, data, 30                          // data = data & 0x00000003
         cmpwi   cr7, data, 3
-        bne     cr7, private_fe04_fe05_L2
+        bne     cr7, fe04_fe05_move_ecr_L2
         mcrf    cr7, cr1                                // cr7 = cr1
         li      base_disp, 0x4C0
         and     base_disp, base_disp, sr_and_flags
@@ -30884,10 +30976,10 @@ private_fe05_L4:
         bf      cr_dr_enabled, update_nzvc_zero
         crandc  4*cr7+so, cr_dr_enabled, 4*cr7+so       // cr7.so = cr_dr_enabled & ~cr7.so
         lwz     data, dr_setup_vector(EmulatorStatePtr)
-        bns     cr7, private_fe05_L5
+        bns     cr7, fe05_move_to_ecr_L5
         mtctr   data
         bctrl
-private_fe05_L5:
+fe05_move_to_ecr_L5:
         crandc  4*cr7+eq, cr_dr_ready, 4*cr7+eq         // cr7.eq = cr_dr_ready & ~cr7.eq
         lwz     data, dr_flush_vector(EmulatorStatePtr)
         bne     cr7, update_nzvc_zero
@@ -30895,14 +30987,14 @@ private_fe05_L5:
         bctrl
         lwz     dr_entry, dr_dispatch_vector(EmulatorStatePtr)
         b       update_nzvc_zero
-private_fe05_L6:
+fe05_move_to_ecr_L6:
         andi.   data, a0, 0xFFFF
         rlwimi  sr_and_flags, a0, 16, 0, 15             // sr_and_flags[31:16] = a0[15:0]
         neg.    data, data
         rlwimi  sr_and_flags, data, 11, 21, 21          // sr_and_flags[10] = data[31]
         cror    cr_special_event_pending, cr_special_event_pending, lt  // cr_special_event_pending = cr_special_event_pending | cr0.lt
         b       update_nzvc_zero
-private_fe05_L7:
+fe05_move_to_ecr_L7:
         lwz     data, 0x7A8(EmulatorStatePtr)
         lwz     immed_data, 0x7AC(EmulatorStatePtr)
         xor     data, data, a0
@@ -30920,16 +31012,19 @@ private_fe05_L7:
         stw     base_disp, 0(addr)
         stw     rtn_addr, 64(addr)
         b       update_nzvc_zero
-private_fe05_L8:
+fe05_move_to_ecr_L8:
         mtcrf   0x40, zero                              // cr1 = zero[27:24]
         bflr_likely cr_special_event_pending            // DISPATCH unless a special event is pending
         b       process_special_event
-private_fe05_L9:
+fe05_move_to_ecr_L9:
         blr
 
+// FC16: tell the dynamic recompiler that the D0 bytes at (A0) have changed
+// (docs/09-dynamic-recompiler.md).
+//
 // Reached from 1 dispatch table entry:
 //     F-LINE cpID 6
-private_fc16:
+fc16_invalidate_range:
         bf      cr_dr_ready, fetch
         lwz     data, dr_invalidate_vector(EmulatorStatePtr)
         mr      addr, a0
@@ -30938,9 +31033,12 @@ private_fc16:
         bctrl
         b       fetch
 
+// FE0F: calls handler slot +0x99C, which defaults to kernel service 5,
+// PowerDispatch, with D0 and D1.
+//
 // Reached from 1 dispatch table entry:
 //     F-LINE cpID 7
-private_fe0f:
+fe0f_power_dispatch:
         lwz     immed_data, 0x99C(EmulatorStatePtr)
         mr      addr, d0
         mr      rtn_addr, d1
@@ -30954,9 +31052,12 @@ private_fe0f:
         bflr_likely cr_special_event_pending            // DISPATCH unless a special event is pending
         b       process_special_event
 
+// FE11: calls handler slot +0x9A4, which defaults to kernel service 7,
+// CacheDispatch.
+//
 // Reached from 1 dispatch table entry:
 //     F-LINE cpID 7
-private_fe11:
+fe11_cache_dispatch:
         lwz     immed_data, 0x9A4(EmulatorStatePtr)
         mr      addr, d0
         mtlr    immed_data
@@ -30968,9 +31069,14 @@ private_fe11:
         bflr_likely cr_special_event_pending            // DISPATCH unless a special event is pending
         b       process_special_event
 
+// FE0A, _VMDispatch (also _KernelVMDispatch): D0 is a selector and A0, A1
+// and D1 are parameters; the result is returned in D0.  Calls handler slot
+// +0x968, which defaults to kernel service 3, VMDispatch.  FE06 is a second
+// entry that differs in one condition register bit.
+//
 // Reached from 2 dispatch table entries:
 //     F-LINE cpID 7
-private_fe06_fe0a:
+fe06_fe0a_vm_dispatch:
         lwz     immed_data, 0x968(EmulatorStatePtr)
         mr      addr, d0
         mtlr    immed_data
@@ -30980,31 +31086,39 @@ private_fe06_fe0a:
         blrl
         cmpwi   addr, -1
         mr      d0, addr
-        beq     private_fe06_fe0a_L2
-private_fe06_fe0a_L1:
+        beq     fe06_fe0a_vm_dispatch_L2
+fe06_fe0a_vm_dispatch_L1:
         rlwimi  disp_table, prefetch_data, 3, 13, 28    // DECODE1: disp_table[18:3] = opcode in prefetch_data
         mtlr    disp_table                              // DECODE2: LR = address of the next dispatch entry
         lhau    prefetch_data, 2(pc)                    // PREFETCH: pc += 2, load the word there
         bflr_likely cr_special_event_pending            // DISPATCH unless a special event is pending
         b       process_special_event
-private_fe06_fe0a_L2:
-        bns     cr7, private_fe06_fe0a_L1
+fe06_fe0a_vm_dispatch_L2:
+        bns     cr7, fe06_fe0a_vm_dispatch_L1
         li      immed_data, 44
         b       take_exception
 
+// FE09, _ReadTimeBase64: A0 = upper and D0 = lower half of the PowerPC time
+// base.  (FE08, _ReadTimeBase32, is done by its table entry.)
+//
 // Reached from 1 dispatch table entry:
 //     F-LINE cpID 7
-private_fe09:
+fe09_read_time_base_64:
         mftbu   a0
         mftb    d0
         mftbu   data
         cmplw   cr7, data, a0
-        bne     cr7, private_fe09
+        bne     cr7, fe09_read_time_base_64
         b       fetch_decoded
 
+// FE0B-FE0E: apply a PowerPC cache instruction to every 32-byte block of
+// the D0 bytes at (A0).  The table entry supplies the loop for the
+// instruction in rtn_addr.  Stops early if an interrupt becomes pending,
+// with D0 and the 68K pc left so that the opcode resumes afterwards.
+//
 // Reached from 4 dispatch table entries:
 //     F-LINE cpID 7
-private_fe0b_fe0c_etc:
+fe0b_fe0e_cache_range:
         add     addr, a0, d0
         cmpwi   d0, 0
         mtlr    rtn_addr
@@ -31026,39 +31140,41 @@ private_fe0b_fe0c_etc:
 
 // Continuation (via rtn_addr) of 1 dispatch table entry:
 //     F-LINE cpID 7
-private_fe0b:
+fe0b_icbi_range:
         icbi    0, a0
         addi    a0, a0, 32
-        bdnzf   cr_interrupt_pending, private_fe0b
+        bdnzf   cr_interrupt_pending, fe0b_icbi_range
         blr
 
 // Continuation (via rtn_addr) of 1 dispatch table entry:
 //     F-LINE cpID 7
-private_fe0c:
+fe0c_dcbf_range:
         dcbf    0, a0
         addi    a0, a0, 32
-        bdnzf   cr_interrupt_pending, private_fe0c
+        bdnzf   cr_interrupt_pending, fe0c_dcbf_range
         blr
 
 // Continuation (via rtn_addr) of 1 dispatch table entry:
 //     F-LINE cpID 7
-private_fe0d:
+fe0d_dcbst_range:
         dcbst   0, a0
         addi    a0, a0, 32
-        bdnzf   cr_interrupt_pending, private_fe0d
+        bdnzf   cr_interrupt_pending, fe0d_dcbst_range
         blr
 
 // Continuation (via rtn_addr) of 1 dispatch table entry:
 //     F-LINE cpID 7
-private_fe0e:
+fe0e_dcbz_range:
         dcbz    0, a0
         addi    a0, a0, 32
-        bdnzf   cr_interrupt_pending, private_fe0e
+        bdnzf   cr_interrupt_pending, fe0e_dcbz_range
         blr
 
+// FE20: kernel service 6, RTASDispatch, with A0.
+//
 // Reached from 1 dispatch table entry:
 //     F-LINE cpID 7
-private_fe20:
+fe20_rtas_dispatch:
         mr      addr, a0
         mtlr    disp_table                              // DECODE2: LR = address of the next dispatch entry
         twi     31, EmulatorStatePtr, 6                 // unconditional trap
@@ -31066,14 +31182,14 @@ private_fe20:
         bflr_likely cr_special_event_pending            // DISPATCH unless a special event is pending
         b       process_special_event
 
-// Private opcode FE1F.  The table entry has loaded rtn_addr from handler
+// FE1F.  The table entry has loaded rtn_addr from handler
 // slot +0x9DC, which defaults to kcall_mp_dispatch (kernel service 8,
 // MPDispatch).  The handler is called with D0, A0, D1, A1, D2, A2, D3 and
 // A3 in r0 and r3 to r9, and r3 to r6 are returned in D0, A0, D1 and A1.
 //
 // Reached from 1 dispatch table entry:
 //     F-LINE cpID 7
-private_fe1f:
+fe1f_mp_dispatch:
         mtlr    rtn_addr                                // the handler's address
         mr      zero, d0
         mr      addr, a0
@@ -31174,7 +31290,7 @@ handler_defaults:
         .short  take_bus_error_L1 - cb
         .short  rte_bad_format - cb
         .short  rte_bad_format - cb
-        .short  private_fe07_L5 - cb
+        .short  fe07_handle_mixed_mode_fault_L5 - cb
         .short  rte_bad_format - cb
         .short  move_l_usp_an_L1 - cb
         .short  move_l_an_usp_L1 - cb
@@ -31227,16 +31343,16 @@ handler_defaults:
         .short  take_exception - cb
         .short  take_exception - cb
         .short  take_exception - cb
-        .short  private_fe07_L9 - cb
-        .short  private_fe07_L9 - cb
-        .short  private_fe07_L11 - cb
-        .short  private_fe07_L11 - cb
+        .short  fe07_handle_mixed_mode_fault_L9 - cb
+        .short  fe07_handle_mixed_mode_fault_L9 - cb
+        .short  fe07_handle_mixed_mode_fault_L11 - cb
+        .short  fe07_handle_mixed_mode_fault_L11 - cb
         .short  move16_mem_mem_2_L1 - cb
         .short  move16_mem_mem_4_L1 - cb
         .short  move16_mem_L1 - cb
         .short  fetch - cb
         .short  fetch - cb
-        .short  private_fe04_fe05_L1 - cb
+        .short  fe04_fe05_move_ecr_L1 - cb
         .short  kcall_run_alternate_context - cb
         .short  kcall_vm_dispatch - cb
         .short  0
@@ -31276,13 +31392,13 @@ handler_defaults:
         .short  0
         .short  0
         .short  0
-        .short  private_fe05_L8 - cb
-        .short  private_fe05_L9 - cb
-        .short  private_fe05_L9 - cb
-        .short  private_fe05_L9 - cb
-        .short  private_fe05_L9 - cb
-        .short  private_fe05_L9 - cb
-        .short  private_fe05_L9 - cb
+        .short  fe05_move_to_ecr_L8 - cb
+        .short  fe05_move_to_ecr_L9 - cb
+        .short  fe05_move_to_ecr_L9 - cb
+        .short  fe05_move_to_ecr_L9 - cb
+        .short  fe05_move_to_ecr_L9 - cb
+        .short  fe05_move_to_ecr_L9 - cb
+        .short  fe05_move_to_ecr_L9 - cb
         .short  0
         .short  0
         .short  0
@@ -31307,7 +31423,7 @@ handler_defaults_L1:
         stw     addr, 0x70C(EmulatorStatePtr)
         stw     addr, native_call_entry(EmulatorStatePtr)
         stw     addr, native_return_entry(EmulatorStatePtr)
-        ori     addr, code_ptr, private_fe07_L8 - cb
+        ori     addr, code_ptr, fe07_handle_mixed_mode_fault_L8 - cb
         stw     addr, 0x7A4(EmulatorStatePtr)
         li      addr, 0x907
         stw     addr, 0x7AC(EmulatorStatePtr)
@@ -31345,9 +31461,13 @@ native_call_unavailable:
         li      addr, 255
         b       EmKernelTrapTable
 
+// FE01: the mixed mode switch.  The table entry has loaded rtn_addr from
+// mixed_mode_handler, by default mixed_mode_dispatch.  (In the SuperMario
+// sources the opcode for this is FEED, _MixedMode.)
+//
 // Reached from 1 dispatch table entry:
 //     F-LINE cpID 7
-private_fe01:
+fe01_mixed_mode:
         mtlr    rtn_addr
         lwz     base_disp, 0(a7)
         blr
@@ -31589,9 +31709,12 @@ L_0E110:
         stwu    base_disp, -4(a7)
         b       fetch
 
+// FE02: 68K code called from native code returns; falls into
+// switch_to_native.
+//
 // Reached from 1 dispatch table entry:
 //     F-LINE cpID 7
-private_fe02:
+fe02_return_to_native:
         lwz     addr, native_context(EmulatorStatePtr)
         ori     sr_and_flags, sr_and_flags, 0x0800
 
@@ -31759,9 +31882,12 @@ L_0E35C:
         stw     base_disp, 68(addr)
         blr
 
+// FE07, _HandleMixedModeFault: "handle mixed mode interrupts and page
+// faults".  Looks at the exception frame on the stack.
+//
 // Reached from 1 dispatch table entry:
 //     F-LINE cpID 7
-private_fe07:
+fe07_handle_mixed_mode_fault:
         lhz     immed_data, 6(a7)
         lhz     base_disp, 20(a7)
         srwi    immed_data, immed_data, 12
@@ -31771,14 +31897,14 @@ private_fe07:
         cmpwi   cr5, base_disp, 0x1300
         cmpwi   cr4, data, 12
         addco.  zero, zero, zero                        // N=0, Z=1, V=0, C=0
-        beq     cr7, private_fe07_L1
+        beq     cr7, fe07_handle_mixed_mode_fault_L1
         cmpwi   cr7, data, 20
-        bne     cr6, private_fe07_L4
+        bne     cr6, fe07_handle_mixed_mode_fault_L4
         cmpwi   data, 0
-        bne     cr5, private_fe07_L4
-        beq     cr4, private_fe07_L2
-        beq     cr7, private_fe07_L3
-private_fe07_L1:
+        bne     cr5, fe07_handle_mixed_mode_fault_L4
+        beq     cr4, fe07_handle_mixed_mode_fault_L2
+        beq     cr7, fe07_handle_mixed_mode_fault_L3
+fe07_handle_mixed_mode_fault_L1:
         li      rtn_addr, 0x4C0
         and     rtn_addr, rtn_addr, sr_and_flags
         cmpwi   cr7, rtn_addr, 0
@@ -31787,20 +31913,20 @@ private_fe07_L1:
         crand   cr_dr_active, cr_dr_enabled, 4*cr7+eq   // cr_dr_active = cr_dr_enabled & cr7.eq
         bflr_likely cr_special_event_pending            // DISPATCH unless a special event is pending
         b       process_special_event
-private_fe07_L2:
+fe07_handle_mixed_mode_fault_L2:
         lwz     addr, 0x114(a7)
         addco.  zero, zero, zero                        // N=0, Z=1, V=0, C=0
         lbz     data, 0(addr)
-        b       private_fe07_L1
-private_fe07_L3:
+        b       fe07_handle_mixed_mode_fault_L1
+fe07_handle_mixed_mode_fault_L3:
         lwz     addr, 76(a7)
         addco.  zero, zero, zero                        // N=0, Z=1, V=0, C=0
         lbz     data, 0(addr)
-        b       private_fe07_L1
-private_fe07_L4:
+        b       fe07_handle_mixed_mode_fault_L1
+fe07_handle_mixed_mode_fault_L4:
         cmpwi   zero, 1
-        b       private_fe07_L1
-private_fe07_L5:
+        b       fe07_handle_mixed_mode_fault_L1
+fe07_handle_mixed_mode_fault_L5:
         lhz     immed_data, 20(a7)
         lbz     rtn_addr, 0x317(a7)
         cmpwi   cr7, immed_data, 0x1300
@@ -31816,13 +31942,13 @@ private_fe07_L5:
         mtctr   immed_data
         addi    rtn_addr, rtn_addr, 0x300
         cmplwi  cr7, base_disp, 0x0000
-private_fe07_L6:
+fe07_handle_mixed_mode_fault_L6:
         lwz     immed_data, -4(addr)
         lwzu    base_disp, -8(addr)
         stw     immed_data, -4(rtn_addr)
         stwu    base_disp, -8(rtn_addr)
-        bdnz    private_fe07_L6                         // CTR -= 1; branch while CTR != 0
-        beq     cr7, private_fe07_L7
+        bdnz    fe07_handle_mixed_mode_fault_L6         // CTR -= 1; branch while CTR != 0
+        beq     cr7, fe07_handle_mixed_mode_fault_L7
         lwz     addr, 216(rtn_addr)
         lwz     base_disp, 0x218(addr)
         stw     base_disp, 216(rtn_addr)
@@ -31830,13 +31956,13 @@ private_fe07_L6:
         lwz     base_disp, 236(EmulatorStatePtr)
         andc    base_disp, base_disp, immed_data        // base_disp = base_disp & ~immed_data
         stw     base_disp, 236(EmulatorStatePtr)
-private_fe07_L7:
+fe07_handle_mixed_mode_fault_L7:
         lwz     rtn_addr, 12(a7)
         lwz     addr, 16(a7)
         addi    a7, a7, 0x318
         mtlr    rtn_addr
         b       set_ccr
-private_fe07_L8:
+fe07_handle_mixed_mode_fault_L8:
         addi    EmulatorStatePtr, EmulatorStatePtr, -0x740
         lwz     rtn_addr, 0x7B8(EmulatorStatePtr)
         mtcrf   0x01, rtn_addr                          // cr7 = rtn_addr[3:0]
@@ -31844,14 +31970,14 @@ private_fe07_L8:
         bnelr   cr7
         mtctr   rtn_addr
         bctr
-private_fe07_L9:
-        bf      cr_dr_ready, private_fe07_L10
+fe07_handle_mixed_mode_fault_L9:
+        bf      cr_dr_ready, fe07_handle_mixed_mode_fault_L10
         lwz     data, dr_flush_vector(EmulatorStatePtr)
         mtctr   data
         bctrl
-private_fe07_L10:
+fe07_handle_mixed_mode_fault_L10:
         b       fetch
-private_fe07_L11:
+fe07_handle_mixed_mode_fault_L11:
         b       fetch
 
 // Reached from 8 dispatch table entries:

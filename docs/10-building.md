@@ -129,8 +129,8 @@ with the files in `annotations/`:
 
 Routines reached from the dispatch table are named automatically
 (`tools/naming.py`) unless an annotation names them: after the
-instructions that use them, or, for Apple's private opcodes, after the
-opcode (`private_fe0f`). Automatic comments
+instructions that use them, or, for a private opcode that no annotation
+names, after the opcode (`private_fe0f`). Automatic comments
 come from `gen.py`; an annotation for the same offset replaces them.
 
 The generator cannot produce wrong code silently: it only writes

@@ -35,7 +35,8 @@ Legend: `[x]` done, `[~]` partly done, `[ ]` not started.
 
 ### Interpreter still to read
 - [ ] Bit fields, BCD, MOVEM, MOVEP, MOVE16, CAS/CAS2, CHK2/CMP2, long multiply/divide
-- [ ] Private opcodes `FC01`-`FC11`, and those that only forward to kernel services
+- [~] Private opcodes: all named (Apple's names from SuperMario) and described; the SANE
+      arithmetic (`FC04`, `FC06`, `FC08`-`FC0F`, 4 KB) is not read line by line
 - [ ] The routines behind the forty FPU handler slots (`0E6D4`-`0E78F`)
 - [ ] Mixed mode: the layout of the native context block and the format `$E` frame
 

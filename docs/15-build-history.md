@@ -43,8 +43,9 @@ the PowerPC code they generate can be laid side by side.
 `init_state` stores a constant at `+0x718` in the state block, and it is
 different in each build: `0x20F3`, `0x21F7`, `0x21F8`. In the two later
 builds `dr_setup` stores it again and it is also the last word of the
-recompiler's code block. 68K code can read it: it is variable 0 of
-private opcode `FE04` ([08-native-interface.md](08-native-interface.md)).
+recompiler's code block. 68K code can read it: it is emulator control
+register 0 for private opcode `FE04`
+([08-native-interface.md](08-native-interface.md)).
 It is named `emulator_version` *(inferred: it is the only such constant
 that changes with every build, it increases with the builds' age, and in
 Apple's version notation the three values read 2.0f3, 2.1f7 and 2.1f8)*.
@@ -62,11 +63,11 @@ apart from padding. The differences are all in system support.
 |---|---|
 | `cas_l_mem_3` (`0CF28`) | `CAS.L` on an address that is a multiple of four is done with `lwarx`/`stwcx.`; the first build has only the load-compare-store sequence that the later builds keep for other addresses |
 | `test_mode_events` (`0D2B4`) | Test-mode bit 18 and its hook at `+0x7C8` are new |
-| `private_fe04_fe05` (`0D824`) | Private opcodes `FE04`/`FE05` accept 26 variables instead of 24; the two new ones are the hook and its argument |
-| `private_fe0f` (`0D9EC`) | `FE0F` passes D1 as well as D0 |
-| `private_fe11` (`0DA1C`) | `FE11` calls handler slot `+0x9A4` (kernel service 7) from a routine of its own instead of the common one |
-| `private_fe20` (`0DB2C`) | New: `FE20`, kernel service 6. In the first build the opcode goes to the line-F handler |
-| `private_fe01` (`0DE10`) | `FE01` reaches `mixed_mode_dispatch` through handler slot `+0x9E0` instead of directly |
+| `fe04_fe05_move_ecr` (`0D824`) | Private opcodes `FE04`/`FE05` accept 26 register numbers instead of 24; the two new ones are the hook and its argument |
+| `fe0f_power_dispatch` (`0D9EC`) | `FE0F` passes D1 as well as D0 |
+| `fe11_cache_dispatch` (`0DA1C`) | `FE11` calls handler slot `+0x9A4` (kernel service 7) from a routine of its own instead of the common one |
+| `fe20_rtas_dispatch` (`0DB2C`) | New: `FE20`, kernel service 6. In the first build the opcode goes to the line-F handler |
+| `fe01_mixed_mode` (`0DE10`) | `FE01` reaches `mixed_mode_dispatch` through handler slot `+0x9E0` instead of directly |
 
 `FE01`, `FE11` and `FE20` are also the only three dispatch table
 entries that differ, other than in branch displacements.
@@ -77,10 +78,10 @@ entries that differ, other than in branch displacements.
 |---|---|
 | `write_sr` (`0C410`) | Sets `cr_special_event_pending` when the private interrupt request at `+0x1D0` is non-zero; makes the `sc` call ([08-native-interface.md](08-native-interface.md)) |
 | `check_interrupt` (`0D3E4`) | New, with its call in `special_event_continue`: the private interrupt request and its per-level table at `+0xAE0` ([06-exceptions.md](06-exceptions.md)). The G3 build goes straight to `take_interrupt` |
-| `private_fe1f` (`0DB44`) | New: private opcode `FE1F`, kernel service 8 |
+| `fe1f_mp_dispatch` (`0DB44`) | New: private opcode `FE1F`, kernel service 8 |
 | `init_state` (`0DB94`) | The configuration word at `+0x7A0` starts as `0x80000039` instead of `1` |
 | After `handler_defaults` (`0DD74`…) | The set-up of the native context area preserves `+0x4D8` and stores `0xAE0` at `+0x1C8`. The table itself has 151 entries in all three builds |
-| `switch_to_native` (`0E128`), `private_fe07` (`0E380`) | Where the native context area is copied to the 68K stack and back, a save area of 0x220 bytes is now also claimed from, and returned to, a pool described by `+0xE0`…`+0xEC`; kernel service 15 when none is free |
+| `switch_to_native` (`0E128`), `fe07_handle_mixed_mode_fault` (`0E380`) | Where the native context area is copied to the 68K stack and back, a save area of 0x220 bytes is now also claimed from, and returned to, a pool described by `+0xE0`…`+0xEC`; kernel service 15 when none is free |
 | `EmKernelTrapTable` (`0E8C0`) | Seventeen entries instead of sixteen |
 | After `interpreter_credits` | Removed: see below |
 | Throughout | Padding is `nop` instead of a branch to the next instruction |
