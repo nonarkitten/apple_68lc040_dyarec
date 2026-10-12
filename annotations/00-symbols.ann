@@ -1,2 +1,0 @@
-# Labels required by the build are defined with their descriptions in
-# 10-dispatch.ann (cb) and 30-system.ann (EmEntry, EmKernelTrapTable).

@@ -18,13 +18,8 @@ criterion is that the source reassembles to a byte-identical `Emulator.x`.
 - `docs/`           finished technical documentation. `docs/patents/` holds the three patents.
 - `TODO.md`         checklist, open questions, working notes.
 - `build/`          build output (ignored).
-- `ppcd/`, `Emulator.asm`, `*.ROM`  the owner's working files and ROM images; untracked and
-                    ignored. Leave them alone. Note: `Emulator.x` is a *later* build than the
-                    emulator inside the 8600/9600 ROM (see `docs/13-rom-context.md`).
-- `powermac-rom-master/`  reference copy of elliotnunn/powermac-rom, where `Emulator.x` comes
-                    from; untracked and ignored. Its `Internal/EmulatorPublic.a`, `Internal/NKPublic.a`
-                    and `NanoKernel/*.s` are the authority for kernel-side names (files use
-                    classic Mac line endings and MacRoman: convert before grepping).
+- `*.ROM`           ROM images used as evidence for `docs/13-rom-context.md`; git-ignored, never
+                    commit them. Note: `Emulator.x` is a *later* build than the emulator in any ROM chip.
 - `LICENSE`, `NOTICE.md`  CC0 for the project's own work; Apple's code is not licensed here.
 
 ## Commands
@@ -74,15 +69,18 @@ A new register or state-field name must be added to `src/include/*.inc`
 6. Conventional names for things outside the image (kernel services and
    structures, Mac OS low-memory globals, info records) may and should be
    used - the owner asked for this. Say how each is known, as
-   `docs/13-rom-context.md` does: read from a ROM, follows from the image,
-   or a name recalled from headers / other disassemblies. Verify against
-   a ROM where one is available (`tools/rominfo.py`; ROM files are
-   git-ignored and must never be committed).
-7. Offsets are relative to `EmTop` (start of the image) and written as five
+   `docs/13-rom-context.md` does. The authority for kernel-side names is
+   https://github.com/elliotnunn/powermac-rom (the project `Emulator.x`
+   came from): `Internal/EmulatorPublic.a`, `Internal/NKPublic.a`,
+   `NanoKernel/*.s`. Fetch it when needed rather than keeping a copy here
+   (its files use classic Mac line endings and MacRoman).
+7. Keep the repository focused: no scratch files, dumps, third-party
+   trees or reference copies. Working files go in a temp directory.
+8. Offsets are relative to `EmTop` (start of the image) and written as five
    hex digits. Bit numbers in prose are LSB = 0.
-8. Commit at milestones with messages that say what was learned, not just
+9. Commit at milestones with messages that say what was learned, not just
    what was changed. Work happens on a branch, not on `master`.
-9. Python: standard library only.
+10. Python: standard library only.
 
 ## Conventions in the generated source
 - Registers are referred to by role (`d0`, `a7`, `pc`, `prefetch_data`, ...);

@@ -8,15 +8,5 @@ __pycache__/
 # macOS
 .DS_Store
 
-# Legacy working files from the original ppcd-based disassembly attempt.
-# Superseded by tools/ and src/; kept locally but not tracked.
-/ppcd/
-/Emulator.asm
-
-# Ignore Apple binaries
+# Apple ROM images used as evidence (docs/13-rom-context.md); never tracked
 *.ROM
-
-# Reference copy of https://github.com/elliotnunn/powermac-rom (the project
-# Emulator.x was taken from).  Someone else's work, and it contains a 68K
-# ROM image, so it is consulted but not tracked here.
-/powermac-rom-master/
