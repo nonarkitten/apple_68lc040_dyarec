@@ -47,6 +47,8 @@ criterion is that the source reassembles to a byte-identical `Emulator.x`.
 - `python3 tools/show.py START [END] [-x]`   the source with offsets; START and END are hex
                     offsets or labels, END may be `+N`
 - `python3 tools/m68k.py 4E75 ...`              decode 68K opcode words
+- `python3 tools/patentmodel.py`   estimate what the patent's recompiler would cost, from
+                    traces of the interpreter (see TODO.md)
 
 ## Workflow for naming and commenting
 1. Find the code: `python3 tools/show.py 0D780 +40`, or search `src/` for a label.

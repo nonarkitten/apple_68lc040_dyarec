@@ -189,3 +189,4 @@ Only the LLVM build has been verified.
 | `tools/drtranslate.py WORD…` | Run the recompiler's translator on 68K code and print the PowerPC code it generates |
 | `tools/run68k.py [--dr\|--both] WORD…` | Run a 68K program under the emulator and print the registers it ends with |
 | `tools/selftest.py [-v]` | The 68K test programs |
+| `tools/patentmodel.py [--loops]` | Estimate, from traces of the interpreter, what the recompiler of US 5,790,825 would cost beside the interpreter and the shipped recompiler |

@@ -77,7 +77,8 @@ Legend: `[x]` done, `[~]` partly done, `[ ]` not started.
 - [ ] Confirm `Emulator.x` against an actual "Mac OS ROM" file with `tools/rominfo.py`
 
 ### Experiments
-- [ ] Feasibility check for the two items below (notes under "The patent's recompiler")
+- [x] Feasibility check for the two items below: see "The patent's recompiler: feasibility"
+      and `tools/patentmodel.py`
 - [ ] Reconstruct the hypothetical original Dynamic Recompiler from the patent by
       using the Dynamic Recompiler to extract what the semantic routines might have been
       and rebuild the Offset Table from that
@@ -108,9 +109,14 @@ Legend: `[x]` done, `[~]` partly done, `[ ]` not started.
 - **Licence**: CC0 for the project's own work; Apple's code is not licensed
   here (`NOTICE.md`). Wording is Renee's to change.
 
-## The patent's recompiler: notes towards a feasibility check
+## The patent's recompiler: feasibility
 
-What US 5,790,825 describes (columns 5-8), as far as it bears on rebuilding it:
+**Verdict: feasible, as a new implementation in the manner of the patent, derived
+mechanically from the interpreter. Not as a recovery of Apple's code - none survives.
+A trace-driven model (`tools/patentmodel.py`) already answers the performance question
+to first order; building the real thing would refine the answer, not change it.**
+
+What US 5,790,825 describes (columns 5-10):
 
 - A cache line is 32 entries of four PowerPC instructions, one entry per two bytes of
   68K code: 64 bytes of 68K code per line, `pc[5:1]` the entry, `pc[16:6]` the line
@@ -122,49 +128,67 @@ What US 5,790,825 describes (columns 5-8), as far as it bears on rebuilding it:
   ends its entry with `b $+16` instead, skipping the entries of its extension words.
 - "Inline": the instruction needs only two host instructions, so no `bl`. "Double
   inline": three, using the event-test slot; not allowed in a line's last entry.
-- Execution falls through entry to entry inside a line but *not* line to line: the last
+- Execution falls through entry to entry inside a line but not line to line: the last
   entry branches to `dispatch_next_pc` (event test, find the line, compare the tag,
-  recompile on a mismatch), as does every change of flow. So a line is in effect a
-  fixed 64-byte block with a tag check at each end. The shipped recompiler's chained
-  blocks are the ones that run block to block without a check.
+  recompile on a mismatch), as does every change of flow.
 - Translation is meant to be trivial ("fewer than twenty PowerPC instructions" per 68K
-  instruction): no decoding beyond two table look-ups, no flag analysis.
+  instruction): two table look-ups, no flag analysis.
+- Its own performance claim is in cycles on a 603, not instruction counts: 4 cycles
+  interpreted against 2 recompiled for `BCLR.B D5`, and two instruction cache lines
+  touched instead of three.
 
-What the image offers:
+What was measured (`python3 tools/patentmodel.py`):
 
-- Nothing of the patent's code. Translating every translated opcode shows the shipped
-  recompiler's output is straight-line code that calls nothing but three division
-  helpers (`docs/09`); there are no DR semantic routines in it, and no offset table in
-  any ROM examined. The first PCI ROM predates the patent application (November 1995)
-  and already has the block design.
-- But the patent's entry starts with the dispatch table's first instruction, so its
-  semantic routine for an opcode has to pick up exactly where the interpreter's routine
-  does. The natural reconstruction is therefore from the *interpreter*: each routine
-  with its fetch-and-dispatch tail replaced by `blr`, and the offset table read off the
-  second instruction of each dispatch table entry. `tools/check.py`'s path walker
-  already finds those tails. The patent's Figures 9 and 10 show such pairs and can
-  check the result.
-- The shipped recompiler helps in two ways: its first pass gives every instruction's
-  length (the 2-bit flag), and its straight-line translations show which instructions
-  can be done in two or three host instructions (inline, double inline) - though they
-  do not start from the dispatch table's first instruction, so they are a guide, not
-  the entries themselves.
+- The patent's semantic routine has to continue from the state the dispatch table's
+  first instruction leaves, so it is the interpreter's routine minus DECODE1, DECODE2,
+  PREFETCH and DISPATCH. Tracing every opcode once in the interpreter gives the split:
+  of 40,927 straight-line opcodes, 5,941 are inline, 2,949 double inline and 32,037
+  need a routine. All of them can be derived from the interpreter.
+- Per 68K instruction, each opcode counted once: 14.4 PowerPC instructions interpreted,
+  12.5 as patent entries. The shipped recompiler generates about 4.8 (all flags wanted).
+- Per loop iteration, four small loops (interpreter / shipped / patent model):
+  26 / 7 / 21, 38 / 13 / 27, 49 / 33 / 37, 47 / 9 / 36. The patent design saves the
+  dispatch, about a fifth; the shipped one saves the prefetch, the per-instruction
+  event test, the call and return, the generic routines and dead flags as well. It is
+  weakest on calls: `RTS` leaves through the run-time (16 of its 33 instructions).
+- Translating: the shipped translator executes 80 to 115 PowerPC instructions per 68K
+  instruction; the patent claims under 20. On these counts the shipped design overtakes
+  the patent's after an instruction has run about ten times.
+- Memory: the patent's cache holds 8 bytes of host code per byte of 68K code for whole
+  64-byte lines, executed or not; the shipped one about 19 bytes per translated
+  instruction, only for blocks that ran.
 
-Open questions for the check:
+What building it would take:
 
-- LR. An entry's `bl` puts the return address in LR, which the interpreter's routines
-  use themselves (effective address routines return through LR or CTR, and LR normally
-  holds the next dispatch entry). How many routines survive the tail swap unchanged?
-- Which instructions must leave for the interpreter (the patent: anything that changes
-  flow goes through `dispatch_next_pc`), and the "special case" encodings.
-- The run-time (`dispatch_next_pc`, tag store, the line recompiler) has to be written
-  from the description; the patent gives no listing of it.
-- Measuring. `tools/ppcsim.py` counts instructions. The patent's own argument is about
-  instruction cache lines touched and folded branches, which needs at least a cache
-  model. Instruction counts alone would understate the patent design's cost (two taken
-  branches per 68K instruction) and say nothing about translation time or memory.
-- It would be new code, not Apple's. Where it lives (apart from `src/`, or another
-  repository) is Renee's decision.
+1. Offset table (128 KB) and entries: generated; the classification above is most of it.
+2. Semantic routines: the interpreter's routines with the dispatch sequence removed and
+   `blr` added. Three things stop this being a plain deletion:
+   - 14,841 of the 40,927 opcodes use routines that use LR themselves (effective
+     address continuations, calls), which the entry's `bl` would destroy. LR has to be
+     saved - r23 is the one free register, and the interpreter's hooks need it to hold
+     the dispatcher - or those routines changed to use CTR.
+   - Instructions with extension words (16,110 opcodes) advance `pc` in the routine;
+     the patent moves that to the entry.
+   - 3,891 opcodes' routines read their own opcode out of `disp_table` (`ADDQ`/`SUBQ`,
+     BCD, `Scc`, rotates), which the patent's entries do not keep up to date.
+3. Run-time: `dispatch_next_pc`, the tag store, the line recompiler, the special cases
+   (variable-length modes, branches within a line), flushing. A few hundred lines of
+   new PowerPC assembly, written from prose; the patent gives no listing.
+4. Hooking it in needs no change to Apple's code: the interpreter already leaves through
+   `dr_entry` at every control transfer when `cr_dr_active` is set.
+5. Testing: `tools/fuzz.py` against the interpreter, as for the shipped recompiler.
+6. Measuring beyond instruction counts needs a cycle and cache model in `tools/ppcsim.py`
+   (branch folding, a 603-style instruction cache) - the patent's argument lives there.
+
+Limits to say out loud: the result would characterise the patent's design, not Apple's
+lost code; the original's semantic routines, special-case encodings and tuning are
+unknown; `DISPATCH_NEXT_PC` in the model (12 instructions) is an assumption.
+
+Suggested order: (a) add the cycle and cache model to the simulator and re-run the
+comparison - cheap, and it tests the patent's own claim; (b) widen the set of programs
+beyond four loops; (c) only then build the reconstruction, if the modelled gap leaves
+anything to learn. It would be new code, not Apple's: where it lives (apart from
+`src/`, or another repository) is Renee's decision.
 
 ## Leads not yet followed
 
