@@ -203,8 +203,10 @@ Open questions for the check:
 - The special-cased sequences and operands (`docs/14`) are presumably from hot code in the
   ROM or system. The SuperMario sources could be searched for them: `MOVE.L ([bd.w],od.w),
   -(A7)`, `JSR ([bd.w])`, `JMP ([bd.w,A4,D0.W*4])`, and the string loops.
-- SuperMario's SANE sources, if the PowerPC-era package is among them, would show the 68K
-  side of `FC01`-`FC0F` and settle what the bits of D6 and D7 mean.
+- The 68K side of `FC01`-`FC0F` (the SANE package as built for Power Macs) is not in
+  SuperMario - nothing there uses the macros - so what the bits of D6 and D7 mean rests
+  on the PowerPC side alone. A Power Mac ROM's 68K part could be disassembled around the
+  `FC01` opcodes to settle it.
 - `0C960` is a lone zero word in the middle of code. Cause unknown.
 - The first PCI ROM (1995) already has the hash-lookup recompiler. If the
   patent's direct-mapped design ever existed in a ROM, it predates everything

@@ -2170,6 +2170,25 @@ dr_ea_length_tables:
 
 // Pass-3 code generators.  Emitter values stored in the records are
 // offsets from this label.
+//
+// How to read an emitter.  It is entered from dr_emit_next with
+//
+// prefetch_data   the 68K opcode being translated
+// blk_ofs         offset in the block of the word after the opcode;
+// extension words are read with pc as the base
+// rec_ptr         the instruction's record
+// out_ptr         the last word written to the translation
+// base_disp       dr_emitters
+//
+// and it finishes with "b dr_emit_next".  "lwz x, T_... - dr_emitters
+// (base_disp)" loads a template - the comment shows the instruction - the
+// rlwinm, rlwimi and add that follow put register numbers taken from the
+// opcode into its fields, and "stwu x, 4(out_ptr)" appends it to the
+// translation.  "lhz x, 0(rec_ptr)" then "mtcrf 0x02, x" brings in the
+// record's flags as the liveness pass left them: afterwards cr6.gt means
+// that N, Z, V and C have to be produced and cr6.lt that X has, so
+// "ble cr6" skips the instructions that would compute the flags.  The
+// header of each emitter shows the result for one instruction.
 dr_emitters:
         lwz     addr, T_11598 - dr_emitters(base_disp)  // template: add zero, a0, zero
 T_1133C:
