@@ -12,3 +12,6 @@ __pycache__/
 # Superseded by tools/ and src/; kept locally but not tracked.
 /ppcd/
 /Emulator.asm
+
+# Ignore Apple binaries
+*.ROM
