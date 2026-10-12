@@ -73,11 +73,20 @@ generators have not been examined one by one. See [TODO.md](TODO.md).
 
 ## Provenance and rights
 
-The emulator is Apple's code. The disassembly, names and commentary were
-produced for study from a binary extracted from a ROM, with the patents
-as a guide to the authors' terminology. The patents are US 5,574,873,
-US 5,623,617 and US 5,790,825; the last of them expired on
-November 8, 2015.
+The emulator is Apple's code, reproduced here for study; nobody involved
+in this repository claims any right in it. Everything else — the
+documentation, names, comments and tools — is dedicated to the public
+domain under [CC0 1.0](LICENSE). [NOTICE.md](NOTICE.md) spells out which
+is which.
+
+The names of registers and many routines follow the three patents that
+describe the design (US 5,574,873, US 5,623,617 and US 5,790,825; the
+last of them expired on November 8, 2015).
+
+`Emulator.x` is a later build of the emulator than the one in the Power
+Macintosh 8600/9600 ROM; [docs/13-rom-context.md](docs/13-rom-context.md)
+describes where the emulator sits in that ROM and how its kernel starts
+it.
 
 The repository began as a fork of the `ppcd` PowerPC disassembler, which
 it no longer contains.
