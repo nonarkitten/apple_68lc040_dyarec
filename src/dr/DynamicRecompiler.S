@@ -7889,7 +7889,7 @@ dr_divs_w_shift:
 //         addc    addr, d0, rtn_addr
 dr_emit_cmp_cmpa_l:
         lhz     addr, 12(rec_ptr)
-        bl      dr_emit_cmpm_l_L9
+        bl      dr_plan_compare
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr7, rtn_addr, 0x0001
         lis     immed_data, 0x0060
@@ -7899,7 +7899,7 @@ dr_emit_cmp_cmpa_l:
         cmplwi  cr7, addr, 0x003F
         lwz     addr, T_14C60 - dr_emitters(base_disp)  // template: subfco. rtn_addr, addr, d0
         beq     cr7, dr_emit_cmp_cmpa_l_L2
-        lwz     data, 0xBB0(EmulatorStatePtr)
+        lwz     data, dr_compare_plan(EmulatorStatePtr)
         rlwinm  immed_data, prefetch_data, 2, 18, 20    // immed_data = prefetch_data[11:9] << 11
         rlwimi  immed_data, prefetch_data, 6, 17, 17    // immed_data[14] = prefetch_data[8]
         mtcrf   0x02, data                              // cr6 = data[7:4]
@@ -7918,7 +7918,7 @@ dr_emit_cmp_cmpa_l_L2:
         lwz     addr, T_14C68 - dr_emitters(base_disp)  // template: subfco. rtn_addr, addr, a7
         b       dr_emit_cmp_cmpa_l_L1
 dr_emit_cmp_cmpa_l_L3:
-        lwz     rtn_addr, 0xBB0(EmulatorStatePtr)
+        lwz     rtn_addr, dr_compare_plan(EmulatorStatePtr)
         clrlwi  addr, prefetch_data, 28                 // addr = prefetch_data & 0x0000000F
         cmpwi   cr7, addr, 15
         lwz     addr, T_14C50 - dr_emitters(base_disp)  // template: subfco. rtn_addr, d0, d0
@@ -7969,7 +7969,7 @@ dr_emit_cmp_cmpa_l_L6:
 //         addc    addr, addr, rtn_addr
 dr_emit_cmpi_l:
         lhz     addr, 12(rec_ptr)
-        bl      dr_emit_cmpm_l_L9
+        bl      dr_plan_compare
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr6, rtn_addr, 0x0001
         ble     cr6, dr_emit_cmpi_l_L2
@@ -7979,7 +7979,7 @@ dr_emit_cmpi_l:
         lhz     rtn_addr, 2(rec_ptr)
         addi    rtn_addr, rtn_addr, 2
         bl      dr_operand_address_L1
-        lwz     data, 0xBB0(EmulatorStatePtr)
+        lwz     data, dr_compare_plan(EmulatorStatePtr)
         mtcrf   0x02, data                              // cr6 = data[7:4]
         bge     cr6, dr_emit_cmpi_l_L1
         beql    cr6, dr_emit_cmpi_w_L2
@@ -7990,7 +7990,7 @@ dr_emit_cmpi_l_L1:
         b       dr_emit_cmp_cmpa_l_L1
 dr_emit_cmpi_l_L2:
         bl      dr_operand_address_L2
-        lwz     data, 0xBB0(EmulatorStatePtr)
+        lwz     data, dr_compare_plan(EmulatorStatePtr)
         rlwinm  immed_data, prefetch_data, 16, 13, 15   // immed_data = prefetch_data[2:0] << 16
         mtcrf   0x02, data                              // cr6 = data[7:4]
         bge     cr6, dr_emit_cmpi_l_L3
@@ -8070,14 +8070,14 @@ T_14C78:
 //         addc    addr, addr, rtn_addr
 dr_emit_cmpa_w:
         lhz     addr, 12(rec_ptr)
-        bl      dr_emit_cmpm_l_L9
+        bl      dr_plan_compare
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr6, rtn_addr, 0x0001
         lis     immed_data, 0x0060
         ble     cr6, dr_emit_cmpa_w_L6
         bl      dr_operand_load_w
 dr_emit_cmpa_w_L1:
-        lwz     data, 0xBB0(EmulatorStatePtr)
+        lwz     data, dr_compare_plan(EmulatorStatePtr)
         rlwinm  addr, prefetch_data, 23, 29, 31         // addr = prefetch_data[11:9]
         cmpwi   cr7, addr, 7
         mtcrf   0x02, data                              // cr6 = data[7:4]
@@ -8132,7 +8132,7 @@ dr_emit_cmpa_w_L7:
 //         addc    addr, addr, rtn_addr
 dr_emit_cmp_w:
         lhz     addr, 12(rec_ptr)
-        bl      dr_emit_cmpm_l_L9
+        bl      dr_plan_compare
         clrlwi  rtn_addr, prefetch_data, 26             // rtn_addr = prefetch_data & 0x0000003F
         cmpwi   cr6, rtn_addr, 15
         lis     immed_data, 0x0060
@@ -8147,7 +8147,7 @@ dr_emit_cmp_w_L1:
         add     addr, addr, data
         stwu    addr, 4(out_ptr)
 dr_emit_cmp_w_L2:
-        lwz     data, 0xBB0(EmulatorStatePtr)
+        lwz     data, dr_compare_plan(EmulatorStatePtr)
         mtcrf   0x02, data                              // cr6 = data[7:4]
         bge     cr6, dr_emit_cmp_w_L3
         beql    cr6, dr_emit_cmpi_w_L2
@@ -8186,7 +8186,7 @@ dr_emit_cmp_w_L5:
 //         addc    addr, addr, rtn_addr
 dr_emit_cmpi_w:
         lhz     addr, 12(rec_ptr)
-        bl      dr_emit_cmpm_l_L9
+        bl      dr_plan_compare
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr6, rtn_addr, 0x0001
         ble     cr6, dr_emit_cmpi_w_L1
@@ -8360,7 +8360,7 @@ T_14F6C:
 //         addc    addr, addr, rtn_addr
 dr_emit_cmp_b:
         lhz     addr, 12(rec_ptr)
-        bl      dr_emit_cmpm_l_L9
+        bl      dr_plan_compare
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr6, rtn_addr, 0x0001
         lis     immed_data, 0x0060
@@ -8373,7 +8373,7 @@ dr_emit_cmp_b_L1:
         rlwinm  data, prefetch_data, 12, 8, 10          // data = prefetch_data[11:9] << 21
         add     addr, addr, data
 dr_emit_cmp_b_L2:
-        lwz     data, 0xBB0(EmulatorStatePtr)
+        lwz     data, dr_compare_plan(EmulatorStatePtr)
         stwu    addr, 4(out_ptr)
         mtcrf   0x02, data                              // cr6 = data[7:4]
         bge     cr6, dr_emit_cmp_b_L3
@@ -8408,7 +8408,7 @@ dr_emit_cmp_b_L4:
 //         addc    addr, addr, rtn_addr
 dr_emit_cmpi_b:
         lhz     addr, 12(rec_ptr)
-        bl      dr_emit_cmpm_l_L9
+        bl      dr_plan_compare
         rlwinm  rtn_addr, prefetch_data, 29, 29, 31     // rtn_addr = prefetch_data[5:3]
         cmplwi  cr6, rtn_addr, 0x0001
         ble     cr6, dr_emit_cmpi_b_L1
@@ -8507,7 +8507,7 @@ dr_emit_cmpm_w:
 //         addc    addr, addr, rtn_addr
 dr_emit_cmpm_l:
         lhz     addr, 12(rec_ptr)
-        bl      dr_emit_cmpm_l_L9
+        bl      dr_plan_compare
         lwz     addr, T_15208 - dr_emitters(base_disp)  // template: lwz addr, 0(a0)
         clrlwi  data, prefetch_data, 29                 // data = prefetch_data & 0x00000007
         cmpwi   cr7, data, 7
@@ -8539,7 +8539,7 @@ dr_emit_cmpm_l_L2:
         b       dr_emit_cmp_w_L2
 dr_emit_cmpm_l_L3:
         lhz     addr, 12(rec_ptr)
-        bl      dr_emit_cmpm_l_L9
+        bl      dr_plan_compare
         lwz     addr, T_15218 - dr_emitters(base_disp)  // template: lhz addr, 0(a0)
         clrlwi  data, prefetch_data, 29                 // data = prefetch_data & 0x00000007
         cmpwi   cr7, data, 7
@@ -8575,7 +8575,7 @@ dr_emit_cmpm_l_L5:
         b       dr_emit_cmp_w_L2
 dr_emit_cmpm_l_L6:
         lhz     addr, 12(rec_ptr)
-        bl      dr_emit_cmpm_l_L9
+        bl      dr_plan_compare
         lwz     addr, T_15230 - dr_emitters(base_disp)  // template: lbz addr, 0(a0)
         clrlwi  data, prefetch_data, 29                 // data = prefetch_data & 0x00000007
         cmpwi   cr7, data, 7
@@ -8643,9 +8643,28 @@ T_15240:
         slwi    addr, addr, 24                          // template
 T_15244:
         slwi    rtn_addr, rtn_addr, 24                  // template
-dr_emit_cmpm_l_L9:
-        mtcrf   0x07, addr                              // cr5..cr7 = addr[11:0]
-        lhz     addr, 14(rec_ptr)
+
+// Called by the emitters of CMP, CMPA, CMPI and CMPM with the flags of the
+// next record in addr, to decide how the compare is to be generated when a
+// conditional branch follows.  The answer is left in cr6 and saved in
+// dr_compare_plan:
+//
+// cr6.lt   also emit a PowerPC compare into cr7 for the branch to test -
+// cmplw if cr6.eq (conditions HI, LS, CC, CS, NE, EQ), cmpw if
+// cr6.so (GE, LT, GT, LE)
+// cr6.gt   emit the usual code that sets the 68K flags as well
+//
+// The 68K flags can be left out altogether, so that compare and branch
+// become two PowerPC instructions, when nothing else can want them: the
+// instruction at the branch's target replaces N, Z, V and C (bit 0x0004),
+// the instructions after the branch do too (bit 0x0400 clear after the
+// liveness pass), the target is an instruction of this block, and the
+// branch is not itself the target of another branch.  Failing that, a
+// branch of the signed class still gets its cmpw, next to the code for
+// the flags; one of the other class gets nothing extra.
+dr_plan_compare:
+        mtcrf   0x07, addr                              // cr5-cr7 = the next record's flags
+        lhz     addr, 14(rec_ptr)                       // is the next instruction a branch target ?
         srwi    data, addr, 4
         add     data, EmulatorStatePtr, data
         lbz     data, 0xBA8(data)
@@ -8654,40 +8673,40 @@ dr_emit_cmpm_l_L9:
         srw     rtn_addr, rtn_addr, addr
         and     rtn_addr, rtn_addr, data
         cmplwi  cr4, rtn_addr, 0x0000
-        bne     cr4, dr_emit_cmpm_l_L13
-        cror    4*cr6+lt, 4*cr6+eq, 4*cr6+so            // cr6.lt = cr6.eq | cr6.so
-        crandc  4*cr4+lt, 4*cr7+gt, 4*cr5+gt            // cr4.lt = cr7.gt & ~cr5.gt
+        bne     cr4, dr_plan_compare_L4
+        cror    4*cr6+lt, 4*cr6+eq, 4*cr6+so            // a class of condition that can use cr7 ...
+        crandc  4*cr4+lt, 4*cr7+gt, 4*cr5+gt            // ... whose flags are dead on both paths
         crand   4*cr6+lt, 4*cr4+lt, 4*cr6+lt            // cr6.lt = cr4.lt & cr6.lt
         crnot   4*cr6+gt, 4*cr6+lt
-        bgt     cr6, dr_emit_cmpm_l_L12
-        lwz     rtn_addr, 20(rec_ptr)
+        bgt     cr6, dr_plan_compare_L3
+        lwz     rtn_addr, 20(rec_ptr)                   // the branch's target: is it in this block ...
         lwz     data, dr_last_offset(EmulatorStatePtr)
         cmpwi   cr4, rtn_addr, 0
         cmpw    cr5, rtn_addr, data
         cror    4*cr7+so, 4*cr4+lt, 4*cr5+gt            // cr7.so = cr4.lt | cr5.gt
-        bso     cr7, dr_emit_cmpm_l_L11
+        bso     cr7, dr_plan_compare_L2
         lwz     addr, dr_records(EmulatorStatePtr)
-dr_emit_cmpm_l_L10:
-        lha     immed_data, 2(addr)
+dr_plan_compare_L1:
+        lha     immed_data, 2(addr)                     // ... and the start of an instruction ?
         addi    addr, addr, 12
         cmpw    cr4, immed_data, rtn_addr
         cmpw    cr5, immed_data, data
-        beq     cr4, dr_emit_cmpm_l_L11
-        blt     cr5, dr_emit_cmpm_l_L10
+        beq     cr4, dr_plan_compare_L2
+        blt     cr5, dr_plan_compare_L1
         crset   4*cr7+so
-dr_emit_cmpm_l_L11:
+dr_plan_compare_L2:
         cror    4*cr6+gt, 4*cr7+so, 4*cr6+gt            // cr6.gt = cr7.so | cr6.gt
         crandc  4*cr6+lt, 4*cr6+lt, 4*cr7+so            // cr6.lt = cr6.lt & ~cr7.so
-dr_emit_cmpm_l_L12:
-        cror    4*cr6+lt, 4*cr6+lt, 4*cr7+eq            // cr6.lt = cr6.lt | cr7.eq
+dr_plan_compare_L3:
+        cror    4*cr6+lt, 4*cr6+lt, 4*cr7+eq            // signed class (bit 0x0002): a compare into cr7 in any case
         mfcr    addr
-        stw     addr, 0xBB0(EmulatorStatePtr)
+        stw     addr, dr_compare_plan(EmulatorStatePtr)
         blr
-dr_emit_cmpm_l_L13:
+dr_plan_compare_L4:
         crset   4*cr6+gt
         crclr   4*cr6+lt
         mfcr    addr
-        stw     addr, 0xBB0(EmulatorStatePtr)
+        stw     addr, dr_compare_plan(EmulatorStatePtr)
         blr
 
 // Code generator for 50 opcodes:

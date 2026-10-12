@@ -199,6 +199,13 @@ First build                                     G3 build and Emulator.x
 
 `TST` followed by a signed branch is translated alike in both.
 
+When the flags are needed by nothing else, the G3 build leaves them out
+and the pair is a compare and a branch; this applies to the unsigned
+and equality conditions as well
+([09-dynamic-recompiler.md](09-dynamic-recompiler.md)). For
+`CMP.L D1,D0` / `BHI.S` in such a place the first build generates six
+instructions and the G3 build two.
+
 **`ADDQ.W` and `SUBQ.W` on a data register, when only X is wanted.** The
 G3 build computes in `ccr_x` itself, so that the carry or borrow out of
 the low word arrives where X is kept:

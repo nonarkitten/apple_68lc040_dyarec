@@ -299,6 +299,24 @@ prepare for the branch. It can emit a PowerPC compare into CR7 —
 `cmplw` for the first class, `cmpw` for the signed one — and set bit
 `0x0008` in the branch's record, upon which the branch is generated from
 `dr_bcc_sequences_cr7`, where every condition is a single branch on CR7.
+`dr_plan_compare` (`15248`) decides. When nothing else can want the 68K
+flags — the instruction at the branch's target replaces them, so do the
+instructions after the branch, the target is inside the block and the
+branch is not itself a branch target — the compare is generated as the
+PowerPC compare alone, and the pair costs two instructions:
+
+```
+68K     B081        CMP.L   D1,D0
+        6202        BHI.S   *+4
+        7001        MOVEQ   #1,D0
+        7002        MOVEQ   #2,D0
+
+        cmplw   cr7, d0, d1
+        bgt     cr7, <MOVEQ #2>
+```
+
+Otherwise the flags are computed as usual; a branch of the signed class
+still gets its `cmpw` beside them, because rebuilding N⊕V costs more.
 Before a branch of the signed class, `CMP`,
 `CMPA`, `CMPI` and `CMPM` also emit a PowerPC signed compare into CR7,
 and the branch tests that instead of rebuilding N⊕V

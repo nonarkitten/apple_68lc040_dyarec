@@ -172,10 +172,6 @@ Open questions for the check:
   (`docs/09`). The code it emits for `OR.B D0,(d8,PC,Xn)` reads at one
   displacement and writes at another, which looks like a further slip in an
   emitter nobody could have tested.
-- Compare-and-branch: the compare emitters put `cmplw cr7` (class `0x0020`) or `cmpw cr7`
-  (class `0x0012`) in front of a conditional branch and mark its record `0x0008`. When
-  exactly they do so depends on a word at `+0xBB0` that has not been traced; the unsigned
-  form did not appear in any sequence tried (`CMP` + `BHI`).
 - Some code generators differ between the first build and `Emulator.x` without any
   difference showing in `buildcmp.py --emitters` or in the sequences tried by hand
   (around `ADDQ.B`, `TST`, `Scc`, `JMP`, `JSR`, `LINK`). Reading them, or sampling

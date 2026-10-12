@@ -160,6 +160,7 @@
 #define dr_page_bitmap          0xB90   // one bit per 512 bytes of 68K memory holding translated code
 #define dr_page_bitmap_blocks   0xB94   // its size in 32-byte blocks
 #define dr_memory_limit         0xB98   // highest address the bitmap covers
+#define dr_compare_plan         0xBB0   // pass 3: CR image from dr_plan_compare; cr6 says how to generate a compare
 #define dr_branch_targets       0xBA8   // pass 1: 64 bits, one per word of the block, set where a branch lands
 
 //@ end

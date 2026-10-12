@@ -145,6 +145,33 @@
 @182F8 dr_version
     The same word that init_state and dr_setup store in emulator_version.
 
+@15248 dr_plan_compare
+    Called by the emitters of CMP, CMPA, CMPI and CMPM with the flags of the
+    next record in addr, to decide how the compare is to be generated when a
+    conditional branch follows.  The answer is left in cr6 and saved in
+    dr_compare_plan:
+    .
+      cr6.lt   also emit a PowerPC compare into cr7 for the branch to test -
+               cmplw if cr6.eq (conditions HI, LS, CC, CS, NE, EQ), cmpw if
+               cr6.so (GE, LT, GT, LE)
+      cr6.gt   emit the usual code that sets the 68K flags as well
+    .
+    The 68K flags can be left out altogether, so that compare and branch
+    become two PowerPC instructions, when nothing else can want them: the
+    instruction at the branch's target replaces N, Z, V and C (bit 0x0004),
+    the instructions after the branch do too (bit 0x0400 clear after the
+    liveness pass), the target is an instruction of this block, and the
+    branch is not itself the target of another branch.  Failing that, a
+    branch of the signed class still gets its cmpw, next to the code for
+    the flags; one of the other class gets nothing extra.
+15248 cr5-cr7 = the next record's flags
+1524C is the next instruction a branch target ?
+15274 a class of condition that can use cr7 ...
+15278 ... whose flags are dead on both paths
+15288 the branch's target: is it in this block ...
+152A4 ... and the start of an instruction ?
+152C8 signed class (bit 0x0002): a compare into cr7 in any case
+
 @149E0 dr_divs_w
     Called by the translation of DIVS.W (the emitter above generates the
     call).  data is the 32-bit dividend, addr the divisor, sign-extended, and
