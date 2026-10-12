@@ -204,9 +204,10 @@ Instructions are translated to the PowerPC instructions that perform
 them, on the same register assignments the interpreter uses, so that
 control can pass between translated code and the interpreter at any
 instruction boundary. The code is straight-line: translating each of the
-37,328 valid opcodes that do not end a block, on its own, gives between
-1 and about 20 PowerPC instructions, most often 5, and only `DIVU.W` and
-`DIVS.W` call a routine — three helpers in the recompiler's own block
+37,328 valid opcodes that do not end a block, on its own and with every
+flag wanted, gives anything from no PowerPC instructions (`NOP`) to a
+dozen or more (`MOVEM`), most often five, and only `DIVU.W` and `DIVS.W`
+call a routine — three helpers in the recompiler's own block
 (`149E0`, `14A40`, `14A80`). No translation calls an interpreter
 routine.
 
