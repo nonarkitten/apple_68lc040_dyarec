@@ -93,9 +93,12 @@ When the recompiler is active, every interpreted instruction that changes
 the flow of control jumps to `dr_dispatch` instead of to the next table
 entry. `dr_dispatch` looks the target address up in a table of translated
 blocks, translating the block first if necessary, and runs the translation.
-Translated blocks call or branch into the same interpreter routines for
-anything complicated, and fall back to the interpreter whenever a special
-event is pending. See [09-dynamic-recompiler.md](09-dynamic-recompiler.md).
+Translated code is straight-line PowerPC code that keeps the 68K state in
+the same registers as the interpreter and calls none of its routines. A
+block stops in front of an instruction the recompiler does not translate,
+which the interpreter then executes, and leaves for the interpreter
+whenever a special event is pending. See
+[09-dynamic-recompiler.md](09-dynamic-recompiler.md).
 
 ### The outside world
 

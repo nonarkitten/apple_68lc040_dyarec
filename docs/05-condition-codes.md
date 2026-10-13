@@ -160,7 +160,8 @@ and `set_ccr` (`0C3EC`) the scattering, used by `MOVE to CCR`, `RTE`,
 ## In translated code
 
 The dynamic recompiler uses the same representation, which is what lets
-translated code call the interpreter's routines. Its second pass works out
+control pass between translated code and the interpreter at any
+instruction boundary. Its second pass works out
 which instructions compute flags that are overwritten before anything
 reads them and selects cheaper code for those; see
 [09-dynamic-recompiler.md](09-dynamic-recompiler.md).
